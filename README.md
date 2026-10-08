@@ -28,6 +28,27 @@ Scientific validity takes priority over benchmark improvement. Development resul
 implementation QA and model promotion are distinct. Frozen-test access follows the
 registered final evaluation procedure; opening the repository does not authorize it.
 
-## Private data snapshot
+## Private data and result backup
 
-See [DATASET_AND_RESULTS.md](DATASET_AND_RESULTS.md) for the original full datasets, selected experiment results, checksums, and recovery instructions.
+The Code tab contains the project source and documentation. The original datasets
+and selected scientific results are in the private
+[Release](https://github.com/LLzijian/grid-transient-rom/releases/tag/curated-data-2026-10-08)
+because private_data/ is excluded from Git.
+
+These root files were added only for the backup:
+
+- DATASET_AND_RESULTS.md explains the contents and recovery procedure.
+- original_research_data_manifest.jsonl lists each archived file and its SHA-256.
+- original_research_data_volumes.json lists the four parts and their SHA-256.
+- restore_private_data.py verifies and restores the files.
+- selection_policy.json records what was included and omitted.
+- .gitattributes keeps text line endings consistent in the repository.
+
+From a fresh clone on Windows, after signing in with GitHub CLI:
+
+    gh release download curated-data-2026-10-08 -R LLzijian/grid-transient-rom -D .\release_parts
+    python restore_private_data.py .\release_parts
+
+This creates private_data/ and external_data/ in the clone. The script refuses to
+overwrite either existing directory. For browser downloads or historical canonical
+dataset path setup, see [DATASET_AND_RESULTS.md](DATASET_AND_RESULTS.md).
