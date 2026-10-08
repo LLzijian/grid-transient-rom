@@ -1,0 +1,336 @@
+{
+  "format_version": 3,
+  "method": "B2-prunable-energy",
+  "active_blocks": [
+    "NODE_HIGH_ORDER",
+    "EDGE_MEMORY",
+    "RESONANT_MEMORY"
+  ],
+  "active_block_instances": [
+    {
+      "instance_id": "node_high_order:tau",
+      "family": "NODE_HIGH_ORDER",
+      "time_constant": 0.2,
+      "frequency_hz": null,
+      "damping_ratio": null,
+      "factor": [],
+      "port_rank": 0,
+      "source_support": {},
+      "energy_constraint": "reciprocal_node_storage",
+      "removable": true
+    },
+    {
+      "instance_id": "edge_memory:0:tau=0.01",
+      "family": "EDGE_MEMORY",
+      "time_constant": 0.010000000000000009,
+      "frequency_hz": null,
+      "damping_ratio": null,
+      "factor": [],
+      "port_rank": 0,
+      "source_support": {},
+      "energy_constraint": "reciprocal_real_pole_storage",
+      "removable": true
+    },
+    {
+      "instance_id": "edge_memory:1:tau=0.22",
+      "family": "EDGE_MEMORY",
+      "time_constant": 0.2199999999999953,
+      "frequency_hz": null,
+      "damping_ratio": null,
+      "factor": [],
+      "port_rank": 0,
+      "source_support": {},
+      "energy_constraint": "reciprocal_real_pole_storage",
+      "removable": true
+    },
+    {
+      "instance_id": "edge_memory:2:tau=0.78",
+      "family": "EDGE_MEMORY",
+      "time_constant": 0.7799999999999834,
+      "frequency_hz": null,
+      "damping_ratio": null,
+      "factor": [],
+      "port_rank": 0,
+      "source_support": {},
+      "energy_constraint": "reciprocal_real_pole_storage",
+      "removable": true
+    },
+    {
+      "instance_id": "resonant_memory:0:f=0.1998001998",
+      "family": "RESONANT_MEMORY",
+      "time_constant": null,
+      "frequency_hz": 0.19980019980020405,
+      "damping_ratio": 0.49,
+      "factor": [],
+      "port_rank": 0,
+      "source_support": {},
+      "energy_constraint": "reciprocal_oscillator_storage",
+      "removable": true
+    },
+    {
+      "instance_id": "resonant_memory:1:f=0.999000999001",
+      "family": "RESONANT_MEMORY",
+      "time_constant": null,
+      "frequency_hz": 0.9990009990010202,
+      "damping_ratio": 0.1,
+      "factor": [],
+      "port_rank": 0,
+      "source_support": {},
+      "energy_constraint": "reciprocal_oscillator_storage",
+      "removable": true
+    },
+    {
+      "instance_id": "resonant_memory:2:f=2.74024024024",
+      "family": "RESONANT_MEMORY",
+      "time_constant": null,
+      "frequency_hz": 2.740240240240238,
+      "damping_ratio": 0.295,
+      "factor": [],
+      "port_rank": 0,
+      "source_support": {},
+      "energy_constraint": "reciprocal_oscillator_storage",
+      "removable": true
+    }
+  ],
+  "memory_taus": [
+    0.010000000000000009,
+    0.2199999999999953,
+    0.7799999999999834
+  ],
+  "resonances": [
+    [
+      0.19980019980020405,
+      0.49
+    ],
+    [
+      0.9990009990010202,
+      0.1
+    ],
+    [
+      2.740240240240238,
+      0.295
+    ]
+  ],
+  "node_tau": 0.2,
+  "potential_scale": 0.25,
+  "max_internal_step": 0.01,
+  "enforce_identifiability": true,
+  "minimum_equation_parameter_ratio": 3.0,
+  "maximum_condition_number": 100000000.0,
+  "selected_ridge": 1e-08,
+  "diagnostics": {
+    "n_scalar_equations": 634100,
+    "n_parameters": 335,
+    "n_equal_case_window_blocks": 595,
+    "weak_window_weighting": "equal_source_equal_line_equal_event_equal_window_width",
+    "source_balance": {
+      "ieee39_highorder_dataset": 0.5,
+      "ieee39_near_critical_unstable_v1_dense": 0.5
+    },
+    "solver_success": true,
+    "solver_iterations": 38,
+    "effective_rank": 116,
+    "condition_number": 24.625245132053898,
+    "weak_residual_rmse": 9.54046943397248e-05,
+    "solver_form": "equivalent_normal_equation_cholesky_nonnegative_least_squares",
+    "active_parameter_count": 116,
+    "screened_parameter_count": 219,
+    "equation_parameter_ratio": 5466.379310344828,
+    "identifiability_pass": true,
+    "unbiased_active_refit": {
+      "solver_success": true,
+      "solver_iterations": 27,
+      "effective_rank": 116,
+      "condition_number": 24.625245132059437,
+      "weak_residual_rmse": 9.540469433966516e-05,
+      "solver_form": "equivalent_normal_equation_cholesky_nonnegative_least_squares"
+    },
+    "selected_ridge": 1e-08,
+    "active_blocks": [
+      "NODE_HIGH_ORDER",
+      "EDGE_MEMORY",
+      "RESONANT_MEMORY"
+    ],
+    "active_block_instances": [
+      {
+        "instance_id": "node_high_order:tau",
+        "family": "NODE_HIGH_ORDER",
+        "time_constant": 0.2,
+        "frequency_hz": null,
+        "damping_ratio": null,
+        "factor": [],
+        "port_rank": 0,
+        "source_support": {},
+        "energy_constraint": "reciprocal_node_storage",
+        "removable": true
+      },
+      {
+        "instance_id": "edge_memory:0:tau=0.01",
+        "family": "EDGE_MEMORY",
+        "time_constant": 0.010000000000000009,
+        "frequency_hz": null,
+        "damping_ratio": null,
+        "factor": [],
+        "port_rank": 0,
+        "source_support": {},
+        "energy_constraint": "reciprocal_real_pole_storage",
+        "removable": true
+      },
+      {
+        "instance_id": "edge_memory:1:tau=0.22",
+        "family": "EDGE_MEMORY",
+        "time_constant": 0.2199999999999953,
+        "frequency_hz": null,
+        "damping_ratio": null,
+        "factor": [],
+        "port_rank": 0,
+        "source_support": {},
+        "energy_constraint": "reciprocal_real_pole_storage",
+        "removable": true
+      },
+      {
+        "instance_id": "edge_memory:2:tau=0.78",
+        "family": "EDGE_MEMORY",
+        "time_constant": 0.7799999999999834,
+        "frequency_hz": null,
+        "damping_ratio": null,
+        "factor": [],
+        "port_rank": 0,
+        "source_support": {},
+        "energy_constraint": "reciprocal_real_pole_storage",
+        "removable": true
+      },
+      {
+        "instance_id": "resonant_memory:0:f=0.1998001998",
+        "family": "RESONANT_MEMORY",
+        "time_constant": null,
+        "frequency_hz": 0.19980019980020405,
+        "damping_ratio": 0.49,
+        "factor": [],
+        "port_rank": 0,
+        "source_support": {},
+        "energy_constraint": "reciprocal_oscillator_storage",
+        "removable": true
+      },
+      {
+        "instance_id": "resonant_memory:1:f=0.999000999001",
+        "family": "RESONANT_MEMORY",
+        "time_constant": null,
+        "frequency_hz": 0.9990009990010202,
+        "damping_ratio": 0.1,
+        "factor": [],
+        "port_rank": 0,
+        "source_support": {},
+        "energy_constraint": "reciprocal_oscillator_storage",
+        "removable": true
+      },
+      {
+        "instance_id": "resonant_memory:2:f=2.74024024024",
+        "family": "RESONANT_MEMORY",
+        "time_constant": null,
+        "frequency_hz": 2.740240240240238,
+        "damping_ratio": 0.295,
+        "factor": [],
+        "port_rank": 0,
+        "source_support": {},
+        "energy_constraint": "reciprocal_oscillator_storage",
+        "removable": true
+      }
+    ],
+    "block_parameter_norms": {
+      "NODE_HIGH_ORDER": 1.537268852593356,
+      "EDGE_MEMORY": 0.7841688280173421,
+      "RESONANT_MEMORY": 4.509583240422135
+    },
+    "instance_parameter_norms": {
+      "node_high_order:tau": 1.537268852593356,
+      "edge_memory:0:tau=0.01": 0.0882615836464948,
+      "edge_memory:1:tau=0.22": 0.3197095634713854,
+      "edge_memory:2:tau=0.78": 0.7105747242276781,
+      "resonant_memory:0:f=0.1998001998": 2.6674907226687146,
+      "resonant_memory:1:f=0.999000999001": 0.5531966657624489,
+      "resonant_memory:2:f=2.74024024024": 3.593717809700958
+    },
+    "candidate_validation_losses": {
+      "1e-08": 9.904378215384417,
+      "1e-06": 9.904378215384908,
+      "0.0001": 9.904378215432057,
+      "0.01": 9.90437822015637
+    },
+    "validation": {
+      "standardized_loss": 9.904378215384417,
+      "raw_mean_rmse": 0.33621744765114625,
+      "failure_rate": 0.0,
+      "horizon_standardized_loss": {
+        "1s": 9.904378215384417,
+        "5s": 9.904378215384417,
+        "10s": 9.904378215384417
+      }
+    },
+    "passive_reciprocity_by_construction": true,
+    "reciprocal_port_ranks": {
+      "NODE_HIGH_ORDER": 3,
+      "EDGE_MEMORY": [
+        2,
+        6,
+        4
+      ],
+      "RESONANT_MEMORY": [
+        29,
+        16,
+        1
+      ]
+    },
+    "port_realizations": {
+      "edge_memory:0:tau=0.01": {
+        "proposed_rank": 2,
+        "realized_rank": 2,
+        "tolerance": 2.881317024558734e-15,
+        "discarded_rank": 0,
+        "zero_port": false,
+        "candidate_port_rank": 0
+      },
+      "edge_memory:1:tau=0.22": {
+        "proposed_rank": 6,
+        "realized_rank": 6,
+        "tolerance": 4.664158866643772e-15,
+        "discarded_rank": 0,
+        "zero_port": false,
+        "candidate_port_rank": 0
+      },
+      "edge_memory:2:tau=0.78": {
+        "proposed_rank": 4,
+        "realized_rank": 4,
+        "tolerance": 6.966410353643255e-15,
+        "discarded_rank": 0,
+        "zero_port": false,
+        "candidate_port_rank": 0
+      },
+      "resonant_memory:0:f=0.1998001998": {
+        "proposed_rank": 29,
+        "realized_rank": 29,
+        "tolerance": 1.3191879682333557e-14,
+        "discarded_rank": 0,
+        "zero_port": false,
+        "candidate_port_rank": 0
+      },
+      "resonant_memory:1:f=0.999000999001": {
+        "proposed_rank": 16,
+        "realized_rank": 16,
+        "tolerance": 6.386557633100602e-15,
+        "discarded_rank": 0,
+        "zero_port": false,
+        "candidate_port_rank": 0
+      },
+      "resonant_memory:2:f=2.74024024024": {
+        "proposed_rank": 1,
+        "realized_rank": 1,
+        "tolerance": 1.8941951714466486e-14,
+        "discarded_rank": 0,
+        "zero_port": false,
+        "candidate_port_rank": 0
+      }
+    }
+  },
+  "pruning_trace": []
+}

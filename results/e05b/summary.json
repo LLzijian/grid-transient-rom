@@ -1,0 +1,163 @@
+{
+  "stage": "E5b",
+  "timestamp": "2026-09-04T09:07:18.115324+00:00",
+  "purpose": "E5 cross-fold frequency-stability confirmation; each fold val is OOS to that fold's own frozen (full) modular model.",
+  "metric": "per-event best relative frequency error among both-sides light-damped (zeta<0.3) model-empirical matches; model freq from linearized post-clear equilibrium poles, empirical from DMD of the true omega ringdown (<=4 s).",
+  "light_damping_threshold": 0.3,
+  "model_pathes": {
+    "F1": "E:\\03-nn_Transfer_Func\\kiki\\results\\e02_full\\model_full.npz",
+    "F2": "E:\\03-nn_Transfer_Func\\kiki\\results\\e06\\F2\\full\\model_full.npz",
+    "F3": "E:\\03-nn_Transfer_Func\\kiki\\results\\e06\\F3\\full\\model_full.npz",
+    "F4": "E:\\03-nn_Transfer_Func\\kiki\\results\\e06\\F4\\full\\model_full.npz",
+    "F5": "E:\\03-nn_Transfer_Func\\kiki\\results\\e06\\F5\\full\\model_full.npz"
+  },
+  "per_fold": {
+    "F1": {
+      "fold": "F1",
+      "n_val": 43,
+      "n_error_events": 0,
+      "n_matched_cases": 34,
+      "n_matches_all": 132,
+      "n_light_pairs": 101,
+      "n_light_events": 34,
+      "model_frequency_hz": {
+        "count": 2193,
+        "min": 0.1192828582826879,
+        "max": 1.4039273467865867,
+        "median": 0.17417031626132268
+      },
+      "pair_level_all": {
+        "n": 132,
+        "median_relative_frequency_error": 0.09901401444366756,
+        "median_mac": 0.39140282091815437,
+        "mean_mac": 0.36308309681292733
+      },
+      "per_event_best_light": {
+        "n": 34,
+        "median_relative_frequency_error": 0.04003092738289636,
+        "mean_relative_frequency_error": 0.0523462232201332,
+        "fraction_below_10pct": 0.9117647058823529
+      }
+    },
+    "F2": {
+      "fold": "F2",
+      "n_val": 37,
+      "n_error_events": 0,
+      "n_matched_cases": 36,
+      "n_matches_all": 129,
+      "n_light_pairs": 114,
+      "n_light_events": 36,
+      "model_frequency_hz": {
+        "count": 1776,
+        "min": 0.14082071861063725,
+        "max": 3.218399664557712,
+        "median": 0.1741703162613226
+      },
+      "pair_level_all": {
+        "n": 129,
+        "median_relative_frequency_error": 0.209818337944946,
+        "median_mac": 0.46404815925536214,
+        "mean_mac": 0.3857415008721322
+      },
+      "per_event_best_light": {
+        "n": 36,
+        "median_relative_frequency_error": 0.06985563234459226,
+        "mean_relative_frequency_error": 0.09649837791145964,
+        "fraction_below_10pct": 0.6666666666666666
+      }
+    },
+    "F3": {
+      "fold": "F3",
+      "n_val": 42,
+      "n_error_events": 0,
+      "n_matched_cases": 34,
+      "n_matches_all": 121,
+      "n_light_pairs": 96,
+      "n_light_events": 34,
+      "model_frequency_hz": {
+        "count": 2310,
+        "min": 0.10649633092511258,
+        "max": 1.3562362027707386,
+        "median": 0.1741703162613226
+      },
+      "pair_level_all": {
+        "n": 121,
+        "median_relative_frequency_error": 0.17669158325925627,
+        "median_mac": 0.4580322968592083,
+        "mean_mac": 0.4392692914143766
+      },
+      "per_event_best_light": {
+        "n": 34,
+        "median_relative_frequency_error": 0.09128024099752696,
+        "mean_relative_frequency_error": 0.10465987003473642,
+        "fraction_below_10pct": 0.5294117647058824
+      }
+    },
+    "F4": {
+      "fold": "F4",
+      "n_val": 43,
+      "n_error_events": 0,
+      "n_matched_cases": 38,
+      "n_matches_all": 148,
+      "n_light_pairs": 122,
+      "n_light_events": 38,
+      "model_frequency_hz": {
+        "count": 2365,
+        "min": 0.1098388156488059,
+        "max": 2.7674074854707422,
+        "median": 0.17417031626132273
+      },
+      "pair_level_all": {
+        "n": 148,
+        "median_relative_frequency_error": 0.16473633994301107,
+        "median_mac": 0.5096951783353771,
+        "mean_mac": 0.488766799594489
+      },
+      "per_event_best_light": {
+        "n": 38,
+        "median_relative_frequency_error": 0.06881686932485248,
+        "mean_relative_frequency_error": 0.07628468251518307,
+        "fraction_below_10pct": 0.6578947368421053
+      }
+    },
+    "F5": {
+      "fold": "F5",
+      "n_val": 47,
+      "n_error_events": 0,
+      "n_matched_cases": 44,
+      "n_matches_all": 132,
+      "n_light_pairs": 117,
+      "n_light_events": 44,
+      "model_frequency_hz": {
+        "count": 2491,
+        "min": 0.06929372845757138,
+        "max": 2.8298494266647287,
+        "median": 0.17417031626132287
+      },
+      "pair_level_all": {
+        "n": 132,
+        "median_relative_frequency_error": 0.19877755878015052,
+        "median_mac": 0.40377664136768465,
+        "mean_mac": 0.3912885122050682
+      },
+      "per_event_best_light": {
+        "n": 44,
+        "median_relative_frequency_error": 0.10673672630376783,
+        "mean_relative_frequency_error": 0.11863418198714891,
+        "fraction_below_10pct": 0.5
+      }
+    }
+  },
+  "pooled": {
+    "n_val_total": 212,
+    "n_error_events": 0,
+    "n_matched_cases": 186,
+    "n_light_pairs": 550,
+    "per_event_best_light": {
+      "n": 186,
+      "median_relative_frequency_error": 0.07219682075387157,
+      "mean_relative_frequency_error": 0.09102618665854635,
+      "fraction_below_10pct": 0.6451612903225806
+    }
+  }
+}

@@ -1,0 +1,345 @@
+{
+  "role": "post_selection_validation_audit_not_confirmatory",
+  "input_sha256": {
+    "results\\e10_refit_v2\\F1\\backbone\\summary.json": "c0b919d51b223b8788641c000c35292bbb8804e003937e0274d45dadc8f0435a",
+    "results\\e10_refit_v2\\F1\\full\\summary.json": "38ea611cd1304a10224d6688f4b432066083954b4a12a71e901f1be418cca87a",
+    "results\\e10_refit_v2\\F1\\prune\\summary.json": "6d522063b4206f978310927f35ed27211012bd6979a105a639c926207e42f154",
+    "results\\e10_refit_v2\\F2\\backbone\\summary.json": "d5ab58b0c83ed246bb3fb38e9d2ca0ce61b4fdfd62046c5ce69aff563020caf5",
+    "results\\e10_refit_v2\\F2\\full\\summary.json": "fd9b4c6b5daba30cb5d9430497dffd14cae77d8e5be0cf2fc8488cb0448648f8",
+    "results\\e10_refit_v2\\F2\\prune\\summary.json": "bfbdda80770247e48c0e741170631c8a224a48d6548563341ad4e0fc2671f77c",
+    "results\\e10_refit_v2\\F3\\backbone\\summary.json": "f641cafc8e1c0f27d63a7f5165dca9ea6ca41658dac8e49dae55bb8c00dbfcc6",
+    "results\\e10_refit_v2\\F3\\full\\summary.json": "26880dd9a49d6ce7ecaace457b5d9e9f04558b20aaca4d5b89129427b45f7ae0",
+    "results\\e10_refit_v2\\F3\\prune\\summary.json": "fff4184ffc2fe60ae6729a2ff0cc70e0860332789b84b34f586be8f24fc1621f",
+    "results\\e10_refit_v2\\F4\\backbone\\summary.json": "72f9b9c0b1b6e147768bf2153f76978e32cbd757a9ec67178e00c8e78b4f27b2",
+    "results\\e10_refit_v2\\F4\\full\\summary.json": "c4f8fb3ab50588266126de73afd26d562a478b82fabb956d9058487df21e4186",
+    "results\\e10_refit_v2\\F4\\prune\\summary.json": "663e475a680138efc73095e914322bd3cac35fc37766e84031347a11db901cee",
+    "results\\e10_refit_v2\\F5\\backbone\\summary.json": "12c7326c06e361a4147277b5d48382455d1e1e5bafc93da9489369663222eff5",
+    "results\\e10_refit_v2\\F5\\full\\summary.json": "7c012d4fdbb85990592976cbf1792562ab31108368ccf84d83406742c4ba0764",
+    "results\\e10_refit_v2\\F5\\prune\\summary.json": "3c823fea62c0febb218e50e32e63d83c5fe6d0953a18a41e1b5571dbcde8577e",
+    "results\\e11_modal_validation_v2\\summary.json": "a5679746de3688d7f6acffee41c1be71d5121b429de6c25f4aeb1d4318d80830"
+  },
+  "per_fold": {
+    "F1": {
+      "module_adoption_gate": {
+        "accepted": true,
+        "minimum_improvement": 0.02,
+        "observed_improvement": 0.6630879502627862,
+        "backbone_standardized_loss": 5.654913531971033,
+        "candidate_standardized_loss": 1.9052085091430684,
+        "backbone_failure_rate": 0.0,
+        "candidate_failure_rate": 0.0,
+        "criterion": "candidate improves validation loss by threshold without higher failure rate"
+      },
+      "active_blocks": [
+        "NODE_HIGH_ORDER",
+        "EDGE_MEMORY",
+        "RESONANT_MEMORY"
+      ],
+      "trajectory": {
+        "mean_rmse": 0.22208010719092705,
+        "median_rmse": 0.07996851086179776,
+        "pooled_rmse": 0.31695546373964334,
+        "worst_10pct_cvar_rmse": 0.5719000153759723,
+        "pooled_r2": 0.7657880854148419,
+        "pooled_delta_r2": 0.9358854332368508,
+        "pooled_omega_r2": 0.6309967244935968,
+        "failure_rate": 0.0,
+        "n_declared": 43,
+        "n_eligible": 34,
+        "n_success": 34,
+        "n_failures": 0
+      }
+    },
+    "F2": {
+      "module_adoption_gate": {
+        "accepted": false,
+        "minimum_improvement": 0.02,
+        "observed_improvement": 0.00042347745365455295,
+        "backbone_standardized_loss": 2.012966324893229,
+        "candidate_standardized_loss": 2.0121138790396706,
+        "backbone_failure_rate": 0.0,
+        "candidate_failure_rate": 0.0,
+        "criterion": "candidate improves validation loss by threshold without higher failure rate"
+      },
+      "active_blocks": [],
+      "trajectory": {
+        "mean_rmse": 0.24845517239479895,
+        "median_rmse": 0.07850779789498466,
+        "pooled_rmse": 0.36164821408225606,
+        "worst_10pct_cvar_rmse": 0.6679670035167943,
+        "pooled_r2": 0.7134224937599292,
+        "pooled_delta_r2": 0.9455020365072233,
+        "pooled_omega_r2": 0.5373265457161729,
+        "failure_rate": 0.0,
+        "n_declared": 37,
+        "n_eligible": 32,
+        "n_success": 32,
+        "n_failures": 0
+      }
+    },
+    "F3": {
+      "module_adoption_gate": {
+        "accepted": true,
+        "minimum_improvement": 0.02,
+        "observed_improvement": 0.5922990512887787,
+        "backbone_standardized_loss": 4.010942192801614,
+        "candidate_standardized_loss": 1.6352649372310843,
+        "backbone_failure_rate": 0.0,
+        "candidate_failure_rate": 0.0,
+        "criterion": "candidate improves validation loss by threshold without higher failure rate"
+      },
+      "active_blocks": [
+        "NODE_HIGH_ORDER",
+        "EDGE_MEMORY",
+        "RESONANT_MEMORY"
+      ],
+      "trajectory": {
+        "mean_rmse": 0.2317651809035219,
+        "median_rmse": 0.13332150757086697,
+        "pooled_rmse": 0.29757598872102997,
+        "worst_10pct_cvar_rmse": 0.5554816855344291,
+        "pooled_r2": 0.8575654889041693,
+        "pooled_delta_r2": 0.9426628083638958,
+        "pooled_omega_r2": 0.7862674158310797,
+        "failure_rate": 0.0,
+        "n_declared": 42,
+        "n_eligible": 34,
+        "n_success": 34,
+        "n_failures": 0
+      }
+    },
+    "F4": {
+      "module_adoption_gate": {
+        "accepted": false,
+        "minimum_improvement": 0.02,
+        "observed_improvement": -0.916696081482269,
+        "backbone_standardized_loss": 5.157446791411092,
+        "candidate_standardized_loss": 9.885258055550942,
+        "backbone_failure_rate": 0.0,
+        "candidate_failure_rate": 0.0,
+        "criterion": "candidate improves validation loss by threshold without higher failure rate"
+      },
+      "active_blocks": [],
+      "trajectory": {
+        "mean_rmse": 0.3003895294083891,
+        "median_rmse": 0.25087569326906817,
+        "pooled_rmse": 0.3996687896141099,
+        "worst_10pct_cvar_rmse": 0.740384105044906,
+        "pooled_r2": 0.6762776851657999,
+        "pooled_delta_r2": 0.9286556577043973,
+        "pooled_omega_r2": 0.46706431708571294,
+        "failure_rate": 0.0,
+        "n_declared": 43,
+        "n_eligible": 38,
+        "n_success": 38,
+        "n_failures": 0
+      }
+    },
+    "F5": {
+      "module_adoption_gate": {
+        "accepted": true,
+        "minimum_improvement": 0.02,
+        "observed_improvement": 0.24314032266190302,
+        "backbone_standardized_loss": 50.854491077121146,
+        "candidate_standardized_loss": 38.48971370782304,
+        "backbone_failure_rate": 0.0,
+        "candidate_failure_rate": 0.0,
+        "criterion": "candidate improves validation loss by threshold without higher failure rate"
+      },
+      "active_blocks": [
+        "NODE_HIGH_ORDER",
+        "EDGE_MEMORY",
+        "RESONANT_MEMORY"
+      ],
+      "trajectory": {
+        "mean_rmse": 0.9149557809381675,
+        "median_rmse": 0.3972206196066116,
+        "pooled_rmse": 1.5797113129074554,
+        "worst_10pct_cvar_rmse": 3.823428816717444,
+        "pooled_r2": -1.6983466733803798,
+        "pooled_delta_r2": -0.9134369241654559,
+        "pooled_omega_r2": -3.0201440375341724,
+        "failure_rate": 0.0,
+        "n_declared": 47,
+        "n_eligible": 39,
+        "n_success": 39,
+        "n_failures": 0
+      }
+    }
+  },
+  "pooled_stages": {
+    "backbone": {
+      "n_declared": 212,
+      "n_success": 177,
+      "outcomes_successful": {
+        "stable": 177
+      },
+      "metrics_successful": {
+        "mean_rmse": 0.49125028972572815,
+        "median_rmse": 0.20538607097938658,
+        "pooled_rmse": 0.9471146486047811,
+        "worst_10pct_cvar_rmse": 2.272136939377173,
+        "pooled_r2": -0.5100560993294676,
+        "pooled_delta_r2": 0.28507781569527546,
+        "pooled_omega_r2": -1.310071508542272,
+        "failure_rate": 0.0
+      },
+      "n_failures": 0,
+      "n_excluded_short": 35
+    },
+    "full": {
+      "n_declared": 212,
+      "n_success": 177,
+      "outcomes_successful": {
+        "stable": 177
+      },
+      "metrics_successful": {
+        "mean_rmse": 0.40372418801741766,
+        "median_rmse": 0.16360808407007882,
+        "pooled_rmse": 0.8146493599378889,
+        "worst_10pct_cvar_rmse": 2.033177777898376,
+        "pooled_r2": -0.1171961121707017,
+        "pooled_delta_r2": 0.4021805648631471,
+        "pooled_omega_r2": -0.6922506464883587,
+        "failure_rate": 0.0
+      },
+      "n_failures": 0,
+      "n_excluded_short": 35
+    },
+    "prune": {
+      "n_declared": 212,
+      "n_success": 177,
+      "outcomes_successful": {
+        "stable": 177
+      },
+      "metrics_successful": {
+        "mean_rmse": 0.3981886038754358,
+        "median_rmse": 0.1808008827072657,
+        "pooled_rmse": 0.8025581929788437,
+        "worst_10pct_cvar_rmse": 1.8895337389565343,
+        "pooled_r2": -0.08427898286309587,
+        "pooled_delta_r2": 0.41392319180571824,
+        "pooled_omega_r2": -0.6409559759467549,
+        "failure_rate": 0.0
+      },
+      "n_failures": 0,
+      "n_excluded_short": 35
+    }
+  },
+  "final_by_source": {
+    "ieee39_highorder_dataset": {
+      "n_declared": 100,
+      "n_success": 100,
+      "outcomes_successful": {
+        "stable": 100
+      },
+      "metrics_successful": {
+        "mean_rmse": 0.10749815723998,
+        "median_rmse": 0.0648341842936613,
+        "pooled_rmse": 0.1737410520948475,
+        "worst_10pct_cvar_rmse": 0.4707428694694259,
+        "pooled_r2": 0.7699231976023682,
+        "pooled_delta_r2": 0.9818993696688049,
+        "pooled_omega_r2": -0.6049134612732006,
+        "failure_rate": 0.0
+      },
+      "n_failures": 0,
+      "n_excluded_short": 0
+    },
+    "ieee39_near_critical_unstable_v1_dense": {
+      "n_declared": 112,
+      "n_success": 77,
+      "outcomes_successful": {
+        "stable": 77
+      },
+      "metrics_successful": {
+        "mean_rmse": 0.775708664440963,
+        "median_rmse": 0.5443116729990228,
+        "pooled_rmse": 1.2005790988155869,
+        "worst_10pct_cvar_rmse": 3.348731396923984,
+        "pooled_r2": -0.2060630479697696,
+        "pooled_delta_r2": 0.09790221289395351,
+        "pooled_omega_r2": -0.6420113768523332,
+        "failure_rate": 0.0
+      },
+      "n_failures": 0,
+      "n_excluded_short": 35
+    }
+  },
+  "excluded_outcomes": {
+    "unstable": 35
+  },
+  "modal": {
+    "n_events": 167,
+    "n_events_with_assignments": 167,
+    "event_assignment_coverage": 1.0,
+    "n_assigned_pairs": 647,
+    "primary_metric": "median across events of each event's median over all assigned pairs",
+    "median_event_relative_frequency_error": 0.19492736378289763,
+    "median_event_absolute_damping_ratio_error": 0.07536516321159105,
+    "median_event_mac": 0.376469598455035,
+    "best_match_selection_used": false,
+    "n_eligible": 177,
+    "n_failed": 10,
+    "successful_event_coverage_of_eligible": 0.943502824858757,
+    "failure_records": [
+      {
+        "fold": "F1",
+        "event_id": "ncunstable_0018",
+        "error": "ValueError: post-clear equilibrium solve failed: {'success': True, 'residual_inf_norm': 0.08243768583271194, 'iterations': 21}"
+      },
+      {
+        "fold": "F1",
+        "event_id": "ncunstable_0019",
+        "error": "ValueError: post-clear equilibrium solve failed: {'success': True, 'residual_inf_norm': 0.17746941689643947, 'iterations': 19}"
+      },
+      {
+        "fold": "F1",
+        "event_id": "ncunstable_0020",
+        "error": "ValueError: post-clear equilibrium solve failed: {'success': True, 'residual_inf_norm': 0.2415733846053458, 'iterations': 21}"
+      },
+      {
+        "fold": "F1",
+        "event_id": "ncunstable_dense_0078",
+        "error": "ValueError: post-clear equilibrium solve failed: {'success': True, 'residual_inf_norm': 0.05590965042120334, 'iterations': 19}"
+      },
+      {
+        "fold": "F1",
+        "event_id": "ncunstable_dense_0079",
+        "error": "ValueError: post-clear equilibrium solve failed: {'success': True, 'residual_inf_norm': 0.1184930366598807, 'iterations': 19}"
+      },
+      {
+        "fold": "F1",
+        "event_id": "ncunstable_dense_0080",
+        "error": "ValueError: post-clear equilibrium solve failed: {'success': True, 'residual_inf_norm': 0.1820810144774615, 'iterations': 19}"
+      },
+      {
+        "fold": "F1",
+        "event_id": "ncunstable_dense_0081",
+        "error": "ValueError: post-clear equilibrium solve failed: {'success': True, 'residual_inf_norm': 0.21407023698619665, 'iterations': 18}"
+      },
+      {
+        "fold": "F1",
+        "event_id": "ncunstable_dense_0082",
+        "error": "ValueError: post-clear equilibrium solve failed: {'success': True, 'residual_inf_norm': 0.24615871247783078, 'iterations': 21}"
+      },
+      {
+        "fold": "F1",
+        "event_id": "ncunstable_dense_0083",
+        "error": "ValueError: post-clear equilibrium solve failed: {'success': True, 'residual_inf_norm': 0.27828654364419664, 'iterations': 19}"
+      },
+      {
+        "fold": "F1",
+        "event_id": "ncunstable_dense_0084",
+        "error": "ValueError: post-clear equilibrium solve failed: {'success': True, 'residual_inf_norm': 0.2937824417168476, 'iterations': 21}"
+      }
+    ]
+  },
+  "limitations": [
+    "H100 eligibility depends on observed trajectory length; all eligible events are stable.",
+    "Unscaled joint angle/speed errors mix different physical quantities; component R2 is also reported.",
+    "F1 backbone/full post-reload standardized losses used unit scales; use the corrected final gate.",
+    "Modal summaries are conditional on successful equilibrium solving.",
+    "Validation folds participated in selection; the legacy test build is consumed."
+  ]
+}

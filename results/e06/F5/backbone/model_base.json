@@ -1,0 +1,73 @@
+{
+  "format_version": 3,
+  "method": "B2-prunable-energy",
+  "active_blocks": [],
+  "active_block_instances": [],
+  "memory_taus": [
+    0.05,
+    0.2,
+    1.0
+  ],
+  "resonances": [
+    [
+      1.0,
+      0.1
+    ]
+  ],
+  "node_tau": 0.2,
+  "potential_scale": 0.25,
+  "max_internal_step": 0.01,
+  "enforce_identifiability": false,
+  "minimum_equation_parameter_ratio": 3.0,
+  "maximum_condition_number": 100000000.0,
+  "selected_ridge": 0.01,
+  "diagnostics": {
+    "n_scalar_equations": 618440,
+    "n_parameters": 55,
+    "n_equal_case_window_blocks": 588,
+    "weak_window_weighting": "equal_source_equal_line_equal_event_equal_window_width",
+    "source_balance": {
+      "ieee39_highorder_dataset": 0.5,
+      "ieee39_near_critical_unstable_v1_dense": 0.5
+    },
+    "solver_success": true,
+    "solver_iterations": 25,
+    "effective_rank": 55,
+    "condition_number": 11.117558369200228,
+    "weak_residual_rmse": 8.705273173848879e-05,
+    "solver_form": "equivalent_normal_equation_cholesky_nonnegative_least_squares",
+    "active_parameter_count": 55,
+    "screened_parameter_count": 0,
+    "equation_parameter_ratio": 11244.363636363636,
+    "identifiability_pass": true,
+    "selected_ridge": 0.01,
+    "active_blocks": [],
+    "active_block_instances": [],
+    "block_parameter_norms": {},
+    "instance_parameter_norms": {},
+    "candidate_validation_losses": {
+      "1e-08": 49.66626092665707,
+      "1e-06": 49.666260926516976,
+      "0.0001": 49.66626091250192,
+      "0.01": 49.66625951099767
+    },
+    "validation": {
+      "standardized_loss": 49.66625951099767,
+      "raw_mean_rmse": 0.6174454524276954,
+      "failure_rate": 0.0,
+      "horizon_standardized_loss": {
+        "1s": 49.66625951099767,
+        "5s": 49.66625951099767,
+        "10s": 49.66625951099767
+      }
+    },
+    "passive_reciprocity_by_construction": true,
+    "reciprocal_port_ranks": {
+      "NODE_HIGH_ORDER": 0,
+      "EDGE_MEMORY": [],
+      "RESONANT_MEMORY": []
+    },
+    "port_realizations": {}
+  },
+  "pruning_trace": []
+}

@@ -1,0 +1,83 @@
+{
+  "andes_version": "2.0.0",
+  "case": "ieee39/ieee39_full.xlsx",
+  "seed": 347,
+  "fault_start_s": 1,
+  "postfault_horizon_s": 15,
+  "sample_interval_s": 0.01,
+  "integration_step_s": 0.005,
+  "newton_tolerance": 1e-7,
+  "newton_max_iterations": 30,
+  "disable_builtin_timed_events": true,
+  "disable_pss": false,
+  "fault_type": "temporary_bus_three_phase_ground",
+  "los_angle_rad": 3.141592653589793,
+  "los_relative_speed_pu": 0.02,
+  "los_hold_samples": 5,
+  "stable_tail_seconds": 1,
+  "stable_tail_speed_pu": 0.005,
+  "pre_fault_speed_tolerance_pu": 0.000001,
+  "pre_fault_angle_drift_rad": 0.00001,
+  "smoke": [
+    {
+      "line": "Line_21",
+      "location": 0,
+      "bus": 16,
+      "duration_s": 0.1,
+      "xf": 0.001
+    },
+    {
+      "line": "Line_31",
+      "location": 0,
+      "bus": 26,
+      "duration_s": 0.15,
+      "xf": 0.001
+    },
+    {
+      "line": "Line_35",
+      "location": 0,
+      "bus": 2,
+      "duration_s": 0.3,
+      "xf": 0.001
+    },
+    {
+      "line": "Line_21",
+      "location": 0,
+      "bus": 16,
+      "duration_s": 0.4,
+      "xf": 0.001
+    },
+    {
+      "line": "Line_21",
+      "location": 0,
+      "bus": 16,
+      "duration_s": 0.6,
+      "xf": 0.001
+    }
+  ],
+  "pilot_buses": [
+    37,
+    38,
+    39
+  ],
+  "pilot_durations_s": [
+    0.425,
+    0.45,
+    0.475,
+    0.5,
+    0.525,
+    0.55,
+    0.575
+  ],
+  "pilot_fault_reactance_pu": [
+    0.001,
+    0.01
+  ],
+  "validation_buses": [],
+  "test_buses": [
+    37,
+    38,
+    39
+  ],
+  "notes": "Loop0047 prospective TEST-only duration supplement. All42 fixed-grid attempts retained or rejected solely by unchanged numerical/physical QA. No model scores or adaptive event selection. Old Pilot test remains consumed."
+}

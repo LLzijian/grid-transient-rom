@@ -1,0 +1,62 @@
+{
+  "stage": "E7-pinn",
+  "timestamp": "2026-09-04T08:33:49.608042+00:00",
+  "method": "PINN",
+  "n_train": 209,
+  "n_val": 43,
+  "fit_status": "completed",
+  "best_validation_loss": 0.12202311578691465,
+  "epochs": 100,
+  "hidden": 24,
+  "learning_rate": 0.001,
+  "fit_seconds": 228.7,
+  "base_method": "M0",
+  "base_damping_norm": 7.999422924046022e-28,
+  "physics_audit": {
+    "status": "pass",
+    "shared_model": true,
+    "equilibrium_zero_by_construction": true,
+    "certificate_claim": false
+  },
+  "aggregate": {
+    "mean_rmse": 0.4008251637721416,
+    "median_rmse": 0.17661646693941022,
+    "pooled_rmse": 0.600814768789396,
+    "worst_10pct_cvar_rmse": 1.1490513285196908,
+    "pooled_r2": 0.2780602245755157,
+    "pooled_delta_r2": 0.8599298742464978,
+    "pooled_omega_r2": -0.07455958017330278,
+    "failure_rate": 0.0,
+    "n_rollout_failures": 0
+  },
+  "difficulty_stratified": {
+    "stable_mild": {
+      "n": 17,
+      "mean_delta_rmse": 0.05998519902403926,
+      "mean_omega_rmse": 0.14977395213039515,
+      "mean_rmse": 0.11408431276628593,
+      "median_peak_omega_1s": 0.2349176734711354
+    },
+    "stable_moderate": {
+      "n": 3,
+      "mean_delta_rmse": 0.06530070617415835,
+      "mean_omega_rmse": 0.24110808918124402,
+      "mean_rmse": 0.17663138579464646,
+      "median_peak_omega_1s": 0.5306346904822605
+    },
+    "stable_severe": {
+      "n": 14,
+      "mean_delta_rmse": 0.22276303978551026,
+      "mean_omega_rmse": 1.2530349214504375,
+      "mean_rmse": 0.8999221872664283,
+      "median_peak_omega_1s": 5.911206965063246
+    },
+    "unstable_severe": {
+      "n": 9,
+      "mean_delta_rmse": 0.030100974982941016,
+      "mean_omega_rmse": 0.33785954421142095,
+      "mean_rmse": 0.23984905702302933,
+      "median_peak_omega_1s": 8.377301975629868
+    }
+  }
+}

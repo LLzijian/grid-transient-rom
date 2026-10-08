@@ -1,0 +1,199 @@
+{
+  "stage": "E3b",
+  "timestamp": "2026-09-04T03:58:01.953595+00:00",
+  "fold": "F1",
+  "horizon_steps": 800,
+  "gate_subset": "ieee39_highorder_dataset (n=20, stable long traces; dense excluded: long-horizon rollout diverges by construction)",
+  "train_for_weak_system": 209,
+  "method": "M0-GMD-PM",
+  "status": "completed",
+  "promoted": true,
+  "validation_improvement_vs_ZOH": 0.35285501158798804,
+  "selected_candidate": {
+    "candidate": "stable_graph_modal_Pm_ODE",
+    "ridge": 0.0001,
+    "relative_threshold": 0.03,
+    "spectral_margin": 0.5,
+    "spectral_shift": 0.5167531060808797,
+    "spectral_abscissa": -0.5000000000000002,
+    "active_coefficients": 89,
+    "weak_residual_rmse": 0.0008381699750711243,
+    "standalone_pm_mean_rmse": 0.011640949331653706,
+    "standalone_pm_median_rmse": 0.012286491943236836,
+    "standalone_pm_p90_rmse": 0.02094411505838072,
+    "standardized_loss": 0.3991029831108198,
+    "raw_mean_rmse": 0.011807547284489867,
+    "raw_median_rmse": 0.011523426432181414,
+    "omega_mean_rmse": 0.016168015736254558,
+    "edge_angle_mean_rmse": 0.0037387080056163896,
+    "pm_mean_rmse": 0.01466526617539966,
+    "maximum_coi_drift": 5.329070518200751e-15,
+    "failure_rate": 0.0,
+    "source_standardized_loss": {
+      "ieee39_highorder_dataset": 0.3991029831108198
+    }
+  },
+  "best_candidate_before_gate": {
+    "candidate": "stable_graph_modal_Pm_ODE",
+    "ridge": 0.0001,
+    "relative_threshold": 0.03,
+    "spectral_margin": 0.5,
+    "spectral_shift": 0.5167531060808797,
+    "spectral_abscissa": -0.5000000000000002,
+    "active_coefficients": 89,
+    "weak_residual_rmse": 0.0008381699750711243,
+    "standalone_pm_mean_rmse": 0.011640949331653706,
+    "standalone_pm_median_rmse": 0.012286491943236836,
+    "standalone_pm_p90_rmse": 0.02094411505838072,
+    "standardized_loss": 0.3991029831108198,
+    "raw_mean_rmse": 0.011807547284489867,
+    "raw_median_rmse": 0.011523426432181414,
+    "omega_mean_rmse": 0.016168015736254558,
+    "edge_angle_mean_rmse": 0.0037387080056163896,
+    "pm_mean_rmse": 0.01466526617539966,
+    "maximum_coi_drift": 5.329070518200751e-15,
+    "failure_rate": 0.0,
+    "source_standardized_loss": {
+      "ieee39_highorder_dataset": 0.3991029831108198
+    }
+  },
+  "fallback_candidate": {
+    "candidate": "Pm_clear_ZOH",
+    "ridge": null,
+    "relative_threshold": null,
+    "spectral_margin": null,
+    "spectral_shift": 0.0,
+    "spectral_abscissa": 0.0,
+    "active_coefficients": 0,
+    "weak_residual_rmse": 0.000858123960143655,
+    "standalone_pm_mean_rmse": 0.030895375328304726,
+    "standalone_pm_median_rmse": 0.028646000289478415,
+    "standalone_pm_p90_rmse": 0.050086019784736466,
+    "standardized_loss": 0.9011627714573732,
+    "raw_mean_rmse": 0.01824559796632847,
+    "raw_median_rmse": 0.018498601937450003,
+    "omega_mean_rmse": 0.024811591058250218,
+    "edge_angle_mean_rmse": 0.007491530313913861,
+    "pm_mean_rmse": 0.030895375328304726,
+    "maximum_coi_drift": 2.6645352591003757e-15,
+    "failure_rate": 0.0,
+    "source_standardized_loss": {
+      "ieee39_highorder_dataset": 0.9011627714573732
+    }
+  },
+  "eigenvalues_real": [
+    -0.5000000000000002,
+    -1.0417326936127616,
+    -12.855928227981343,
+    -11.419969056859612,
+    -10.818784050570626,
+    -2.9740723205680064,
+    -7.986291029473715,
+    -7.37301235285204,
+    -5.707884552790223
+  ],
+  "eigenvalues_imag": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "effective_time_constants": [
+    1.9999999999999991,
+    0.9599391534232921,
+    0.07778512622865051,
+    0.08756591152051606,
+    0.09243182924491926,
+    0.3362393016081781,
+    0.12521457035681038,
+    0.13562977411982477,
+    0.1751962554167574
+  ],
+  "weak_system": {
+    "n_cases": 209,
+    "source_counts": {
+      "ieee39_near_critical_unstable_v1_dense": 151,
+      "ieee39_highorder_dataset": 58
+    },
+    "weak_windows": [
+      1,
+      5,
+      20
+    ],
+    "horizon_window_counts": {
+      "1": 142659,
+      "5": 141827,
+      "20": 138872
+    },
+    "weak_weighting": "equal_case_equal_horizon",
+    "matrix_shape": [
+      423358,
+      18
+    ],
+    "matrix_condition_number": 721.9425558444689,
+    "effective_rank": 18,
+    "response_singular_values": [
+      1039.3282055386514,
+      204.73413510059316,
+      118.85954540432283,
+      97.14630422324056,
+      79.03681889300464,
+      57.692545437014324,
+      29.09612156149183,
+      12.219344429137447,
+      8.318895017541916,
+      4.963553192965131e-13
+    ],
+    "response_rank_90pct": 1,
+    "response_rank_95pct": 2,
+    "response_rank_99pct": 4
+  },
+  "physics_audit": {
+    "status": "pass",
+    "method": "M0-GMD-PM",
+    "causal_inputs_only": true,
+    "future_observed_Pm_consumed_at_deployment": false,
+    "Pm_clear_exact_initialization": true,
+    "selected_is_exact_ZOH_fallback": false,
+    "stable_or_exact_ZOH": true,
+    "zero_total_power_invariant": true,
+    "maximum_basis_sum": 1.1102230246251565e-16,
+    "basis_orthogonality_error": 4.440892098500626e-16,
+    "Hurwitz_state_matrix": true,
+    "spectral_abscissa": -0.5000000000000002,
+    "maximum_effective_time_constant": 1.9999999999999991,
+    "time_constant_cap": 2.5,
+    "time_constant_bound_pass": true,
+    "finite_coefficients": true,
+    "common_frequency_available": false,
+    "machine_level_governor_recovery_claim": false
+  },
+  "h800_policies": {
+    "zoh_M0_GMD": {
+      "n": 20,
+      "failure_rate": 0.0,
+      "mean_rmse": 0.01823492337639183,
+      "mean_delta_rmse": 0.007007444336832926,
+      "mean_omega_rmse": 0.02479645612906724
+    },
+    "pm_ODE": {
+      "n": 20,
+      "failure_rate": 0.0,
+      "mean_rmse": 0.011800179451861664,
+      "mean_delta_rmse": 0.0040160077709376464,
+      "mean_omega_rmse": 0.016157927111043545
+    },
+    "observed_oracle": {
+      "n": 20,
+      "failure_rate": 0.0,
+      "mean_rmse": 0.009647870369808055,
+      "mean_delta_rmse": 0.0036704010592208567,
+      "mean_omega_rmse": 0.013139868500506857
+    }
+  }
+}

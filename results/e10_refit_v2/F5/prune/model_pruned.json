@@ -1,0 +1,1861 @@
+{
+  "format_version": 4,
+  "method": "B2-prunable-energy",
+  "active_blocks": [
+    "NODE_HIGH_ORDER",
+    "EDGE_MEMORY",
+    "RESONANT_MEMORY"
+  ],
+  "active_block_instances": [
+    {
+      "instance_id": "node_high_order:tau",
+      "family": "NODE_HIGH_ORDER",
+      "time_constant": 0.2,
+      "frequency_hz": null,
+      "damping_ratio": null,
+      "factor": [],
+      "port_rank": 0,
+      "source_support": {},
+      "energy_constraint": "reciprocal_node_storage",
+      "removable": true
+    },
+    {
+      "instance_id": "edge_memory:1:tau=0.23",
+      "family": "EDGE_MEMORY",
+      "time_constant": 0.2299999999999951,
+      "frequency_hz": null,
+      "damping_ratio": null,
+      "factor": [],
+      "port_rank": 0,
+      "source_support": {},
+      "energy_constraint": "reciprocal_real_pole_storage",
+      "removable": true
+    },
+    {
+      "instance_id": "edge_memory:2:tau=1.69",
+      "family": "EDGE_MEMORY",
+      "time_constant": 1.689999999999964,
+      "frequency_hz": null,
+      "damping_ratio": null,
+      "factor": [],
+      "port_rank": 0,
+      "source_support": {},
+      "energy_constraint": "reciprocal_real_pole_storage",
+      "removable": true
+    },
+    {
+      "instance_id": "resonant_memory:0:f=0.1998001998",
+      "family": "RESONANT_MEMORY",
+      "time_constant": null,
+      "frequency_hz": 0.19980019980020405,
+      "damping_ratio": 0.49,
+      "factor": [],
+      "port_rank": 0,
+      "source_support": {},
+      "energy_constraint": "reciprocal_oscillator_storage",
+      "removable": true
+    },
+    {
+      "instance_id": "resonant_memory:1:f=0.799200799201",
+      "family": "RESONANT_MEMORY",
+      "time_constant": null,
+      "frequency_hz": 0.7992007992008162,
+      "damping_ratio": 0.1,
+      "factor": [],
+      "port_rank": 0,
+      "source_support": {},
+      "energy_constraint": "reciprocal_oscillator_storage",
+      "removable": true
+    },
+    {
+      "instance_id": "resonant_memory:2:f=2.7027027027",
+      "family": "RESONANT_MEMORY",
+      "time_constant": null,
+      "frequency_hz": 2.7027027027027004,
+      "damping_ratio": 0.295,
+      "factor": [],
+      "port_rank": 0,
+      "source_support": {},
+      "energy_constraint": "reciprocal_oscillator_storage",
+      "removable": true
+    }
+  ],
+  "memory_taus": [
+    0.2299999999999951,
+    1.689999999999964
+  ],
+  "resonances": [
+    [
+      0.19980019980020405,
+      0.49
+    ],
+    [
+      0.7992007992008162,
+      0.1
+    ],
+    [
+      2.7027027027027004,
+      0.295
+    ]
+  ],
+  "node_tau": 0.2,
+  "potential_scale": 0.25,
+  "max_internal_step": 0.01,
+  "enforce_identifiability": true,
+  "minimum_equation_parameter_ratio": 3.0,
+  "maximum_condition_number": 100000000.0,
+  "selected_ridge": 1e-08,
+  "validation_scales": {
+    "omega": 0.3201850133883649,
+    "edge_angle": 0.4941552282889967
+  },
+  "diagnostics": {
+    "n_scalar_equations": 618440,
+    "n_parameters": 290,
+    "n_equal_case_window_blocks": 588,
+    "weak_window_weighting": "equal_source_equal_line_equal_event_equal_window_width",
+    "source_balance": {
+      "ieee39_highorder_dataset": 0.5,
+      "ieee39_near_critical_unstable_v1_dense": 0.5
+    },
+    "solver_success": true,
+    "solver_iterations": 34,
+    "effective_rank": 115,
+    "condition_number": 26.94237769493771,
+    "weak_residual_rmse": 8.393431283812379e-05,
+    "solver_form": "equivalent_normal_equation_cholesky_nonnegative_least_squares",
+    "active_parameter_count": 115,
+    "screened_parameter_count": 175,
+    "equation_parameter_ratio": 5377.739130434783,
+    "identifiability_pass": true,
+    "unbiased_active_refit": {
+      "solver_success": true,
+      "solver_iterations": 27,
+      "effective_rank": 115,
+      "condition_number": 26.942377694938106,
+      "weak_residual_rmse": 8.393431291601108e-05,
+      "solver_form": "equivalent_normal_equation_cholesky_nonnegative_least_squares"
+    },
+    "selected_ridge": 1e-08,
+    "active_blocks": [
+      "NODE_HIGH_ORDER",
+      "EDGE_MEMORY",
+      "RESONANT_MEMORY"
+    ],
+    "active_block_instances": [
+      {
+        "instance_id": "node_high_order:tau",
+        "family": "NODE_HIGH_ORDER",
+        "time_constant": 0.2,
+        "frequency_hz": null,
+        "damping_ratio": null,
+        "factor": [],
+        "port_rank": 0,
+        "source_support": {},
+        "energy_constraint": "reciprocal_node_storage",
+        "removable": true
+      },
+      {
+        "instance_id": "edge_memory:1:tau=0.23",
+        "family": "EDGE_MEMORY",
+        "time_constant": 0.2299999999999951,
+        "frequency_hz": null,
+        "damping_ratio": null,
+        "factor": [],
+        "port_rank": 0,
+        "source_support": {},
+        "energy_constraint": "reciprocal_real_pole_storage",
+        "removable": true
+      },
+      {
+        "instance_id": "edge_memory:2:tau=1.69",
+        "family": "EDGE_MEMORY",
+        "time_constant": 1.689999999999964,
+        "frequency_hz": null,
+        "damping_ratio": null,
+        "factor": [],
+        "port_rank": 0,
+        "source_support": {},
+        "energy_constraint": "reciprocal_real_pole_storage",
+        "removable": true
+      },
+      {
+        "instance_id": "resonant_memory:0:f=0.1998001998",
+        "family": "RESONANT_MEMORY",
+        "time_constant": null,
+        "frequency_hz": 0.19980019980020405,
+        "damping_ratio": 0.49,
+        "factor": [],
+        "port_rank": 0,
+        "source_support": {},
+        "energy_constraint": "reciprocal_oscillator_storage",
+        "removable": true
+      },
+      {
+        "instance_id": "resonant_memory:1:f=0.799200799201",
+        "family": "RESONANT_MEMORY",
+        "time_constant": null,
+        "frequency_hz": 0.7992007992008162,
+        "damping_ratio": 0.1,
+        "factor": [],
+        "port_rank": 0,
+        "source_support": {},
+        "energy_constraint": "reciprocal_oscillator_storage",
+        "removable": true
+      },
+      {
+        "instance_id": "resonant_memory:2:f=2.7027027027",
+        "family": "RESONANT_MEMORY",
+        "time_constant": null,
+        "frequency_hz": 2.7027027027027004,
+        "damping_ratio": 0.295,
+        "factor": [],
+        "port_rank": 0,
+        "source_support": {},
+        "energy_constraint": "reciprocal_oscillator_storage",
+        "removable": true
+      }
+    ],
+    "block_parameter_norms": {
+      "NODE_HIGH_ORDER": 1.4900445899784514,
+      "EDGE_MEMORY": 0.8873681054646454,
+      "RESONANT_MEMORY": 6.3098900113842875
+    },
+    "instance_parameter_norms": {
+      "node_high_order:tau": 1.4900445899784514,
+      "edge_memory:1:tau=0.23": 0.5947873461733237,
+      "edge_memory:2:tau=1.69": 0.658521197402186,
+      "resonant_memory:0:f=0.1998001998": 1.9714313895969628,
+      "resonant_memory:1:f=0.799200799201": 0.309697049386165,
+      "resonant_memory:2:f=2.7027027027": 5.9860051761989395
+    },
+    "candidate_validation_losses": {
+      "1e-08": 38.490005546053744
+    },
+    "validation": {
+      "standardized_loss": 38.490005546053744,
+      "raw_mean_rmse": 0.5451461462510712,
+      "failure_rate": 0.0,
+      "horizon_standardized_loss": {
+        "1s": 24.68484446072019,
+        "5s": null,
+        "10s": null
+      }
+    },
+    "passive_reciprocity_by_construction": true,
+    "reciprocal_port_ranks": {
+      "NODE_HIGH_ORDER": 2,
+      "EDGE_MEMORY": [
+        12,
+        2
+      ],
+      "RESONANT_MEMORY": [
+        27,
+        16,
+        1
+      ]
+    },
+    "port_realizations": {
+      "edge_memory:1:tau=0.23": {
+        "proposed_rank": 12,
+        "realized_rank": 12,
+        "tolerance": 6.278412117659361e-15,
+        "discarded_rank": 0,
+        "zero_port": false,
+        "candidate_port_rank": 0
+      },
+      "edge_memory:2:tau=1.69": {
+        "proposed_rank": 2,
+        "realized_rank": 2,
+        "tolerance": 8.095201632621054e-15,
+        "discarded_rank": 0,
+        "zero_port": false,
+        "candidate_port_rank": 0
+      },
+      "resonant_memory:0:f=0.1998001998": {
+        "proposed_rank": 27,
+        "realized_rank": 27,
+        "tolerance": 1.2921088805703208e-14,
+        "discarded_rank": 0,
+        "zero_port": false,
+        "candidate_port_rank": 0
+      },
+      "resonant_memory:1:f=0.799200799201": {
+        "proposed_rank": 16,
+        "realized_rank": 16,
+        "tolerance": 3.966903219659021e-15,
+        "discarded_rank": 0,
+        "zero_port": false,
+        "candidate_port_rank": 0
+      },
+      "resonant_memory:2:f=2.7027027027": {
+        "proposed_rank": 1,
+        "realized_rank": 1,
+        "tolerance": 2.44467585536109e-14,
+        "discarded_rank": 0,
+        "zero_port": false,
+        "candidate_port_rank": 0
+      }
+    },
+    "module_adoption_gate": {
+      "accepted": true,
+      "minimum_improvement": 0.02,
+      "observed_improvement": 0.24314032266190302,
+      "backbone_standardized_loss": 50.854491077121146,
+      "candidate_standardized_loss": 38.48971370782304,
+      "backbone_failure_rate": 0.0,
+      "candidate_failure_rate": 0.0,
+      "criterion": "candidate improves validation loss by threshold without higher failure rate"
+    }
+  },
+  "pruning_trace": [
+    {
+      "active_before": [
+        "node_high_order:tau",
+        "edge_memory:0:tau=0.02",
+        "edge_memory:1:tau=0.23",
+        "edge_memory:2:tau=1.69",
+        "resonant_memory:0:f=0.1998001998",
+        "resonant_memory:1:f=0.799200799201",
+        "resonant_memory:2:f=2.7027027027"
+      ],
+      "frozen_ridge": 1e-08,
+      "reference_loss": 38.488458150028535,
+      "trials": [
+        {
+          "removed_instance": "node_high_order:tau",
+          "removed_family": "NODE_HIGH_ORDER",
+          "summary": {
+            "standardized_loss": 43.113144249715354,
+            "raw_mean_rmse": 0.5756992890199394,
+            "failure_rate": 0.0,
+            "horizon_standardized_loss": {
+              "1s": 28.084533271944903,
+              "5s": null,
+              "10s": null
+            }
+          },
+          "physics": {
+            "status": "pass",
+            "finite_parameters": true,
+            "nonnegative_parameters": true,
+            "reciprocal_dynamic_ports": true,
+            "energy_supply_identity_by_construction": true,
+            "memory_residual_operator": "positive-semidefinite edge operator",
+            "memory_connection_factor": "nonnegative square-root factor",
+            "active_blocks": [
+              "EDGE_MEMORY",
+              "RESONANT_MEMORY"
+            ],
+            "storage_hessian_min_eigenvalue": 1.5856912019178866,
+            "storage_curvature_positive": true,
+            "postclear_equilibrium": {
+              "success": true,
+              "residual_inf_norm": 2.363235828717366e-14,
+              "iterations": 4
+            },
+            "postclear_storage_hessian_min_eigenvalue": 1.6006575161885905
+          },
+          "modal_noninferior": false,
+          "source_degradation": {
+            "rows": [
+              {
+                "source": "ieee39_highorder_dataset",
+                "horizon_seconds": 1.0,
+                "point_degradation": 0.0666318308875666,
+                "bootstrap_upper": 0.09101233622882919,
+                "fault_lines": 6,
+                "events": 22,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_highorder_dataset",
+                "horizon_seconds": 5.0,
+                "point_degradation": 0.17525080496689,
+                "bootstrap_upper": 0.3369406253435749,
+                "fault_lines": 6,
+                "events": 22,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_highorder_dataset",
+                "horizon_seconds": 10.0,
+                "point_degradation": 0.13969228692917826,
+                "bootstrap_upper": 0.4948399775117028,
+                "fault_lines": 6,
+                "events": 22,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_near_critical_unstable_v1_dense",
+                "horizon_seconds": 1.0,
+                "point_degradation": 0.5412218090210545,
+                "bootstrap_upper": 0.5412218090210545,
+                "fault_lines": 1,
+                "events": 17,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_near_critical_unstable_v1_dense",
+                "horizon_seconds": 5.0,
+                "point_degradation": 0.0,
+                "bootstrap_upper": 0.0,
+                "fault_lines": 1,
+                "events": 17,
+                "passes": true,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_near_critical_unstable_v1_dense",
+                "horizon_seconds": 10.0,
+                "point_degradation": 0.0,
+                "bootstrap_upper": 0.0,
+                "fault_lines": 1,
+                "events": 17,
+                "passes": true,
+                "status": "assessed"
+              }
+            ],
+            "passes": false,
+            "failures": [],
+            "maximum_point_degradation": 0.5412218090210545,
+            "maximum_bootstrap_upper": 0.5412218090210545,
+            "bootstrap_draws": 200,
+            "confidence": 0.95,
+            "requested_horizons_seconds": [
+              1.0,
+              5.0,
+              10.0
+            ],
+            "horizon_policy": "score_only_events_reaching_each_physical_horizon",
+            "normalization": "positive_SSE_increase_over_truth_SST"
+          },
+          "fit_error": null,
+          "admissible": false
+        },
+        {
+          "removed_instance": "edge_memory:0:tau=0.02",
+          "removed_family": "EDGE_MEMORY",
+          "summary": {
+            "standardized_loss": 38.48971370782304,
+            "raw_mean_rmse": 0.5451437949998719,
+            "failure_rate": 0.0,
+            "horizon_standardized_loss": {
+              "1s": 24.684648702610186,
+              "5s": null,
+              "10s": null
+            }
+          },
+          "physics": {
+            "status": "pass",
+            "finite_parameters": true,
+            "nonnegative_parameters": true,
+            "reciprocal_dynamic_ports": true,
+            "energy_supply_identity_by_construction": true,
+            "memory_residual_operator": "positive-semidefinite edge operator",
+            "memory_connection_factor": "nonnegative square-root factor",
+            "active_blocks": [
+              "NODE_HIGH_ORDER",
+              "EDGE_MEMORY",
+              "RESONANT_MEMORY"
+            ],
+            "storage_hessian_min_eigenvalue": 1.4388706707402883,
+            "storage_curvature_positive": true,
+            "postclear_equilibrium": {
+              "success": true,
+              "residual_inf_norm": 5.0008350782974444e-14,
+              "iterations": 4
+            },
+            "postclear_storage_hessian_min_eigenvalue": 1.457044303657255
+          },
+          "modal_noninferior": true,
+          "source_degradation": {
+            "rows": [
+              {
+                "source": "ieee39_highorder_dataset",
+                "horizon_seconds": 1.0,
+                "point_degradation": 0.00011054905073047593,
+                "bootstrap_upper": 0.00011251864126079915,
+                "fault_lines": 6,
+                "events": 22,
+                "passes": true,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_highorder_dataset",
+                "horizon_seconds": 5.0,
+                "point_degradation": 0.0004193893026328551,
+                "bootstrap_upper": 0.0005219330620675547,
+                "fault_lines": 6,
+                "events": 22,
+                "passes": true,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_highorder_dataset",
+                "horizon_seconds": 10.0,
+                "point_degradation": 0.0005225817154164617,
+                "bootstrap_upper": 0.0007053348836715567,
+                "fault_lines": 6,
+                "events": 22,
+                "passes": true,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_near_critical_unstable_v1_dense",
+                "horizon_seconds": 1.0,
+                "point_degradation": 0.00027475280970963643,
+                "bootstrap_upper": 0.00027475280970963643,
+                "fault_lines": 1,
+                "events": 17,
+                "passes": true,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_near_critical_unstable_v1_dense",
+                "horizon_seconds": 5.0,
+                "point_degradation": 0.0,
+                "bootstrap_upper": 0.0,
+                "fault_lines": 1,
+                "events": 17,
+                "passes": true,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_near_critical_unstable_v1_dense",
+                "horizon_seconds": 10.0,
+                "point_degradation": 0.0,
+                "bootstrap_upper": 0.0,
+                "fault_lines": 1,
+                "events": 17,
+                "passes": true,
+                "status": "assessed"
+              }
+            ],
+            "passes": true,
+            "failures": [],
+            "maximum_point_degradation": 0.0005225817154164617,
+            "maximum_bootstrap_upper": 0.0007053348836715567,
+            "bootstrap_draws": 200,
+            "confidence": 0.95,
+            "requested_horizons_seconds": [
+              1.0,
+              5.0,
+              10.0
+            ],
+            "horizon_policy": "score_only_events_reaching_each_physical_horizon",
+            "normalization": "positive_SSE_increase_over_truth_SST"
+          },
+          "fit_error": null,
+          "admissible": true
+        },
+        {
+          "removed_instance": "edge_memory:1:tau=0.23",
+          "removed_family": "EDGE_MEMORY",
+          "summary": {
+            "standardized_loss": 38.52727892278953,
+            "raw_mean_rmse": 0.540799072064663,
+            "failure_rate": 0.0,
+            "horizon_standardized_loss": {
+              "1s": 24.85111610835503,
+              "5s": null,
+              "10s": null
+            }
+          },
+          "physics": {
+            "status": "pass",
+            "finite_parameters": true,
+            "nonnegative_parameters": true,
+            "reciprocal_dynamic_ports": true,
+            "energy_supply_identity_by_construction": true,
+            "memory_residual_operator": "positive-semidefinite edge operator",
+            "memory_connection_factor": "nonnegative square-root factor",
+            "active_blocks": [
+              "NODE_HIGH_ORDER",
+              "EDGE_MEMORY",
+              "RESONANT_MEMORY"
+            ],
+            "storage_hessian_min_eigenvalue": 1.8216207845061536,
+            "storage_curvature_positive": true,
+            "postclear_equilibrium": {
+              "success": true,
+              "residual_inf_norm": 3.446441052839659e-14,
+              "iterations": 4
+            },
+            "postclear_storage_hessian_min_eigenvalue": 1.855430706970874
+          },
+          "modal_noninferior": false,
+          "source_degradation": {
+            "rows": [
+              {
+                "source": "ieee39_highorder_dataset",
+                "horizon_seconds": 1.0,
+                "point_degradation": 0.007817756031093756,
+                "bootstrap_upper": 0.22645313088405072,
+                "fault_lines": 6,
+                "events": 22,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_highorder_dataset",
+                "horizon_seconds": 5.0,
+                "point_degradation": 0.0,
+                "bootstrap_upper": 0.0,
+                "fault_lines": 6,
+                "events": 22,
+                "passes": true,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_highorder_dataset",
+                "horizon_seconds": 10.0,
+                "point_degradation": 0.0,
+                "bootstrap_upper": 0.0,
+                "fault_lines": 6,
+                "events": 22,
+                "passes": true,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_near_critical_unstable_v1_dense",
+                "horizon_seconds": 1.0,
+                "point_degradation": 0.0,
+                "bootstrap_upper": 0.0,
+                "fault_lines": 1,
+                "events": 17,
+                "passes": true,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_near_critical_unstable_v1_dense",
+                "horizon_seconds": 5.0,
+                "point_degradation": 59.36203443279172,
+                "bootstrap_upper": 59.36203443279172,
+                "fault_lines": 1,
+                "events": 17,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_near_critical_unstable_v1_dense",
+                "horizon_seconds": 10.0,
+                "point_degradation": 3283.4840835692435,
+                "bootstrap_upper": 3283.4840835692435,
+                "fault_lines": 1,
+                "events": 17,
+                "passes": false,
+                "status": "assessed"
+              }
+            ],
+            "passes": false,
+            "failures": [],
+            "maximum_point_degradation": 3283.4840835692435,
+            "maximum_bootstrap_upper": 3283.4840835692435,
+            "bootstrap_draws": 200,
+            "confidence": 0.95,
+            "requested_horizons_seconds": [
+              1.0,
+              5.0,
+              10.0
+            ],
+            "horizon_policy": "score_only_events_reaching_each_physical_horizon",
+            "normalization": "positive_SSE_increase_over_truth_SST"
+          },
+          "fit_error": null,
+          "admissible": false
+        },
+        {
+          "removed_instance": "edge_memory:2:tau=1.69",
+          "removed_family": "EDGE_MEMORY",
+          "summary": {
+            "standardized_loss": 38.50443251922262,
+            "raw_mean_rmse": 0.5419155267265889,
+            "failure_rate": 0.0,
+            "horizon_standardized_loss": {
+              "1s": 24.672171319762636,
+              "5s": null,
+              "10s": null
+            }
+          },
+          "physics": {
+            "status": "pass",
+            "finite_parameters": true,
+            "nonnegative_parameters": true,
+            "reciprocal_dynamic_ports": true,
+            "energy_supply_identity_by_construction": true,
+            "memory_residual_operator": "positive-semidefinite edge operator",
+            "memory_connection_factor": "nonnegative square-root factor",
+            "active_blocks": [
+              "NODE_HIGH_ORDER",
+              "EDGE_MEMORY",
+              "RESONANT_MEMORY"
+            ],
+            "storage_hessian_min_eigenvalue": 1.3825153038489764,
+            "storage_curvature_positive": true,
+            "postclear_equilibrium": {
+              "success": true,
+              "residual_inf_norm": 4.810327081829163e-14,
+              "iterations": 4
+            },
+            "postclear_storage_hessian_min_eigenvalue": 1.401090721908223
+          },
+          "modal_noninferior": false,
+          "source_degradation": {
+            "rows": [
+              {
+                "source": "ieee39_highorder_dataset",
+                "horizon_seconds": 1.0,
+                "point_degradation": 0.0,
+                "bootstrap_upper": 0.0020054610145568133,
+                "fault_lines": 6,
+                "events": 22,
+                "passes": true,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_highorder_dataset",
+                "horizon_seconds": 5.0,
+                "point_degradation": 0.0,
+                "bootstrap_upper": 0.004099539917912782,
+                "fault_lines": 6,
+                "events": 22,
+                "passes": true,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_highorder_dataset",
+                "horizon_seconds": 10.0,
+                "point_degradation": 0.0,
+                "bootstrap_upper": 0.040544909448856005,
+                "fault_lines": 6,
+                "events": 22,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_near_critical_unstable_v1_dense",
+                "horizon_seconds": 1.0,
+                "point_degradation": 0.010506195360491029,
+                "bootstrap_upper": 0.010506195360491029,
+                "fault_lines": 1,
+                "events": 17,
+                "passes": true,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_near_critical_unstable_v1_dense",
+                "horizon_seconds": 5.0,
+                "point_degradation": 13.533433482236589,
+                "bootstrap_upper": 13.533433482236589,
+                "fault_lines": 1,
+                "events": 17,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_near_critical_unstable_v1_dense",
+                "horizon_seconds": 10.0,
+                "point_degradation": 612.5257392894009,
+                "bootstrap_upper": 612.5257392894009,
+                "fault_lines": 1,
+                "events": 17,
+                "passes": false,
+                "status": "assessed"
+              }
+            ],
+            "passes": false,
+            "failures": [],
+            "maximum_point_degradation": 612.5257392894009,
+            "maximum_bootstrap_upper": 612.5257392894009,
+            "bootstrap_draws": 200,
+            "confidence": 0.95,
+            "requested_horizons_seconds": [
+              1.0,
+              5.0,
+              10.0
+            ],
+            "horizon_policy": "score_only_events_reaching_each_physical_horizon",
+            "normalization": "positive_SSE_increase_over_truth_SST"
+          },
+          "fit_error": null,
+          "admissible": false
+        },
+        {
+          "removed_instance": "resonant_memory:0:f=0.1998001998",
+          "removed_family": "RESONANT_MEMORY",
+          "summary": {
+            "standardized_loss": 43.83167133269928,
+            "raw_mean_rmse": 0.6114677371822785,
+            "failure_rate": 0.0,
+            "horizon_standardized_loss": {
+              "1s": 27.040239881768084,
+              "5s": null,
+              "10s": null
+            }
+          },
+          "physics": {
+            "status": "pass",
+            "finite_parameters": true,
+            "nonnegative_parameters": true,
+            "reciprocal_dynamic_ports": true,
+            "energy_supply_identity_by_construction": true,
+            "memory_residual_operator": "positive-semidefinite edge operator",
+            "memory_connection_factor": "nonnegative square-root factor",
+            "active_blocks": [
+              "NODE_HIGH_ORDER",
+              "EDGE_MEMORY",
+              "RESONANT_MEMORY"
+            ],
+            "storage_hessian_min_eigenvalue": 1.3190797953925584,
+            "storage_curvature_positive": true,
+            "postclear_equilibrium": {
+              "success": true,
+              "residual_inf_norm": 3.2412887496503546e-14,
+              "iterations": 4
+            },
+            "postclear_storage_hessian_min_eigenvalue": 1.331584176122472
+          },
+          "modal_noninferior": false,
+          "source_degradation": {
+            "rows": [
+              {
+                "source": "ieee39_highorder_dataset",
+                "horizon_seconds": 1.0,
+                "point_degradation": 0.6815671058213767,
+                "bootstrap_upper": 1.9285447554626791,
+                "fault_lines": 6,
+                "events": 22,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_highorder_dataset",
+                "horizon_seconds": 5.0,
+                "point_degradation": 2.6702408468982886,
+                "bootstrap_upper": 4.908807000429321,
+                "fault_lines": 6,
+                "events": 22,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_highorder_dataset",
+                "horizon_seconds": 10.0,
+                "point_degradation": 3.5452571318612303,
+                "bootstrap_upper": 5.750346756864887,
+                "fault_lines": 6,
+                "events": 22,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_near_critical_unstable_v1_dense",
+                "horizon_seconds": 1.0,
+                "point_degradation": 1.1176394572850137,
+                "bootstrap_upper": 1.1176394572850137,
+                "fault_lines": 1,
+                "events": 17,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_near_critical_unstable_v1_dense",
+                "horizon_seconds": 5.0,
+                "point_degradation": 718.4128633264078,
+                "bootstrap_upper": 718.4128633264078,
+                "fault_lines": 1,
+                "events": 17,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_near_critical_unstable_v1_dense",
+                "horizon_seconds": 10.0,
+                "point_degradation": 13091.124095250872,
+                "bootstrap_upper": 13091.124095250872,
+                "fault_lines": 1,
+                "events": 17,
+                "passes": false,
+                "status": "assessed"
+              }
+            ],
+            "passes": false,
+            "failures": [],
+            "maximum_point_degradation": 13091.124095250872,
+            "maximum_bootstrap_upper": 13091.124095250872,
+            "bootstrap_draws": 200,
+            "confidence": 0.95,
+            "requested_horizons_seconds": [
+              1.0,
+              5.0,
+              10.0
+            ],
+            "horizon_policy": "score_only_events_reaching_each_physical_horizon",
+            "normalization": "positive_SSE_increase_over_truth_SST"
+          },
+          "fit_error": null,
+          "admissible": false
+        },
+        {
+          "removed_instance": "resonant_memory:1:f=0.799200799201",
+          "removed_family": "RESONANT_MEMORY",
+          "summary": {
+            "standardized_loss": 39.0709769791265,
+            "raw_mean_rmse": 0.5544271103566529,
+            "failure_rate": 0.0,
+            "horizon_standardized_loss": {
+              "1s": 25.000823197046998,
+              "5s": null,
+              "10s": null
+            }
+          },
+          "physics": {
+            "status": "pass",
+            "finite_parameters": true,
+            "nonnegative_parameters": true,
+            "reciprocal_dynamic_ports": true,
+            "energy_supply_identity_by_construction": true,
+            "memory_residual_operator": "positive-semidefinite edge operator",
+            "memory_connection_factor": "nonnegative square-root factor",
+            "active_blocks": [
+              "NODE_HIGH_ORDER",
+              "EDGE_MEMORY",
+              "RESONANT_MEMORY"
+            ],
+            "storage_hessian_min_eigenvalue": 1.3970886792812074,
+            "storage_curvature_positive": true,
+            "postclear_equilibrium": {
+              "success": true,
+              "residual_inf_norm": 5.449809220734017e-14,
+              "iterations": 4
+            },
+            "postclear_storage_hessian_min_eigenvalue": 1.4139527962352305
+          },
+          "modal_noninferior": false,
+          "source_degradation": {
+            "rows": [
+              {
+                "source": "ieee39_highorder_dataset",
+                "horizon_seconds": 1.0,
+                "point_degradation": 0.2210510766313153,
+                "bootstrap_upper": 0.23027012822466028,
+                "fault_lines": 6,
+                "events": 22,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_highorder_dataset",
+                "horizon_seconds": 5.0,
+                "point_degradation": 0.7936784794663018,
+                "bootstrap_upper": 1.7630414767206255,
+                "fault_lines": 6,
+                "events": 22,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_highorder_dataset",
+                "horizon_seconds": 10.0,
+                "point_degradation": 0.9321830954635536,
+                "bootstrap_upper": 2.0982911091178837,
+                "fault_lines": 6,
+                "events": 22,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_near_critical_unstable_v1_dense",
+                "horizon_seconds": 1.0,
+                "point_degradation": 0.0980842956885792,
+                "bootstrap_upper": 0.0980842956885792,
+                "fault_lines": 1,
+                "events": 17,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_near_critical_unstable_v1_dense",
+                "horizon_seconds": 5.0,
+                "point_degradation": 12.548232304999399,
+                "bootstrap_upper": 12.548232304999399,
+                "fault_lines": 1,
+                "events": 17,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_near_critical_unstable_v1_dense",
+                "horizon_seconds": 10.0,
+                "point_degradation": 374.1497103234866,
+                "bootstrap_upper": 374.1497103234866,
+                "fault_lines": 1,
+                "events": 17,
+                "passes": false,
+                "status": "assessed"
+              }
+            ],
+            "passes": false,
+            "failures": [],
+            "maximum_point_degradation": 374.1497103234866,
+            "maximum_bootstrap_upper": 374.1497103234866,
+            "bootstrap_draws": 200,
+            "confidence": 0.95,
+            "requested_horizons_seconds": [
+              1.0,
+              5.0,
+              10.0
+            ],
+            "horizon_policy": "score_only_events_reaching_each_physical_horizon",
+            "normalization": "positive_SSE_increase_over_truth_SST"
+          },
+          "fit_error": null,
+          "admissible": false
+        },
+        {
+          "removed_instance": "resonant_memory:2:f=2.7027027027",
+          "removed_family": "RESONANT_MEMORY",
+          "summary": {
+            "standardized_loss": 40.11534852024126,
+            "raw_mean_rmse": 0.5536446630659417,
+            "failure_rate": 0.0,
+            "horizon_standardized_loss": {
+              "1s": 25.81084316154205,
+              "5s": null,
+              "10s": null
+            }
+          },
+          "physics": {
+            "status": "pass",
+            "finite_parameters": true,
+            "nonnegative_parameters": true,
+            "reciprocal_dynamic_ports": true,
+            "energy_supply_identity_by_construction": true,
+            "memory_residual_operator": "positive-semidefinite edge operator",
+            "memory_connection_factor": "nonnegative square-root factor",
+            "active_blocks": [
+              "NODE_HIGH_ORDER",
+              "EDGE_MEMORY",
+              "RESONANT_MEMORY"
+            ],
+            "storage_hessian_min_eigenvalue": 1.4422844889522632,
+            "storage_curvature_positive": true,
+            "postclear_equilibrium": {
+              "success": true,
+              "residual_inf_norm": 4.7154235943855224e-14,
+              "iterations": 4
+            },
+            "postclear_storage_hessian_min_eigenvalue": 1.4585774443284207
+          },
+          "modal_noninferior": false,
+          "source_degradation": {
+            "rows": [
+              {
+                "source": "ieee39_highorder_dataset",
+                "horizon_seconds": 1.0,
+                "point_degradation": 0.013434938551986256,
+                "bootstrap_upper": 0.06537948351288106,
+                "fault_lines": 6,
+                "events": 22,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_highorder_dataset",
+                "horizon_seconds": 5.0,
+                "point_degradation": 0.050853139581971185,
+                "bootstrap_upper": 0.16545592187352456,
+                "fault_lines": 6,
+                "events": 22,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_highorder_dataset",
+                "horizon_seconds": 10.0,
+                "point_degradation": 0.08083858901528529,
+                "bootstrap_upper": 0.2957882508780749,
+                "fault_lines": 6,
+                "events": 22,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_near_critical_unstable_v1_dense",
+                "horizon_seconds": 1.0,
+                "point_degradation": 0.19833812319815544,
+                "bootstrap_upper": 0.19833812319815544,
+                "fault_lines": 1,
+                "events": 17,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_near_critical_unstable_v1_dense",
+                "horizon_seconds": 5.0,
+                "point_degradation": 0.0,
+                "bootstrap_upper": 0.0,
+                "fault_lines": 1,
+                "events": 17,
+                "passes": true,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_near_critical_unstable_v1_dense",
+                "horizon_seconds": 10.0,
+                "point_degradation": 0.0,
+                "bootstrap_upper": 0.0,
+                "fault_lines": 1,
+                "events": 17,
+                "passes": true,
+                "status": "assessed"
+              }
+            ],
+            "passes": false,
+            "failures": [],
+            "maximum_point_degradation": 0.19833812319815544,
+            "maximum_bootstrap_upper": 0.2957882508780749,
+            "bootstrap_draws": 200,
+            "confidence": 0.95,
+            "requested_horizons_seconds": [
+              1.0,
+              5.0,
+              10.0
+            ],
+            "horizon_policy": "score_only_events_reaching_each_physical_horizon",
+            "normalization": "positive_SSE_increase_over_truth_SST"
+          },
+          "fit_error": null,
+          "admissible": false
+        }
+      ],
+      "accepted_removal": "edge_memory:0:tau=0.02",
+      "accepted_family": "EDGE_MEMORY"
+    },
+    {
+      "active_before": [
+        "node_high_order:tau",
+        "edge_memory:1:tau=0.23",
+        "edge_memory:2:tau=1.69",
+        "resonant_memory:0:f=0.1998001998",
+        "resonant_memory:1:f=0.799200799201",
+        "resonant_memory:2:f=2.7027027027"
+      ],
+      "frozen_ridge": 1e-08,
+      "reference_loss": 38.48971370782304,
+      "trials": [
+        {
+          "removed_instance": "node_high_order:tau",
+          "removed_family": "NODE_HIGH_ORDER",
+          "summary": {
+            "standardized_loss": 43.113144249715354,
+            "raw_mean_rmse": 0.5756992890199394,
+            "failure_rate": 0.0,
+            "horizon_standardized_loss": {
+              "1s": 28.084533271944903,
+              "5s": null,
+              "10s": null
+            }
+          },
+          "physics": {
+            "status": "pass",
+            "finite_parameters": true,
+            "nonnegative_parameters": true,
+            "reciprocal_dynamic_ports": true,
+            "energy_supply_identity_by_construction": true,
+            "memory_residual_operator": "positive-semidefinite edge operator",
+            "memory_connection_factor": "nonnegative square-root factor",
+            "active_blocks": [
+              "EDGE_MEMORY",
+              "RESONANT_MEMORY"
+            ],
+            "storage_hessian_min_eigenvalue": 1.5856912019178866,
+            "storage_curvature_positive": true,
+            "postclear_equilibrium": {
+              "success": true,
+              "residual_inf_norm": 2.363235828717366e-14,
+              "iterations": 4
+            },
+            "postclear_storage_hessian_min_eigenvalue": 1.6006575161885905
+          },
+          "modal_noninferior": false,
+          "source_degradation": {
+            "rows": [
+              {
+                "source": "ieee39_highorder_dataset",
+                "horizon_seconds": 1.0,
+                "point_degradation": 0.06652128183683613,
+                "bootstrap_upper": 0.09099197437242577,
+                "fault_lines": 6,
+                "events": 22,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_highorder_dataset",
+                "horizon_seconds": 5.0,
+                "point_degradation": 0.17483141566425717,
+                "bootstrap_upper": 0.33682337915137733,
+                "fault_lines": 6,
+                "events": 22,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_highorder_dataset",
+                "horizon_seconds": 10.0,
+                "point_degradation": 0.1391697052137618,
+                "bootstrap_upper": 0.49459552331819195,
+                "fault_lines": 6,
+                "events": 22,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_near_critical_unstable_v1_dense",
+                "horizon_seconds": 1.0,
+                "point_degradation": 0.540947056211345,
+                "bootstrap_upper": 0.540947056211345,
+                "fault_lines": 1,
+                "events": 17,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_near_critical_unstable_v1_dense",
+                "horizon_seconds": 5.0,
+                "point_degradation": 0.0,
+                "bootstrap_upper": 0.0,
+                "fault_lines": 1,
+                "events": 17,
+                "passes": true,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_near_critical_unstable_v1_dense",
+                "horizon_seconds": 10.0,
+                "point_degradation": 0.0,
+                "bootstrap_upper": 0.0,
+                "fault_lines": 1,
+                "events": 17,
+                "passes": true,
+                "status": "assessed"
+              }
+            ],
+            "passes": false,
+            "failures": [],
+            "maximum_point_degradation": 0.540947056211345,
+            "maximum_bootstrap_upper": 0.540947056211345,
+            "bootstrap_draws": 200,
+            "confidence": 0.95,
+            "requested_horizons_seconds": [
+              1.0,
+              5.0,
+              10.0
+            ],
+            "horizon_policy": "score_only_events_reaching_each_physical_horizon",
+            "normalization": "positive_SSE_increase_over_truth_SST"
+          },
+          "fit_error": null,
+          "admissible": false
+        },
+        {
+          "removed_instance": "edge_memory:1:tau=0.23",
+          "removed_family": "EDGE_MEMORY",
+          "summary": {
+            "standardized_loss": 39.219958340543435,
+            "raw_mean_rmse": 0.5496992001782736,
+            "failure_rate": 0.0,
+            "horizon_standardized_loss": {
+              "1s": 25.301530386549487,
+              "5s": null,
+              "10s": null
+            }
+          },
+          "physics": {
+            "status": "pass",
+            "finite_parameters": true,
+            "nonnegative_parameters": true,
+            "reciprocal_dynamic_ports": true,
+            "energy_supply_identity_by_construction": true,
+            "memory_residual_operator": "positive-semidefinite edge operator",
+            "memory_connection_factor": "nonnegative square-root factor",
+            "active_blocks": [
+              "NODE_HIGH_ORDER",
+              "EDGE_MEMORY",
+              "RESONANT_MEMORY"
+            ],
+            "storage_hessian_min_eigenvalue": 1.852221068961394,
+            "storage_curvature_positive": true,
+            "postclear_equilibrium": {
+              "success": true,
+              "residual_inf_norm": 3.888113028022054e-14,
+              "iterations": 4
+            },
+            "postclear_storage_hessian_min_eigenvalue": 1.8912501067810548
+          },
+          "modal_noninferior": false,
+          "source_degradation": {
+            "rows": [
+              {
+                "source": "ieee39_highorder_dataset",
+                "horizon_seconds": 1.0,
+                "point_degradation": 0.08613850928089144,
+                "bootstrap_upper": 0.33618011242410384,
+                "fault_lines": 6,
+                "events": 22,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_highorder_dataset",
+                "horizon_seconds": 5.0,
+                "point_degradation": 0.2547525752183071,
+                "bootstrap_upper": 1.1091356661647425,
+                "fault_lines": 6,
+                "events": 22,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_highorder_dataset",
+                "horizon_seconds": 10.0,
+                "point_degradation": 0.0,
+                "bootstrap_upper": 1.1084742570786008,
+                "fault_lines": 6,
+                "events": 22,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_near_critical_unstable_v1_dense",
+                "horizon_seconds": 1.0,
+                "point_degradation": 0.03823445168307699,
+                "bootstrap_upper": 0.03823445168307699,
+                "fault_lines": 1,
+                "events": 17,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_near_critical_unstable_v1_dense",
+                "horizon_seconds": 5.0,
+                "point_degradation": 210.6464295102744,
+                "bootstrap_upper": 210.6464295102744,
+                "fault_lines": 1,
+                "events": 17,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_near_critical_unstable_v1_dense",
+                "horizon_seconds": 10.0,
+                "point_degradation": 8239.638691936158,
+                "bootstrap_upper": 8239.638691936158,
+                "fault_lines": 1,
+                "events": 17,
+                "passes": false,
+                "status": "assessed"
+              }
+            ],
+            "passes": false,
+            "failures": [],
+            "maximum_point_degradation": 8239.638691936158,
+            "maximum_bootstrap_upper": 8239.638691936158,
+            "bootstrap_draws": 200,
+            "confidence": 0.95,
+            "requested_horizons_seconds": [
+              1.0,
+              5.0,
+              10.0
+            ],
+            "horizon_policy": "score_only_events_reaching_each_physical_horizon",
+            "normalization": "positive_SSE_increase_over_truth_SST"
+          },
+          "fit_error": null,
+          "admissible": false
+        },
+        {
+          "removed_instance": "edge_memory:2:tau=1.69",
+          "removed_family": "EDGE_MEMORY",
+          "summary": {
+            "standardized_loss": 38.50452652217504,
+            "raw_mean_rmse": 0.5419164775901814,
+            "failure_rate": 0.0,
+            "horizon_standardized_loss": {
+              "1s": 24.672212027412304,
+              "5s": null,
+              "10s": null
+            }
+          },
+          "physics": {
+            "status": "pass",
+            "finite_parameters": true,
+            "nonnegative_parameters": true,
+            "reciprocal_dynamic_ports": true,
+            "energy_supply_identity_by_construction": true,
+            "memory_residual_operator": "positive-semidefinite edge operator",
+            "memory_connection_factor": "nonnegative square-root factor",
+            "active_blocks": [
+              "NODE_HIGH_ORDER",
+              "EDGE_MEMORY",
+              "RESONANT_MEMORY"
+            ],
+            "storage_hessian_min_eigenvalue": 1.3825301008319775,
+            "storage_curvature_positive": true,
+            "postclear_equilibrium": {
+              "success": true,
+              "residual_inf_norm": 5.811333635634669e-14,
+              "iterations": 4
+            },
+            "postclear_storage_hessian_min_eigenvalue": 1.4011056748668256
+          },
+          "modal_noninferior": false,
+          "source_degradation": {
+            "rows": [
+              {
+                "source": "ieee39_highorder_dataset",
+                "horizon_seconds": 1.0,
+                "point_degradation": 0.0,
+                "bootstrap_upper": 0.0019082813736614886,
+                "fault_lines": 6,
+                "events": 22,
+                "passes": true,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_highorder_dataset",
+                "horizon_seconds": 5.0,
+                "point_degradation": 0.0,
+                "bootstrap_upper": 0.0037102774517611,
+                "fault_lines": 6,
+                "events": 22,
+                "passes": true,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_highorder_dataset",
+                "horizon_seconds": 10.0,
+                "point_degradation": 0.0,
+                "bootstrap_upper": 0.0400059937314826,
+                "fault_lines": 6,
+                "events": 22,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_near_critical_unstable_v1_dense",
+                "horizon_seconds": 1.0,
+                "point_degradation": 0.010248579742618303,
+                "bootstrap_upper": 0.010248579742618303,
+                "fault_lines": 1,
+                "events": 17,
+                "passes": true,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_near_critical_unstable_v1_dense",
+                "horizon_seconds": 5.0,
+                "point_degradation": 13.548839583643675,
+                "bootstrap_upper": 13.548839583643675,
+                "fault_lines": 1,
+                "events": 17,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_near_critical_unstable_v1_dense",
+                "horizon_seconds": 10.0,
+                "point_degradation": 612.8795563673069,
+                "bootstrap_upper": 612.8795563673069,
+                "fault_lines": 1,
+                "events": 17,
+                "passes": false,
+                "status": "assessed"
+              }
+            ],
+            "passes": false,
+            "failures": [],
+            "maximum_point_degradation": 612.8795563673069,
+            "maximum_bootstrap_upper": 612.8795563673069,
+            "bootstrap_draws": 200,
+            "confidence": 0.95,
+            "requested_horizons_seconds": [
+              1.0,
+              5.0,
+              10.0
+            ],
+            "horizon_policy": "score_only_events_reaching_each_physical_horizon",
+            "normalization": "positive_SSE_increase_over_truth_SST"
+          },
+          "fit_error": null,
+          "admissible": false
+        },
+        {
+          "removed_instance": "resonant_memory:0:f=0.1998001998",
+          "removed_family": "RESONANT_MEMORY",
+          "summary": {
+            "standardized_loss": 43.937628000636245,
+            "raw_mean_rmse": 0.6130262599060525,
+            "failure_rate": 0.0,
+            "horizon_standardized_loss": {
+              "1s": 27.079770725521712,
+              "5s": null,
+              "10s": null
+            }
+          },
+          "physics": {
+            "status": "pass",
+            "finite_parameters": true,
+            "nonnegative_parameters": true,
+            "reciprocal_dynamic_ports": true,
+            "energy_supply_identity_by_construction": true,
+            "memory_residual_operator": "positive-semidefinite edge operator",
+            "memory_connection_factor": "nonnegative square-root factor",
+            "active_blocks": [
+              "NODE_HIGH_ORDER",
+              "EDGE_MEMORY",
+              "RESONANT_MEMORY"
+            ],
+            "storage_hessian_min_eigenvalue": 1.3204816698998116,
+            "storage_curvature_positive": true,
+            "postclear_equilibrium": {
+              "success": true,
+              "residual_inf_norm": 2.337536878565564e-14,
+              "iterations": 4
+            },
+            "postclear_storage_hessian_min_eigenvalue": 1.3331585606328589
+          },
+          "modal_noninferior": false,
+          "source_degradation": {
+            "rows": [
+              {
+                "source": "ieee39_highorder_dataset",
+                "horizon_seconds": 1.0,
+                "point_degradation": 0.6919925199744207,
+                "bootstrap_upper": 1.9334481362857152,
+                "fault_lines": 6,
+                "events": 22,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_highorder_dataset",
+                "horizon_seconds": 5.0,
+                "point_degradation": 2.7104360193726382,
+                "bootstrap_upper": 4.929185674875262,
+                "fault_lines": 6,
+                "events": 22,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_highorder_dataset",
+                "horizon_seconds": 10.0,
+                "point_degradation": 3.6051815826136835,
+                "bootstrap_upper": 5.792397177768518,
+                "fault_lines": 6,
+                "events": 22,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_near_critical_unstable_v1_dense",
+                "horizon_seconds": 1.0,
+                "point_degradation": 1.1475302237199172,
+                "bootstrap_upper": 1.1475302237199172,
+                "fault_lines": 1,
+                "events": 17,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_near_critical_unstable_v1_dense",
+                "horizon_seconds": 5.0,
+                "point_degradation": 716.4957668575322,
+                "bootstrap_upper": 716.4957668575322,
+                "fault_lines": 1,
+                "events": 17,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_near_critical_unstable_v1_dense",
+                "horizon_seconds": 10.0,
+                "point_degradation": 13045.843730162203,
+                "bootstrap_upper": 13045.843730162203,
+                "fault_lines": 1,
+                "events": 17,
+                "passes": false,
+                "status": "assessed"
+              }
+            ],
+            "passes": false,
+            "failures": [],
+            "maximum_point_degradation": 13045.843730162203,
+            "maximum_bootstrap_upper": 13045.843730162203,
+            "bootstrap_draws": 200,
+            "confidence": 0.95,
+            "requested_horizons_seconds": [
+              1.0,
+              5.0,
+              10.0
+            ],
+            "horizon_policy": "score_only_events_reaching_each_physical_horizon",
+            "normalization": "positive_SSE_increase_over_truth_SST"
+          },
+          "fit_error": null,
+          "admissible": false
+        },
+        {
+          "removed_instance": "resonant_memory:1:f=0.799200799201",
+          "removed_family": "RESONANT_MEMORY",
+          "summary": {
+            "standardized_loss": 39.166925702201574,
+            "raw_mean_rmse": 0.5556337034532312,
+            "failure_rate": 0.0,
+            "horizon_standardized_loss": {
+              "1s": 25.041956860607403,
+              "5s": null,
+              "10s": null
+            }
+          },
+          "physics": {
+            "status": "pass",
+            "finite_parameters": true,
+            "nonnegative_parameters": true,
+            "reciprocal_dynamic_ports": true,
+            "energy_supply_identity_by_construction": true,
+            "memory_residual_operator": "positive-semidefinite edge operator",
+            "memory_connection_factor": "nonnegative square-root factor",
+            "active_blocks": [
+              "NODE_HIGH_ORDER",
+              "EDGE_MEMORY",
+              "RESONANT_MEMORY"
+            ],
+            "storage_hessian_min_eigenvalue": 1.3935304394956232,
+            "storage_curvature_positive": true,
+            "postclear_equilibrium": {
+              "success": true,
+              "residual_inf_norm": 5.1729599159414205e-14,
+              "iterations": 4
+            },
+            "postclear_storage_hessian_min_eigenvalue": 1.4103621413153136
+          },
+          "modal_noninferior": false,
+          "source_degradation": {
+            "rows": [
+              {
+                "source": "ieee39_highorder_dataset",
+                "horizon_seconds": 1.0,
+                "point_degradation": 0.2292186423467937,
+                "bootstrap_upper": 0.2386192174019179,
+                "fault_lines": 6,
+                "events": 22,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_highorder_dataset",
+                "horizon_seconds": 5.0,
+                "point_degradation": 0.8305397384325028,
+                "bootstrap_upper": 1.7730030590913686,
+                "fault_lines": 6,
+                "events": 22,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_highorder_dataset",
+                "horizon_seconds": 10.0,
+                "point_degradation": 0.9784728660545824,
+                "bootstrap_upper": 2.1143548716887057,
+                "fault_lines": 6,
+                "events": 22,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_near_critical_unstable_v1_dense",
+                "horizon_seconds": 1.0,
+                "point_degradation": 0.118949875282023,
+                "bootstrap_upper": 0.118949875282023,
+                "fault_lines": 1,
+                "events": 17,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_near_critical_unstable_v1_dense",
+                "horizon_seconds": 5.0,
+                "point_degradation": 7.0081538591868915,
+                "bootstrap_upper": 7.0081538591868915,
+                "fault_lines": 1,
+                "events": 17,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_near_critical_unstable_v1_dense",
+                "horizon_seconds": 10.0,
+                "point_degradation": 227.60848212670643,
+                "bootstrap_upper": 227.60848212670643,
+                "fault_lines": 1,
+                "events": 17,
+                "passes": false,
+                "status": "assessed"
+              }
+            ],
+            "passes": false,
+            "failures": [],
+            "maximum_point_degradation": 227.60848212670643,
+            "maximum_bootstrap_upper": 227.60848212670643,
+            "bootstrap_draws": 200,
+            "confidence": 0.95,
+            "requested_horizons_seconds": [
+              1.0,
+              5.0,
+              10.0
+            ],
+            "horizon_policy": "score_only_events_reaching_each_physical_horizon",
+            "normalization": "positive_SSE_increase_over_truth_SST"
+          },
+          "fit_error": null,
+          "admissible": false
+        },
+        {
+          "removed_instance": "resonant_memory:2:f=2.7027027027",
+          "removed_family": "RESONANT_MEMORY",
+          "summary": {
+            "standardized_loss": 40.11535341070361,
+            "raw_mean_rmse": 0.5536447274470341,
+            "failure_rate": 0.0,
+            "horizon_standardized_loss": {
+              "1s": 25.81084537324135,
+              "5s": null,
+              "10s": null
+            }
+          },
+          "physics": {
+            "status": "pass",
+            "finite_parameters": true,
+            "nonnegative_parameters": true,
+            "reciprocal_dynamic_ports": true,
+            "energy_supply_identity_by_construction": true,
+            "memory_residual_operator": "positive-semidefinite edge operator",
+            "memory_connection_factor": "nonnegative square-root factor",
+            "active_blocks": [
+              "NODE_HIGH_ORDER",
+              "EDGE_MEMORY",
+              "RESONANT_MEMORY"
+            ],
+            "storage_hessian_min_eigenvalue": 1.4422841817859529,
+            "storage_curvature_positive": true,
+            "postclear_equilibrium": {
+              "success": true,
+              "residual_inf_norm": 5.904329821779245e-14,
+              "iterations": 4
+            },
+            "postclear_storage_hessian_min_eigenvalue": 1.4585771281738085
+          },
+          "modal_noninferior": false,
+          "source_degradation": {
+            "rows": [
+              {
+                "source": "ieee39_highorder_dataset",
+                "horizon_seconds": 1.0,
+                "point_degradation": 0.013325009411352234,
+                "bootstrap_upper": 0.06535933733192524,
+                "fault_lines": 6,
+                "events": 22,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_highorder_dataset",
+                "horizon_seconds": 5.0,
+                "point_degradation": 0.05043578360327046,
+                "bootstrap_upper": 0.16533536414807473,
+                "fault_lines": 6,
+                "events": 22,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_highorder_dataset",
+                "horizon_seconds": 10.0,
+                "point_degradation": 0.08031845276706251,
+                "bootstrap_upper": 0.29554512774909025,
+                "fault_lines": 6,
+                "events": 22,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_near_critical_unstable_v1_dense",
+                "horizon_seconds": 1.0,
+                "point_degradation": 0.1980644145226425,
+                "bootstrap_upper": 0.1980644145226425,
+                "fault_lines": 1,
+                "events": 17,
+                "passes": false,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_near_critical_unstable_v1_dense",
+                "horizon_seconds": 5.0,
+                "point_degradation": 0.0,
+                "bootstrap_upper": 0.0,
+                "fault_lines": 1,
+                "events": 17,
+                "passes": true,
+                "status": "assessed"
+              },
+              {
+                "source": "ieee39_near_critical_unstable_v1_dense",
+                "horizon_seconds": 10.0,
+                "point_degradation": 0.0,
+                "bootstrap_upper": 0.0,
+                "fault_lines": 1,
+                "events": 17,
+                "passes": true,
+                "status": "assessed"
+              }
+            ],
+            "passes": false,
+            "failures": [],
+            "maximum_point_degradation": 0.1980644145226425,
+            "maximum_bootstrap_upper": 0.29554512774909025,
+            "bootstrap_draws": 200,
+            "confidence": 0.95,
+            "requested_horizons_seconds": [
+              1.0,
+              5.0,
+              10.0
+            ],
+            "horizon_policy": "score_only_events_reaching_each_physical_horizon",
+            "normalization": "positive_SSE_increase_over_truth_SST"
+          },
+          "fit_error": null,
+          "admissible": false
+        }
+      ]
+    },
+    {
+      "action": "all_modules_vs_backbone_gate",
+      "accepted": true,
+      "minimum_improvement": 0.02,
+      "observed_improvement": 0.24314032266190302,
+      "backbone_standardized_loss": 50.854491077121146,
+      "candidate_standardized_loss": 38.48971370782304,
+      "backbone_failure_rate": 0.0,
+      "candidate_failure_rate": 0.0,
+      "criterion": "candidate improves validation loss by threshold without higher failure rate"
+    }
+  ]
+}

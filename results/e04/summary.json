@@ -1,0 +1,50 @@
+{
+  "stage": "E4",
+  "timestamp": "2026-09-04T02:45:11.120172+00:00",
+  "fold": "F1",
+  "model": "model_full.npz (pruned F1 modular)",
+  "n_val": 43,
+  "angle_limit": 1.5707963267948966,
+  "certificates": {
+    "storage_center_error": 0.0,
+    "storage_gradient_norm": 2.5172027167143304e-10,
+    "projected_hessian_min": 0.1265276320492384,
+    "curvature_positive": true,
+    "max_supply_identity_error": 1.0286100859957514e-09,
+    "identity_pass": true,
+    "discrete_energy_convergent": true,
+    "balance_dt": NaN,
+    "balance_dt2": NaN,
+    "balance_dt4": NaN,
+    "certificate_passed": true
+  },
+  "n_margin_certified": 24,
+  "confusion": {
+    "n_val": 43,
+    "n_stable": 34,
+    "n_unstable": 9,
+    "stable_safe": 17,
+    "stable_rejected_or_refused": 17,
+    "unstable_unsafe_called_stable": 0,
+    "unstable_refused": 9,
+    "unstable_called_unstable": 0
+  },
+  "classification": {
+    "missed_instability_rate": 0.0,
+    "stable_safe_coverage": 0.5,
+    "margin_rule": "certified stable => margin>0; certified unstable => margin<=0; not certified => refused (never declared stable)"
+  },
+  "bootstrap": {
+    "missed_instability_95_upper": 0.0,
+    "missed_instability_median": 0.0,
+    "stable_safe_coverage_95_lower": 0.19539337474120083,
+    "stable_safe_coverage_median": 0.527046783625731,
+    "n_fault_lines": 7,
+    "clusters": "fault_line"
+  },
+  "trajectory_threshold_comparison": {
+    "fsr": 1.0,
+    "n_unstable": 9,
+    "note": "threshold on range>=pi or |w|>=0.05pu over uniform H=100 causal rollout"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "stage": "E6-F3-full",
+  "timestamp": "2026-09-04T05:04:44.739449+00:00",
+  "fold": "F3",
+  "representation": "generator_10",
+  "pm_mode": "zoh",
+  "n_train": 212,
+  "n_val": 42,
+  "bootstrap_draws": 100,
+  "fit": {
+    "status": "completed",
+    "best_validation_loss": 1.6207777833115973,
+    "selected_ridge": 0.01
+  },
+  "active_blocks": [
+    "NODE_HIGH_ORDER",
+    "EDGE_MEMORY",
+    "RESONANT_MEMORY"
+  ],
+  "block_parameter_norms": {
+    "NODE_HIGH_ORDER": 0.9996295553078095,
+    "EDGE_MEMORY": 0.5927962772641495,
+    "RESONANT_MEMORY": 0.8966564249693915
+  },
+  "physics_audit": {
+    "status": "pass",
+    "finite_parameters": true,
+    "nonnegative_parameters": true,
+    "reciprocal_dynamic_ports": true,
+    "energy_supply_identity_by_construction": true,
+    "memory_residual_operator": "positive-semidefinite edge operator",
+    "memory_connection_factor": "nonnegative square-root factor",
+    "active_blocks": [
+      "NODE_HIGH_ORDER",
+      "EDGE_MEMORY",
+      "RESONANT_MEMORY"
+    ]
+  },
+  "val_metrics_H100": {
+    "mean_rmse": 0.24367587316040987,
+    "median_rmse": 0.20426007201316035,
+    "pooled_rmse": 0.29841904880606623,
+    "worst_10pct_cvar_rmse": 0.541985843087468,
+    "pooled_r2": 0.8653914847409256,
+    "pooled_delta_r2": 0.9468998357300651,
+    "pooled_omega_r2": 0.8023388721993773,
+    "failure_rate": 0.0,
+    "n_rollout_failures": 0
+  }
+}

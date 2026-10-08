@@ -1,0 +1,33 @@
+{
+  "snapshot_utc": "2026-10-08T04:35:58+00:00",
+  "included_stages": [
+    "task2_cross_dissipation_0103",
+    "task2_joint_adequacy_0099",
+    "task2_joint_numerical_pair_0100",
+    "task2_local_memory_0098",
+    "task2_lr_adaptation_0104",
+    "task2_oracle_distill_0106",
+    "task2_prediction_optimization_0102",
+    "task2_q0_scope_0105",
+    "task2_shared_closure_FS_0101"
+  ],
+  "included_validation_trajectory_paths": [
+    "task2_local_memory_0098/validation_G3-S/trajectories/trajectories.npz",
+    "task2_local_memory_0098/validation_L10-S/trajectories/trajectories.npz",
+    "task2_prediction_optimization_0102/eval_F_O/validation/trajectories.npz",
+    "task2_prediction_optimization_0102/eval_S_O/validation/trajectories.npz",
+    "task2_shared_closure_FS_0101/eval_F23/validation/trajectories.npz",
+    "task2_shared_closure_FS_0101/eval_S23/validation/trajectories.npz"
+  ],
+  "excluded": [
+    "all TEST HDF5 event payloads",
+    "TEST-only holdout supplement",
+    "historical TEST result files",
+    "interim monitor arrays",
+    "duplicate full-TRAIN trajectory arrays",
+    "timing retries",
+    "trace logs",
+    "optimizer and RNG states",
+    "caches and temporary runs"
+  ]
+}

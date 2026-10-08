@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kiki"
+version = "0.1.0"
+description = "Modular physics-structured SINDy for IEEE39 post-clear dynamics (minimal rebuild of kron-reduce)"
+requires-python = ">=3.11"
+dependencies = [
+    "h5py>=3.10",
+    "numpy>=1.26",
+    "scipy>=1.12",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.5"]
+baselines = ["torch>=2.2"]
+
+[tool.setuptools.packages.find]
+where = ["src"]

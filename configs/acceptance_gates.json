@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "required": [
+    {
+      "id": "G1-syntax",
+      "command": "python -m compileall -q src experiments tests",
+      "accept": "exit_code == 0"
+    },
+    {
+      "id": "G2-unit",
+      "command": "python -m pytest -q",
+      "accept": "exit_code == 0 and collected_tests > 0"
+    },
+    {
+      "id": "G6-json",
+      "command": "python experiments/verify_artifacts.py --json-only",
+      "accept": "exit_code == 0"
+    }
+  ],
+  "failure_report_dir": "reports/failed",
+  "accepted_report_dir": "reports/accepted"
+}
+
