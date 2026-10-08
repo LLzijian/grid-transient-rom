@@ -30,4 +30,4 @@ registered final evaluation procedure; opening the repository does not authorize
 
 ## Private data snapshot
 
-See [DATASET_AND_RESULTS.md](DATASET_AND_RESULTS.md) for the curated TRAIN/validation data, experiment results, checksums, and recovery instructions.
+See [DATASET_AND_RESULTS.md](DATASET_AND_RESULTS.md) for the original full datasets, selected experiment results, checksums, and recovery instructions.

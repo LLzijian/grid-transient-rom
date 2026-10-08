@@ -1,6 +1,15 @@
 {
-  "snapshot_utc": "2026-10-08T04:35:58+00:00",
-  "included_stages": [
+  "snapshot_utc": "2026-10-08T05:41:21+00:00",
+  "dataset_policy": "byte-for-byte originals; all TRAIN, validation, TEST and holdout events retained",
+  "included_dataset_directories": [
+    "ieee39_postfault",
+    "ieee39_expansion",
+    "ieee39_holdout_supplement",
+    "ieee39_boundary_0075",
+    "ieee39_boundary_fine_0075"
+  ],
+  "included_external_canonical_directory": "E:\\03-nn_Transfer_Func\\kron-reduce\\data\\ieee39_postclear_canonical_v1",
+  "included_result_stages": [
     "task2_cross_dissipation_0103",
     "task2_joint_adequacy_0099",
     "task2_joint_numerical_pair_0100",
@@ -11,18 +20,8 @@
     "task2_q0_scope_0105",
     "task2_shared_closure_FS_0101"
   ],
-  "included_validation_trajectory_paths": [
-    "task2_local_memory_0098/validation_G3-S/trajectories/trajectories.npz",
-    "task2_local_memory_0098/validation_L10-S/trajectories/trajectories.npz",
-    "task2_prediction_optimization_0102/eval_F_O/validation/trajectories.npz",
-    "task2_prediction_optimization_0102/eval_S_O/validation/trajectories.npz",
-    "task2_shared_closure_FS_0101/eval_F23/validation/trajectories.npz",
-    "task2_shared_closure_FS_0101/eval_S23/validation/trajectories.npz"
-  ],
+  "result_policy": "terminal scientific evidence, per-event results, stage ledgers, formal model weights, six decisive validation trajectory arrays",
   "excluded": [
-    "all TEST HDF5 event payloads",
-    "TEST-only holdout supplement",
-    "historical TEST result files",
     "interim monitor arrays",
     "duplicate full-TRAIN trajectory arrays",
     "timing retries",

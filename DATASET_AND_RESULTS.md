@@ -1,16 +1,22 @@
-# Curated private data and research results
+# Original datasets and curated research results
 
-Snapshot built at 2026-10-08T04:35:58+00:00 from the local working tree. The Git repository contains 666 current source, configuration, protocol, report, paper, and lightweight result files (13,638,297 bytes). It is a current-state snapshot, without the local Git commit history. Historical TEST-bearing numerical files under \`results/e06/*/test\`, test-margin files, and \`results/e08\` are excluded.
+This private snapshot contains byte-for-byte copies of the data files used by this project, including TRAIN, validation, TEST, and holdout events. No HDF5 event was filtered, regenerated, relabeled, or resampled for publication. Merely backing up the TEST bytes does not constitute a model evaluation or change the scientific TEST gate.
 
-The private release \`curated-data-2026-10-08\` contains 619 selected \`private_data/\` files (4,127,249,540 source bytes) in 3 numbered volumes. It contains:
-- All TRAIN and validation events from \`ieee39_postfault\` (227 TRAIN, 74 validation) and \`ieee39_expansion\` (142 TRAIN, 43 validation), retaining original event trajectories, labels, times, equilibrium, inertia, and filtered indices. The HDF5 files are explicitly derived subsets, not byte-identical source files. All 105 TEST event payloads were omitted without reading their trajectory values.
-- Two TRAIN-only boundary-analysis datasets (20 events each).
-- 601 selected scientific result files (1,155,069,121 bytes): terminal evidence, per-event rows, stage plans and cost ledgers, formal model weights/checkpoint descriptions, and six decisive matched validation trajectory arrays.
+The Git repository is a current working-tree snapshot of source code, configuration, protocols, reports, paper, and lightweight results. It does not transfer the local Git history. The full data and selected scientific result artifacts are attached to the private Release curated-data-2026-10-08, not stored in Git history.
 
-No TEST-only holdout supplement, full training rollout duplicates, interim monitor arrays, optimizer/RNG states, timing retries, trace logs, caches, or temporary runs are included. Unselected local originals remain in the source workspace. Scientific conclusions and adverse outcomes remain documented in \`reports/\`.
+The Release contains 654 files (5,315,134,456 source bytes) in four numbered parts:
 
-Download all \`selected_private_data.tar.partNNN\` release assets into one directory. From the cloned repository, run:
-\`\`\`powershell
-python restore_private_data.py path\to\downloaded\parts
-\`\`\`
-The script verifies volume and file SHA-256 values using \`selected_private_data_volumes.json\` and \`selected_private_data_manifest.jsonl\`, then restores \`private_data/\`. It refuses to overwrite an existing \`private_data/\` directory. The exported \`splits.json\` files deliberately have an empty \`test\` list; \`export_scope.json\` records source hashes and omitted TEST counts. Do not treat these subset files as the full historical data release.
+- The original private_data/ieee39_postfault and private_data/ieee39_expansion directories, with their complete dataset.h5 files, indices, original split files, and QA reports. These include all TRAIN, validation, and TEST events.
+- The original TRAIN-only boundary datasets and TEST-only holdout supplement, with their original metadata.
+- The historical canonical dataset referenced by configs/dataset.json, under external_data/ieee39_postclear_canonical_v1. Its original source and checksum metadata are preserved.
+- 601 selected files from the closed TASK2 stages 0098–0106: terminal scientific evidence, per-event results, stage cost ledgers, formal model weights/checkpoint descriptions, and six decisive matched validation trajectory arrays.
+
+Repeated monitor arrays, duplicate full-TRAIN rollout arrays, timing retries, trace logs, optimizer/RNG states, caches, and temporary runs are omitted. Earlier findings and adverse classifications remain in reports/. The original project workspace is unchanged.
+
+Download all original_research_data.tar.partNNN assets from the private Release into one directory. From a fresh clone of the repository, run:
+
+    python restore_private_data.py path\to\downloaded\parts
+
+The restore script checks SHA-256 for every part and every extracted file against original_research_data_volumes.json and original_research_data_manifest.jsonl. It restores private_data/ and external_data/ and refuses to overwrite existing copies. The historical canonical dataset is restored into external_data/ within the clone; configs/dataset.json still names its original sibling-project location, so place or configure that data at the expected location before rerunning historical e-series code.
+
+Because the original postfault HDF5 file exceeds the per-asset upload size, the Release uses byte-split tar volumes. Reassembled and extracted files are byte-identical to the source files, as recorded by the file-level SHA-256 manifest.

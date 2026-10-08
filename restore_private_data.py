@@ -7,6 +7,7 @@ import tarfile
 from pathlib import Path, PurePosixPath
 
 BLOCK = 8 * 1024 * 1024
+ALLOWED_ROOTS = {"private_data", "external_data"}
 
 class PartReader:
     def __init__(self, directory: Path, names: list[str]):
@@ -46,18 +47,19 @@ def digest_file(path: Path) -> str:
     return digest.hexdigest()
 
 def main():
-    parser = argparse.ArgumentParser(description="Verify and restore the private_data Release volumes")
+    parser = argparse.ArgumentParser(description="Verify and restore original dataset and curated result Release volumes")
     parser.add_argument("parts_directory", type=Path)
     parser.add_argument("--verify-only", action="store_true", help="verify every archived file without extracting")
     args = parser.parse_args()
 
     repo = Path(__file__).resolve().parent
-    target = repo / "private_data"
-    if target.exists() and not args.verify_only:
-        raise SystemExit(f"Refusing to overwrite {target}")
-    meta = json.loads((repo / "selected_private_data_volumes.json").read_text(encoding="utf-8"))
+    if not args.verify_only:
+        existing = [repo / name for name in ALLOWED_ROOTS if (repo / name).exists()]
+        if existing:
+            raise SystemExit(f"Refusing to overwrite existing directories: {existing}")
+    meta = json.loads((repo / "original_research_data_volumes.json").read_text(encoding="utf-8"))
     expected = {}
-    for line in (repo / "selected_private_data_manifest.jsonl").read_text(encoding="utf-8").splitlines():
+    for line in (repo / "original_research_data_manifest.jsonl").read_text(encoding="utf-8").splitlines():
         record = json.loads(line)
         expected[record["path"]] = record
     if len(expected) != meta["source_files"]:
@@ -78,9 +80,10 @@ def main():
         with tarfile.open(fileobj=reader, mode="r|") as archive:
             for member in archive:
                 name = member.name
-                parts_of_name = PurePosixPath(name).parts
-                if (not member.isfile() or not parts_of_name or parts_of_name[0] != "private_data"
-                        or any(p in ("", ".", "..") for p in parts_of_name)):
+                path_parts = PurePosixPath(name).parts
+                if (not member.isfile() or len(path_parts) < 2
+                        or path_parts[0] not in ALLOWED_ROOTS
+                        or any(p in ("", ".", "..") for p in path_parts)):
                     raise SystemExit(f"Unexpected tar member: {name}")
                 if name not in expected or name in seen:
                     raise SystemExit(f"Unexpected or duplicate file: {name}")
@@ -90,7 +93,7 @@ def main():
                 digest = hashlib.sha256()
                 out = None
                 if not args.verify_only:
-                    destination = repo.joinpath(*parts_of_name)
+                    destination = repo.joinpath(*path_parts)
                     destination.parent.mkdir(parents=True, exist_ok=True)
                     out = destination.open("xb")
                 try:
@@ -111,7 +114,7 @@ def main():
                 if digest.hexdigest() != record["sha256"]:
                     raise SystemExit(f"File SHA-256 mismatch: {name}")
                 seen.add(name)
-                if len(seen) % 250 == 0:
+                if len(seen) % 200 == 0:
                     print(f"verified {len(seen)}/{len(expected)} files", flush=True)
     finally:
         reader.close()
@@ -121,4 +124,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
