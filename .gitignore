@@ -22,7 +22,16 @@ paper/*.synctex.gz
 # Closed-loop runs may create disposable scratch work here.
 .loop-work/
 .claude/*.lock
-private_data/
+# Keep private_data available for selected research artifacts. Raw/generated
+# contents remain local unless an individual path is explicitly allowed.
+private_data/*
+!private_data/task2_m3_0020/
+private_data/task2_m3_0020/*
+!private_data/task2_m3_0020/model.npz
+!private_data/task2_control_modes_0078/
+private_data/task2_control_modes_0078/*
+!private_data/task2_control_modes_0078/evidence.json
+!private_data/task2_control_modes_0078/modal_arrays.npz
 
 # Local curated publication staging
 /_selected_private_data/
