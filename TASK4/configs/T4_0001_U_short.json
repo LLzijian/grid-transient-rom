@@ -1,0 +1,47 @@
+{
+  "seed": 401,
+  "latent_per_machine": 2,
+  "hidden": 32,
+  "dtype": "float64",
+  "device": "cpu",
+  "lr": 0.0003,
+  "grad_clip": 100,
+  "integration_dt": 0.01,
+  "anchor_horizons": [
+    0.02,
+    0.05,
+    0.1,
+    0.2,
+    0.5
+  ],
+  "anchor_weight": 0.2,
+  "latent_weight": 0.1,
+  "torque_weight": 0.1,
+  "complexity_weight": 0.00001,
+  "shooting_fraction": 0.45,
+  "final_autonomous_fraction": 0.35,
+  "continuity_weight": 1,
+  "checkpoint_steps": 0,
+  "trace_field": true,
+  "save_every": 5,
+  "monitor_count": 12,
+  "synthetic": false,
+  "name": "T4_0001_U_short",
+  "arm": "U",
+  "batch_size": 4,
+  "steps": 200,
+  "horizons": [
+    0.25,
+    0.5
+  ],
+  "milestones": [
+    100,
+    200
+  ],
+  "segment_schedule": [
+    0.25,
+    0.5
+  ],
+  "u_hidden": 64,
+  "initialization_checkpoint": "artifacts/T4_0001/P_anchor/last.pt"
+}

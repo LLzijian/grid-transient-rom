@@ -1,0 +1,80 @@
+{
+  "checkpoint_sha256": "344335336292d71502e2ed85f1ec7c0585c45f1993446fb77b5c9ce2f7aa1bdd",
+  "event_ids": [
+    "pilot_0000",
+    "pilot_0030"
+  ],
+  "kind": "exact_executor_test_not_candidate_selection",
+  "test_payload_read": false,
+  "cases": [
+    {
+      "reuse_origin_terms": false,
+      "trace_build_seconds": 0.20400000002700835,
+      "rows": [
+        {
+          "horizon": 0.02,
+          "seconds": 2.51500000001397,
+          "loss": 0.7188062843274949,
+          "gradient_l2": 0.42578250919398564,
+          "rss_bytes": 585584640,
+          "peak_rss_bytes": 598114304
+        },
+        {
+          "horizon": 1.0,
+          "seconds": 7.5,
+          "loss": 1.8969225864204957,
+          "gradient_l2": 2.4293454175415605,
+          "rss_bytes": 753364992,
+          "peak_rss_bytes": 1157636096
+        },
+        {
+          "horizon": 5.0,
+          "seconds": 27.094000000040978,
+          "loss": 1.8979108887821214,
+          "gradient_l2": 2.4309014362629178,
+          "rss_bytes": 1187069952,
+          "peak_rss_bytes": 2668621824
+        }
+      ]
+    },
+    {
+      "reuse_origin_terms": true,
+      "trace_build_seconds": 0.14000000001396984,
+      "rows": [
+        {
+          "horizon": 0.02,
+          "seconds": 1.547000000020489,
+          "loss": 0.7188062843274949,
+          "gradient_l2": 0.42578250919398564,
+          "rss_bytes": 663470080,
+          "peak_rss_bytes": 2668621824,
+          "loss_abs_diff": 0.0,
+          "gradient_max_abs_diff": 6.505213034913027e-19
+        },
+        {
+          "horizon": 1.0,
+          "seconds": 5.702999999979511,
+          "loss": 1.8969225864204957,
+          "gradient_l2": 2.4293454175415605,
+          "rss_bytes": 832241664,
+          "peak_rss_bytes": 2668621824,
+          "loss_abs_diff": 0.0,
+          "gradient_max_abs_diff": 6.938893903907228e-18
+        },
+        {
+          "horizon": 5.0,
+          "seconds": 20.703000000095926,
+          "loss": 1.8979108887821214,
+          "gradient_l2": 2.4309014362629178,
+          "rss_bytes": 1207717888,
+          "peak_rss_bytes": 2668621824,
+          "loss_abs_diff": 0.0,
+          "gradient_max_abs_diff": 7.37257477290143e-18
+        }
+      ]
+    }
+  ],
+  "complete": true,
+  "equivalence_passed": true,
+  "memory_note": "peak RSS is cumulative in this sequential process, not an isolated per-case memory comparison"
+}

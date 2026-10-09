@@ -1,0 +1,35 @@
+{
+  "scope": "TRAIN full-joint cost-only lock; no development or prediction acceptance",
+  "probe_run": "run_22b423bba84c",
+  "probe_managed_seconds": 85.51499999989755,
+  "source_C": "E:\\03-nn_Transfer_Func\\TASK4\\artifacts\\T4_0002\\C_compression\\last.pt",
+  "source_C_sha256": "5b66422ee5f36470c14d4450b8f9f685d32ab5e971332a2ca872cf834143594e",
+  "step_seconds": [
+    22.844000000040978,
+    20.141000000061467,
+    21.062000000150874
+  ],
+  "maximum_step_seconds": 22.844000000040978,
+  "rule": "min(800,floor((24000 - actual probe managed cost -1000)/max measured step seconds)), minimum600; no loss selection",
+  "formal_steps": 800,
+  "formal_source": "fixed C; probe checkpoint forbidden as formal source",
+  "formal_config": "E:\\03-nn_Transfer_Func\\TASK4\\configs\\T4_0002_S_final.json",
+  "formal_config_sha256": "c62a06d1249065c855aacd316b3b7bde21430e0f27be74b1eda5fd20357c7bc9",
+  "formal_cap_seconds": 23914,
+  "projected_step_seconds_only": 18275.200000032783,
+  "probe_head_in_optimizer": false,
+  "function_execution": {
+    "quadratic_functions": "energy_only",
+    "enabled_function_modules": [
+      "node_energy",
+      "edge_energy"
+    ],
+    "scientific_definition_changed_by_executor": false,
+    "algebraically_equivalent_not_bitwise_claim": true,
+    "source_preflight_role": "CPU executor eligibility only; not model selection"
+  },
+  "probe_unique_events": 6,
+  "probe_not_full_TRAIN_coverage": true,
+  "probe_checkpoint_research_candidate": false,
+  "test_or_development_payload_read": false
+}

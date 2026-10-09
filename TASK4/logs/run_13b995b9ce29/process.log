@@ -1,0 +1,54 @@
+.................................................................F...... [ 55%]
+..................s.s.....................................               [100%]
+================================== FAILURES ===================================
+__________ test_named_blocks_preserve_adam_and_report_actual_updates __________
+
+    def test_named_blocks_preserve_adam_and_report_actual_updates():
+        _, physics = fixture(events=1, steps=12)
+        torch.manual_seed(19)
+        model = PowerGraph(physics, [.2, .3, .1], hidden=8)
+        encoder = HistoryEncoder(model, 8)
+        head = PredictiveHead(model, [.02], 8)
+        groups = training.optimizer_groups(model, encoder, head, {'lr': .0003})
+        assert {'energy', 'coupling', 'exchange', 'dissipation', 'port', 'encoder', 'head'} <= {g['name'] for g in groups}
+        params = [p for g in groups for p in g['params']]
+        assert len({id(p) for p in params}) == len(params)
+        reference = [torch.nn.Parameter(p.detach().clone()) for p in params]
+        grouped = torch.optim.Adam(groups, lr=.0003)
+        flat = torch.optim.Adam(reference, lr=.0003)
+        for _ in range(2):
+            for p, q in zip(params, reference):
+                p.grad = torch.randn_like(p); q.grad = p.grad.clone()
+            before, stats = training.capture_updates(grouped)
+            grouped.step(); flat.step()
+            report = training.summarize_updates(before, stats)
+            for p, q in zip(params, reference):
+                torch.testing.assert_close(p, q, rtol=0, atol=0)
+            for name, row in report.items():
+                exact = sum(float((p-old).square().sum()) for key, p, old in before if key == name)**.5
+>               assert row['update_l2'] == exact and row['gradient_l2'] > 0
+E               assert (0.002740758530106271 == 0.0027407585301062716)
+
+tests\test_optimizer_blocks.py:37: AssertionError
+============================== warnings summary ===============================
+tests/test_accelerate.py::test_trace_preserves_values_gradients_parameter_updates_and_state[PowerGraph]
+tests/test_accelerate.py::test_trace_preserves_values_gradients_parameter_updates_and_state[UnstructuredGraph]
+tests/test_accelerate.py::test_traced_field_through_rk4_without_recomputation
+  E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\torch\jit\_trace.py:1006: DeprecationWarning: `torch.jit.trace` is deprecated. Please switch to `torch.compile` or `torch.export`.
+    warnings.warn(
+
+tests/test_accelerate.py::test_trace_preserves_values_gradients_parameter_updates_and_state[PowerGraph]
+tests/test_accelerate.py::test_trace_preserves_values_gradients_parameter_updates_and_state[UnstructuredGraph]
+tests/test_accelerate.py::test_traced_field_through_rk4_without_recomputation
+  E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\torch\jit\_trace.py:1145: DeprecationWarning: `torch.jit.trace_method` is deprecated. Please switch to `torch.compile` or `torch.export`.
+    warnings.warn(
+
+tests/test_optimizer_blocks.py::test_named_blocks_preserve_adam_and_report_actual_updates
+  E:\03-nn_Transfer_Func\TASK4\tests\test_optimizer_blocks.py:36: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+  Consider using tensor.detach() first. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\torch\csrc\autograd\generated\python_variable_methods.cpp:823.)
+    exact = sum(float((p-old).square().sum()) for key, p, old in before if key == name)**.5
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_optimizer_blocks.py::test_named_blocks_preserve_adam_and_report_actual_updates
+1 failed, 127 passed, 2 skipped, 7 warnings in 37.01s

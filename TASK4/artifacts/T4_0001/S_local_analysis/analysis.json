@@ -1,0 +1,2258 @@
+{
+  "status": "candidate_only_no_region_certificate",
+  "complete": true,
+  "stop_reason": "fixed_diagnostic_complete",
+  "source_model_path": "E:\\03-nn_Transfer_Func\\TASK4\\artifacts\\T4_0001\\S_export\\model.json",
+  "source_model_sha256": "aed134b86740fa5c54800d5cafae32405dbd635690bfcdde6aa9d166971e8feb",
+  "analysis_role": "post-hoc diagnostic of one fixed final endpoint; never training or model selection",
+  "full_autonomous_field_including_all_ports": true,
+  "removed_field_terms": [],
+  "test_payload_read": false,
+  "event_payload_read": false,
+  "new_fom_data_generated": false,
+  "all_analysis_samples_are_rom_only": true,
+  "original_13_mode_matching_performed": false,
+  "L2_region_certificate": false,
+  "global_stability_claim": false,
+  "high_order_system_guarantee": false,
+  "finite_samples_are_region_proof": false,
+  "policy": {
+    "difference_steps_scaled": [
+      1e-05,
+      5e-06
+    ],
+    "radii_scaled": [
+      0.0001,
+      0.001,
+      0.01,
+      0.03,
+      0.1
+    ],
+    "directions_per_radius": 128,
+    "direction_seed": 4439,
+    "directions": "64 fixed seeded Gaussian unit vectors and exact negative pairs, reused at all radii",
+    "origin_scaled_inf_tolerance": 1e-10,
+    "jacobian_consistency_atol": 1e-06,
+    "jacobian_consistency_rtol": 1e-05,
+    "lyapunov_relative_residual_tolerance": 1e-08,
+    "tolerances_are_numerical_diagnostics_not_proof_bounds": true
+  },
+  "stages": [
+    {
+      "name": "source_and_coordinates",
+      "complete": true
+    },
+    {
+      "name": "origin_complete_field",
+      "complete": true
+    },
+    {
+      "completed_columns": 49,
+      "complete": true,
+      "all_finite": true,
+      "step": 1e-05,
+      "errors": [],
+      "stop_reason": "complete",
+      "wall_seconds": 0.0470000000204891,
+      "name": "central_jacobian",
+      "artifact": "jacobian_1.npz"
+    },
+    {
+      "completed_columns": 49,
+      "complete": true,
+      "all_finite": true,
+      "step": 5e-06,
+      "errors": [],
+      "stop_reason": "complete",
+      "wall_seconds": 0.06199999991804361,
+      "name": "central_jacobian",
+      "artifact": "jacobian_2.npz"
+    },
+    {
+      "name": "full_quotient_spectrum",
+      "complete": true,
+      "modes": 49
+    },
+    {
+      "name": "quadratic_candidate",
+      "complete": true
+    },
+    {
+      "name": "fixed_radius_sampling",
+      "radius": 0.0001,
+      "complete": true
+    },
+    {
+      "name": "fixed_radius_sampling",
+      "radius": 0.001,
+      "complete": true
+    },
+    {
+      "name": "fixed_radius_sampling",
+      "radius": 0.01,
+      "complete": true
+    },
+    {
+      "name": "fixed_radius_sampling",
+      "radius": 0.03,
+      "complete": true
+    },
+    {
+      "name": "fixed_radius_sampling",
+      "radius": 0.1,
+      "complete": true
+    }
+  ],
+  "sampling": [
+    {
+      "radius_scaled_euclidean": 0.0001,
+      "planned_directions": 128,
+      "completed_directions": 128,
+      "complete": true,
+      "finite_directions": 128,
+      "nonfinite_or_exception_count": 0,
+      "nonpositive_v_count": 0,
+      "nonnegative_vdot_count": 0,
+      "bad_direction_indices": [],
+      "uncomputed_direction_indices": [],
+      "min_v": 1.1191079489782281e-08,
+      "max_vdot": -9.999842281355269e-09,
+      "min_vdot": -1.0000157717788163e-08,
+      "max_vdot_over_radius_squared": -0.9999842281355269,
+      "sampled_strict_decrease_only": true,
+      "region_positive_definiteness_or_invariance_proven": false,
+      "errors": [],
+      "stop_reason": "complete",
+      "wall_seconds": 0.031999999890103936,
+      "artifact": "radius_01.npz"
+    },
+    {
+      "radius_scaled_euclidean": 0.001,
+      "planned_directions": 128,
+      "completed_directions": 128,
+      "complete": true,
+      "finite_directions": 128,
+      "nonfinite_or_exception_count": 0,
+      "nonpositive_v_count": 0,
+      "nonnegative_vdot_count": 0,
+      "bad_direction_indices": [],
+      "uncomputed_direction_indices": [],
+      "min_v": 1.1191079489782293e-06,
+      "max_vdot": -9.998422792413232e-07,
+      "min_vdot": -1.0001577154893813e-06,
+      "max_vdot_over_radius_squared": -0.9998422792413232,
+      "sampled_strict_decrease_only": true,
+      "region_positive_definiteness_or_invariance_proven": false,
+      "errors": [],
+      "stop_reason": "complete",
+      "wall_seconds": 0.030999999959021807,
+      "artifact": "radius_02.npz"
+    },
+    {
+      "radius_scaled_euclidean": 0.01,
+      "planned_directions": 128,
+      "completed_directions": 128,
+      "complete": true,
+      "finite_directions": 128,
+      "nonfinite_or_exception_count": 0,
+      "nonpositive_v_count": 0,
+      "nonnegative_vdot_count": 0,
+      "bad_direction_indices": [],
+      "uncomputed_direction_indices": [],
+      "min_v": 0.00011191079489782289,
+      "max_vdot": -9.984225564160538e-05,
+      "min_vdot": -0.00010015769183799302,
+      "max_vdot_over_radius_squared": -0.9984225564160537,
+      "sampled_strict_decrease_only": true,
+      "region_positive_definiteness_or_invariance_proven": false,
+      "errors": [],
+      "stop_reason": "complete",
+      "wall_seconds": 0.015999999828636646,
+      "artifact": "radius_03.npz"
+    },
+    {
+      "radius_scaled_euclidean": 0.03,
+      "planned_directions": 128,
+      "completed_directions": 128,
+      "complete": true,
+      "finite_directions": 128,
+      "nonfinite_or_exception_count": 0,
+      "nonpositive_v_count": 0,
+      "nonnegative_vdot_count": 0,
+      "bad_direction_indices": [],
+      "uncomputed_direction_indices": [],
+      "min_v": 0.0010071971540804065,
+      "max_vdot": -0.0008957394900977394,
+      "min_vdot": -0.0009042562558884268,
+      "max_vdot_over_radius_squared": -0.9952661001085994,
+      "sampled_strict_decrease_only": true,
+      "region_positive_definiteness_or_invariance_proven": false,
+      "errors": [],
+      "stop_reason": "complete",
+      "wall_seconds": 0.01500000013038516,
+      "artifact": "radius_04.npz"
+    },
+    {
+      "radius_scaled_euclidean": 0.1,
+      "planned_directions": 128,
+      "completed_directions": 128,
+      "complete": true,
+      "finite_directions": 128,
+      "nonfinite_or_exception_count": 0,
+      "nonpositive_v_count": 0,
+      "nonnegative_vdot_count": 0,
+      "bad_direction_indices": [],
+      "uncomputed_direction_indices": [],
+      "min_v": 0.011191079489782282,
+      "max_vdot": -0.009842021953437535,
+      "min_vdot": -0.010157452873498857,
+      "max_vdot_over_radius_squared": -0.9842021953437533,
+      "sampled_strict_decrease_only": true,
+      "region_positive_definiteness_or_invariance_proven": false,
+      "errors": [],
+      "stop_reason": "complete",
+      "wall_seconds": 0.01600000006146729,
+      "artifact": "radius_05.npz"
+    }
+  ],
+  "managed_save_deadline_unix": 1791392125.929627,
+  "process_wall_seconds_including_load_and_all_stages": 0.5,
+  "field_cost": {
+    "calls": 180,
+    "states_evaluated": 838,
+    "wall_seconds": 0.21899999980814755
+  },
+  "source_metadata": {
+    "format": "explicit_symbolic_json",
+    "kind": "T4-S",
+    "export_metadata": {
+      "checkpoint_sha256": "74bc488e78824ec86a81103aa347bdc1c8e7b4bf88d3a354031f19457e49eee6",
+      "checkpoint": "E:\\03-nn_Transfer_Func\\TASK4\\artifacts\\T4_0001\\S_final\\last.pt",
+      "step": 400,
+      "autonomous_only_training": true,
+      "final_steps_complete": true,
+      "prediction_accuracy_or_stability_claim": false
+    },
+    "scale_source": "saved symbolic-export normalization; copied without any fit"
+  },
+  "coordinates": {
+    "n": 10,
+    "rank": 2,
+    "full_dimension": 50,
+    "quotient_dimension": 49,
+    "full_order": [
+      "delta[N]",
+      "pi[N]",
+      "p[N]",
+      "q[N*rank] machine-major"
+    ],
+    "quotient_order": [
+      "delta_i-delta_last [N-1]",
+      "pi[N]",
+      "p[N]",
+      "q[N*rank]"
+    ],
+    "lift": "last delta is exactly zero; all pi, p and q retained",
+    "scaled_coordinate": "xi=y/s",
+    "scaled_field": "g(xi)=project(f(lift(s*xi)))/s",
+    "coordinate_scale": [
+      0.447944393280982,
+      0.447944393280982,
+      0.447944393280982,
+      0.447944393280982,
+      0.447944393280982,
+      0.447944393280982,
+      0.447944393280982,
+      0.447944393280982,
+      0.447944393280982,
+      0.3654432960938513,
+      0.2119269927814589,
+      0.25270186399118333,
+      0.28110420397390595,
+      0.23497133835748696,
+      0.31610142336548724,
+      0.22643830432470216,
+      0.19724450518880918,
+      0.48609856675439767,
+      5.015642307881498,
+      0.48400350758061667,
+      0.48400350758061667,
+      0.48400350758061667,
+      0.48400350758061667,
+      0.48400350758061667,
+      0.48400350758061667,
+      0.48400350758061667,
+      0.48400350758061667,
+      0.48400350758061667,
+      0.48400350758061667,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "saved_training_scales": [
+      0.447944393280982,
+      1.5770246899891243,
+      0.48400350758061667
+    ],
+    "mass": [
+      0.23172959714179966,
+      0.13438406774907274,
+      0.16023963708071434,
+      0.17824971654428856,
+      0.14899661359081665,
+      0.20044164518925014,
+      0.1435857699388738,
+      0.12507382188808308,
+      0.3082377656102201,
+      3.1804462794530424
+    ],
+    "scale_units": [
+      "delta: rad",
+      "pi: mass*(rad/s)",
+      "p: system pu",
+      "q: one latent unit"
+    ],
+    "jacobian_unit": "1/s",
+    "scale_fit_in_this_diagnostic": false
+  },
+  "source_sha256_after_load": "aed134b86740fa5c54800d5cafae32405dbd635690bfcdde6aa9d166971e8feb",
+  "origin": {
+    "full_field": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "scaled_quotient_field": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "all_finite": true,
+    "scaled_inf_norm": 0.0,
+    "numerically_zero": true,
+    "common_angle_shift_probe_rad": 0.123,
+    "gauge_probe_scaled_inf_difference": 0.0,
+    "gauge_probe_pass": true
+  },
+  "jacobian_consistency": {
+    "max_absolute_difference_per_s": 6.017799591973017e-10,
+    "relative_frobenius_difference": 1.3661633472828402e-11,
+    "consistent": true,
+    "selected_step_is_fixed_smaller_step": 5e-06
+  },
+  "spectrum": {
+    "summary": {
+      "spectral_abscissa_per_s": -0.24744118242364743,
+      "hurwitz_by_computed_eigenvalues": true,
+      "near_imaginary_axis_count_abs_real_le_1e_8": 0,
+      "eigenvector_matrix_condition": 11.915110206673521,
+      "relative_eigen_equation_residual": 1.9969566271297668e-16,
+      "original_13_mode_matching_performed": false,
+      "original_13_mode_match_result": null,
+      "participation_definition": "squared right-eigenvector physical-readout amplitudes in saved physical scales; not biorthogonal participation factors or physical energy fractions",
+      "first_step_spectral_abscissa_per_s": -0.2474411824236624,
+      "first_step_hurwitz": true,
+      "both_steps_hurwitz": true
+    },
+    "all_modes": [
+      {
+        "index": 0,
+        "eigenvalue_real_per_s": -4.363555567307667,
+        "eigenvalue_imag_per_s": 0.0,
+        "oscillation_frequency_hz": 0.0,
+        "natural_frequency_hz": 0.6944814379931749,
+        "damping_ratio": 1.0,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 0.01164783744769702,
+            "share_of_total_scaled_readout_squared_amplitude": 0.011648064174622712,
+            "physical_amplitude_l2": 0.048344464685104664,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 0.017893592700135987,
+            "share_of_total_scaled_readout_squared_amplitude": 0.01789394100163665,
+            "physical_amplitude_l2": 0.21095375802519764,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 1.5924211776278658e-06,
+            "share_of_total_scaled_readout_squared_amplitude": 1.5924521743480407e-06,
+            "physical_amplitude_l2": 0.0019900659318748647,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 0.9704375126579341,
+            "share_of_total_scaled_readout_squared_amplitude": 0.9704564023715663,
+            "physical_amplitude_l2": 0.4767956637182595,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 2.885223009911638e-06
+      },
+      {
+        "index": 1,
+        "eigenvalue_real_per_s": -4.097029685862496,
+        "eigenvalue_imag_per_s": 0.0,
+        "oscillation_frequency_hz": 0.0,
+        "natural_frequency_hz": 0.6520625264992513,
+        "damping_ratio": 1.0,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 0.02453690874144299,
+            "share_of_total_scaled_readout_squared_amplitude": 0.024729570672010974,
+            "physical_amplitude_l2": 0.07016718100572607,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 0.03322991985828538,
+            "share_of_total_scaled_readout_squared_amplitude": 0.03349083864719962,
+            "physical_amplitude_l2": 0.2874770235537472,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 0.0001489248564299053,
+            "share_of_total_scaled_readout_squared_amplitude": 0.0001500942030110777,
+            "physical_amplitude_l2": 0.019245184890698864,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 0.9342934954174569,
+            "share_of_total_scaled_readout_squared_amplitude": 0.9416294964777783,
+            "physical_amplitude_l2": 0.46783226621968815,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 0.0004281055578234828
+      },
+      {
+        "index": 2,
+        "eigenvalue_real_per_s": -3.908834816558591,
+        "eigenvalue_imag_per_s": 0.0,
+        "oscillation_frequency_hz": 0.0,
+        "natural_frequency_hz": 0.6221103827850017,
+        "damping_ratio": 1.0,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 0.007482314558739507,
+            "share_of_total_scaled_readout_squared_amplitude": 0.007480808265052507,
+            "physical_amplitude_l2": 0.038747357178706796,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 0.009223628929714109,
+            "share_of_total_scaled_readout_squared_amplitude": 0.009221772085295314,
+            "physical_amplitude_l2": 0.15145701878975906,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 9.128942432023857e-06,
+            "share_of_total_scaled_readout_squared_amplitude": 9.12710464931018e-06,
+            "physical_amplitude_l2": 0.004764844443437904,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 0.9834862819727604,
+            "share_of_total_scaled_readout_squared_amplitude": 0.9832882925450028,
+            "physical_amplitude_l2": 0.4799905225629907,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 6.532581702802504e-06
+      },
+      {
+        "index": 3,
+        "eigenvalue_real_per_s": -3.761702090483997,
+        "eigenvalue_imag_per_s": 0.0,
+        "oscillation_frequency_hz": 0.0,
+        "natural_frequency_hz": 0.5986934821396442,
+        "damping_ratio": 1.0,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 0.00791770475173117,
+            "share_of_total_scaled_readout_squared_amplitude": 0.007918954203546713,
+            "physical_amplitude_l2": 0.03985875751022755,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 0.00903939417236718,
+            "share_of_total_scaled_readout_squared_amplitude": 0.009040820632157514,
+            "physical_amplitude_l2": 0.1499367714503166,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 3.057448313199607e-05,
+            "share_of_total_scaled_readout_squared_amplitude": 3.057930793219466e-05,
+            "physical_amplitude_l2": 0.00872003151844424,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 0.9828545466911024,
+            "share_of_total_scaled_readout_squared_amplitude": 0.9830096458563635,
+            "physical_amplitude_l2": 0.47983633858346975,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 6.198806079021098e-06
+      },
+      {
+        "index": 4,
+        "eigenvalue_real_per_s": -3.671976250572077,
+        "eigenvalue_imag_per_s": 0.0,
+        "oscillation_frequency_hz": 0.0,
+        "natural_frequency_hz": 0.5844131711945901,
+        "damping_ratio": 1.0,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 0.020151734707771842,
+            "share_of_total_scaled_readout_squared_amplitude": 0.020167828004347688,
+            "physical_amplitude_l2": 0.06358875523803485,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 0.021922162322505268,
+            "share_of_total_scaled_readout_squared_amplitude": 0.021939669493225605,
+            "physical_amplitude_l2": 0.2334963990375045,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 2.6048620668672492e-05,
+            "share_of_total_scaled_readout_squared_amplitude": 2.6069423253853956e-05,
+            "physical_amplitude_l2": 0.00804879485580717,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 0.9571020855954345,
+            "share_of_total_scaled_readout_squared_amplitude": 0.9578664330791729,
+            "physical_amplitude_l2": 0.4735083482475635,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 5.1646308171477886e-05
+      },
+      {
+        "index": 5,
+        "eigenvalue_real_per_s": -3.4141129722980788,
+        "eigenvalue_imag_per_s": 0.0,
+        "oscillation_frequency_hz": 0.0,
+        "natural_frequency_hz": 0.5433729558154023,
+        "damping_ratio": 1.0,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 0.02227374824058591,
+            "share_of_total_scaled_readout_squared_amplitude": 0.022485867685824362,
+            "physical_amplitude_l2": 0.06685297807112042,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 0.02094692639927713,
+            "share_of_total_scaled_readout_squared_amplitude": 0.02114641013049616,
+            "physical_amplitude_l2": 0.22824361966937273,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 0.00023216021759923597,
+            "share_of_total_scaled_readout_squared_amplitude": 0.0002343711475258774,
+            "physical_amplitude_l2": 0.024028817215340358,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 0.9471137090623803,
+            "share_of_total_scaled_readout_squared_amplitude": 0.9561333510361536,
+            "physical_amplitude_l2": 0.4710310868859624,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 0.0004374037319904837
+      },
+      {
+        "index": 6,
+        "eigenvalue_real_per_s": -3.1232168107200766,
+        "eigenvalue_imag_per_s": 0.0,
+        "oscillation_frequency_hz": 0.0,
+        "natural_frequency_hz": 0.49707539377380466,
+        "damping_ratio": 1.0,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 0.022088502614721398,
+            "share_of_total_scaled_readout_squared_amplitude": 0.022848924622408482,
+            "physical_amplitude_l2": 0.06657439724037396,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 0.01738368196052486,
+            "share_of_total_scaled_readout_squared_amplitude": 0.017982135127223717,
+            "physical_amplitude_l2": 0.20792627662469274,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 0.0006719904542115361,
+            "share_of_total_scaled_readout_squared_amplitude": 0.0006951244954478817,
+            "physical_amplitude_l2": 0.040880862002944614,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 0.9265753962303065,
+            "share_of_total_scaled_readout_squared_amplitude": 0.95847381575492,
+            "physical_amplitude_l2": 0.4658959026085262,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 0.0017123335446438846
+      },
+      {
+        "index": 7,
+        "eigenvalue_real_per_s": -2.8872765996114587,
+        "eigenvalue_imag_per_s": 0.0,
+        "oscillation_frequency_hz": 0.0,
+        "natural_frequency_hz": 0.4595243429017228,
+        "damping_ratio": 1.0,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 0.002197923258732126,
+            "share_of_total_scaled_readout_squared_amplitude": 0.0022009317165730506,
+            "physical_amplitude_l2": 0.021000535422294048,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 0.0014782930382245558,
+            "share_of_total_scaled_readout_squared_amplitude": 0.0014803164857058824,
+            "physical_amplitude_l2": 0.060634354504101366,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 0.00017121712183536727,
+            "share_of_total_scaled_readout_squared_amplitude": 0.00017145147919549788,
+            "physical_amplitude_l2": 0.020635361851725213,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 0.9947856646376944,
+            "share_of_total_scaled_readout_squared_amplitude": 0.9961473003185256,
+            "physical_amplitude_l2": 0.4827399800111986,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 9.068560786773311e-05
+      },
+      {
+        "index": 8,
+        "eigenvalue_real_per_s": -2.5114365397862324,
+        "eigenvalue_imag_per_s": 0.0,
+        "oscillation_frequency_hz": 0.0,
+        "natural_frequency_hz": 0.39970753956858435,
+        "damping_ratio": 1.0,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 0.0213701961607545,
+            "share_of_total_scaled_readout_squared_amplitude": 0.02290645012669596,
+            "physical_amplitude_l2": 0.06548296859328416,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 0.010874871920424007,
+            "share_of_total_scaled_readout_squared_amplitude": 0.011656641305748497,
+            "physical_amplitude_l2": 0.16445632005884742,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 0.002835613090143651,
+            "share_of_total_scaled_readout_squared_amplitude": 0.003039458755519841,
+            "physical_amplitude_l2": 0.0839773138644538,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 0.8978528830673786,
+            "share_of_total_scaled_readout_squared_amplitude": 0.9623974498120358,
+            "physical_amplitude_l2": 0.45861800389967655,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 0.007530767557074309
+      },
+      {
+        "index": 9,
+        "eigenvalue_real_per_s": -1.5806044642925827,
+        "eigenvalue_imag_per_s": 0.0,
+        "oscillation_frequency_hz": 0.0,
+        "natural_frequency_hz": 0.2515610135652817,
+        "damping_ratio": 1.0,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 0.24063823092094933,
+            "share_of_total_scaled_readout_squared_amplitude": 0.24513884002944478,
+            "physical_amplitude_l2": 0.2197386328686987,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 0.048504525383092884,
+            "share_of_total_scaled_readout_squared_amplitude": 0.04941169590170474,
+            "physical_amplitude_l2": 0.3473198640898127,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 0.0007091548058247208,
+            "share_of_total_scaled_readout_squared_amplitude": 0.0007224179875153996,
+            "physical_amplitude_l2": 0.041996105485988325,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 0.6917886599724027,
+            "share_of_total_scaled_readout_squared_amplitude": 0.7047270460813351,
+            "physical_amplitude_l2": 0.40256427212975204,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 0.005951880767146391
+      },
+      {
+        "index": 10,
+        "eigenvalue_real_per_s": -0.9888264320278446,
+        "eigenvalue_imag_per_s": -4.177999399024315,
+        "oscillation_frequency_hz": 0.6649492565896877,
+        "natural_frequency_hz": 0.6833190416167686,
+        "damping_ratio": 0.23031205766605337,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 0.29450678788320106,
+            "share_of_total_scaled_readout_squared_amplitude": 0.3122327848271012,
+            "physical_amplitude_l2": 0.24309261171742533,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 0.43799919936971227,
+            "share_of_total_scaled_readout_squared_amplitude": 0.4643618259334754,
+            "physical_amplitude_l2": 1.0436987204786783,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 0.0001784074149741665,
+            "share_of_total_scaled_readout_squared_amplitude": 0.0001891455351897705,
+            "physical_amplitude_l2": 0.021064198707891318,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 0.21054387025081436,
+            "share_of_total_scaled_readout_squared_amplitude": 0.2232162437042336,
+            "physical_amplitude_l2": 0.22208529834204746,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 0.001515919055456951
+      },
+      {
+        "index": 11,
+        "eigenvalue_real_per_s": -0.9888264320278446,
+        "eigenvalue_imag_per_s": 4.177999399024315,
+        "oscillation_frequency_hz": 0.6649492565896877,
+        "natural_frequency_hz": 0.6833190416167686,
+        "damping_ratio": 0.23031205766605337,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 0.29450678788320106,
+            "share_of_total_scaled_readout_squared_amplitude": 0.3122327848271012,
+            "physical_amplitude_l2": 0.24309261171742533,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 0.43799919936971227,
+            "share_of_total_scaled_readout_squared_amplitude": 0.4643618259334754,
+            "physical_amplitude_l2": 1.0436987204786783,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 0.0001784074149741665,
+            "share_of_total_scaled_readout_squared_amplitude": 0.0001891455351897705,
+            "physical_amplitude_l2": 0.021064198707891318,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 0.21054387025081436,
+            "share_of_total_scaled_readout_squared_amplitude": 0.2232162437042336,
+            "physical_amplitude_l2": 0.22208529834204746,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 0.001515919055456951
+      },
+      {
+        "index": 12,
+        "eigenvalue_real_per_s": -0.9129600413055813,
+        "eigenvalue_imag_per_s": -5.723789887971748,
+        "oscillation_frequency_hz": 0.9109694538901095,
+        "natural_frequency_hz": 0.9224847137914415,
+        "damping_ratio": 0.15751166523070928,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 0.18163116300517787,
+            "share_of_total_scaled_readout_squared_amplitude": 0.18214888783707,
+            "physical_amplitude_l2": 0.1909058720399268,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 0.492311161338007,
+            "share_of_total_scaled_readout_squared_amplitude": 0.49371445419274185,
+            "physical_amplitude_l2": 1.1065176192999135,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 2.715918830745275e-05,
+            "share_of_total_scaled_readout_squared_amplitude": 2.7236603360949942e-05,
+            "physical_amplitude_l2": 0.008218581871665144,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 0.32318819973498336,
+            "share_of_total_scaled_readout_squared_amplitude": 0.3241094213668272,
+            "physical_amplitude_l2": 0.27515426991831715,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 0.0002131443768635269
+      },
+      {
+        "index": 13,
+        "eigenvalue_real_per_s": -0.9129600413055813,
+        "eigenvalue_imag_per_s": 5.723789887971748,
+        "oscillation_frequency_hz": 0.9109694538901095,
+        "natural_frequency_hz": 0.9224847137914415,
+        "damping_ratio": 0.15751166523070928,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 0.18163116300517787,
+            "share_of_total_scaled_readout_squared_amplitude": 0.18214888783707,
+            "physical_amplitude_l2": 0.1909058720399268,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 0.492311161338007,
+            "share_of_total_scaled_readout_squared_amplitude": 0.49371445419274185,
+            "physical_amplitude_l2": 1.1065176192999135,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 2.715918830745275e-05,
+            "share_of_total_scaled_readout_squared_amplitude": 2.7236603360949942e-05,
+            "physical_amplitude_l2": 0.008218581871665144,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 0.32318819973498336,
+            "share_of_total_scaled_readout_squared_amplitude": 0.3241094213668272,
+            "physical_amplitude_l2": 0.27515426991831715,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 0.0002131443768635269
+      },
+      {
+        "index": 14,
+        "eigenvalue_real_per_s": -0.9071574353153644,
+        "eigenvalue_imag_per_s": -6.4264576795627395,
+        "oscillation_frequency_hz": 1.0228025062732815,
+        "natural_frequency_hz": 1.0329424689145446,
+        "damping_ratio": 0.13977408649363124,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 0.16067254035204606,
+            "share_of_total_scaled_readout_squared_amplitude": 0.16067273127178502,
+            "physical_amplitude_l2": 0.17955393826925728,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 0.5460405417893431,
+            "share_of_total_scaled_readout_squared_amplitude": 0.5460411906240318,
+            "physical_amplitude_l2": 1.1653353939003155,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 7.086366720601787e-06,
+            "share_of_total_scaled_readout_squared_amplitude": 7.086375141003192e-06,
+            "physical_amplitude_l2": 0.004198076075724206,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 0.29327864323961217,
+            "share_of_total_scaled_readout_squared_amplitude": 0.2932789917290422,
+            "physical_amplitude_l2": 0.26211310084480643,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 6.719361252307488e-05
+      },
+      {
+        "index": 15,
+        "eigenvalue_real_per_s": -0.9071574353153644,
+        "eigenvalue_imag_per_s": 6.4264576795627395,
+        "oscillation_frequency_hz": 1.0228025062732815,
+        "natural_frequency_hz": 1.0329424689145446,
+        "damping_ratio": 0.13977408649363124,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 0.16067254035204606,
+            "share_of_total_scaled_readout_squared_amplitude": 0.16067273127178502,
+            "physical_amplitude_l2": 0.17955393826925728,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 0.5460405417893431,
+            "share_of_total_scaled_readout_squared_amplitude": 0.5460411906240318,
+            "physical_amplitude_l2": 1.1653353939003155,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 7.086366720601787e-06,
+            "share_of_total_scaled_readout_squared_amplitude": 7.086375141003192e-06,
+            "physical_amplitude_l2": 0.004198076075724206,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 0.29327864323961217,
+            "share_of_total_scaled_readout_squared_amplitude": 0.2932789917290422,
+            "physical_amplitude_l2": 0.26211310084480643,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 6.719361252307488e-05
+      },
+      {
+        "index": 16,
+        "eigenvalue_real_per_s": -0.8758256845661228,
+        "eigenvalue_imag_per_s": -8.381234562082676,
+        "oscillation_frequency_hz": 1.3339149097680947,
+        "natural_frequency_hz": 1.3411782553178386,
+        "damping_ratio": 0.10393248357020804,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 0.1218531888403394,
+            "share_of_total_scaled_readout_squared_amplitude": 0.12210706984822114,
+            "physical_amplitude_l2": 0.1563660820727717,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 0.6981373408902021,
+            "share_of_total_scaled_readout_squared_amplitude": 0.6995919094036066,
+            "physical_amplitude_l2": 1.3176768818556728,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 1.4161695360568146e-06,
+            "share_of_total_scaled_readout_squared_amplitude": 1.4191201239943747e-06,
+            "physical_amplitude_l2": 0.0018767054561846586,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 0.17792888695425826,
+            "share_of_total_scaled_readout_squared_amplitude": 0.17829960162804834,
+            "physical_amplitude_l2": 0.20416050909336886,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 0.00012009631596065006
+      },
+      {
+        "index": 17,
+        "eigenvalue_real_per_s": -0.8758256845661228,
+        "eigenvalue_imag_per_s": 8.381234562082676,
+        "oscillation_frequency_hz": 1.3339149097680947,
+        "natural_frequency_hz": 1.3411782553178386,
+        "damping_ratio": 0.10393248357020804,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 0.1218531888403394,
+            "share_of_total_scaled_readout_squared_amplitude": 0.12210706984822114,
+            "physical_amplitude_l2": 0.1563660820727717,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 0.6981373408902021,
+            "share_of_total_scaled_readout_squared_amplitude": 0.6995919094036066,
+            "physical_amplitude_l2": 1.3176768818556728,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 1.4161695360568146e-06,
+            "share_of_total_scaled_readout_squared_amplitude": 1.4191201239943747e-06,
+            "physical_amplitude_l2": 0.0018767054561846586,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 0.17792888695425826,
+            "share_of_total_scaled_readout_squared_amplitude": 0.17829960162804834,
+            "physical_amplitude_l2": 0.20416050909336886,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 0.00012009631596065006
+      },
+      {
+        "index": 18,
+        "eigenvalue_real_per_s": -0.8620299887714542,
+        "eigenvalue_imag_per_s": -7.029340214071085,
+        "oscillation_frequency_hz": 1.118754241744055,
+        "natural_frequency_hz": 1.1271352569369126,
+        "damping_ratio": 0.12172126899771626,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 0.15093022815716242,
+            "share_of_total_scaled_readout_squared_amplitude": 0.15097194792651789,
+            "physical_amplitude_l2": 0.17402523118323135,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 0.6107440709599098,
+            "share_of_total_scaled_readout_squared_amplitude": 0.6109128913618053,
+            "physical_amplitude_l2": 1.2324466325243872,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 5.255580078959796e-07,
+            "share_of_total_scaled_readout_squared_amplitude": 5.25703281371943e-07,
+            "physical_amplitude_l2": 0.0011432700370913806,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 0.2380488341242634,
+            "share_of_total_scaled_readout_squared_amplitude": 0.2381146350083955,
+            "physical_amplitude_l2": 0.23614651372781972,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 3.7943197941368055e-05
+      },
+      {
+        "index": 19,
+        "eigenvalue_real_per_s": -0.8620299887714542,
+        "eigenvalue_imag_per_s": 7.029340214071085,
+        "oscillation_frequency_hz": 1.118754241744055,
+        "natural_frequency_hz": 1.1271352569369126,
+        "damping_ratio": 0.12172126899771626,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 0.15093022815716242,
+            "share_of_total_scaled_readout_squared_amplitude": 0.15097194792651789,
+            "physical_amplitude_l2": 0.17402523118323135,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 0.6107440709599098,
+            "share_of_total_scaled_readout_squared_amplitude": 0.6109128913618053,
+            "physical_amplitude_l2": 1.2324466325243872,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 5.255580078959796e-07,
+            "share_of_total_scaled_readout_squared_amplitude": 5.25703281371943e-07,
+            "physical_amplitude_l2": 0.0011432700370913806,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 0.2380488341242634,
+            "share_of_total_scaled_readout_squared_amplitude": 0.2381146350083955,
+            "physical_amplitude_l2": 0.23614651372781972,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 3.7943197941368055e-05
+      },
+      {
+        "index": 20,
+        "eigenvalue_real_per_s": -0.8111525744673183,
+        "eigenvalue_imag_per_s": -8.75874696764829,
+        "oscillation_frequency_hz": 1.3939978751923745,
+        "natural_frequency_hz": 1.3999630755209274,
+        "damping_ratio": 0.09221596203896494,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 0.11354743392382323,
+            "share_of_total_scaled_readout_squared_amplitude": 0.113557855108722,
+            "physical_amplitude_l2": 0.15094292691319058,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 0.7088289517574022,
+            "share_of_total_scaled_readout_squared_amplitude": 0.7088940068389008,
+            "physical_amplitude_l2": 1.3277283135812445,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 4.727265567671938e-07,
+            "share_of_total_scaled_readout_squared_amplitude": 4.7276994278380725e-07,
+            "physical_amplitude_l2": 0.001084285108102004,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 0.17753137176362424,
+            "share_of_total_scaled_readout_squared_amplitude": 0.17754766528243437,
+            "physical_amplitude_l2": 0.20393232162916952,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 2.5956491374811944e-05
+      },
+      {
+        "index": 21,
+        "eigenvalue_real_per_s": -0.8111525744673183,
+        "eigenvalue_imag_per_s": 8.75874696764829,
+        "oscillation_frequency_hz": 1.3939978751923745,
+        "natural_frequency_hz": 1.3999630755209274,
+        "damping_ratio": 0.09221596203896494,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 0.11354743392382323,
+            "share_of_total_scaled_readout_squared_amplitude": 0.113557855108722,
+            "physical_amplitude_l2": 0.15094292691319058,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 0.7088289517574022,
+            "share_of_total_scaled_readout_squared_amplitude": 0.7088940068389008,
+            "physical_amplitude_l2": 1.3277283135812445,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 4.727265567671938e-07,
+            "share_of_total_scaled_readout_squared_amplitude": 4.7276994278380725e-07,
+            "physical_amplitude_l2": 0.001084285108102004,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 0.17753137176362424,
+            "share_of_total_scaled_readout_squared_amplitude": 0.17754766528243437,
+            "physical_amplitude_l2": 0.20393232162916952,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 2.5956491374811944e-05
+      },
+      {
+        "index": 22,
+        "eigenvalue_real_per_s": -0.7949955152949506,
+        "eigenvalue_imag_per_s": -6.147039902345972,
+        "oscillation_frequency_hz": 0.9783317858414831,
+        "natural_frequency_hz": 0.98647974274129,
+        "damping_ratio": 0.1282615957662523,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 0.16203536037963956,
+            "share_of_total_scaled_readout_squared_amplitude": 0.16247066178012526,
+            "physical_amplitude_l2": 0.1803138161162501,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 0.5022467137549984,
+            "share_of_total_scaled_readout_squared_amplitude": 0.5035959791090214,
+            "physical_amplitude_l2": 1.117627410619309,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 3.2091313209790794e-05,
+            "share_of_total_scaled_readout_squared_amplitude": 3.21775252165461e-05,
+            "physical_amplitude_l2": 0.008933717955647567,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 0.3330065729813783,
+            "share_of_total_scaled_readout_squared_amplitude": 0.3339011815856367,
+            "physical_amplitude_l2": 0.2793025571567625,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 0.00015812834120803007
+      },
+      {
+        "index": 23,
+        "eigenvalue_real_per_s": -0.7949955152949506,
+        "eigenvalue_imag_per_s": 6.147039902345972,
+        "oscillation_frequency_hz": 0.9783317858414831,
+        "natural_frequency_hz": 0.98647974274129,
+        "damping_ratio": 0.1282615957662523,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 0.16203536037963956,
+            "share_of_total_scaled_readout_squared_amplitude": 0.16247066178012526,
+            "physical_amplitude_l2": 0.1803138161162501,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 0.5022467137549984,
+            "share_of_total_scaled_readout_squared_amplitude": 0.5035959791090214,
+            "physical_amplitude_l2": 1.117627410619309,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 3.2091313209790794e-05,
+            "share_of_total_scaled_readout_squared_amplitude": 3.21775252165461e-05,
+            "physical_amplitude_l2": 0.008933717955647567,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 0.3330065729813783,
+            "share_of_total_scaled_readout_squared_amplitude": 0.3339011815856367,
+            "physical_amplitude_l2": 0.2793025571567625,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 0.00015812834120803007
+      },
+      {
+        "index": 24,
+        "eigenvalue_real_per_s": -0.581046558410977,
+        "eigenvalue_imag_per_s": -4.250832829443059,
+        "oscillation_frequency_hz": 0.6765410570631705,
+        "natural_frequency_hz": 0.6828321113978671,
+        "damping_ratio": 0.13543070162345844,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 0.22529934759056422,
+            "share_of_total_scaled_readout_squared_amplitude": 0.2945317298847955,
+            "physical_amplitude_l2": 0.21261997960288595,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 0.3345944772963553,
+            "share_of_total_scaled_readout_squared_amplitude": 0.43741223071398616,
+            "physical_amplitude_l2": 0.9122164023129425,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 0.00035165697221177343,
+            "share_of_total_scaled_readout_squared_amplitude": 0.0004597178707317343,
+            "physical_amplitude_l2": 0.029573185604042224,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 0.2046953538148006,
+            "share_of_total_scaled_readout_squared_amplitude": 0.2675963215304866,
+            "physical_amplitude_l2": 0.21897901683878096,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 0.006571511999869757
+      },
+      {
+        "index": 25,
+        "eigenvalue_real_per_s": -0.581046558410977,
+        "eigenvalue_imag_per_s": 4.250832829443059,
+        "oscillation_frequency_hz": 0.6765410570631705,
+        "natural_frequency_hz": 0.6828321113978671,
+        "damping_ratio": 0.13543070162345844,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 0.22529934759056422,
+            "share_of_total_scaled_readout_squared_amplitude": 0.2945317298847955,
+            "physical_amplitude_l2": 0.21261997960288595,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 0.3345944772963553,
+            "share_of_total_scaled_readout_squared_amplitude": 0.43741223071398616,
+            "physical_amplitude_l2": 0.9122164023129425,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 0.00035165697221177343,
+            "share_of_total_scaled_readout_squared_amplitude": 0.0004597178707317343,
+            "physical_amplitude_l2": 0.029573185604042224,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 0.2046953538148006,
+            "share_of_total_scaled_readout_squared_amplitude": 0.2675963215304866,
+            "physical_amplitude_l2": 0.21897901683878096,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 0.006571511999869757
+      },
+      {
+        "index": 26,
+        "eigenvalue_real_per_s": -0.5074021501628659,
+        "eigenvalue_imag_per_s": 0.0,
+        "oscillation_frequency_hz": 0.0,
+        "natural_frequency_hz": 0.08075556033387626,
+        "damping_ratio": 1.0,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 0.01205734251837518,
+            "share_of_total_scaled_readout_squared_amplitude": 0.02466170763510284,
+            "physical_amplitude_l2": 0.049186951213058806,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 0.0002504536870494095,
+            "share_of_total_scaled_readout_squared_amplitude": 0.0005122700625559093,
+            "physical_amplitude_l2": 0.024957564805461713,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 0.03051401093228607,
+            "share_of_total_scaled_readout_squared_amplitude": 0.06241239437625098,
+            "physical_amplitude_l2": 0.27547877396700954,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 0.4460876672902916,
+            "share_of_total_scaled_readout_squared_amplitude": 0.9124136279260903,
+            "physical_amplitude_l2": 0.3232649489392059,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 0.20808383087289337
+      },
+      {
+        "index": 27,
+        "eigenvalue_real_per_s": -0.43831325988800707,
+        "eigenvalue_imag_per_s": -13.494490270202016,
+        "oscillation_frequency_hz": 2.147714831008137,
+        "natural_frequency_hz": 2.1488474618121702,
+        "damping_ratio": 0.032463784970138826,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 0.05982816667247524,
+            "share_of_total_scaled_readout_squared_amplitude": 0.0598439105908895,
+            "physical_amplitude_l2": 0.10956628903532155,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 0.8799294066972646,
+            "share_of_total_scaled_readout_squared_amplitude": 0.8801609621260844,
+            "physical_amplitude_l2": 1.4793209530274285,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 4.1910200176957495e-07,
+            "share_of_total_scaled_readout_squared_amplitude": 4.1921228941651617e-07,
+            "physical_amplitude_l2": 0.0010209356291265195,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 0.059978924480061764,
+            "share_of_total_scaled_readout_squared_amplitude": 0.05999470807073668,
+            "physical_amplitude_l2": 0.11853533896042553,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 1.1751505121933377e-05
+      },
+      {
+        "index": 28,
+        "eigenvalue_real_per_s": -0.43831325988800707,
+        "eigenvalue_imag_per_s": 13.494490270202016,
+        "oscillation_frequency_hz": 2.147714831008137,
+        "natural_frequency_hz": 2.1488474618121702,
+        "damping_ratio": 0.032463784970138826,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 0.05982816667247524,
+            "share_of_total_scaled_readout_squared_amplitude": 0.0598439105908895,
+            "physical_amplitude_l2": 0.10956628903532155,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 0.8799294066972646,
+            "share_of_total_scaled_readout_squared_amplitude": 0.8801609621260844,
+            "physical_amplitude_l2": 1.4793209530274285,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 4.1910200176957495e-07,
+            "share_of_total_scaled_readout_squared_amplitude": 4.1921228941651617e-07,
+            "physical_amplitude_l2": 0.0010209356291265195,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 0.059978924480061764,
+            "share_of_total_scaled_readout_squared_amplitude": 0.05999470807073668,
+            "physical_amplitude_l2": 0.11853533896042553,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 1.1751505121933377e-05
+      },
+      {
+        "index": 29,
+        "eigenvalue_real_per_s": -0.3480471537870504,
+        "eigenvalue_imag_per_s": -1.0445134238197316,
+        "oscillation_frequency_hz": 0.16623947452675014,
+        "natural_frequency_hz": 0.1752255529855586,
+        "damping_ratio": 0.31612640970714734,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 0.030040534948920006,
+            "share_of_total_scaled_readout_squared_amplitude": 0.117333956487607,
+            "physical_amplitude_l2": 0.07763864302698426,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 0.002937876274801119,
+            "share_of_total_scaled_readout_squared_amplitude": 0.011474917060552555,
+            "physical_amplitude_l2": 0.0854781755009437,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 0.01249453299601534,
+            "share_of_total_scaled_readout_squared_amplitude": 0.048801827044033366,
+            "physical_amplitude_l2": 0.1762781592652859,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 0.2105529825297202,
+            "share_of_total_scaled_readout_squared_amplitude": 0.822389299407807,
+            "physical_amplitude_l2": 0.22209010418436695,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 0.6264432799683294
+      },
+      {
+        "index": 30,
+        "eigenvalue_real_per_s": -0.3480471537870504,
+        "eigenvalue_imag_per_s": 1.0445134238197316,
+        "oscillation_frequency_hz": 0.16623947452675014,
+        "natural_frequency_hz": 0.1752255529855586,
+        "damping_ratio": 0.31612640970714734,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 0.030040534948920006,
+            "share_of_total_scaled_readout_squared_amplitude": 0.117333956487607,
+            "physical_amplitude_l2": 0.07763864302698426,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 0.002937876274801119,
+            "share_of_total_scaled_readout_squared_amplitude": 0.011474917060552555,
+            "physical_amplitude_l2": 0.0854781755009437,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 0.01249453299601534,
+            "share_of_total_scaled_readout_squared_amplitude": 0.048801827044033366,
+            "physical_amplitude_l2": 0.1762781592652859,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 0.2105529825297202,
+            "share_of_total_scaled_readout_squared_amplitude": 0.822389299407807,
+            "physical_amplitude_l2": 0.22209010418436695,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 0.6264432799683294
+      },
+      {
+        "index": 31,
+        "eigenvalue_real_per_s": -0.2597294280076493,
+        "eigenvalue_imag_per_s": -0.05168785009505438,
+        "oscillation_frequency_hz": 0.008226376840420798,
+        "natural_frequency_hz": 0.04214782587748257,
+        "damping_ratio": 0.9807676071835609,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 7.114354454018201e-05,
+            "share_of_total_scaled_readout_squared_amplitude": 0.7166397369964773,
+            "physical_amplitude_l2": 0.003778260122653078,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 4.0254720434176115e-07,
+            "share_of_total_scaled_readout_squared_amplitude": 0.004054919170989746,
+            "physical_amplitude_l2": 0.0010005686702263836,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 9.63226348989342e-08,
+            "share_of_total_scaled_readout_squared_amplitude": 0.0009702725410566577,
+            "physical_amplitude_l2": 0.0004894436177980606,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 2.7631378109887333e-05,
+            "share_of_total_scaled_readout_squared_amplitude": 0.2783350712914763,
+            "physical_amplitude_l2": 0.0025441914096071524,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 0.9998977233024322
+      },
+      {
+        "index": 32,
+        "eigenvalue_real_per_s": -0.2597294280076493,
+        "eigenvalue_imag_per_s": 0.05168785009505438,
+        "oscillation_frequency_hz": 0.008226376840420798,
+        "natural_frequency_hz": 0.04214782587748257,
+        "damping_ratio": 0.9807676071835609,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 7.114354454018201e-05,
+            "share_of_total_scaled_readout_squared_amplitude": 0.7166397369964773,
+            "physical_amplitude_l2": 0.003778260122653078,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 4.0254720434176115e-07,
+            "share_of_total_scaled_readout_squared_amplitude": 0.004054919170989746,
+            "physical_amplitude_l2": 0.0010005686702263836,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 9.63226348989342e-08,
+            "share_of_total_scaled_readout_squared_amplitude": 0.0009702725410566577,
+            "physical_amplitude_l2": 0.0004894436177980606,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 2.7631378109887333e-05,
+            "share_of_total_scaled_readout_squared_amplitude": 0.2783350712914763,
+            "physical_amplitude_l2": 0.0025441914096071524,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 0.9998977233024322
+      },
+      {
+        "index": 33,
+        "eigenvalue_real_per_s": -0.2596862348249013,
+        "eigenvalue_imag_per_s": -0.051779923464482173,
+        "oscillation_frequency_hz": 0.008241030772292357,
+        "natural_frequency_hz": 0.042143946751777926,
+        "damping_ratio": 0.9806947642738784,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 8.550100716790804e-05,
+            "share_of_total_scaled_readout_squared_amplitude": 0.7305254507380825,
+            "physical_amplitude_l2": 0.004141996431347426,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 4.836961171776092e-07,
+            "share_of_total_scaled_readout_squared_amplitude": 0.004132727037092267,
+            "physical_amplitude_l2": 0.0010967933113328414,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 2.067603980832915e-08,
+            "share_of_total_scaled_readout_squared_amplitude": 0.0001766572558706357,
+            "physical_amplitude_l2": 0.00022676298883709113,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 3.103504285550036e-05,
+            "share_of_total_scaled_readout_squared_amplitude": 0.26516516496895465,
+            "physical_amplitude_l2": 0.00269634018143138,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 0.9998826493756572
+      },
+      {
+        "index": 34,
+        "eigenvalue_real_per_s": -0.2596862348249013,
+        "eigenvalue_imag_per_s": 0.051779923464482173,
+        "oscillation_frequency_hz": 0.008241030772292357,
+        "natural_frequency_hz": 0.042143946751777926,
+        "damping_ratio": 0.9806947642738784,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 8.550100716790804e-05,
+            "share_of_total_scaled_readout_squared_amplitude": 0.7305254507380825,
+            "physical_amplitude_l2": 0.004141996431347426,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 4.836961171776092e-07,
+            "share_of_total_scaled_readout_squared_amplitude": 0.004132727037092267,
+            "physical_amplitude_l2": 0.0010967933113328414,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 2.067603980832915e-08,
+            "share_of_total_scaled_readout_squared_amplitude": 0.0001766572558706357,
+            "physical_amplitude_l2": 0.00022676298883709113,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 3.103504285550036e-05,
+            "share_of_total_scaled_readout_squared_amplitude": 0.26516516496895465,
+            "physical_amplitude_l2": 0.00269634018143138,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 0.9998826493756572
+      },
+      {
+        "index": 35,
+        "eigenvalue_real_per_s": -0.25968594578860693,
+        "eigenvalue_imag_per_s": -0.05186646363108028,
+        "oscillation_frequency_hz": 0.00825480406758244,
+        "natural_frequency_hz": 0.042146597102287756,
+        "damping_ratio": 0.980632002708169,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 0.0001225414795485624,
+            "share_of_total_scaled_readout_squared_amplitude": 0.8051017396995168,
+            "physical_amplitude_l2": 0.00495867522934154,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 6.933285952397174e-07,
+            "share_of_total_scaled_readout_squared_amplitude": 0.004555192741815294,
+            "physical_amplitude_l2": 0.0013131309841346432,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 2.8943083038070114e-08,
+            "share_of_total_scaled_readout_squared_amplitude": 0.00019015705206157027,
+            "physical_amplitude_l2": 0.00026829395527429046,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 2.8942452667710826e-05,
+            "share_of_total_scaled_readout_squared_amplitude": 0.19015291050660627,
+            "physical_amplitude_l2": 0.002603851274918323,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 0.9998475335635573
+      },
+      {
+        "index": 36,
+        "eigenvalue_real_per_s": -0.25968594578860693,
+        "eigenvalue_imag_per_s": 0.05186646363108028,
+        "oscillation_frequency_hz": 0.00825480406758244,
+        "natural_frequency_hz": 0.042146597102287756,
+        "damping_ratio": 0.980632002708169,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 0.0001225414795485624,
+            "share_of_total_scaled_readout_squared_amplitude": 0.8051017396995168,
+            "physical_amplitude_l2": 0.00495867522934154,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 6.933285952397174e-07,
+            "share_of_total_scaled_readout_squared_amplitude": 0.004555192741815294,
+            "physical_amplitude_l2": 0.0013131309841346432,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 2.8943083038070114e-08,
+            "share_of_total_scaled_readout_squared_amplitude": 0.00019015705206157027,
+            "physical_amplitude_l2": 0.00026829395527429046,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 2.8942452667710826e-05,
+            "share_of_total_scaled_readout_squared_amplitude": 0.19015291050660627,
+            "physical_amplitude_l2": 0.002603851274918323,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 0.9998475335635573
+      },
+      {
+        "index": 37,
+        "eigenvalue_real_per_s": -0.2596202073041153,
+        "eigenvalue_imag_per_s": -0.05201176341413773,
+        "oscillation_frequency_hz": 0.008277929246286213,
+        "natural_frequency_hz": 0.04214087367335759,
+        "damping_ratio": 0.9805169119005683,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 9.83434980281047e-05,
+            "share_of_total_scaled_readout_squared_amplitude": 0.7230856690892532,
+            "physical_amplitude_l2": 0.004442187963517813,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 5.562674959595158e-07,
+            "share_of_total_scaled_readout_squared_amplitude": 0.00409004217435443,
+            "physical_amplitude_l2": 0.001176197723848416,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 1.0178014513066944e-07,
+            "share_of_total_scaled_readout_squared_amplitude": 0.0007483541445798393,
+            "physical_amplitude_l2": 0.0005031181973037236,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 3.700377462981077e-05,
+            "share_of_total_scaled_readout_squared_amplitude": 0.27207593459181245,
+            "physical_amplitude_l2": 0.002944228569669774,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 0.9998627944116079
+      },
+      {
+        "index": 38,
+        "eigenvalue_real_per_s": -0.2596202073041153,
+        "eigenvalue_imag_per_s": 0.05201176341413773,
+        "oscillation_frequency_hz": 0.008277929246286213,
+        "natural_frequency_hz": 0.04214087367335759,
+        "damping_ratio": 0.9805169119005683,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 9.83434980281047e-05,
+            "share_of_total_scaled_readout_squared_amplitude": 0.7230856690892532,
+            "physical_amplitude_l2": 0.004442187963517813,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 5.562674959595158e-07,
+            "share_of_total_scaled_readout_squared_amplitude": 0.00409004217435443,
+            "physical_amplitude_l2": 0.001176197723848416,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 1.0178014513066944e-07,
+            "share_of_total_scaled_readout_squared_amplitude": 0.0007483541445798393,
+            "physical_amplitude_l2": 0.0005031181973037236,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 3.700377462981077e-05,
+            "share_of_total_scaled_readout_squared_amplitude": 0.27207593459181245,
+            "physical_amplitude_l2": 0.002944228569669774,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 0.9998627944116079
+      },
+      {
+        "index": 39,
+        "eigenvalue_real_per_s": -0.259585680759955,
+        "eigenvalue_imag_per_s": -0.05219017514149881,
+        "oscillation_frequency_hz": 0.008306324354601295,
+        "natural_frequency_hz": 0.04214107337258956,
+        "damping_ratio": 0.9803818683862534,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 4.3443766565920384e-05,
+            "share_of_total_scaled_readout_squared_amplitude": 0.5574018639455712,
+            "physical_amplitude_l2": 0.002952485958214211,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 2.4573647235653304e-07,
+            "share_of_total_scaled_readout_squared_amplitude": 0.0031529026730014375,
+            "physical_amplitude_l2": 0.0007817597429242552,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 2.0288092798987576e-08,
+            "share_of_total_scaled_readout_squared_amplitude": 0.00026030479481784814,
+            "physical_amplitude_l2": 0.00022462552443523048,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 3.4229967194099964e-05,
+            "share_of_total_scaled_readout_squared_amplitude": 0.4391849285866094,
+            "physical_amplitude_l2": 0.0028317294040483163,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 0.9999210028101551
+      },
+      {
+        "index": 40,
+        "eigenvalue_real_per_s": -0.259585680759955,
+        "eigenvalue_imag_per_s": 0.05219017514149881,
+        "oscillation_frequency_hz": 0.008306324354601295,
+        "natural_frequency_hz": 0.04214107337258956,
+        "damping_ratio": 0.9803818683862534,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 4.3443766565920384e-05,
+            "share_of_total_scaled_readout_squared_amplitude": 0.5574018639455712,
+            "physical_amplitude_l2": 0.002952485958214211,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 2.4573647235653304e-07,
+            "share_of_total_scaled_readout_squared_amplitude": 0.0031529026730014375,
+            "physical_amplitude_l2": 0.0007817597429242552,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 2.0288092798987576e-08,
+            "share_of_total_scaled_readout_squared_amplitude": 0.00026030479481784814,
+            "physical_amplitude_l2": 0.00022462552443523048,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 3.4229967194099964e-05,
+            "share_of_total_scaled_readout_squared_amplitude": 0.4391849285866094,
+            "physical_amplitude_l2": 0.0028317294040483163,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 0.9999210028101551
+      },
+      {
+        "index": 41,
+        "eigenvalue_real_per_s": -0.2595722509725691,
+        "eigenvalue_imag_per_s": -0.05155805547715899,
+        "oscillation_frequency_hz": 0.008205719385396023,
+        "natural_frequency_hz": 0.04211926238602918,
+        "damping_ratio": 0.9808388013337465,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 0.0013301980137580443,
+            "share_of_total_scaled_readout_squared_amplitude": 0.85971286589645,
+            "physical_amplitude_l2": 0.016337374054165733,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 7.516380729892284e-06,
+            "share_of_total_scaled_readout_squared_amplitude": 0.004857870145369151,
+            "physical_amplitude_l2": 0.004323573815038766,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 9.580060662207223e-07,
+            "share_of_total_scaled_readout_squared_amplitude": 0.0006191635622804438,
+            "physical_amplitude_l2": 0.0015435568246452219,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 0.00020858606971545335,
+            "share_of_total_scaled_readout_squared_amplitude": 0.1348101003959003,
+            "physical_amplitude_l2": 0.006990225072917608,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 0.9984440250447333
+      },
+      {
+        "index": 42,
+        "eigenvalue_real_per_s": -0.2595722509725691,
+        "eigenvalue_imag_per_s": 0.05155805547715899,
+        "oscillation_frequency_hz": 0.008205719385396023,
+        "natural_frequency_hz": 0.04211926238602918,
+        "damping_ratio": 0.9808388013337465,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 0.0013301980137580443,
+            "share_of_total_scaled_readout_squared_amplitude": 0.85971286589645,
+            "physical_amplitude_l2": 0.016337374054165733,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 7.516380729892284e-06,
+            "share_of_total_scaled_readout_squared_amplitude": 0.004857870145369151,
+            "physical_amplitude_l2": 0.004323573815038766,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 9.580060662207223e-07,
+            "share_of_total_scaled_readout_squared_amplitude": 0.0006191635622804438,
+            "physical_amplitude_l2": 0.0015435568246452219,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 0.00020858606971545335,
+            "share_of_total_scaled_readout_squared_amplitude": 0.1348101003959003,
+            "physical_amplitude_l2": 0.006990225072917608,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 0.9984440250447333
+      },
+      {
+        "index": 43,
+        "eigenvalue_real_per_s": -0.2594792770553317,
+        "eigenvalue_imag_per_s": -0.05241398769600865,
+        "oscillation_frequency_hz": 0.008341945228977559,
+        "natural_frequency_hz": 0.04213150943967548,
+        "damping_ratio": 0.9802024689478003,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 1.3764165095498696e-05,
+            "share_of_total_scaled_readout_squared_amplitude": 0.17009745436855844,
+            "physical_amplitude_l2": 0.0016618776288742213,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 7.782065327956525e-08,
+            "share_of_total_scaled_readout_squared_amplitude": 0.0009617070798199881,
+            "physical_amplitude_l2": 0.00043993238066185943,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 3.975621066465367e-07,
+            "share_of_total_scaled_readout_squared_amplitude": 0.004913069686739841,
+            "physical_amplitude_l2": 0.0009943539066191748,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 6.667974130498326e-05,
+            "share_of_total_scaled_readout_squared_amplitude": 0.8240277688648817,
+            "physical_amplitude_l2": 0.003952259591704785,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 0.9999087995434275
+      },
+      {
+        "index": 44,
+        "eigenvalue_real_per_s": -0.2594792770553317,
+        "eigenvalue_imag_per_s": 0.05241398769600865,
+        "oscillation_frequency_hz": 0.008341945228977559,
+        "natural_frequency_hz": 0.04213150943967548,
+        "damping_ratio": 0.9802024689478003,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 1.3764165095498696e-05,
+            "share_of_total_scaled_readout_squared_amplitude": 0.17009745436855844,
+            "physical_amplitude_l2": 0.0016618776288742213,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 7.782065327956525e-08,
+            "share_of_total_scaled_readout_squared_amplitude": 0.0009617070798199881,
+            "physical_amplitude_l2": 0.00043993238066185943,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 3.975621066465367e-07,
+            "share_of_total_scaled_readout_squared_amplitude": 0.004913069686739841,
+            "physical_amplitude_l2": 0.0009943539066191748,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 6.667974130498326e-05,
+            "share_of_total_scaled_readout_squared_amplitude": 0.8240277688648817,
+            "physical_amplitude_l2": 0.003952259591704785,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 0.9999087995434275
+      },
+      {
+        "index": 45,
+        "eigenvalue_real_per_s": -0.25874627917859805,
+        "eigenvalue_imag_per_s": -0.055812445144208,
+        "oscillation_frequency_hz": 0.008882826530745956,
+        "natural_frequency_hz": 0.042127885339844115,
+        "damping_ratio": 0.977517599226874,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 6.0471767312452886e-05,
+            "share_of_total_scaled_readout_squared_amplitude": 0.4683086219302267,
+            "physical_amplitude_l2": 0.003483376645052026,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 3.418400490761912e-07,
+            "share_of_total_scaled_readout_squared_amplitude": 0.002647295579708743,
+            "physical_amplitude_l2": 0.0009220404283234231,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 3.454322875658599e-07,
+            "share_of_total_scaled_readout_squared_amplitude": 0.0026751147808253446,
+            "physical_amplitude_l2": 0.00092687241477752,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 6.796898507786082e-05,
+            "share_of_total_scaled_readout_squared_amplitude": 0.5263689677092392,
+            "physical_amplitude_l2": 0.0039902848703965935,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 0.9998014940051265
+      },
+      {
+        "index": 46,
+        "eigenvalue_real_per_s": -0.25874627917859805,
+        "eigenvalue_imag_per_s": 0.055812445144208,
+        "oscillation_frequency_hz": 0.008882826530745956,
+        "natural_frequency_hz": 0.042127885339844115,
+        "damping_ratio": 0.977517599226874,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 6.0471767312452886e-05,
+            "share_of_total_scaled_readout_squared_amplitude": 0.4683086219302267,
+            "physical_amplitude_l2": 0.003483376645052026,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 3.418400490761912e-07,
+            "share_of_total_scaled_readout_squared_amplitude": 0.002647295579708743,
+            "physical_amplitude_l2": 0.0009220404283234231,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 3.454322875658599e-07,
+            "share_of_total_scaled_readout_squared_amplitude": 0.0026751147808253446,
+            "physical_amplitude_l2": 0.00092687241477752,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 6.796898507786082e-05,
+            "share_of_total_scaled_readout_squared_amplitude": 0.5263689677092392,
+            "physical_amplitude_l2": 0.0039902848703965935,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 0.9998014940051265
+      },
+      {
+        "index": 47,
+        "eigenvalue_real_per_s": -0.24744118242364743,
+        "eigenvalue_imag_per_s": -0.014502878800437286,
+        "oscillation_frequency_hz": 0.002308204850152252,
+        "natural_frequency_hz": 0.039449072893536295,
+        "damping_ratio": 0.9982867636334118,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 5.5109829213475726e-05,
+            "share_of_total_scaled_readout_squared_amplitude": 0.008229446594067203,
+            "physical_amplitude_l2": 0.003325359764245773,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 2.7317039391222277e-07,
+            "share_of_total_scaled_readout_squared_amplitude": 4.079201840878207e-05,
+            "physical_amplitude_l2": 0.0008242430752604613,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 0.0004279051728580266,
+            "share_of_total_scaled_readout_squared_amplitude": 0.06389827037422843,
+            "physical_amplitude_l2": 0.03262212601624374,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 0.006213374669141173,
+            "share_of_total_scaled_readout_squared_amplitude": 0.9278314910132955,
+            "physical_amplitude_l2": 0.038151558199870816,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 0.9893663712909487
+      },
+      {
+        "index": 48,
+        "eigenvalue_real_per_s": -0.24744118242364743,
+        "eigenvalue_imag_per_s": 0.014502878800437286,
+        "oscillation_frequency_hz": 0.002308204850152252,
+        "natural_frequency_hz": 0.039449072893536295,
+        "damping_ratio": 0.9982867636334118,
+        "strictly_negative_real_part": true,
+        "physical_readout": {
+          "relative_delta": {
+            "scaled_squared_amplitude": 5.5109829213475726e-05,
+            "share_of_total_scaled_readout_squared_amplitude": 0.008229446594067203,
+            "physical_amplitude_l2": 0.003325359764245773,
+            "physical_amplitude_unit": "rad"
+          },
+          "relative_omega": {
+            "scaled_squared_amplitude": 2.7317039391222277e-07,
+            "share_of_total_scaled_readout_squared_amplitude": 4.079201840878207e-05,
+            "physical_amplitude_l2": 0.0008242430752604613,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "common_omega": {
+            "scaled_squared_amplitude": 0.0004279051728580266,
+            "share_of_total_scaled_readout_squared_amplitude": 0.06389827037422843,
+            "physical_amplitude_l2": 0.03262212601624374,
+            "physical_amplitude_unit": "rad/s"
+          },
+          "p": {
+            "scaled_squared_amplitude": 0.006213374669141173,
+            "share_of_total_scaled_readout_squared_amplitude": 0.9278314910132955,
+            "physical_amplitude_l2": 0.038151558199870816,
+            "physical_amplitude_unit": "system pu"
+          }
+        },
+        "latent_scaled_right_eigenvector_squared_share": 0.9893663712909487
+      }
+    ]
+  },
+  "lyapunov": {
+    "constructed": true,
+    "candidate": "V(xi)=xi.T @ P @ xi",
+    "equation": "A.T @ P + P @ A = -I, using the fixed smaller-step scaled Jacobian",
+    "P_all_finite": true,
+    "P_positive_definite_numerically": true,
+    "P_min_eigenvalue": 0.10572805653776057,
+    "P_max_eigenvalue": 17.495511966482134,
+    "P_condition_number": 165.4765304442502,
+    "raw_symmetry_defect": 5.012840201889495e-15,
+    "relative_equation_residual": 1.403986633220418e-13,
+    "residual_pass": true,
+    "region_certificate": false
+  },
+  "sampled_counterexample_count": 0,
+  "candidate_status_does_not_assert_all_radii_pass": true,
+  "source_sha256_after_analysis": "aed134b86740fa5c54800d5cafae32405dbd635690bfcdde6aa9d166971e8feb",
+  "source_unchanged": true,
+  "limitations": [
+    "Numerical linearization and negative real parts are not a nonlinear stability-region certificate.",
+    "Numerical eigenvalues of P are a positivity diagnostic; validated bounds and full-field region conditions are still needed for a nonlinear region/invariance certificate.",
+    "The 640 fixed ROM-only directional samples can expose failures but cannot prove decrease between samples.",
+    "No original 13-mode matching, L2 success, global stability, or high-order-system guarantee is asserted."
+  ]
+}

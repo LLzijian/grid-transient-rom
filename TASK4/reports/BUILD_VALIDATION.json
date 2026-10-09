@@ -1,0 +1,41 @@
+{
+  "scope": "Packaging engineering validation; no real KIKI data or electric-grid experiment was run",
+  "python": "3.13.5",
+  "dependencies": {
+    "torch": "2.10.0+cpu",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "h5py": "3.15.1",
+    "pytest": "9.0.2",
+    "psutil": "7.2.2"
+  },
+  "unit_tests": {
+    "passed": 30,
+    "failed": 0,
+    "command": "python -m pytest -q"
+  },
+  "smoke": {
+    "arms": [
+      "P",
+      "A",
+      "U"
+    ],
+    "updates_each": 3,
+    "checkpoint_reload": "passed",
+    "data": "3-node synthetic M3 fixtures"
+  },
+  "preflight_real_data": {
+    "result": "expected BLOCKED_DATA",
+    "reason": "No /mnt/data/kiki/private_data present in packaging runtime"
+  },
+  "main_process_jobs_remaining": 0,
+  "research_state": "NOT_STARTED",
+  "not_validated": [
+    "IEEE39 prediction quality",
+    "complete fixed-horizon LOS classification parity",
+    "complete T4-S autonomous NumPy compiler",
+    "scientific optimization adequacy",
+    "stable region",
+    "physical modal recovery"
+  ]
+}

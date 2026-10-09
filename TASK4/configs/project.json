@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "kiki_root": "../kiki",
+  "datasets": [
+    "private_data/ieee39_postfault",
+    "private_data/ieee39_expansion"
+  ],
+  "baseline": "private_data/task2_m3_0020/model.npz",
+  "physics_config": "configs/private_dataset.json",
+  "history_ms": 100,
+  "sample_dt": 0.01,
+  "expected": {
+    "train_raw": 369,
+    "train_eligible": 346,
+    "train_unstable": 35,
+    "validation_raw": 117,
+    "validation_eligible": 107,
+    "validation_unstable": 12
+  },
+  "test_access": false,
+  "outputs": "artifacts",
+  "budget": {
+    "default_launch_cap_seconds": 60000,
+    "default_process_cap_seconds": 7200,
+    "reserved_final_fraction": 0.35,
+    "memory_gib": 8,
+    "max_concurrent_jobs": 1,
+    "poll_seconds": 900
+  },
+  "progress_reporting": {
+    "mode": "milestones_and_events",
+    "routine_poll_reporting": false,
+    "health_check_log_tail_lines": 1,
+    "reload_model_for_health_check": false,
+    "notify_on": [
+      "registered_milestone",
+      "stage_completed",
+      "exception",
+      "user_decision_required"
+    ]
+  },
+  "scope": {
+    "roadmap": "TASK4.md",
+    "route_revision": 1,
+    "new_fom_requires_approval": true,
+    "major_direction_requires_approval": true
+  }
+}

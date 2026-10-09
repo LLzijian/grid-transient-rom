@@ -1,0 +1,148 @@
+..F...                                                                   [100%]
+================================== FAILURES ===================================
+_________________ test_traced_field_through_checkpointed_rk4 __________________
+
+    def test_traced_field_through_checkpointed_rk4():
+        from task4.integrators import rollout
+        _,phys=fixture();torch.manual_seed(502)
+        m=PowerGraph(phys,[.2,.3,.1],hidden=8);j=copy.deepcopy(m);trace_field(j)
+        m.checkpoint_steps=j.checkpoint_steps=2
+        x=(torch.randn(2,m.dim,dtype=torch.float64)*.1).requires_grad_();y=x.detach().clone().requires_grad_()
+        a=rollout(m,x,3);b=rollout(j,y,3)
+        torch.testing.assert_close(a,b,atol=1e-12,rtol=1e-10)
+>       a.square().sum().backward();b.square().sum().backward()
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_accelerate.py:35: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\kron-reduce\.venv\Lib\site-packages\torch\_tensor.py:623: in backward
+    torch.autograd.backward(
+..\kron-reduce\.venv\Lib\site-packages\torch\autograd\__init__.py:395: in backward
+    _engine_run_backward(
+..\kron-reduce\.venv\Lib\site-packages\torch\autograd\graph.py:979: in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+..\kron-reduce\.venv\Lib\site-packages\torch\utils\checkpoint.py:1183: in unpack_hook
+    _run_fn_with_dynamo_disabled(frame.recompute_fn, *args)
+..\kron-reduce\.venv\Lib\site-packages\torch\_compile.py:54: in inner
+    return disable_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\kron-reduce\.venv\Lib\site-packages\torch\_dynamo\eval_frame.py:1446: in _fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+..\kron-reduce\.venv\Lib\site-packages\torch\utils\checkpoint.py:1150: in _run_fn_with_dynamo_disabled
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+..\kron-reduce\.venv\Lib\site-packages\torch\utils\checkpoint.py:1688: in recompute_fn
+    fn(*args, **kwargs)
+src\task4\integrators.py:33: in <lambda>
+    part=checkpoint(lambda zz,count=count:chunk(zz,count),z,use_reentrant=False)
+                                          ^^^^^^^^^^^^^^^
+src\task4\integrators.py:22: in chunk
+    for __ in range(sub):zz=rk4(model,zz,dt,training)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^
+src\task4\integrators.py:8: in rk4
+    a=fn(z);b=fn(z+dt*a/2);c=fn(z+dt*b/2);d=fn(z+dt*c)
+                                            ^^^^^^^^^^
+src\task4\integrators.py:7: in <lambda>
+    fn=lambda x:model.field(x,create_graph=training)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src\task4\dynamics.py:162: in field
+    with torch.set_grad_enabled(create_graph):return self._compiled_field(x)
+                                                     ^^^^^^^^^^^^^^^^^^^^^^^
+..\kron-reduce\.venv\Lib\site-packages\torch\nn\modules\module.py:1778: in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = _Field(
+  original_name=_Field
+  (model): PowerGraph(
+    original_name=PowerGraph
+    (node_energy): FunctionNet(
+   ...iginal_name=Linear)
+        (3): Tanh(original_name=Tanh)
+        (4): Linear(original_name=Linear)
+      )
+    )
+  )
+)
+args = (tensor([[-0.1667,  0.0042,  0.0087, -0.1125, -0.0259,  0.0263,  0.0110, -0.0576,
+         -0.0525,  0.0184, -0.1825, ... -0.0930, -0.0853, -0.0757,  0.0776,  0.0814, -0.1115, -0.1009]],
+       dtype=torch.float64, grad_fn=<AddBackward0>),)
+kwargs = {}
+
+    def _call_impl(self, *args, **kwargs):
+        forward_call = (self._slow_forward if torch._C._get_tracing_state() else self.forward)
+        # If we don't have any hooks, we want to skip the rest of the logic in
+        # this function, and just call forward.
+        if not (self._backward_hooks or self._backward_pre_hooks or self._forward_hooks or self._forward_pre_hooks
+                or _global_backward_pre_hooks or _global_backward_hooks
+                or _global_forward_hooks or _global_forward_pre_hooks):
+>           return forward_call(*args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           RuntimeError: The following operation failed in the TorchScript interpreter.
+E           Traceback of TorchScript (most recent call last):
+E           E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\torch\functional.py(372): einsum
+E           E:\03-nn_Transfer_Func\TASK4\src\task4\dynamics.py(146): _force
+E           E:\03-nn_Transfer_Func\TASK4\src\task4\dynamics.py(166): field
+E           E:\03-nn_Transfer_Func\TASK4\src\task4\accelerate.py(12): forward
+E           E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\torch\nn\modules\module.py(1768): _slow_forward
+E           E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\torch\nn\modules\module.py(1789): _call_impl
+E           E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\torch\nn\modules\module.py(1778): _wrapped_call_impl
+E           E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\torch\jit\_trace.py(1216): trace_module
+E           E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\torch\jit\_trace.py(707): _trace_impl
+E           E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\torch\jit\_trace.py(1022): trace
+E           E:\03-nn_Transfer_Func\TASK4\src\task4\accelerate.py(20): trace_field
+E           E:\03-nn_Transfer_Func\TASK4\tests\test_accelerate.py(30): test_traced_field_through_checkpointed_rk4
+E           E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\_pytest\python.py(167): pytest_pyfunc_call
+E           E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\pluggy\_callers.py(121): _multicall
+E           E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\pluggy\_manager.py(120): _hookexec
+E           E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\pluggy\_hooks.py(512): __call__
+E           E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\_pytest\python.py(1707): runtest
+E           E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\_pytest\runner.py(184): pytest_runtest_call
+E           E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\pluggy\_callers.py(121): _multicall
+E           E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\pluggy\_manager.py(120): _hookexec
+E           E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\pluggy\_hooks.py(512): __call__
+E           E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\_pytest\runner.py(250): <lambda>
+E           E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\_pytest\runner.py(361): from_call
+E           E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\_pytest\runner.py(249): call_and_report
+E           E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\_pytest\runner.py(139): runtestprotocol
+E           E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\_pytest\runner.py(118): pytest_runtest_protocol
+E           E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\pluggy\_callers.py(121): _multicall
+E           E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\pluggy\_manager.py(120): _hookexec
+E           E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\pluggy\_hooks.py(512): __call__
+E           E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\_pytest\main.py(408): pytest_runtestloop
+E           E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\pluggy\_callers.py(121): _multicall
+E           E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\pluggy\_manager.py(120): _hookexec
+E           E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\pluggy\_hooks.py(512): __call__
+E           E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\_pytest\main.py(384): _main
+E           E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\_pytest\main.py(330): wrap_session
+E           E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\_pytest\main.py(377): pytest_cmdline_main
+E           E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\pluggy\_callers.py(121): _multicall
+E           E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\pluggy\_manager.py(120): _hookexec
+E           E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\pluggy\_hooks.py(512): __call__
+E           E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\_pytest\config\__init__.py(229): _main
+E           E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\_pytest\config\__init__.py(253): _console_main
+E           E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\pytest\__main__.py(9): <module>
+E           <frozen runpy>(88): _run_code
+E           <frozen runpy>(198): _run_module_as_main
+E           RuntimeError:
+
+..\kron-reduce\.venv\Lib\site-packages\torch\nn\modules\module.py:1789: RuntimeError
+============================== warnings summary ===============================
+tests/test_accelerate.py::test_trace_preserves_values_gradients_parameter_updates_and_state[PowerGraph]
+tests/test_accelerate.py::test_trace_preserves_values_gradients_parameter_updates_and_state[UnstructuredGraph]
+tests/test_accelerate.py::test_traced_field_through_checkpointed_rk4
+  E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\torch\jit\_trace.py:1006: DeprecationWarning: `torch.jit.trace` is deprecated. Please switch to `torch.compile` or `torch.export`.
+    warnings.warn(
+
+tests/test_accelerate.py::test_trace_preserves_values_gradients_parameter_updates_and_state[PowerGraph]
+tests/test_accelerate.py::test_trace_preserves_values_gradients_parameter_updates_and_state[UnstructuredGraph]
+tests/test_accelerate.py::test_traced_field_through_checkpointed_rk4
+  E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\torch\jit\_trace.py:1145: DeprecationWarning: `torch.jit.trace_method` is deprecated. Please switch to `torch.compile` or `torch.export`.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_accelerate.py::test_traced_field_through_checkpointed_rk4
+1 failed, 5 passed, 6 warnings in 9.59s

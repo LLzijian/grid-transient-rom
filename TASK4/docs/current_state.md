@@ -1,0 +1,26 @@
+# TASK4 current state
+
+- mission_status: PAUSED；用户最新原话“完成当前实验后暂停”已落实。T4_0002 CLOSED，不开T4_0003，无活动科学进程或后台自动研究任务。
+- active_roadmap: TASK4.md，route_revision=1，pending_direction=none；项目总目标尚未完成，暂停非预算耗尽/核心改向。
+- authorization: 原100000累计进程墙钟秒授权保留，未继承TASK2或归零；恢复须用户明确指令，费用继续同一账本。
+- active_loop: none；last_closed_loop: T4_0002，decision retain，reports/T4_0002_closure.md。
+- active_jobs: none；所有训练、压缩、冻结、开发、公式/结构、局部区域、模态与计时受管运行已真实结束。
+- accepted_prediction_model: none；accepted_candidate/active_candidate均null，未晋升默认或部署模型。
+- research_candidates: 旧T4_0001/S_final/last.pt、旧A_long/last.pt、新T4_0002/S_final/last.pt，共3个互补research-only候选；全部不可部署，失败资产不删。
+- accepted_code_ref: logs/run_6e4e003652b7/source.zip；本轮96项冻结/协议QA及人员独立只读复核通过，测试fixture失败与修复成本保留。
+- last_execution: 旧N400后追加N800，再七函数C/seed419/adapt16/max2048，固定S800；N/S均346 TRAIN、共享GRU32/q2、完整5s单次100ms自主ODE，无未来输入、head/teacher/reset。未用成本探针或中间端点。
+- last_optimization: N/S每六块800次非零更新，clip33/800与228/800；固定TRAIN12终点mean .52294785/.56691940、未双步长验证。监控后段恶化保留，不归因为整个模型族不成立。
+- last_prediction: 原117/覆盖107、失稳22/覆盖12，95个真实5/8s长区间、12严重短前缀分别计。两端点107数值门通过、实际积分失败/未决0；全部开发证据，不是新组独立确认。
+- N_result: 5s relative pooled .422396、delta .129752rad/common .753926rad/s/p .256550pu；相对旧N略改善但严重pooled1.891651变差，10/12检出；两漏检pilot_0155/expansion_0155，expansion_0189延迟+.48s，不新增N候选指针。
+- S_result: 5s relative pooled .586798、delta .349155rad/common .239208rad/s/p .147182pu；12严重relative全部改善、pooled1.923580，但严重common及长5/8s relative/delta/tail与8s p损害保留。10/12检出、两漏检同N，新增稳定pilot_0237假LOS/pred1.48s，pilot_0232窗口未定；窗口筛查非稳定证书。
+- formula: 7显式函数/34共享标量/544非零、764 dense槽、2776规范标量树节点（非DAG/整RHS），GRU4194/coupling45另列；S_export独立NumPy运行包，50行因式RHS，单位/尺度/系数明确，q潜态单位未识别、H非校准SI能量。
+- structure: N/S各856/856预选状态的解析/autograd梯度、全局J/R/端口与场验证；两个12预选事件有限独立缓存算术/44generation和46输入哈希通过。人员独立复核只读元数据，不是第二人重跑全队列。
+- region: 新最终S连续49维完整商ODE重新计算，8固定半径完成、6内含椭球至.01通过，.03/.1充分条件未决；V=xi^T P xi，rho4.2360258955e-7，mP.00847205179，mQ.05096682748/s。只去共同delta，pi/common频率/p/q全保留，非整个盒/全局/Poisson/FOM/离散/50维点证书；条件依赖受信区间后端。107初始化中心0inside/107outside/0invalid，未覆盖误差集合，outside未证明非失稳。
+- modes: 原13目标/门槛不变，N0/13、S1/13；附加结果不否决L1或冒称整个L3完成，无新FOM。
+- runtime: CPU1/float64 5s/.0025s，16执行trial=4warmup+12timed，另1S Torch参考均完成。单事件N/S中位7.62254/8.23769s，B8整批39.08280/11.35503s；原始S重复波动大、单事件S较慢/B8中位较快，仅runtime-only，无同精度/FOM提速声明。S8次物理parity通过，N独立parity未取得。
+- budget_confirmed: 累计65291.287534/100000秒；T4_0001 CLOSED 32413.790932秒，T4_0002 CLOSED 32877.496602秒，55000预留未用22122.503398秒释放；按已确认费用口径剩余34708.712466秒。
+- budget_gap: 旧403/405/407监控cell的25次轻量标准库读取实际秒unknown，300秒只保守留量、非实际收费/已证上界；不可称全账精确余额。后23次耐久监控58.7169349秒已一次入账。external_cost_records与batch04/05/06_final均已闭合，无其他已知待记费用。
+- data: ../kiki严格只读；TRAIN原369/覆盖346/覆盖失稳35/时延23；开发原117/覆盖107/覆盖失稳12/时延10；TEST载荷未读，0075/0077未自动并入，无新FOM、额外下载或环境修改。
+- historical_limits: 旧物理基线热启动/重复开发不当严格新组确认；旧P_anchor独立source.zip缺口保留。M3/A/U为首轮历史参照，新N/S非同预算/起点因果对照。
+- reports: reports/T4_0002_closure.md；reports/T4_0002_frozen_endpoints.json；artifacts/T4_0002/full_comparison/capability_table.md；reports/T4_0002_final_readonly_review.md。首轮完整报告与原current_state快照保留。
+- next_required: 等待用户恢复指令；当前不执行追加训练、评价、新轮或核心改向。若恢复，仍沿现路线处理S长时域delta/假LOS与优化受限，预算累加不重开。

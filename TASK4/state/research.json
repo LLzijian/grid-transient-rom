@@ -1,0 +1,1097 @@
+{
+  "schema": 1,
+  "status": "PAUSED",
+  "route_revision": 1,
+  "authorization": {
+    "user_instruction": "用户启动原话：请按照项目设计，开始推进。预算确认问题说明累计进程墙钟秒、最多1个重任务、8 GiB；用户答复原话：100000。",
+    "recorded_at": "2026-09-29T16:38:56.635984+00:00",
+    "source": "user_message_recorded_by_agent"
+  },
+  "active_loop": null,
+  "active_jobs": {},
+  "accepted_candidate": null,
+  "accepted_code_ref": "logs/run_6e4e003652b7/source.zip",
+  "active_candidate": null,
+  "complementary_candidates": [
+    "artifacts/T4_0001/S_final/last.pt",
+    "artifacts/T4_0001/A_long/last.pt",
+    "artifacts\\T4_0002\\S_final\\last.pt"
+  ],
+  "pending_direction": null,
+  "budget": {
+    "cap_seconds": 100000.0,
+    "spent_seconds": 65291.28753379909,
+    "unreceipted_monitoring_cost": {
+      "status": "unreceipted_small_monitor_cost_contingency",
+      "calls": 25,
+      "terminated_monitor_cells": [
+        "403",
+        "405",
+        "407"
+      ],
+      "actual_seconds": null,
+      "contingency_seconds": 300.0,
+      "contingency_role": "Conservative held resource allowance; not represented as actual cost or a proven exact upper bound",
+      "scope": "Completed standard-library lightweight S JSON/status reads only, not S managed runner cost",
+      "reason": "Terminated functions.exec cells did not retain isolated store updates; public rollout records retain 25 notifications but no nested exec duration. Exact duration not reconstructed or fabricated."
+    }
+  },
+  "loops": {
+    "T4_0001": {
+      "spec": "reports\\T4_0001_idea.md",
+      "reserved_seconds": 94000.0,
+      "spent_seconds": 32413.790931999785,
+      "status": "CLOSED",
+      "opened_at": "2026-09-29T16:39:04.001099+00:00",
+      "accepted_before": null,
+      "accepted_code_before": null,
+      "decision": "retain",
+      "evidence": "reports\\T4_0001_closure.md",
+      "closed_at": "2026-10-07T19:17:22.277356+00:00",
+      "released_seconds": 61586.209068000215
+    },
+    "T4_0002": {
+      "spec": "reports\\T4_0002_idea.md",
+      "reserved_seconds": 55000.0,
+      "spent_seconds": 32877.496601799314,
+      "status": "CLOSED",
+      "opened_at": "2026-10-07T19:17:24.961394+00:00",
+      "accepted_before": null,
+      "accepted_code_before": "logs/run_5e2a92c59d5b/source.zip",
+      "decision": "retain",
+      "evidence": "reports\\T4_0002_closure.md",
+      "closed_at": "2026-10-08T04:49:02.661334+00:00",
+      "released_seconds": 22122.503398200686
+    }
+  },
+  "history": [
+    {
+      "at": "2026-09-29T16:38:56.635984+00:00",
+      "kind": "AUTHORIZED",
+      "cap_seconds": 100000.0,
+      "quote": "用户启动原话：请按照项目设计，开始推进。预算确认问题说明累计进程墙钟秒、最多1个重任务、8 GiB；用户答复原话：100000。"
+    },
+    {
+      "at": "2026-09-29T16:39:04.001099+00:00",
+      "kind": "LOOP_OPENED",
+      "loop_id": "T4_0001",
+      "reserved_seconds": 94000.0
+    },
+    {
+      "at": "2026-09-29T16:39:05.464303+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_853c533ceacd",
+      "seconds": 1.062000000034459,
+      "exit_code": 1,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-09-29T16:39:45.223441+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_80058cb02dd0",
+      "seconds": 1.0939999999245629,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-09-29T16:40:30.058274+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_cdbdd8b9dcc9",
+      "seconds": 11.281000000075437,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-09-29T16:41:06.626191+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_387d21d013e0",
+      "seconds": 1.0619999999180436,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-09-29T16:41:08.138838+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_7577b6e7c075",
+      "seconds": 1.077999999979511,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-09-29T16:42:01.804336+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_82d3c6f676ea",
+      "seconds": 22.625,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-09-29T16:43:14.053676+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_114b6d8f5874",
+      "seconds": 15.391000000061467,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-09-29T16:44:20.410144+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_67f80339cde4",
+      "seconds": 5.14000000001397,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-09-29T16:45:01.922512+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_c728c27cfff2",
+      "seconds": 16.375,
+      "exit_code": 1,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-09-29T16:47:32.672508+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_cc7c4877b12f",
+      "seconds": 111.64000000001397,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-09-29T16:48:35.117965+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_fbd6723c4b10",
+      "seconds": 3.0929999999934807,
+      "exit_code": 2,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-09-29T16:49:57.088814+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_70fbee69aeb8",
+      "seconds": 15.327999999979511,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-09-29T16:51:31.904352+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_411eb16f6761",
+      "seconds": 9.218999999924563,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-09-29T16:53:23.369333+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_c0e9c37eed40",
+      "seconds": 73.51500000001397,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-09-29T16:57:05.967761+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_ff739d8ef756",
+      "seconds": 195.01599999994505,
+      "exit_code": 4294967295,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-09-29T16:57:35.015025+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_6178030899a9",
+      "seconds": 26.65700000000652,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-09-29T16:58:47.872510+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_fc17179bf4bb",
+      "seconds": 36.85899999993853,
+      "exit_code": 1,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-09-29T17:00:45.485867+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_def92b43641c",
+      "seconds": 11.296999999904074,
+      "exit_code": 1,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-09-29T17:01:17.349017+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_c878250e04f3",
+      "seconds": 8.23499999998603,
+      "exit_code": 1,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-09-29T17:02:19.160096+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_24df4d31c6fe",
+      "seconds": 11.28200000000652,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-09-29T17:03:19.608180+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_3adbb6336bea",
+      "seconds": 17.42099999997299,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-09-29T17:05:20.841414+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_b55502305256",
+      "seconds": 7.187000000034459,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-09-29T17:16:19.853445+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_81a78be9ee69",
+      "seconds": 647.4219999999041,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-09-29T17:17:24.671482+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_13b995b9ce29",
+      "seconds": 38.90600000007544,
+      "exit_code": 1,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-09-29T17:17:55.631877+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_92fe1d4e4cd6",
+      "seconds": 8.21799999999348,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-09-29T17:36:03.518296+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_e9e712bcd38d",
+      "seconds": 1060.4370000000345,
+      "exit_code": 4294967295,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-09-29T17:37:27.786332+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_e1db173f90fb",
+      "seconds": 77.65599999995902,
+      "exit_code": 1,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-09-29T17:37:53.358483+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_ea55cae378e4",
+      "seconds": 10.437999999965541,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-09-29T17:39:23.777116+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_354fb03edfd4",
+      "seconds": 82.71899999992456,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-09-29T17:40:45.784238+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_f93f20b15ac7",
+      "seconds": 30.780999999959022,
+      "exit_code": 4294967295,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-09-29T18:37:08.931599+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_d357cd0df732",
+      "seconds": 3380.780999999959,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-07T10:58:40.544789+00:00",
+      "kind": "RUNTIME_INTERRUPTION_RECONCILED",
+      "prior_agent_status": "INTERRUPTED_RUNTIME",
+      "child_run": "run_d357cd0df732",
+      "child_result": "normal_exit_and_billed_3380.781s",
+      "user_resume_quote": "请继续推进",
+      "budget_reset": false
+    },
+    {
+      "at": "2026-10-07T10:58:43.811757+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_6564b323652a",
+      "seconds": 52.98399999993853,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-07T11:08:44.042147+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_bb0acfd71a45",
+      "seconds": 575.7810000001919,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-07T11:09:27.150456+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_a7d006a02568",
+      "seconds": 16.594000000040978,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-07T11:10:25.301038+00:00",
+      "kind": "IMPLEMENTATION_ACCEPTED",
+      "previous": null,
+      "code_ref": "logs/run_a7d006a02568/source.zip",
+      "scope": "Necessary compression, original modal comparison, deployment timing, independent structure audit, cache-generation anchors; synthetic QA only",
+      "independent_review": "readonly_review prior and readonly_review_resume",
+      "qa_runs": [
+        "run_6564b323652a",
+        "run_a7d006a02568"
+      ],
+      "model_promotion": false
+    },
+    {
+      "at": "2026-10-07T11:11:38.396354+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_786f3f1d5cb6",
+      "seconds": 109.32799999997951,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-07T14:18:09.275962+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_bca7bcaaaf15",
+      "seconds": 11071.43700000015,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-07T14:19:33.114360+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_48c78908cd77",
+      "seconds": 19.984000000171363,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-07T14:19:57.291667+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_fc491cc193f5",
+      "seconds": 3.155999999959022,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-07T14:29:23.428282+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_76f2fc735fb8",
+      "seconds": 531.1720000000205,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-07T14:32:04.858910+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_5cdfcf89eb75",
+      "seconds": 3.125,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-07T14:32:13.771336+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_4d65f1943c7e",
+      "seconds": 2.125,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-07T14:43:48.224747+00:00",
+      "kind": "PHASE_COMPLETED",
+      "stage": "S_final",
+      "run_id": "run_bca7bcaaaf15",
+      "step": 400,
+      "train_coverage": 346,
+      "scientific_promotion": false
+    },
+    {
+      "at": "2026-10-07T14:43:48.224747+00:00",
+      "kind": "REPORT_IMPLEMENTATION_VERIFIED",
+      "qa_runs": [
+        "run_48c78908cd77",
+        "run_5cdfcf89eb75"
+      ],
+      "scope": "Interval/cache/AST/factored RHS; source guard and completed endpoint manifest pending",
+      "scientific_promotion": false
+    },
+    {
+      "at": "2026-10-07T15:42:43.405075+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_82e29ede91f3",
+      "seconds": 4214.2029999999795,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-07T15:43:45.275286+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_5e2a92c59d5b",
+      "seconds": 19.75,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-07T15:45:06.666168+00:00",
+      "kind": "IMPLEMENTATION_ACCEPTED",
+      "previous": "logs/run_a7d006a02568/source.zip",
+      "code_ref": "logs/run_5e2a92c59d5b/source.zip",
+      "qa_runs": [
+        "run_48c78908cd77",
+        "run_5cdfcf89eb75",
+        "run_5e2a92c59d5b"
+      ],
+      "independent_review": "readonly_review_resume",
+      "scope": "Necessary interval/cache/AST/source-identity interfaces; completed-endpoint manifest runtime check pending",
+      "model_promotion": false
+    },
+    {
+      "at": "2026-10-07T15:49:09.632933+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_cf182b56e9d9",
+      "seconds": 296.9220000000205,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-07T16:25:07.446275+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_2c4f349cfd59",
+      "seconds": 1965.2339999999385,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-07T16:27:14.887756+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_897c7d6bf4c3",
+      "seconds": 5.484999999869615,
+      "exit_code": 1,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-07T16:28:32.038434+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_7744a6e40221",
+      "seconds": 3.140000000130385,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-07T16:30:09.788882+00:00",
+      "kind": "ENDPOINTS_FROZEN",
+      "manifest": "reports/T4_0001_frozen_endpoints.json",
+      "run_id": "run_7744a6e40221",
+      "history_ms": 100,
+      "source_archive_gap": [
+        "run_c0e9c37eed40"
+      ],
+      "model_promotion": false
+    },
+    {
+      "at": "2026-10-07T16:30:09.788882+00:00",
+      "kind": "DEVELOPMENT_EVALUATION_STARTED",
+      "endpoints": [
+        "M3",
+        "P-N",
+        "P-S",
+        "A",
+        "U"
+      ],
+      "fine_dt": 0.0025,
+      "coarse_dt": 0.005,
+      "scope": "fixed development evidence, not independent confirmation",
+      "test_payload_read": false
+    },
+    {
+      "at": "2026-10-07T16:32:16.128754+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_b95025731d2d",
+      "seconds": 195.65599999995902,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-07T16:43:23.137904+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_623b170299b5",
+      "seconds": 528.5319999998901,
+      "exit_code": 4294967295,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-07T16:44:23.508513+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_2a9a3b8ed9d4",
+      "seconds": 42.061999999918044,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-07T16:45:39.074802+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_14f1b67e65fd",
+      "seconds": 3.1399999998975545,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-07T16:46:53.585105+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_e7ceae977eb7",
+      "seconds": 40.15599999995902,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-07T16:48:26.027109+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_d4d33231e3f1",
+      "seconds": 21.07799999997951,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-07T16:48:50.967473+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_38baa924e141",
+      "seconds": 4.187999999849126,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-07T17:18:01.323476+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_0413885aa57c",
+      "seconds": 1661.7339999999385,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-07T17:19:33.371106+00:00",
+      "kind": "EXTERNAL_COST",
+      "seconds": 145.2580267,
+      "reason": "本恢复段外层查看/监控成本补录：root逐命令实报89.8915941秒；代理13.5949739+5.4523421秒为命令实报，initializer13.3191167和cache23秒为缺内层时间时按已执行外层耗时及并行数保守封顶，不冒称精确内层；不重复受管runner，不含无进程等待或思考"
+    },
+    {
+      "at": "2026-10-07T17:20:56.407515+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_d2d08ed0ecd8",
+      "seconds": 80.2819999998901,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-07T17:45:03.417252+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_145994ba4150",
+      "seconds": 1404.96800000011,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-07T17:55:14.536883+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_8fe878356d3d",
+      "seconds": 22.984000000171363,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-07T17:55:34.824842+00:00",
+      "kind": "EXTERNAL_COST",
+      "seconds": 85.2692086,
+      "reason": "外层查看及静态复核补录；逐命令实际墙钟及一条缺内层字段的3秒保守已执行界；包含initializer跨批变更测试源码查看2.0696452秒；不重复受管runner、不含等待"
+    },
+    {
+      "at": "2026-10-07T18:17:08.799381+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_f7fdd0270e11",
+      "seconds": 1291.2029999999795,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-07T18:18:00.946680+00:00",
+      "kind": "EXTERNAL_COST",
+      "seconds": 48.8898302,
+      "reason": "外层实际源码/报告/状态查看逐命令墙钟补录；分类一条inner字段丢失按外层2.6秒加0.05秒保守上界2.65秒，不重复同批另一JSON；不含受管runner、等待和思考"
+    },
+    {
+      "at": "2026-10-07T18:19:55.895895+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_98ac16b5287b",
+      "seconds": 101.71899999980815,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-07T18:41:49.820773+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_8e0f7ebb7f89",
+      "seconds": 1090.905999999959,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-07T18:44:22.932541+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_6040b0a618b2",
+      "seconds": 24.640000000130385,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-07T18:44:40.980074+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_0bbc91ef41f9",
+      "seconds": 3.171000000089407,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-07T18:45:13.646151+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_662403eb89e9",
+      "seconds": 23.625,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-07T18:46:06.932622+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_303c8234577c",
+      "seconds": 32.89100000006147,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-07T18:47:10.782175+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_14cb9e458511",
+      "seconds": 26.67200000002049,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-07T18:48:48.532998+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_6cf1e9a2943b",
+      "seconds": 5.2030000002123415,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-07T18:49:13.132864+00:00",
+      "kind": "EXTERNAL_COST",
+      "seconds": 74.5026247,
+      "reason": "外层报告/状态/源码查看与独立复核逐命令实际墙钟补录；受管计算不重复，无等待或思考计费"
+    },
+    {
+      "at": "2026-10-07T18:57:51.987207+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_50c176d53469",
+      "seconds": 516.0150000001304,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-07T19:02:40.342525+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_00fcaff07598",
+      "seconds": 10.280999999959022,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-07T19:11:05.235265+00:00",
+      "kind": "EXTERNAL_COST",
+      "seconds": 63.8545348,
+      "reason": "本轮末外层实际报告/源码/状态读取及独立复核墙钟补录，含新协议只读契约检查和C修复作者查看；不重复受管计算/此前复核，无等待计费"
+    },
+    {
+      "at": "2026-10-07T19:13:01.841111+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_85c7829666d8",
+      "seconds": 22.57799999997951,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-07T19:17:17.020269+00:00",
+      "kind": "EXTERNAL_COST",
+      "seconds": 12.697707,
+      "reason": "收尾head报告修复作者及独立复核源码查看、QA结果读取实际墙钟，受管QA已另计且不重复，无等待成本"
+    },
+    {
+      "at": "2026-10-07T19:17:22.277356+00:00",
+      "kind": "LOOP_CLOSED",
+      "loop_id": "T4_0001",
+      "decision": "retain",
+      "released_seconds": 61586.209068000215
+    },
+    {
+      "at": "2026-10-07T19:17:24.961394+00:00",
+      "kind": "LOOP_OPENED",
+      "loop_id": "T4_0002",
+      "reserved_seconds": 55000.0
+    },
+    {
+      "at": "2026-10-07T19:18:56.126232+00:00",
+      "kind": "IMPLEMENTATION_ACCEPTED",
+      "previous": "logs/run_5e2a92c59d5b/source.zip",
+      "code_ref": "logs/run_85c7829666d8/source.zip",
+      "qa_runs": [
+        "run_d2d08ed0ecd8",
+        "run_8fe878356d3d",
+        "run_6040b0a618b2",
+        "run_00fcaff07598",
+        "run_85c7829666d8"
+      ],
+      "independent_review": "readonly_review_resume",
+      "model_promotion": false,
+      "recorded_after_loop_open": "T4_0002",
+      "reason": "repair of failed metadata helper import; loop opening history remains unchanged"
+    },
+    {
+      "at": "2026-10-07T19:18:58.795672+00:00",
+      "kind": "EXTERNAL_COST",
+      "seconds": 4.257686,
+      "reason": "T4_0002启动状态辅助写入实际墙钟，含错误模块导入失败1.9941329秒与更正写入；未做数据/模型计算、不重复旧loop结算"
+    },
+    {
+      "at": "2026-10-07T23:47:22.547609+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_568c7260cba1",
+      "seconds": 16101.04700000002,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-07T23:49:56.613582+00:00",
+      "kind": "EXTERNAL_COST",
+      "seconds": 171.390422,
+      "reason": "T4_0002 actual outer metadata and source reads plus independent static reviews; excludes managed N run cost and idle waits"
+    },
+    {
+      "at": "2026-10-07T23:51:28.854154+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_22a9c29a5cb1",
+      "seconds": 18.82799999997951,
+      "exit_code": 1,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-07T23:56:34.343311+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_6e4e003652b7",
+      "seconds": 36.936999999918044,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-07T23:57:15.335717+00:00",
+      "kind": "EXTERNAL_COST",
+      "seconds": 22.6606929,
+      "reason": "Measured source/report reads and synthetic ZIP fixture correction after N close; no managed runner duplication"
+    },
+    {
+      "at": "2026-10-07T23:57:39.537981+00:00",
+      "kind": "IMPLEMENTATION_ACCEPTED",
+      "code_ref": "logs/run_6e4e003652b7/source.zip",
+      "evidence": "reports/T4_0002_implementation_review.md",
+      "scope": "Explicit freeze provenance/evaluation protocol guards; 96 synthetic QA passed and independent read-only review; no prediction model promotion"
+    },
+    {
+      "at": "2026-10-08T00:07:34.982178+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_aad8c1d9f431",
+      "seconds": 592.6710000000894,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-08T00:09:33.459919+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_22b423bba84c",
+      "seconds": 85.51499999989755,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-08T00:10:07.099803+00:00",
+      "kind": "EXTERNAL_COST",
+      "seconds": 26.8843823,
+      "reason": "Measured C/probe metadata and independent actual freeze QA read-only review; no managed cost duplication"
+    },
+    {
+      "at": "2026-10-08T01:00:56.029015+00:00",
+      "kind": "USER_PAUSE_AFTER_CURRENT_EXPERIMENT",
+      "loop_id": "T4_0002",
+      "quote": "完成当前实验后暂停",
+      "scope": "Finish current fixed N/C/S training, freezing, registered endpoint evaluation, finite reviews and closure; then pause before any new loop."
+    },
+    {
+      "at": "2026-10-08T01:58:39.368854+00:00",
+      "kind": "EXTERNAL_COST_RECEIPT_GAP",
+      "status": "unreceipted_small_monitor_cost_contingency",
+      "calls": 25,
+      "terminated_monitor_cells": [
+        "403",
+        "405",
+        "407"
+      ],
+      "actual_seconds": null,
+      "contingency_seconds": 300.0,
+      "contingency_role": "Conservative held resource allowance; not represented as actual cost or a proven exact upper bound",
+      "scope": "Completed standard-library lightweight S JSON/status reads only, not S managed runner cost",
+      "reason": "Terminated functions.exec cells did not retain isolated store updates; public rollout records retain 25 notifications but no nested exec duration. Exact duration not reconstructed or fabricated."
+    },
+    {
+      "at": "2026-10-08T03:30:33.155305+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_c5a7c6f6fc5e",
+      "seconds": 12023.061999999918,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-08T03:31:35.638586+00:00",
+      "kind": "EXTERNAL_COST",
+      "seconds": 131.5520239,
+      "reason": "T4_0002 measured external cost batch 04 after S800; ledger housekeeping excluded"
+    },
+    {
+      "at": "2026-10-08T03:31:59.594272+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_faf766eb9fac",
+      "seconds": 9.734999999869615,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-08T03:32:35.562188+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_97152f1cc4cb",
+      "seconds": 3.125,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-08T03:34:14.959721+00:00",
+      "kind": "FROZEN_ENDPOINT_EVALUATION_STARTED",
+      "protocol": "T4_0002",
+      "frozen_manifest": "reports/T4_0002_frozen_endpoints.json",
+      "candidate_selection": false
+    },
+    {
+      "at": "2026-10-08T03:56:38.732168+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_ac77fe19cf9a",
+      "seconds": 1417.71800000011,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-08T04:23:00.216162+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_71513423b7f3",
+      "seconds": 1562.719000000041,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-08T04:23:23.223998+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_ebcb986f1e06",
+      "seconds": 3.125,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-08T04:24:59.328791+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_088cf14ad19b",
+      "seconds": 9.296999999787658,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-08T04:25:29.872452+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_bcc7d5eca0a4",
+      "seconds": 27.82799999997951,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-08T04:26:07.579930+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_fac12b0e238a",
+      "seconds": 35.014999999897555,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-08T04:26:12.414758+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_333af033f1ff",
+      "seconds": 2.1089999999385327,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-08T04:27:00.018136+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_5eafdb49d657",
+      "seconds": 45.21900000004098,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-08T04:27:06.933113+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_d19159e5c092",
+      "seconds": 4.156999999890104,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-08T04:27:17.982099+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_f53366d28f14",
+      "seconds": 8.296000000089407,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-08T04:27:25.979403+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_add1430dd78c",
+      "seconds": 5.202999999979511,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-08T04:34:51.284410+00:00",
+      "kind": "PROCESS_CLOSED",
+      "run_id": "run_e725d8123f5e",
+      "seconds": 442.3599999998696,
+      "exit_code": 0,
+      "reason": "exit"
+    },
+    {
+      "at": "2026-10-08T04:38:07.151669+00:00",
+      "kind": "EXTERNAL_COST",
+      "seconds": 52.561312,
+      "reason": "T4_0002 measured external cost batch 05 after all finite science; ledger housekeeping excluded"
+    },
+    {
+      "at": "2026-10-08T04:49:02.609383+00:00",
+      "kind": "EXTERNAL_COST",
+      "seconds": 34.2240827,
+      "reason": "T4_0002 measured external final batch 06; pure ledger close and pause housekeeping excluded"
+    },
+    {
+      "at": "2026-10-08T04:49:02.661334+00:00",
+      "kind": "LOOP_CLOSED",
+      "loop_id": "T4_0002",
+      "decision": "retain",
+      "released_seconds": 22122.503398200686
+    },
+    {
+      "at": "2026-10-08T04:49:02.673894+00:00",
+      "kind": "PAUSE",
+      "reason": "用户明确指令：完成当前实验后暂停；T4_0002固定训练、冻结、评价、数学/成本及独立复核已结题，停止后续科学扩展。"
+    },
+    {
+      "at": "2026-10-08T04:49:02.685083+00:00",
+      "kind": "USER_PAUSE_AFTER_CURRENT_EXPERIMENT_FULFILLED",
+      "instruction": "完成当前实验后暂停",
+      "closed_loop_id": "T4_0002",
+      "decision": "retain",
+      "new_model_default": false
+    }
+  ],
+  "note": "T4_0001 closed with full scoped evidence; S/A research-only, no accepted predictor. T4_0002 opened on same 100000s budget. Implementation record repaired after failed metadata helper import; no model/data computation was performed by that failed helper.",
+  "bootstrap_code_ref": "artifacts/code_snapshots/BOOTSTRAP.zip",
+  "updated_at": "2026-10-08T04:49:02.685083+00:00",
+  "candidate_roles": {
+    "artifacts/T4_0001/S_final/last.pt": {
+      "role": "complementary_research_candidate",
+      "deployable": false
+    },
+    "artifacts/T4_0001/A_long/last.pt": {
+      "role": "complementary_research_candidate",
+      "deployable": false
+    }
+  },
+  "accepted_scoped_results": [
+    {
+      "evidence": "artifacts/T4_0001/S_region/certificate.json",
+      "scope": "conditional continuous 49-dimensional ROM local ellipsoids, not FOM or initializer coverage",
+      "largest_scaled_box_radius": 0.003,
+      "event_centers_covered": 0,
+      "independent_readonly_review": "readonly_review_resume",
+      "scientific_model_promotion": false
+    }
+  ],
+  "stop_after_current_experiment": {
+    "loop_id": "T4_0002",
+    "user_instruction": "完成当前实验后暂停",
+    "recorded_at": "2026-10-08T01:00:56.029015+00:00",
+    "scope": "Finish current fixed N/C/S training, freezing, registered endpoint evaluation, finite reviews and closure; then pause before any new loop.",
+    "fulfilled": true,
+    "fulfilled_at": "2026-10-08T04:49:02.612383+00:00",
+    "closed_loop_id": "T4_0002"
+  },
+  "current_phase": {
+    "loop_id": "T4_0002",
+    "phase": "PAUSED_AFTER_CLOSED_CURRENT_EXPERIMENT",
+    "decision": "retain",
+    "report": "reports/T4_0002_closure.md",
+    "new_science_started_after_closure": false
+  },
+  "retained_candidate_scopes": {
+    "artifacts\\T4_0002\\S_final\\last.pt": {
+      "role": "complementary_research_candidate",
+      "deployable": false,
+      "prediction_model_accepted": false,
+      "evidence": "reports/T4_0002_closure.md",
+      "gains": "common frequency and twelve severe-relative prefixes; new explicit formula and scoped continuous-ROM inner region",
+      "harms": "long-horizon relative/delta/tail deterioration, two missed LOS, one false LOS, zero initialization centers certified",
+      "direction_revision": 1
+    }
+  }
+}

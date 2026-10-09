@@ -1,0 +1,275 @@
+........................................................................ [ 39%]
+.F.....................................................................s [ 78%]
+.s.....................................                                  [100%]
+================================== FAILURES ===================================
+___ test_late_failure_preserves_early_scores_full_forecast_and_denominators ___
+
+tmp_path = WindowsPath('C:/Users/LLLzijian/AppData/Local/Temp/pytest-of-LLLzijian/pytest-396/test_late_failure_preserves_ea0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001EF589730E0>
+
+    def test_late_failure_preserves_early_scores_full_forecast_and_denominators(tmp_path, monkeypatch):
+        allow_test_outputs(monkeypatch)
+        events = [event('late_failure', fail=True, label='unstable'),
+                  event('finite_neighbor'), event('short_severe', length=51, label='unstable')]
+        truth_before = [item.y.copy() for item in events]
+        model = ClockFailureODE()
+        physics = SimpleNamespace(mass=np.ones(2), delta_star=np.zeros(2), omega_s=2 * np.pi * 60)
+        facts = {'split': 'validation', 'raw_count': 4, 'eligible_count': 3,
+                 'excluded': [{'id': 'latency', 'label': 'unstable', 'reason': 'latency_uncovered'}],
+                 'test_payload_read': False}
+>       result = evaluation.evaluate(model, torch.nn.Identity(), events, tmp_path / 'evidence.json',
+                                     physics=physics, facts=facts)
+
+tests\test_evaluation_full.py:77: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+model = ClockFailureODE(), encoder = Identity()
+events = [Event(id='late_failure', group='late_failure', label='unstable', t=array([0.  , 0.01, 0.02, 0.03, 0.04, 0.05, 0.06, 0...        [0., 0., 0.]],
+
+       [[0., 0., 0.],
+        [0., 0., 0.]]]), torque=None, source='constructed', metadata={})]
+output = WindowsPath('C:/Users/LLLzijian/AppData/Local/Temp/pytest-of-LLLzijian/pytest-396/test_late_failure_preserves_ea0/evidence.json')
+horizons = (1.0, 2.0, 5.0, 8.0), fine_dt = 0.005, coarse_dt = 0.01
+tolerance = 0.001
+physics = namespace(mass=array([1., 1.]), delta_star=array([0., 0.]), omega_s=376.99111843077515)
+facts = {'split': 'validation', 'raw_count': 4, 'eligible_count': 3, 'excluded': [{'id': 'latency', 'label': 'unstable', 'reason': 'latency_uncovered'}], ...}
+batch_size = 8, decision_horizon_s = 8.0, endpoint = None
+
+    def evaluate(model, encoder, events, output, horizons=(1., 2., 5., 8.),
+                 fine_dt=.005, coarse_dt=.01, tolerance=.001, *,
+                 physics=None, facts=None, batch_size=8, decision_horizon_s=DECISION_HORIZON,
+                 endpoint=None):
+        """Evaluate frozen candidates; optional shorter horizons are engineering-only.
+    
+        ``physics`` supplies authoritative omega_s/delta_star. Without it the
+        trajectory metrics remain available but physical classification is
+        explicitly unavailable. ``facts`` carries the raw population and
+        metadata-only latency exclusions. No data source is opened here.
+        """
+        torch.set_num_threads(1)
+        if not isinstance(batch_size, int) or not 1 <= batch_size <= 8:
+            raise ValueError('batch_size must be in 1..8')
+        if not np.isfinite(tolerance) or tolerance <= 0:
+            raise ValueError('tolerance must be positive')
+        steps = round(float(decision_horizon_s) / SAMPLE_DT)
+        if steps < 1 or not np.isclose(steps * SAMPLE_DT, decision_horizon_s, atol=1e-10, rtol=0):
+            raise ValueError('decision horizon must be on the 10-ms grid')
+        horizons = tuple(float(h) for h in horizons)
+        if not horizons or any(h <= 0 or h > decision_horizon_s or not np.isclose(round(h / SAMPLE_DT) * SAMPLE_DT, h) for h in horizons):
+            raise ValueError('Scoring horizons must lie on the forecast grid within the decision horizon')
+        if len(set(horizons)) != len(horizons):
+            raise ValueError('Duplicate scoring horizons')
+        if endpoint is not None and endpoint not in ('P-N', 'P-S', 'A', 'U', 'M3'):
+            raise ValueError('Unknown registered endpoint')
+        events = list(events)
+        identities = [event.id for event in events]
+        if len(identities) != len(set(identities)):
+            raise ValueError('Duplicate evaluation event IDs')
+        source_facts = facts or {}
+        excluded = [dict(row, group=row.get('group', 'unknown')) for row in source_facts.get('excluded', [])]
+        if any(row.get('reason') != 'latency_uncovered' for row in excluded):
+            raise ValueError('Unrecognized excluded event reason; reconcile population before scoring')
+        raw_count = int(source_facts.get('raw_count', len(events) + len(excluded)))
+        if raw_count != len(events) + len(excluded) or int(source_facts.get('eligible_count', len(events))) != len(events):
+            raise ValueError('Facts and event populations disagree; cannot alter denominators')
+        if source_facts.get('test_payload_read', False):
+            raise PermissionError('TEST payload evidence is not authorized')
+        output = project_path(output)
+        cache_dir = project_path(output.with_suffix('.cache'))
+        cache_dir.mkdir(parents=True, exist_ok=False)
+        mass = model.mass.detach().cpu().numpy()
+        p_scale = float(model.scales[2])
+        if not np.isfinite(p_scale) or p_scale <= 0:
+            raise ValueError('Power scale must be finite and positive')
+        if physics is not None and not np.allclose(np.asarray(physics.mass), mass):
+            raise ValueError('Evaluation physics mass differs from model')
+        model.eval()
+        if encoder is not None:
+            encoder.eval()
+        rows, classification_rows, numerical_rows, caches, failures = [], [], [], [], []
+        device = model.mass.device
+        start = time.monotonic()
+        initial_calls = 0
+        for offset in range(0, len(events), batch_size):
+            batch_events = events[offset:offset + batch_size]
+            for event in batch_events:
+                if event.label not in ('stable', 'unstable') or len(event.y) < 11:
+                    raise ValueError(f'Invalid event label/history: {event.id}')
+                if not np.isfinite(event.y[:11]).all():
+                    raise ValueError(f'Nonfinite causal history: {event.id}')
+            history = np.stack([event.y[:11] for event in batch_events])
+            hist = torch.as_tensor(history, dtype=torch.float64, device=device)
+            with torch.no_grad():
+                z0 = model.initial(hist, encoder).detach()
+            initial_calls += 1
+            fine = forecast_batch(model, z0, steps=steps, max_step=fine_dt)
+            coarse = forecast_batch(model, z0, steps=steps, max_step=coarse_dt)
+            arrays = {
+                'event_ids': np.asarray([event.id for event in batch_events], dtype=str),
+                'history': history, 'initial_state': z0.cpu().numpy(), 'mass': mass,
+                'p_scale': np.asarray(p_scale), 'sample_interval_s': np.asarray(SAMPLE_DT),
+                'decision_horizon_s': np.asarray(decision_horizon_s),
+                'fine_states': fine['states'], 'coarse_states': coarse['states'],
+                'fine_physical': fine['physical'], 'coarse_physical': coarse['physical'],
+                'fine_state_finite': fine['state_finite'], 'coarse_state_finite': coarse['state_finite'],
+                'fine_substep_states': fine['substep_states'], 'coarse_substep_states': coarse['substep_states'],
+                'fine_substep_physical': fine['substep_physical'], 'coarse_substep_physical': coarse['substep_physical'],
+                'fine_substep_state_finite': fine['substep_state_finite'],
+                'coarse_substep_state_finite': coarse['substep_state_finite'],
+                'fine_substeps_per_output': np.asarray(fine['substeps_per_output']),
+                'coarse_substeps_per_output': np.asarray(coarse['substeps_per_output']),
+            }
+            if physics is not None:
+                arrays.update(delta_star=np.asarray(physics.delta_star), omega_s=np.asarray(physics.omega_s))
+            batch_metadata = []
+            for local, event in enumerate(batch_events):
+                # Save true ragged arrays directly. No extension/padding/freezing.
+                arrays[f'truth_{local:03d}'] = np.asarray(event.y)
+                arrays[f'truth_time_{local:03d}'] = np.asarray(event.t)
+                batch_metadata.append({'id': event.id, 'label': event.label, 'group': event.group,
+                                       'source': event.source, 'metadata': event.metadata,
+                                       'fine_failure': fine['failures'][local], 'coarse_failure': coarse['failures'][local]})
+                failures.append({'id': event.id, 'fine': fine['failures'][local], 'coarse': coarse['failures'][local]})
+                available = len(event.y) - 11
+                requests = [(str(h), round(h / SAMPLE_DT), 'complete') for h in horizons]
+                requests.append(('prefix', min(steps, available), 'available_prefix'))
+                for name, count, scope in requests:
+                    scorable = count >= 1 and available >= count
+                    row = {'id': event.id, 'group': event.group, 'label': event.label,
+                           'horizon': name, 'scope': scope, 'steps': count,
+                           'true_available_steps': available, 'scorable': scorable,
+                           'qualified': False, 'metrics': None, 'numerical_difference': None}
+                    if not scorable:
+                        row['failure'] = 'truth_interval_unavailable'
+                        rows.append(row)
+                        continue
+                    f, c = fine['physical'][local, :count + 1], coarse['physical'][local, :count + 1]
+                    fine_finite = bool(fine['substep_state_finite'][local, :count * fine['substeps_per_output'] + 1].all())
+                    coarse_finite = bool(coarse['substep_state_finite'][local, :count * coarse['substeps_per_output'] + 1].all())
+                    row.update(finite_fine=fine_finite, finite_coarse=coarse_finite)
+                    difference = numerical_difference(f, c, mass, p_scale)
+                    row['numerical_difference'] = difference
+                    row['qualified'] = bool(fine_finite and coarse_finite and difference is not None
+                                            and max(difference.values()) <= tolerance)
+                    if np.isfinite(f).all():
+                        with np.errstate(over='ignore', invalid='ignore'):
+                            metrics = metric(f, event.y[10:11 + count], mass, p_scale)
+                        if all(np.isfinite(value) for value in metrics.values()):
+                            row['metrics'] = metrics
+                        else:
+                            row['qualified'] = False
+                            row['failure'] = 'nonfinite_metric_statistic'
+                    if not row['qualified']:
+                        reason = 'nonfinite_prediction' if not (fine_finite and coarse_finite) else 'step_discrepancy'
+                        row.setdefault('failure', reason)
+                    rows.append(row)
+                if physics is not None:
+                    pair, passed = numerical_pair(
+                        fine['physical'][local], coarse['physical'][local], history[local],
+                        mass, physics.delta_star, physics.omega_s,
+                        first_latent_finite=fine['state_finite'][local],
+                        second_latent_finite=coarse['state_finite'][local],
+                        first_substeps=fine['substep_physical'][local],
+                        first_substeps_latent_finite=fine['substep_state_finite'][local],
+                        substep_ratio=fine['substeps_per_output'], decision_horizon_s=decision_horizon_s,
+                    )
+                    endpoint_index = max(0, pair['comparison_endpoint_index'] - 10)
+                    # The original coarse grid is 10 ms. If a caller requests
+                    # smaller coarse substeps, include their finite-state audit.
+                    coarse_to_endpoint = bool(coarse['substep_state_finite'][local, :endpoint_index * coarse['substeps_per_output'] + 1].all())
+                    passed = bool(passed and coarse_to_endpoint)
+                    pair.update(id=event.id, screen_pass=passed,
+                                coarse_substeps_finite_to_endpoint=coarse_to_endpoint,
+                                supplemental_max_component_difference=numerical_difference(
+                                    fine['physical'][local, :endpoint_index + 1],
+                                    coarse['physical'][local, :endpoint_index + 1], mass, p_scale),
+                                supplemental_differences_change_original_los_gate=False)
+                    nonfinite_statistics = [key for key, value in pair.items()
+                                            if isinstance(value, float) and not np.isfinite(value)]
+                    if nonfinite_statistics:
+                        for key in nonfinite_statistics:
+                            pair[key] = None
+                        pair['nonfinite_screen_statistics'] = nonfinite_statistics
+                        passed = False
+                        pair['screen_pass'] = False
+                    numerical_rows.append(pair)
+                    true_event_time = _optional_float((event.metadata or {}).get('event_time_s'))
+                    category = classify_forecast(
+                        history[local], fine['physical'][local], mass, physics.delta_star, physics.omega_s,
+                        latent_finite=fine['state_finite'][local], true_event_time_s=true_event_time,
+                        numerical_passed=passed, decision_horizon_s=decision_horizon_s,
+                    )
+                    classification_rows.append({'id': event.id, 'group': event.group, 'label': event.label,
+                                                **category, **_timing(event, category['trigger_index'])})
+            batch_number = offset // batch_size
+            cache = cache_dir / f'batch_{batch_number:04d}.npz'
+            np.savez_compressed(cache, **arrays)
+            write_json(cache_dir / f'batch_{batch_number:04d}.json', batch_metadata)
+            caches.append({'path': str(cache), 'metadata_path': str(cache.with_suffix('.json')),
+                           'event_ids': [event.id for event in batch_events]})
+        summary = {str(h): _summary([row for row in rows if row['horizon'] == str(h)], len(events)) for h in horizons}
+        summary['prefix'] = _summary([row for row in rows if row['horizon'] == 'prefix'], len(events))
+        severe_rows = [row for row in rows if row['horizon'] == 'prefix' and row['label'] == 'unstable']
+        summary['severe_prefix'] = _summary(severe_rows, sum(event.label == 'unstable' for event in events))
+        raw_unstable = sum(event.label == 'unstable' for event in events) + sum(row['label'] == 'unstable' for row in excluded)
+        for name, item in summary.items():
+            item['raw_denominator'] = raw_unstable if name == 'severe_prefix' else raw_count
+            item['latency_uncovered_count'] = sum(row['label'] == 'unstable' for row in excluded) if name == 'severe_prefix' else len(excluded)
+        if physics is not None:
+            classification = summarize_classifications(classification_rows, excluded)
+            classification['status'] = 'frozen_los_and_window_screen'
+            classification['evidence_role'] = 'development' if source_facts.get('split') == 'validation' else 'engineering_or_train'
+        else:
+            classification = {'status': 'unavailable_missing_authoritative_physics',
+                              'event_count_raw': raw_count, 'eligible_event_count': len(events),
+                              'latency_uncovered_count': len(excluded), 'latency_uncovered_rows': excluded}
+        result = {
+            'summary': summary, 'rows': rows, 'severe_prefix_rows': severe_rows,
+            'classification': classification, 'classification_numerical': numerical_rows,
+            'classification_status': classification['status'], 'integration_failures': failures,
+            'history_ms': 100, 'encoder_calls_per_event': 0 if isinstance(model, FrozenM3) else 1,
+            'encoder_calls_per_forecast': 0 if isinstance(model, FrozenM3) else 1,
+            'initializations_per_event': 1,
+            'initialization_batch_calls': initial_calls, 'batch_size': batch_size,
+            'forecast_steps': steps, 'decision_horizon_s': float(decision_horizon_s),
+            'test_payload_read': False, 'raw_event_count': raw_count, 'eligible_event_count': len(events),
+            'latency_uncovered_count': len(excluded), 'source_facts': source_facts,
+            'scope': 'genuine-truth accuracy intervals; full fixed decision-window classification',
+            'fine_dt': fine_dt, 'coarse_dt': coarse_dt, 'tolerance': tolerance,
+            'classification_rms_tolerance': .001, 'classification_hit_time_tolerance_s': .02,
+            'endpoint': endpoint, 'evidence_role': 'development' if source_facts.get('split') == 'validation' else 'engineering_or_train',
+            'model_identity': getattr(model, 'evaluation_identity', None),
+            'comparison_context': {
+                'saved_training_scales': np.asarray(model.scales.detach().cpu()).tolist(),
+                'metric_scales_delta_omega': [DELTA_SCALE, OMEGA_SCALE],
+                'mass': mass.tolist(),
+>               'source_physics': None if physics is None else physics.as_dict(),
+                                                               ^^^^^^^^^^^^^^^
+                'truth_time_origin': 'postfault t=0; initializer ends at t=0.1 s',
+                'error_time_origin': 'forecast elapsed after t=0.1 s',
+                'history_samples': 11,
+            },
+            'cache': {'directory': str(cache_dir), 'batches': caches,
+                      'missing_predictions': 'NaN after first invalid RK stage; never truth padding',
+                      'truth_layout': 'unmodified ragged truth_000, truth_time_000 etc. within each batch'},
+            'evaluation_wall_seconds': time.monotonic() - start,
+            'timing': {'status': 'not_a_same_accuracy_speed_benchmark'},
+        }
+E       AttributeError: 'types.SimpleNamespace' object has no attribute 'as_dict'
+
+src\task4\evaluation.py:512: AttributeError
+============================== warnings summary ===============================
+tests/test_accelerate.py: 3 warnings
+tests/test_origin_cache.py: 17 warnings
+  E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\torch\jit\_trace.py:1006: DeprecationWarning: `torch.jit.trace` is deprecated. Please switch to `torch.compile` or `torch.export`.
+    warnings.warn(
+
+tests/test_accelerate.py: 3 warnings
+tests/test_origin_cache.py: 17 warnings
+  E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\torch\jit\_trace.py:1145: DeprecationWarning: `torch.jit.trace_method` is deprecated. Please switch to `torch.compile` or `torch.export`.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_evaluation_full.py::test_late_failure_preserves_early_scores_full_forecast_and_denominators
+1 failed, 180 passed, 2 skipped, 40 warnings in 74.27s (0:01:14)

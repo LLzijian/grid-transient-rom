@@ -1,0 +1,40 @@
+..............................F.......................                   [100%]
+================================== FAILURES ===================================
+_________ test_shared_gru_11_point_initialization_matches_torch[7-32] _________
+
+n = 7, hidden = 32
+
+    @pytest.mark.parametrize('n,hidden', [(2, 32), (3, 5), (7, 32)])
+    def test_shared_gru_11_point_initialization_matches_torch(n, hidden):
+        model, encoder, physics = polynomial_model(n=n, hidden=hidden)
+        runtime = SymbolicPowerGraph(export_symbolic(model, encoder, omega_s=physics.omega_s))
+        history = np.random.default_rng(805+n).normal(0, 0.3, (3, 11, n, 3))
+        ht = torch.as_tensor(history)
+        np.testing.assert_allclose(runtime.encode_history(history), encoder(ht).detach().numpy(),
+                                   rtol=2e-11, atol=2e-13)
+        np.testing.assert_allclose(runtime.initial(history), model.initial(ht, encoder).detach().numpy(),
+                                   rtol=2e-11, atol=2e-13)
+        changed = history.copy()
+        changed[..., 0] += 3.2
+        changed[..., 2] += 400
+        np.testing.assert_allclose(runtime.encode_history(changed), runtime.encode_history(history),
+                                   rtol=2e-11, atol=2e-13)
+>       np.testing.assert_allclose(runtime.encode_history(np.zeros_like(history)), 0, atol=0)
+E       AssertionError: 
+E       Not equal to tolerance rtol=1e-07, atol=0
+E       
+E       Mismatched elements: 2 / 42 (4.76%)
+E       Mismatch at indices:
+E        [0, 6, 0]: -2.7755575615628914e-17 (ACTUAL), 0 (DESIRED)
+E        [1, 6, 0]: -2.7755575615628914e-17 (ACTUAL), 0 (DESIRED)
+E       Max absolute difference among violations: 2.77555756e-17
+E       Max relative difference among violations: inf
+E        ACTUAL: array([[[ 0.000000e+00,  0.000000e+00],
+E               [ 0.000000e+00,  0.000000e+00],
+E               [ 0.000000e+00,  0.000000e+00],...
+E        DESIRED: array(0)
+
+tests\test_symbolic_runtime.py:95: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_symbolic_runtime.py::test_shared_gru_11_point_initialization_matches_torch[7-32]
+1 failed, 53 passed in 14.90s

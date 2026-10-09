@@ -1,0 +1,73 @@
+{
+  "checkpoint_step": 10,
+  "source": "P_short complete-update checkpoint",
+  "cases": [
+    {
+      "trace": false,
+      "checkpoint_steps": 10,
+      "trace_seconds": 0.0,
+      "rows": [
+        {
+          "horizon": 0.02,
+          "seconds": 0.7820000000065193,
+          "loss": 0.8548914090038843,
+          "model_gradient_l2": 0.4148573105725462,
+          "rss_bytes": 480563200,
+          "peak_rss_bytes": 487157760
+        },
+        {
+          "horizon": 0.25,
+          "seconds": 4.297000000020489,
+          "loss": 1.2543277921553604,
+          "model_gradient_l2": 0.6070848716872425,
+          "rss_bytes": 559374336,
+          "peak_rss_bytes": 608489472
+        },
+        {
+          "horizon": 1.0,
+          "seconds": 23.35999999998603,
+          "loss": 2.791037531439027,
+          "model_gradient_l2": 1.833986882940203,
+          "rss_bytes": 890109952,
+          "peak_rss_bytes": 943607808
+        }
+      ]
+    },
+    {
+      "trace": true,
+      "checkpoint_steps": 0,
+      "trace_seconds": 0.09399999992456287,
+      "rows": [
+        {
+          "horizon": 0.02,
+          "seconds": 2.26500000001397,
+          "loss": 0.8548914090038843,
+          "model_gradient_l2": 0.4148573105725462,
+          "rss_bytes": 583118848,
+          "peak_rss_bytes": 597164032
+        },
+        {
+          "horizon": 0.25,
+          "seconds": 1.452999999979511,
+          "loss": 1.2543277921553604,
+          "model_gradient_l2": 0.6070848716872425,
+          "rss_bytes": 621752320,
+          "peak_rss_bytes": 740667392
+        },
+        {
+          "horizon": 1.0,
+          "seconds": 7.625,
+          "loss": 2.791037531439027,
+          "model_gradient_l2": 1.8339868829402028,
+          "rss_bytes": 746815488,
+          "peak_rss_bytes": 1156423680
+        }
+      ]
+    }
+  ],
+  "rejected_combination": {
+    "trace": true,
+    "checkpoint_steps": 10,
+    "reason": "TorchScript/checkpoint incompatibility; failed logs retained, no scientific candidate"
+  }
+}

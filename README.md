@@ -52,3 +52,11 @@ From a fresh clone on Windows, after signing in with GitHub CLI:
 This creates private_data/ and external_data/ in the clone. The script refuses to
 overwrite either existing directory. For browser downloads or historical canonical
 dataset path setup, see [DATASET_AND_RESULTS.md](DATASET_AND_RESULTS.md).
+
+
+## TASK4 latest results
+
+The independent TASK4 project's closed T4_0002 results, explicit models, scientific
+limitations and reproducibility records are available in
+[TASK4 results (2026-10-09 publication)](TASK4/RESULTS_2026-10-09.md).
+TASK4 research remains paused; retained candidates are not deployment models.

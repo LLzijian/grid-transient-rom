@@ -1,0 +1,39 @@
+{
+  "protocol": "T4_0002",
+  "stages": {
+    "N": [
+      {
+        "run_id": "run_568c7260cba1",
+        "run_result": "reports/T4_0002_launch_receipts/N_autonomous_result.json",
+        "output": "artifacts/T4_0002/N_autonomous",
+        "source_checkpoint": "E:/03-nn_Transfer_Func/TASK4/artifacts/T4_0001/P_long_cached/last.pt",
+        "config": "configs/T4_0002_N_autonomous.json",
+        "mode": "warm_start",
+        "start_step": 0,
+        "launch_receipt": "reports/T4_0002_launch_receipts/N_autonomous.json"
+      }
+    ],
+    "C": [
+      {
+        "run_id": "run_aad8c1d9f431",
+        "run_result": "reports/T4_0002_launch_receipts/C_compression_result.json",
+        "output": "artifacts/T4_0002/C_compression",
+        "source_checkpoint": "E:/03-nn_Transfer_Func/TASK4/artifacts/T4_0002/N_autonomous/last.pt",
+        "launch_receipt": "reports/T4_0002_launch_receipts/C_compression.json"
+      }
+    ],
+    "S": [
+      {
+        "run_id": "run_c5a7c6f6fc5e",
+        "run_result": "reports/T4_0002_launch_receipts/S_final_result.json",
+        "output": "artifacts/T4_0002/S_final",
+        "source_checkpoint": "E:/03-nn_Transfer_Func/TASK4/artifacts/T4_0002/C_compression/last.pt",
+        "config": "configs/T4_0002_S_final.json",
+        "mode": "warm_start",
+        "start_step": 0,
+        "launch_receipt": "reports/T4_0002_launch_receipts/S_final.json",
+        "symbolic_json": "artifacts/T4_0002/S_export/model.json"
+      }
+    ]
+  }
+}

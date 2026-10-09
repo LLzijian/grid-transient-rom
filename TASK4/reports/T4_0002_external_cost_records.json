@@ -1,0 +1,135 @@
+{
+  "loop_id": "T4_0002",
+  "status": "CLOSED_confirmed_external_costs_booked_unreceipted_gap_disclosed",
+  "as_of_utc": "2026-10-08T04:49:02.612383+00:00",
+  "managed_run_costs_authority": "state/research.json; managed runner costs must not be counted here a second time",
+  "already_booked_external_seconds": 443.5306018,
+  "already_booked_external_scope": "Opening helper failure/correction plus the following one-time external reads booking; managed N16101.047 seconds was billed separately by the runner",
+  "pending_components": [],
+  "pending_total_seconds": 0.0,
+  "accounting_rule": "Do not account while active_jobs is nonempty. After closure add later actual reads, account pending once, then mark components booked. Waiting and managed runner polling are not added. Preserve all failures and old loop closed total. Keep the 300-second contingency separate from confirmed actual spend; do not clear this gap by treating missing receipts as zero or guessing an exact value.",
+  "bookings": [
+    {
+      "booked_at": "2026-10-07 23:49:56 UTC",
+      "seconds": 171.390422,
+      "components": [
+        {
+          "scope": "root metadata/source/report/receipt/focused cached-log reads",
+          "seconds": 121.18343390000001
+        },
+        {
+          "agent": "cache_verification",
+          "scope": "7 measured new explicit T4_0002 source-freeze script/test source views only; no scientific run/CP/payload",
+          "seconds": 13.7288529
+        },
+        {
+          "agent": "readonly_review_resume",
+          "seconds": 20.9208602,
+          "scope": "T4_0002 freeze static11 reads no model payload or QA"
+        },
+        {
+          "agent": "cache_verification",
+          "seconds": 4.1603158,
+          "scope": "T4_0002 freeze launch/C/derived buffer static amendment no QA/payload"
+        },
+        {
+          "agent": "cache_verification",
+          "seconds": 1.9062042,
+          "scope": "Historical long400 summary/lineage metadata scope correction no CP/HDF/QA"
+        },
+        {
+          "agent": "readonly_review_resume",
+          "seconds": 9.490755,
+          "scope": "T4_0002 finite second static review5 reads launch receipt/C/fixed buffers no QA/payload"
+        }
+      ]
+    },
+    {
+      "booked_at": "2026-10-07T23:57:15.339222+00:00",
+      "seconds": 22.6606929,
+      "components": [
+        {
+          "scope": "root measured metadata/source/report reads after N booking",
+          "seconds": 20.362673500000003
+        },
+        {
+          "agent": "cache_verification",
+          "scope": "T4_0002 synthetic ZIP timestamp fixture fix static source read",
+          "seconds": 2.2980194
+        }
+      ]
+    },
+    {
+      "booked_at": "2026-10-08T00:10:07.119993+00:00",
+      "seconds": 26.8843823,
+      "components": [
+        {
+          "scope": "root measured C/probe source/report/status/receipt metadata work",
+          "seconds": 21.689085800000004
+        },
+        {
+          "agent": "readonly_review_resume",
+          "scope": "Actual freeze QA log/source hash and ZIP date fixture finite independent read-only review; no Python/model/payload",
+          "seconds": 5.1952965
+        }
+      ]
+    },
+    {
+      "batch_id": "T4_0002_batch_04",
+      "booked_at": "2026-10-08T03:31:35.641590+00:00",
+      "seconds": 131.5520239,
+      "receipt_file": "reports/T4_0002_external_cost_batch_04.json",
+      "scope": "Measured root helpers and finite peer reads after prior booking; durable S monitor receipts booked once; S runner is already independently managed and not included"
+    },
+    {
+      "batch_id": "T4_0002_batch_05",
+      "booked_at": "2026-10-08T04:38:07.154669+00:00",
+      "seconds": 52.561312,
+      "receipt_file": "reports/T4_0002_external_cost_batch_05.json",
+      "scope": "Finite root metadata/log diagnostics and independent freeze plus old/new N/S report reads after batch04; all managed evaluation/math/runtime runners excluded to avoid double billing"
+    },
+    {
+      "batch_id": "T4_0002_batch_06_final",
+      "booked_at": "2026-10-08T04:49:02.612383+00:00",
+      "seconds": 34.2240827,
+      "receipt_file": "reports/T4_0002_external_cost_batch_06_final.json",
+      "scope": "Final root report link/pointer and finite source/bookkeeping metadata reads plus independent final closure read-only review; science runners already billed; pure ledger close/pause bookkeeping excluded"
+    }
+  ],
+  "pending_scope": "Measured closed N log statistics, independent stage governance review and root metadata reads; account once only after the sole S managed runner closes. This writer cost is added separately after return.",
+  "unreceipted_monitoring_cost": {
+    "status": "unreceipted_small_monitor_cost_contingency",
+    "calls": 25,
+    "terminated_monitor_cells": [
+      "403",
+      "405",
+      "407"
+    ],
+    "actual_seconds": null,
+    "contingency_seconds": 300.0,
+    "contingency_role": "Conservative held resource allowance; not represented as actual cost or a proven exact upper bound",
+    "scope": "Completed standard-library lightweight S JSON/status reads only, not S managed runner cost",
+    "reason": "Terminated functions.exec cells did not retain isolated store updates; public rollout records retain 25 notifications but no nested exec duration. Exact duration not reconstructed or fabricated."
+  },
+  "historical_pending_components_consumed_in_batch04": [
+    {
+      "scope": "root measured metadata/source/report/launch/status work after last booking",
+      "seconds": 13.3565203
+    },
+    {
+      "agent": "readonly_review_resume",
+      "scope": "Finite completed N/C/probe and live formal S governance/metadata read-only review",
+      "seconds": 12.2639136
+    },
+    {
+      "agent": "symbolic_runtime",
+      "scope": "One standard-library closed N800 JSON optimizer-log statistics process; no model/data payload",
+      "seconds": 2.197589
+    },
+    {
+      "agent": "readonly_review_resume",
+      "scope": "Finite four source reads of approved prediction/formula/structure/L2/L3/runtime acceptance definitions; no model/data/QA",
+      "seconds": 8.0010423
+    }
+  ]
+}

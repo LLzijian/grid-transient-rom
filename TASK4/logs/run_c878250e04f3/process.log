@@ -1,0 +1,60 @@
+Traceback (most recent call last):
+  File "E:\03-nn_Transfer_Func\TASK4\scripts\executor_probe.py", line 29, in <module>
+    loss.backward()
+  File "E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\torch\_tensor.py", line 623, in backward
+    torch.autograd.backward(
+  File "E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\torch\autograd\__init__.py", line 395, in backward
+    _engine_run_backward(
+  File "E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\torch\autograd\graph.py", line 979, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\torch\utils\checkpoint.py", line 1183, in unpack_hook
+    _run_fn_with_dynamo_disabled(frame.recompute_fn, *args)
+  File "E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\torch\_compile.py", line 54, in inner
+    return disable_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\torch\_dynamo\eval_frame.py", line 1446, in _fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\torch\utils\checkpoint.py", line 1150, in _run_fn_with_dynamo_disabled
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\torch\utils\checkpoint.py", line 1688, in recompute_fn
+    fn(*args, **kwargs)
+  File "E:\03-nn_Transfer_Func\TASK4\src\task4\integrators.py", line 33, in <lambda>
+    part=checkpoint(lambda zz,count=count:chunk(zz,count),z,use_reentrant=False)
+                                          ^^^^^^^^^^^^^^^
+  File "E:\03-nn_Transfer_Func\TASK4\src\task4\integrators.py", line 22, in chunk
+    for __ in range(sub):zz=rk4(model,zz,dt,training)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\03-nn_Transfer_Func\TASK4\src\task4\integrators.py", line 8, in rk4
+    a=fn(z);b=fn(z+dt*a/2);c=fn(z+dt*b/2);d=fn(z+dt*c)
+                                            ^^^^^^^^^^
+  File "E:\03-nn_Transfer_Func\TASK4\src\task4\integrators.py", line 7, in <lambda>
+    fn=lambda x:model.field(x,create_graph=training)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\03-nn_Transfer_Func\TASK4\src\task4\dynamics.py", line 162, in field
+    with torch.set_grad_enabled(create_graph):return self._compiled_field(x)
+                                                     ^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1778, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1789, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: The following operation failed in the TorchScript interpreter.
+Traceback of TorchScript (most recent call last):
+E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\torch\functional.py(372): einsum
+E:\03-nn_Transfer_Func\TASK4\src\task4\dynamics.py(146): _force
+E:\03-nn_Transfer_Func\TASK4\src\task4\dynamics.py(166): field
+E:\03-nn_Transfer_Func\TASK4\src\task4\accelerate.py(12): forward
+E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\torch\nn\modules\module.py(1768): _slow_forward
+E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\torch\nn\modules\module.py(1789): _call_impl
+E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\torch\nn\modules\module.py(1778): _wrapped_call_impl
+E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\torch\jit\_trace.py(1216): trace_module
+E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\torch\jit\_trace.py(707): _trace_impl
+E:\03-nn_Transfer_Func\kron-reduce\.venv\Lib\site-packages\torch\jit\_trace.py(1022): trace
+E:\03-nn_Transfer_Func\TASK4\src\task4\accelerate.py(20): trace_field
+E:\03-nn_Transfer_Func\TASK4\scripts\executor_probe.py(22): <module>
+RuntimeError: 
+

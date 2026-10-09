@@ -1,0 +1,163 @@
+{
+  "scope": "Executed outer metadata/source/report reads only; exclude managed runners, waits and thinking. Conservative bounds explicitly marked where inner time was not retained.",
+  "booked": [
+    {
+      "root": 89.89159399999998,
+      "agents": [
+        {
+          "agent": "symbolic_runtime",
+          "seconds": 13.5949739,
+          "scope": "7 exec_command calls for current TRAIN/source static diagnosis; excluded earlier implementation work and waits"
+        },
+        {
+          "agent": "interval_region",
+          "seconds": 13.3191167,
+          "scope": "Current initializer checker reads: first 2 measured command walls total 5.2691167; last 3 single-command outer exec durations 2.4/2.7/2.8 with 0.05s rounding allowance each. Conservative executed-cost bound, not exact missing inner timing."
+        },
+        {
+          "agent": "cache_verification",
+          "seconds": 23,
+          "scope": "8 source/test read commands across 5 outer exec groups (2,2,1,2,1 parallel cardinalities), observed outer durations 2.7/2.8/2.9/2.8/3.1 at 0.1s precision; bound each child by group duration plus 0.05s, sum =23s. Inner fields unavailable; executed-cost conservative bound, not precise cumulative process time."
+        },
+        {
+          "agent": "symbolic_runtime",
+          "seconds": 5.4523421,
+          "scope": "Current optional quadratic executor implementation: 3 read command walls, excludes earlier TRAIN diagnosis and all waits/writes"
+        }
+      ],
+      "booked_seconds": 145.2580267
+    },
+    {
+      "seconds": 85.26920859999998,
+      "root": 18.3444651,
+      "review": 66.92474349999999,
+      "components": [
+        {
+          "agent": "readonly_review_resume",
+          "seconds": 59.1220011,
+          "scope": "32 recovered read command walls totaling 56.1220011; one early M3 source view inner field truncated, booked 3s conservative executed-read bound against observed outer 2.7s. Scope M3/region/trace/origins/initializer/quadratic static and approved JSON review, no scientific run."
+        },
+        {
+          "agent": "symbolic_runtime",
+          "seconds": 5.7330972,
+          "scope": "3 measured read command walls for current real-TRAIN quadratic cost probe implementation, no scientific execution"
+        },
+        {
+          "agent": "interval_region",
+          "scope": "one cross-batch cache mutation regression source read",
+          "seconds": 2.0696452
+        }
+      ]
+    },
+    {
+      "seconds": 48.8898302,
+      "root": 14.9428907,
+      "review": 33.9469395,
+      "components": [
+        {
+          "agent": "readonly_review_resume",
+          "scope": "8 measured source views of fixed TRAIN quadratic training probe; no payload/compute",
+          "seconds": 14.2495245
+        },
+        {
+          "agent": "symbolic_runtime",
+          "scope": "4 measured source and TRAIN log/monitor JSON reads on active optimization path; no scientific computation",
+          "seconds": 6.8608249
+        },
+        {
+          "agent": "classification",
+          "scope": "actual frozen N/S JSON and classification source views; 5 exact command walls plus one source-view inner time truncated, conservative executed upper bound 2.65s from outer2.6s; paired JSON1.8986622 not repeated",
+          "exact_seconds": 10.1865901,
+          "conservative_seconds": 2.65,
+          "seconds": 12.8365901
+        }
+      ]
+    },
+    {
+      "seconds": 74.5026247,
+      "root": 25.998037300000004,
+      "review": 48.5045874,
+      "components": [
+        {
+          "agent": "readonly_review_resume",
+          "scope": "3 measured actual quadratic training probe JSON/source reads; no CP/payload/NPZ arrays or scientific calculation",
+          "seconds": 6.5014345
+        },
+        {
+          "agent": "cache_verification",
+          "scope": "two measured source/test views for training-only quadratic runtime option implementation; no CP/payload/QA",
+          "seconds": 4.7410399
+        },
+        {
+          "agent": "readonly_review_resume",
+          "scope": "two measured source/test views of default-off training quadratic option; no scientific compute",
+          "seconds": 3.8351626
+        },
+        {
+          "agent": "readonly_review_resume",
+          "scope": "two measured source/test views of relative warm/resume path fix only; no scientific run",
+          "seconds": 3.7257045
+        },
+        {
+          "agent": "readonly_review_resume",
+          "scope": "16 measured full five frozen endpoint JSON/comparison/source views; no CP/cache array/payload or metric recomputation",
+          "seconds": 29.7012459
+        }
+      ]
+    },
+    {
+      "seconds": 63.854534799999996,
+      "root": 15.063675700000001,
+      "review": 48.7908591,
+      "components": [
+        {
+          "agent": "readonly_review_resume",
+          "scope": "9 measured actual cache verification, structure and initializer membership JSON/source views, including one failed PS view; no payload or scientific recomputation",
+          "seconds": 20.723856
+        },
+        {
+          "agent": "symbolic_runtime",
+          "scope": "4 measured planned T4_0002 protocol and source contract views; no CP/payload or execution",
+          "seconds": 7.5096054
+        },
+        {
+          "agent": "symbolic_runtime",
+          "scope": "two measured source/test views to fix C phase contract inherited from strict autonomous N; no execution",
+          "seconds": 3.7866164
+        },
+        {
+          "agent": "readonly_review_resume",
+          "scope": "7 measured completed benchmark JSON/source read-only views, no arrays/CP/payload/compute",
+          "seconds": 11.5951524
+        },
+        {
+          "agent": "readonly_review_resume",
+          "scope": "three measured C phase contract source/test read-only views, benchmark cost not repeated",
+          "seconds": 5.1756289
+        }
+      ]
+    },
+    {
+      "seconds": 12.697707,
+      "root": 1.871604,
+      "review": 10.826103,
+      "components": [
+        {
+          "agent": "cache_verification",
+          "scope": "three measured source views to fix head usage report metadata; no scientific run",
+          "seconds": 5.6518067
+        },
+        {
+          "agent": "readonly_review_resume",
+          "scope": "three measured local head reporting source/test views; no execution",
+          "seconds": 5.1742963
+        }
+      ]
+    }
+  ],
+  "not_yet_booked": {
+    "root_command_wall_seconds": 0,
+    "agents": [],
+    "total_seconds": 0
+  }
+}

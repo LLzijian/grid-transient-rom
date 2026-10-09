@@ -1,0 +1,47 @@
+{
+  "name": "T4_0002_S_final",
+  "seed": 401,
+  "arm": "P",
+  "latent_per_machine": 2,
+  "hidden": 32,
+  "dtype": "float64",
+  "device": "cpu",
+  "batch_size": 2,
+  "lr": 0.0001,
+  "grad_clip": 100.0,
+  "integration_dt": 0.01,
+  "steps": 800,
+  "horizons": [
+    5.0
+  ],
+  "milestones": [
+    200,
+    400,
+    800
+  ],
+  "anchor_horizons": [
+    0.02,
+    0.05,
+    0.1,
+    0.2,
+    0.5
+  ],
+  "anchor_weight": 0.0,
+  "latent_weight": 0.0,
+  "torque_weight": 0.0,
+  "complexity_weight": 1e-05,
+  "shooting_fraction": 0.0,
+  "final_autonomous_fraction": 1.0,
+  "segment_schedule": [
+    5.0
+  ],
+  "continuity_weight": 0.0,
+  "checkpoint_steps": 0,
+  "trace_field": true,
+  "reuse_origin_terms": true,
+  "quadratic_functions": "energy_only",
+  "save_every": 5,
+  "monitor_count": 12,
+  "synthetic": false,
+  "autonomous_only": true
+}
