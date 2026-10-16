@@ -1,0 +1,246 @@
+{
+  "recorded_epoch": 1792187804.4117045,
+  "scope": "bounded original generated1701 prefit handoff; no structure selection",
+  "actual_job": {
+    "format": "predefined_generated1701_prefit_v1",
+    "status": "incomplete_timeout",
+    "scope": "existing generated/1701/round1 branch prefit only; no new seed or branch",
+    "identity_sha256": "f27cb8860a77551b07bd57749efc13c36f7566151baea49c4193155398c78428",
+    "train_event_count": 346,
+    "mode": "generated",
+    "seed": 1701,
+    "round": 1,
+    "levels": [
+      32,
+      128,
+      512
+    ],
+    "shortlist_rule": "all returned proposals to immutable level 32; first two by (score32.risk, proposal_index) to levels 128 then 512",
+    "process_cap_seconds": 1100,
+    "command_cap_seconds": 1200,
+    "scratch_path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_discovery_20261017\\B\\prefit_generated\\1701\\round1\\scratch",
+    "target_path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_discovery_20261017\\B\\generated\\1701\\round1",
+    "atomic_publication": "validate in-B absolute paths and candidate checkpoint model/optimizer hashes; os.rename scratch to target only if target is absent; on collision retain scratch and mark not_published",
+    "train_only": true,
+    "validation_test_fom_task4_access": false,
+    "execution_order_sha256": "b4daa0596e1ebc9c601189ed6512d9fd738786a509e1bfd7ef413f1a815f2f82",
+    "worker_script": "private_data/closure_discovery_20261017/B/prefit_generated/1701/round1/run_predefined_job.py",
+    "implementation_identity_sha256": "f27cb8860a77551b07bd57749efc13c36f7566151baea49c4193155398c78428",
+    "work_deadline_seconds": 1040.0,
+    "phase": "published",
+    "pid": 3076,
+    "elapsed_process_seconds": 1011.0752121999976,
+    "updated_epoch": 1792187663.849823,
+    "train_ids_sha256": "d79001d78cbf4f77b22f981cac8682228d90788c28019791f93d04787d0b92e0",
+    "force_scale": 1.0068379869405584,
+    "proposal_count": 6,
+    "screening_record_count": 36,
+    "completed_32_candidate_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "numerical_failures": [],
+    "shortlisted_candidate_indices": [
+      0,
+      3
+    ],
+    "score32_risk_by_candidate": [
+      {
+        "index": 0,
+        "risk": 2.069537515231482
+      },
+      {
+        "index": 1,
+        "risk": 3.0814591850979283
+      },
+      {
+        "index": 2,
+        "risk": 2.279604162213049
+      },
+      {
+        "index": 3,
+        "risk": 2.134044674217556
+      },
+      {
+        "index": 4,
+        "risk": 2.2406360231380145
+      },
+      {
+        "index": 5,
+        "risk": 2.2410407488249313
+      }
+    ],
+    "candidate_checkpoints": [
+      {
+        "candidate_index": 0,
+        "step": 199,
+        "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_discovery_20261017\\B\\prefit_generated\\1701\\round1\\scratch\\candidate00",
+        "model_sha256": "3e7b2da94b6bc8b03624bb61d08320dd18043f2e17006eb6dea8c4ec6fdcc643",
+        "training_sha256": "1d3e3552b77511b083e97c6508dfaf401248872a6efaad989a475a54a7c8753d",
+        "checkpoint_sha256": "a5ca3408f9a6c552be661c82536324769867612977fe9f5a1d5376353843dff5",
+        "candidate_failure": null,
+        "verified": true
+      },
+      {
+        "candidate_index": 1,
+        "step": 32,
+        "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_discovery_20261017\\B\\prefit_generated\\1701\\round1\\scratch\\candidate01",
+        "model_sha256": "d5d90ea6eab0835fc0ebd789f778e5fb442b5a638c25f06c9e4d4610eedbf73a",
+        "training_sha256": "fee96c78a08d2150d23d86e3c4eb40b8fbd15a3f0415a32bd01c48abe6406a27",
+        "checkpoint_sha256": "6d613fa256b00141441e7a7b51e76ced1ebe5efa4da765a1ab36ca11b6746be5",
+        "candidate_failure": null,
+        "verified": true
+      },
+      {
+        "candidate_index": 2,
+        "step": 32,
+        "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_discovery_20261017\\B\\prefit_generated\\1701\\round1\\scratch\\candidate02",
+        "model_sha256": "774863fb68035234df614abb1b4521ac8e1c0dae6257aa33d489297695016944",
+        "training_sha256": "7dfd9bfd2a61a86c2d37437d2a9f81cae0caa587d9ae0729e652b35fd2e304c9",
+        "checkpoint_sha256": "6fab571d39ebcfc5a0c4de42504339381839ee3ee0ff30de95f438d30e0e73f8",
+        "candidate_failure": null,
+        "verified": true
+      },
+      {
+        "candidate_index": 3,
+        "step": 32,
+        "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_discovery_20261017\\B\\prefit_generated\\1701\\round1\\scratch\\candidate03",
+        "model_sha256": "328ec5682ff00b3c931102dcd68753812827ee9220b997b7554ef7f70d092e65",
+        "training_sha256": "ca615929a679166408682699c8310e0447e290dd0020389bd74aaff259870f66",
+        "checkpoint_sha256": "aaa5cdb7715d0e080cb32dca2b567f9797c153ec9aa531e5f7f73b6e52cf0a4d",
+        "candidate_failure": null,
+        "verified": true
+      },
+      {
+        "candidate_index": 4,
+        "step": 32,
+        "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_discovery_20261017\\B\\prefit_generated\\1701\\round1\\scratch\\candidate04",
+        "model_sha256": "8433f4cc6e4b5dbf0a15f09b3b3615f0958e65f1a991022b79618555582d25c9",
+        "training_sha256": "fd3ec57dc2d9bbf341ec44c90c595c828880be2191f8a9c9f6d0389214b6fd5b",
+        "checkpoint_sha256": "e192da4e85a02c03744cceef62337f2fd9dbf30cc9aa1cf56f82e48347da302b",
+        "candidate_failure": null,
+        "verified": true
+      },
+      {
+        "candidate_index": 5,
+        "step": 32,
+        "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_discovery_20261017\\B\\prefit_generated\\1701\\round1\\scratch\\candidate05",
+        "model_sha256": "740d94322da2d7f988b2e8c916f76fd80bd49c0caf95f79c458fdc351b838e5f",
+        "training_sha256": "156e23e0b2d1c5cf484df2791193c272dd552196bbb24d59451520c976c702d7",
+        "checkpoint_sha256": "cd586e54c57fdcb639f3491396e6ebc8685a8cd68adae600f2c2d998f5e7d5e0",
+        "candidate_failure": null,
+        "verified": true
+      }
+    ],
+    "publication_status": "published",
+    "publication_reason": "TimeoutError('stage cap; incomplete candidate preserved, not ranked')",
+    "published_candidate_checkpoints": [
+      {
+        "candidate_index": 0,
+        "step": 199,
+        "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_discovery_20261017\\B\\generated\\1701\\round1\\candidate00",
+        "model_sha256": "3e7b2da94b6bc8b03624bb61d08320dd18043f2e17006eb6dea8c4ec6fdcc643",
+        "training_sha256": "1d3e3552b77511b083e97c6508dfaf401248872a6efaad989a475a54a7c8753d",
+        "checkpoint_sha256": "a5ca3408f9a6c552be661c82536324769867612977fe9f5a1d5376353843dff5",
+        "candidate_failure": null,
+        "verified": true
+      },
+      {
+        "candidate_index": 1,
+        "step": 32,
+        "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_discovery_20261017\\B\\generated\\1701\\round1\\candidate01",
+        "model_sha256": "d5d90ea6eab0835fc0ebd789f778e5fb442b5a638c25f06c9e4d4610eedbf73a",
+        "training_sha256": "fee96c78a08d2150d23d86e3c4eb40b8fbd15a3f0415a32bd01c48abe6406a27",
+        "checkpoint_sha256": "6d613fa256b00141441e7a7b51e76ced1ebe5efa4da765a1ab36ca11b6746be5",
+        "candidate_failure": null,
+        "verified": true
+      },
+      {
+        "candidate_index": 2,
+        "step": 32,
+        "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_discovery_20261017\\B\\generated\\1701\\round1\\candidate02",
+        "model_sha256": "774863fb68035234df614abb1b4521ac8e1c0dae6257aa33d489297695016944",
+        "training_sha256": "7dfd9bfd2a61a86c2d37437d2a9f81cae0caa587d9ae0729e652b35fd2e304c9",
+        "checkpoint_sha256": "6fab571d39ebcfc5a0c4de42504339381839ee3ee0ff30de95f438d30e0e73f8",
+        "candidate_failure": null,
+        "verified": true
+      },
+      {
+        "candidate_index": 3,
+        "step": 32,
+        "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_discovery_20261017\\B\\generated\\1701\\round1\\candidate03",
+        "model_sha256": "328ec5682ff00b3c931102dcd68753812827ee9220b997b7554ef7f70d092e65",
+        "training_sha256": "ca615929a679166408682699c8310e0447e290dd0020389bd74aaff259870f66",
+        "checkpoint_sha256": "aaa5cdb7715d0e080cb32dca2b567f9797c153ec9aa531e5f7f73b6e52cf0a4d",
+        "candidate_failure": null,
+        "verified": true
+      },
+      {
+        "candidate_index": 4,
+        "step": 32,
+        "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_discovery_20261017\\B\\generated\\1701\\round1\\candidate04",
+        "model_sha256": "8433f4cc6e4b5dbf0a15f09b3b3615f0958e65f1a991022b79618555582d25c9",
+        "training_sha256": "fd3ec57dc2d9bbf341ec44c90c595c828880be2191f8a9c9f6d0389214b6fd5b",
+        "checkpoint_sha256": "e192da4e85a02c03744cceef62337f2fd9dbf30cc9aa1cf56f82e48347da302b",
+        "candidate_failure": null,
+        "verified": true
+      },
+      {
+        "candidate_index": 5,
+        "step": 32,
+        "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_discovery_20261017\\B\\generated\\1701\\round1\\candidate05",
+        "model_sha256": "740d94322da2d7f988b2e8c916f76fd80bd49c0caf95f79c458fdc351b838e5f",
+        "training_sha256": "156e23e0b2d1c5cf484df2791193c272dd552196bbb24d59451520c976c702d7",
+        "checkpoint_sha256": "cd586e54c57fdcb639f3491396e6ebc8685a8cd68adae600f2c2d998f5e7d5e0",
+        "candidate_failure": null,
+        "verified": true
+      }
+    ]
+  },
+  "checkpoint_rows_at_handoff_verification": [
+    {
+      "candidate": "candidate00",
+      "step": 199,
+      "model_sha256": "3e7b2da94b6bc8b03624bb61d08320dd18043f2e17006eb6dea8c4ec6fdcc643",
+      "training_sha256": "1d3e3552b77511b083e97c6508dfaf401248872a6efaad989a475a54a7c8753d"
+    },
+    {
+      "candidate": "candidate01",
+      "step": 32,
+      "model_sha256": "d5d90ea6eab0835fc0ebd789f778e5fb442b5a638c25f06c9e4d4610eedbf73a",
+      "training_sha256": "fee96c78a08d2150d23d86e3c4eb40b8fbd15a3f0415a32bd01c48abe6406a27"
+    },
+    {
+      "candidate": "candidate02",
+      "step": 32,
+      "model_sha256": "774863fb68035234df614abb1b4521ac8e1c0dae6257aa33d489297695016944",
+      "training_sha256": "7dfd9bfd2a61a86c2d37437d2a9f81cae0caa587d9ae0729e652b35fd2e304c9"
+    },
+    {
+      "candidate": "candidate03",
+      "step": 32,
+      "model_sha256": "328ec5682ff00b3c931102dcd68753812827ee9220b997b7554ef7f70d092e65",
+      "training_sha256": "ca615929a679166408682699c8310e0447e290dd0020389bd74aaff259870f66"
+    },
+    {
+      "candidate": "candidate04",
+      "step": 32,
+      "model_sha256": "8433f4cc6e4b5dbf0a15f09b3b3615f0958e65f1a991022b79618555582d25c9",
+      "training_sha256": "fd3ec57dc2d9bbf341ec44c90c595c828880be2191f8a9c9f6d0389214b6fd5b"
+    },
+    {
+      "candidate": "candidate05",
+      "step": 32,
+      "model_sha256": "740d94322da2d7f988b2e8c916f76fd80bd49c0caf95f79c458fdc351b838e5f",
+      "training_sha256": "156e23e0b2d1c5cf484df2791193c272dd552196bbb24d59451520c976c702d7"
+    }
+  ],
+  "scratch_absent": true,
+  "publication_note": "round1_results publication_status was recorded before the atomic directory rename; job published plus post-rename checkpoint hashes attest completed handoff; original round result retained unchanged",
+  "formal_runner_next": "complete original level32 ranking and original shortlist128/512 adaptation; no substitution or new branch",
+  "test_read": false
+}
