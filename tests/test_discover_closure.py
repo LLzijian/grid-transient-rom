@@ -79,6 +79,27 @@ def test_disabled_direction_remains_trainable_on_activation_and_optimizer_resume
     runner.optimizer(restored).load_state_dict(runner.optimizer(candidate).state_dict())
 
 
+def test_resume_ranks_saved_32_step_state_after_candidate_reaches_512(tmp_path,monkeypatch):
+    model=toy_source().with_terms([{'channel':'port','expression':{'op':'var','name':'q'}}])
+    with torch.no_grad():model.coefficients.fill_(.2)
+    model.export(tmp_path/'model_at_step00032.json')
+    with torch.no_grad():model.coefficients.fill_(99.)
+    model.export(tmp_path/'model.json')
+    (tmp_path/'checkpoint.json').write_text('{"step":512}')
+    calls=[]
+    def fake_score(m,events,**kwargs):
+        value=float(m.coefficients[0].detach())
+        calls.append(value);return {'risk':value,'events':[]}
+    monkeypatch.setattr(runner,'score',fake_score)
+    result=runner.score_at_level(tmp_path,[],32)
+    assert result['risk']==pytest.approx(.2)
+    assert result['adaptation_updates']==32
+    assert runner.score_at_level(tmp_path,[],32)==result
+    assert calls==[.2]
+    (tmp_path/'model_at_step00032.json').unlink()
+    with pytest.raises(ValueError,match='cannot relabel'):runner.score_at_level(tmp_path,[],32)
+
+
 def test_primary_comparison_refuses_invalid_event():
     from closure_discovery_confirmation import paired_primary
     row={'id':'e','group':'g','label':'stable','complete_5s':True,'numerical_pass':False,'mse':None}

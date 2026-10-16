@@ -138,12 +138,50 @@ def score(model,events,horizons=(1.,2.,5.),*,deadline=None):
 def checkpoint(path,model,opt,rng,step,trace,selection=None,coverage=None):
     path=Path(path);path.mkdir(parents=True,exist_ok=True)
     model.provenance['completed_updates_in_current_fit']=step
+    identity=context()[1]/'implementation/identity.json'
+    if identity.exists():
+        current=sha(identity);previous=model.provenance.get('implementation_identity_sha256')
+        history=model.provenance.setdefault('implementation_history',[])
+        for value in (previous,current):
+            if value and value not in history:history.append(value)
+        model.provenance['implementation_identity_sha256']=current
     model.export(path/'model.json')
+    if step in (32,128,256,512,1024):
+        level_path=path/f'model_at_step{step:05d}.json'
+        if level_path.exists() and sha(level_path)!=sha(path/'model.json'):
+            raise ValueError('immutable adaptation endpoint changed')
+        if not level_path.exists():level_path.write_bytes((path/'model.json').read_bytes())
     torch.save({'optimizer':opt.state_dict(),'numpy_rng':rng.bit_generator.state,
                 'torch_rng':torch.get_rng_state(),'step':step,'coverage':coverage},path/'training.pt')
     write(path/'checkpoint.json',{'step':step,'model_sha256':sha(path/'model.json'),
          'training_sha256':sha(path/'training.pt'),'trace':trace,'selection':selection,
          'test_read':False,'status':'research_only'})
+
+
+def score_at_level(path,events,level,*,deadline=None):
+    """Rank a saved adaptation level, regardless of later optimizer progress."""
+    from symbolic_closure_rom import SymbolicClosureROM
+    path=Path(path);meta=json.loads((path/'checkpoint.json').read_text())
+    snapshot=path/f'model_at_step{level:05d}.json';cache=path/f'score{level}.json'
+    if not snapshot.exists():
+        if meta['step']!=level or sha(path/'model.json')!=meta['model_sha256']:
+            raise ValueError('earlier adaptation endpoint unavailable; cannot relabel a later model')
+        snapshot.write_bytes((path/'model.json').read_bytes())
+    expected={'adaptation_updates':level,'model_sha256':sha(snapshot)}
+    if cache.exists():
+        result=json.loads(cache.read_text())
+        if all(result.get(k)==v for k,v in expected.items()):return result
+        # Migration is permitted only for the exact current checkpoint level.
+        # Preserve its original score before adding missing identity fields.
+        ids=[e['id'] for e in events]
+        if meta['step']!=level or any(k in result for k in expected) or [e['id'] for e in result.get('events',[])]!=ids:
+            raise ValueError('cached score adaptation identity changed')
+        original=cache.with_name(f'score{level}_before_identity.json')
+        if not original.exists():original.write_bytes(cache.read_bytes())
+        result.update(expected);write(cache,result);return result
+    model=SymbolicClosureROM.from_export(snapshot)
+    result=score(model,events,deadline=deadline);result.update(expected);write(cache,result)
+    return result
 
 
 def bind_execution_sources(out):
@@ -212,6 +250,9 @@ def fit(model,events,force_scale,target,path,seed,*,final=False,deadline=None):
             checkpoint(path,model,opt,rng,step,trace,coverage=coverage)
             raise TimeoutError('stage cap; incomplete candidate preserved, not ranked')
         tick=time.perf_counter();samples,sampling_trace=next_samples(events,rng,coverage);hist=histories_for(samples)
+        write(path/'current_update.json',{'attempted_update':step+1,'last_completed_in_memory':step,
+            'last_recoverable_checkpoint':json.loads((path/'checkpoint.json').read_text())['step'] if (path/'checkpoint.json').exists() else 0,
+            'status':'in_progress','test_read':False})
         for group in opt.param_groups:group['lr']=context()[0]['rates'][group['block']]*(.3 if final and step>=512 else 1.)
         opt.zero_grad(set_to_none=True)
         with graph(model):
@@ -385,9 +426,10 @@ def stage_b(out,deadline):
                     if (path/'candidate_failure.json').exists():
                         failures.append(json.loads((path/'candidate_failure.json').read_text()));continue
                     try:
-                        m,_=fit(m,events,scale,32,path,seed,deadline=deadline)
-                        s=score(m,events,deadline=deadline);fitted.append((s['risk'],i,m,s))
-                        write(path/'score32.json',s)
+                        actual=json.loads((path/'checkpoint.json').read_text())['step'] if (path/'checkpoint.json').exists() else 0
+                        if actual>=32:m=SymbolicClosureROM.from_export(path/'model.json')
+                        else:m,_=fit(m,events,scale,32,path,seed,deadline=deadline)
+                        s=score_at_level(path,events,32,deadline=deadline);fitted.append((s['risk'],i,m,s))
                     except FloatingPointError as error:
                         failure={'mode':mode,'seed':seed,'path':str(path),'level':32,'status':'numerically_unresolved','error':repr(error)}
                         write(path/'candidate_failure.json',failure);failures.append(failure)
@@ -397,8 +439,9 @@ def stage_b(out,deadline):
                     path=folder/f'candidate{i:02d}'
                     try:
                         for level in (128,512):
-                            m,_=fit(m,events,scale,level,path,seed,deadline=deadline)
-                        s=score(m,events,deadline=deadline);write(path/'score512.json',s)
+                            actual=json.loads((path/'checkpoint.json').read_text())['step']
+                            if actual<level:m,_=fit(m,events,scale,level,path,seed,deadline=deadline)
+                        s=score_at_level(path,events,512,deadline=deadline)
                         final.append((s['risk'],i,m,s))
                     except FloatingPointError as error:
                         failure={'mode':mode,'seed':seed,'path':str(path),'level':level,'status':'numerically_unresolved','error':repr(error)}
