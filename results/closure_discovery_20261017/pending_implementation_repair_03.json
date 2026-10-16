@@ -58,6 +58,17 @@
       "registration_epoch": 1792187417.0854692,
       "status_at_registration": "D condition selection and newval remain unopened; no data-dependent selection change",
       "scientific_algorithm_or_budget_change": false
+    },
+    {
+      "files": [
+        "experiments/discover_closure.py",
+        "synthetic recovery tests"
+      ],
+      "fix": "stage_c main entry must preserve existing candidate_failure or fit_failure for all core and deletion refits, record the branch as unresolved and continue other originally registered branches without automatic retry",
+      "evidence": "bounded C wrappers already guard recorded failures; the public sequential stage_c entry currently calls fit again on the same failed path during resume",
+      "registration_epoch": 1792188920.3982935,
+      "status_at_registration": "only predefined fixed controls have run and no C numerical failures have occurred; selected C and deletion fits have not started",
+      "scientific_algorithm_or_budget_change": false
     }
   ],
   "timing": "do not edit bound source until current B/C jobs have stopped; preserve old source snapshot and records, run targeted checks, register new identity and push before next scientific execution",
