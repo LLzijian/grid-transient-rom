@@ -89,6 +89,8 @@ def _canonical_expr(expr: Mapping[str, Any]) -> Any:
                     rest.append(child)
             if not rest:
                 return {"op": "const", "value": sign}
+            from closure_expression_identity import compact_factors
+            rest=compact_factors(rest)
             if sign < 0:
                 rest.append({"op": "const", "value": -1})
             args = sorted(rest, key=_json_dump)
@@ -147,6 +149,16 @@ class ProcessLedger:
         self.receipts_path = self.directory / "receipts.jsonl"
         self.state_path = self.directory / "state.json"
         self.lock_path = self.directory / ".ledger.lock"
+        allocation_path=self.directory/'allocation.json'
+        self.caps_seconds=dict(PHASE_CAPS_SECONDS)
+        if allocation_path.exists():
+            allocation=json.loads(allocation_path.read_text(encoding='utf-8'))
+            caps=allocation['caps_seconds']
+            if set(caps)!=set(PHASE_CAPS_SECONDS) or any(not math.isfinite(float(v)) or float(v)<0 for v in caps.values()):
+                raise ValueError('invalid prospectively registered stage allocation')
+            if sum(float(v) for v in caps.values())!=PARENT_CAP_SECONDS or allocation.get('parent_cap_seconds')!=PARENT_CAP_SECONDS:
+                raise ValueError('stage allocation cannot increase or reset the authorized parent cap')
+            self.caps_seconds={k:float(v) for k,v in caps.items()}
         self._local_lock = contextvars.ContextVar(f"ledger_lock_{id(self)}", default=None)
         self._scope = contextvars.ContextVar(f"ledger_scope_{id(self)}", default=None)
         self._initialize_state()
@@ -204,7 +216,7 @@ class ProcessLedger:
     def _write_state(self, receipts: Sequence[Mapping[str, Any]]) -> None:
         state = {
             "schema_version": 1,
-            "caps_seconds": PHASE_CAPS_SECONDS,
+            "caps_seconds": self.caps_seconds,
             "parent_cap_seconds": PARENT_CAP_SECONDS,
             "stage_spent_seconds": _stage_spend_from_receipts(receipts),
             "receipt_count": len(receipts),
@@ -232,7 +244,7 @@ class ProcessLedger:
     def remaining_seconds(self, stage: str) -> float:
         if stage not in PHASE_CAPS_SECONDS:
             raise ValueError(f"unknown stage {stage!r}")
-        return max(0.0, PHASE_CAPS_SECONDS[stage] - self.stage_spend_seconds[stage])
+        return max(0.0, self.caps_seconds[stage] - self.stage_spend_seconds[stage])
 
     def spent(self, stage: str | None = None) -> float:
         """Return counted wall time for one stage or cumulatively across spendable stages."""
@@ -301,7 +313,7 @@ class ProcessLedger:
             # an unforeseen overrun is appended and visible instead of discarded.
             receipt["over_budget_after_receipt"] = bool(
                 counted
-                and _stage_spend_from_receipts(receipts)[stage] + elapsed > PHASE_CAPS_SECONDS[stage]
+                and _stage_spend_from_receipts(receipts)[stage] + elapsed > self.caps_seconds[stage]
             )
             with self.receipts_path.open("a", encoding="utf-8", newline="\n") as handle:
                 handle.write(_json_dump(receipt) + "\n")
@@ -329,6 +341,10 @@ class ProcessLedger:
         current_id = receipt_id or str(uuid.uuid4())
         token = self._scope.set(current_id)
         start = time.monotonic()
+        start_path = self.directory / f"started-{current_id}.json"
+        start_path.write_text(_json_dump({"receipt_id": current_id, "stage": stage,
+            "category": category, "pid": os.getpid(), "started_epoch": time.time(),
+            "parent_receipt_id": parent_id, "details": details}), encoding="utf-8")
         status = "completed"
         try:
             yield current_id
@@ -348,6 +364,7 @@ class ProcessLedger:
                 details=details,
                 counted=parent_id is None,
             )
+            start_path.unlink(missing_ok=True)
 
     def run(self, stage: str, label: str) -> contextlib.AbstractContextManager[str]:
         """Runner-facing timed scope alias; yields the persistent receipt ID."""
@@ -394,12 +411,17 @@ def estimate_stage_costs(depth: int, timings: Mapping[str, Any]) -> dict[str, fl
     if depth < 1:
         raise ValueError("depth must be positive")
     t = _timing_costs(timings)
+    for stage,cost in timings.get('eval_by_depth',{}).get(str(depth),{}).items():
+        if stage not in ('B','C','D') or not math.isfinite(float(cost)) or float(cost)<0:
+            raise ValueError('invalid per-depth fixed evaluation cost')
+        t[f'eval_{stage}']=float(cost)
     b_updates = 6 * (6 * 32 + 2 * 96 + 2 * 384) * depth  # six runs at the requested depth
     c_updates = 14 * 1024
     d_updates = 14 * 256
     step = t["max_measured_step_s"]
-    if 'seconds_by_horizon' in timings:
-        horizon_costs={float(k):float(v) for k,v in timings['seconds_by_horizon'].items()}
+    measured_horizons=timings.get('seconds_by_depth',{}).get(str(depth),timings.get('seconds_by_horizon'))
+    if measured_horizons:
+        horizon_costs={float(k):float(v) for k,v in measured_horizons.items()}
         if set(horizon_costs)!={1.,2.,5.} or any(not math.isfinite(v) or v<=0 for v in horizon_costs.values()):
             raise ValueError('three positive measured horizon costs required')
         def cost(n):
@@ -485,10 +507,15 @@ def _candidate_terms(parent_terms=()) -> list[dict[str, Any]]:
 
     def add(channel: str, expr: Mapping[str, Any]) -> None:
         from symbolic_closure_rom import validate_expression
+        from closure_expression_identity import mechanism_signature
         try:expr=validate_expression(expr,channel)
         except ValueError:return
         candidate = _term(channel, expr)
-        out[term_key(candidate)] = candidate
+        signature=mechanism_signature(candidate)
+        if signature is None:return
+        old=out.get(signature)
+        if old is None or (len(term_key(candidate)),term_key(candidate))<(len(term_key(old)),term_key(old)):
+            out[signature] = candidate
 
     channel_vars = {
         "node": ("p", "q"),
@@ -558,7 +585,10 @@ def generate_mutation_pool(
     by_kind: dict[str, list[dict[str, Any]]] = {kind: [] for kind in ("add", "delete", "replace")}
 
     def proposal(kind: str, candidate_terms: list[dict[str, Any]], removed=None, added=None) -> None:
-        if sum(_tanh_count(term["expression"]) for term in candidate_terms) > 1:
+        from closure_expression_identity import mechanism_signature,distinct_mechanisms
+        if not distinct_mechanisms(candidate_terms):return
+        if {mechanism_signature(t) for t in candidate_terms}=={mechanism_signature(t) for t in parent}:return
+        if any(_tanh_count(term["expression"]) > 1 for term in candidate_terms):
             return
         key_payload = [kind, sorted(term_key(t) for t in candidate_terms)]
         candidate_key = _stable_hash(key_payload)
@@ -976,3 +1006,4 @@ def generate_new_fault_manifest(
     manifest["train_pool"] = copy.deepcopy(manifest["train_candidate_pool"])
     manifest["original_conditions"] = original_conditions
     return manifest
+

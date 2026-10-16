@@ -3,17 +3,52 @@
   "source": "private_data/task2_prediction_optimization_0102/formal_S_O/step00650/structured_numeric_export.json",
   "output": "private_data/closure_discovery_20261017",
   "parent_cap_seconds": 259200,
-  "stage_caps_seconds": {"A":43200,"B":86400,"C":57600,"D":43200,"E":14400,"reserve":14400},
-  "search_seeds": [1701,1702,1703],
-  "refit_seeds": [2701,2702,2703],
+  "stage_caps_seconds": {
+    "A": 43200.0,
+    "B": 57600.0,
+    "C": 86400.0,
+    "D": 43200.0,
+    "E": 14400.0,
+    "reserve": 14400.0
+  },
+  "search_seeds": [
+    1701,
+    1702,
+    1703
+  ],
+  "refit_seeds": [
+    2701,
+    2702,
+    2703
+  ],
   "confirmation_seed": 3701,
   "synthetic_seed": 4801,
   "bootstrap_seed": 5701,
-  "search": {"beam_width":2,"max_rounds":3,"candidates_per_round":6,"levels":[32,128,512],"survivors":[6,2,2]},
-  "refit_updates":1024,
-  "new_train_updates":256,
-  "rates":{"skeleton":0.01,"closure":0.001,"encoder":0.0003},
-  "clip_norm":100.0,
-  "test_access":false,
-  "candidate_status":"research_only"
+  "search": {
+    "beam_width": 2,
+    "max_rounds": 3,
+    "candidates_per_round": 6,
+    "levels": [
+      32,
+      128,
+      512
+    ],
+    "survivors": [
+      6,
+      2,
+      2
+    ],
+    "selected_rounds": 1
+  },
+  "refit_updates": 1024,
+  "new_train_updates": 256,
+  "rates": {
+    "skeleton": 0.01,
+    "closure": 0.001,
+    "encoder": 0.0003
+  },
+  "clip_norm": 100.0,
+  "test_access": false,
+  "candidate_status": "research_only",
+  "allocation_amendment": "reports/closure_discovery_20261017_resource_amendment.md"
 }

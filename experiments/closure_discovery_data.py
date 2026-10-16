@@ -29,6 +29,11 @@ BASE_PATH = ROOT / "private_data/task2_m3_0020/model.npz"
 OMEGA_S = 2.0 * np.pi * 60.0
 SCALES = np.asarray([0.47675314588683515, 1.0033667249602924], dtype=np.float64)
 INTEGRATION_STEPS = (0.005, 0.0025)
+SYSTEM_EQUILIBRIUM_KEYS = ("delta", "omega", "Pm", "Pe", "full_state", "algebraic_state")
+# The four successful stage-A raw files matched every stored equilibrium and
+# inertia value exactly.  Keep a small absolute allowance for serialization
+# differences while forbidding relative scaling or order changes.
+SYSTEM_ATOL = 1e-9
 RAW_KEYS = ("t", "delta", "omega", "Pm", "Pe", "te", "full_state",
             "algebraic_state", "bus_v", "bus_a", "terminal_v")
 
@@ -240,6 +245,13 @@ def select_new_train_conditions(
     ranked.sort(key=lambda row: (row[0], row[1], row[2]))
     if len(ranked) < count:
         raise ValueError(f"need {count} scored distinct candidate conditions; found {len(ranked)}")
+    if count==24:
+        selected=[]
+        for stratum in ('short','medium','long'):
+            matching=[row for row in ranked if ('short' if row[3]['duration_s']<.15 else 'medium' if row[3]['duration_s']<=.3 else 'long')==stratum]
+            if len(matching)<8:raise ValueError(f'need eight new train conditions in {stratum}; no replacement sampling')
+            selected.extend({**row[3],'stratum':stratum} for row in matching[:8])
+        return selected
     return [row[3] for row in ranked[:count]]
 
 
@@ -363,12 +375,15 @@ class _RemoteSimulationError(RuntimeError):
 
 
 def _simulation_worker(condition: Mapping[str, Any], config: Mapping[str, Any],
-                       output: str, event_id: str, step: float, connection: Any) -> None:
+                       output: str, event_id: str, step: float,
+                       reference: Mapping[str, Any], connection: Any) -> None:
     """Isolated default FOM worker so the stage cap can terminate a long call."""
     diagnostics: dict[str, Any] = {}
     try:
+        attestation = _runtime_system_attestation(config, reference)
+        diagnostics["system_attestation"] = attestation
         result = _load_simulator()(condition, config, diagnostics=diagnostics)
-        raw_file = _persist_raw(Path(output), event_id, step, result)
+        raw_file = _persist_raw(Path(output), event_id, step, result, attestation)
         connection.send({"status": "complete", "raw_file": raw_file,
                          "diagnostics": diagnostics})
     except BaseException as error:
@@ -383,12 +398,14 @@ def _simulation_worker(condition: Mapping[str, Any], config: Mapping[str, Any],
 
 def _run_bounded_simulation(condition: Mapping[str, Any], config: Mapping[str, Any],
                             output: Path, event_id: str, step: float,
-                            timeout_seconds: float) -> tuple[Any, dict[str, Any], str]:
+                            timeout_seconds: float,
+                            reference: Mapping[str, Any]) -> tuple[Any, dict[str, Any], str]:
     """Run the real simulator in a child process and stop it at the cap."""
     context = multiprocessing.get_context("spawn")
     receiver, sender = context.Pipe(duplex=False)
     process = context.Process(target=_simulation_worker,
-                              args=(dict(condition), dict(config), str(output), event_id, step, sender))
+                              args=(dict(condition), dict(config), str(output), event_id, step,
+                                    dict(reference), sender))
     deadline = time.perf_counter() + max(0.0, float(timeout_seconds))
     process.start()
     sender.close()
@@ -436,7 +453,177 @@ def _safe_config() -> dict[str, Any]:
     return config
 
 
-def _persist_raw(output: Path, condition_id: str, step: float, result: Any) -> str:
+def _decode_text(value: Any) -> str:
+    return value.decode("utf-8") if isinstance(value, bytes) else str(value)
+
+
+def _reference_fingerprint_payload(reference: Mapping[str, Any]) -> dict[str, Any]:
+    return {
+        "andes_version": str(reference["andes_version"]),
+        "case": str(reference["case"]),
+        "case_sha256": str(reference["case_sha256"]),
+        "omega_s": float(reference["omega_s"]),
+        "mva_base": float(reference["mva_base"]),
+        "postfault_signature": str(reference["postfault_signature"]),
+        "state_mapping": reference["state_mapping"],
+        "algebraic_names": reference["algebraic_names"],
+        "equilibrium": {key: np.asarray(reference["equilibrium"][key]).tolist()
+                        for key in SYSTEM_EQUILIBRIUM_KEYS},
+        "inertia": np.asarray(reference["inertia"]).tolist(),
+    }
+
+
+def _reference_fingerprint_sha256(reference: Mapping[str, Any]) -> str:
+    payload = json.dumps(_reference_fingerprint_payload(reference), sort_keys=True,
+                         separators=(",", ":"), allow_nan=False)
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+
+def _load_reference_fingerprint() -> dict[str, Any]:
+    """Read the immutable system baseline from historical TRAIN-store metadata.
+
+    Only HDF5 root attributes and the root ``equilibrium``/``inertia`` arrays
+    are read.  The ``events`` group is never opened or enumerated.
+    """
+    import h5py
+
+    references: list[dict[str, Any]] = []
+    for root in DATASET_ROOTS:
+        path = root / "dataset.h5"
+        with h5py.File(path, "r") as file:
+            attrs = file.attrs
+            config = json.loads(_decode_text(attrs["config"]))
+            equilibrium = {key: np.asarray(file["equilibrium"][key][...], dtype=np.float64)
+                           for key in SYSTEM_EQUILIBRIUM_KEYS}
+            references.append({
+                "source": str(root.name),
+                "andes_version": _decode_text(attrs["andes_version"]),
+                "case": str(config["case"]),
+                "case_sha256": _decode_text(attrs["case_sha256"]),
+                "omega_s": float(attrs["omega_s"]),
+                "mva_base": float(attrs["mva_base"]),
+                "postfault_signature": _decode_text(attrs["postfault_signature"]),
+                "raw_units": _decode_text(attrs["raw_units"]),
+                "equilibrium": equilibrium,
+                "inertia": np.asarray(file["inertia"][...], dtype=np.float64),
+                "state_mapping": json.loads(_decode_text(attrs["state_mapping"])),
+                "algebraic_names": json.loads(_decode_text(attrs["algebraic_names"])),
+                "config_checks": {key: config.get(key) for key in (
+                    "andes_version", "case", "disable_pss", "fault_type",
+                    "postfault_horizon_s", "sample_interval_s")},
+            })
+    if len(references) < 2:
+        raise ValueError("physical compatibility requires both historical dataset roots")
+    first = references[0]
+    for other in references[1:]:
+        for key in ("andes_version", "case", "case_sha256", "omega_s", "mva_base",
+                    "postfault_signature", "raw_units", "state_mapping", "algebraic_names",
+                    "config_checks"):
+            if other[key] != first[key]:
+                raise ValueError(f"historical TRAIN physical metadata disagree at {key}")
+        for key in SYSTEM_EQUILIBRIUM_KEYS:
+            if not np.array_equal(other["equilibrium"][key], first["equilibrium"][key]):
+                raise ValueError(f"historical TRAIN equilibrium arrays disagree at {key}")
+        if not np.array_equal(other["inertia"], first["inertia"]):
+            raise ValueError("historical TRAIN inertia arrays disagree")
+    first = dict(first)
+    first["sources"] = [row["source"] for row in references]
+    first["fingerprint_sha256"] = _reference_fingerprint_sha256(first)
+    return first
+
+
+def _assert_config_compatible(config: Mapping[str, Any], reference: Mapping[str, Any]) -> None:
+    if str(config.get("andes_version")) != reference["andes_version"]:
+        raise ValueError("configured ANDES version differs from historical TRAIN")
+    if str(config.get("case")) != reference["case"]:
+        raise ValueError("configured case differs from historical TRAIN")
+    if bool(config.get("disable_pss")) != bool(reference["config_checks"].get("disable_pss")):
+        raise ValueError("PSS setting differs from historical TRAIN")
+    if float(config.get("postfault_horizon_s", -1)) != 15.0:
+        raise ValueError("postfault horizon differs from the registered 15-s system run")
+    if not math.isclose(float(reference["omega_s"]), OMEGA_S, rel_tol=0.0, abs_tol=1e-12):
+        raise ValueError("historical omega_s differs from the adapter's canonical frequency")
+
+
+def _assert_result_system_compatible(result: Any, reference: Mapping[str, Any]) -> None:
+    """Reject a numerically valid result if its physical-system fingerprint drifts."""
+    _arrays, metadata, equilibrium, inertia, mapping, algebraic_names = result
+    for key in SYSTEM_EQUILIBRIUM_KEYS:
+        if key not in equilibrium:
+            raise ValueError(f"system compatibility missing equilibrium array {key}")
+        observed = np.asarray(equilibrium[key], dtype=np.float64)
+        expected = np.asarray(reference["equilibrium"][key], dtype=np.float64)
+        if observed.shape != expected.shape or not np.isfinite(observed).all():
+            raise ValueError(f"system compatibility has invalid equilibrium array {key}")
+        if not np.allclose(observed, expected, rtol=0.0, atol=SYSTEM_ATOL):
+            raise ValueError(f"system compatibility equilibrium mismatch: {key}")
+    observed_inertia = np.asarray(inertia, dtype=np.float64)
+    expected_inertia = np.asarray(reference["inertia"], dtype=np.float64)
+    if observed_inertia.shape != expected_inertia.shape or not np.isfinite(observed_inertia).all():
+        raise ValueError("system compatibility has invalid inertia")
+    if not np.allclose(observed_inertia, expected_inertia, rtol=0.0, atol=SYSTEM_ATOL):
+        raise ValueError("system compatibility inertia mismatch")
+    if mapping != reference["state_mapping"]:
+        raise ValueError("system compatibility state mapping mismatch")
+    if list(algebraic_names) != reference["algebraic_names"]:
+        raise ValueError("system compatibility algebraic ordering mismatch")
+    if metadata.get("postfault_signature") != reference["postfault_signature"]:
+        raise ValueError("system compatibility postfault signature mismatch")
+
+
+def _config_sha256(config: Mapping[str, Any]) -> str:
+    payload = json.dumps(_json_safe(config), sort_keys=True, separators=(",", ":"),
+                         allow_nan=False)
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+
+def _runtime_system_attestation(config: Mapping[str, Any],
+                                reference: Mapping[str, Any]) -> dict[str, Any]:
+    """Attest the actual ANDES runtime/case used by a real new FOM call."""
+    import andes
+
+    resolved_case = Path(andes.get_case(str(config["case"]))).resolve()
+    if not resolved_case.is_file():
+        raise FileNotFoundError(f"ANDES case file was not resolved: {resolved_case}")
+    attestation = {
+        "source": "andes_runtime",
+        "andes_version": str(andes.__version__),
+        "case_config": str(config["case"]),
+        "resolved_case_path": str(resolved_case),
+        "case_sha256": _sha256(resolved_case),
+        "omega_s": float(reference["omega_s"]),
+        "omega_s_source": "matching_historical_train_fingerprint_and_case_sha256",
+        "config_sha256": _config_sha256(config),
+        "config_file_sha256": _sha256(CONFIG_PATH),
+        "reference_fingerprint_sha256": reference["fingerprint_sha256"],
+    }
+    _assert_attestation_compatible(attestation, config, reference)
+    return attestation
+
+
+def _assert_attestation_compatible(attestation: Mapping[str, Any],
+                                   config: Mapping[str, Any],
+                                   reference: Mapping[str, Any]) -> None:
+    if attestation.get("andes_version") != reference["andes_version"]:
+        raise ValueError("runtime ANDES version differs from historical TRAIN")
+    if attestation.get("case_config") != reference["case"]:
+        raise ValueError("runtime ANDES case selection differs from historical TRAIN")
+    if attestation.get("case_sha256") != reference["case_sha256"]:
+        raise ValueError("runtime ANDES case-file SHA256 differs from historical TRAIN")
+    try:
+        omega_s = float(attestation["omega_s"])
+    except (KeyError, TypeError, ValueError) as error:
+        raise ValueError("run attestation has no valid omega_s") from error
+    if not math.isclose(omega_s, float(reference["omega_s"]), rel_tol=0.0, abs_tol=1e-12):
+        raise ValueError("run omega_s differs from historical TRAIN")
+    if attestation.get("config_sha256") != _config_sha256(config):
+        raise ValueError("run configuration SHA256 does not match the effective config")
+    if attestation.get("reference_fingerprint_sha256") != reference["fingerprint_sha256"]:
+        raise ValueError("run attestation is bound to a different historical fingerprint")
+
+
+def _persist_raw(output: Path, condition_id: str, step: float, result: Any,
+                 system_attestation: Mapping[str, Any] | None = None) -> str:
     arrays, metadata, equilibrium, inertia, mapping, algebraic_names = result
     if not isinstance(arrays, Mapping):
         raise TypeError("simulator result arrays must be a mapping")
@@ -462,7 +649,8 @@ def _persist_raw(output: Path, condition_id: str, step: float, result: Any) -> s
     os.replace(temporary, path)
     _write_json(attempt_dir / f"{condition_id}_dt{int(round(step * 10000)):04d}.json",
                 {"metadata": dict(metadata), "state_mapping": mapping,
-                 "algebraic_names": list(algebraic_names)})
+                 "algebraic_names": list(algebraic_names),
+                 "system_attestation": None if system_attestation is None else dict(system_attestation)})
     return str(path.relative_to(output))
 
 
@@ -642,11 +830,23 @@ def generate_conditions(
     if raw_dir.exists() and any(raw_dir.iterdir()):
         raise FileExistsError(f"raw attempt artifacts already exist: {raw_dir}")
     config = _safe_config()
+    reference = _load_reference_fingerprint()
+    _assert_config_compatible(config, reference)
     start = time.perf_counter()
-    _write_json(manifest_path, {"schema_version": 1, "split": split,
+    _write_json(manifest_path, {"schema_version": 2, "split": split,
                                 "conditions": normalized, "attempts": [],
                                 "freeze": freeze, "status": "RUNNING",
-                                "test_read": False, "cap_seconds": cap_seconds})
+                                "test_read": False, "cap_seconds": cap_seconds,
+                                "system_fingerprint": {
+                                    "sha256": reference["fingerprint_sha256"],
+                                    "sources": reference["sources"],
+                                    "andes_version": reference["andes_version"],
+                                    "case": reference["case"],
+                                    "case_sha256": reference["case_sha256"],
+                                    "omega_s": reference["omega_s"],
+                                    "postfault_signature": reference["postfault_signature"],
+                                    "comparison_atol": SYSTEM_ATOL,
+                                }})
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     run_simulator = simulator
     stop = False
@@ -686,16 +886,35 @@ def generate_conditions(
                 if run_simulator is None:
                     result, diagnostics, raw_path = _run_bounded_simulation(
                         condition, step_config, output, condition["event_id"], step,
-                        cap_seconds - (time.perf_counter() - start))
+                        cap_seconds - (time.perf_counter() - start), reference)
                 else:
+                    # Injection is reserved for deterministic tests.  The
+                    # production path obtains these values from the real
+                    # ANDES runtime in _simulation_worker.
+                    diagnostics["system_attestation"] = {
+                        "source": "injected_simulator",
+                        "andes_version": reference["andes_version"],
+                        "case_config": reference["case"],
+                        "case_sha256": reference["case_sha256"],
+                        "omega_s": float(reference["omega_s"]),
+                        "config_sha256": _config_sha256(step_config),
+                        "config_file_sha256": _sha256(CONFIG_PATH),
+                        "reference_fingerprint_sha256": reference["fingerprint_sha256"],
+                    }
                     result = run_simulator(condition, step_config, diagnostics=diagnostics)
-                    raw_path = _persist_raw(output, condition["event_id"], step, result)
+                    raw_path = _persist_raw(output, condition["event_id"], step, result,
+                                            diagnostics["system_attestation"])
                 if time.perf_counter() - start >= cap_seconds:
                     stop = True
                     stop_reason = stop_reason or "budget_exhausted"
                 results[key] = result
                 try:
                     _validate_raw(result, step_config)
+                    _assert_result_system_compatible(result, reference)
+                    attestation = diagnostics.get("system_attestation")
+                    if not isinstance(attestation, Mapping):
+                        raise TypeError("missing per-run physical-system attestation")
+                    _assert_attestation_compatible(attestation, step_config, reference)
                     raw_validation = {"pass": True}
                     valid[key] = True
                 except Exception as error:
@@ -705,7 +924,9 @@ def generate_conditions(
                 per_condition["steps"][key] = {
                     "status": "completed" if valid[key] else "raw_validation_failed",
                     "raw_file": raw_path, "metadata": dict(metadata),
-                    "diagnostics": diagnostics, "raw_validation": raw_validation,
+                    "diagnostics": diagnostics,
+                    "system_attestation": diagnostics.get("system_attestation"),
+                    "raw_validation": raw_validation,
                 }
             except Exception as error:
                 error_diagnostics = getattr(error, "diagnostics", diagnostics)
@@ -791,6 +1012,12 @@ def load_new_events(
     manifest = json.loads((output / "generation.json").read_text(encoding="utf-8"))
     if manifest.get("split") != split:
         raise ValueError(f"artifact split {manifest.get('split')!r} does not match {split!r}")
+    reference = _load_reference_fingerprint()
+    _assert_config_compatible(_safe_config(), reference)
+    recorded_fingerprint = manifest.get("system_fingerprint")
+    legacy_without_run_attestation = recorded_fingerprint is None
+    if recorded_fingerprint is not None and recorded_fingerprint.get("sha256") != reference["fingerprint_sha256"]:
+        raise ValueError("artifact historical physical-system fingerprint differs from current TRAIN metadata")
     if split == "val":
         if freeze_path is None:
             raise ValueError("VAL loading requires the frozen-model manifest")
@@ -808,6 +1035,29 @@ def load_new_events(
             excluded.append({"id": condition["event_id"], "root": "closure_discovery",
                              "new_split": split, "reason": pair.get("reason", "unqualified_pair"),
                              "steps": {key: value.get("status") for key, value in attempt.get("steps", {}).items()}})
+            continue
+        system_attestation_complete = True
+        try:
+            for step_key in ("0.005", "0.0025"):
+                step_record = attempt["steps"][step_key]
+                step_result = _load_result(output, attempt, step_key)
+                _assert_result_system_compatible(step_result, reference)
+                attestation = step_record.get("system_attestation")
+                if attestation is None:
+                    # Preserve already-generated stage-A data if its raw
+                    # physical fingerprint matches; the compatibility review
+                    # separately records that its run-time case/version
+                    # attestation was not persisted.
+                    if not legacy_without_run_attestation:
+                        raise ValueError("schema-2 attempt lacks run-time system attestation")
+                    system_attestation_complete = False
+                else:
+                    _assert_attestation_compatible(attestation, _safe_config() | {
+                        "integration_step_s": float(step_key)}, reference)
+        except Exception as error:
+            excluded.append({"id": condition["event_id"], "root": "closure_discovery",
+                             "new_split": split, "reason": "system_compatibility_failure",
+                             "error": f"{type(error).__name__}: {error}"})
             continue
         result = _load_result(output, attempt, "0.005")
         arrays, metadata, equilibrium, inertia, _mapping, _names = result
@@ -857,6 +1107,8 @@ def load_new_events(
             "classification_meta": {"equilibrium_delta": eq_delta.copy(),
                                      "omega_s": OMEGA_S,
                                      "inertia": np.asarray(inertia, dtype=np.float64).copy(),
-                                     "event_time_s": event_time},
+                                     "event_time_s": event_time,
+                                     "system_fingerprint_sha256": reference["fingerprint_sha256"],
+                                     "system_attestation_complete": system_attestation_complete},
         })
     return events, excluded

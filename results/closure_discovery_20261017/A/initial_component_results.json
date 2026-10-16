@@ -1,0 +1,350 @@
+{
+  "implementation_pass": true,
+  "cases": [
+    {
+      "case": "node",
+      "noise": 0.0,
+      "recovered_term": {
+        "channel": "node",
+        "expression": {
+          "op": "mul",
+          "args": [
+            {
+              "op": "pow2",
+              "arg": {
+                "op": "var",
+                "name": "p"
+              }
+            },
+            {
+              "op": "var",
+              "name": "q"
+            },
+            {
+              "op": "var",
+              "name": "q"
+            }
+          ]
+        }
+      },
+      "coefficient": 0.19999999999999998,
+      "same_canonical_term": false,
+      "field_mse": 1.322343212187502e-35,
+      "autonomous_mse": 2.1666716238815627e-35,
+      "information": "complete hidden coordinates and field available in this controlled fixture"
+    },
+    {
+      "case": "node",
+      "noise": 0.01,
+      "recovered_term": {
+        "channel": "node",
+        "expression": {
+          "op": "mul",
+          "args": [
+            {
+              "op": "pow2",
+              "arg": {
+                "op": "var",
+                "name": "p"
+              }
+            },
+            {
+              "op": "pow2",
+              "arg": {
+                "op": "var",
+                "name": "q"
+              }
+            }
+          ]
+        }
+      },
+      "coefficient": 0.20000058133991552,
+      "same_canonical_term": true,
+      "field_mse": 3.2899371060941716e-16,
+      "autonomous_mse": 1.497243399513669e-18,
+      "information": "complete hidden coordinates and field available in this controlled fixture"
+    },
+    {
+      "case": "edge",
+      "noise": 0.0,
+      "recovered_term": {
+        "channel": "edge",
+        "expression": {
+          "op": "mul",
+          "args": [
+            {
+              "op": "var",
+              "name": "qi"
+            },
+            {
+              "op": "var",
+              "name": "s"
+            }
+          ]
+        }
+      },
+      "coefficient": 0.3,
+      "same_canonical_term": false,
+      "field_mse": 0.0,
+      "autonomous_mse": 0.0,
+      "information": "complete hidden coordinates and field available in this controlled fixture"
+    },
+    {
+      "case": "edge",
+      "noise": 0.01,
+      "recovered_term": {
+        "channel": "edge",
+        "expression": {
+          "op": "mul",
+          "args": [
+            {
+              "op": "add",
+              "args": [
+                {
+                  "op": "mul",
+                  "args": [
+                    {
+                      "op": "var",
+                      "name": "qj"
+                    },
+                    {
+                      "op": "const",
+                      "value": -1
+                    }
+                  ]
+                },
+                {
+                  "op": "var",
+                  "name": "qi"
+                },
+                {
+                  "op": "var",
+                  "name": "qi"
+                }
+              ]
+            },
+            {
+              "op": "var",
+              "name": "s"
+            }
+          ]
+        }
+      },
+      "coefficient": 0.10001601180160567,
+      "same_canonical_term": false,
+      "field_mse": 8.082615747373024e-11,
+      "autonomous_mse": 1.0940991176214218e-11,
+      "information": "complete hidden coordinates and field available in this controlled fixture"
+    },
+    {
+      "case": "partial_saturation",
+      "noise": 0.0,
+      "proposal": {
+        "channel": "port",
+        "expression": {
+          "op": "tanh",
+          "arg": {
+            "op": "var",
+            "name": "q"
+          },
+          "scale": 2.0
+        }
+      },
+      "initial_mse": 6.575918462441638e-07,
+      "final_mse": 1.1049084019654844e-08,
+      "all_candidates": [
+        {
+          "proposal": {
+            "channel": "port",
+            "expression": {
+              "op": "tanh",
+              "arg": {
+                "op": "var",
+                "name": "q"
+              },
+              "scale": 0.5
+            }
+          },
+          "initial_mse": 6.575918462441638e-07,
+          "final_mse": 2.3336458075623494e-08
+        },
+        {
+          "proposal": {
+            "channel": "port",
+            "expression": {
+              "op": "tanh",
+              "arg": {
+                "op": "var",
+                "name": "q"
+              },
+              "scale": 1.0
+            }
+          },
+          "initial_mse": 6.575918462441638e-07,
+          "final_mse": 1.7045858650227648e-08
+        },
+        {
+          "proposal": {
+            "channel": "port",
+            "expression": {
+              "op": "tanh",
+              "arg": {
+                "op": "var",
+                "name": "q"
+              },
+              "scale": 2.0
+            }
+          },
+          "initial_mse": 6.575918462441638e-07,
+          "final_mse": 1.1049084019654844e-08
+        },
+        {
+          "proposal": {
+            "channel": "port",
+            "expression": {
+              "op": "var",
+              "name": "p"
+            }
+          },
+          "initial_mse": 6.575918462441638e-07,
+          "final_mse": 3.361197749961809e-08
+        },
+        {
+          "proposal": {
+            "channel": "port",
+            "expression": {
+              "op": "var",
+              "name": "q"
+            }
+          },
+          "initial_mse": 6.575918462441638e-07,
+          "final_mse": 1.7035422119953536e-08
+        },
+        {
+          "proposal": {
+            "channel": "port",
+            "expression": {
+              "op": "var",
+              "name": "w"
+            }
+          },
+          "initial_mse": 6.575918462441638e-07,
+          "final_mse": 2.9360398965172498e-08
+        }
+      ],
+      "same_canonical_term": true,
+      "updates_per_candidate": 128,
+      "information": "100ms physical history; q not a fit target",
+      "scope": "finite blind candidate comparison; small hidden amplitudes can leave saturation scales indistinguishable"
+    },
+    {
+      "case": "partial_saturation",
+      "noise": 0.01,
+      "proposal": {
+        "channel": "port",
+        "expression": {
+          "op": "tanh",
+          "arg": {
+            "op": "var",
+            "name": "q"
+          },
+          "scale": 2.0
+        }
+      },
+      "initial_mse": 9.061738080918329e-06,
+      "final_mse": 8.403953464004383e-06,
+      "all_candidates": [
+        {
+          "proposal": {
+            "channel": "port",
+            "expression": {
+              "op": "tanh",
+              "arg": {
+                "op": "var",
+                "name": "q"
+              },
+              "scale": 0.5
+            }
+          },
+          "initial_mse": 9.061738080918329e-06,
+          "final_mse": 8.414996841901766e-06
+        },
+        {
+          "proposal": {
+            "channel": "port",
+            "expression": {
+              "op": "tanh",
+              "arg": {
+                "op": "var",
+                "name": "q"
+              },
+              "scale": 1.0
+            }
+          },
+          "initial_mse": 9.061738080918329e-06,
+          "final_mse": 8.409438537855613e-06
+        },
+        {
+          "proposal": {
+            "channel": "port",
+            "expression": {
+              "op": "tanh",
+              "arg": {
+                "op": "var",
+                "name": "q"
+              },
+              "scale": 2.0
+            }
+          },
+          "initial_mse": 9.061738080918329e-06,
+          "final_mse": 8.403953464004383e-06
+        },
+        {
+          "proposal": {
+            "channel": "port",
+            "expression": {
+              "op": "var",
+              "name": "p"
+            }
+          },
+          "initial_mse": 9.061738080918329e-06,
+          "final_mse": 8.423776269174124e-06
+        },
+        {
+          "proposal": {
+            "channel": "port",
+            "expression": {
+              "op": "var",
+              "name": "q"
+            }
+          },
+          "initial_mse": 9.061738080918329e-06,
+          "final_mse": 8.409432603628633e-06
+        },
+        {
+          "proposal": {
+            "channel": "port",
+            "expression": {
+              "op": "var",
+              "name": "w"
+            }
+          },
+          "initial_mse": 9.061738080918329e-06,
+          "final_mse": 8.41220191365041e-06
+        }
+      ],
+      "same_canonical_term": true,
+      "updates_per_candidate": 128,
+      "information": "100ms physical history; q not a fit target",
+      "scope": "finite blind candidate comparison; small hidden amplitudes can leave saturation scales indistinguishable"
+    },
+    {
+      "case": "outside_grammar",
+      "best_field_mse": 0.0008898110639249379,
+      "exact_recovery_claim": false,
+      "scope": "approximation diagnostic; outside grammar is known to evaluator only"
+    }
+  ],
+  "scope": "observed-state symbolic identification plus partial-observer component test; full search recovery is evaluated separately",
+  "test_read": false
+}

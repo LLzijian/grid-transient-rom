@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-17",
+  "reviewer": "independent_agent_neurips_structure",
+  "scope": {
+    "type": "bounded read-only pre-B gate challenge",
+    "project_code_edited": false,
+    "training_or_simulation_run": false,
+    "tests_run": false,
+    "data_payloads_read": false,
+    "test_read": false,
+    "new_val_read": false,
+    "written_artifact": "A/pre_search_gate_challenge.json",
+    "root_test_claim": "58 targeted tests passed; reviewer read integration_checks.json recording pytest_exit=0 but did not independently rerun tests"
+  },
+  "decision_owner": "root",
+  "recommendation": "No unresolved scientific or implementation issue found that requires stopping exploratory B. Correct the partial-fixture history duration in the A interpretation before closing the gate. A is an implementation/cost gate, not evidence that partial-observation structure recovery or generalization has succeeded.",
+  "blocking_issue_count": 0,
+  "verified_repairs": [
+    {
+      "issue": "Actual D execution cost",
+      "status": "verified",
+      "evidence": [
+        "experiments/discover_closure.py:606-637",
+        "experiments/closure_discovery_confirmation.py:205-224",
+        "A/confirmation_cost_1/timing.json",
+        "A/depth_lock.json"
+      ],
+      "observation": "Two authorized new-train fixtures were priced through batch-one full 8 s three-grid evaluation, forced finer grid, and metrics. The maximum 21.91663160000462 s/event is multiplied by 14 models x 24 events; the complete old-train pair prediction disagreement is separately priced at 11.637053599995852 s. The estimate is then included in the 25% margin calculation. No new-val outcomes were used.",
+      "scope": "A cost estimate with runtime budget enforcement, not a guarantee that all future events cost identically."
+    },
+    {
+      "issue": "Effective stage allocation",
+      "status": "verified",
+      "evidence": [
+        "experiments/discover_closure.py:355-369",
+        "experiments/discover_closure.py:648-649",
+        "A/depth_lock.json",
+        "ledger/allocation.json",
+        "reports/closure_discovery_20261017_resource_amendment.md"
+      ],
+      "observation": "Before B, the frozen choice is recomputed against ProcessLedger effective caps and compared with the saved choice; config and ledger allocation must also agree. The current lock chooses one round under A12/B16/C24/D12/E4/reserve4 hours, preserving the 72-hour total."
+    },
+    {
+      "issue": "Signed p-squared and q-squared candidates",
+      "status": "verified",
+      "evidence": [
+        "experiments/closure_discovery_support.py:508-518",
+        "A/independent_challenge_response.json",
+        "reports/closure_discovery_20261017_resource_amendment.md"
+      ],
+      "observation": "The explicit removal of pure p-squared/q-squared candidates is gone. Candidate filtering now rejects centered zero terms and duplicate full mechanism signatures. Extension of a positive backbone's coefficient domain is kept available and is not described as discovering a new functional form."
+    }
+  ],
+  "final_cost_gate": {
+    "units": "process seconds, including 25 percent margin",
+    "search_rounds": 1,
+    "estimates": {
+      "B": 37392.83066578873,
+      "C": 79767.49735347574,
+      "D": 36772.76231999626
+    },
+    "caps": {
+      "A": 43200,
+      "B": 57600,
+      "C": 86400,
+      "D": 43200,
+      "E": 14400,
+      "reserve": 14400
+    },
+    "total_cap": 259200,
+    "complete_comparisons_preserved": true
+  },
+  "interpretation_corrections": [
+    {
+      "priority": "P2",
+      "issue": "The controlled partial-observation history totals one second, not 100 ms",
+      "locations": [
+        "experiments/closure_discovery_benchmarks.py:18-20",
+        "experiments/closure_discovery_benchmarks.py:80-97",
+        "experiments/closure_discovery_benchmarks.py:240-245",
+        "A/controlled_observation_noise_v2_retry1/results.json"
+      ],
+      "evidence": "PARTIAL_HISTORY_STEPS=10 and PARTIAL_DT_SECONDS=0.1 give 11 observed frames spanning 1.0 s; PARTIAL_FUTURE_STEPS=20 gives a 2.0 s autonomous future. The text '10-step 100-ms physical history' describes step size but can be mistaken for total duration.",
+      "required_correction": "Record these results as a toy joint-fitting implementation check using 1 s of history. Do not report this fixture as validation of 100 ms partial-observation structure recovery. Preserve the existing result and its timing metadata.",
+      "effect_on_B": "Does not require stopping authorized exploratory B because production read_train verifies 0.01 s intervals and histories_for supplies 11 successive frames spanning 0.1 s. Production fit uses histories_for. The root's proposed A interpretation already withholds partial structure recovery and generalization claims.",
+      "production_evidence": [
+        "experiments/train_local_memory_0098.py:79-80",
+        "experiments/train_local_memory_0098.py:170-171",
+        "experiments/discover_closure.py:213"
+      ]
+    }
+  ],
+  "scientific_scope": {
+    "observed_coordinate_cases": "Node and edge mechanisms are recovered under full observed 40-D states and clean total-RHS labels, at zero and 1% input observation noise. Their selected formulas are equal after algebraic expansion and edge symmetrization, even though the legacy same_canonical_term string comparison is false.",
+    "node_identity": "(p*q)^2 = p^2*q^2; recovered coefficient 0.2 matches the truth.",
+    "edge_identity": "Symmetrizing qi*s gives 0.5*(qi-qj)*s; recovered coefficient 0.3 therefore equals truth coefficient 0.15 multiplying (qi-qj)*s.",
+    "partial_case": "Six blind candidates received 128 joint updates each. The selected term was w rather than the planted tanh(2q); train MSE improved from 0.05441569 to 0.02981953 without noise and from 0.05464185 to 0.03002024 with 1% noise. This establishes execution and a train-fitting gain, not recovery of the planted latent mechanism.",
+    "optimization": "The partial fixture does not establish adequate optimization of the true mechanism. Failure to select it does not falsify the model family.",
+    "permitted_next_claim": "B may study whether the registered constrained search produces useful effective closure candidates; C/D must provide the registered matched adaptation, held-out and frozen confirmation evidence before stronger claims.",
+    "prohibited_inference": "No claim that A proves partial-observation physical structure discovery, latent uniqueness, causal mechanism identification, or generalization.",
+    "recovery_and_confirmation": "Preserve adverse candidates and failures, retain three complete search seeds and the complete 1024-update final comparisons, keep newly selected train and prelocked new val separate, and treat numerical or incomplete-budget outcomes as unresolved.",
+    "source_of_latest_cost": "Use the current A/depth_lock.json and resource amendment; historical A/result.json carries a superseded depth-3 estimate and remains historical evidence."
+  }
+}

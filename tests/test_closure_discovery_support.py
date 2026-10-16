@@ -64,6 +64,19 @@ def test_depth_cost_rejects_shared_scalar_eval_that_could_double_count():
         estimate_stage_costs(1, {"max_measured_step_s": 0.1, "fom_cost_s": 0, "known_eval_cost_s": 0})
 
 
+def test_explicit_allocation_preserves_parent_and_existing_spend(tmp_path):
+    ledger=ProcessLedger(tmp_path/'ledger');ledger.record_external('A','previous',10.)
+    caps={**PHASE_CAPS_SECONDS,'A':28800.,'B':50400.,'C':108000.}
+    path=tmp_path/'ledger/allocation.json'
+    path.write_text(json.dumps({'caps_seconds':caps,'parent_cap_seconds':259200.}))
+    resumed=ProcessLedger(tmp_path/'ledger')
+    assert resumed.spent('A')==10.
+    assert resumed.remaining('A')==28790.
+    caps['C']+=1
+    path.write_text(json.dumps({'caps_seconds':caps,'parent_cap_seconds':259200.}))
+    with pytest.raises(ValueError,match='parent cap'):ProcessLedger(tmp_path/'ledger')
+
+
 def test_process_ledger_persists_failed_nested_and_external_attempts_once(tmp_path):
     ledger = ProcessLedger(tmp_path / "ledger")
     with ledger.run("B", "outer") as outer_id:
@@ -210,3 +223,4 @@ def test_fault_manifest_excludes_existing_pairs_and_fails_when_not_enough_allowe
     assert all((row["duration_s"], row["xf"]) != (0.125, 0.01) for row in manifest["val_conditions"])
     with pytest.raises(ValueError):
         build_new_fault_manifest(["only-one"], [], seed=0)
+

@@ -1,35 +1,17 @@
-# Current closure-discovery research state
+# 当前研究状态
 
-Mission **RUNNING — stage A implementation** (2026-10-17). User approved implementation of the72-process-hour plan. Active protocol: `reports/closure_discovery_20261017_protocol.md`; config: `configs/closure_discovery_20261017.json`. No scientific process launched at this snapshot; no live scientific job ID. TASK4 remains paused; frozen test remains closed.
+任务状态：**RUNNING，阶段A完成，等待阶段B启动**（2026-10-17）。执行用户批准的72进程小时物理闭合方程发现计划；协议为[执行协议](../reports/closure_discovery_20261017_protocol.md)，配置为 `configs/closure_discovery_20261017.json`。TASK4保持暂停，原冻结test关闭。
 
-New cap259200process-seconds, stage A43200/B86400/C57600/D43200/E14400/reserve14400. Old59643.306023/60000seconds are separately retained, not reset or transferred. Actual new spend begins with receipted scientific checks/runs.
+已接通表达式生成、物理编译、联合拟合、受控问题、新FOM数据与冻结确认、NumPy独立导出。59项针对性检查通过。原S-O向量场重建最大差2.22e-16；两条新增train条件通过双步长核验，物理系统指纹与历史train一致。受控问题证据和范围见[阶段A结论](../reports/closure_discovery_20261017_stage_A.md)；尚无正式搜索、重训或新val成绩。
 
-Source S-O: `private_data/task2_prediction_optimization_0102/formal_S_O/step00650/structured_numeric_export.json`, SHA256 c9fe3f86cf093d1f6c4600c71ecd333200840b9be4c2b156c018e1ff09a1e238. It remains a structured research candidate; F-O remains a sparse development baseline. No accepted deployment model.
+实际进程：当前没有运行中的科学计算。阶段A已关闭为实现与成本检查通过，部分观测结构恢复保持未决。下一执行动作是核实本次GitHub归档后运行 `experiments/discover_closure.py B`，进行固定一轮、两方法各三个种子的完整搜索。B/C/D/E尚未运行。
 
-Next: implement expression compiler and bounded search, verify exact source reconstruction, run controlled cases and measure complete-work costs. Freeze depth3/2/1 before B; no reduced seeds/adaptation after seeing results. Source data labels, actual times and100ms boundaries stay fixed (train346eligible/35unstable; val107/12).
+新授权总上限259200进程秒；前瞻分配为A43200/B57600/C86400/D43200/E14400/reserve14400，详见[资源变更](../reports/closure_discovery_20261017_resource_amendment.md)。截至阶段A结算1986.0352545秒，总授权余257213.9647455秒；B余57600秒。唯一费用账为 `private_data/closure_discovery_20261017/ledger/receipts.jsonl`。旧TASK2的59643.306023/60000秒独立保留，不转移、不重置。
 
-Protocol/config remotely verified before scientific execution on `codex/closure-discovery-20261017`, commit868ae3f10254236d06e5728e08d33896fcd83b19. Stage results/negative outcomes/code must be archived on this branch. Unrelated local edits preserved. Recovery cwd `E:/03-nn_Transfer_Func/kiki`, Python `E:/03-nn_Transfer_Func/kron-reduce/.venv/Scripts/python.exe`.
+固定来源为0102 S-O：`private_data/task2_prediction_optimization_0102/formal_S_O/step00650/structured_numeric_export.json`，SHA256 `c9fe3f86cf093d1f6c4600c71ecd333200840b9be4c2b156c018e1ff09a1e238`。S-O是结构化研究候选，F-O是普通稀疏开发基线；均未成为最终部署模型。train为346个合格事件、其中35个失稳样本；历史val为107个合格事件、其中12个失稳样本。保留原标签、真实时间和100ms输入边界。
 
-Historical recovery evidence follows;0102–0106 reports retain all source classifications and adverse results.
+恢复目录 `E:/03-nn_Transfer_Func/kiki`；Python为 `E:/03-nn_Transfer_Func/kron-reduce/.venv/Scripts/python.exe`。入口命令按阶段为 `experiments/discover_closure.py B`（之后C/D/E）。B必须先通过最终成本锁定；断点包含模型、优化器、随机状态、采样游标和实际更新数。部署与能量/稳定性声明尚未形成。
 
-## Historical TASK2 state
+GitHub归档分支为 `codex/closure-discovery-20261017`，最近已核实提交 `c994c77ed6ebc3fd1cef89e4fc0c415bf402d3da`。全部实现与阶段A结果正在本次归档；不要据此旧提交重开已完成核验。关键设计、代码及正负结果均须推送并核实；原轨迹、缓存和重复检查点留在本地。无关工作区修改保持原样。
 
-Historical TASK2 pool **BLOCKED — verified parent resource insufficiency** (2026-09-27). This historical status is retained below; a separately authorized research stage is active. No live job ID. Active roadmap: `docs/TASK2_after_loop_101.md`; L1 accurate single-initialization autonomous prediction first, L2 structurally supported stability region next, L3 modal correspondence optional. Rules: `AGENTS.md`, `docs/engineering_loop.md`. TEST has not been opened.
-
-## Decisive evidence and model scope
-
-Loop0102 four-arm matched optimization study is closed in `reports/0102_prediction_optimization_capability.md`: full346-TRAIN J at650 S-O13.184178, S-M13.875706, F-O9.380140, F-M10.652581. Development5/8s pooled S-O .425694/.347969 versus F-O .343771/.279167. The M package did not improve either matched O arm, and global optimization adequacy remains unresolved. **S-O** (`private_data/task2_prediction_optimization_0102/formal_S_O/step00650`) is the current structured *research candidate*; **F-O** is an ordinary sparse L1 *development baseline*, not a structured stability model. Neither is final/deployment. M endpoints remain adverse artifacts; S23 power QA is not an L2 certificate.
-
-Loop0103 (`reports/0103_cross_dissipation_capability.md`) matched S-C/S-R at600 updates. Complete TRAIN J 13.821/13.863 and development5/8s pooled .716/.841 versus .716/.819 showed no usable benefit from activating one π–q dissipative group. S-C detailed TRAIN5/8s had one numerically unresolved event, so those official pooled values stay null. Loop0104 (`reports/0104_lr_adaptation_capability.md`) restarted both step300 states with 0.2× block rates for210 joint updates; complete TRAIN J still rose from each start to13.341/13.127. Development5/8s .702/.808 and .699/.808 showed only tiny S-R differences; no endpoint was promoted.
-
-Loop0105 (`reports/0105_q0_scope_conclusion.md`) fixed the0102 S-O vector field and used future TRAIN labels to optimize q0 for12 genuine TRAIN events. Numerically qualified 5s risk fell .225969→.092699; all12 events, including3 unstable prefixes, improved. This is an **offline optimistic diagnostic**, not causal inference or deployment performance. Loop0106 (`reports/0106_oracle_distillation_pilot_capability.md`) completed60 all-parameter joint updates with a brief12-event GRU q0 auxiliary followed by original autonomous training. Full346-TRAIN J worsened13.184→13.905; numerically qualified development5/8s .709/.811 and11/12 unstable detections with2 false loss-of-synchronism events. This unpaired, short pilot neither validates nor falsifies the initialization strategy. No 0103–0106 endpoint is a final model.
-
-Historical0101 S23/F23 and all prior accepted/failed classes remain in `reports/0101_shared_closure_FS_capability.md` and their source reports. 0098 **L10-S** remains a nondeployment short/severe research candidate with **G3-S** its matched development control; **HL11-S** has no added training. Old S/M3/0058/C3000/G3000 references remain unchanged. Modal outcomes are report-only; no ROM attraction-region certificate exists.
-
-## Resource boundary and recovery
-
-Parent cap **60,000 process-seconds**; charged through closed0106 **59,643.306023**, verified remaining **356.693977**. Active recovery ledger: `private_data/task2_oracle_distill_0106/execution_costs.json`; prior closed ledgers in their corresponding0102–0105 directories. Historical0101 and outside-parent0098 balances are separate. Unused stage categories cannot be borrowed and a new number cannot reset parent spend.
-
-The remaining356.69 seconds cannot support an interpretable autonomous joint stage: one measured frozen TRAIN/development endpoint evaluation costs about251 seconds and one full TRAIN monitor about88 seconds, leaving under18 seconds before a single update, QA, checkpoint save or runtime margin. The independently audited minimal two-arm60-update comparison already costs about1522 seconds **before** QA. Further proxy diagnostics would violate the return-to-autonomous rule. **Blocker:** insufficient verified parent authorization for any defensible next stage; this is not a scientific family verdict. Next executable action if the user extends the parent cap: register a finite same-source GRU-initialization strategy/control pair with complete TRAIN objective, frozen development long/severe panels, numerical isolation and realistic no-update timing; alternatively reassess one specific structured closure/heterogeneity hypothesis under the active roadmap. Do not launch a process until that new resource boundary exists.
-
-Recovery cwd `E:/03-nn_Transfer_Func/kiki`; runtime `E:/03-nn_Transfer_Func/kron-reduce/.venv/Scripts/python.exe`. TRAIN369raw/346eligible including35 severe; development117raw/107eligible including12 severe. Original23/10 latency exclusions, labels, genuine times, units and causal100ms inputs are fixed. No synthetic tails, additional exclusions, TEST access or history relabeling.
+历史结论与余额见[前状态快照](../reports/history/current_state_before_closure_discovery_20261017.md)及0102–0106结论。历史accepted/failed分类不变；旧父预算耗尽状态不适用于本轮新增授权。

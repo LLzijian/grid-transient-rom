@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import copy
 import json
+import functools
 from pathlib import Path
 from typing import Any, Mapping
 
@@ -80,6 +81,8 @@ def canonicalize_expression(expression: Mapping[str, Any]) -> dict[str, Any]:
                     rest.append(child)
             if not rest:
                 return {"op": "const", "value": sign}
+            from closure_expression_identity import compact_factors
+            rest=compact_factors(rest)
             if sign < 0:
                 rest.append({"op": "const", "value": -1})
             args = sorted(rest, key=_json_key)
@@ -158,21 +161,20 @@ def _canonical_terms(terms: Any) -> list[dict[str, Any]]:
         raise ValueError(f"at most {_MAX_TERMS} symbolic terms are allowed")
     out = []
     keys = set()
-    tanh_total = 0
     for term in terms:
         if not isinstance(term, Mapping) or set(term) != {"channel", "expression"}:
             raise ValueError("each term requires channel and expression")
         channel = term["channel"]
         ast = validate_expression(term["expression"], channel)
-        tanh_total += _expression_stats(ast, _VARIABLES[channel])[2]
         item = {"channel": channel, "expression": ast}
         key = term_key(item)
         if key in keys:
             raise ValueError("duplicate symbolic terms are not allowed")
         keys.add(key)
         out.append(item)
-    if tanh_total > _MAX_TANH:
-        raise ValueError("at most one tanh is allowed across the model")
+    from closure_expression_identity import distinct_mechanisms
+    if not distinct_mechanisms(out):
+        raise ValueError('centered zero or duplicate physical mechanisms are not allowed')
     return out
 
 
@@ -297,6 +299,16 @@ def _ast_at_zero(ast: Mapping[str, Any]) -> float:
     return float(np.tanh(ast["scale"] * value))
 
 
+@functools.lru_cache(maxsize=1024)
+def _origin_expression(serialized_ast: str, channel: str):
+    """Parameter-independent origin of the shared, symmetrized feature function."""
+    ast=json.loads(serialized_ast)
+    value,gradient=_numpy_eval(ast,np.zeros(len(_VARIABLES[channel])),_VARIABLES[channel])
+    if channel=='edge':
+        gradient=.5*(gradient+np.asarray([gradient[1],gradient[0],gradient[3],gradient[2],-gradient[4],gradient[5]]))
+    return float(value),tuple(float(v) for v in gradient)
+
+
 def _torch_feature_eval(ast: Mapping[str, Any], features: torch.Tensor,
                         variables: tuple[str, ...], channel: str) -> tuple[torch.Tensor, torch.Tensor]:
     """Evaluate an expression with physical-origin centering."""
@@ -310,18 +322,8 @@ def _torch_feature_eval(ast: Mapping[str, Any], features: torch.Tensor,
                                     -reverse_grad[..., 4], reverse_grad[..., 5]), -1)
         value = .5 * (value + reverse_value)
         grad = .5 * (grad + reverse_grad)
-    zero_features = torch.zeros_like(features)
-    zero_value, zero_grad = _torch_eval(ast, zero_features, variables)
-    if channel == "edge":
-        reverse_zero = torch.stack((zero_features[..., 1], zero_features[..., 0],
-                                    zero_features[..., 3], zero_features[..., 2],
-                                    -zero_features[..., 4], zero_features[..., 5]), -1)
-        reverse_zero_value, reverse_zero_grad = _torch_eval(ast, reverse_zero, variables)
-        reverse_zero_grad = torch.stack((reverse_zero_grad[..., 1], reverse_zero_grad[..., 0],
-                                         reverse_zero_grad[..., 3], reverse_zero_grad[..., 2],
-                                         -reverse_zero_grad[..., 4], reverse_zero_grad[..., 5]), -1)
-        zero_value = .5 * (zero_value + reverse_zero_value)
-        zero_grad = .5 * (zero_grad + reverse_zero_grad)
+    zero_value,origin_gradient=_origin_expression(_json_key(ast),channel)
+    zero_grad=features.new_tensor(origin_gradient)
     if channel == "port":
         return value - zero_value, grad
     return value - zero_value - (zero_grad * features).sum(-1), grad - zero_grad
@@ -340,18 +342,8 @@ def _numpy_feature_eval(ast: Mapping[str, Any], features: np.ndarray,
                                  -reverse_grad[..., 4], reverse_grad[..., 5]), axis=-1)
         value = .5 * (value + reverse_value)
         grad = .5 * (grad + reverse_grad)
-    zero_features = np.zeros_like(features)
-    zero_value, zero_grad = _numpy_eval(ast, zero_features, variables)
-    if channel == "edge":
-        reverse_zero = np.stack((zero_features[..., 1], zero_features[..., 0],
-                                 zero_features[..., 3], zero_features[..., 2],
-                                 -zero_features[..., 4], zero_features[..., 5]), axis=-1)
-        reverse_zero_value, reverse_zero_grad = _numpy_eval(ast, reverse_zero, variables)
-        reverse_zero_grad = np.stack((reverse_zero_grad[..., 1], reverse_zero_grad[..., 0],
-                                      reverse_zero_grad[..., 3], reverse_zero_grad[..., 2],
-                                      -reverse_zero_grad[..., 4], reverse_zero_grad[..., 5]), axis=-1)
-        zero_value = .5 * (zero_value + reverse_zero_value)
-        zero_grad = .5 * (zero_grad + reverse_zero_grad)
+    zero_value,origin_gradient=_origin_expression(_json_key(ast),channel)
+    zero_grad=np.asarray(origin_gradient,dtype=np.float64)
     if channel == "port":
         return value - zero_value, grad
     return value - zero_value - (zero_grad * features).sum(-1), grad - zero_grad
@@ -420,6 +412,11 @@ def _torch_term_value_gradient(model: "SymbolicClosureROM", term: Mapping[str, A
         gq = grad[..., :, 1]
     elif channel == "edge":
         ds, dc, positive, negative = features[3]
+        # Restore the physical-angle tangent; feature centering would erase c.
+        origin_cos_slope = _origin_expression(_json_key(term["expression"]), "edge")[1][5]
+        eta=d @ model.base_D.T
+        if origin_cos_slope:
+            value=value+origin_cos_slope*(f[...,5]+torch.sin(model.phi)*eta)
         norm_k = model.base_coupling / model.base_coupling.mean().clamp_min(1e-15)
         weight = norm_k
         contribution = (weight * value).sum(-1)
@@ -430,6 +427,8 @@ def _torch_term_value_gradient(model: "SymbolicClosureROM", term: Mapping[str, A
               + torch.einsum("...e,en->...n", weighted_grad[..., 3], negative))
         gd = (torch.einsum("...e,...en->...n", weighted_grad[..., 4], ds)
               + torch.einsum("...e,...en->...n", weighted_grad[..., 5], dc))
+        if origin_cos_slope:
+            gd=gd+(weight*origin_cos_slope*(-torch.sin(model.phi+eta)+torch.sin(model.phi))) @ model.base_D
     else:
         contribution = value.sum(-1)
         # Port terms are one scalar contribution per machine.  Their energy
@@ -461,6 +460,7 @@ class SymbolicClosureROM(LocalMemoryROM):
                 raise ValueError("coefficients must be a finite value for every term")
             initial.copy_(supplied)
         self.coefficients = nn.Parameter(initial)
+        self.provenance={}
         with torch.no_grad():
             self.template_mask[:3] = 0
             self.template_mask[7] = 0
@@ -515,8 +515,13 @@ class SymbolicClosureROM(LocalMemoryROM):
             model.template_mask[7] = 0
         for parameter in model._template_scalars[:3]:
             parameter.requires_grad_(False)
+        # All four legal direction amplitudes belong to joint adaptation,
+        # including a currently disabled group that may be proposed later.
+        for parameter in model._template_scalars[3:7]:
+            parameter.requires_grad_(True)
         model.port_raw.requires_grad_(False)
         model._graph_cache = None
+        model.provenance=copy.deepcopy(getattr(source,'provenance',{}))
         return model
 
     def with_terms(self, terms: list[dict[str, Any]]) -> "SymbolicClosureROM":
@@ -663,16 +668,40 @@ class SymbolicClosureROM(LocalMemoryROM):
         per_channel = {key: 0 for key in _VARIABLES}
         op_nodes = 0
         active_terms = 0
+        expanded_instances=0;expanded_value_operators=0;expanded_rhs_products=0
+        J,R=self.matrices();A=(J-R).detach().cpu().numpy();B=self.port_matrix().detach().cpu().numpy()
+        from closure_expression_identity import mechanism_signature
         for coefficient, term in zip(self.coefficients.detach(), self.terms):
             per_channel[term["channel"]] += 1
             _, nodes, _, _ = _expression_stats(term["expression"], _VARIABLES[term["channel"]])
             op_nodes += nodes
             active_terms += int(coefficient != 0)
+            channel=term['channel'];size=len(self.base_D) if channel=='edge' else self.n
+            expanded_instances+=size;expanded_value_operators+=nodes*size*(2 if channel=='edge' else 1)
+            if channel=='port':
+                expanded_rhs_products+=int(np.count_nonzero(B));continue
+            signature=mechanism_signature(term)
+            names={v for monomial,_ in signature[1] for v in monomial} if signature else set()
+            D=self.base_D.detach().cpu().numpy()
+            for location in range(size):
+                indices=set()
+                if channel=='node':
+                    if 'p' in names:indices.add(20+location)
+                    if 'q' in names:indices.add(30+location)
+                else:
+                    for feature,sign,offset in [('pi',1,20),('pj',-1,20),('qi',1,30),('qj',-1,30)]:
+                        if feature in names:indices.update(offset+int(i) for i in np.flatnonzero(D[location]*sign>0))
+                    if names & {'s','c'}:indices.update(int(i) for i in np.flatnonzero(D[location]))
+                expanded_rhs_products+=int(np.count_nonzero(A[:,sorted(indices)]))
         inherited["symbolic_closure"] = {
             "expressions": len(self.terms), "active_expressions": active_terms,
             "expressions_by_channel": per_channel, "operator_nodes": op_nodes,
             "max_expressions": _MAX_TERMS, "max_depth": _MAX_DEPTH,
-            "expanded_symbolic_rhs_contributions": "feature derivatives are evaluated analytically; inherited count excludes symbolic terms",
+            "independent_closure_coefficients":len(self.coefficients),
+            "expanded_term_instances":expanded_instances,
+            "expanded_value_tree_operators":expanded_value_operators,
+            "expanded_gradient_or_port_rhs_products":expanded_rhs_products,
+            "expanded_cost_definition":"spatial expression instances, value-tree operators (edge symmetry evaluated twice), and nonzero constant-direction products before summation; not a FLOP or wall-time claim",
         }
         return inherited
 
@@ -701,6 +730,8 @@ class SymbolicClosureROM(LocalMemoryROM):
         }
         return {
             "format": "symbolic_closure_v1", "model_kind": self.model_kind,
+            "provenance":copy.deepcopy(self.provenance),
+            "trainable_parameters":[name for name,p in self.named_parameters() if p.requires_grad],
             "config": self.config(), "terms": copy.deepcopy(self.terms),
             "coefficients": self.coefficients.detach().cpu().tolist(),
             "state_dict": {k: v.detach().cpu().tolist() for k, v in self.state_dict().items()},
@@ -737,6 +768,11 @@ class SymbolicClosureROM(LocalMemoryROM):
         model = cls.from_config(payload["config"], terms=payload["terms"])
         state = {k: torch.as_tensor(v, dtype=torch.float64) for k, v in payload["state_dict"].items()}
         model.load_state_dict(state, strict=True)
+        model.provenance=copy.deepcopy(payload.get('provenance',{}))
+        if 'trainable_parameters' in payload:
+            trainable=set(payload['trainable_parameters'])
+            if not trainable<=set(dict(model.named_parameters())):raise ValueError('unknown trainable parameter in export')
+            for name,p in model.named_parameters():p.requires_grad_(name in trainable)
         return model
 
 
@@ -807,6 +843,9 @@ def _numpy_symbolic_field(payload: Mapping[str, Any], state: np.ndarray,
             gq += (np.einsum("be,en->bn", wg[..., 2], positive)
                    + np.einsum("be,en->bn", wg[..., 3], negative))
             gd += np.einsum("be,ben->bn", wg[..., 4], ds) + np.einsum("be,ben->bn", wg[..., 5], dc)
+            _, origin_gradient = _numpy_eval(term['expression'],np.zeros(6),_VARIABLES['edge'])
+            if origin_gradient[5]:
+                gd += (coefficient*weight*origin_gradient[5]*(-np.sin(phi+eta)+np.sin(phi))) @ D
 
     e = np.concatenate((gd, gpi, gp, gq), axis=-1)
     if external_input is None:

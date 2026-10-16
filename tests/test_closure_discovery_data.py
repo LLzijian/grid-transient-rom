@@ -34,6 +34,8 @@ def _metadata_roots(tmp_path, monkeypatch):
             "test": [f"{event_prefix}_test"],
         }), encoding="utf-8")
     monkeypatch.setattr(data, "DATASET_ROOTS", tuple(roots))
+    reference = _reference_fingerprint()
+    monkeypatch.setattr(data, "_load_reference_fingerprint", lambda: reference)
     return roots
 
 
@@ -45,6 +47,28 @@ def _condition():
 def _base():
     return SimpleNamespace(pm_star=np.full(10, 0.5, dtype=np.float64),
                            mass=np.ones(10, dtype=np.float64))
+
+
+def _reference_fingerprint():
+    equilibrium = {"delta": np.linspace(0.1, 0.2, 10),
+                   "omega": np.ones(10), "Pm": np.full(10, 0.5),
+                   "Pe": np.full(10, 0.5), "full_state": np.zeros(1),
+                   "algebraic_state": np.zeros(1)}
+    reference = {
+        "source": "fixture", "sources": ["ieee39_postfault", "ieee39_expansion"],
+        "andes_version": "2.0.0", "case": "ieee39/ieee39_full.xlsx",
+        "case_sha256": "a" * 64, "omega_s": 2 * np.pi * 60,
+        "mva_base": 100.0, "postfault_signature": "f" * 64,
+        "raw_units": "delta rad; omega pu; powers on system base",
+        "equilibrium": equilibrium, "inertia": np.arange(1.0, 11.0),
+        "state_mapping": [[i, "x", "GENROU", str(i)] for i in range(40)],
+        "algebraic_names": [],
+        "config_checks": {"andes_version": "2.0.0", "case": "ieee39/ieee39_full.xlsx",
+                           "disable_pss": False, "fault_type": "temporary_bus_three_phase_ground",
+                           "postfault_horizon_s": 15.0, "sample_interval_s": 0.01},
+    }
+    reference["fingerprint_sha256"] = data._reference_fingerprint_sha256(reference)
+    return reference
 
 
 def _result(config, *, label="stable", offset=0.0):
@@ -60,9 +84,10 @@ def _result(config, *, label="stable", offset=0.0):
               "terminal_v": np.ones((len(t), 1))}
     metadata = {"label": label, "event_time_s": "", "clearing_time_s": 1.125,
                 "record_start_delay_s": 0.0001, "trajectory_end_s": float(t[-1]),
-                "valid_length": len(t)}
+                "valid_length": len(t), "postfault_signature": "f" * 64}
     equilibrium = {"delta": eq_delta, "omega": np.ones(10), "Pm": np.full(10, 0.5),
-                   "Pe": np.full(10, 0.5)}
+                   "Pe": np.full(10, 0.5), "full_state": np.zeros(1),
+                   "algebraic_state": np.zeros(1)}
     return arrays, metadata, equilibrium, np.arange(1.0, 11.0), [[i, "x", "GENROU", str(i)] for i in range(40)], []
 
 
@@ -85,6 +110,13 @@ def test_new_train_selection_uses_nearest_scored_old_train_event(tmp_path, monke
     assert picked[0]["selection_score"] == 7.0
 
 
+def test_formal_new_train_selection_balances_duration_before_scores(tmp_path,monkeypatch):
+    _metadata_roots(tmp_path,monkeypatch)
+    pool=[{**_condition(),'duration_s':duration,'xf':.001+.00001*i} for duration in (.125,.225,.35) for i in range(10)]
+    selected=data.select_new_train_conditions(pool,{'pilot_train':7.,'expansion_train':2.},count=24)
+    assert {s:sum(r['stratum']==s for r in selected) for s in ('short','medium','long')}=={'short':8,'medium':8,'long':8}
+
+
 def test_generation_keeps_failed_attempt_and_runs_both_steps(tmp_path, monkeypatch):
     _metadata_roots(tmp_path, monkeypatch)
     calls = []
@@ -104,7 +136,8 @@ def test_generation_keeps_failed_attempt_and_runs_both_steps(tmp_path, monkeypat
     assert calls == [0.005, 0.0025]
     attempt = manifest["attempts"][0]
     assert attempt["steps"]["0.005"]["status"] == "simulation_failed"
-    assert attempt["steps"]["0.005"]["diagnostics"] == {"attempted": True}
+    assert attempt["steps"]["0.005"]["diagnostics"]["attempted"] is True
+    assert attempt["steps"]["0.005"]["diagnostics"]["system_attestation"]["source"] == "injected_simulator"
     assert attempt["steps"]["0.0025"]["status"] == "completed"
     assert attempt["pair_qualification"]["pass"] is False
     events, excluded = data.load_new_events(artifact, "train", base=_base())
@@ -136,6 +169,7 @@ def test_qualified_event_preserves_canonical_units_and_actual_time(tmp_path, mon
     assert np.allclose(event["torque"], 0.3)
     assert event["absolute_t"][0] == pytest.approx(1.1251)
     assert event["classification_meta"]["omega_s"] == pytest.approx(2 * np.pi * 60)
+    assert event["classification_meta"]["system_attestation_complete"] is True
     assert event["new_split"] == "train"
 
 
@@ -156,6 +190,36 @@ def test_events_without_100ms_coverage_are_counted_as_latency_excluded(tmp_path,
     assert len(excluded) == 1
     assert excluded[0]["reason"] == "latency_uncovered"
     assert excluded[0]["trajectory_end_s"] == pytest.approx(0.1)
+
+
+@pytest.mark.parametrize("mismatch", ["equilibrium", "case_hash"])
+def test_system_fingerprint_mismatch_is_retained_as_data_failure(tmp_path, monkeypatch, mismatch):
+    _metadata_roots(tmp_path, monkeypatch)
+
+    def simulator(condition, config, diagnostics=None):
+        result = _result(config)
+        if mismatch == "equilibrium":
+            result[2]["delta"] = result[2]["delta"].copy()
+            result[2]["delta"][0] += 2e-9
+        else:
+            diagnostics["system_attestation"]["case_sha256"] = "b" * 64
+        return result
+
+    artifact = tmp_path / f"fingerprint_{mismatch}"
+    manifest = data.generate_conditions([_condition()], artifact, "train", 60.0,
+                                        simulator=simulator)
+    attempt = manifest["attempts"][0]
+    assert attempt["pair_qualification"]["pass"] is False
+    failed = [row for row in attempt["steps"].values()
+              if row["status"] == "raw_validation_failed"]
+    assert len(failed) == 2
+    expected_text = "equilibrium mismatch" if mismatch == "equilibrium" else "case-file SHA256"
+    assert all(expected_text in row["raw_validation"]["error"] for row in failed)
+    assert all(row["metadata"]["label"] == "stable" for row in attempt["steps"].values()
+               if "metadata" in row)
+    events, excluded = data.load_new_events(artifact, "train", base=_base())
+    assert events == []
+    assert excluded[0]["reason"] == "raw_simulation_or_validation_failure"
 
 
 def test_val_freeze_is_checked_before_generation_and_again_at_load(tmp_path, monkeypatch):

@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "date_local": "2026-10-17",
+  "reviewer": "independent_agent_neurips_structure",
+  "scope": "Bounded read-only pre-search scientific implementation review; only this report was written. No training, simulation, data payload, original test or new val access.",
+  "stage_b_started": false,
+  "decision_owner": "root",
+  "recommendation": "Resolve the three findings before B; this review does not approve an allocation or scientific outcome.",
+  "proposed_allocation_hours": {"A": 12, "B": 16, "C": 24, "D": 12, "E": 4, "reserve": 4},
+  "proposed_search_depth": 1,
+  "allocation_observation": "The proposal preserves the 72-process-hour total and all registered search/refit/confirmation repetitions. Any adoption must be prospective, preserve spent receipts, and bind the same effective allocation to the cost gate and runtime ledger.",
+  "reviewed_source_sha256": {
+    "experiments/discover_closure.py": "d983fbea605084f8793a34e68f64dd2cc6ef53eb391a3b8832089020f4729f7d",
+    "experiments/closure_discovery_support.py": "482367144d84d5d43694ba4ff3b636cd39665b42c0ddef722f6fec5008cd69d2",
+    "experiments/closure_expression_identity.py": "5d8666079652166777757d62534252fb61210aae99ad08e3db5d4e83eb073293",
+    "experiments/symbolic_closure_rom.py": "6030484eac53615873b4156f8bb3f791835239c36dc250d6525f43e008e52618",
+    "experiments/closure_discovery_confirmation.py": "5385b9b5a3b1f173397557c55057123cb3b7b8bb80f569c06fa099ee8ea6764d"
+  },
+  "cost_snapshot": {
+    "artifact": "A/cost_preflight_1",
+    "depth1_estimate_seconds": {"B": 37392.83066578873, "C": 79767.49735347574, "D": 31945.730730994328},
+    "includes_25_percent_margin": true,
+    "status": "Arithmetic verified against saved depth lock; D execution-path coverage remains incomplete, so these values do not yet establish complete-suite affordability."
+  },
+  "passed_checks": [
+    "B training count includes six complete searches and 6*32 + 2*(128-32) + 2*(512-128) = 1152 updates per search round; horizon-specific cost sums match the current 2s warmup then 1/2/5s cycle.",
+    "The latest complete_cost_preflight includes 48*depth complete train scores: six searches times six 32-update candidates plus two 512-update candidates per round.",
+    "C includes fourteen 1024-update fits, fourteen final train scores and up to twelve deletion-selection train scores; D includes fourteen 256-update fits and 48*2 FOM calls.",
+    "The expression signature symmetrizes polynomial edges before dropping centered linear p/q terms, retains the c term to match the physical-angle tangent correction, and normalizes nonzero scalar multiples. No false-positive equivalence deletion was found in these operations by algebraic inspection.",
+    "The old compiled-AST timing record was not used; the review used A/cost_preflight_1 and its recorded legal generic-edge/node/port timing profiles."
+  ],
+  "findings": [
+    {
+      "id": "F1",
+      "priority": "P1",
+      "title": "D affordability is based on a surrogate cost rather than its complete evaluation path",
+      "locations": ["experiments/discover_closure.py:510-511", "experiments/closure_discovery_confirmation.py:211-225", "experiments/closure_discovery_confirmation.py:390-395", "experiments/closure_discovery_support.py:436"],
+      "evidence": "D fixed evaluation cost is 14*max(251, train_score_seconds), currently 3514 seconds. Actual confirmation loops over 14 models and up to 24 events individually, with 1600 steps at 0.005 and 800 at 0.01 per event, plus 3200 at 0.0025 when qualification requires it, followed by classification and metrics. The old-train disagreement computation also performs two individual 100-step rollouts per event and is not separately priced. Neither a batched 1/2/5s train score nor the unexplained 251-second floor verifies these costs. The B gradient-proposal allowance is present but remains a 0.2-times-one-second-training proxy rather than a direct measurement.",
+      "impact": "The saved D estimate does not demonstrate that all frozen confirmation work fits in 12 hours. This is a missing affordability check, not evidence that D necessarily exceeds its allocation.",
+      "repair": "Measure the exact batch-one three-step-size 8s evaluation and metric path on an already authorized train fixture and representative complex model; multiply by the full 14*24 planned invocation count and retain a priced finer-step allowance. Measure or conservatively bound the complete old-train disagreement computation. Recompute the depth-one suite with the registered margin before B. Keep all incomplete or numerically failed confirmation outcomes unresolved rather than shortening the suite."
+    },
+    {
+      "id": "F2",
+      "priority": "P1",
+      "title": "The cost gate and runtime ledger can use different stage allocations",
+      "locations": ["experiments/closure_discovery_support.py:152-161", "experiments/closure_discovery_support.py:440-447", "experiments/discover_closure.py:514", "experiments/discover_closure.py:334-340"],
+      "evidence": "ProcessLedger reads a prospectively registered allocation.json, but select_depth defaults to the original PHASE_CAPS_SECONDS and current callers omit stage_caps. B trusts the saved depth choice and preflight flags without comparing its priced allocation to the active ledger. Thus changing configuration/allocation to A12/B16/C24/D12/E4/reserve4 alone does not update the gate coherently.",
+      "impact": "An intended affordable depth-one plan can remain rejected under the old C cap, or a separately adjusted stale choice can be used without a machine-checked match to the new caps. The plan to fix depth one is not yet represented consistently across all gate inputs.",
+      "repair": "Pass the effective allocation explicitly to select_depth, lock the requested maximum search depth to one, and store allocation/protocol identities with the final cost artifact. At B entry compare these identities and the complete-suite estimates against the active remaining authorization; preserve all historical spend and prior rejected locks."
+    },
+    {
+      "id": "F3",
+      "priority": "P2",
+      "title": "Dropping p-squared and q-squared as backbone duplicates changes the allowed coefficient domain",
+      "locations": ["experiments/closure_discovery_support.py:516-518", "experiments/structured_rom.py:118", "experiments/local_memory_rom_0098.py:265-266", "experiments/symbolic_closure_rom.py:462"],
+      "evidence": "The candidate generator deletes pure node p^2 and q^2 signatures because the backbone already contains those functions. Backbone storage coefficients and q_quadratic are softplus-positive, whereas added expression coefficients are unconstrained. A signed extra quadratic term can produce curvature not attainable by merely refitting a positive backbone coefficient. Function-span overlap alone does not prove equivalence of the feasible parameterized models.",
+      "impact": "The filter removes a legal nonzero mechanism under the currently declared signed-coefficient grammar. This is distinct from the valid centering, edge symmetry and scalar-multiple identity filters.",
+      "repair": "Restore these proposals, or explicitly preregister a positive-quadratic search-space restriction and enforce the same restriction throughout candidate construction. Do not describe their removal as pure algebraic equivalence."
+    }
+  ],
+  "root_response_received_before_report": {
+    "status": "root accepted all three findings and plans repairs; repairs not verified in this review",
+    "planned_actions": [
+      "Restore p^2/q^2 proposals because they extend the positive-backbone coefficient domain.",
+      "Pass the effective allocation to the final depth gate.",
+      "Measure D on the two already qualified new train fixtures using the representative generic-edge model, batch-one full 8s three-step-size evaluation and metrics, and measure the complete old-train disagreement computation."
+    ]
+  }
+}
