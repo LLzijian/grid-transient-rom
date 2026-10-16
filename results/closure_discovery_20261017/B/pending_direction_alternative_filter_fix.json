@@ -1,0 +1,14 @@
+{
+  "registered_epoch": 1792183564.8693738,
+  "kind": "implementation discrepancy with the approved alternative-candidate definition",
+  "location": "experiments/discover_closure.py stage_b alternative loop",
+  "defect": "same expression set is currently excluded even if the registered J/R direction mask differs; direction groups are a searched structure in the approved plan",
+  "required_rule": "exclude identical expression sets only when direction masks also match; all alternatives must still be near optimal and exceed the fixed normalized observable disagreement threshold 1e-4",
+  "not_a_gate_change": true,
+  "equations_losses_scores_search_branches_seeds_or_budgets_changed": false,
+  "action_before_formal_C_selection": "after checkpointed B search execution, repair the selection filter and rerun aggregation from immutable completed levels; original B result retained; no new fitting or val access",
+  "reason_to_defer_edit": "avoid interrupting valid source-bound fitting for a final aggregation-only filter repair",
+  "status": "registered implementation correction, no scientific selection yet",
+  "generated_512_scores_at_registration": [],
+  "observed_before_generated_512_results": true
+}
