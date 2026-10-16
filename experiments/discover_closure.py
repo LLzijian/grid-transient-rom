@@ -47,7 +47,15 @@ def write(path, obj):
     path=Path(path); path.parent.mkdir(parents=True,exist_ok=True)
     tmp=path.with_suffix(path.suffix+'.tmp')
     tmp.write_text(json.dumps(safe(obj),indent=2,allow_nan=False),encoding='utf-8')
-    os.replace(tmp,path)
+    # Windows readers can briefly hold the destination without delete sharing.
+    # Keep the complete temporary file and retry only this transient OS error.
+    for attempt in range(8):
+        try:
+            os.replace(tmp,path)
+            break
+        except PermissionError:
+            if attempt==7:raise
+            time.sleep(.01*(2**attempt))
 
 
 def context():

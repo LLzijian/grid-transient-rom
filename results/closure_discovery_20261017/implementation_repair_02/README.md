@@ -1,0 +1,1 @@
+恢复修复02：先按 implementation_repair_01 的来源快照恢复，再覆盖本目录 experiments/discover_closure.py；identity.json 为修复后的完整文件及环境哈希。方程、损失、数据、种子、搜索分支与总预算不变。修复仅对Windows短暂共享占用导致的 os.replace PermissionError 作有界重试。生产入口仍为 experiments/discover_closure.py，检查点与费用账必须一同保留。

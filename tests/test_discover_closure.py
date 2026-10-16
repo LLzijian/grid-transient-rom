@@ -447,3 +447,37 @@ def test_d_fit_recovery_reuses_only_matching_verified_checkpoint(tmp_path):
         confirmation._fit_with_recovery(fake_fit,Model,model,events+[{'id':'new'}],2.,256,
                                         path,2701,100.,'source-hash')
     assert len(calls)==2
+
+
+def test_atomic_json_write_retries_transient_windows_reader(tmp_path,monkeypatch):
+    import json
+    import discover_closure as runner
+    path=tmp_path/'progress.json'
+    path.write_text('{"old": true}',encoding='utf-8')
+    original_replace=runner.os.replace
+    attempts=[]
+    delays=[]
+    def temporarily_locked(source,destination):
+        attempts.append((source,destination))
+        if len(attempts)<4:raise PermissionError('destination temporarily opened by a reader')
+        original_replace(source,destination)
+    monkeypatch.setattr(runner.os,'replace',temporarily_locked)
+    monkeypatch.setattr(runner.time,'sleep',delays.append)
+    runner.write(path,{'completed':32})
+    assert json.loads(path.read_text())=={'completed':32}
+    assert len(attempts)==4
+    assert delays==[.01,.02,.04]
+    assert not path.with_suffix('.json.tmp').exists()
+
+
+def test_atomic_json_write_preserves_temporary_file_on_persistent_lock(tmp_path,monkeypatch):
+    import json
+    import discover_closure as runner
+    path=tmp_path/'progress.json'
+    path.write_text('{"old": true}',encoding='utf-8')
+    def locked(*args):raise PermissionError('persistent destination lock')
+    monkeypatch.setattr(runner.os,'replace',locked)
+    monkeypatch.setattr(runner.time,'sleep',lambda delay:None)
+    with pytest.raises(PermissionError):runner.write(path,{'completed':32})
+    assert json.loads(path.read_text())=={'old':True}
+    assert json.loads(path.with_suffix('.json.tmp').read_text())=={'completed':32}
