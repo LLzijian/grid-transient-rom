@@ -36,6 +36,17 @@
       ],
       "fix": "correct exported equation explanation to physical-coordinate edge centering; actual runtime already restores g_c0*(c+sin(phi)*eta), no dynamics change",
       "registration": "E/preparation.json"
+    },
+    {
+      "files": [
+        "experiments/discover_closure.py",
+        "tests/test_discover_closure.py"
+      ],
+      "fix": "resume must preserve the score32 shortlist when a selected candidate failed at level128 or512; skip the recorded failed higher-level fit without admitting a third score32 candidate or retrying it",
+      "evidence": "stage_b currently skips any candidate_failure.json in the score32 collection, which could change the original top-two shortlist after a higher-level numerical failure on resume",
+      "registration_epoch": 1792186288.880534,
+      "status_at_registration": "observed generated failures are at level32; no later-level failure used to choose this repair",
+      "test": "a failed selected level512 candidate remains in the original score32 shortlist, is not retrained and is not replaced by the third score32 candidate"
     }
   ],
   "timing": "do not edit bound source until current B/C jobs have stopped; preserve old source snapshot and records, run targeted checks, register new identity and push before next scientific execution",
