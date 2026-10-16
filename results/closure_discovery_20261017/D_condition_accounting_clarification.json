@@ -1,0 +1,39 @@
+{
+  "registered_epoch": 1792184424.661152,
+  "scope": "prospective D condition-accounting clarification before any D selection or new val generation",
+  "hard_unique_condition_cap": 48,
+  "new_train_total": 24,
+  "new_val_total": 24,
+  "already_generated_train_conditions": [
+    {
+      "bus_id": "17",
+      "duration_s": 0.125,
+      "xf": 0.01,
+      "split": "train",
+      "bus": 17,
+      "line": "Line_21",
+      "location": 1.0,
+      "id": "449f2a97fdcc3c2a",
+      "event_id": "newtrain_449f2a97fdcc3c2a",
+      "new_split": "train"
+    },
+    {
+      "bus_id": "8",
+      "duration_s": 0.175,
+      "xf": 0.0031622776601683794,
+      "split": "train",
+      "bus": 8,
+      "line": "Line_10",
+      "location": 1.0,
+      "id": "83adbaea1acb2425",
+      "event_id": "newtrain_83adbaea1acb2425",
+      "new_split": "train"
+    }
+  ],
+  "rule": "count these two A cost-preflight conditions inside the 24 new train conditions; retain short/middle/long totals 8/8/8 and choose the remaining 22 by the existing normalized disagreement ordering within remaining strata quotas",
+  "new_val_conditions_unchanged": true,
+  "no_D_results_observed": true,
+  "repeated_numerical_checks_of_the_same_condition_are_not_new_unique_conditions": true,
+  "implementation_action": "apply before D selection with a direct regression test for total unique union<=48, exact mandatory inclusion, strata8/8/8 and train/val disjointness",
+  "status": "registered prospective implementation clarification; existing production selection not edited during source-bound fitting"
+}

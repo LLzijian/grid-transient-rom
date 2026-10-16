@@ -1,0 +1,519 @@
+{
+  "recorded_epoch": 1792184477.405224,
+  "scope": "partial B progress, one complete original library seed only; not formal1024 refit or confirmation",
+  "selection_split": "train",
+  "events": 346,
+  "selection_score": "mean event errors over1/2/5s autonomous horizons on genuine available intervals, then existing risk; train selection only",
+  "completed_searches": [
+    {
+      "mode": "library",
+      "seed": 1701,
+      "completed_512_candidates": 2,
+      "status": "rankable"
+    }
+  ],
+  "completed_512_candidates": [
+    {
+      "mode": "library",
+      "seed": 1701,
+      "round": 1,
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_discovery_20261017\\B\\library\\1701\\round1\\candidate02",
+      "terms": [
+        {
+          "channel": "node",
+          "expression": {
+            "op": "mul",
+            "args": [
+              {
+                "op": "var",
+                "name": "p"
+              },
+              {
+                "op": "var",
+                "name": "q"
+              }
+            ]
+          }
+        },
+        {
+          "channel": "edge",
+          "expression": {
+            "op": "mul",
+            "args": [
+              {
+                "op": "add",
+                "args": [
+                  {
+                    "op": "mul",
+                    "args": [
+                      {
+                        "op": "var",
+                        "name": "qj"
+                      },
+                      {
+                        "op": "const",
+                        "value": -1
+                      }
+                    ]
+                  },
+                  {
+                    "op": "var",
+                    "name": "qi"
+                  }
+                ]
+              },
+              {
+                "op": "var",
+                "name": "s"
+              }
+            ]
+          }
+        },
+        {
+          "channel": "edge",
+          "expression": {
+            "op": "mul",
+            "args": [
+              {
+                "op": "add",
+                "args": [
+                  {
+                    "op": "var",
+                    "name": "qi"
+                  },
+                  {
+                    "op": "var",
+                    "name": "qj"
+                  }
+                ]
+              },
+              {
+                "op": "var",
+                "name": "c"
+              }
+            ]
+          }
+        },
+        {
+          "channel": "port",
+          "expression": {
+            "op": "var",
+            "name": "w"
+          }
+        },
+        {
+          "channel": "port",
+          "expression": {
+            "op": "var",
+            "name": "p"
+          }
+        },
+        {
+          "channel": "port",
+          "expression": {
+            "op": "var",
+            "name": "q"
+          }
+        },
+        {
+          "channel": "port",
+          "expression": {
+            "op": "var",
+            "name": "es"
+          }
+        },
+        {
+          "channel": "port",
+          "expression": {
+            "op": "var",
+            "name": "ec"
+          }
+        },
+        {
+          "channel": "port",
+          "expression": {
+            "op": "var",
+            "name": "nq"
+          }
+        }
+      ],
+      "direction_mask": [
+        1.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "counts": {
+        "machines": 10,
+        "rank": 10,
+        "active_edges": 26,
+        "template_groups_available": 8,
+        "template_groups_active": 2,
+        "shared_memory_scalar_coordinates": 14,
+        "template_instances": {
+          "H_pq": 10,
+          "H_edge_sin": 26,
+          "H_edge_cos": 26,
+          "J_pi_q": 10,
+          "J_p_q": 10,
+          "R_q": 10,
+          "R_pi_q": 10,
+          "local_port": 10
+        },
+        "raw_trainable_scalar_count": 506,
+        "encoder_trainable_scalar_count": 416,
+        "masked_base_storage_coordinates": 10,
+        "inactive_template_coordinates": 2,
+        "effective_active_parameter_coordinate_upper_bound": 494,
+        "expanded_rhs_scalar_contributions": {
+          "gradient_atoms": [
+            8,
+            5,
+            5,
+            7,
+            4,
+            5,
+            5,
+            1,
+            6,
+            6,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "assembled_J_minus_R_times_gradient_atoms": 142,
+          "explicit_port_basis_contributions": 0,
+          "total": 142,
+          "convention": null
+        },
+        "symbolic_closure": {
+          "expressions": 9,
+          "active_expressions": 9,
+          "expressions_by_channel": {
+            "node": 1,
+            "edge": 2,
+            "port": 6
+          },
+          "operator_nodes": 6,
+          "max_expressions": 12,
+          "max_depth": 3,
+          "independent_closure_coefficients": 9,
+          "expanded_term_instances": 122,
+          "expanded_value_tree_operators": 270,
+          "expanded_gradient_or_port_rhs_products": 422,
+          "expanded_cost_definition": "spatial expression instances, value-tree operators (edge symmetry evaluated twice), and nonzero constant-direction products before summation; not a FLOP or wall-time claim"
+        }
+      },
+      "score": {
+        "risk": 1.6340458144237466,
+        "group_se": 0.39839495366840977,
+        "se_method": "leave-one-fault-bus-out jackknife of the nonlinear event risk",
+        "seconds": 25.74597740000172,
+        "scope": "train selection; genuine available intervals",
+        "horizons": [
+          1.0,
+          2.0,
+          5.0
+        ],
+        "adaptation_updates": 512,
+        "model_sha256": "4d233989fe4f1343dacd90cc9b998fb3b3a06941c624b9be82b83d96a7feaa67"
+      },
+      "model_sha256": "4d233989fe4f1343dacd90cc9b998fb3b3a06941c624b9be82b83d96a7feaa67"
+    },
+    {
+      "mode": "library",
+      "seed": 1701,
+      "round": 1,
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_discovery_20261017\\B\\library\\1701\\round1\\candidate04",
+      "terms": [
+        {
+          "channel": "node",
+          "expression": {
+            "op": "mul",
+            "args": [
+              {
+                "op": "var",
+                "name": "p"
+              },
+              {
+                "op": "var",
+                "name": "q"
+              }
+            ]
+          }
+        },
+        {
+          "channel": "edge",
+          "expression": {
+            "op": "mul",
+            "args": [
+              {
+                "op": "add",
+                "args": [
+                  {
+                    "op": "mul",
+                    "args": [
+                      {
+                        "op": "var",
+                        "name": "qj"
+                      },
+                      {
+                        "op": "const",
+                        "value": -1
+                      }
+                    ]
+                  },
+                  {
+                    "op": "var",
+                    "name": "qi"
+                  }
+                ]
+              },
+              {
+                "op": "var",
+                "name": "s"
+              }
+            ]
+          }
+        },
+        {
+          "channel": "edge",
+          "expression": {
+            "op": "mul",
+            "args": [
+              {
+                "op": "add",
+                "args": [
+                  {
+                    "op": "var",
+                    "name": "qi"
+                  },
+                  {
+                    "op": "var",
+                    "name": "qj"
+                  }
+                ]
+              },
+              {
+                "op": "var",
+                "name": "c"
+              }
+            ]
+          }
+        },
+        {
+          "channel": "port",
+          "expression": {
+            "op": "var",
+            "name": "w"
+          }
+        },
+        {
+          "channel": "port",
+          "expression": {
+            "op": "var",
+            "name": "p"
+          }
+        },
+        {
+          "channel": "port",
+          "expression": {
+            "op": "var",
+            "name": "q"
+          }
+        },
+        {
+          "channel": "port",
+          "expression": {
+            "op": "var",
+            "name": "es"
+          }
+        },
+        {
+          "channel": "port",
+          "expression": {
+            "op": "var",
+            "name": "ec"
+          }
+        },
+        {
+          "channel": "port",
+          "expression": {
+            "op": "var",
+            "name": "nq"
+          }
+        }
+      ],
+      "direction_mask": [
+        1.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "counts": {
+        "machines": 10,
+        "rank": 10,
+        "active_edges": 26,
+        "template_groups_available": 8,
+        "template_groups_active": 2,
+        "shared_memory_scalar_coordinates": 14,
+        "template_instances": {
+          "H_pq": 10,
+          "H_edge_sin": 26,
+          "H_edge_cos": 26,
+          "J_pi_q": 10,
+          "J_p_q": 10,
+          "R_q": 10,
+          "R_pi_q": 10,
+          "local_port": 10
+        },
+        "raw_trainable_scalar_count": 506,
+        "encoder_trainable_scalar_count": 416,
+        "masked_base_storage_coordinates": 10,
+        "inactive_template_coordinates": 2,
+        "effective_active_parameter_coordinate_upper_bound": 494,
+        "expanded_rhs_scalar_contributions": {
+          "gradient_atoms": [
+            8,
+            5,
+            5,
+            7,
+            4,
+            5,
+            5,
+            1,
+            6,
+            6,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "assembled_J_minus_R_times_gradient_atoms": 132,
+          "explicit_port_basis_contributions": 0,
+          "total": 132,
+          "convention": null
+        },
+        "symbolic_closure": {
+          "expressions": 9,
+          "active_expressions": 9,
+          "expressions_by_channel": {
+            "node": 1,
+            "edge": 2,
+            "port": 6
+          },
+          "operator_nodes": 6,
+          "max_expressions": 12,
+          "max_depth": 3,
+          "independent_closure_coefficients": 9,
+          "expanded_term_instances": 122,
+          "expanded_value_tree_operators": 270,
+          "expanded_gradient_or_port_rhs_products": 412,
+          "expanded_cost_definition": "spatial expression instances, value-tree operators (edge symmetry evaluated twice), and nonzero constant-direction products before summation; not a FLOP or wall-time claim"
+        }
+      },
+      "score": {
+        "risk": 1.7514495407462536,
+        "group_se": 0.42585284773099835,
+        "se_method": "leave-one-fault-bus-out jackknife of the nonlinear event risk",
+        "seconds": 22.40065959999629,
+        "scope": "train selection; genuine available intervals",
+        "horizons": [
+          1.0,
+          2.0,
+          5.0
+        ],
+        "adaptation_updates": 512,
+        "model_sha256": "c0aa85aeb595c7cec8e854ba09424f1cbb939381a3a272f1a9ab7373ff654529"
+      },
+      "model_sha256": "c0aa85aeb595c7cec8e854ba09424f1cbb939381a3a272f1a9ab7373ff654529"
+    }
+  ],
+  "observed_numerical_failures": [
+    {
+      "candidate": {
+        "mode": "generated",
+        "seed": 1702,
+        "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_discovery_20261017\\B\\generated\\1702\\round1\\candidate00",
+        "level": 32,
+        "status": "numerically_unresolved",
+        "error": "FloatingPointError('nonfinite training objective at update 4; state and cost retained')"
+      },
+      "completed_updates": 3,
+      "attempted_step": 4,
+      "failure_state_path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_discovery_20261017\\B\\generated\\1702\\round1\\candidate00\\failure_state_step00004.pt",
+      "failure_state_sha256": "0892ef727f174fd3e8f1b124d76565d2c737b977de0eef4181eb934be19bd8b4",
+      "interpretation": "numerically unresolved; not a physical instability label or family falsification"
+    },
+    {
+      "candidate": {
+        "mode": "generated",
+        "seed": 1703,
+        "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_discovery_20261017\\B\\generated\\1703\\round1\\candidate00",
+        "level": 32,
+        "status": "numerically_unresolved",
+        "error": "FloatingPointError('nonfinite training objective at update 2; state and cost retained')"
+      },
+      "completed_updates": 1,
+      "attempted_step": 2,
+      "failure_state_path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_discovery_20261017\\B\\generated\\1703\\round1\\candidate00\\failure_state_step00002.pt",
+      "failure_state_sha256": "54e9e1947dc99f87ce4d07bd6b9aef5c93c3c709d1f4ddf24d1aa1267c272152",
+      "interpretation": "numerically unresolved; not a physical instability label or family falsification"
+    }
+  ],
+  "scientific_selection": null,
+  "test_read": false
+}
