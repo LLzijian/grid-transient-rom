@@ -105,3 +105,17 @@ final model. Complementary candidates do not silently become deployment defaults
 Preserve historical accepted/failed classifications, useful tested code and model artifacts.
 Revert inappropriate integration changes, not evidence or infrastructure merely to label a
 scientific failure. Do not create registries, schemas or orchestration systems without need.
+
+## 7. GitHub archival after each execution
+
+Repository: `https://github.com/LLzijian/grid-transient-rom.git`.
+After every execution that produces or changes a project design, implementation or
+experimental result, commit and push the key design decisions, decisive results and
+reproduction information, regardless of acceptance, rejection, failure or unresolved
+outcome. Follow the selective archival procedure in `docs/engineering_loop.md`.
+Disposable intermediate data need not be uploaded; preserve required local evidence,
+source checkpoints and adverse results under the existing retention rules.
+Review and stage only relevant files, protect unrelated working-tree edits, and verify
+the remote commit before reporting synchronization complete. If a push is blocked,
+retain the local commit and record the exact blocker and retry action. After a runtime
+interruption, reconcile pending archival on recovery before starting another experiment.

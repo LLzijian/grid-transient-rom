@@ -198,6 +198,45 @@ action, recovery checkpoint/command and cwd, cumulative spend, verified remainin
 and real job IDs only. Keep these fields in the existing snapshot, not a new registry.
 Use one current capability table in the report or state, not a new framework or dashboard.
 
+## GitHub archival after each execution
+
+Repository: `https://github.com/LLzijian/grid-transient-rom.git`.
+Every execution that produces or changes a project design, implementation or experimental
+result closes with a selective Git commit and push. This applies equally to accepted,
+rejected, failed, inconclusive and blocked outcomes; model acceptance is not an archival
+condition. A read-only check with no new material needs no empty commit. For long-running
+work, synchronize at meaningful execution/stage boundaries and before handing control back;
+do not create a commit for every optimizer update or liveness check.
+
+1. **Save the durable record.** Include the key design/protocol and amendments, necessary
+   source/configuration changes, decisive experimental results (including adverse results),
+   numerical qualification, evaluation scope, resource cost and stage decision. Include
+   the actual reproduction command, source checkpoint identifiers and hashes, and required
+   environment/data references. Update `docs/current_state.md` when research state changes.
+   Documentation-only work archives its changed documents without inventing an experiment.
+2. **Select the evidence.** Track concise reports, essential tables/figures and compact
+   evidence needed to inspect the conclusion. Raw datasets, disposable caches, temporary
+   outputs, redundant per-step logs and intermediate checkpoints stay local by default.
+   A decisive large/private artifact may remain in its existing storage with a path, hash
+   and access/reproduction instructions in the report; state explicitly when reproduction
+   requires an artifact not available from GitHub. Upload a selected model artifact only
+   when needed and appropriate. Exclusion from GitHub does not authorize deleting evidence,
+   adverse outcomes or source checkpoints, and does not authorize reading frozen test data.
+3. **Review and commit.** Inspect the selected diff and file list for relevance, sensitive
+   data and accidental bulk artifacts. Stage explicit paths or hunks; never sweep unrelated
+   working-tree edits into a commit. Keep useful rejected implementations reproducible in
+   history without adopting them as the default. Preserve existing unrelated local work.
+4. **Push and verify.** Push the relevant commit to the repository's appropriate branch
+   using a normal, non-force push; pushing does not require merging a candidate into `main`.
+   Verify that the remote branch points to the intended commit and report the branch/commit.
+   A local commit alone is not a completed synchronization. If network, authentication or
+   branch permissions prevent pushing, retain the commit and record the exact blocker,
+   commit and retry action in the handoff (and current state when it affects recovery).
+   Reconcile pending archival after interruption before starting another experiment.
+
+This archival step uses the existing reports, artifacts and Git history. It creates no
+new registry, changes no scientific gate and grants no extra training or test allowance.
+
 ## Long-running process monitoring
 
 For long-running training, simulation, or evaluation jobs, avoid frequent polling that
