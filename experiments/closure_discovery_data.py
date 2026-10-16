@@ -171,6 +171,15 @@ def _score_value(value: Any) -> float | None:
     return number if math.isfinite(number) else None
 
 
+def _condition_stratum(row: Mapping[str, Any]) -> str:
+    duration = float(row.get("duration_s", row.get("fault_duration_s")))
+    if duration < 0.15:
+        return "short"
+    if duration <= 0.3:
+        return "medium"
+    return "long"
+
+
 def _condition_score(scores: Mapping[Any, Any], row: Mapping[str, Any]) -> float | None:
     event_id = str(row.get("event_id", row.get("id", "")))
     for key in (event_id, f"{row.get('root', '')}:{event_id}",
@@ -195,6 +204,7 @@ def select_new_train_conditions(
     existingtrain_disagreement: Mapping[Any, Any] | Sequence[Mapping[str, Any]],
     *,
     count: int = 24,
+    mandatory_conditions: Sequence[Mapping[str, Any]] | None = None,
 ) -> list[dict[str, Any]]:
     """Rank new candidates by nearby historical TRAIN disagreement only.
 
@@ -204,6 +214,8 @@ def select_new_train_conditions(
     """
     if count < 0:
         raise ValueError("count must be nonnegative")
+    if mandatory_conditions is not None and count != 24:
+        raise ValueError("mandatory TRAIN conditions are defined only for the fixed 24-condition selection")
     if not isinstance(existingtrain_disagreement, Mapping):
         converted: dict[Any, Any] = {}
         for row in existingtrain_disagreement:
@@ -214,6 +226,22 @@ def select_new_train_conditions(
                 converted[str(event_id)] = row
         existingtrain_disagreement = converted
     old = allowed_train_conditions()
+    mandatory: list[dict[str, Any]] = []
+    mandatory_keys: set[tuple[str, str, float, float, float]] = set()
+    if mandatory_conditions is not None:
+        for item in mandatory_conditions:
+            if not isinstance(item, Mapping):
+                raise TypeError("each mandatory condition must be a mapping")
+            declared = item.get("split")
+            if declared not in (None, "train"):
+                raise ValueError("mandatory conditions must be registered as TRAIN")
+            row = _resolve_line(item, old)
+            key = _physical_key(row)
+            if key in mandatory_keys:
+                raise ValueError(f"duplicate mandatory TRAIN condition: {key}")
+            mandatory_keys.add(key)
+            row["split"] = "train"
+            mandatory.append(row)
     scored_old = [(row, _condition_score(existingtrain_disagreement, row)) for row in old]
     scored_old = [(row, score) for row, score in scored_old if score is not None]
     ranked: list[tuple[float, float, str, dict[str, Any]]] = []
@@ -243,12 +271,43 @@ def select_new_train_conditions(
         ranked.append((-float(score), _distance(candidate, nearest),
                        str(candidate.get("id", candidate.get("event_id", candidate_key))), candidate))
     ranked.sort(key=lambda row: (row[0], row[1], row[2]))
+    pool_keys = set(seen)
+    if mandatory_conditions is not None:
+        missing = mandatory_keys - pool_keys
+        if missing:
+            raise ValueError(f"mandatory TRAIN conditions are absent from the distinct candidate pool: {sorted(missing)}")
     if len(ranked) < count:
         raise ValueError(f"need {count} scored distinct candidate conditions; found {len(ranked)}")
     if count==24:
+        if mandatory_conditions is not None:
+            quotas = {"short": 8, "medium": 8, "long": 8}
+            mandatory_by_stratum = {name: [row for row in mandatory if _condition_stratum(row) == name]
+                                    for name in quotas}
+            if sum(map(len, mandatory_by_stratum.values())) != len(mandatory):
+                raise ValueError("a mandatory TRAIN condition has an unrecognized duration stratum")
+            if any(len(rows) > quotas[name] for name, rows in mandatory_by_stratum.items()):
+                raise ValueError("mandatory TRAIN conditions exceed a duration stratum quota")
+            selected: list[dict[str, Any]] = []
+            for stratum, quota in quotas.items():
+                required = mandatory_by_stratum[stratum]
+                selected.extend({**row, "stratum": stratum} for row in required)
+                required_keys = {_physical_key(row) for row in required}
+                matching = [row[3] for row in ranked
+                            if _condition_stratum(row[3]) == stratum
+                            and _physical_key(row[3]) not in required_keys]
+                needed = quota - len(required)
+                if len(matching) < needed:
+                    raise ValueError(f"need {needed} additional disagreement-ranked TRAIN conditions in {stratum}; found {len(matching)}")
+                selected.extend({**row, "stratum": stratum} for row in matching[:needed])
+            selected_keys = [_physical_key(row) for row in selected]
+            if len(selected) != count or len(set(selected_keys)) != count:
+                raise ValueError("mandatory TRAIN selection is not a distinct 24-condition set")
+            if not mandatory_keys <= set(selected_keys):
+                raise ValueError("mandatory TRAIN condition was omitted from selection")
+            return selected
         selected=[]
         for stratum in ('short','medium','long'):
-            matching=[row for row in ranked if ('short' if row[3]['duration_s']<.15 else 'medium' if row[3]['duration_s']<=.3 else 'long')==stratum]
+            matching=[row for row in ranked if _condition_stratum(row[3])==stratum]
             if len(matching)<8:raise ValueError(f'need eight new train conditions in {stratum}; no replacement sampling')
             selected.extend({**row[3],'stratum':stratum} for row in matching[:8])
         return selected

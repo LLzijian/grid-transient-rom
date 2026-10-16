@@ -90,6 +90,9 @@ def test_numpy_package_field_encoder_and_rollout_parity(tmp_path):
     equations = paths["equations"].read_text(encoding="utf-8")
     assert "not SI units" in equations
     assert "J`, `R`, and `B" in equations
+    assert "centered in physical coordinates" in equations
+    assert "g_c0 * (c + sin(phi) * eta)" in equations
+    assert "AST names `pi` and `pj`" in equations
     assert "0.17" in equations and "-0.23000000000000001" in equations
     assert "does not infer or invent" in equations
 

@@ -229,19 +229,26 @@ def fit(model,events,force_scale,target,path,seed,*,final=False,deadline=None):
     from train_joint_numerical_pair_0100 import next_samples
     from train_local_memory_0098 import histories_for
     from symbolic_closure_rom import SymbolicClosureROM
-    path=Path(path);rng=np.random.default_rng(seed);torch.manual_seed(seed)
-    coverage={'cover_order':rng.permutation(len(events)).tolist(),'cursor':0}
-    opt=optimizer(model);step=0;trace=[]
+    path=Path(path);started=time.perf_counter();state=None;step=0;trace=[]
     if (path/'checkpoint.json').exists():
         meta=json.loads((path/'checkpoint.json').read_text());
         if sha(path/'model.json')!=meta['model_sha256'] or sha(path/'training.pt')!=meta['training_sha256']:
             raise ValueError('resume checkpoint hash changed')
-        model=SymbolicClosureROM.from_export(path/'model.json');opt=optimizer(model)
+        step=int(meta['step'])
+        if step>target:raise ValueError('checkpoint exceeds requested adaptation target; cannot relabel it')
+        model=SymbolicClosureROM.from_export(path/'model.json')
         state=torch.load(path/'training.pt',weights_only=False,map_location='cpu')
+        if int(state['step'])!=step:raise ValueError('optimizer and model checkpoint updates differ')
+        if step==target:
+            return model,{'seconds':time.perf_counter()-started,'updates':step,
+                          'path':str(path),'reused_checkpoint':True}
+    rng=np.random.default_rng(seed);torch.manual_seed(seed)
+    coverage={'cover_order':rng.permutation(len(events)).tolist(),'cursor':0}
+    opt=optimizer(model)
+    if state is not None:
         opt.load_state_dict(state['optimizer']);rng.bit_generator.state=state['numpy_rng'];torch.set_rng_state(state['torch_rng'])
         step=state['step'];trace=meta['trace']
         coverage=state['coverage']
-    started=time.perf_counter()
     model.provenance['fit_seed']=seed
     def numerical_failure(reason,attempted_step):
         path.mkdir(parents=True,exist_ok=True)
@@ -401,6 +408,12 @@ def stage_a(out,deadline):
     return {'stage':'A','parity':parity,'controlled':controlled,'depth_choice':choice}
 
 
+def structure_identity(terms,direction_mask):
+    """A mechanism support includes its legal exchange/dissipation directions."""
+    from symbolic_closure_rom import term_key
+    return (frozenset(term_key(term) for term in terms),tuple(float(v) for v in direction_mask))
+
+
 def stage_b(out,deadline):
     from symbolic_closure_rom import SymbolicClosureROM,term_key
     cfg,_=context();lock=json.loads((out/'A/depth_lock.json').read_text())
@@ -432,7 +445,10 @@ def stage_b(out,deadline):
                     m=proposal_model(beam[parent],proposal)
                     path=folder/f'candidate{i:02d}'
                     if (path/'candidate_failure.json').exists():
-                        failures.append(json.loads((path/'candidate_failure.json').read_text()));continue
+                        previous=json.loads((path/'candidate_failure.json').read_text());failures.append(previous)
+                        # A failed later level retains its immutable score32
+                        # place; it cannot admit the third-ranked candidate.
+                        if int(previous['level'])<=32:continue
                     try:
                         actual=json.loads((path/'checkpoint.json').read_text())['step'] if (path/'checkpoint.json').exists() else 0
                         if actual>=32:m=SymbolicClosureROM.from_export(path/'model.json')
@@ -445,6 +461,8 @@ def stage_b(out,deadline):
                 final=[]
                 for _,i,m,_ in selected:
                     path=folder/f'candidate{i:02d}'
+                    if (path/'candidate_failure.json').exists():
+                        continue
                     try:
                         for level in (128,512):
                             actual=json.loads((path/'checkpoint.json').read_text())['step']
@@ -492,9 +510,9 @@ def stage_b(out,deadline):
     main=SymbolicClosureROM.from_export(Path(selected['generated']['path'])/'model.json')
     with torch.no_grad(),graph(main):p0=main.rollout(hist,100,.01)[...,:30]
     alternatives=[]
-    mainkeys={term_key(t) for t in main.terms}
+    mainkey=structure_identity(main.terms,main.template_mask[3:7].detach().tolist())
     for row in records:
-        if row['mode']!='generated' or {term_key(t) for t in row['terms']}==mainkeys:continue
+        if row['mode']!='generated' or structure_identity(row['terms'],row['direction_mask'])==mainkey:continue
         if row['score']['risk']>selected['generated']['score']['risk']+selected['generated']['score']['group_se']:continue
         other=SymbolicClosureROM.from_export(Path(row['path'])/'model.json')
         with torch.no_grad(),graph(other):p=other.rollout(hist,100,.01)[...,:30]
@@ -511,6 +529,20 @@ def stage_b(out,deadline):
             'numerical_failures':len(failures),'depth':depth,'selected':selected}
 
 
+def recorded_refit_failure(path,name,seed):
+    """Preserve a scoped failed C attempt; resuming never authorizes a retry."""
+    path=Path(path)
+    for filename in ('candidate_failure.json','fit_failure.json'):
+        record=path/filename
+        if record.exists():
+            failure=json.loads(record.read_text())
+            return {**failure,'name':name,'seed':seed,'path':str(path),
+                    'error':failure.get('error',failure.get('reason','recorded unresolved refit')),
+                    'status':failure.get('status','numerically_unresolved'),
+                    'recorded_failure_path':str(record)}
+    return None
+
+
 def stage_c(out,deadline):
     cfg,_=context();selection=json.loads((out/'B/selection.json').read_text())
     events,_,scale=train_inputs();structures={'fixed':source().terms,
@@ -524,6 +556,11 @@ def stage_c(out,deadline):
                 selected=selection[{'main':'generated'}.get(name,name)]
                 with torch.no_grad():m.template_mask[3:7]=torch.as_tensor(selected['direction_mask'],dtype=torch.float64)
             path=out/f'C/{name}/{seed}'
+            previous=recorded_refit_failure(path,name,seed)
+            if previous is not None:
+                failures.append(previous)
+                write(out/'C/progress.json',{'valid_endpoints':frozen,'numerical_failures':failures,'test_read':False})
+                continue
             try:
                 m,_=fit(m,events,scale,1024,path,seed,final=True,deadline=deadline)
                 s=score(m,events,deadline=deadline);write(path/'train_score.json',s)
@@ -550,6 +587,11 @@ def stage_c(out,deadline):
          'unresolved':unscored_deletions,'scope':'fixed-parameter proposal ordering; no necessity conclusion'})
     for _,i in sorted(effects,reverse=True)[:2]:
         terms=main.terms[:i]+main.terms[i+1:];path=out/f'C/delete{i}/2701'
+        previous=recorded_refit_failure(path,f'delete{i}',2701)
+        if previous is not None:
+            failures.append(previous)
+            write(out/'C/progress.json',{'valid_endpoints':frozen,'numerical_failures':failures,'test_read':False})
+            continue
         m=source().with_terms(terms)
         with torch.no_grad():m.template_mask[3:7]=main.template_mask[3:7]
         try:

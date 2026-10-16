@@ -337,8 +337,44 @@ def _physical_condition_key(row):
     return bus, line, location, duration, xf
 
 
-def _selection_identity(manifest, frozen_models, old_train_events):
-    import closure_discovery_data as data
+def _mandatory_a_train_conditions(out, data):
+    """Read the completed A TRAIN condition manifest and bind its two conditions.
+
+    This reads condition metadata only. It never opens generated raw artifacts or
+    any validation trajectory.
+    """
+    generation_path = Path(out).resolve() / "A/fom_cost_retry2/generation.json"
+    if not generation_path.is_file():
+        raise RecoveryUnresolved(f"mandatory A TRAIN generation manifest is missing: {generation_path}")
+    try:
+        generation = json.loads(generation_path.read_text(encoding="utf-8"))
+    except Exception as error:
+        raise RecoveryUnresolved("mandatory A TRAIN generation manifest is unreadable") from error
+    if generation.get("split") != "train" or generation.get("status") != "complete":
+        raise RecoveryUnresolved("mandatory A generation is not a completed TRAIN-only artifact")
+    declared = generation.get("conditions")
+    if not isinstance(declared, list) or len(declared) != 2:
+        raise RecoveryUnresolved("mandatory A TRAIN generation must declare exactly two conditions")
+    if any(not isinstance(row, dict) or row.get("split") != "train" for row in declared):
+        raise RecoveryUnresolved("mandatory A generation contains a non-TRAIN condition")
+    try:
+        conditions = data._conditions_for_split(declared, "train")
+    except Exception as error:
+        raise RecoveryUnresolved("mandatory A TRAIN conditions do not match registered physical TRAIN metadata") from error
+    keys = [_physical_condition_key(row) for row in conditions]
+    if len(set(keys)) != 2:
+        raise RecoveryUnresolved("mandatory A TRAIN conditions contain a physical duplicate")
+    strata = {name: sum(("short" if row["duration_s"] < 0.15 else
+                         "medium" if row["duration_s"] <= 0.3 else "long") == name
+                        for row in conditions)
+              for name in ("short", "medium", "long")}
+    if strata != {"short": 1, "medium": 1, "long": 0}:
+        raise RecoveryUnresolved(f"mandatory A TRAIN conditions have unexpected duration strata: {strata}")
+    return conditions, _file_sha256(generation_path)
+
+
+def _selection_identity(manifest, frozen_models, old_train_events,
+                        mandatory_conditions, mandatory_generation_sha256):
 
     source_hashes = {}
     for row in frozen_models:
@@ -346,9 +382,14 @@ def _selection_identity(manifest, frozen_models, old_train_events):
         actual = _file_sha256(path)
         if actual != row.get("sha256"):
             raise RecoveryUnresolved(f"C-stage model hash changed: {path}")
-        source_hashes[row["name"]] = actual
+        identity_key = f"{row['name']}:{int(row['seed'])}"
+        if identity_key in source_hashes:
+            raise RecoveryUnresolved(f"duplicate frozen model identity: {identity_key}")
+        source_hashes[identity_key] = actual
     return {
         "candidate_pool_sha256": _json_sha256(manifest["train_pool"]),
+        "mandatory_a_train_conditions_sha256": _json_sha256(mandatory_conditions),
+        "mandatory_a_train_generation_sha256": str(mandatory_generation_sha256),
         "source_model_sha256": source_hashes,
         "train_cohort": _cohort_identity(old_train_events),
         "metric": "train_structured_rom._point_error(a,b,main).mean()",
@@ -381,7 +422,10 @@ def _select_or_reuse_train_conditions(out, manifest, frozen_models, old_train_ev
     import closure_discovery_data as data
 
     selection_path = Path(out) / "D/selected_new_train.json"
-    identity = _selection_identity(manifest, frozen_models, old_train_events)
+    mandatory, mandatory_generation_sha256 = _mandatory_a_train_conditions(out, data)
+    mandatory_keys = {_physical_condition_key(row) for row in mandatory}
+    identity = _selection_identity(manifest, frozen_models, old_train_events,
+                                   mandatory, mandatory_generation_sha256)
     if selection_path.exists():
         try:
             saved = json.loads(selection_path.read_text(encoding="utf-8"))
@@ -399,13 +443,25 @@ def _select_or_reuse_train_conditions(out, manifest, frozen_models, old_train_ev
         chosen_keys = [_physical_condition_key(row) for row in chosen]
         if len(chosen_keys) != 24 or len(set(chosen_keys)) != 24 or not set(chosen_keys) <= pool_keys:
             raise RecoveryUnresolved("existing TRAIN selection is not the original 24-condition subset")
+        if not mandatory_keys <= set(chosen_keys):
+            raise RecoveryUnresolved("existing TRAIN selection omits a mandatory A TRAIN condition; no resampling is permitted")
+        chosen_strata = {name: sum(("short" if row["duration_s"] < 0.15 else
+                                    "medium" if row["duration_s"] <= 0.3 else "long") == name
+                                   for row in chosen)
+                         for name in ("short", "medium", "long")}
+        if chosen_strata != {"short": 8, "medium": 8, "long": 8}:
+            raise RecoveryUnresolved("existing TRAIN selection does not preserve the registered 8/8/8 strata")
         return conditions
 
     metadata = {str(row["event_id"]): row for row in data.allowed_train_conditions()}
     discrepancy = train_disagreement_rows(main,alternative,old_train_events,metadata)
-    conditions = data.select_new_train_conditions(manifest["train_pool"], discrepancy, count=24)
+    conditions = data.select_new_train_conditions(manifest["train_pool"], discrepancy, count=24,
+                                                  mandatory_conditions=mandatory)
     if len(conditions) != 24:
         raise RecoveryUnresolved("TRAIN selector did not return the fixed 24 conditions")
+    selected_keys = {_physical_condition_key(row) for row in conditions}
+    if not mandatory_keys <= selected_keys:
+        raise RecoveryUnresolved("TRAIN selector omitted a mandatory A TRAIN condition")
     payload = {"identity": {"base": identity, "conditions_sha256": _json_sha256(conditions)},
                "conditions": conditions}
     _write_once_json(selection_path, payload)
