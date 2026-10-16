@@ -1,6 +1,20 @@
-# Current TASK2 research state
+# Current closure-discovery research state
 
-Mission **BLOCKED — verified parent resource insufficiency** (2026-09-27), not completed or user-paused. No live job ID. Active roadmap: `docs/TASK2_after_loop_101.md`; L1 accurate single-initialization autonomous prediction first, L2 structurally supported stability region next, L3 modal correspondence optional. Rules: `AGENTS.md`, `docs/engineering_loop.md`. TEST has not been opened.
+Mission **RUNNING — stage A implementation** (2026-10-17). User approved implementation of the72-process-hour plan. Active protocol: `reports/closure_discovery_20261017_protocol.md`; config: `configs/closure_discovery_20261017.json`. No scientific process launched at this snapshot; no live scientific job ID. TASK4 remains paused; frozen test remains closed.
+
+New cap259200process-seconds, stage A43200/B86400/C57600/D43200/E14400/reserve14400. Old59643.306023/60000seconds are separately retained, not reset or transferred. Actual new spend begins with receipted scientific checks/runs.
+
+Source S-O: `private_data/task2_prediction_optimization_0102/formal_S_O/step00650/structured_numeric_export.json`, SHA256 c9fe3f86cf093d1f6c4600c71ecd333200840b9be4c2b156c018e1ff09a1e238. It remains a structured research candidate; F-O remains a sparse development baseline. No accepted deployment model.
+
+Next: implement expression compiler and bounded search, verify exact source reconstruction, run controlled cases and measure complete-work costs. Freeze depth3/2/1 before B; no reduced seeds/adaptation after seeing results. Source data labels, actual times and100ms boundaries stay fixed (train346eligible/35unstable; val107/12).
+
+Protocol/config remotely verified before scientific execution on `codex/closure-discovery-20261017`, commit868ae3f10254236d06e5728e08d33896fcd83b19. Stage results/negative outcomes/code must be archived on this branch. Unrelated local edits preserved. Recovery cwd `E:/03-nn_Transfer_Func/kiki`, Python `E:/03-nn_Transfer_Func/kron-reduce/.venv/Scripts/python.exe`.
+
+Historical recovery evidence follows;0102–0106 reports retain all source classifications and adverse results.
+
+## Historical TASK2 state
+
+Historical TASK2 pool **BLOCKED — verified parent resource insufficiency** (2026-09-27). This historical status is retained below; a separately authorized research stage is active. No live job ID. Active roadmap: `docs/TASK2_after_loop_101.md`; L1 accurate single-initialization autonomous prediction first, L2 structurally supported stability region next, L3 modal correspondence optional. Rules: `AGENTS.md`, `docs/engineering_loop.md`. TEST has not been opened.
 
 ## Decisive evidence and model scope
 
