@@ -1,0 +1,43 @@
+{
+  "registered_epoch": 1792184689.9231858,
+  "scope": "follow-up source repair after current source-bound fits end, before formal C aggregation/selection",
+  "scientific_field_loss_seed_budget_changes": false,
+  "items": [
+    {
+      "files": [
+        "experiments/discover_closure.py",
+        "tests/test_discover_closure.py"
+      ],
+      "fix": "alternative identity includes both normalized expression support and J/R direction mask; keep fixed near-optimal and observable-disagreement criteria",
+      "registration": "B/pending_direction_alternative_filter_fix.json"
+    },
+    {
+      "files": [
+        "experiments/discover_closure.py",
+        "tests/test_discover_closure.py"
+      ],
+      "fix": "fit must return an intact already-completed checkpoint without rewriting it or changing its provenance; reject checkpoint beyond requested adaptation target rather than relabelling",
+      "evidence": "checkpoint() updates implementation provenance before immutable endpoint comparison; after a source-only repair, current fit() unconditionally calls it even when step==target, which would change immutable completed endpoint bytes",
+      "test": "completed target checkpoint is read-only across current identity change; optimizer/loss/checkpoint writer must not run; original file SHA/provenance retained"
+    },
+    {
+      "files": [
+        "experiments/closure_discovery_data.py",
+        "experiments/closure_discovery_confirmation.py",
+        "related tests"
+      ],
+      "fix": "A two cost-preflight conditions count inside newtrain24; remaining22 by original disagreement within quotas; newval24 unchanged; total unique new conditions48",
+      "registration": "D_condition_accounting_clarification.json"
+    },
+    {
+      "files": [
+        "experiments/closure_discovery_export.py",
+        "export documentation tests"
+      ],
+      "fix": "correct exported equation explanation to physical-coordinate edge centering; actual runtime already restores g_c0*(c+sin(phi)*eta), no dynamics change",
+      "registration": "E/preparation.json"
+    }
+  ],
+  "timing": "do not edit bound source until current B/C jobs have stopped; preserve old source snapshot and records, run targeted checks, register new identity and push before next scientific execution",
+  "test_read": false
+}

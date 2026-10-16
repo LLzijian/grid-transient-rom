@@ -1,0 +1,30 @@
+{
+  "registered_epoch": 1792186005.5497222,
+  "scope": "original generated/1701/round1 only, bounded partial prefit",
+  "execution_order": "after generated1703 process exits, prefit the original generated1701 search in private scratch while official B continues library seeds; atomically publish only when official target does not exist; official B completes remaining original adaptation levels",
+  "source_identity_sha256": "f27cb8860a77551b07bd57749efc13c36f7566151baea49c4193155398c78428",
+  "no_search_seed_or_branch_or_budget_change": true,
+  "max_process_seconds": 1100,
+  "work_deadline_seconds": 1040,
+  "budget_stage": "B",
+  "scratch": "B/prefit_generated/1701/round1/scratch",
+  "official_target": "B/generated/1701/round1",
+  "ownership": "worker exclusively owns scratch, no writes to existing official target or global B aggregations; no writes after atomic handoff",
+  "required_helpers": [
+    "bind_execution_sources",
+    "source",
+    "rank_proposals",
+    "proposal_model",
+    "fit",
+    "score_at_level"
+  ],
+  "levels": [
+    32,
+    128,
+    512
+  ],
+  "survivors": 2,
+  "failure_and_timeout": "retain all actual costs, checkpoints and numerical failures; timeout does not establish scientific failure or change adaptation levels",
+  "train_only": true,
+  "promotion_authority": "root"
+}
