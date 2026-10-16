@@ -1,0 +1,18 @@
+{
+  "status": "PROSPECTIVE_STAGING_ONLY",
+  "registered_utc": "2026-10-16T23:22:00Z",
+  "reason": "Confirmation must report common-frequency and mechanical-power error separately. Both are already included in the unchanged primary point error; current component output covers only relative angles and speeds.",
+  "active_C_source_identity_sha256": "2e38331099ecb14bfe0d858e1cc88671fba996264bba88bd74ccfc36f017e487",
+  "apply_gate": "All C processes using the active source identity must have exited. Review isolated diff, run targeted synthetic checks, preserve C provenance, then bind and archive a new D source identity before D scientific execution.",
+  "allowed_changes": ["Add separate component output to confirmation event rows", "Require the new field when validating reusable evaluation caches", "Synthetic regression checks"],
+  "forbidden_changes": ["Primary point error, risk or paired confidence interval", "Classification or numerical qualification", "Training, candidate selection or frozen comparison", "Data generation, split semantics or frozen test access", "Production source changes while any C source-bound process is live"],
+  "horizons_s": [1, 2, 5, 8],
+  "actual_interval": "Also report the genuine interval min(800, len(event.x)-11) without padding.",
+  "alignment": "For n future steps use pred[1:n+1] against event.x[11:11+n], dt=0.01 s; never include the initial state as a future error.",
+  "common_frequency": {"definition": "sum_i(M_i * omega_i)/sum_i(M_i)", "physical_sse": "Sum of squared errors over n actual future time points", "scalar_count": "n", "rmse_unit": "rad/s", "normalized_mse": "mean(error^2)/SCALES[1]^2"},
+  "mechanical_power": {"definition": "p = Pm - pm_star, all ten machines", "physical_sse": "Sum of squared errors over n*10 scalar values", "scalar_count": "n*10", "rmse_unit": "p.u. on 100 MVA system base", "normalized_mse": "mean((error_i/model.p_scale_i)^2), using frozen train scales"},
+  "availability": "Record unavailable horizons and nonfinite components explicitly; retain every event and do not filter failed cases to recompute a total.",
+  "cache_policy": "A cache missing components is incomplete and must be rejected, never silently overwritten or recomputed.",
+  "budget": "Implementation repair and synthetic checks count in the existing reserve. No new scientific branch, seed or adaptation update.",
+  "test_access": false
+}
