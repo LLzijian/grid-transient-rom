@@ -1,0 +1,54 @@
+{
+  "registered_utc": "2026-10-16T23:26:55.396187+00:00",
+  "source_identity_sha256": "2e38331099ecb14bfe0d858e1cc88671fba996264bba88bd74ccfc36f017e487",
+  "wrapper_sha256": "348da5f3c40bf59883421e3b9ff3d8f6474002b0d4486fd30a5abc10d32de330",
+  "main_model_sha256": "40ed74ff469e35340aa5142bbc430a1958a5ef443fd8cfdfd0f5ce55bf0b3246",
+  "indices": [
+    3,
+    2
+  ],
+  "selected_terms": [
+    {
+      "channel": "port",
+      "expression": {
+        "name": "w",
+        "op": "var"
+      }
+    },
+    {
+      "channel": "edge",
+      "expression": {
+        "args": [
+          {
+            "args": [
+              {
+                "name": "qi",
+                "op": "var"
+              },
+              {
+                "name": "qj",
+                "op": "var"
+              }
+            ],
+            "op": "add"
+          },
+          {
+            "name": "c",
+            "op": "var"
+          }
+        ],
+        "op": "mul"
+      }
+    }
+  ],
+  "selection_rule": "Two largest valid fixed-parameter train risks; descending (risk,index), no replacement",
+  "source_sha256": "c9fe3f86cf093d1f6c4600c71ecd333200840b9be4c2b156c018e1ff09a1e238",
+  "seed": 2701,
+  "updates_each": 1024,
+  "fresh_source": true,
+  "final_learning_rate_decay": true,
+  "cap_seconds_each": 6000,
+  "max_concurrent_fit_processes": 4,
+  "train_count": 346,
+  "no_test": true
+}
