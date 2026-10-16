@@ -1,0 +1,124 @@
+--- experiments/closure_discovery_confirmation.py (current C)
++++ experiments/closure_discovery_confirmation.py (pending D)
+@@ -10,6 +10,92 @@
+ 
+ class RecoveryUnresolved(RuntimeError):
+     """An existing artifact is incomplete or its scientific identity has changed."""
++
++
++def _component_metrics(pred, event, mass, p_scale):
++    """Return physical common-frequency and mechanical-power scores by horizon.
++
++    Predictions include the initial point at index zero.  Scored values begin
++    at index one and are paired with the first observed future point x[11].
++    """
++    from evaluate_structured_rom import DT
++    from closure_discovery_data import SCALES
++
++    pred = np.asarray(pred, dtype=np.float64)
++    truth = np.asarray(event["x"], dtype=np.float64)
++    mass = np.asarray(mass, dtype=np.float64).reshape(-1)
++    p_scale = np.asarray(p_scale, dtype=np.float64).reshape(-1)
++    if pred.ndim != 2 or pred.shape[1] < 30 or truth.ndim != 2 or truth.shape[1] < 30:
++        raise ValueError("component metrics require [time,30+] prediction and truth arrays")
++    if (mass.shape != (10,) or p_scale.shape != (10,)
++            or not np.isfinite(mass).all() or not np.isfinite(p_scale).all()
++            or np.any(mass <= 0) or np.any(p_scale <= 0)):
++        raise ValueError("component metrics require positive length-10 mass and p_scale vectors")
++
++    available_steps = max(0, len(truth) - 11)
++    horizons = {str(seconds): round(float(seconds) / DT) for seconds in (1, 2, 5, 8)}
++    horizons["prefix"] = min(800, available_steps)
++    rows = {}
++    for name, requested in horizons.items():
++        n = min(requested, available_steps) if name == "prefix" else requested
++        interval_available = (n > 0 and (name == "prefix" or available_steps >= requested)
++                              and pred.shape[0] >= n + 1)
++        row = {"available": bool(interval_available), "n_time_points": int(n) if interval_available else 0}
++        if not interval_available:
++            row.update({"frequency": {"unit": "rad/s", "physical_sse_unit": "(rad/s)^2",
++                                       "finite": None, "physical_sse": None,
++                                       "n_scalar_points": 0, "rmse_rad_s": None,
++                                       "normalized_mse": None},
++                        "mechanical_power": {"unit": "p.u. (100 MVA system base)",
++                                             "physical_sse_unit": "p.u.^2",
++                                             "finite": None, "physical_sse": None,
++                                             "n_scalar_points": 0, "rmse_pu": None,
++                                             "normalized_mse": None}})
++            rows[name] = row
++            continue
++
++        # Keep the event time grid authoritative; prediction index zero is the
++        # initial condition and is intentionally excluded from scored errors.
++        with np.errstate(over="ignore", invalid="ignore", divide="ignore"):
++            omega_error = pred[1:n + 1, 10:20] - truth[11:11 + n, 10:20]
++            common_error = (omega_error * mass[None, :]).sum(axis=1) / mass.sum()
++            power_error = pred[1:n + 1, 20:30] - truth[11:11 + n, 20:30]
++        frequency_finite = bool(np.isfinite(common_error).all())
++        power_finite = bool(np.isfinite(power_error).all())
++        if frequency_finite:
++            with np.errstate(over="ignore", invalid="ignore", divide="ignore"):
++                frequency_sse = float(np.square(common_error).sum())
++                frequency_rmse = float(np.sqrt(frequency_sse / n))
++                frequency_normalized = float(np.mean(np.square(common_error)) / float(SCALES[1]) ** 2)
++            frequency_finite = bool(np.isfinite([frequency_sse, frequency_rmse, frequency_normalized]).all())
++            if not frequency_finite:
++                frequency_sse = frequency_rmse = frequency_normalized = None
++        else:
++            frequency_sse = frequency_rmse = frequency_normalized = None
++        power_count = n * 10
++        if power_finite:
++            with np.errstate(over="ignore", invalid="ignore", divide="ignore"):
++                power_sse = float(np.square(power_error).sum())
++                power_rmse = float(np.sqrt(power_sse / power_count))
++                power_normalized = float(np.mean(np.square(power_error / p_scale[None, :])))
++            power_finite = bool(np.isfinite([power_sse, power_rmse, power_normalized]).all())
++            if not power_finite:
++                power_sse = power_rmse = power_normalized = None
++        else:
++            power_sse = power_rmse = power_normalized = None
++        row.update({
++            "frequency": {"unit": "rad/s", "physical_sse_unit": "(rad/s)^2",
++                          "finite": frequency_finite, "physical_sse": frequency_sse,
++                          "n_scalar_points": int(n), "rmse_rad_s": frequency_rmse,
++                          "normalized_mse": frequency_normalized},
++            "mechanical_power": {"unit": "p.u. (100 MVA system base)",
++                                  "physical_sse_unit": "p.u.^2",
++                                  "finite": power_finite, "physical_sse": power_sse,
++                                  "n_scalar_points": int(power_count), "rmse_pu": power_rmse,
++                                  "normalized_mse": power_normalized},
++        })
++        rows[name] = row
++    return rows
+ 
+ 
+ def _json_value(value):
+@@ -190,7 +276,7 @@
+     records = result.get("records")
+     expected_ids = sorted(str(event["id"]) for event in events)
+     row_fields = {"id", "group", "label", "numerical_pass", "complete_5s", "mse",
+-                  "metrics", "pair", "selected_pair", "scored_numerics"}
++                  "metrics", "components", "pair", "selected_pair", "scored_numerics"}
+     summary_fields = {"primary_risk", "primary_complete_stable_count", "all_numerical_pass",
+                       "classification_counts", "scope", "test_read"}
+     if (result.get("_identity") != identity or not isinstance(records, list)
+@@ -208,6 +294,7 @@
+     from train_structured_rom import _point_error
+     from train_local_memory_0098 import risk
+     output=Path(output);rows=[];mass=model.mass.detach().numpy()
++    p_scale=model.p_scale.detach().numpy()
+     for e in events:
+         if deadline is not None and time.perf_counter()+30>=deadline:
+             raise TimeoutError('incomplete numerical evaluation at stage cap; no partial aggregate')
+@@ -229,9 +316,10 @@
+         truth=torch.as_tensor(e['x'][11:11+actual],dtype=torch.float64)
+         pred=torch.as_tensor(ref[1:1+actual],dtype=torch.float64)
+         mse=float(_point_error(pred,truth,model).mean()) if actual>0 and np.isfinite(pred.numpy()).all() else None
++        components=_component_metrics(ref,e,mass,p_scale)
+         rows.append({'id':e['id'],'group':e['group'],'label':e['label'],'numerical_pass':numerical,
+                      'actual_seconds':actual*.01,'complete_5s':actual==500,'mse':mse,
+-                     'metrics':metrics,'pair':pair,'selected_pair':selected_pair,'scored_numerics':scored})
++                     'metrics':metrics,'components':components,'pair':pair,'selected_pair':selected_pair,'scored_numerics':scored})
+     primary=[r for r in rows if r['label']=='stable' and r['complete_5s']]
+     qualified=bool(primary) and all(r['numerical_pass'] and r['mse'] is not None for r in primary)
+     summary={'records':rows,'event_count':len(events),'primary_complete_stable_count':len(primary),
