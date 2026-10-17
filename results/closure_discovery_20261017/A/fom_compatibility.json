@@ -1,0 +1,164 @@
+{
+  "schema_version": 1,
+  "review": "A/fom_cost_retry2 new-FOM fixed-system compatibility against historical TRAIN data",
+  "date": "2026-10-17",
+  "scope": {
+    "fom_execution": false,
+    "historical_event_payloads_read": false,
+    "test_payloads_read": false,
+    "new_val_labels_read": false,
+    "historical_hdf5_access": "Root attributes plus root equilibrium/inertia arrays only; events groups were not opened.",
+    "new_fom_access": "Manifest and sidecar metadata, plus NPZ equilibrium and inertia fields only; raw trajectory fields were not read for this review."
+  },
+  "conclusion": {
+    "observed_fixed_system_compatibility": "verified for the compared physical fingerprint",
+    "case_file_and_runtime_attestation": "partially verified; the legacy A attempt artifacts do not persist an immutable per-run case SHA256, ANDES version, omega_s, or effective configuration hash",
+    "fault_conditions": "The two conditions differ in bus/line/duration/reactance. Those are event perturbations; they do not indicate different fixed physical systems."
+  },
+  "historical_reference": {
+    "datasets": [
+      "private_data/ieee39_postfault/dataset.h5",
+      "private_data/ieee39_expansion/dataset.h5"
+    ],
+    "andes_version": "2.0.0",
+    "case": "ieee39/ieee39_full.xlsx",
+    "case_sha256": "9c2048dc94201ee48ffe816de65d53831fa1f4b0e7fdf32f24c50f1017edcfe5",
+    "omega_s_rad_per_s": 376.99111843077515,
+    "mva_base": 100.0,
+    "postfault_signature": "e52c4d30ec9db0ae76c6a2f1f722ca00a7a5803c4dbb01ad3b6718bfcade16d9",
+    "state_mapping_rows": 220,
+    "generator_order": [
+      "GENROU_1",
+      "GENROU_2",
+      "GENROU_3",
+      "GENROU_4",
+      "GENROU_5",
+      "GENROU_6",
+      "GENROU_7",
+      "GENROU_8",
+      "GENROU_9",
+      "GENROU_10"
+    ],
+    "cross_dataset_agreement": "Exact equality for all six equilibrium arrays, inertia, omega_s, state_mapping, algebraic_names, postfault_signature, ANDES version, case path and case SHA256.",
+    "raw_units": "delta rad; omega absolute pu; Pm=GENROU.tm, Pe=GENROU.Pe, te=GENROU.te on system MVA base"
+  },
+  "new_train_conditions": [
+    {
+      "id": "newtrain_449f2a97fdcc3c2a",
+      "fault": {
+        "bus": 17,
+        "line": "Line_21",
+        "location": 1.0,
+        "duration_s": 0.125,
+        "xf": 0.01
+      },
+      "time_steps_s": [
+        0.005,
+        0.0025
+      ],
+      "pair_qualified": true,
+      "scaled_rms": 2.6640029807354822e-05,
+      "postfault_signature_matches_historical": true
+    },
+    {
+      "id": "newtrain_83adbaea1acb2425",
+      "fault": {
+        "bus": 8,
+        "line": "Line_10",
+        "location": 1.0,
+        "duration_s": 0.175,
+        "xf": 0.0031622776601683794
+      },
+      "time_steps_s": [
+        0.005,
+        0.0025
+      ],
+      "pair_qualified": true,
+      "scaled_rms": 4.7267280994469656e-05,
+      "postfault_signature_matches_historical": true
+    }
+  ],
+  "comparisons": {
+    "new_raw_files_compared": 4,
+    "equilibrium_arrays": [
+      "delta",
+      "omega",
+      "Pm",
+      "Pe",
+      "full_state",
+      "algebraic_state"
+    ],
+    "max_absolute_difference_by_array_for_each_file": {
+      "delta": 0.0,
+      "omega": 0.0,
+      "Pm": 0.0,
+      "Pe": 0.0,
+      "full_state": 0.0,
+      "algebraic_state": 0.0,
+      "inertia": 0.0
+    },
+    "state_mapping": "All 220 entries match the historical mapping exactly, including GENROU_1 through GENROU_10 order.",
+    "omega_s": "Both historical roots store 376.99111843077515 rad/s; the adapter's canonical constant is 2*pi*60 and equals that value.",
+    "postfault_signature": "All four raw sidecars store the same signature as both historical roots. The generator computes the signature from physical model parameters while excluding only TimedEvent devices and checks restoration after clearing."
+  },
+  "case_and_version_evidence": {
+    "historical": "Both historical roots persist ANDES 2.0.0, case ieee39/ieee39_full.xlsx, and the same case SHA256.",
+    "new_run_support": [
+      "configs/private_dataset.json specifies the same case and ANDES version.",
+      "private_data/closure_discovery_20261017/A/environment_after_fom_deps.json records ANDES 2.0.0.",
+      "experiments/generate_private_dataset.py rejects an ANDES version that differs from config and resolves the configured case before simulation."
+    ],
+    "new_run_gap": "The A/fom_cost_retry2 generation manifest and its raw sidecars do not store per-attempt ANDES version or resolved case path/SHA256. Thus the inspected source/config/environment support the match, but the specific legacy attempts do not provide an immutable per-run case/version attestation."
+  },
+  "adapter_assessment": {
+    "before_guard": {
+      "enforced": [
+        "TRAIN/VAL split restrictions and documented line endpoints",
+        "disable_pss=false and 15-s configured horizon",
+        "The simulator's configured ANDES-version check",
+        "Raw validity, ten-generator dimensions, actual horizon, and paired-step raw/classification agreement"
+      ],
+      "not_enforced": [
+        "Historical equilibrium arrays and inertia equality",
+        "omega_s equality to both historical roots",
+        "Exact generator/algebraic ordering match",
+        "Historical case SHA256 and postfault signature equality",
+        "Persisted per-run case/version/frequency/config attestation"
+      ]
+    },
+    "guard_added": "experiments/closure_discovery_data.py now loads only historical root metadata/equilibrium/inertia; requires the two references to agree; compares each new result against that fingerprint with rtol=0 and atol=1e-9; verifies state/algebraic order and postfault signature; checks actual ANDES version, resolved case-file SHA256, omega_s basis and effective config hash before accepting a real run; writes the attestation to each raw sidecar and manifest step. load_new_events repeats the physical checks. Legacy schema-1 A artifacts remain readable only after the physical fingerprint passes and are explicitly marked as lacking complete per-run attestation.",
+    "failure_semantics": "A mismatch invalidates the data attempt or excludes it as system_compatibility_failure. It does not change or infer the physical stable/unstable label and does not trigger replacement sampling."
+  },
+  "recommended_guard": {
+    "implementation": "Implemented in experiments/closure_discovery_data.py",
+    "numerical_tolerance": {
+      "rtol": 0.0,
+      "atol": 1e-09
+    },
+    "reference_sources": [
+      "private_data/ieee39_postfault/dataset.h5",
+      "private_data/ieee39_expansion/dataset.h5"
+    ],
+    "attestation_fields": [
+      "andes_version",
+      "case_config",
+      "resolved_case_path",
+      "case_sha256",
+      "omega_s",
+      "config_sha256",
+      "config_file_sha256",
+      "reference_fingerprint_sha256"
+    ]
+  },
+  "evidence_paths": [
+    "configs/private_dataset.json",
+    "private_data/ieee39_postfault/dataset.h5 (root metadata/equilibrium/inertia only)",
+    "private_data/ieee39_expansion/dataset.h5 (root metadata/equilibrium/inertia only)",
+    "private_data/closure_discovery_20261017/A/fom_cost_retry2/generation.json (split=train)",
+    "private_data/closure_discovery_20261017/A/fom_cost_retry2/raw/*.json",
+    "private_data/closure_discovery_20261017/A/fom_cost_retry2/raw/*.npz (equilibrium and inertia fields only)",
+    "private_data/closure_discovery_20261017/A/environment_after_fom_deps.json",
+    "experiments/generate_private_dataset.py",
+    "experiments/closure_discovery_data.py"
+  ]
+}

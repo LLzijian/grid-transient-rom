@@ -264,3 +264,7 @@ does not change a scientific or safety decision.
   4. a preregistered decision point is near.
 - Progress messages to the user should correspond to meaningful milestones, decisions,
   failures, or completion—not routine liveness polling.
+
+## GPU execution for future closure training
+
+For new 40-state closure training, use `experiments/train_closure.py` in the dedicated CUDA environment; its default is CUDA and unavailable CUDA is an explicit error. CPU execution must be requested for reproduction or debugging. Preserve float64, registered step sizes, batch/split semantics and scientific gates. The historical runners remain reproduction assets. Use a new output directory and bind source, train, code, optimizer and CPU/CUDA RNG identities. GPU availability does not itself establish a speed gain; use synchronized, scope-matched timing. See [GPU execution guide](gpu_training.md). This engineering default grants no additional scientific experiment or test access.

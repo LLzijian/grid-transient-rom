@@ -1,0 +1,40 @@
+{
+  "status": "prepared_not_run",
+  "execution_started": false,
+  "wrapper_sha256": "894e8a07428b80527fe41086a2261465e2311edcaaf8a149a6c374cf30b28bc8",
+  "copied_wrapper_sha256": "894e8a07428b80527fe41086a2261465e2311edcaaf8a149a6c374cf30b28bc8",
+  "conditions_manifest_sha256": "adb8d1829811bb9b7834a4405a2c46007bcc7f0282dceb7d8aecc5af4361c9df",
+  "c_frozen_sha256": null,
+  "execution_orders": {
+    "train": {
+      "path": "D/data_train_execution_order.json",
+      "sha256": null,
+      "required_fields": [
+        "source_identity_sha256",
+        "wrapper_sha256",
+        "c_frozen_sha256",
+        "conditions_manifest_sha256"
+      ]
+    },
+    "val": {
+      "path": "D/data_val_execution_order.json",
+      "sha256": null,
+      "required_fields": [
+        "source_identity_sha256",
+        "wrapper_sha256",
+        "c_frozen_sha256",
+        "conditions_manifest_sha256",
+        "confirmation_freeze_sha256"
+      ]
+    }
+  },
+  "attempted_conditions_per_phase": 24,
+  "generation_sequence": [
+    "train generation",
+    "D adaptation and immutable confirmation freeze",
+    "val generation"
+  ],
+  "generator_policy": "generate_or_reuse owns the registered dual-step-size generation and preserves failed or unresolved attempts without replacement sampling",
+  "fom_run_result_rule": "false only when the completed generation was reused; true when generation was newly run",
+  "static_check": "Python compile only; main was not called; no train/val payload read"
+}

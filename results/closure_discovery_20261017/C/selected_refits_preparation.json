@@ -1,0 +1,33 @@
+{
+  "prepared_epoch": 1792187003.4836705,
+  "scope": "bounded execution of the original selected C structures and refit seeds only",
+  "wrapper_sha256": "1e30d3fdee4df90cad313bac1020ea7c5b5314bd5fc56bb0475059add26f430d",
+  "checks": [
+    "py_compile passed by worker",
+    "static import without main or dataset loading passed by worker",
+    "root AST parse passed",
+    "root read-only contract review and provenance binding additions"
+  ],
+  "status": "prepared_not_started",
+  "required_launch_registration": "C/selected_refits_execution_order.json: source_identity_sha256, selection_sha256, wrapper_sha256, names mapping to allowed seeds",
+  "source_binding": "created only after current f27 source-bound jobs end and repair03 passes",
+  "scientific_counts_unchanged": true,
+  "formal_selection_authority": "root, after bounded independent challenge",
+  "test_read": false,
+  "root_frozen_aggregation": "C/frozen.json rows use the original stage_c schema only: name, seed, path, sha256, qa; mechanism deletions additionally record deleted. Additional worker provenance/train summaries stay in their original job manifests, avoiding collision with D endpoint source_sha256 semantics.",
+  "deletion_subtasks": {
+    "wrapper_sha256": "348da5f3c40bf59883421e3b9ff3d8f6474002b0d4486fd30a5abc10d32de330",
+    "status": "static_checked_and_root_reviewed_not_started",
+    "checks": [
+      "py_compile and static import without main/model/data passed",
+      "root scoped-ownership and failure-preservation review"
+    ],
+    "orders": [
+      "C/deletion_execution_order_screen.json",
+      "C/deletion_execution_order_fit.json"
+    ],
+    "screen": "all main expression removals scored with remaining weights fixed, proposal ordering only",
+    "root_selection": "at most two largest valid risks, descending risk then index as original stage_c",
+    "fit": "fresh registered source, main direction mask, seed2701, 1024 final updates; no replacement on numerical failure"
+  }
+}

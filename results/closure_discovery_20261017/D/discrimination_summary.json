@@ -1,0 +1,4925 @@
+{
+  "scope": "exploratory new train discrimination of frozen predictors, not confirmation or isolated mechanism necessity",
+  "selected_conditions": 24,
+  "qualified_events": 20,
+  "excluded": [
+    {
+      "id": "newtrain_15dd85eb449e115b",
+      "new_split": "train",
+      "reason": "numerical_or_classification_gate_failed",
+      "root": "closure_discovery",
+      "steps": {
+        "0.0025": "completed",
+        "0.005": "completed"
+      }
+    },
+    {
+      "id": "newtrain_857e3fd540105aac",
+      "new_split": "train",
+      "reason": "numerical_or_classification_gate_failed",
+      "root": "closure_discovery",
+      "steps": {
+        "0.0025": "completed",
+        "0.005": "completed"
+      }
+    },
+    {
+      "id": "newtrain_be83e796c4f1aa34",
+      "new_split": "train",
+      "reason": "raw_simulation_or_validation_failure",
+      "root": "closure_discovery",
+      "steps": {
+        "0.0025": "simulation_failed",
+        "0.005": "simulation_failed"
+      }
+    },
+    {
+      "id": "newtrain_25383327cf3eb1a6",
+      "new_split": "train",
+      "reason": "raw_simulation_or_validation_failure",
+      "root": "closure_discovery",
+      "steps": {
+        "0.0025": "simulation_failed",
+        "0.005": "simulation_failed"
+      }
+    }
+  ],
+  "complete_selected_cohort_loaded": false,
+  "models": {
+    "main_2701": {
+      "visible_result_sha256": "1bfd4a3b850f37b28fd7e06c62fc1eae81bf4d241c3ee26e46fdd6db24c0aa2c",
+      "source_model_sha256": "40ed74ff469e35340aa5142bbc430a1958a5ef443fd8cfdfd0f5ce55bf0b3246",
+      "event_count": 20,
+      "primary_complete_stable_count": 14,
+      "primary_risk": 3.256502151489258,
+      "all_numerical_pass": true,
+      "classification_counts": {
+        "false_los": 1,
+        "missed_unstable": 0,
+        "numerically_unresolved": 0,
+        "true_unstable": 6
+      },
+      "records": [
+        {
+          "id": "newtrain_449f2a97fdcc3c2a",
+          "group": "17",
+          "label": "stable",
+          "numerical_pass": true,
+          "actual_seconds": 5.0,
+          "complete_5s": true,
+          "mse": 0.11493782053543325,
+          "components": {
+            "1": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 100,
+                "normalized_mse": 0.006977818637127489,
+                "physical_sse": 0.7024882521912088,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.08381457225275381,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 1000,
+                "normalized_mse": 0.10810732860139337,
+                "physical_sse": 27.931171839448517,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.16712621529684837,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 100
+            },
+            "2": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 200,
+                "normalized_mse": 0.024498153017349547,
+                "physical_sse": 4.932677557281786,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.15704581429127276,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 2000,
+                "normalized_mse": 0.08741634425986305,
+                "physical_sse": 48.19245360608597,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.1552295938377827,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 200
+            },
+            "5": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 500,
+                "normalized_mse": 0.020784067961089055,
+                "physical_sse": 10.462126012936377,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.1446521760149938,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 5000,
+                "normalized_mse": 0.05526120160684577,
+                "physical_sse": 74.81805425055128,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.12232583884899485,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 500
+            },
+            "8": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.023636690674272015,
+                "physical_sse": 19.03689205220049,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.1542598945457004,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.039961262297823597,
+                "physical_sse": 86.43439459097442,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.10394373152755197,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            },
+            "prefix": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.023636690674272015,
+                "physical_sse": 19.03689205220049,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.1542598945457004,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.039961262297823597,
+                "physical_sse": 86.43439459097442,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.10394373152755197,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            }
+          }
+        },
+        {
+          "id": "newtrain_a1e9f43d0649de37",
+          "group": "17",
+          "label": "stable",
+          "numerical_pass": true,
+          "actual_seconds": 5.0,
+          "complete_5s": true,
+          "mse": 0.24540719775806594,
+          "components": {
+            "1": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 100,
+                "normalized_mse": 0.025443691855657626,
+                "physical_sse": 2.561530408066129,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.16004781810653118,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 1000,
+                "normalized_mse": 0.1971135655563363,
+                "physical_sse": 51.8985554889652,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.22781254462598235,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 100
+            },
+            "2": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 200,
+                "normalized_mse": 0.07835622726504128,
+                "physical_sse": 15.776944630471426,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.2808642432784158,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 2000,
+                "normalized_mse": 0.1638313032164434,
+                "physical_sse": 91.29274754370411,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.21365011999025896,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 200
+            },
+            "5": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 500,
+                "normalized_mse": 0.0543344494475512,
+                "physical_sse": 27.350461806997274,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.23388228580633152,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 5000,
+                "normalized_mse": 0.10823287509409654,
+                "physical_sse": 146.76970868336355,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.17132992072802902,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 500
+            },
+            "8": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.054595302115381966,
+                "physical_sse": 43.97082854153861,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.23444303290335428,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.07860440140665446,
+                "physical_sse": 170.44514722093672,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.145964527891598,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            },
+            "prefix": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.054595302115381966,
+                "physical_sse": 43.97082854153861,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.23444303290335428,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.07860440140665446,
+                "physical_sse": 170.44514722093672,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.145964527891598,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            }
+          }
+        },
+        {
+          "id": "newtrain_fffecebc8c19c397",
+          "group": "6",
+          "label": "stable",
+          "numerical_pass": true,
+          "actual_seconds": 5.0,
+          "complete_5s": true,
+          "mse": 0.20362260149900202,
+          "components": {
+            "1": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 100,
+                "normalized_mse": 0.004476363428874583,
+                "physical_sse": 0.450655553669888,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.06713088362816984,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 1000,
+                "normalized_mse": 0.20363759528801723,
+                "physical_sse": 57.40831730701263,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.23960032826983488,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 100
+            },
+            "2": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 200,
+                "normalized_mse": 0.01796198998574253,
+                "physical_sse": 3.6166279484027024,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.13447356521641535,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 2000,
+                "normalized_mse": 0.15382624209637474,
+                "physical_sse": 91.57289915809869,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.21397768476887805,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 200
+            },
+            "5": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 500,
+                "normalized_mse": 0.016528873353216837,
+                "physical_sse": 8.320178523134489,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.1289975079072033,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 5000,
+                "normalized_mse": 0.09072074621334682,
+                "physical_sse": 129.06252332456174,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.16066270464831703,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 500
+            },
+            "8": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.027173681218411454,
+                "physical_sse": 21.885569479439788,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.16539940099438008,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.06591832291232605,
+                "physical_sse": 148.96548375292502,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.13645763250590137,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            },
+            "prefix": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.027173681218411454,
+                "physical_sse": 21.885569479439788,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.16539940099438008,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.06591832291232605,
+                "physical_sse": 148.96548375292502,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.13645763250590137,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            }
+          }
+        },
+        {
+          "id": "newtrain_fcce946bce1243a2",
+          "group": "6",
+          "label": "stable",
+          "numerical_pass": true,
+          "actual_seconds": 5.0,
+          "complete_5s": true,
+          "mse": 0.1702446476620689,
+          "components": {
+            "1": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 100,
+                "normalized_mse": 0.0034372518550549467,
+                "physical_sse": 0.3460435378974759,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.05882546539530953,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 1000,
+                "normalized_mse": 0.17365977153027445,
+                "physical_sse": 48.77143515174421,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.2208425573836352,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 100
+            },
+            "2": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 200,
+                "normalized_mse": 0.014115873135476428,
+                "physical_sse": 2.8422163322880007,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.11921024142849473,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 2000,
+                "normalized_mse": 0.13038913954110612,
+                "physical_sse": 77.40097903292906,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.19672439990114224,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 200
+            },
+            "5": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 500,
+                "normalized_mse": 0.014177268124418321,
+                "physical_sse": 7.136445373183751,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.11946920417566823,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 5000,
+                "normalized_mse": 0.07593804614053318,
+                "physical_sse": 107.96864120589714,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.1469480460611145,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 500
+            },
+            "8": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.022812303482564446,
+                "physical_sse": 18.37293404750248,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.1515459255782817,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.05491295065386146,
+                "physical_sse": 124.06174292297983,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.12452998781567627,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            },
+            "prefix": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.022812303482564446,
+                "physical_sse": 18.37293404750248,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.1515459255782817,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.05491295065386146,
+                "physical_sse": 124.06174292297983,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.12452998781567627,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            }
+          }
+        },
+        {
+          "id": "newtrain_ec341ae4d28d1ec0",
+          "group": "18",
+          "label": "stable",
+          "numerical_pass": true,
+          "actual_seconds": 5.0,
+          "complete_5s": true,
+          "mse": 0.19521110540429765,
+          "components": {
+            "1": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 100,
+                "normalized_mse": 0.020214092559897836,
+                "physical_sse": 2.0350432263283404,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.1426549412508498,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 1000,
+                "normalized_mse": 0.16594317894631613,
+                "physical_sse": 43.47553638061222,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.20850788085972247,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 100
+            },
+            "2": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 200,
+                "normalized_mse": 0.05946766780153038,
+                "physical_sse": 11.973752884176957,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.24468094413109653,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 2000,
+                "normalized_mse": 0.13873517325436763,
+                "physical_sse": 77.4884967081793,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.1968355871129244,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 200
+            },
+            "5": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 500,
+                "normalized_mse": 0.04380358996972521,
+                "physical_sse": 22.04951787783934,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.2099977041676377,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 5000,
+                "normalized_mse": 0.08987979020544767,
+                "physical_sse": 122.54050328778055,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.1565506328877533,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 500
+            },
+            "8": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.04589510421086685,
+                "physical_sse": 36.96372544815533,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.21495268504997597,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.06599683064109446,
+                "physical_sse": 143.39608697848445,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.13388245169666768,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            },
+            "prefix": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.04589510421086685,
+                "physical_sse": 36.96372544815533,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.21495268504997597,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.06599683064109446,
+                "physical_sse": 143.39608697848445,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.13388245169666768,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            }
+          }
+        },
+        {
+          "id": "newtrain_9d6e71f7fdd48ba6",
+          "group": "15",
+          "label": "stable",
+          "numerical_pass": true,
+          "actual_seconds": 5.0,
+          "complete_5s": true,
+          "mse": 0.1942787705103219,
+          "components": {
+            "1": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 100,
+                "normalized_mse": 0.011899085513782888,
+                "physical_sse": 1.1979342284384955,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.10945018174669677,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 1000,
+                "normalized_mse": 0.17097156083432397,
+                "physical_sse": 45.677752110032394,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.21372354130987162,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 100
+            },
+            "2": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 200,
+                "normalized_mse": 0.047639323453453675,
+                "physical_sse": 9.59212808722844,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.21899917907641162,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 2000,
+                "normalized_mse": 0.1357004092135172,
+                "physical_sse": 77.38132600279489,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.19669942298186197,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 200
+            },
+            "5": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 500,
+                "normalized_mse": 0.03395423063302435,
+                "physical_sse": 17.09162230512604,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.1848871131535459,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 5000,
+                "normalized_mse": 0.08784322818757317,
+                "physical_sse": 120.02519673144083,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.15493559741482318,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 500
+            },
+            "8": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.03710294692333232,
+                "physical_sse": 29.882558651360597,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.19326975530123885,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.06337816087462103,
+                "physical_sse": 138.63275707324263,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.13164001912091675,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            },
+            "prefix": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.03710294692333232,
+                "physical_sse": 29.882558651360597,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.19326975530123885,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.06337816087462103,
+                "physical_sse": 138.63275707324263,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.13164001912091675,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            }
+          }
+        },
+        {
+          "id": "newtrain_e4ef975372a3eafa",
+          "group": "21",
+          "label": "stable",
+          "numerical_pass": true,
+          "actual_seconds": 5.0,
+          "complete_5s": true,
+          "mse": 0.18150983667813564,
+          "components": {
+            "1": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 100,
+                "normalized_mse": 0.005329734233342881,
+                "physical_sse": 0.5365682143561687,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.07325081667504935,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 1000,
+                "normalized_mse": 0.1675011769345962,
+                "physical_sse": 43.16578590232753,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.2077637742782113,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 100
+            },
+            "2": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 200,
+                "normalized_mse": 0.03536623812658253,
+                "physical_sse": 7.120955158086071,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.18869227803604033,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 2000,
+                "normalized_mse": 0.1244680404442669,
+                "physical_sse": 68.84291421754129,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.18553020538114717,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 200
+            },
+            "5": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 500,
+                "normalized_mse": 0.023831677893477867,
+                "physical_sse": 11.99620871564024,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.15489485927970778,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 5000,
+                "normalized_mse": 0.08011902857913929,
+                "physical_sse": 106.17985416082294,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.14572566977771825,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 500
+            },
+            "8": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.026477621262240604,
+                "physical_sse": 21.324965694836933,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.16326728734975102,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.056978956520428996,
+                "physical_sse": 121.28500162688293,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.1231284906240646,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            },
+            "prefix": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.026477621262240604,
+                "physical_sse": 21.324965694836933,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.16326728734975102,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.056978956520428996,
+                "physical_sse": 121.28500162688293,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.1231284906240646,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            }
+          }
+        },
+        {
+          "id": "newtrain_e6041b33464f3be1",
+          "group": "23",
+          "label": "stable",
+          "numerical_pass": true,
+          "actual_seconds": 5.0,
+          "complete_5s": true,
+          "mse": 0.09316032436911952,
+          "components": {
+            "1": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 100,
+                "normalized_mse": 0.001019456084648421,
+                "physical_sse": 0.10263320965091424,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.032036418284651334,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 1000,
+                "normalized_mse": 0.1102240065152599,
+                "physical_sse": 27.21245365544152,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.16496197639286916,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 100
+            },
+            "2": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 200,
+                "normalized_mse": 0.011295693265185756,
+                "physical_sse": 2.274376056989333,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.10663901858581906,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 2000,
+                "normalized_mse": 0.07593091847486329,
+                "physical_sse": 40.53681083212296,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.1423671500594905,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 200
+            },
+            "5": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 500,
+                "normalized_mse": 0.00732498119226336,
+                "physical_sse": 3.6871933068791147,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.08587424883955742,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 5000,
+                "normalized_mse": 0.044140416143036425,
+                "physical_sse": 57.12837626541246,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.10689095028617948,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 500
+            },
+            "8": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.009580275825993832,
+                "physical_sse": 7.715914179486443,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.09820841473294463,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.03091519836569635,
+                "physical_sse": 64.30178728370333,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.0896533513621377,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            },
+            "prefix": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.009580275825993832,
+                "physical_sse": 7.715914179486443,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.09820841473294463,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.03091519836569635,
+                "physical_sse": 64.30178728370333,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.0896533513621377,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            }
+          }
+        },
+        {
+          "id": "newtrain_83adbaea1acb2425",
+          "group": "8",
+          "label": "stable",
+          "numerical_pass": true,
+          "actual_seconds": 5.0,
+          "complete_5s": true,
+          "mse": 0.22285398015650176,
+          "components": {
+            "1": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 100,
+                "normalized_mse": 0.005516707383792214,
+                "physical_sse": 0.5553916387666242,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.07452460256630854,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 1000,
+                "normalized_mse": 0.20406547018687202,
+                "physical_sse": 57.313028775744364,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.2394013967706629,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 100
+            },
+            "2": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 200,
+                "normalized_mse": 0.024649550579209985,
+                "physical_sse": 4.963161298447386,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.15753033514925605,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 2000,
+                "normalized_mse": 0.16262463965975954,
+                "physical_sse": 96.78269558045264,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.21998033500798728,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 200
+            },
+            "5": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 500,
+                "normalized_mse": 0.024424697455831337,
+                "physical_sse": 12.294718391469516,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.15681019349181044,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 5000,
+                "normalized_mse": 0.09993850797412109,
+                "physical_sse": 142.05297328802783,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.1685544263957656,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 500
+            },
+            "8": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.037616749431687246,
+                "physical_sse": 30.29637304790593,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.1946033563684923,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.07462654941857229,
+                "physical_sse": 167.745378854967,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.144803910019277,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            },
+            "prefix": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.037616749431687246,
+                "physical_sse": 30.29637304790593,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.1946033563684923,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.07462654941857229,
+                "physical_sse": 167.745378854967,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.144803910019277,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            }
+          }
+        },
+        {
+          "id": "newtrain_b01e1cbcd7bcb6ad",
+          "group": "14",
+          "label": "stable",
+          "numerical_pass": true,
+          "actual_seconds": 5.0,
+          "complete_5s": true,
+          "mse": 1.0533461496713366,
+          "components": {
+            "1": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 100,
+                "normalized_mse": 0.029213040588480635,
+                "physical_sse": 2.941007625936331,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.17149366244664352,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 1000,
+                "normalized_mse": 0.36279609869315405,
+                "physical_sse": 101.91527663829561,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.31924172133086803,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 100
+            },
+            "2": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 200,
+                "normalized_mse": 0.0714491399010405,
+                "physical_sse": 14.386209794156924,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.2681996438677438,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 2000,
+                "normalized_mse": 0.40326712126364134,
+                "physical_sse": 214.8013998308082,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.3277204600195174,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 200
+            },
+            "5": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 500,
+                "normalized_mse": 0.04186388901320858,
+                "physical_sse": 21.073125966858175,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.20529552341372753,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 5000,
+                "normalized_mse": 0.4546971186306975,
+                "physical_sse": 555.7038138742988,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.3333778078619808,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 500
+            },
+            "8": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.11129102963560493,
+                "physical_sse": 89.63333094075396,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.3347262518475993,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.3555058788358909,
+                "physical_sse": 703.9491357725922,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.29663722283552685,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            },
+            "prefix": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.11129102963560493,
+                "physical_sse": 89.63333094075396,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.3347262518475993,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.3555058788358909,
+                "physical_sse": 703.9491357725922,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.29663722283552685,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            }
+          }
+        },
+        {
+          "id": "newtrain_8bb0ee309b2606af",
+          "group": "5",
+          "label": "unstable",
+          "numerical_pass": true,
+          "actual_seconds": 0.43,
+          "complete_5s": false,
+          "mse": 0.4763512309091825,
+          "components": {
+            "1": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "2": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "5": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "8": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "prefix": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 43,
+                "normalized_mse": 0.12604516698792834,
+                "physical_sse": 5.456498523886592,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.3562236860583396,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 430,
+                "normalized_mse": 0.09982126604254138,
+                "physical_sse": 13.737459886660956,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.17873886295870203,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 43
+            }
+          }
+        },
+        {
+          "id": "newtrain_e287677b0cb6b062",
+          "group": "30",
+          "label": "stable",
+          "numerical_pass": true,
+          "actual_seconds": 5.0,
+          "complete_5s": true,
+          "mse": 0.288519334848465,
+          "components": {
+            "1": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 100,
+                "normalized_mse": 0.02190130963886036,
+                "physical_sse": 2.204902925828278,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.14848915535581306,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 1000,
+                "normalized_mse": 0.21809360555388588,
+                "physical_sse": 41.47226978349089,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.20364741536167574,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 100
+            },
+            "2": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 200,
+                "normalized_mse": 0.041103110859761434,
+                "physical_sse": 8.276068499075192,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.20342158807603475,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 2000,
+                "normalized_mse": 0.16381464488631792,
+                "physical_sse": 71.59419225800477,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.18920120541107127,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 200
+            },
+            "5": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 500,
+                "normalized_mse": 0.03482967528949627,
+                "physical_sse": 17.532296976249526,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.18725542436068188,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 5000,
+                "normalized_mse": 0.09445094686104735,
+                "physical_sse": 106.40660923481158,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.14588119086079027,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 500
+            },
+            "8": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.042116556954253655,
+                "physical_sse": 33.92049925251113,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.2059141181794947,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.07696200117662114,
+                "physical_sse": 136.39882844608468,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.130575087806827,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            },
+            "prefix": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.042116556954253655,
+                "physical_sse": 33.92049925251113,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.2059141181794947,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.07696200117662114,
+                "physical_sse": 136.39882844608468,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.130575087806827,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            }
+          }
+        },
+        {
+          "id": "newtrain_ab91dc4c00f6ba89",
+          "group": "14",
+          "label": "stable",
+          "numerical_pass": true,
+          "actual_seconds": 5.0,
+          "complete_5s": true,
+          "mse": 0.518510329282894,
+          "components": {
+            "1": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 100,
+                "normalized_mse": 0.05285229734298014,
+                "physical_sse": 5.3208774712500215,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.230670272710855,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 1000,
+                "normalized_mse": 0.3086070358038771,
+                "physical_sse": 84.09975940145536,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.2899995851746264,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 100
+            },
+            "2": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 200,
+                "normalized_mse": 0.1706164593501255,
+                "physical_sse": 34.353446128907244,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.4144481036807096,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 2000,
+                "normalized_mse": 0.3019474286476441,
+                "physical_sse": 174.99953673377127,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.2958035976232974,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 200
+            },
+            "5": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 500,
+                "normalized_mse": 0.11614794084638004,
+                "physical_sse": 58.465666853710374,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.34195223892734017,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 5000,
+                "normalized_mse": 0.2210341409737396,
+                "physical_sse": 303.0717509546863,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.24619981760947196,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 500
+            },
+            "8": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.13271411159834348,
+                "physical_sse": 106.88739177229029,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.3655259767996836,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.1721870300708495,
+                "physical_sse": 375.79147361484877,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.2167347092688573,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            },
+            "prefix": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.13271411159834348,
+                "physical_sse": 106.88739177229029,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.3655259767996836,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.1721870300708495,
+                "physical_sse": 375.79147361484877,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.2167347092688573,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            }
+          }
+        },
+        {
+          "id": "newtrain_1a969dfe17c75d69",
+          "group": "24",
+          "label": "stable",
+          "numerical_pass": true,
+          "actual_seconds": 5.0,
+          "complete_5s": true,
+          "mse": 1.174657538299599,
+          "components": {
+            "1": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 100,
+                "normalized_mse": 0.0324261108247722,
+                "physical_sse": 3.264481796280953,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.18067877009435707,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 1000,
+                "normalized_mse": 0.5571978712461271,
+                "physical_sse": 146.08562032000654,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.38221148637895036,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 100
+            },
+            "2": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 200,
+                "normalized_mse": 0.20453788431134373,
+                "physical_sse": 41.18348966315741,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.4537812780578183,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 2000,
+                "normalized_mse": 0.5279382970902936,
+                "physical_sse": 284.2984514581568,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.37702682362012174,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 200
+            },
+            "5": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 500,
+                "normalized_mse": 0.10648325556356199,
+                "physical_sse": 53.60073110131034,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.32741634382330503,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 5000,
+                "normalized_mse": 0.4849282084918159,
+                "physical_sse": 612.5730723412373,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.3500208771891292,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 500
+            },
+            "8": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.15069082858461572,
+                "physical_sse": 121.36576463068383,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.3894960921348952,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.3655756710948504,
+                "physical_sse": 742.8351444585422,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.3047201881354725,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            },
+            "prefix": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.15069082858461572,
+                "physical_sse": 121.36576463068383,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.3894960921348952,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.3655756710948504,
+                "physical_sse": 742.8351444585422,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.3047201881354725,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            }
+          }
+        },
+        {
+          "id": "newtrain_9839a09144dd43ec",
+          "group": "15",
+          "label": "unstable",
+          "numerical_pass": true,
+          "actual_seconds": 0.27,
+          "complete_5s": false,
+          "mse": 0.4050851443789739,
+          "components": {
+            "1": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "2": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "5": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "8": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "prefix": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 27,
+                "normalized_mse": 0.00457993115655276,
+                "physical_sse": 0.12449218877301801,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.0679030323800644,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 270,
+                "normalized_mse": 0.06621488203183395,
+                "physical_sse": 5.560690547236899,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.14351010478343146,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 27
+            }
+          }
+        },
+        {
+          "id": "newtrain_7686602ca2df933f",
+          "group": "15",
+          "label": "unstable",
+          "numerical_pass": true,
+          "actual_seconds": 0.5700000000000001,
+          "complete_5s": false,
+          "mse": 1.1207436528045114,
+          "components": {
+            "1": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "2": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "5": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "8": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "prefix": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 57,
+                "normalized_mse": 0.12882539418644004,
+                "physical_sse": 7.392574743267395,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.3601309397171163,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 570,
+                "normalized_mse": 0.1972322593226427,
+                "physical_sse": 26.717325023006765,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.21650057745965193,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 57
+            }
+          }
+        },
+        {
+          "id": "newtrain_807efe654094c95c",
+          "group": "17",
+          "label": "unstable",
+          "numerical_pass": true,
+          "actual_seconds": 0.4,
+          "complete_5s": false,
+          "mse": 0.7592879621549994,
+          "components": {
+            "1": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "2": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "5": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "8": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "prefix": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 40,
+                "normalized_mse": 0.02263304834910655,
+                "physical_sse": 0.9114281355451337,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.15094934047099492,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 400,
+                "normalized_mse": 0.09266631814503783,
+                "physical_sse": 8.86399229192803,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.14886228780258645,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 40
+            }
+          }
+        },
+        {
+          "id": "newtrain_fdf9b090374343f7",
+          "group": "15",
+          "label": "stable",
+          "numerical_pass": true,
+          "actual_seconds": 5.0,
+          "complete_5s": true,
+          "mse": 18.28250031054611,
+          "components": {
+            "1": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 100,
+                "normalized_mse": 0.11535681878089245,
+                "physical_sse": 11.613487569388449,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.3407856741324149,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 1000,
+                "normalized_mse": 0.7431329647770509,
+                "physical_sse": 185.26553085009056,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.4304248260150552,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 100
+            },
+            "2": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 200,
+                "normalized_mse": 0.42050973624406934,
+                "physical_sse": 84.66919678069738,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.6506504314172756,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 2000,
+                "normalized_mse": 0.9715715674471005,
+                "physical_sse": 460.55274948538323,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.47987120641135744,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 200
+            },
+            "5": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 500,
+                "normalized_mse": 1.8468264424590621,
+                "physical_sse": 929.6414446489939,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 1.363555238814324,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 5000,
+                "normalized_mse": 2.310943811699967,
+                "physical_sse": 3172.752906828651,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.7965868322824137,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 500
+            },
+            "8": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 2.0257582645918673,
+                "physical_sse": 1631.537254445883,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 1.428083179670342,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 1.9939502752175764,
+                "physical_sse": 4194.66322738989,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.7241083506104155,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            },
+            "prefix": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 2.0257582645918673,
+                "physical_sse": 1631.537254445883,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 1.428083179670342,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 1.9939502752175764,
+                "physical_sse": 4194.66322738989,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.7241083506104155,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            }
+          }
+        },
+        {
+          "id": "newtrain_f19d6366a51b07d4",
+          "group": "8",
+          "label": "unstable",
+          "numerical_pass": true,
+          "actual_seconds": 0.13,
+          "complete_5s": false,
+          "mse": 0.06467670316534527,
+          "components": {
+            "1": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "2": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "5": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "8": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "prefix": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 13,
+                "normalized_mse": 0.007397245682819781,
+                "physical_sse": 0.09681280066573786,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.08629680476558252,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 130,
+                "normalized_mse": 0.009341859359954732,
+                "physical_sse": 0.43566869397226626,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.057890393382153744,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 13
+            }
+          }
+        },
+        {
+          "id": "newtrain_b205117cd732146c",
+          "group": "8",
+          "label": "unstable",
+          "numerical_pass": true,
+          "actual_seconds": 0.26,
+          "complete_5s": false,
+          "mse": 0.18922785500989608,
+          "components": {
+            "1": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "2": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "5": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "8": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "prefix": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 26,
+                "normalized_mse": 0.0355422993938034,
+                "physical_sse": 0.9303326383780718,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.18916137172531491,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 260,
+                "normalized_mse": 0.02924520787872974,
+                "physical_sse": 2.73154474034202,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.10249849417922086,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 26
+            }
+          }
+        }
+      ]
+    },
+    "alternative_2701": {
+      "visible_result_sha256": "c0f6e67f6de155b694974eee12b0280555df711bbf6ce4fa5ca07e6b96264dc1",
+      "source_model_sha256": "70f00a60cbfe250304d1ec0ad91c60d8ca4e6addeb577e4f774340a6eaa6a530",
+      "event_count": 20,
+      "primary_complete_stable_count": 14,
+      "primary_risk": 3.815286636352539,
+      "all_numerical_pass": true,
+      "classification_counts": {
+        "false_los": 1,
+        "missed_unstable": 0,
+        "numerically_unresolved": 0,
+        "true_unstable": 6
+      },
+      "records": [
+        {
+          "id": "newtrain_449f2a97fdcc3c2a",
+          "group": "17",
+          "label": "stable",
+          "numerical_pass": true,
+          "actual_seconds": 5.0,
+          "complete_5s": true,
+          "mse": 0.11315275516662338,
+          "components": {
+            "1": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 100,
+                "normalized_mse": 0.006589728171638119,
+                "physical_sse": 0.6634174469766537,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.08145044180215683,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 1000,
+                "normalized_mse": 0.10339436744204387,
+                "physical_sse": 26.807627334144826,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.16373034945954532,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 100
+            },
+            "2": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 200,
+                "normalized_mse": 0.020049401584273117,
+                "physical_sse": 4.036926096495317,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.14207262397265907,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 2000,
+                "normalized_mse": 0.08615947560888415,
+                "physical_sse": 47.71740466355051,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.15446262438459102,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 200
+            },
+            "5": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 500,
+                "normalized_mse": 0.017220033625060627,
+                "physical_sse": 8.668089522689659,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.13166692464464763,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 5000,
+                "normalized_mse": 0.055005055713804256,
+                "physical_sse": 74.68571369449921,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.12221760404663415,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 500
+            },
+            "8": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.020171174046473967,
+                "physical_sse": 16.2457794189795,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.14250341846329292,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.03926030079883695,
+                "physical_sse": 85.31605277481245,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.1032690979763625,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            },
+            "prefix": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.020171174046473967,
+                "physical_sse": 16.2457794189795,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.14250341846329292,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.03926030079883695,
+                "physical_sse": 85.31605277481245,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.1032690979763625,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            }
+          }
+        },
+        {
+          "id": "newtrain_a1e9f43d0649de37",
+          "group": "17",
+          "label": "stable",
+          "numerical_pass": true,
+          "actual_seconds": 5.0,
+          "complete_5s": true,
+          "mse": 0.23517474936429728,
+          "components": {
+            "1": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 100,
+                "normalized_mse": 0.023641761133992006,
+                "physical_sse": 2.3801219724130034,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.15427643930338175,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 1000,
+                "normalized_mse": 0.184860371040246,
+                "physical_sse": 48.98857108869596,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.22133361942709012,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 100
+            },
+            "2": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 200,
+                "normalized_mse": 0.06524295037622478,
+                "physical_sse": 13.136600006691898,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.256286948620993,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 2000,
+                "normalized_mse": 0.15859417706338552,
+                "physical_sse": 89.07284478133072,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.2110365427850479,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 200
+            },
+            "5": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 500,
+                "normalized_mse": 0.044372691196740054,
+                "physical_sse": 22.3359877239875,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.21135745893621782,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 5000,
+                "normalized_mse": 0.10590707055778414,
+                "physical_sse": 144.2565531907424,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.1698567356278475,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 500
+            },
+            "8": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.0456962933751407,
+                "physical_sse": 36.803604030538864,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.21448660806253983,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.07586591139767475,
+                "physical_sse": 165.60391197844035,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.14387664507245448,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            },
+            "prefix": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.0456962933751407,
+                "physical_sse": 36.803604030538864,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.21448660806253983,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.07586591139767475,
+                "physical_sse": 165.60391197844035,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.14387664507245448,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            }
+          }
+        },
+        {
+          "id": "newtrain_fffecebc8c19c397",
+          "group": "6",
+          "label": "stable",
+          "numerical_pass": true,
+          "actual_seconds": 5.0,
+          "complete_5s": true,
+          "mse": 0.20010011718509696,
+          "components": {
+            "1": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 100,
+                "normalized_mse": 0.003956944971388811,
+                "physical_sse": 0.39836337135182714,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.0631160337277167,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 1000,
+                "normalized_mse": 0.19765212470852628,
+                "physical_sse": 55.72935702956066,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.2360706610944288,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 100
+            },
+            "2": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 200,
+                "normalized_mse": 0.012228323011336058,
+                "physical_sse": 2.4621600835986466,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.11095404642460424,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 2000,
+                "normalized_mse": 0.1516509892168749,
+                "physical_sse": 90.54397736123225,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.21277215203267585,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 200
+            },
+            "5": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 500,
+                "normalized_mse": 0.012250989824998535,
+                "physical_sse": 6.166810057217502,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.11105683281291162,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 5000,
+                "normalized_mse": 0.0899568052942738,
+                "physical_sse": 128.4162071935886,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.1602599183786068,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 500
+            },
+            "8": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.0226062115571386,
+                "physical_sse": 18.20694847061999,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.15085982098715014,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.06455330362680042,
+                "physical_sse": 146.6547769044371,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.13539515173393263,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            },
+            "prefix": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.0226062115571386,
+                "physical_sse": 18.20694847061999,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.15085982098715014,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.06455330362680042,
+                "physical_sse": 146.6547769044371,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.13539515173393263,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            }
+          }
+        },
+        {
+          "id": "newtrain_fcce946bce1243a2",
+          "group": "6",
+          "label": "stable",
+          "numerical_pass": true,
+          "actual_seconds": 5.0,
+          "complete_5s": true,
+          "mse": 0.16896488802099469,
+          "components": {
+            "1": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 100,
+                "normalized_mse": 0.0029297850133816693,
+                "physical_sse": 0.2949545782682805,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.05430972088570153,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 1000,
+                "normalized_mse": 0.16965321892404073,
+                "physical_sse": 47.67049294328299,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.21833573446250842,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 100
+            },
+            "2": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 200,
+                "normalized_mse": 0.010111069674481115,
+                "physical_sse": 2.035853332620803,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.10089235185634247,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 2000,
+                "normalized_mse": 0.1293311398150484,
+                "physical_sse": 77.00997281602574,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.19622687483627943,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 200
+            },
+            "5": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 500,
+                "normalized_mse": 0.011067731812249485,
+                "physical_sse": 5.571190640538662,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.1055574785653642,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 5000,
+                "normalized_mse": 0.07591894311237844,
+                "physical_sse": 108.23979081402852,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.14713245108678677,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 500
+            },
+            "8": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.019361767044822724,
+                "physical_sse": 15.593886396852598,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.13961503499288946,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.054221905932991823,
+                "physical_sse": 123.07357589613069,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.12403304796309868,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            },
+            "prefix": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.019361767044822724,
+                "physical_sse": 15.593886396852598,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.13961503499288946,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.054221905932991823,
+                "physical_sse": 123.07357589613069,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.12403304796309868,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            }
+          }
+        },
+        {
+          "id": "newtrain_ec341ae4d28d1ec0",
+          "group": "18",
+          "label": "stable",
+          "numerical_pass": true,
+          "actual_seconds": 5.0,
+          "complete_5s": true,
+          "mse": 0.18662183914302638,
+          "components": {
+            "1": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 100,
+                "normalized_mse": 0.01834843625329142,
+                "physical_sse": 1.8472192506457372,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.13591244426636354,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 1000,
+                "normalized_mse": 0.15567167064250645,
+                "physical_sse": 41.02191203152572,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.20253866799089432,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 100
+            },
+            "2": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 200,
+                "normalized_mse": 0.0480674856545722,
+                "physical_sse": 9.678338099829718,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.21998111396015022,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 2000,
+                "normalized_mse": 0.13405750392424573,
+                "physical_sse": 75.47890892487193,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.1942664522310426,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 200
+            },
+            "5": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 500,
+                "normalized_mse": 0.03531524898872465,
+                "physical_sse": 17.776721370906323,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.18855620578971313,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 5000,
+                "normalized_mse": 0.08778629764254421,
+                "physical_sse": 120.27968387697052,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.1550997639437085,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 500
+            },
+            "8": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.03828527149891168,
+                "physical_sse": 30.834797931644754,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.1963249790896613,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.06348927295448609,
+                "physical_sse": 138.97298646119845,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.13180145411811586,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            },
+            "prefix": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.03828527149891168,
+                "physical_sse": 30.834797931644754,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.1963249790896613,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.06348927295448609,
+                "physical_sse": 138.97298646119845,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.13180145411811586,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            }
+          }
+        },
+        {
+          "id": "newtrain_9d6e71f7fdd48ba6",
+          "group": "15",
+          "label": "stable",
+          "numerical_pass": true,
+          "actual_seconds": 5.0,
+          "complete_5s": true,
+          "mse": 0.1873771589191084,
+          "components": {
+            "1": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 100,
+                "normalized_mse": 0.010725132319801224,
+                "physical_sse": 1.0797471028794454,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.10391088022336474,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 1000,
+                "normalized_mse": 0.1619280082092718,
+                "physical_sse": 43.447044667725805,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.2084395467940904,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 100
+            },
+            "2": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 200,
+                "normalized_mse": 0.03837335026208641,
+                "physical_sse": 7.726434050006,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.19655068112329196,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 2000,
+                "normalized_mse": 0.13222759864459677,
+                "physical_sse": 75.90485824274192,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.19481383195597526,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 200
+            },
+            "5": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 500,
+                "normalized_mse": 0.027048999961774657,
+                "physical_sse": 13.61571982221181,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.1650195129202108,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 5000,
+                "normalized_mse": 0.08630669501114865,
+                "physical_sse": 118.43128169787623,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.15390339937628164,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 500
+            },
+            "8": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.030775810521628373,
+                "physical_sse": 24.786709391468552,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.17602098380402176,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.06154638190870932,
+                "physical_sse": 135.4013664031769,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.13009677475017248,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            },
+            "prefix": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.030775810521628373,
+                "physical_sse": 24.786709391468552,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.17602098380402176,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.06154638190870932,
+                "physical_sse": 135.4013664031769,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.13009677475017248,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            }
+          }
+        },
+        {
+          "id": "newtrain_e4ef975372a3eafa",
+          "group": "21",
+          "label": "stable",
+          "numerical_pass": true,
+          "actual_seconds": 5.0,
+          "complete_5s": true,
+          "mse": 0.17722240818447216,
+          "components": {
+            "1": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 100,
+                "normalized_mse": 0.0048646351080692775,
+                "physical_sse": 0.4897446024797193,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.06998175494225044,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 1000,
+                "normalized_mse": 0.15894335096010967,
+                "physical_sse": 41.184487471172616,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.20293961533217858,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 100
+            },
+            "2": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 200,
+                "normalized_mse": 0.029089320958323367,
+                "physical_sse": 5.85710443338607,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.17113013225884666,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 2000,
+                "normalized_mse": 0.12189425361847801,
+                "physical_sse": 67.87609424638062,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.18422281922495462,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 200
+            },
+            "5": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 500,
+                "normalized_mse": 0.019051153658537538,
+                "physical_sse": 9.589824794673628,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.13849061191772985,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 5000,
+                "normalized_mse": 0.0794387537367856,
+                "physical_sse": 105.61268580140742,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.14533594586433696,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 500
+            },
+            "8": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.021970937965843717,
+                "physical_sse": 17.695301770675734,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.14872500533987104,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.0560720955220317,
+                "physical_sse": 119.8050009378678,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.12237493663832262,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            },
+            "prefix": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.021970937965843717,
+                "physical_sse": 17.695301770675734,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.14872500533987104,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.0560720955220317,
+                "physical_sse": 119.8050009378678,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.12237493663832262,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            }
+          }
+        },
+        {
+          "id": "newtrain_e6041b33464f3be1",
+          "group": "23",
+          "label": "stable",
+          "numerical_pass": true,
+          "actual_seconds": 5.0,
+          "complete_5s": true,
+          "mse": 0.09128886065021959,
+          "components": {
+            "1": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 100,
+                "normalized_mse": 0.0008843453216789641,
+                "physical_sse": 0.0890310040525029,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.02983806361889171,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 1000,
+                "normalized_mse": 0.10384870446536655,
+                "physical_sse": 25.77484735417109,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.16054546818322557,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 100
+            },
+            "2": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 200,
+                "normalized_mse": 0.008873347229094962,
+                "physical_sse": 1.7866392092468302,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.09451558626086044,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 2000,
+                "normalized_mse": 0.07382031801318124,
+                "physical_sse": 39.710771621614626,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.1409091402670789,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 200
+            },
+            "5": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 500,
+                "normalized_mse": 0.005670469383570887,
+                "physical_sse": 2.8543577395186555,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.07555604197572363,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 5000,
+                "normalized_mse": 0.04359422897596375,
+                "physical_sse": 56.65181598398472,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.10644417878304545,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 500
+            },
+            "8": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.007911956239562878,
+                "physical_sse": 6.372256545127865,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.08924864526372281,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.030393580489115793,
+                "physical_sse": 63.490108196428835,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.08908570886822198,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            },
+            "prefix": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.007911956239562878,
+                "physical_sse": 6.372256545127865,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.08924864526372281,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.030393580489115793,
+                "physical_sse": 63.490108196428835,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.08908570886822198,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            }
+          }
+        },
+        {
+          "id": "newtrain_83adbaea1acb2425",
+          "group": "8",
+          "label": "stable",
+          "numerical_pass": true,
+          "actual_seconds": 5.0,
+          "complete_5s": true,
+          "mse": 0.21678027164331984,
+          "components": {
+            "1": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 100,
+                "normalized_mse": 0.0044836035067464825,
+                "physical_sse": 0.4513844447337653,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.06718515049724644,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 1000,
+                "normalized_mse": 0.19610789805505027,
+                "physical_sse": 55.11413113769489,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.2347639902917287,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 100
+            },
+            "2": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 200,
+                "normalized_mse": 0.0161473457336069,
+                "physical_sse": 3.251251220997143,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.1275000239411182,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 2000,
+                "normalized_mse": 0.15906284182953992,
+                "physical_sse": 95.06701344378195,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.21802180331767504,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 200
+            },
+            "5": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 500,
+                "normalized_mse": 0.018006502639603243,
+                "physical_sse": 9.06397631207175,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.13464008550258538,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 5000,
+                "normalized_mse": 0.09837371333524382,
+                "physical_sse": 140.43395620773137,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.1675911430880113,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 500
+            },
+            "8": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.031068085422615035,
+                "physical_sse": 25.022106377295636,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.17685483587286932,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.07234720051092339,
+                "physical_sse": 163.67976124672379,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.1430383520453185,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            },
+            "prefix": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.031068085422615035,
+                "physical_sse": 25.022106377295636,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.17685483587286932,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.07234720051092339,
+                "physical_sse": 163.67976124672379,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.1430383520453185,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            }
+          }
+        },
+        {
+          "id": "newtrain_b01e1cbcd7bcb6ad",
+          "group": "14",
+          "label": "stable",
+          "numerical_pass": true,
+          "actual_seconds": 5.0,
+          "complete_5s": true,
+          "mse": 1.139109616629662,
+          "components": {
+            "1": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 100,
+                "normalized_mse": 0.024735050817446397,
+                "physical_sse": 2.4901883411176966,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.1578033060844321,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 1000,
+                "normalized_mse": 0.34664680374395895,
+                "physical_sse": 97.3624018562474,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.3120294887606737,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 100
+            },
+            "2": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 200,
+                "normalized_mse": 0.055557284712501674,
+                "physical_sse": 11.186401327920208,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.23649948549542565,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 2000,
+                "normalized_mse": 0.392151967244689,
+                "physical_sse": 209.50118910378077,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.32365196515993905,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 200
+            },
+            "5": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 500,
+                "normalized_mse": 0.03725750182675258,
+                "physical_sse": 18.7543978285889,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.1936718762680266,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 5000,
+                "normalized_mse": 0.49053455998006756,
+                "physical_sse": 590.4600355662201,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.3436451761821254,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 500
+            },
+            "8": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.08526479911063513,
+                "physical_sse": 68.67191346242522,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.29298445663214207,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.36630714369049633,
+                "physical_sse": 714.8339943457214,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.29892181133737156,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            },
+            "prefix": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.08526479911063513,
+                "physical_sse": 68.67191346242522,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.29298445663214207,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.36630714369049633,
+                "physical_sse": 714.8339943457214,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.29892181133737156,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            }
+          }
+        },
+        {
+          "id": "newtrain_8bb0ee309b2606af",
+          "group": "5",
+          "label": "unstable",
+          "numerical_pass": true,
+          "actual_seconds": 0.43,
+          "complete_5s": false,
+          "mse": 0.48318297027970053,
+          "components": {
+            "1": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "2": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "5": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "8": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "prefix": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 43,
+                "normalized_mse": 0.11873434740640024,
+                "physical_sse": 5.140012955988302,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.3457386079438971,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 430,
+                "normalized_mse": 0.10091120453028943,
+                "physical_sse": 13.675028442420697,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.178332250943456,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 43
+            }
+          }
+        },
+        {
+          "id": "newtrain_e287677b0cb6b062",
+          "group": "30",
+          "label": "stable",
+          "numerical_pass": true,
+          "actual_seconds": 5.0,
+          "complete_5s": true,
+          "mse": 0.26710503652714607,
+          "components": {
+            "1": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 100,
+                "normalized_mse": 0.02004334676372122,
+                "physical_sse": 2.017853482346332,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.14205116973634296,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 1000,
+                "normalized_mse": 0.20853909672644677,
+                "physical_sse": 39.753300185691046,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.1993822965704103,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 100
+            },
+            "2": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 200,
+                "normalized_mse": 0.031833019521823595,
+                "physical_sse": 6.409545277336194,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.17901878780362962,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 2000,
+                "normalized_mse": 0.15753598687415626,
+                "physical_sse": 69.42022924839586,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.1863065071976766,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 200
+            },
+            "5": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 500,
+                "normalized_mse": 0.028633663257074175,
+                "physical_sse": 14.413395576281557,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.16978454332642626,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 5000,
+                "normalized_mse": 0.09220384567902289,
+                "physical_sse": 104.99511122499601,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.14491039384736762,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 500
+            },
+            "8": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.036481452790323915,
+                "physical_sse": 29.382009869629698,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.19164423376933917,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.0734230108394632,
+                "physical_sse": 131.71102189094736,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.1283116430273123,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            },
+            "prefix": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.036481452790323915,
+                "physical_sse": 29.382009869629698,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.19164423376933917,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.0734230108394632,
+                "physical_sse": 131.71102189094736,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.1283116430273123,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            }
+          }
+        },
+        {
+          "id": "newtrain_ab91dc4c00f6ba89",
+          "group": "14",
+          "label": "stable",
+          "numerical_pass": true,
+          "actual_seconds": 5.0,
+          "complete_5s": true,
+          "mse": 0.4813287044522308,
+          "components": {
+            "1": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 100,
+                "normalized_mse": 0.045259101068333925,
+                "physical_sse": 4.5564363963359735,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.21345810821648292,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 1000,
+                "normalized_mse": 0.2804940010929408,
+                "physical_sse": 77.12707399679059,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.27771761556802727,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 100
+            },
+            "2": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 200,
+                "normalized_mse": 0.13227759850668647,
+                "physical_sse": 26.633956487371755,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.36492435166327114,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 2000,
+                "normalized_mse": 0.28520437103144614,
+                "physical_sse": 167.50267980715478,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.289398237561284,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 200
+            },
+            "5": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 500,
+                "normalized_mse": 0.088560831835116,
+                "physical_sse": 44.57907779189642,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.29859362950972823,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 5000,
+                "normalized_mse": 0.21104154080036347,
+                "physical_sse": 291.47727398585283,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.24144451701616784,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 500
+            },
+            "8": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.10768049827807342,
+                "physical_sse": 86.72542404923523,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.32925184898728216,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.1616581016904317,
+                "physical_sse": 356.2144692534742,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.21101376414036188,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            },
+            "prefix": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.10768049827807342,
+                "physical_sse": 86.72542404923523,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.32925184898728216,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.1616581016904317,
+                "physical_sse": 356.2144692534742,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.21101376414036188,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            }
+          }
+        },
+        {
+          "id": "newtrain_1a969dfe17c75d69",
+          "group": "24",
+          "label": "stable",
+          "numerical_pass": true,
+          "actual_seconds": 5.0,
+          "complete_5s": true,
+          "mse": 1.2037129483631575,
+          "components": {
+            "1": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 100,
+                "normalized_mse": 0.0329666057830796,
+                "physical_sse": 3.318895844327325,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.18217836985568087,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 1000,
+                "normalized_mse": 0.5187895670228075,
+                "physical_sse": 137.26747112495298,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.3704962498122659,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 100
+            },
+            "2": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 200,
+                "normalized_mse": 0.17767628096771976,
+                "physical_sse": 35.77493384787356,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.42293577436694546,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 2000,
+                "normalized_mse": 0.5151318604546732,
+                "physical_sse": 279.74634382836655,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.3739962191174976,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 200
+            },
+            "5": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 500,
+                "normalized_mse": 0.08440174808737107,
+                "physical_sse": 42.48550985569038,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.2914978897202873,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 5000,
+                "normalized_mse": 0.5023574247627965,
+                "physical_sse": 629.4128187556046,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.3547993288481827,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 500
+            },
+            "8": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.11852941855074692,
+                "physical_sse": 95.46309917304677,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.3454401163245353,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.3671495326814697,
+                "physical_sse": 741.4818919039144,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.304442501119652,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            },
+            "prefix": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 0.11852941855074692,
+                "physical_sse": 95.46309917304677,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.3454401163245353,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 0.3671495326814697,
+                "physical_sse": 741.4818919039144,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.304442501119652,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            }
+          }
+        },
+        {
+          "id": "newtrain_9839a09144dd43ec",
+          "group": "15",
+          "label": "unstable",
+          "numerical_pass": true,
+          "actual_seconds": 0.27,
+          "complete_5s": false,
+          "mse": 0.39818042146594756,
+          "components": {
+            "1": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "2": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "5": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "8": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "prefix": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 27,
+                "normalized_mse": 0.0028360382576275815,
+                "physical_sse": 0.07708950158146481,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.05343376016377135,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 270,
+                "normalized_mse": 0.0622335010331171,
+                "physical_sse": 5.170697426793005,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.13838616697612685,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 27
+            }
+          }
+        },
+        {
+          "id": "newtrain_7686602ca2df933f",
+          "group": "15",
+          "label": "unstable",
+          "numerical_pass": true,
+          "actual_seconds": 0.5700000000000001,
+          "complete_5s": false,
+          "mse": 1.0297465556559218,
+          "components": {
+            "1": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "2": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "5": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "8": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "prefix": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 57,
+                "normalized_mse": 0.12089459711779407,
+                "physical_sse": 6.9374702937611,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.34886961053336746,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 570,
+                "normalized_mse": 0.18213165365107983,
+                "physical_sse": 24.19181878319786,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.20601404646029264,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 57
+            }
+          }
+        },
+        {
+          "id": "newtrain_807efe654094c95c",
+          "group": "17",
+          "label": "unstable",
+          "numerical_pass": true,
+          "actual_seconds": 0.4,
+          "complete_5s": false,
+          "mse": 0.6909592129895797,
+          "components": {
+            "1": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "2": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "5": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "8": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "prefix": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 40,
+                "normalized_mse": 0.019685497351399656,
+                "physical_sse": 0.7927308717552013,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.14077738381529908,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 400,
+                "normalized_mse": 0.0840957285669598,
+                "physical_sse": 7.819398009806779,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.13981593265617817,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 40
+            }
+          }
+        },
+        {
+          "id": "newtrain_fdf9b090374343f7",
+          "group": "15",
+          "label": "stable",
+          "numerical_pass": true,
+          "actual_seconds": 5.0,
+          "complete_5s": true,
+          "mse": 21.81566447574791,
+          "components": {
+            "1": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 100,
+                "normalized_mse": 0.11727037917647315,
+                "physical_sse": 11.806134264245394,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.3436005568133642,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 1000,
+                "normalized_mse": 0.739679508280686,
+                "physical_sse": 181.62629874530285,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.42617637046802914,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 100
+            },
+            "2": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 200,
+                "normalized_mse": 0.38156334966278616,
+                "physical_sse": 76.82738246552577,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.6197877962074027,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 2000,
+                "normalized_mse": 1.005872248377553,
+                "physical_sse": 470.32665992790123,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.48493641847560864,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 200
+            },
+            "5": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 500,
+                "normalized_mse": 2.3641598262999914,
+                "physical_sse": 1190.052787730408,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 1.542759078878104,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 5000,
+                "normalized_mse": 2.6156510060568583,
+                "physical_sse": 3625.639434100282,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.8515444127114312,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 500
+            },
+            "8": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 2.3994852501276065,
+                "physical_sse": 1932.5354093348933,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 1.5542423432877566,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 2.408471899317456,
+                "physical_sse": 5259.36711740906,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.8108149540284345,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            },
+            "prefix": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 800,
+                "normalized_mse": 2.3994852501276065,
+                "physical_sse": 1932.5354093348933,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 1.5542423432877566,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 8000,
+                "normalized_mse": 2.408471899317456,
+                "physical_sse": 5259.36711740906,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.8108149540284345,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 800
+            }
+          }
+        },
+        {
+          "id": "newtrain_f19d6366a51b07d4",
+          "group": "8",
+          "label": "unstable",
+          "numerical_pass": true,
+          "actual_seconds": 0.13,
+          "complete_5s": false,
+          "mse": 0.06545929807764009,
+          "components": {
+            "1": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "2": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "5": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "8": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "prefix": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 13,
+                "normalized_mse": 0.006624889521370237,
+                "physical_sse": 0.08670444867804698,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.08166745358607909,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 130,
+                "normalized_mse": 0.009369701639277413,
+                "physical_sse": 0.436626697156553,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.057954006774374574,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 13
+            }
+          }
+        },
+        {
+          "id": "newtrain_b205117cd732146c",
+          "group": "8",
+          "label": "unstable",
+          "numerical_pass": true,
+          "actual_seconds": 0.26,
+          "complete_5s": false,
+          "mse": 0.1917747650250187,
+          "components": {
+            "1": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "2": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "5": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "8": {
+              "available": false,
+              "frequency": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": null,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": null,
+                "n_scalar_points": 0,
+                "normalized_mse": null,
+                "physical_sse": null,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": null,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 0
+            },
+            "prefix": {
+              "available": true,
+              "frequency": {
+                "finite": true,
+                "n_scalar_points": 26,
+                "normalized_mse": 0.032590688599202236,
+                "physical_sse": 0.8530731502515032,
+                "physical_sse_unit": "(rad/s)^2",
+                "rmse_rad_s": 0.18113670467054427,
+                "unit": "rad/s"
+              },
+              "mechanical_power": {
+                "finite": true,
+                "n_scalar_points": 260,
+                "normalized_mse": 0.02922297852632855,
+                "physical_sse": 2.716192819894962,
+                "physical_sse_unit": "p.u.^2",
+                "rmse_pu": 0.10221005557739644,
+                "unit": "p.u. (100 MVA system base)"
+              },
+              "n_time_points": 26
+            }
+          }
+        }
+      ]
+    }
+  },
+  "no_CI_or_reselection": true,
+  "test_read": false,
+  "val_read": false
+}

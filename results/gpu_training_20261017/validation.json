@@ -1,0 +1,35 @@
+{
+  "scope": "Engineering QA; synthetic events plus published frozen model parameters on synthetic states; no private observation data, val or test read. Synthetic optimizer updates are test fixtures, not research fits.",
+  "cpu": {
+    "python": "E:/03-nn_Transfer_Func/kron-reduce/.venv/Scripts/python.exe",
+    "torch": "2.13.0+cpu",
+    "passed": 32,
+    "skipped_cuda_cases": 3,
+    "pytest_seconds": 25.14
+  },
+  "cuda": {
+    "python": "E:/03-nn_Transfer_Func/kiki/.venv-gpu/Scripts/python.exe",
+    "torch": "2.13.0+cu130",
+    "cuda": "13.0",
+    "passed": 35,
+    "skipped": 0,
+    "pytest_seconds": 34.36
+  },
+  "command_suffix": "-m pytest -q tests/test_closure_training_runtime.py tests/test_train_closure.py tests/test_symbolic_closure_rom.py tests/test_symbolic_compile.py tests/test_confirmation_components.py",
+  "tests_cover": [
+    "discover_closure.loss values, terms and all trainable gradients",
+    "nonzero seeded coefficients and legal direction groups",
+    "real interval counts including varying event lengths",
+    "generic node p^2*q^2 and tanh(2q) fallback",
+    "four published physical parameter packages: field and Jacobian",
+    "graph cache cleared by backward scope, device or state change",
+    "portable JSON export without moving live model",
+    "two synthetic optimizer updates: uninterrupted vs exact checkpoint resume on CPU and CUDA",
+    "CPU-to-CUDA Adam moment migration with explicit environment-change guard",
+    "checkpoint export and pointer publication interruptions",
+    "before-update, Adam and post-publication interruptions with correct rollback accounting"
+  ],
+  "private_observation_data_read": false,
+  "val_read": false,
+  "test_read": false
+}

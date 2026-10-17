@@ -1,0 +1,312 @@
+{
+  "task": "predefined-fixed-controls-3seeds",
+  "implementation_identity_sha256": "f27cb8860a77551b07bd57749efc13c36f7566151baea49c4193155398c78428",
+  "source_model_sha256": "c9fe3f86cf093d1f6c4600c71ecd333200840b9be4c2b156c018e1ff09a1e238",
+  "split": "train",
+  "train_event_count": 346,
+  "target_updates_each": 1024,
+  "direction_mask": [
+    1.0,
+    1.0,
+    1.0,
+    0.0
+  ],
+  "unresolved": [],
+  "val_read": false,
+  "test_read": false,
+  "fom_run": false,
+  "models": [
+    {
+      "name": "fixed",
+      "seed": 2701,
+      "updates": 1024,
+      "model_path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_discovery_20261017\\C\\fixed\\2701\\model.json",
+      "model_sha256": "674ec465cc425c4616da18975ebc4deaab0b30a90506e4dff7c4a91931b393ce",
+      "train_score": {
+        "event_count": 346,
+        "group_se": 0.44503191865013114,
+        "risk": 1.8767424533990393,
+        "scope": "train selection; genuine available intervals",
+        "se_method": "leave-one-fault-bus-out jackknife of the nonlinear event risk"
+      },
+      "physics": {
+        "jacobian": {
+          "f0_gate": true,
+          "f0_max_abs": 0.0,
+          "fd_1e-05_max_abs": 2.9768614240310853e-09,
+          "fd_1e-05_relative_fro": 1.690420431289135e-11,
+          "fd_1e-06_max_abs": 2.5150939109153114e-09,
+          "fd_1e-06_relative_fro": 2.0751915812910513e-11,
+          "fd_gate": true,
+          "finite": true,
+          "gauge_gate": true,
+          "gauge_max_abs": 0.0,
+          "jacobian_gauge_max_abs": 2.842170943040401e-14,
+          "pass": true
+        },
+        "numpy_field_max_abs": 4.218847493575595e-15,
+        "pass": true,
+        "power": {
+          "J_skew_max_abs": 0.0,
+          "R_min_eigenvalue": 0.0,
+          "R_symmetry_max_abs": 0.0,
+          "angle_port_max_abs": 0.0,
+          "finite": true,
+          "gradient_max_abs_error": 8.881784197001252e-16,
+          "pass": true,
+          "power_scaled_max_abs_error": 3.252606517456513e-17,
+          "probe_count": 8,
+          "probes": {
+            "actual_port_supply": [
+              -0.0026966823350402323,
+              -0.002883902444115657,
+              -0.001061893998224392,
+              -0.0012237180561398982,
+              -0.0030719793127422434,
+              -0.0024449457123477394,
+              -0.0007289457101559294,
+              -0.001794781320829017
+            ],
+            "dissipation": [
+              0.0031810865215683663,
+              0.003699425164817246,
+              0.005184760099455572,
+              0.004317690274078864,
+              0.0030489001156623857,
+              0.004171706273884547,
+              0.005196981647839175,
+              0.0038728677621626957
+            ],
+            "energy": [
+              0.033875155425012474,
+              0.02520987296512078,
+              0.05871560316803517,
+              0.059824547545752164,
+              0.026142213714430415,
+              0.03243993412988205,
+              0.06469939982441461,
+              0.05144275117876078
+            ],
+            "hdot": [
+              -0.005877768856608568,
+              -0.006583327608932901,
+              -0.006246654097679997,
+              -0.0055414083302187545,
+              -0.00612087942840466,
+              -0.0066166519862322914,
+              -0.005925927357995115,
+              -0.005667649082991728
+            ],
+            "power_defect": [
+              3.0357660829594124e-17,
+              1.3010426069826053e-18,
+              -3.252606517456513e-17,
+              7.37257477290143e-18,
+              -3.0791341698588326e-17,
+              -5.204170427930421e-18,
+              -1.0625181290357943e-17,
+              -1.5612511283791264e-17
+            ]
+          },
+          "scope": "construction QA including actual ports; no L2 certificate",
+          "status": "pass"
+        }
+      }
+    },
+    {
+      "name": "fixed",
+      "seed": 2702,
+      "updates": 1024,
+      "model_path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_discovery_20261017\\C\\fixed\\2702\\model.json",
+      "model_sha256": "e2f6607e432f75151c3e92a6737f9083447498c0b42e736bcefee736b42c493c",
+      "train_score": {
+        "event_count": 346,
+        "group_se": 0.3891738216633105,
+        "risk": 1.6153696585736936,
+        "scope": "train selection; genuine available intervals",
+        "se_method": "leave-one-fault-bus-out jackknife of the nonlinear event risk"
+      },
+      "physics": {
+        "jacobian": {
+          "f0_gate": true,
+          "f0_max_abs": 0.0,
+          "fd_1e-05_max_abs": 2.952077693407773e-09,
+          "fd_1e-05_relative_fro": 1.6887283354514092e-11,
+          "fd_1e-06_max_abs": 2.4595294689788716e-09,
+          "fd_1e-06_relative_fro": 2.0514403610089737e-11,
+          "fd_gate": true,
+          "finite": true,
+          "gauge_gate": true,
+          "gauge_max_abs": 0.0,
+          "jacobian_gauge_max_abs": 1.4210854715202004e-14,
+          "pass": true
+        },
+        "numpy_field_max_abs": 3.9968028886505635e-15,
+        "pass": true,
+        "power": {
+          "J_skew_max_abs": 0.0,
+          "R_min_eigenvalue": 0.0,
+          "R_symmetry_max_abs": 0.0,
+          "angle_port_max_abs": 0.0,
+          "finite": true,
+          "gradient_max_abs_error": 8.881784197001252e-16,
+          "pass": true,
+          "power_scaled_max_abs_error": 4.9873299934333204e-17,
+          "probe_count": 8,
+          "probes": {
+            "actual_port_supply": [
+              -0.0026144079874259054,
+              -0.002812655684271812,
+              -0.0010282673582850774,
+              -0.001170659464932823,
+              -0.0029857090448097133,
+              -0.0023851329672314866,
+              -0.0006965157463447209,
+              -0.0017299453187666967
+            ],
+            "dissipation": [
+              0.0031535024295286343,
+              0.003655741598900468,
+              0.005000452038284029,
+              0.004182886246335507,
+              0.0030409226506423986,
+              0.004089032922296639,
+              0.005003421589258604,
+              0.003775638707320105
+            ],
+            "energy": [
+              0.034007560747461404,
+              0.025329460392479745,
+              0.05876221536667076,
+              0.05990034433976608,
+              0.02628408375762552,
+              0.03253849800470004,
+              0.06473926226499414,
+              0.051537874095590366
+            ],
+            "hdot": [
+              -0.005767910416954563,
+              -0.006468397283172259,
+              -0.006028719396569102,
+              -0.005353545711268332,
+              -0.006026631695452093,
+              -0.00647416588952813,
+              -0.005699937335603341,
+              -0.005505584026086752
+            ],
+            "power_defect": [
+              -2.3418766925686896e-17,
+              2.0816681711721685e-17,
+              3.686287386450715e-18,
+              -1.951563910473908e-18,
+              1.9081958235744878e-17,
+              -4.336808689942018e-18,
+              -1.5937771935536915e-17,
+              4.9873299934333204e-17
+            ]
+          },
+          "scope": "construction QA including actual ports; no L2 certificate",
+          "status": "pass"
+        }
+      }
+    },
+    {
+      "name": "fixed",
+      "seed": 2703,
+      "updates": 1024,
+      "model_path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_discovery_20261017\\C\\fixed\\2703\\model.json",
+      "model_sha256": "92fa360699939a688b8d76e12d7da0b61db4e9106032c368ccba43bcba77a793",
+      "train_score": {
+        "event_count": 346,
+        "group_se": 0.3466317903482846,
+        "risk": 1.4502502349678728,
+        "scope": "train selection; genuine available intervals",
+        "se_method": "leave-one-fault-bus-out jackknife of the nonlinear event risk"
+      },
+      "physics": {
+        "jacobian": {
+          "f0_gate": true,
+          "f0_max_abs": 0.0,
+          "fd_1e-05_max_abs": 3.007642135344213e-09,
+          "fd_1e-05_relative_fro": 1.6890680699317448e-11,
+          "fd_1e-06_max_abs": 2.485023742337944e-09,
+          "fd_1e-06_relative_fro": 2.0575296887211084e-11,
+          "fd_gate": true,
+          "finite": true,
+          "gauge_gate": true,
+          "gauge_max_abs": 0.0,
+          "jacobian_gauge_max_abs": 1.4210854715202004e-14,
+          "pass": true
+        },
+        "numpy_field_max_abs": 3.9968028886505635e-15,
+        "pass": true,
+        "power": {
+          "J_skew_max_abs": 0.0,
+          "R_min_eigenvalue": 0.0,
+          "R_symmetry_max_abs": 0.0,
+          "angle_port_max_abs": 0.0,
+          "finite": true,
+          "gradient_max_abs_error": 4.440892098500626e-16,
+          "pass": true,
+          "power_scaled_max_abs_error": 2.3418766925686896e-17,
+          "probe_count": 8,
+          "probes": {
+            "actual_port_supply": [
+              -0.002851999674345594,
+              -0.003053414331921546,
+              -0.0011578721284146792,
+              -0.0013216616162559274,
+              -0.003243109668937043,
+              -0.002597855036673179,
+              -0.0008126844636288823,
+              -0.0019120947459961165
+            ],
+            "dissipation": [
+              0.0035474730291991884,
+              0.00394877381979384,
+              0.005736198719585007,
+              0.0049145491572027645,
+              0.0033395183176560496,
+              0.004478828076301601,
+              0.005807661067939941,
+              0.004405929489960649
+            ],
+            "energy": [
+              0.034150689541217354,
+              0.025421276322747374,
+              0.05892890776063209,
+              0.06011030652583344,
+              0.02639489461243323,
+              0.032640460117929225,
+              0.06494169272529021,
+              0.05171621921130524
+            ],
+            "hdot": [
+              -0.0063994727035447795,
+              -0.007002188151715375,
+              -0.006894070847999673,
+              -0.006236210773458697,
+              -0.006582627986593069,
+              -0.007076683112974778,
+              -0.006620345531568832,
+              -0.006318024235956749
+            ],
+            "power_defect": [
+              3.0357660829594124e-18,
+              1.0842021724855044e-17,
+              1.3227266504323154e-17,
+              -5.204170427930421e-18,
+              2.3418766925686896e-17,
+              1.734723475976807e-18,
+              -8.348356728138384e-18,
+              1.6046192152785466e-17
+            ]
+          },
+          "scope": "construction QA including actual ports; no L2 certificate",
+          "status": "pass"
+        }
+      }
+    }
+  ],
+  "completed_process_seconds": 6584.5900627
+}

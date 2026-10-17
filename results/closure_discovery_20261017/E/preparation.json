@@ -1,0 +1,22 @@
+{
+  "scope": "preparation only, no final model analysis before D freeze",
+  "registered_epoch": 1792183076.552397,
+  "coordinate": "internal delta, pi=M*omega, p, q",
+  "quotient": "Q=blockdiag(U,I30), U orthonormal complement of ones(10), dimension 39",
+  "checks": [
+    "energy Hessian restricted to Q",
+    "field Jacobian restricted to Q",
+    "strict Hurwitz linearization, with declared float64 norm-scaled tolerance",
+    "conditional linearized Lyapunov witness only, no nonlinear radius certificate"
+  ],
+  "forbidden": [
+    "no val/test access",
+    "no training",
+    "no change to production bound sources",
+    "no automatic model promotion or stability claim"
+  ],
+  "worker": "symbolic_model_impl",
+  "compute_cap_seconds": 120,
+  "budget_stage": "E",
+  "pending_export_documentation_correction": "Final equations must center symmetrized edge energy in physical variables (p_i,p_j,q_i,q_j,eta). The generated explanation currently describes feature-tangent subtraction; it omits the implemented restoration g_c0 * [c + sin(phi)*eta]. Correct the delivered equation text after export, with an explicit artifact note; runtime equations already include this restoration."
+}

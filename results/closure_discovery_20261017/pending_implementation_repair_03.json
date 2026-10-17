@@ -1,0 +1,76 @@
+{
+  "registered_epoch": 1792184689.9231858,
+  "scope": "follow-up source repair after current source-bound fits end, before formal C aggregation/selection",
+  "scientific_field_loss_seed_budget_changes": false,
+  "items": [
+    {
+      "files": [
+        "experiments/discover_closure.py",
+        "tests/test_discover_closure.py"
+      ],
+      "fix": "alternative identity includes both normalized expression support and J/R direction mask; keep fixed near-optimal and observable-disagreement criteria",
+      "registration": "B/pending_direction_alternative_filter_fix.json"
+    },
+    {
+      "files": [
+        "experiments/discover_closure.py",
+        "tests/test_discover_closure.py"
+      ],
+      "fix": "fit must return an intact already-completed checkpoint without rewriting it or changing its provenance; reject checkpoint beyond requested adaptation target rather than relabelling",
+      "evidence": "checkpoint() updates implementation provenance before immutable endpoint comparison; after a source-only repair, current fit() unconditionally calls it even when step==target, which would change immutable completed endpoint bytes",
+      "test": "completed target checkpoint is read-only across current identity change; optimizer/loss/checkpoint writer must not run; original file SHA/provenance retained"
+    },
+    {
+      "files": [
+        "experiments/closure_discovery_data.py",
+        "experiments/closure_discovery_confirmation.py",
+        "related tests"
+      ],
+      "fix": "A two cost-preflight conditions count inside newtrain24; remaining22 by original disagreement within quotas; newval24 unchanged; total unique new conditions48",
+      "registration": "D_condition_accounting_clarification.json"
+    },
+    {
+      "files": [
+        "experiments/closure_discovery_export.py",
+        "export documentation tests"
+      ],
+      "fix": "correct exported equation explanation to physical-coordinate edge centering; actual runtime already restores g_c0*(c+sin(phi)*eta), no dynamics change",
+      "registration": "E/preparation.json"
+    },
+    {
+      "files": [
+        "experiments/discover_closure.py",
+        "tests/test_discover_closure.py"
+      ],
+      "fix": "resume must preserve the score32 shortlist when a selected candidate failed at level128 or512; skip the recorded failed higher-level fit without admitting a third score32 candidate or retrying it",
+      "evidence": "stage_b currently skips any candidate_failure.json in the score32 collection, which could change the original top-two shortlist after a higher-level numerical failure on resume",
+      "registration_epoch": 1792186288.880534,
+      "status_at_registration": "observed generated failures are at level32; no later-level failure used to choose this repair",
+      "test": "a failed selected level512 candidate remains in the original score32 shortlist, is not retrained and is not replaced by the third score32 candidate"
+    },
+    {
+      "files": [
+        "experiments/closure_discovery_confirmation.py",
+        "synthetic recovery tests"
+      ],
+      "fix": "bind each C source endpoint by name and seed in D train-condition selection identity, rejecting duplicate name/seed records; do not overwrite main2701 and alternative2701 with later seeds",
+      "evidence": "source_hashes[row[name]] currently overwrites the three same-structure refit seeds although the actual disagreement is computed from main2701 and alternative2701",
+      "registration_epoch": 1792187417.0854692,
+      "status_at_registration": "D condition selection and newval remain unopened; no data-dependent selection change",
+      "scientific_algorithm_or_budget_change": false
+    },
+    {
+      "files": [
+        "experiments/discover_closure.py",
+        "synthetic recovery tests"
+      ],
+      "fix": "stage_c main entry must preserve existing candidate_failure or fit_failure for all core and deletion refits, record the branch as unresolved and continue other originally registered branches without automatic retry",
+      "evidence": "bounded C wrappers already guard recorded failures; the public sequential stage_c entry currently calls fit again on the same failed path during resume",
+      "registration_epoch": 1792188920.3982935,
+      "status_at_registration": "only predefined fixed controls have run and no C numerical failures have occurred; selected C and deletion fits have not started",
+      "scientific_algorithm_or_budget_change": false
+    }
+  ],
+  "timing": "do not edit bound source until current B/C jobs have stopped; preserve old source snapshot and records, run targeted checks, register new identity and push before next scientific execution",
+  "test_read": false
+}

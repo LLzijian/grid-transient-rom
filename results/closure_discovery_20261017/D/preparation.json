@@ -1,0 +1,12 @@
+{
+  "artifact": "D/run_parallel_tasks.py",
+  "sha256": "986170f8576a764cbd13a87aa8c4bf4726bfaa1db1fd8fa0e508f27eeb7a50c3",
+  "preparation_only": true,
+  "scope": "registered per-key adaptation on old TRAIN plus already-generated selected new TRAIN, or evaluation on already-generated VAL",
+  "execution_order_fields": {
+    "common": ["wrapper_sha256", "source_identity_sha256", "frozen_sha256", "keys"],
+    "adapt": ["train_generation_sha256", "train_integrity_sha256", "selected_new_train_sha256"],
+    "evaluate": ["freeze_sha256", "val_generation_sha256", "val_integrity_sha256"]
+  },
+  "restrictions": ["no FOM or simulator invocation", "no freeze writes", "no primary comparison computation or writes", "no TEST access"]
+}

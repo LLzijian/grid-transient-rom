@@ -1,0 +1,55 @@
+{
+  "schema": "closure_discrimination_preparation_v1",
+  "status": "prepared_not_authorized_to_run",
+  "scope": "exploratory new train discrimination of frozen predictors, not confirmation or isolated mechanism necessity",
+  "wrapper_path": "private_data/closure_discovery_20261017/D/run_discrimination.py",
+  "wrapper_sha256": "BC8F1BBEA0001333796B4E14AA6072D7C41F5720681865443825E8549DCF3A46",
+  "execution_order_path": "private_data/closure_discovery_20261017/D/discrimination_execution_order.json",
+  "execution_order_contract": {
+    "wrapper_sha256": "BC8F1BBEA0001333796B4E14AA6072D7C41F5720681865443825E8549DCF3A46",
+    "source_identity_field": "source_identity_sha256 or current_source_identity_sha256",
+    "source_identity_sha256": null,
+    "c_frozen_sha256": null,
+    "train_generation_sha256": null,
+    "train_integrity_sha256": null,
+    "selected_new_train_sha256": null,
+    "keys": [
+      "main:2701",
+      "alternative:2701"
+    ]
+  },
+  "fixed_outputs": [
+    "private_data/closure_discovery_20261017/D/discrimination/main_2701.json",
+    "private_data/closure_discovery_20261017/D/discrimination/alternative_2701.json",
+    "private_data/closure_discovery_20261017/D/discrimination/manifest.json"
+  ],
+  "immutable_evaluator_caches": "D/discrimination/cache/<name>_<seed>.json; evaluate_or_reuse validates and reuses these without overwriting",
+  "cap": {
+    "cli_argument": "--cap-seconds",
+    "default_seconds": 1800,
+    "effective_seconds": "min(requested, D remaining - 1800 seconds)",
+    "safety_margin_seconds": 1800
+  },
+  "preconditions": [
+    "C frozen manifest contains exactly 14 unique keys (fixed/library/main/alternative seeds 2701, 2702, 2703; delete3:2701; delete2:2701) and every model hash matches",
+    "registered D execution order matches wrapper, current source identity, C frozen manifest, completed train generation, train integrity, selected 24-condition manifest, and exact fixed keys",
+    "D new-train generation and integrity artifacts already exist and match the execution order",
+    "D/models contains no files or symlinks and D/confirmation_freeze.json does not exist",
+    "all 24 selected conditions are preserved; job, each result, and manifest retain the eligible event count and all load_new_events exclusions",
+    "empty or duplicate-ID eligible cohorts are unresolved; a complete selected cohort requires exactly 24 eligible events and no exclusions",
+    "score-before-adaptation evidence is rechecked before each predictor and before the final manifest"
+  ],
+  "forbidden": [
+    "fit or optimizer calls",
+    "candidate selection or primary comparison",
+    "FOM or simulator execution",
+    "VAL or TEST access",
+    "confirmation freeze writes",
+    "cache deletion or overwrite"
+  ],
+  "static_checks": {
+    "real_data_or_model_imported": false,
+    "train_payload_read": false,
+    "scientific_evaluation_run": false
+  }
+}

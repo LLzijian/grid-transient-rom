@@ -1,0 +1,37 @@
+{
+  "scope": "Same seeded synthetic equations, data and float64; no optimizer step; forward/backward only; three repeats and one warmup; synchronized CUDA. Small-matrix GPU timing is not claimed faster than CPU.",
+  "rows": [
+    {
+      "batch": 12,
+      "horizon_seconds": 0.2,
+      "medians_seconds": {
+        "legacy_cpu": 0.7634879000106594,
+        "prepared_cpu": 0.4154761000099825,
+        "prepared_original_field": 2.521174900000915,
+        "prepared_requested_device": 1.3422467000054894
+      },
+      "cpu_speedup_vs_legacy": 1.837621706741532,
+      "gpu_speedup_vs_original_field": 1.8783245285614067,
+      "gpu_over_optimized_cpu_time": 3.230623133251804,
+      "max_loss_abs_difference": 0.0,
+      "gpu_peak_allocated_bytes": 35229184
+    },
+    {
+      "batch": 96,
+      "horizon_seconds": 0.2,
+      "medians_seconds": {
+        "legacy_cpu": 0.9138812000019243,
+        "prepared_cpu": 0.5319030999962706,
+        "prepared_original_field": 2.4165409999986878,
+        "prepared_requested_device": 1.3017135999980383
+      },
+      "cpu_speedup_vs_legacy": 1.718134750499352,
+      "gpu_speedup_vs_original_field": 1.8564306311329386,
+      "gpu_over_optimized_cpu_time": 2.4472758290131513,
+      "max_loss_abs_difference": 4.336808689942018e-19,
+      "gpu_peak_allocated_bytes": 99142656
+    }
+  ],
+  "val_read": false,
+  "test_read": false
+}

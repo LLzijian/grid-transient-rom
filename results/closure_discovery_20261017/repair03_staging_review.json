@@ -1,0 +1,30 @@
+{
+  "reviewed_epoch": 1792189614.8121164,
+  "status": "staged_and_synthetic_checked_not_applied",
+  "bound_source_sha256": "f27cb8860a77551b07bd57749efc13c36f7566151baea49c4193155398c78428",
+  "production_bound_files_unchanged": true,
+  "staging_files_sha256": {
+    "experiments/closure_discovery_confirmation.py": "124607ad6cad5b1b77336bfcece822d1203beae1dc43431bebbbec77f029c6e4",
+    "experiments/closure_discovery_data.py": "df313113242691b5bdcf61d4fa3abc294ae2c8f953260f963a0fe5800aa7373a",
+    "experiments/closure_discovery_export.py": "f07d74aa31f626c087d7108f272f925362cce9926ee7065675e2a197dda145e2",
+    "experiments/discover_closure.py": "86b0ec6ef87a243b5dc8c5b1cdedb67eebe1b0334494c875459b78e9ee15500b",
+    "tests/test_closure_discovery_data.py": "26a252d7d086eff9906431051e1ae356f24be6d9fb1a447b7defbe5bbed87352",
+    "tests/test_closure_discovery_export.py": "238d0290cf81d7deb2dd11ea9584d431e444db0057ec8547278e312e5849cfce",
+    "tests/test_discover_closure.py": "1743b60e42ead3b71fc07469861b42248e2d1a43e4513804393326f8c762753d",
+    "tests/test_discover_closure_repair03.py": "33ae94c8bcac45933702396900fe11d0037a1f8711b6ec90ef50bca514482a52",
+    "tests/test_repair03_mandatory_selection.py": "04abfcd2a970f56d16385949344ba306cdda721deff371c8ac16cc6d8c96f770"
+  },
+  "root_checks": {
+    "runner_recovery_and_identity": "5 initial synthetic regressions passed",
+    "partial_resume": "additional synthetic uninterrupted vs resumed training gives identical model tensors, sample trace, coverage and numpy/torch RNG; passed after correcting an empty-tensor mean in the synthetic loss fixture",
+    "export_documentation": "one existing synthetic independent-export parity check with corrected physical-centering assertions passed",
+    "public_C_failure_recovery": "2 additional synthetic checks passed: failed core seed skipped while next registered seed executes; recorded deletion failure is not retried and full C remains unresolved"
+  },
+  "worker_checks": {
+    "mandatory_D_selection": "5 synthetic regressions plus 2 original selector regressions passed",
+    "A_metadata": "completed train-only exactly two physical conditions, short/medium one each; no trajectories read"
+  },
+  "apply_gate": "wait until official B PID25132 and C fixed PID33548 both end; preserve f27 implementation snapshot; apply exact staged files, run integrated targeted checks, bind and archive new implementation before scientific execution",
+  "scientific_field_loss_rates_seed_budget_changes": false,
+  "test_read": false
+}

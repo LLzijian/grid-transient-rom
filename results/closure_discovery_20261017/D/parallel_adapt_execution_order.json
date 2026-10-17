@@ -1,0 +1,62 @@
+{
+  "phase": "adapt",
+  "registered_utc": "2026-10-17T01:44:35.002632+00:00",
+  "source_identity_sha256": "b8d1f961bd5ae7700b8c656b28357b0ad537a77bd838fda5530c4c0c0f4694bc",
+  "wrapper_sha256": "986170f8576a764cbd13a87aa8c4bf4726bfaa1db1fd8fa0e508f27eeb7a50c3",
+  "frozen_sha256": "e504cb15875ce106cd834607ca28793cc539f68ccaa6d991a120db2f2128f814",
+  "train_generation_sha256": "18d4f24bd2ea772ca30fc5b4c3fa9fee384707a8b3566f4b4eded5656d994933",
+  "train_integrity_sha256": "86e24997316b519bb1475d660b7c2cd5a63409900157a8e786e69e13d549dd9f",
+  "selected_new_train_sha256": "c3619d2684d6a4dcb99863d3a615bee3f3b801ffa4e779a1e4d48cc1be9235ab",
+  "completed_discrimination_manifest_sha256": "35328afc7f6c8e3be96eb88e475307bd1ca1daed8ccb54221cfeb0d8d82a3915",
+  "keys": [
+    "fixed:2701",
+    "fixed:2702",
+    "fixed:2703",
+    "library:2701",
+    "library:2702",
+    "library:2703",
+    "main:2701",
+    "main:2702",
+    "main:2703",
+    "alternative:2701",
+    "alternative:2702",
+    "alternative:2703",
+    "delete3:2701",
+    "delete2:2701"
+  ],
+  "process_groups": [
+    [
+      "fixed:2701",
+      "library:2702",
+      "main:2703",
+      "delete3:2701"
+    ],
+    [
+      "fixed:2702",
+      "library:2703",
+      "alternative:2701",
+      "delete2:2701"
+    ],
+    [
+      "fixed:2703",
+      "main:2701",
+      "alternative:2702"
+    ],
+    [
+      "library:2701",
+      "main:2702",
+      "alternative:2703"
+    ]
+  ],
+  "process_cap_seconds_each": 4000,
+  "max_processes": 4,
+  "sum_of_adapt_process_caps_seconds": 16000,
+  "D_cap_seconds": 43200,
+  "updates_per_model": 256,
+  "fresh_Adam_from_each_C_endpoint": true,
+  "old_train": 346,
+  "qualified_new_train": 20,
+  "no_reselection": true,
+  "no_val_read": true,
+  "test_read": false
+}

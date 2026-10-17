@@ -1,0 +1,56 @@
+{
+  "repair": "repair04",
+  "applied_utc": "2026-10-17T01:28:14.5358402Z",
+  "scope": "confirmation component reporting and cache completeness; protocol amendment",
+  "old_implementation_identity_sha256": "2e38331099ecb14bfe0d858e1cc88671fba996264bba88bd74ccfc36f017e487",
+  "new_implementation_identity_sha256": "b8d1f961bd5ae7700b8c656b28357b0ad537a77bd838fda5530c4c0c0f4694bc",
+  "old_identity_source_file_count": 30,
+  "new_identity_source_file_count": 30,
+  "changed_bound_files": [
+    {
+      "path": "experiments\\closure_discovery_confirmation.py",
+      "old_sha256": "124607ad6cad5b1b77336bfcece822d1203beae1dc43431bebbbec77f029c6e4",
+      "new_sha256": "43ecf8f1b29231e1b68b452efa7310fcdce305a136e4a5bba54e0fbedff66579"
+    },
+    {
+      "path": "reports\\closure_discovery_20261017_protocol.md",
+      "old_sha256": "0b019f4212099dc1c76e1f93dc459b1c77feb33208a9ad60eb1152e93c561da7",
+      "new_sha256": "df6216a27afc9834699235b9caa2c27821b5d94d88ad6e42527bbf9a3edae3d5"
+    }
+  ],
+  "c_frozen_sha256": "e504cb15875ce106cd834607ca28793cc539f68ccaa6d991a120db2f2128f814",
+  "implementation_snapshot": "private_data/closure_discovery_20261017/implementation_before_repair04_2e3833",
+  "test_run": {
+    "command": "E:\\\\03-nn_Transfer_Func\\\\kron-reduce\\\\.venv\\\\Scripts\\\\python.exe -m pytest -q tests\\\\test_discover_closure.py tests\\\\test_confirmation_components.py",
+    "result": "passed",
+    "passed": 29,
+    "failed": 0,
+    "pytest_wall_seconds": 4.37,
+    "native_command_wall_seconds": 5.5450924,
+    "tool_chunk_id": "866cff",
+    "real_data_model_or_fom_accessed": false
+  },
+  "test_files": [
+    {
+      "path": "tests/test_discover_closure.py",
+      "sha256": "c40d34838c62142d28414615145fe695e0fadb0be0a69b934f5896c06eb1e1c1",
+      "change": "one synthetic cache fixture adds required components field"
+    },
+    {
+      "path": "tests/test_confirmation_components.py",
+      "sha256": "bfeadedf0f4a6c7e5b3a50e5316f6c1f7cdb5b231c35bdc5100541a35f5a9520",
+      "change": "new synthetic component tests"
+    }
+  ],
+  "production_source": {
+    "path": "experiments/closure_discovery_confirmation.py",
+    "sha256": "43ecf8f1b29231e1b68b452efa7310fcdce305a136e4a5bba54e0fbedff66579"
+  },
+  "protocol": {
+    "path": "reports/closure_discovery_20261017_protocol.md",
+    "old_sha256": "0b019f4212099dc1c76e1f93dc459b1c77feb33208a9ad60eb1152e93c561da7",
+    "new_sha256": "df6216a27afc9834699235b9caa2c27821b5d94d88ad6e42527bbf9a3edae3d5",
+    "append_count": 1
+  },
+  "source_binding": "bind_execution_sources(out) completed in a new process after removing only implementation/identity.json"
+}
