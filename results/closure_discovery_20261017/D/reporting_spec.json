@@ -1,0 +1,19 @@
+{
+  "registered_utc": "2026-10-17T01:56:40.461964+00:00",
+  "before_new_val_generation": true,
+  "purpose": "Make the approved supplemental output aggregation explicit before confirmation; no change to primary comparison, model, gate or fit.",
+  "primary": "Use unchanged paired_primary(main_2701,fixed_2701), complete stable 5 s, bus cluster resampling2000,seed5701; generation exclusions or model numerical failures remain unresolved.",
+  "models": "All fourteen frozen endpoint rows; same-seed byte-identical main/library remain logically separate labels, not independent successes.",
+  "supplemental_cohorts": [
+    "stable events with complete 1/2/5/8 s horizons",
+    "unstable events over genuine future interval capped at 8 s"
+  ],
+  "normalized_event_error": "metrics.normalized_sse/metrics.n + components.frequency.normalized_mse + components.mechanical_power.normalized_mse; at each matching horizon; 5 s algebra checked on 14 new-train stable records, max difference3.56e-15 against saved point_error MSE.",
+  "normalized_risk": "0.8*event mean +0.2*mean of largest max(1,ceil(0.1*n_events)) event errors; horizons1/2/8 and unstable actual intervals; not RMSE.",
+  "physical_components": "For frequency rad/s and mechanical power p.u. on 100 MVA system base, report pooled sqrt(sum physical_sse / sum n_scalar_points), event count and scalar count; do not combine the two units.",
+  "cohort_qualification": "Report availability counts; if any available event in an aggregate is model-numerically unresolved/nonfinite, keep the aggregate unresolved rather than remove that event. FOM exclusions remain outside qualified-cohort diagnostics and disallow full24 improvement claims.",
+  "classification": "Keep true unstable/stable counts, false_los, missed_unstable and numerically_unresolved separately with denominators; zero errors do not imply safety.",
+  "statistics": "No new confidence intervals or significance comparisons beyond registered primary. Do not reselect structure, seed, horizon or train after seeing new val.",
+  "test_read": false,
+  "new_val_read": false
+}

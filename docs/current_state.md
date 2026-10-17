@@ -6,7 +6,9 @@ A完成实现、受控问题与成本检查；旧S-O向量场重建误差2.22e-1
 
 C完成四类结构各三个种子的1024次重新适配及两项完整机制删除，共14个端点；物理检查、更新次数、模型/优化器/端点哈希均通过，所有C进程已退出。main/library三个相同种子的模型字节均相同，不支持生成式方法优于固定库。main与固定结构的train排序随种子改变，仍按登记规则保留原主比较。[阶段C结论](../reports/closure_discovery_20261017_stage_C.md)和[冻结清单](../results/closure_discovery_20261017/C/frozen.json)；冻结SHA e504cb15875ce106cd834607ca28793cc539f68ccaa6d991a120db2f2128f814。
 
-当前实际进程状态：D新增train24全部尝试，20条合格、2条步长数值不合格、2条仿真失败，未替换条件。main2701与alternative2701正在合格新增train上做冻结预测器辨别；实际PID、命令和恢复位置见private_data/closure_discovery_20261017/active_job.json。尚未启动D适配，也未生成新增val。下一动作：辨别结束后登记全部14个端点各256次追加适配，完成核对与冻结后才生成、评价预锁新增val24。主比较保持main2701与fixed2701，不按val重选。
+当前实际进程状态：四个互不重叠进程对14个C端点各追加256次，输入为346旧train加20合格新增train；PID、完整命令、键集合和恢复位置见private_data/closure_discovery_20261017/active_job.json及D/parallel_adapt_execution_order.json。新增train24全部尝试，20合格、2步长数值不合格、2仿真失败，没有替换条件。冻结C预测器已在合格新增train完成辨别：14完整5s稳定事件风险main2701=3.25650215、alternative2701=3.81528664；这是探索，非完整24条件确认。两模型数值资格通过、合格集含6个失稳样本，两者各有1次假失步、0次漏检，不能据此证明安全。探索证据及适配执行单已核实归档fbf276d9c5154aef5b3c89bc9bf18f52a658e47c。
+
+尚未生成新增val。下一动作：全部14个D端点各256次、来源/采样/物理检查通过后写不可变冻结，再生成、评价预锁val24；主比较保持main2701与fixed2701，不按val重选。
 
 repair04已通过29项合成生产检查，D源码身份b8d1f961bd5ae7700b8c656b28357b0ad537a77bd838fda5530c4c0c0f4694bc；仅确认分项输出和协议更新，C及旧来源保留。源码与执行单归档31f9ebe921ff745d0815a45630800d84663cd639；train完整尝试记录与辨别执行单归档9dafbefc19bbc3fedbf405c78ae7929dab6acab1。E尚未开始。
 
