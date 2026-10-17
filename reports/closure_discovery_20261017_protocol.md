@@ -59,3 +59,45 @@ A用实测代表性模型每更新成本和固定评价成本乘1.25，测算完
 A已预跑的两个train条件计入D的24个新增train（短、中持续时间各一条）；其余22条按原train预测分歧和分层规则选择，短/中/长补足7/7/8，总数仍24。新增val24的预锁定条件不变，因此本轮最多48个不同故障条件。A原始数据保留，D统一生成时允许对相同两个条件再次做双步长数值核验，重复运行计费但不产生额外条件。条件选择身份同时绑定模型名与种子，防止三种子来源相互覆盖。
 
 B首次f27运行观察到三个数值失败（其中一个在完成132次更新后、尝试133次时非有限）；这些失败和原始选择均保留。修复后的B只用原始等级缓存重新汇总，禁止追加任何拟合更新。表达式字符串变化或库外AST不单独作为新函数族、新物理机制或潜坐标唯一性的证据。
+
+## Implementation repair04: confirmation components and new-train discrimination
+
+This prospective amendment applies to D and E after all C processes have exited.
+C remains bound to source identity
+`2e38331099ecb14bfe0d858e1cc88671fba996264bba88bd74ccfc36f017e487`;
+its weights, optimizer states, classifications and evidence are preserved.
+
+The confirmation output adds separate common-frequency and mechanical-power
+components at 1/2/5/8 s and over the genuine available interval capped at 8 s.
+For n future points, prediction indices 1:n+1 are paired with x[11:11+n].
+Common frequency is mass weighted, with RMSE in rad/s and normalized MSE using
+the frozen train frequency scale. Mechanical power is Pm minus its equilibrium
+value, with RMSE in p.u. on the 100 MVA system base and normalized MSE using
+the frozen per-machine train p scales. Each component retains physical SSE,
+scalar count, availability and finite-status fields. Unavailable or nonfinite
+values remain explicit. Existing evaluation caches missing the added component
+field are rejected without overwrite or recomputation.
+
+The primary point error, nonlinear event risk, classification, numerical gates,
+sampling, losses, learning rates, seeds, adaptation counts and selected models
+are unchanged. This is an output and recovery repair, with targeted synthetic
+component and confirmation-cache checks. The new source identity is recorded
+externally after application; C provenance is not rewritten.
+
+To complete the approved discrimination role of new train data, after all 24
+new train conditions have been attempted and locked, score the two frozen C
+predictors main2701 and alternative2701 before any D adaptation. Use the existing
+evaluation procedure, retain all condition failures and exclusions, and label
+the result exploratory new-train discrimination of whole observable predictors.
+It is neither independent confirmation nor evidence for isolated mechanism
+necessity. There is no new model, condition, search branch, fit update, confidence
+interval or primary-comparison selection. The fixed main2701 versus fixed2701
+new-val comparison remains locked. This step has a finite 1800-process-second
+cap inside the existing D allocation of 43200 process seconds.
+
+All model and cohort identities and the wrapper hash must be registered before
+that scoring execution. Any D adaptation evidence or confirmation freeze makes
+the pre-adaptation scorer refuse execution. D then performs the original uniform
+256 updates, freezes every formula, coefficient and initializer, and only then
+generates and evaluates the 24 locked new val conditions. Original test stays
+closed. All outcomes remain under the original scientific claim standards.

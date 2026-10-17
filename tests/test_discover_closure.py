@@ -308,6 +308,7 @@ def test_evaluation_reuses_only_same_model_and_full_event_cohort(tmp_path, monke
         result={'_identity':identity,'event_count':len(events),
                 'records':[{'id':event['id'],'group':event['group'],'label':event['label'],
                             'numerical_pass':True,'complete_5s':True,'mse':0.,'metrics':[],
+                            'components':{h:{} for h in ('1','2','5','8','prefix')},
                             'pair':{},'selected_pair':{},'scored_numerics':[]} for event in events],
                 'primary_risk':0.,'primary_complete_stable_count':len(events),
                 'all_numerical_pass':True,'classification_counts':{},'scope':'mock','test_read':False}
