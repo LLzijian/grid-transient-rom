@@ -1,0 +1,69 @@
+{
+  "phase": "evaluate",
+  "registered_utc": "2026-10-17T02:36:00.487776+00:00",
+  "source_identity_sha256": "b8d1f961bd5ae7700b8c656b28357b0ad537a77bd838fda5530c4c0c0f4694bc",
+  "wrapper_sha256": "986170f8576a764cbd13a87aa8c4bf4726bfaa1db1fd8fa0e508f27eeb7a50c3",
+  "frozen_sha256": "e504cb15875ce106cd834607ca28793cc539f68ccaa6d991a120db2f2128f814",
+  "freeze_sha256": "6bb7d43997222ffa9c7bb47728c0117d6b8b25712f5df0141f38f06fca78751d",
+  "val_generation_sha256": "c4decf17271e591c607c798109e0e0f84bfa31d9081cc6afa835698707369a9f",
+  "val_integrity_sha256": "d255e5a1d5db4df808caf7b90d6da40913ead9f297f4d258536e99f86df38da5",
+  "keys": [
+    "fixed:2701",
+    "fixed:2702",
+    "fixed:2703",
+    "library:2701",
+    "library:2702",
+    "library:2703",
+    "main:2701",
+    "main:2702",
+    "main:2703",
+    "alternative:2701",
+    "alternative:2702",
+    "alternative:2703",
+    "delete3:2701",
+    "delete2:2701"
+  ],
+  "process_groups": [
+    [
+      "fixed:2701",
+      "library:2702",
+      "main:2703",
+      "delete3:2701"
+    ],
+    [
+      "fixed:2702",
+      "library:2703",
+      "alternative:2701",
+      "delete2:2701"
+    ],
+    [
+      "fixed:2703",
+      "main:2701",
+      "alternative:2702"
+    ],
+    [
+      "library:2701",
+      "main:2702",
+      "alternative:2703"
+    ]
+  ],
+  "process_cap_seconds_each": 3000,
+  "max_processes": 4,
+  "sum_process_caps_seconds": 12000,
+  "D_cap_seconds": 43200,
+  "attempted_val_conditions": 24,
+  "qualified_eligible_val_events": 23,
+  "excluded_val": [
+    {
+      "id": "newval_817a73a1c910c3d7",
+      "new_split": "val",
+      "reason": "latency_uncovered",
+      "root": "closure_discovery",
+      "trajectory_end_s": 0.07
+    }
+  ],
+  "no_training_or_FOM_or_reselection": true,
+  "all_fourteen_logical_rows_evaluated": true,
+  "primary_method_unchanged": true,
+  "test_read": false
+}
