@@ -1,0 +1,287 @@
+{
+  "status": "SUPPORTED_WITH_STATED_SCOPE",
+  "reviewer": "closure_stage_b_challenge; independent of proposal and implementation",
+  "scope": "冻结D方程及已保存E矩阵/导出证据的独立复核；未运行模型或读取任何轨迹、val或test。只写本JSON，科学决定归root。",
+  "freeze_sha256": "6bb7d43997222ffa9c7bb47728c0117d6b8b25712f5df0141f38f06fca78751d",
+  "evidence_identity": {
+    "frozen_model_records": 14,
+    "distinct_model_hashes": 11,
+    "all_model_and_npz_hashes_match": true,
+    "matrix_manifest_freeze_matches": true,
+    "analyzer_sha256": "128548091c206103fc3604a2cc9896fc715627a9a7067046d845cf01884d38a2",
+    "analyzer_hash_matches_summary": true
+  },
+  "blocking_issues": [],
+  "numerical_recheck": {
+    "method": "只用冻结JSON直接解析二次项与三角边项的原点Hessian，并解析全部当前线性端口的Du；独立组装A=(J-R)H+B Du，再与NPZ比较。对NPZ重算投影、特征值及已存P的Lyapunov残差。未调用analyzer或模型。",
+    "max_abs_H_difference": 7.105427357601002e-15,
+    "max_abs_full_A_difference": 7.105427357601002e-15,
+    "port_jacobian_included": true,
+    "Q_shape": [
+      40,
+      39
+    ],
+    "Q_orthogonality_norm2": 4.779991910704001e-16,
+    "QQ_transpose_projector_error_norm2": 4.341702372698731e-16,
+    "all_common_angle_gauges_match": true,
+    "max_H_gauge_residual": 2.051121075660015e-15,
+    "max_A_gauge_residual": 4.623450761781506e-15,
+    "all_f0_and_gradH0_zero": true,
+    "full_40_coordinate_zero_modes_each": 1,
+    "quotient_near_neutral_modes_each": 0,
+    "positive_real_mode_endpoint_records": 13,
+    "positive_real_mode_distinct_models": 10,
+    "positive_definite_quotient_H_records": 13,
+    "positive_definite_quotient_H_distinct_models": 10,
+    "spectral_rows": [
+      {
+        "key": "fixed:2701",
+        "max_real_per_s": 0.0067074012323956825,
+        "positive_real_modes": 1,
+        "min_quotient_H_eigenvalue": 0.11481413118685863
+      },
+      {
+        "key": "fixed:2702",
+        "max_real_per_s": 0.005215673281761439,
+        "positive_real_modes": 1,
+        "min_quotient_H_eigenvalue": 0.09809711220753788
+      },
+      {
+        "key": "fixed:2703",
+        "max_real_per_s": 0.00481639351974231,
+        "positive_real_modes": 1,
+        "min_quotient_H_eigenvalue": 0.12886881623125337
+      },
+      {
+        "key": "library:2701",
+        "max_real_per_s": 0.008881240976377524,
+        "positive_real_modes": 1,
+        "min_quotient_H_eigenvalue": 0.01649511698133753
+      },
+      {
+        "key": "library:2702",
+        "max_real_per_s": 0.004242871944547862,
+        "positive_real_modes": 1,
+        "min_quotient_H_eigenvalue": 0.09843740010350975
+      },
+      {
+        "key": "library:2703",
+        "max_real_per_s": 0.005621984354322084,
+        "positive_real_modes": 1,
+        "min_quotient_H_eigenvalue": 0.11865772567163367
+      },
+      {
+        "key": "main:2701",
+        "max_real_per_s": 0.008881240976377524,
+        "positive_real_modes": 1,
+        "min_quotient_H_eigenvalue": 0.01649511698133753
+      },
+      {
+        "key": "main:2702",
+        "max_real_per_s": 0.004242871944547862,
+        "positive_real_modes": 1,
+        "min_quotient_H_eigenvalue": 0.09843740010350975
+      },
+      {
+        "key": "main:2703",
+        "max_real_per_s": 0.005621984354322084,
+        "positive_real_modes": 1,
+        "min_quotient_H_eigenvalue": 0.11865772567163367
+      },
+      {
+        "key": "alternative:2701",
+        "max_real_per_s": 0.009831370251267015,
+        "positive_real_modes": 1,
+        "min_quotient_H_eigenvalue": 0.06287246045465303
+      },
+      {
+        "key": "alternative:2702",
+        "max_real_per_s": 0.002342059887396659,
+        "positive_real_modes": 1,
+        "min_quotient_H_eigenvalue": 0.1282384064617082
+      },
+      {
+        "key": "alternative:2703",
+        "max_real_per_s": 0.004061859319297317,
+        "positive_real_modes": 1,
+        "min_quotient_H_eigenvalue": 0.1541040715583266
+      },
+      {
+        "key": "delete3:2701",
+        "max_real_per_s": 0.03468560717895484,
+        "positive_real_modes": 1,
+        "min_quotient_H_eigenvalue": -0.20747348008646993
+      },
+      {
+        "key": "delete2:2701",
+        "max_real_per_s": -0.08474333758775404,
+        "positive_real_modes": 0,
+        "min_quotient_H_eigenvalue": 0.12950331029962317
+      }
+    ],
+    "delete2_2701": {
+      "max_real_per_s": -0.08474333758775404,
+      "strict_hurwitz_on_quotient": true,
+      "P_min_eigenvalue": 0.1093128960492154,
+      "P_symmetry_norm2": 1.0480285866134333e-14,
+      "P_tolerance": 7.122209463315087e-13,
+      "residual_norm2": 9.223174323734114e-13,
+      "residual_tolerance": 5.3663282535244066e-12,
+      "stored_residual_max_abs_difference": 0
+    },
+    "tolerance_scope": "float64数值检查：谱阈值100*eps*max(1,||matrix||2)，Lyapunov残差阈值1000*eps*max(1,||Aq.T P||2,||P Aq||2)。不是区间算术的舍入误差证书。",
+    "coordinates_and_units": "内部(delta,pi,p,q)，pi=M*omega；时间为秒，A特征值为s^-1。Q只去除共同角，保留全部10个pi以及共同频率；不移除其他动态模态。p和q采用冻结模型尺度，H不是SI储能；H谱数值与范数容差依赖坐标尺度。"
+  },
+  "alternative_folding": {
+    "formula": "alpha*sum[(p_i/p_scale_i)^2+(p_i/p_scale_i)*q_i]可由beta_new=beta+alpha及b_i_new=b_i+2*alpha/p_scale_i^2吸收。",
+    "rows": [
+      {
+        "key": "alternative:2701",
+        "alpha": 0.004513289547498885,
+        "folded_p_storage_min": 0.19016524246088445,
+        "positive_storage_domain_preserved": true,
+        "p_storage_active_and_trainable": true,
+        "model_sha256": "a4876eb9bd47bd5e079fb2139bdcd790d25818d09d0e35690d4e20fdcc59aa4f"
+      },
+      {
+        "key": "alternative:2702",
+        "alpha": 0.0006587193561929312,
+        "folded_p_storage_min": 0.14623280703357416,
+        "positive_storage_domain_preserved": true,
+        "p_storage_active_and_trainable": true,
+        "model_sha256": "0e3acf2426f978755d10abe81260fad011a3b6f92e528673f522f1938ae8fd7f"
+      },
+      {
+        "key": "alternative:2703",
+        "alpha": 0.0021116986844656057,
+        "folded_p_storage_min": 0.1721769434943046,
+        "positive_storage_domain_preserved": true,
+        "p_storage_active_and_trainable": true,
+        "model_sha256": "7cad5b51b6526961cdb15883c54f69f9cc1fc2c962be116afdc0f365c81d44e1"
+      }
+    ],
+    "conclusion": "三个实际冻结alternative均可吸收到原九项模型函数族，保持同一H和完整ODE；这不表示它们与删除port es的八项主候选是相同预测器。公式字符串或表达式数不能计作不同机制数。"
+  },
+  "independent_export": {
+    "records": 14,
+    "histories_per_model": 3,
+    "horizon_s": 8,
+    "dt_s": 0.01,
+    "recorded_all_finite_and_pass": true,
+    "largest_recorded_normalized_point_error": 2.0376366937148045e-27,
+    "metric": "两实现可观察量之间既有归一化平方误差的最大值；不是RMSE或对FOM的预测误差。",
+    "runtime": "NumPy独立AST/梯度、GRU及RK4；初始化一次后自主推进。",
+    "payload_check": "14个导出包的state_dict、terms、coefficients、config、trainable_parameters和provenance与冻结模型相同；physical原有键不变，仅补充从config导出的gain、rate、input_scale_delta以供独立初始化器使用。",
+    "all_payload_differences_are_added_encoder_metadata": true,
+    "simulator_sha256": "7ba9ccf916dfd772c63352079d3a4f625ba6dd29b346032845c74da767bc958e",
+    "supported_scope": "同一冻结方程与初始化器在所检查历史和固定步长下的实现一致性。",
+    "not_supported": "不提供FOM预测准确性、积分误差资格、长期有界性或稳定性证据。"
+  },
+  "supported_claims": [
+    "这些冻结ROM在已核实零平衡点的39维共同角商空间上，13条端点记录各有一个正实部模态，delete2_2701为严格Hurwitz。",
+    "delete2_2701保存的P对该39维线性矩阵给出通过既定容差的正定二次Lyapunov数值见证。",
+    "13条端点记录的商空间储能Hessian正定，delete3_2701存在负曲率；此结论与完整端口作用下的场谱分别报告。",
+    "当前三个alternative端点不需要库外函数即可表达；八秒NumPy/PyTorch记录支持实现一致性。"
+  ],
+  "unsupported_claims": [
+    "全40维严格Hurwitz、非线性吸引域半径、全局或部署安全证书。",
+    "根据ROM局部谱给FOM事件加失稳标签，或由Hessian正定直接推出含端口系统稳定。",
+    "生成式方法产生新物理机制、唯一器件解释，或main/library重复模型构成独立算法优势。",
+    "依据事后数学结果更换已冻结主候选，或把实现一致性当作独立预测确认。"
+  ],
+  "necessary_root_actions": [
+    "沿用已冻结主比较，不因delete2局部谱更换主候选或扩大模型身份。",
+    "报告14条端点但11个不同模型；main/library逐种子的重复须注明。",
+    "将局部线性场、储能曲率、线性二次见证及独立实现一致性分别归因，并保留对应范围。",
+    "按现有选择性归档规则推送此审查及关联证据；本agent未操作GitHub。"
+  ],
+  "evidence_paths": [
+    "private_data/closure_discovery_20261017/D/confirmation_freeze.json",
+    "private_data/closure_discovery_20261017/E/math/summary.json",
+    "private_data/closure_discovery_20261017/E/math/matrix_manifest.json",
+    "private_data/closure_discovery_20261017/E/math/model_<frozen-model-sha-prefix>.npz",
+    "experiments/analyze_symbolic_closure.py",
+    "experiments/symbolic_closure_rom.py",
+    "experiments/local_memory_rom_0098.py:551",
+    "private_data/closure_discovery_20261017/E/export/<name_seed>/independent_run.json",
+    "private_data/closure_discovery_20261017/E/export/<name_seed>/simulate.py",
+    "experiments/closure_discovery_export.py:236",
+    "experiments/discover_closure.py:611"
+  ],
+  "native_cost": {
+    "session_log": "C:\\Users\\LLLzijian\\.codex\\sessions\\2026\\10\\17\\rollout-2026-10-17T06-27-49-01a146d4-1e4f-7a73-a778-db91342db0f2.jsonl",
+    "rows": [
+      {
+        "id": "exec-176dde83-74fb-4f8b-938b-b993a30bebcb",
+        "time": "2026-10-17T02:23:35.484Z",
+        "status": "completed",
+        "native_seconds": 1.9305079
+      },
+      {
+        "id": "exec-2167fc89-a79e-475d-8fdb-569a23cd0f4d",
+        "time": "2026-10-17T02:24:04.387Z",
+        "status": "completed",
+        "native_seconds": 1.9599862
+      },
+      {
+        "id": "exec-6b10bdb1-2ad0-4382-a257-28580949a00f",
+        "time": "2026-10-17T02:24:16.814Z",
+        "status": "completed",
+        "native_seconds": 1.9229181
+      },
+      {
+        "id": "exec-1df4642c-884a-411b-a5f8-80fee367505d",
+        "time": "2026-10-17T02:24:35.454Z",
+        "status": "completed",
+        "native_seconds": 1.9160829000000001
+      },
+      {
+        "id": "exec-8059de28-97dd-4213-9814-a209224fec44",
+        "time": "2026-10-17T02:25:23.575Z",
+        "status": "completed",
+        "native_seconds": 2.1001653
+      },
+      {
+        "id": "exec-d657d198-27d3-4f9d-8bf0-e13ce795326d",
+        "time": "2026-10-17T02:26:06.456Z",
+        "status": "completed",
+        "native_seconds": 2.1220249
+      },
+      {
+        "id": "exec-39edb8ca-145a-4c5f-955c-73b2b13f763a",
+        "time": "2026-10-17T02:26:20.511Z",
+        "status": "completed",
+        "native_seconds": 1.9125671
+      },
+      {
+        "id": "exec-5a3bae9e-e3a2-451c-a136-6c829580937a",
+        "time": "2026-10-17T02:26:32.428Z",
+        "status": "completed",
+        "native_seconds": 1.9999691
+      },
+      {
+        "id": "exec-43940f1e-f078-4b25-b608-acc3752fc589",
+        "time": "2026-10-17T02:26:46.147Z",
+        "status": "completed",
+        "native_seconds": 1.858045
+      }
+    ],
+    "closed_native_seconds": 17.7222665,
+    "cutoff": "原生审计命令开始前；该审计命令chunk=4c52a3另约1.8959103秒，最终统一读取会话日志补齐并去重。未写ledger。",
+    "matrix_recheck_command_id": "exec-8059de28-97dd-4213-9814-a209224fec44"
+  },
+  "access": {
+    "frozen_model_json": true,
+    "saved_math_matrices": true,
+    "export_code_and_saved_checks": true,
+    "trajectory_data": false,
+    "new_val": false,
+    "old_val": false,
+    "test": false,
+    "model_evaluation": false,
+    "training": false,
+    "FOM": false,
+    "source_modified": false,
+    "ledger_modified": false
+  }
+}
