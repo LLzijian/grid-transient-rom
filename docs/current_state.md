@@ -1,19 +1,15 @@
 # 当前研究状态
 
-任务状态：**RUNNING，阶段C公平重训**。实施用户批准的72进程小时物理闭合方程发现计划；[协议](../reports/closure_discovery_20261017_protocol.md)、[资源变更](../reports/closure_discovery_20261017_resource_amendment.md)。TASK4暂停，原冻结test关闭。
+任务状态：**RUNNING，阶段C已完成，正在准备阶段D**。实施用户批准的72进程小时物理闭合方程发现计划；[协议](../reports/closure_discovery_20261017_protocol.md)、[资源变更](../reports/closure_discovery_20261017_resource_amendment.md)。TASK4暂停，原冻结test关闭。
 
-A已形成可执行首版，原S-O向量场重建误差2.22e-16；两个新增train条件通过双步长FOM核验。已知q组件例与100ms部分观测例的证据范围分别记录，后者不冒充正确公式恢复。详见[阶段A结论](../reports/closure_discovery_20261017_stage_A.md)。
+A完成实现、受控问题与成本检查；旧S-O向量场重建误差2.22e-16。部分观测例尚未恢复正确公式，证据范围见[阶段A](../reports/closure_discovery_20261017_stage_A.md)。B完成六次搜索，11个合法512次端点及三个数值失败全部保留。固定库和生成式均选同一八项结构；替代候选新增的二次表达式在已查端点可吸收到原函数族，见[阶段B](../reports/closure_discovery_20261017_stage_B.md)。
 
-B六次搜索已结束，11个合法512次端点、三个数值失败均保留。固定库与生成式均选同一八项模型，删除port es，掩码[1,1,1,0]；不能据此声称生成式优于固定库。10项替代候选满足近优及可观测分歧规则，其新增(p+q)p在当前B端点可吸收到原p二次储能和pq系数。独立只读审查同意继续原C比较，不晋升最终模型。详见[阶段B结论](../reports/closure_discovery_20261017_stage_B.md)。
+C完成四类结构各三个种子的1024次重新适配及两项完整机制删除，共14个端点；物理检查、更新次数、模型/优化器/端点哈希均通过，所有C进程已退出。main/library三个相同种子的模型字节均相同，不支持生成式方法优于固定库。main与固定结构的train排序随种子改变，仍按登记规则保留原主比较。[阶段C结论](../reports/closure_discovery_20261017_stage_C.md)和[冻结清单](../results/closure_discovery_20261017/C/frozen.json)；冻结SHA e504cb15875ce106cd834607ca28793cc539f68ccaa6d991a120db2f2128f814。
 
-当前绑定源码2e38331099ecb14bfe0d858e1cc88671fba996264bba88bd74ccfc36f017e487。repair03通过67项定向回归，不改训练数学或科学预算；只读B缓存汇总禁止fit且原模型/优化器/失败字节保持。旧f27实现及三种子固定对照保持原来源、1024次和SHA。
+当前实际进程状态：无科学计算任务运行。下一动作：应用已通过隔离回归的repair04，补齐共同频率和机械功率独立输出，重新绑定并归档D源码。随后登记并生成24条新增train（A阶段两个条件包含其中），先评价两个冻结C预测器，再对全部14个端点统一追加256次；冻结全部权重后才生成与评价24条预锁新增val。正式主比较保持main2701与fixed2701，禁止根据val重选或训练。D/E科学执行尚未开始。C→D独立审查的前提及root后续核对见D/stage_entry_review.json；当前源码仍为2e38331099ecb14bfe0d858e1cc88671fba996264bba88bd74ccfc36f017e487，旧来源不重写。
 
-实际C进程仅剩alternative2703，PID46048/工具会话65518；原三种子顺序进程仍正常运行。其余十三个端点已完成：固定结构、library、main各三个，alternative前两个及两个删除实验。1024次端点、训练状态SHA与物理QA均核实。[紧凑进度证据](../results/closure_discovery_20261017/C/completed_endpoints_progress.json)保留全部范围与哈希；实际命令和检查点见 `private_data/closure_discovery_20261017/C/active_refits_snapshot.json`。library/main三个相同种子的模型字节全部相同，不计作独立算法成功。
+总授权259200进程秒，A43200/B57600/C86400/D43200/E14400/reserve14400。截至2026-10-17T01:18Z的已闭账支出：A1990.0095387、B15527.1357605、C32727.9678417、D111.7186242、E41.0764439、reserve596.1004754秒；之后少量归档与准备成本尚待核算。唯一账本private_data/closure_discovery_20261017/ledger/receipts.jsonl。旧TASK2的59643.306023/60000秒单列，不转移额度。
 
-八项删除评分按原规则选中index3转速端口、index2边储能，两项均从同一S-O完成1024次重训（seed2701）。train 1/2/5 s风险为主候选1.7722107185、delete3为2.0254499203、delete2为1.9960797974；这是一种子、固定适配预算下的比较，不代替新增val确认或普遍必要性证明。下一动作：完成alternative2703并形成十四端点的C冻结清单。确认分项输出repair04及原缓存/恢复兼容回归已通过16项合成检查；生产源码保持冻结，必须等所有C进程退出才应用并重新绑定D来源。D随后生成新增train24、统一追加256次、冻结全部权重后才生成新增val24。D/E科学执行尚未开始。
+恢复目录E:/03-nn_Transfer_Func/kiki，Python E:/03-nn_Transfer_Func/kron-reduce/.venv/Scripts/python.exe。源0102 S-O SHA c9fe3f86cf093d1f6c4600c71ecd333200840b9be4c2b156c018e1ff09a1e238；S-O为研究候选，F-O为开发基线，未改变部署默认模型。原train346个合格事件、35个失稳样本，100ms因果边界和真实区间保持。
 
-总授权259200进程秒；分配A43200/B57600/C86400/D43200/E14400/reserve14400。截至2026-10-17T00:41:05Z十三端点快照的闭账支出 A=1990.0095387, B=15513.3064088, C=23883.2744936, D=61.9055724, E=41.0764439, reserve=407.2419022；最后一条在运行C进程及部分短检查尚待结算，不能将闭账余量当成全部可用预算。唯一账本 `private_data/closure_discovery_20261017/ledger/receipts.jsonl`；旧TASK2的59643.306023/60000秒单列，不转移额度。
-
-恢复目录 `E:/03-nn_Transfer_Func/kiki`，Python `E:/03-nn_Transfer_Func/kron-reduce/.venv/Scripts/python.exe`。来源0102 S-O SHA256 c9fe3f86cf093d1f6c4600c71ecd333200840b9be4c2b156c018e1ff09a1e238。S-O是研究候选、F-O是开发基线；train为346合格事件、含35个失稳样本，真实区间与100ms因果边界不变。
-
-GitHub归档分支 `codex/closure-discovery-20261017`，当前已核实关键结果提交d0020f094460b8c22f01dd3360416fe2f47cec7a。关键设计、代码、正负结果均归档；原轨迹、缓存及中间检查点留本地，重要模型列路径与SHA。无关修改与本地HEAD a951013保持原样。工程接口见[执行说明](closure_discovery_runbook.md)；历史状态见[备份](history/current_state_before_closure_discovery_20261017.md)。
+GitHub归档分支codex/closure-discovery-20261017；关键设计、代码、正负结果均归档，原轨迹、缓存与重复中间检查点留本地，重要模型记录路径和SHA。无关修改、本地HEAD a951013及用户index保持。恢复入口见[执行说明](closure_discovery_runbook.md)。
