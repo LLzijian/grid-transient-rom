@@ -1,0 +1,45 @@
+{
+  "stage": "D",
+  "new_train": null,
+  "new_train_excluded": null,
+  "new_val": 23,
+  "new_val_excluded": [
+    {
+      "id": "newval_817a73a1c910c3d7",
+      "root": "closure_discovery",
+      "new_split": "val",
+      "reason": "latency_uncovered",
+      "trajectory_end_s": 0.07
+    }
+  ],
+  "frozen_sha256": "6bb7d43997222ffa9c7bb47728c0117d6b8b25712f5df0141f38f06fca78751d",
+  "primary": {
+    "status": "unresolved",
+    "reason": "new val has unavailable/numerically unqualified events; no aggregate improvement claim",
+    "excluded": [
+      {
+        "id": "newval_817a73a1c910c3d7",
+        "root": "closure_discovery",
+        "new_split": "val",
+        "reason": "latency_uncovered",
+        "trajectory_end_s": 0.07
+      }
+    ],
+    "qualified_cohort_diagnostic": {
+      "status": "complete",
+      "difference": -0.01286005973815918,
+      "ci95": [
+        -0.03361368179321289,
+        -0.00032949913293123245
+      ],
+      "supports_primary_improvement": true,
+      "events": 20,
+      "groups": 3,
+      "resamples": 2000
+    }
+  },
+  "generation_reused": true,
+  "freeze_reused": true,
+  "status": "frozen_confirmation_complete",
+  "test_read": false
+}

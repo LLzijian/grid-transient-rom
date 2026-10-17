@@ -1,0 +1,312 @@
+{
+  "status": "SUPPORT_UNRESOLVED_FULL_COHORT_AND_DIAGNOSTIC_SUBSET",
+  "blocking_issue_for_confirmation_claim": "锁定24条val中有1条真实失稳样本只提供0.07秒轨迹，不能满足100ms初始化；按原登记规则全体确认保持unresolved，合格子集的区间不能改称全体改善已确认。",
+  "independent_recheck": {
+    "saved_primary_status": "unresolved",
+    "exact_numeric_match": true,
+    "main2701_minus_fixed2701": -0.01286005973815918,
+    "ci95": [
+      -0.03361368179321289,
+      -0.00032949913293123245
+    ],
+    "stable_complete_5s_events": 20,
+    "fault_bus_groups": 3,
+    "fault_bus_event_counts": {
+      "1": 6,
+      "2": 10,
+      "3": 4
+    },
+    "resamples": 2000,
+    "seed": 5701,
+    "risk_definition": "每事件真实5s区间归一化MSE；risk=0.8*事件均值+0.2*最差ceil(10%事件)均值。主差为两个完整风险之差，不是逐点误差的均值。",
+    "resampling": "以故障母线为单位有放回抽样；每次保留被抽中母线全部配对事件及重复次数，重新计算两模型风险。",
+    "saved_precision": "使用既有float32聚合完全复现；另以float64做的差值核对为-0.01286015767918336，非新的主指标或区间。",
+    "inference_scope": "登记的3母线、20稳定事件子集诊断；不能据此推广到所有故障母线或跨系统配置。"
+  },
+  "cohort_accounting": {
+    "locked_conditions": 24,
+    "generated_label_counts": {
+      "stable": 20,
+      "unstable": 4
+    },
+    "evaluable_events_each_model": 23,
+    "evaluable_stable": 20,
+    "evaluable_unstable": 3,
+    "excluded": [
+      {
+        "id": "newval_817a73a1c910c3d7",
+        "new_split": "val",
+        "reason": "latency_uncovered",
+        "root": "closure_discovery",
+        "trajectory_end_s": 0.07
+      }
+    ],
+    "excluded_physical_label": "unstable",
+    "excluded_termination_reason": "physical_loss_of_synchronism",
+    "excluded_solver_success": true,
+    "all14_same_23_event_identity": true,
+    "all14_cache_hashes_match_summary": true,
+    "all23_rows_retained_for_each_model": true,
+    "all14_classification_counts_recomputed_match": true,
+    "numerical_failures_in_evaluable_rows_total": 0,
+    "rule": "0.07s事件保留在24条锁定条件的台账，不补尾、不替换、不计作可初始化模型的漏检或成功。"
+  },
+  "model_and_seed_checks": {
+    "main_library_equal_each_seed": {
+      "2701": {
+        "cache_bytes_equal": true,
+        "model_sha_equal": true
+      },
+      "2702": {
+        "cache_bytes_equal": true,
+        "model_sha_equal": true
+      },
+      "2703": {
+        "cache_bytes_equal": true,
+        "model_sha_equal": true
+      }
+    },
+    "independent_algorithm_win_supported": false,
+    "risk_difference_main_minus_fixed_by_seed": {
+      "2701": -0.01286005973815918,
+      "2702": -0.07884955406188965,
+      "2703": 0.06134653091430664
+    },
+    "improving_directions": 2,
+    "total_seeds": 3,
+    "interpretation": "2703风险增加，不能称三种子一致改善；没有增加其他种子的显著性检验。",
+    "classification_rows": [
+      {
+        "key": "alternative_2701",
+        "missed_unstable": 1,
+        "false_los": 1,
+        "numerically_unresolved": 0
+      },
+      {
+        "key": "alternative_2702",
+        "missed_unstable": 0,
+        "false_los": 1,
+        "numerically_unresolved": 0
+      },
+      {
+        "key": "alternative_2703",
+        "missed_unstable": 0,
+        "false_los": 1,
+        "numerically_unresolved": 0
+      },
+      {
+        "key": "delete2_2701",
+        "missed_unstable": 0,
+        "false_los": 0,
+        "numerically_unresolved": 0
+      },
+      {
+        "key": "delete3_2701",
+        "missed_unstable": 0,
+        "false_los": 1,
+        "numerically_unresolved": 0
+      },
+      {
+        "key": "fixed_2701",
+        "missed_unstable": 0,
+        "false_los": 1,
+        "numerically_unresolved": 0
+      },
+      {
+        "key": "fixed_2702",
+        "missed_unstable": 0,
+        "false_los": 1,
+        "numerically_unresolved": 0
+      },
+      {
+        "key": "fixed_2703",
+        "missed_unstable": 1,
+        "false_los": 1,
+        "numerically_unresolved": 0
+      },
+      {
+        "key": "library_2701",
+        "missed_unstable": 1,
+        "false_los": 1,
+        "numerically_unresolved": 0
+      },
+      {
+        "key": "library_2702",
+        "missed_unstable": 0,
+        "false_los": 1,
+        "numerically_unresolved": 0
+      },
+      {
+        "key": "library_2703",
+        "missed_unstable": 1,
+        "false_los": 1,
+        "numerically_unresolved": 0
+      },
+      {
+        "key": "main_2701",
+        "missed_unstable": 1,
+        "false_los": 1,
+        "numerically_unresolved": 0
+      },
+      {
+        "key": "main_2702",
+        "missed_unstable": 0,
+        "false_los": 1,
+        "numerically_unresolved": 0
+      },
+      {
+        "key": "main_2703",
+        "missed_unstable": 1,
+        "false_los": 1,
+        "numerically_unresolved": 0
+      }
+    ],
+    "classification_denominators": {
+      "unstable": 3,
+      "stable": 20
+    },
+    "primary_seed_safety_tradeoff": "main2701漏检1/3，fixed2701漏检0/3；两者均假失步1/20。稳定事件风险改善不能抵消或隐去该差异。",
+    "primary_seed_component_differences": {
+      "1s": {
+        "normalized_risk": 0.011166774032131066,
+        "frequency_rmse": 0.001946852521781256,
+        "mechanical_power_rmse": 0.002554514223320231
+      },
+      "2s": {
+        "normalized_risk": 0.004257737346915813,
+        "frequency_rmse": -0.0009199560478167501,
+        "mechanical_power_rmse": -0.0005637787609074629
+      },
+      "5s": {
+        "normalized_risk": -0.012860157679183803,
+        "frequency_rmse": -0.012050429310526634,
+        "mechanical_power_rmse": -0.010167329609126169
+      },
+      "8s": {
+        "normalized_risk": -0.6552923820381231,
+        "frequency_rmse": -0.028508703651917378,
+        "mechanical_power_rmse": -0.00889079448834934
+      },
+      "unstable_actual": {
+        "normalized_risk": 0.001210374546154025,
+        "frequency_rmse": -0.009206908328842522,
+        "mechanical_power_rmse": 0.0016580760992133403
+      }
+    }
+  },
+  "deletion2_scope": {
+    "seed": 2701,
+    "refit_seed_count": 1,
+    "stable5s_risk": 0.8827193975448608,
+    "missed_unstable": 0,
+    "false_los": 0,
+    "denominators": {
+      "unstable": 3,
+      "stable": 20
+    },
+    "differences_vs_main2701": {
+      "1s": {
+        "normalized_risk": 0.3759606779867306,
+        "frequency_rmse": -0.06551480677048013,
+        "mechanical_power_rmse": 0.05704990866801485
+      },
+      "2s": {
+        "normalized_risk": 0.45004078892412736,
+        "frequency_rmse": 0.13223659432352813,
+        "mechanical_power_rmse": 0.038829946030622176
+      },
+      "5s": {
+        "normalized_risk": -1.5567334670681483,
+        "frequency_rmse": 0.13549702930917684,
+        "mechanical_power_rmse": -0.013018965302234758
+      },
+      "8s": {
+        "normalized_risk": -2.3368731649344974,
+        "frequency_rmse": 0.015201384790127448,
+        "mechanical_power_rmse": -0.03161537746881582
+      },
+      "unstable_actual": {
+        "normalized_risk": -0.11997341713698129,
+        "frequency_rmse": 0.22452737642985493,
+        "mechanical_power_rmse": 0.0012554121582987743
+      }
+    },
+    "interpretation": "delete2在20稳定事件的5/8s风险及本次分类计数上有优势，但1/2s风险和5s共同频率RMSE较高。它只有一个删除种子；与root记录的train排序变化共同构成适用范围证据，不建立机制普遍必要性。",
+    "root_train_order_context": "原train相对排序由root提供，本审查未重算train。",
+    "prior_math_review": "E已确认该冻结端点为唯一39维商空间严格Hurwitz模型；此局部结果不扩大当前val结论，也不改变已锁定主比较。",
+    "no_posthoc_promotion_or_new_significance_test": true
+  },
+  "supported_claims": [
+    "登记主种子在20条稳定、完整5s的合格子集上，风险差和登记区间均支持较低风险；这是子集诊断。",
+    "主候选对固定结构的三种子风险方向为2/3；分类和分项存在不同方向的变化，应同时报告。",
+    "所有14个评价缓存保留相同23条可评价事件；主候选/固定库逐种子是相同模型及相同缓存。"
+  ],
+  "unsupported_claims": [
+    "24条锁定val上的整体改善已确认，或删除0.07s样本后重新定义确认总体。",
+    "生成式搜索优于固定库、三种子一致改善或主候选更安全。",
+    "根据delete2单种子val成绩更换主候选、追加显著性检验、模型晋升或安全证明。"
+  ],
+  "necessary_root_actions": [
+    "报告整体unresolved，并把20稳定事件区间放在合格子集诊断项；保留1条初始化不可用事件的身份、真实标签与时间。",
+    "给出main2701对fixed2701的漏检差异及三种子风险方向，不能只展示登记主区间。",
+    "保留delete2的完整能力组合与单种子范围；继续遵守冻结比较和原有模型身份。",
+    "按选择性归档规则提交此审查；本agent未操作GitHub、生产源码或ledger。"
+  ],
+  "read_files_sha256": {
+    "private_data\\closure_discovery_20261017\\D\\primary_comparison.json": "9b71a18a8c28fcdde28fe22b6ad42820fb86bd58631caf2e6a052d887eba1349",
+    "results\\closure_discovery_20261017\\D\\confirmation_summary.json": "5b021ae8713f682051c3e41998dc168f51c6732d2272a070f0c5378c3d4a6d6a",
+    "experiments\\closure_discovery_confirmation.py": "43ecf8f1b29231e1b68b452efa7310fcdce305a136e4a5bba54e0fbedff66579",
+    "experiments\\train_local_memory_0098.py": "e73de06b9a1d66b05de4bb1d29504a19cc7b486bc3694ddd341d451f403ae667",
+    "reports\\closure_discovery_20261017_protocol.md": "df6216a27afc9834699235b9caa2c27821b5d94d88ad6e42527bbf9a3edae3d5",
+    "private_data\\closure_discovery_20261017\\D\\evaluation\\alternative_2701.json": "5b96e54e8e5f58829bacbda7d7694352975da8bbbbb8299319946183b6c72d4b",
+    "private_data\\closure_discovery_20261017\\D\\evaluation\\alternative_2702.json": "26708cc673e90ba7a81fa4ad0a89637c50e06a90201662803ee3b659ec4a5a1f",
+    "private_data\\closure_discovery_20261017\\D\\evaluation\\alternative_2703.json": "ce789f9ef40c0fdde516502810f3b403750d168649451e661d9120200d13560e",
+    "private_data\\closure_discovery_20261017\\D\\evaluation\\delete2_2701.json": "cdf84cde2c79ebab8ca7ba6d5632b4d051a7f69e743c71cbad6bc9afc69bfaa8",
+    "private_data\\closure_discovery_20261017\\D\\evaluation\\delete3_2701.json": "7cd97b26b2727b8f89a1dcfcbd2f0e775995b74edb485b9534a1fe9067ecf7e4",
+    "private_data\\closure_discovery_20261017\\D\\evaluation\\fixed_2701.json": "5a30377f85403d76cda4041a93c210312f624c294e736766b9425299346521a1",
+    "private_data\\closure_discovery_20261017\\D\\evaluation\\fixed_2702.json": "60a52ffb351de8f8dbb325b99ee6e380d564c5e79696f589ba2786693ecadb83",
+    "private_data\\closure_discovery_20261017\\D\\evaluation\\fixed_2703.json": "79ccd0510d103ba16d559e746fc1e5b23f2f1050f7f38ce51e5ce2606652805b",
+    "private_data\\closure_discovery_20261017\\D\\evaluation\\library_2701.json": "44a4965100a2497899a797623a17a35ba65f72259a0fd787edfece302cbbb9e1",
+    "private_data\\closure_discovery_20261017\\D\\evaluation\\library_2702.json": "3cfb39b268e229cd7137a9fe7e3c00399b3bb7e7814592c8d37d725adf613ceb",
+    "private_data\\closure_discovery_20261017\\D\\evaluation\\library_2703.json": "ebc0c1e50f1d7438ed81fdbe75b00f2cc5bc97016561c96db7d2f78a09f1ed83",
+    "private_data\\closure_discovery_20261017\\D\\evaluation\\main_2701.json": "44a4965100a2497899a797623a17a35ba65f72259a0fd787edfece302cbbb9e1",
+    "private_data\\closure_discovery_20261017\\D\\evaluation\\main_2702.json": "3cfb39b268e229cd7137a9fe7e3c00399b3bb7e7814592c8d37d725adf613ceb",
+    "private_data\\closure_discovery_20261017\\D\\evaluation\\main_2703.json": "ebc0c1e50f1d7438ed81fdbe75b00f2cc5bc97016561c96db7d2f78a09f1ed83",
+    "private_data/closure_discovery_20261017/D/new_data/val/generation.json": "c4decf17271e591c607c798109e0e0f84bfa31d9081cc6afa835698707369a9f"
+  },
+  "access": {
+    "saved_metrics_and_metadata_only": true,
+    "new_ODE_runs": false,
+    "training": false,
+    "raw_trajectory_arrays": false,
+    "test": false,
+    "production_modified": false,
+    "ledger_modified": false
+  },
+  "tool_cost": {
+    "chunks": [
+      {
+        "chunk": "263d8d",
+        "reported_wall_seconds": 1.8756511
+      },
+      {
+        "chunk": "3e362b",
+        "reported_wall_seconds": 3.6305704
+      },
+      {
+        "chunk": "bfc5d4",
+        "reported_wall_seconds": 1.9517079
+      },
+      {
+        "chunk": "4941aa",
+        "reported_wall_seconds": 1.9212757
+      },
+      {
+        "chunk": "1c1696",
+        "reported_wall_seconds": 1.8750446
+      }
+    ],
+    "note": "实际原生CommandExecution ID和最终耗时由本agent会话日志统一审计；以上chunk为已完成工具调用，未写ledger。JSON写入和随后校验另计。",
+    "session_log": "C:/Users/LLLzijian/.codex/sessions/2026/10/17/rollout-2026-10-17T06-27-49-01a146d4-1e4f-7a73-a778-db91342db0f2.jsonl"
+  }
+}
