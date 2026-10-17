@@ -1,0 +1,37 @@
+{
+  "status": "PROSPECTIVELY_REGISTERED_WITHIN_APPROVED_D_STAGE",
+  "registered_utc": "2026-10-17 00:48:14 UTC",
+  "purpose": "Complete the approved new-train discrimination step by scoring the two frozen C predictors before any 256-update adaptation.",
+  "models": [
+    "main:2701",
+    "alternative:2701"
+  ],
+  "source_stage": "C completed 1024-update endpoints",
+  "prerequisites": [
+    "All fourteen C endpoints qualified and frozen; every C process exited",
+    "Reviewed repair04 applied and new D source identity bound and archived",
+    "All twenty-four selected new train conditions attempted and generation/integrity locked",
+    "No D adaptation/model/checkpoint evidence and no confirmation freeze"
+  ],
+  "evaluations": "Existing evaluate_or_reuse, numerical qualification, 1/2/5/8 s and actual-interval metrics; no changed errors, gates or classification.",
+  "cohort_policy": "Retain all 24 condition attempts and all generation/latency/numerical exclusions. A qualified subset is diagnostic and cannot support a full-cohort improvement claim.",
+  "scope": "Exploratory discrimination of frozen observable predictors, not independent confirmation, coordinate identification or isolated mechanism necessity.",
+  "comparison_lock": "Do not change structures, main candidate, seeds, learning rates or the main_2701 versus fixed_2701 new-val comparison based on this result.",
+  "budget": {
+    "stage": "D",
+    "cap_seconds": 1800,
+    "parent_cap_seconds": 259200,
+    "no_new_condition": true,
+    "no_new_model": true,
+    "no_new_fit_update": true
+  },
+  "forbidden": [
+    "fit or optimizer calls",
+    "FOM generation or resampling",
+    "val or test reads",
+    "confirmation freeze writes",
+    "existing cache overwrite/recompute",
+    "additional branches or confidence intervals"
+  ],
+  "next": "Prepare and review a bounded wrapper; register exact source/model/cohort/script hashes after train generation and before execution."
+}
