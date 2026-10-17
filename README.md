@@ -28,6 +28,10 @@ scientific evidence. This README does not duplicate the agent rules or current s
 
 The finite A–E implementation and study are documented in the [final report](reports/closure_discovery_20261017_final.md), with [explicit equations and an independent NumPy package](results/closure_discovery_20261017/E/packages/main_2701/README.md). Prediction, structure recovery and stability findings retain their reported scope.
 
+## GPU training
+
+Future closure fits use the CUDA-default entry `experiments/train_closure.py` in a separate GPU environment. See the [GPU training guide](docs/gpu_training.md) for setup, resume and measured performance. Historical experiments retain their original runners and frozen evidence.
+
 ## Repository
 
 - `src/kiki/`: model, data and evaluation code.

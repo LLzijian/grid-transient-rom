@@ -1,19 +1,17 @@
 # 当前研究状态
 
-任务状态：**COMPLETED，仅指本次有限A—E实施、执行与记录已完成**。物理结构恢复、生成式搜索优势和整体确认改善尚未成立；不表示项目科学路线全部完成。所有科学进程已退出，没有后台或计划任务。原test关闭，TASK4保持暂停，未改变部署默认模型。
+任务状态：**COMPLETED：本轮GPU训练与工程效率更新已交付**。所有验证进程均退出；本轮未启动真实数据研究训练，没有后台任务。下一次40维闭合模型训练使用默认CUDA入口；原test关闭，TASK4保持暂停。
 
-[最终报告](../reports/closure_discovery_20261017_final.md)汇总算法、实验与证据范围；[原协议](../reports/closure_discovery_20261017_protocol.md)及[资源变更](../reports/closure_discovery_20261017_resource_amendment.md)保留。A实现与成本检查后，搜索深度前瞻锁定一轮。B完成两种方法各三个搜索种子；C完成四类结构各三个1024次重训和两项完整删除；D完成24新增train、24锁定新增val、14×256次适配与冻结确认；E完成显式方程、独立运行和数学检查。
+[本轮工程结论](../reports/gpu_training_20261017.md)、[GPU运行说明](gpu_training.md)、[工程范围](../reports/gpu_training_20261017_protocol.md)。新增experiments/closure_training_runtime.py和train_closure.py；独立环境E:/03-nn_Transfer_Func/kiki/.venv-gpu/Scripts/python.exe，已验证RTX 4060 Ti、PyTorch2.13.0+cu130、CUDA13.0。旧CPU环境不变。
 
-关键结果：main/library在三个相同种子上模型字节与评价相同，不支持生成式方法额外收益。A的部分观测问题未恢复植入饱和项。新增val24真实标签20稳定/4失稳，1个失稳样本只覆盖0.07 s不能100 ms初始化，保留不可评价；23条共同进入全部模型评价。20条完整5 s稳定事件上main2701风险2.43945313、fixed2701为2.45231318，差−0.01286006、95%区间[−0.03361368,−0.00032950]；仅为合格子集诊断，完整确认按原规则保持未决。main漏检1/3、fixed漏检0/3，均假失步1/20。详见[阶段D](../reports/closure_discovery_20261017_stage_D.md)。
+35项CPU/CUDA检查全部通过：损失与全部可训练梯度、一般表达式、变长真实区间、公开方程包的场/Jacobian、导出、Adam及CPU/CUDA/NumPy随机状态恢复和中断回退。固定0.2 s合成前向反向、12/96事件的GPU同设备加速分别为1.88/1.86倍，CPU同设备为1.84/1.72倍；优化CPU在这两个批量下仍更快，不声称GPU比CPU加速。float64、0.01 s RK4、100 ms一次初始化、原采样及discover_closure.loss定义保持。
 
-14条最终端点对应11个不同模型，全部为研究候选。主模型存在去共同角后的正实部局部模态；仅单种子delete2通过39维严格Hurwitz线性检查，没有非线性稳定域证书。delete2在新val的5 s风险较低但短时与频率分项有损害，没有据val重新选择。独立审查及回应见D/E结果目录。[阶段E](../reports/closure_discovery_20261017_stage_E.md)及[主方程包](../results/closure_discovery_20261017/E/packages/main_2701/README.md)。
+下一可执行入口：`.venv-gpu/Scripts/python.exe experiments/train_closure.py doctor`。研究训练按新的来源、更新次数和额度登记，使用`train`子命令及新输出目录；恢复加`--resume`，更换设备需明确记录。合成速度复核使用`benchmark`子命令，不打开数据。检查点stepNNNNNN/latest.json；GPU源模型仍从登记的symbolic_closure_v1导入，不能覆盖旧冻结模型。
 
-最终绑定源码b8d1f961bd5ae7700b8c656b28357b0ad537a77bd838fda5530c4c0c0f4694bc，30文件完整性通过；14个冻结模型SHA及逐事件误差重建一致。确认冻结SHA6bb7d43997222ffa9c7bb47728c0117d6b8b25712f5df0141f38f06fca78751d。源为0102 S-O step650，SHA c9fe3f86cf093d1f6c4600c71ecd333200840b9be4c2b156c018e1ff09a1e238。S-O为研究候选，F-O为开发基线。
+工程费用快照：验证/支持506.080/3600进程秒，软件安装1322.489秒单列；详见[本轮费用](../results/gpu_training_20261017/cost_summary.json)，本地逐命令审计private_data/gpu_training_20261017/native_audit.json。未从旧72小时计划转移余额，快照后的归档核验按实际回执继续计费。
 
-费用快照2026-10-17T02:57:34.196230+00:00：总上限259200秒（72进程小时），已核算62639.270247秒（17.3998小时），未用196560.729753秒。A/B/C/D/E/reserve分别为1990.009539/15527.135760/32729.761889/11457.973091/225.498610/708.891358秒；科学进程已全部计入，快照后的归档核验按实际回执继续计费。[费用与口径](../results/closure_discovery_20261017/final_cost_summary.json)，唯一账本private_data/closure_discovery_20261017/ledger/receipts.jsonl。旧TASK2的59643.306023/60000秒单列、不转移。剩余额度不自动授权新搜索或新研究。
+上一有限A—E研究的[最终报告](../reports/closure_discovery_20261017_final.md)保持：main/library三个同种子模型相同；部分观测结构恢复及生成式优势未成立。锁定新增val24中23可评价，完整确认未决；主候选在3条可评价失稳样本中漏检1、固定对照漏检0。主候选存在局部正实部模态，未获非线性稳定域证书。全部仍为研究候选，S-O为研究候选、F-O为开发基线，部署默认模型未变。
 
-停止原因：登记的有限A—E执行及记录已结束，保留负面和未决结论；没有以预算耗尽或稳定性成功为由结束。下一可执行动作是复核既有不可变结果或运行已导出包；进一步科学实验需要新的前瞻问题、预算与授权，不重放当前train/val确认。
+原研究源码身份b8d1f961bd5ae7700b8c656b28357b0ad537a77bd838fda5530c4c0c0f4694bc，30个绑定文件哈希保持。确认冻结SHA6bb7d43997222ffa9c7bb47728c0117d6b8b25712f5df0141f38f06fca78751d，源0102 S-O SHA c9fe3f86cf093d1f6c4600c71ecd333200840b9be4c2b156c018e1ff09a1e238。旧A—E已核算约17.403进程小时、上限72小时，旧TASK2的59643.306023/60000秒单列，均不构成本轮新研究授权。
 
-恢复目录E:/03-nn_Transfer_Func/kiki；Python E:/03-nn_Transfer_Func/kron-reduce/.venv/Scripts/python.exe；检查点和命令见[执行说明](closure_discovery_runbook.md)、D冻结及E交付清单。active_job.json中pids为空。关键设计、代码、正负与未决结果归档分支codex/closure-discovery-20261017；原轨迹、缓存、重复检查点和大矩阵留本地，重要路径与SHA公开。无关修改、本地HEAD a951013和用户index保持。
-
-最终交付提交8ea67edbe29122e84f3fc33427612e5269173ee5已核实远端分支及全部17份交付文件字节；归档核验与费用快照随本次收尾更新保存。
+工作目录E:/03-nn_Transfer_Func/kiki。停止原因：用户要求的GPU默认训练、工程优化、CPU/CUDA及恢复验证完成；不是科研目标全部成立或预算耗尽。工程归档分支codex/gpu-training-20261017，基于旧交付4dbd96b；本地HEAD a951013和用户index保持，无关改动保留。环境、原始数据和临时模型留本地，关键代码、验证和性能证据上传GitHub。

@@ -1,0 +1,24 @@
+{
+  "scope": "Independent static read-only engineering review; no data, ODE or training access",
+  "reviewer": "/root/gpu_runtime_review",
+  "initial_findings": [
+    {
+      "priority": "P1",
+      "issue": "Partially published checkpoint directories could block subsequent saves",
+      "response": "Unique pending directory, atomic directory/pointer publication; orphan preservation with verified parent paths; fault injection tests added"
+    },
+    {
+      "priority": "P1",
+      "issue": "Interruptions could lose unsaved valid updates and lacked an explicit recovery boundary",
+      "response": "Per-attempt sampler/CPU/CUDA RNG boundary; before-update and completed-step exceptions save safe state; Adam interruptions return to verified disk checkpoint with explicit rollback count; full failed state retained"
+    },
+    {
+      "priority": "P2",
+      "issue": "Equivalence reference must name the symbolic discovery loss rather than the 0098 L1-penalized objective",
+      "response": "Documentation now explicitly names discover_closure.loss and preserves removal of coefficient L1"
+    }
+  ],
+  "followup": "Reviewer confirmed both P1 paths corrected and no new numerical blocker. Nonblocking pointer-publication bookkeeping window was identified; root added full-file verification of latest before reporting saved_step and a third interruption test.",
+  "root_decision": "Accept engineering implementation after 35 CPU/CUDA regression tests passed; no scientific promotion",
+  "updated_utc": "2026-10-17T08:34:26.735118+00:00"
+}

@@ -1,0 +1,107 @@
+{
+  "scope": "synthetic forward+backward, no optimizer updates; not FOM prediction or research training",
+  "batch": 12,
+  "horizon": 0.2,
+  "warmups_each": 1,
+  "rows": [
+    {
+      "name": "legacy_cpu",
+      "environment": {
+        "torch": "2.13.0+cu130",
+        "cuda_build": "13.0",
+        "device": "cpu",
+        "dtype": "float64",
+        "threads": 1,
+        "gpu": null
+      },
+      "seconds": [
+        0.2466290000011213,
+        0.7634879000106594,
+        0.7872103999980027
+      ],
+      "median_seconds": 0.7634879000106594,
+      "losses": [
+        0.002000049164758022,
+        0.002000049164758022,
+        0.002000049164758022
+      ],
+      "initial_model_and_data_setup_seconds": 0.0011630999943008646,
+      "cuda_peak_allocated_bytes": null
+    },
+    {
+      "name": "prepared_cpu",
+      "environment": {
+        "torch": "2.13.0+cu130",
+        "cuda_build": "13.0",
+        "device": "cpu",
+        "dtype": "float64",
+        "threads": 1,
+        "gpu": null
+      },
+      "seconds": [
+        0.4154761000099825,
+        0.41491690000111703,
+        0.41837759999907576
+      ],
+      "median_seconds": 0.4154761000099825,
+      "losses": [
+        0.002000049164758022,
+        0.002000049164758022,
+        0.002000049164758022
+      ],
+      "initial_model_and_data_setup_seconds": 0.0025763000012375414,
+      "cuda_peak_allocated_bytes": null
+    },
+    {
+      "name": "prepared_original_field",
+      "environment": {
+        "torch": "2.13.0+cu130",
+        "cuda_build": "13.0",
+        "device": "cuda:0",
+        "dtype": "float64",
+        "threads": 1,
+        "gpu": "NVIDIA GeForce RTX 4060 Ti"
+      },
+      "seconds": [
+        2.4727956999995513,
+        2.521174900000915,
+        2.838435700003174
+      ],
+      "median_seconds": 2.521174900000915,
+      "losses": [
+        0.002000049164758022,
+        0.002000049164758022,
+        0.002000049164758022
+      ],
+      "initial_model_and_data_setup_seconds": 0.14993060000415426,
+      "cuda_peak_allocated_bytes": 39085568
+    },
+    {
+      "name": "prepared_requested_device",
+      "environment": {
+        "torch": "2.13.0+cu130",
+        "cuda_build": "13.0",
+        "device": "cuda:0",
+        "dtype": "float64",
+        "threads": 1,
+        "gpu": "NVIDIA GeForce RTX 4060 Ti"
+      },
+      "seconds": [
+        1.2455648000031943,
+        1.3422467000054894,
+        1.3761525999871083
+      ],
+      "median_seconds": 1.3422467000054894,
+      "losses": [
+        0.002000049164758022,
+        0.002000049164758022,
+        0.002000049164758022
+      ],
+      "initial_model_and_data_setup_seconds": 0.011373099987395108,
+      "cuda_peak_allocated_bytes": 35229184
+    }
+  ],
+  "timing_scope": "forward and backward including per-batch preparation; excludes one-time model/data residency, checkpoint and optimizer step; CUDA synchronized",
+  "test_read": false,
+  "private_data_read": false
+}
