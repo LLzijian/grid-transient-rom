@@ -1,0 +1,95 @@
+{
+  "registered_utc": "2026-10-17T02:21:40.461499+00:00",
+  "source_identity_sha256": "b8d1f961bd5ae7700b8c656b28357b0ad537a77bd838fda5530c4c0c0f4694bc",
+  "confirmation_freeze_sha256": "6bb7d43997222ffa9c7bb47728c0117d6b8b25712f5df0141f38f06fca78751d",
+  "models": [
+    {
+      "name": "fixed",
+      "seed": 2701,
+      "sha256": "ef8db8e70ea9bb3e5760917e23654e545712c3e055f2713a05a450f1c89162bb"
+    },
+    {
+      "name": "fixed",
+      "seed": 2702,
+      "sha256": "e2bf77f17a1973f57f6b943b89ff1abdc1bbbe31517de763c989f3320884839b"
+    },
+    {
+      "name": "fixed",
+      "seed": 2703,
+      "sha256": "2ac7836c8ed1745b5de994529171f94b375718e5f0344fcdcecbcc4c2a73084c"
+    },
+    {
+      "name": "library",
+      "seed": 2701,
+      "sha256": "d50ae781153658ea45048a9ee56c616d6c5e687986ff6ebb96a16925fb48ac91"
+    },
+    {
+      "name": "library",
+      "seed": 2702,
+      "sha256": "da2471ab103d6f19361997d39a44610d196e7439ae4e41657dc6741f57c41e00"
+    },
+    {
+      "name": "library",
+      "seed": 2703,
+      "sha256": "638e597029d8ddbfe8f440259cba92eab7fd06d659a506e8f4541b8d200b314b"
+    },
+    {
+      "name": "main",
+      "seed": 2701,
+      "sha256": "d50ae781153658ea45048a9ee56c616d6c5e687986ff6ebb96a16925fb48ac91"
+    },
+    {
+      "name": "main",
+      "seed": 2702,
+      "sha256": "da2471ab103d6f19361997d39a44610d196e7439ae4e41657dc6741f57c41e00"
+    },
+    {
+      "name": "main",
+      "seed": 2703,
+      "sha256": "638e597029d8ddbfe8f440259cba92eab7fd06d659a506e8f4541b8d200b314b"
+    },
+    {
+      "name": "alternative",
+      "seed": 2701,
+      "sha256": "a4876eb9bd47bd5e079fb2139bdcd790d25818d09d0e35690d4e20fdcc59aa4f"
+    },
+    {
+      "name": "alternative",
+      "seed": 2702,
+      "sha256": "0e3acf2426f978755d10abe81260fad011a3b6f92e528673f522f1938ae8fd7f"
+    },
+    {
+      "name": "alternative",
+      "seed": 2703,
+      "sha256": "7cad5b51b6526961cdb15883c54f69f9cc1fc2c962be116afdc0f365c81d44e1"
+    },
+    {
+      "name": "delete3",
+      "seed": 2701,
+      "sha256": "be8fe3f111d0afdbc0fa2789714dc085a1679487e0f7fb7bb1eb50f9f65b8519"
+    },
+    {
+      "name": "delete2",
+      "seed": 2701,
+      "sha256": "65d048d2b908fb896e12e9f81cbbcf66878189d65c62d6c969ff99cf7dcaf7ca"
+    }
+  ],
+  "export_command": [
+    "E:/03-nn_Transfer_Func/kron-reduce/.venv/Scripts/python.exe",
+    "experiments/discover_closure.py",
+    "E"
+  ],
+  "export_driver_sha256": "86b0ec6ef87a243b5dc8c5b1cdedb67eebe1b0334494c875459b78e9ee15500b",
+  "export_compiler_sha256": "f07d74aa31f626c087d7108f272f925362cce9926ee7065675e2a197dda145e2",
+  "analyzer_sha256": "128548091c206103fc3604a2cc9896fc715627a9a7067046d845cf01884d38a2",
+  "independent_check": {
+    "events": "old train indices0,173,345",
+    "horizon_s": 8,
+    "dt_s": 0.01,
+    "criterion": "existing max normalized observable point error<1e-12; all finite; implementation agreement, not prediction accuracy or stability"
+  },
+  "mathematics": "All frozen model weights only;40-state raw Hessian/Jacobian and39-state common-angle quotient; linear quadratic witness conditional on strict Hurwitz and residual checks; no nonlinear attraction radius certificate",
+  "E_cap_seconds": 14400,
+  "no_training_or_val_or_test_access": true,
+  "permitted_parallelism": "Export/local math may run while locked new val FOM generation proceeds because they read only frozen models and old train. No model mutation."
+}
