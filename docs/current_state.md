@@ -1,6 +1,6 @@
 # 当前研究状态
 
-最新任务：**COMPLETED：2026-10-19改进方案已形成**，见[方案](../reports/closure_improvement_plan_20261019.md)。下一研究建议为100 ms因果结构恢复、边余弦储能项的成对多种子重训，再按证据开展有目标的搜索、新激励辨别与局部稳定域分析。所列72进程小时是新预算建议，未执行、未转移旧余额。没有训练或仿真作业运行；默认模型与原test权限不变。
+最新任务：**RUNNING：2026-10-19用户已授权按改进方案推进**。新上限72进程小时，P0/P1先合计12小时，旧账本关闭。见[执行协议](../reports/closure_mechanism_20261019_protocol.md)与[原方案](../reports/closure_improvement_plan_20261019.md)。P0已启动完整GPU成本探针；实际进程与测时保存于private_data/closure_mechanism_20261019/P0/measure01/measurement.json，探针模型不采用。下一步：核对366条train与费用后执行因果恢复，满足门槛才进入真实搜索。原test关闭，TASK4暂停。
 
 任务状态：**COMPLETED：本轮GPU训练与工程效率更新已交付**。所有验证进程均退出；本轮未启动真实数据研究训练，没有后台任务。下一次40维闭合模型训练使用默认CUDA入口；原test关闭，TASK4保持暂停。
 
