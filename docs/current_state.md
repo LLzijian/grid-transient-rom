@@ -1,5 +1,7 @@
 # 当前研究状态
 
+最新任务：**COMPLETED：2026-10-19改进方案已形成**，见[方案](../reports/closure_improvement_plan_20261019.md)。下一研究建议为100 ms因果结构恢复、边余弦储能项的成对多种子重训，再按证据开展有目标的搜索、新激励辨别与局部稳定域分析。所列72进程小时是新预算建议，未执行、未转移旧余额。没有训练或仿真作业运行；默认模型与原test权限不变。
+
 任务状态：**COMPLETED：本轮GPU训练与工程效率更新已交付**。所有验证进程均退出；本轮未启动真实数据研究训练，没有后台任务。下一次40维闭合模型训练使用默认CUDA入口；原test关闭，TASK4保持暂停。
 
 [本轮工程结论](../reports/gpu_training_20261017.md)、[GPU运行说明](gpu_training.md)、[工程范围](../reports/gpu_training_20261017_protocol.md)。新增experiments/closure_training_runtime.py和train_closure.py；独立环境E:/03-nn_Transfer_Func/kiki/.venv-gpu/Scripts/python.exe，已验证RTX 4060 Ti、PyTorch2.13.0+cu130、CUDA13.0。旧CPU环境不变。
@@ -14,4 +16,4 @@
 
 原研究源码身份b8d1f961bd5ae7700b8c656b28357b0ad537a77bd838fda5530c4c0c0f4694bc，30个绑定文件哈希保持。确认冻结SHA6bb7d43997222ffa9c7bb47728c0117d6b8b25712f5df0141f38f06fca78751d，源0102 S-O SHA c9fe3f86cf093d1f6c4600c71ecd333200840b9be4c2b156c018e1ff09a1e238。旧A—E已核算约17.403进程小时、上限72小时，旧TASK2的59643.306023/60000秒单列，均不构成本轮新研究授权。
 
-工作目录E:/03-nn_Transfer_Func/kiki。停止原因：用户要求的GPU默认训练、工程优化、CPU/CUDA及恢复验证完成；不是科研目标全部成立或预算耗尽。工程归档分支codex/gpu-training-20261017，基于旧交付4dbd96b；本地HEAD a951013和用户index保持，无关改动保留。环境、原始数据和临时模型留本地，关键代码、验证和性能证据上传GitHub。
+工作目录E:/03-nn_Transfer_Func/kiki。GPU工程任务及有限A—E研究已通过PR #1合并到main，合并提交9fe0ff25952cfd88372141ab2d5977eb6a455c3d；不代表科研目标全部成立或预算耗尽。本轮按用户要求交付改进方案后停止，研究训练仍需按新的明确范围与资源登记。本地HEAD a951013和用户index保持，无关改动保留。环境、原始数据和临时模型留本地，关键代码、验证和性能证据上传GitHub。
