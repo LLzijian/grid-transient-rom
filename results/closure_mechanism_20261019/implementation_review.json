@@ -1,0 +1,18 @@
+{
+  "reviewer": "/root/p0_p1_code_challenge",
+  "scope": "read-only implementation review",
+  "findings": [
+    "scale floor mismatch1e-8 versus1e-6",
+    "dualstep threshold recorded but not enforced"
+  ],
+  "response": [
+    "changed floor1e-6",
+    "enforced maximum normalized discrepancy<=1e-3 before any fit"
+  ],
+  "qa": {
+    "prior_runtime": 19,
+    "new_interfaces": 21
+  },
+  "search_claim": "known controls/single-term feasibility are not full discovery",
+  "test_read": false
+}
