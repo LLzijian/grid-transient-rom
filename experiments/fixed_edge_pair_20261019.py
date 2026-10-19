@@ -170,7 +170,7 @@ def physical_metrics(pred, event, mass, p_scale, mva_base=100):
 
 def train_steps(model, opt, store, events, rng, coverage, schedule, *, start_step=0,
                 end_step=1024, force=.01, save=None, milestone=None, check=None,
-                update=None, sampler=None):
+                update=None, sampler=None, save_initial=True):
     from linear_cache_cost_gate_20261019 import one_update
     from train_joint_numerical_pair_0100 import next_samples
     from train_closure import RATES
@@ -178,7 +178,7 @@ def train_steps(model, opt, store, events, rng, coverage, schedule, *, start_ste
     trace = []
     if not 0 <= start_step <= end_step <= len(schedule):
         raise ValueError("illegal schedule range")
-    if start_step == 0 and save:
+    if start_step == 0 and save and save_initial:
         save(0, trace)
     for step in range(start_step+1, end_step+1):
         if check:
@@ -470,7 +470,7 @@ def worker(args):
             if target > start_step:
                 train_steps(model, opt, TensorEventStore(events, device), events, rng, coverage,
                     schedules[str(args.seed)]["rows"], start_step=start_step, end_step=target, force=force,
-                    save=save, milestone=milestone, check=check, update=actual_update)
+                    save=save, milestone=milestone, check=check, update=actual_update, save_initial=False)
             check()
             write(attempt / "recovery_complete.json", {"seconds": time.perf_counter()-started,
                 "completed_qpc": time.perf_counter(), "completed_unix": time.time(),
@@ -479,7 +479,8 @@ def worker(args):
             state["last_completed_update"] = target
         store = TensorEventStore(events, device)
         train_steps(model, opt, store, events, rng, coverage, schedules[str(args.seed)]["rows"],
-            start_step=start_step, force=force, save=save, milestone=milestone, check=check, update=actual_update)
+            start_step=start_step, force=force, save=save, milestone=milestone, check=check,
+            update=actual_update, save_initial=not bool(args.recovery))
         sources_check()
         state["status"] = "COMPLETED"
     except BaseException as exc:
