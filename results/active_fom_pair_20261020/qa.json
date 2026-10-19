@@ -1,0 +1,83 @@
+{
+  "status": "COMPLETED",
+  "category": "qa",
+  "source_commit": "4129153ecc82632b6d9b1a602cb6dc5f5db10c20",
+  "charged_seconds": 13.956230000010692,
+  "binding_sha256": "586bb00acd27a406d61f768af4b98ad785ff89996dc24669748cd3ec0c26fb31",
+  "command_sha256": "3d1159d979d34bfa48eeb3657c03d1d1741ea9f78f196a3bd985a58511e01524",
+  "worker": {
+    "pid": 25644,
+    "creation_filetime_utc": 134369125179322235,
+    "argv": [
+      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\active_fom_pair01\\qa_once.py",
+      "--output",
+      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\active_fom_pair01\\qa01"
+    ]
+  },
+  "source_count": 203,
+  "sources_unchanged": true,
+  "outer": {
+    "status": "COMPLETED",
+    "exit_code": 0,
+    "native_receipt_complete": true,
+    "seconds": 13.956230000010692,
+    "actual_worker_pid": 25644,
+    "cleanup": {}
+  },
+  "inner": {
+    "status": "COMPLETED",
+    "exit_code": 0,
+    "native_receipt_complete": true,
+    "cleanup_verified": true,
+    "fixture_identity_after": "GONE",
+    "fixture_pid": 25644,
+    "fixture_creation_filetime_utc": 134369125179322235,
+    "timeout": false
+  },
+  "qa": {
+    "status": "PASS",
+    "acquisition": {
+      "status": "PASS",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0
+    },
+    "fit": {
+      "status": "PASS",
+      "cases": [
+        {
+          "name": "schedule",
+          "status": "PASS",
+          "details": null
+        },
+        {
+          "name": "metrics",
+          "status": "PASS",
+          "details": null
+        },
+        {
+          "name": "freeze",
+          "status": "PASS",
+          "details": null
+        },
+        {
+          "name": "real_adam_rng_resume",
+          "status": "PASS",
+          "details": {
+            "actual_updates": 3,
+            "safe_step_label": 1056,
+            "scope": "synthetic moments/RNG replay, not full 256-step or full-scale recovery proof"
+          }
+        }
+      ],
+      "elapsed_seconds": 9.632891699962784,
+      "historical_data_read": false,
+      "scientific_training": false
+    },
+    "synthetic_only": true,
+    "seconds": 11.925572299980558
+  },
+  "private_receipt": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\active_fom_pair01\\native_qa01\\execution.json",
+  "private_receipt_sha256": "5960e2ef6ab22cb4e531c4f11fe505e81e336955022cacbb26ba3bcc26efeae1",
+  "scope": "synthetic engineering; no full256 recovery proof or scientific FOM/model result"
+}

@@ -1,0 +1,290 @@
+{
+  "status": "CLOSED_ENGINEERING_ACCEPTED_PENDING_PR",
+  "source_commit": "eeae1563f734c0ad3023892200725a492ae9047f",
+  "worker": {
+    "pid": 85932,
+    "creation_filetime_utc": 134369146707911838,
+    "executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe"
+  },
+  "native_seconds": 17.84752110001864,
+  "support_held_seconds": 600,
+  "support_is_actual_spend": false,
+  "closed_charged_or_held_seconds": 617.8475211000186,
+  "cancelled_repair_allocation_seconds": 582.1524788999814,
+  "source_count": 90,
+  "source_unchanged": true,
+  "source_binding_sha256": "fb128deb9e39e6e1fd5ada37436954efbde8865c94d287486b90016363d858a7",
+  "command_sha256": "289fe1f41217fa197808e5b0633fafeacdad371f300a3ae57b1140cf639a4676",
+  "outer": {
+    "started_unix": 1792441069.4448147,
+    "started_qpc": 298827.2652135,
+    "exit_code": 0,
+    "command": [
+      "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-File",
+      "E:\\03-nn_Transfer_Func\\kiki\\experiments\\native_process_receipt_20261020.ps1",
+      "-CommandJson",
+      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\repair\\fom_environment01\\commands\\qa01.json",
+      "-WorkingDirectory",
+      "E:\\03-nn_Transfer_Func\\kiki",
+      "-Output",
+      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\repair\\fom_environment01\\native_qa01\\inner",
+      "-TimeoutSeconds",
+      "420.0",
+      "-MaxSeconds",
+      "450.0",
+      "-SourceCommit",
+      "eeae1563f734c0ad3023892200725a492ae9047f",
+      "-FixtureIdentityJson",
+      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\repair\\fom_environment01\\qa01\\worker.json"
+    ],
+    "includes_child_cost_once": true,
+    "timed_out": false,
+    "native_receipt_complete": true,
+    "launcher_pid": 88964,
+    "seconds": 17.84752110001864,
+    "cleanup": {},
+    "actual_worker_pid": 85932,
+    "status": "COMPLETED"
+  },
+  "inner": {
+    "status": "COMPLETED",
+    "timeout": false,
+    "terminated_observed": true,
+    "exit_code_obtained": true,
+    "exit_code": 0,
+    "cleanup_verified": true,
+    "stdout_drained": true,
+    "stderr_drained": true,
+    "native_receipt_complete": true,
+    "supervised_pid": 80928,
+    "supervised_creation_filetime_utc": 134369146707187737,
+    "fixture_pid": 85932,
+    "fixture_creation_filetime_utc": 134369146707911838,
+    "fixture_identity_after": "GONE",
+    "owned_child_pid": null,
+    "owned_child_creation_filetime_utc": null,
+    "supervised_identity_after": "GONE",
+    "owned_child_identity_after": null,
+    "taskkill_exit_code": null,
+    "errors": [],
+    "executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+    "arguments": [
+      "-m",
+      "experiments.fom_execution_environment_20261020",
+      "qa",
+      "--output",
+      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\repair\\fom_environment01\\qa01",
+      "--max-seconds",
+      "360"
+    ],
+    "working_directory": "E:\\03-nn_Transfer_Func\\kiki",
+    "output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\repair\\fom_environment01\\native_qa01\\inner",
+    "source_commit": "eeae1563f734c0ad3023892200725a492ae9047f",
+    "powershell_version": "5.1.26100.9168",
+    "timeout_seconds": 420,
+    "max_seconds": 450,
+    "elapsed_seconds": 16.5580584
+  },
+  "real_FOM": {
+    "status": "PASS",
+    "identity": {
+      "role": "fom",
+      "executable": "E:\\03-nn_Transfer_Func\\kron-reduce\\.venv\\Scripts\\python.exe",
+      "executable_sha256": "5912d0884b23c0343983a864c6064242391e2265536f50b88624857e353882c9",
+      "prefix": "E:\\03-nn_Transfer_Func\\kron-reduce\\.venv",
+      "base_prefix": "C:\\Users\\LLLzijian\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python",
+      "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+      "numpy": {
+        "version": "2.5.2",
+        "path": "E:\\03-nn_Transfer_Func\\kron-reduce\\.venv\\Lib\\site-packages\\numpy\\__init__.py"
+      },
+      "andes": {
+        "version": "2.0.0",
+        "path": "E:\\03-nn_Transfer_Func\\kron-reduce\\.venv\\Lib\\site-packages\\andes\\__init__.py",
+        "module_sha256": "939909810f88f0d1de3e7c909f31030665d5d55ef8c6b610d4fdb3e3292b967c"
+      },
+      "h5py": {
+        "version": "3.16.0",
+        "path": "E:\\03-nn_Transfer_Func\\kron-reduce\\.venv\\Lib\\site-packages\\h5py\\__init__.py"
+      },
+      "case": {
+        "configured": "ieee39/ieee39_full.xlsx",
+        "resolved_path": "E:\\03-nn_Transfer_Func\\kron-reduce\\.venv\\Lib\\site-packages\\andes\\cases\\ieee39\\ieee39_full.xlsx",
+        "sha256": "9c2048dc94201ee48ffe816de65d53831fa1f4b0e7fdf32f24c50f1017edcfe5"
+      },
+      "train_physical_metadata_sha256": "4da835555c89e36b4bb8f0a8e5f7edfce94b6207a38e028f57f34ded46de7b72",
+      "attestation": {
+        "source": "andes_runtime",
+        "andes_version": "2.0.0",
+        "case_config": "ieee39/ieee39_full.xlsx",
+        "resolved_case_path": "E:\\03-nn_Transfer_Func\\kron-reduce\\.venv\\Lib\\site-packages\\andes\\cases\\ieee39\\ieee39_full.xlsx",
+        "case_sha256": "9c2048dc94201ee48ffe816de65d53831fa1f4b0e7fdf32f24c50f1017edcfe5",
+        "omega_s": 376.99111843077515,
+        "omega_s_source": "matching_historical_train_fingerprint_and_case_sha256",
+        "config_sha256": "dc6da5563eae6b8133428ce06bef686544a078e263c87f40655c950f0a6da8e2",
+        "config_file_sha256": "c6735b3dd07785df0c5018a6ce043b5072c4b236614d1c9714492ea4d73f2555",
+        "reference_fingerprint_sha256": "4da835555c89e36b4bb8f0a8e5f7edfce94b6207a38e028f57f34ded46de7b72"
+      },
+      "source": {
+        "production": {
+          "path": "E:\\03-nn_Transfer_Func\\kiki\\experiments\\active_fom_pair_20261020.py",
+          "sha256": "2d59eaa0072f044370de974ce0b05577a98f27d0212573207396216ae9de49d5",
+          "module": "experiments.active_fom_pair_20261020"
+        },
+        "preflight": {
+          "path": "E:\\03-nn_Transfer_Func\\kiki\\experiments\\fom_execution_environment_20261020.py",
+          "sha256": "b99d2257b3898f55f15bfb6e7c3647f5bc8c4f4bd2f3fee0c3d6856d0e45f7f3"
+        },
+        "adapter": {
+          "path": "E:\\03-nn_Transfer_Func\\kiki\\experiments\\closure_discovery_data.py",
+          "sha256": "df313113242691b5bdcf61d4fa3abc294ae2c8f953260f963a0fe5800aa7373a"
+        }
+      }
+    },
+    "spawn": {
+      "pid": 60076,
+      "worker": {
+        "pid": 60076,
+        "creation_filetime_utc": 134369146805799086,
+        "executable": "E:\\03-nn_Transfer_Func\\kron-reduce\\.venv\\Scripts\\python.exe"
+      },
+      "exit_code": 0,
+      "identity_match": true,
+      "identity": {
+        "role": "fom",
+        "executable": "E:\\03-nn_Transfer_Func\\kron-reduce\\.venv\\Scripts\\python.exe",
+        "executable_sha256": "5912d0884b23c0343983a864c6064242391e2265536f50b88624857e353882c9",
+        "prefix": "E:\\03-nn_Transfer_Func\\kron-reduce\\.venv",
+        "base_prefix": "C:\\Users\\LLLzijian\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python",
+        "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+        "numpy": {
+          "version": "2.5.2",
+          "path": "E:\\03-nn_Transfer_Func\\kron-reduce\\.venv\\Lib\\site-packages\\numpy\\__init__.py"
+        },
+        "andes": {
+          "version": "2.0.0",
+          "path": "E:\\03-nn_Transfer_Func\\kron-reduce\\.venv\\Lib\\site-packages\\andes\\__init__.py",
+          "module_sha256": "939909810f88f0d1de3e7c909f31030665d5d55ef8c6b610d4fdb3e3292b967c"
+        },
+        "h5py": {
+          "version": "3.16.0",
+          "path": "E:\\03-nn_Transfer_Func\\kron-reduce\\.venv\\Lib\\site-packages\\h5py\\__init__.py"
+        },
+        "case": {
+          "configured": "ieee39/ieee39_full.xlsx",
+          "resolved_path": "E:\\03-nn_Transfer_Func\\kron-reduce\\.venv\\Lib\\site-packages\\andes\\cases\\ieee39\\ieee39_full.xlsx",
+          "sha256": "9c2048dc94201ee48ffe816de65d53831fa1f4b0e7fdf32f24c50f1017edcfe5"
+        },
+        "train_physical_metadata_sha256": "4da835555c89e36b4bb8f0a8e5f7edfce94b6207a38e028f57f34ded46de7b72",
+        "attestation": {
+          "source": "andes_runtime",
+          "andes_version": "2.0.0",
+          "case_config": "ieee39/ieee39_full.xlsx",
+          "resolved_case_path": "E:\\03-nn_Transfer_Func\\kron-reduce\\.venv\\Lib\\site-packages\\andes\\cases\\ieee39\\ieee39_full.xlsx",
+          "case_sha256": "9c2048dc94201ee48ffe816de65d53831fa1f4b0e7fdf32f24c50f1017edcfe5",
+          "omega_s": 376.99111843077515,
+          "omega_s_source": "matching_historical_train_fingerprint_and_case_sha256",
+          "config_sha256": "dc6da5563eae6b8133428ce06bef686544a078e263c87f40655c950f0a6da8e2",
+          "config_file_sha256": "c6735b3dd07785df0c5018a6ce043b5072c4b236614d1c9714492ea4d73f2555",
+          "reference_fingerprint_sha256": "4da835555c89e36b4bb8f0a8e5f7edfce94b6207a38e028f57f34ded46de7b72"
+        },
+        "source": {
+          "production": {
+            "path": "E:\\03-nn_Transfer_Func\\kiki\\experiments\\active_fom_pair_20261020.py",
+            "sha256": "2d59eaa0072f044370de974ce0b05577a98f27d0212573207396216ae9de49d5",
+            "module": "experiments.active_fom_pair_20261020"
+          },
+          "preflight": {
+            "path": "E:\\03-nn_Transfer_Func\\kiki\\experiments\\fom_execution_environment_20261020.py",
+            "sha256": "b99d2257b3898f55f15bfb6e7c3647f5bc8c4f4bd2f3fee0c3d6856d0e45f7f3"
+          },
+          "adapter": {
+            "path": "E:\\03-nn_Transfer_Func\\kiki\\experiments\\closure_discovery_data.py",
+            "sha256": "df313113242691b5bdcf61d4fa3abc294ae2c8f953260f963a0fe5800aa7373a"
+          }
+        }
+      },
+      "elapsed_seconds": 1.1709999999729916
+    },
+    "elapsed_seconds": 7.530999999959022
+  },
+  "real_GPU": {
+    "role": "gpu",
+    "executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+    "executable_sha256": "82264b3fe4248d1ff3564a0296cbb4a266ef968799bd85902ab5eaaf3e17eb62",
+    "prefix": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu",
+    "base_prefix": "C:\\Users\\LLLzijian\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python",
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "numpy": {
+      "version": "2.5.2",
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Lib\\site-packages\\numpy\\__init__.py"
+    },
+    "torch": {
+      "version": "2.13.0+cu130",
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Lib\\site-packages\\torch\\__init__.py",
+      "cuda_version": "13.0",
+      "cuda_available": true,
+      "devices": [
+        {
+          "index": 0,
+          "name": "NVIDIA GeForce RTX 4060 Ti"
+        }
+      ]
+    }
+  },
+  "probes": {
+    "fom": {
+      "worker": {
+        "pid": 85992,
+        "creation_filetime_utc": 134369146740296473,
+        "executable": "E:\\03-nn_Transfer_Func\\kron-reduce\\.venv\\Scripts\\python.exe"
+      },
+      "exit_code": 0,
+      "timeout": false,
+      "supervision_valid": true,
+      "cost_scope": "subset of enclosing QA envelope; not an additional charge"
+    },
+    "gpu": {
+      "worker": {
+        "pid": 53744,
+        "creation_filetime_utc": 134369146832191965,
+        "executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe"
+      },
+      "exit_code": 0,
+      "timeout": false,
+      "supervision_valid": true,
+      "cost_scope": "subset of enclosing QA envelope; not an additional charge"
+    },
+    "wrong_role": {
+      "worker": {
+        "pid": 6348,
+        "creation_filetime_utc": 134369146866062721,
+        "executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe"
+      },
+      "exit_code": 1,
+      "timeout": false,
+      "supervision_valid": true,
+      "cost_scope": "subset of enclosing QA envelope; not an additional charge"
+    }
+  },
+  "synthetic": {
+    "status": "PASS",
+    "tests": 9,
+    "failures": 0,
+    "errors": 0,
+    "log": "test_case_mutation (test_fom_execution_environment_20261020.EnvironmentContracts.test_case_mutation) ... ok\ntest_category_dispatch_and_unknown (test_fom_execution_environment_20261020.EnvironmentContracts.test_category_dispatch_and_unknown) ... ok\ntest_child_mismatch (test_fom_execution_environment_20261020.EnvironmentContracts.test_child_mismatch) ... ok\ntest_empty_partial_or_wrong_role_expected (test_fom_execution_environment_20261020.EnvironmentContracts.test_empty_partial_or_wrong_role_expected) ... ok\ntest_gpu_unavailable_or_malformed_identity (test_fom_execution_environment_20261020.EnvironmentContracts.test_gpu_unavailable_or_malformed_identity) ... ok\ntest_missing_package_before_callback (test_fom_execution_environment_20261020.EnvironmentContracts.test_missing_package_before_callback) ... ok\ntest_source_mutation (test_fom_execution_environment_20261020.EnvironmentContracts.test_source_mutation) ... ok\ntest_wrong_executable (test_fom_execution_environment_20261020.EnvironmentContracts.test_wrong_executable) ... ok\ntest_wrong_prefix (test_fom_execution_environment_20261020.EnvironmentContracts.test_wrong_prefix) ... ok\n\n----------------------------------------------------------------------\nRan 9 tests in 0.007s\n\nOK\n",
+    "success_identities_from_real_probes": true,
+    "failure_before_condition_callback": true
+  },
+  "private_execution": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\repair\\fom_environment01\\native_qa01\\execution.json",
+  "private_execution_sha256": "7e548886e528c26965cfcc454e69064134819732fa2d7586fb5ae8935b3a38cf",
+  "scientific_FOM_solves": 0,
+  "model_updates": 0,
+  "model_adoption": false,
+  "test_access": false
+}
