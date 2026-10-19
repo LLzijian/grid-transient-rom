@@ -1,0 +1,46 @@
+{
+  "status": "READY_NO_SOLVER_QA",
+  "actual_planning_model": "gpt-6-astra",
+  "actual_planning_agent": "/root/astra6_after_fom_environment_failure",
+  "protocol": "reports/fom_environment_repair_20261020_protocol.md",
+  "registered_repair_seconds": 1200,
+  "native_cumulative_cap_seconds": 600,
+  "support_held_seconds": 600,
+  "first_native_cap_seconds": 450,
+  "qa_command": {
+    "executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+    "arguments": [
+      "-m",
+      "experiments.fom_execution_environment_20261020",
+      "qa",
+      "--output",
+      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\repair\\fom_environment01\\qa01",
+      "--max-seconds",
+      "360"
+    ],
+    "arguments_line": "-m experiments.fom_execution_environment_20261020 qa --output E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\repair\\fom_environment01\\qa01 --max-seconds 360"
+  },
+  "qa_command_sha256": "289fe1f41217fa197808e5b0633fafeacdad371f300a3ae57b1140cf639a4676",
+  "private_binding": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\repair\\fom_environment01\\binding_qa01.json",
+  "private_binding_sha256": "fb128deb9e39e6e1fd5ada37436954efbde8865c94d287486b90016363d858a7",
+  "explicit_source_config_count": 90,
+  "source": {
+    "configs/private_dataset.json": "c6735b3dd07785df0c5018a6ce043b5072c4b236614d1c9714492ea4d73f2555",
+    "experiments/fom_execution_environment_20261020.py": "b99d2257b3898f55f15bfb6e7c3647f5bc8c4f4bd2f3fee0c3d6856d0e45f7f3",
+    "private_data/closure_mechanism_20261019/repair/fom_environment01/commands/qa01.json": "289fe1f41217fa197808e5b0633fafeacdad371f300a3ae57b1140cf639a4676",
+    "private_data/closure_mechanism_20261019/repair/fom_environment01/launch_qa.py": "2a29aa943097097eb36eb647baff515db8c1e7e8ae17ea3a66db39a1d26d3b55",
+    "reports/astra6_fom_environment_repair_20261020.md": "cdafc542c9d4046449635b93cc43efedd9bb71ad9ab9a94505de71cd0d939e39",
+    "reports/fom_environment_repair_20261020_implementation_review.md": "908340ce8ebaf2ddc896211902912cb3e8b6656910ee1154c36b32a1a1b30e15",
+    "reports/fom_environment_repair_20261020_independent_review.md": "36fb184e078d6b713fbf10b265f21fe8d28bf12d1a2f91bf2c8c190d9ad13b35",
+    "reports/fom_environment_repair_20261020_protocol.md": "12b310c367d498355fbdaac9d441e83e1fadc8e52736097b27b6d8db9be71ced",
+    "tests/test_fom_execution_environment_20261020.py": "f9a24d9ea2f3434f58f77d7199cedb441a3d05fdd6ff24f511508b66982b3c00"
+  },
+  "candidate_FOM_python": "E:/03-nn_Transfer_Func/kron-reduce/.venv/Scripts/python.exe",
+  "candidate_GPU_python": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+  "actual_environment_results": null,
+  "FOM_solves": 0,
+  "model_updates": 0,
+  "old_failed_stage_unchanged": true,
+  "default_model_changed": false,
+  "root_final_static_adoption": "Independent cleanup concern closed; execute single no-solver QA after remote source verification."
+}
