@@ -1,5 +1,5 @@
 {
-  "status": "CORRECTED_PREPARATION_STATIC_ACCEPTED_READY_FOR_UNIQUE_QA",
+  "status": "CLOSED_INCONCLUSIVE_NATIVE_EXIT_UNVERIFIED_NO_SCIENCE",
   "planning_model": "gpt-6-astra",
   "planning_agent": "/root/astra6_p3_admissibility",
   "raw_plan_sha256": "1de559a79e1a8c25dd13bf3d44b1ae80844d7013970560ce32ceb1010cb2ed9c",
@@ -14,7 +14,7 @@
     "support_held": 900,
     "retry_allowed": false
   },
-  "qa_attempts": 0,
+  "qa_attempts": 1,
   "inference_attempts": 0,
   "default_model_changed": false,
   "val_read": false,
@@ -50,5 +50,37 @@
     "qa_sha256": "edbd2b405095c36bfcb5c7d5ea0cb168bbe006986be2b2b53eef14c1eeeefb11",
     "command_exit_code": 0,
     "source_count": 65
-  }
+  },
+  "qa_test_result": {
+    "errors": [],
+    "failures": [],
+    "status": "PASS",
+    "synthetic_only": true,
+    "tests": 7
+  },
+  "qa_native_receipt": {
+    "output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\disagreement01\\qa01",
+    "cap_seconds": 300,
+    "error": null,
+    "source_commit": "1bb5ca02705a2c2bb0533de8366fb176d8b61584",
+    "status": "FAILED",
+    "mode": "qa",
+    "seconds": 3.4262628,
+    "exit_code": null,
+    "includes_child_cost_once": true,
+    "timeout": false,
+    "native_receipt_complete": true,
+    "end": "2026-10-20T02:01:58.8801091+08:00",
+    "native_supervisor_pid": 78244,
+    "cleanup": null,
+    "start": "2026-10-20T02:01:55.3766614+08:00",
+    "actual_worker_pid": 86120,
+    "launcher_pid": 86352
+  },
+  "qa_native_charged_seconds": 3.4262628,
+  "support_held_seconds": 900,
+  "closed_charged_or_held_seconds": 903.4262628,
+  "unspent_allocation_cancelled_seconds": 3896.5737372,
+  "root_decision": "Seven synthetic cases PASS but native launcher exit code null; do not launch real inference, do not retry this stage or integrate as qualified. Preserve scope incident and all evidence.",
+  "qa_result_sha256": "068187c15ebd89bac7c4d5b7343719292623200ad5bec40269fe8dad9dcd24fe"
 }
