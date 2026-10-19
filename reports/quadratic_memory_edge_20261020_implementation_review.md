@@ -43,3 +43,15 @@ root采纳后，本代理再次只读核对launcher第93–96行：每份prior�
 三文件QA driver现包含runtime测试、runner测试和六项纯合成native费用/清理/重复/独占检查；新增测试不启动worker，不读取科学数据。真实QA本身仍须通过统一原生父链证明实际worker、两层退出、GONE、来源前后不变及完整测试结果。私有launcher属于这些合成监督测试的依赖，因此不应称公开clone独立自足CI。
 
 **最终静态意见：支持冻结当前候选源码、精确QA命令及完整直接依赖后，执行已登记的一次三文件原生QA；未发现剩余确定阻断。** 它不授予正式训练：实际QA通过后还须登记成本阶段、消费真实flat admission、核对训练及评价完整包络并归档；768仍须之后的全九组条件。唯一明确实现修复、全部失败费用、来源不变和旧val不重试规则保持。root负责实际费用与外部恢复事实，科学采用不由本审查决定。
+
+## runtime两文件的实际工程验收
+
+本次验收范围限定为拟集成的`experiments/quadratic_memory_runtime_20261020.py`及`tests/test_quadratic_memory_runtime_20261020.py`，不包含新runner、私有监督器、科学端点或默认模型。只读QA01/QA02紧凑回执、工程说明和两份执行回执中的这两个源哈希，没有接触正在运行的cost01、任何模型权重或数据，也没有重跑测试。
+
+QA01真实27项中26通过、1失败，失败为field的结构验证缓存入口：非法宽度调用先设置已验证标志，之后编译类别被修改却跳过校验，以KeyError结束。唯一修复先检查输入宽度；无活动图缓存时每次校验结构，活动cache只复用begin_graph_cache的验证。当前runtime SHA为`5ee142103f38f4cdd4c041b3e1926c9a9d8972efdb78f198e6e76740fe49de1d`。在内存中将当前这一段guard恢复成原段后，重建源码SHA精确等于QA01的`49d048c8e182100aa9d83718a68cafb972d856746b991477877f23e6e6684092`；因此该修复没有改变其余公式或代码。未写回文件或执行源码。
+
+runtime测试SHA在QA01前后、QA02前后及当前均为`ffd17475da60d22c77dc1903f68cbc9d7ed02eb7abfce686f8e68c1b6aae8d62`，没有降低断言或删测试。QA02实际27/27通过，inner/outer均exit0、原生回执完整、真实worker及FILETIME对应、清理GONE、270绑定源前后一致；原生9.5058777秒。QA01的exit1、14.1351105秒和原失败保留，两次合计23.6409882秒，唯一修复名额已使用。
+
+runtime在实际CPU/CUDA参数化中包含13项检查：同源A场保持与B/C初始等价、正负非零b的通用表达式/NumPy值和状态/参数梯度、非零b原点零梯度/Hessian及Jacobian、短自主积分且初始化一次、导出恢复、图缓存生命周期及非法结构/来源拒绝。它们足以支持这项精确单式计算与入口保护的工程集成；不证明385事件预测、科学成本资格、优化收益或稳定域。该测试文件使用合成模型和临时导出，没有私有BASE、历史环境QA或真实条件metadata依赖；不要把另外两个含私有监督依赖的测试文件也纳入“公开自足runtime测试”的主张。
+
+**同意root提出的两文件加精简验证说明的范围受限工程PR，未见本范围的剩余阻断。** 合并前由root核对实际PR head、两文件与上述QA02身份相同，以及目标main已具备其直接运行/测试依赖（TrainingClosureROM、LinearCacheRuntime、SymbolicClosureROM及测试用的LocalMemoryROM/StructuredROM、Torch/NumPy/pytest）。不以本机陈旧Git引用替代远端核实。不得整体合并fresh或quadratic归档分支，不纳入新默认模型。当前cost阶段及随后九组科学执行仍受实际成本、注册协议与原科学门槛约束，与本工程准入分开。
