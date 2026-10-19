@@ -1,5 +1,5 @@
 {
-  "status": "FROZEN_STATIC_ACCEPTED_READY_FOR_FIRST_REAL_INFERENCE",
+  "status": "RUNNING_FIRST_REAL_INFERENCE",
   "planning_model": "gpt-6-astra",
   "planning_agent": "/root/astra6_first_disagreement_inference",
   "protocol_commit": "9fd7488385817c07d2537bf2877cdb0697c70bfe",
@@ -11,7 +11,7 @@
     "support_held": 900,
     "retry_allowed": false
   },
-  "attempts": 0,
+  "attempts": 1,
   "qa_repeated": false,
   "default_model_changed": false,
   "val_read": false,
@@ -286,5 +286,63 @@
     "six_math_functions_exact_equal": true,
     "infer_equal_after_removing_only_deadline_guards": true,
     "no_math_qa_repeated": true
-  }
+  },
+  "source_commit": "1cc0fc89aec791d3ef80e42d396361714c332342",
+  "actual_outer_supervisor_pid": 82304,
+  "actual_powershell_pid": 49128,
+  "actual_worker_pid": 87180,
+  "worker_identity": {
+    "argv": [
+      "E:\\03-nn_Transfer_Func\\kiki\\experiments\\closure_p3_disagreement_20261020.py",
+      "infer",
+      "--output",
+      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\first_disagreement_inference01\\run01",
+      "--manifest",
+      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\first_disagreement_inference01\\frozen_source.json",
+      "--max-seconds",
+      "3500"
+    ],
+    "creation_filetime_utc": 134369085077319782,
+    "max_seconds": 3500.0,
+    "pid": 87180,
+    "started_unix": 1792434907.821381
+  },
+  "native_running": {
+    "command": [
+      "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-File",
+      "E:\\03-nn_Transfer_Func\\kiki\\experiments\\native_process_receipt_20261020.ps1",
+      "-CommandJson",
+      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\first_disagreement_inference01\\command.json",
+      "-WorkingDirectory",
+      "E:\\03-nn_Transfer_Func\\kiki",
+      "-Output",
+      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\first_disagreement_inference01\\native_inner01",
+      "-TimeoutSeconds",
+      "3570",
+      "-MaxSeconds",
+      "3600",
+      "-SourceCommit",
+      "1cc0fc89aec791d3ef80e42d396361714c332342",
+      "-FixtureIdentityJson",
+      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\first_disagreement_inference01\\run01\\worker.json"
+    ],
+    "exit_code": -1,
+    "includes_child_cost_once": true,
+    "launcher_pid": 49128,
+    "native_receipt_complete": false,
+    "started_qpc": 292664.2390017,
+    "started_unix": 1792434906.419169,
+    "status": "RUNNING",
+    "supervisor_pid": 82304,
+    "timed_out": false
+  },
+  "native_receipt_pending": true,
+  "unified_exec_session": 88276,
+  "observed_at": "2026-10-20T02:35+08:00",
+  "next_action": "Read existing execution.json / native receipts at completion; no new command, retry or recovery. Evaluate actual full numeric and identity evidence before admission."
 }

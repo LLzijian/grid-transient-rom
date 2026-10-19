@@ -1,8 +1,8 @@
 # 当前研究状态
 
-任务状态：**RUNNING**。工作目录E:/03-nn_Transfer_Func/kiki。原生回执工程已一次验收通过，已通过PR12合并核实，root已采纳实际Astra6方案，登记首次真实D的P3独立4500秒，正在静态接线，无科学作业；当前没有科学作业，旧P3不续跑。原test关闭、TASK4暂停，默认模型不变，full8/delete7均仅研究候选。
+任务状态：**RUNNING**。工作目录E:/03-nn_Transfer_Func/kiki。原生回执工程已一次验收通过，已通过PR12合并核实，首次真实D已启动，正在执行唯一train推断；原P3仍关闭，不重复队列；当前唯一科学作业为首次真实D，旧P3不续跑。原test关闭、TASK4暂停，默认模型不变，full8/delete7均仅研究候选。
 
-**当前工程进展**：[实际Astra6方案](../reports/astra6_native_receipt_20261020.md)、[root协议](../reports/native_receipt_20261020_protocol.md)、[结论](../reports/native_receipt_20261020_conclusion.md)、[证据](../results/native_receipt_20261020/summary.json)。新Process/Handle监督通过真实快速exit0、快速exit7、timeout tree三个固定案例，各一次；QA外层实际exit0，15.2062228进程秒，四源哈希未变，launcher81272/worker77060及全部自有子树已退出。来源61db23be9524238409cbf9eb7a46c6381dd93280，路径private_data/closure_mechanism_20261019/repair/native_receipt01/qa01，不覆盖、不重跑。下一实际动作：独立静态审核最小身份/监督接线，冻结归档后启动唯一首次真实D；本工程不授予科学执行或长运行已合格结论。
+**当前工程进展**：[实际Astra6方案](../reports/astra6_native_receipt_20261020.md)、[root协议](../reports/native_receipt_20261020_protocol.md)、[结论](../reports/native_receipt_20261020_conclusion.md)、[证据](../results/native_receipt_20261020/summary.json)。新Process/Handle监督通过真实快速exit0、快速exit7、timeout tree三个固定案例，各一次；QA外层实际exit0，15.2062228进程秒，四源哈希未变，launcher81272/worker77060及全部自有子树已退出。来源61db23be9524238409cbf9eb7a46c6381dd93280，路径private_data/closure_mechanism_20261019/repair/native_receipt01/qa01，不覆盖、不重跑。下一实际动作：稀疏等待现有execution.json及两层原生回执，评价完整366x6数值和身份，禁止重跑/恢复；本工程不授予科学执行或长运行已合格结论。
 
 **P3原分歧轮已关闭未决**：[结论](../reports/p3_disagreement_20261020_conclusion.md)、[证据](../results/p3_disagreement_20261020/summary.json)，归档d874c8ae96b280590facc0e2306dbcc0bd2ea3fd。唯一7项合成测试PASS，但原生退出码缺失，3.4262628秒；没有真实推断/D/FOM或模型采用，不重跑原QA。首次准备违规整文件哈希读取历史HDF5含受限字节，未反序列化或评分，[违规记录](../reports/p3_disagreement_20261020_preparation_incident.md)及拒绝manifest保留。修正train_only准备已独立审查。后续工程成功不追改原exitnull或读取违规。
 
@@ -14,4 +14,4 @@ P1未知结构发现未通过，真实生成搜索关闭；原18组GRU512已完�
 
 已合并工程PR8/9/10/11/12，最后远端main8c523a24fdec26c03d5a0a442e543f72d512e15e。PR11是未来step0恢复修正及P2专用runner工程集成，非模型采用，原恢复缺陷/QA历史保留。本地HEAD a95101337855ed3fc1f4abfd710982443d5564cb、index SHA256 82b060840d50257c41df55e15805fa106f29117cac8bf1868a6b83e490e2df93和用户未提交工作保持，仅GitData选择性归档；无reset/强推/删除证据。
 
-当前新轮：[实际Astra6方案](../reports/astra6_first_disagreement_inference_20261020.md)、[root协议](../reports/first_disagreement_inference_20261020_protocol.md)。新P3分配4500=单次真实包络3600+支持900，登记后P3未分配88196.5737372/父未分配201709.2466334。科学定义全复用，不重跑QA/训练，不改旧未决分类；run01目录尚未启动，不能称运行。
+当前新轮：[实际Astra6方案](../reports/astra6_first_disagreement_inference_20261020.md)、[root协议](../reports/first_disagreement_inference_20261020_protocol.md)。新P3分配4500=单次真实包络3600+支持900，登记后P3未分配88196.5737372/父未分配201709.2466334。科学定义全复用，不重跑QA/训练，不改旧未决分类；执行源1cc0fc89aec791d3ef80e42d396361714c332342；2026-10-20 02:35实际启动，outer真实监督82304/PowerShell49128/内层launcher89904/实际worker87180及创建FILETIME已核，session88276。目录private_data/closure_mechanism_20261019/P3/first_disagreement_inference01/run01；两层回执待结束，实际费用未定，保留3600包络+900支持预占，不能将额度当实际消耗。只读现有execution.json、native_outer01/native.json、native_inner01/receipt.json结项；不再次调用launch_once.py。。
