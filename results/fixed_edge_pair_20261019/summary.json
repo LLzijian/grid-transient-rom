@@ -1,9 +1,9 @@
 {
-  "status": "QA02_PASS_SCIENCE_READY",
+  "status": "RUNNING_PREREGISTERED_SCIENTIFIC_QUEUE",
   "planning_model": "gpt-6-astra",
   "planning_agent": "/root/astra6_fixed_edge_science",
   "preregistered_commit": "72b727ad1c9d2bdab02a404b8d71b16656e2e7da",
-  "scientific_attempts": 0,
+  "scientific_attempts": 1,
   "qa_attempts": 2,
   "source_sha256": {
     "experiments/fixed_edge_pair_20261019.py": "4412777530c9a40f80641faf431991e2c62f38194c15023c8d6f1417ce4c14f9",
@@ -240,5 +240,37 @@
     "source_commit": "47ba6f341886aeb4cc235d3c25a9b16bc8f4a24b"
   },
   "source_frozen_commit": "47ba6f341886aeb4cc235d3c25a9b16bc8f4a24b",
-  "root_decision": "Matching actual synthetic QA PASS and independent source review admit preregistered fixed scientific queue; model adoption none"
+  "root_decision": "Matching actual synthetic QA PASS and independent source review admit preregistered fixed scientific queue; model adoption none",
+  "scientific_native_receipt_pending": true,
+  "campaign_native_running": {
+    "launcher_pid": 59512,
+    "start": "2026-10-19T20:01:51.7249664+08:00",
+    "mode": "campaign",
+    "native_supervisor_pid": 58916,
+    "cap_seconds": 69000,
+    "source_commit": "47ba6f341886aeb4cc235d3c25a9b16bc8f4a24b",
+    "output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\fixed_edge_pair01\\campaign01"
+  },
+  "campaign_actual_queue_pid": 87020,
+  "first_model_actual_worker_pid": 61800,
+  "first_model_progress_snapshot": {
+    "identity_sha256": "5113fae28ba1c7ec7cea78304d72b729ad2ea94a251768e04351223bfa3fa6f5",
+    "last_completed_update": 17,
+    "pid": 61800,
+    "seed": 6101,
+    "status": "RUNNING",
+    "structure": "full8"
+  },
+  "first_model_step0": {
+    "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\fixed_edge_pair01\\campaign01\\6101_full8\\checkpoints\\step000000",
+    "model_sha256": "93fcc0024acec78b91a748e02bd3a808edf7bb108d9539422ee8f2bd157e3938",
+    "training_sha256": "eb1b78f8df3fd3b1ecb2153ee838211a210e78b881642a372881a7a93384b880",
+    "checkpoint_metadata_sha256": "e3c4fb72e868a5d50a3c71efe17e3e57bc30314c2a4066ad1462bd93bbeef6de",
+    "step": 0
+  },
+  "frozen_code_sha256": "c62eaf3ce696bab10546636c2ca44f0e3a1794f27681ef260a97cf4e827364a2",
+  "stage_identity_sha256": "c53902f0c522e7e5a18fd1b481e4b325a1168d048dbd6d03b613ff44a80953f3",
+  "qa_pass_archive_commit": "3c6dbb3bf8d27bf50322df7a0fb0188379ed0f01",
+  "scientific_source_immutable": true,
+  "remaining_actual_cost": "pending complete native receipts; entire registered allocation remains reserved"
 }

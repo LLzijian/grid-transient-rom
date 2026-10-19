@@ -1,17 +1,19 @@
 # 当前研究状态
 
-任务状态：**RUNNING**。工作目录E:/03-nn_Transfer_Func/kiki。**无活跃计算PID**；原test关闭，TASK4暂停，默认模型不变，没有最终科学模型采用。
+任务状态：**RUNNING**。工作目录E:/03-nn_Transfer_Func/kiki。原test关闭、TASK4暂停；默认模型不变，没有最终科学模型采用。
 
-**新缓存运行类完整真实train费用核验已通过独立验收，已通过[PR #10](https://github.com/LLzijian/grid-transient-rom/pull/10)合并，远端main54a65bdc14b50058d4b37a75eb54013f013a9ac7已核验。**实际gpt-6-astra规划与root前瞻采纳见[协议](../reports/astra6_linear_cost_20261019.md)。源冻结dd1257c07fe7470e520705d4023690fc935be43c；QA一次PASS 16.1099461秒，唯一measure01完整369.4389037秒，无重试。36次更新、4套保存恢复、两结构各366条train五类各1830行、局部导数均完成；两来源数值PASS，56源未变。六模型各1024更新、24保存、三里程碑及一次全计划恢复加25%余量估计**62369.2206764秒≤P2上限86400秒**。独立只读逐项复算一致，root接受工程费用可执行性；科学P2未启动。见[结论](../reports/linear_cache_cost_20261019_conclusion.md)、[紧凑证据](../results/linear_cache_cost_20261019/summary.json)及[完整费用表](../results/linear_cache_cost_20261019/cost.json)。
+**P2固定边项科学队列正在实际运行。**2026-10-19 20:01:51启动，原生监督58916、launcher59512、实际队列87020；首个6101/full8实际worker61800，启动核验快照已完成17次真实联合更新。路径private_data/closure_mechanism_20261019/P2/fixed_edge_pair01/campaign01；实时进度各任务attempt_initial/progress.json，安全检查点checkpoints/latest.json。真实366条train、原346尺度、分类元数据、100MVA及完整采样安排首步前绑定通过。完整命令、源及PID见campaign01.native.running.json、campaign.json和对应worker.json，活跃时禁止重复启动。
 
-完整本地记录private_data/closure_mechanism_20261019/P0/linear_cache_cost01，测量19:01:28—19:07:38；worker44008/launcher84200/原生监督83316均退出0。最终回执后stdlib-only finalize_cost完成，无超时。约52MB完整采样安排、四套检查点、全评价及源数据留本地并记哈希；试算权重不得作为科学起点。已登记启动归档768976ed78ffc50e526eb3d127abc2517d5dc1c3。
+实际gpt-6-astra（/root/astra6_fixed_edge_science）制定[原始方案](../reports/astra6_fixed_edge_pair_20261019.md)，root明确采纳并获独立挑战支持。固定顺序6101完整/删除、6102完整/删除、6103完整/删除，三种子各1024；主seed6101，256/512/1024全366条train双步长/能力表及局部谱。主风险沿用_point_error事件均值与原risk，结论限train成对重训；P1未知发现仍未通过，生成搜索关闭，无val、新FOM或模型采用。源47ba6f341886aeb4cc235d3c25a9b16bc8f4a24b冻结，全部59实际依赖绑定、原56源未变。
 
-**新P2轮已登记，尚无科学计算PID。**实际gpt-6-astra（/root/astra6_fixed_edge_science）已返回[完整方案](../reports/astra6_fixed_edge_pair_20261019.md)，root明确采纳并获有条件独立挑战支持，收缩为因果接口已有证据＋固定边项成对重训；P1未知发现仍未通过、生成搜索关闭。两结构各6101/6102/6103三种子，各1024，主seed6101，256/512/1024全366train固定双步长和局部谱。72k分配=QA1200+支持1800+科学69000；六模型原生累计各12000/10000共66000，分析及队列包络1800，恢复1200为模型内重叠子限不重复扣账、不延长模型限。P2未分配14400、父未分配156684.7341593。QA01在仅stable合成分层处失败14.2073349秒；唯一fixture修正后QA02 PASS 24.74585秒，合计38.9531849秒，无真实数据访问。全部实际依赖同源且原56源未变，独立源码审查通过。QA02实际worker75624/原生监督86856已退出0。source冻结47ba6f341886aeb4cc235d3c25a9b16bc8f4a24b，原负结果保留。下一动作归档后实际启动唯一campaign01固定六任务队列，外原生69000秒总限；普通里程碑不停止，独立任务失败按协议记录并继续。无val/test、新FOM或科学模型采用。
+QA01仅stable的合成fixture失败14.2073349秒，负结果归档b833575f4445b34d2f67ffc9da7ce4e4e304f8df；唯一fixture修正后QA02 PASS 24.74585秒，两次合计38.9531849秒。恢复、typed identity/损坏拒绝、采样、指标和真实进程树清理通过，未读取真实数据；独立源码复查通过。QA实际worker75624/监督86856已退出0，PASS归档3c6dbb3bf8d27bf50322df7a0fb0188379ed0f01。[紧凑证据](../results/fixed_edge_pair_20261019/summary.json)记录实际启动、step0来源和本地哈希。
 
-预算上限259200进程秒；累计已关闭实际加保守支持30515.2658407，父剩至少**228684.7341593**。本轮7200按执行385.5488498+支持保守600关闭，取消未用执行6214.4511502。P0剩9037.2289973；P1剩3982.0903771；修复预留14065.4147849；P2/P3/P4尚未启动，上限86400/93600/21600保持。旧900未核对支持保守扣留，类别不转移、旧账本不复活。见[费用快照](../results/closure_mechanism_20261019/cost_snapshot.json)。
+**下一实际动作：**稀疏检查存活、失败及固定里程碑；队列自动顺序继续，不在普通里程碑等授权、不修改冻结源。模型所有attempt累计完整各12000、删除各10000秒；独立模型失败/到限保留后继续其他合法任务。仅外部运行中断可用一次同源同环境安全cp恢复，恢复活动1200秒为模型内子限，最多50步重放，不重复扣费、不延长模型上限。没有中断就不创建恢复记录；pause.request只在实际用户暂停时写。等待完整campaign01.native.receipt.json校准科学总账，未结束费用保持预占，不报0。
 
-已合并工程：严格JSON身份adapter PR #8；参数公共乘积缓存PR #9，远端main 4833b6d7f15fba7dbe824f8b8efa700d6a1c2f7c。缓存12事件合成固定负载八项/七项更新时间缩短16.69%/17.56%，仅opt-in工程接受；[结论](../reports/linear_cache_20261019_conclusion.md)。当前完整真实费用是新runtime首次核验，旧gate关闭记录及18.4908032秒最大值不改。
+预算上限259200进程秒；已关闭轮次实际加保守支持30515.2658407。当前P2登记72000=QA1200+支持1800+科学69000，模型合计66000、最终分析及队列包络1800、恢复1200为重叠子限且额外1200保守不用；QA已实际38.9531849，科学在途回执待定。父预算扣除本轮完整分配后未分配156684.7341593，P2未分配14400，不自动追加。P0剩9037.2289973、P1剩3982.0903771、修复预留14065.4147849；P3/P4未启动，上限93600/21600保持。旧900支持继续保守扣留，类别不互转。见[费用快照](../results/closure_mechanism_20261019/cost_snapshot.json)。
 
-保留科学证据：节点/边已知支撑、无噪声各三种子×两初始化器×512，历史残差候选各3/3合成val总体MSE≤0.01、对照0/3；不证明未知结构恢复或真实q唯一性。原18组GRU512已完成6085.6472446秒，不重跑。已关闭构造顺序、tanh/saturation/真q0及旧费用gate不修正或补跑；负结果、代码、源检查点保留原归档。独立范围解释见[审查](../reports/research_scope_challenge_20261019.md)。
+工程进展已合并：严格JSON身份PR #8、参数乘积缓存PR #9、完整真实train费用核验[PR #10](https://github.com/LLzijian/grid-transient-rom/pull/10)，远端main54a65bdc14b50058d4b37a75eb54013f013a9ac7已核验。费用轮执行385.5488498+支持保守600关闭，六模型1024/24保存/3里程碑/一次恢复及25%估计62369.2206764≤86400，见[结论](../reports/linear_cache_cost_20261019_conclusion.md)。科学新runner与未完成模型研究保留codex/fixed-edge-pair-20261019，尚未集成为默认模型。
 
-本地HEAD a95101337855ed3fc1f4abfd710982443d5564cb、Git index SHA256 82b060840d50257c41df55e15805fa106f29117cac8bf1868a6b83e490e2df93及用户未提交工作保持；通过GitHub GitData选择性归档，不reset、不强推、不删证据。
+原18组GRU512已完成6085.6472446秒，不重跑；P1节点/边已知支撑三种子预测证据保留，不证明未知结构恢复。构造顺序、tanh/saturation/真q0与旧费用gate均保持关闭，旧18.4908032秒最大值不改。旧证据、源检查点和负结果保留原归档，见[范围审查](../reports/research_scope_challenge_20261019.md)。
+
+本地HEAD a95101337855ed3fc1f4abfd710982443d5564cb、Git index SHA256 82b060840d50257c41df55e15805fa106f29117cac8bf1868a6b83e490e2df93及用户未提交工作保持；仅用GitHub GitData选择性归档，不reset、强推或删除证据。
