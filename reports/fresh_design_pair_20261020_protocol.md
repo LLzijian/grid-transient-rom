@@ -15,3 +15,5 @@ fit.CAMPAIGN仅在当前进程限固定新BASE并恢复，源模型限原六个P
 val仍按设计条件性稳定5秒加权风险（.8均值+.2最高10%权重尾均值、边界分数权重）及原ceil风险分列；主seed6101，delete7−full8，逐事件和三seed方向、频率/功率/失稳损害独立报告，无新增显著性或bootstrap。确认任何未覆盖/数值未决则全24未决；六端点不齐不生成val。无模型晋升或L2证书替代。
 
 QA与准备累计1000、最多一次明确修正重验；任何失败均保留真实回执（无native时单列实际工具包络，不伪造）。若此新档QA再失败，关闭并暂搁这条启动实现路线，root作实质路线评审，不再排掉72条件开同构档。源/环境/实现确定性科学失败按阶段关闭，不借恢复/新编号重试。有限独立实现审查与精确命令/源归档后才执行；QA通过立即一次设计冻结并启动合法短历史，不加代理诊断链。各阶段实际结果均选择性GitHub归档、结项独立挑战；合格工程才PR合并，模型仍须原科学门槛。本登记无当前科学PID。
+
+新入口及私有launcher已封版，代码来源743fcbee73e59a7753300e07502b03d28eba0590；[独立同轮实现审查](fresh_design_pair_20261020_independent_review.md)支持源/命令冻结后实际QA，root采纳并保留其freeze文件必须在campaign内的条件。QA为GPU解释器`-m experiments.fresh_design_pair_20261020 qa`，worker --output/--wrapper-output均为BASE/stages/qa01绝对路径，自限240、原生外层300。root对launcher的command/output/worker/binding/prior故意使用相对CLI，必须在真实回执中看到全部规范为绝对路径、实际worker存在且完成17项检查。准备为prepare-binding、BASE/stages/prepare01，自限120/外层180；仅QA通过后使用实际QA回执建立prior并冻结调用。精确命令/hash及显式绑定见结果preparation；代码来源与执行前命令归档提交分别记录，不声称二者同一提交。本条记录为待执行命令，无虚构PID。
