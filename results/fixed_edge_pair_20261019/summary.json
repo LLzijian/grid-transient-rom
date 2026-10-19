@@ -1,0 +1,607 @@
+{
+  "status": "CLOSED_SCIENCE_VALID_ENGINEERING_INTEGRATION_WITHHELD",
+  "planning_model": "gpt-6-astra",
+  "planning_agent": "/root/astra6_fixed_edge_science",
+  "preregistered_commit": "72b727ad1c9d2bdab02a404b8d71b16656e2e7da",
+  "scientific_attempts": 1,
+  "qa_attempts": 2,
+  "source_sha256": {
+    "experiments/fixed_edge_pair_20261019.py": "4412777530c9a40f80641faf431991e2c62f38194c15023c8d6f1417ce4c14f9",
+    "tests/test_fixed_edge_pair_20261019.py": "54a1c89a51a918c9198da92ee316eac503fc97fddd27fdd4c52e74d1b936e738",
+    "reports/astra6_fixed_edge_pair_20261019.md": "188d375985eea8f8991dc5358507cb786b24d13ec385ac5b22a38e8e4070a6d3"
+  },
+  "native_supervisor": {
+    "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\fixed_edge_pair01\\native_supervise.ps1",
+    "sha256": "f7c422a1462faf3156d16f3df8c6a77340379e9940ca0e3f55ca5ad795ae87ef"
+  },
+  "independent_static_review": "PASS for first bounded QA only",
+  "default_model_changed": false,
+  "val_read": false,
+  "test_read": false,
+  "budget": {
+    "allocation": 72000,
+    "qa": 1200,
+    "each_qa": 600,
+    "support_held": 1800,
+    "science_reserved": 69000,
+    "six_model_caps": 66000,
+    "analysis_queue_cap": 1800,
+    "recovery_nested_cap": 1200,
+    "recovery_extra_charged": false
+  },
+  "qa_charged_seconds": 38.9531849,
+  "qa01": {
+    "result": {
+      "S_O_source_read": false,
+      "error": "ValueError(\"expected stable/unstable TRAIN strata, got ['stable']\")",
+      "real_train_read": false,
+      "scope": "synthetic new-loop/checkpoint/metric QA",
+      "status": "FAIL",
+      "test_read": false,
+      "traceback": "Traceback (most recent call last):\n  File \"E:\\03-nn_Transfer_Func\\kiki\\tests\\test_fixed_edge_pair_20261019.py\", line 383, in run_qa\n    result[\"sampler_checkpoint\"] = _sampler_checkpoint_test(output / \"synthetic\")\n                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\03-nn_Transfer_Func\\kiki\\tests\\test_fixed_edge_pair_20261019.py\", line 177, in _sampler_checkpoint_test\n    samples, sampling = next_samples(events, rng, coverage)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\03-nn_Transfer_Func\\kiki\\experiments\\train_joint_numerical_pair_0100.py\", line 144, in next_samples\n    chosen, _ = sample_batch(events, rng, 10)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\03-nn_Transfer_Func\\kiki\\experiments\\train_joint_campaign.py\", line 85, in sample_batch\n    pools = _stratified_pools(events)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\03-nn_Transfer_Func\\kiki\\experiments\\train_joint_campaign.py\", line 68, in _stratified_pools\n    raise ValueError(f\"expected stable/unstable TRAIN strata, got {sorted(pools)}\")\nValueError: expected stable/unstable TRAIN strata, got ['stable']\n",
+      "val_read": false
+    },
+    "native_receipt": {
+      "end": "2026-10-19T19:53:47.5703280+08:00",
+      "native_supervisor_pid": 21476,
+      "output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\fixed_edge_pair01\\qa01",
+      "status": "FAILED",
+      "timeout": false,
+      "native_receipt_complete": true,
+      "seconds": 14.2073349,
+      "cap_seconds": 600,
+      "includes_child_cost_once": true,
+      "source_commit": "8e8447c48e81b7f7ac829c542133ca68b8650cfc",
+      "mode": "qa",
+      "launcher_pid": 42616,
+      "actual_worker_pid": 77584,
+      "start": "2026-10-19T19:53:33.3380183+08:00",
+      "cleanup": null,
+      "exit_code": 1
+    },
+    "result_sha256": "ff35fc4c4b0e46a670d438af25d72cd4677087a46dbc939a6118f1def9eb7806",
+    "source_commit": "8e8447c48e81b7f7ac829c542133ca68b8650cfc"
+  },
+  "qa_repairs_used": 1,
+  "qa02_source_sha256": {
+    "experiments/fixed_edge_pair_20261019.py": "4412777530c9a40f80641faf431991e2c62f38194c15023c8d6f1417ce4c14f9",
+    "tests/test_fixed_edge_pair_20261019.py": "24852a89d65afeba06a6f4bed9ef37afd6ceb6a457cdef2d8dc9a2109125708c",
+    "reports/astra6_fixed_edge_pair_20261019.md": "8bea72c5d6c0ca90fe716cce0740f15c77ec059872b26562e88fac2d1023d963"
+  },
+  "qa01_archive_commit": "b833575f4445b34d2f67ffc9da7ce4e4e304f8df",
+  "qa02": {
+    "result": {
+      "S_O_source_read": false,
+      "code_sha256": {
+        "experiments/analyze_symbolic_closure.py": "128548091c206103fc3604a2cc9896fc715627a9a7067046d845cf01884d38a2",
+        "experiments/closure_checkpoint_identity_20261019.py": "7761a88586bdf4e4e326071654693832339559836737c06ab5189e86082d23ac",
+        "experiments/closure_discovery_benchmarks.py": "5f94f52532ae4808e1e8eeeb4b1c627d138c81e2cdca15767a8f9ed7d8c5d42e",
+        "experiments/closure_discovery_confirmation.py": "43ecf8f1b29231e1b68b452efa7310fcdce305a136e4a5bba54e0fbedff66579",
+        "experiments/closure_discovery_data.py": "df313113242691b5bdcf61d4fa3abc294ae2c8f953260f963a0fe5800aa7373a",
+        "experiments/closure_discovery_export.py": "f07d74aa31f626c087d7108f272f925362cce9926ee7065675e2a197dda145e2",
+        "experiments/closure_discovery_support.py": "4e492f0d4f87abf517c7037efc7a64ebcbcd0693ac8c4884b66a31ee3d81c119",
+        "experiments/closure_expression_identity.py": "5d8666079652166777757d62534252fb61210aae99ad08e3db5d4e83eb073293",
+        "experiments/closure_mechanism_study.py": "6467605e00b20e9cbf31e2db3bc860f48dafaf4a8515b8cfa232f0dadf97a5cb",
+        "experiments/closure_training_runtime.py": "80aeff279bf0e1e498205fcb7b591a680b721643efc98e0e4e993d61d8ac90b0",
+        "experiments/compare_physical_modes.py": "0688c0c69778399524065152917c01de13348a4a55c414731454dd9af5c0f3ce",
+        "experiments/discover_closure.py": "86b0ec6ef87a243b5dc8c5b1cdedb67eebe1b0334494c875459b78e9ee15500b",
+        "experiments/evaluate_l1_latent.py": "5882dc6814f13ef4210d94db07fd87ca88d8130aa984dbda7757c53088662314",
+        "experiments/evaluate_local_memory_0098.py": "386a8cbd964618602fe7298d6a20c47ec876e9ad70e011c96f3f55e6c44d5034",
+        "experiments/evaluate_long_latent.py": "8a52a2c8138d768cd636a1aef8a07fd871b86ed62f78e8785e0d069066ac890c",
+        "experiments/evaluate_structured_rom.py": "38aacbf79e61081449adcb254d99f0556f65021d2bd5b8d46cf17c5d757e01d9",
+        "experiments/fixed_edge_pair_20261019.py": "4412777530c9a40f80641faf431991e2c62f38194c15023c8d6f1417ce4c14f9",
+        "experiments/generate_private_dataset.py": "239b574f7b17b26c2c315f5be6b7aebaf05e82e1c91c61b32d48135caf452ab8",
+        "experiments/joint_training_grid_0100.py": "9619bf4647041d0db1cce2c9ae3c79ee18507a00af4f8396e70052e6b65c9d6e",
+        "experiments/linear_cache_cost_gate_20261019.py": "e4027b2be8cb0649d89fb97e75f81997bf1a0486907303ba103a632cd3e01fba",
+        "experiments/linear_cache_runtime_20261019.py": "323406ebb23a4e55d2a64108807e5a850ad1c38e9b3a23622bf4d855d6bcdc3f",
+        "experiments/local_memory_rom_0098.py": "cb73ce129c1c095f8c5ac1288a725b072144bcd7978d4711e44afb4ea075636d",
+        "experiments/monitor_joint_adequacy_0099.py": "344a78d946de959ecd43920ec3627557d2bb006a704c135a19a542a9136a4f59",
+        "experiments/run_private_m2.py": "25698fe4fa77b35982b85d1fa84b5e2ec0c9ab728d095e951b8ac0fe9479f972",
+        "experiments/shared_closure_rom_0101.py": "2d94589a5f387591468cad928da93ed2e5400c748c8fb4a09748953af09b63d5",
+        "experiments/structure_grammar.py": "0325a0a1f50d7f22510cd3d7da5dbc28d8c3e186ea7288e7717f7a3a8704d28d",
+        "experiments/structured_rom.py": "921b6dedb2e8b5218c5f4ec84fc6a35ac4844ebc0e310f8a6639bb0c7bcf88f3",
+        "experiments/summarize_train_local_memory_0098.py": "468fc24781df3ce8f184226f125add7becf1e8b573ae074fc89846c1fe99e7a1",
+        "experiments/symbolic_closure_rom.py": "01bd836ef2e06b0fbca40065f26cb98a23f8042a3328d86b265bfb114940dbc9",
+        "experiments/train_closure.py": "3fbd5a0d0256887708994a574996cee4f883a2d88fd392891b8d3fbe0875e002",
+        "experiments/train_joint_adequacy_0099.py": "5326f66fe729a35f59871497f4b1e3151fd67f3e8340afa882b561fde285ef10",
+        "experiments/train_joint_campaign.py": "0914e609f76cacd27632a0c52081da836a39456121cfea3c4633cbaf0c03593b",
+        "experiments/train_joint_latent.py": "57dc52517897608572afe2cd5028f0c8ede540d524c99f8366426fe685b22735",
+        "experiments/train_joint_numerical_pair_0100.py": "4d10ab86398fd43257f4249cdb2641799197abbb303e006457a92617d6b04ed5",
+        "experiments/train_local_memory_0098.py": "e73de06b9a1d66b05de4bb1d29504a19cc7b486bc3694ddd341d451f403ae667",
+        "experiments/train_long_latent.py": "7e8c2a93a875392814d8972386e5561ffec587d37cc33b8b46e0de663ae98ecc",
+        "experiments/train_structured_rom.py": "6afa2186411a0a23ea5f5d62f9cfeacb3192c6023f62676c7c134ef9bb365482",
+        "experiments/train_teacher_latent.py": "808671ddd94b483e440cd6ec69d28657e90a4b643ef633050903c2aec18b90c9",
+        "reports/astra6_fixed_edge_pair_20261019.md": "8bea72c5d6c0ca90fe716cce0740f15c77ec059872b26562e88fac2d1023d963",
+        "src/kiki/__init__.py": "3e5ee9a8509b412c44e2f556e44103296523a44ad798edea8456ee8570d8c125",
+        "src/kiki/data/__init__.py": "050a5a8225e7c5968a298457e8564522ff81a7ed509ac14956038294ac91b4c7",
+        "src/kiki/data/adapter.py": "307840683d775347c322c107f1e47500105be4b35c8a09d07d282c4baead3158",
+        "src/kiki/data/contracts.py": "3a027f8b7cafc69877e03779894370548d48f1b507f5c46a39e3f7edf79e691b",
+        "src/kiki/data/private_dataset.py": "615ec905047a81f681620d3f214b6dfa60be3c78af7059de21b232c593d941ee",
+        "src/kiki/data/schema.py": "0fcd4c51f734ea20f5cd62504598cc407eae9685592b7096aaad6b3dc131bfdb",
+        "src/kiki/data/splits.py": "78fabed80b331063d185181b02e7ec9f7d01fe90c0a121877ed6b2d659f03ce8",
+        "src/kiki/data/store.py": "e408c61994932b0bd09f6c7a27780d56c56bda60ee8c13f07e2bf08002114524",
+        "src/kiki/models/__init__.py": "c856dd0831a9dfa06af3b518e85deb8a6c2f0696b35a38942a8aff0d0f52530c",
+        "src/kiki/models/base.py": "8fbc96338574ce16d702b17b909a1f4c9b702fa28bdf15f228488594d681f5cd",
+        "src/kiki/models/private_pm.py": "adea9a1675cb9bdbd955b6fdf881bed5da915ba431e9d61a57fc33aa29606841",
+        "src/kiki/models/private_rom.py": "eced34511e8ba726ed3ee06f58c0826f26957bb27feecadc30c4cf44ba6062e4",
+        "src/kiki/physics/__init__.py": "de2c10aed81f501ceaaedee6361bc225d242b72f7d5b3c97ffcf57d77c03d5e4",
+        "src/kiki/physics/aggregation.py": "4c9aa927f4278404f11b43baa62163e7112c8c02ae97984fca454daa613336ab",
+        "src/kiki/physics/constants.py": "5fa4a9a9c45f68b6aff57ab3b3f9ee1156295fde7bd4fe047c5fadc025ad99da",
+        "src/kiki/physics/coordinates.py": "9a738d46647ab631407f8e4b5814fe0a7868c717e31fda13963861c10e373089",
+        "src/kiki/physics/graph.py": "724dd978e7627ccceec0ad94067eef304c8e5562a378641516d544e1d8ca8dfe",
+        "src/kiki/physics/units.py": "11f6e09ef577a1c09a7996743deaef1530a36ecf26be82edaa5cd3e01187dd46",
+        "tests/test_fixed_edge_pair_20261019.py": "24852a89d65afeba06a6f4bed9ef37afd6ceb6a457cdef2d8dc9a2109125708c",
+        "tests/test_linear_cache_cost_gate_20261019.py": "403d33087d855c5e5b429b5791492c1ebd8069cbf0e471c6481686c45d599e1e"
+      },
+      "dependency_hashes": {
+        "experiments/analyze_symbolic_closure.py": "128548091c206103fc3604a2cc9896fc715627a9a7067046d845cf01884d38a2",
+        "experiments/closure_checkpoint_identity_20261019.py": "7761a88586bdf4e4e326071654693832339559836737c06ab5189e86082d23ac",
+        "experiments/closure_discovery_benchmarks.py": "5f94f52532ae4808e1e8eeeb4b1c627d138c81e2cdca15767a8f9ed7d8c5d42e",
+        "experiments/closure_discovery_confirmation.py": "43ecf8f1b29231e1b68b452efa7310fcdce305a136e4a5bba54e0fbedff66579",
+        "experiments/closure_discovery_data.py": "df313113242691b5bdcf61d4fa3abc294ae2c8f953260f963a0fe5800aa7373a",
+        "experiments/closure_discovery_export.py": "f07d74aa31f626c087d7108f272f925362cce9926ee7065675e2a197dda145e2",
+        "experiments/closure_discovery_support.py": "4e492f0d4f87abf517c7037efc7a64ebcbcd0693ac8c4884b66a31ee3d81c119",
+        "experiments/closure_expression_identity.py": "5d8666079652166777757d62534252fb61210aae99ad08e3db5d4e83eb073293",
+        "experiments/closure_mechanism_study.py": "6467605e00b20e9cbf31e2db3bc860f48dafaf4a8515b8cfa232f0dadf97a5cb",
+        "experiments/closure_training_runtime.py": "80aeff279bf0e1e498205fcb7b591a680b721643efc98e0e4e993d61d8ac90b0",
+        "experiments/compare_physical_modes.py": "0688c0c69778399524065152917c01de13348a4a55c414731454dd9af5c0f3ce",
+        "experiments/discover_closure.py": "86b0ec6ef87a243b5dc8c5b1cdedb67eebe1b0334494c875459b78e9ee15500b",
+        "experiments/evaluate_l1_latent.py": "5882dc6814f13ef4210d94db07fd87ca88d8130aa984dbda7757c53088662314",
+        "experiments/evaluate_local_memory_0098.py": "386a8cbd964618602fe7298d6a20c47ec876e9ad70e011c96f3f55e6c44d5034",
+        "experiments/evaluate_long_latent.py": "8a52a2c8138d768cd636a1aef8a07fd871b86ed62f78e8785e0d069066ac890c",
+        "experiments/evaluate_structured_rom.py": "38aacbf79e61081449adcb254d99f0556f65021d2bd5b8d46cf17c5d757e01d9",
+        "experiments/fixed_edge_pair_20261019.py": "4412777530c9a40f80641faf431991e2c62f38194c15023c8d6f1417ce4c14f9",
+        "experiments/generate_private_dataset.py": "239b574f7b17b26c2c315f5be6b7aebaf05e82e1c91c61b32d48135caf452ab8",
+        "experiments/joint_training_grid_0100.py": "9619bf4647041d0db1cce2c9ae3c79ee18507a00af4f8396e70052e6b65c9d6e",
+        "experiments/linear_cache_cost_gate_20261019.py": "e4027b2be8cb0649d89fb97e75f81997bf1a0486907303ba103a632cd3e01fba",
+        "experiments/linear_cache_runtime_20261019.py": "323406ebb23a4e55d2a64108807e5a850ad1c38e9b3a23622bf4d855d6bcdc3f",
+        "experiments/local_memory_rom_0098.py": "cb73ce129c1c095f8c5ac1288a725b072144bcd7978d4711e44afb4ea075636d",
+        "experiments/monitor_joint_adequacy_0099.py": "344a78d946de959ecd43920ec3627557d2bb006a704c135a19a542a9136a4f59",
+        "experiments/run_private_m2.py": "25698fe4fa77b35982b85d1fa84b5e2ec0c9ab728d095e951b8ac0fe9479f972",
+        "experiments/shared_closure_rom_0101.py": "2d94589a5f387591468cad928da93ed2e5400c748c8fb4a09748953af09b63d5",
+        "experiments/structure_grammar.py": "0325a0a1f50d7f22510cd3d7da5dbc28d8c3e186ea7288e7717f7a3a8704d28d",
+        "experiments/structured_rom.py": "921b6dedb2e8b5218c5f4ec84fc6a35ac4844ebc0e310f8a6639bb0c7bcf88f3",
+        "experiments/summarize_train_local_memory_0098.py": "468fc24781df3ce8f184226f125add7becf1e8b573ae074fc89846c1fe99e7a1",
+        "experiments/symbolic_closure_rom.py": "01bd836ef2e06b0fbca40065f26cb98a23f8042a3328d86b265bfb114940dbc9",
+        "experiments/train_closure.py": "3fbd5a0d0256887708994a574996cee4f883a2d88fd392891b8d3fbe0875e002",
+        "experiments/train_joint_adequacy_0099.py": "5326f66fe729a35f59871497f4b1e3151fd67f3e8340afa882b561fde285ef10",
+        "experiments/train_joint_campaign.py": "0914e609f76cacd27632a0c52081da836a39456121cfea3c4633cbaf0c03593b",
+        "experiments/train_joint_latent.py": "57dc52517897608572afe2cd5028f0c8ede540d524c99f8366426fe685b22735",
+        "experiments/train_joint_numerical_pair_0100.py": "4d10ab86398fd43257f4249cdb2641799197abbb303e006457a92617d6b04ed5",
+        "experiments/train_local_memory_0098.py": "e73de06b9a1d66b05de4bb1d29504a19cc7b486bc3694ddd341d451f403ae667",
+        "experiments/train_long_latent.py": "7e8c2a93a875392814d8972386e5561ffec587d37cc33b8b46e0de663ae98ecc",
+        "experiments/train_structured_rom.py": "6afa2186411a0a23ea5f5d62f9cfeacb3192c6023f62676c7c134ef9bb365482",
+        "experiments/train_teacher_latent.py": "808671ddd94b483e440cd6ec69d28657e90a4b643ef633050903c2aec18b90c9",
+        "reports/astra6_fixed_edge_pair_20261019.md": "8bea72c5d6c0ca90fe716cce0740f15c77ec059872b26562e88fac2d1023d963",
+        "src/kiki/__init__.py": "3e5ee9a8509b412c44e2f556e44103296523a44ad798edea8456ee8570d8c125",
+        "src/kiki/data/__init__.py": "050a5a8225e7c5968a298457e8564522ff81a7ed509ac14956038294ac91b4c7",
+        "src/kiki/data/adapter.py": "307840683d775347c322c107f1e47500105be4b35c8a09d07d282c4baead3158",
+        "src/kiki/data/contracts.py": "3a027f8b7cafc69877e03779894370548d48f1b507f5c46a39e3f7edf79e691b",
+        "src/kiki/data/private_dataset.py": "615ec905047a81f681620d3f214b6dfa60be3c78af7059de21b232c593d941ee",
+        "src/kiki/data/schema.py": "0fcd4c51f734ea20f5cd62504598cc407eae9685592b7096aaad6b3dc131bfdb",
+        "src/kiki/data/splits.py": "78fabed80b331063d185181b02e7ec9f7d01fe90c0a121877ed6b2d659f03ce8",
+        "src/kiki/data/store.py": "e408c61994932b0bd09f6c7a27780d56c56bda60ee8c13f07e2bf08002114524",
+        "src/kiki/models/__init__.py": "c856dd0831a9dfa06af3b518e85deb8a6c2f0696b35a38942a8aff0d0f52530c",
+        "src/kiki/models/base.py": "8fbc96338574ce16d702b17b909a1f4c9b702fa28bdf15f228488594d681f5cd",
+        "src/kiki/models/private_pm.py": "adea9a1675cb9bdbd955b6fdf881bed5da915ba431e9d61a57fc33aa29606841",
+        "src/kiki/models/private_rom.py": "eced34511e8ba726ed3ee06f58c0826f26957bb27feecadc30c4cf44ba6062e4",
+        "src/kiki/physics/__init__.py": "de2c10aed81f501ceaaedee6361bc225d242b72f7d5b3c97ffcf57d77c03d5e4",
+        "src/kiki/physics/aggregation.py": "4c9aa927f4278404f11b43baa62163e7112c8c02ae97984fca454daa613336ab",
+        "src/kiki/physics/constants.py": "5fa4a9a9c45f68b6aff57ab3b3f9ee1156295fde7bd4fe047c5fadc025ad99da",
+        "src/kiki/physics/coordinates.py": "9a738d46647ab631407f8e4b5814fe0a7868c717e31fda13963861c10e373089",
+        "src/kiki/physics/graph.py": "724dd978e7627ccceec0ad94067eef304c8e5562a378641516d544e1d8ca8dfe",
+        "src/kiki/physics/units.py": "11f6e09ef577a1c09a7996743deaef1530a36ecf26be82edaa5cd3e01187dd46",
+        "tests/test_fixed_edge_pair_20261019.py": "24852a89d65afeba06a6f4bed9ef37afd6ceb6a457cdef2d8dc9a2109125708c",
+        "tests/test_linear_cache_cost_gate_20261019.py": "403d33087d855c5e5b429b5791492c1ebd8069cbf0e471c6481686c45d599e1e"
+      },
+      "native_receipts": {
+        "nonzero_exit": 7,
+        "normal_seconds": 0.0962065999628976,
+        "timeout_owned_tree_cleaned": true,
+        "timeout_seconds": 4.414628900005482
+      },
+      "owned_tree": {
+        "owned_tree_cleaned": true
+      },
+      "real_train_read": false,
+      "sampler_checkpoint": {
+        "adam_groups": 3,
+        "checkpoint_step": 0,
+        "source_and_corruption_rejected": true,
+        "steps": [
+          1
+        ],
+        "updates_equal": true
+      },
+      "scope": "synthetic new-loop/checkpoint/metric QA",
+      "status": "PASS",
+      "test_read": false,
+      "val_read": false
+    },
+    "native_receipt": {
+      "start": "2026-10-19T19:59:23.8027685+08:00",
+      "exit_code": 0,
+      "output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\fixed_edge_pair01\\qa02",
+      "source_commit": "47ba6f341886aeb4cc235d3c25a9b16bc8f4a24b",
+      "cap_seconds": 600,
+      "includes_child_cost_once": true,
+      "timeout": false,
+      "native_supervisor_pid": 86856,
+      "mode": "qa",
+      "native_receipt_complete": true,
+      "status": "COMPLETED",
+      "seconds": 24.74585,
+      "end": "2026-10-19T19:59:48.5763122+08:00",
+      "launcher_pid": 86056,
+      "cleanup": null,
+      "actual_worker_pid": 75624
+    },
+    "result_sha256": "09389e6fb28c389de0eb226b3554c37e2ddef3dd77eabacf61163272ff516774",
+    "source_commit": "47ba6f341886aeb4cc235d3c25a9b16bc8f4a24b"
+  },
+  "source_frozen_commit": "47ba6f341886aeb4cc235d3c25a9b16bc8f4a24b",
+  "root_decision": "Matching actual synthetic QA PASS and independent source review admit preregistered fixed scientific queue; model adoption none",
+  "scientific_native_receipt_pending": false,
+  "campaign_native_running": {
+    "launcher_pid": 59512,
+    "start": "2026-10-19T20:01:51.7249664+08:00",
+    "mode": "campaign",
+    "native_supervisor_pid": 58916,
+    "cap_seconds": 69000,
+    "source_commit": "47ba6f341886aeb4cc235d3c25a9b16bc8f4a24b",
+    "output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\fixed_edge_pair01\\campaign01"
+  },
+  "campaign_actual_queue_pid": 87020,
+  "first_model_actual_worker_pid": 61800,
+  "first_model_progress_snapshot": {
+    "identity_sha256": "5113fae28ba1c7ec7cea78304d72b729ad2ea94a251768e04351223bfa3fa6f5",
+    "last_completed_update": 17,
+    "pid": 61800,
+    "seed": 6101,
+    "status": "RUNNING",
+    "structure": "full8"
+  },
+  "first_model_step0": {
+    "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\fixed_edge_pair01\\campaign01\\6101_full8\\checkpoints\\step000000",
+    "model_sha256": "93fcc0024acec78b91a748e02bd3a808edf7bb108d9539422ee8f2bd157e3938",
+    "training_sha256": "eb1b78f8df3fd3b1ecb2153ee838211a210e78b881642a372881a7a93384b880",
+    "checkpoint_metadata_sha256": "e3c4fb72e868a5d50a3c71efe17e3e57bc30314c2a4066ad1462bd93bbeef6de",
+    "step": 0
+  },
+  "frozen_code_sha256": "c62eaf3ce696bab10546636c2ca44f0e3a1794f27681ef260a97cf4e827364a2",
+  "stage_identity_sha256": "c53902f0c522e7e5a18fd1b481e4b325a1168d048dbd6d03b613ff44a80953f3",
+  "qa_pass_archive_commit": "3c6dbb3bf8d27bf50322df7a0fb0188379ed0f01",
+  "scientific_source_immutable": true,
+  "remaining_actual_cost": "pending complete native receipts; entire registered allocation remains reserved",
+  "registered_milestones_file": "results/fixed_edge_pair_20261019/milestones.json",
+  "registered_milestones_sha256": "c9f8e565c62401a2e21a5eb4fba8e4ddce4e3b607973d91a0f806cc6a82b7115",
+  "registered_milestones_completed": [
+    {
+      "seed": 6101,
+      "structure": "full8",
+      "step": 256
+    },
+    {
+      "seed": 6101,
+      "structure": "full8",
+      "step": 512
+    },
+    {
+      "seed": 6101,
+      "structure": "full8",
+      "step": 1024
+    },
+    {
+      "seed": 6101,
+      "structure": "delete7",
+      "step": 256
+    },
+    {
+      "seed": 6101,
+      "structure": "delete7",
+      "step": 512
+    },
+    {
+      "seed": 6101,
+      "structure": "delete7",
+      "step": 1024
+    },
+    {
+      "seed": 6102,
+      "structure": "full8",
+      "step": 256
+    },
+    {
+      "seed": 6102,
+      "structure": "full8",
+      "step": 512
+    },
+    {
+      "seed": 6102,
+      "structure": "full8",
+      "step": 1024
+    },
+    {
+      "seed": 6102,
+      "structure": "delete7",
+      "step": 256
+    },
+    {
+      "seed": 6102,
+      "structure": "delete7",
+      "step": 512
+    },
+    {
+      "seed": 6102,
+      "structure": "delete7",
+      "step": 1024
+    },
+    {
+      "seed": 6103,
+      "structure": "full8",
+      "step": 256
+    },
+    {
+      "seed": 6103,
+      "structure": "full8",
+      "step": 512
+    },
+    {
+      "seed": 6103,
+      "structure": "full8",
+      "step": 1024
+    },
+    {
+      "seed": 6103,
+      "structure": "delete7",
+      "step": 256
+    },
+    {
+      "seed": 6103,
+      "structure": "delete7",
+      "step": 512
+    },
+    {
+      "seed": 6103,
+      "structure": "delete7",
+      "step": 1024
+    }
+  ],
+  "source_audit_count": 59,
+  "source_audit_mismatches": [],
+  "last_scientific_milestone_observed_at": "2026-10-19T17:12:34.979021+00:00",
+  "completed_model_receipts": [
+    {
+      "seed": 6101,
+      "structure": "full8",
+      "receipt": {
+        "actual_worker_pid": 61800,
+        "cleanup": {},
+        "command": [
+          "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+          "E:\\03-nn_Transfer_Func\\kiki\\experiments\\fixed_edge_pair_20261019.py",
+          "worker",
+          "--output",
+          "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\fixed_edge_pair01\\campaign01",
+          "--seed",
+          "6101",
+          "--structure",
+          "full8",
+          "--max-seconds",
+          "11992.0"
+        ],
+        "exit_code": 0,
+        "includes_child_cost_once": true,
+        "launcher_pid": 65324,
+        "native_receipt_complete": true,
+        "seconds": 4195.512856799993,
+        "started_qpc": 269071.690308,
+        "started_unix": 1792411313.8695624,
+        "status": "COMPLETED",
+        "timed_out": false
+      },
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\fixed_edge_pair01\\campaign01\\6101_full8\\native_initial\\native.json",
+      "sha256": "b5b85979b5b3751592576a1c02981569b6899fa1872fe5aae2cef8140a3919f0"
+    },
+    {
+      "seed": 6101,
+      "structure": "delete7",
+      "receipt": {
+        "actual_worker_pid": 78640,
+        "cleanup": {},
+        "command": [
+          "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+          "E:\\03-nn_Transfer_Func\\kiki\\experiments\\fixed_edge_pair_20261019.py",
+          "worker",
+          "--output",
+          "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\fixed_edge_pair01\\campaign01",
+          "--seed",
+          "6101",
+          "--structure",
+          "delete7",
+          "--max-seconds",
+          "9992.0"
+        ],
+        "exit_code": 0,
+        "includes_child_cost_once": true,
+        "launcher_pid": 80984,
+        "native_receipt_complete": true,
+        "seconds": 3544.626795899996,
+        "started_qpc": 273268.142503,
+        "started_unix": 1792415510.322065,
+        "status": "COMPLETED",
+        "timed_out": false
+      },
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\fixed_edge_pair01\\campaign01\\6101_delete7\\native_initial\\native.json",
+      "sha256": "af8e35040b3ac47fca65d83d3ef5a3b725477562b5a67f25a4696ee61e030a30"
+    },
+    {
+      "seed": 6102,
+      "structure": "full8",
+      "receipt": {
+        "actual_worker_pid": 47140,
+        "cleanup": {},
+        "command": [
+          "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+          "E:\\03-nn_Transfer_Func\\kiki\\experiments\\fixed_edge_pair_20261019.py",
+          "worker",
+          "--output",
+          "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\fixed_edge_pair01\\campaign01",
+          "--seed",
+          "6102",
+          "--structure",
+          "full8",
+          "--max-seconds",
+          "11992.0"
+        ],
+        "exit_code": 0,
+        "includes_child_cost_once": true,
+        "launcher_pid": 84832,
+        "native_receipt_complete": true,
+        "seconds": 3087.5840517999604,
+        "started_qpc": 276813.7462099,
+        "started_unix": 1792419055.9258149,
+        "status": "COMPLETED",
+        "timed_out": false
+      },
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\fixed_edge_pair01\\campaign01\\6102_full8\\native_initial\\native.json",
+      "sha256": "6bda535e5bcc338c7b580bfd353c337e65d64906c60d994dd6f67ab1be0d768d"
+    },
+    {
+      "seed": 6102,
+      "structure": "delete7",
+      "receipt": {
+        "actual_worker_pid": 89828,
+        "cleanup": {},
+        "command": [
+          "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+          "E:\\03-nn_Transfer_Func\\kiki\\experiments\\fixed_edge_pair_20261019.py",
+          "worker",
+          "--output",
+          "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\fixed_edge_pair01\\campaign01",
+          "--seed",
+          "6102",
+          "--structure",
+          "delete7",
+          "--max-seconds",
+          "9992.0"
+        ],
+        "exit_code": 0,
+        "includes_child_cost_once": true,
+        "launcher_pid": 89332,
+        "native_receipt_complete": true,
+        "seconds": 2395.2217766999966,
+        "started_qpc": 279902.2748896,
+        "started_unix": 1792422144.4546437,
+        "status": "COMPLETED",
+        "timed_out": false
+      },
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\fixed_edge_pair01\\campaign01\\6102_delete7\\native_initial\\native.json",
+      "sha256": "b43efe406f6ba218dc1e1b0d272e325dfb71121f3a257bfa9d7877a22d84b466"
+    },
+    {
+      "seed": 6103,
+      "structure": "full8",
+      "receipt": {
+        "actual_worker_pid": 86968,
+        "cleanup": {},
+        "command": [
+          "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+          "E:\\03-nn_Transfer_Func\\kiki\\experiments\\fixed_edge_pair_20261019.py",
+          "worker",
+          "--output",
+          "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\fixed_edge_pair01\\campaign01",
+          "--seed",
+          "6103",
+          "--structure",
+          "full8",
+          "--max-seconds",
+          "11992.0"
+        ],
+        "exit_code": 0,
+        "includes_child_cost_once": true,
+        "launcher_pid": 64312,
+        "native_receipt_complete": true,
+        "seconds": 2833.659242399968,
+        "started_qpc": 282298.4209894,
+        "started_unix": 1792424540.5997531,
+        "status": "COMPLETED",
+        "timed_out": false
+      },
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\fixed_edge_pair01\\campaign01\\6103_full8\\native_initial\\native.json",
+      "sha256": "45c005ea27221cb1b64d2f57639cc71bc43c2ca13131f0111272bb0249ae4157"
+    },
+    {
+      "seed": 6103,
+      "structure": "delete7",
+      "receipt": {
+        "actual_worker_pid": 79844,
+        "cleanup": {},
+        "command": [
+          "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+          "E:\\03-nn_Transfer_Func\\kiki\\experiments\\fixed_edge_pair_20261019.py",
+          "worker",
+          "--output",
+          "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\fixed_edge_pair01\\campaign01",
+          "--seed",
+          "6103",
+          "--structure",
+          "delete7",
+          "--max-seconds",
+          "9992.0"
+        ],
+        "exit_code": 0,
+        "includes_child_cost_once": true,
+        "launcher_pid": 76444,
+        "native_receipt_complete": true,
+        "seconds": 2387.492993599968,
+        "started_qpc": 285133.012484,
+        "started_unix": 1792427375.1923113,
+        "status": "COMPLETED",
+        "timed_out": false
+      },
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\fixed_edge_pair01\\campaign01\\6103_delete7\\native_initial\\native.json",
+      "sha256": "b0692ec3e993a7c29f838beae780a3da8fc68bedbe1c39da65225b02cd47aaf8"
+    }
+  ],
+  "current_active_model": null,
+  "completed_model_native_seconds": 18444.097717199882,
+  "numerically_unresolved_milestones": [
+    {
+      "seed": 6102,
+      "structure": "delete7",
+      "step": 512,
+      "event_ids": [
+        "expansion_0094"
+      ],
+      "official_primary": null
+    }
+  ],
+  "scientific_native_receipt": {
+    "native_receipt_complete": true,
+    "source_commit": "47ba6f341886aeb4cc235d3c25a9b16bc8f4a24b",
+    "start": "2026-10-19T20:01:51.7249664+08:00",
+    "timeout": false,
+    "exit_code": 0,
+    "seconds": 18460.3930355,
+    "cleanup": null,
+    "mode": "campaign",
+    "end": "2026-10-20T01:09:32.1870029+08:00",
+    "status": "COMPLETED",
+    "includes_child_cost_once": true,
+    "launcher_pid": 59512,
+    "output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\fixed_edge_pair01\\campaign01",
+    "cap_seconds": 69000,
+    "native_supervisor_pid": 58916,
+    "actual_worker_pid": 87020
+  },
+  "scientific_native_receipt_sha256": "cf03ba939563f27c95159253cd117e02a04986cb0ed14677a2ebe4bba3f2f8f6",
+  "scientific_charged_seconds": 18460.3930355,
+  "analysis_and_queue_charged_seconds": 16.295318300119106,
+  "recovery_used": false,
+  "final_evidence": "results/fixed_edge_pair_20261019/final.json",
+  "final_evidence_sha256": "a14ad9d78aff6f1f03f5a105db6e3030eaffcc0bab2a23006a04c5c9833c2ae8",
+  "decision": "science completed within fixed train scope; default model unchanged; runner integration withheld due actual step0 recovery wiring defect; subsequent engineering requires fresh preregistration",
+  "total_stage_charged_or_held_seconds": 20299.346220400002,
+  "unspent_allocation_cancelled_seconds": 51700.6537796
+}
