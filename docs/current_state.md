@@ -1,8 +1,8 @@
 # 当前研究状态
 
-任务状态：**RUNNING**。工作目录E:/03-nn_Transfer_Func/kiki。原生回执工程已一次验收通过，root正在选择性PR合并；当前没有科学作业，旧P3不续跑。原test关闭、TASK4暂停，默认模型不变，full8/delete7均仅研究候选。
+任务状态：**RUNNING**。工作目录E:/03-nn_Transfer_Func/kiki。原生回执工程已一次验收通过，已通过PR12合并核实，root正在选择下一有限科学入口；当前没有科学作业，旧P3不续跑。原test关闭、TASK4暂停，默认模型不变，full8/delete7均仅研究候选。
 
-**当前工程进展**：[实际Astra6方案](../reports/astra6_native_receipt_20261020.md)、[root协议](../reports/native_receipt_20261020_protocol.md)、[结论](../reports/native_receipt_20261020_conclusion.md)、[证据](../results/native_receipt_20261020/summary.json)。新Process/Handle监督通过真实快速exit0、快速exit7、timeout tree三个固定案例，各一次；QA外层实际exit0，15.2062228进程秒，四源哈希未变，launcher81272/worker77060及全部自有子树已退出。来源61db23be9524238409cbf9eb7a46c6381dd93280，路径private_data/closure_mechanism_20261019/repair/native_receipt01/qa01，不覆盖、不重跑。下一实际动作：核对有限PR及预期head并合并，再实际调用Astra6审议尚未执行的固定D；本工程不授予科学执行或长运行已合格结论。
+**当前工程进展**：[实际Astra6方案](../reports/astra6_native_receipt_20261020.md)、[root协议](../reports/native_receipt_20261020_protocol.md)、[结论](../reports/native_receipt_20261020_conclusion.md)、[证据](../results/native_receipt_20261020/summary.json)。新Process/Handle监督通过真实快速exit0、快速exit7、timeout tree三个固定案例，各一次；QA外层实际exit0，15.2062228进程秒，四源哈希未变，launcher81272/worker77060及全部自有子树已退出。来源61db23be9524238409cbf9eb7a46c6381dd93280，路径private_data/closure_mechanism_20261019/repair/native_receipt01/qa01，不覆盖、不重跑。下一实际动作：实际调用Astra6审议尚未执行的固定D；本工程不授予科学执行或长运行已合格结论。
 
 **P3原分歧轮已关闭未决**：[结论](../reports/p3_disagreement_20261020_conclusion.md)、[证据](../results/p3_disagreement_20261020/summary.json)，归档d874c8ae96b280590facc0e2306dbcc0bd2ea3fd。唯一7项合成测试PASS，但原生退出码缺失，3.4262628秒；没有真实推断/D/FOM或模型采用，不重跑原QA。首次准备违规整文件哈希读取历史HDF5含受限字节，未反序列化或评分，[违规记录](../reports/p3_disagreement_20261020_preparation_incident.md)及拒绝manifest保留。修正train_only准备已独立审查。后续工程成功不追改原exitnull或读取违规。
 
@@ -12,4 +12,4 @@
 
 P1未知结构发现未通过，真实生成搜索关闭；原18组GRU512已完成6085.6472446秒，不重跑。构造顺序/tanh/saturation/真q0及旧费用gate分类不改。短历史P0双步长真提前停止probe已合格，first_record_plus_100ms（示例切除后0.1001s预测起点），不等于完整事件资格。新FOM、val确认、P4各须原准入；父余额不自动授权新分支。
 
-已合并工程PR8/9/10/11，最后远端main51370332dd68054028fdeeb86d967c8cc5b72ffb。PR11是未来step0恢复修正及P2专用runner工程集成，非模型采用，原恢复缺陷/QA历史保留。本地HEAD a95101337855ed3fc1f4abfd710982443d5564cb、index SHA256 82b060840d50257c41df55e15805fa106f29117cac8bf1868a6b83e490e2df93和用户未提交工作保持，仅GitData选择性归档；无reset/强推/删除证据。
+已合并工程PR8/9/10/11/12，最后远端main8c523a24fdec26c03d5a0a442e543f72d512e15e。PR11是未来step0恢复修正及P2专用runner工程集成，非模型采用，原恢复缺陷/QA历史保留。本地HEAD a95101337855ed3fc1f4abfd710982443d5564cb、index SHA256 82b060840d50257c41df55e15805fa106f29117cac8bf1868a6b83e490e2df93和用户未提交工作保持，仅GitData选择性归档；无reset/强推/删除证据。
