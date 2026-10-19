@@ -274,7 +274,7 @@
   "scientific_source_immutable": true,
   "remaining_actual_cost": "pending complete native receipts; entire registered allocation remains reserved",
   "registered_milestones_file": "results/fixed_edge_pair_20261019/milestones.json",
-  "registered_milestones_sha256": "0cdf101427823f7b5b5861098d1759a0a8eceef34898fe950f8fa6a012bde6f3",
+  "registered_milestones_sha256": "272a499a8c998f7f33a718e00177a3d77669e39c8f61a323597325fabb5dc202",
   "registered_milestones_completed": [
     {
       "seed": 6101,
@@ -320,11 +320,21 @@
       "seed": 6102,
       "structure": "full8",
       "step": 1024
+    },
+    {
+      "seed": 6102,
+      "structure": "delete7",
+      "step": 256
+    },
+    {
+      "seed": 6102,
+      "structure": "delete7",
+      "step": 512
     }
   ],
   "source_audit_count": 59,
   "source_audit_mismatches": [],
-  "last_scientific_milestone_observed_at": "2026-10-19T15:07:43.371953+00:00",
+  "last_scientific_milestone_observed_at": "2026-10-19T15:37:56.978178+00:00",
   "completed_model_receipts": [
     {
       "seed": 6101,
@@ -431,12 +441,23 @@
     "actual_worker_pid": 89828,
     "progress_snapshot": {
       "identity_sha256": "98759c8af3826fcc4918d7ca82c13081bf940a028c4f393de76fc1c894ebbf2d",
-      "last_completed_update": 156,
+      "last_completed_update": 921,
       "pid": 89828,
       "seed": 6102,
       "status": "RUNNING",
       "structure": "delete7"
     }
   },
-  "completed_model_native_seconds": 10827.72370449995
+  "completed_model_native_seconds": 10827.72370449995,
+  "numerically_unresolved_milestones": [
+    {
+      "seed": 6102,
+      "structure": "delete7",
+      "step": 512,
+      "event_ids": [
+        "expansion_0094"
+      ],
+      "official_primary": null
+    }
+  ]
 }
