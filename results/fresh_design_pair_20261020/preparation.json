@@ -1,5 +1,5 @@
 {
-  "status": "QA_AND_DESIGN_PASS_READY_FIRST_SHORT_FOM",
+  "status": "SHORT_FOM_COMPLETE_READY_REGISTERED_SCORE",
   "actual_planning_model": "gpt-6-astra",
   "code_source_commit": "4ae86576e4cdae1fdca912b0f36172331ee60f10",
   "registered_P3_seconds": 40000,
@@ -120,6 +120,33 @@
         ],
         "arguments_line": "-m experiments.fresh_design_pair_20261020 acquire --stage short --campaign E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\campaign01 --output E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\stages\\short01 --wrapper-output E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\stages\\short01_wrapper --source-manifest E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\campaign01\\source_manifest.json --source-commit 4ae86576e4cdae1fdca912b0f36172331ee60f10 --max-seconds 1440"
       }
+    },
+    "score01": {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\commands\\score01.json",
+      "sha256": "fe4d08786c39d331b7ec623a5df4cdcab898b1db7f2578f99fcd53006f45172f",
+      "command": {
+        "executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+        "arguments": [
+          "-m",
+          "experiments.fresh_design_pair_20261020",
+          "acquire",
+          "--stage",
+          "score",
+          "--campaign",
+          "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\campaign01",
+          "--output",
+          "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\stages\\score01",
+          "--wrapper-output",
+          "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\stages\\score01_wrapper",
+          "--source-manifest",
+          "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\campaign01\\source_manifest.json",
+          "--source-commit",
+          "4ae86576e4cdae1fdca912b0f36172331ee60f10",
+          "--max-seconds",
+          "690"
+        ],
+        "arguments_line": "-m experiments.fresh_design_pair_20261020 acquire --stage score --campaign E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\campaign01 --output E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\stages\\score01 --wrapper-output E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\stages\\score01_wrapper --source-manifest E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\campaign01\\source_manifest.json --source-commit 4ae86576e4cdae1fdca912b0f36172331ee60f10 --max-seconds 690"
+      }
     }
   },
   "launcher_CLI_path_style": "relative intentionally; all worker JSON paths absolute; actual native receipt must prove canonical forwarding",
@@ -137,5 +164,9 @@
   "short_binding_sha256": "8311db9f627a7d847ea836c55d55814b64452b6ab753ddeb16a7941c0f54078b",
   "short_explicit_bound_files": 240,
   "design_sha256": "32fe260b0875d9b711e5ecaa46200d24146fe7af6e6e949dc6c2e1541910b32a",
-  "val_conditions_sha256": "2101bb4b2c617922c397a792d109b485c551b567654a9bbaf74647c2da600db4"
+  "val_conditions_sha256": "2101bb4b2c617922c397a792d109b485c551b567654a9bbaf74647c2da600db4",
+  "short_native_seconds": 394.8537176999962,
+  "score_binding_path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\bindings\\score01.json",
+  "score_binding_sha256": "7499203f86d9f51c2a2e6c7e0e51a1f3cc65171aa228d2befd92162a6fe95fb8",
+  "score_explicit_bound_files": 622
 }
