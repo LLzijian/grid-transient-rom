@@ -1,5 +1,5 @@
 {
-  "status": "FROZEN_STATIC_ADMISSION_PASS_NOT_EXECUTED",
+  "status": "CLOSED_ENGINEERING_ACCEPTED_PENDING_PR",
   "planning_model": "gpt-6-astra",
   "planning_agent": "/root/astra6_after_fixed_pair",
   "protocol_commit": "8627f4220e87e10a4f133855b0f69d89d915d8ca",
@@ -12,7 +12,7 @@
     "attempt_limit": 1,
     "retry_allowed": false
   },
-  "qa_attempts": 0,
+  "qa_attempts": 1,
   "science_retrained": false,
   "val_read": false,
   "test_read": false,
@@ -100,5 +100,207 @@
     "identity_corruption_unsafe",
     "recovery_step50",
     "native_receipts"
-  ]
+  ],
+  "qa_source_commit": "94ccfd0e1a2fa408032bed715123958c44ab33f1",
+  "qa_native_receipt": {
+    "error": null,
+    "start": "2026-10-20T01:34:12.7054212+08:00",
+    "seconds": 57.5088199,
+    "cap_seconds": 1200,
+    "status": "COMPLETED",
+    "end": "2026-10-20T01:35:10.2488915+08:00",
+    "launcher_pid": 87848,
+    "actual_worker_pid": 26332,
+    "native_supervisor_pid": 53312,
+    "exit_code": 0,
+    "cleanup": null,
+    "timeout": false,
+    "includes_child_cost_once": true,
+    "output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\repair\\worker_resume01\\qa01",
+    "source_commit": "94ccfd0e1a2fa408032bed715123958c44ab33f1",
+    "native_receipt_complete": true
+  },
+  "qa_native_receipt_path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\repair\\worker_resume01\\qa01.native.receipt.json",
+  "qa_native_receipt_sha256": "5424c0f79a304d06fcdfd0e15b787fb0f4fb63a8c877affc7f272d8f11f73f92",
+  "qa_result": {
+    "status": "PASS",
+    "case_summaries": {
+      "fresh_step0": {
+        "status": "PASS"
+      },
+      "identity_corruption_unsafe": {
+        "status": "PASS",
+        "results": {
+          "corrupt_model.json": {
+            "error": "ValueError('checkpoint file hash changed')",
+            "rejected": true
+          },
+          "corrupt_training.pt": {
+            "error": "ValueError('checkpoint file hash changed')",
+            "rejected": true
+          },
+          "unsafe_checkpoint": {
+            "error": "FloatingPointError('unsafe state cannot publish a checkpoint')",
+            "rejected": true
+          },
+          "unsafe_update50": {
+            "error": "FloatingPointError('synthetic unsafe update at safe boundary 50')",
+            "rejected": true
+          },
+          "wrong_identity": {
+            "error": "ValueError('typed source, train, configuration or code identity changed')",
+            "rejected": true
+          }
+        },
+        "latest_unchanged": true
+      },
+      "legacy_negative_control": {
+        "status": "PASS",
+        "expected_actual_rejection": "ValueError('cannot overwrite the active immutable checkpoint')",
+        "source_sha256": "4412777530c9a40f80641faf431991e2c62f38194c15023c8d6f1417ce4c14f9",
+        "step0_unchanged": true
+      },
+      "native_receipts": {
+        "status": "PASS",
+        "nonzero_exit": 7,
+        "normal_seconds": 0.13127509999321774,
+        "timeout_owned_tree_cleaned": true,
+        "timeout_seconds": 4.47656039998401
+      },
+      "recovery_step50": {
+        "status": "PASS",
+        "safe_step": 50,
+        "target": 51,
+        "endpoint": 52,
+        "replayed_steps": 1,
+        "step0_hashes_unchanged": {
+          "checkpoint.json": "0301d141d9b6ac307f4b00505b7ec027eea2a68c073ddb8bfa66d25d229fdc1c",
+          "model.json": "f89f47fb70e3d70f1778e0467547c4da6e74c15456ac647c470c400e22d21eb2",
+          "training.pt": "93f005bf5312a94a44f0d3e469692835e01324b5b2c7afc158668176da4701f4"
+        },
+        "model_adam_rng_coverage_trace_equal": true,
+        "recovery_train_calls": [
+          {
+            "end": 51,
+            "save_initial": false,
+            "start": 50
+          },
+          {
+            "end": 52,
+            "save_initial": false,
+            "start": 51
+          }
+        ],
+        "restore_records": [
+          {
+            "changed": false,
+            "step": 50
+          }
+        ],
+        "recovery_marker": {
+          "completed_qpc": 289061.2623003,
+          "completed_unix": 1792431303.441833,
+          "replayed_steps": 1,
+          "seconds": 1.3994029000168666,
+          "status": "COMPLETED"
+        }
+      },
+      "recovery_target0": {
+        "status": "PASS",
+        "safe_step": 0,
+        "target": 0,
+        "endpoint": 2,
+        "replayed_steps": 0,
+        "step0_hashes_unchanged": {
+          "checkpoint.json": "0301d141d9b6ac307f4b00505b7ec027eea2a68c073ddb8bfa66d25d229fdc1c",
+          "model.json": "f89f47fb70e3d70f1778e0467547c4da6e74c15456ac647c470c400e22d21eb2",
+          "training.pt": "93f005bf5312a94a44f0d3e469692835e01324b5b2c7afc158668176da4701f4"
+        },
+        "model_adam_rng_coverage_trace_equal": true,
+        "recovery_train_calls": [
+          {
+            "end": 2,
+            "save_initial": false,
+            "start": 0
+          }
+        ],
+        "restore_records": [
+          {
+            "changed": false,
+            "step": 0
+          }
+        ],
+        "recovery_marker": {
+          "completed_qpc": 289041.4307468,
+          "completed_unix": 1792431283.6106937,
+          "replayed_steps": 0,
+          "seconds": 0.9739871999481693,
+          "status": "COMPLETED"
+        }
+      },
+      "recovery_target1": {
+        "status": "PASS",
+        "safe_step": 0,
+        "target": 1,
+        "endpoint": 2,
+        "replayed_steps": 1,
+        "step0_hashes_unchanged": {
+          "checkpoint.json": "0301d141d9b6ac307f4b00505b7ec027eea2a68c073ddb8bfa66d25d229fdc1c",
+          "model.json": "f89f47fb70e3d70f1778e0467547c4da6e74c15456ac647c470c400e22d21eb2",
+          "training.pt": "93f005bf5312a94a44f0d3e469692835e01324b5b2c7afc158668176da4701f4"
+        },
+        "model_adam_rng_coverage_trace_equal": true,
+        "recovery_train_calls": [
+          {
+            "end": 1,
+            "save_initial": false,
+            "start": 0
+          },
+          {
+            "end": 2,
+            "save_initial": false,
+            "start": 1
+          }
+        ],
+        "restore_records": [
+          {
+            "changed": false,
+            "step": 0
+          }
+        ],
+        "recovery_marker": {
+          "completed_qpc": 289048.2437207,
+          "completed_unix": 1792431290.4236348,
+          "replayed_steps": 1,
+          "seconds": 1.446104499977082,
+          "status": "COMPLETED"
+        }
+      }
+    },
+    "scope_limits": [
+      "long-case steps 2..50 use no-model-update stubs; sampling, trace and saves remain real",
+      "real one_update at short steps 1,2 and long steps 1,51,52",
+      "test-only interruption is not scientific interruption evidence",
+      "outer native supervisor owns process-tree cost and hard timeout"
+    ],
+    "source_hashes": {
+      "legacy": "4412777530c9a40f80641faf431991e2c62f38194c15023c8d6f1417ce4c14f9",
+      "qa": "efa100e889f7711c39a02f42ca96fff411b5217e2f4d82706ac5edd522b3a31b",
+      "runner": "6f3194387f13a103a04bd73d27dbe17cde7e786d8617655ba2fff8bf811d72c3",
+      "synthetic_schedule": "0d71b3e2fcbdba6ecba4dad524a9fef5d1b093104a3fc3d4d5af2f1c5607253b",
+      "synthetic_source": "27ee17fe738fc326ad7096029e52953abc4a3ef160af494bcac0ba1ae4ded273"
+    },
+    "elapsed_process_seconds": 56.386610199988354
+  },
+  "qa_result_path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\repair\\worker_resume01\\qa01\\qa.json",
+  "qa_result_sha256": "9305d487aa23053a446090c63b78c251c2220db38cd7d7ddbcfdfbdf8156557b",
+  "source_audit_count": 64,
+  "source_audit_mismatches": [],
+  "scientific_updates": 0,
+  "scientific_checkpoint_resume_used": false,
+  "independent_result_review": "PASS for scope-limited engineering PR; long steps2..50 are control-flow placeholders, not1024 training validation",
+  "qa_charged_seconds": 57.5088199,
+  "support_held_seconds": 600,
+  "total_charged_or_held_seconds": 657.5088199,
+  "unspent_allocation_cancelled_seconds": 1142.4911801
 }
