@@ -1,0 +1,58 @@
+{
+  "checks.json": {
+    "checks": {
+      "adam_parameters": 16,
+      "device": "cuda:0",
+      "identity_sha256": "f331556f158684e64b03a7d9f0628b7d2eeca58f3044a952c407be0e88e3c19b",
+      "real_data_read": false,
+      "status": "PASS",
+      "synthetic_events": 3,
+      "test_read": false,
+      "tolerance": {
+        "atol": 2e-09,
+        "rtol": 2e-09
+      },
+      "val_read": false
+    },
+    "contract": "closure_checkpoint_identity_20261019",
+    "source_sha256": {
+      "experiments/closure_checkpoint_identity_20261019.py": "7761a88586bdf4e4e326071654693832339559836737c06ab5189e86082d23ac",
+      "experiments/train_closure.py": "3fbd5a0d0256887708994a574996cee4f883a2d88fd392891b8d3fbe0875e002",
+      "tests/test_closure_checkpoint_identity_20261019.py": "d4815ae0dd1988e346ffc1141f7ba9340147038df87f8aa3d57429e8fa2c3f14",
+      "tests/test_closure_training_runtime.py": "096cb6638ffafc20deebd345a24a32f9181a0131e7a60cb0148a0a854af47a7d"
+    }
+  },
+  "receipt.json": {
+    "exit_code": 0,
+    "started": "2026-10-19T17:20:24.2203689+08:00",
+    "supervisor_pid": 81348,
+    "launch_and_child_counted_once": true,
+    "wall_seconds": 34.5852151,
+    "ended": "2026-10-19T17:20:58.8069164+08:00",
+    "source_commit": "ecdc1731cee66c2043b71c1a2416375e2c2ba492",
+    "process_cap_seconds": 300,
+    "launcher_pid": 86968,
+    "timeout": false
+  },
+  "launch.json": {
+    "source_commit": "ecdc1731cee66c2043b71c1a2416375e2c2ba492",
+    "launcher_pid": 86968,
+    "started": "2026-10-19T17:20:24.2203689+08:00",
+    "command": ".venv-gpu/Scripts/python.exe tests/test_closure_checkpoint_identity_20261019.py --output private_data/closure_mechanism_20261019/reserve/checkpoint_identity01/checks.json",
+    "supervisor_pid": 81348
+  },
+  "artifact_sha256": {
+    "private_data/closure_mechanism_20261019/reserve/checkpoint_identity01/checks.json": "7082d435fcb682f92467d8240bc4af13cf3f0b4bc89078fa5d4b81b9183f70b2",
+    "private_data/closure_mechanism_20261019/reserve/checkpoint_identity01/receipt.json": "4252e63f6b4ddddcd0573e22b987b89bf6e33c19039b32aeb38549220bde0d29",
+    "private_data/closure_mechanism_20261019/reserve/checkpoint_identity01/launch.json": "36c960bed18a28b6b16ff0775019612fe281954d58d71c0bfcfc1d65ebc400b9",
+    "private_data/closure_mechanism_20261019/reserve/checkpoint_identity01/stdout.log": "7082d435fcb682f92467d8240bc4af13cf3f0b4bc89078fa5d4b81b9183f70b2",
+    "private_data/closure_mechanism_20261019/reserve/checkpoint_identity01/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "static_review": {
+    "reviewer": "/root/edge_result_challenge",
+    "independent": true,
+    "execution_before_review": false,
+    "accepted": true,
+    "limitations": "synthetic CUDA contract only; old helper/gate unchanged; no P2 admission"
+  }
+}
