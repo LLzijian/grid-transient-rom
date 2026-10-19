@@ -1,0 +1,42 @@
+{
+  "scope": "implementation interruption, not scientific result",
+  "interruption": {
+    "command_line": "\"C:\\Users\\LLLzijian\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" experiments/closure_oracle_q0_20261019.py --output private_data/closure_mechanism_20261019/P1/oracle_q0 --max-seconds 4500",
+    "interrupted_utc": "2026-10-19T02:24:15.2035476Z",
+    "reason": "numpy bool serialization; preserve all checkpoints",
+    "elapsed_seconds": 1444.3631872,
+    "current": "node_5102",
+    "pid": 52876
+  },
+  "original_code_sha256": "44cb9d96f28fb2f39a18565be978cf3d44645a171483e4d25bb7b34de9a81133",
+  "original_dependencies": {
+    "closure_causal_recovery_20261019.py": "85d7a76444738e233f0bc2a632dbe17e5b6f4a528305e7e8cd5ead1f07a02659",
+    "closure_training_runtime.py": "80aeff279bf0e1e498205fcb7b591a680b721643efc98e0e4e993d61d8ac90b0",
+    "symbolic_closure_rom.py": "01bd836ef2e06b0fbca40065f26cb98a23f8042a3328d86b265bfb114940dbc9",
+    "closure_discovery_benchmarks.py": "5f94f52532ae4808e1e8eeeb4b1c627d138c81e2cdca15767a8f9ed7d8c5d42e"
+  },
+  "checkpoints": [
+    {
+      "case": "node_5101",
+      "checkpoint": {
+        "checkpoint": "checkpoint_00512",
+        "updates": 512,
+        "recovery": "explicit whole-run restart only; retain checkpoints and failed attempts"
+      }
+    },
+    {
+      "case": "node_5102",
+      "checkpoint": {
+        "checkpoint": "checkpoint_00032",
+        "updates": 32,
+        "recovery": "explicit whole-run restart only; retain checkpoints and failed attempts"
+      }
+    }
+  ],
+  "error": "prediction_gate numpy boolean not JSON serializable",
+  "failure_path": "private_data\\closure_mechanism_20261019\\P1\\oracle_q0\\node_5101\\failure.json",
+  "previous_execution_seconds": 1444.3631872,
+  "original_execution_cap_seconds": 4500,
+  "remaining_execution_cap_seconds": 3055.6368128,
+  "model_adopted": false
+}
