@@ -1,0 +1,1792 @@
+{
+  "status": "CLOSED_ACTIVE_DESIGN_ADMITTED_ENGINEERING_ACCEPTED_PENDING_PR",
+  "planning_model": "gpt-6-astra",
+  "planning_agent": "/root/astra6_first_disagreement_inference",
+  "protocol_commit": "9fd7488385817c07d2537bf2877cdb0697c70bfe",
+  "prior_verified_main": "8c523a24fdec26c03d5a0a442e543f72d512e15e",
+  "budget": {
+    "category": "P3",
+    "total": 4500,
+    "native_envelope": 3600,
+    "support_held": 900,
+    "retry_allowed": false
+  },
+  "attempts": 1,
+  "qa_repeated": false,
+  "default_model_changed": false,
+  "val_read": false,
+  "test_read": false,
+  "prior_scope_violation_retained": true,
+  "command": {
+    "executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+    "arguments": [
+      "E:\\03-nn_Transfer_Func\\kiki\\experiments\\closure_p3_disagreement_20261020.py",
+      "infer",
+      "--output",
+      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\first_disagreement_inference01\\run01",
+      "--manifest",
+      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\first_disagreement_inference01\\frozen_source.json",
+      "--max-seconds",
+      "3500"
+    ],
+    "arguments_line": "E:\\03-nn_Transfer_Func\\kiki\\experiments\\closure_p3_disagreement_20261020.py infer --output E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\first_disagreement_inference01\\run01 --manifest E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\first_disagreement_inference01\\frozen_source.json --max-seconds 3500"
+  },
+  "base": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\first_disagreement_inference01",
+  "independent_static_review": "PASS final source identity/time/scope wiring; no new QA",
+  "runner_sha256": "76f8ea427470751eeed25f5d852880c750c5ed93c1026dc84ae86207f02a388d",
+  "math_qa_sha256": "edbd2b405095c36bfcb5c7d5ea0cb168bbe006986be2b2b53eef14c1eeeefb11",
+  "manifest_path": "private_data\\closure_mechanism_20261019\\P3\\first_disagreement_inference01\\frozen_source.json",
+  "manifest_sha256": "43fafb7b7a13393ab2350068c4c605ac432f6cfd20ce2f6af70497ae90ea1d5a",
+  "manifest": {
+    "data": {
+      "private_data/closure_discovery_20261017/D/new_data/train/generation.integrity.json": "86e24997316b519bb1475d660b7c2cd5a63409900157a8e786e69e13d549dd9f",
+      "private_data/closure_discovery_20261017/D/new_data/train/generation.json": "18d4f24bd2ea772ca30fc5b4c3fa9fee384707a8b3566f4b4eded5656d994933",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_15dd85eb449e115b_dt0025.json": "b59921cdba52100a004a25421c06a184f53ff53cffb3898acc21927c27b881cd",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_15dd85eb449e115b_dt0025.npz": "fa0fa361c45f0131c6dc5d05daed40d85701cc78a363aea4af220a21e7a7e02b",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_15dd85eb449e115b_dt0050.json": "d45c81eee4d92986908b7b8f2e684c37b3f06633a669c5b3c7039fdc6d8b8105",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_15dd85eb449e115b_dt0050.npz": "bda8331917c6d8a1f672ebe058dd54754fa06bf7e965f3a26a097cfab1e33850",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_1a969dfe17c75d69_dt0025.json": "5795462fc6d8e5841349dabc2595d4e98311d4e3033e9dc6bbc9671c074a5c29",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_1a969dfe17c75d69_dt0025.npz": "db4b003cd2e20eb02572a820f098a0f5c9766d1ce7c9e7d988bb34cc6336d7ec",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_1a969dfe17c75d69_dt0050.json": "f5b96226b7a8c3bf646361a735ddae68955b6e29281dc67a14e93cd747564f2d",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_1a969dfe17c75d69_dt0050.npz": "209a002e136183c22f30c162720cd07ac9e7704824caafa7ffac7d4097d03ccf",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_449f2a97fdcc3c2a_dt0025.json": "80088b1459d233ff59d149253db0c454146dcc582d8279b6d51e2b9cb99bf1bc",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_449f2a97fdcc3c2a_dt0025.npz": "8b6b0bb232f7b78aca0b3562aeb2f7ef24bef81016a7bf158caa6e1a708d6600",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_449f2a97fdcc3c2a_dt0050.json": "bf18b8f38817d0301ca550f44ca7480521517e820d8292ba83e8b3344eec56e2",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_449f2a97fdcc3c2a_dt0050.npz": "2d3543eb83a97febbeb73df6ae15e2898aeabff9a793867f95ba62134d4fd776",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_7686602ca2df933f_dt0025.json": "479e7e8c7a7e624e5ca10c3d17d343f76776d08ef245367986c9599fabf57568",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_7686602ca2df933f_dt0025.npz": "1e318680c43f838d9bc28ca80a0e28b7c28c0152ec37195039813310d39f896d",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_7686602ca2df933f_dt0050.json": "b62611e945640b13e130ba3bf3589d402351bd5553c3b83bdc933a0ef6711d33",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_7686602ca2df933f_dt0050.npz": "ba5f90a2e71756fecb2ccbc6783ff43f14d1f73aafdddf75670e1cd18ca95b3d",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_807efe654094c95c_dt0025.json": "6a68ce5bfb6a0a0f65e657b1cf27d5f9a0279eb6b1bb56ab7efcd9b5d1c79ec7",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_807efe654094c95c_dt0025.npz": "5adb41615a7aee05e19dcb87dc8663c8a5c9b80a5f596ae028e976aea95eecda",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_807efe654094c95c_dt0050.json": "85fdfea013d80fc006ea86ddc09ab2abd794dc0d7c9dd677d5277d28f71949ac",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_807efe654094c95c_dt0050.npz": "d4c5d76e18230b2168cab90f778d3785bcf9881fd13e1f3551f83947f90fde45",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_83adbaea1acb2425_dt0025.json": "0ea4144b892dae4306af6125d9d3c01d5a43c7f541a6d35bbf073971589d0b6d",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_83adbaea1acb2425_dt0025.npz": "5307b51112226d7b10fa55232ed90fa67a2aa72b3e047794f1a96bcb1b0f38f8",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_83adbaea1acb2425_dt0050.json": "ee85835f7b08cf238a4a5df3756b97d99c0bb4b8058a977d635d264098569861",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_83adbaea1acb2425_dt0050.npz": "a0375152902e2e99a2f30c8c480f619cfcd69ff2d2de49f840fdfcaa5b77845a",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_857e3fd540105aac_dt0025.json": "947b56338e831a861306c915714dd4870c7d01aa0e6620af7e053e316d1bfb39",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_857e3fd540105aac_dt0025.npz": "cac9cfa63b8ab27a5632f2643ca48523d49722eb03182658207dfea052e7af18",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_857e3fd540105aac_dt0050.json": "02938959b95edc9d44f068e2bf43d5009de167938c6e6bc228511603f3a4b9fb",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_857e3fd540105aac_dt0050.npz": "8244d744097074d013f498e3d86e6e011809d9b6bd521f89955e8fd4c8ff628e",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_8bb0ee309b2606af_dt0025.json": "dfb292bc93a8e241439b238675e27cfcbf7810f8eb088667e2449e063eaafeea",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_8bb0ee309b2606af_dt0025.npz": "d7cb4fe68aa461e47a57547fc4000d2d78d6c68eaf4fbed0892c52c7ecb623db",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_8bb0ee309b2606af_dt0050.json": "7d963cc8b9bcb6053b50a1e4e8ff562eae5efcf9ee4a5c28c068ff0d492ebdc9",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_8bb0ee309b2606af_dt0050.npz": "e519d15673b478c93fff6792fd6ee79a7fd1997fcedba59b0cc47888a4da2d8d",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_9839a09144dd43ec_dt0025.json": "fc5b510f739c1e5ec43ce8e9ec5c24121d3df6f36aa027f241455389a5e2c03f",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_9839a09144dd43ec_dt0025.npz": "4bc3ce8b485a0062b627a79380ab93bf686a6dd826af33bd3c65a1aaf7b024fc",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_9839a09144dd43ec_dt0050.json": "a54c0e22587dd010c84e594f8468723d37bfb95f0888df8da7910c29f494c3db",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_9839a09144dd43ec_dt0050.npz": "949fb773028b82a560139e9009b032cf77983c9aa7caa505bc2135da638dd6d3",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_9d6e71f7fdd48ba6_dt0025.json": "9b7adfd568793bc67d198124e6b5f9cea22c7c7b8d6311bb90a0fe8c1cf09b05",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_9d6e71f7fdd48ba6_dt0025.npz": "9634d9778b0b715a619cb14317b980575a96c9035fed80478772c33bfaa2fae9",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_9d6e71f7fdd48ba6_dt0050.json": "db3430b8559f8b36828a97bd757368c32a5b1d0e63aa0843fa42aedd389aba08",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_9d6e71f7fdd48ba6_dt0050.npz": "f91904f08229315cf19baa2102808df9ed8a2ea9d1b413b4523165903b022b85",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_a1e9f43d0649de37_dt0025.json": "9ea46917b85f181099276d24d704fa64c82207f008082d68ddf9b8df6ea5a1bd",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_a1e9f43d0649de37_dt0025.npz": "864423299c30604b269a4192a694522f7438234555062e05ee7eedacfc2fa215",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_a1e9f43d0649de37_dt0050.json": "eab3882d959e3fa04ee64c854f2c1fb3eed151573c06e6a27cc4d582cc07057e",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_a1e9f43d0649de37_dt0050.npz": "8b17589b9f730225ce8696284eb4bb42dc8c65b04ff8c97a101e8175293d57c5",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_ab91dc4c00f6ba89_dt0025.json": "b71e5092c325da3f84604603990e6cc3185f74c32711ac02cb58f984b8132f35",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_ab91dc4c00f6ba89_dt0025.npz": "91b94dd45e4a4b2f16a4078216dcdc9cbeb0858e7c3c12d3c2969659e2ec6e86",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_ab91dc4c00f6ba89_dt0050.json": "677fdf0dea93d0ce570c7422c32a00b2ef8409ac91f9e5fac4cfa45e60d17a95",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_ab91dc4c00f6ba89_dt0050.npz": "9c183f8516a3c98eb31ea5f4d5bdeda37a4c5c32a039bbc167daf41d515b9520",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_b01e1cbcd7bcb6ad_dt0025.json": "8690640fc7e4820be43a7f33a9b95beb37f2187179204ecd5a70d6242f0104da",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_b01e1cbcd7bcb6ad_dt0025.npz": "844509990b745559d9d0587257d4ae50a5e79aab0b3f632ceb1442b1302599b8",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_b01e1cbcd7bcb6ad_dt0050.json": "ddc463a53b9db1d2da4e81836845eeefb420c37613b868f096a927149ae49b5a",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_b01e1cbcd7bcb6ad_dt0050.npz": "f4a09686ef2a3e12c1466ea2ecb2ffcfce32ef16c652dfc3439344d48a84f398",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_b205117cd732146c_dt0025.json": "a7c977c473825bbbb475d80b18038b04ffb15f37d570d7620b17051d10c2a707",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_b205117cd732146c_dt0025.npz": "3bcec70cd9ab40ce7ecbd2500621678f79b5970a253241cf3caea839d1e318e4",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_b205117cd732146c_dt0050.json": "ed99af707c8424866bccb0098df08ec3b38189736990b6125a5a8b33d34a7886",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_b205117cd732146c_dt0050.npz": "5f55b18bc4a97c6e46e9d625c211dea496faad188e178c12183046c2407eb9cb",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_e287677b0cb6b062_dt0025.json": "a09e537adfda8a13dd09d6cb6802209baa794ae49eb75f3f1c5d61f6c82ef1c0",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_e287677b0cb6b062_dt0025.npz": "9042a134d42712da272a9d2cea399ca87768d0fef87bb3915a9c0bcacf934dbe",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_e287677b0cb6b062_dt0050.json": "1e003033160ad4dc0c6d7c293333e1675b7d1ec6689ff91fbd31cacaa79ad1ab",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_e287677b0cb6b062_dt0050.npz": "787ab8050a49badb41d5292091632d3d6b180c1eff6f805b22b2aa1aa878ecc1",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_e4ef975372a3eafa_dt0025.json": "a72104ecd41f4ca233f53b08050cde740677d84f8cc33eb728897faf0971df9e",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_e4ef975372a3eafa_dt0025.npz": "f372636f165dc6c6bd336a83dea48678b35663e0aac9e15935b4f49f76ea37ea",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_e4ef975372a3eafa_dt0050.json": "4984a04c2bba460618b952ccaf10e2a26674ae0c94c62de76153063c72d59fac",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_e4ef975372a3eafa_dt0050.npz": "3344291b41b87cef5798866046aed2c40a805c6985b885a0fc2a463425ec46ff",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_e6041b33464f3be1_dt0025.json": "1602ee499e9507415ba3418650ddc53ffac8fd2b29a7ba867dab093c72183bb7",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_e6041b33464f3be1_dt0025.npz": "d1467e588916bc20683d8787cbef0c1a796828bfcfe4981d9fccddf62cb03201",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_e6041b33464f3be1_dt0050.json": "dd725faf3ec91e167cdb1d191016f4a0f09ffb9892d2a5c3e1bda83dda534cde",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_e6041b33464f3be1_dt0050.npz": "d0a5b49144c7b2ca5c243d813e8a2a660a690b9e195b8920a1f548be8da9a93b",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_ec341ae4d28d1ec0_dt0025.json": "d59231b99f9db2f8bdc7e92be707d481305fe97e9ea54029d18489e372a70fac",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_ec341ae4d28d1ec0_dt0025.npz": "1847289e7636fa82a6f93e9dc45032cfc7dba3bc0d67eba8e508462d33bbadee",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_ec341ae4d28d1ec0_dt0050.json": "53e810ae46571ed8d4bc3896459a2aeb60a210c0d5cf0372fe697e422c818462",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_ec341ae4d28d1ec0_dt0050.npz": "920ee6e890f09b7f1cbfec7a863c784c7421108862aa26daef447f6b60bccd72",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_f19d6366a51b07d4_dt0025.json": "0ee264030fc57601cb1d71ad1d3ac47cf589e16165f39fc9904584ff0371e106",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_f19d6366a51b07d4_dt0025.npz": "3658c2c4e5a5a4f6a68a95c3bfb9394c9a93999ada9cd286d2fe29ff1120f8b4",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_f19d6366a51b07d4_dt0050.json": "708e7542d63b18e3a7849b80ffeafa1f9e7da6200bb4a027c6cac07dc68c6497",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_f19d6366a51b07d4_dt0050.npz": "46f8184d27769982d2b143e501405c1dcbdab921b5ae1d20267fb666d6003220",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_fcce946bce1243a2_dt0025.json": "47e90fe9731873f14689c8947f071d8fd1042a77a35bd6640aa0c05c197a31bd",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_fcce946bce1243a2_dt0025.npz": "c206f3b590bd720e5edabb84f836b5e93c47a2fca0029a135303aa88a733e255",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_fcce946bce1243a2_dt0050.json": "7d863f55aafed2edda2d20b72a4532067cbb68de579112966163f4b08e6f7183",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_fcce946bce1243a2_dt0050.npz": "0f59db73555b190bf7115dcef17e58836a039e5b62b7ebb97491fd21abc81128",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_fdf9b090374343f7_dt0025.json": "6f7722578fc48d733838a19241ac345bd975789dd2b87d77feeaf137586d7144",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_fdf9b090374343f7_dt0025.npz": "f7ec12f4b0bf7140f0de7a85a30265d2484c6b80418561b5a3a12bd900d68a55",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_fdf9b090374343f7_dt0050.json": "731fdd0d8803f56a50b2311cec57d8da5e65769fb8f5d72e6537afffdbc75e07",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_fdf9b090374343f7_dt0050.npz": "24a20d87452d13e65de9aa11c3c53d7cc3cd8a3e65f77d140e84ea17caec7a7c",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_fffecebc8c19c397_dt0025.json": "abfd11e4092842ed7934c73b4a60df2cf3c91e5c290fc3141304635ba1c54b6d",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_fffecebc8c19c397_dt0025.npz": "f5d3c5b7345f599fb0f69e7918f18e60c71a78e4674a80a7fb2ef870676224c4",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_fffecebc8c19c397_dt0050.json": "806da0409c2989f595249ca1af1727e352b19467243314e7ee8cd4774080dab0",
+      "private_data/closure_discovery_20261017/D/new_data/train/raw/newtrain_fffecebc8c19c397_dt0050.npz": "a66c1853e0e7f8ac3bb4e866a3ded344f9c7be63ef46d7411c65a6f51fc02e12",
+      "private_data/closure_mechanism_20261019/P0/linear_cache_cost01/measure01/schedule.json": "98f085af9cd0f3347fdf5677965e2c85b9474ab51b1817aeddb4d716cf819a6c",
+      "private_data/ieee39_expansion/dataset_index.csv": "6e4c0f3b5329f2472201869aa1034d2e2097726c400064a4cdf1bcc54ac3d783",
+      "private_data/ieee39_expansion/splits.json": "f1d12c0f60462c85991a41464f56fe247977cefaf5e458a22a4ecc0d7e61c10b",
+      "private_data/ieee39_postfault/dataset_index.csv": "3cb759749328986790fc6933c34aba416be10ef807135b4654f1ae970d84de9b",
+      "private_data/ieee39_postfault/splits.json": "02990d0ddb22e4153824a28f1e99fc0d22a0afb70a4d197e6a294e6da253dba8",
+      "private_data/task2_long_0060_5s/normalization.npz": "4e27ea9018655ff31931566b7b61c754592ba41d14baaec086867930f46f8b3a",
+      "private_data/task2_m3_0020/model.npz": "4928f40e54656fa05a5d478969f4d53f63e7551a824f761312efc793bc0621b4",
+      "private_data/task2_prediction_optimization_0102/formal_S_O/step00650/structured_numeric_export.json": "c9fe3f86cf093d1f6c4600c71ecd333200840b9be4c2b156c018e1ff09a1e238"
+    },
+    "endpoint_evidence": {
+      "6101_delete7": {
+        "complete": "private_data/closure_mechanism_20261019/P2/fixed_edge_pair01/campaign01/6101_delete7/milestone_1024/attempt_1792419025135544400/complete.json",
+        "complete_sha256": "6b643a3800fad78a9cfbec74306ee207a1ae0dea1ded3b444c355bce6a28202c",
+        "evidence_sha256": "b3567607a20da330b6f9d0da2a0be1051bf0b5ca307b91216a123e8205752d8a"
+      },
+      "6101_full8": {
+        "complete": "private_data/closure_mechanism_20261019/P2/fixed_edge_pair01/campaign01/6101_full8/milestone_1024/attempt_1792415482065518700/complete.json",
+        "complete_sha256": "87ef50a16872d3b9187026b1c3a9e4a7b2501271211d1d509893aba706613d0a",
+        "evidence_sha256": "370ba5581c717073fde7c931a6d526963ace96c9e97ebace739529268a5d33a3"
+      },
+      "6102_delete7": {
+        "complete": "private_data/closure_mechanism_20261019/P2/fixed_edge_pair01/campaign01/6102_delete7/milestone_1024/attempt_1792424518290963900/complete.json",
+        "complete_sha256": "cf4bbcfa95c1013f50a9f7b8ce2214dc5e8e6178c1f9249e1f117f7133709a3f",
+        "evidence_sha256": "ad645ba466b122629d5d52335f25fd8db6e82f201abbb7324c0ea41663db4a20"
+      },
+      "6102_full8": {
+        "complete": "private_data/closure_mechanism_20261019/P2/fixed_edge_pair01/campaign01/6102_full8/milestone_1024/attempt_1792422118922812500/complete.json",
+        "complete_sha256": "e7be27e1a6c10e616424d63948910e780b62103d8a3616b6ac089a058fa5364a",
+        "evidence_sha256": "adca096453c69f99f424095549ca7705a734d2ba421735c8dad2732e070db4aa"
+      },
+      "6103_delete7": {
+        "complete": "private_data/closure_mechanism_20261019/P2/fixed_edge_pair01/campaign01/6103_delete7/milestone_1024/attempt_1792429741129580900/complete.json",
+        "complete_sha256": "508fa2934a01d6859a6cb22519ea5b5bc29f51e997d35e39cb836af160486ecf",
+        "evidence_sha256": "f0fcad190388eae4b885610c210dd173a7cd362ce16b6dceec87602046f4236d"
+      },
+      "6103_full8": {
+        "complete": "private_data/closure_mechanism_20261019/P2/fixed_edge_pair01/campaign01/6103_full8/milestone_1024/attempt_1792427350264742100/complete.json",
+        "complete_sha256": "684994dcc65ca6470c3af8ea3ce7e364b7fb120f5e4a7a4ca3cba65db56c3523",
+        "evidence_sha256": "b25329629bf4212f379560c0ed53e44a6b733dc163f259420d04df8e60083433"
+      }
+    },
+    "historical_runner_sha256": "4412777530c9a40f80641faf431991e2c62f38194c15023c8d6f1417ce4c14f9",
+    "historical_science_commit": "47ba6f341886aeb4cc235d3c25a9b16bc8f4a24b",
+    "models": {
+      "6101_delete7": {
+        "checkpoint.json": "47b0371047ffd3d6c68b4506086b3e870c5885603730b3ff6ad93244bec77a87",
+        "model.json": "42bd24499bd5fdb68ff77742eef17c8c6fc09cf2337fd86c3ecae824bf53c1d5",
+        "training.pt": "3866f9927f623398efd443608a0f0f46b675263c90e023ba1a40edd8235300b5"
+      },
+      "6101_full8": {
+        "checkpoint.json": "74e419c1bacde2d98c8b31fcfc6a5b180174e26232cb5fb36268db4e0fd81255",
+        "model.json": "844cdef3ba176e0ad4462f4586a49668ca60329438b1cb155b16457f0b34a8f6",
+        "training.pt": "121852cb865c27e50df4c4c10aa37e370954e8b2c70e151687877ed9b46a8123"
+      },
+      "6102_delete7": {
+        "checkpoint.json": "ec4e4ef0450409dfd3563cecbb73a55523b9e6bf6dc193d86af9808182b2031d",
+        "model.json": "d52a4a06d875261689f4aa2132c4fa3e8b6fa2858e14138b8b24d9434fec3124",
+        "training.pt": "b8ae5d3bf582d89df79008e708a98be297db079666c5e2f55fe840a89d89706f"
+      },
+      "6102_full8": {
+        "checkpoint.json": "1a2aed947a616905d9c00b40c9360895f18a8b60f172eae3b0718e6d58d03db2",
+        "model.json": "7fd9501d1ca4b8d4ee20f6d96ed57fe31de561c2896faa7507186d950ed50a71",
+        "training.pt": "e3746e7f546b41984d1d0061aea03d70e8b51f6cf91c15f4073d8d7b5e7e362e"
+      },
+      "6103_delete7": {
+        "checkpoint.json": "4dee9291973d459987264a9d93fb3c80d21b81c0ec502d6aa51ce490c9028d3b",
+        "model.json": "cd92cf3fe400962c88c706097676406a9b57a013afee89e772a14bcba28bdcfe",
+        "training.pt": "89430c457c10c0e4cfb5f5b032fed089d7ea634d00cdc8e12dc340492fd7d3d1"
+      },
+      "6103_full8": {
+        "checkpoint.json": "ef2a89e27da81809a25b55afbba67f5587c7255529dfb5d28fceb106510e6419",
+        "model.json": "ec9327e8da6bcd599f7e4fd513f0e93df17adc8b2db0d9b07d54584a29c89c1e",
+        "training.pt": "4cd2abd18ee9f7ae70cdb2984af4f849fa417ff752302064e052b7adb8d9416a"
+      }
+    },
+    "prospective_runner_sha256": "6f3194387f13a103a04bd73d27dbe17cde7e786d8617655ba2fff8bf811d72c3",
+    "schema": 1,
+    "source": {
+      "experiments/analyze_symbolic_closure.py": "128548091c206103fc3604a2cc9896fc715627a9a7067046d845cf01884d38a2",
+      "experiments/closure_checkpoint_identity_20261019.py": "7761a88586bdf4e4e326071654693832339559836737c06ab5189e86082d23ac",
+      "experiments/closure_discovery_benchmarks.py": "5f94f52532ae4808e1e8eeeb4b1c627d138c81e2cdca15767a8f9ed7d8c5d42e",
+      "experiments/closure_discovery_confirmation.py": "43ecf8f1b29231e1b68b452efa7310fcdce305a136e4a5bba54e0fbedff66579",
+      "experiments/closure_discovery_data.py": "df313113242691b5bdcf61d4fa3abc294ae2c8f953260f963a0fe5800aa7373a",
+      "experiments/closure_discovery_export.py": "f07d74aa31f626c087d7108f272f925362cce9926ee7065675e2a197dda145e2",
+      "experiments/closure_discovery_support.py": "4e492f0d4f87abf517c7037efc7a64ebcbcd0693ac8c4884b66a31ee3d81c119",
+      "experiments/closure_expression_identity.py": "5d8666079652166777757d62534252fb61210aae99ad08e3db5d4e83eb073293",
+      "experiments/closure_mechanism_study.py": "6467605e00b20e9cbf31e2db3bc860f48dafaf4a8515b8cfa232f0dadf97a5cb",
+      "experiments/closure_p3_disagreement_20261020.py": "76f8ea427470751eeed25f5d852880c750c5ed93c1026dc84ae86207f02a388d",
+      "experiments/closure_training_runtime.py": "80aeff279bf0e1e498205fcb7b591a680b721643efc98e0e4e993d61d8ac90b0",
+      "experiments/compare_physical_modes.py": "0688c0c69778399524065152917c01de13348a4a55c414731454dd9af5c0f3ce",
+      "experiments/discover_closure.py": "86b0ec6ef87a243b5dc8c5b1cdedb67eebe1b0334494c875459b78e9ee15500b",
+      "experiments/evaluate_l1_latent.py": "5882dc6814f13ef4210d94db07fd87ca88d8130aa984dbda7757c53088662314",
+      "experiments/evaluate_local_memory_0098.py": "386a8cbd964618602fe7298d6a20c47ec876e9ad70e011c96f3f55e6c44d5034",
+      "experiments/evaluate_long_latent.py": "8a52a2c8138d768cd636a1aef8a07fd871b86ed62f78e8785e0d069066ac890c",
+      "experiments/evaluate_structured_rom.py": "38aacbf79e61081449adcb254d99f0556f65021d2bd5b8d46cf17c5d757e01d9",
+      "experiments/fixed_edge_pair_20261019.py": "6f3194387f13a103a04bd73d27dbe17cde7e786d8617655ba2fff8bf811d72c3",
+      "experiments/generate_private_dataset.py": "239b574f7b17b26c2c315f5be6b7aebaf05e82e1c91c61b32d48135caf452ab8",
+      "experiments/joint_training_grid_0100.py": "9619bf4647041d0db1cce2c9ae3c79ee18507a00af4f8396e70052e6b65c9d6e",
+      "experiments/linear_cache_cost_gate_20261019.py": "e4027b2be8cb0649d89fb97e75f81997bf1a0486907303ba103a632cd3e01fba",
+      "experiments/linear_cache_runtime_20261019.py": "323406ebb23a4e55d2a64108807e5a850ad1c38e9b3a23622bf4d855d6bcdc3f",
+      "experiments/local_memory_rom_0098.py": "cb73ce129c1c095f8c5ac1288a725b072144bcd7978d4711e44afb4ea075636d",
+      "experiments/monitor_joint_adequacy_0099.py": "344a78d946de959ecd43920ec3627557d2bb006a704c135a19a542a9136a4f59",
+      "experiments/native_process_receipt_20261020.ps1": "805be69bb3144e6f9184340aca732291b6fa606c9f54dd8f52fea11ebf5a798f",
+      "experiments/run_private_m2.py": "25698fe4fa77b35982b85d1fa84b5e2ec0c9ab728d095e951b8ac0fe9479f972",
+      "experiments/shared_closure_rom_0101.py": "2d94589a5f387591468cad928da93ed2e5400c748c8fb4a09748953af09b63d5",
+      "experiments/structure_grammar.py": "0325a0a1f50d7f22510cd3d7da5dbc28d8c3e186ea7288e7717f7a3a8704d28d",
+      "experiments/structured_rom.py": "921b6dedb2e8b5218c5f4ec84fc6a35ac4844ebc0e310f8a6639bb0c7bcf88f3",
+      "experiments/summarize_train_local_memory_0098.py": "468fc24781df3ce8f184226f125add7becf1e8b573ae074fc89846c1fe99e7a1",
+      "experiments/symbolic_closure_rom.py": "01bd836ef2e06b0fbca40065f26cb98a23f8042a3328d86b265bfb114940dbc9",
+      "experiments/train_closure.py": "3fbd5a0d0256887708994a574996cee4f883a2d88fd392891b8d3fbe0875e002",
+      "experiments/train_joint_adequacy_0099.py": "5326f66fe729a35f59871497f4b1e3151fd67f3e8340afa882b561fde285ef10",
+      "experiments/train_joint_campaign.py": "0914e609f76cacd27632a0c52081da836a39456121cfea3c4633cbaf0c03593b",
+      "experiments/train_joint_latent.py": "57dc52517897608572afe2cd5028f0c8ede540d524c99f8366426fe685b22735",
+      "experiments/train_joint_numerical_pair_0100.py": "4d10ab86398fd43257f4249cdb2641799197abbb303e006457a92617d6b04ed5",
+      "experiments/train_local_memory_0098.py": "e73de06b9a1d66b05de4bb1d29504a19cc7b486bc3694ddd341d451f403ae667",
+      "experiments/train_long_latent.py": "7e8c2a93a875392814d8972386e5561ffec587d37cc33b8b46e0de663ae98ecc",
+      "experiments/train_structured_rom.py": "6afa2186411a0a23ea5f5d62f9cfeacb3192c6023f62676c7c134ef9bb365482",
+      "experiments/train_teacher_latent.py": "808671ddd94b483e440cd6ec69d28657e90a4b643ef633050903c2aec18b90c9",
+      "private_data/closure_mechanism_20261019/P3/disagreement01/native_supervise.ps1": "503b96e31b1cb293fa70d6713b5d1d709562a83e40d9ff57cb01567150e9b639",
+      "private_data/closure_mechanism_20261019/P3/first_disagreement_inference01/command.json": "6c040661c166435986b44c3204cf0c41e0f37ffdbd65fc7b8f82ef495e6b40c0",
+      "private_data/closure_mechanism_20261019/P3/first_disagreement_inference01/launch_once.py": "4bcb943e66ac1eba0727a4dd4f9424bce14685e7e06bc85f4bf1634331ad1c8f",
+      "reports/astra6_first_disagreement_inference_20261020.md": "6dc4ca4d9f6e735833606cc7b31e154d19c490130ca4c7f2029f2a938a50175c",
+      "reports/astra6_fixed_edge_pair_20261019.md": "8bea72c5d6c0ca90fe716cce0740f15c77ec059872b26562e88fac2d1023d963",
+      "reports/astra6_p3_admissibility_20261020.md": "1de559a79e1a8c25dd13bf3d44b1ae80844d7013970560ce32ceb1010cb2ed9c",
+      "reports/first_disagreement_inference_20261020_protocol.md": "439683c1fffee4a6cbce7b142409f28bf26ac06783dcb970a6ab2ae07eb5a5fd",
+      "reports/p3_disagreement_20261020_protocol.md": "880bf3756bc382a4aead8c2c48625a9b16c8de61a46ceb38e44d365b8bb04e64",
+      "results/fixed_edge_pair_20261019/final.json": "a14ad9d78aff6f1f03f5a105db6e3030eaffcc0bab2a23006a04c5c9833c2ae8",
+      "src/kiki/__init__.py": "3e5ee9a8509b412c44e2f556e44103296523a44ad798edea8456ee8570d8c125",
+      "src/kiki/data/__init__.py": "050a5a8225e7c5968a298457e8564522ff81a7ed509ac14956038294ac91b4c7",
+      "src/kiki/data/adapter.py": "307840683d775347c322c107f1e47500105be4b35c8a09d07d282c4baead3158",
+      "src/kiki/data/contracts.py": "3a027f8b7cafc69877e03779894370548d48f1b507f5c46a39e3f7edf79e691b",
+      "src/kiki/data/private_dataset.py": "615ec905047a81f681620d3f214b6dfa60be3c78af7059de21b232c593d941ee",
+      "src/kiki/data/schema.py": "0fcd4c51f734ea20f5cd62504598cc407eae9685592b7096aaad6b3dc131bfdb",
+      "src/kiki/data/splits.py": "78fabed80b331063d185181b02e7ec9f7d01fe90c0a121877ed6b2d659f03ce8",
+      "src/kiki/data/store.py": "e408c61994932b0bd09f6c7a27780d56c56bda60ee8c13f07e2bf08002114524",
+      "src/kiki/models/__init__.py": "c856dd0831a9dfa06af3b518e85deb8a6c2f0696b35a38942a8aff0d0f52530c",
+      "src/kiki/models/base.py": "8fbc96338574ce16d702b17b909a1f4c9b702fa28bdf15f228488594d681f5cd",
+      "src/kiki/models/private_pm.py": "adea9a1675cb9bdbd955b6fdf881bed5da915ba431e9d61a57fc33aa29606841",
+      "src/kiki/models/private_rom.py": "eced34511e8ba726ed3ee06f58c0826f26957bb27feecadc30c4cf44ba6062e4",
+      "src/kiki/physics/__init__.py": "de2c10aed81f501ceaaedee6361bc225d242b72f7d5b3c97ffcf57d77c03d5e4",
+      "src/kiki/physics/aggregation.py": "4c9aa927f4278404f11b43baa62163e7112c8c02ae97984fca454daa613336ab",
+      "src/kiki/physics/constants.py": "5fa4a9a9c45f68b6aff57ab3b3f9ee1156295fde7bd4fe047c5fadc025ad99da",
+      "src/kiki/physics/coordinates.py": "9a738d46647ab631407f8e4b5814fe0a7868c717e31fda13963861c10e373089",
+      "src/kiki/physics/graph.py": "724dd978e7627ccceec0ad94067eef304c8e5562a378641516d544e1d8ca8dfe",
+      "src/kiki/physics/units.py": "11f6e09ef577a1c09a7996743deaef1530a36ecf26be82edaa5cd3e01187dd46",
+      "tests/test_closure_p3_disagreement_20261020.py": "edbd2b405095c36bfcb5c7d5ea0cb168bbe006986be2b2b53eef14c1eeeefb11",
+      "tests/test_fixed_edge_pair_20261019.py": "24852a89d65afeba06a6f4bed9ef37afd6ceb6a457cdef2d8dc9a2109125708c",
+      "tests/test_linear_cache_cost_gate_20261019.py": "403d33087d855c5e5b429b5791492c1ebd8069cbf0e471c6481686c45d599e1e"
+    }
+  },
+  "private_launcher_source": "\"\"\"Single registered outer native envelope for the first P3 train inference.\"\"\"\nfrom __future__ import annotations\n\nimport argparse\nimport hashlib\nimport json\nimport os\nfrom pathlib import Path\nimport subprocess\nimport sys\nimport time\nimport traceback\n\nROOT = Path(__file__).resolve().parents[4]\nBASE = Path(__file__).resolve().parent\nMANIFEST = BASE / \"frozen_source.json\"\nCOMMAND = BASE / \"command.json\"\nOUTER = BASE / \"native_outer01\"\nINNER = BASE / \"native_inner01\"\nWORKER = BASE / \"run01/worker.json\"\nEXECUTION = BASE / \"execution.json\"\n\n\ndef sha(path):\n    digest = hashlib.sha256()\n    with Path(path).open(\"rb\") as stream:\n        for block in iter(lambda: stream.read(1024 * 1024), b\"\"):\n            digest.update(block)\n    return digest.hexdigest()\n\n\ndef write_new(path, value):\n    if path.exists():\n        raise FileExistsError(path)\n    temp = path.with_suffix(path.suffix + \".tmp\")\n    with temp.open(\"x\", encoding=\"utf-8\") as stream:\n        json.dump(value, stream, indent=2, sort_keys=True, allow_nan=False)\n        stream.write(\"\\n\")\n    temp.replace(path)\n\n\ndef source_hashes(manifest):\n    expected = manifest[\"source\"]\n    if not isinstance(expected, dict) or not expected:\n        raise ValueError(\"empty frozen source identity\")\n    required = {\"experiments/closure_p3_disagreement_20261020.py\",\n                \"experiments/native_process_receipt_20261020.ps1\",\n                \"private_data/closure_mechanism_20261019/P3/first_disagreement_inference01/launch_once.py\",\n                \"private_data/closure_mechanism_20261019/P3/first_disagreement_inference01/command.json\",\n                \"reports/first_disagreement_inference_20261020_protocol.md\",\n                \"reports/astra6_first_disagreement_inference_20261020.md\"}\n    if not required <= set(expected):\n        raise ValueError(\"new stage source binding incomplete\")\n    actual = {name: sha(ROOT / name) for name in expected}\n    if actual != expected:\n        raise ValueError(\"frozen source identity mismatch\")\n    return actual\n\n\ndef command_identity():\n    command = json.loads(COMMAND.read_text(encoding=\"utf-8\"))\n    python = (ROOT / \".venv-gpu/Scripts/python.exe\").resolve()\n    script = (ROOT / \"experiments/closure_p3_disagreement_20261020.py\").resolve()\n    expected_args = [str(script), \"infer\", \"--output\", str(BASE / \"run01\"),\n                     \"--manifest\", str(MANIFEST), \"--max-seconds\", \"3500\"]\n    if (Path(command[\"executable\"]).resolve() != python or command[\"arguments\"] != expected_args\n            or command[\"arguments_line\"] != subprocess.list2cmdline(expected_args)):\n        raise ValueError(\"registered infer command changed\")\n    return command\n\n\ndef main():\n    parser = argparse.ArgumentParser(description=__doc__)\n    parser.add_argument(\"--source-commit\", required=True)\n    args = parser.parse_args()\n    if len(args.source_commit) != 40 or any(c not in \"0123456789abcdef\" for c in args.source_commit):\n        parser.error(\"full lowercase archived source commit required\")\n    if any(path.exists() for path in (OUTER, INNER, WORKER.parent, EXECUTION)):\n        parser.error(\"exclusive first-run outputs must not already exist\")\n    manifest = json.loads(MANIFEST.read_text(encoding=\"utf-8\"))\n    before = source_hashes(manifest)\n    command_identity()\n    powershell = (Path(os.environ[\"SystemRoot\"]) / \"System32/WindowsPowerShell/v1.0/powershell.exe\").resolve()\n    if not powershell.is_file():\n        raise FileNotFoundError(powershell)\n    ps = (ROOT / \"experiments/native_process_receipt_20261020.ps1\").resolve()\n    native_command = [str(powershell), \"-NoProfile\", \"-NonInteractive\", \"-ExecutionPolicy\", \"Bypass\",\n                      \"-File\", str(ps), \"-CommandJson\", str(COMMAND),\n                      \"-WorkingDirectory\", str(ROOT), \"-Output\", str(INNER),\n                      \"-TimeoutSeconds\", \"3570\", \"-MaxSeconds\", \"3600\",\n                      \"-SourceCommit\", args.source_commit, \"-FixtureIdentityJson\", str(WORKER)]\n    sys.path.insert(0, str(ROOT / \"experiments\"))\n    from fixed_edge_pair_20261019 import native_job\n    record = {\"status\": \"INCONCLUSIVE_NUMERICAL_OR_IMPLEMENTATION\", \"source_commit\": args.source_commit,\n              \"source_before\": before, \"native_command\": native_command,\n              \"native_outer_receipt\": str(OUTER / \"native.json\"),\n              \"native_inner_receipt\": str(INNER / \"receipt.json\"),\n              \"worker_identity\": str(WORKER), \"support_hold_seconds\": 900}\n    started = time.perf_counter()\n    try:\n        outer = native_job(native_command, OUTER, 3600, worker_json=WORKER)\n        record[\"outer\"] = outer\n        if (INNER / \"receipt.json\").is_file():\n            record[\"inner\"] = json.loads((INNER / \"receipt.json\").read_text(encoding=\"utf-8\"))\n        if WORKER.is_file():\n            record[\"worker\"] = json.loads(WORKER.read_text(encoding=\"utf-8\"))\n        final = WORKER.parent / \"final.json\"\n        if final.is_file():\n            science = json.loads(final.read_text(encoding=\"utf-8\"))\n            record[\"scientific_result\"] = {\"status\": science.get(\"status\"),\n                                            \"row_count\": len(science.get(\"rows\", [])),\n                                            \"final_sha256\": sha(final)}\n        record[\"source_after\"] = source_hashes(manifest)\n        inner = record.get(\"inner\", {})\n        worker = record.get(\"worker\", {})\n        valid = (outer.get(\"status\") == \"COMPLETED\" and outer.get(\"exit_code\") == 0\n                 and outer.get(\"native_receipt_complete\") is True\n                 and inner.get(\"status\") == \"COMPLETED\" and inner.get(\"exit_code\") == 0\n                 and inner.get(\"native_receipt_complete\") is True\n                 and inner.get(\"cleanup_verified\") is True and inner.get(\"timeout\") is False\n                 and inner.get(\"fixture_identity_after\") == \"GONE\"\n                 and isinstance(worker.get(\"pid\"), int) and worker[\"pid\"] > 0\n                 and isinstance(worker.get(\"creation_filetime_utc\"), int)\n                 and worker[\"creation_filetime_utc\"] > 0\n                 and outer.get(\"actual_worker_pid\") == worker[\"pid\"]\n                 and inner.get(\"fixture_pid\") == worker[\"pid\"]\n                 and inner.get(\"fixture_creation_filetime_utc\") == worker[\"creation_filetime_utc\"]\n                 and record.get(\"scientific_result\", {}).get(\"row_count\") == 366\n                 and record.get(\"scientific_result\", {}).get(\"status\") in\n                 (\"ACTIVE_DESIGN_ADMISSIBLE\", \"NO_ACTIVE_DESIGN_ADMISSION\"))\n        record[\"status\"] = \"EXECUTION_COMPLETED\" if valid else \"INCONCLUSIVE_NUMERICAL_OR_IMPLEMENTATION\"\n    except BaseException as exc:\n        record[\"error\"] = repr(exc)\n        record[\"traceback\"] = traceback.format_exc()\n    finally:\n        if \"source_after\" not in record:\n            try:\n                record[\"source_after\"] = source_hashes(manifest)\n            except BaseException as exc:\n                record[\"source_after_error\"] = repr(exc)\n                record[\"status\"] = \"INCONCLUSIVE_NUMERICAL_OR_IMPLEMENTATION\"\n        record[\"launcher_seconds\"] = time.perf_counter() - started\n        record[\"actual_wrapped_seconds\"] = record.get(\"outer\", {}).get(\"seconds\")\n        write_new(EXECUTION, record)\n    print(json.dumps({\"status\": record[\"status\"], \"execution\": str(EXECUTION),\n                      \"outer_receipt\": record[\"native_outer_receipt\"],\n                      \"inner_receipt\": record[\"native_inner_receipt\"],\n                      \"actual_wrapped_seconds\": record[\"actual_wrapped_seconds\"]}))\n    return 0 if record[\"status\"] == \"EXECUTION_COMPLETED\" else 1\n\n\nif __name__ == \"__main__\":\n    raise SystemExit(main())\n",
+  "private_launcher_sha256": "4bcb943e66ac1eba0727a4dd4f9424bce14685e7e06bc85f4bf1634331ad1c8f",
+  "math_source_comparison": {
+    "parent_commit": "d874c8ae96b280590facc0e2306dbcc0bd2ea3fd",
+    "six_math_functions_exact_equal": true,
+    "infer_equal_after_removing_only_deadline_guards": true,
+    "no_math_qa_repeated": true
+  },
+  "source_commit": "1cc0fc89aec791d3ef80e42d396361714c332342",
+  "actual_outer_supervisor_pid": 82304,
+  "actual_powershell_pid": 49128,
+  "actual_worker_pid": 87180,
+  "worker_identity": {
+    "argv": [
+      "E:\\03-nn_Transfer_Func\\kiki\\experiments\\closure_p3_disagreement_20261020.py",
+      "infer",
+      "--output",
+      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\first_disagreement_inference01\\run01",
+      "--manifest",
+      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\first_disagreement_inference01\\frozen_source.json",
+      "--max-seconds",
+      "3500"
+    ],
+    "creation_filetime_utc": 134369085077319782,
+    "max_seconds": 3500.0,
+    "pid": 87180,
+    "started_unix": 1792434907.821381
+  },
+  "native_running": {
+    "command": [
+      "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-File",
+      "E:\\03-nn_Transfer_Func\\kiki\\experiments\\native_process_receipt_20261020.ps1",
+      "-CommandJson",
+      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\first_disagreement_inference01\\command.json",
+      "-WorkingDirectory",
+      "E:\\03-nn_Transfer_Func\\kiki",
+      "-Output",
+      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\first_disagreement_inference01\\native_inner01",
+      "-TimeoutSeconds",
+      "3570",
+      "-MaxSeconds",
+      "3600",
+      "-SourceCommit",
+      "1cc0fc89aec791d3ef80e42d396361714c332342",
+      "-FixtureIdentityJson",
+      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\first_disagreement_inference01\\run01\\worker.json"
+    ],
+    "exit_code": -1,
+    "includes_child_cost_once": true,
+    "launcher_pid": 49128,
+    "native_receipt_complete": false,
+    "started_qpc": 292664.2390017,
+    "started_unix": 1792434906.419169,
+    "status": "RUNNING",
+    "supervisor_pid": 82304,
+    "timed_out": false
+  },
+  "native_receipt_pending": false,
+  "unified_exec_session": 88276,
+  "observed_at": "2026-10-20T02:35+08:00",
+  "next_action": "Merge reviewed qualified implementation and evidence, then actual Astra6 full FOM plan with cost/freeze rules before collection.",
+  "execution": {
+    "actual_wrapped_seconds": 122.6443724000128,
+    "inner": {
+      "arguments": [
+        "E:\\03-nn_Transfer_Func\\kiki\\experiments\\closure_p3_disagreement_20261020.py",
+        "infer",
+        "--output",
+        "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\first_disagreement_inference01\\run01",
+        "--manifest",
+        "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\first_disagreement_inference01\\frozen_source.json",
+        "--max-seconds",
+        "3500"
+      ],
+      "cleanup_verified": true,
+      "elapsed_seconds": 121.34872209999999,
+      "errors": [],
+      "executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+      "exit_code": 0,
+      "exit_code_obtained": true,
+      "fixture_creation_filetime_utc": 134369085077319782,
+      "fixture_identity_after": "GONE",
+      "fixture_pid": 87180,
+      "max_seconds": 3600,
+      "native_receipt_complete": true,
+      "output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\first_disagreement_inference01\\native_inner01",
+      "owned_child_creation_filetime_utc": null,
+      "owned_child_identity_after": null,
+      "owned_child_pid": null,
+      "powershell_version": "5.1.26100.9168",
+      "source_commit": "1cc0fc89aec791d3ef80e42d396361714c332342",
+      "status": "COMPLETED",
+      "stderr_drained": true,
+      "stdout_drained": true,
+      "supervised_creation_filetime_utc": 134369085076955008,
+      "supervised_identity_after": "GONE",
+      "supervised_pid": 89904,
+      "taskkill_exit_code": null,
+      "terminated_observed": true,
+      "timeout": false,
+      "timeout_seconds": 3570,
+      "working_directory": "E:\\03-nn_Transfer_Func\\kiki"
+    },
+    "launcher_seconds": 122.71770609996747,
+    "native_command": [
+      "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-File",
+      "E:\\03-nn_Transfer_Func\\kiki\\experiments\\native_process_receipt_20261020.ps1",
+      "-CommandJson",
+      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\first_disagreement_inference01\\command.json",
+      "-WorkingDirectory",
+      "E:\\03-nn_Transfer_Func\\kiki",
+      "-Output",
+      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\first_disagreement_inference01\\native_inner01",
+      "-TimeoutSeconds",
+      "3570",
+      "-MaxSeconds",
+      "3600",
+      "-SourceCommit",
+      "1cc0fc89aec791d3ef80e42d396361714c332342",
+      "-FixtureIdentityJson",
+      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\first_disagreement_inference01\\run01\\worker.json"
+    ],
+    "native_inner_receipt": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\first_disagreement_inference01\\native_inner01\\receipt.json",
+    "native_outer_receipt": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\first_disagreement_inference01\\native_outer01\\native.json",
+    "outer": {
+      "actual_worker_pid": 87180,
+      "cleanup": {},
+      "command": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "E:\\03-nn_Transfer_Func\\kiki\\experiments\\native_process_receipt_20261020.ps1",
+        "-CommandJson",
+        "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\first_disagreement_inference01\\command.json",
+        "-WorkingDirectory",
+        "E:\\03-nn_Transfer_Func\\kiki",
+        "-Output",
+        "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\first_disagreement_inference01\\native_inner01",
+        "-TimeoutSeconds",
+        "3570",
+        "-MaxSeconds",
+        "3600",
+        "-SourceCommit",
+        "1cc0fc89aec791d3ef80e42d396361714c332342",
+        "-FixtureIdentityJson",
+        "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\first_disagreement_inference01\\run01\\worker.json"
+      ],
+      "exit_code": 0,
+      "includes_child_cost_once": true,
+      "launcher_pid": 49128,
+      "native_receipt_complete": true,
+      "seconds": 122.6443724000128,
+      "started_qpc": 292664.2390017,
+      "started_unix": 1792434906.419169,
+      "status": "COMPLETED",
+      "timed_out": false
+    },
+    "scientific_result": {
+      "final_sha256": "a8fcae5de3c363dc024fc8621c13c9b3af904bf799cf377e1fe5fa7883e4ccd6",
+      "row_count": 366,
+      "status": "ACTIVE_DESIGN_ADMISSIBLE"
+    },
+    "source_commit": "1cc0fc89aec791d3ef80e42d396361714c332342",
+    "status": "EXECUTION_COMPLETED",
+    "support_hold_seconds": 900,
+    "worker": {
+      "argv": [
+        "E:\\03-nn_Transfer_Func\\kiki\\experiments\\closure_p3_disagreement_20261020.py",
+        "infer",
+        "--output",
+        "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\first_disagreement_inference01\\run01",
+        "--manifest",
+        "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\first_disagreement_inference01\\frozen_source.json",
+        "--max-seconds",
+        "3500"
+      ],
+      "creation_filetime_utc": 134369085077319782,
+      "max_seconds": 3500.0,
+      "pid": 87180,
+      "started_unix": 1792434907.821381
+    },
+    "worker_identity": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\first_disagreement_inference01\\run01\\worker.json"
+  },
+  "final_summary": {
+    "all": {
+      "coarse_B": {
+        "event_mean": 0.08904107774576948,
+        "max": 8.343663376538634,
+        "median": 0.007510062023373851,
+        "min": 5.721751575522405e-05
+      },
+      "coarse_D": {
+        "event_mean": 14.218811307847574,
+        "max": 61.018551359163624,
+        "median": 13.328214068611942,
+        "min": 0.31031794741178553
+      },
+      "coarse_W": {
+        "event_mean": 0.046018393065656145,
+        "max": 4.413726970933292,
+        "median": 0.0005422185644557059,
+        "min": 4.208399561370533e-06
+      },
+      "count": 366,
+      "fine_B": {
+        "event_mean": 0.0890410798965215,
+        "max": 8.343671376262606,
+        "median": 0.007510061123049472,
+        "min": 5.721751881791622e-05
+      },
+      "fine_D": {
+        "event_mean": 14.218806314914378,
+        "max": 61.0185465974119,
+        "median": 13.32821080977477,
+        "min": 0.31031774109714594
+      },
+      "fine_W": {
+        "event_mean": 0.0460183384890122,
+        "max": 4.413715198218324,
+        "median": 0.000542218495160197,
+        "min": 4.208406396657586e-06
+      }
+    },
+    "buses": {
+      "1": {
+        "coarse_B": {
+          "event_mean": 0.0024761647003470597,
+          "max": 0.012572709546727715,
+          "median": 0.001363538054037776,
+          "min": 5.721751575522405e-05
+        },
+        "coarse_D": {
+          "event_mean": 12.195904482558984,
+          "max": 13.385856636875324,
+          "median": 12.164484611046477,
+          "min": 10.985623334199017
+        },
+        "coarse_W": {
+          "event_mean": 0.0001971706826649222,
+          "max": 0.0009681187342211596,
+          "median": 0.0001121909109007046,
+          "min": 4.208399561370533e-06
+        },
+        "count": 16,
+        "fine_B": {
+          "event_mean": 0.0024761650604001304,
+          "max": 0.012572711084798084,
+          "median": 0.0013635382235300823,
+          "min": 5.721751881791622e-05
+        },
+        "fine_D": {
+          "event_mean": 12.195884565920124,
+          "max": 13.385845203506108,
+          "median": 12.164461408163323,
+          "min": 10.985609505171233
+        },
+        "fine_W": {
+          "event_mean": 0.0001971710089132189,
+          "max": 0.0009681200683790838,
+          "median": 0.00011219114150604675,
+          "min": 4.208406396657586e-06
+        }
+      },
+      "11": {
+        "coarse_B": {
+          "event_mean": 0.010425699793898024,
+          "max": 0.03218264208818704,
+          "median": 0.007177102694493657,
+          "min": 0.0005673862373247298
+        },
+        "coarse_D": {
+          "event_mean": 18.61413808941838,
+          "max": 42.84224427311938,
+          "median": 13.584323727187908,
+          "min": 10.154931954326633
+        },
+        "coarse_W": {
+          "event_mean": 0.0007791473960430973,
+          "max": 0.0027357742638709883,
+          "median": 0.00037002279966402333,
+          "min": 4.1774763352009163e-05
+        },
+        "count": 13,
+        "fine_B": {
+          "event_mean": 0.01042569869830638,
+          "max": 0.03218263783195594,
+          "median": 0.0071770988385931505,
+          "min": 0.0005673861852802616
+        },
+        "fine_D": {
+          "event_mean": 18.614133898006962,
+          "max": 42.842226368409676,
+          "median": 13.584323473871503,
+          "min": 10.154932450938258
+        },
+        "fine_W": {
+          "event_mean": 0.0007791473348026033,
+          "max": 0.002735773689552821,
+          "median": 0.0003700227714497659,
+          "min": 4.177475991184621e-05
+        }
+      },
+      "12": {
+        "coarse_B": {
+          "event_mean": 0.007851516027634665,
+          "max": 0.031978002245481925,
+          "median": 0.004855398370029621,
+          "min": 0.00020330213774879066
+        },
+        "coarse_D": {
+          "event_mean": 14.635690351855306,
+          "max": 27.91167046453948,
+          "median": 13.956857982329376,
+          "min": 12.681550863447017
+        },
+        "coarse_W": {
+          "event_mean": 0.0005376438196289155,
+          "max": 0.0022207095192896516,
+          "median": 0.00034011543555674973,
+          "min": 1.5031330863071616e-05
+        },
+        "count": 16,
+        "fine_B": {
+          "event_mean": 0.007851515310412997,
+          "max": 0.031977999010260695,
+          "median": 0.0048553979629323354,
+          "min": 0.00020330212121510665
+        },
+        "fine_D": {
+          "event_mean": 14.635689754143666,
+          "max": 27.91166376119283,
+          "median": 13.956857874709154,
+          "min": 12.681550829553156
+        },
+        "fine_W": {
+          "event_mean": 0.0005376437945895127,
+          "max": 0.0022207094398959838,
+          "median": 0.0003401154074120972,
+          "min": 1.5031329602159562e-05
+        }
+      },
+      "14": {
+        "coarse_B": {
+          "event_mean": 0.02288473953287819,
+          "max": 0.08707926820109009,
+          "median": 0.014671964836570527,
+          "min": 0.0006042806475317161
+        },
+        "coarse_D": {
+          "event_mean": 16.14740013662543,
+          "max": 44.78841082364437,
+          "median": 14.027322168777243,
+          "min": 8.653241322068329
+        },
+        "coarse_W": {
+          "event_mean": 0.0019172786768673488,
+          "max": 0.010062196547981642,
+          "median": 0.0008661674394835645,
+          "min": 3.7221762146427744e-05
+        },
+        "count": 16,
+        "fine_B": {
+          "event_mean": 0.02288473649524353,
+          "max": 0.0870792450509714,
+          "median": 0.014671963905484572,
+          "min": 0.0006042806071952893
+        },
+        "fine_D": {
+          "event_mean": 16.147398301351878,
+          "max": 44.78840215653385,
+          "median": 14.027321222421662,
+          "min": 8.65324327116324
+        },
+        "fine_W": {
+          "event_mean": 0.0019172783676517677,
+          "max": 0.01006219160599139,
+          "median": 0.0008661675074982779,
+          "min": 3.722177930377322e-05
+        }
+      },
+      "15": {
+        "coarse_B": {
+          "event_mean": 0.27836711864885505,
+          "max": 3.0066027581881136,
+          "median": 0.02336768847983013,
+          "min": 0.000611506349324765
+        },
+        "coarse_D": {
+          "event_mean": 16.382318554098703,
+          "max": 55.461364910815476,
+          "median": 13.692418130172396,
+          "min": 0.35231264487704106
+        },
+        "coarse_W": {
+          "event_mean": 0.0970619235127396,
+          "max": 0.8058527828669283,
+          "median": 0.0013611673945656297,
+          "min": 4.238168566943874e-05
+        },
+        "count": 20,
+        "fine_B": {
+          "event_mean": 0.27836695468874034,
+          "max": 3.0066027305312173,
+          "median": 0.02336768736600217,
+          "min": 0.0006115063021921493
+        },
+        "fine_D": {
+          "event_mean": 16.38231592813996,
+          "max": 55.461379840463756,
+          "median": 13.692416626029651,
+          "min": 0.3523128371467016
+        },
+        "fine_W": {
+          "event_mean": 0.09706189107613497,
+          "max": 0.8058524939639483,
+          "median": 0.001361167882520105,
+          "min": 4.238168429500004e-05
+        }
+      },
+      "17": {
+        "coarse_B": {
+          "event_mean": 0.2479513822477046,
+          "max": 2.8143191257317217,
+          "median": 0.016590674631788895,
+          "min": 0.0006804314893751511
+        },
+        "coarse_D": {
+          "event_mean": 14.701532923851866,
+          "max": 30.749580727869084,
+          "median": 13.917627597416928,
+          "min": 0.7558731952570996
+        },
+        "coarse_W": {
+          "event_mean": 0.2337450974611067,
+          "max": 3.7232678543406683,
+          "median": 0.001232104926655279,
+          "min": 4.755391077118161e-05
+        },
+        "count": 19,
+        "fine_B": {
+          "event_mean": 0.24795132683282317,
+          "max": 2.814318102306131,
+          "median": 0.01659067415940769,
+          "min": 0.0006804314443897119
+        },
+        "fine_D": {
+          "event_mean": 14.701529335468006,
+          "max": 30.74957283314684,
+          "median": 13.917626105416934,
+          "min": 0.755872855632251
+        },
+        "fine_W": {
+          "event_mean": 0.23374504002160149,
+          "max": 3.723268173295144,
+          "median": 0.0012321051904313695,
+          "min": 4.75539076543062e-05
+        }
+      },
+      "18": {
+        "coarse_B": {
+          "event_mean": 0.25072564997691543,
+          "max": 2.1629434939709284,
+          "median": 0.015084111908820627,
+          "min": 0.0005496669313977604
+        },
+        "coarse_D": {
+          "event_mean": 15.609829036476325,
+          "max": 61.018551359163624,
+          "median": 14.130100879874258,
+          "min": 2.215820183276341
+        },
+        "coarse_W": {
+          "event_mean": 0.09597753031231634,
+          "max": 0.9761357417336056,
+          "median": 0.0008246049371966631,
+          "min": 3.769424281874421e-05
+        },
+        "count": 17,
+        "fine_B": {
+          "event_mean": 0.2507255706602767,
+          "max": 2.1629420547966607,
+          "median": 0.015084110966311187,
+          "min": 0.0005496669027371387
+        },
+        "fine_D": {
+          "event_mean": 15.609828992984045,
+          "max": 61.0185465974119,
+          "median": 14.130100322726763,
+          "min": 2.215824578685022
+        },
+        "fine_W": {
+          "event_mean": 0.09597725391508248,
+          "max": 0.9761331559268448,
+          "median": 0.0008246049869172769,
+          "min": 3.769424286920614e-05
+        }
+      },
+      "2": {
+        "coarse_B": {
+          "event_mean": 0.04344407746413586,
+          "max": 0.4055434146212924,
+          "median": 0.011347560242695323,
+          "min": 0.00040690737132941044
+        },
+        "coarse_D": {
+          "event_mean": 15.303918373588964,
+          "max": 37.89450806919635,
+          "median": 13.5329129057827,
+          "min": 11.809703209043192
+        },
+        "coarse_W": {
+          "event_mean": 0.002351920037367323,
+          "max": 0.019820106843899427,
+          "median": 0.0009437858187216617,
+          "min": 3.2848746121189234e-05
+        },
+        "count": 16,
+        "fine_B": {
+          "event_mean": 0.043444086052633335,
+          "max": 0.4055434039298798,
+          "median": 0.011347568004726121,
+          "min": 0.000406907411284642
+        },
+        "fine_D": {
+          "event_mean": 15.303900847788837,
+          "max": 37.89448518586957,
+          "median": 13.532900957627419,
+          "min": 11.809685385633312
+        },
+        "fine_W": {
+          "event_mean": 0.002351921694128174,
+          "max": 0.019820105296347458,
+          "median": 0.0009437879526489391,
+          "min": 3.2848815638893056e-05
+        }
+      },
+      "20": {
+        "coarse_B": {
+          "event_mean": 0.01628539783914302,
+          "max": 0.08899039938057922,
+          "median": 0.007965884737507947,
+          "min": 0.0004678782915086004
+        },
+        "coarse_D": {
+          "event_mean": 7.2510147044066,
+          "max": 10.211222105406438,
+          "median": 8.951125729246911,
+          "min": 0.9570540596680632
+        },
+        "coarse_W": {
+          "event_mean": 0.010286285584064272,
+          "max": 0.09298267054776814,
+          "median": 0.0008889310520776412,
+          "min": 4.7137923343708824e-05
+        },
+        "count": 13,
+        "fine_B": {
+          "event_mean": 0.016285389393195383,
+          "max": 0.08899030357433509,
+          "median": 0.007965883706345453,
+          "min": 0.0004678782012437294
+        },
+        "fine_D": {
+          "event_mean": 7.251015025714914,
+          "max": 10.211221650076551,
+          "median": 8.95112660594106,
+          "min": 0.9570537049750741
+        },
+        "fine_W": {
+          "event_mean": 0.010286281113108317,
+          "max": 0.09298260490297959,
+          "median": 0.0008889308497165397,
+          "min": 4.713791575390619e-05
+        }
+      },
+      "21": {
+        "coarse_B": {
+          "event_mean": 0.04550442356207183,
+          "max": 0.37141785349293527,
+          "median": 0.013278767843429396,
+          "min": 0.0005063818111439091
+        },
+        "coarse_D": {
+          "event_mean": 15.42141821710695,
+          "max": 38.38726937237752,
+          "median": 13.48519766127226,
+          "min": 11.161372469680185
+        },
+        "coarse_W": {
+          "event_mean": 0.002155504891074623,
+          "max": 0.0096745476376811,
+          "median": 0.0010054917677242482,
+          "min": 3.6498931145231865e-05
+        },
+        "count": 16,
+        "fine_B": {
+          "event_mean": 0.04550441822737311,
+          "max": 0.3714178280131601,
+          "median": 0.013278766382234576,
+          "min": 0.000506381745107775
+        },
+        "fine_D": {
+          "event_mean": 15.421413768455967,
+          "max": 38.38724888229412,
+          "median": 13.485195581316034,
+          "min": 11.161375014439217
+        },
+        "fine_W": {
+          "event_mean": 0.002155505161234977,
+          "max": 0.009674552138472584,
+          "median": 0.0010054919983418654,
+          "min": 3.649893169170068e-05
+        }
+      },
+      "23": {
+        "coarse_B": {
+          "event_mean": 0.018277576841708512,
+          "max": 0.08201739942742592,
+          "median": 0.008340701878497728,
+          "min": 0.00043885393712021835
+        },
+        "coarse_D": {
+          "event_mean": 14.283269687999438,
+          "max": 17.933707858029454,
+          "median": 13.57819877205743,
+          "min": 12.80877243417941
+        },
+        "coarse_W": {
+          "event_mean": 0.001151833110581348,
+          "max": 0.004900132038513863,
+          "median": 0.0006132715995336624,
+          "min": 3.269975921052231e-05
+        },
+        "count": 15,
+        "fine_B": {
+          "event_mean": 0.018277573120996635,
+          "max": 0.08201738097416772,
+          "median": 0.008340700154166594,
+          "min": 0.00043885385538706376
+        },
+        "fine_D": {
+          "event_mean": 14.283266679343052,
+          "max": 17.93370528529117,
+          "median": 13.57819564568667,
+          "min": 12.808770287655102
+        },
+        "fine_W": {
+          "event_mean": 0.001151833137829127,
+          "max": 0.00490013187764468,
+          "median": 0.0006132716139766442,
+          "min": 3.269975765622471e-05
+        }
+      },
+      "24": {
+        "coarse_B": {
+          "event_mean": 0.06609309882177723,
+          "max": 0.5709723014504017,
+          "median": 0.02163014248005328,
+          "min": 0.0006492575735048261
+        },
+        "coarse_D": {
+          "event_mean": 13.183116251482046,
+          "max": 16.89874200929244,
+          "median": 13.52232734802918,
+          "min": 0.45153495223516016
+        },
+        "coarse_W": {
+          "event_mean": 0.08625243358336192,
+          "max": 1.2645130727733485,
+          "median": 0.0015985872547195643,
+          "min": 4.631909853167269e-05
+        },
+        "count": 15,
+        "fine_B": {
+          "event_mean": 0.06609309684433286,
+          "max": 0.5709722756345544,
+          "median": 0.021630141186962226,
+          "min": 0.0006492574996937472
+        },
+        "fine_D": {
+          "event_mean": 13.183113126569872,
+          "max": 16.898738971888427,
+          "median": 13.522324508936338,
+          "min": 0.4515352689885496
+        },
+        "fine_W": {
+          "event_mean": 0.08625237154007523,
+          "max": 1.2645121285393204,
+          "median": 0.0015985874949360794,
+          "min": 4.631909694519284e-05
+        }
+      },
+      "27": {
+        "coarse_B": {
+          "event_mean": 0.24625180428718627,
+          "max": 3.675098772892421,
+          "median": 0.010561417020816147,
+          "min": 0.0003851851015043962
+        },
+        "coarse_D": {
+          "event_mean": 13.120833044785435,
+          "max": 16.594333328025122,
+          "median": 13.33299657691621,
+          "min": 2.4082047996389075
+        },
+        "coarse_W": {
+          "event_mean": 0.09647849911769345,
+          "max": 1.526073017227885,
+          "median": 0.000824289490849509,
+          "min": 2.801851958011746e-05
+        },
+        "count": 16,
+        "fine_B": {
+          "event_mean": 0.24625178135708348,
+          "max": 3.675098426034624,
+          "median": 0.010561416862660954,
+          "min": 0.00038518508771068606
+        },
+        "fine_D": {
+          "event_mean": 13.120831898558002,
+          "max": 16.594330353038554,
+          "median": 13.332996636401045,
+          "min": 2.408201540355544
+        },
+        "fine_W": {
+          "event_mean": 0.0964786192604174,
+          "max": 1.526074938599407,
+          "median": 0.000824289601844243,
+          "min": 2.8018518232748376e-05
+        }
+      },
+      "28": {
+        "coarse_B": {
+          "event_mean": 0.008023149746058268,
+          "max": 0.041048734277712044,
+          "median": 0.0048401244812876325,
+          "min": 0.00021345154984467058
+        },
+        "coarse_D": {
+          "event_mean": 11.524592963369903,
+          "max": 12.933457607318669,
+          "median": 11.954602996589568,
+          "min": 5.873096675849132
+        },
+        "coarse_W": {
+          "event_mean": 0.0006915639390865283,
+          "max": 0.0033467808813064425,
+          "median": 0.0003913731676983231,
+          "min": 1.9201380680651337e-05
+        },
+        "count": 16,
+        "fine_B": {
+          "event_mean": 0.008023148141821892,
+          "max": 0.04104872263257609,
+          "median": 0.004840123753599733,
+          "min": 0.000213451526309845
+        },
+        "fine_D": {
+          "event_mean": 11.524592120772017,
+          "max": 12.933457461032866,
+          "median": 11.95460218511267,
+          "min": 5.87309521788949
+        },
+        "fine_W": {
+          "event_mean": 0.0006915638251552103,
+          "max": 0.0033467795734470835,
+          "median": 0.00039137314321509097,
+          "min": 1.9201379901744413e-05
+        }
+      },
+      "29": {
+        "coarse_B": {
+          "event_mean": 0.006105405270156856,
+          "max": 0.02067201799322311,
+          "median": 0.0038805026498190984,
+          "min": 0.0002875352822011882
+        },
+        "coarse_D": {
+          "event_mean": 10.947924873299192,
+          "max": 12.105239479968985,
+          "median": 11.39758094909245,
+          "min": 5.413144563656514
+        },
+        "coarse_W": {
+          "event_mean": 0.0005322580200732605,
+          "max": 0.0017446574395628446,
+          "median": 0.0003311536681685716,
+          "min": 2.680455841187787e-05
+        },
+        "count": 14,
+        "fine_B": {
+          "event_mean": 0.006105403857620028,
+          "max": 0.020672012109844404,
+          "median": 0.0038805019432369267,
+          "min": 0.0002875352427042241
+        },
+        "fine_D": {
+          "event_mean": 10.947923322504792,
+          "max": 12.105238350411076,
+          "median": 11.397579294274392,
+          "min": 5.41314187017832
+        },
+        "fine_W": {
+          "event_mean": 0.0005322579438057196,
+          "max": 0.0017446569328004897,
+          "median": 0.0003311536632272472,
+          "min": 2.6804558455375774e-05
+        }
+      },
+      "3": {
+        "coarse_B": {
+          "event_mean": 0.044687505627381684,
+          "max": 0.34351689548445674,
+          "median": 0.014939312129015466,
+          "min": 0.0005771399741006189
+        },
+        "coarse_D": {
+          "event_mean": 13.71019172624757,
+          "max": 17.440779563130278,
+          "median": 14.287594098102513,
+          "min": 0.31031794741178553
+        },
+        "coarse_W": {
+          "event_mean": 0.07521399763363082,
+          "max": 1.1069826545052193,
+          "median": 0.001077797131443228,
+          "min": 3.9880756118560204e-05
+        },
+        "count": 15,
+        "fine_B": {
+          "event_mean": 0.04468743742194593,
+          "max": 0.34351586700091785,
+          "median": 0.014939311349897953,
+          "min": 0.0005771399589133815
+        },
+        "fine_D": {
+          "event_mean": 13.710189230583232,
+          "max": 17.440777227157522,
+          "median": 14.287593029950497,
+          "min": 0.31031774109714594
+        },
+        "fine_W": {
+          "event_mean": 0.07521382605411198,
+          "max": 1.1069800761911261,
+          "median": 0.0010777972063519634,
+          "min": 3.988077059812247e-05
+        }
+      },
+      "30": {
+        "coarse_B": {
+          "event_mean": 0.49925204993519035,
+          "max": 8.343663376538634,
+          "median": 0.00546451055113469,
+          "min": 0.00019621062932452028
+        },
+        "coarse_D": {
+          "event_mean": 9.360065906247362,
+          "max": 12.976367196685956,
+          "median": 9.172223906470714,
+          "min": 1.8903891294357114
+        },
+        "coarse_W": {
+          "event_mean": 0.2604699159531961,
+          "max": 4.413726970933292,
+          "median": 0.00052723103138347,
+          "min": 2.039182725206914e-05
+        },
+        "count": 17,
+        "fine_B": {
+          "event_mean": 0.4992525475476204,
+          "max": 8.343671376262606,
+          "median": 0.0054645191263176865,
+          "min": 0.00019621068873450106
+        },
+        "fine_D": {
+          "event_mean": 9.360036873443176,
+          "max": 12.97632620772419,
+          "median": 9.172189665818282,
+          "min": 1.8903959841438556
+        },
+        "fine_W": {
+          "event_mean": 0.26046922803232225,
+          "max": 4.413715198218324,
+          "median": 0.0005272334834087656,
+          "min": 2.039191358697187e-05
+        }
+      },
+      "31": {
+        "coarse_B": {
+          "event_mean": 0.006937121329410451,
+          "max": 0.027506389994396915,
+          "median": 0.004006525439261294,
+          "min": 0.00027051357292494355
+        },
+        "coarse_D": {
+          "event_mean": 16.913829738395375,
+          "max": 30.146277759350887,
+          "median": 14.270790691150157,
+          "min": 12.181111925225585
+        },
+        "coarse_W": {
+          "event_mean": 0.00044203970664362315,
+          "max": 0.001624998656382955,
+          "median": 0.0002891801505109522,
+          "min": 7.973365636858255e-06
+        },
+        "count": 13,
+        "fine_B": {
+          "event_mean": 0.006937117259939453,
+          "max": 0.027506364044129483,
+          "median": 0.004006523757322813,
+          "min": 0.00027051417807631294
+        },
+        "fine_D": {
+          "event_mean": 16.913829600498506,
+          "max": 30.146324292370398,
+          "median": 14.270785210149034,
+          "min": 12.181110108012675
+        },
+        "fine_W": {
+          "event_mean": 0.00044203961789776266,
+          "max": 0.0016249981972134239,
+          "median": 0.00028918011177784717,
+          "min": 7.97337185962589e-06
+        }
+      },
+      "32": {
+        "coarse_B": {
+          "event_mean": 0.0040792826176505245,
+          "max": 0.01601350831495492,
+          "median": 0.002365550312422001,
+          "min": 0.000321993538080711
+        },
+        "coarse_D": {
+          "event_mean": 10.586718503918028,
+          "max": 16.61562324214862,
+          "median": 11.422081932595516,
+          "min": 1.3816646073279744
+        },
+        "coarse_W": {
+          "event_mean": 0.0007649150679201959,
+          "max": 0.004095691769367852,
+          "median": 0.00020072061096169775,
+          "min": 2.898878737458019e-05
+        },
+        "count": 11,
+        "fine_B": {
+          "event_mean": 0.0040792821131165405,
+          "max": 0.016013501225910904,
+          "median": 0.0023655501748083,
+          "min": 0.0003219935176119225
+        },
+        "fine_D": {
+          "event_mean": 10.586714949863872,
+          "max": 16.615582100556704,
+          "median": 11.422082481426717,
+          "min": 1.3816642572118165
+        },
+        "fine_W": {
+          "event_mean": 0.0007649152983597955,
+          "max": 0.004095696129864097,
+          "median": 0.00020072057669803892,
+          "min": 2.8988783981557554e-05
+        }
+      },
+      "33": {
+        "coarse_B": {
+          "event_mean": 0.02231660975174734,
+          "max": 0.14530047712025973,
+          "median": 0.009645495785006755,
+          "min": 0.0004966330838914927
+        },
+        "coarse_D": {
+          "event_mean": 11.933915882078532,
+          "max": 18.262989718556394,
+          "median": 12.045342684802513,
+          "min": 2.187268751955833
+        },
+        "coarse_W": {
+          "event_mean": 0.005675380548628322,
+          "max": 0.06642909780592053,
+          "median": 0.0006270716525618597,
+          "min": 4.33406229828177e-05
+        },
+        "count": 14,
+        "fine_B": {
+          "event_mean": 0.02231659465032828,
+          "max": 0.14530033061734854,
+          "median": 0.00964549458574297,
+          "min": 0.0004966329749988511
+        },
+        "fine_D": {
+          "event_mean": 11.933913185144062,
+          "max": 18.26298122002746,
+          "median": 12.045340371813714,
+          "min": 2.187274042667372
+        },
+        "fine_W": {
+          "event_mean": 0.005675364205153243,
+          "max": 0.06642887014107998,
+          "median": 0.0006270716252435489,
+          "min": 4.33406203017353e-05
+        }
+      },
+      "5": {
+        "coarse_B": {
+          "event_mean": 0.015634455441102334,
+          "max": 0.03559792575989354,
+          "median": 0.011727430287949843,
+          "min": 0.0006392801394546037
+        },
+        "coarse_D": {
+          "event_mean": 21.144365190899897,
+          "max": 52.20666600641691,
+          "median": 14.147181882963347,
+          "min": 11.795484605872044
+        },
+        "coarse_W": {
+          "event_mean": 0.0008425450267398022,
+          "max": 0.0024478050169727127,
+          "median": 0.0005847676845674002,
+          "min": 4.5944261980870746e-05
+        },
+        "count": 13,
+        "fine_B": {
+          "event_mean": 0.015634456272402623,
+          "max": 0.035597919975876545,
+          "median": 0.011727428639471214,
+          "min": 0.0006392800627762894
+        },
+        "fine_D": {
+          "event_mean": 21.144361850960202,
+          "max": 52.20666429122736,
+          "median": 14.14718109609172,
+          "min": 11.795483026971159
+        },
+        "fine_W": {
+          "event_mean": 0.0008425450765251164,
+          "max": 0.0024478049527243916,
+          "median": 0.0005847679945423645,
+          "min": 4.594425689502591e-05
+        }
+      },
+      "6": {
+        "coarse_B": {
+          "event_mean": 0.012485233179630064,
+          "max": 0.0404181720564907,
+          "median": 0.00820441560597816,
+          "min": 0.0006601915067822257
+        },
+        "coarse_D": {
+          "event_mean": 14.849557425323123,
+          "max": 33.92252703485763,
+          "median": 13.71643659176572,
+          "min": 11.362049477171233
+        },
+        "coarse_W": {
+          "event_mean": 0.0009387869948987218,
+          "max": 0.003280755827304077,
+          "median": 0.0005045248333016616,
+          "min": 4.7879323364106095e-05
+        },
+        "count": 13,
+        "fine_B": {
+          "event_mean": 0.01248523087480918,
+          "max": 0.04041816483511614,
+          "median": 0.00820441425848331,
+          "min": 0.0006601914215699864
+        },
+        "fine_D": {
+          "event_mean": 14.849553785098777,
+          "max": 33.922493326177054,
+          "median": 13.716435487858705,
+          "min": 11.362049013431193
+        },
+        "fine_W": {
+          "event_mean": 0.0009387869435629886,
+          "max": 0.003280755312272744,
+          "median": 0.0005045247896920455,
+          "min": 4.787931830324498e-05
+        }
+      },
+      "8": {
+        "coarse_B": {
+          "event_mean": 0.015479631997287245,
+          "max": 0.07185179547951964,
+          "median": 0.009194222172298056,
+          "min": 0.0004949800823891443
+        },
+        "coarse_D": {
+          "event_mean": 18.261679937258002,
+          "max": 42.99066322899455,
+          "median": 13.847099454137739,
+          "min": 12.114093611094674
+        },
+        "coarse_W": {
+          "event_mean": 0.0010552843958133826,
+          "max": 0.005110171711345077,
+          "median": 0.0005259501440932692,
+          "min": 3.57130502381388e-05
+        },
+        "count": 16,
+        "fine_B": {
+          "event_mean": 0.01547962946029734,
+          "max": 0.07185177847287144,
+          "median": 0.009194220762817194,
+          "min": 0.0004949800224953571
+        },
+        "fine_D": {
+          "event_mean": 18.261674302075,
+          "max": 42.990646871426634,
+          "median": 13.847098765719009,
+          "min": 12.114093363383466
+        },
+        "fine_W": {
+          "event_mean": 0.001055284330783722,
+          "max": 0.005110171104865638,
+          "median": 0.0005259502472274059,
+          "min": 3.57130461552489e-05
+        }
+      },
+      "9": {
+        "coarse_B": {
+          "event_mean": 0.006794435414721314,
+          "max": 0.0437906524268756,
+          "median": 0.0030258087684357816,
+          "min": 0.00011182359253026113
+        },
+        "coarse_D": {
+          "event_mean": 14.271382616392527,
+          "max": 16.2955551430243,
+          "median": 14.413151455806902,
+          "min": 12.53301873991623
+        },
+        "coarse_W": {
+          "event_mean": 0.0004514170441158073,
+          "max": 0.0026862758885800356,
+          "median": 0.00020697690708541393,
+          "min": 7.9223191037061e-06
+        },
+        "count": 16,
+        "fine_B": {
+          "event_mean": 0.006794434478921551,
+          "max": 0.04379064652694172,
+          "median": 0.0030258083532483495,
+          "min": 0.00011182358216649476
+        },
+        "fine_D": {
+          "event_mean": 14.271381966312454,
+          "max": 16.295552807859675,
+          "median": 14.413150812271214,
+          "min": 12.533018802741465
+        },
+        "fine_W": {
+          "event_mean": 0.0004514170243241672,
+          "max": 0.002686275911610719,
+          "median": 0.00020697688760557047,
+          "min": 7.922318232063493e-06
+        }
+      }
+    },
+    "qualified_buses": [
+      "1",
+      "11",
+      "12",
+      "14",
+      "15",
+      "17",
+      "18",
+      "2",
+      "20",
+      "21",
+      "23",
+      "24",
+      "27",
+      "28",
+      "29",
+      "3",
+      "30",
+      "31",
+      "32",
+      "33",
+      "5",
+      "6",
+      "8",
+      "9"
+    ],
+    "qualified_events": 361,
+    "stable": {
+      "coarse_B": {
+        "event_mean": 0.09485253800956496,
+        "max": 8.343663376538634,
+        "median": 0.006854519827916051,
+        "min": 5.721751575522405e-05
+      },
+      "coarse_D": {
+        "event_mean": 12.713982392413502,
+        "max": 20.460180040153066,
+        "median": 13.18435785919898,
+        "min": 0.31031794741178553
+      },
+      "coarse_W": {
+        "event_mean": 0.051023080727890975,
+        "max": 4.413726970933292,
+        "median": 0.0005368520053429262,
+        "min": 4.208399561370533e-06
+      },
+      "count": 325,
+      "fine_B": {
+        "event_mean": 0.09485254040825224,
+        "max": 8.343671376262606,
+        "median": 0.006854529994554606,
+        "min": 5.721751881791622e-05
+      },
+      "fine_D": {
+        "event_mean": 12.713977915998996,
+        "max": 20.460181098206036,
+        "median": 13.184357062335634,
+        "min": 0.31031774109714594
+      },
+      "fine_W": {
+        "event_mean": 0.051023020009838056,
+        "max": 4.413715198218324,
+        "median": 0.0005368519665961838,
+        "min": 4.208406396657586e-06
+      }
+    },
+    "unstable": {
+      "coarse_B": {
+        "event_mean": 0.042974624435195605,
+        "max": 0.37141785349293527,
+        "median": 0.01658855766072987,
+        "min": 0.00027051357292494355
+      },
+      "coarse_D": {
+        "event_mean": 26.14733319848351,
+        "max": 61.018551359163624,
+        "median": 29.00527211059341,
+        "min": 0.9570540596680632
+      },
+      "coarse_W": {
+        "event_mean": 0.00634708842598974,
+        "max": 0.09298267054776814,
+        "median": 0.0005847676845674002,
+        "min": 7.973365636858255e-06
+      },
+      "count": 41,
+      "fine_B": {
+        "event_mean": 0.042974624620607214,
+        "max": 0.3714178280131601,
+        "median": 0.016588556868784295,
+        "min": 0.00027051417807631294
+      },
+      "fine_D": {
+        "event_mean": 26.147324111194838,
+        "max": 61.0185465974119,
+        "median": 29.00525009457087,
+        "min": 0.9570537049750741
+      },
+      "fine_W": {
+        "event_mean": 0.0063470825312462896,
+        "max": 0.09298260490297959,
+        "median": 0.0005847679945423645,
+        "min": 7.97337185962589e-06
+      }
+    }
+  },
+  "raw_train_denominator": 393,
+  "eligible_events": 366,
+  "labels": {
+    "stable": 325,
+    "unstable": 41
+  },
+  "all_model_event_numeric_qualified": true,
+  "numerical_rows": 2196,
+  "qualified_events": 361,
+  "qualified_buses": 24,
+  "N_range": [
+    3,
+    500
+  ],
+  "exclusions": [
+    {
+      "id": "pilot_0079",
+      "reason": "latency_uncovered",
+      "root": "ieee39_postfault",
+      "source": "old_excluded"
+    },
+    {
+      "id": "pilot_0094",
+      "reason": "latency_uncovered",
+      "root": "ieee39_postfault",
+      "source": "old_excluded"
+    },
+    {
+      "id": "pilot_0095",
+      "reason": "latency_uncovered",
+      "root": "ieee39_postfault",
+      "source": "old_excluded"
+    },
+    {
+      "id": "pilot_0124",
+      "reason": "latency_uncovered",
+      "root": "ieee39_postfault",
+      "source": "old_excluded"
+    },
+    {
+      "id": "pilot_0126",
+      "reason": "latency_uncovered",
+      "root": "ieee39_postfault",
+      "source": "old_excluded"
+    },
+    {
+      "id": "pilot_0284",
+      "reason": "latency_uncovered",
+      "root": "ieee39_postfault",
+      "source": "old_excluded"
+    },
+    {
+      "id": "pilot_0302",
+      "reason": "latency_uncovered",
+      "root": "ieee39_postfault",
+      "source": "old_excluded"
+    },
+    {
+      "id": "pilot_0332",
+      "reason": "latency_uncovered",
+      "root": "ieee39_postfault",
+      "source": "old_excluded"
+    },
+    {
+      "id": "pilot_0334",
+      "reason": "latency_uncovered",
+      "root": "ieee39_postfault",
+      "source": "old_excluded"
+    },
+    {
+      "id": "pilot_0382",
+      "reason": "latency_uncovered",
+      "root": "ieee39_postfault",
+      "source": "old_excluded"
+    },
+    {
+      "id": "expansion_0012",
+      "reason": "latency_uncovered",
+      "root": "ieee39_expansion",
+      "source": "old_excluded"
+    },
+    {
+      "id": "expansion_0014",
+      "reason": "latency_uncovered",
+      "root": "ieee39_expansion",
+      "source": "old_excluded"
+    },
+    {
+      "id": "expansion_0046",
+      "reason": "latency_uncovered",
+      "root": "ieee39_expansion",
+      "source": "old_excluded"
+    },
+    {
+      "id": "expansion_0108",
+      "reason": "latency_uncovered",
+      "root": "ieee39_expansion",
+      "source": "old_excluded"
+    },
+    {
+      "id": "expansion_0110",
+      "reason": "latency_uncovered",
+      "root": "ieee39_expansion",
+      "source": "old_excluded"
+    },
+    {
+      "id": "expansion_0111",
+      "reason": "latency_uncovered",
+      "root": "ieee39_expansion",
+      "source": "old_excluded"
+    },
+    {
+      "id": "expansion_0122",
+      "reason": "latency_uncovered",
+      "root": "ieee39_expansion",
+      "source": "old_excluded"
+    },
+    {
+      "id": "expansion_0124",
+      "reason": "latency_uncovered",
+      "root": "ieee39_expansion",
+      "source": "old_excluded"
+    },
+    {
+      "id": "expansion_0125",
+      "reason": "latency_uncovered",
+      "root": "ieee39_expansion",
+      "source": "old_excluded"
+    },
+    {
+      "id": "expansion_0126",
+      "reason": "latency_uncovered",
+      "root": "ieee39_expansion",
+      "source": "old_excluded"
+    },
+    {
+      "id": "expansion_0127",
+      "reason": "latency_uncovered",
+      "root": "ieee39_expansion",
+      "source": "old_excluded"
+    },
+    {
+      "id": "expansion_0140",
+      "reason": "latency_uncovered",
+      "root": "ieee39_expansion",
+      "source": "old_excluded"
+    },
+    {
+      "id": "expansion_0142",
+      "reason": "latency_uncovered",
+      "root": "ieee39_expansion",
+      "source": "old_excluded"
+    },
+    {
+      "id": "newtrain_15dd85eb449e115b",
+      "new_split": "train",
+      "reason": "numerical_or_classification_gate_failed",
+      "root": "closure_discovery",
+      "source": "new_excluded",
+      "steps": {
+        "0.0025": "completed",
+        "0.005": "completed"
+      }
+    },
+    {
+      "id": "newtrain_857e3fd540105aac",
+      "new_split": "train",
+      "reason": "numerical_or_classification_gate_failed",
+      "root": "closure_discovery",
+      "source": "new_excluded",
+      "steps": {
+        "0.0025": "completed",
+        "0.005": "completed"
+      }
+    },
+    {
+      "id": "newtrain_be83e796c4f1aa34",
+      "new_split": "train",
+      "reason": "raw_simulation_or_validation_failure",
+      "root": "closure_discovery",
+      "source": "new_excluded",
+      "steps": {
+        "0.0025": "simulation_failed",
+        "0.005": "simulation_failed"
+      }
+    },
+    {
+      "id": "newtrain_25383327cf3eb1a6",
+      "new_split": "train",
+      "reason": "raw_simulation_or_validation_failure",
+      "root": "closure_discovery",
+      "source": "new_excluded",
+      "steps": {
+        "0.0025": "simulation_failed",
+        "0.005": "simulation_failed"
+      }
+    }
+  ],
+  "prediction_artifacts": {
+    "predictions_000_031.npz": "1b0dca59f74fa62faa6b8d0f449fe3c9fabac379f6ff51a8e88c598b0cb1f9ca",
+    "predictions_032_063.npz": "db0db99f21ab1aafd7a58da5bb385daa5cfd9fc579561d76c6131d367eb76d91",
+    "predictions_064_095.npz": "67da87a15cb3aac1acd19cbe813244db5bf280cafc0add65c7a13775132efb3d",
+    "predictions_096_127.npz": "71fd7d1282830f54871f065de5c5eb5dee522cbb652f40dd649d88be1f65f57a",
+    "predictions_128_159.npz": "054197c12b8d54da6af17a634ae8382531dac34fa06bb57bec5cb6eef6dca150",
+    "predictions_160_191.npz": "b70a86a98da789664fe75eeaf745aa9d5d71ccd221d93572c5bfa4527e42567c",
+    "predictions_192_223.npz": "5e70f2f80084002eca2eb364a53088ec11ef367eac4da0ee0c69cff348b6d401",
+    "predictions_224_255.npz": "af4fbb147d5ac3611742470f2ae2af47a06786aea95e19425bc919d657f9aa9a",
+    "predictions_256_287.npz": "3c9872ae07fc8a1b6af3840c2e920df771e55b5dff8264a0951db6c36e7e7cc6",
+    "predictions_288_319.npz": "c8eedf0f250e15ed3d3141fa2ae79b180230466a6350a7d12a7d04cd79979516",
+    "predictions_320_351.npz": "85cc167e51a573d524e3ebf9e489cb5efb18f2b1bbade5eb25123041f35016b2",
+    "predictions_352_365.npz": "8b6beca07a6d7e6261df52b9a3f44dad6314b6451b12787343b8c49e23cd1340"
+  },
+  "all_prediction_file_hashes_verified": true,
+  "final_private_path": "private_data\\closure_mechanism_20261019\\P3\\first_disagreement_inference01\\run01\\final.json",
+  "final_private_sha256": "a8fcae5de3c363dc024fc8621c13c9b3af904bf799cf377e1fe5fa7883e4ccd6",
+  "compact_event_evidence_sha256": "2ddd97e2020dfaa5c29be526b7586d89616b749a4fea640272b9b43d54ba7947",
+  "closed_science_seconds": 122.6443724000128,
+  "support_held_seconds": 900,
+  "closed_charged_or_held_seconds": 1022.6443724000128,
+  "unspent_allocation_cancelled_seconds": 3477.355627599987,
+  "independent_final_review": "Accept fixed-train acquisition-design admission and scoped engineering PR; no mechanism/generalization/model promotion",
+  "root_decision": "Accept acquisition design admission. Preserve all old adverse classifications. Next actual Astra6 must preregister full FOM acquisition/adaptation/confirmation cost before collection.",
+  "source_audit": {
+    "count": 70,
+    "before_after_equal": true,
+    "current_mismatches": []
+  },
+  "execution_private_path": "private_data\\closure_mechanism_20261019\\P3\\first_disagreement_inference01\\execution.json",
+  "execution_private_sha256": "5ced4df4dc62bc50a83354e3db85b9cf2e1f93dd371dee1861ac0994b886fdcb",
+  "process_state": "ALL_EXITED"
+}

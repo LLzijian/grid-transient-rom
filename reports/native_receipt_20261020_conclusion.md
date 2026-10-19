@@ -11,3 +11,5 @@
 唯一复现入口：E:/03-nn_Transfer_Func/kiki/.venv-gpu/Scripts/python.exe tests/test_native_process_receipt_20261020.py --output E:/03-nn_Transfer_Func/kiki/private_data/closure_mechanism_20261019/repair/native_receipt01/qa01 --max-seconds 300 --source-commit 61db23be9524238409cbf9eb7a46c6381dd93280。该目录已完成，不得覆盖或再次执行；复现需要另有授权的新目录。
 
 原P3依旧CLOSED_INCONCLUSIVE_NATIVE_EXIT_UNVERIFIED_NO_SCIENCE：7项合成PASS但旧native exitnull保留，原受限HDF5字节读取违规、失败源码和拒绝manifest保留；新成功不补写旧退出码，也未证明Refresh是历史根因。原固定D未执行，不能把它判为科学失败或偷续旧QA。下一科学入口须另实际Astra6规划；原test关闭、TASK4暂停，原六端点及默认模型保持。main合并须核对精确范围、预期head和远端。
+
+PR12已合并核实：预期head ff94943c9858aecf5535bce3156419c0aedec927，远端main8c523a24fdec26c03d5a0a442e543f72d512e15e，15个相关文件，无远端CI任务；原P3未合格实现未纳入。
