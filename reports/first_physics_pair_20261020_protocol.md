@@ -13,3 +13,5 @@ root明确采用一次前瞻窄政策：原48条件96次调用统一在ANDES导�
 val仍为原固定设计的条件性比较；逐事件、三seed方向及频率/功率/失稳损害分别报告，无新增95%显著性或bootstrap。任何确认未覆盖/数值未决，全24确认未决。只有原门槛满足才描述相应能力；工程合并、D或局部Hurwitz不能代替模型采用或L2证书。
 
 实际CLI、命令JSON/hash、源提交与独立实现审查在启动前补记并推送；本登记没有已启动PID。每阶段实际执行后选择性归档，独立审查通过的可复用工程才PR集成。旧结果与默认模型保持。科学确定性实现/环境失败不以新编号再试本例外；关闭后由root按父授权选其他合法方向。
+
+实现已封版并通过[有限实现审查](first_physics_pair_20261020_implementation_review.md)。root采纳其条件：未来val冻结文件放在campaign01内；完整prior与唯一恢复逐阶段核对。代码来源e7862454f00fab958b31be0451dd18634304a6b2。首QA为GPU解释器`-m experiments.first_physics_pair_20261020 qa`，固定--output/--wrapper-output均为BASE/stages/qa01，--max-seconds 240，--source-commit为上述代码来源，外层300秒。prepare-binding对应BASE/stages/prepare01，自限120/外层180，同属累计1000的QA/绑定准备类别。精确命令及hash存BASE/commands/{qa01,prepare01}.json与公开preparation；prepare实际prior在QA完成后按真实回执另行冻结。源提交指代码版本，命令归档提交在执行前单独核实；不声称尚未存在的命令属于旧提交。

@@ -1,0 +1,61 @@
+{
+  "status": "READY_REGISTERED_WIRING_QA",
+  "actual_planning_model": "gpt-6-astra",
+  "code_source_commit": "e7862454f00fab958b31be0451dd18634304a6b2",
+  "registered_P3_seconds": 40000,
+  "QA_category_cap_seconds": 1000,
+  "QA_native_cap_seconds": 300,
+  "prepare_native_cap_seconds": 180,
+  "QA_binding_path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\active_fom_pair_first_physics01\\bindings\\qa01.json",
+  "QA_binding_sha256": "ebd6ba10ea128bb871c54ec10eac6e957397e3da70624f9ba3b0a56744973de3",
+  "QA_explicit_source_count": 93,
+  "commands": {
+    "qa01": {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\active_fom_pair_first_physics01\\commands\\qa01.json",
+      "sha256": "f7527a08bcab3f0a2bb57712bd10b5cda65feb1034ac83d03674ed7bdafd08c2",
+      "command": {
+        "executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+        "arguments": [
+          "-m",
+          "experiments.first_physics_pair_20261020",
+          "qa",
+          "--output",
+          "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\active_fom_pair_first_physics01\\stages\\qa01",
+          "--wrapper-output",
+          "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\active_fom_pair_first_physics01\\stages\\qa01",
+          "--max-seconds",
+          "240",
+          "--source-commit",
+          "e7862454f00fab958b31be0451dd18634304a6b2"
+        ],
+        "arguments_line": "-m experiments.first_physics_pair_20261020 qa --output E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\active_fom_pair_first_physics01\\stages\\qa01 --wrapper-output E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\active_fom_pair_first_physics01\\stages\\qa01 --max-seconds 240 --source-commit e7862454f00fab958b31be0451dd18634304a6b2"
+      }
+    },
+    "prepare01": {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\active_fom_pair_first_physics01\\commands\\prepare01.json",
+      "sha256": "3f861e5b44c5bc8a9ee2d17101317795bf4891cd581aa5acd2e7770618b141dd",
+      "command": {
+        "executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+        "arguments": [
+          "-m",
+          "experiments.first_physics_pair_20261020",
+          "prepare-binding",
+          "--output",
+          "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\active_fom_pair_first_physics01\\stages\\prepare01",
+          "--wrapper-output",
+          "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\active_fom_pair_first_physics01\\stages\\prepare01",
+          "--max-seconds",
+          "120",
+          "--source-commit",
+          "e7862454f00fab958b31be0451dd18634304a6b2"
+        ],
+        "arguments_line": "-m experiments.first_physics_pair_20261020 prepare-binding --output E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\active_fom_pair_first_physics01\\stages\\prepare01 --wrapper-output E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\active_fom_pair_first_physics01\\stages\\prepare01 --max-seconds 120 --source-commit e7862454f00fab958b31be0451dd18634304a6b2"
+      }
+    }
+  },
+  "scientific_FOM_solves": 0,
+  "model_updates": 0,
+  "old_failures_retained": true,
+  "default_model_changed": false,
+  "scope": "code source commit identifies exact code; command archival commit is separately verified before execution"
+}
