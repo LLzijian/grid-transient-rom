@@ -1,0 +1,72 @@
+{
+  "scope": "engineering QA and fixed cost decision; no formal model result",
+  "original_precheck": {
+    "kind": "disposable implementation QA; no formal scientific endpoint",
+    "pid": 39528,
+    "children": [],
+    "includes_all_children_once": true,
+    "gpu": "NVIDIA GeForce RTX 4060 Ti",
+    "torch": "2.13.0+cu130",
+    "updates": 9,
+    "updates_per_case": 3,
+    "horizon_steps": 50,
+    "synchronized_update_seconds": {
+      "node": [
+        3.7477822999935597,
+        2.70440720001352,
+        2.6972164000035264
+      ],
+      "edge": [
+        0.9708673999994062,
+        1.017311299976427,
+        1.3342018999974243
+      ],
+      "saturation": [
+        2.249311799998395,
+        2.0396031999844126,
+        2.11451680000755
+      ]
+    },
+    "tau_max_seconds": 3.7477822999935597,
+    "C_seconds": 2548.580671995878,
+    "feasible_all18": false,
+    "feasible_node6": false,
+    "benchmark_seconds": 46.46076209997409,
+    "source_sha256": "76e12759e88f4354b2c1041bdb4a4c616befe73b5d358f2326512541c65aff0b",
+    "initial_pytest_reported_seconds": 70.14,
+    "initial_process_wall_seconds": null,
+    "initial_process_wall_note": "Initial pytest reported 70.14s; interpreter startup was not separately timed. Later checks measured process wall.",
+    "subsequent_check_wall_seconds": [
+      8.2101306,
+      9.580653,
+      8.9583311
+    ],
+    "code_final_sha256": "7cd83fc90a3db54eba5ecc670873e7a76f52aa2d11aab447b4487072d8f07771",
+    "measured_pytest_and_subsequent_wall_seconds": 96.8891147,
+    "final_targeted_checks": "8 passed, GPU timing not repeated"
+  },
+  "new_execution_stage_checks": {
+    "tests_sha256": "4ac7522a423aa4c8ad29cc245ee0750df7c8801eeb177b465fbab83f54fbb116",
+    "child_accounting": "one pytest child, included once in parent elapsed",
+    "seconds": 8.8094797,
+    "exit_code": 0,
+    "children": [
+      {
+        "pid_note": "child PID not separately captured",
+        "accounting": "included once in measured parent elapsed",
+        "role": "pytest",
+        "pid": null
+      }
+    ],
+    "formal_fit_started": false,
+    "kind": "node6_15600 necessary profile and inherited checks",
+    "command": ".venv-gpu/Scripts/python.exe -m pytest tests/test_closure_causal_history_residual_20261019.py -q -k 'not gpu_feasibility'",
+    "pid": 33384,
+    "source_sha256": "0b217d44fde452f31e517625d33c4522e658591ae9d7c5072e8bdf42a489744a",
+    "result": "8 passed, 1 deselected"
+  },
+  "root_decision": "old fee precheck closed; fixed node6_15600 stage adopted within original P1 cap",
+  "model_adoption": "none",
+  "cost_note": "precheck1200s and newstage800s QA/support caps held; receipt components not added again above these holds",
+  "review": "independent scope/budget and code challenge accepted after fixes; orphan/pending checkpoints require root reconciliation"
+}
