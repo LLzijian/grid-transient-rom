@@ -1,14 +1,14 @@
 {
-  "status": "READY_REGISTERED_REAL_NATIVE_WIRING_QA",
+  "status": "READY_LAST_REGISTERED_QA_TEST_FIXTURES_CORRECTED",
   "actual_planning_model": "gpt-6-astra",
-  "code_source_commit": "743fcbee73e59a7753300e07502b03d28eba0590",
+  "code_source_commit": "4ae86576e4cdae1fdca912b0f36172331ee60f10",
   "registered_P3_seconds": 40000,
   "QA_category_cap_seconds": 1000,
   "QA_native_cap_seconds": 300,
   "prepare_native_cap_seconds": 180,
-  "QA_binding_path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\bindings\\qa01.json",
-  "QA_binding_sha256": "6832ae942eb000e6bd7f541a1d5fcc74ed7597913b4808ac89faa9c8f590b0ea",
-  "QA_explicit_source_count": 104,
+  "QA_binding_path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\bindings\\qa02.json",
+  "QA_binding_sha256": "74ac0c73eaa127b0b59951cf091a05b1d6571d4f9528b438e724ed3ff06dfa84",
+  "QA_explicit_source_count": 107,
   "commands": {
     "qa01": {
       "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\commands\\qa01.json",
@@ -51,10 +51,54 @@
         ],
         "arguments_line": "-m experiments.fresh_design_pair_20261020 prepare-binding --output E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\stages\\prepare01 --wrapper-output E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\stages\\prepare01 --max-seconds 120 --source-commit 743fcbee73e59a7753300e07502b03d28eba0590"
       }
+    },
+    "qa02": {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\commands\\qa02.json",
+      "sha256": "051e4005d5eed0d243e29bc7e30bb04bf1528af090d60c092af24a9b273c6efe",
+      "command": {
+        "executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+        "arguments": [
+          "-m",
+          "experiments.fresh_design_pair_20261020",
+          "qa",
+          "--output",
+          "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\stages\\qa02",
+          "--wrapper-output",
+          "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\stages\\qa02",
+          "--max-seconds",
+          "240",
+          "--source-commit",
+          "4ae86576e4cdae1fdca912b0f36172331ee60f10"
+        ],
+        "arguments_line": "-m experiments.fresh_design_pair_20261020 qa --output E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\stages\\qa02 --wrapper-output E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\stages\\qa02 --max-seconds 240 --source-commit 4ae86576e4cdae1fdca912b0f36172331ee60f10"
+      }
+    },
+    "prepare02": {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\commands\\prepare02.json",
+      "sha256": "452d55d694378060f11699c5082f7ed9bb9ae9b732d14631b6c9787fc19fd2d2",
+      "command": {
+        "executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+        "arguments": [
+          "-m",
+          "experiments.fresh_design_pair_20261020",
+          "prepare-binding",
+          "--output",
+          "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\stages\\prepare02",
+          "--wrapper-output",
+          "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\stages\\prepare02",
+          "--max-seconds",
+          "120",
+          "--source-commit",
+          "4ae86576e4cdae1fdca912b0f36172331ee60f10"
+        ],
+        "arguments_line": "-m experiments.fresh_design_pair_20261020 prepare-binding --output E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\stages\\prepare02 --wrapper-output E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\stages\\prepare02 --max-seconds 120 --source-commit 4ae86576e4cdae1fdca912b0f36172331ee60f10"
+      }
     }
   },
   "launcher_CLI_path_style": "relative intentionally; all worker JSON paths absolute; actual native receipt must prove canonical forwarding",
   "scientific_FOM_solves": 0,
   "model_updates": 0,
-  "default_model_changed": false
+  "default_model_changed": false,
+  "QA_repairs_used": 1,
+  "QA_previous_actual_seconds": 4.151774500031024
 }
