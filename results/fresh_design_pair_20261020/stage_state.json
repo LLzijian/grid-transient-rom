@@ -1,17 +1,17 @@
 {
-  "status": "READY_FIXED_TRAIN_EVALUATION",
+  "status": "RUNNING_FIXED_TRAIN_EVALUATION",
   "source_commit": "4ae86576e4cdae1fdca912b0f36172331ee60f10",
   "command_archive_commit": "b210b01bfae102eefb20c5a5d68bfdcd71f3469b",
   "native_cap_seconds": 2970,
   "self_cap_seconds": 2910,
   "QA_prepare_closed_seconds": 11.658018800080754,
-  "scientific_result": "six final1280 endpoints complete; train evaluation not started; no val or model adoption",
-  "native_output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\native_adapt_6103_delete7",
-  "actual_command": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\commands\\adapt_6103_delete7.json",
+  "scientific_result": "0/18 fixed train evaluations complete; endpoint training frozen; val not generated",
+  "native_output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\native_eval_train_6101_full8_original_after",
+  "actual_command": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\commands\\eval_train_6101_full8_original_after.json",
   "short_native_seconds": 394.8537176999962,
   "short_qualified_count": 41,
-  "actual_worker_pid": null,
-  "receipt_pending": false,
+  "actual_worker_pid": 76992,
+  "receipt_pending": true,
   "next_actual_command": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\commands\\eval_train_6101_full8_original_after.json",
   "score_native_seconds": 64.41502789995866,
   "score_qualified_count": 37,
@@ -27,7 +27,7 @@
   "original_train_count": 366,
   "new_train_count": 19,
   "schedule_native_seconds": 10.752583800000139,
-  "current_model": null,
+  "current_model": "6101_full8",
   "source1024_lineage_exists": true,
   "closed_native_seconds": 5178.041057100054,
   "adapt_models_closed": {
@@ -67,5 +67,39 @@
       "model_sha256": "8caae80db4c8a4cc5a5a7e9c8630462f2bee534a150f2516349d35cb0f6f0af6",
       "training_sha256": "e4eefcbbf54ef40b2f55ffb4fef91068b4f3f23fdb89ecfbc57111d68fd912c4"
     }
-  }
+  },
+  "current_evaluation_scope": "original_after",
+  "worker": {
+    "pid": 76992,
+    "creation_filetime_utc": 134369238775153399,
+    "executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+    "argv": [
+      "E:\\03-nn_Transfer_Func\\kiki\\experiments\\fresh_design_pair_20261020.py",
+      "fit",
+      "evaluate",
+      "--output",
+      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\evaluation_train\\6101_full8\\original_after",
+      "--wrapper-output",
+      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\stages\\eval_train_6101_full8_original_after_wrapper",
+      "--events-spec",
+      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\inputs\\train_original.json",
+      "--model",
+      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\models\\6101_full8\\checkpoints\\step001280\\model.json",
+      "--max-seconds",
+      "300",
+      "--source-commit",
+      "4ae86576e4cdae1fdca912b0f36172331ee60f10"
+    ],
+    "cwd": "E:\\03-nn_Transfer_Func\\kiki",
+    "received_paths": {
+      "output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\evaluation_train\\6101_full8\\original_after",
+      "wrapper_output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\stages\\eval_train_6101_full8_original_after_wrapper",
+      "events_spec": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\inputs\\train_original.json",
+      "model": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\models\\6101_full8\\checkpoints\\step001280\\model.json"
+    }
+  },
+  "outer_supervisor_pid": 51932,
+  "powershell_pid": 73500,
+  "unified_exec_session_id": 4221,
+  "train_evaluations_closed": {}
 }
