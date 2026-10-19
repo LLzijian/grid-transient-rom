@@ -1,0 +1,44 @@
+{
+  "status": "PREPARATION_QUARANTINED_SCOPE_VIOLATION_NO_QA_NO_INFERENCE",
+  "planning_model": "gpt-6-astra",
+  "planning_agent": "/root/astra6_p3_admissibility",
+  "raw_plan_sha256": "1de559a79e1a8c25dd13bf3d44b1ae80844d7013970560ce32ceb1010cb2ed9c",
+  "protocol_commit": "3da3666712a9198f120d9417c2b22e1db36379c8",
+  "prior_verified_main": "51370332dd68054028fdeeb86d967c8cc5b72ffb",
+  "scientific_source_commit": "47ba6f341886aeb4cc235d3c25a9b16bc8f4a24b",
+  "budget": {
+    "category": "P3",
+    "total": 4800,
+    "one_qa_cap": 300,
+    "one_inference_cap": 3600,
+    "support_held": 900,
+    "retry_allowed": false
+  },
+  "qa_attempts": 0,
+  "inference_attempts": 0,
+  "default_model_changed": false,
+  "val_read": false,
+  "test_read": true,
+  "native_supervisor": {
+    "path": "private_data/closure_mechanism_20261019/P3/disagreement01/native_supervise.ps1",
+    "sha256": "833beaa1cdede3cf69895ffcf198a878017ba7d0fded6cb96d21c066c15cb113"
+  },
+  "independent_plan_review": "No blocking definition issue; enforce all 40 fine state channels and actual-window classification time origin",
+  "output_base": "private_data/closure_mechanism_20261019/P3/disagreement01",
+  "test_values_deserialized": false,
+  "restricted_hdf5_raw_bytes_hashed": true,
+  "preparation_incident": {
+    "description": "Whole historical HDF5 byte hashing violated explicit P2 read restriction. Root launched standard-library freeze before independent static review returned. No values deserialized, score computed, fit or QA run.",
+    "rejected_manifest_path": "private_data\\closure_mechanism_20261019\\P3\\disagreement01\\frozen_source.json",
+    "rejected_manifest_sha256": "cef322957f9ed8b6d6a4e99d75d7de996ceebff7dfe6f1d5aa2b9c193d80bdc1",
+    "source_sha256": {
+      "runner": "d7577efd3526658f445117c9e072906e086279196bfcfa2dbf9cca6211ad0c4a",
+      "qa": "edbd2b405095c36bfcb5c7d5ea0cb168bbe006986be2b2b53eef14c1eeeefb11"
+    },
+    "command": "python -X utf8 experiments/closure_p3_disagreement_20261020.py freeze --output private_data/closure_mechanism_20261019/P3/disagreement01/frozen_source.json",
+    "exit_code": 0,
+    "individual_native_cost_unreconciled_included_in_support_hold": 900,
+    "scientific_outputs": 0,
+    "root_decision": "preserve failed preparation; remove forbidden whole-HDF5 hashing; one corrected metadata-only preparation after independent static review; original QA/inference attempt limits unchanged"
+  }
+}
