@@ -1,0 +1,86 @@
+{
+  "status": "CLOSED_INCONCLUSIVE_NATIVE_EXIT_UNVERIFIED_NO_SCIENCE",
+  "planning_model": "gpt-6-astra",
+  "planning_agent": "/root/astra6_p3_admissibility",
+  "raw_plan_sha256": "1de559a79e1a8c25dd13bf3d44b1ae80844d7013970560ce32ceb1010cb2ed9c",
+  "protocol_commit": "3da3666712a9198f120d9417c2b22e1db36379c8",
+  "prior_verified_main": "51370332dd68054028fdeeb86d967c8cc5b72ffb",
+  "scientific_source_commit": "47ba6f341886aeb4cc235d3c25a9b16bc8f4a24b",
+  "budget": {
+    "category": "P3",
+    "total": 4800,
+    "one_qa_cap": 300,
+    "one_inference_cap": 3600,
+    "support_held": 900,
+    "retry_allowed": false
+  },
+  "qa_attempts": 1,
+  "inference_attempts": 0,
+  "default_model_changed": false,
+  "val_read": false,
+  "test_read": true,
+  "native_supervisor": {
+    "path": "private_data/closure_mechanism_20261019/P3/disagreement01/native_supervise.ps1",
+    "sha256": "503b96e31b1cb293fa70d6713b5d1d709562a83e40d9ff57cb01567150e9b639",
+    "source": "param([ValidateSet('qa','infer')][string]$Mode,[string]$SourceCommit)\n$ErrorActionPreference='Stop'\n$taskRoot='E:/03-nn_Transfer_Func/kiki'\n$taskBase=Join-Path $taskRoot 'private_data/closure_mechanism_20261019/P3/disagreement01'\n$taskCap=if($Mode -eq 'qa'){300}else{3600}\n$taskName=if($Mode -eq 'qa'){'qa01'}else{'inference01'}\n$taskOutput=Join-Path $taskBase $taskName\nif(Test-Path -LiteralPath $taskOutput){throw 'Unique registered output already exists'}\n$taskArguments=if($Mode -eq 'qa'){@('experiments/closure_p3_disagreement_20261020.py','qa','--output',$taskOutput,'--max-seconds',[string]$taskCap)}else{@('experiments/closure_p3_disagreement_20261020.py','infer','--output',$taskOutput,'--manifest',(Join-Path $taskBase 'frozen_source_train_only.json'),'--max-seconds',[string]$taskCap)}\n$taskStart=Get-Date\n$taskTimer=[Diagnostics.Stopwatch]::StartNew()\n$taskProcess=$null\n$taskCleanup=$null\n$taskFinished=$false\n$taskError=$null\ntry {\n $taskProcess=Start-Process -FilePath (Join-Path $taskRoot '.venv-gpu/Scripts/python.exe') -ArgumentList $taskArguments -WorkingDirectory $taskRoot -WindowStyle Hidden -PassThru -RedirectStandardOutput (Join-Path $taskBase \"$taskName.stdout.log\") -RedirectStandardError (Join-Path $taskBase \"$taskName.stderr.log\")\n @{source_commit=$SourceCommit;mode=$Mode;native_supervisor_pid=$PID;launcher_pid=$taskProcess.Id;start=$taskStart.ToString('o');cap_seconds=$taskCap;output=$taskOutput} | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $taskBase \"$taskName.native.running.json\") -Encoding utf8\n $taskFinished=$taskProcess.WaitForExit(($taskCap-3)*1000)\n if(-not $taskFinished){$taskCleanup=(& taskkill /PID $taskProcess.Id /T /F 2>&1 | Out-String);[void]$taskProcess.WaitForExit(2000)}\n} catch {$taskError=$_.Exception.Message} finally {\n if($null -ne $taskProcess -and -not $taskProcess.HasExited){$taskCleanup=(& taskkill /PID $taskProcess.Id /T /F 2>&1 | Out-String);[void]$taskProcess.WaitForExit(2000)}\n $taskTimer.Stop()\n $taskExit=$null\n if($null -ne $taskProcess){$taskProcess.Refresh();if($taskProcess.HasExited){$taskExit=$taskProcess.ExitCode}}\n $taskWorkerPath=Join-Path $taskOutput 'worker.json'\n $taskWorker=if(Test-Path -LiteralPath $taskWorkerPath){(Get-Content -Raw -LiteralPath $taskWorkerPath | ConvertFrom-Json).pid}else{$null}\n $taskComplete=($null -ne $taskProcess -and $taskProcess.HasExited)\n $taskStatus=if($taskFinished -and $taskExit -eq 0 -and $taskTimer.Elapsed.TotalSeconds -le $taskCap -and $null -eq $taskError){'COMPLETED'}else{'FAILED'}\n $taskReceipt=@{status=$taskStatus;source_commit=$SourceCommit;mode=$Mode;native_supervisor_pid=$PID;launcher_pid=$(if($null -ne $taskProcess){$taskProcess.Id}else{$null});actual_worker_pid=$taskWorker;start=$taskStart.ToString('o');end=(Get-Date).ToString('o');seconds=$taskTimer.Elapsed.TotalSeconds;cap_seconds=$taskCap;exit_code=$taskExit;native_receipt_complete=$taskComplete;includes_child_cost_once=$true;timeout=(-not $taskFinished);cleanup=$taskCleanup;error=$taskError;output=$taskOutput}\n [IO.File]::WriteAllText((Join-Path $taskBase \"$taskName.native.receipt.json\"),($taskReceipt | ConvertTo-Json -Depth 8),[Text.UTF8Encoding]::new($false))\n $taskReceipt | ConvertTo-Json -Compress -Depth 8\n}\nif($taskStatus -ne 'COMPLETED'){exit 1}\n"
+  },
+  "independent_plan_review": "No blocking definition issue; enforce all 40 fine state channels and actual-window classification time origin",
+  "output_base": "private_data/closure_mechanism_20261019/P3/disagreement01",
+  "test_values_deserialized": false,
+  "restricted_hdf5_raw_bytes_hashed": true,
+  "preparation_incident": {
+    "description": "Whole historical HDF5 byte hashing violated explicit P2 read restriction. Root launched standard-library freeze before independent static review returned. No values deserialized, score computed, fit or QA run.",
+    "rejected_manifest_path": "private_data\\closure_mechanism_20261019\\P3\\disagreement01\\frozen_source.json",
+    "rejected_manifest_sha256": "cef322957f9ed8b6d6a4e99d75d7de996ceebff7dfe6f1d5aa2b9c193d80bdc1",
+    "source_sha256": {
+      "runner": "d7577efd3526658f445117c9e072906e086279196bfcfa2dbf9cca6211ad0c4a",
+      "qa": "edbd2b405095c36bfcb5c7d5ea0cb168bbe006986be2b2b53eef14c1eeeefb11"
+    },
+    "command": "python -X utf8 experiments/closure_p3_disagreement_20261020.py freeze --output private_data/closure_mechanism_20261019/P3/disagreement01/frozen_source.json",
+    "exit_code": 0,
+    "individual_native_cost_unreconciled_included_in_support_hold": 900,
+    "scientific_outputs": 0,
+    "root_decision": "preserve failed preparation; remove forbidden whole-HDF5 hashing; one corrected metadata-only preparation after independent static review; original QA/inference attempt limits unchanged"
+  },
+  "corrected_preparation": {
+    "manifest": "private_data\\closure_mechanism_20261019\\P3\\disagreement01\\frozen_source_train_only.json",
+    "manifest_sha256": "865dd4df021d181ef6b0e578229eb7c71a8bac33f3f9fb9c9009deb25c36e9be",
+    "independent_review": "Read scope static PASS; no historical HDF5 hash; scope violation retained",
+    "runner_sha256": "4f57856a82442b514eedfa6d3eaf8f7cda7800085c96def26c22bf6caa425173",
+    "qa_sha256": "edbd2b405095c36bfcb5c7d5ea0cb168bbe006986be2b2b53eef14c1eeeefb11",
+    "command_exit_code": 0,
+    "source_count": 65
+  },
+  "qa_test_result": {
+    "errors": [],
+    "failures": [],
+    "status": "PASS",
+    "synthetic_only": true,
+    "tests": 7
+  },
+  "qa_native_receipt": {
+    "output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\disagreement01\\qa01",
+    "cap_seconds": 300,
+    "error": null,
+    "source_commit": "1bb5ca02705a2c2bb0533de8366fb176d8b61584",
+    "status": "FAILED",
+    "mode": "qa",
+    "seconds": 3.4262628,
+    "exit_code": null,
+    "includes_child_cost_once": true,
+    "timeout": false,
+    "native_receipt_complete": true,
+    "end": "2026-10-20T02:01:58.8801091+08:00",
+    "native_supervisor_pid": 78244,
+    "cleanup": null,
+    "start": "2026-10-20T02:01:55.3766614+08:00",
+    "actual_worker_pid": 86120,
+    "launcher_pid": 86352
+  },
+  "qa_native_charged_seconds": 3.4262628,
+  "support_held_seconds": 900,
+  "closed_charged_or_held_seconds": 903.4262628,
+  "unspent_allocation_cancelled_seconds": 3896.5737372,
+  "root_decision": "Seven synthetic cases PASS but native launcher exit code null; do not launch real inference, do not retry this stage or integrate as qualified. Preserve scope incident and all evidence.",
+  "qa_result_sha256": "068187c15ebd89bac7c4d5b7343719292623200ad5bec40269fe8dad9dcd24fe"
+}
