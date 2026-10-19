@@ -63,7 +63,8 @@ def test_step512_only_evaluates_and_writes_native_bool_result(tmp_path,monkeypat
     monkeypatch.setattr(oracle,'ROOT',tmp_path)
     original=tmp_path/'private_data/closure_mechanism_20261019/P1/known_controls/node_noise0_seed5101'
     (original/'attempt').mkdir(parents=True)
-    meta={'clean_sha256':['a','b'],'scales':[1.]*30,'dual_step_normalized_max_abs':[0.,0.]}
+    meta={'clean_sha256':['a','b'],'scales':[1.]*30,'dual_step_normalized_max_abs':[0.,0.],
+          'data_streams':[(0,),(1,),(2,),(3,)]}
     (original/'latest.json').write_text(json.dumps({'attempt':'attempt'}))
     (original/'attempt/fixture.json').write_text(json.dumps(meta))
     arrays=[np.zeros((16,61,30)),np.zeros((16,111,30))]
@@ -85,8 +86,13 @@ def test_step512_only_evaluates_and_writes_native_bool_result(tmp_path,monkeypat
     assert json.loads((folder/'result.json').read_text())['prediction_gate'] is True
     assert failure.read_text()=='original failure'
     calls.clear()
+    fixture_bytes=(folder/'fixture.json').read_bytes()
     assert oracle.one('node',5101,'cpu',folder,time.perf_counter()+10,resume=True)==result
     assert calls==[]
+    assert (folder/'fixture.json').read_bytes()==fixture_bytes
+    meta['scales'][0]=2.
+    with pytest.raises(ValueError,match='observations/scales differ'):
+        oracle.one('node',5101,'cpu',folder,time.perf_counter()+10,resume=True)
 
 
 def test_recovery_budget_never_resets_and_rejects_unknown_identity(tmp_path):

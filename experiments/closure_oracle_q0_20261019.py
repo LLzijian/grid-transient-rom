@@ -12,6 +12,7 @@ from closure_causal_recovery_20261019 import (fixture,truths,toy_source,copy_run
     optimizer,trajectory,save_checkpoint,atomic_json,resolve_device,synchronize)
 
 ORIGINAL_CODE_SHA='44cb9d96f28fb2f39a18565be978cf3d44645a171483e4d25bb7b34de9a81133'
+PREVIOUS_REPAIR_CODE_SHA='d34e4be359b2e8323764042bc3bb151ab60278a62c7d378e10e6bdad6d843b7f'
 CONFIG={'updates':512,'checkpoint_every':32,'noise':0.,'oracle_q_time_s':.1,
         'encoder_updated':False,'future_q_supervision':False,'diagnostic_only':True}
 
@@ -39,14 +40,14 @@ def restore_checkpoint(folder,model,opt,rng,device):
     return step,list(state['trace'])
 
 def recovery_spend(output,previous,current_sha,dependencies,cap,extra):
-    if previous['code_sha256'] not in (ORIGINAL_CODE_SHA,current_sha):raise ValueError('unknown code lineage')
+    if previous['code_sha256'] not in (ORIGINAL_CODE_SHA,PREVIOUS_REPAIR_CODE_SHA,current_sha):raise ValueError('unknown code lineage')
     if previous['dependencies']!=dependencies:raise ValueError('dependency identity changed')
     if previous['max_seconds']!=cap:raise ValueError('cannot reset or change original cap')
     manifest_path=output/'recovery_checkpoint_manifest.json'
-    if previous['code_sha256']==ORIGINAL_CODE_SHA:
+    if previous['code_sha256'] in (ORIGINAL_CODE_SHA,PREVIOUS_REPAIR_CODE_SHA):
         if not manifest_path.is_file():raise ValueError('original recovery requires checkpoint byte manifest')
         manifest=json.loads(manifest_path.read_text())
-        if manifest['original_code_sha256']!=ORIGINAL_CODE_SHA:raise ValueError('manifest lineage mismatch')
+        if manifest['original_code_sha256']!=previous['code_sha256']:raise ValueError('manifest lineage mismatch')
         expected={f'{case}_{seed}' for case in ('node','edge','saturation') for seed in (5101,5102,5103)
                   if (output/f'{case}_{seed}'/'latest.json').exists()}
         declared=[row['folder'] for row in manifest['rows']]
@@ -114,6 +115,8 @@ def one(case,seed,device,folder,deadline,resume=False):
     if max(meta['dual_step_normalized_max_abs'])>1e-3:raise ValueError('unqualified truth')
     fixture_record=dict(meta,oracle_q_time_s=.1,diagnostic_only=True,reconstructed_sha256=digests,
         original_control=str(attempt),original_fixture_sha256=hashlib.sha256((attempt/'fixture.json').read_bytes()).hexdigest())
+    # Compare the persisted JSON representation: SeedSequence spawn keys are tuples in memory.
+    fixture_record=json.loads(json.dumps(fixture_record,allow_nan=False))
     if (folder/'fixture.json').exists():
         if json.loads((folder/'fixture.json').read_text())!=fixture_record:raise ValueError('fixture identity changed')
     else:atomic_json(folder/'fixture.json',fixture_record)

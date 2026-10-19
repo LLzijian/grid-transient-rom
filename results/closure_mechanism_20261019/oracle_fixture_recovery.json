@@ -1,0 +1,133 @@
+{
+  "scope": "same registered oracle diagnostic; fixture JSON representation repair",
+  "snapshot": {
+    "status": "RUNNING",
+    "pid": 80888,
+    "rows": [
+      {
+        "case": "node",
+        "seed": 5101,
+        "noise": 0.0,
+        "updates": 512,
+        "status": "qualified",
+        "train_event_mse": [
+          2.577901348741951E-07,
+          1.0593121111714309E-07,
+          5.8241964486125187E-08,
+          1.1223823094992805E-07,
+          8.428482979317003E-08,
+          7.730812773410195E-08,
+          1.3766014802188348E-07,
+          7.121056757900912E-08,
+          1.1261579019931942E-06,
+          1.7793832696130118E-06,
+          1.766596083036704E-06,
+          8.335466907912455E-07,
+          1.7653320697623176E-06,
+          5.254547557159183E-07,
+          1.6157192365428562E-06,
+          1.7424350873794531E-06
+        ],
+        "heldout_event_mse": [
+          1.0135364855167164E-06,
+          5.840802912384499E-07,
+          1.2569298695434335E-06,
+          1.0492163883362892E-06,
+          4.976732862347472E-07,
+          1.2087478441818091E-06,
+          5.311424731043143E-07,
+          2.0331519266416573E-06,
+          1.6465630545021472E-05,
+          5.681414543592129E-05,
+          3.516244143604958E-05,
+          1.971122546111884E-05,
+          1.1342229873847024E-05,
+          1.494972801746934E-05,
+          3.254916255273131E-05,
+          8.22806624931097E-05
+        ],
+        "train_mse": 7.537056443368911E-07,
+        "heldout_mse": 1.7340606523754123E-05,
+        "model_dual_step_max_normalized": [
+          1.357668194785617E-10,
+          2.8878891147773536E-10
+        ],
+        "prediction_gate": true,
+        "diagnostic_only": true,
+        "q_supplied_once_at_time_s": 0.1,
+        "future_q_supervision": false,
+        "encoder_updated": false,
+        "identity": {
+          "case": "node",
+          "seed": 5101,
+          "config": {
+            "updates": 512,
+            "checkpoint_every": 32,
+            "noise": 0.0,
+            "oracle_q_time_s": 0.1,
+            "encoder_updated": false,
+            "future_q_supervision": false,
+            "diagnostic_only": true
+          },
+          "fixture_sha256": "5614e2df08bedf894605097263cbbeb6212b82f7cd24bed17285496985c4d5f6"
+        }
+      }
+    ],
+    "max_seconds": 4500.0,
+    "diagnostic_only": true,
+    "code_sha256": "c21cf8abf7c34b9fb2e9ae4bad771fcdc49a9f5b5efd6f1b2d242cc1e1227839",
+    "command": [
+      "experiments/closure_oracle_q0_20261019.py",
+      "--output",
+      "private_data/closure_mechanism_20261019/P1/oracle_q0",
+      "--max-seconds",
+      "4500",
+      "--resume"
+    ],
+    "dependencies": {
+      "closure_causal_recovery_20261019.py": "85d7a76444738e233f0bc2a632dbe17e5b6f4a528305e7e8cd5ead1f07a02659",
+      "closure_training_runtime.py": "80aeff279bf0e1e498205fcb7b591a680b721643efc98e0e4e993d61d8ac90b0",
+      "symbolic_closure_rom.py": "01bd836ef2e06b0fbca40065f26cb98a23f8042a3328d86b265bfb114940dbc9",
+      "closure_discovery_benchmarks.py": "5f94f52532ae4808e1e8eeeb4b1c627d138c81e2cdca15767a8f9ed7d8c5d42e"
+    },
+    "prior_elapsed_seconds": 2588.9845622000003,
+    "current": "node_5102"
+  },
+  "execution_prior_seconds": 2588.9845622,
+  "execution_remaining_at_restart_seconds": 1911.0154378,
+  "qa_seconds": 27.4142577,
+  "qa_passed": 6,
+  "manifest": {
+    "original_code_sha256": "d34e4be359b2e8323764042bc3bb151ab60278a62c7d378e10e6bdad6d843b7f",
+    "rows": [
+      {
+        "folder": "node_5101",
+        "checkpoint": "checkpoint_00512",
+        "updates": 512,
+        "files": {
+          "model.json": "15684466a66207bf5518191ba0188f38f11f1caf5721776daa4d685f54b53302",
+          "training.pt": "501fa995c8a7f146a76533e86497245783b0ffb5beab1a216c1cf26e8dc1b2fe"
+        }
+      },
+      {
+        "folder": "node_5102",
+        "checkpoint": "checkpoint_00032",
+        "updates": 32,
+        "files": {
+          "model.json": "57b28bb59c442d485de733b0db1c9fe967225d94406415cf406909c28101ac95",
+          "training.pt": "1ee7ef8c4c8a22f0802ad48faf52d91c7dbdf07615f4c130776fd4e4997f5634"
+        }
+      },
+      {
+        "folder": "node_5103",
+        "checkpoint": "checkpoint_00416",
+        "updates": 416,
+        "files": {
+          "model.json": "eed054b5d3ea4d4efa6b27ea365f9a50fca399ca89e1d054c9b948fcfe49b4cd",
+          "training.pt": "86f045184a420eb92affc8814a42f8983fc0433eb4145dff7c558987dffe4888"
+        }
+      }
+    ]
+  },
+  "independent_review": "fixture_recovery_check confirmed tuple/list mismatch and strict JSON comparison; no edits"
+}
