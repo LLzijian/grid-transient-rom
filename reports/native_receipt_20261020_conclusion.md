@@ -1,0 +1,13 @@
+# 未来原生回执一次验收通过
+
+2026-10-20。显式持有Process/Handle的新监督接口实际通过三个固定合成案例：快速退出0为COMPLETED，快速退出7原样保留7并为FAILED_NONZERO，真实父子树超时保持TIMEOUT且全部退出。外层标准库Popen实际取得QAworker退出0，完整包络15.206222799955867进程秒，无超时，来源四文件未变。root接受这一限定工程能力，送范围有限PR；不晋升模型、不恢复旧P3。
+
+实际gpt-6-astra规划、root采纳和独立静态审查见[协议](native_receipt_20261020_protocol.md)。仅两个新源码文件，未读数据集、模型或HDF5。参数通过JSON和标准库list2cmdline传入；同一个Process保存句柄直到真实退出码、日志与回执完成。缺失退出码保持失败，非有限时间拒绝，超时按创建身份清理自有树；没有Refresh或null转0。代码接受显式有限参数最多3600秒，本次只实测29秒子包络及10秒超时，不声称长科学任务已经验收。
+
+唯一QA来源61db23be9524238409cbf9eb7a46c6381dd93280。PS SHA805be69bb3144e6f9184340aca732291b6fa606c9f54dd8f52fea11ebf5a798f，Python SHAdb59a1363f19703f5ad885bc2d7a1de34bda2223172aedc3d10e053d5ad6a190。Windows PowerShell5.1.26100.9168；同一.venv-gpu Python仅执行标准库。三个完整外层案例分别1.7432012、1.4455118、11.8663925秒，已包含于总15.2062228，不重复加。超时实际子退出1、taskkill退出0，PID53612/fixture46112/child87696创建身份均核为GONE。QA launcher81272、真实worker77060亦已退出。
+
+外层总费用加600支持保守结项615.2062228，登记未用284.7937772取消仅回repair。父累计52990.7533666/259200，余206209.2466334；repair余12792.6997422。其他类别及旧900hold保持。支持包含实际准备、静态修正、审查与归档，不把子案例费用重复记账。源码、实际命令、三案例完整紧凑证据、外层回执和本地日志路径见[summary](../results/native_receipt_20261020/summary.json)。
+
+唯一复现入口：E:/03-nn_Transfer_Func/kiki/.venv-gpu/Scripts/python.exe tests/test_native_process_receipt_20261020.py --output E:/03-nn_Transfer_Func/kiki/private_data/closure_mechanism_20261019/repair/native_receipt01/qa01 --max-seconds 300 --source-commit 61db23be9524238409cbf9eb7a46c6381dd93280。该目录已完成，不得覆盖或再次执行；复现需要另有授权的新目录。
+
+原P3依旧CLOSED_INCONCLUSIVE_NATIVE_EXIT_UNVERIFIED_NO_SCIENCE：7项合成PASS但旧native exitnull保留，原受限HDF5字节读取违规、失败源码和拒绝manifest保留；新成功不补写旧退出码，也未证明Refresh是历史根因。原固定D未执行，不能把它判为科学失败或偷续旧QA。下一科学入口须另实际Astra6规划；原test关闭、TASK4暂停，原六端点及默认模型保持。main合并须核对精确范围、预期head和远端。

@@ -1,5 +1,5 @@
 {
-  "status": "STATIC_ACCEPTED_READY_FOR_UNIQUE_QA",
+  "status": "CLOSED_ENGINEERING_ACCEPTED_PENDING_PR",
   "planning_model": "gpt-6-astra",
   "planning_agent": "/root/astra6_native_receipt_recovery",
   "raw_plan_sha256": "753813d100400ad651ac32fd558f09384bdcd61999f077b16aafaecf622471f6",
@@ -12,7 +12,7 @@
     "attempt_limit": 1,
     "retry_allowed": false
   },
-  "qa_attempts": 0,
+  "qa_attempts": 1,
   "fixed_cases": [
     "quick_exit_0",
     "quick_exit_7",
@@ -30,5 +30,325 @@
     "reports/native_receipt_20261020_protocol.md": "8be4005812f2a71adb35c23255fb0d1283737a09344d55a283d617fea9e29ab8"
   },
   "frozen_manifest_path": "private_data\\closure_mechanism_20261019\\repair\\native_receipt01\\frozen_source.json",
-  "frozen_manifest_sha256": "bd2708aa78103de3eec4251d17bd27a41551cd5f3bf012186e9374c4c38884e6"
+  "frozen_manifest_sha256": "bd2708aa78103de3eec4251d17bd27a41551cd5f3bf012186e9374c4c38884e6",
+  "source_commit": "61db23be9524238409cbf9eb7a46c6381dd93280",
+  "qa_native_receipt": {
+    "cleanup": {},
+    "command": [
+      "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+      "E:\\03-nn_Transfer_Func\\kiki\\tests\\test_native_process_receipt_20261020.py",
+      "--qa-worker",
+      "--output",
+      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\repair\\native_receipt01\\qa01",
+      "--max-seconds",
+      "300.0",
+      "--source-commit",
+      "61db23be9524238409cbf9eb7a46c6381dd93280"
+    ],
+    "elapsed_seconds": 15.206222799955867,
+    "launcher_creation_filetime_utc": 134369074552876557,
+    "launcher_pid": 81272,
+    "launcher_state": "GONE",
+    "max_seconds": 300.0,
+    "native_receipt_complete": true,
+    "outer_timeout": false,
+    "output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\repair\\native_receipt01\\qa01",
+    "qa_status": "ENGINEERING_ACCEPTED",
+    "source_commit": "61db23be9524238409cbf9eb7a46c6381dd93280",
+    "status": "ENGINEERING_ACCEPTED",
+    "stderr_log": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\repair\\native_receipt01\\qa01.outer.stderr.log",
+    "stdout_log": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\repair\\native_receipt01\\qa01.outer.stdout.log",
+    "worker_creation_filetime_utc": 134369074552993547,
+    "worker_exit_code": 0,
+    "worker_pid": 77060,
+    "worker_state": "GONE"
+  },
+  "qa_result": {
+    "cases": [
+      {
+        "accepted": true,
+        "case": "quick_exit_0",
+        "command": [
+          "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+          "-NoProfile",
+          "-NonInteractive",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "E:\\03-nn_Transfer_Func\\kiki\\experiments\\native_process_receipt_20261020.ps1",
+          "-CommandJson",
+          "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\repair\\native_receipt01\\qa01\\quick_exit_0\\command.json",
+          "-WorkingDirectory",
+          "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\repair\\native_receipt01\\qa01\\quick_exit_0",
+          "-Output",
+          "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\repair\\native_receipt01\\qa01\\quick_exit_0\\native",
+          "-TimeoutSeconds",
+          "20",
+          "-MaxSeconds",
+          "29",
+          "-SourceCommit",
+          "61db23be9524238409cbf9eb7a46c6381dd93280",
+          "-FixtureIdentityJson",
+          "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\repair\\native_receipt01\\qa01\\quick_exit_0\\worker.json"
+        ],
+        "elapsed_seconds": 1.7432012000354007,
+        "identities": {
+          "child": null,
+          "fixture": {
+            "identity": {
+              "creation_filetime_utc": 134369074568911200,
+              "pid": 85584
+            },
+            "state": "GONE"
+          },
+          "powershell": {
+            "identity": {
+              "creation_filetime_utc": 134369074553875490,
+              "pid": 89588
+            },
+            "state": "GONE"
+          }
+        },
+        "native_receipt": {
+          "arguments": [
+            "E:\\03-nn_Transfer_Func\\kiki\\tests\\test_native_process_receipt_20261020.py",
+            "--worker",
+            "quick_exit_0",
+            "--identity",
+            "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\repair\\native_receipt01\\qa01\\quick_exit_0\\worker.json",
+            "--child-identity",
+            "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\repair\\native_receipt01\\qa01\\quick_exit_0\\child.json"
+          ],
+          "cleanup_verified": true,
+          "elapsed_seconds": 0.263098,
+          "errors": [],
+          "executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+          "exit_code": 0,
+          "exit_code_obtained": true,
+          "fixture_creation_filetime_utc": 134369074568911200,
+          "fixture_identity_after": "GONE",
+          "fixture_pid": 85584,
+          "max_seconds": 29,
+          "native_receipt_complete": true,
+          "output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\repair\\native_receipt01\\qa01\\quick_exit_0\\native",
+          "owned_child_creation_filetime_utc": null,
+          "owned_child_identity_after": null,
+          "owned_child_pid": null,
+          "powershell_version": "5.1.26100.9168",
+          "source_commit": "61db23be9524238409cbf9eb7a46c6381dd93280",
+          "status": "COMPLETED",
+          "stderr_drained": true,
+          "stdout_drained": true,
+          "supervised_creation_filetime_utc": 134369074568561699,
+          "supervised_identity_after": "GONE",
+          "supervised_pid": 89392,
+          "taskkill_exit_code": null,
+          "terminated_observed": true,
+          "timeout": false,
+          "timeout_seconds": 20,
+          "working_directory": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\repair\\native_receipt01\\qa01\\quick_exit_0"
+        },
+        "outer_cleanup": null,
+        "outer_exit_code": 0,
+        "outer_timed_out": false,
+        "rescue_cleanup": {}
+      },
+      {
+        "accepted": true,
+        "case": "quick_exit_7",
+        "command": [
+          "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+          "-NoProfile",
+          "-NonInteractive",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "E:\\03-nn_Transfer_Func\\kiki\\experiments\\native_process_receipt_20261020.ps1",
+          "-CommandJson",
+          "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\repair\\native_receipt01\\qa01\\quick_exit_7\\command.json",
+          "-WorkingDirectory",
+          "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\repair\\native_receipt01\\qa01\\quick_exit_7",
+          "-Output",
+          "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\repair\\native_receipt01\\qa01\\quick_exit_7\\native",
+          "-TimeoutSeconds",
+          "20",
+          "-MaxSeconds",
+          "29",
+          "-SourceCommit",
+          "61db23be9524238409cbf9eb7a46c6381dd93280",
+          "-FixtureIdentityJson",
+          "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\repair\\native_receipt01\\qa01\\quick_exit_7\\worker.json"
+        ],
+        "elapsed_seconds": 1.4455118000041693,
+        "identities": {
+          "child": null,
+          "fixture": {
+            "identity": {
+              "creation_filetime_utc": 134369074583874409,
+              "pid": 78824
+            },
+            "state": "GONE"
+          },
+          "powershell": {
+            "identity": {
+              "creation_filetime_utc": 134369074571442332,
+              "pid": 45004
+            },
+            "state": "GONE"
+          }
+        },
+        "native_receipt": {
+          "arguments": [
+            "E:\\03-nn_Transfer_Func\\kiki\\tests\\test_native_process_receipt_20261020.py",
+            "--worker",
+            "quick_exit_7",
+            "--identity",
+            "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\repair\\native_receipt01\\qa01\\quick_exit_7\\worker.json",
+            "--child-identity",
+            "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\repair\\native_receipt01\\qa01\\quick_exit_7\\child.json"
+          ],
+          "cleanup_verified": true,
+          "elapsed_seconds": 0.2276812,
+          "errors": [],
+          "executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+          "exit_code": 7,
+          "exit_code_obtained": true,
+          "fixture_creation_filetime_utc": 134369074583874409,
+          "fixture_identity_after": "GONE",
+          "fixture_pid": 78824,
+          "max_seconds": 29,
+          "native_receipt_complete": true,
+          "output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\repair\\native_receipt01\\qa01\\quick_exit_7\\native",
+          "owned_child_creation_filetime_utc": null,
+          "owned_child_identity_after": null,
+          "owned_child_pid": null,
+          "powershell_version": "5.1.26100.9168",
+          "source_commit": "61db23be9524238409cbf9eb7a46c6381dd93280",
+          "status": "FAILED_NONZERO",
+          "stderr_drained": true,
+          "stdout_drained": true,
+          "supervised_creation_filetime_utc": 134369074583369447,
+          "supervised_identity_after": "GONE",
+          "supervised_pid": 85940,
+          "taskkill_exit_code": null,
+          "terminated_observed": true,
+          "timeout": false,
+          "timeout_seconds": 20,
+          "working_directory": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\repair\\native_receipt01\\qa01\\quick_exit_7"
+        },
+        "outer_cleanup": null,
+        "outer_exit_code": 1,
+        "outer_timed_out": false,
+        "rescue_cleanup": {}
+      },
+      {
+        "accepted": true,
+        "case": "timeout_tree",
+        "command": [
+          "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+          "-NoProfile",
+          "-NonInteractive",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "E:\\03-nn_Transfer_Func\\kiki\\experiments\\native_process_receipt_20261020.ps1",
+          "-CommandJson",
+          "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\repair\\native_receipt01\\qa01\\timeout_tree\\command.json",
+          "-WorkingDirectory",
+          "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\repair\\native_receipt01\\qa01\\timeout_tree",
+          "-Output",
+          "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\repair\\native_receipt01\\qa01\\timeout_tree\\native",
+          "-TimeoutSeconds",
+          "10",
+          "-MaxSeconds",
+          "29",
+          "-SourceCommit",
+          "61db23be9524238409cbf9eb7a46c6381dd93280",
+          "-FixtureIdentityJson",
+          "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\repair\\native_receipt01\\qa01\\timeout_tree\\worker.json",
+          "-OwnedChildIdentityJson",
+          "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\repair\\native_receipt01\\qa01\\timeout_tree\\child.json"
+        ],
+        "elapsed_seconds": 11.866392500000075,
+        "identities": {
+          "child": {
+            "identity": {
+              "creation_filetime_utc": 134369074599282114,
+              "pid": 87696
+            },
+            "state": "GONE"
+          },
+          "fixture": {
+            "identity": {
+              "creation_filetime_utc": 134369074598262001,
+              "pid": 46112
+            },
+            "state": "GONE"
+          },
+          "powershell": {
+            "identity": {
+              "creation_filetime_utc": 134369074585945283,
+              "pid": 83152
+            },
+            "state": "GONE"
+          }
+        },
+        "native_receipt": {
+          "arguments": [
+            "E:\\03-nn_Transfer_Func\\kiki\\tests\\test_native_process_receipt_20261020.py",
+            "--worker",
+            "timeout_tree",
+            "--identity",
+            "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\repair\\native_receipt01\\qa01\\timeout_tree\\worker.json",
+            "--child-identity",
+            "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\repair\\native_receipt01\\qa01\\timeout_tree\\child.json"
+          ],
+          "cleanup_verified": true,
+          "elapsed_seconds": 10.6552224,
+          "errors": [],
+          "executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+          "exit_code": 1,
+          "exit_code_obtained": true,
+          "fixture_creation_filetime_utc": 134369074598262001,
+          "fixture_identity_after": "GONE",
+          "fixture_pid": 46112,
+          "max_seconds": 29,
+          "native_receipt_complete": true,
+          "output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\repair\\native_receipt01\\qa01\\timeout_tree\\native",
+          "owned_child_creation_filetime_utc": 134369074599282114,
+          "owned_child_identity_after": "GONE",
+          "owned_child_pid": 87696,
+          "powershell_version": "5.1.26100.9168",
+          "source_commit": "61db23be9524238409cbf9eb7a46c6381dd93280",
+          "status": "TIMEOUT",
+          "stderr_drained": true,
+          "stdout_drained": true,
+          "supervised_creation_filetime_utc": 134369074597875778,
+          "supervised_identity_after": "GONE",
+          "supervised_pid": 53612,
+          "taskkill_exit_code": 0,
+          "terminated_observed": true,
+          "timeout": true,
+          "timeout_seconds": 10,
+          "working_directory": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\repair\\native_receipt01\\qa01\\timeout_tree"
+        },
+        "outer_cleanup": null,
+        "outer_exit_code": 1,
+        "outer_timed_out": false,
+        "rescue_cleanup": {}
+      }
+    ],
+    "elapsed_seconds": 15.077865200000815,
+    "max_seconds": 300.0,
+    "powershell_executable": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "python_launcher": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+    "source_commit": "61db23be9524238409cbf9eb7a46c6381dd93280",
+    "status": "ENGINEERING_ACCEPTED"
+  },
+  "qa_native_charged_seconds": 15.206222799955867,
+  "support_held_seconds": 600,
+  "closed_charged_or_held_seconds": 615.2062227999559,
+  "unspent_allocation_cancelled_seconds": 284.7937772000441,
+  "qa_json_sha256": "66563dfd4fb6d973c1b8e524772c594db6639751bd4a5aade81f1d5b24f2a6ac",
+  "source_mismatches_after_execution": []
 }
