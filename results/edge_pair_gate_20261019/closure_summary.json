@@ -1,0 +1,148 @@
+{
+  "scope": "P0 real-train interface and cost audit; incomplete measurement, no P2 candidate",
+  "status": "CLOSED_UNRESOLVED_IMPLEMENTATION_FAILURE",
+  "receipt": {
+    "status": "FAILED",
+    "error": "RuntimeError('worker exit 1')",
+    "pid": 82708,
+    "child_pid": 60876,
+    "launcher_pid": 60876,
+    "actual_worker_pid": 67828,
+    "cleanup": {},
+    "command": [
+      "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+      "E:\\03-nn_Transfer_Func\\kiki\\experiments\\edge_pair_cost_gate_20261019.py",
+      "measure",
+      "--worker",
+      "--output",
+      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P0\\edge_pair_gate01",
+      "--max-seconds",
+      "2800.0"
+    ],
+    "mode": "measure",
+    "seconds": 121.16303799999878,
+    "cap_seconds": 2800.0,
+    "includes_child_cost_once": true,
+    "category": "EXEC",
+    "val_read": false,
+    "test_read": false
+  },
+  "charged_execution_seconds": 121.16303799999878,
+  "measurement": {
+    "status": "UNRESOLVED",
+    "pid": 67828,
+    "phase": "populated checkpoint full8",
+    "rows": [
+      {
+        "structure": "full8",
+        "horizon": 1.0,
+        "panel": "distributed",
+        "seconds": [
+          2.312432600010652,
+          1.88603019999573
+        ]
+      },
+      {
+        "structure": "full8",
+        "horizon": 1.0,
+        "panel": "longest",
+        "seconds": [
+          1.536416899994947,
+          1.4769579000130761
+        ]
+      },
+      {
+        "structure": "full8",
+        "horizon": 1.0,
+        "panel": "unstable",
+        "seconds": [
+          1.5235542000154965,
+          1.475768700009212
+        ]
+      },
+      {
+        "structure": "full8",
+        "horizon": 2.0,
+        "panel": "distributed",
+        "seconds": [
+          2.618285999982618,
+          2.7364339000196196
+        ]
+      },
+      {
+        "structure": "full8",
+        "horizon": 2.0,
+        "panel": "longest",
+        "seconds": [
+          3.595092800009297,
+          8.55061370000476
+        ]
+      },
+      {
+        "structure": "full8",
+        "horizon": 2.0,
+        "panel": "unstable",
+        "seconds": [
+          6.4039058000198565,
+          6.525541800016072
+        ]
+      },
+      {
+        "structure": "full8",
+        "horizon": 5.0,
+        "panel": "distributed",
+        "seconds": [
+          17.965059100009967,
+          18.490803199994843
+        ]
+      },
+      {
+        "structure": "full8",
+        "horizon": 5.0,
+        "panel": "longest",
+        "seconds": [
+          18.13616669998737,
+          6.332736000011209
+        ]
+      },
+      {
+        "structure": "full8",
+        "horizon": 5.0,
+        "panel": "unstable",
+        "seconds": [
+          2.2682354999997187,
+          2.203367799986154
+        ],
+        "checkpoint_seconds": 0.5436292999947909
+      }
+    ],
+    "overhead": {},
+    "val_read": false,
+    "test_read": false,
+    "environment": {
+      "torch": "2.13.0+cu130",
+      "cuda_build": "13.0",
+      "device": "cuda:0",
+      "dtype": "float64",
+      "threads": 1,
+      "gpu": "NVIDIA GeForce RTX 4060 Ti"
+    },
+    "frozen_identity_sha256": "8c3302dc0e810c1c42df2f6a54f3f430ea14ae870a2cfea7c850453e8a9ff263",
+    "elapsed_worker_seconds": 118.22039269999368,
+    "error": "ValueError('source, train, configuration or code identity changed')",
+    "traceback": "Traceback (most recent call last):\n  File \"E:\\03-nn_Transfer_Func\\kiki\\experiments\\edge_pair_cost_gate_20261019.py\", line 289, in measure\n    restore_checkpoint(probe, device, identity)\n  File \"E:\\03-nn_Transfer_Func\\kiki\\experiments\\train_closure.py\", line 113, in restore_checkpoint\n    raise ValueError(\"source, train, configuration or code identity changed\")\nValueError: source, train, configuration or code identity changed\n",
+    "cost_gate": "UNRESOLVED"
+  },
+  "frozen_identity_sha256": "8c3302dc0e810c1c42df2f6a54f3f430ea14ae870a2cfea7c850453e8a9ff263",
+  "source_code_unchanged": true,
+  "completed_updates": 18,
+  "planned_updates": 36,
+  "full_train_evaluations_completed": 0,
+  "discarded_probe_checkpoint": "full8_discarded_probe/step000002",
+  "checkpoint_metadata_sha256": "20ca6f6dfea572f72c4093b9199920e765b5f71a19b7ecbfb3a4073cc2dab850",
+  "persisted_checkpoint_identity_equals_frozen_json": true,
+  "remaining_scope": "delete7 updates, full366 evaluations, final cost table and full overhead not completed",
+  "decision": "P0 gate unresolved; no second batch or repair; withhold integration/P2/default",
+  "artifacts_local": "private_data\\closure_mechanism_20261019\\P0\\edge_pair_gate01",
+  "private_requirements": "366 train/source weights and checkpoints remain local; hashes and reproduction information archived"
+}
