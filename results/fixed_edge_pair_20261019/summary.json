@@ -1,5 +1,5 @@
 {
-  "status": "RUNNING_PREREGISTERED_SCIENTIFIC_QUEUE",
+  "status": "CLOSED_SCIENCE_VALID_ENGINEERING_INTEGRATION_WITHHELD",
   "planning_model": "gpt-6-astra",
   "planning_agent": "/root/astra6_fixed_edge_science",
   "preregistered_commit": "72b727ad1c9d2bdab02a404b8d71b16656e2e7da",
@@ -241,7 +241,7 @@
   },
   "source_frozen_commit": "47ba6f341886aeb4cc235d3c25a9b16bc8f4a24b",
   "root_decision": "Matching actual synthetic QA PASS and independent source review admit preregistered fixed scientific queue; model adoption none",
-  "scientific_native_receipt_pending": true,
+  "scientific_native_receipt_pending": false,
   "campaign_native_running": {
     "launcher_pid": 59512,
     "start": "2026-10-19T20:01:51.7249664+08:00",
@@ -274,7 +274,7 @@
   "scientific_source_immutable": true,
   "remaining_actual_cost": "pending complete native receipts; entire registered allocation remains reserved",
   "registered_milestones_file": "results/fixed_edge_pair_20261019/milestones.json",
-  "registered_milestones_sha256": "338cd571446fcaed624aa25825a1f274d5fdd18c0b1cda40b9cb368660ec7ae6",
+  "registered_milestones_sha256": "c9f8e565c62401a2e21a5eb4fba8e4ddce4e3b607973d91a0f806cc6a82b7115",
   "registered_milestones_completed": [
     {
       "seed": 6101,
@@ -350,11 +350,26 @@
       "seed": 6103,
       "structure": "full8",
       "step": 1024
+    },
+    {
+      "seed": 6103,
+      "structure": "delete7",
+      "step": 256
+    },
+    {
+      "seed": 6103,
+      "structure": "delete7",
+      "step": 512
+    },
+    {
+      "seed": 6103,
+      "structure": "delete7",
+      "step": 1024
     }
   ],
   "source_audit_count": 59,
   "source_audit_mismatches": [],
-  "last_scientific_milestone_observed_at": "2026-10-19T16:37:48.316955+00:00",
+  "last_scientific_milestone_observed_at": "2026-10-19T17:12:34.979021+00:00",
   "completed_model_receipts": [
     {
       "seed": 6101,
@@ -515,24 +530,42 @@
       },
       "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\fixed_edge_pair01\\campaign01\\6103_full8\\native_initial\\native.json",
       "sha256": "45c005ea27221cb1b64d2f57639cc71bc43c2ca13131f0111272bb0249ae4157"
+    },
+    {
+      "seed": 6103,
+      "structure": "delete7",
+      "receipt": {
+        "actual_worker_pid": 79844,
+        "cleanup": {},
+        "command": [
+          "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+          "E:\\03-nn_Transfer_Func\\kiki\\experiments\\fixed_edge_pair_20261019.py",
+          "worker",
+          "--output",
+          "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\fixed_edge_pair01\\campaign01",
+          "--seed",
+          "6103",
+          "--structure",
+          "delete7",
+          "--max-seconds",
+          "9992.0"
+        ],
+        "exit_code": 0,
+        "includes_child_cost_once": true,
+        "launcher_pid": 76444,
+        "native_receipt_complete": true,
+        "seconds": 2387.492993599968,
+        "started_qpc": 285133.012484,
+        "started_unix": 1792427375.1923113,
+        "status": "COMPLETED",
+        "timed_out": false
+      },
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\fixed_edge_pair01\\campaign01\\6103_delete7\\native_initial\\native.json",
+      "sha256": "b0692ec3e993a7c29f838beae780a3da8fc68bedbe1c39da65225b02cd47aaf8"
     }
   ],
-  "current_active_model": {
-    "attempt": "initial",
-    "seed": 6103,
-    "status": "STARTING",
-    "structure": "delete7",
-    "actual_worker_pid": 79844,
-    "progress_snapshot": {
-      "identity_sha256": "544e51d4b9b370b77f7b376fde7f905e0a9663fd8ff696f50f341cdb83fe315d",
-      "last_completed_update": 231,
-      "pid": 79844,
-      "seed": 6103,
-      "status": "RUNNING",
-      "structure": "delete7"
-    }
-  },
-  "completed_model_native_seconds": 16056.604723599914,
+  "current_active_model": null,
+  "completed_model_native_seconds": 18444.097717199882,
   "numerically_unresolved_milestones": [
     {
       "seed": 6102,
@@ -543,5 +576,32 @@
       ],
       "official_primary": null
     }
-  ]
+  ],
+  "scientific_native_receipt": {
+    "native_receipt_complete": true,
+    "source_commit": "47ba6f341886aeb4cc235d3c25a9b16bc8f4a24b",
+    "start": "2026-10-19T20:01:51.7249664+08:00",
+    "timeout": false,
+    "exit_code": 0,
+    "seconds": 18460.3930355,
+    "cleanup": null,
+    "mode": "campaign",
+    "end": "2026-10-20T01:09:32.1870029+08:00",
+    "status": "COMPLETED",
+    "includes_child_cost_once": true,
+    "launcher_pid": 59512,
+    "output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\fixed_edge_pair01\\campaign01",
+    "cap_seconds": 69000,
+    "native_supervisor_pid": 58916,
+    "actual_worker_pid": 87020
+  },
+  "scientific_native_receipt_sha256": "cf03ba939563f27c95159253cd117e02a04986cb0ed14677a2ebe4bba3f2f8f6",
+  "scientific_charged_seconds": 18460.3930355,
+  "analysis_and_queue_charged_seconds": 16.295318300119106,
+  "recovery_used": false,
+  "final_evidence": "results/fixed_edge_pair_20261019/final.json",
+  "final_evidence_sha256": "a14ad9d78aff6f1f03f5a105db6e3030eaffcc0bab2a23006a04c5c9833c2ae8",
+  "decision": "science completed within fixed train scope; default model unchanged; runner integration withheld due actual step0 recovery wiring defect; subsequent engineering requires fresh preregistration",
+  "total_stage_charged_or_held_seconds": 20299.346220400002,
+  "unspent_allocation_cancelled_seconds": 51700.6537796
 }
