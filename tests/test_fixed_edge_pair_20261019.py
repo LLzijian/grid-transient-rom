@@ -163,7 +163,8 @@ def _sampler_checkpoint_test(output):
     assert groups and all(group[2] for group in groups)
 
     rng_data = np.random.default_rng(83101)
-    events = [{"id": f"qa-{i}", "group": f"g{i}", "label": "stable",
+    events = [{"id": f"qa-{i}", "group": f"g{i}",
+               "label": "unstable" if i == 1 else "stable",
                "x": rng_data.normal(0, .01, (length, 30)),
                "torque": rng_data.normal(0, .01, (length, 10))}
               for i, length in enumerate((26, 29, 33))]
@@ -252,13 +253,28 @@ def _sampler_checkpoint_test(output):
         np.random.default_rng(83102), copy.deepcopy(initial_coverage), [stale_rng], end_step=1,
         update=lambda *args: (_ for _ in ()).throw(AssertionError("stale RNG reached update"))),
         "expired schedule RNG")
+    failure_rng = np.random.default_rng(83102)
+    failure_coverage = copy.deepcopy(initial_coverage)
+    failure_schedule = []
+    for step in range(1, 51):
+        horizon = (1., 2., 5.)[(step-1) % 3]
+        samples, sampling = next_samples(events, failure_rng, failure_coverage)
+        failure_schedule.append({"step": step, "horizon_s": horizon, "sampling": sampling,
+            "numpy_rng_after": copy.deepcopy(failure_rng.bit_generator.state),
+            "long_counts": [min(round(horizon*100), len(e["x"])-11) for e, _ in samples],
+            "local_counts": [min(20, len(e["x"])-i-1) for e, i in samples]})
+    calls = [0]
     failure_saves = []
+    def fail_at_fiftieth(*args):
+        calls[0] += 1
+        if calls[0] == 50:
+            raise FloatingPointError("synthetic update failure")
+        return {"loss": 0.}
     _raises(lambda: runner.train_steps(rm, ro, store, events,
-        np.random.default_rng(83102), copy.deepcopy(initial_coverage), schedule[:1], end_step=1,
-        save=lambda step, history: failure_saves.append(step),
-        update=lambda *args: (_ for _ in ()).throw(FloatingPointError("synthetic update failure"))),
+        np.random.default_rng(83102), copy.deepcopy(initial_coverage), failure_schedule,
+        end_step=50, save=lambda step, history: failure_saves.append(step), update=fail_at_fiftieth),
         "failed update")
-    assert failure_saves == [0], "failed update published an unsafe continuation checkpoint"
+    assert calls == [50] and failure_saves == [0], "failed update published an unsafe step-50 checkpoint"
     damage = output / "damaged"
     shutil.copytree(cpdir, damage)
     metadata_path = damage / "latest.json"
