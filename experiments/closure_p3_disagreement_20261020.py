@@ -120,13 +120,16 @@ def frozen_inputs():
                 raise ValueError(f"historical P2 dependency changed outside future runner: {name}")
             source[name] = current
         for name, old_hash in meta["identity"]["common"]["bound_files"].items():
+            if Path(name).name == "dataset.h5":
+                raise ValueError("historical whole-HDF5 input is forbidden in P3 freeze")
             if sha(name) != old_hash:
                 raise ValueError(f"historical bound input changed: {name}")
     data = []
-    # Byte hashes only: freeze never opens H5 groups or deserializes val/test trajectories.
+    # Historical dataset.h5 contains other splits: do not hash or open it here.
+    # The original bound files and explicit train cohort are checked separately.
     for root_name in ("ieee39_postfault", "ieee39_expansion"):
         data += [ROOT / "private_data" / root_name / name
-                 for name in ("dataset.h5", "dataset_index.csv", "splits.json")]
+                 for name in ("dataset_index.csv", "splits.json")]
     train = ROOT / "private_data/closure_discovery_20261017/D/new_data/train"
     data += [p for p in train.rglob("*") if p.is_file()]
     from_source = ROOT / "private_data/task2_prediction_optimization_0102/formal_S_O/step00650/structured_numeric_export.json"

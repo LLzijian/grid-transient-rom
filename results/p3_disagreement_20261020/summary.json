@@ -1,5 +1,5 @@
 {
-  "status": "PREPARATION_QUARANTINED_SCOPE_VIOLATION_NO_QA_NO_INFERENCE",
+  "status": "CORRECTED_PREPARATION_STATIC_ACCEPTED_READY_FOR_UNIQUE_QA",
   "planning_model": "gpt-6-astra",
   "planning_agent": "/root/astra6_p3_admissibility",
   "raw_plan_sha256": "1de559a79e1a8c25dd13bf3d44b1ae80844d7013970560ce32ceb1010cb2ed9c",
@@ -21,7 +21,8 @@
   "test_read": true,
   "native_supervisor": {
     "path": "private_data/closure_mechanism_20261019/P3/disagreement01/native_supervise.ps1",
-    "sha256": "833beaa1cdede3cf69895ffcf198a878017ba7d0fded6cb96d21c066c15cb113"
+    "sha256": "503b96e31b1cb293fa70d6713b5d1d709562a83e40d9ff57cb01567150e9b639",
+    "source": "param([ValidateSet('qa','infer')][string]$Mode,[string]$SourceCommit)\n$ErrorActionPreference='Stop'\n$taskRoot='E:/03-nn_Transfer_Func/kiki'\n$taskBase=Join-Path $taskRoot 'private_data/closure_mechanism_20261019/P3/disagreement01'\n$taskCap=if($Mode -eq 'qa'){300}else{3600}\n$taskName=if($Mode -eq 'qa'){'qa01'}else{'inference01'}\n$taskOutput=Join-Path $taskBase $taskName\nif(Test-Path -LiteralPath $taskOutput){throw 'Unique registered output already exists'}\n$taskArguments=if($Mode -eq 'qa'){@('experiments/closure_p3_disagreement_20261020.py','qa','--output',$taskOutput,'--max-seconds',[string]$taskCap)}else{@('experiments/closure_p3_disagreement_20261020.py','infer','--output',$taskOutput,'--manifest',(Join-Path $taskBase 'frozen_source_train_only.json'),'--max-seconds',[string]$taskCap)}\n$taskStart=Get-Date\n$taskTimer=[Diagnostics.Stopwatch]::StartNew()\n$taskProcess=$null\n$taskCleanup=$null\n$taskFinished=$false\n$taskError=$null\ntry {\n $taskProcess=Start-Process -FilePath (Join-Path $taskRoot '.venv-gpu/Scripts/python.exe') -ArgumentList $taskArguments -WorkingDirectory $taskRoot -WindowStyle Hidden -PassThru -RedirectStandardOutput (Join-Path $taskBase \"$taskName.stdout.log\") -RedirectStandardError (Join-Path $taskBase \"$taskName.stderr.log\")\n @{source_commit=$SourceCommit;mode=$Mode;native_supervisor_pid=$PID;launcher_pid=$taskProcess.Id;start=$taskStart.ToString('o');cap_seconds=$taskCap;output=$taskOutput} | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $taskBase \"$taskName.native.running.json\") -Encoding utf8\n $taskFinished=$taskProcess.WaitForExit(($taskCap-3)*1000)\n if(-not $taskFinished){$taskCleanup=(& taskkill /PID $taskProcess.Id /T /F 2>&1 | Out-String);[void]$taskProcess.WaitForExit(2000)}\n} catch {$taskError=$_.Exception.Message} finally {\n if($null -ne $taskProcess -and -not $taskProcess.HasExited){$taskCleanup=(& taskkill /PID $taskProcess.Id /T /F 2>&1 | Out-String);[void]$taskProcess.WaitForExit(2000)}\n $taskTimer.Stop()\n $taskExit=$null\n if($null -ne $taskProcess){$taskProcess.Refresh();if($taskProcess.HasExited){$taskExit=$taskProcess.ExitCode}}\n $taskWorkerPath=Join-Path $taskOutput 'worker.json'\n $taskWorker=if(Test-Path -LiteralPath $taskWorkerPath){(Get-Content -Raw -LiteralPath $taskWorkerPath | ConvertFrom-Json).pid}else{$null}\n $taskComplete=($null -ne $taskProcess -and $taskProcess.HasExited)\n $taskStatus=if($taskFinished -and $taskExit -eq 0 -and $taskTimer.Elapsed.TotalSeconds -le $taskCap -and $null -eq $taskError){'COMPLETED'}else{'FAILED'}\n $taskReceipt=@{status=$taskStatus;source_commit=$SourceCommit;mode=$Mode;native_supervisor_pid=$PID;launcher_pid=$(if($null -ne $taskProcess){$taskProcess.Id}else{$null});actual_worker_pid=$taskWorker;start=$taskStart.ToString('o');end=(Get-Date).ToString('o');seconds=$taskTimer.Elapsed.TotalSeconds;cap_seconds=$taskCap;exit_code=$taskExit;native_receipt_complete=$taskComplete;includes_child_cost_once=$true;timeout=(-not $taskFinished);cleanup=$taskCleanup;error=$taskError;output=$taskOutput}\n [IO.File]::WriteAllText((Join-Path $taskBase \"$taskName.native.receipt.json\"),($taskReceipt | ConvertTo-Json -Depth 8),[Text.UTF8Encoding]::new($false))\n $taskReceipt | ConvertTo-Json -Compress -Depth 8\n}\nif($taskStatus -ne 'COMPLETED'){exit 1}\n"
   },
   "independent_plan_review": "No blocking definition issue; enforce all 40 fine state channels and actual-window classification time origin",
   "output_base": "private_data/closure_mechanism_20261019/P3/disagreement01",
@@ -40,5 +41,14 @@
     "individual_native_cost_unreconciled_included_in_support_hold": 900,
     "scientific_outputs": 0,
     "root_decision": "preserve failed preparation; remove forbidden whole-HDF5 hashing; one corrected metadata-only preparation after independent static review; original QA/inference attempt limits unchanged"
+  },
+  "corrected_preparation": {
+    "manifest": "private_data\\closure_mechanism_20261019\\P3\\disagreement01\\frozen_source_train_only.json",
+    "manifest_sha256": "865dd4df021d181ef6b0e578229eb7c71a8bac33f3f9fb9c9009deb25c36e9be",
+    "independent_review": "Read scope static PASS; no historical HDF5 hash; scope violation retained",
+    "runner_sha256": "4f57856a82442b514eedfa6d3eaf8f7cda7800085c96def26c22bf6caa425173",
+    "qa_sha256": "edbd2b405095c36bfcb5c7d5ea0cb168bbe006986be2b2b53eef14c1eeeefb11",
+    "command_exit_code": 0,
+    "source_count": 65
   }
 }
