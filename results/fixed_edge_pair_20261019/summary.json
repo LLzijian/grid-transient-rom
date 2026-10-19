@@ -1,10 +1,10 @@
 {
-  "status": "IMPLEMENTED_STATIC_REVIEWED_QA_PENDING",
+  "status": "QA01_FAILED_SYNTHETIC_STRATA_ONLY_REPAIR_AVAILABLE",
   "planning_model": "gpt-6-astra",
   "planning_agent": "/root/astra6_fixed_edge_science",
   "preregistered_commit": "72b727ad1c9d2bdab02a404b8d71b16656e2e7da",
   "scientific_attempts": 0,
-  "qa_attempts": 0,
+  "qa_attempts": 1,
   "source_sha256": {
     "experiments/fixed_edge_pair_20261019.py": "4412777530c9a40f80641faf431991e2c62f38194c15023c8d6f1417ce4c14f9",
     "tests/test_fixed_edge_pair_20261019.py": "54a1c89a51a918c9198da92ee316eac503fc97fddd27fdd4c52e74d1b936e738",
@@ -28,5 +28,38 @@
     "analysis_queue_cap": 1800,
     "recovery_nested_cap": 1200,
     "recovery_extra_charged": false
+  },
+  "qa_charged_seconds": 14.2073349,
+  "qa01": {
+    "result": {
+      "S_O_source_read": false,
+      "error": "ValueError(\"expected stable/unstable TRAIN strata, got ['stable']\")",
+      "real_train_read": false,
+      "scope": "synthetic new-loop/checkpoint/metric QA",
+      "status": "FAIL",
+      "test_read": false,
+      "traceback": "Traceback (most recent call last):\n  File \"E:\\03-nn_Transfer_Func\\kiki\\tests\\test_fixed_edge_pair_20261019.py\", line 383, in run_qa\n    result[\"sampler_checkpoint\"] = _sampler_checkpoint_test(output / \"synthetic\")\n                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\03-nn_Transfer_Func\\kiki\\tests\\test_fixed_edge_pair_20261019.py\", line 177, in _sampler_checkpoint_test\n    samples, sampling = next_samples(events, rng, coverage)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\03-nn_Transfer_Func\\kiki\\experiments\\train_joint_numerical_pair_0100.py\", line 144, in next_samples\n    chosen, _ = sample_batch(events, rng, 10)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\03-nn_Transfer_Func\\kiki\\experiments\\train_joint_campaign.py\", line 85, in sample_batch\n    pools = _stratified_pools(events)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\03-nn_Transfer_Func\\kiki\\experiments\\train_joint_campaign.py\", line 68, in _stratified_pools\n    raise ValueError(f\"expected stable/unstable TRAIN strata, got {sorted(pools)}\")\nValueError: expected stable/unstable TRAIN strata, got ['stable']\n",
+      "val_read": false
+    },
+    "native_receipt": {
+      "end": "2026-10-19T19:53:47.5703280+08:00",
+      "native_supervisor_pid": 21476,
+      "output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\fixed_edge_pair01\\qa01",
+      "status": "FAILED",
+      "timeout": false,
+      "native_receipt_complete": true,
+      "seconds": 14.2073349,
+      "cap_seconds": 600,
+      "includes_child_cost_once": true,
+      "source_commit": "8e8447c48e81b7f7ac829c542133ca68b8650cfc",
+      "mode": "qa",
+      "launcher_pid": 42616,
+      "actual_worker_pid": 77584,
+      "start": "2026-10-19T19:53:33.3380183+08:00",
+      "cleanup": null,
+      "exit_code": 1
+    },
+    "result_sha256": "ff35fc4c4b0e46a670d438af25d72cd4677087a46dbc939a6118f1def9eb7806",
+    "source_commit": "8e8447c48e81b7f7ac829c542133ca68b8650cfc"
   }
 }
