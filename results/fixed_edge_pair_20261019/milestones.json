@@ -1,6 +1,6 @@
 {
   "status": "PARTIAL_REGISTERED_MILESTONES",
-  "observed_at": "2026-10-19T16:07:56.648428+00:00",
+  "observed_at": "2026-10-19T16:37:48.316955+00:00",
   "sources_checked": 59,
   "sources_unchanged": true,
   "registered_model_target_updates": 1024,
@@ -11548,6 +11548,826 @@
         "model_sha256": "c8ffa72525d10ef04f377481235018ea2b56c4e3e92a33379085ce9c2c1de5e3",
         "training_sha256": "94b0a598158a72b30612429fcf21169a752b32382ca8e39dd8e1cb4d055e8654"
       }
+    },
+    {
+      "seed": 6103,
+      "structure": "full8",
+      "step": 1024,
+      "split": "train",
+      "event_count": 366,
+      "rows_by_family": {
+        "common_frequency": 1830,
+        "normalized_p": 1830,
+        "numerical": 1830,
+        "objective_point_error": 1830,
+        "records": 1830
+      },
+      "primary": {
+        "definition": "original risk of stable complete-5s objective_point_error.mean_point_error",
+        "eligible": 325,
+        "unresolved_ids": [],
+        "value": 2.74731360149217
+      },
+      "scientific_numeric_qualified_events": 366,
+      "scientific_numeric_unresolved_event_ids": [],
+      "other_registered_metrics": {
+        "common_frequency": {
+          "1": {
+            "all_rows": 366,
+            "diagnostic_scope": "finite-only descriptive subset; does not replace unresolved official score",
+            "eligible_events": 329,
+            "finite_events": 329,
+            "finite_subcohort_diagnostic": {
+              "cvar10": 0.5129169055132561,
+              "mean": 0.14915685796787362,
+              "n_events": 329,
+              "pooled": 0.21920556713623915,
+              "worst": 1.221751604360841
+            },
+            "numerically_admissible_events": 329,
+            "official": {
+              "cvar10": 0.5129169055132561,
+              "mean": 0.14915685796787362,
+              "n_events": 329,
+              "pooled": 0.21920556713623915,
+              "worst": 1.221751604360841
+            },
+            "unavailable_events": 37,
+            "unresolved_event_ids": []
+          },
+          "2": {
+            "all_rows": 366,
+            "diagnostic_scope": "finite-only descriptive subset; does not replace unresolved official score",
+            "eligible_events": 325,
+            "finite_events": 325,
+            "finite_subcohort_diagnostic": {
+              "cvar10": 0.6863701185367213,
+              "mean": 0.2249755370645081,
+              "n_events": 325,
+              "pooled": 0.30502197633729194,
+              "worst": 1.4786887882214812
+            },
+            "numerically_admissible_events": 325,
+            "official": {
+              "cvar10": 0.6863701185367213,
+              "mean": 0.2249755370645081,
+              "n_events": 325,
+              "pooled": 0.30502197633729194,
+              "worst": 1.4786887882214812
+            },
+            "unavailable_events": 41,
+            "unresolved_event_ids": []
+          },
+          "5": {
+            "all_rows": 366,
+            "diagnostic_scope": "finite-only descriptive subset; does not replace unresolved official score",
+            "eligible_events": 325,
+            "finite_events": 325,
+            "finite_subcohort_diagnostic": {
+              "cvar10": 0.7717478257044752,
+              "mean": 0.21348337816314614,
+              "n_events": 325,
+              "pooled": 0.3280834521959274,
+              "worst": 1.6043533255184774
+            },
+            "numerically_admissible_events": 325,
+            "official": {
+              "cvar10": 0.7717478257044752,
+              "mean": 0.21348337816314614,
+              "n_events": 325,
+              "pooled": 0.3280834521959274,
+              "worst": 1.6043533255184774
+            },
+            "unavailable_events": 41,
+            "unresolved_event_ids": []
+          },
+          "8": {
+            "all_rows": 366,
+            "diagnostic_scope": "finite-only descriptive subset; does not replace unresolved official score",
+            "eligible_events": 325,
+            "finite_events": 325,
+            "finite_subcohort_diagnostic": {
+              "cvar10": 0.8228770670441553,
+              "mean": 0.23851246968110665,
+              "n_events": 325,
+              "pooled": 0.354712749504849,
+              "worst": 1.7026836659068023
+            },
+            "numerically_admissible_events": 325,
+            "official": {
+              "cvar10": 0.8228770670441553,
+              "mean": 0.23851246968110665,
+              "n_events": 325,
+              "pooled": 0.354712749504849,
+              "worst": 1.7026836659068023
+            },
+            "unavailable_events": 41,
+            "unresolved_event_ids": []
+          },
+          "prefix": {
+            "all_rows": 366,
+            "diagnostic_scope": "finite-only descriptive subset; does not replace unresolved official score",
+            "eligible_events": 366,
+            "finite_events": 366,
+            "finite_subcohort_diagnostic": {
+              "cvar10": 0.8927239193460171,
+              "mean": 0.2500622620014774,
+              "n_events": 366,
+              "pooled": 0.35979082191524225,
+              "worst": 1.7026836659068023
+            },
+            "numerically_admissible_events": 366,
+            "official": {
+              "cvar10": 0.8927239193460171,
+              "mean": 0.2500622620014774,
+              "n_events": 366,
+              "pooled": 0.35979082191524225,
+              "worst": 1.7026836659068023
+            },
+            "unavailable_events": 0,
+            "unresolved_event_ids": []
+          },
+          "unstable_prefix": {
+            "all_rows": 41,
+            "diagnostic_scope": "finite-only descriptive subset; does not replace unresolved official score",
+            "eligible_events": 41,
+            "finite_events": 41,
+            "finite_subcohort_diagnostic": {
+              "cvar10": 1.1779307056045218,
+              "mean": 0.34161549380929446,
+              "n_events": 41,
+              "pooled": 0.8107712095853131,
+              "worst": 1.530885775765692
+            },
+            "numerically_admissible_events": 41,
+            "official": {
+              "cvar10": 1.1779307056045218,
+              "mean": 0.34161549380929446,
+              "n_events": 41,
+              "pooled": 0.8107712095853131,
+              "worst": 1.530885775765692
+            },
+            "unavailable_events": 0,
+            "unresolved_event_ids": []
+          }
+        },
+        "normalized_p": {
+          "1": {
+            "all_rows": 366,
+            "diagnostic_scope": "finite-only descriptive subset; does not replace unresolved official score",
+            "eligible_events": 329,
+            "finite_events": 329,
+            "finite_subcohort_diagnostic": {
+              "cvar10": 0.9057925896121235,
+              "mean": 0.411570308596851,
+              "n_events": 329,
+              "pooled": 0.48158173784284614,
+              "worst": 2.661901726395751
+            },
+            "numerically_admissible_events": 329,
+            "official": {
+              "cvar10": 0.9057925896121235,
+              "mean": 0.411570308596851,
+              "n_events": 329,
+              "pooled": 0.48158173784284614,
+              "worst": 2.661901726395751
+            },
+            "unavailable_events": 37,
+            "unresolved_event_ids": []
+          },
+          "2": {
+            "all_rows": 366,
+            "diagnostic_scope": "finite-only descriptive subset; does not replace unresolved official score",
+            "eligible_events": 325,
+            "finite_events": 325,
+            "finite_subcohort_diagnostic": {
+              "cvar10": 0.9929787667752704,
+              "mean": 0.3989074815658432,
+              "n_events": 325,
+              "pooled": 0.4877781957721917,
+              "worst": 2.218608160331185
+            },
+            "numerically_admissible_events": 325,
+            "official": {
+              "cvar10": 0.9929787667752704,
+              "mean": 0.3989074815658432,
+              "n_events": 325,
+              "pooled": 0.4877781957721917,
+              "worst": 2.218608160331185
+            },
+            "unavailable_events": 41,
+            "unresolved_event_ids": []
+          },
+          "5": {
+            "all_rows": 366,
+            "diagnostic_scope": "finite-only descriptive subset; does not replace unresolved official score",
+            "eligible_events": 325,
+            "finite_events": 325,
+            "finite_subcohort_diagnostic": {
+              "cvar10": 1.0165732346370038,
+              "mean": 0.34393204792590004,
+              "n_events": 325,
+              "pooled": 0.4539557986095901,
+              "worst": 1.7807194977183716
+            },
+            "numerically_admissible_events": 325,
+            "official": {
+              "cvar10": 1.0165732346370038,
+              "mean": 0.34393204792590004,
+              "n_events": 325,
+              "pooled": 0.4539557986095901,
+              "worst": 1.7807194977183716
+            },
+            "unavailable_events": 41,
+            "unresolved_event_ids": []
+          },
+          "8": {
+            "all_rows": 366,
+            "diagnostic_scope": "finite-only descriptive subset; does not replace unresolved official score",
+            "eligible_events": 325,
+            "finite_events": 325,
+            "finite_subcohort_diagnostic": {
+              "cvar10": 0.9304636487938138,
+              "mean": 0.3038310290818321,
+              "n_events": 325,
+              "pooled": 0.41118074712804265,
+              "worst": 1.6746196479353828
+            },
+            "numerically_admissible_events": 325,
+            "official": {
+              "cvar10": 0.9304636487938138,
+              "mean": 0.3038310290818321,
+              "n_events": 325,
+              "pooled": 0.41118074712804265,
+              "worst": 1.6746196479353828
+            },
+            "unavailable_events": 41,
+            "unresolved_event_ids": []
+          },
+          "prefix": {
+            "all_rows": 366,
+            "diagnostic_scope": "finite-only descriptive subset; does not replace unresolved official score",
+            "eligible_events": 366,
+            "finite_events": 366,
+            "finite_subcohort_diagnostic": {
+              "cvar10": 0.934872891609927,
+              "mean": 0.30550159122727655,
+              "n_events": 366,
+              "pooled": 0.412834155808698,
+              "worst": 1.6746196479353828
+            },
+            "numerically_admissible_events": 366,
+            "official": {
+              "cvar10": 0.934872891609927,
+              "mean": 0.30550159122727655,
+              "n_events": 366,
+              "pooled": 0.412834155808698,
+              "worst": 1.6746196479353828
+            },
+            "unavailable_events": 0,
+            "unresolved_event_ids": []
+          },
+          "unstable_prefix": {
+            "all_rows": 41,
+            "diagnostic_scope": "finite-only descriptive subset; does not replace unresolved official score",
+            "eligible_events": 41,
+            "finite_events": 41,
+            "finite_subcohort_diagnostic": {
+              "cvar10": 0.8903642023402842,
+              "mean": 0.31874385213628736,
+              "n_events": 41,
+              "pooled": 0.6071734665153609,
+              "worst": 1.0073537978770737
+            },
+            "numerically_admissible_events": 41,
+            "official": {
+              "cvar10": 0.8903642023402842,
+              "mean": 0.31874385213628736,
+              "n_events": 41,
+              "pooled": 0.6071734665153609,
+              "worst": 1.0073537978770737
+            },
+            "unavailable_events": 0,
+            "unresolved_event_ids": []
+          }
+        },
+        "objective_point_error": {
+          "1": {
+            "all_rows": 366,
+            "diagnostic_scope": "finite-only descriptive subset; does not replace unresolved official score",
+            "eligible_events": 329,
+            "finite_events": 329,
+            "finite_subcohort_diagnostic": {
+              "cvar10": 3.0803915816853946,
+              "mean": 0.563052035531622,
+              "n_events": 329,
+              "worst": 33.63665057981238
+            },
+            "numerically_admissible_events": 329,
+            "official": {
+              "cvar10": 3.0803915816853946,
+              "mean": 0.563052035531622,
+              "n_events": 329,
+              "worst": 33.63665057981238
+            },
+            "unavailable_events": 37,
+            "unresolved_event_ids": []
+          },
+          "2": {
+            "all_rows": 366,
+            "diagnostic_scope": "finite-only descriptive subset; does not replace unresolved official score",
+            "eligible_events": 325,
+            "finite_events": 325,
+            "finite_subcohort_diagnostic": {
+              "cvar10": 5.083594498038248,
+              "mean": 0.7827512963762536,
+              "n_events": 325,
+              "worst": 38.750125550077755
+            },
+            "numerically_admissible_events": 325,
+            "official": {
+              "cvar10": 5.083594498038248,
+              "mean": 0.7827512963762536,
+              "n_events": 325,
+              "worst": 38.750125550077755
+            },
+            "unavailable_events": 41,
+            "unresolved_event_ids": []
+          },
+          "5": {
+            "all_rows": 366,
+            "diagnostic_scope": "finite-only descriptive subset; does not replace unresolved official score",
+            "eligible_events": 325,
+            "finite_events": 325,
+            "finite_subcohort_diagnostic": {
+              "cvar10": 9.193388151069422,
+              "mean": 1.1357949640978573,
+              "n_events": 325,
+              "worst": 41.69180504703363
+            },
+            "numerically_admissible_events": 325,
+            "official": {
+              "cvar10": 9.193388151069422,
+              "mean": 1.1357949640978573,
+              "n_events": 325,
+              "worst": 41.69180504703363
+            },
+            "unavailable_events": 41,
+            "unresolved_event_ids": []
+          },
+          "8": {
+            "all_rows": 366,
+            "diagnostic_scope": "finite-only descriptive subset; does not replace unresolved official score",
+            "eligible_events": 325,
+            "finite_events": 325,
+            "finite_subcohort_diagnostic": {
+              "cvar10": 11.297346038245268,
+              "mean": 1.3081310482563135,
+              "n_events": 325,
+              "worst": 43.860631904656294
+            },
+            "numerically_admissible_events": 325,
+            "official": {
+              "cvar10": 11.297346038245268,
+              "mean": 1.3081310482563135,
+              "n_events": 325,
+              "worst": 43.860631904656294
+            },
+            "unavailable_events": 41,
+            "unresolved_event_ids": []
+          },
+          "prefix": {
+            "all_rows": 366,
+            "diagnostic_scope": "finite-only descriptive subset; does not replace unresolved official score",
+            "eligible_events": 366,
+            "finite_events": 366,
+            "finite_subcohort_diagnostic": {
+              "cvar10": 10.641992926745838,
+              "mean": 1.2570705677197112,
+              "n_events": 366,
+              "worst": 43.860631904656294
+            },
+            "numerically_admissible_events": 366,
+            "official": {
+              "cvar10": 10.641992926745838,
+              "mean": 1.2570705677197112,
+              "n_events": 366,
+              "worst": 43.860631904656294
+            },
+            "unavailable_events": 0,
+            "unresolved_event_ids": []
+          },
+          "unstable_prefix": {
+            "all_rows": 41,
+            "diagnostic_scope": "finite-only descriptive subset; does not replace unresolved official score",
+            "eligible_events": 41,
+            "finite_events": 41,
+            "finite_subcohort_diagnostic": {
+              "cvar10": 3.6784896584068862,
+              "mean": 0.8523228561490852,
+              "n_events": 41,
+              "worst": 4.823071274974283
+            },
+            "numerically_admissible_events": 41,
+            "official": {
+              "cvar10": 3.6784896584068862,
+              "mean": 0.8523228561490852,
+              "n_events": 41,
+              "worst": 4.823071274974283
+            },
+            "unavailable_events": 0,
+            "unresolved_event_ids": []
+          }
+        },
+        "records": {
+          "1": {
+            "all_rows": 366,
+            "diagnostic_scope": "finite-only descriptive subset; does not replace unresolved official score",
+            "eligible_events": 329,
+            "finite_events": 329,
+            "finite_subcohort_diagnostic": {
+              "cvar10": 1.097273987396592,
+              "delta_rmse_rad": 0.19862906425843155,
+              "mean": 0.36298408838571317,
+              "n_events": 329,
+              "omega_rmse_rad_s": 0.6291871885573141,
+              "pooled": 0.5323550577764506,
+              "worst": 5.1321818916480915,
+              "worst_group_mean": 0.7907787110506477
+            },
+            "numerically_admissible_events": 329,
+            "official": {
+              "cvar10": 1.097273987396592,
+              "delta_rmse_rad": 0.19862906425843155,
+              "mean": 0.36298408838571317,
+              "n_events": 329,
+              "omega_rmse_rad_s": 0.6291871885573141,
+              "pooled": 0.5323550577764506,
+              "worst": 5.1321818916480915,
+              "worst_group_mean": 0.7907787110506477
+            },
+            "unavailable_events": 37,
+            "unresolved_event_ids": []
+          },
+          "2": {
+            "all_rows": 366,
+            "diagnostic_scope": "finite-only descriptive subset; does not replace unresolved official score",
+            "eligible_events": 325,
+            "finite_events": 325,
+            "finite_subcohort_diagnostic": {
+              "cvar10": 1.3673795789331078,
+              "delta_rmse_rad": 0.31805018778842475,
+              "mean": 0.4007917336403539,
+              "n_events": 325,
+              "omega_rmse_rad_s": 0.6803477709026245,
+              "pooled": 0.6726132930008388,
+              "worst": 5.626369313854588,
+              "worst_group_mean": 0.7215154340778821
+            },
+            "numerically_admissible_events": 325,
+            "official": {
+              "cvar10": 1.3673795789331078,
+              "delta_rmse_rad": 0.31805018778842475,
+              "mean": 0.4007917336403539,
+              "n_events": 325,
+              "omega_rmse_rad_s": 0.6803477709026245,
+              "pooled": 0.6726132930008388,
+              "worst": 5.626369313854588,
+              "worst_group_mean": 0.7215154340778821
+            },
+            "unavailable_events": 41,
+            "unresolved_event_ids": []
+          },
+          "5": {
+            "all_rows": 366,
+            "diagnostic_scope": "finite-only descriptive subset; does not replace unresolved official score",
+            "eligible_events": 325,
+            "finite_events": 325,
+            "finite_subcohort_diagnostic": {
+              "cvar10": 2.017604159943006,
+              "delta_rmse_rad": 0.5209945003085137,
+              "mean": 0.4423907182023518,
+              "n_events": 325,
+              "omega_rmse_rad_s": 0.674123009813624,
+              "pooled": 0.9070840543763274,
+              "worst": 6.091299899068656,
+              "worst_group_mean": 1.027602381954952
+            },
+            "numerically_admissible_events": 325,
+            "official": {
+              "cvar10": 2.017604159943006,
+              "delta_rmse_rad": 0.5209945003085137,
+              "mean": 0.4423907182023518,
+              "n_events": 325,
+              "omega_rmse_rad_s": 0.674123009813624,
+              "pooled": 0.9070840543763274,
+              "worst": 6.091299899068656,
+              "worst_group_mean": 1.027602381954952
+            },
+            "unavailable_events": 41,
+            "unresolved_event_ids": []
+          },
+          "8": {
+            "all_rows": 366,
+            "diagnostic_scope": "finite-only descriptive subset; does not replace unresolved official score",
+            "eligible_events": 325,
+            "finite_events": 325,
+            "finite_subcohort_diagnostic": {
+              "cvar10": 2.180000063884508,
+              "delta_rmse_rad": 0.6227949534164554,
+              "mean": 0.4158240270423929,
+              "n_events": 325,
+              "omega_rmse_rad_s": 0.5690773013646526,
+              "pooled": 1.0070170096551394,
+              "worst": 6.252667440921948,
+              "worst_group_mean": 1.1642915509117566
+            },
+            "numerically_admissible_events": 325,
+            "official": {
+              "cvar10": 2.180000063884508,
+              "delta_rmse_rad": 0.6227949534164554,
+              "mean": 0.4158240270423929,
+              "n_events": 325,
+              "omega_rmse_rad_s": 0.5690773013646526,
+              "pooled": 1.0070170096551394,
+              "worst": 6.252667440921948,
+              "worst_group_mean": 1.1642915509117566
+            },
+            "unavailable_events": 41,
+            "unresolved_event_ids": []
+          },
+          "prefix": {
+            "all_rows": 366,
+            "diagnostic_scope": "finite-only descriptive subset; does not replace unresolved official score",
+            "eligible_events": 366,
+            "finite_events": 366,
+            "finite_subcohort_diagnostic": {
+              "cvar10": 2.1493816620774355,
+              "delta_rmse_rad": 0.6211531345154954,
+              "mean": 0.43213187386478336,
+              "n_events": 366,
+              "omega_rmse_rad_s": 0.5738736850934678,
+              "pooled": 1.0061377535862526,
+              "worst": 6.252667440921948,
+              "worst_group_mean": 1.094533455646131
+            },
+            "numerically_admissible_events": 366,
+            "official": {
+              "cvar10": 2.1493816620774355,
+              "delta_rmse_rad": 0.6211531345154954,
+              "mean": 0.43213187386478336,
+              "n_events": 366,
+              "omega_rmse_rad_s": 0.5738736850934678,
+              "pooled": 1.0061377535862526,
+              "worst": 6.252667440921948,
+              "worst_group_mean": 1.094533455646131
+            },
+            "unavailable_events": 0,
+            "unresolved_event_ids": []
+          },
+          "unstable_prefix": {
+            "all_rows": 41,
+            "diagnostic_scope": "finite-only descriptive subset; does not replace unresolved official score",
+            "eligible_events": 41,
+            "finite_events": 41,
+            "finite_subcohort_diagnostic": {
+              "cvar10": 1.2747529999918121,
+              "delta_rmse_rad": 0.2977932627428424,
+              "mean": 0.5614013913593419,
+              "n_events": 41,
+              "omega_rmse_rad_s": 1.0615745456985777,
+              "pooled": 0.8687779754744311,
+              "worst": 1.4126648934791788,
+              "worst_group_mean": 1.4126648934791788
+            },
+            "numerically_admissible_events": 41,
+            "official": {
+              "cvar10": 1.2747529999918121,
+              "delta_rmse_rad": 0.2977932627428424,
+              "mean": 0.5614013913593419,
+              "n_events": 41,
+              "omega_rmse_rad_s": 1.0615745456985777,
+              "pooled": 0.8687779754744311,
+              "worst": 1.4126648934791788,
+              "worst_group_mean": 1.4126648934791788
+            },
+            "unavailable_events": 0,
+            "unresolved_event_ids": []
+          }
+        }
+      },
+      "local_analysis": {
+        "finite": {
+          "A": true,
+          "A_projected": true,
+          "H": true,
+          "K_projected": true
+        },
+        "equilibrium_pass": true,
+        "f0_norm_inf": 0.0,
+        "quotient": {
+          "QQ_transpose_expected_projector_error": 4.341702372698731e-16,
+          "Q_transpose_Q_error": 4.779991910704001e-16,
+          "dimension_full": 40,
+          "dimension_reduced": 39,
+          "energy_gauge_residual_norm": 1.4584392955587397e-15,
+          "field_gauge_column_residual_norm": 1.881660314113562e-15,
+          "gauge_invariance_pass": true,
+          "gauge_invariance_tolerance_absolute": 1e-10,
+          "internal_coordinates": "(delta[10], pi[10], p[10], q[10]); no physical rescaling applied"
+        },
+        "energy_curvature": {
+          "quotient_positive_eigenvalue_count": 38,
+          "quotient_strict_positive_definite": false,
+          "raw_positive_eigenvalue_count": 38,
+          "raw_strict_positive_definite": false
+        },
+        "linear_field": {
+          "interpretation": "eligible local quotient linearization at a verified equilibrium",
+          "near_neutral_mode_count": 0,
+          "strict_hurwitz": false,
+          "strictly_stable_mode_count": 38,
+          "strictly_unstable_mode_count": 1
+        },
+        "max_quotient_pole_real_s_inverse": 0.008900417039335386,
+        "lyapunov": {
+          "attempted": false,
+          "interpretation": null,
+          "positive_definite": null,
+          "residual_norm": null,
+          "residual_tolerance": null,
+          "verified": false
+        },
+        "scope": "local derivatives and quotient-space spectra only; no nonlinear radius, attraction domain, or global stability claim",
+        "quotient_A_eigenvalues_real_imag": [
+          [
+            -0.7608534683093924,
+            13.785779580200535
+          ],
+          [
+            -0.7608534683093924,
+            -13.785779580200535
+          ],
+          [
+            -0.7134087988123132,
+            9.34619013678896
+          ],
+          [
+            -0.7134087988123132,
+            -9.34619013678896
+          ],
+          [
+            -0.5011832016798199,
+            8.654819654930877
+          ],
+          [
+            -0.5011832016798199,
+            -8.654819654930877
+          ],
+          [
+            -0.5139333684277818,
+            7.673934363654727
+          ],
+          [
+            -0.5139333684277818,
+            -7.673934363654727
+          ],
+          [
+            -0.8491266531885895,
+            6.8173624054594875
+          ],
+          [
+            -0.8491266531885895,
+            -6.8173624054594875
+          ],
+          [
+            -0.7495127053099397,
+            6.320053834943774
+          ],
+          [
+            -0.7495127053099397,
+            -6.320053834943774
+          ],
+          [
+            -0.48299374490391045,
+            5.880556189459947
+          ],
+          [
+            -0.48299374490391045,
+            -5.880556189459947
+          ],
+          [
+            -0.4384401508300432,
+            3.703044720086211
+          ],
+          [
+            -0.4384401508300432,
+            -3.703044720086211
+          ],
+          [
+            -0.566342099719245,
+            3.1276273383086965
+          ],
+          [
+            -0.566342099719245,
+            -3.1276273383086965
+          ],
+          [
+            -4.4480150374982985,
+            0.0
+          ],
+          [
+            -3.89494986004477,
+            0.0
+          ],
+          [
+            -3.5555094653129067,
+            0.0
+          ],
+          [
+            -3.4838590575151542,
+            0.0
+          ],
+          [
+            -0.15945851711323852,
+            1.1374563830368525
+          ],
+          [
+            -0.15945851711323852,
+            -1.1374563830368525
+          ],
+          [
+            -2.580759675386806,
+            0.0
+          ],
+          [
+            -2.1512151459979862,
+            0.0
+          ],
+          [
+            -2.0592305179371304,
+            0.0
+          ],
+          [
+            -1.3232241694504705,
+            0.0
+          ],
+          [
+            -1.268126616428025,
+            0.0
+          ],
+          [
+            -0.598583977066476,
+            0.0
+          ],
+          [
+            0.008900417039335386,
+            0.0
+          ],
+          [
+            -0.05852344261176163,
+            0.0
+          ],
+          [
+            -0.01995005940137264,
+            0.001420133385608617
+          ],
+          [
+            -0.01995005940137264,
+            -0.001420133385608617
+          ],
+          [
+            -0.026864252336915924,
+            0.0
+          ],
+          [
+            -0.028608748051703718,
+            0.0
+          ],
+          [
+            -0.030437109328889614,
+            0.0
+          ],
+          [
+            -0.03150949262407933,
+            0.0
+          ],
+          [
+            -0.03162181393887642,
+            0.0
+          ]
+        ]
+      },
+      "local_evidence": {
+        "directory": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\fixed_edge_pair01\\campaign01\\6103_full8\\milestone_1024\\attempt_1792427350264742100",
+        "evidence_sha256": "b25329629bf4212f379560c0ed53e44a6b733dc163f259420d04df8e60083433",
+        "local_sha256": "96666202abeda887c915f23c0229fdfbce7ab94ef29413e7d9627612e4cea242",
+        "complete_sha256": "684994dcc65ca6470c3af8ea3ce7e364b7fb120f5e4a7a4ca3cba65db56c3523",
+        "checkpoint": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\fixed_edge_pair01\\campaign01\\6103_full8\\checkpoints\\step001024",
+        "checkpoint_metadata_sha256": "ef2a89e27da81809a25b55afbba67f5587c7255529dfb5d28fceb106510e6419",
+        "model_sha256": "ec9327e8da6bcd599f7e4fd513f0e93df17adc8b2db0d9b07d54584a29c89c1e",
+        "training_sha256": "4cd2abd18ee9f7ae70cdb2984af4f849fa417ff752302064e052b7adb8d9416a"
+      }
     }
   ],
   "metric_units": {
@@ -11557,7 +12377,7 @@
     "normalized_p": "dimensionless p_scale-normalized RMSE",
     "objective_point_error": "dimensionless event mean squared point error"
   },
-  "scope": "fixed registered train evaluations; two endpoint pairs complete with opposite primary-risk directions; earlier seed6102 deletion step512 remains numerically unresolved; seed6103 pending",
+  "scope": "fixed registered train evaluations; five models completed, final seed6103 deletion running; two endpoint-pair primary directions differ; historical seed6102 deletion512 numerical failure preserved",
   "completed_endpoint_pairs": [
     {
       "seed": 6101,
