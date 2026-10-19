@@ -1,5 +1,5 @@
 {
-  "status": "QA_PASS_MEASUREMENT_NOT_STARTED",
+  "status": "RUNNING_SINGLE_FORMAL_MEASUREMENT",
   "qa": {
     "S_O_source_read": false,
     "cache_checkpoint": {
@@ -171,7 +171,33 @@
   "native_supervisor_local_path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P0\\linear_cache_cost01\\native_supervise.ps1",
   "native_supervisor_sha256": "a80334e74593e0bfa976d565f4b75a1828ec67d540986c4c1782ab6d6e6e823d",
   "frozen_source_commit": "dd1257c07fe7470e520705d4023690fc935be43c",
-  "formal_attempts": 0,
+  "formal_attempts": 1,
   "scientific_admission": "NOT_AUTHORIZED",
-  "reproduction": ".venv-gpu/Scripts/python.exe experiments/linear_cache_cost_gate_20261019.py measure --output private_data/closure_mechanism_20261019/P0/linear_cache_cost01/measure01 --max-seconds 6000 --qa-record private_data/closure_mechanism_20261019/P0/linear_cache_cost01/qa01/qa.json"
+  "reproduction": ".venv-gpu/Scripts/python.exe experiments/linear_cache_cost_gate_20261019.py measure --output private_data/closure_mechanism_20261019/P0/linear_cache_cost01/measure01 --max-seconds 6000 --qa-record private_data/closure_mechanism_20261019/P0/linear_cache_cost01/qa01/qa.json",
+  "measurement_native_running": {
+    "launcher_pid": 84200,
+    "start": "2026-10-19T19:01:28.5153150+08:00",
+    "output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P0\\linear_cache_cost01\\measure01",
+    "mode": "measure",
+    "cap_seconds": 6000,
+    "native_supervisor_pid": 83316,
+    "source_commit": "dd1257c07fe7470e520705d4023690fc935be43c"
+  },
+  "measurement_worker": {
+    "argv": [
+      "E:\\03-nn_Transfer_Func\\kiki\\experiments\\linear_cache_cost_gate_20261019.py",
+      "measure",
+      "--worker",
+      "--output",
+      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P0\\linear_cache_cost01\\measure01",
+      "--max-seconds",
+      "6000.0",
+      "--qa-record",
+      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P0\\linear_cache_cost01\\qa01\\qa.json"
+    ],
+    "parent_pid": 62156,
+    "pid": 44008
+  },
+  "native_receipt_pending": true,
+  "qa_archive_commit": "7d4a36388758baf407c08f3245b9fee1fbd935c4"
 }
