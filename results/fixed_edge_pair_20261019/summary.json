@@ -274,7 +274,7 @@
   "scientific_source_immutable": true,
   "remaining_actual_cost": "pending complete native receipts; entire registered allocation remains reserved",
   "registered_milestones_file": "results/fixed_edge_pair_20261019/milestones.json",
-  "registered_milestones_sha256": "272a499a8c998f7f33a718e00177a3d77669e39c8f61a323597325fabb5dc202",
+  "registered_milestones_sha256": "cffb3d8802086654aded823542c7ffa9993363f6aef3880784f90962bb7bdd3d",
   "registered_milestones_completed": [
     {
       "seed": 6101,
@@ -330,11 +330,26 @@
       "seed": 6102,
       "structure": "delete7",
       "step": 512
+    },
+    {
+      "seed": 6102,
+      "structure": "delete7",
+      "step": 1024
+    },
+    {
+      "seed": 6103,
+      "structure": "full8",
+      "step": 256
+    },
+    {
+      "seed": 6103,
+      "structure": "full8",
+      "step": 512
     }
   ],
   "source_audit_count": 59,
   "source_audit_mismatches": [],
-  "last_scientific_milestone_observed_at": "2026-10-19T15:37:56.978178+00:00",
+  "last_scientific_milestone_observed_at": "2026-10-19T16:07:56.648428+00:00",
   "completed_model_receipts": [
     {
       "seed": 6101,
@@ -431,24 +446,56 @@
       },
       "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\fixed_edge_pair01\\campaign01\\6102_full8\\native_initial\\native.json",
       "sha256": "6bda535e5bcc338c7b580bfd353c337e65d64906c60d994dd6f67ab1be0d768d"
+    },
+    {
+      "seed": 6102,
+      "structure": "delete7",
+      "receipt": {
+        "actual_worker_pid": 89828,
+        "cleanup": {},
+        "command": [
+          "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+          "E:\\03-nn_Transfer_Func\\kiki\\experiments\\fixed_edge_pair_20261019.py",
+          "worker",
+          "--output",
+          "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\fixed_edge_pair01\\campaign01",
+          "--seed",
+          "6102",
+          "--structure",
+          "delete7",
+          "--max-seconds",
+          "9992.0"
+        ],
+        "exit_code": 0,
+        "includes_child_cost_once": true,
+        "launcher_pid": 89332,
+        "native_receipt_complete": true,
+        "seconds": 2395.2217766999966,
+        "started_qpc": 279902.2748896,
+        "started_unix": 1792422144.4546437,
+        "status": "COMPLETED",
+        "timed_out": false
+      },
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\fixed_edge_pair01\\campaign01\\6102_delete7\\native_initial\\native.json",
+      "sha256": "b43efe406f6ba218dc1e1b0d272e325dfb71121f3a257bfa9d7877a22d84b466"
     }
   ],
   "current_active_model": {
     "attempt": "initial",
-    "seed": 6102,
+    "seed": 6103,
     "status": "STARTING",
-    "structure": "delete7",
-    "actual_worker_pid": 89828,
+    "structure": "full8",
+    "actual_worker_pid": 86968,
     "progress_snapshot": {
-      "identity_sha256": "98759c8af3826fcc4918d7ca82c13081bf940a028c4f393de76fc1c894ebbf2d",
-      "last_completed_update": 921,
-      "pid": 89828,
-      "seed": 6102,
+      "identity_sha256": "663e8054f3be511843df62d9af7fb967e1a6954a867a7054bda06487f72ae5ec",
+      "last_completed_update": 561,
+      "pid": 86968,
+      "seed": 6103,
       "status": "RUNNING",
-      "structure": "delete7"
+      "structure": "full8"
     }
   },
-  "completed_model_native_seconds": 10827.72370449995,
+  "completed_model_native_seconds": 13222.945481199946,
   "numerically_unresolved_milestones": [
     {
       "seed": 6102,
