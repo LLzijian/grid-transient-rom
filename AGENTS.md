@@ -119,3 +119,24 @@ Review and stage only relevant files, protect unrelated working-tree edits, and 
 the remote commit before reporting synchronization complete. If a push is blocked,
 retain the local commit and record the exact blocker and retry action. After a runtime
 interruption, reconcile pending archival on recovery before starting another experiment.
+
+## 8. Astra6 planning and conditional main integration
+
+User authorization dated2026-10-19 requires automatic progression within the existing
+scientific scope and verified budget. Before each new scientific round, actually invoke
+`gpt-6-astra` (Astra6) for bounded analysis and planning. Save model identity, its returned
+plan, evidence references and root's adoption decision before execution. A heartbeat or
+liveness check is not a new scientific round. Never silently substitute another model;
+if Astra6 cannot be invoked, preserve safe preparation and record the specific blocker.
+
+After root adopts a finite preregistered plan, implement, verify, execute and evaluate it.
+Merge qualified substantive progress to `main` through a reviewed, scope-limited PR and
+verify the remote merge. Reusable engineering progress requires relevant correctness and
+recovery checks; scientific model adoption requires its original scientific gates. Failed
+model thresholds cannot be bypassed by describing code work as model improvement.
+If acceptance conditions are unmet, withdraw that round's integration/default adoption,
+retaining useful tested tools and all positive/negative evidence on the archival branch.
+If an unacceptable change was already merged, use a normal revert commit; never erase
+evidence, reset user edits or force-push. The detailed procedure is in engineering_loop.
+This instruction authorizes routine PR merge/rollback within task scope, not test access,
+additional budget, destructive cleanup or resurrection of closed budgets.

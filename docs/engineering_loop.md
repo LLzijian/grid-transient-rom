@@ -268,3 +268,35 @@ does not change a scientific or safety decision.
 ## GPU execution for future closure training
 
 For new 40-state closure training, use `experiments/train_closure.py` in the dedicated CUDA environment; its default is CUDA and unavailable CUDA is an explicit error. CPU execution must be requested for reproduction or debugging. Preserve float64, registered step sizes, batch/split semantics and scientific gates. The historical runners remain reproduction assets. Use a new output directory and bind source, train, code, optimizer and CPU/CUDA RNG identities. GPU availability does not itself establish a speed gain; use synchronized, scope-matched timing. See [GPU execution guide](gpu_training.md). This engineering default grants no additional scientific experiment or test access.
+
+## Automatic rounds with Astra6 and conditional merge
+
+2026-10-19 user instruction: progress automatically within the authorized research and
+budget; before each new round invoke `gpt-6-astra` (Astra6) for a bounded read-only plan.
+Record its model identifier, returned plan, root decision, finite costs, acceptance and
+rollback conditions before execution. Do not confuse a queued next action with execution.
+The root retains final scientific responsibility and obtains an independent challenge
+when required by AGENTS.md. Astra6 unavailable means explicit planning blocker, never a
+different model presented as Astra6.
+
+At closure separate engineering acceptance, scientific capability and model adoption.
+Relevant checks passing plus a reusable implementation/fix is substantive engineering
+progress eligible for main; a scientific candidate needs the locked scientific gate.
+A diagnostic or failed known-support control does not establish structure discovery.
+An informative negative conclusion is preserved with its code and cost, without adopting
+the unsuccessful model. A round with no qualified integration leaves main unchanged.
+
+Select only accepted code/documentation/evidence, review the exact diff against current
+main, create and attach a PR, merge with expected-head verification and verify the remote
+merge commit. No blanket staging of local dirty files. Rejected model/configuration
+integration is removed prospectively; already merged defects use a normal revert commit.
+Keep source checkpoints, all adverse outcomes and reproduction details on the archival
+branch and locally as appropriate. Never interpret rollback as deletion of scientific
+records or resetting the unrelated local checkout.
+
+Thread heartbeat `kiki-astra6` is ACTIVE at30-minute intervals. Each wake first checks
+current_state, actual processes and cumulative ledger. Healthy unchanged jobs remain
+quiet; new work starts only when no duplicate job exists. Notify on meaningful results,
+completion, failure/rollback or required user action. The heartbeat is scheduling, not a
+scientific budget extension. Respect pause/resource/test boundaries and do not modify
+other projects' automations. Existing TASK4 pause remains independent.
