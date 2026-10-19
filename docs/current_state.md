@@ -2,9 +2,9 @@
 
 任务状态：**RUNNING**。工作目录E:/03-nn_Transfer_Func/kiki。原test关闭、TASK4暂停；默认模型不变，没有最终科学模型采用。
 
-**P2固定边项科学队列正在实际运行。**2026-10-19 20:01:51启动，原生监督58916、launcher59512、实际队列87020；首个6101/full8实际worker61800，启动核验快照已完成17次真实联合更新。路径private_data/closure_mechanism_20261019/P2/fixed_edge_pair01/campaign01；实时进度各任务attempt_initial/progress.json，安全检查点checkpoints/latest.json。真实366条train、原346尺度、分类元数据、100MVA及完整采样安排首步前绑定通过。完整命令、源及PID见campaign01.native.running.json、campaign.json和对应worker.json，活跃时禁止重复启动。
+**P2固定边项科学队列正在实际运行。**2026-10-19 20:01:51启动，原生监督58916、launcher59512、实际队列87020；首个6101/full8实际worker61800，已完成256/512两次登记评估，原进程继续运行。路径private_data/closure_mechanism_20261019/P2/fixed_edge_pair01/campaign01；实时进度各任务attempt_initial/progress.json，安全检查点checkpoints/latest.json。真实366条train、原346尺度、分类元数据、100MVA及完整采样安排首步前绑定通过。完整命令、源及PID见campaign01.native.running.json、campaign.json和对应worker.json，活跃时禁止重复启动。
 
-实际gpt-6-astra（/root/astra6_fixed_edge_science）制定[原始方案](../reports/astra6_fixed_edge_pair_20261019.md)，root明确采纳并获独立挑战支持。固定顺序6101完整/删除、6102完整/删除、6103完整/删除，三种子各1024；主seed6101，256/512/1024全366条train双步长/能力表及局部谱。主风险沿用_point_error事件均值与原risk，结论限train成对重训；P1未知发现仍未通过，生成搜索关闭，无val、新FOM或模型采用。源47ba6f341886aeb4cc235d3c25a9b16bc8f4a24b冻结，全部59实际依赖绑定、原56源未变。
+实际gpt-6-astra（/root/astra6_fixed_edge_science）制定[原始方案](../reports/astra6_fixed_edge_pair_20261019.md)，root明确采纳并获独立挑战支持。固定顺序6101完整/删除、6102完整/删除、6103完整/删除，三种子各1024；主seed6101，256/512/1024全366条train双步长/能力表及局部谱。主风险沿用_point_error事件均值与原risk，结论限train成对重训；P1未知发现仍未通过，生成搜索关闭，无val、新FOM或模型采用。源47ba6f341886aeb4cc235d3c25a9b16bc8f4a24b冻结，全部59实际依赖绑定、原56源未变。2026-10-19 20:38核验：6101/full8的256与512评估均完整保留366事件、五族各1830行，366条科学数值资格通过。325条完整5秒稳定train主风险分别2.8707132433、2.5570443267；两端局部39维线性化均为38稳定模态、1不稳定模态，没有区域证书。见[中途登记证据](../results/fixed_edge_pair_20261019/milestones.json)。只报告同一模型的优化进展，未到1024、未形成结构比较。
 
 QA01仅stable的合成fixture失败14.2073349秒，负结果归档b833575f4445b34d2f67ffc9da7ce4e4e304f8df；唯一fixture修正后QA02 PASS 24.74585秒，两次合计38.9531849秒。恢复、typed identity/损坏拒绝、采样、指标和真实进程树清理通过，未读取真实数据；独立源码复查通过。QA实际worker75624/监督86856已退出0，PASS归档3c6dbb3bf8d27bf50322df7a0fb0188379ed0f01。[紧凑证据](../results/fixed_edge_pair_20261019/summary.json)记录实际启动、step0来源和本地哈希。
 
