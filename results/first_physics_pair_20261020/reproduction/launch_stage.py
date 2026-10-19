@@ -110,7 +110,8 @@ def prior_cost_gate(a, command):
             raise ValueError("nonlocal/duplicate prior receipt")
         seen.add(path); r = json.loads(path.read_text(encoding="utf-8"))
         native = r.get("outer", {})
-        seconds = native.get("seconds")
+        seconds = (r.get("prelaunch_seconds") if r.get("cost_kind")=="prelaunch_tool_envelope"
+                   and not native else native.get("seconds"))
         if not isinstance(seconds, (int,float)) or not 0 <= seconds < 40000 or r.get("status") == "RUNNING":
             raise ValueError("unreconciled prior native cost")
         category = CLASS.get(r["category"],r["category"])
