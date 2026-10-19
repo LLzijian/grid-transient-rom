@@ -4,6 +4,8 @@
 
 问题是未来监督能否可靠记录真实进程退出状态和完整费用。只新建experiments/native_process_receipt_20261020.ps1与tests/test_native_process_receipt_20261020.py；明确ProcessStartInfo/Process保有Handle、异步有界日志读取、deadline/self-owned tree cleanup、真实nullable ExitCode、回执发布后Dispose。具体合同采用Astra原始方案，不把null推成0，不从QA文字或worker.json推造退出。旧监督和旧结果不修改。
 
+接口接受显式有限正数时间参数，代码防误用上限3600秒，以供未来另行登记的推断调用；这不是本轮执行额度。本轮子案例仍只使用29秒包络、10/20秒等待，QA总上限300。未实测长运行，不能声称长任务已通过或据此开放科学执行。
+
 固定Windows PowerShell主机、同一登记Python环境，唯一标准库QA依次执行quick_exit_0、quick_exit_7、timeout_tree，每项一次。快速两项限30秒，超时子程序限10秒、留最多10秒清理且整个案例30秒；QA外包络300秒。三案例必须取得OS退出码，0/7保持真实整数；超时即使取得0也保持TIMEOUT；实测launcher/worker和自有子树全部退出。首个非预期失败停止后续，不预跑、不重复、不换实现重试。外层Python标准库Popen实际监督测试worker并记录完整退出成本，不再套用旧P3失格监督。所有输出用新private_data/closure_mechanism_20261019/repair/native_receipt01/qa01目录，不覆盖旧证据。
 
 repair独立登记900秒：唯一QA最多300，支持保守600，不互借。登记前父累计52375.5471438、余206824.4528562，repair余13407.905965；登记后父未分配205924.4528562、repair未分配12507.905965。结项按外层真实费用+600支持，未用额显式取消仅回repair，旧900hold保留，不续用P3的QA或未执行推断额度。其他类别不变。
@@ -13,3 +15,5 @@ repair独立登记900秒：唯一QA最多300，支持保守600，不互借。登
 三项真实行为及外层原生exit0/完整包络均满足才工程接受；仅内部JSON PASS不足。通过可有限工程PR，精确文件/预期head/远端合并核验，非模型采用。失败则关闭这一监督实现及依赖路径的修复链，不再换方案反复诊断；保留源码、命令、真实回执和代价在归档分支。无论成败选择性GitHub归档。
 
 成功后须另一次实际Astra6规划尚未执行的D，原定义/epsilon/六端点/366事件保持，不偷续原P3或重跑其QA。本轮不授予科学推断、新val/FOM、P1搜索或P4资格。整体任务未完成，继续条件按AGENTS执行。
+
+执行前独立静态审查/root/fixed_edge_final_review：最终PS805be69bb3144e6f9184340aca732291b6fa606c9f54dd8f52fea11ebf5a798f、Pythondb59a1363f19703f5ad885bc2d7a1de34bda2223172aedc3d10e053d5ad6a190通过，时间参数有限性已补齐；未发现参数引用、持有handle/nullable退出码、身份核验与有界清理的剩余确定阻断。同意冻结归档后唯一300秒三案例QA；不是实际结果或长任务资格。root采纳。所有修改前未启动或导入测试。
