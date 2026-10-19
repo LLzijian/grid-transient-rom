@@ -68,8 +68,8 @@ class WiringContracts(unittest.TestCase):
                 try: short.run_short_history(c,'synthetic',step=.005)
                 except Exception: pass
             self.fail('old loop incorrectly swallowed batch stop')
-        with tempfile.TemporaryDirectory() as tmp:
-            base=Path(tmp); campaign=base/'campaign01'; worker=base/'wrapper'
+        with tempfile.TemporaryDirectory(dir=w.BASE) as tmp:
+            base=Path(tmp).resolve(); campaign=base/'campaign01'; worker=base/'wrapper'
             campaign.mkdir(); worker.mkdir()
             (campaign/'design.json').write_text(json.dumps({'candidates':candidates}),encoding='utf-8')
             (campaign/'source_manifest.json').write_text(json.dumps({'source':{'synthetic.py':'fixture'}}),encoding='utf-8')
@@ -146,7 +146,7 @@ class WiringContracts(unittest.TestCase):
     def test_launcher_wrong_role_executable_before_native(self):
         launch=self.launcher()
         with tempfile.TemporaryDirectory(dir=w.BASE) as tmp:
-            base=Path(tmp); command=base/'command.json'; binding=base/'binding.json'
+            base=Path(tmp).resolve(); command=base/'command.json'; binding=base/'binding.json'
             command.write_text(json.dumps({'executable':str(w.ROOT/'.venv-gpu/Scripts/python.exe'),
                                           'arguments':[],'arguments_line':''}),encoding='utf-8')
             binding.write_text(json.dumps({'files':{'synthetic':'not-used'}}),encoding='utf-8')
@@ -158,8 +158,8 @@ class WiringContracts(unittest.TestCase):
             self.assertFalse((base/'native').exists())
 
     def test_early_real_worker_and_source_refusal(self):
-        with tempfile.TemporaryDirectory() as tmp:
-            base=Path(tmp)
+        with tempfile.TemporaryDirectory(dir=w.BASE) as tmp:
+            base=Path(tmp).resolve()
             with patch.object(w,'BASE',base): w.early_worker(base/'wrapper')
             worker=json.loads((base/'wrapper/wrapper_worker.json').read_text(encoding='utf-8'))
             import os
@@ -212,8 +212,8 @@ class WiringContracts(unittest.TestCase):
     def test_parsed_relative_paths_forward_as_absolute(self):
         import os
         from experiments import fom_execution_environment_20261020 as env
-        with tempfile.TemporaryDirectory() as tmp:
-            base=Path(tmp); output=base/'scientific'; worker=base/'wrapper'
+        with tempfile.TemporaryDirectory(dir=w.BASE) as tmp:
+            base=Path(tmp).resolve(); output=base/'scientific'; worker=base/'wrapper'
             argv=['prepare-binding','--output',os.path.relpath(output,Path.cwd()),
                   '--wrapper-output',os.path.relpath(worker,Path.cwd()),'--max-seconds','30','--source-commit','a'*40]
             with patch.object(w,'BASE',base),patch.object(w,'expected_environment',return_value={'synthetic':'known'}),patch.object(env,'preflight',return_value={'synthetic':'known'}),patch.object(w,'prepare_binding',return_value={'synthetic_preparation':True}) as prepare:

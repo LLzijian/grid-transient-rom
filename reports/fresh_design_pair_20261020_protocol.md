@@ -17,3 +17,5 @@ val仍按设计条件性稳定5秒加权风险（.8均值+.2最高10%权重尾�
 QA与准备累计1000、最多一次明确修正重验；任何失败均保留真实回执（无native时单列实际工具包络，不伪造）。若此新档QA再失败，关闭并暂搁这条启动实现路线，root作实质路线评审，不再排掉72条件开同构档。源/环境/实现确定性科学失败按阶段关闭，不借恢复/新编号重试。有限独立实现审查与精确命令/源归档后才执行；QA通过立即一次设计冻结并启动合法短历史，不加代理诊断链。各阶段实际结果均选择性GitHub归档、结项独立挑战；合格工程才PR合并，模型仍须原科学门槛。本登记无当前科学PID。
 
 新入口及私有launcher已封版，代码来源743fcbee73e59a7753300e07502b03d28eba0590；[独立同轮实现审查](fresh_design_pair_20261020_independent_review.md)支持源/命令冻结后实际QA，root采纳并保留其freeze文件必须在campaign内的条件。QA为GPU解释器`-m experiments.fresh_design_pair_20261020 qa`，worker --output/--wrapper-output均为BASE/stages/qa01绝对路径，自限240、原生外层300。root对launcher的command/output/worker/binding/prior故意使用相对CLI，必须在真实回执中看到全部规范为绝对路径、实际worker存在且完成17项检查。准备为prepare-binding、BASE/stages/prepare01，自限120/外层180；仅QA通过后使用实际QA回执建立prior并冻结调用。精确命令/hash及显式绑定见结果preparation；代码来源与执行前命令归档提交分别记录，不声称二者同一提交。本条记录为待执行命令，无虚构PID。
+
+首QA已真实贯通native并执行17项，15通过、2个Windows临时目录fixture报错；内外exit1、清理GONE、104绑定前后一致，实际4.151774500031024秒。生产绝对路径转发已被实际worker证实；失败为fixture的C/E跨盘relpath与未规范化临时ROOT。保留qa01_result及完整log。采用已登记唯一修正，只把新测试临时目录放本BASE同盘并resolve，生产源码/门槛/17项断言不变。最后QA使用qa02新输出、自限240/外层300，prior包括真实首回执，累计1000保持；不允许第三次QA。未执行prepare或物理求解，原prepare01待执行命令保留并在合格后以新代码来源另冻结准备命令。

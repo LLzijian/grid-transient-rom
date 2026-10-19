@@ -39,3 +39,11 @@ launcher在parse后将command/output/worker/binding/prior的resolve结果赋回�
 测试包含17项接线/设计定义，不执行FOM、不加载科研权重或旧val/test结果，也不重跑旧科学QA。root要求QA分支在FAIL抛错前保存完整qa_result，避免StringIO日志丢失；该限定日志修正由root在最终源码/命令冻结时核对，不增加案例或执行次数。
 
 本次静态决定：支持源、精确命令、显式输入和期望环境身份冻结归档后的登记QA。通过须实际证明相对launcher CLI规范化后进入真实QA worker、执行测试、两层exit0及清理GONE；静态、AST或定义存在不能代替。root继续承担完整prior、无重复PID、类别/每模型累计及唯一外部恢复核实。若QA仍失败，按本轮协议关闭并暂搁启动路线，不再同构排除72重开。此次仅追加本文，没有修改生产源码或执行任何计算。
+
+## QA01实际失败及唯一fixture修正
+
+只读实际`stages/qa01/qa_result.json`和`native_qa01/execution.json`确认：本轮已通过生产native链进入真实QA worker81184，17项实际执行，15项通过、2项fixture ERROR，0断言FAIL。外层4.151774500031024秒、真实exit1，内层exit1；两层完整回执、无超时，内层清理核实且worker GONE。该结果为QA未通过，不能据已贯通或15项通过启动科学步骤。没有执行FOM。
+
+两处错误与root提出的修正一致：临时目录在C盘而cwd在E盘导致`os.path.relpath`在生产wrapper调用前报跨盘错误；另一个fixture将未canonical的临时路径作为ROOT，生产对文件resolve后按严格路径边界拒绝。当前测试改为`TemporaryDirectory(dir=w.BASE)`并用`Path(tmp).resolve()`设置fixture根，保留同盘相对输入、真实worker记录、源码变更拒绝及全部原断言。修正没有放宽生产路径守卫、PS要求或科学门槛。
+
+同意将其作为登记中唯一明确测试fixture修正，冻结新测试/命令/完整来源、保留QA01负结果及全部4.1517745秒费用后，执行最后QA02；两次与准备累计仍受1000秒限制。QA02结果未知，不授予额外第三次机会或其他诊断。此次仅读取固定日志及测试差异、追加本文，没有修生产、导入或运行。
