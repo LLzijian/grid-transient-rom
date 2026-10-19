@@ -1,5 +1,5 @@
 {
-  "status": "SHORT_FOM_COMPLETE_READY_REGISTERED_SCORE",
+  "status": "SCORE_AND_PRE_FOM_FREEZE_PASS_READY_FULL_TRAIN_FOM",
   "actual_planning_model": "gpt-6-astra",
   "code_source_commit": "4ae86576e4cdae1fdca912b0f36172331ee60f10",
   "registered_P3_seconds": 40000,
@@ -147,6 +147,33 @@
         ],
         "arguments_line": "-m experiments.fresh_design_pair_20261020 acquire --stage score --campaign E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\campaign01 --output E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\stages\\score01 --wrapper-output E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\stages\\score01_wrapper --source-manifest E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\campaign01\\source_manifest.json --source-commit 4ae86576e4cdae1fdca912b0f36172331ee60f10 --max-seconds 690"
       }
+    },
+    "train01": {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\commands\\train01.json",
+      "sha256": "15709f6b00f38e7fd9fd1caf2ddc223afc7486ce747e35aec936d50015703c8c",
+      "command": {
+        "executable": "E:\\03-nn_Transfer_Func\\kron-reduce\\.venv\\Scripts\\python.exe",
+        "arguments": [
+          "-m",
+          "experiments.fresh_design_pair_20261020",
+          "acquire",
+          "--stage",
+          "train",
+          "--campaign",
+          "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\campaign01",
+          "--output",
+          "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\stages\\train01",
+          "--wrapper-output",
+          "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\stages\\train01_wrapper",
+          "--source-manifest",
+          "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\campaign01\\source_manifest.json",
+          "--source-commit",
+          "4ae86576e4cdae1fdca912b0f36172331ee60f10",
+          "--max-seconds",
+          "2940"
+        ],
+        "arguments_line": "-m experiments.fresh_design_pair_20261020 acquire --stage train --campaign E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\campaign01 --output E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\stages\\train01 --wrapper-output E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\stages\\train01_wrapper --source-manifest E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\campaign01\\source_manifest.json --source-commit 4ae86576e4cdae1fdca912b0f36172331ee60f10 --max-seconds 2940"
+      }
     }
   },
   "launcher_CLI_path_style": "relative intentionally; all worker JSON paths absolute; actual native receipt must prove canonical forwarding",
@@ -168,5 +195,9 @@
   "short_native_seconds": 394.8537176999962,
   "score_binding_path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\bindings\\score01.json",
   "score_binding_sha256": "7499203f86d9f51c2a2e6c7e0e51a1f3cc65171aa228d2befd92162a6fe95fb8",
-  "score_explicit_bound_files": 622
+  "score_explicit_bound_files": 622,
+  "score_native_seconds": 64.41502789995866,
+  "train_binding_path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\bindings\\train01.json",
+  "train_binding_sha256": "df29fff8824289b257aaf836c48d005bef149e2e5f455727bbf2c31019c08398",
+  "train_explicit_bound_files": 763
 }

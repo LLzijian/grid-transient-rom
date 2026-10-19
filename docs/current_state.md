@@ -1,14 +1,14 @@
 # 当前研究状态
 
-任务状态：**RUNNING**。工作目录E:/03-nn_Transfer_Func/kiki。新fresh_design_pair短FOM已完成，41/48合格，正在准备登记内GPU评分；此前首次物理档因接线QA两次拒绝已关闭，0科学worker/0求解/0训练/0val，旧档无PID。本轮不集成、不再QA，原设计复用的一次例外关闭。环境工程PR14及main6b17be3535cc57985c1e1be4138decabc7c0f033保持有效；默认模型不变，原test关闭、TASK4暂停。
+任务状态：**RUNNING**。工作目录E:/03-nn_Transfer_Func/kiki。新fresh_design_pair短FOM已完成，41/48合格，GPU分歧准入完成，准备24条件完整train FOM；此前首次物理档因接线QA两次拒绝已关闭，0科学worker/0求解/0训练/0val，旧档无PID。本轮不集成、不再QA，原设计复用的一次例外关闭。环境工程PR14及main6b17be3535cc57985c1e1be4138decabc7c0f033保持有效；默认模型不变，原test关闭、TASK4暂停。
 
 **决定性本轮证据**：[实际Astra6原案](../reports/astra6_first_physics_20261020.md)、[root协议](../reports/first_physics_pair_20261020_protocol.md)、[结论](../reports/first_physics_pair_20261020_conclusion.md)、[回执](../results/first_physics_pair_20261020/qa_result.json)。QA1绑定漏配置，native前拒绝2.1761836秒；唯一修正后QA2因root相对--output传到要求绝对路径的PS被拒绝，外层exit1、1.4703283秒，96绑定未变，无inner/科学worker。15项测试没有执行，AST/静态审查不称通过。私有BASE=P3/active_fom_pair_first_physics01冻结，不重复队列。
 
-**当前实际阶段**：48双步长短FOM完成，41合格（short14/medium15/long12），7条失败完整保留、不补位；[逐条件证据](../results/fresh_design_pair_20261020/short_attempts.json)/[回执](../results/fresh_design_pair_20261020/short_result.json)。实际394.8537177秒，内外exit0、清理GONE、240绑定未变。worker90144已退出，无当前科学PID；session76818已结束。QA+准备11.6580188秒，本档原生累计406.5117365，原40000P3仍锁定。
+**当前实际阶段**：[短FOM](../results/fresh_design_pair_20261020/short_result.json)48尝试41合格，7失败保留。GPU[评分与事前预测](../results/fresh_design_pair_20261020/score_result.json)完成：37/48达到固定六源双步长D/B准入，short14/medium15/long8，按规则选定随机12+主动12。24×六源144个15秒预测身份在完整FOM前冻结：132组真实预测数值合格，另12组是2条件无法初始化的原样占位；原writer标签不替代numerical_qualification.pass。score实际64.4150279秒、内外exit0/清理GONE/622绑定未变。无当前科学PID。
 
-**下一实际动作**：精确score01命令/622绑定和短FOM证据归档后，GPU执行已登记D及入选15秒事前预测冻结（cap750/self690）。仅真实合格100ms历史输入，固定5秒/500点、六源、双步长阈值不改；每层不足4主动候选即关闭。BASE=P3/fresh_design_pair01/campaign01；来源4ae86576e4cdae1fdca912b0f36172331ee60f10，新design SHA32fe260b0875d9b711e5ecaa46200d24146fe7af6e6e949dc6c2e1541910b32a。父未分配158002.8850249、P3未分配45108.0596498。旧48/24不复用，test关闭、TASK4暂停、默认模型保持。
+**下一实际动作**：已登记train01完整FOM命令/763绑定与预测证据归档后，ANDES环境执行24双步长15秒完整train（cap3000/self2940、单条件120/单步55）。所有24尝试保留，以真实系统/数值/短完整100ms对齐决定共同可用，不按ROM成绩删样本或补位；零合格关闭，部分可用完整24覆盖保持未决。BASE=P3/fresh_design_pair01/campaign01；来源4ae86576e4cdae1fdca912b0f36172331ee60f10。原生累计470.9267644；父未分配158002.8850249、P3未分配45108.0596498。旧48/24不复用，test关闭、TASK4暂停、默认模型保持。
 
-**预算**：父上限259200进程秒；已关闭轮累计实际加保守支持61197.1149751，余198002.8850249。P0余9037.2289973、P1余3982.0903771、P2余66100.6537796、P3余85108.0596498、P4余21600、repair余12174.8522211。新条件档实际QA13.956230+准备7.6523984+短阶段40.6145747=62.2232031，加3250保守支持，结项3312.2232031；取消未用36687.7767969回P3，首次物理档实际3.6465119+支持3250结项3253.6465119，取消36746.3534881回P3；新fresh档40000预占当前原生406.5117365，short回执已核实；类别不可互借，旧900未核对hold保留，子进程不双计。见[账本](../results/closure_mechanism_20261019/cost_snapshot.json)。
+**预算**：父上限259200进程秒；已关闭轮累计实际加保守支持61197.1149751，余198002.8850249。P0余9037.2289973、P1余3982.0903771、P2余66100.6537796、P3余85108.0596498、P4余21600、repair余12174.8522211。新条件档实际QA13.956230+准备7.6523984+短阶段40.6145747=62.2232031，加3250保守支持，结项3312.2232031；取消未用36687.7767969回P3，首次物理档实际3.6465119+支持3250结项3253.6465119，取消36746.3534881回P3；新fresh档40000预占当前原生470.9267644，short/score回执已核实；类别不可互借，旧900未核对hold保留，子进程不双计。见[账本](../results/closure_mechanism_20261019/cost_snapshot.json)。
 
 **决定性既有证据**：首次真实D[结论](../reports/first_disagreement_inference_20261020_conclusion.md)/[摘要](../results/first_disagreement_inference_20261020/summary.json)/[事件表](../results/first_disagreement_inference_20261020/events.json)已关闭并合并PR13。六模型366事件2196项双步长核验合格，361事件/24母线满足固定D/B判据，fine D中位数13.32821081；只支持采集设计准入。唯一实际外层122.6443724秒、内外exit0、清理与70源核实；结项1022.6443724含900支持，未用3477.3556276已取消。private_data/closure_mechanism_20261019/P3/first_disagreement_inference01完成，禁止重跑/恢复。
 
