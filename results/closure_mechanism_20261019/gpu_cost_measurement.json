@@ -1,0 +1,93 @@
+{
+  "status": "COMPLETED",
+  "pid": 30332,
+  "argv": [
+    "experiments/closure_mechanism_study.py",
+    "--output",
+    "private_data/closure_mechanism_20261019/P0/measure01",
+    "--max-seconds",
+    "1200"
+  ],
+  "environment": {
+    "torch": "2.13.0+cu130",
+    "cuda_build": "13.0",
+    "device": "cuda:0",
+    "dtype": "float64",
+    "threads": 1,
+    "gpu": "NVIDIA GeForce RTX 4060 Ti"
+  },
+  "source_sha256": "c9fe3f86cf093d1f6c4600c71ecd333200840b9be4c2b156c018e1ff09a1e238",
+  "code_sha256": "6467605e00b20e9cbf31e2db3bc860f48dafaf4a8515b8cfa232f0dadf97a5cb",
+  "test_read": false,
+  "val_read": false,
+  "max_seconds": 1200.0,
+  "rows": [
+    {
+      "horizon_s": 1.0,
+      "update_seconds": 5.680434400012018,
+      "checkpoint_seconds": 0.2683121000009123,
+      "loss": 6.96412493897959,
+      "gradient_norm": 20.68239085341874,
+      "genuine_counts": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        29,
+        26
+      ]
+    },
+    {
+      "horizon_s": 2.0,
+      "update_seconds": 3.4023861000023317,
+      "checkpoint_seconds": 0.050120500003686175,
+      "loss": 9.94122221402076,
+      "gradient_norm": 37.26525400717789,
+      "genuine_counts": [
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        29,
+        26
+      ]
+    },
+    {
+      "horizon_s": 5.0,
+      "update_seconds": 8.55734699999448,
+      "checkpoint_seconds": 0.07090079999761656,
+      "loss": 7.686030624789211,
+      "gradient_norm": 42.271982903306274,
+      "genuine_counts": [
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        29,
+        26
+      ]
+    }
+  ],
+  "residency_seconds": 0.4899093999993056,
+  "paired_6x1024_update_estimate_seconds": 45158.8288000226,
+  "estimate_scope": "single fixed train panel, includes 25% margin; excludes full evaluation/search/FOM; not full-plan approval",
+  "elapsed_process_seconds": 56.86941139999544
+}
