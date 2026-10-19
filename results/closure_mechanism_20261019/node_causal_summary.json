@@ -1,0 +1,727 @@
+{
+  "scope": "known-support node synthetic causal initializer comparison; research evidence; no deployment or structure recovery claim",
+  "status": "CLOSED",
+  "completed": 6,
+  "updates_each": 512,
+  "causal_interface": "same 30 observed coordinates; first11 samples0..0.1s only; one initialization; autonomous thereafter",
+  "train_events": 16,
+  "val_events": 16,
+  "train_future_s": 0.5,
+  "val_future_s": 1.0,
+  "normalization": "fixed original train observed coordinate standard deviations; MSE not RMSE",
+  "input_augmentation_bundle": "shared linear endpoint/OLS slope features for COI angle, public omega,p; train-only RMS; added optimizer group lr.01; original GRU unchanged",
+  "runtime_identity": {
+    "files": {
+      "experiments\\closure_causal_history_residual_20261019.py": "0b217d44fde452f31e517625d33c4522e658591ae9d7c5072e8bdf42a489744a",
+      "experiments\\closure_causal_recovery_20261019.py": "85d7a76444738e233f0bc2a632dbe17e5b6f4a528305e7e8cd5ead1f07a02659",
+      "experiments\\closure_discovery_benchmarks.py": "5f94f52532ae4808e1e8eeeb4b1c627d138c81e2cdca15767a8f9ed7d8c5d42e",
+      "experiments\\closure_discovery_support.py": "4e492f0d4f87abf517c7037efc7a64ebcbcd0693ac8c4884b66a31ee3d81c119",
+      "experiments\\closure_expression_identity.py": "5d8666079652166777757d62534252fb61210aae99ad08e3db5d4e83eb073293",
+      "experiments\\closure_training_runtime.py": "80aeff279bf0e1e498205fcb7b591a680b721643efc98e0e4e993d61d8ac90b0",
+      "experiments\\local_memory_rom_0098.py": "cb73ce129c1c095f8c5ac1288a725b072144bcd7978d4711e44afb4ea075636d",
+      "experiments\\structure_grammar.py": "0325a0a1f50d7f22510cd3d7da5dbc28d8c3e186ea7288e7717f7a3a8704d28d",
+      "experiments\\structured_rom.py": "921b6dedb2e8b5218c5f4ec84fc6a35ac4844ebc0e310f8a6639bb0c7bcf88f3",
+      "experiments\\symbolic_closure_rom.py": "01bd836ef2e06b0fbca40065f26cb98a23f8042a3328d86b265bfb114940dbc9"
+    },
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "torch": "2.13.0+cu130",
+    "numpy": "2.5.2",
+    "cuda": "13.0",
+    "config": {
+      "updates": 512,
+      "checkpoint_every": 32,
+      "noise": 0.0,
+      "fit_global_seconds": 9720.0,
+      "total_seconds": 10800.0,
+      "fit_item_seconds": 540.0,
+      "item_seconds": 600.0,
+      "head_lr": 0.01,
+      "batch_size": 12,
+      "dtype": "float64"
+    },
+    "profile": "node6_15600",
+    "effective_caps": {
+      "item_total": 2600.0,
+      "item_fit": 2480.0,
+      "item_eval_reserved": 120.0,
+      "items": 6,
+      "fit_global": 14880.0,
+      "total": 15600.0,
+      "eval_global_reserved": 720.0
+    }
+  },
+  "receipt": {
+    "pid": 45576,
+    "status": "CLOSED",
+    "cumulative_seconds": 7475.146918300015,
+    "this_invocation_seconds": 7475.150711000024,
+    "prior_seconds": 0.0,
+    "children": [],
+    "includes_all_children_once": true,
+    "fit_seconds": 7335.770820699952,
+    "current": null
+  },
+  "charged_execution_seconds": 7475.150711000024,
+  "execution_receipt_policy": "larger invocation/cumulative value charged once; no child duplication",
+  "original_execution_cap_seconds": 15600,
+  "unspent_execution_allocation_cancelled_seconds": 8124.849288999976,
+  "prior_qa_holds_seconds": {
+    "oracle": 500,
+    "history_cost_precheck": 1200,
+    "node_execution": 800
+  },
+  "P1_conservative_spend_and_holds_seconds": 20560.825084400014,
+  "P1_remaining_at_least_seconds": 8239.174915599986,
+  "parent_remaining_at_least_seconds": 237596.98267630002,
+  "model_adoption": "none; candidate research evidence only",
+  "unknown_structure_search": "closed",
+  "project_test_access": "closed",
+  "TASK4": "paused",
+  "independent_review": "node_result_challenge read-only review accepted scoped overall-MSE node result; no implementation/proposal role; root adopted limited research conclusion, no promotion",
+  "rows": [
+    {
+      "seed": 5101,
+      "group": "control",
+      "fit_status": "complete",
+      "updates": 512,
+      "fit_seconds": 1306.0024316000054,
+      "eval_seconds": 23.142979600001127,
+      "train_milestones": {
+        "128": 0.02579376634862013,
+        "256": 0.024947906351669595,
+        "512": 0.022870761808577944
+      },
+      "evaluation": {
+        "train": {
+          "event_mse": [
+            0.0021026393804110936,
+            0.001611657332360476,
+            0.002707812874893494,
+            0.004643141487082478,
+            0.0018853470466286286,
+            0.004084995090519537,
+            0.004613873908480955,
+            0.004653870416157049,
+            0.03831805047274709,
+            0.02471993760884462,
+            0.04201534773032283,
+            0.03455585948215746,
+            0.03810403183717931,
+            0.024347204935944687,
+            0.07352635399457444,
+            0.064042065338943
+          ],
+          "mse": 0.022870761808577948,
+          "weak_mse": 0.0032879171920667137,
+          "strong_mse": 0.04245360642508918,
+          "dual_step_max_normalized": 1.1963635893736504e-10
+        },
+        "heldout": {
+          "event_mse": [
+            0.024815401636901588,
+            0.015387859896094548,
+            0.04302260660889812,
+            0.009947905860320657,
+            0.006040929797666613,
+            0.010502041969893386,
+            0.01158694648771705,
+            0.02161491654572829,
+            0.33296618386521737,
+            0.4610670294095162,
+            0.3000585460604567,
+            0.12084086140379018,
+            0.04894060865511009,
+            0.12175759231111126,
+            0.4382367698763936,
+            0.6551879099615493
+          ],
+          "mse": 0.1638733818966478,
+          "weak_mse": 0.01786482610040253,
+          "strong_mse": 0.3098819376928931,
+          "dual_step_max_normalized": 1.6253526301741303e-10
+        },
+        "numerical_qualified": true,
+        "prediction_gate": false
+      },
+      "checkpoint": "private_data\\closure_mechanism_20261019\\P1\\history_residual\\node_run01\\node_5101_control\\checkpoint_00512",
+      "checkpoint_sha256": {
+        "model.json": "a80bedd509452265ce41c9f948be24a3bb463e91798f6ffe249992d213d2629e",
+        "training.pt": "ce8356329a23e7e91ff8e6f1a615d67188313f629e44f1fdc25922c67efcc2ef"
+      },
+      "fixture_sha256": "6b41dc6fb30215047fef839aae2ebf8349304bf7ba2335e013d02980d430c767",
+      "result_sha256": "9b788018d23e11f526db08070ab4a28a85f4db52cd49632a8639ac2b020e0d12",
+      "parameter_changes_group_l2": {
+        "skeleton": 8.816080811833604,
+        "closure": 0.14240803218490344,
+        "encoder": 3.329400898520975
+      },
+      "last_gradient_norms_group_l2": {
+        "skeleton": 0.0016487985869633732,
+        "closure": 0.004941394211126419,
+        "encoder": 0.02263635898624027
+      }
+    },
+    {
+      "seed": 5101,
+      "group": "residual",
+      "fit_status": "complete",
+      "updates": 512,
+      "fit_seconds": 1267.0718282999878,
+      "eval_seconds": 22.738076200010255,
+      "train_milestones": {
+        "128": 0.0006180024002733485,
+        "256": 0.0002950507797436294,
+        "512": 6.827764029015271e-05
+      },
+      "evaluation": {
+        "train": {
+          "event_mse": [
+            4.372608027240222e-05,
+            1.8501002913967835e-05,
+            1.5715337194144203e-05,
+            1.143715521057464e-05,
+            1.5431208176579347e-05,
+            1.0778594630982953e-05,
+            2.4871195018270632e-05,
+            4.54305326236303e-06,
+            0.00015869394200407883,
+            8.455567597620887e-05,
+            0.00011179261232400742,
+            9.059049460147269e-05,
+            9.829678246676632e-05,
+            8.727894709637486e-05,
+            0.00014662371781548137,
+            0.00016960644567876802
+          ],
+          "mse": 6.82776402901527e-05,
+          "weak_mse": 1.8125453334910606e-05,
+          "strong_mse": 0.0001184298272453948,
+          "dual_step_max_normalized": 7.86369110181993e-11
+        },
+        "heldout": {
+          "event_mse": [
+            0.0003195227723005697,
+            0.00011315493323980512,
+            7.612972044281486e-05,
+            8.33572841120077e-05,
+            5.303184723212863e-05,
+            0.00015292598751489762,
+            5.899049479858555e-05,
+            9.066097018702435e-05,
+            0.001069785878439334,
+            0.004257447644568437,
+            0.003205628066682429,
+            0.0009183558446830642,
+            0.0022455776219066637,
+            0.0018189818105542803,
+            0.004029817736276153,
+            0.00526748374666453
+          ],
+          "mse": 0.0014850532724751703,
+          "weak_mse": 0.0001184717512284792,
+          "strong_mse": 0.0028516347937218613,
+          "dual_step_max_normalized": 1.933601739762408e-10
+        },
+        "numerical_qualified": true,
+        "prediction_gate": true
+      },
+      "checkpoint": "private_data\\closure_mechanism_20261019\\P1\\history_residual\\node_run01\\node_5101_residual\\checkpoint_00512",
+      "checkpoint_sha256": {
+        "model.json": "e4d85281b4b15ea37dbb45e3c29de586eaf9c9b7c74bc2e365ee11916ba5283d",
+        "training.pt": "f5698b4797f747d6b5606c2c1f4008a57c4ccfdef0191d39057da98b2fc0088c"
+      },
+      "fixture_sha256": "6b41dc6fb30215047fef839aae2ebf8349304bf7ba2335e013d02980d430c767",
+      "result_sha256": "9285f8e4c44cdb73ce37a900aed2584ff65c044f1a1224469c35ef04b4e1e992",
+      "initializer": {
+        "format": "causal_history_residual_v1",
+        "history_scales": [
+          0.2066891857017858,
+          0.23540575691803728,
+          0.19621220877554799,
+          0.22014493118743997,
+          0.28121952583059034,
+          0.1297560033223549
+        ],
+        "source_mass": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "history_coefficients": [
+          0.044618107120322416,
+          0.11403932802963107,
+          -0.01894379692190534,
+          0.005605999238125597,
+          0.5406568703077775,
+          0.15765848470907767
+        ]
+      },
+      "parameter_changes_group_l2": {
+        "residual": 0.5766732937300721,
+        "skeleton": 3.340274432432765,
+        "closure": 0.2984372025119055,
+        "encoder": 2.4700241710431965
+      },
+      "last_gradient_norms_group_l2": {
+        "residual": 0.001109662418797796,
+        "skeleton": 0.00012995012957200234,
+        "closure": 0.00012950099194942232,
+        "encoder": 0.00016185932893374231
+      }
+    },
+    {
+      "seed": 5102,
+      "group": "control",
+      "fit_status": "complete",
+      "updates": 512,
+      "fit_seconds": 1187.0493811999913,
+      "eval_seconds": 22.613467099989066,
+      "train_milestones": {
+        "128": 0.032246095806461365,
+        "256": 0.03150662269550846,
+        "512": 0.029248774118500145
+      },
+      "evaluation": {
+        "train": {
+          "event_mse": [
+            0.0037084685739961977,
+            0.0018632051410356534,
+            0.0028999541823305167,
+            0.0028243080846559057,
+            0.0063087485721859795,
+            0.0037689863230128957,
+            0.004748497562977905,
+            0.0014902483733897733,
+            0.0517329690701475,
+            0.06329228701288349,
+            0.07653954126837055,
+            0.046519348862946855,
+            0.037867281337805585,
+            0.05288529712969034,
+            0.04188572952335842,
+            0.06964551487721474
+          ],
+          "mse": 0.029248774118500145,
+          "weak_mse": 0.003451552101698103,
+          "strong_mse": 0.055045996135302186,
+          "dual_step_max_normalized": 1.8719422359919546e-10
+        },
+        "heldout": {
+          "event_mse": [
+            0.018826787598385037,
+            0.03602211931961262,
+            0.01956154932446819,
+            0.007237410898766532,
+            0.009691630214018684,
+            0.011826297620436492,
+            0.006397795811138046,
+            0.023437453764482332,
+            0.25685187270867754,
+            0.68430879706205,
+            0.39695857799045625,
+            0.22685621730168387,
+            0.6194828107862638,
+            0.6494147565951177,
+            0.320453700614215,
+            0.24665682935782693
+          ],
+          "mse": 0.22087403793547494,
+          "weak_mse": 0.01662513056891349,
+          "strong_mse": 0.42512294530203637,
+          "dual_step_max_normalized": 4.5921510703513573e-10
+        },
+        "numerical_qualified": true,
+        "prediction_gate": false
+      },
+      "checkpoint": "private_data\\closure_mechanism_20261019\\P1\\history_residual\\node_run01\\node_5102_control\\checkpoint_00512",
+      "checkpoint_sha256": {
+        "model.json": "38d8c6dc54c0b0c06a23b44b9328ee45f89b40a59719dd77f6ee03310d2182b3",
+        "training.pt": "06eba2f1bd795ad8dfe56c63bbbd377d8960441a0371e31e00a81be5ba0c3ffa"
+      },
+      "fixture_sha256": "4a2104e767488e3ec8683f93befcf25b75c25b32d821e0eb6e5d644357b4b14e",
+      "result_sha256": "da737d4ae40dbf095aa25ccae3e66f8a9521775452b59a13e0eda3c863f52bd8",
+      "parameter_changes_group_l2": {
+        "skeleton": 7.9392737270807325,
+        "closure": 0.48704628467721306,
+        "encoder": 3.4068076553990694
+      },
+      "last_gradient_norms_group_l2": {
+        "skeleton": 0.002470834057570285,
+        "closure": 0.0017667949096844137,
+        "encoder": 0.007556585705455106
+      }
+    },
+    {
+      "seed": 5102,
+      "group": "residual",
+      "fit_status": "complete",
+      "updates": 512,
+      "fit_seconds": 1185.142755900015,
+      "eval_seconds": 22.684744600002887,
+      "train_milestones": {
+        "128": 0.0008670946558329332,
+        "256": 0.0004274792670947513,
+        "512": 0.00018813591045525605
+      },
+      "evaluation": {
+        "train": {
+          "event_mse": [
+            2.2871697027507603e-05,
+            6.0168081707785324e-05,
+            1.073466403566563e-05,
+            2.550733253707583e-05,
+            4.9248118499615224e-05,
+            3.469268426131145e-05,
+            2.0762810301344773e-05,
+            1.951568920260426e-05,
+            0.0002918844508511523,
+            0.0002804972243449088,
+            0.0006685006660295294,
+            0.00048635833345178446,
+            0.00017788250126173606,
+            0.0002746190917931397,
+            0.0002869427295259855,
+            0.00029998849245294995
+          ],
+          "mse": 0.00018813591045525603,
+          "weak_mse": 3.043763469661376e-05,
+          "strong_mse": 0.00034583418621389825,
+          "dual_step_max_normalized": 7.172450314005995e-11
+        },
+        "heldout": {
+          "event_mse": [
+            0.0002249157083726247,
+            0.00018051402839746176,
+            0.00023223748469399454,
+            7.463640303485238e-05,
+            0.00021823580391637783,
+            0.00010324017711468524,
+            0.00017122169153984982,
+            0.00023009771380707764,
+            0.005676594264720608,
+            0.0018626790652922273,
+            0.003913472137285278,
+            0.004062662567558958,
+            0.010384015853968885,
+            0.002295537657359643,
+            0.00489222216268311,
+            0.0019693320511158167
+          ],
+          "mse": 0.0022807259231788406,
+          "weak_mse": 0.0001793873763596155,
+          "strong_mse": 0.004382064469998065,
+          "dual_step_max_normalized": 1.8406015324243605e-10
+        },
+        "numerical_qualified": true,
+        "prediction_gate": true
+      },
+      "checkpoint": "private_data\\closure_mechanism_20261019\\P1\\history_residual\\node_run01\\node_5102_residual\\checkpoint_00512",
+      "checkpoint_sha256": {
+        "model.json": "681d692de14b95b498bc58e87978221126f7a2a9543a5290f62a849c94334165",
+        "training.pt": "5ba9e8fb99786d0bbf3b00709303d80760341b137937d0305473669375e60cc1"
+      },
+      "fixture_sha256": "4a2104e767488e3ec8683f93befcf25b75c25b32d821e0eb6e5d644357b4b14e",
+      "result_sha256": "df64f9cae7d67907ddd6ce2e29ba47eb7a58356a40658dd79bc60830d5add0f8",
+      "initializer": {
+        "format": "causal_history_residual_v1",
+        "history_scales": [
+          0.2202139791242427,
+          0.1864394051063367,
+          0.19973128898133322,
+          0.1773125399728835,
+          0.2876878446429699,
+          0.12829778019894306
+        ],
+        "source_mass": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "history_coefficients": [
+          0.0406424201345175,
+          0.1333178254894123,
+          -0.009856021788439749,
+          -0.017402671467623847,
+          0.5228093632325311,
+          0.15482720245896084
+        ]
+      },
+      "parameter_changes_group_l2": {
+        "residual": 0.5631398902157376,
+        "skeleton": 3.4940760944404503,
+        "closure": 0.1840516365798052,
+        "encoder": 2.5721288734599193
+      },
+      "last_gradient_norms_group_l2": {
+        "residual": 0.0021892901275338485,
+        "skeleton": 0.00021086609960940738,
+        "closure": 0.0002089508580177682,
+        "encoder": 0.0004010136721202937
+      }
+    },
+    {
+      "seed": 5103,
+      "group": "control",
+      "fit_status": "complete",
+      "updates": 512,
+      "fit_seconds": 1181.2645553999755,
+      "eval_seconds": 23.03587819999666,
+      "train_milestones": {
+        "128": 0.03908512583960699,
+        "256": 0.03833047635780979,
+        "512": 0.03321182925103655
+      },
+      "evaluation": {
+        "train": {
+          "event_mse": [
+            0.007998094511970514,
+            0.003349361776877226,
+            0.009198819390235386,
+            0.002089217141820992,
+            0.005345412528063917,
+            0.006384516347583302,
+            0.0012554476128190026,
+            0.005652090422704248,
+            0.1259600556386326,
+            0.03673053839436094,
+            0.025618228986982378,
+            0.057005857594340736,
+            0.06360043619549051,
+            0.06341549159155452,
+            0.05564926775133068,
+            0.062136432131817874
+          ],
+          "mse": 0.03321182925103655,
+          "weak_mse": 0.005159119966509323,
+          "strong_mse": 0.06126453853556378,
+          "dual_step_max_normalized": 4.4744092058925273e-10
+        },
+        "heldout": {
+          "event_mse": [
+            0.032849442757602855,
+            0.01533229105549877,
+            0.02295919792361697,
+            0.02413142459432446,
+            0.021212123742015494,
+            0.02565246173073703,
+            0.012250170394415477,
+            0.007597784093036014,
+            0.5485266232333078,
+            0.6135725351576051,
+            0.3303742955916916,
+            0.5521908542704604,
+            0.23933726792357496,
+            0.18339321547286955,
+            1.0049952321972222,
+            0.1528493651521915
+          ],
+          "mse": 0.23670151783063564,
+          "weak_mse": 0.020248112036405884,
+          "strong_mse": 0.4531549236248654,
+          "dual_step_max_normalized": 1.0616749693112145e-09
+        },
+        "numerical_qualified": true,
+        "prediction_gate": false
+      },
+      "checkpoint": "private_data\\closure_mechanism_20261019\\P1\\history_residual\\node_run01\\node_5103_control\\checkpoint_00512",
+      "checkpoint_sha256": {
+        "model.json": "7c373d2df4987730d2bddf5f420dd865ab43c0892f95926253892d452ce9fb1a",
+        "training.pt": "52605c5f5615d2bcb452b20d079fe5d27ac82a7af2182d7ef7997499e7aeeaf6"
+      },
+      "fixture_sha256": "978a186c90a4cb8e30baa388f812260b06077c5ae1c45f1ab9b184c7da850a0c",
+      "result_sha256": "ddd8de3a28a5da5b5e163efc1c8d483613884b95f6331786d7cfa147e63f6f4c",
+      "parameter_changes_group_l2": {
+        "skeleton": 7.575879164925034,
+        "closure": 0.6716438117437047,
+        "encoder": 3.4263371748631584
+      },
+      "last_gradient_norms_group_l2": {
+        "skeleton": 0.0022332413399310212,
+        "closure": 0.0006624411046595966,
+        "encoder": 0.018590843489614515
+      }
+    },
+    {
+      "seed": 5103,
+      "group": "residual",
+      "fit_status": "complete",
+      "updates": 512,
+      "fit_seconds": 1209.2398682999774,
+      "eval_seconds": 22.657199100009166,
+      "train_milestones": {
+        "128": 0.0008337019358978149,
+        "256": 0.0004009254633690962,
+        "512": 8.053748484881034e-05
+      },
+      "evaluation": {
+        "train": {
+          "event_mse": [
+            1.804134892633185e-05,
+            1.1854350946399407e-05,
+            1.9176356872275303e-05,
+            4.354907143267873e-05,
+            2.3253858994735245e-05,
+            1.808443842547165e-05,
+            1.2455118236972796e-05,
+            8.610666957076126e-06,
+            0.00018799210802545406,
+            0.00010776702193312054,
+            9.627332300440953e-05,
+            0.00010303267441157639,
+            0.0002391353106117765,
+            9.462104542873472e-05,
+            8.128363362550807e-05,
+            0.00022346942974844455
+          ],
+          "mse": 8.053748484881034e-05,
+          "weak_mse": 1.9378151348992637e-05,
+          "strong_mse": 0.00014169681834862803,
+          "dual_step_max_normalized": 1.2318860987739863e-10
+        },
+        "heldout": {
+          "event_mse": [
+            6.165501101732792e-05,
+            6.560916737723856e-05,
+            0.00017251156630449603,
+            0.00011346554712753169,
+            0.00010975517024995725,
+            6.518939959265512e-05,
+            5.1094652046750336e-05,
+            9.707115540882184e-05,
+            0.012213046645635757,
+            0.001892715943124292,
+            0.0012318533990114764,
+            0.013930493522306913,
+            0.0020890140002175817,
+            0.0015428842326587718,
+            0.003195461124489082,
+            0.0006496221064687093
+          ],
+          "mse": 0.002342590165189835,
+          "weak_mse": 9.204395864059734e-05,
+          "strong_mse": 0.004593136371739073,
+          "dual_step_max_normalized": 1.4950961589164163e-10
+        },
+        "numerical_qualified": true,
+        "prediction_gate": true
+      },
+      "checkpoint": "private_data\\closure_mechanism_20261019\\P1\\history_residual\\node_run01\\node_5103_residual\\checkpoint_00512",
+      "checkpoint_sha256": {
+        "model.json": "83204b09e091754a2bc7c6d234b4c47a4dab59bc7edb4c24387efb603d511e40",
+        "training.pt": "fba27b1fd99c4933664b5386a979ff988a1e686d9debb2cb8e7b0112d8daec07"
+      },
+      "fixture_sha256": "978a186c90a4cb8e30baa388f812260b06077c5ae1c45f1ab9b184c7da850a0c",
+      "result_sha256": "d238f2f72957e93d48fb79a5a785e350b6a2d39a98e1c491a91816db78813862",
+      "initializer": {
+        "format": "causal_history_residual_v1",
+        "history_scales": [
+          0.18975693364679894,
+          0.18592492616599973,
+          0.19879794706129567,
+          0.18050034278349594,
+          0.2816038676262324,
+          0.1341645835823196
+        ],
+        "source_mass": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "history_coefficients": [
+          0.03471700547697368,
+          0.09604623398905163,
+          -0.033618216435043535,
+          -0.007661423314992438,
+          0.5338935257421257,
+          0.13780149346680767
+        ]
+      },
+      "parameter_changes_group_l2": {
+        "residual": 0.5618278916601536,
+        "skeleton": 3.3645352190048317,
+        "closure": 0.2597424146481984,
+        "encoder": 2.5486935986129473
+      },
+      "last_gradient_norms_group_l2": {
+        "residual": 0.0009427822659061354,
+        "skeleton": 7.664896581363672e-05,
+        "closure": 0.00034519760332548776,
+        "encoder": 0.00016070235074229467
+      }
+    }
+  ],
+  "paired_differences": [
+    {
+      "case": "node",
+      "seed": 5101,
+      "residual_minus_control": {
+        "train": {
+          "mse": -0.022802484168287795,
+          "weak_mse": -0.003269791738731803,
+          "strong_mse": -0.042335176597843784
+        },
+        "heldout": {
+          "mse": -0.16238832862417263,
+          "weak_mse": -0.01774635434917405,
+          "strong_mse": -0.3070303028991712
+        }
+      }
+    },
+    {
+      "case": "node",
+      "seed": 5102,
+      "residual_minus_control": {
+        "train": {
+          "mse": -0.02906063820804489,
+          "weak_mse": -0.0034211144670014894,
+          "strong_mse": -0.054700161949088284
+        },
+        "heldout": {
+          "mse": -0.2185933120122961,
+          "weak_mse": -0.016445743192553874,
+          "strong_mse": -0.4207408808320383
+        }
+      }
+    },
+    {
+      "case": "node",
+      "seed": 5103,
+      "residual_minus_control": {
+        "train": {
+          "mse": -0.03313129176618774,
+          "weak_mse": -0.0051397418151603305,
+          "strong_mse": -0.06112284171721515
+        },
+        "heldout": {
+          "mse": -0.2343589276654458,
+          "weak_mse": -0.020156068077765286,
+          "strong_mse": -0.44856178725312634
+        }
+      }
+    }
+  ],
+  "freeze_barrier_sha256": "e0576b2af5e0a65a32ab95ebc5de8264a4938b95ee1515753b263b1b9fd46631",
+  "private_recovery_artifacts": "private_data\\closure_mechanism_20261019\\P1\\history_residual\\node_run01",
+  "detailed_parameter_records": "private node_run01/state.json retains individual parameter and gradient norms"
+}
