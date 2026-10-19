@@ -1,0 +1,80 @@
+{
+  "status": "CLOSED_VAL_INTERFACE_FAILURE_BEFORE_FOM",
+  "native_seconds": 5.509251899959054,
+  "native_receipt": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\native_val01\\execution.json",
+  "native_receipt_sha256": "83fdbe9f3b732f81c62272e0a702ae921f852116b8c1b126b398e0fa57ce3377",
+  "inner_exit": 1,
+  "outer_exit": 1,
+  "cleanup_verified": true,
+  "fixture_identity_after": "GONE",
+  "worker": {
+    "pid": 70068,
+    "creation_filetime_utc": 134369253714201900,
+    "executable": "E:\\03-nn_Transfer_Func\\kron-reduce\\.venv\\Scripts\\python.exe",
+    "argv": [
+      "E:\\03-nn_Transfer_Func\\kiki\\experiments\\fresh_design_pair_20261020.py",
+      "acquire",
+      "--stage",
+      "val",
+      "--campaign",
+      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\campaign01",
+      "--source-manifest",
+      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\campaign01\\source_manifest.json",
+      "--freeze-manifest",
+      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\campaign01\\freeze_val\\frozen.json",
+      "--output",
+      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\stages\\val01",
+      "--wrapper-output",
+      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\stages\\val01_wrapper",
+      "--max-seconds",
+      "2940",
+      "--source-commit",
+      "4ae86576e4cdae1fdca912b0f36172331ee60f10"
+    ],
+    "cwd": "E:\\03-nn_Transfer_Func\\kiki",
+    "received_paths": {
+      "output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\stages\\val01",
+      "wrapper_output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\stages\\val01_wrapper",
+      "campaign": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\campaign01",
+      "source_manifest": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\campaign01\\source_manifest.json",
+      "freeze_manifest": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\campaign01\\freeze_val\\frozen.json"
+    }
+  },
+  "source_file_count": 967,
+  "source_unchanged": true,
+  "error": "ValueError: confirmation endpoint outside current campaign",
+  "cause": "fresh fitting legitimately stored six endpoints at BASE/models; inherited active_fom.verify_val_freeze requires model paths beneath BASE/campaign01. freeze creation checked identity but not this downstream containment rule.",
+  "reject_at": "experiments/active_fom_pair_20261020.py:432, called by fresh_design_pair_20261020.py:184 before old acquisition main/generate_full",
+  "physical_conditions_attempted": 0,
+  "val_directory_exists": false,
+  "val_scores_computed": 0,
+  "retries": 0,
+  "repair_or_relocation_applied": false,
+  "frozen_models_changed": false,
+  "frozen_conditions_changed": false,
+  "pending_six_val_evaluations": "NOT_EXECUTED; not queued",
+  "logs": [
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\native_val01\\outer\\stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\native_val01\\outer\\stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\native_val01\\inner\\stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\native_val01\\inner\\stderr.log",
+      "sha256": "f2850a18b2fa079e288047dda08e7587e8c6d3367c15ad3a306ac2067a45ea81",
+      "bytes": 1133
+    }
+  ],
+  "traceback": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"E:\\03-nn_Transfer_Func\\kiki\\experiments\\fresh_design_pair_20261020.py\", line 402, in <module>\n    if __name__=='__main__': raise SystemExit(main())\n                                              ^^^^^^\n  File \"E:\\03-nn_Transfer_Func\\kiki\\experiments\\fresh_design_pair_20261020.py\", line 338, in main\n    elif args.command=='acquire': result={'old_exit':acquire(args,worker_dir)}\n                                                     ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\03-nn_Transfer_Func\\kiki\\experiments\\fresh_design_pair_20261020.py\", line 184, in acquire\n    inside(args.freeze_manifest); old.verify_val_freeze(CAMPAIGN,args.freeze_manifest)\n                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\03-nn_Transfer_Func\\kiki\\experiments\\active_fom_pair_20261020.py\", line 432, in verify_val_freeze\n    raise ValueError('confirmation endpoint outside current campaign')\nValueError: confirmation endpoint outside current campaign\n",
+  "decision": "close current confirmation stage; no same-stage/new-number retry, no model/default/main integration; preserve completed train science and all source checkpoints; next round requires actual Astra6 and prospective scope/budget"
+}
