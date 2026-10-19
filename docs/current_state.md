@@ -1,6 +1,6 @@
 # 当前研究状态
 
-任务状态：**RUNNING**，父研究继续，工作目录E:/03-nn_Transfer_Func/kiki。fresh_design_pair已关闭：train研究完成，val因路径接口不一致在求解前拒绝，0物理条件/0轨迹/0成绩；本轮不集成、不重试、不采用模型，当前无科学PID。[结论](../reports/fresh_design_pair_20261020_conclusion.md)、[失败回执](../results/fresh_design_pair_20261020/val_start_failure.json)、[闭合账本](../results/fresh_design_pair_20261020/closed_cost.json)。实际gpt-6-astra已返回二次边记忆固定函数方案，root按独立挑战采纳三同源结构、九组Adam统一重启，保留1/2/5s循环；登记P2 36000秒（工程2500/训练27000/评价3500/支持3000），尚未启动科学训练。当前执行：专用快路径、同源构造及成本准入；协议见[quadratic_memory_edge](../reports/quadratic_memory_edge_20261020_protocol.md)。旧24禁止重试。
+任务状态：**RUNNING**，父研究继续，工作目录E:/03-nn_Transfer_Func/kiki。fresh_design_pair已关闭：train研究完成，val因路径接口不一致在求解前拒绝，0物理条件/0轨迹/0成绩；本轮不集成、不重试、不采用模型，当前无科学PID。[结论](../reports/fresh_design_pair_20261020_conclusion.md)、[失败回执](../results/fresh_design_pair_20261020/val_start_failure.json)、[闭合账本](../results/fresh_design_pair_20261020/closed_cost.json)。实际gpt-6-astra已返回二次边记忆固定函数方案，root按独立挑战采纳三同源结构、九组Adam统一重启，保留1/2/5s循环；登记P2 36000秒（工程2500/训练27000/评价3500/支持3000），尚未启动科学训练。当前执行：QA01实际26通过/1失败（未缓存field结构验证遗漏），14.1351105秒且270源前后一致/worker清理GONE；使用唯一实现修复后复测，尚未正式训练。专用快路径、同源构造及成本准入；协议见[quadratic_memory_edge](../reports/quadratic_memory_edge_20261020_protocol.md)。旧24禁止重试。
 
 **保留进展**：48短FOM中41合格，固定D/B准入37；24完整train尝试19合格（17稳定/2失稳）、5失败或未决全部保留。共同385=原366+新19，六组GPU从1024连同Adam/RNG联合适配256至1280，均全385覆盖，无重试/恢复；18次固定train评价闭合。新17稳定train完整5秒风险full8三seed3.433179/3.495122/3.723859，delete7为1.099224/1.041328/.860202，所有新19队列数值合格；新两失稳样本实际区间误差删除组更大且六模型均漏检。train不是独立确认，也不能隔离新增数据的因果收益。
 

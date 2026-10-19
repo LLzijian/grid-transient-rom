@@ -74,13 +74,12 @@ class QuadraticMemoryRuntime(TrainingClosureROM):
         return result
 
     def field(self, z, u=None):
-        if not getattr(self, '_quadratic_validated', False):
-            _check(self)
-            self._quadratic_validated = True
         z = torch.as_tensor(z, dtype=self.mass.dtype, device=self.mass.device)
-        if z.shape[-1] != 40:
+        if z.ndim == 0 or z.shape[-1] != 40:
             raise ValueError('quadratic runtime requires width-40 interface state')
         runtime = getattr(self, '_runtime_cache', None)
+        if runtime is None or not getattr(self, '_quadratic_validated', False):
+            _check(self)
         runtime = self._constants() if runtime is None else runtime
         A, coupling, storage, quadratic, sin0, cos0, absD, weights = runtime
         products = getattr(self, '_quadratic_cache', None)

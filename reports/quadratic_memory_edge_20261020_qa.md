@@ -1,0 +1,7 @@
+# 二次边记忆工程检查
+
+QA01实际执行27项：26通过，1失败。失败为未开启缓存时field在非法宽度调用中先设置结构已验证标志，后续编译类别被改变时未重新校验，最终抛KeyError。公式、非零b导数、CPU/CUDA、NumPy及生产恢复等检查未报告失败；完整QA尚未通过，正式训练未启动。
+
+按登记唯一实现修复：先验证输入宽度；未开启图缓存时每次校验结构；只在活动缓存中复用begin_graph_cache的验证，不在field中提前标记成功。仅runtime入口改动，公式/目标/数据/优化器/测试断言保持。最终runtime SHA5ee142103f38f4cdd4c041b3e1926c9a9d8972efdb78f198e6e76740fe49de1d。等待一次统一复测，不增加修复名额。
+
+QA01原生14.135110500035807秒，270源前后一致，inner/outer回执完整，exit1，worker74788/FILETIME134369273673459230已GONE。无科学训练或新FOM，失败成本记工程2500子包络；修复及操作计入本轮3000支持hold。原始stdout和完整私有execution路径/hash见results/quadratic_memory_edge_20261020/qa01.json，证据全部保留。
