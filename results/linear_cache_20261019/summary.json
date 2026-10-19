@@ -307,8 +307,8 @@
     "launcher_pid": 58872,
     "command": ".venv-gpu/Scripts/python.exe tests/test_linear_cache_runtime_20261019.py --mode check --output private_data/closure_mechanism_20261019/P0/linear_cache01/attempt01/check.json"
   },
-  "status": "CHECK_PASS_BENCHMARK_NOT_STARTED",
-  "benchmark_started": false,
+  "status": "BENCHMARK_RUNNING",
+  "benchmark_started": true,
   "source_hashes_unchanged": true,
   "artifact_sha256": {
     "private_data/closure_mechanism_20261019/P0/linear_cache01/attempt01/check.json": "ffb6be2a4ac29d0b0df4a257969f602ff10c68046a2042381ac910f8644d39c7",
@@ -316,5 +316,13 @@
     "private_data/closure_mechanism_20261019/P0/linear_cache01/attempt01/check.launch.json": "aa3ccf41ebdf5eb1ba9a1c81fe9f753f31c2a458622c23db2de2721ce469b9c5",
     "private_data/closure_mechanism_20261019/P0/linear_cache01/attempt01/check.stdout.log": "ffb6be2a4ac29d0b0df4a257969f602ff10c68046a2042381ac910f8644d39c7",
     "private_data/closure_mechanism_20261019/P0/linear_cache01/attempt01/check.stderr.log": "f68707665b3abe28157e183378b5761aa30e139688adcab329212318b2e96e0f"
-  }
+  },
+  "benchmark_launch": {
+    "source_commit": "269973736df49da2005efb11e9c5bdf61f2b8d48",
+    "supervisor_pid": 85372,
+    "launcher_pid": 87028,
+    "started": "2026-10-19T18:16:35.6317144+08:00",
+    "command": ".venv-gpu/Scripts/python.exe tests/test_linear_cache_runtime_20261019.py --mode benchmark --output private_data/closure_mechanism_20261019/P0/linear_cache01/attempt01/benchmark.json"
+  },
+  "benchmark_actual_worker_pid": 66652
 }
