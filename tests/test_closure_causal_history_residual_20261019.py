@@ -176,6 +176,30 @@ def test_profiles_and_single_initialization():
     assert torch.equal(calls[0], h)
 
 
+def test_edge_only_profile_order_budget_and_restore_isolation(tmp_path):
+    edge = source_identity('edge6_6600')
+    assert implementation.study_order('edge6_6600') == [
+        (seed, 'edge', group) for seed in (5101, 5102, 5103)
+        for group in ('control', 'residual')]
+    assert implementation.study_order('node6_15600') == [
+        (seed, 'node', group) for seed in (5101, 5102, 5103)
+        for group in ('control', 'residual')]
+    assert implementation.study_order('all18') == implementation.ORDER
+    assert edge['cases'] == ['edge'] and edge['config']['updates'] == 512
+    assert edge['effective_caps'] == {'item_total': 1100., 'item_fit': 980.,
+        'item_eval_reserved': 120., 'items': 6, 'fit_global': 5880.,
+        'total': 6600., 'eval_global_reserved': 720.}
+    assert json.loads(json.dumps(edge)) == edge
+    base, h = small()
+    model = CausalHistoryResidual.from_train(base, h)
+    opt = make_optimizer(model); rng = np.random.default_rng(11)
+    node = source_identity('node6_15600')
+    checkpoint(tmp_path, model, opt, rng, 0, [], node)
+    with pytest.raises(ValueError, match='provenance'):
+        restore(tmp_path, model, opt, rng, edge)
+    assert (tmp_path / 'checkpoint_00000' / 'training.pt').exists()
+
+
 def test_checkpoint_pointer_interruption_rejects_orphan(tmp_path, monkeypatch):
     base, h = small()
     model = CausalHistoryResidual.from_train(base, h)
