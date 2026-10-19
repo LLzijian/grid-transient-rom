@@ -1,0 +1,379 @@
+{
+  "scope": "P0 real-train CUDA reference equality and recovery; no val/test or formal fit",
+  "attempts": 2,
+  "corrections": 1,
+  "failures": 0,
+  "qa_native_wall_seconds": 46.13125819998095,
+  "rows": [
+    {
+      "path": "private_data\\closure_mechanism_20261019\\P0\\edge_pair_gate_qa01",
+      "status": "PASS",
+      "receipt": {
+        "status": "COMPLETED",
+        "error": null,
+        "pid": 41100,
+        "child_pid": 56552,
+        "command": [
+          "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+          "E:\\03-nn_Transfer_Func\\kiki\\experiments\\edge_pair_cost_gate_20261019.py",
+          "qa",
+          "--worker",
+          "--output",
+          "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P0\\edge_pair_gate_qa01",
+          "--max-seconds",
+          "290.0"
+        ],
+        "mode": "qa",
+        "seconds": 30.066721299983328,
+        "cap_seconds": 290.0,
+        "includes_child_cost_once": true,
+        "category": "SUPPORT",
+        "val_read": false,
+        "test_read": false
+      },
+      "rows": [
+        {
+          "structure": "full8",
+          "status": "PASS",
+          "optimizer_layout": [
+            {
+              "names": [
+                "_q_quadratic_raw",
+                "structured.coupling",
+                "structured.damping",
+                "structured.jpi_p",
+                "structured.rpp",
+                "structured.storage_base",
+                "_template_scalars.5",
+                "_template_scalars.6"
+              ],
+              "block": "skeleton",
+              "lr": 0.01
+            },
+            {
+              "names": [
+                "coefficients",
+                "_template_scalars.3",
+                "_template_scalars.4"
+              ],
+              "block": "closure",
+              "lr": 0.001
+            },
+            {
+              "names": [
+                "local_gru.weight_ih_l0",
+                "local_gru.weight_hh_l0",
+                "local_gru.bias_ih_l0",
+                "local_gru.bias_hh_l0",
+                "local_head.weight"
+              ],
+              "block": "encoder",
+              "lr": 0.0003
+            }
+          ],
+          "populated_checkpoint_seconds": 0.08688059999258257,
+          "restore_seconds": 0.04481890000170097
+        },
+        {
+          "structure": "delete_edge_cosine",
+          "status": "PASS",
+          "optimizer_layout": [
+            {
+              "names": [
+                "_q_quadratic_raw",
+                "structured.coupling",
+                "structured.damping",
+                "structured.jpi_p",
+                "structured.rpp",
+                "structured.storage_base",
+                "_template_scalars.5",
+                "_template_scalars.6"
+              ],
+              "block": "skeleton",
+              "lr": 0.01
+            },
+            {
+              "names": [
+                "coefficients",
+                "_template_scalars.3",
+                "_template_scalars.4"
+              ],
+              "block": "closure",
+              "lr": 0.001
+            },
+            {
+              "names": [
+                "local_gru.weight_ih_l0",
+                "local_gru.weight_hh_l0",
+                "local_gru.bias_ih_l0",
+                "local_gru.bias_hh_l0",
+                "local_head.weight"
+              ],
+              "block": "encoder",
+              "lr": 0.0003
+            }
+          ],
+          "populated_checkpoint_seconds": 0.06878110000980087,
+          "restore_seconds": 0.02832680000574328
+        }
+      ],
+      "tolerances": {
+        "field": [
+          2e-11,
+          1e-11
+        ],
+        "loss": [
+          2e-10,
+          2e-10
+        ],
+        "gradient": [
+          2e-09,
+          2e-09
+        ],
+        "adam": [
+          2e-09,
+          2e-09
+        ],
+        "export": [
+          1e-11,
+          0.0
+        ]
+      },
+      "qa_sha256": "5ab6c19777c857b89283d96f961b525959bcceb2b7bf55bc1be22c17f1c85ef7",
+      "source_identity": {
+        "experiments/analyze_symbolic_closure.py": "128548091c206103fc3604a2cc9896fc715627a9a7067046d845cf01884d38a2",
+        "experiments/closure_discovery_benchmarks.py": "5f94f52532ae4808e1e8eeeb4b1c627d138c81e2cdca15767a8f9ed7d8c5d42e",
+        "experiments/closure_discovery_confirmation.py": "43ecf8f1b29231e1b68b452efa7310fcdce305a136e4a5bba54e0fbedff66579",
+        "experiments/closure_discovery_data.py": "df313113242691b5bdcf61d4fa3abc294ae2c8f953260f963a0fe5800aa7373a",
+        "experiments/closure_discovery_export.py": "f07d74aa31f626c087d7108f272f925362cce9926ee7065675e2a197dda145e2",
+        "experiments/closure_discovery_support.py": "4e492f0d4f87abf517c7037efc7a64ebcbcd0693ac8c4884b66a31ee3d81c119",
+        "experiments/closure_expression_identity.py": "5d8666079652166777757d62534252fb61210aae99ad08e3db5d4e83eb073293",
+        "experiments/closure_mechanism_study.py": "6467605e00b20e9cbf31e2db3bc860f48dafaf4a8515b8cfa232f0dadf97a5cb",
+        "experiments/closure_training_runtime.py": "80aeff279bf0e1e498205fcb7b591a680b721643efc98e0e4e993d61d8ac90b0",
+        "experiments/compare_physical_modes.py": "0688c0c69778399524065152917c01de13348a4a55c414731454dd9af5c0f3ce",
+        "experiments/discover_closure.py": "86b0ec6ef87a243b5dc8c5b1cdedb67eebe1b0334494c875459b78e9ee15500b",
+        "experiments/edge_pair_cost_gate_20261019.py": "85bb491bee8a254345ea8dd9559707ff794601f631362aef1bb44d95c0aef697",
+        "experiments/evaluate_l1_latent.py": "5882dc6814f13ef4210d94db07fd87ca88d8130aa984dbda7757c53088662314",
+        "experiments/evaluate_local_memory_0098.py": "386a8cbd964618602fe7298d6a20c47ec876e9ad70e011c96f3f55e6c44d5034",
+        "experiments/evaluate_long_latent.py": "8a52a2c8138d768cd636a1aef8a07fd871b86ed62f78e8785e0d069066ac890c",
+        "experiments/evaluate_structured_rom.py": "38aacbf79e61081449adcb254d99f0556f65021d2bd5b8d46cf17c5d757e01d9",
+        "experiments/generate_private_dataset.py": "239b574f7b17b26c2c315f5be6b7aebaf05e82e1c91c61b32d48135caf452ab8",
+        "experiments/joint_training_grid_0100.py": "9619bf4647041d0db1cce2c9ae3c79ee18507a00af4f8396e70052e6b65c9d6e",
+        "experiments/local_memory_rom_0098.py": "cb73ce129c1c095f8c5ac1288a725b072144bcd7978d4711e44afb4ea075636d",
+        "experiments/monitor_joint_adequacy_0099.py": "344a78d946de959ecd43920ec3627557d2bb006a704c135a19a542a9136a4f59",
+        "experiments/run_private_m2.py": "25698fe4fa77b35982b85d1fa84b5e2ec0c9ab728d095e951b8ac0fe9479f972",
+        "experiments/shared_closure_rom_0101.py": "2d94589a5f387591468cad928da93ed2e5400c748c8fb4a09748953af09b63d5",
+        "experiments/structure_grammar.py": "0325a0a1f50d7f22510cd3d7da5dbc28d8c3e186ea7288e7717f7a3a8704d28d",
+        "experiments/structured_rom.py": "921b6dedb2e8b5218c5f4ec84fc6a35ac4844ebc0e310f8a6639bb0c7bcf88f3",
+        "experiments/summarize_train_local_memory_0098.py": "468fc24781df3ce8f184226f125add7becf1e8b573ae074fc89846c1fe99e7a1",
+        "experiments/symbolic_closure_rom.py": "01bd836ef2e06b0fbca40065f26cb98a23f8042a3328d86b265bfb114940dbc9",
+        "experiments/train_closure.py": "3fbd5a0d0256887708994a574996cee4f883a2d88fd392891b8d3fbe0875e002",
+        "experiments/train_joint_adequacy_0099.py": "5326f66fe729a35f59871497f4b1e3151fd67f3e8340afa882b561fde285ef10",
+        "experiments/train_joint_campaign.py": "0914e609f76cacd27632a0c52081da836a39456121cfea3c4633cbaf0c03593b",
+        "experiments/train_joint_latent.py": "57dc52517897608572afe2cd5028f0c8ede540d524c99f8366426fe685b22735",
+        "experiments/train_joint_numerical_pair_0100.py": "4d10ab86398fd43257f4249cdb2641799197abbb303e006457a92617d6b04ed5",
+        "experiments/train_local_memory_0098.py": "e73de06b9a1d66b05de4bb1d29504a19cc7b486bc3694ddd341d451f403ae667",
+        "experiments/train_long_latent.py": "7e8c2a93a875392814d8972386e5561ffec587d37cc33b8b46e0de663ae98ecc",
+        "experiments/train_structured_rom.py": "6afa2186411a0a23ea5f5d62f9cfeacb3192c6023f62676c7c134ef9bb365482",
+        "experiments/train_teacher_latent.py": "808671ddd94b483e440cd6ec69d28657e90a4b643ef633050903c2aec18b90c9",
+        "src/kiki/data/private_dataset.py": "615ec905047a81f681620d3f214b6dfa60be3c78af7059de21b232c593d941ee",
+        "src/kiki/models/private_pm.py": "adea9a1675cb9bdbd955b6fdf881bed5da915ba431e9d61a57fc33aa29606841",
+        "src/kiki/models/private_rom.py": "eced34511e8ba726ed3ee06f58c0826f26957bb27feecadc30c4cf44ba6062e4",
+        "src/kiki/physics/__init__.py": "de2c10aed81f501ceaaedee6361bc225d242b72f7d5b3c97ffcf57d77c03d5e4",
+        "tests/test_edge_pair_cost_gate_20261019.py": "775f3797a2b5200adde3b1f7503ca3d6d33ef1d76c27eb28f8f0ebab42a48946"
+      },
+      "checks_added": null
+    },
+    {
+      "path": "private_data\\closure_mechanism_20261019\\P0\\edge_pair_gate_qa02",
+      "status": "PASS",
+      "receipt": {
+        "status": "COMPLETED",
+        "error": null,
+        "pid": 60380,
+        "child_pid": 48532,
+        "launcher_pid": 48532,
+        "actual_worker_pid": 70892,
+        "cleanup": {},
+        "command": [
+          "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+          "E:\\03-nn_Transfer_Func\\kiki\\experiments\\edge_pair_cost_gate_20261019.py",
+          "qa",
+          "--worker",
+          "--output",
+          "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P0\\edge_pair_gate_qa02",
+          "--max-seconds",
+          "290.0"
+        ],
+        "mode": "qa",
+        "seconds": 16.06453689999762,
+        "cap_seconds": 290.0,
+        "includes_child_cost_once": true,
+        "category": "SUPPORT",
+        "val_read": false,
+        "test_read": false
+      },
+      "rows": [
+        {
+          "structure": "full8",
+          "status": "PASS",
+          "optimizer_layout": [
+            {
+              "names": [
+                "_q_quadratic_raw",
+                "structured.coupling",
+                "structured.damping",
+                "structured.jpi_p",
+                "structured.rpp",
+                "structured.storage_base",
+                "_template_scalars.5",
+                "_template_scalars.6"
+              ],
+              "block": "skeleton",
+              "lr": 0.01
+            },
+            {
+              "names": [
+                "coefficients",
+                "_template_scalars.3",
+                "_template_scalars.4"
+              ],
+              "block": "closure",
+              "lr": 0.001
+            },
+            {
+              "names": [
+                "local_gru.weight_ih_l0",
+                "local_gru.weight_hh_l0",
+                "local_gru.bias_ih_l0",
+                "local_gru.bias_hh_l0",
+                "local_head.weight"
+              ],
+              "block": "encoder",
+              "lr": 0.0003
+            }
+          ],
+          "populated_checkpoint_seconds": 0.06437129998812452,
+          "restore_seconds": 0.03429789998335764
+        },
+        {
+          "structure": "delete_edge_cosine",
+          "status": "PASS",
+          "optimizer_layout": [
+            {
+              "names": [
+                "_q_quadratic_raw",
+                "structured.coupling",
+                "structured.damping",
+                "structured.jpi_p",
+                "structured.rpp",
+                "structured.storage_base",
+                "_template_scalars.5",
+                "_template_scalars.6"
+              ],
+              "block": "skeleton",
+              "lr": 0.01
+            },
+            {
+              "names": [
+                "coefficients",
+                "_template_scalars.3",
+                "_template_scalars.4"
+              ],
+              "block": "closure",
+              "lr": 0.001
+            },
+            {
+              "names": [
+                "local_gru.weight_ih_l0",
+                "local_gru.weight_hh_l0",
+                "local_gru.bias_ih_l0",
+                "local_gru.bias_hh_l0",
+                "local_head.weight"
+              ],
+              "block": "encoder",
+              "lr": 0.0003
+            }
+          ],
+          "populated_checkpoint_seconds": 0.07640099999844097,
+          "restore_seconds": 0.03181459999177605
+        }
+      ],
+      "tolerances": {
+        "field": [
+          2e-11,
+          1e-11
+        ],
+        "loss": [
+          2e-10,
+          2e-10
+        ],
+        "gradient": [
+          2e-09,
+          2e-09
+        ],
+        "adam": [
+          2e-09,
+          2e-09
+        ],
+        "export": [
+          1e-11,
+          0.0
+        ]
+      },
+      "qa_sha256": "649741f11172473da3b82d3c421edb34a2f640a5619795266cb92cd3be17e695",
+      "source_identity": {
+        "experiments/analyze_symbolic_closure.py": "128548091c206103fc3604a2cc9896fc715627a9a7067046d845cf01884d38a2",
+        "experiments/closure_discovery_benchmarks.py": "5f94f52532ae4808e1e8eeeb4b1c627d138c81e2cdca15767a8f9ed7d8c5d42e",
+        "experiments/closure_discovery_confirmation.py": "43ecf8f1b29231e1b68b452efa7310fcdce305a136e4a5bba54e0fbedff66579",
+        "experiments/closure_discovery_data.py": "df313113242691b5bdcf61d4fa3abc294ae2c8f953260f963a0fe5800aa7373a",
+        "experiments/closure_discovery_export.py": "f07d74aa31f626c087d7108f272f925362cce9926ee7065675e2a197dda145e2",
+        "experiments/closure_discovery_support.py": "4e492f0d4f87abf517c7037efc7a64ebcbcd0693ac8c4884b66a31ee3d81c119",
+        "experiments/closure_expression_identity.py": "5d8666079652166777757d62534252fb61210aae99ad08e3db5d4e83eb073293",
+        "experiments/closure_mechanism_study.py": "6467605e00b20e9cbf31e2db3bc860f48dafaf4a8515b8cfa232f0dadf97a5cb",
+        "experiments/closure_training_runtime.py": "80aeff279bf0e1e498205fcb7b591a680b721643efc98e0e4e993d61d8ac90b0",
+        "experiments/compare_physical_modes.py": "0688c0c69778399524065152917c01de13348a4a55c414731454dd9af5c0f3ce",
+        "experiments/discover_closure.py": "86b0ec6ef87a243b5dc8c5b1cdedb67eebe1b0334494c875459b78e9ee15500b",
+        "experiments/edge_pair_cost_gate_20261019.py": "5a15cf58e5c3e56ce9e38a01e59ca7e06ea9e49eeb0256cca64f13ca42433fcb",
+        "experiments/evaluate_l1_latent.py": "5882dc6814f13ef4210d94db07fd87ca88d8130aa984dbda7757c53088662314",
+        "experiments/evaluate_local_memory_0098.py": "386a8cbd964618602fe7298d6a20c47ec876e9ad70e011c96f3f55e6c44d5034",
+        "experiments/evaluate_long_latent.py": "8a52a2c8138d768cd636a1aef8a07fd871b86ed62f78e8785e0d069066ac890c",
+        "experiments/evaluate_structured_rom.py": "38aacbf79e61081449adcb254d99f0556f65021d2bd5b8d46cf17c5d757e01d9",
+        "experiments/generate_private_dataset.py": "239b574f7b17b26c2c315f5be6b7aebaf05e82e1c91c61b32d48135caf452ab8",
+        "experiments/joint_training_grid_0100.py": "9619bf4647041d0db1cce2c9ae3c79ee18507a00af4f8396e70052e6b65c9d6e",
+        "experiments/local_memory_rom_0098.py": "cb73ce129c1c095f8c5ac1288a725b072144bcd7978d4711e44afb4ea075636d",
+        "experiments/monitor_joint_adequacy_0099.py": "344a78d946de959ecd43920ec3627557d2bb006a704c135a19a542a9136a4f59",
+        "experiments/run_private_m2.py": "25698fe4fa77b35982b85d1fa84b5e2ec0c9ab728d095e951b8ac0fe9479f972",
+        "experiments/shared_closure_rom_0101.py": "2d94589a5f387591468cad928da93ed2e5400c748c8fb4a09748953af09b63d5",
+        "experiments/structure_grammar.py": "0325a0a1f50d7f22510cd3d7da5dbc28d8c3e186ea7288e7717f7a3a8704d28d",
+        "experiments/structured_rom.py": "921b6dedb2e8b5218c5f4ec84fc6a35ac4844ebc0e310f8a6639bb0c7bcf88f3",
+        "experiments/summarize_train_local_memory_0098.py": "468fc24781df3ce8f184226f125add7becf1e8b573ae074fc89846c1fe99e7a1",
+        "experiments/symbolic_closure_rom.py": "01bd836ef2e06b0fbca40065f26cb98a23f8042a3328d86b265bfb114940dbc9",
+        "experiments/train_closure.py": "3fbd5a0d0256887708994a574996cee4f883a2d88fd392891b8d3fbe0875e002",
+        "experiments/train_joint_adequacy_0099.py": "5326f66fe729a35f59871497f4b1e3151fd67f3e8340afa882b561fde285ef10",
+        "experiments/train_joint_campaign.py": "0914e609f76cacd27632a0c52081da836a39456121cfea3c4633cbaf0c03593b",
+        "experiments/train_joint_latent.py": "57dc52517897608572afe2cd5028f0c8ede540d524c99f8366426fe685b22735",
+        "experiments/train_joint_numerical_pair_0100.py": "4d10ab86398fd43257f4249cdb2641799197abbb303e006457a92617d6b04ed5",
+        "experiments/train_local_memory_0098.py": "e73de06b9a1d66b05de4bb1d29504a19cc7b486bc3694ddd341d451f403ae667",
+        "experiments/train_long_latent.py": "7e8c2a93a875392814d8972386e5561ffec587d37cc33b8b46e0de663ae98ecc",
+        "experiments/train_structured_rom.py": "6afa2186411a0a23ea5f5d62f9cfeacb3192c6023f62676c7c134ef9bb365482",
+        "experiments/train_teacher_latent.py": "808671ddd94b483e440cd6ec69d28657e90a4b643ef633050903c2aec18b90c9",
+        "src/kiki/data/private_dataset.py": "615ec905047a81f681620d3f214b6dfa60be3c78af7059de21b232c593d941ee",
+        "src/kiki/models/private_pm.py": "adea9a1675cb9bdbd955b6fdf881bed5da915ba431e9d61a57fc33aa29606841",
+        "src/kiki/models/private_rom.py": "eced34511e8ba726ed3ee06f58c0826f26957bb27feecadc30c4cf44ba6062e4",
+        "src/kiki/physics/__init__.py": "de2c10aed81f501ceaaedee6361bc225d242b72f7d5b3c97ffcf57d77c03d5e4",
+        "tests/test_edge_pair_cost_gate_20261019.py": "52af0cd754cb0dbc2d2dedddb88ba4236d5d296ca16833709aa0143f8ae40cf0"
+      },
+      "checks_added": null
+    }
+  ],
+  "correction": "owned Windows Popen process tree termination on timeout/interruption; no equation/objective or schedule-count change",
+  "independent_review": {
+    "agent": "/root/edge_result_challenge",
+    "scope": "read-only MAIN8/wholeedge-deletion, panels/formalschedule/full366/numeric/cost claim scope",
+    "decision": "accepted after QA and archive; corrected preliminary count concern withdrawn"
+  },
+  "root_review": "accept exact final source including process ownership cleanup; QA2 passed real CUDA mathematics/recovery plus mock cleanup contract; no live timeout asserted",
+  "measurement": "not started; one registered 2800 second batch after remote source verification",
+  "P2_authorization": false
+}
