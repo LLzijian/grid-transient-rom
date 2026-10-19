@@ -1,0 +1,724 @@
+{
+  "scope": "known-support edge synthetic causal initializer comparison; no structure recovery or deployment claim",
+  "status": "CLOSED",
+  "completed": 6,
+  "updates_each": 512,
+  "causal_interface": "same30 observed coordinates; first11 samples0..0.1s only; one initialization; autonomous thereafter",
+  "train_events": 16,
+  "val_events": 16,
+  "train_future_s": 0.5,
+  "val_future_s": 1.0,
+  "normalization": "original train observed standard deviations; overall mean normalized MSE per seed, not eventwise threshold",
+  "runtime_identity": {
+    "files": {
+      "experiments\\closure_causal_history_residual_20261019.py": "abe887a7c4758f0ad21fa0d9fb97282ce22349a03eb70a09bbb478a8f54f364a",
+      "experiments\\closure_causal_recovery_20261019.py": "85d7a76444738e233f0bc2a632dbe17e5b6f4a528305e7e8cd5ead1f07a02659",
+      "experiments\\closure_discovery_benchmarks.py": "5f94f52532ae4808e1e8eeeb4b1c627d138c81e2cdca15767a8f9ed7d8c5d42e",
+      "experiments\\closure_discovery_support.py": "4e492f0d4f87abf517c7037efc7a64ebcbcd0693ac8c4884b66a31ee3d81c119",
+      "experiments\\closure_expression_identity.py": "5d8666079652166777757d62534252fb61210aae99ad08e3db5d4e83eb073293",
+      "experiments\\closure_training_runtime.py": "80aeff279bf0e1e498205fcb7b591a680b721643efc98e0e4e993d61d8ac90b0",
+      "experiments\\local_memory_rom_0098.py": "cb73ce129c1c095f8c5ac1288a725b072144bcd7978d4711e44afb4ea075636d",
+      "experiments\\structure_grammar.py": "0325a0a1f50d7f22510cd3d7da5dbc28d8c3e186ea7288e7717f7a3a8704d28d",
+      "experiments\\structured_rom.py": "921b6dedb2e8b5218c5f4ec84fc6a35ac4844ebc0e310f8a6639bb0c7bcf88f3",
+      "experiments\\symbolic_closure_rom.py": "01bd836ef2e06b0fbca40065f26cb98a23f8042a3328d86b265bfb114940dbc9"
+    },
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "torch": "2.13.0+cu130",
+    "numpy": "2.5.2",
+    "cuda": "13.0",
+    "config": {
+      "updates": 512,
+      "checkpoint_every": 32,
+      "noise": 0.0,
+      "fit_global_seconds": 9720.0,
+      "total_seconds": 10800.0,
+      "fit_item_seconds": 540.0,
+      "item_seconds": 600.0,
+      "head_lr": 0.01,
+      "batch_size": 12,
+      "dtype": "float64"
+    },
+    "profile": "edge6_6600",
+    "cases": [
+      "edge"
+    ],
+    "effective_caps": {
+      "item_total": 1100.0,
+      "item_fit": 980.0,
+      "item_eval_reserved": 120.0,
+      "items": 6,
+      "fit_global": 5880.0,
+      "total": 6600.0,
+      "eval_global_reserved": 720.0
+    }
+  },
+  "receipt": {
+    "pid": 13468,
+    "status": "CLOSED",
+    "cumulative_seconds": 2634.287857599993,
+    "this_invocation_seconds": 2634.292564500007,
+    "prior_seconds": 0.0,
+    "children": [],
+    "includes_all_children_once": true,
+    "fit_seconds": 2601.2271468000254,
+    "current": null
+  },
+  "charged_execution_seconds": 2634.292564500007,
+  "execution_receipt_policy": "larger invocation/cumulative value once; includes all in-process work",
+  "execution_cap_seconds": 6600,
+  "unspent_execution_allocation_cancelled_seconds": 3965.707435499993,
+  "P1_conservative_spend_and_holds_seconds": 23995.11764890002,
+  "P1_remaining_at_least_seconds": 4804.882351099979,
+  "parent_remaining_at_least_seconds": 234162.6901118,
+  "model_adoption": "none; research evidence only",
+  "unknown_structure_search": "closed",
+  "original_test": "closed",
+  "TASK4": "paused",
+  "independent_review": "edge_result_challenge accepted known-support synthetic512-update bundle prediction result; read-only independent scope/identity/numeric/cost check; root adopted scoped research conclusion, no promotion",
+  "rows": [
+    {
+      "seed": 5101,
+      "group": "control",
+      "fit_status": "complete",
+      "updates": 512,
+      "fit_seconds": 441.75547820000793,
+      "eval_seconds": 5.286332999996375,
+      "train_milestones": {
+        "128": 0.013858214704372668,
+        "256": 0.013625550166024694,
+        "512": 0.01339934029806474
+      },
+      "parameter_changes_group_l2": {
+        "skeleton": 7.913404184793262,
+        "closure": 0.1922770618738549,
+        "encoder": 1.5161827653404898
+      },
+      "last_gradient_norms_group_l2": {
+        "skeleton": 0.0009296805897902561,
+        "closure": 0.0025858519712561555,
+        "encoder": 6.460828555477988E-05
+      },
+      "evaluation": {
+        "train": {
+          "event_mse": [
+            0.0015676363375511238,
+            0.001530758797499011,
+            0.0012728422224355148,
+            0.0038181714006256594,
+            0.0011738885206652723,
+            0.001197346706736026,
+            0.0025094272782382595,
+            0.002555902224466528,
+            0.045292089718976164,
+            0.011234467806988961,
+            0.013570048037262963,
+            0.010230325787640163,
+            0.018266827970372376,
+            0.010650000752251882,
+            0.05681682168698446,
+            0.03270288952034148
+          ],
+          "mse": 0.013399340298064739,
+          "weak_mse": 0.0019532466860271744,
+          "strong_mse": 0.024845433910102306,
+          "dual_step_max_normalized": 2.3140681008296315E-10
+        },
+        "heldout": {
+          "event_mse": [
+            0.0035700476933380196,
+            0.004126041726233781,
+            0.011773407482077934,
+            0.008421619301933907,
+            0.00843793710755241,
+            0.004396738586112113,
+            0.0054516993037056725,
+            0.009013497110954978,
+            0.1582101642628565,
+            0.11462771186991888,
+            0.11587818923239837,
+            0.07214770857336701,
+            0.04416253748978668,
+            0.0743562912391616,
+            0.1611880398416914,
+            0.40260839958039696
+          ],
+          "mse": 0.07489812690009288,
+          "weak_mse": 0.006898873538988602,
+          "strong_mse": 0.14289738026119717,
+          "dual_step_max_normalized": 2.7954646442695616E-10
+        },
+        "numerical_qualified": true,
+        "prediction_gate": false
+      },
+      "checkpoint": "private_data\\closure_mechanism_20261019\\P1\\history_residual\\edge_run01\\edge_5101_control\\checkpoint_00512",
+      "checkpoint_sha256": {
+        "model.json": "cdca2c1c47937677e90bac433889fc30d464531184da65364a33682c685be27a",
+        "training.pt": "bf26e1b42e95bb21acb4dbf3499cf25941e2eb3c9829787744871a8e657303c3"
+      },
+      "fixture_sha256": "4ab125b3fb6ba7eb3d191daa1f500f3c6262ff851a9c9a96e53dd969f4a147df",
+      "result_sha256": "9e4d6e30acb6964b3ac2277192e08a68baf9c528c0644d3826d7085ce4717eaf"
+    },
+    {
+      "seed": 5101,
+      "group": "residual",
+      "fit_status": "complete",
+      "updates": 512,
+      "fit_seconds": 433.76302910002414,
+      "eval_seconds": 5.064285800006473,
+      "train_milestones": {
+        "128": 0.000344754295146362,
+        "256": 0.00015002099701907364,
+        "512": 2.4000242057694588E-05
+      },
+      "parameter_changes_group_l2": {
+        "residual": 0.4297002141172616,
+        "skeleton": 3.896661330401384,
+        "closure": 0.05490932154938255,
+        "encoder": 2.445520542402169
+      },
+      "last_gradient_norms_group_l2": {
+        "residual": 0.0006776890672408719,
+        "skeleton": 3.1426410975585886E-05,
+        "closure": 0.0009811600868185131,
+        "encoder": 0.00010445316675013568
+      },
+      "evaluation": {
+        "train": {
+          "event_mse": [
+            4.664412941215772E-06,
+            4.5581686747023075E-06,
+            1.4852560661608269E-06,
+            4.880987871655981E-06,
+            4.534187299079264E-06,
+            3.5620187655112226E-06,
+            7.1278630992304345E-06,
+            3.3136559770286653E-06,
+            4.120315808683837E-05,
+            2.864418668871719E-05,
+            8.751697431638208E-05,
+            3.260750192121497E-05,
+            4.054149873212197E-05,
+            2.1959030789072996E-05,
+            2.3493369287283414E-05,
+            7.391160240689798E-05
+          ],
+          "mse": 2.400024205769459E-05,
+          "weak_mse": 4.265818836823059E-06,
+          "strong_mse": 4.373466527856612E-05,
+          "dual_step_max_normalized": 9.11153308474658E-11
+        },
+        "heldout": {
+          "event_mse": [
+            0.0001013826634837468,
+            5.950715449915831E-05,
+            2.7786404384871496E-05,
+            1.5102526602672637E-05,
+            1.067086058946843E-05,
+            5.970075417484957E-05,
+            4.597748389523787E-05,
+            1.3217982322962769E-05,
+            0.0005892873095260098,
+            0.0031007769171459026,
+            0.0010689460797702675,
+            0.0008214173198569822,
+            0.00044207272807968276,
+            0.0002938940446326143,
+            0.004793215729847322,
+            0.0017603282410457693
+          ],
+          "mse": 0.0008252052624910949,
+          "weak_mse": 4.1668228744120984E-05,
+          "strong_mse": 0.001608742296238069,
+          "dual_step_max_normalized": 8.19582267075849E-11
+        },
+        "numerical_qualified": true,
+        "prediction_gate": true
+      },
+      "checkpoint": "private_data\\closure_mechanism_20261019\\P1\\history_residual\\edge_run01\\edge_5101_residual\\checkpoint_00512",
+      "checkpoint_sha256": {
+        "model.json": "a19d4d7582294106c8ee47fbefd38c5d6507d50624b0a616904907503010b49a",
+        "training.pt": "982e92cbb2921c3be43d75c03256987442e8058bb5939e0602074aa551940607"
+      },
+      "fixture_sha256": "4ab125b3fb6ba7eb3d191daa1f500f3c6262ff851a9c9a96e53dd969f4a147df",
+      "result_sha256": "4b367be411f8625becdcbac7c64b0297dd73692d9c2156f713c7ea0c5947791f",
+      "initializer": {
+        "format": "causal_history_residual_v1",
+        "history_scales": [
+          0.20675025462306806,
+          0.2343779271374995,
+          0.19812584750437826,
+          0.21972434829499907,
+          0.1964759167811095,
+          0.1074376361046132
+        ],
+        "source_mass": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "history_coefficients": [
+          0.028751313674331536,
+          0.12379506358947663,
+          -0.05198652744020587,
+          0.002870522308986653,
+          0.3958323231383631,
+          0.095374793475881
+        ]
+      }
+    },
+    {
+      "seed": 5102,
+      "group": "control",
+      "fit_status": "complete",
+      "updates": 512,
+      "fit_seconds": 421.53245529998094,
+      "eval_seconds": 5.181330299994443,
+      "train_milestones": {
+        "128": 0.01740697038161477,
+        "256": 0.016755864252081257,
+        "512": 0.012976378501107243
+      },
+      "parameter_changes_group_l2": {
+        "skeleton": 8.167725435578314,
+        "closure": 0.2435878514495653,
+        "encoder": 3.6149444445092715
+      },
+      "last_gradient_norms_group_l2": {
+        "skeleton": 0.003069336569393436,
+        "closure": 0.013744186103495138,
+        "encoder": 0.004715916879218739
+      },
+      "evaluation": {
+        "train": {
+          "event_mse": [
+            0.0014674371898113373,
+            0.0014606435036713546,
+            0.0023638021894594055,
+            0.0007870034252634749,
+            0.0023760290255718944,
+            0.002930564462980956,
+            0.0031171720876039797,
+            0.002037262118919474,
+            0.012835968181535847,
+            0.03454309706589792,
+            0.04890072294938638,
+            0.0436273245231123,
+            0.008815238715675173,
+            0.010422812907214175,
+            0.021245825647860685,
+            0.010691152023751533
+          ],
+          "mse": 0.012976378501107243,
+          "weak_mse": 0.0020674892504102347,
+          "strong_mse": 0.023885267751804252,
+          "dual_step_max_normalized": 1.3294627920065387E-10
+        },
+        "heldout": {
+          "event_mse": [
+            0.01580992442635195,
+            0.02429561617478467,
+            0.010351027516465938,
+            0.006120469269236587,
+            0.0099702986723534,
+            0.002429591311789441,
+            0.011065298803690008,
+            0.025560919021744163,
+            0.14050103880459597,
+            0.17045324085218722,
+            0.19494707828448,
+            0.1014962348574218,
+            0.2944357213944327,
+            0.4496787615068433,
+            0.2215241381918379,
+            0.2701766293434732
+          ],
+          "mse": 0.12180099927698051,
+          "weak_mse": 0.01320039314955202,
+          "strong_mse": 0.23040160540440902,
+          "dual_step_max_normalized": 1.446413838227012E-10
+        },
+        "numerical_qualified": true,
+        "prediction_gate": false
+      },
+      "checkpoint": "private_data\\closure_mechanism_20261019\\P1\\history_residual\\edge_run01\\edge_5102_control\\checkpoint_00512",
+      "checkpoint_sha256": {
+        "model.json": "a7df54c72b91547c1d95213253cf93bffdfe42a8cdb5259398097ac316dc1e9e",
+        "training.pt": "db4055725f48c44bccf3a7e8cc1912a76fd1ca2fca2cf8e275b76b85a52965e2"
+      },
+      "fixture_sha256": "5de5f8e2d04674dd1d958f516922b54f31370e4368ae036e42f3ce4cccdbef73",
+      "result_sha256": "656a18e4561a081120c6a577ae591393569e8c0d8bab6987441517824427d197"
+    },
+    {
+      "seed": 5102,
+      "group": "residual",
+      "fit_status": "complete",
+      "updates": 512,
+      "fit_seconds": 421.17200220000814,
+      "eval_seconds": 5.0586159999947995,
+      "train_milestones": {
+        "128": 0.0004787239855280725,
+        "256": 0.00020067662433216523,
+        "512": 2.8986833607436775E-05
+      },
+      "parameter_changes_group_l2": {
+        "residual": 0.43077056007652736,
+        "skeleton": 3.685561663169184,
+        "closure": 0.05393603716444242,
+        "encoder": 2.6664712436140827
+      },
+      "last_gradient_norms_group_l2": {
+        "residual": 0.0005798537996937463,
+        "skeleton": 5.1755497445241555E-05,
+        "closure": 0.0007700315149624981,
+        "encoder": 0.00016134187481117268
+      },
+      "evaluation": {
+        "train": {
+          "event_mse": [
+            2.8620302890808636E-06,
+            1.7014339157104735E-06,
+            3.218825716488948E-06,
+            4.879208126225274E-06,
+            3.314975633061171E-06,
+            7.291642796541543E-06,
+            3.1381682876985478E-06,
+            2.600939924409177E-06,
+            7.930307917950522E-05,
+            3.690611076588146E-05,
+            4.302340282937628E-05,
+            5.7083891201850234E-05,
+            1.4708415803108205E-05,
+            7.742691475979545E-05,
+            6.008765934961596E-05,
+            6.624263914063966E-05
+          ],
+          "mse": 2.8986833607436778E-05,
+          "weak_mse": 3.625903086152E-06,
+          "strong_mse": 5.434776412872156E-05,
+          "dual_step_max_normalized": 4.230429390697503E-11
+        },
+        "heldout": {
+          "event_mse": [
+            6.0702067390598225E-05,
+            2.4598334343682637E-05,
+            2.796028166240886E-05,
+            1.5950967517670518E-05,
+            1.6971142532506696E-05,
+            3.0355331814083357E-05,
+            5.02634610640154E-05,
+            0.00010692844710836595,
+            0.002221362741685232,
+            0.0003033727335663778,
+            0.00415566043906576,
+            0.010329169962803777,
+            0.013161195210692355,
+            0.0017671494684478413,
+            0.000963330980189966,
+            0.0019930328326400125
+          ],
+          "mse": 0.0022017502751577904,
+          "weak_mse": 4.1716254179166455E-05,
+          "strong_mse": 0.0043617842961364145,
+          "dual_step_max_normalized": 1.0132072976128131E-10
+        },
+        "numerical_qualified": true,
+        "prediction_gate": true
+      },
+      "checkpoint": "private_data\\closure_mechanism_20261019\\P1\\history_residual\\edge_run01\\edge_5102_residual\\checkpoint_00512",
+      "checkpoint_sha256": {
+        "model.json": "e30e80a8d9d6858a8a4d449bad2267be50fbc3b71b965e9ac6380453522c7745",
+        "training.pt": "f8ca70c594d885affec011095ac728308d4476fc0f44b2e5949d26eee811518d"
+      },
+      "fixture_sha256": "5de5f8e2d04674dd1d958f516922b54f31370e4368ae036e42f3ce4cccdbef73",
+      "result_sha256": "2cd276a8c4358f776417eeac41d6c06e681c7ad882c2b7cdf1eafd57e6d11974",
+      "initializer": {
+        "format": "causal_history_residual_v1",
+        "history_scales": [
+          0.2204307064342319,
+          0.18240364088766048,
+          0.20292496241181268,
+          0.17548997203757413,
+          0.19695635284646812,
+          0.09391294053027423
+        ],
+        "source_mass": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "history_coefficients": [
+          0.03429258176340823,
+          0.10717855921773434,
+          -0.05292531050249455,
+          -0.002905352849028214,
+          0.4029601939568236,
+          0.08782712125517929
+        ]
+      }
+    },
+    {
+      "seed": 5103,
+      "group": "control",
+      "fit_status": "complete",
+      "updates": 512,
+      "fit_seconds": 463.52249329999904,
+      "eval_seconds": 5.359934900014196,
+      "train_milestones": {
+        "128": 0.016439369408825566,
+        "256": 0.015822420779340773,
+        "512": 0.015428795409360336
+      },
+      "parameter_changes_group_l2": {
+        "skeleton": 8.28853328039993,
+        "closure": 0.14469863026209384,
+        "encoder": 1.8081810179438398
+      },
+      "last_gradient_norms_group_l2": {
+        "skeleton": 0.0003963275934382763,
+        "closure": 0.00025070021703948184,
+        "encoder": 0.00011629853565872329
+      },
+      "evaluation": {
+        "train": {
+          "event_mse": [
+            0.0017268266134803428,
+            0.0016663198231550008,
+            0.0019622176877821073,
+            0.001654247894968576,
+            0.000989668123754232,
+            0.0049043504888340635,
+            0.0021308570480910835,
+            0.0026079207801243546,
+            0.037121810264049974,
+            0.009533280302634638,
+            0.012602777002538534,
+            0.031594843295870964,
+            0.03498298514814337,
+            0.01378183157811223,
+            0.06550285905543513,
+            0.02409793144279079
+          ],
+          "mse": 0.015428795409360336,
+          "weak_mse": 0.00220530105752372,
+          "strong_mse": 0.028652289761196954,
+          "dual_step_max_normalized": 4.6021393780519105E-11
+        },
+        "heldout": {
+          "event_mse": [
+            0.007405446488183218,
+            0.004986877367254081,
+            0.0069587686208902036,
+            0.007567005963393591,
+            0.009355834098008367,
+            0.010728551197494862,
+            0.005969863588270178,
+            0.003512325041092887,
+            0.21868396895692244,
+            0.23115837333853057,
+            0.13444822480049906,
+            0.6602789714740456,
+            0.1192675595173465,
+            0.07193651073139189,
+            0.30408556427694877,
+            0.09855130920899409
+          ],
+          "mse": 0.11843094716682914,
+          "weak_mse": 0.0070605840455734235,
+          "strong_mse": 0.22980131028808484,
+          "dual_step_max_normalized": 8.759852750118449E-11
+        },
+        "numerical_qualified": true,
+        "prediction_gate": false
+      },
+      "checkpoint": "private_data\\closure_mechanism_20261019\\P1\\history_residual\\edge_run01\\edge_5103_control\\checkpoint_00512",
+      "checkpoint_sha256": {
+        "model.json": "d313d9048e4da240bb3e0d7937ca5d349bbe843226a66faf7dddc04c70ac61d9",
+        "training.pt": "53b120602b9ab621ffb8743c61a13ad52a984d5d64b67db8f56bbd3b52b88393"
+      },
+      "fixture_sha256": "5ced32ad95f872b76d332f4289033019f0d0555d9bb6667961fcd486a279239c",
+      "result_sha256": "e4743fdd755e4accee40d0860559750459300c115b787d43494e62b210b63131"
+    },
+    {
+      "seed": 5103,
+      "group": "residual",
+      "fit_status": "complete",
+      "updates": 512,
+      "fit_seconds": 419.4816887000052,
+      "eval_seconds": 5.104860999999801,
+      "train_milestones": {
+        "128": 0.0004548918114016862,
+        "256": 0.0001984414546483794,
+        "512": 2.6120554360812315E-05
+      },
+      "parameter_changes_group_l2": {
+        "residual": 0.4017723685496124,
+        "skeleton": 4.124357000441731,
+        "closure": 0.046435166600319815,
+        "encoder": 2.5073363490346727
+      },
+      "last_gradient_norms_group_l2": {
+        "residual": 0.00048295318779016704,
+        "skeleton": 3.8833232414160826E-05,
+        "closure": 0.0002606736352853872,
+        "encoder": 8.123039052905394E-05
+      },
+      "evaluation": {
+        "train": {
+          "event_mse": [
+            2.2784576611249377E-06,
+            5.127890029396394E-06,
+            8.97398114312331E-06,
+            6.210455245792443E-06,
+            6.3649461780625E-06,
+            2.8258194725836786E-06,
+            2.3901318189986707E-06,
+            2.4311646792673587E-06,
+            3.761941623677157E-05,
+            2.6972482024658055E-05,
+            7.581166248158808E-05,
+            9.886546642311162E-05,
+            2.5258685273425313E-05,
+            3.894493834982092E-05,
+            4.1337893787557455E-05,
+            3.6515478967714704E-05
+          ],
+          "mse": 2.6120554360812315E-05,
+          "weak_mse": 4.575355778543662E-06,
+          "strong_mse": 4.766575294308097E-05,
+          "dual_step_max_normalized": 3.9318899289469824E-11
+        },
+        "heldout": {
+          "event_mse": [
+            2.156297641073748E-05,
+            8.643417136765923E-06,
+            4.496434609286708E-05,
+            2.0961909260149573E-05,
+            5.1930445122778906E-05,
+            3.264885373669219E-05,
+            1.529423049141013E-05,
+            2.1122747808270503E-05,
+            0.010384982857992268,
+            0.001738024120108109,
+            0.0006269315822685021,
+            0.0015742839967239667,
+            0.003387080949002268,
+            0.0009054567908365598,
+            0.0006266828564244327,
+            0.0003142679302624639
+          ],
+          "mse": 0.0012359275006048902,
+          "weak_mse": 2.7141115757458974E-05,
+          "strong_mse": 0.002444713885452321,
+          "dual_step_max_normalized": 6.698173562221395E-11
+        },
+        "numerical_qualified": true,
+        "prediction_gate": true
+      },
+      "checkpoint": "private_data\\closure_mechanism_20261019\\P1\\history_residual\\edge_run01\\edge_5103_residual\\checkpoint_00512",
+      "checkpoint_sha256": {
+        "model.json": "d90dacfe59f93eacf65d95bbba17a80a0b1653c66db0f9eec1a0ff077295d726",
+        "training.pt": "ee15725534da6f275ac9e2e36e32387c44618ba83f8b4b751431e2a3460854a5"
+      },
+      "fixture_sha256": "5ced32ad95f872b76d332f4289033019f0d0555d9bb6667961fcd486a279239c",
+      "result_sha256": "1ddf5496e885f1a0d23927b20b0266c53c4f32d4a5cf121ae54b93a676e8c0b9",
+      "initializer": {
+        "format": "causal_history_residual_v1",
+        "history_scales": [
+          0.1899401441427994,
+          0.18548001180711204,
+          0.20159175908513982,
+          0.18055633345900118,
+          0.17764461950283442,
+          0.1030514264446962
+        ],
+        "source_mass": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "history_coefficients": [
+          0.015513724798780073,
+          0.07817246262814298,
+          -0.08471736093307575,
+          0.0015955594067528951,
+          0.3790412365022279,
+          0.0649429791206218
+        ]
+      }
+    }
+  ],
+  "paired_differences": [
+    {
+      "case": "edge",
+      "seed": 5101,
+      "residual_minus_control": {
+        "train": {
+          "mse": -0.013375340056007044,
+          "weak_mse": -0.0019489808671903513,
+          "strong_mse": -0.02480169924482374
+        },
+        "heldout": {
+          "mse": -0.07407292163760179,
+          "weak_mse": -0.006857205310244481,
+          "strong_mse": -0.1412886379649591
+        }
+      }
+    },
+    {
+      "case": "edge",
+      "seed": 5102,
+      "residual_minus_control": {
+        "train": {
+          "mse": -0.012947391667499806,
+          "weak_mse": -0.0020638633473240827,
+          "strong_mse": -0.02383091998767553
+        },
+        "heldout": {
+          "mse": -0.11959924900182273,
+          "weak_mse": -0.013158676895372853,
+          "strong_mse": -0.2260398211082726
+        }
+      }
+    },
+    {
+      "case": "edge",
+      "seed": 5103,
+      "residual_minus_control": {
+        "train": {
+          "mse": -0.015402674854999524,
+          "weak_mse": -0.0022007257017451765,
+          "strong_mse": -0.028604624008253872
+        },
+        "heldout": {
+          "mse": -0.11719501966622425,
+          "weak_mse": -0.007033442929815965,
+          "strong_mse": -0.22735659640263253
+        }
+      }
+    }
+  ],
+  "freeze_barrier_sha256": "58a9b1d205c47b44a5601a668066262f517e495ec978a61fd1c8fede43ff1fe5",
+  "private_recovery_artifacts": "private_data\\closure_mechanism_20261019\\P1\\history_residual\\edge_run01",
+  "detailed_parameter_records": "state.json retains individual change and gradient norms"
+}
