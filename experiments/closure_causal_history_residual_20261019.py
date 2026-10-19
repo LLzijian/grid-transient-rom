@@ -1,6 +1,6 @@
 """Fixed paired causal-history study. Synthetic observations only; no project readers.
 
-All 18 fit endpoints are frozen before any heldout model metric is computed.
+All fit endpoints are frozen before any heldout model metric is computed.
 This entry point never changes an existing model, historical result, or default.
 """
 from __future__ import annotations
@@ -38,7 +38,17 @@ ORDER = [(seed, case, group) for seed in (5101, 5102, 5103)
          for case in ('node', 'edge', 'saturation') for group in ('control', 'residual')]
 PROFILES = {'all18': (600., 60., 9720., 10800.),
             'node6': (1800., 180., 9720., 10800.),
-            'node6_15600': (2600., 120., 14880., 15600.)}
+            'node6_15600': (2600., 120., 14880., 15600.),
+            'edge6_6600': (1100., 120., 5880., 6600.)}
+PROFILE_CASES = {'all18': ('node', 'edge', 'saturation'),
+                 'node6': ('node',), 'node6_15600': ('node',),
+                 'edge6_6600': ('edge',)}
+
+
+def study_order(profile):
+    if profile not in PROFILES:
+        raise ValueError('root must lock a registered profile before launch')
+    return [item for item in ORDER if item[1] in PROFILE_CASES[profile]]
 
 
 def history_features(history, mass):
@@ -230,6 +240,7 @@ def source_identity(profile='all18'):
     return {'files': {str(p.relative_to(ROOT)): sha(p) for p in sorted(paths)},
             'python': sys.version, 'torch': torch.__version__, 'numpy': np.__version__,
             'cuda': torch.version.cuda, 'config': CONFIG, 'profile': profile,
+            'cases': list(PROFILE_CASES[profile]),
             'effective_caps': {'item_total': item, 'item_fit': item - reserve,
                                'item_eval_reserved': reserve, 'items': 18 if profile == 'all18' else 6,
                                'fit_global': fit_global, 'total': total,
@@ -282,7 +293,7 @@ def run(output, device, resume=False, profile='all18'):
     output = Path(output)
     if profile not in PROFILES:
         raise ValueError('root must lock a registered profile before launch')
-    order = ORDER if profile == 'all18' else [x for x in ORDER if x[1] == 'node']
+    order = study_order(profile)
     item_cap, eval_reserve, fit_global, total_cap = PROFILES[profile]
     global_eval_reserve = total_cap - fit_global
     fit_cap = item_cap - eval_reserve

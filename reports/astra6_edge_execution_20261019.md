@@ -21,3 +21,5 @@
 采纳上述唯一六项比较，预算7400从P1已核实余额8239.1749156前瞻分配；同一父研究费用累计，不清零。原节点及真实q阶段保持关闭，无新诊断。父259200、P1 28800上限不变，旧900支持预占及各已登记检查保留，不动用旧研究退休余额。模型/目标/数据/门槛不变，仅新增固定profile、edge任务顺序和对应身份。先通过配置与恢复隔离检查、选择性归档源与本协议，再启动全新private_data/closure_mechanism_20261019/P1/history_residual/edge_run01。
 
 源码复用已通过的初始化、因果、单位、导出及恢复检查。必要新检查验证edge-only六项、种子配对顺序、1100/980及6600/5880费用身份、禁止跨profile恢复。全部归本阶段800秒支持，不重新测时。通过后实际执行，不把本文件当作作业；未知结构搜索及默认采用保持关闭。节点结论另由独立node_result_challenge接受限定归档，工程合并不等于模型晋升。
+
+启动前验收：9项检查通过、GPU计时项排除（pytest13.42秒，原生进程15.0300306秒，计本阶段支持）。源码SHA256 abe887a7c4758f0ad21fa0d9fb97282ce22349a03eb70a09bbb478a8f54f364a。独立只读挑战/root/node_result_challenge核对固定edge-only顺序、实效预算、恢复身份及原始测时，接受此有限方案，未运行测试/训练或参与实现；root采纳。新源不得恢复已关闭node作业，其历史源和端点哈希继续保留在原归档。正式入口命令：`.venv-gpu/Scripts/python.exe experiments/closure_causal_history_residual_20261019.py --output private_data/closure_mechanism_20261019/P1/history_residual/edge_run01 --profile edge6_6600`，仅在无重复作业且新目录不存在时执行。
