@@ -1,25 +1,19 @@
 # 当前研究状态
 
-任务状态：**RUNNING：闭合机制研究持续推进**。工作目录E:/03-nn_Transfer_Func/kiki；原test关闭、TASK4暂停、默认模型不变，均为研究候选。
+任务状态：**RUNNING**。工作目录E:/03-nn_Transfer_Func/kiki。原test关闭、TASK4暂停；默认模型不变，尚无最终科学模型采用。
 
-**固定边项P0费用核验已CLOSED_UNRESOLVED，无活跃训练/测量进程。**实际计算67828、监督82708及launcher52620/60876已退出。预定36试算完成full8的18次，随后带完整身份的Adam检查点恢复被拒绝；delete7、两结构全366train评价及最终费用表未完成。见[结论](https://github.com/LLzijian/grid-transient-rom/blob/8fc99a6290b764abb6a39261aa5d25aaee2e39de/reports/edge_pair_gate_20261019_conclusion.md)、[紧凑证据](https://github.com/LLzijian/grid-transient-rom/blob/8fc99a6290b764abb6a39261aa5d25aaee2e39de/results/edge_pair_gate_20261019/closure_summary.json)。费用准入未决，不启动P2；无科学模型采用。
+**参数公共乘积缓存工程已完成、接受，待PR远端核验。**[前瞻Astra6协议](../reports/astra6_linear_cache_20261019.md)由实际gpt-6-astra规划并root采纳；新类只支持登记八/七项、40维L10-S，在原参数对象上每个训练图计算公共参数乘积。两结构CUDA等价、5秒目标/全部梯度、连续Adam、缓存清理、恢复及导出检查107.8061575秒PASS；53份绑定源未变。
 
-两次真实CUDA QA均通过，累计46.1312582秒计800支持内，唯一代码修正用于自有Windows进程树终止；检查与修正限额已用尽。本轮不追加第二批、修复或QA。原入口/全部40依赖未变，driver SHA256 5a15cf58e5c3e56ce9e38a01e59ca7e06ea9e49eeb0256cca64f13ca42433fcb。保存源/原Adam/RNG/冻结面板/1024采样日程于private_data/closure_mechanism_20261019/P0/edge_pair_gate01，禁止覆盖或继续。起点公开包只提供八项terms，权重来自登记S-O。原八项与删除整项edge(qi+qj)c后的七项检查保持科学含义。
+固定12条531点合成负载、1/2/5秒、AB/BA共72次完整更新已完成；主计时指标八项缩短16.69%、七项17.56%，六单项均通过105%上限。独立只读审查复算并同意限定工程集成。见[结论](../reports/linear_cache_20261019_conclusion.md)与[完整紧凑证据](../results/linear_cache_20261019/summary.json)。无真实train/val/test访问，合成速度不外推P2费用。
 
-本轮实际EXEC121.163038+800支持保守保留，未用2678.836962秒明确撤销；P0累计实际加保守支持2646.5840264，剩11753.4159736，父剩231735.5063507（259200上限）。旧900支持继续扣留，QA不双加，支持不变成训练。P1累计24817.9096229、剩3982.0903771；P2/3/4未启动，上限86400/93600/21600保持；预留14400不扩科学分支。见[费用快照](../results/closure_mechanism_20261019/cost_snapshot.json)。
+**实际作业均结束，无活跃计算PID。**check worker44304/监督86800，benchmark worker66652/launcher87028/监督85372已退出、无超时。测时18:16:35—18:27:21，645.9072997进程秒；本地完整日志、26份试算检查点及回执位于private_data/closure_mechanism_20261019/P0/linear_cache01/attempt01。源冻结0a7890b4f20ec62e50ef1ac77ca66c26c68efe16，运行登记归档e782e001ba8ec4bfb516811ff605ee005fea107e；这些试算权重不得作为科学起点。
 
-**严格JSON身份契约工程CLOSED_PASS，实际唯一合成CUDA检查34.5852151秒。**新增适配器与测试通过完整嵌套身份、真实变化拒绝、填充Adam/RNG/采样状态和下一更新检查，未读真实train/val/test。源已归档ecdc1731cee66c2043b71c1a2416375e2c2ba492，见[结论](../reports/checkpoint_identity_20261019_conclusion.md)及[证据](../results/checkpoint_identity_20261019/summary.json)。新接口已通过[PR #8](https://github.com/LLzijian/grid-transient-rom/pull/8)合并，远端main核验a5445ecb9b6729a2f4827b4b25a4283161506f47；旧helper/旧gate不变、费用门槛不补写。
+**下一可执行动作：**选择性PR合并本工程并核验远端main，随后实际调用Astra6，登记和执行新运行类的合法完整费用核算。当前未授权启动P2，不补跑旧gate，不重开关闭路线。不是只记录next_action；需在现有授权内继续实际执行。
 
-原600修复分配按实际34.5852151+支持300关闭，未用265.4147849取消；预留剩14065.4147849，父剩231400.9211356。无活跃计算PID。
+预算上限259200进程秒；已关闭阶段实际加保守支持累计29529.7169909，父剩至少229670.2830091。本工程3000分配按实际753.7134572+支持600关闭，未用执行1646.2865428取消，无第二批测时。P0剩10022.7778471；P1累计24817.9096229、剩3982.0903771；修复预留剩14065.4147849。P2/P3/P4尚未启动，上限86400/93600/21600保持。旧900未核对支持保守扣留，类别不转移，旧任务账本不复活。详见[费用快照](../results/closure_mechanism_20261019/cost_snapshot.json)。
 
-**GPU构造顺序工程CLOSED_UNRESOLVED，唯一检查失败，benchmark未启动，不集成main。**新增检查把CPU Adam step与CUDA参数一起传原all_finite，触发设备不一致；见[结论](../reports/construction_order_20261019_conclusion.md)及[证据](../results/construction_order_20261019/summary.json)。原两文件冻结，不修正重跑；所有20份绑定源未变。真实worker72860、launcher86104、监督82476均已退出，无活跃计算PID。
+保留科学证据：节点/边已知支撑、无噪声各三种子×两初始化器×512，历史残差候选各3/3合成val总体MSE≤0.01、对照0/3，六模型各自数值合格；不证明未知结构恢复或真实q唯一性。原18组GRU512已完成6085.6472446秒，不重跑。P1未知恢复/饱和未完成，真实生成搜索关闭；固定边项存在性收缩路线仍需完整费用准入，后续数据/数学阶段仍依原前置门槛。
 
-实际执行76.9246693+支持保守300关闭1800分配，未用1423.0753307明确撤销；P0剩11376.4913043、父剩231023.9964663。预留14065.4147849、P1剩3982.0903771及各原阶段上限不变。检查未完不能宣称吞吐或构造方案有效/无效；旧gate仍关闭，P2不启动。负证据已归档30d2468f570145785d47ee181c0b25e9bc4dd1ef。实际再次调用gpt-6-astra后，root已采纳[参数公共乘积缓存方案](../reports/astra6_linear_cache_20261019.md)，为本阶段明确剩余优化方向，不修复旧构造检查。
+关闭证据保持：旧费用核验仅完成full8的18次，121.163038+支持800，完整费用未决；[旧结论/冻结源](https://github.com/LLzijian/grid-transient-rom/blob/8fc99a6290b764abb6a39261aa5d25aaee2e39de/reports/edge_pair_gate_20261019_conclusion.md)，原18.4908032秒最大值不改。构造顺序任务76.9246693+支持300，CPU Adam step/GPU有限值检查混堆叠失败，不修复重跑，见[负结果](../reports/construction_order_20261019_conclusion.md)，归档30d2468f570145785d47ee181c0b25e9bc4dd1ef。tanh/saturation/真q0各原限额与关闭分类保持；[饱和归档](https://github.com/LLzijian/grid-transient-rom/blob/3792653e0e459ac0e6a3c94b0ef747dfd16f7728/reports/saturation_pair_20261019_conclusion.md)。
 
-**参数公共乘积缓存阶段RUNNING：两结构等价检查PASS，唯一benchmark实际运行。**P0分配3000=最多两次检查合计600(各300、仅一次新增实现修正)+唯一benchmark1800+支持600；分配后P0剩8376.4913043、父228023.9964663。新运行类仅固定八/七项，将只依赖参数的乘积每个训练图计算一次，保留完整梯度/参数身份/旧构造顺序。固定12条531点合成负载，无真实train/val/test。最终两文件静态审查通过并归档0a7890b4f20ec62e50ef1ac77ca66c26c68efe16；首个CUDA检查107.8061575秒PASS、未超时，worker44304已退出，所有绑定源哈希未变；见[检查证据](../results/linear_cache_20261019/summary.json)。两结构完整目标/全梯度/连续Adam/缓存/恢复/导出通过，尚非速度或模型采用。2026-10-19 18:16:35实际启动唯一1800秒、72次更新benchmark：worker66652、launcher87028、监督85372，源/检查归档269973736df49da2005efb11e9c5bdf61f2b8d48。输出private_data/closure_mechanism_20261019/P0/linear_cache01/attempt01/benchmark.json，回执benchmark.receipt.json；监督超时终止自有进程树，无第二批。不追加检查；额度仍按原3000保守占用至阶段关闭。下一动作稀疏核对该真实PID/回执，完成后按90%/105%条件和独立审查决定采用或归档关闭，不重复队列。当前不是科学训练、模型仍不采用。失败不自动枚举其他GPU技巧，须实质性阶段决定；P2及旧gate不启动。
-
-P1保留节点/边已知支撑、无噪声各三种子×两初始化器×512的研究证据：历史残差候选均3/3合成val总体MSE≤0.01，对照0/3，六模型各自数值合格。节点候选0.00148505/0.00228073/0.00234259，边0.00082521/0.00220175/0.00123593。不是未知结构发现、真实q唯一性、独立确认或稳定域。原18组GRU512已完成6085.6472446，不重跑；旧真q0诊断按4500秒关闭，不恢复。
-
-饱和比较路线CLOSED：run01 PID79820退出、六项零更新、无检查点/模型val；唯一修复QA2未过buffer身份，run02未开始，不再诊断/修复/检查。负证据在[归档结论](https://github.com/LLzijian/grid-transient-rom/blob/3792653e0e459ac0e6a3c94b0ef747dfd16f7728/reports/saturation_pair_20261019_conclusion.md)。早先专用tanh固定工程网络检查/测时有效但通用采用暂缓，其源保留独立归档，不用于本次真实系统工作。
-
-P1饱和/未知恢复未完成，发现门槛未通过，真实生成搜索关闭。原方案“因果恢复＋固定边项存在性”收缩路线仍需合法范围独立挑战和完整费用准入，P0失败不是P1通过。main为PR #8 a5445ecb9b6729a2f4827b4b25a4283161506f47，新增身份工程接口集成；科学模型及已关闭入口不集成。原本地HEAD a951013、Git index及用户未提交工作保持，不reset、不强推、不删正负证据。
+远端main当前PR #8 a5445ecb9b6729a2f4827b4b25a4283161506f47（严格JSON身份工程已集成），本轮缓存工程PR待办。原本地HEAD a951013、Git index SHA256 82b060840d50257c41df55e15805fa106f29117cac8bf1868a6b83e490e2df93及用户未提交工作保持；不reset、不强推、不删证据。
