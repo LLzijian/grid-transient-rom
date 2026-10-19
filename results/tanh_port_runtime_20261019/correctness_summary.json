@@ -1,0 +1,143 @@
+{
+  "scope": "P0 fixed nonempty engineering toy only; no val/test; no scientific fit",
+  "attempt_limit": 2,
+  "repair_limit": 1,
+  "repair": "correctness harness torch.load map_location cuda->cpu to preserve native Adam scalar step location",
+  "runtime_integration": "WITHHELD: empty-D matching remains broader than verified scope; no more edits/checks permitted",
+  "independent_reviewer": "/root/edge_result_challenge; read-only; fixed benchmark accepted",
+  "attempts": [
+    {
+      "path": "results\\tanh_port_runtime_20261019\\correctness_attempt_01",
+      "receipt": {
+        "native_parent_wall_seconds": 20.77063780001481,
+        "scope": "child startup, imports, initialization, checks/updates and persistence counted once",
+        "attempt": 1,
+        "cap_seconds": 900.0,
+        "status": "failed",
+        "command": [
+          "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+          "E:\\03-nn_Transfer_Func\\kiki\\tests\\test_tanh_port_runtime_20261019.py",
+          "--child",
+          "--output",
+          "results\\tanh_port_runtime_20261019\\correctness_attempt_01",
+          "--max-seconds",
+          "900.0",
+          "--attempt",
+          "1",
+          "--device",
+          "cuda"
+        ]
+      },
+      "identity": {
+        "seed": 7401,
+        "perturbation_seed": 7402,
+        "train_events": 12,
+        "observed_points": 61,
+        "future_steps": 50,
+        "q_supervision": false,
+        "heldout_generated": false,
+        "initial_sha256": "c476f18fbe49f5abfaf01235b73aeb958b5d40b6465e852a1e19e9a82e7345ff",
+        "observations_sha256": "3982061210499a71ae9de0e597f50bef74d8be121b99053a9c8e30901e7986df",
+        "scales_sha256": "5e5c3206dd3d2a22e8e2bda4727e7cf0179983b02d4323ec72f0b281fca4a1a8",
+        "source_sha256": {
+          "experiments\\tanh_port_runtime_20261019.py": "d0e46fb0894713ba0123ad2957f48abe7f65893a049f0bd50138f5902356faa5",
+          "experiments\\benchmark_tanh_port_20261019.py": "34023dcfd6d4efcf6dd653a237d55461e126eb87a0bc92609d5b54fec07004bf",
+          "experiments\\closure_training_runtime.py": "80aeff279bf0e1e498205fcb7b591a680b721643efc98e0e4e993d61d8ac90b0",
+          "experiments\\symbolic_closure_rom.py": "01bd836ef2e06b0fbca40065f26cb98a23f8042a3328d86b265bfb114940dbc9",
+          "experiments\\structured_rom.py": "921b6dedb2e8b5218c5f4ec84fc6a35ac4844ebc0e310f8a6639bb0c7bcf88f3",
+          "experiments\\local_memory_rom_0098.py": "cb73ce129c1c095f8c5ac1288a725b072144bcd7978d4711e44afb4ea075636d",
+          "experiments\\closure_causal_recovery_20261019.py": "85d7a76444738e233f0bc2a632dbe17e5b6f4a528305e7e8cd5ead1f07a02659",
+          "experiments\\closure_causal_history_residual_20261019.py": "abe887a7c4758f0ad21fa0d9fb97282ce22349a03eb70a09bbb478a8f54f364a",
+          "experiments\\closure_discovery_benchmarks.py": "5f94f52532ae4808e1e8eeeb4b1c627d138c81e2cdca15767a8f9ed7d8c5d42e",
+          "tests\\test_tanh_port_runtime_20261019.py": "4c2e9c0162ebf72279f33cb41165446fad0cb78d7e8d60b53adae6ff91603170"
+        },
+        "torch": "2.13.0+cu130",
+        "scope": "disposable engineering only; discard all updated parameters"
+      },
+      "status": "failed",
+      "checks": [
+        "field_0.0_False",
+        "field_0.0_True",
+        "field_0.4_False",
+        "field_0.4_True",
+        "field_-0.2_False",
+        "field_-0.2_True",
+        "full_50step_40state_trajectory_and_gradients",
+        "explicit_fallback_selection"
+      ],
+      "comparison_count": 346,
+      "max_recorded_absolute_difference": 0.0,
+      "error": "AssertionError(\"gru/reference/recovery_next_adam_state/state/0/step: The values for attribute 'device' do not match: cpu != cuda:0.\")",
+      "traceback": "Traceback (most recent call last):\n  File \"E:\\03-nn_Transfer_Func\\kiki\\tests\\test_tanh_port_runtime_20261019.py\", line 145, in run_checks\n    check(opt.state_dict(),recovered_opt.state_dict(),kind+'/'+tag+'/recovery_next_adam_state',True)\n  File \"E:\\03-nn_Transfer_Func\\kiki\\tests\\test_tanh_port_runtime_20261019.py\", line 41, in check\n    for k in a:check(a[k],b[k],name+'/'+str(k),gradient)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\03-nn_Transfer_Func\\kiki\\tests\\test_tanh_port_runtime_20261019.py\", line 41, in check\n    for k in a:check(a[k],b[k],name+'/'+str(k),gradient)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\03-nn_Transfer_Func\\kiki\\tests\\test_tanh_port_runtime_20261019.py\", line 41, in check\n    for k in a:check(a[k],b[k],name+'/'+str(k),gradient)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\03-nn_Transfer_Func\\kiki\\tests\\test_tanh_port_runtime_20261019.py\", line 36, in check\n    torch.testing.assert_close(a,b,atol=atol,rtol=rtol,msg=lambda msg:name+': '+msg)\n  File \"E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Lib\\site-packages\\torch\\testing\\_comparison.py\", line 1631, in assert_close\n    raise error_metas[0].to_error(msg)\nAssertionError: gru/reference/recovery_next_adam_state/state/0/step: The values for attribute 'device' do not match: cpu != cuda:0.\n",
+      "correctness_sha256": "81fb3b676aaf9eca85f1268643c911945bfdc9de1d367957b83c74d69d4e0bda"
+    },
+    {
+      "path": "results\\tanh_port_runtime_20261019\\correctness_attempt_02",
+      "receipt": {
+        "native_parent_wall_seconds": 37.33177839999553,
+        "scope": "child startup, imports, initialization, checks/updates and persistence counted once",
+        "attempt": 2,
+        "cap_seconds": 900.0,
+        "status": "passed",
+        "command": [
+          "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+          "E:\\03-nn_Transfer_Func\\kiki\\tests\\test_tanh_port_runtime_20261019.py",
+          "--child",
+          "--output",
+          "results\\tanh_port_runtime_20261019\\correctness_attempt_02",
+          "--max-seconds",
+          "900.0",
+          "--attempt",
+          "2",
+          "--device",
+          "cuda"
+        ]
+      },
+      "identity": {
+        "seed": 7401,
+        "perturbation_seed": 7402,
+        "train_events": 12,
+        "observed_points": 61,
+        "future_steps": 50,
+        "q_supervision": false,
+        "heldout_generated": false,
+        "initial_sha256": "c476f18fbe49f5abfaf01235b73aeb958b5d40b6465e852a1e19e9a82e7345ff",
+        "observations_sha256": "3982061210499a71ae9de0e597f50bef74d8be121b99053a9c8e30901e7986df",
+        "scales_sha256": "5e5c3206dd3d2a22e8e2bda4727e7cf0179983b02d4323ec72f0b281fca4a1a8",
+        "source_sha256": {
+          "experiments\\tanh_port_runtime_20261019.py": "d0e46fb0894713ba0123ad2957f48abe7f65893a049f0bd50138f5902356faa5",
+          "experiments\\benchmark_tanh_port_20261019.py": "34023dcfd6d4efcf6dd653a237d55461e126eb87a0bc92609d5b54fec07004bf",
+          "experiments\\closure_training_runtime.py": "80aeff279bf0e1e498205fcb7b591a680b721643efc98e0e4e993d61d8ac90b0",
+          "experiments\\symbolic_closure_rom.py": "01bd836ef2e06b0fbca40065f26cb98a23f8042a3328d86b265bfb114940dbc9",
+          "experiments\\structured_rom.py": "921b6dedb2e8b5218c5f4ec84fc6a35ac4844ebc0e310f8a6639bb0c7bcf88f3",
+          "experiments\\local_memory_rom_0098.py": "cb73ce129c1c095f8c5ac1288a725b072144bcd7978d4711e44afb4ea075636d",
+          "experiments\\closure_causal_recovery_20261019.py": "85d7a76444738e233f0bc2a632dbe17e5b6f4a528305e7e8cd5ead1f07a02659",
+          "experiments\\closure_causal_history_residual_20261019.py": "abe887a7c4758f0ad21fa0d9fb97282ce22349a03eb70a09bbb478a8f54f364a",
+          "experiments\\closure_discovery_benchmarks.py": "5f94f52532ae4808e1e8eeeb4b1c627d138c81e2cdca15767a8f9ed7d8c5d42e",
+          "tests\\test_tanh_port_runtime_20261019.py": "e267693d896ad3d1944d01c836c994a5a865bf86796039b58c83e20bcf9c8696"
+        },
+        "torch": "2.13.0+cu130",
+        "scope": "disposable engineering only; discard all updated parameters"
+      },
+      "status": "passed",
+      "checks": [
+        "field_0.0_False",
+        "field_0.0_True",
+        "field_0.4_False",
+        "field_0.4_True",
+        "field_-0.2_False",
+        "field_-0.2_True",
+        "full_50step_40state_trajectory_and_gradients",
+        "explicit_fallback_selection",
+        "gru/causal_loss_all_gradients_adam_recovery_reference_export",
+        "history/causal_loss_all_gradients_adam_recovery_reference_export"
+      ],
+      "comparison_count": 1012,
+      "max_recorded_absolute_difference": 0.0,
+      "error": null,
+      "traceback": null,
+      "correctness_sha256": "f712e066ac5308ebeead2cee3511d0f47f3d8e410b3b925fef050d808991bf25"
+    }
+  ],
+  "execution_seconds": 58.10241620001034
+}
