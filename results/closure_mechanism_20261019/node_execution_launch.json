@@ -1,0 +1,120 @@
+{
+  "scope": "launch snapshot; no final scientific model scores",
+  "state": {
+    "identity": {
+      "files": {
+        "experiments\\closure_causal_history_residual_20261019.py": "0b217d44fde452f31e517625d33c4522e658591ae9d7c5072e8bdf42a489744a",
+        "experiments\\closure_causal_recovery_20261019.py": "85d7a76444738e233f0bc2a632dbe17e5b6f4a528305e7e8cd5ead1f07a02659",
+        "experiments\\closure_discovery_benchmarks.py": "5f94f52532ae4808e1e8eeeb4b1c627d138c81e2cdca15767a8f9ed7d8c5d42e",
+        "experiments\\closure_discovery_support.py": "4e492f0d4f87abf517c7037efc7a64ebcbcd0693ac8c4884b66a31ee3d81c119",
+        "experiments\\closure_expression_identity.py": "5d8666079652166777757d62534252fb61210aae99ad08e3db5d4e83eb073293",
+        "experiments\\closure_training_runtime.py": "80aeff279bf0e1e498205fcb7b591a680b721643efc98e0e4e993d61d8ac90b0",
+        "experiments\\local_memory_rom_0098.py": "cb73ce129c1c095f8c5ac1288a725b072144bcd7978d4711e44afb4ea075636d",
+        "experiments\\structure_grammar.py": "0325a0a1f50d7f22510cd3d7da5dbc28d8c3e186ea7288e7717f7a3a8704d28d",
+        "experiments\\structured_rom.py": "921b6dedb2e8b5218c5f4ec84fc6a35ac4844ebc0e310f8a6639bb0c7bcf88f3",
+        "experiments\\symbolic_closure_rom.py": "01bd836ef2e06b0fbca40065f26cb98a23f8042a3328d86b265bfb114940dbc9"
+      },
+      "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+      "torch": "2.13.0+cu130",
+      "numpy": "2.5.2",
+      "cuda": "13.0",
+      "config": {
+        "updates": 512,
+        "checkpoint_every": 32,
+        "noise": 0.0,
+        "fit_global_seconds": 9720.0,
+        "total_seconds": 10800.0,
+        "fit_item_seconds": 540.0,
+        "item_seconds": 600.0,
+        "head_lr": 0.01,
+        "batch_size": 12,
+        "dtype": "float64"
+      },
+      "profile": "node6_15600",
+      "effective_caps": {
+        "item_total": 2600.0,
+        "item_fit": 2480.0,
+        "item_eval_reserved": 120.0,
+        "items": 6,
+        "fit_global": 14880.0,
+        "total": 15600.0,
+        "eval_global_reserved": 720.0
+      }
+    },
+    "device": "cuda:0",
+    "resumes": 0,
+    "elapsed_seconds": 2.4230032000050414,
+    "fit_seconds": 0.0,
+    "phase": "fit",
+    "items": [
+      {
+        "seed": 5101,
+        "case": "node",
+        "group": "control",
+        "fit_status": "running",
+        "fit_seconds": 0.0,
+        "eval_seconds": 0.0
+      },
+      {
+        "seed": 5101,
+        "case": "node",
+        "group": "residual",
+        "fit_status": "pending",
+        "fit_seconds": 0.0,
+        "eval_seconds": 0.0
+      },
+      {
+        "seed": 5102,
+        "case": "node",
+        "group": "control",
+        "fit_status": "pending",
+        "fit_seconds": 0.0,
+        "eval_seconds": 0.0
+      },
+      {
+        "seed": 5102,
+        "case": "node",
+        "group": "residual",
+        "fit_status": "pending",
+        "fit_seconds": 0.0,
+        "eval_seconds": 0.0
+      },
+      {
+        "seed": 5103,
+        "case": "node",
+        "group": "control",
+        "fit_status": "pending",
+        "fit_seconds": 0.0,
+        "eval_seconds": 0.0
+      },
+      {
+        "seed": 5103,
+        "case": "node",
+        "group": "residual",
+        "fit_status": "pending",
+        "fit_seconds": 0.0,
+        "eval_seconds": 0.0
+      }
+    ],
+    "status": "RUNNING",
+    "pid": 45576,
+    "command": [
+      "experiments/closure_causal_history_residual_20261019.py",
+      "--output",
+      "private_data/closure_mechanism_20261019/P1/history_residual/node_run01",
+      "--profile",
+      "node6_15600"
+    ],
+    "children": [],
+    "child_accounting": "no subprocesses; process elapsed includes all in-process work",
+    "current": "node_5101_control"
+  },
+  "source_sha256": "0b217d44fde452f31e517625d33c4522e658591ae9d7c5072e8bdf42a489744a",
+  "registered_command": ".venv-gpu/Scripts/python.exe experiments/closure_causal_history_residual_20261019.py --output private_data/closure_mechanism_20261019/P1/history_residual/node_run01 --profile node6_15600",
+  "preregistered_commit": "7db50d48a5bf710aefbe1337676dc27d191fb05c",
+  "live_state_path": "private_data\\closure_mechanism_20261019\\P1\\history_residual\\node_run01\\state.json",
+  "budget_note": "15600 cumulative execution seconds; 800 QA/support cap; preceding fee-precheck1200 kept, original P1 cap unchanged",
+  "test_closed": true,
+  "TASK4_paused": true,
+  "model_adoption": "none"
+}

@@ -12,7 +12,7 @@ P1已知支撑对照18/18均完成512更新，累计6085.6472446进程秒；留�
 
 父上限259200进程秒，P0/P1上限14400/28800秒；新父预算下P0已测142.1922393秒、原900秒支持预占、P1对照6085.6472446秒及本诊断累计记账，见[费用快照](../results/closure_mechanism_20261019/cost_snapshot.json)。旧A—E约17.403小时和旧TASK2的59643.306023/60000秒各自关闭，没有转移余额。receipt的cumulative_seconds已包含两次中断费用，禁止再次相加。
 
-历史残差原费用预检关闭：9次GPU完整更新最大3.7477823秒，原10800秒执行分类不足，未启动正式拟合；1200秒检查分类保守扣留，未启动10800秒分配明确撤销，不改旧门槛。Astra6已重新实际分析，同一研究问题进入节点执行阶段，见reports/astra6_node_execution_20261019.md：node三种子×两组各512更新，共6项；全新profile node6_15600，15600执行+800检查=16400秒，P1上限28800及父259200不变。分配后P1保守114.3256266秒、父229472.1333873秒，旧900秒支持仍保留。模块8项检查通过，新增预算profile正在核对，尚无正式PID或排队；下一动作检查后启动private_data/closure_mechanism_20261019/P1/history_residual/node_run01。原test/未知结构搜索关闭、TASK4暂停；禁止重复队列。
+历史残差原费用预检关闭：9次GPU完整更新最大3.7477823秒，原10800秒执行分类不足，未启动正式拟合；1200秒检查分类保守扣留，未启动10800秒分配明确撤销，不改旧门槛。Astra6已重新实际分析，同一研究问题进入节点执行阶段，见reports/astra6_node_execution_20261019.md：node三种子×两组各512更新，共6项；全新profile node6_15600，15600执行+800检查=16400秒，P1上限28800及父259200不变。分配后P1保守114.3256266秒、父229472.1333873秒，旧900秒支持仍保留。模块及新增预算profile的8项检查通过，正式作业已启动，实际PID45576，RUNNING/fit，当前首项node_5101_control；工作目录E:/03-nn_Transfer_Func/kiki，源SHA256为0b217d44fde452f31e517625d33c4522e658591ae9d7c5072e8bdf42a489744a。命令：`.venv-gpu/Scripts/python.exe experiments/closure_causal_history_residual_20261019.py --output private_data/closure_mechanism_20261019/P1/history_residual/node_run01 --profile node6_15600`。实际状态/累计费用以该目录state.json/receipt.json和真实PID为准，下一动作稀疏监测；六项冻结后才评价，不按val改配置。仅已捕获完整核账中断可恢复一次，未知强杀/孤立检查点不自动重启，保留并核账。原test/未知结构搜索关闭、TASK4暂停；禁止重复队列。
 
 真实短历史双步长探针取得11点100ms，预测起点为切除后100.1ms、标签unknown，归一化差2.37654e-5；不等于完整事件资格。原30个绑定文件及Git index未改。旧[科学结论](../reports/closure_discovery_20261017_final.md)保留：生成式优势、部分观测机制恢复及完整确认仍未成立，尚无非线性稳定域证书。
 
