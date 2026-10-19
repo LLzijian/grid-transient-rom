@@ -1,18 +1,18 @@
 {
-  "status": "RUNNING_FIXED_TRAIN_EVALUATION",
+  "status": "READY_FROZEN_NEW_VAL_PREPARATION",
   "source_commit": "4ae86576e4cdae1fdca912b0f36172331ee60f10",
   "command_archive_commit": "b210b01bfae102eefb20c5a5d68bfdcd71f3469b",
   "native_cap_seconds": 2970,
   "self_cap_seconds": 2910,
   "QA_prepare_closed_seconds": 11.658018800080754,
-  "scientific_result": "15/18 fixed train evaluations complete; endpoint training frozen; val not generated",
+  "scientific_result": "all18 train evaluations completed; source old366 not repeated; two deletion original8s unresolved; new19 all qualified; val not generated",
   "native_output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\native_eval_train_6103_delete7_original_after",
   "actual_command": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\commands\\eval_train_6103_delete7_original_after.json",
   "short_native_seconds": 394.8537176999962,
   "short_qualified_count": 41,
-  "actual_worker_pid": 90824,
-  "receipt_pending": true,
-  "next_actual_command": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\commands\\eval_train_6103_delete7_original_after.json",
+  "actual_worker_pid": null,
+  "receipt_pending": false,
+  "next_actual_command": "prepare exact six-model/statistics val freeze; not yet launched",
   "score_native_seconds": 64.41502789995866,
   "score_qualified_count": 37,
   "selected_conditions": 24,
@@ -27,9 +27,9 @@
   "original_train_count": 366,
   "new_train_count": 19,
   "schedule_native_seconds": 10.752583800000139,
-  "current_model": "6103_delete7",
+  "current_model": null,
   "source1024_lineage_exists": true,
-  "closed_native_seconds": 5751.923198100238,
+  "closed_native_seconds": 5861.766854600166,
   "adapt_models_closed": {
     "6101_full8": {
       "native_seconds": 708.9682990000001,
@@ -68,39 +68,6 @@
       "training_sha256": "e4eefcbbf54ef40b2f55ffb4fef91068b4f3f23fdb89ecfbc57111d68fd912c4"
     }
   },
-  "current_evaluation_scope": "original_after",
-  "worker": {
-    "pid": 90824,
-    "creation_filetime_utc": 134369248767489110,
-    "executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
-    "argv": [
-      "E:\\03-nn_Transfer_Func\\kiki\\experiments\\fresh_design_pair_20261020.py",
-      "fit",
-      "evaluate",
-      "--output",
-      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\evaluation_train\\6103_delete7\\original_after",
-      "--wrapper-output",
-      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\stages\\eval_train_6103_delete7_original_after_wrapper",
-      "--events-spec",
-      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\inputs\\train_original.json",
-      "--model",
-      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\models\\6103_delete7\\checkpoints\\step001280\\model.json",
-      "--max-seconds",
-      "300",
-      "--source-commit",
-      "4ae86576e4cdae1fdca912b0f36172331ee60f10"
-    ],
-    "cwd": "E:\\03-nn_Transfer_Func\\kiki",
-    "received_paths": {
-      "output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\evaluation_train\\6103_delete7\\original_after",
-      "wrapper_output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\stages\\eval_train_6103_delete7_original_after_wrapper",
-      "events_spec": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\inputs\\train_original.json",
-      "model": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P3\\fresh_design_pair01\\models\\6103_delete7\\checkpoints\\step001280\\model.json"
-    }
-  },
-  "outer_supervisor_pid": 17828,
-  "powershell_pid": 77784,
-  "unified_exec_session_id": 41541,
   "train_evaluations_closed": {
     "6101_full8_original_after": {
       "native_seconds": 94.96582169999601,
@@ -191,6 +158,24 @@
       "event_count": 19,
       "evidence_sha256": "2faa67d66b5193412214ac0b913ef99deb98dcf91ddd62e731266544efab7dbe",
       "receipt_sha256": "8f3b82864c11d15d593fa77c1c575338b3b28bd137c62c839d34c3658d698b52"
+    },
+    "6103_delete7_original_after": {
+      "native_seconds": 88.95327469997574,
+      "event_count": 366,
+      "evidence_sha256": "7af87c6244d306dcb945f6bea48885a21dfea35f08de05b95d5e51a7b399da91",
+      "receipt_sha256": "e97fe61e3a05e8f952d6d95336a5b8d1fe60d6f1826f56ca03578f470b0eb835"
+    },
+    "6103_delete7_new_after": {
+      "native_seconds": 12.48525480000535,
+      "event_count": 19,
+      "evidence_sha256": "54bfcd6122b0bbaede55d6fa3d5b77542a0f8163ec29b086ed063c2ce3114e5d",
+      "receipt_sha256": "597ed6fff8605690a9da379a2da527e535bdc246ae038dcb6e00ce9f29af0406"
+    },
+    "6103_delete7_new_before": {
+      "native_seconds": 8.405126999947242,
+      "event_count": 19,
+      "evidence_sha256": "1ecca4ae1ef8c8ab5d865fdcd82196d0b20af24649c767e0f21bb0f4398ad6aa",
+      "receipt_sha256": "56b36c919ff5cd7df3d2ee006bcb0a4d0582da1220658cdd634e19f25c2f2342"
     }
   }
 }
