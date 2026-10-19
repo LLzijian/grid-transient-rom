@@ -1,0 +1,35 @@
+{
+  "scope": "closed one permitted implementation-repair route; no real optimizer update/fixture/rollout/model score in QA2",
+  "qa1_seconds": 7.2187849,
+  "diagnosis_seconds": 2.4700098,
+  "qa2": {
+    "includes_child_once": true,
+    "command": ".venv-gpu/Scripts/python.exe tests/test_closure_saturation_pair_20261019.py --output results/closure_saturation_pair_20261019/qa/attempt_02 --attempt 2",
+    "native_wall_seconds": 10.7942835,
+    "attempt": 2,
+    "exit_code": 1,
+    "scope": "CUDA/CPU admission/export; fake caches and mocked updates/evaluation; no real optimizer update, fixture, rollout or score"
+  },
+  "checks": {
+    "attempt": 2,
+    "successful": false,
+    "tests": 10,
+    "errors": 1,
+    "failures": 0,
+    "in_process_seconds": 7.878756999998586,
+    "scope": "CUDA/CPU admission and export; fake caches/mocked updates and evaluation; no optimizer updates, fixture generation or rollout"
+  },
+  "qa_cumulative_measured_seconds": 20.4830782,
+  "repairs_used": 1,
+  "qa_attempts_used": 2,
+  "decision": "CLOSED_NO_QA3_NO_FURTHER_REPAIR_OR_DIAGNOSIS_ON_THIS_ROUTE",
+  "failure": "actual CUDA-to-CPU canonical admission: immutable toy buffers changed; which buffer unresolved",
+  "source_sha256": {
+    "experiments/closure_saturation_pair_20261019.py": "6805fc293d9a3e272c0fc046ce37e6dad42a520168e409e434871a025f314348",
+    "tests/test_closure_saturation_pair_20261019.py": "8f0accd7a41837c64db22f405ebd3c3fb58e347d88b5ea8623fe4b26a0804508"
+  },
+  "run02_started": false,
+  "model_adoption": "none",
+  "main_integration": "WITHHELD",
+  "independent_review": "edge_result_challenge read-only pre-QA acceptance was conditional; real QA gate failed"
+}

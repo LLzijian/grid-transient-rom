@@ -2,6 +2,7 @@
 from __future__ import annotations
 import argparse
 import copy
+from contextlib import contextmanager, ExitStack
 import json
 from pathlib import Path
 import sys
@@ -31,7 +32,7 @@ class ChangedEntry(unittest.TestCase):
         changed = copy.deepcopy(identity)
         changed['files']['experiments/closure_training_runtime.py'] = 'changed'
         state = dict(status='INTERRUPTED_RUNTIME', resumes=0, identity=identity,
-                     device='cpu', phase='fit', elapsed_seconds=10.)
+                     device='cpu', phase='fit', elapsed_seconds=10., failure_import=dict(binding_sha256=entry.BINDING_SHA))
         entry.resume_allowed(state, identity, 'cpu')
         for key, value in [('status', 'RUNNING'), ('resumes', 1), ('phase', 'startup'), ('elapsed_seconds', 4000.)]:
             bad = dict(state, **{key: value})
@@ -49,6 +50,7 @@ class ChangedEntry(unittest.TestCase):
                      lambda m: m.mass.add_(.1),
                      lambda m: next(m.parameters()).requires_grad_(False),
                      lambda m: setattr(m, 'arm', 'G3-S'),
+                     lambda m: m._template_scalars.append('unregistered object'),
                      lambda m: setattr(m, 'extra', torch.nn.Linear(1, 1).double())]
         for mutation in mutations:
             m = copy.deepcopy(self.reference)
@@ -84,6 +86,45 @@ class ChangedEntry(unittest.TestCase):
             self.assertIs(type(loaded), entry.TanhPortTrainingROM)
             for name, tensor in base.state_dict().items():
                 self.assertTrue(torch.equal(tensor, loaded.state_dict()[name]), name)
+
+    def test_actual_cuda_to_cpu_canonical_admission(self):
+        self.assertTrue(torch.cuda.is_available(), 'registered QA2 requires CUDA')
+        base = entry.core.runtime_model(self.source, [entry.TERM], 5101, 'cuda:0')
+        self.assertNotEqual(base._template_scalars.extra_repr(), self.reference._template_scalars.extra_repr())
+        selected = entry.fast_model(base, self.reference)
+        self.assertIs(type(selected), entry.TanhPortTrainingROM)
+        self.assertEqual(entry.structure(selected), entry.structure(self.reference))
+        with torch.no_grad():
+            for parameter in selected.parameters():
+                if parameter.requires_grad:
+                    parameter.add_(.007)
+        wrapper = entry.core.CausalHistoryResidual(selected, np.arange(1, 7.), np.ones(10))
+        with torch.no_grad():
+            wrapper.history_coefficients.copy_(torch.arange(6, dtype=torch.float64, device='cuda:0')*.003)
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / 'cuda_wrapper.json'
+            wrapper.export(path)
+            reloaded = entry.evaluation_model(path, 'residual', 'cuda:0', self.reference)
+            for name, tensor in wrapper.state_dict().items():
+                self.assertTrue(torch.equal(tensor, reloaded.state_dict()[name]), name)
+            path = Path(tmp) / 'control.json'
+            selected.export(path)
+            loaded = entry.evaluation_model(path, 'control', 'cuda:0', self.reference)
+            self.assertIs(type(loaded), entry.TanhPortTrainingROM)
+            for name, tensor in selected.state_dict().items():
+                self.assertTrue(torch.equal(tensor, loaded.state_dict()[name]), name)
+        with self.fake_origin() as (origin, target, binding):
+            target.mkdir()
+            _, manifest = entry.import_zero_update_failure(target, json.loads(json.dumps(entry.source_identity())), 'cpu')
+            models = entry.startup_models(self.source, self.reference, target, manifest, 'cuda:0')
+            self.assertEqual(len(models), 6)
+            self.assertTrue(all(m.mass.is_cuda for m in models.values()))
+            for seed in (5101, 5102, 5103):
+                control_rng = models[(seed, 'control')]._registered_start_rng
+                residual_rng = models[(seed, 'residual')]._registered_start_rng
+                self.assertTrue(torch.equal(control_rng[0], residual_rng[0]))
+                self.assertTrue(all(torch.equal(a, b) for a, b in zip(control_rng[1], residual_rng[1])))
+        torch.cuda.synchronize()
 
     @staticmethod
     def fake_prepare(output, device, deadline):
@@ -135,9 +176,86 @@ class ChangedEntry(unittest.TestCase):
         state['items'].append(dict(fit_seconds=3396., eval_seconds=0.))
         self.assertEqual(entry.phase_budget(state, item, 'evaluation', 1.), 0.)
 
-    def test_mockrun_freeze_six_items_and_startup_failure(self):
-        with tempfile.TemporaryDirectory() as tmp:
-            output = Path(tmp) / 'run'
+    @contextmanager
+    def fake_origin(self):
+        # Fake observation cache only; lives under ROOT so path identity rules are
+        # exercised unchanged. The real private fixture is never loaded by QA.
+        with tempfile.TemporaryDirectory(dir=ROOT) as tmp:
+            temp = Path(tmp)
+            origin, target = temp / 'run01', temp / 'run02'
+            origin.mkdir()
+            manifest = self.fake_prepare(origin, 'cpu', 1.)
+            costs = [dict(seed=s, case=c, group=g, fit_seconds=.03 + i*.001, eval_seconds=0.)
+                     for i, (s, c, g) in enumerate(entry.ORDER)]
+            identity = json.loads(json.dumps(entry.source_identity()))
+            old_files = identity['files'].copy()
+            old_files[str(Path(entry.__file__).relative_to(ROOT))] = entry.ORIGIN_ENTRY_SHA
+            error = "ValueError('registered structure/order/trainability changed')"
+            items = []
+            for cost in costs:
+                item = dict(cost, fit_status='unresolved', error=error)
+                items.append(item)
+                folder = origin / f"saturation_{item['seed']}_{item['group']}"
+                folder.mkdir()
+                entry.core.atomic_json(folder / 'failure_mock.json', dict(error=error, traceback='fast_model(core.runtime_model( BEFORE OPTIMIZER'))
+            entry.core.atomic_json(origin / 'fits_frozen.json', items)
+            state = dict(status='CLOSED', device='cpu', complete_pairs=0, identity=dict(files=old_files),
+                         startup_seconds=entry.PRIOR_STARTUP, items=items, manifest=manifest,
+                         freeze_sha256=entry.core.sha(origin / 'fits_frozen.json'))
+            entry.core.atomic_json(origin / 'state.json', state)
+            entry.core.atomic_json(origin / 'receipt.json', dict(status='CLOSED', this_invocation_seconds=entry.PRIOR_TOTAL, prior_seconds=0.))
+            filenames = ['state.json', 'receipt.json', 'fits_frozen.json', 'fixtures/manifest.json', 'fixtures/source.json']
+            filenames += [f"saturation_{s}_{g}/failure_mock.json" for s, _, g in entry.ORDER]
+            files = {str((origin / name).relative_to(ROOT)).replace('\\', '/'): entry.core.sha(origin / name) for name in filenames}
+            binding = dict(origin=str(origin.relative_to(ROOT)), target=str(target.relative_to(ROOT)),
+                           origin_entry_sha256=entry.ORIGIN_ENTRY_SHA, files=files,
+                           prior_total_seconds=entry.PRIOR_TOTAL, prior_startup_seconds=entry.PRIOR_STARTUP,
+                           prior_items=costs, error=error, prior_dependency_files=old_files)
+            path = temp / 'binding.json'
+            entry.core.atomic_json(path, binding)
+            with ExitStack() as stack:
+                for key, value in dict(BINDING=path, BINDING_SHA=entry.core.sha(path), ORIGIN=origin, TARGET=target).items():
+                    stack.enter_context(patch.object(entry, key, value))
+                yield origin, target, binding
+
+    def test_import_rejects_tamper_checkpoint_wrongroute(self):
+        for problem in ('origin', 'cache', 'checkpoint', 'route', 'binding'):
+            with self.fake_origin() as (origin, target, binding):
+                target.mkdir()
+                identity = json.loads(json.dumps(entry.source_identity()))
+                if problem == 'origin':
+                    (origin / 'state.json').write_text('{}')
+                elif problem == 'cache':
+                    p = origin / 'fixtures/5101/observations.npz'
+                    p.write_bytes(p.read_bytes()+b'tamper')
+                elif problem == 'checkpoint':
+                    (origin / 'saturation_5101_control/checkpoint_00000').mkdir()
+                elif problem == 'route':
+                    target = target.with_name('unregistered')
+                else:
+                    entry.BINDING.write_text('{}')
+                with self.assertRaises(ValueError):
+                    entry.import_zero_update_failure(target, identity, 'cpu')
+
+    def test_startup_failure_zero_updates_and_repeated_import_rejected(self):
+        with self.fake_origin() as (origin, target, binding):
+            with patch.object(entry, 'PROCESS_START', time.perf_counter()-30.), patch.object(entry, 'startup_models', return_value={}), patch.object(entry.core, 'train_update') as updates, patch.object(entry.core, 'make_optimizer') as optimizers:
+                with self.assertRaises(TimeoutError):
+                    entry.run(target, 'cpu', import_failure=True)
+                updates.assert_not_called()
+                optimizers.assert_not_called()
+            state = json.loads((target / 'state.json').read_text())
+            self.assertGreater(state['startup_seconds'], 50.)
+            self.assertGreater(state['elapsed_seconds'], entry.PRIOR_TOTAL+30.)
+            for item, old in zip(state['items'], binding['prior_items']):
+                self.assertEqual(item['fit_seconds'], old['fit_seconds'])
+            with self.assertRaises(FileExistsError):
+                entry.run(target, 'cpu', import_failure=True)
+            with self.assertRaises(ValueError):
+                entry.run(target, 'cpu')
+
+    def test_mockrun_freeze_six_items_inherited_costs(self):
+        with self.fake_origin() as (origin, output, binding):
             evaluated = []
             def fake_evaluate(model, obs, scales, deadline):
                 frozen = json.loads((output / 'fits_frozen.json').read_text())
@@ -147,25 +265,42 @@ class ChangedEntry(unittest.TestCase):
                 row = dict(mse=.001, weak_mse=.001, strong_mse=.001,
                            event_mse=[.001]*16, dual_step_max_normalized=0.)
                 return dict(train=row.copy(), heldout=row.copy(), numerical_qualified=True, prediction_gate=True)
-            with patch.object(entry, 'PROCESS_START', time.perf_counter()), patch.object(entry, 'prepare', side_effect=self.fake_prepare), patch.object(entry.core, 'checked_fixture', side_effect=AssertionError('forbidden real fixture')), patch.object(entry.core, 'train_update', return_value=(0., {})) as updates, patch.object(entry.core, 'loss', return_value=0.), patch.object(entry.core, 'checkpoint', side_effect=self.fake_checkpoint), patch.object(entry.core, 'evaluate', side_effect=fake_evaluate):
-                result = entry.run(output, 'cpu')
+            with patch.object(entry, 'PROCESS_START', time.perf_counter()), patch.object(entry, 'startup_models', return_value={}), patch.object(entry.core, 'checked_fixture', side_effect=AssertionError('forbidden real fixture')), patch.object(entry.core, 'train_update', return_value=(0., {})) as updates, patch.object(entry.core, 'loss', return_value=0.), patch.object(entry.core, 'checkpoint', side_effect=self.fake_checkpoint), patch.object(entry.core, 'evaluate', side_effect=fake_evaluate):
+                result = entry.run(output, 'cpu', import_failure=True)
             self.assertEqual(updates.call_count, 6 * 512)
             self.assertEqual(len(evaluated), 6)
             self.assertEqual(result['complete_pairs'], 3)
             self.assertLessEqual(sum(i['fit_seconds'] + i['eval_seconds'] for i in result['items']), result['elapsed_seconds'])
-            output2 = Path(tmp) / 'startup_fail'
-            with patch.object(entry, 'PROCESS_START', time.perf_counter()), patch.object(entry, 'prepare', side_effect=TimeoutError('startup cap')), patch.object(entry.core, 'train_update') as forbidden:
-                with self.assertRaises(TimeoutError):
-                    entry.run(output2, 'cpu')
-                forbidden.assert_not_called()
-            state = json.loads((output2 / 'state.json').read_text())
-            self.assertEqual(state['status'], 'UNRESOLVED')
+            receipt = json.loads((output / 'receipt.json').read_text())
+            self.assertEqual(receipt['prior_seconds'], entry.PRIOR_TOTAL)
+            self.assertAlmostEqual(receipt['cumulative_seconds'], entry.PRIOR_TOTAL + receipt['this_invocation_seconds'], places=2)
+            for item, old in zip(result['items'], binding['prior_items']):
+                self.assertGreater(item['fit_seconds'], old['fit_seconds'])
+            first = dict(binding['prior_items'][0])
+            budget = entry.phase_budget(dict(items=binding['prior_items']), first, 'fit', entry.PRIOR_TOTAL)
+            self.assertEqual(budget, 535. - first['fit_seconds'])
+
+    def test_mock_caught_resume_once_retains_identity_and_costs(self):
+        with self.fake_origin() as (origin, output, binding):
+            with patch.object(entry, 'PROCESS_START', time.perf_counter()), patch.object(entry, 'startup_models', return_value={}), patch.object(entry.core, 'train_update', side_effect=KeyboardInterrupt), patch.object(entry.core, 'checkpoint', side_effect=self.fake_checkpoint):
+                with self.assertRaises(KeyboardInterrupt):
+                    entry.run(output, 'cpu', import_failure=True)
+            interrupted = json.loads((output / 'state.json').read_text())
+            self.assertEqual(interrupted['status'], 'INTERRUPTED_RUNTIME')
+            prior = interrupted['elapsed_seconds']
+            with patch.object(entry, 'PROCESS_START', time.perf_counter()), patch.object(entry.core, 'restore', return_value=(0, [])), patch.object(entry.core, 'train_update', side_effect=FloatingPointError('mock unresolved; no real update')), patch.object(entry.core, 'checkpoint', side_effect=self.fake_checkpoint):
+                result = entry.run(output, 'cpu', resume=True)
+            self.assertEqual(result['resumes'], 1)
+            self.assertGreater(result['elapsed_seconds'], prior)
+            self.assertEqual(json.loads((output / 'receipt.json').read_text())['prior_seconds'], prior)
+            with self.assertRaises(ValueError):
+                entry.resume_allowed(result, result['identity'], 'cpu')
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--output', type=Path, required=True)
-    parser.add_argument('--attempt', type=int, choices=(1, 2), required=True)
+    parser.add_argument('--attempt', type=int, choices=(2,), required=True)
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=False)
     started = time.perf_counter()
@@ -174,5 +309,5 @@ if __name__ == '__main__':
     entry.core.atomic_json(args.output / 'checks.json', dict(attempt=args.attempt, successful=result.wasSuccessful(),
                            tests=result.testsRun, errors=len(result.errors), failures=len(result.failures),
                            in_process_seconds=time.perf_counter()-started,
-                           scope='CPU fake caches and mocked updates/evaluation only; no generated fixture or rollout'))
+                           scope='CUDA/CPU admission and export; fake caches/mocked updates and evaluation; no optimizer updates, fixture generation or rollout'))
     sys.exit(0 if result.wasSuccessful() else 1)

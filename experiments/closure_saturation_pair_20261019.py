@@ -7,6 +7,7 @@ import copy
 import hashlib
 import json
 import os
+import shutil
 from pathlib import Path
 import sys
 import traceback
@@ -28,9 +29,18 @@ ORDER = [(s, 'saturation', g) for s in (5101, 5102, 5103)
 CAPS = dict(startup=50., fit=535., evaluation=120., item=655., items=3930., total=4000.)
 PINNED = {'closure_causal_history_residual_20261019.py': 'abe887a7c4758f0ad21fa0d9fb97282ce22349a03eb70a09bbb478a8f54f364a',
           'tanh_port_runtime_20261019.py': 'd0e46fb0894713ba0123ad2957f48abe7f65893a049f0bd50138f5902356faa5'}
+BINDING = ROOT / 'results/closure_saturation_pair_20261019/admission_recovery_binding.json'
+BINDING_SHA = 'c4bbf9365e6699c80f7acdcec8f784327e6465988252ca380146841e8bfc3bb2'
+ORIGIN = ROOT / 'private_data/closure_mechanism_20261019/P1/history_residual/saturation_run01'
+TARGET = ORIGIN.with_name('saturation_run02')
+ORIGIN_ENTRY_SHA = 'fbb3e446a748cfb1cace69e342aef0614f99e5a7411fcf9f9a22c93f7b3e5916'
+PRIOR_TOTAL = 22.79197399999248
+PRIOR_STARTUP = 22.430804100004025
 
 
 def source_identity():
+    if core.sha(BINDING) != BINDING_SHA:
+        raise ValueError('registered failure-import binding changed')
     identity = core.source_identity()
     files = identity['files']
     for name, expected in PINNED.items():
@@ -42,7 +52,18 @@ def source_identity():
     return {'files': files, 'python': sys.version, 'torch': torch.__version__,
             'numpy': np.__version__, 'cuda': torch.version.cuda, 'caps': CAPS,
             'order': ORDER, 'updates': 512, 'checkpoint_every': 32,
-            'dtype': 'float64', 'noise': 0., 'batch_size': 12, 'head_lr': .01}
+            'dtype': 'float64', 'noise': 0., 'batch_size': 12, 'head_lr': .01,
+            'failure_import_binding_sha256': BINDING_SHA}
+
+
+def module_description(module):
+    # ParameterList.extra_repr includes device placement. Describe only this exact
+    # container explicitly; every other module keeps its original description.
+    if type(module) is torch.nn.ParameterList:
+        return [(str(i), type(p).__module__, type(p).__name__, tuple(p.shape), str(p.dtype), p.requires_grad)
+                if isinstance(p, torch.Tensor) else (str(i), type(p).__module__, type(p).__name__, repr(p))
+                for i, p in enumerate(module)]
+    return module.extra_repr()
 
 
 def structure(model):
@@ -52,7 +73,7 @@ def structure(model):
                       s.n, s.n_p, s.n_q),
             'terms': model.terms, 'kinds': model._term_kinds,
             'specs': (s.storage_specs, s.exchange_specs, s.dissipation_specs, s.port_specs),
-            'modules': [(n, type(m).__module__, type(m).__name__, m.extra_repr())
+            'modules': [(n, type(m).__module__, type(m).__name__, module_description(m))
                         for n, m in model.named_modules() if n],
             'parameters': [(n, tuple(p.shape), str(p.dtype), p.requires_grad)
                            for n, p in model.named_parameters()]}
@@ -124,31 +145,96 @@ def load_cache(output, seed, manifest):
     return observed, scales, meta
 
 
-def prepare(output, device, deadline):
-    fixtures = output / 'fixtures'
-    fixtures.mkdir()
-    # This independent source factory is not a fixture or a hidden truth export.
-    source = toy_source()
-    source.export(fixtures / 'source.json')
-    records = {}
+def import_zero_update_failure(output, identity, device):
+    """The sole registered run01 -> run02 import; never a generic restart."""
+    if output.resolve() != TARGET.resolve() or core.sha(BINDING) != BINDING_SHA:
+        raise ValueError('unregistered output or failure-import binding changed')
+    binding = json.loads(BINDING.read_text())
+    origin = ROOT / binding['origin']
+    if (origin.resolve() != ORIGIN.resolve() or (ROOT / binding['target']).resolve() != TARGET.resolve()
+            or binding['origin_entry_sha256'] != ORIGIN_ENTRY_SHA
+            or binding['prior_total_seconds'] != PRIOR_TOTAL
+            or binding['prior_startup_seconds'] != PRIOR_STARTUP):
+        raise ValueError('failure import route/source/budget changed')
+    for name, expected in binding['files'].items():
+        if core.sha(ROOT / name) != expected:
+            raise ValueError('original failure evidence changed: ' + name)
+    state = json.loads((origin / 'state.json').read_text())
+    receipt = json.loads((origin / 'receipt.json').read_text())
+    if (state['status'] != 'CLOSED' or receipt['status'] != 'CLOSED' or state['complete_pairs'] != 0
+            or state['device'] != str(device)
+            or receipt['this_invocation_seconds'] != PRIOR_TOTAL or receipt['prior_seconds'] != 0.
+            or state['startup_seconds'] != PRIOR_STARTUP
+            or state['identity']['files'] != binding['prior_dependency_files']):
+        raise ValueError('not the registered closed zero-update run')
+    if (state['freeze_sha256'] != core.sha(origin / 'fits_frozen.json')
+            or json.loads((origin / 'fits_frozen.json').read_text()) != state['items']):
+        raise ValueError('original frozen failures changed')
+    for name, expected in binding['prior_dependency_files'].items():
+        if Path(name).name == Path(__file__).name:
+            if expected != ORIGIN_ENTRY_SHA:
+                raise ValueError('original entry identity changed')
+        elif core.sha(ROOT / name) != expected or identity['files'].get(name) != expected:
+            raise ValueError('unmodified dependency identity changed')
+    if len(state['items']) != 6 or len(binding['prior_items']) != 6:
+        raise ValueError('six original failures required')
+    if any(origin.rglob('latest.json')) or any(origin.rglob('checkpoint_*')) or any(origin.rglob('pending_*')):
+        raise ValueError('zero-update import forbids checkpoint/latest/pending evidence')
+    for old, costs, expected_order in zip(state['items'], binding['prior_items'], ORDER):
+        if tuple(old[k] for k in ('seed', 'case', 'group')) != expected_order:
+            raise ValueError('original item order changed')
+        if ({k: old[k] for k in costs} != costs or old['fit_status'] != 'unresolved'
+                or old.get('updates', 0) != 0 or old['error'] != binding['error']
+                or old['eval_seconds'] != 0. or any(k in old for k in ('evaluation', 'evaluation_error', 'checkpoint'))):
+            raise ValueError('original item is not the registered zero-update failure')
+        folder = origin / f"saturation_{old['seed']}_{old['group']}"
+        failures = list(folder.glob('failure_*.json'))
+        if len(failures) != 1 or str(failures[0].relative_to(ROOT)).replace('\\', '/') not in binding['files']:
+            raise ValueError('unexpected failure evidence')
+        failure = json.loads(failures[0].read_text())
+        if failure['error'] != binding['error'] or 'fast_model(core.runtime_model(' not in failure['traceback']:
+            raise ValueError('failure did not precede optimizer creation')
+        if any(p.name not in {failures[0].name} for p in folder.iterdir()):
+            raise ValueError('unexpected original item artifacts')
+    manifest = json.loads((origin / 'fixtures' / 'manifest.json').read_text())
+    if manifest != state['manifest'] or core.sha(origin / 'fixtures' / 'source.json') != manifest['source_sha256']:
+        raise ValueError('original factory identity changed')
     for seed in (5101, 5102, 5103):
-        if time.perf_counter() >= deadline:
-            raise TimeoutError('shared fixture startup cap before any updates')
-        folder = fixtures / str(seed)
-        folder.mkdir()
-        generated, obs, scales, meta = core.checked_fixture('saturation', seed, device, folder, deadline)
-        if generated._export_payload() != source._export_payload():
-            raise ValueError('fixture source does not match independent original factory')
-        np.savez(folder / 'observations.npz', train=obs[0], val=obs[1], scales=scales)
-        records[str(seed)] = {'files': {n: core.sha(folder / n) for n in ('fixture.json', 'observations.npz')},
-                             'arrays': cache_digest(obs, scales), 'meta': meta}
-    manifest = {'source_sha256': core.sha(fixtures / 'source.json'), 'seeds': records}
-    core.atomic_json(fixtures / 'manifest.json', manifest)
+        load_cache(origin, seed, manifest['seeds'])
+    shutil.copytree(origin / 'fixtures', output / 'fixtures')
+    for p in (origin / 'fixtures').rglob('*'):
+        if p.is_file() and core.sha(p) != core.sha(output / 'fixtures' / p.relative_to(origin / 'fixtures')):
+            raise ValueError('copied cache bytes changed')
     for seed in (5101, 5102, 5103):
-        load_cache(output, seed, records)
-    if time.perf_counter() >= deadline:
-        raise TimeoutError('shared fixture startup cap before any updates')
-    return manifest
+        load_cache(output, seed, manifest['seeds'])
+    return binding, manifest
+
+
+def startup_models(source, reference, output, manifest, device):
+    if torch.device(device).type != 'cuda':
+        raise ValueError('registered recovery preflight requires actual CUDA')
+    models = {}
+    for seed, _, group in ORDER:
+        if PRIOR_STARTUP + time.perf_counter() - PROCESS_START >= CAPS['startup']:
+            raise TimeoutError('cumulative startup cap during GPU preflight')
+        obs, _, _ = load_cache(output, seed, manifest['seeds'])
+        base = fast_model(core.runtime_model(source, [TERM], seed, device), reference)
+        if not bool((base.coefficients == 0).all()):
+            raise ValueError('nonzero starting port coefficients')
+        model = (core.CausalHistoryResidual.from_train(base, torch.tensor(obs[0][:, :11], dtype=torch.float64, device=device))
+                 if group == 'residual' else base)
+        # Retain the original per-item torch RNG identity despite preparing all
+        # six models before the first update. Batch permutations use core's RNG.
+        model._registered_start_rng = (torch.get_rng_state(), torch.cuda.get_rng_state_all())
+        models[(seed, group)] = model
+        if group == 'residual':
+            control = models[(seed, 'control')]
+            if any(not torch.equal(p, dict(base.named_parameters())[n]) for n, p in control.named_parameters()):
+                raise ValueError('paired starting parameters differ')
+            if not bool((model.history_coefficients == 0).all()) or not torch.equal(model.source_mass, control.mass):
+                raise ValueError('residual starting buffers/coefficients changed')
+    core.synchronize(device)
+    return models
 
 
 def phase_budget(state, item, phase, elapsed):
@@ -161,14 +247,17 @@ def phase_budget(state, item, phase, elapsed):
 
 def resume_allowed(state, identity, device):
     if (state['status'] != 'INTERRUPTED_RUNTIME' or state['resumes'] != 0 or
-            state['identity'] != identity or state['device'] != str(device)):
+            state['identity'] != identity or state['device'] != str(device) or
+            state.get('failure_import', {}).get('binding_sha256') != BINDING_SHA):
         raise ValueError('unknown interruption/source/device or resume already used')
     if state['phase'] == 'startup' or state['elapsed_seconds'] >= CAPS['total']:
         raise ValueError('incomplete fixture startup or exhausted process cannot resume')
 
 
-def run(output, device, resume=False):
+def run(output, device, resume=False, import_failure=False):
     output = Path(output)
+    if output.resolve() != TARGET.resolve() or resume == import_failure:
+        raise ValueError('fixed run02 requires exactly one of failure import or caught resume')
     # JSON normalization makes identities stable over disk round trips.
     identity = json.loads(json.dumps(source_identity()))
     if resume:
@@ -178,11 +267,11 @@ def run(output, device, resume=False):
     else:
         output.mkdir(parents=True, exist_ok=False)
         state = {'identity': identity, 'device': str(device), 'resumes': 0,
-                 'elapsed_seconds': 0., 'phase': 'startup',
+                 'elapsed_seconds': PRIOR_TOTAL, 'startup_seconds': PRIOR_STARTUP, 'phase': 'startup',
                  'items': [dict(seed=s, case=c, group=g, fit_status='pending',
                                 fit_seconds=0., eval_seconds=0.) for s, c, g in ORDER]}
         core.atomic_json(output / 'identity.json', identity)
-    prior = state['elapsed_seconds'] if resume else 0.
+    prior = state['elapsed_seconds'] if resume else PRIOR_TOTAL
     state.update(status='RUNNING', pid=os.getpid(), command=sys.argv, cwd=str(Path.cwd()), children=[])
     active = None
     phase_start = None
@@ -204,10 +293,13 @@ def run(output, device, resume=False):
     try:
         persist()
         if not resume:
-            state['manifest'] = prepare(output, device, PROCESS_START + CAPS['startup'])
-            state['startup_seconds'] = time.perf_counter() - PROCESS_START
-            state['phase'] = 'fit'
-            persist()
+            binding, state['manifest'] = import_zero_update_failure(output, identity, device)
+            state['failure_import'] = {'binding_sha256': BINDING_SHA, 'origin': binding['origin'],
+                                      'prior_total_seconds': PRIOR_TOTAL, 'prior_startup_seconds': PRIOR_STARTUP,
+                                      'original_failures': binding['files']}
+            for item, costs in zip(state['items'], binding['prior_items']):
+                item.update(fit_seconds=costs['fit_seconds'], eval_seconds=costs['eval_seconds'],
+                            prior_failure=binding['error'])
         manifest = state['manifest']
         manifest_path = output / 'fixtures' / 'manifest.json'
         if json.loads(manifest_path.read_text()) != manifest or core.sha(output / 'fixtures' / 'source.json') != manifest['source_sha256']:
@@ -217,6 +309,14 @@ def run(output, device, resume=False):
         strict_admit(copy_runtime(source, [TERM], 'cpu'), reference)
         for seed in (5101, 5102, 5103):
             load_cache(output, seed, manifest['seeds'])
+        starting_models = {}
+        if not resume:
+            starting_models = startup_models(source, reference, output, manifest, device)
+            state['startup_seconds'] = PRIOR_STARTUP + time.perf_counter() - PROCESS_START
+            if state['startup_seconds'] >= CAPS['startup'] or elapsed() >= CAPS['total']:
+                raise TimeoutError('cumulative startup cap before any optimizer updates')
+            state['phase'] = 'fit'
+            persist()
         if state['phase'] == 'fit':
             for item in state['items']:
                 if item['fit_status'] not in ('pending', 'running'):
@@ -235,9 +335,16 @@ def run(output, device, resume=False):
                     obs, scales, _ = load_cache(output, item['seed'], manifest['seeds'])
                     train = torch.tensor(obs[0], dtype=torch.float64, device=device)
                     scale = torch.tensor(scales, dtype=torch.float64, device=device)
-                    model = fast_model(core.runtime_model(source, [TERM], item['seed'], device), reference)
-                    if item['group'] == 'residual':
-                        model = core.CausalHistoryResidual.from_train(model, train[:, :11])
+                    model = starting_models.pop((item['seed'], item['group']), None)
+                    if model is None:
+                        model = fast_model(core.runtime_model(source, [TERM], item['seed'], device), reference)
+                        if item['group'] == 'residual':
+                            model = core.CausalHistoryResidual.from_train(model, train[:, :11])
+                    elif hasattr(model, '_registered_start_rng'):
+                        cpu_rng, cuda_rng = model._registered_start_rng
+                        torch.set_rng_state(cpu_rng)
+                        torch.cuda.set_rng_state_all(cuda_rng)
+                        del model._registered_start_rng
                     opt = core.make_optimizer(model)
                     rng = np.random.default_rng(np.random.SeedSequence([item['seed'], 7]))
                     key = {'run': identity, 'item': name, 'fixture': manifest['seeds'][str(item['seed'])],
@@ -326,6 +433,8 @@ def run(output, device, resume=False):
         state.update(status='UNRESOLVED', error=repr(error))
         raise
     finally:
+        if state['phase'] == 'startup':
+            state['startup_seconds'] = PRIOR_STARTUP + time.perf_counter() - PROCESS_START
         persist()
         core.atomic_json(output / 'receipt.json', {'pid': os.getpid(), 'status': state['status'],
                          'cumulative_seconds': elapsed(), 'this_invocation_seconds': time.perf_counter() - PROCESS_START,
@@ -338,7 +447,9 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--device', default='cuda')
-    parser.add_argument('--resume', action='store_true')
+    mode = parser.add_mutually_exclusive_group(required=True)
+    mode.add_argument('--resume', action='store_true')
+    mode.add_argument('--import-zero-update-failure', action='store_true')
     args = parser.parse_args()
     torch.set_num_threads(1)
-    run(args.output, core.resolve_device(args.device), args.resume)
+    run(args.output, core.resolve_device(args.device), args.resume, args.import_zero_update_failure)

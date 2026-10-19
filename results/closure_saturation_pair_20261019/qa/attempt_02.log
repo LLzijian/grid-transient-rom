@@ -1,0 +1,28 @@
+test_actual_cuda_to_cpu_canonical_admission (__main__.ChangedEntry.test_actual_cuda_to_cpu_canonical_admission) ... ERROR
+test_admission_rejects_unregistered_structures (__main__.ChangedEntry.test_admission_rejects_unregistered_structures) ... ok
+test_fakecache_binding_tamper_and_contents (__main__.ChangedEntry.test_fakecache_binding_tamper_and_contents) ... ok
+test_import_rejects_tamper_checkpoint_wrongroute (__main__.ChangedEntry.test_import_rejects_tamper_checkpoint_wrongroute) ... ok
+test_learned_export_and_wrapper_preservation (__main__.ChangedEntry.test_learned_export_and_wrapper_preservation) ... ok
+test_mock_caught_resume_once_retains_identity_and_costs (__main__.ChangedEntry.test_mock_caught_resume_once_retains_identity_and_costs) ... ok
+test_mockrun_freeze_six_items_inherited_costs (__main__.ChangedEntry.test_mockrun_freeze_six_items_inherited_costs) ... ok
+test_phase_caps_and_failure_accounting (__main__.ChangedEntry.test_phase_caps_and_failure_accounting) ... ok
+test_registered_order_caps_and_binding (__main__.ChangedEntry.test_registered_order_caps_and_binding) ... ok
+test_startup_failure_zero_updates_and_repeated_import_rejected (__main__.ChangedEntry.test_startup_failure_zero_updates_and_repeated_import_rejected) ... ok
+
+======================================================================
+ERROR: test_actual_cuda_to_cpu_canonical_admission (__main__.ChangedEntry.test_actual_cuda_to_cpu_canonical_admission)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\03-nn_Transfer_Func\kiki\tests\test_closure_saturation_pair_20261019.py", line 94, in test_actual_cuda_to_cpu_canonical_admission
+    selected = entry.fast_model(base, self.reference)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\03-nn_Transfer_Func\kiki\experiments\closure_saturation_pair_20261019.py", line 101, in fast_model
+    strict_admit(model, reference)
+  File "E:\03-nn_Transfer_Func\kiki\experiments\closure_saturation_pair_20261019.py", line 96, in strict_admit
+    raise ValueError('registered immutable toy buffers changed')
+ValueError: registered immutable toy buffers changed
+
+----------------------------------------------------------------------
+Ran 10 tests in 7.878s
+
+FAILED (errors=1)
