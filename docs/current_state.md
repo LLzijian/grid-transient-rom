@@ -1,12 +1,12 @@
 # 当前研究状态
 
-任务状态：**RUNNING**。工作目录E:/03-nn_Transfer_Func/kiki。新条件完整档已关闭：48候选的96短历史调用全部在FOM启动前因GPU环境缺ANDES失败，0合格历史、0D、0完整FOM、0更新、0val。真实worker42944已退出，内外exit0只代表失败记录完成，清理/211绑定文件核实；无当前科学PID。原test关闭、TASK4暂停、默认模型不变；原失败档不采用，环境工程另通过PR14集成。
+任务状态：**RUNNING**。工作目录E:/03-nn_Transfer_Func/kiki。首次物理档因接线QA两次拒绝已关闭，0科学worker/0求解/0训练/0val，无当前PID。本轮不集成、不再QA，原设计复用的一次例外关闭。环境工程PR14及main6b17be3535cc57985c1e1be4138decabc7c0f033保持有效；默认模型不变，原test关闭、TASK4暂停。
 
-**本轮入口**：[root有限协议](../reports/active_fom_pair_20261020_protocol.md)、[实际Astra6原案](../reports/astra6_active_fom_20261020.md)、[执行前原始修订](../reports/astra6_active_fom_20261020_design_amendment.md)、[独立挑战](../reports/active_fom_20261020_independent_precheck.md)。实际模型gpt-6-astra已调用，root采纳。完整档48双步长短历史、随机12+主动12的24新train、两结构三seed各追加256、六端点冻结后24新val一次确认。旧val只读事先条件设计排重；可用456组合，1-short与3-long为空，采用固定整数DP平衡分配。原参数域不扩，不再声称每母线每层概率1/3。本档科学尝试1（全部在FOM启动前失败），无合格科学结果。
+**决定性本轮证据**：[实际Astra6原案](../reports/astra6_first_physics_20261020.md)、[root协议](../reports/first_physics_pair_20261020_protocol.md)、[结论](../reports/first_physics_pair_20261020_conclusion.md)、[回执](../results/first_physics_pair_20261020/qa_result.json)。QA1绑定漏配置，native前拒绝2.1761836秒；唯一修正后QA2因root相对--output传到要求绝对路径的PS被拒绝，外层exit1、1.4703283秒，96绑定未变，无inner/科学worker。15项测试没有执行，AST/静态审查不称通过。私有BASE=P3/active_fom_pair_first_physics01冻结，不重复队列。
 
-**下一实际动作**：环境工程PR14已合并核实main6b17be3535cc57985c1e1be4138decabc7c0f033。实际gpt-6-astra新轮原案[首次物理方案](../reports/astra6_first_physics_20261020.md)已返回，root采纳[有限协议](../reports/first_physics_pair_20261020_protocol.md)，一次窄政策逐字复用原预锁设计，保留旧96启动失败。登记独立40000P3完整档，正在新wrapper/launcher实现；无科学PID。BASE=P3/active_fom_pair_first_physics01，QA/命令冻结后才启动48双步长；父未分配161256.5315368、P3未分配48361.7061617。原test关闭、TASK4暂停、默认模型不变。
+**下一实际动作**：完成本轮失败与费用归档后实际调用gpt-6-astra，选择新的合法方案；不得第三次借例外运行原48条件或把原24val称新抽样。没有全局阻塞，尚未登记下一轮或启动科学作业。新方案须修正绝对路径接线并容纳完整对照，原科学门槛保持。
 
-**预算**：父上限259200进程秒；已关闭轮累计实际加保守支持57943.4684632，余201256.5315368。P0余9037.2289973、P1余3982.0903771、P2余66100.6537796、P3余88361.7061617、P4余21600、repair余12174.8522211。新条件档实际QA13.956230+准备7.6523984+短阶段40.6145747=62.2232031，加3250保守支持，结项3312.2232031；取消未用36687.7767969回P3，无在途预占。类别不可互借，旧900未核对hold保留，子进程不双计。见[账本](../results/closure_mechanism_20261019/cost_snapshot.json)。
+**预算**：父上限259200进程秒；已关闭轮累计实际加保守支持61197.1149751，余198002.8850249。P0余9037.2289973、P1余3982.0903771、P2余66100.6537796、P3余85108.0596498、P4余21600、repair余12174.8522211。新条件档实际QA13.956230+准备7.6523984+短阶段40.6145747=62.2232031，加3250保守支持，结项3312.2232031；取消未用36687.7767969回P3，首次物理档实际3.6465119+支持3250结项3253.6465119，取消36746.3534881回P3；无在途预占。类别不可互借，旧900未核对hold保留，子进程不双计。见[账本](../results/closure_mechanism_20261019/cost_snapshot.json)。
 
 **决定性既有证据**：首次真实D[结论](../reports/first_disagreement_inference_20261020_conclusion.md)/[摘要](../results/first_disagreement_inference_20261020/summary.json)/[事件表](../results/first_disagreement_inference_20261020/events.json)已关闭并合并PR13。六模型366事件2196项双步长核验合格，361事件/24母线满足固定D/B判据，fine D中位数13.32821081；只支持采集设计准入。唯一实际外层122.6443724秒、内外exit0、清理与70源核实；结项1022.6443724含900支持，未用3477.3556276已取消。private_data/closure_mechanism_20261019/P3/first_disagreement_inference01完成，禁止重跑/恢复。
 

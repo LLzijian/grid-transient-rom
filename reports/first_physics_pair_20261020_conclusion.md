@@ -1,0 +1,15 @@
+# 首次物理档：接线资格未通过，保留失败并关闭
+
+2026-10-20。本轮在科学程序启动前关闭，没有物理求解、预测、训练或val。两次有限QA调用未通过；不再重验，不执行原48条件，不采用新wrapper/launcher到main。原预锁设计复用的一次例外到此关闭，不用第三档继续同一例外。[决定性回执](../results/first_physics_pair_20261020/qa_result.json)与[首次拒绝](../results/first_physics_pair_20261020/prelaunch_failure01.json)保留。
+
+首调用由私有launcher在native启动前拒绝：root生成绑定漏掉configs/private_dataset.json，该文件在旧manifest属于data而非source。没有native_qa01或stages/qa01。真实工具包络2.1761836秒。采用登记中唯一修正，补配置绑定，并使累计费用显式读取这一非native启动失败记录，不伪造原生回执。
+
+第二调用代码来源f78ea7dd974bae0067fff7aa884ac020fdfbb9c0，精确命令归档23ab84f2e29f5d90623b756231af6a7142d11494。root启动私有launcher时将--output写成相对路径；launcher检查resolve后的归属但未将参数归一为绝对路径，传给原生PS的-Output仍为相对路径。PS按既有规则拒绝“Output must be absolute”。实际外层进程89012、exit1、完整退出回执，1.470328299968969秒；没有内层回执或科学worker，96个明确绑定文件前后相同。没有运行所定义的15项接线测试，不能将AST或静态审查写作QA通过。
+
+实际包络共3.646511899968969秒，加登记3250保守支持，结项3253.646511899969；取消未用36746.35348810003回P3。父累计61197.1149751、余额198002.8850249；P3余85108.0596498，其他类别及旧900hold不动。不存在在途科学费用或PID。
+
+原48条件96次缺ANDES启动失败、此前全部证据与费用保持。环境工程PR14的真实ANDES/spawn/CUDA验收及main6b17be3535cc57985c1e1be4138decabc7c0f033保持有效；本轮没有合并，也无须revert。默认模型不变，test关闭、TASK4暂停、结构生成搜索关闭。
+
+复现信息为新BASE private_data/closure_mechanism_20261019/P3/active_fom_pair_first_physics01，下有commands/qa01.json、commands/qa02.json、bindings、prelaunch_failure01.json及native_qa02/execution.json；公开结果给出完整私有回执路径/hash、准确命令与源码副本。源码、失败和未执行的准备命令均在codex/first-physics-pair-20261020归档。保留冻结文件，不覆盖输出或再运行本档。
+
+父任务尚未完成且资源充足。root下一步实际调用gpt-6-astra选择其他合法路线，明确原48与本轮原24val不再借本例外复用，排除以新编号恢复本档；新科学方案必须容纳完整比较、事先锁定有限费用并实际执行。科学结论仍未检验新激励上的两结构差异。
