@@ -2,7 +2,7 @@
 
 任务状态：**RUNNING**，E:/03-nn_Transfer_Func/kiki。当前W8研究检验转速幅值相关耗散：H=N7，新增b_W*(omega/input_scale_omega)^3动量端口、b_W<=0。实际gpt-6-astra原案fe364ab44fae2b0a925f192528e730c33b91ca31，root[有限协议](../reports/frequency_dissipation_20261021_protocol.md)/独立挑战d6cc1b0d9736c0e4baf47fab46b7eeb481efb655；[静态审查](../reports/frequency_dissipation_20261021_implementation_review.md)。源399e50d73531dd79a4613cf7e235fc4db061f6ee冻结。
 
-**实际作业**：三W均完成1024、各33检查点，native1455.1161956/1466.9721954/1453.1782482秒；全部来源一致、两层0/GONE/锁清除，无原生训练作业。三端点首次正式评价前统一冻结，manifest97e8a957dc9dff098368b69234d3976ffad4bc6a408ebe550541c3d46dc1d81c，[冻结清单](../results/frequency_dissipation_20261021/frozen_evaluation_endpoints.json)。下一实际动作依次6101_W/6102_W/6103_W各一次完整385双步长评价，不重试/不改变阈值，不重训/重评N/Q。BASE private_data/closure_mechanism_20261019/P2/frequency_dissipation01。无当前预测结果。
+**实际作业**：三W均已完成1024并统一冻结manifest97e8a957dc9dff098368b69234d3976ffad4bc6a408ebe550541c3d46dc1d81c。6101_W一次完整385评价完成，native88.4773125秒，375来源一致、两层0/GONE/锁清除，8s数值资格385/385；[摘要](../results/frequency_dissipation_20261021/eval6101_summary.json)。下一实际动作6102_W→6103_W各一次完整385双步长评价，全部完成后才提取配对指标；不重试/不改变阈值，不重训/重评N/Q。BASE private_data/closure_mechanism_20261019/P2/frequency_dissipation01，无当前活作业。
 
 **已通过的准入**：[QA01](../results/frequency_dissipation_20261021/qa01_summary.json)48通过/0失败（runtime22/runner16/native10），native61.7325231秒、361来源一致、两层0/GONE，干净-m/未设PYTHONPATH完成六组合成baseline入口；QA02禁止。[唯一真实cost](../results/frequency_dissipation_20261021/cost01_summary.json)native42.70245秒、363来源一致/两层0/GONE，真实六N/Q初态/RNG与三O512同源零更新已核，12次试算/非空Adam恢复状态丢弃。含25%余量估价2135.4053223820665/模型<=2140、三模型6406.2159671462<=6420、评价99.08035624903277<=180。只准入完整执行，不是科学收益或模型采用。
 
