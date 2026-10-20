@@ -138,14 +138,15 @@ class DRuntime(TrainingClosureROM):
             gd = gd + (-(q @ absD.T) * sin * edge_cosine) @ self.base_D
             gq = gq + (c * edge_cosine) @ absD
 
+        q_cube = q.pow(3)
         coefficient = products['quartic_coefficient']
         if coefficient is not None:
             # Never branch on a==0: its derivative must remain connected.
-            gq = gq + 4 * coefficient * q.pow(3)
+            gq = gq + 4 * coefficient * q_cube
 
         pv = (w * products["port_w"] + p * products["port_p"] +
               q @ products["port_Q"] + c @ products["port_ec"])
-        pv = pv + products['cubic_coefficient'] * q.pow(3)
+        pv = pv + products['cubic_coefficient'] * q_cube
         if u is not None:
             pv = torch.as_tensor(u, dtype=z.dtype, device=z.device)
         if pv.shape[-1] != 10:
