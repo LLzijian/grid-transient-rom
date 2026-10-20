@@ -2,7 +2,7 @@
 
 任务状态：**RUNNING**，目录E:/03-nn_Transfer_Func/kiki。当前quadratic_memory_edge研究比较同源full8 global1280构造的A原项/B删除/C二次记忆项，三seed九组、统一新Adam，保持100ms一次GRU及1/2/5s循环。[协议](../reports/quadratic_memory_edge_20261020_protocol.md)、[实际gpt-6-astra方案](../reports/astra6_after_fresh_val_failure_20261020.md)、[独立实现审查](../reports/quadratic_memory_edge_20261020_implementation_review.md)。
 
-**实际执行**：6/9完成，均stage512、273源前后一致、逐行日程一致、全385覆盖；训练累计8090.7931626进程秒。当前6103_A已启动，GPU worker81684/FILETIME134369376684385460、session40390，native上限2400/self2340。执行代理/root/active_fom_acquire_impl独占顺序九组；先核实回执和其状态，禁止重复派发。768档已在训练前因实测超限禁用。九组全部合格后，同代理冻结9端点身份并在原评价预算内逐项一次CPU double评价；任一训练未决先报root，不自动补跑。root在9次评价后统一提取固定指标。原366/新19按源metadata集合，runner的newtrain_前缀分栏隔离不用，见[统计身份](../reports/quadratic_memory_edge_20261020_metric_scope.md)。[执行清单](../results/quadratic_memory_edge_20261020/frozen_training_batch.json)。
+**实际执行**：6/9完成，均stage512、273源前后一致、逐行日程一致、全385覆盖；训练累计8090.7931626进程秒。当前6103_A已启动，GPU worker81684/FILETIME134369376684385452、session40390，native上限2400/self2340。执行代理/root/active_fom_acquire_impl独占顺序九组；先核实回执和其状态，禁止重复派发。768档已在训练前因实测超限禁用。九组全部合格后，同代理冻结9端点身份并在原评价预算内逐项一次CPU double评价；任一训练未决先报root，不自动补跑。root在9次评价后统一提取固定指标。原366/新19按源metadata集合，runner的newtrain_前缀分栏隔离不用，见[统计身份](../reports/quadratic_memory_edge_20261020_metric_scope.md)。[执行清单](../results/quadratic_memory_edge_20261020/frozen_training_batch.json)。
 
 **费用**：父上限259200，旧关闭70318.2526126；本轮支持hold3000、工程253.7854629、关闭训练8090.7931626，累计81662.8312381、剩余177537.1687619（当前在途上限2400单列，未重复计入实耗）。本轮P2预占36000、未用24655.4213745；父未分配152881.7473874/P2未分配30100.6537796。工程2500/训练27000/评价3500/支持3000不可互借，单模型全部尝试≤3000；唯一实现修复已用，1200外部恢复嵌套一次且尚未授权启动。旧900支持hold保留。[完整账本](../results/closure_mechanism_20261019/cost_snapshot.json)。
 
