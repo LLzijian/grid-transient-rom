@@ -1,0 +1,71 @@
+{
+  "status": "STATIC_AST_ONLY_NO_EXECUTION",
+  "files": {
+    "experiments/fused_closure_audit_20261021.py": "54763d7dcdb5a9fd70cc4f73d1fbbb63fc581fbd1501bb50ae083c5cec3bfa41",
+    "tests/test_fused_closure_audit_20261021.py": "432665667d502dbcbad024031e4d3801b1d48562ae5aa07971c3d15723b48b35",
+    "private_data/closure_mechanism_20261019/P0/fused_runtime01/launch_stage.py": "6fba5bb7a7d698e1eb1cf8cf751141a49d4e78a404e6fefa52cc9fd8add34284",
+    "private_data/closure_mechanism_20261019/P0/fused_runtime01/make_invocation.py": "dbad3cfac802fd341391004695439b8dde8ef6b39b8e70c940241ff1451db0f8",
+    "private_data/closure_mechanism_20261019/P0/fused_runtime01/qa_driver.py": "e06f06995e831faf1a7d030e7bef4b85ca71cdc094d04c13b8b4223d28774b41"
+  },
+  "completed_command_receipts": [
+    {
+      "chunk": "2ee854",
+      "outer_seconds": 1.7071092
+    },
+    {
+      "chunk": "bc6bd9",
+      "outer_seconds": 1.8422498
+    },
+    {
+      "chunk": "859f80",
+      "outer_seconds": 1.9328511
+    },
+    {
+      "chunk": "bc6178",
+      "outer_seconds": 2.0204161
+    },
+    {
+      "chunk": "30c7e9",
+      "outer_seconds": 2.0155218
+    },
+    {
+      "chunk": "105c7f",
+      "outer_seconds": 2.0693752
+    },
+    {
+      "chunk": "09e012",
+      "outer_seconds": 2.3783441
+    }
+  ],
+  "completed_command_outer_sum_seconds": 13.9658673,
+  "this_final_record_command_outer_seconds": "root to append from actual tool result",
+  "leaf_static_cap_seconds": 40,
+  "no_torch_numpy_module_import": true,
+  "no_fixture_or_model_or_private_data_read": true,
+  "no_QA_prepare_benchmark_or_Git_execution": true,
+  "asset_schema": {
+    "manifest": "prepare01/manifest.json",
+    "files": [
+      "model_N.json",
+      "model_D.json",
+      "synthetic.npz",
+      "rng.pt"
+    ],
+    "npz_keys": [
+      "x",
+      "torque",
+      "event_ids",
+      "groups"
+    ],
+    "rng_keys": [
+      "cpu",
+      "cuda",
+      "numpy"
+    ]
+  },
+  "warnings": [
+    "All correctness/restore/throughput assertions remain unexecuted.",
+    "Actual CUDA mandatory in separately authorized prepare/QA/benchmark.",
+    "Speed gates apply only to frozen synthetic N/D loads; no D scientific admission or baseline rerun."
+  ]
+}
