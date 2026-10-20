@@ -1,5 +1,8 @@
 # 当前研究状态
 
+**当前新阶段：两种边记忆方程辨别P0准入已登记，正在静态实现。** [有限协议](../reports/edge_memory_discrimination_20261021_protocol.md)，实际Astra addendum2及独立挑战已采纳。只比较原正弦差项和新余弦和项；P0帽2200/support700已预占，P0未分配5922.771089；父charged/held134972.46971589996，尚未执行最大1500另留。P1三新512仍条件性，QA/控制合同/唯一cost未通过前不登记、不执行。无原生作业/真实PID，下一动作实现与独立静态检查→唯一QA→唯一cost。BASE private_data/closure_mechanism_20261019/P0/edge_memory_discrimination01。不是185项搜索、不重跑旧对照/饱和。
+
+
 任务状态：**RUNNING**，E:/03-nn_Transfer_Func/kiki。W8完整关闭：[结论](../reports/frequency_dissipation_20261021_conclusion.md)/[独立挑战](../reports/frequency_dissipation_20261021_result_review.md)。实际Astra方案fe364ab44fae2b0a925f192528e730c33b91ca31，科学source399e50d73531dd79a4613cf7e235fc4db061f6ee冻结。三W各1024/33检查点、各一次完整385评价已结束，两层0/GONE/无锁，无活作业，不重跑。
 
 **结果/采用**：共同385中342稳定5s风险降10.36%–11.21%，共同频率RMSE升2.29%–2.57%；43失稳真实区间平方误差降1.39%–1.69%，漏检N19/18/19→W19/19/19，误报各减1。新19中的17稳定风险均升。原门槛FAIL，不采用/不默认/不确认/P4；分类未平稳与数值未决分开，数值资格均通过。高clip与有限1024不证明家族不可能；端口耗散/39维局部稳定不是吸引域。N/Q冻结不重训/重评；E/P8/D/S/C/F及P1历史关闭不修复。
