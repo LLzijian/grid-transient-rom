@@ -69,3 +69,28 @@ def test_shared_role_freeze_contract_has_no_old_source_as_new_endpoint(tmp_path,
     monkeypatch.setattr(r,'check_endpoint',lambda p:entries[Path(p).resolve()]);monkeypatch.setattr(r,'sha',lambda p:'synthetic')
     assert len(r.freeze_endpoints()['endpoints'])==6
     with pytest.raises(FileExistsError):r.freeze_endpoints()
+
+
+def test_endpoint_payload_exact_role_terms_finite_coefficients_and_dual_copies():
+    def payload(role):
+        terms=copy.deepcopy(rt.TERMS[role]);values=[.02*(i-2) for i in range(len(terms))]
+        if role=='Q':values[-1]=.1
+        return {'terms':terms,'coefficients':values,'state_dict':{'coefficients':values.copy()}}
+    for role in ('N','Q'):
+        original=payload(role);assert r.validate_endpoint_payload(original,role)==original
+        permuted=copy.deepcopy(original)
+        for key in ('terms','coefficients'):permuted[key].reverse()
+        permuted['state_dict']['coefficients']=permuted['coefficients'].copy()
+        assert r.validate_endpoint_payload(permuted,role)==permuted
+        with pytest.raises(ValueError):r.validate_endpoint_payload(payload('Q' if role=='N' else 'N'),role)
+        cases=[]
+        duplicate=copy.deepcopy(original);duplicate['terms'][1]=copy.deepcopy(duplicate['terms'][0]);cases.append(duplicate)
+        missing=copy.deepcopy(original);missing['terms'].pop();cases.append(missing)
+        short=copy.deepcopy(original);short['coefficients'].pop();short['state_dict']['coefficients']=short['coefficients'].copy();cases.append(short)
+        long=copy.deepcopy(original);long['coefficients'].append(.1);long['state_dict']['coefficients']=long['coefficients'].copy();cases.append(long)
+        nan=copy.deepcopy(original);nan['coefficients'][0]=float('nan');nan['state_dict']['coefficients']=nan['coefficients'].copy();cases.append(nan)
+        mismatch=copy.deepcopy(original);mismatch['state_dict']['coefficients'][0]+=.1;cases.append(mismatch)
+        for bad in cases:
+            with pytest.raises(ValueError):r.validate_endpoint_payload(bad,role)
+    negative=payload('Q');negative['coefficients'][-1]=-.1;negative['state_dict']['coefficients']=negative['coefficients'].copy()
+    with pytest.raises(ValueError):r.validate_endpoint_payload(negative,'Q')

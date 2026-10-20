@@ -48,7 +48,7 @@ while pending:
                 for j in range(1,len(parts)+1):
                     init=base.joinpath(*parts[:j])/"__init__.py"
                     if init.is_file():pending.append(init)
-for f in [Path(__file__),BASE/"implementation_cost.json",BASE/"launch_stage.py",BASE/"qa_driver.py",command,prior,FRESH/"inputs/train_combined.json",ROOT/"experiments/native_process_receipt_20261020.ps1",ROOT/"reports/quartic_memory_20261020_protocol.md",ROOT/"reports/astra6_quartic_memory_20261020.md"]:
+for f in [Path(__file__),BASE/"implementation_cost.json",BASE/"launch_stage.py",BASE/"qa_driver.py",command,prior,FRESH/"inputs/train_combined.json",ROOT/"experiments/native_process_receipt_20261020.ps1",ROOT/"reports/quartic_memory_20261020_protocol.md",ROOT/"reports/astra6_after_spatial_extrema_20261020.md"]:
     files[f.relative_to(ROOT).as_posix()]=sha(f)
 manifest=ROOT/"results/spatial_extrema_20261020/frozen_evaluation_endpoints.json"
 if sha(manifest)!="b8c525f9b87709528c74f1b64724aace4b653e4a6948765da8471599cc1d0af4":raise ValueError("source manifest changed")

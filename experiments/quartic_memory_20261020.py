@@ -110,6 +110,24 @@ def endpoint_role(path):
     if p not in roles:raise ValueError('exact registered role endpoint path required')
     return roles[p]
 
+def validate_endpoint_payload(data,variant):
+    """Pure JSON role/term/coefficient contract shared with freeze consumption."""
+    from symbolic_closure_rom import term_key
+    from quartic_memory_runtime_20261020 import KEYS,QUARTIC_TERM
+    if variant not in KEYS or not isinstance(data,dict):raise ValueError('invalid endpoint role/payload')
+    payload=data.get('model',data)
+    if not isinstance(payload,dict):raise ValueError('endpoint payload must be an object')
+    terms=payload.get('terms');coefficients=payload.get('coefficients');state=payload.get('state_dict')
+    if not isinstance(terms,list) or not isinstance(coefficients,list) or not isinstance(state,dict):raise ValueError('endpoint arrays/state missing')
+    keys=[term_key(t) for t in terms]
+    if len(keys)!=len(KEYS[variant]) or len(set(keys))!=len(keys) or set(keys)!=set(KEYS[variant]):raise ValueError('endpoint role term set differs')
+    if len(coefficients)!=len(terms) or any(isinstance(c,bool) or not isinstance(c,(int,float)) or not math.isfinite(c) for c in coefficients):raise ValueError('endpoint coefficient count/finite contract differs')
+    if state.get('coefficients')!=coefficients:raise ValueError('export coefficient copies differ')
+    if variant=='Q':
+        a=coefficients[keys.index(term_key(QUARTIC_TERM))]
+        if a<0:raise ValueError('invalid quartic endpoint')
+    return payload
+
 def check_endpoint(path):
     from quartic_memory_runtime_20261020 import QuarticMemoryRuntime,quartic_index
     p=Path(path).resolve();seed,v=endpoint_role(p);folder=p.parent;m=read(folder/'checkpoint.json');identity=m['identity'];schedule=checked_schedule()
@@ -118,15 +136,7 @@ def check_endpoint(path):
     actual=(sha(p),sha(folder/'training.pt'),sha(folder/'checkpoint.json'))
     if actual[:2]!=(m['model_sha256'],m['training_sha256']):raise ValueError('endpoint bytes differ')
     # Validate JSON copies and a>=0 without constructing a model or consuming RNG.
-    data=read(p);payload=data.get('model',data)
-    coefficients=payload.get('coefficients');state=payload.get('state_dict',{})
-    if coefficients is None or state.get('coefficients')!=coefficients:raise ValueError('export coefficient copies differ')
-    from symbolic_closure_rom import term_key
-    from quartic_memory_runtime_20261020 import QUARTIC_TERM
-    terms=payload.get('terms',[]);keys=[term_key(t) for t in terms]
-    if v=='Q':
-        ix=keys.index(term_key(QUARTIC_TERM));a=coefficients[ix]
-        if not math.isfinite(a) or a<0:raise ValueError('invalid quartic endpoint')
+    validate_endpoint_payload(read(p),v)
     seen=set()
     for step,(t,row) in enumerate(zip(m['trace'],schedule['seeds'][str(seed)]['rows']),1):
         if t['stage_step']!=step or t['sampling']!=row['sampling'] or t['horizon_s']!=horizon_for(v,step):raise ValueError('trace schedule differs')

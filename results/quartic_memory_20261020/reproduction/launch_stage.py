@@ -80,7 +80,7 @@ def command_gate(a, command, binding):
         "tests/test_quartic_memory_20261020.py",
         "tests/test_quartic_native_envelope_20261020.py",
         "reports/quartic_memory_20261020_protocol.md",
-        "reports/astra6_quartic_memory_20261020.md"}
+        "reports/astra6_after_spatial_extrema_20261020.md"}
     if not required <= set(binding["files"]):
         raise ValueError("required source/entry/command/protocol binding absent")
     def flag(name):
