@@ -55,3 +55,11 @@ runtime测试SHA在QA01前后、QA02前后及当前均为`ffd17475da60d22c77dc19
 runtime在实际CPU/CUDA参数化中包含13项检查：同源A场保持与B/C初始等价、正负非零b的通用表达式/NumPy值和状态/参数梯度、非零b原点零梯度/Hessian及Jacobian、短自主积分且初始化一次、导出恢复、图缓存生命周期及非法结构/来源拒绝。它们足以支持这项精确单式计算与入口保护的工程集成；不证明385事件预测、科学成本资格、优化收益或稳定域。该测试文件使用合成模型和临时导出，没有私有BASE、历史环境QA或真实条件metadata依赖；不要把另外两个含私有监督依赖的测试文件也纳入“公开自足runtime测试”的主张。
 
 **同意root提出的两文件加精简验证说明的范围受限工程PR，未见本范围的剩余阻断。** 合并前由root核对实际PR head、两文件与上述QA02身份相同，以及目标main已具备其直接运行/测试依赖（TrainingClosureROM、LinearCacheRuntime、SymbolicClosureROM及测试用的LocalMemoryROM/StructuredROM、Torch/NumPy/pytest）。不以本机陈旧Git引用替代远端核实。不得整体合并fresh或quadratic归档分支，不纳入新默认模型。当前cost阶段及随后九组科学执行仍受实际成本、注册协议与原科学门槛约束，与本工程准入分开。
+
+## 评价前的固定分组身份核查
+
+root在本轮端点评价前发现runner内置cohorts按`newtrain_`前缀分组会把原20条与本轮19条合并。本代理的先前调用链审查没有识别这项分组错误；前文“原366/新19分栏”不应视为已核正确集合。该内置346/39分栏须保留并隔离，不用于正式结论；这不影响此前仅runtime两文件的工程验收。
+
+本次仅读取root统计范围说明、固定cohort_identity及三个full8 global1280 checkpoint的身份元数据。三seed均确认：identity.events为385个唯一事件；identity.source_identity.common.events为其中366个唯一事件，含20个同样以newtrain_开头的旧事件；差集精确19个。固定清单的id/group/label与三份metadata全部一致，原366为325稳定/41失稳，新19为17稳定/2失稳，无遗漏或重复。
+
+以这份评价前固定的身份集合，从同次预测的完整385原始rows/extras重新汇总原366与新19，符合原协议分母，不改变事件资格、风险公式或真实区间。原始预测、内置错误分栏、完整385资格及不利结果必须保留，未决不得在提取时丢弃；不能用这次修正触发重预测、改模型或重开旧val。未读取任何新科学成绩、权重或轨迹，未执行程序或修改冻结源。纯stdlib提取器由root另行核对，本节不宣称该工具已通过检查。
