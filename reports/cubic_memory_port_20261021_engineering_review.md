@@ -1,0 +1,29 @@
+# 三次记忆端口工具：独立工程集成审查
+
+2026-10-21，独立代理`/root/fixed_edge_final_review`。本代理未负责提案或实现。本次只读runtime、对应合成测试、说明、实际QA紧凑记录及stdout，并通过GitHub只读API核固定main和新增依赖；未执行测试、Torch、模型、数据或额外QA，未读私有权重/预测成绩，未修改绑定文件或旧报告，未递归委派。仅新增本文。
+
+**接受精确三文件工程集成，未发现阻断。** 范围为`experiments/cubic_memory_port_runtime_20261021.py`、`tests/test_cubic_memory_port_runtime_20261021.py`和`docs/cubic_memory_port_runtime.md`。不带入研究runner、私有监督helper、其他旧依赖、checkpoint或默认模型。root仍须核最终PR三个blob、expected head及远端合并，科学采用另按原协议。
+
+## 固定main依赖
+
+本次读取GitHub commit API确认固定main `8bc36d93f2885985fa4a0f30cca847f16a4b886c`的第一父为`3e97af12092545ad727e216e4afb33adb0d405f7`，差异精确为新增旧quartic runtime、其测试和说明三文件，没有更改旧依赖。此前独立工程审查已核38个旧依赖：32项字节相同，余六项仅CRLF/LF；本次沿用该明确见证，不称重新扫描全仓或重跑main测试。
+
+新D runtime直接使用既有closure_training_runtime、symbolic_closure_rom和train_local_memory_0098；新增测试还使用已在main的quartic runtime与test_quartic_memory_runtime的合成fixture。后者只提供source/inputs/generic，构造合成模型和内存事件，不引入本轮研究runner或私有BASE。
+
+本次通过fetch_file读取上述两个quartic文件在固定main的解码源码，未将源码当JSON解析；与local逐字符相等，无需行尾规范化。远端/API blob及local原始字节Git blob独立计算一致：runtime为ba8ff82f9b59f0f1bb412451baef9d91b2becfad，fixture测试为9559e6d61d3590ffad349188c9014106ba44ee50。因此相对于已核旧闭包，新D合成路径所需两项依赖均已存在且相同，不需要扩大PR或合并用户/历史改动。这里的自洽依赖结论不等于已在main checkout实跑QA。
+
+## 实际正确性和恢复依据
+
+唯一QA01固定源码为432c29ba9ec36a572e831ee8d681fce1176ea1aa，执行归档0edac6aba8407ca13d5e93cbcbd386b6e2127126。公开qa01_result与原stdout一致：29项通过/0失败，其中runtime13、runner10、native6；CPU参数化5项、CUDA参数化5项均实际执行，另有3项runtime非参数化检查。原生34.87600220000604秒、两层退出0/完整回执、299源前后一致、worker51788及FILETIME身份、清理GONE，环境Torch2.13.0+cu130/RTX4060Ti。没有追加QA。
+
+runtime13项实际覆盖正负b、fast/generic/NumPy场与梯度、dotπ/dotω正确质量换算、包含全部端口的储能率恒等式、零a/b嵌入N及零b嵌入Q的公共raw梯度、新系数梯度连接、同参数集合裁剪Adam、非空Adam导出恢复、只投影a/保留b和矩、表达式重排/双副本、cache生命周期及单次初始化/真实n=1。参数化覆盖与实际stdout相符。q_cube在每次field内对当前q计算一次并供储能梯度和端口复用，不跨状态持有，保持计算图；不是基于未经检查的全局缓存。
+
+当前三文件SHA256：runtime为9a43cc31313077203dd3272b4850c4767062005235b57c21c5810dce4cd6f75c；测试为dfe6a2ff2d8187262c588541faedc05b75dbd8ea4aa3f7297bed29eace962d8f；说明为d1efc270bf9e7f933cd1603c7d8a071cd8fcc908940368a6a479c073dfeeaf3b。对应runtime/test与QA版本一致。
+
+## 文档与主张
+
+说明准确区分a非负、b有符号、closure参数身份及原目标；明确新增端口进dotπ为bq³、进dotω为bq³/M、储能率Σωbq³不再除M，单位H-unit/s而非机械功率MW。已明确固定本地QA源码和完整29项包含三文件外的runner/native设置，不冒称公开clone完整CI。本次未发现必须修改的说明语句。
+
+该工具可作为已验证的可选计算实现保留；它不证明D预测改善、加速、真实器件机制识别、默认采用或非线性稳定域。独立NumPy/通用编译、功率恒等式与恢复检查支持工程正确性，不替代本轮科学端点门槛，也不授权追加训练、评价或开放P4/val/test。
+
+本次审查支持采用最多300秒保守份额，是既有1500支持hold的子集，不新增分配或原生任务。实际只执行有界只读源/元数据调用及本文写入；未计作科学执行或额外QA。本文写毕停止编辑。
