@@ -1,0 +1,399 @@
+...FFFF..FF...................                                           [100%]
+================================== FAILURES ===================================
+________ test_o_original_components_all_gradients_and_adam_exact[cpu] _________
+
+device = 'cpu'
+
+    @pytest.mark.parametrize('device',DEVICES)
+    def test_o_original_components_all_gradients_and_adam_exact(device):
+        torch.set_num_threads(1)
+        a=model_fixture(device); b=copy.deepcopy(a); _,store,samples,eq=fixtures(device)
+        oa=torch.optim.Adam(a.parameters(),lr=9e-5); ob=torch.optim.Adam(b.parameters(),lr=9e-5)
+        cpu_rng=torch.get_rng_state().clone()
+        cuda_rng=torch.cuda.get_rng_state().clone() if device=='cuda' else None
+        with graph(a): old,ot=original_objective(a,store,samples,.07,.01); old.backward()
+>       with graph(b): new,nt=spatial.objective(b,store,samples,.07,.01,eq,False); new.backward()
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_spatial_extrema_runtime_20261020.py:106: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+experiments\spatial_extrema_runtime_20261020.py:94: in objective
+    long,spatial,angle,speed = spatial_rollout_errors(model,long_batch,equilibrium_delta)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+model = LinearCacheRuntime(
+  (structured): StructuredROM(
+    (storage_gamma): ParameterList()
+    (exchange_kappa): Paramete...    (5): Parameter containing: [torch.float64 of size ]
+      (6): Parameter containing: [torch.float64 of size ]
+  )
+)
+prepared = PreparedRollout(history=tensor([[[-1.7040e-02, -2.3391e-02,  2.5389e-02,  1.8239e-02, -2.1378e-02,
+           1.0485e-...0036, -0.0312,
+          -0.0215,  0.0177]]], dtype=torch.float64))], counts=tensor([1., 5., 7.], dtype=torch.float64))
+equilibrium_delta = tensor([-0.2000, -0.1444, -0.0889, -0.0333,  0.0222,  0.0778,  0.1333,  0.1889,
+         0.2444,  0.3000], dtype=torch.float64)
+initial = None
+
+    def spatial_rollout_errors(model,prepared,equilibrium_delta,initial=None):
+        """Per-event(original point mean, s mean, angle mean, speed mean), one encode."""
+        h,n = prepared.history,prepared.counts
+        if h.ndim != 3 or h.shape[1:] != (11,30) or not len(h):
+            raise ValueError('nonempty11x30 causal histories required')
+        mass,eq = _physical_inputs(h[:,-1],model.mass,equilibrium_delta)
+        if n.ndim != 1 or len(n) != len(h) or n.device != h.device or not bool((torch.isfinite(n)&(n>=1)&(n==n.floor())).all()):
+            raise ValueError('positive integral true counts matching histories required')
+        segments = []; coverage = torch.zeros_like(n); start = 0
+        for ix,truth in prepared.segments:
+            if ix.ndim != 1 or ix.dtype != torch.long or ix.device != h.device or truth.ndim != 3 or truth.shape[1:] != (len(ix),30) or not len(truth) or truth.device != h.device:
+                raise ValueError('invalid genuine segment')
+            expected = torch.nonzero(n>=start+len(truth),as_tuple=False).flatten()
+            if not torch.equal(ix,expected):
+                raise ValueError('segments require exactly ascending genuine active rows')
+>           coverage = coverage.index_add(0,ix,torch.full_like(ix,len(truth)))
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           RuntimeError: index_add_(): self (Double) and source (Long) must have the same scalar type
+
+experiments\spatial_extrema_runtime_20261020.py:68: RuntimeError
+________ test_o_original_components_all_gradients_and_adam_exact[cuda] ________
+
+device = 'cuda'
+
+    @pytest.mark.parametrize('device',DEVICES)
+    def test_o_original_components_all_gradients_and_adam_exact(device):
+        torch.set_num_threads(1)
+        a=model_fixture(device); b=copy.deepcopy(a); _,store,samples,eq=fixtures(device)
+        oa=torch.optim.Adam(a.parameters(),lr=9e-5); ob=torch.optim.Adam(b.parameters(),lr=9e-5)
+        cpu_rng=torch.get_rng_state().clone()
+        cuda_rng=torch.cuda.get_rng_state().clone() if device=='cuda' else None
+        with graph(a): old,ot=original_objective(a,store,samples,.07,.01); old.backward()
+>       with graph(b): new,nt=spatial.objective(b,store,samples,.07,.01,eq,False); new.backward()
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_spatial_extrema_runtime_20261020.py:106: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+experiments\spatial_extrema_runtime_20261020.py:94: in objective
+    long,spatial,angle,speed = spatial_rollout_errors(model,long_batch,equilibrium_delta)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+model = LinearCacheRuntime(
+  (structured): StructuredROM(
+    (storage_gamma): ParameterList()
+    (exchange_kappa): Paramete... containing: [torch.float64 of size  (cuda:0)]
+      (6): Parameter containing: [torch.float64 of size  (cuda:0)]
+  )
+)
+prepared = PreparedRollout(history=tensor([[[-1.7040e-02, -2.3391e-02,  2.5389e-02,  1.8239e-02, -2.1378e-02,
+           1.0485e-... 0.0177]]], device='cuda:0', dtype=torch.float64))], counts=tensor([1., 5., 7.], device='cuda:0', dtype=torch.float64))
+equilibrium_delta = tensor([-0.2000, -0.1444, -0.0889, -0.0333,  0.0222,  0.0778,  0.1333,  0.1889,
+         0.2444,  0.3000], device='cuda:0', dtype=torch.float64)
+initial = None
+
+    def spatial_rollout_errors(model,prepared,equilibrium_delta,initial=None):
+        """Per-event(original point mean, s mean, angle mean, speed mean), one encode."""
+        h,n = prepared.history,prepared.counts
+        if h.ndim != 3 or h.shape[1:] != (11,30) or not len(h):
+            raise ValueError('nonempty11x30 causal histories required')
+        mass,eq = _physical_inputs(h[:,-1],model.mass,equilibrium_delta)
+        if n.ndim != 1 or len(n) != len(h) or n.device != h.device or not bool((torch.isfinite(n)&(n>=1)&(n==n.floor())).all()):
+            raise ValueError('positive integral true counts matching histories required')
+        segments = []; coverage = torch.zeros_like(n); start = 0
+        for ix,truth in prepared.segments:
+            if ix.ndim != 1 or ix.dtype != torch.long or ix.device != h.device or truth.ndim != 3 or truth.shape[1:] != (len(ix),30) or not len(truth) or truth.device != h.device:
+                raise ValueError('invalid genuine segment')
+            expected = torch.nonzero(n>=start+len(truth),as_tuple=False).flatten()
+            if not torch.equal(ix,expected):
+                raise ValueError('segments require exactly ascending genuine active rows')
+>           coverage = coverage.index_add(0,ix,torch.full_like(ix,len(truth)))
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           RuntimeError: index_add_(): self (Double) and source (Long) must have the same scalar type
+
+experiments\spatial_extrema_runtime_20261020.py:68: RuntimeError
+________ test_s_single_long_manual_per_event_and_auxiliary_match[cpu] _________
+
+device = 'cpu'
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001B81B0E3050>
+
+    @pytest.mark.parametrize('device',DEVICES)
+    def test_s_single_long_manual_per_event_and_auxiliary_match(device,monkeypatch):
+        a=model_fixture(device); b=copy.deepcopy(a); events,store,samples,eq=fixtures(device)
+        per_event=[]; counts=[]
+        with torch.no_grad(),graph(a):
+            for e in events:
+                h=store.events[e['id']][0][:11][None]; z=torch.cat((h[:,-1],a.encode(h)),-1)
+                n=min(7,len(e['x'])-11); errors=[]; counts.append(n)
+                for k in range(n):
+                    z=a.rk4(z,.01)
+                    errors.append(hand_point(z[0].tolist(),store.events[e['id']][0][11+k].tolist(),a.mass.tolist(),eq.tolist())[0])
+                per_event.append(sum(errors)/n)
+        expected=.8*sum(per_event)/len(per_event)+.2*max(per_event)
+        calls=[]; original_encode=b.encode
+        def encode(h): calls.append(h.detach().clone()); return original_encode(h)
+        monkeypatch.setattr(b,'encode',encode)
+        with graph(a): old,ot=original_objective(a,store,samples,.07,.01)
+>       with graph(b): new,nt=spatial.objective(b,store,samples,.07,.01,eq,True)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_spatial_extrema_runtime_20261020.py:136: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+experiments\spatial_extrema_runtime_20261020.py:94: in objective
+    long,spatial,angle,speed = spatial_rollout_errors(model,long_batch,equilibrium_delta)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+model = LinearCacheRuntime(
+  (structured): StructuredROM(
+    (storage_gamma): ParameterList()
+    (exchange_kappa): Paramete...    (5): Parameter containing: [torch.float64 of size ]
+      (6): Parameter containing: [torch.float64 of size ]
+  )
+)
+prepared = PreparedRollout(history=tensor([[[-1.7040e-02, -2.3391e-02,  2.5389e-02,  1.8239e-02, -2.1378e-02,
+           1.0485e-...0036, -0.0312,
+          -0.0215,  0.0177]]], dtype=torch.float64))], counts=tensor([1., 5., 7.], dtype=torch.float64))
+equilibrium_delta = tensor([-0.2000, -0.1444, -0.0889, -0.0333,  0.0222,  0.0778,  0.1333,  0.1889,
+         0.2444,  0.3000], dtype=torch.float64)
+initial = None
+
+    def spatial_rollout_errors(model,prepared,equilibrium_delta,initial=None):
+        """Per-event(original point mean, s mean, angle mean, speed mean), one encode."""
+        h,n = prepared.history,prepared.counts
+        if h.ndim != 3 or h.shape[1:] != (11,30) or not len(h):
+            raise ValueError('nonempty11x30 causal histories required')
+        mass,eq = _physical_inputs(h[:,-1],model.mass,equilibrium_delta)
+        if n.ndim != 1 or len(n) != len(h) or n.device != h.device or not bool((torch.isfinite(n)&(n>=1)&(n==n.floor())).all()):
+            raise ValueError('positive integral true counts matching histories required')
+        segments = []; coverage = torch.zeros_like(n); start = 0
+        for ix,truth in prepared.segments:
+            if ix.ndim != 1 or ix.dtype != torch.long or ix.device != h.device or truth.ndim != 3 or truth.shape[1:] != (len(ix),30) or not len(truth) or truth.device != h.device:
+                raise ValueError('invalid genuine segment')
+            expected = torch.nonzero(n>=start+len(truth),as_tuple=False).flatten()
+            if not torch.equal(ix,expected):
+                raise ValueError('segments require exactly ascending genuine active rows')
+>           coverage = coverage.index_add(0,ix,torch.full_like(ix,len(truth)))
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           RuntimeError: index_add_(): self (Double) and source (Long) must have the same scalar type
+
+experiments\spatial_extrema_runtime_20261020.py:68: RuntimeError
+________ test_s_single_long_manual_per_event_and_auxiliary_match[cuda] ________
+
+device = 'cuda'
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001B81B210950>
+
+    @pytest.mark.parametrize('device',DEVICES)
+    def test_s_single_long_manual_per_event_and_auxiliary_match(device,monkeypatch):
+        a=model_fixture(device); b=copy.deepcopy(a); events,store,samples,eq=fixtures(device)
+        per_event=[]; counts=[]
+        with torch.no_grad(),graph(a):
+            for e in events:
+                h=store.events[e['id']][0][:11][None]; z=torch.cat((h[:,-1],a.encode(h)),-1)
+                n=min(7,len(e['x'])-11); errors=[]; counts.append(n)
+                for k in range(n):
+                    z=a.rk4(z,.01)
+                    errors.append(hand_point(z[0].tolist(),store.events[e['id']][0][11+k].tolist(),a.mass.tolist(),eq.tolist())[0])
+                per_event.append(sum(errors)/n)
+        expected=.8*sum(per_event)/len(per_event)+.2*max(per_event)
+        calls=[]; original_encode=b.encode
+        def encode(h): calls.append(h.detach().clone()); return original_encode(h)
+        monkeypatch.setattr(b,'encode',encode)
+        with graph(a): old,ot=original_objective(a,store,samples,.07,.01)
+>       with graph(b): new,nt=spatial.objective(b,store,samples,.07,.01,eq,True)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_spatial_extrema_runtime_20261020.py:136: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+experiments\spatial_extrema_runtime_20261020.py:94: in objective
+    long,spatial,angle,speed = spatial_rollout_errors(model,long_batch,equilibrium_delta)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+model = LinearCacheRuntime(
+  (structured): StructuredROM(
+    (storage_gamma): ParameterList()
+    (exchange_kappa): Paramete... containing: [torch.float64 of size  (cuda:0)]
+      (6): Parameter containing: [torch.float64 of size  (cuda:0)]
+  )
+)
+prepared = PreparedRollout(history=tensor([[[-1.7040e-02, -2.3391e-02,  2.5389e-02,  1.8239e-02, -2.1378e-02,
+           1.0485e-... 0.0177]]], device='cuda:0', dtype=torch.float64))], counts=tensor([1., 5., 7.], device='cuda:0', dtype=torch.float64))
+equilibrium_delta = tensor([-0.2000, -0.1444, -0.0889, -0.0333,  0.0222,  0.0778,  0.1333,  0.1889,
+         0.2444,  0.3000], device='cuda:0', dtype=torch.float64)
+initial = None
+
+    def spatial_rollout_errors(model,prepared,equilibrium_delta,initial=None):
+        """Per-event(original point mean, s mean, angle mean, speed mean), one encode."""
+        h,n = prepared.history,prepared.counts
+        if h.ndim != 3 or h.shape[1:] != (11,30) or not len(h):
+            raise ValueError('nonempty11x30 causal histories required')
+        mass,eq = _physical_inputs(h[:,-1],model.mass,equilibrium_delta)
+        if n.ndim != 1 or len(n) != len(h) or n.device != h.device or not bool((torch.isfinite(n)&(n>=1)&(n==n.floor())).all()):
+            raise ValueError('positive integral true counts matching histories required')
+        segments = []; coverage = torch.zeros_like(n); start = 0
+        for ix,truth in prepared.segments:
+            if ix.ndim != 1 or ix.dtype != torch.long or ix.device != h.device or truth.ndim != 3 or truth.shape[1:] != (len(ix),30) or not len(truth) or truth.device != h.device:
+                raise ValueError('invalid genuine segment')
+            expected = torch.nonzero(n>=start+len(truth),as_tuple=False).flatten()
+            if not torch.equal(ix,expected):
+                raise ValueError('segments require exactly ascending genuine active rows')
+>           coverage = coverage.index_add(0,ix,torch.full_like(ix,len(truth)))
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           RuntimeError: index_add_(): self (Double) and source (Long) must have the same scalar type
+
+experiments\spatial_extrema_runtime_20261020.py:68: RuntimeError
+____ test_bad_physical_inputs_and_nonfinite_updates_clear_cache[parameter] ____
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001B81B210BF0>
+fault = 'parameter'
+
+    @pytest.mark.parametrize('fault',['eq','parameter','gradient'])
+    def test_bad_physical_inputs_and_nonfinite_updates_clear_cache(monkeypatch,fault):
+        model=model_fixture('cpu'); _,store,samples,eq=fixtures('cpu'); opt=torch.optim.Adam(model.parameters(),lr=9e-5)
+        hook=None
+        if fault=='eq': eq[0]=float('nan')
+        elif fault=='parameter':
+            with torch.no_grad(): model.coefficients[0]=float('nan')
+        else: hook=model.coefficients.register_hook(lambda g:g*float('nan'))
+        try:
+            with pytest.raises((ValueError,FloatingPointError)):
+>               spatial.one_update(model,opt,store,samples,.07,.01,eq,True)
+
+tests\test_spatial_extrema_runtime_20261020.py:169: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+experiments\spatial_extrema_runtime_20261020.py:126: in one_update
+    value,components = objective(model,store,samples,horizon,force,equilibrium_delta,spatial_weighted)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\spatial_extrema_runtime_20261020.py:94: in objective
+    long,spatial,angle,speed = spatial_rollout_errors(model,long_batch,equilibrium_delta)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+model = LinearCacheRuntime(
+  (structured): StructuredROM(
+    (storage_gamma): ParameterList()
+    (exchange_kappa): Paramete...    (5): Parameter containing: [torch.float64 of size ]
+      (6): Parameter containing: [torch.float64 of size ]
+  )
+)
+prepared = PreparedRollout(history=tensor([[[-1.7040e-02, -2.3391e-02,  2.5389e-02,  1.8239e-02, -2.1378e-02,
+           1.0485e-...0036, -0.0312,
+          -0.0215,  0.0177]]], dtype=torch.float64))], counts=tensor([1., 5., 7.], dtype=torch.float64))
+equilibrium_delta = tensor([-0.2000, -0.1444, -0.0889, -0.0333,  0.0222,  0.0778,  0.1333,  0.1889,
+         0.2444,  0.3000], dtype=torch.float64)
+initial = None
+
+    def spatial_rollout_errors(model,prepared,equilibrium_delta,initial=None):
+        """Per-event(original point mean, s mean, angle mean, speed mean), one encode."""
+        h,n = prepared.history,prepared.counts
+        if h.ndim != 3 or h.shape[1:] != (11,30) or not len(h):
+            raise ValueError('nonempty11x30 causal histories required')
+        mass,eq = _physical_inputs(h[:,-1],model.mass,equilibrium_delta)
+        if n.ndim != 1 or len(n) != len(h) or n.device != h.device or not bool((torch.isfinite(n)&(n>=1)&(n==n.floor())).all()):
+            raise ValueError('positive integral true counts matching histories required')
+        segments = []; coverage = torch.zeros_like(n); start = 0
+        for ix,truth in prepared.segments:
+            if ix.ndim != 1 or ix.dtype != torch.long or ix.device != h.device or truth.ndim != 3 or truth.shape[1:] != (len(ix),30) or not len(truth) or truth.device != h.device:
+                raise ValueError('invalid genuine segment')
+            expected = torch.nonzero(n>=start+len(truth),as_tuple=False).flatten()
+            if not torch.equal(ix,expected):
+                raise ValueError('segments require exactly ascending genuine active rows')
+>           coverage = coverage.index_add(0,ix,torch.full_like(ix,len(truth)))
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           RuntimeError: index_add_(): self (Double) and source (Long) must have the same scalar type
+
+experiments\spatial_extrema_runtime_20261020.py:68: RuntimeError
+____ test_bad_physical_inputs_and_nonfinite_updates_clear_cache[gradient] _____
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001B81B0E3F50>
+fault = 'gradient'
+
+    @pytest.mark.parametrize('fault',['eq','parameter','gradient'])
+    def test_bad_physical_inputs_and_nonfinite_updates_clear_cache(monkeypatch,fault):
+        model=model_fixture('cpu'); _,store,samples,eq=fixtures('cpu'); opt=torch.optim.Adam(model.parameters(),lr=9e-5)
+        hook=None
+        if fault=='eq': eq[0]=float('nan')
+        elif fault=='parameter':
+            with torch.no_grad(): model.coefficients[0]=float('nan')
+        else: hook=model.coefficients.register_hook(lambda g:g*float('nan'))
+        try:
+            with pytest.raises((ValueError,FloatingPointError)):
+>               spatial.one_update(model,opt,store,samples,.07,.01,eq,True)
+
+tests\test_spatial_extrema_runtime_20261020.py:169: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+experiments\spatial_extrema_runtime_20261020.py:126: in one_update
+    value,components = objective(model,store,samples,horizon,force,equilibrium_delta,spatial_weighted)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\spatial_extrema_runtime_20261020.py:94: in objective
+    long,spatial,angle,speed = spatial_rollout_errors(model,long_batch,equilibrium_delta)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+model = LinearCacheRuntime(
+  (structured): StructuredROM(
+    (storage_gamma): ParameterList()
+    (exchange_kappa): Paramete...    (5): Parameter containing: [torch.float64 of size ]
+      (6): Parameter containing: [torch.float64 of size ]
+  )
+)
+prepared = PreparedRollout(history=tensor([[[-1.7040e-02, -2.3391e-02,  2.5389e-02,  1.8239e-02, -2.1378e-02,
+           1.0485e-...0036, -0.0312,
+          -0.0215,  0.0177]]], dtype=torch.float64))], counts=tensor([1., 5., 7.], dtype=torch.float64))
+equilibrium_delta = tensor([-0.2000, -0.1444, -0.0889, -0.0333,  0.0222,  0.0778,  0.1333,  0.1889,
+         0.2444,  0.3000], dtype=torch.float64)
+initial = None
+
+    def spatial_rollout_errors(model,prepared,equilibrium_delta,initial=None):
+        """Per-event(original point mean, s mean, angle mean, speed mean), one encode."""
+        h,n = prepared.history,prepared.counts
+        if h.ndim != 3 or h.shape[1:] != (11,30) or not len(h):
+            raise ValueError('nonempty11x30 causal histories required')
+        mass,eq = _physical_inputs(h[:,-1],model.mass,equilibrium_delta)
+        if n.ndim != 1 or len(n) != len(h) or n.device != h.device or not bool((torch.isfinite(n)&(n>=1)&(n==n.floor())).all()):
+            raise ValueError('positive integral true counts matching histories required')
+        segments = []; coverage = torch.zeros_like(n); start = 0
+        for ix,truth in prepared.segments:
+            if ix.ndim != 1 or ix.dtype != torch.long or ix.device != h.device or truth.ndim != 3 or truth.shape[1:] != (len(ix),30) or not len(truth) or truth.device != h.device:
+                raise ValueError('invalid genuine segment')
+            expected = torch.nonzero(n>=start+len(truth),as_tuple=False).flatten()
+            if not torch.equal(ix,expected):
+                raise ValueError('segments require exactly ascending genuine active rows')
+>           coverage = coverage.index_add(0,ix,torch.full_like(ix,len(truth)))
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           RuntimeError: index_add_(): self (Double) and source (Long) must have the same scalar type
+
+experiments\spatial_extrema_runtime_20261020.py:68: RuntimeError
+=================================== PASSES ====================================
+=========================== short test summary info ===========================
+PASSED tests/test_spatial_extrema_runtime_20261020.py::test_physical_eq_coi_shift_permutation_and_hand_formula[cpu]
+PASSED tests/test_spatial_extrema_runtime_20261020.py::test_physical_eq_coi_shift_permutation_and_hand_formula[cuda]
+PASSED tests/test_spatial_extrema_runtime_20261020.py::test_ties_share_symmetric_subgradient_abs_zero_and_finite_difference
+PASSED tests/test_spatial_extrema_runtime_20261020.py::test_five_seconds_is_capped_by_real_points
+PASSED tests/test_spatial_extrema_runtime_20261020.py::test_bad_physical_inputs_and_nonfinite_updates_clear_cache[eq]
+PASSED tests/test_spatial_extrema_20261020.py::test_five_new_training_roles_and_shared_phase_lock
+PASSED tests/test_spatial_extrema_20261020.py::test_imported_role_exact_path_shared_by_freeze_and_consumer
+PASSED tests/test_spatial_extrema_20261020.py::test_equilibrium_metadata_explicit_ten_common_machine_order
+PASSED tests/test_spatial_extrema_20261020.py::test_cost_output_consumed_by_train_and_full_five_plus_six
+PASSED tests/test_spatial_extrema_20261020.py::test_fixed_schedule_path_hash_not_reallocated
+PASSED tests/test_spatial_extrema_20261020.py::test_freeze_and_evaluate_accept_same_six_roles_without_moving_old_control
+PASSED tests/test_spatial_extrema_20261020.py::test_spatial_same_prediction_diagnostic_is_null_when_15s_unqualified
+PASSED tests/test_spatial_extrema_20261020.py::test_longest_restore_cost_witness_does_not_add_trials
+PASSED tests/test_spatial_extrema_20261020.py::test_actual15_full_pair_join_keeps_unqualified_explanation_null
+PASSED tests/test_spatial_native_envelope_20261020.py::test_exact_prior_and_complete_owned_cleanup
+PASSED tests/test_spatial_native_envelope_20261020.py::test_unresolved_cleanup_blocks_independent_launch
+PASSED tests/test_spatial_native_envelope_20261020.py::test_same_train_endpoint_cannot_run_twice
+PASSED tests/test_spatial_native_envelope_20261020.py::test_same_evaluation_cannot_run_twice
+PASSED tests/test_spatial_native_envelope_20261020.py::test_category_and_nested_recovery_caps
+PASSED tests/test_spatial_native_envelope_20261020.py::test_exclusive_native_claim_preserves_other_owner
+PASSED tests/test_spatial_native_envelope_20261020.py::test_explicit_preparation_cost_counts_against_engineering_and_stage_caps
+PASSED tests/test_spatial_native_envelope_20261020.py::test_production_entry_requires_preparation_cost_binding
+PASSED tests/test_spatial_native_envelope_20261020.py::test_real_ps_3600_boundary_and_all_actual_commands
+PASSED tests/test_spatial_native_envelope_20261020.py::test_imported_old_O_cannot_train_or_enter_prior_receipts
+FAILED tests/test_spatial_extrema_runtime_20261020.py::test_o_original_components_all_gradients_and_adam_exact[cpu]
+FAILED tests/test_spatial_extrema_runtime_20261020.py::test_o_original_components_all_gradients_and_adam_exact[cuda]
+FAILED tests/test_spatial_extrema_runtime_20261020.py::test_s_single_long_manual_per_event_and_auxiliary_match[cpu]
+FAILED tests/test_spatial_extrema_runtime_20261020.py::test_s_single_long_manual_per_event_and_auxiliary_match[cuda]
+FAILED tests/test_spatial_extrema_runtime_20261020.py::test_bad_physical_inputs_and_nonfinite_updates_clear_cache[parameter]
+FAILED tests/test_spatial_extrema_runtime_20261020.py::test_bad_physical_inputs_and_nonfinite_updates_clear_cache[gradient]
+6 failed, 24 passed in 4.32s
