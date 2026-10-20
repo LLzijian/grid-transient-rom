@@ -1,0 +1,149 @@
+{
+  "status": "QA01_COMPLETED_PASSED",
+  "source_commit": "6abbc9d853fdcab3799fda7037184ab2570ef78d",
+  "native_seconds": 44.01498919998994,
+  "worker": {
+    "pid": 58052,
+    "creation_filetime_utc": 134369915518939571,
+    "executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+    "argv": [
+      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P0\\fused_runtime01\\qa_driver.py",
+      "--output",
+      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P0\\fused_runtime01\\qa01",
+      "--max-seconds",
+      "340.0",
+      "--source-commit",
+      "6abbc9d853fdcab3799fda7037184ab2570ef78d",
+      "--binding",
+      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P0\\fused_runtime01\\bindings\\qa01.json"
+    ]
+  },
+  "inner_exit_code": 0,
+  "outer_exit_code": 0,
+  "inner_native_complete": true,
+  "outer_native_complete": true,
+  "source_count": 79,
+  "source_before_after_equal": true,
+  "cleanup_verified": true,
+  "fixture_identity_after": "GONE",
+  "lock_present": false,
+  "passed": 42,
+  "failed": 0,
+  "warnings": 7,
+  "cpu_parameterized_passed": 12,
+  "cuda_parameterized_passed": 12,
+  "passed_test_names": [
+    "tests/test_fused_closure_runtime_20261021.py::test_fields_state_parameter_gradients_external_units[N-cpu]",
+    "tests/test_fused_closure_runtime_20261021.py::test_fields_state_parameter_gradients_external_units[N-cuda]",
+    "tests/test_fused_closure_runtime_20261021.py::test_fields_state_parameter_gradients_external_units[D-cpu]",
+    "tests/test_fused_closure_runtime_20261021.py::test_fields_state_parameter_gradients_external_units[D-cuda]",
+    "tests/test_fused_closure_runtime_20261021.py::test_full_original_objective_components_gradients_and_adam[0.03-N-cpu]",
+    "tests/test_fused_closure_runtime_20261021.py::test_full_original_objective_components_gradients_and_adam[0.03-N-cuda]",
+    "tests/test_fused_closure_runtime_20261021.py::test_full_original_objective_components_gradients_and_adam[0.03-D-cpu]",
+    "tests/test_fused_closure_runtime_20261021.py::test_full_original_objective_components_gradients_and_adam[0.03-D-cuda]",
+    "tests/test_fused_closure_runtime_20261021.py::test_full_original_objective_components_gradients_and_adam[5.0-N-cpu]",
+    "tests/test_fused_closure_runtime_20261021.py::test_full_original_objective_components_gradients_and_adam[5.0-N-cuda]",
+    "tests/test_fused_closure_runtime_20261021.py::test_full_original_objective_components_gradients_and_adam[5.0-D-cpu]",
+    "tests/test_fused_closure_runtime_20261021.py::test_full_original_objective_components_gradients_and_adam[5.0-D-cuda]",
+    "tests/test_fused_closure_runtime_20261021.py::test_zero_coefficients_connected_and_extra_contribution_permutation[cpu]",
+    "tests/test_fused_closure_runtime_20261021.py::test_zero_coefficients_connected_and_extra_contribution_permutation[cuda]",
+    "tests/test_fused_closure_runtime_20261021.py::test_nonempty_adam_rng_restore_next_update_and_export[N-cpu]",
+    "tests/test_fused_closure_runtime_20261021.py::test_nonempty_adam_rng_restore_next_update_and_export[N-cuda]",
+    "tests/test_fused_closure_runtime_20261021.py::test_nonempty_adam_rng_restore_next_update_and_export[D-cpu]",
+    "tests/test_fused_closure_runtime_20261021.py::test_nonempty_adam_rng_restore_next_update_and_export[D-cuda]",
+    "tests/test_fused_closure_runtime_20261021.py::test_cache_freshness_graph_lifecycle_failure_flags_and_order[N]",
+    "tests/test_fused_closure_runtime_20261021.py::test_cache_freshness_graph_lifecycle_failure_flags_and_order[D]",
+    "tests/test_fused_closure_runtime_20261021.py::test_causal_rollout_one_initialization_and_original_auxiliary_positions[cpu]",
+    "tests/test_fused_closure_runtime_20261021.py::test_causal_rollout_one_initialization_and_original_auxiliary_positions[cuda]",
+    "tests/test_fused_closure_runtime_20261021.py::test_nonfinite_update_rejected_and_cache_cleared[parameter-N]",
+    "tests/test_fused_closure_runtime_20261021.py::test_nonfinite_update_rejected_and_cache_cleared[parameter-D]",
+    "tests/test_fused_closure_runtime_20261021.py::test_nonfinite_update_rejected_and_cache_cleared[gradient-N]",
+    "tests/test_fused_closure_runtime_20261021.py::test_nonfinite_update_rejected_and_cache_cleared[gradient-D]",
+    "tests/test_fused_closure_runtime_20261021.py::test_nonfinite_update_rejected_and_cache_cleared[moment-N]",
+    "tests/test_fused_closure_runtime_20261021.py::test_nonfinite_update_rejected_and_cache_cleared[moment-D]",
+    "tests/test_fused_closure_runtime_20261021.py::test_only_a_projected_signed_b_and_adam_moments_unchanged",
+    "tests/test_fused_closure_runtime_20261021.py::test_full_graph_and_bone_relabel_conjugates_jr_and_field[N-cpu]",
+    "tests/test_fused_closure_runtime_20261021.py::test_full_graph_and_bone_relabel_conjugates_jr_and_field[N-cuda]",
+    "tests/test_fused_closure_runtime_20261021.py::test_full_graph_and_bone_relabel_conjugates_jr_and_field[D-cpu]",
+    "tests/test_fused_closure_runtime_20261021.py::test_full_graph_and_bone_relabel_conjugates_jr_and_field[D-cuda]",
+    "tests/test_fused_closure_audit_20261021.py::test_whole72_and_four_repeats_preserve_slow_first",
+    "tests/test_fused_closure_audit_20261021.py::test_each_horizon_gate_and_both_structures_gate",
+    "tests/test_fused_closure_audit_20261021.py::test_native_actual_limits_and_foreign_data_refusal",
+    "tests/test_fused_closure_audit_20261021.py::test_current_stage_budget_and_unclosed_queue",
+    "tests/test_fused_closure_audit_20261021.py::test_QA02_and_benchmark_require_real_authorization_and_QA",
+    "tests/test_fused_closure_audit_20261021.py::test_exclusive_claim_never_overwrites_another_owner",
+    "tests/test_fused_closure_audit_20261021.py::test_actual_prepare_producer_frozen_assets_and_mutation_refusal",
+    "tests/test_fused_closure_audit_20261021.py::test_copied_generator_source_and_identity_rule_are_exact",
+    "tests/test_fused_closure_audit_20261021.py::test_actual_old_N_benchmark_consumer_initialization_and_complete_update"
+  ],
+  "cuda": {
+    "available": true,
+    "torch": "2.13.0+cu130",
+    "cuda_build": "13.0",
+    "device_count": 1,
+    "device_name": "NVIDIA GeForce RTX 4060 Ti"
+  },
+  "driver_result": {
+    "status": "COMPLETED",
+    "exit_code": 0,
+    "seconds": 41.88932570000179,
+    "cuda": {
+      "available": true,
+      "torch": "2.13.0+cu130",
+      "cuda_build": "13.0",
+      "device_count": 1,
+      "device_name": "NVIDIA GeForce RTX 4060 Ti"
+    },
+    "source_commit": "6abbc9d853fdcab3799fda7037184ab2570ef78d"
+  },
+  "manifest_sha256": "0a1f2463693b0a5227c8f39e725a4e8891af0300dfccdfde705d66e346ee9816",
+  "assets": {
+    "qa01_execution.json": {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P0\\fused_runtime01\\native_qa01\\execution.json",
+      "sha256": "022dfcc80e5817af90ce1326eb5c7478a62ccfbf598bb3c12861cbf6840fc2a1",
+      "bytes": 25288
+    },
+    "qa01_inner_receipt.json": {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P0\\fused_runtime01\\native_qa01\\inner\\receipt.json",
+      "sha256": "749d5ed614fe06862892d877b97efaafcd82a12e518bfc1b0fc385144a703947",
+      "bytes": 1911
+    },
+    "qa01_outer_native.json": {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P0\\fused_runtime01\\native_qa01\\outer\\native.json",
+      "sha256": "427d98b09d9e3fd581108e8a5b74fcc55e15dc4a957721fef4aef8af513dd900",
+      "bytes": 1239
+    },
+    "qa01_stdout.log": {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P0\\fused_runtime01\\native_qa01\\inner\\stdout.log",
+      "sha256": "c02272b41b5d128200a577aa035a577cb63ecd2e6f8dda904cfe05fc8a9f81b0",
+      "bytes": 5189
+    },
+    "qa01_stderr.log": {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P0\\fused_runtime01\\native_qa01\\inner\\stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "qa01_worker.json": {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P0\\fused_runtime01\\qa01\\worker.json",
+      "sha256": "dadaa6ab871d386d1636e4e5fb466b14f8c49463b54db39f54db5821eb855a2e",
+      "bytes": 591
+    },
+    "qa01_driver_result.json": {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P0\\fused_runtime01\\qa01\\result.json",
+      "sha256": "81654f0b2d6f8a2396fe3ffabf976e9dc651330204b03fa4051a78dd1fb5925c",
+      "bytes": 270
+    },
+    "qa01_cuda.json": {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P0\\fused_runtime01\\qa01\\cuda.json",
+      "sha256": "ef1ffd4843d17c49fd62918cdf1487bfad8487f4383014fb04a2f7808694666a",
+      "bytes": 148
+    }
+  },
+  "native_children_included_once": true,
+  "static_seconds_before_QA": 57.5517689,
+  "prior_metadata_seconds": 13.5560466,
+  "benchmark_started": false,
+  "scientific_inference_or_training": false,
+  "source_or_fixture_modified": false,
+  "QA02_launched": false
+}
