@@ -11,3 +11,5 @@
 **保留结果与缺口**：E8 QA47通过，唯一cost入口失败无试算/训练/评价，科学分支关闭不修复，runtime23检查经PR22仅三文件合main3e6afbb737a3e072488fd80a1b3ed5e778345cd4并核远端；P8整包41通过/1失败无科学执行，runtime经PR21保留；D估价3644.0138166>3300关闭。P0固定合成负载N/D用时降46.3158%/47.2118%，不替代真实成本。N/Q三seed同源1024共同385数值均合格，Q失稳平方误差降.133%–.183%而稳定共同频率全升/漏检不变，未晋升；manifest a1b411dae2c00867611afe390d934b8cc718d55d3103dd81aba0b6229aa34842、指标4f53916743184e269541f42797a829bbcf938b7a8047b18978147f7d9f107820冻结。S/C/F/P1历史负结果及开发基线保留，无新默认；39维局部谱不等于吸引域，P4同候选L1门槛未满足。
 
 **权限/恢复**：train385=原366+新19=342稳定43失稳；原27排除/新5失败保留，40状态/100ms一次因果GRU/真实区间/单位/数值门槛保持。val/test关闭、TASK4暂停，P1广泛搜索与18×512的6085.6472446不重跑；P3配额用完/旧24val guard失败不重试、不搬模型。E/P8/D源与证据不可改。local HEAD a95101337855ed3fc1f4abfd710982443d5564cb/index SHA82b060840d50257c41df55e15805fa106f29117cac8bf1868a6b83e490e2df93此前核未动；无stage/reset/强推。heartbeat ACTIVE；健康无变化安静，轮次关闭后实际调用Astra继续，不能只写next_action。
+
+**工程候选**：[PR23](https://github.com/LLzijian/grid-transient-rom/pull/23)精确runtime/22项测试/说明已独立审查，head f9a9953c6fc089318b2e6feda05169bdfb7c9b8e，已核三文件但暂不合并；W轮关闭后再核expected head/远端。科学采用与工程合并分开。

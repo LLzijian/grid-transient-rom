@@ -1,0 +1,5 @@
+# W8工程PR候选
+
+独立工程审查支持精确三文件：可选runtime、22项runtime测试及使用/范围说明。已创建并附加PR23 https://github.com/LLzijian/grid-transient-rom/pull/23，base3e6afbb737a3e072488fd80a1b3ed5e778345cd4、预期head f9a9953c6fc089318b2e6feda05169bdfb7c9b8e；已核GitHub实际三文件路径/blob及PR未合并。运行中的W科学比较结束后，root再核最终main/head/三blob并决定工程合并。当前不合并，不晋升模型，不整包集成研究runner/helper。
+
+runtime raw Git blob5ecb343bd27a63f45ec84cf36546a41b1ce208e9，runtime测试1f443da4795918d43e8ca5a9fe04d682a7995c75，说明来自4354dc0e46a651b97e7f36d79c1562a7c5028ce8。源与48项QA/真实cost执行均未变。私有冻结合成资产/真实数据不包含在main；本PR不主张预测收益或完整H稳定性。
