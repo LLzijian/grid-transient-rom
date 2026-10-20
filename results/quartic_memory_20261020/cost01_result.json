@@ -1,0 +1,135 @@
+{
+  "status": "COMPLETED",
+  "source_commit": "31f100d39402ae7d78fd8c32c9525dc974d596f2",
+  "native_seconds": 54.06728690001182,
+  "receipt_path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\quartic_memory01\\native_cost01\\execution.json",
+  "receipt_sha256": "5132cda7bf47de04ff98763e30984f573a7fdcf7be92d27f7c458fd2ee35c0be",
+  "worker": {
+    "pid": 92704,
+    "creation_filetime_utc": 134369671568479117,
+    "executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+    "argv": [
+      "E:\\03-nn_Transfer_Func\\kiki\\experiments\\quartic_memory_20261020.py",
+      "cost",
+      "--output",
+      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\quartic_memory01\\cost01",
+      "--max-seconds",
+      "1740.0",
+      "--source-commit",
+      "31f100d39402ae7d78fd8c32c9525dc974d596f2",
+      "--binding",
+      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\quartic_memory01\\bindings\\cost01.json",
+      "--schedule-path",
+      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\quartic_memory01\\prepare01\\schedule.json"
+    ],
+    "cwd": "E:\\03-nn_Transfer_Func\\kiki"
+  },
+  "outer_exit": 0,
+  "inner_exit": 0,
+  "cleanup_verified": true,
+  "fixture_after": "GONE",
+  "source_file_count": 283,
+  "source_before_equals_after": true,
+  "admission": {
+    "allow1024": true,
+    "allow768": false,
+    "per_model_seconds": {
+      "N": 3176.9155808907817,
+      "Q": 3250.181564097802
+    },
+    "six_models_seconds": 19281.29143496575,
+    "per_evaluation_seconds": 138.2903531248303,
+    "six_evaluations_seconds": 829.7421187489817,
+    "trial_updates_per_variant": 12,
+    "supervision_reserve_before_margin_per_model_seconds": 20.0
+  },
+  "admission_path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\quartic_memory01\\cost01\\admission.json",
+  "admission_sha256": "aa3b3d9704f01c4aa72f6d704a346434c9e5aa5d3861aab0d933741aee6e6fbf",
+  "detail_path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\quartic_memory01\\cost01\\cost.json",
+  "detail_sha256": "f5e0496fc0797b151f9fcbf0677bacc51c294b17e7188386e8318d3966c4b0ae",
+  "zero_update_source_checks": {
+    "comparisons": [
+      {
+        "seed": 6101,
+        "variant": "N",
+        "updates": 0,
+        "source_load_seconds": 1.409301100007724,
+        "shared_terms": 7,
+        "quartic_zero": true
+      },
+      {
+        "seed": 6101,
+        "variant": "Q",
+        "updates": 0,
+        "source_load_seconds": 0.07918310002423823,
+        "shared_terms": 7,
+        "quartic_zero": true
+      },
+      {
+        "seed": 6102,
+        "variant": "N",
+        "updates": 0,
+        "source_load_seconds": 0.06988560000900179,
+        "shared_terms": 7,
+        "quartic_zero": true
+      },
+      {
+        "seed": 6102,
+        "variant": "Q",
+        "updates": 0,
+        "source_load_seconds": 0.07231999997748062,
+        "shared_terms": 7,
+        "quartic_zero": true
+      },
+      {
+        "seed": 6103,
+        "variant": "N",
+        "updates": 0,
+        "source_load_seconds": 0.07365800003753975,
+        "shared_terms": 7,
+        "quartic_zero": true
+      },
+      {
+        "seed": 6103,
+        "variant": "Q",
+        "updates": 0,
+        "source_load_seconds": 0.07602629996836185,
+        "shared_terms": 7,
+        "quartic_zero": true
+      }
+    ],
+    "count": 6,
+    "updates": 0
+  },
+  "trials": {
+    "N": {
+      "actual_updates": 12,
+      "panel_horizon_two_repetitions": true,
+      "longest5s_nonempty_adam_restored_next_update_equal": true,
+      "peak_cuda_bytes": 249191424,
+      "max_actual_future_points": 1490,
+      "qa_checkpoint_path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\quartic_memory01\\cost01\\qa_checkpoint_N\\step000012",
+      "qa_checkpoint_sha256": "fed5879140193357ba507672e729b868dcca08a541a9b6d37f246dfa1270217f"
+    },
+    "Q": {
+      "actual_updates": 12,
+      "panel_horizon_two_repetitions": true,
+      "longest5s_nonempty_adam_restored_next_update_equal": true,
+      "peak_cuda_bytes": 252392448,
+      "max_actual_future_points": 1490,
+      "qa_checkpoint_path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\quartic_memory01\\cost01\\qa_checkpoint_Q\\step000012",
+      "qa_checkpoint_sha256": "a2ac28f73b3d257791af540ad93a3b08796d2fd9b3de8c73e4f0a2ae5253704b"
+    }
+  },
+  "cpu16": {
+    "actual_seconds": 4.425291299994569,
+    "per385_before_margin": 110.63228249986423,
+    "events": 16,
+    "includes": "dual-step15s scoring compression export39D"
+  },
+  "science_checkpoints_created": false,
+  "trial_updates_discarded_as_science_sources": true,
+  "training_started": false,
+  "formal_evaluation_started": false,
+  "root_decision_required_before_training": true
+}
