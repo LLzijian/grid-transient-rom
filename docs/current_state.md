@@ -1,6 +1,6 @@
 # 当前研究状态
 
-任务状态：**RUNNING**，目录E:/03-nn_Transfer_Func/kiki。root已采纳实际gpt-6-astra代理/root/astra6_after_spatial_extrema[原案](../reports/astra6_after_spatial_extrema_20261020.md)及独立方案挑战，登记[正四次记忆储能N/Q协议](../reports/quartic_memory_20261020_protocol.md)。N保留delete7，Q增加aΣq⁴、a>=0，从三冻结O512同源新Adam联合1024；原目标/40状态/100ms接口保持，后512学习率×.3。科学执行须新实现/QA/来源与整档实测成本全部准入，runtime/合成测试及窄runner/native合同已实现、仅静态编译通过，两实施叶已停编；独立实现审查进行中。root已定位helper引用原案路径错误，首次QA前修正实际路径，不生成伪副本；当前无invocation/实际QA/数据/模型作业。静态准备已计26.1505654秒（cap200），尚无科学进程。
+任务状态：**RUNNING**，目录E:/03-nn_Transfer_Func/kiki。root已采纳实际gpt-6-astra代理/root/astra6_after_spatial_extrema[原案](../reports/astra6_after_spatial_extrema_20261020.md)及独立方案挑战，登记[正四次记忆储能N/Q协议](../reports/quartic_memory_20261020_protocol.md)。N保留delete7，Q增加aΣq⁴、a>=0，从三冻结O512同源新Adam联合1024；原目标/40状态/100ms接口保持，后512学习率×.3。科学执行须新实现/QA/来源与整档实测成本全部准入，runtime/合成测试及窄runner/native合同已实现、仅静态编译通过，两实施叶已停编；独立实现审查已封版：确认helper原案路径与端点N/Q表达式角色检查两项启动前阻断。runner叶执行唯一纠错bundle，新增合成拒绝检查，不改旧断言/科学；此后唯一QA01失败即关闭，无QA02或科学重试。当前无invocation/实际QA/数据/模型作业。静态准备已计26.1505654秒（cap200），尚无科学进程。
 
 **本轮结论**：[空间极值监督结论](../reports/spatial_extrema_20261020_conclusion.md)。五新模型均512更新/385覆盖，实际新训练6480.4918511秒；六角色事前冻结后各一次385事件评价，625.4229523秒，原8s及完整真实区间至15s资格分别六次均385，异常0。所有两层退出0/cleanup GONE/源一致，执行叶/root/active_fom_acquire_impl已结束，无科学进程。执行归档分支codex/spatial-extrema-runs-20261020最终538ad78680fec7300239283efcc211b1b868559e。
 
