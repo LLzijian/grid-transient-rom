@@ -1,0 +1,92 @@
+...............................F..........                               [100%]
+================================== FAILURES ===================================
+__________ test_baseline_initial_common_state_and_sampling_contract ___________
+
+tmp_path = WindowsPath('E:/03-nn_Transfer_Func/kiki/private_data/closure_mechanism_20261019/P2/cubic_port_only01/qa01/pytest_tmp/test_baseline_initial_common_s0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001B1982670B0>
+
+    def test_baseline_initial_common_state_and_sampling_contract(tmp_path,monkeypatch):
+        monkeypatch.setattr(r,'source_folder',lambda seed:tmp_path/'source')
+        old=tmp_path/'models/6101_N/checkpoints/step001024/model.json'
+        initial=old.parent.parent/'step000000'
+        initial.mkdir(parents=True);old.parent.mkdir()
+        (tmp_path/'source').mkdir()
+        term={'channel':'node','expression':{'op':'var','name':'q'}}
+        # Seven unique synthetic ASTs; no private source or actual baseline access.
+        terms=[{'channel':'node','expression':{'op':'var','name':str(i)}} for i in range(7)]
+        model={'terms':terms,'coefficients':[.1]*7,'state_dict':{'coefficients':[.1]*7,'mass':[1.]*10},'trainable_parameters':['coefficients']}
+        ident={'synthetic':True}
+        for path,value in [(initial/'model.json',model),(tmp_path/'source/model.json',model),(initial/'checkpoint.json',{'step':0,'trace':[],'identity':ident}),(old.parent/'checkpoint.json',{'identity':ident})]:
+            path.write_text(json.dumps(value),encoding='utf-8')
+        rows=[{'horizon_s':r.horizon_for('P',i),'sampling':{'sample_ids':list(range(12))},'long_counts':[100]*12,'local_counts':[20]*12} for i in range(1,1025)]
+        schedule={'seeds':{'6101':{'rows':rows}}}
+        entries=[{'seed':6101,'variant':'N','model_path':str(old),'checkpoint_path':str(old.parent/'checkpoint.json')}]
+>       assert r.baseline_initial_contract(entries,schedule)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_cubic_port_only_20261021.py:120: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+experiments\cubic_port_only_20261021.py:63: in baseline_initial_contract
+    left={term_key(t):c for t,c in zip(src['terms'],src['coefficients'])}
+          ^^^^^^^^^^^
+experiments\symbolic_closure_rom.py:186: in term_key
+    ast = validate_expression(term["expression"], channel)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\symbolic_closure_rom.py:139: in validate_expression
+    check_vars(ast)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+node = {'op': 'var', 'name': '0'}
+
+    def check_vars(node: Mapping[str, Any]) -> None:
+        if node["op"] == "var":
+            if node["name"] not in _VARIABLES[channel]:
+>               raise ValueError(f"variable {node['name']!r} is not allowed in {channel}")
+E               ValueError: variable '0' is not allowed in node
+
+experiments\symbolic_closure_rom.py:132: ValueError
+=================================== PASSES ====================================
+=========================== short test summary info ===========================
+PASSED tests/test_cubic_port_only_runtime_20261021.py::test_fields_state_parameter_gradients_external_units[P-cpu]
+PASSED tests/test_cubic_port_only_runtime_20261021.py::test_fields_state_parameter_gradients_external_units[P-cuda]
+PASSED tests/test_cubic_port_only_runtime_20261021.py::test_full_original_objective_components_gradients_and_adam[0.03-P-cpu]
+PASSED tests/test_cubic_port_only_runtime_20261021.py::test_full_original_objective_components_gradients_and_adam[0.03-P-cuda]
+PASSED tests/test_cubic_port_only_runtime_20261021.py::test_full_original_objective_components_gradients_and_adam[5.0-P-cpu]
+PASSED tests/test_cubic_port_only_runtime_20261021.py::test_full_original_objective_components_gradients_and_adam[5.0-P-cuda]
+PASSED tests/test_cubic_port_only_runtime_20261021.py::test_zero_coefficients_connected_and_extra_contribution_permutation[cpu]
+PASSED tests/test_cubic_port_only_runtime_20261021.py::test_zero_coefficients_connected_and_extra_contribution_permutation[cuda]
+PASSED tests/test_cubic_port_only_runtime_20261021.py::test_nonempty_adam_rng_restore_next_update_and_export[P-cpu]
+PASSED tests/test_cubic_port_only_runtime_20261021.py::test_nonempty_adam_rng_restore_next_update_and_export[P-cuda]
+PASSED tests/test_cubic_port_only_runtime_20261021.py::test_cache_freshness_graph_lifecycle_failure_flags_and_order[P]
+PASSED tests/test_cubic_port_only_runtime_20261021.py::test_causal_rollout_one_initialization_and_original_auxiliary_positions[cpu]
+PASSED tests/test_cubic_port_only_runtime_20261021.py::test_causal_rollout_one_initialization_and_original_auxiliary_positions[cuda]
+PASSED tests/test_cubic_port_only_runtime_20261021.py::test_nonfinite_update_rejected_and_cache_cleared[parameter-P]
+PASSED tests/test_cubic_port_only_runtime_20261021.py::test_nonfinite_update_rejected_and_cache_cleared[gradient-P]
+PASSED tests/test_cubic_port_only_runtime_20261021.py::test_nonfinite_update_rejected_and_cache_cleared[moment-P]
+PASSED tests/test_cubic_port_only_runtime_20261021.py::test_signed_b_no_projection_and_exact_ast_export_guards
+PASSED tests/test_cubic_port_only_runtime_20261021.py::test_zero_b_embeds_n_initializer_public_raw_gradients_and_energy[cpu]
+PASSED tests/test_cubic_port_only_runtime_20261021.py::test_zero_b_embeds_n_initializer_public_raw_gradients_and_energy[cuda]
+PASSED tests/test_cubic_port_only_runtime_20261021.py::test_full_graph_and_bone_relabel_conjugates_jr_and_field[P-cpu]
+PASSED tests/test_cubic_port_only_runtime_20261021.py::test_full_graph_and_bone_relabel_conjugates_jr_and_field[P-cuda]
+PASSED tests/test_cubic_port_only_20261021.py::test_only_three_new_P1024_roles_and_fixed_phases
+PASSED tests/test_cubic_port_only_20261021.py::test_P_payload_keys_order_dualcopy_and_signed_b
+PASSED tests/test_cubic_port_only_20261021.py::test_time_fraction_linear_crossing_and_exact_zero
+PASSED tests/test_cubic_port_only_20261021.py::test_n1_initial_is_one_interval_finite_fail_and_truncation
+PASSED tests/test_cubic_port_only_20261021.py::test_actual_producer_uses_existing_t0_once_no_rollout
+PASSED tests/test_cubic_port_only_20261021.py::test_513_learning_rate_keeps_nonempty_adam
+PASSED tests/test_cubic_port_only_20261021.py::test_whole_three_cost_not_old_six_budget
+PASSED tests/test_cubic_port_only_20261021.py::test_actual15_full_flags_not_finite_only
+PASSED tests/test_cubic_port_only_20261021.py::test_shared_freeze_consumer_only_new_P_roles
+PASSED tests/test_cubic_port_only_20261021.py::test_nonempty_P_adam_restore_and_next_update
+PASSED tests/test_cubic_port_only_20261021.py::test_scalar_summary_never_silently_uses_finite_subset
+PASSED tests/test_cubic_port_only_20261021.py::test_actual_b_optimizer_group_and_all_parameter_ownership
+PASSED tests/test_cubic_port_only_20261021.py::test_source_binding_and_nontrain_spec_rejected
+PASSED tests/test_cubic_port_only_native_20261021.py::test_actual_caps_and_3600_boundary
+PASSED tests/test_cubic_port_only_native_20261021.py::test_only_P_current_stage_priors_and_single_attempt
+PASSED tests/test_cubic_port_only_native_20261021.py::test_no_Q_role_or_recovery
+PASSED tests/test_cubic_port_only_native_20261021.py::test_static_cost_and_whole_budget
+PASSED tests/test_cubic_port_only_native_20261021.py::test_unreconciled_or_foreign_prior_rejected
+PASSED tests/test_cubic_port_only_native_20261021.py::test_qa_is_one_attempt
+PASSED tests/test_cubic_port_only_native_20261021.py::test_actual_command_consumer_float_caps_entry_and_worker
+FAILED tests/test_cubic_port_only_20261021.py::test_baseline_initial_common_state_and_sampling_contract
+1 failed, 41 passed, 6 warnings in 33.70s
