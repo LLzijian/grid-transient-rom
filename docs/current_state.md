@@ -1,6 +1,6 @@
 # 当前研究状态
 
-任务状态 **RUNNING**；E:/03-nn_Transfer_Func/kiki。无在运行数值作业。两种边记忆结构比较已关闭并归档a232ecec48218f55391cd98c21933697053e11db；实际gpt-6-astra已提出且root采纳删除整个新增边储能后重适配。[当前有限协议](../reports/edge_closure_deletion_20261021_protocol.md)已归档34ef95ffe143476258ef0944d745936ff2cff1c6，新入口唯一QA8项及三个共同合同通过，唯一cost12次丢弃通过；新P1完整2450已登记6b80f9238211b7897ca3466c56d171879a00e467，正在准备专用执行助手，下一动作顺序三组512。无数值作业运行，不重复启动。项目val/test关闭，TASK4暂停，原科学门槛未变，任务L1/L2尚未完成。
+任务状态 **RUNNING**；E:/03-nn_Transfer_Func/kiki。当前train5101实际运行。两种边记忆结构比较已关闭并归档a232ecec48218f55391cd98c21933697053e11db；实际gpt-6-astra已提出且root采纳删除整个新增边储能后重适配。[当前有限协议](../reports/edge_closure_deletion_20261021_protocol.md)已归档34ef95ffe143476258ef0944d745936ff2cff1c6，新入口唯一QA8项及三个共同合同通过，唯一cost12次丢弃通过；新P1完整2450已登记，执行源码91207b155518c0c68f34facd1f8448bd57ec5532；train5101已实际启动，exec25304，workerPID84436/创建FILETIME134370119891049932，上限500。首份正式身份36137字节加trace/储备共56617≤实测65536，生产/消费均核过。下一动作等待结束核回执，再顺序5102/5103及冻结/三次评价，不重复启动。项目val/test关闭，TASK4暂停，原科学门槛未变，任务L1/L2尚未完成。
 
 **刚完成**：[两结构结论](../reports/edge_memory_discrimination_20261021_conclusion.md)。旧正弦三个512端点复用，新余弦三组512完成；统一冻结后各一次16train/16合成val双步长评价均完成、退出0/GONE/源一致。六端点事件平均归一化MSE均≤0.01，train三个种子均选正弦；不代表每事件通过或唯一机制恢复。独立结果挑战已采纳。冻结SHA d1706d146857946a771596adbc3576df5fb2b0014fd6f21ceb8a7aa9064a1c61；实际代码b5b88fb8994c9adee4f552cff56586f03467c568，科学runner SHA93a579962ae6383df292913a0ff6a81d2a31a9c44d40e8dc5115860b214275f8。源检查点和完整恢复文件在private_data/closure_mechanism_20261019/P1/edge_memory_discrimination01，不重跑关闭作业。
 
