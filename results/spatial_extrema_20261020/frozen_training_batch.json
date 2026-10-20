@@ -1,0 +1,69 @@
+{
+  "stage": "spatial_extrema",
+  "source_commit": "77ea266d00a544d0b029b7a8723c8bef6cbe9fa9",
+  "target_stage_step": 512,
+  "extension768_enabled": false,
+  "schedule_path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\temporal_objective01\\prepare01\\schedule.json",
+  "schedule_sha256": "a5ea62c3685ff443c0032e80e0eab951c20c3fa3d56bebdcf0faaa9526b7f4bb",
+  "prepare_path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\spatial_extrema01\\prepare01\\prepare.json",
+  "prepare_sha256": "33ad61f76419abbb0d843f62e915e386081a856e8d081aabf33b8a57427994da",
+  "admission_path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\spatial_extrema01\\cost01\\admission.json",
+  "admission_sha256": "09edbc5e818a0286794f874fe790a29c27eb68fc172f59a5e5e631448d1a3701",
+  "imported_control": {
+    "seed": 6101,
+    "variant": "O",
+    "model_path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\temporal_objective01\\models\\6101_O\\checkpoints\\step000512\\model.json",
+    "model_sha256": "749c8f15cd72d08a253d9381766abec82d04b55c69bc04ccf50ce6fdd2bba39d",
+    "training_path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\temporal_objective01\\models\\6101_O\\checkpoints\\step000512\\training.pt",
+    "training_sha256": "bafcc320fdc8c19395f535d9dc7ab801c7f857677e4f7c3e8ca33a45d50251d7",
+    "checkpoint_path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\temporal_objective01\\models\\6101_O\\checkpoints\\step000512\\checkpoint.json",
+    "checkpoint_sha256": "de35c95ac18ac70538a7176df25d67f077509155c2bc280fd51788c1985bc428",
+    "imported_control": true,
+    "stage_step": 512
+  },
+  "root_decision": "accept complete five-new-training plus imported O six-role512 comparison after actual admission; no retry/recovery/extension",
+  "training_native_max_seconds": 2200,
+  "training_PS_timeout_seconds": 2170,
+  "training_worker_max_seconds": 2100,
+  "five_native_caps_sum_seconds": 11000,
+  "training_all_attempt_total_cap_seconds": 12000,
+  "unused_training1000_not_retry_authority": true,
+  "evaluation_native_max_seconds": 400,
+  "evaluation_PS_timeout_seconds": 370,
+  "evaluation_worker_max_seconds": 340,
+  "six_native_evaluation_caps_sum_seconds": 2400,
+  "evaluation_total_cap_seconds": 4000,
+  "evaluation_only_after_all_six_endpoints_closed_valid_frozen": true,
+  "jobs": [
+    {
+      "seed": 6101,
+      "variant": "S",
+      "name": "train_6101_s",
+      "output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\spatial_extrema01\\models\\6101_S"
+    },
+    {
+      "seed": 6102,
+      "variant": "O",
+      "name": "train_6102_o",
+      "output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\spatial_extrema01\\models\\6102_O"
+    },
+    {
+      "seed": 6102,
+      "variant": "S",
+      "name": "train_6102_s",
+      "output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\spatial_extrema01\\models\\6102_S"
+    },
+    {
+      "seed": 6103,
+      "variant": "O",
+      "name": "train_6103_o",
+      "output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\spatial_extrema01\\models\\6103_O"
+    },
+    {
+      "seed": 6103,
+      "variant": "S",
+      "name": "train_6103_s",
+      "output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\spatial_extrema01\\models\\6103_S"
+    }
+  ]
+}
