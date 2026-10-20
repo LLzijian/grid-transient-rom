@@ -1,0 +1,11 @@
+# 空项P1：实际执行入口
+
+P0已通过并关闭，root登记2450完整P1后新增两份专用助手。独立审查接受其实际P0证明、配对绑定、顺序、费用和清理条件。root在任何P1生成/执行之前补齐old_selection语义键及启动时固定核验，并要求所有先前作业门槛通过才继续；又将重复科学哈希表合并为原immutable_science_files单份。root核最终生成与消费两处都严格等于实际P0的98依赖，全部files另按前后hash检查。最后两行合并由root检查，未冒称独立审查者重新读取。
+
+实际P0代码0a6ef1c5f01abfb28d38b90d18131d3d565a254c与科学文件831785b3edcf67390ef3935af25cc22c5a00e0704255bf67b1c561330a749f41保持。P1新来源提交包含新助手，科学文件须逐字与实际QA/cost一致，不能单凭提交号认定相同。admission保存实际cost结果和源/测试SHA；metadata_cost保守prep40/freeze50/closing10，在100内只计一次。
+
+BASE private_data/closure_mechanism_20261019/P1/edge_closure_deletion01，工作目录E:/03-nn_Transfer_Func/kiki。标准Python运行BASE/make_invocation.py train|freeze|evaluate --source-commit完整SHA [--seed5101/5102/5103]生成但不启动；原始实际command/prior/binding/generation归档后，标准Python运行BASE/launch_stage.py --phase对应阶段 --source-commit同SHA [--seed]启动一次。子GPU入口/450或40或35秒、外层480或45、原生500或50固定。真实GONE和锁释放后才进入下一项，无重复/恢复/重试。
+
+旧两式train表固定公共副本d1706d146857946a771596adbc3576df5fb2b0014fd6f21ceb8a7aa9064a1c61，三份旧cos模型及优化器文件另全绑定；旧sin在原allowlist中。P1生成与启动都按最终binding验证正式身份JSON+512*32+4096≤65536，该证据在实际首个命令中记录，尚未生成时不冒称已通过。三新512全部完成后统一冻结及train选择归档，再恰三次新空项合成val。原项目val/test保持关闭，默认模型和P4资格不变。
+
+本助手叶任务原生5.9924656秒含一次纯静态定位错误，计metadata准备40；独立P1入口审查3.5901976秒计support700，无数值作业重跑。最后助手SHA及容量证明随实际命令文件归档。
