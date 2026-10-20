@@ -1,0 +1,30 @@
+{
+  "scope": "runtime leaf static preparation only; no model/data/test execution",
+  "cap_seconds": 80,
+  "commands": [
+    {
+      "command": "PowerShell Get-Content AGENTS/protocol/Astra/review/make_optimizer",
+      "actual_tool_wall_seconds": 1.9532538,
+      "exit_code": 0
+    },
+    {
+      "command": "stdlib source text construction from linear_cache runtime",
+      "actual_tool_wall_seconds": 2.1303552,
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "C:\\Users\\LLLzijian\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-c",
+        "import ast,hashlib,pathlib; paths=['experiments/quartic_memory_runtime_20261020.py','tests/test_quartic_memory_runtime_20261020.py']; [(ast.parse(pathlib.Path(p).read_bytes()),print(p,hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest())) for p in paths]"
+      ],
+      "native_child_seconds": 0.09784980001859367,
+      "exit_code": 0,
+      "stdout": "experiments/quartic_memory_runtime_20261020.py 240390fd02dee3617315430f65d704e2c30b0fe80e1c71c472a07932728b811d\ntests/test_quartic_memory_runtime_20261020.py cbfe676cf7ab09e31c8e2f293e74cb654d26b2ec07a02901b52ee690d2c6f30c\n",
+      "stderr": ""
+    }
+  ],
+  "accounted_seconds": 4.181458800018594,
+  "driver_elapsed_seconds": 0.09821030002785847,
+  "accounting": "child measured once; do not add child again when root charges outer exec envelope; first two tool wall durations preserved"
+}
