@@ -1,0 +1,99 @@
+{
+  "status": "ROOT_ADMITTED_FIXED_SIX1024",
+  "source_commit": "31f100d39402ae7d78fd8c32c9525dc974d596f2",
+  "schedule_path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\quartic_memory01\\prepare01\\schedule.json",
+  "schedule_sha256": "07fd838bd2a9d136db9ce0b789562c26c93098cf5b6bba40af8f67d674bf2b0c",
+  "admission_path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\quartic_memory01\\cost01\\admission.json",
+  "admission_sha256": "aa3b3d9704f01c4aa72f6d704a346434c9e5aa5d3861aab0d933741aee6e6fbf",
+  "order": [
+    "6101_N",
+    "6101_Q",
+    "6102_N",
+    "6102_Q",
+    "6103_N",
+    "6103_Q"
+  ],
+  "roles": [
+    {
+      "seed": 6101,
+      "variant": "N",
+      "target_step": 1024,
+      "output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\quartic_memory01\\models\\6101_N",
+      "max_seconds": 3500,
+      "ps_timeout_seconds": 3470,
+      "worker_seconds": 3400
+    },
+    {
+      "seed": 6101,
+      "variant": "Q",
+      "target_step": 1024,
+      "output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\quartic_memory01\\models\\6101_Q",
+      "max_seconds": 3500,
+      "ps_timeout_seconds": 3470,
+      "worker_seconds": 3400
+    },
+    {
+      "seed": 6102,
+      "variant": "N",
+      "target_step": 1024,
+      "output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\quartic_memory01\\models\\6102_N",
+      "max_seconds": 3500,
+      "ps_timeout_seconds": 3470,
+      "worker_seconds": 3400
+    },
+    {
+      "seed": 6102,
+      "variant": "Q",
+      "target_step": 1024,
+      "output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\quartic_memory01\\models\\6102_Q",
+      "max_seconds": 3500,
+      "ps_timeout_seconds": 3470,
+      "worker_seconds": 3400
+    },
+    {
+      "seed": 6103,
+      "variant": "N",
+      "target_step": 1024,
+      "output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\quartic_memory01\\models\\6103_N",
+      "max_seconds": 3500,
+      "ps_timeout_seconds": 3470,
+      "worker_seconds": 3400
+    },
+    {
+      "seed": 6103,
+      "variant": "Q",
+      "target_step": 1024,
+      "output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\quartic_memory01\\models\\6103_Q",
+      "max_seconds": 3500,
+      "ps_timeout_seconds": 3470,
+      "worker_seconds": 3400
+    }
+  ],
+  "rates_first512": {
+    "skeleton": 0.0009,
+    "closure": 9e-05,
+    "encoder": 2.7e-05
+  },
+  "rates_multiplier_from_step513": 0.3,
+  "adam_reset_at513": false,
+  "fresh_adam_from_each_O512": true,
+  "shared_parameter_update_evidence": "differences of preserved stage0 and each32 safe checkpoint state_dict/coefficients by identity, no new inference",
+  "all_six_freeze_before_any_evaluation": true,
+  "evaluation_order": [
+    "6101_N",
+    "6101_Q",
+    "6102_N",
+    "6102_Q",
+    "6103_N",
+    "6103_Q"
+  ],
+  "evaluation_once_per_endpoint": true,
+  "retry": false,
+  "external_recovery": false,
+  "extend_or_reduce_steps": false,
+  "replace_seed_or_omit_control": false,
+  "scientific_adoption": "NONE",
+  "test_read": false,
+  "val_read": false,
+  "TASK4": "PAUSED"
+}
