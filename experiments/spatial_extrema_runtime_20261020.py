@@ -65,7 +65,7 @@ def spatial_rollout_errors(model,prepared,equilibrium_delta,initial=None):
         expected = torch.nonzero(n>=start+len(truth),as_tuple=False).flatten()
         if not torch.equal(ix,expected):
             raise ValueError('segments require exactly ascending genuine active rows')
-        coverage = coverage.index_add(0,ix,torch.full_like(ix,len(truth)))
+        coverage = coverage.index_add(0,ix,torch.full_like(ix,len(truth),dtype=coverage.dtype))
         segments.append((ix,truth,eq if eq.ndim==1 else eq.index_select(0,ix)))
         start += len(truth)
     if not segments or not torch.equal(coverage,n):
