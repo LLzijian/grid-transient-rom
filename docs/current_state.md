@@ -1,17 +1,13 @@
 # 当前研究状态
 
-任务状态：**RUNNING**，E:/03-nn_Transfer_Func/kiki。当前W8研究检验转速幅值相关耗散：H=N7，新增b_W*(omega/input_scale_omega)^3动量端口、b_W<=0。实际gpt-6-astra原案fe364ab44fae2b0a925f192528e730c33b91ca31，root[有限协议](../reports/frequency_dissipation_20261021_protocol.md)/独立挑战d6cc1b0d9736c0e4baf47fab46b7eeb481efb655；[静态审查](../reports/frequency_dissipation_20261021_implementation_review.md)。源399e50d73531dd79a4613cf7e235fc4db061f6ee冻结。
+任务状态：**RUNNING**，E:/03-nn_Transfer_Func/kiki。W8完整关闭：[结论](../reports/frequency_dissipation_20261021_conclusion.md)/[独立挑战](../reports/frequency_dissipation_20261021_result_review.md)。实际Astra方案fe364ab44fae2b0a925f192528e730c33b91ca31，科学source399e50d73531dd79a4613cf7e235fc4db061f6ee冻结。三W各1024/33检查点、各一次完整385评价已结束，两层0/GONE/无锁，无活作业，不重跑。
 
-**实际作业**：三W各完成1024并统一冻结manifest97e8a957dc9dff098368b69234d3976ffad4bc6a408ebe550541c3d46dc1d81c；6101/6102/6103各一次完整385评价完成，native88.4773125/84.0070781/100.4244789秒，375/377/379来源前后相同、两层0/GONE/无锁、8s数值资格各385/385。无当前活作业；下一实际动作是受监督提取三组与冻结N/Q的配对指标，随后按原门槛关闭。BASE private_data/closure_mechanism_20261019/P2/frequency_dissipation01。不重试/不重训/不重评N/Q。
+**结果/采用**：共同385中342稳定5s风险降10.36%–11.21%，共同频率RMSE升2.29%–2.57%；43失稳真实区间平方误差降1.39%–1.69%，漏检N19/18/19→W19/19/19，误报各减1。新19中的17稳定风险均升。原门槛FAIL，不采用/不默认/不确认/P4；分类未平稳与数值未决分开，数值资格均通过。高clip与有限1024不证明家族不可能；端口耗散/39维局部稳定不是吸引域。N/Q冻结不重训/重评；E/P8/D/S/C/F及P1历史关闭不修复。
 
-**已通过的准入**：[QA01](../results/frequency_dissipation_20261021/qa01_summary.json)48通过/0失败（runtime22/runner16/native10），native61.7325231秒、361来源一致、两层0/GONE，干净-m/未设PYTHONPATH完成六组合成baseline入口；QA02禁止。[唯一真实cost](../results/frequency_dissipation_20261021/cost01_summary.json)native42.70245秒、363来源一致/两层0/GONE，真实六N/Q初态/RNG与三O512同源零更新已核，12次试算/非空Adam恢复状态丢弃。含25%余量估价2135.4053223820665/模型<=2140、三模型6406.2159671462<=6420、评价99.08035624903277<=180。只准入完整执行，不是科学收益或模型采用。
+**工程**：[PR23](https://github.com/LLzijian/grid-transient-rom/pull/23)精确runtime/22项测试/说明已独立通过，head f9a9953c6fc089318b2e6feda05169bdfb7c9b8e，待本次关闭归档后核expectedhead合并；不含模型/runner/default。此前main3e6afbb737a3e072488fd80a1b3ed5e778345cd4已核。local HEAD a95101337855ed3fc1f4abfd710982443d5564cb/index SHA82b060840d50257c41df55e15805fa106f29117cac8bf1868a6b83e490e2df93本次核未动，无stage/reset/强推。
 
-**预算**：父上限259200；W登记时累计128623.05456179997（含support800，planning600已含）/余130576.94543820003，尚未执行总帽另留；W总9500，P2未分配10.309738700118，不跨类别。静态截至本记录前64.3023292/180、完成native QA+cost+6101/6102共3026.523364099965、元数据截至本记录前70.69788399999999/300分别累计，当前训练2200帽为预留而非已完成实耗；receipt返回后据实累计。支持/归档/审查hold800含已扣规划600、旧900与P8尾9.9928666保留，子层/pytest/试算内部计时不重计。P0 8122.771089/P1 3982.090377/P3 75986.9220123/P4 21600/repair12174.8522211不互借。[账本](../results/closure_mechanism_20261019/cost_snapshot.json)。
+**预算**：父259200累计133672.46971589996，余125527.53028410004；W帽9500，实耗/保留5849.4151540999865，未花3650.5848459000135取消，P2余3660.8945846001316。native科学4752.6104818、静态79.1532436、metadata实测167.6514287+冻结未知尾hold40+关闭hold10、support800含planning600。JSON失败/修复计入，不重评；旧900/P8尾hold保留。P0 8122.771089/P1 3982.090377/P3 75986.9220123/P4 21600/repair12174.8522211不互借。[账本](../results/closure_mechanism_20261019/cost_snapshot.json)。
 
-**保留结果与缺口**：E8 QA47通过，唯一cost入口失败无试算/训练/评价，科学分支关闭不修复，runtime23检查经PR22仅三文件合main3e6afbb737a3e072488fd80a1b3ed5e778345cd4并核远端；P8整包41通过/1失败无科学执行，runtime经PR21保留；D估价3644.0138166>3300关闭。P0固定合成负载N/D用时降46.3158%/47.2118%，不替代真实成本。N/Q三seed同源1024共同385数值均合格，Q失稳平方误差降.133%–.183%而稳定共同频率全升/漏检不变，未晋升；manifest a1b411dae2c00867611afe390d934b8cc718d55d3103dd81aba0b6229aa34842、指标4f53916743184e269541f42797a829bbcf938b7a8047b18978147f7d9f107820冻结。S/C/F/P1历史负结果及开发基线保留，无新默认；39维局部谱不等于吸引域，P4同候选L1门槛未满足。
+**下一动作**：完成证据归档及PR23三文件合并/远端核验，再从P2余款登记planning600实际调用新gpt-6-astra，核所有合法分支并执行有限下一阶段，当前尚无下一研究PID。W符号/阶次/尺度/邻式扫描不立即开放。BASE private_data/closure_mechanism_20261019/P2/frequency_dissipation01保留全部检查点、75份预测及失败记录；完整指标6295179字节SHA7a7283e3fd20dcbee061b5d7ecaa887296ea932d230d8c73c5ae9ae8cba38cb4。
 
-**权限/恢复**：train385=原366+新19=342稳定43失稳；原27排除/新5失败保留，40状态/100ms一次因果GRU/真实区间/单位/数值门槛保持。val/test关闭、TASK4暂停，P1广泛搜索与18×512的6085.6472446不重跑；P3配额用完/旧24val guard失败不重试、不搬模型。E/P8/D源与证据不可改。local HEAD a95101337855ed3fc1f4abfd710982443d5564cb/index SHA82b060840d50257c41df55e15805fa106f29117cac8bf1868a6b83e490e2df93此前核未动；无stage/reset/强推。heartbeat ACTIVE；健康无变化安静，轮次关闭后实际调用Astra继续，不能只写next_action。
-
-**工程候选**：[PR23](https://github.com/LLzijian/grid-transient-rom/pull/23)精确runtime/22项测试/说明已独立审查，head f9a9953c6fc089318b2e6feda05169bdfb7c9b8e，已核三文件但暂不合并；W轮关闭后再核expected head/远端。科学采用与工程合并分开。
-
-元数据冻结已完成并核全部模型身份；工具session未保留导致完整计时尾段未精确核对，metadata300内另hold40，不重跑/不把内部子阶段8.3289重复加费，细节见execution_setup。
+**权限**：train385=原366+新19=342稳定43失稳，原27排除/新5失败保留；40状态/100ms一次因果GRU/真实区间/单位/数值门槛不变。val/test关闭、TASK4暂停，18×512已6085.6472446不重跑，P1广搜关闭；P3配额用完/旧24val guard失败不重试、不搬模型；P4同候选L1门槛未满足。父L1/L2目标未完成，heartbeat ACTIVE30min。
