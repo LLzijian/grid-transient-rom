@@ -24,7 +24,22 @@
       "stderr": ""
     }
   ],
-  "accounted_seconds": 4.181458800018594,
+  "accounted_seconds": 4.274914599990301,
   "driver_elapsed_seconds": 0.09821030002785847,
-  "accounting": "child measured once; do not add child again when root charges outer exec envelope; first two tool wall durations preserved"
+  "accounting": "child measured once; do not add child again when root charges outer exec envelope; first two tool wall durations preserved",
+  "static_addenda": [
+    {
+      "purpose": "pre-QA connected scalar coefficient graph cache",
+      "argv": [
+        "C:\\Users\\LLLzijian\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-c",
+        "import ast,hashlib,pathlib; paths=['experiments/quartic_memory_runtime_20261020.py','tests/test_quartic_memory_runtime_20261020.py']; [(ast.parse(pathlib.Path(p).read_bytes()),print(p,hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest())) for p in paths]"
+      ],
+      "native_child_seconds": 0.09345579997170717,
+      "exit_code": 0,
+      "stdout": "experiments/quartic_memory_runtime_20261020.py 53af6d143c66ba86b1f0cb503e5a791bf604218acf8d388e7ed098fb583c1a68\ntests/test_quartic_memory_runtime_20261020.py b402eed5ae23bbc652a1d6d20b9f72047ec8da8cb52ae6590ceba32f5c31dfea\n",
+      "stderr": "",
+      "accounting": "root already charged original outer6.1871514; add only this command outer envelope, not child separately"
+    }
+  ]
 }

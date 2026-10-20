@@ -163,8 +163,15 @@ def test_runtime_activation_cache_and_zero_source_immutable():
     qrt.enable_runtime(q);assert ids==[id(p) for p in q.parameters()]
     for k,v in src.state_dict().items():assert torch.equal(v,state[k])
     q.begin_graph_cache()
+    cached=q._quartic_cache['quartic_coefficient']
+    assert cached.requires_grad and cached.grad_fn is not None
+    assert cached.item()==0.
     with pytest.raises(RuntimeError):qrt.project_quartic(q,make_optimizer(q))
     q.end_graph_cache();q.load_state_dict(q.state_dict());assert q._quartic_cache is None
+    set_a(q,.12);q.begin_graph_cache()
+    assert q._quartic_cache['quartic_coefficient'] is not cached
+    assert q._quartic_cache['quartic_coefficient'].item()==pytest.approx(.12)
+    q.end_graph_cache()
 
 
 @pytest.mark.parametrize('fault',['parameter','gradient','moment'])

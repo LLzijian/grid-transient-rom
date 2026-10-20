@@ -72,6 +72,8 @@ class QuarticMemoryRuntime(TrainingClosureROM):
         products["port_Q"] = (coefficients["port_q"] * identity +
             coefficients["port_nq"] * (self.neighbor_A.T - identity))
         products['quartic_index'] = quartic_index(self)
+        index = products['quartic_index']
+        products['quartic_coefficient'] = None if index is None else self.coefficients[index]
         return products
 
 
@@ -125,10 +127,10 @@ class QuarticMemoryRuntime(TrainingClosureROM):
             gd = gd + (-(q @ absD.T) * sin * edge_cosine) @ self.base_D
             gq = gq + (c * edge_cosine) @ absD
 
-        index = products['quartic_index']
-        if index is not None:
+        coefficient = products['quartic_coefficient']
+        if coefficient is not None:
             # Never branch on a==0: its derivative must remain connected.
-            gq = gq + 4 * self.coefficients[index] * q.pow(3)
+            gq = gq + 4 * coefficient * q.pow(3)
 
         pv = (w * products["port_w"] + p * products["port_p"] +
               q @ products["port_Q"] + c @ products["port_ec"])
