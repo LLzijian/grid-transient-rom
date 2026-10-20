@@ -1,6 +1,6 @@
 # 当前研究状态
 
-任务状态：**RUNNING**，目录E:/03-nn_Transfer_Func/kiki。实际gpt-6-astra代理/root/astra6_after_quadratic_memory已返回[原案](../reports/astra6_after_quadratic_memory_20261020.md)，root采纳完整O/F/T三组时间目标研究，[正式协议](../reports/temporal_objective_20261020_protocol.md)、[独立方案挑战](../reports/temporal_objective_20261020_plan_review.md)。同seed从前轮B512固定delete7结构构造，三seed×512；O1/2/5s、F1/2/真实至15s、T仅第三相位0.5时间均值+0.5末20%均值。当前实现准备，尚无科学进程，先实际QA/最长时域成本准入，禁止直接排训练或重复旧队列。
+任务状态：**RUNNING**，目录E:/03-nn_Transfer_Func/kiki。实际gpt-6-astra代理/root/astra6_after_quadratic_memory已返回[原案](../reports/astra6_after_quadratic_memory_20261020.md)，root采纳完整O/F/T三组时间目标研究，[正式协议](../reports/temporal_objective_20261020_protocol.md)、[独立方案挑战](../reports/temporal_objective_20261020_plan_review.md)。同seed从前轮B512固定delete7结构构造，三seed×512；O1/2/5s、F1/2/真实至15s、T仅第三相位0.5时间均值+0.5末20%均值。当前两名有限实现代理实际工作：/root/causal_recovery_impl负责时间加权runtime和测试，/root/active_fom_acquire_impl负责专用runner/测试/新BASE原生helper；禁止递归、编辑范围分离。尚无科学进程，先实际QA/最长时域成本准入，禁止直接排训练或重复旧队列。
 
 **新轮费用**：P2总42000含已计1200规划，工程4200/训练30000/评价4000/支持3800；支持仅新增2600，父当前累计90499.8553190/余168700.1446810，轮内未执行38200、父未分配130500.1446810/P2未分配7719.0510732。最低完整九组；成本不容纳就不启动，不自动六组。来源BASE前轮quadratic_memory_edge01，输出新BASE=private_data/closure_mechanism_20261019/P2/temporal_objective01。原损失/科学门槛历史不改，无新val/test/FOM/768/结构搜索。
 
