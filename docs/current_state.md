@@ -1,6 +1,6 @@
 # 当前研究状态
 
-任务状态：**RUNNING**，目录E:/03-nn_Transfer_Func/kiki。空间极值监督这一有限轮次已完整关闭，父研究继续。已核实际无相关Python作业、local HEAD/index及远端main保持。已实际调用gpt-6-astra high只读代理/root/astra6_after_spatial_extrema，原始方案待返回、root未采纳；规划支持hold1200秒已计，原生科学试验未登记/启动，禁止重复旧队列。
+任务状态：**RUNNING**，目录E:/03-nn_Transfer_Func/kiki。空间极值监督这一有限轮次已完整关闭，父研究继续。已核实际无相关Python作业、local HEAD/index及远端main保持。已实际调用gpt-6-astra high只读代理/root/astra6_after_spatial_extrema，原始正四次记忆储能N/Q方案已返回reports/astra6_after_spatial_extrema_20261020.md；独立方案挑战进行中、root未登记科学执行；规划支持hold1200秒已计，原生科学试验未登记/启动，禁止重复旧队列。
 
 **本轮结论**：[空间极值监督结论](../reports/spatial_extrema_20261020_conclusion.md)。五新模型均512更新/385覆盖，实际新训练6480.4918511秒；六角色事前冻结后各一次385事件评价，625.4229523秒，原8s及完整真实区间至15s资格分别六次均385，异常0。所有两层退出0/cleanup GONE/源一致，执行叶/root/active_fom_acquire_impl已结束，无科学进程。执行归档分支codex/spatial-extrema-runs-20261020最终538ad78680fec7300239283efcc211b1b868559e。
 
