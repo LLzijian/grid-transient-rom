@@ -1,0 +1,188 @@
+{
+  "status": "CLOSED_ROOT_DECISION_AFTER_INDEPENDENT_CHALLENGE",
+  "metrics_sha256": "6fab99e03c8f02bcf800036986fb323ae8c39c5a63c0a438aab2be139d3815ba",
+  "manifest_sha256": "b8c525f9b87709528c74f1b64724aace4b653e4a6948765da8471599cc1d0af4",
+  "cohorts": {
+    "common385": {
+      "stable": 342,
+      "unstable": 43
+    },
+    "original366": "source identity",
+    "new19": "already used for train"
+  },
+  "table": [
+    {
+      "seed": 6101,
+      "variant": "O",
+      "stable5_risk": 1.2971756549954379,
+      "stable5_common_frequency_rmse_rad_s": 0.28878635819082904,
+      "unstable_actual15_mean_event_point_error": 1.5893806358702522,
+      "unstable_actual15_common_frequency_rmse_rad_s": 1.1707597389910476,
+      "unstable_actual15_Pm_rmse_MW": 42.74335337301417,
+      "actual15_missed": 27,
+      "actual15_false_los": 1,
+      "actual15_undetermined": 53,
+      "8s_missed": 4,
+      "8s_false_los": 1,
+      "8s_undetermined": 32,
+      "spatial_unstable_combined": 0.8291951657781782
+    },
+    {
+      "seed": 6101,
+      "variant": "S",
+      "stable5_risk": 1.2521539584641017,
+      "stable5_common_frequency_rmse_rad_s": 0.28667033455671675,
+      "unstable_actual15_mean_event_point_error": 1.7201721376504604,
+      "unstable_actual15_common_frequency_rmse_rad_s": 1.180206181512836,
+      "unstable_actual15_Pm_rmse_MW": 45.55189697940337,
+      "actual15_missed": 24,
+      "actual15_false_los": 2,
+      "actual15_undetermined": 40,
+      "8s_missed": 4,
+      "8s_false_los": 2,
+      "8s_undetermined": 24,
+      "spatial_unstable_combined": 0.7285311292594195
+    },
+    {
+      "seed": 6102,
+      "variant": "O",
+      "stable5_risk": 1.3166745941081612,
+      "stable5_common_frequency_rmse_rad_s": 0.29953336551084403,
+      "unstable_actual15_mean_event_point_error": 1.5419865925325484,
+      "unstable_actual15_common_frequency_rmse_rad_s": 1.1634187231126498,
+      "unstable_actual15_Pm_rmse_MW": 41.68731059613681,
+      "actual15_missed": 23,
+      "actual15_false_los": 1,
+      "actual15_undetermined": 50,
+      "8s_missed": 4,
+      "8s_false_los": 1,
+      "8s_undetermined": 31,
+      "spatial_unstable_combined": 0.8113158067268963
+    },
+    {
+      "seed": 6102,
+      "variant": "S",
+      "stable5_risk": 1.2469433832233336,
+      "stable5_common_frequency_rmse_rad_s": 0.2919652101144801,
+      "unstable_actual15_mean_event_point_error": 1.6922021308224522,
+      "unstable_actual15_common_frequency_rmse_rad_s": 1.1727963338453762,
+      "unstable_actual15_Pm_rmse_MW": 45.00588302513652,
+      "actual15_missed": 21,
+      "actual15_false_los": 1,
+      "actual15_undetermined": 41,
+      "8s_missed": 4,
+      "8s_false_los": 1,
+      "8s_undetermined": 25,
+      "spatial_unstable_combined": 0.7297718545632607
+    },
+    {
+      "seed": 6103,
+      "variant": "O",
+      "stable5_risk": 1.3200095838497823,
+      "stable5_common_frequency_rmse_rad_s": 0.29730804858799553,
+      "unstable_actual15_mean_event_point_error": 1.5560551135588643,
+      "unstable_actual15_common_frequency_rmse_rad_s": 1.172010480642428,
+      "unstable_actual15_Pm_rmse_MW": 41.9951667590657,
+      "actual15_missed": 26,
+      "actual15_false_los": 1,
+      "actual15_undetermined": 54,
+      "8s_missed": 4,
+      "8s_false_los": 1,
+      "8s_undetermined": 34,
+      "spatial_unstable_combined": 0.8484856230785094
+    },
+    {
+      "seed": 6103,
+      "variant": "S",
+      "stable5_risk": 1.2644756087798756,
+      "stable5_common_frequency_rmse_rad_s": 0.291302528157843,
+      "unstable_actual15_mean_event_point_error": 1.6716650066699275,
+      "unstable_actual15_common_frequency_rmse_rad_s": 1.179850817535694,
+      "unstable_actual15_Pm_rmse_MW": 44.75753130679091,
+      "actual15_missed": 23,
+      "actual15_false_los": 1,
+      "actual15_undetermined": 48,
+      "8s_missed": 4,
+      "8s_false_los": 1,
+      "8s_undetermined": 31,
+      "spatial_unstable_combined": 0.7361002760372923
+    }
+  ],
+  "per_seed_gates": {
+    "6101": {
+      "checks": {
+        "stable5_risk_nonincrease": true,
+        "unstable_point_nonincrease": false,
+        "unstable_frequency_nonincrease": false,
+        "unstable_power_nonincrease": false,
+        "actual15_missed_nonincrease": true,
+        "actual15_false_los_nonincrease": false,
+        "8s_missed_nonincrease": true,
+        "8s_false_los_nonincrease": false,
+        "stable5_common_frequency_nonincrease": true
+      },
+      "all_nonincrease_gates_pass": false,
+      "strict_actual15_miss_reduction": true,
+      "relative_changes_percent": {
+        "stable5_risk": -3.4707478788980572,
+        "unstable_point": 8.229086150190469,
+        "unstable_spatial_combined": -12.13996905352048
+      }
+    },
+    "6102": {
+      "checks": {
+        "stable5_risk_nonincrease": true,
+        "unstable_point_nonincrease": false,
+        "unstable_frequency_nonincrease": false,
+        "unstable_power_nonincrease": false,
+        "actual15_missed_nonincrease": true,
+        "actual15_false_los_nonincrease": true,
+        "8s_missed_nonincrease": true,
+        "8s_false_los_nonincrease": true,
+        "stable5_common_frequency_nonincrease": true
+      },
+      "all_nonincrease_gates_pass": false,
+      "strict_actual15_miss_reduction": true,
+      "relative_changes_percent": {
+        "stable5_risk": -5.296009446590671,
+        "unstable_point": 9.741689001536047,
+        "unstable_spatial_combined": -10.050827493748661
+      }
+    },
+    "6103": {
+      "checks": {
+        "stable5_risk_nonincrease": true,
+        "unstable_point_nonincrease": false,
+        "unstable_frequency_nonincrease": false,
+        "unstable_power_nonincrease": false,
+        "actual15_missed_nonincrease": true,
+        "actual15_false_los_nonincrease": true,
+        "8s_missed_nonincrease": true,
+        "8s_false_los_nonincrease": true,
+        "stable5_common_frequency_nonincrease": true
+      },
+      "all_nonincrease_gates_pass": false,
+      "strict_actual15_miss_reduction": true,
+      "relative_changes_percent": {
+        "stable5_risk": -4.20708877794227,
+        "unstable_point": 7.429678557249236,
+        "unstable_spatial_combined": -13.245403809372284
+      }
+    }
+  },
+  "strict_miss_reduction_seed_count": 3,
+  "candidate_gate_pass": false,
+  "scientific_adoption": "NONE",
+  "default_change": false,
+  "P4_opened": false,
+  "local_all_six_39d_hurwitz": true,
+  "nonlinear_region_certificate": false,
+  "numeric_all_six": {
+    "8s_qualified_per_role": 385,
+    "actual15_qualified_per_role": 385,
+    "inference_exceptions": 0
+  },
+  "root_interpretation": "Stable risk and actual15 miss-count gains; original unstable three errors worsen in all seeds and seed6101 false_los rises; retain evidence and accepted PR17 tool, no model adoption.",
+  "review": "reports/spatial_extrema_20261020_final_review.md",
+  "root_adoption": "Accept independent challenge; close fixed512 S candidate path; preserve gains, harms and useful engineering."
+}
