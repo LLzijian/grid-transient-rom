@@ -1,0 +1,39 @@
+{
+  "execution_status": "UNRESOLVED_EXECUTION",
+  "native_seconds": 33.80234230001224,
+  "outer_exit": 1,
+  "inner_exit": 1,
+  "cleanup_verified": true,
+  "fixture_after": "GONE",
+  "worker": {
+    "pid": 32096,
+    "creation_filetime_utc": 134369474538010864,
+    "executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+    "argv": [
+      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\temporal_objective01\\qa_driver.py",
+      "--output",
+      "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\temporal_objective01\\qa01",
+      "--max-seconds",
+      "1140.0",
+      "--source-commit",
+      "3536e0e2049923e3596cc8afaaf381f381dd718b"
+    ]
+  },
+  "source_file_count": 275,
+  "source_before_equals_after": true,
+  "passed_tests": 32,
+  "failed_tests": 2,
+  "cuda_facts": {
+    "available": true,
+    "torch_version": "2.13.0+cu130",
+    "device": "NVIDIA GeForce RTX 4060 Ti"
+  },
+  "source_commit": "3536e0e2049923e3596cc8afaaf381f381dd718b",
+  "receipt_path": "private_data\\closure_mechanism_20261019\\P2\\temporal_objective01\\native_qa01\\execution.json",
+  "receipt_sha256": "65b1b77a448697d233c8fc88497a869eb7a05d9903c6ce0b99a840f998d30d7d",
+  "reason": "legacy comparison helper one_update requires load_runtime() to initialize its torch global; failed before new update call",
+  "repair": "single registered repair: initialize legacy helper in new test setup; assertions, inputs, thresholds and scientific code unchanged",
+  "assertions_ast_unchanged": true,
+  "repaired_test_sha256": "ae1004679537459acf3a1c608e26baef64340bf11d2c8fc9001830089ff63e35",
+  "science_training_started": false
+}

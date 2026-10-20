@@ -120,7 +120,8 @@ def test_original_values_components_gradients_and_real_adam_match(device):
 
 @pytest.mark.parametrize('device', DEVICES)
 def test_one_update_matches_old_update_adam_and_clears_cache(device):
-    from linear_cache_cost_gate_20261019 import one_update as old_update
+    from linear_cache_cost_gate_20261019 import one_update as old_update, load_runtime
+    load_runtime()
     a = model_fixture(device); b = copy.deepcopy(a)
     _,store,samples = event_fixture(device)
     oa = torch.optim.Adam([p for p in a.parameters() if p.requires_grad],lr=9e-5)
