@@ -1,10 +1,12 @@
 # 当前研究状态
 
-任务状态：**RUNNING**，目录E:/03-nn_Transfer_Func/kiki。quadratic_memory_edge固定函数研究已关闭，未通过科学候选门槛；默认模型不变。当前无科学进程。[只读规划1200秒hold已登记](../reports/after_quadratic_memory_20261020_planning_scope.md)，已通过collaboration.spawn_agent实际启动gpt-6-astra代理/root/astra6_after_quadratic_memory，只读分析已关闭结果；返回后root采纳并登记下一有限阶段；不恢复本轮768、旧24 val或生成结构搜索。[关闭结论](../reports/quadratic_memory_edge_20261020_conclusion.md)、[独立最终挑战](../reports/quadratic_memory_edge_20261020_final_review.md)。
+任务状态：**RUNNING**，目录E:/03-nn_Transfer_Func/kiki。实际gpt-6-astra代理/root/astra6_after_quadratic_memory已返回[原案](../reports/astra6_after_quadratic_memory_20261020.md)，root采纳完整O/F/T三组时间目标研究，[正式协议](../reports/temporal_objective_20261020_protocol.md)、[独立方案挑战](../reports/temporal_objective_20261020_plan_review.md)。同seed从前轮B512固定delete7结构构造，三seed×512；O1/2/5s、F1/2/真实至15s、T仅第三相位0.5时间均值+0.5末20%均值。当前实现准备，尚无科学进程，先实际QA/最长时域成本准入，禁止直接排训练或重复旧队列。
+
+**新轮费用**：P2总42000含已计1200规划，工程4200/训练30000/评价4000/支持3800；支持仅新增2600，父当前累计90499.8553190/余168700.1446810，轮内未执行38200、父未分配130500.1446810/P2未分配7719.0510732。最低完整九组；成本不容纳就不启动，不自动六组。来源BASE前轮quadratic_memory_edge01，输出新BASE=private_data/closure_mechanism_20261019/P2/temporal_objective01。原损失/科学门槛历史不改，无新val/test/FOM/768/结构搜索。
 
 **决定性结果**：同源full8 global1280、统一新Adam、三seed A原项/B删除/C二次项，九组512训练与九次385事件自主评价一次完成。C较B三个seed失稳点误差下降12.66%–16.01%，稳定342事件5s风险上升0.22%–1.53%；失稳43事件真实区间漏检B28/28/27、C29/26/28。故C不进入后续确认候选、不晋升，仅保留固定函数取舍档案。A三个39D局部谱各一正实部模式，B/C严格Hurwitz及线性二次型检查通过，无非线性吸引域证书。6101_A expansion_0028的8s资格未决完整保留、不救分。[固定指标](../results/quadratic_memory_edge_20261020/fixed_train_metrics_step000512.json)、[公式与门槛证据](../results/quadratic_memory_edge_20261020/decision_evidence.json)。
 
-**费用**：父上限259200，本轮工程253.7854629+训练12158.9154373+评价含JSON提取968.9018062+保守支持hold3000，共16381.6027064进程秒。36000 allocation未用19618.3972936明确取消并仅归还P2供另行登记。父累计86699.8553190、剩余172500.1446810；P2上一轮关闭余额49719.0510732；下一轮只读规划预占1200后P2未分配48519.0510732，父当前累计87899.8553190/余171300.1446810，完整下一阶段尚未登记，当前仅只读规划。P0/P1/P3/P4/repair分类余额保持，不互借；旧900支持hold保留。[关闭费用](../results/quadratic_memory_edge_20261020/closed_cost.json)、[累计账本](../results/closure_mechanism_20261019/cost_snapshot.json)。
+**上一轮关闭费用**：父上限259200，本轮工程253.7854629+训练12158.9154373+评价含JSON提取968.9018062+保守支持hold3000，共16381.6027064进程秒。36000 allocation未用19618.3972936明确取消并仅归还P2供另行登记。父累计86699.8553190、剩余172500.1446810；P2上一轮关闭余额49719.0510732；现新轮占用见上段。P0/P1/P3/P4/repair分类余额保持，不互借；旧900支持hold保留。[关闭费用](../results/quadratic_memory_edge_20261020/closed_cost.json)、[累计账本](../results/closure_mechanism_20261019/cost_snapshot.json)。
 
 **工程与边界**：QA01失败保留，唯一guard修复后QA02 27通过。独立验收的可选runtime已通过PR15合并并核实main c2c95a75f455e2b3e426ca98dd5fe06c93b327a4，工程进展保留，不代表模型采用。新实验runner/模型未整体集成。共同385=原366+新19（342稳定/43失稳）；新5失败与原27排除保留。原366/新19按源metadata身份固定，内置prefix错误分栏隔离。新增19已用于训练，没有独立确认；val/test保持关闭，TASK4暂停，P1结构搜索关闭。旧18组GRU512耗6085.6472446不重跑。
 
