@@ -1,0 +1,5 @@
+# W8工程集成
+
+PR23已按expected head f9a9953c6fc089318b2e6feda05169bdfb7c9b8e正常合并main，远端merge27aa39ad2a2821adefbee1913377a9af153c868c；已重读PR merged=true、main引用与三文件blob身份一致。精确范围为运行模块、其22项测试和说明，未含模型、runner、配置或默认采用。完整科学轮次未达候选门槛，结论与正负结果保留0ca18dad79fa5abf1f66faf6e97c1e29acaa9558。
+
+工程资格：48项检查通过、实际干净入口/真实来源/恢复/完整执行，独立工程及结果审查通过限定范围。测试需要本地冻结合成资产；该合并不声明自包含公开CI、真实训练加速、泛化或吸引域。local HEAD/index未改，不reset/stage/强推。
