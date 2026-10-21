@@ -1,0 +1,18 @@
+# 语法外因果能力表：首次执行来源锁定
+
+root已逐项读取新core/tests、P0两助手、原生观察脚本和独立方案/实现挑战；以下字节在首次QA前冻结。尚无本轮Torch、QA、cost、正式数据或拟合执行。
+
+- experiments/outside_grammar_causal_20261021.py SHA256 8b90b53a3479d9a297feb7a78a0bfe9f6da4cad9577b8ce6ce218c2388c9cf0d
+- tests/test_outside_grammar_causal_20261021.py SHA256 ed5a9af63c6db917721a2c05b10605c85df5e17b52550ddae254d407001cd2b5
+- private_data/closure_mechanism_20261019/P0/outside_grammar_causal01/launch_stage.py SHA256 ef55624136ac69f3ff56961ac5b6cdc516f2276dd3609f051ce1176b71a5356d
+- private_data/closure_mechanism_20261019/P0/outside_grammar_causal01/make_invocation.py SHA256 ed928c4b8134238b3f72c6ad79b521551e94b7b769c40c58c306712d9acf8d34
+- private_data/closure_mechanism_20261019/P0/outside_grammar_causal01/observe_launch.ps1 SHA256 9dfe76804f5f161b7e228251667cc792a55075a768cf17403e896d7aad10bde3
+- private_data/closure_mechanism_20261019/P0/outside_grammar_causal01/support_cost.json SHA256 56325157159696a9528faf1c653009018841a9934a2f4953fc54b276ab1ac758
+
+实际gpt-6-astra原始报告末节与root协议共同确定独立科学问题，不复活六候选搜索/专用饱和/多项式路线。teacher有理动量端口每个RK4子步更新；learner仅原通用合法tanh表达式，前30维coarse历史/未来观察、train尺度、一次初始化。所有val在三seed512端点/来源/实际状态冻结后才生成。
+
+root采纳独立方案9.6137938秒和实现7.8267698秒（均既有P2review250）：coarse唯一观察与尺度；cost g_train包括资格；load包括完整train数组copy和两个真实checkpoint/hash/trace/source/Adam核验；advance共享全部每步CPU记账；metadata体积静态包络/实际上界强制；伪512实际32负例。已核补丁实际落实，独立报告不冒称审查了随后最终SHA，也不自称QA通过。
+
+外部计时root使用同一绑定observe_launch.ps1的.NET Stopwatch实际start/end ticks/frequency覆盖STD launcher及其完整原生子树和退出，真实命令生成工具wall另计shell/STD启动；减去cost主体并保留两次主体未分类余量。原生FILETIME保持整数，回执不改，无额外冷探针。只读/静态AST/PS语法检查没有触发数值阶段。
+
+唯一QA与唯一cost都是400/390/370，无修复或再次测量。P0支持1100含实现叶最初5.9718342、修正1.9881915+4.0388897和助手3.9522826原生工具秒及root准备/归档，不称这些子集为精确总实耗。P0≤2000、P1条件≤900支持180、P2review250；T≤576且run/eval各自25%余量条件保持，未覆盖或超帽关闭，不缩样本/更新/seed。实际完整准入后才做P1，默认模型/原val/test/TASK4不变。
