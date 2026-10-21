@@ -168,9 +168,12 @@ def adapt_base(reference):
     if getattr(reference,'_runtime_cache',None) is not None:raise RuntimeError('close graph before conversion')
     cpu=torch.get_rng_state();cuda=torch.cuda.get_rng_state_all() if torch.cuda.is_available() else []
     try:
-        payload=reference._export_payload()
+        # Historical complexity metadata uses CPU-only NumPy access. Export an
+        # independent CPU snapshot; never migrate the caller's model/optimizer.
+        snapshot=copy.deepcopy(reference).cpu()
+        payload=snapshot._export_payload()
         result=EdgePolynomialROM.from_config(payload['config'],terms=payload['terms'])
-        result.load_state_dict(reference.state_dict())
+        result.load_state_dict(snapshot.state_dict())
         flags={n:p.requires_grad for n,p in reference.named_parameters()}
         for n,p in result.named_parameters():p.requires_grad_(flags[n])
         result.provenance=copy.deepcopy(reference.provenance)
