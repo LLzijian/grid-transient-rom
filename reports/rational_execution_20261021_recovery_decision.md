@@ -1,0 +1,13 @@
+# 执行路径核对与恢复决定
+
+root依据实际gpt-6-astra方案，完成一次已有执行机制的只读适用性核对。结论：已检查的成功调用链都要求有限时长，未找到可直接复用且已验证的无时限执行路径；不将普通前台shell成功当作自有子树清理证明，也不改造旧准入为PASS。
+
+非实现者`/root/fom_history_interface`只读核对了repair/worker_resume01、P0/linear_cache_cost01、P2/fixed_edge_pair01的native_supervise.ps1，P3/disagreement01，P0/rational_control01的observe_launch/launch_stage，以及P3/first_disagreement_inference01/launch_once.py。前三类均int Cap加有限WaitForExit，disagreement为QA300/infer3600，rational调用有界native_process_receipt/native_job且CAP<3600，first_disagreement为3570/3600。root另核通用`experiments/native_process_receipt_20261020.ps1`强制TimeoutSeconds/MaxSeconds、拒绝无穷且Max≤3600。成功回执不证明未实现的无时限分支。
+
+原改进方案可选的6101完整1024端点、固定其余参数后整项移除Jacobian差分尚未执行；既有六端点局部Jacobian和删除后重适配不是该计算。它本可提供直接耦合解释，但同样没有已验证的无时限执行路径。本次不为维持运行状态重复六端点分析，不扩展代理诊断链。
+
+root决定：新执行器已关闭，一次修复用完；现有可核实路径不能在不改代码、不设时限、不伪造准入的条件下直接执行下一计算。当前研究因执行路径未获验证而阻塞，科学目标未完成，模型家族未被证伪。已经向人类提出一次明确范围请求：再修复同一监督缺陷，最多一次修改和一次复查，实际通过后才执行原12模型训练；费用额度仍全部取消。尚未收到答复，不实施第二修复、不生成QA03、不排队训练。后续heartbeat读取此状态，等待同一问题答复，不重复提问或把旧额度当阻塞。
+
+操作披露：盘点者工具已回报等待墙钟合计14.4026239秒，曾误将131462211字节历史analysis.json整体读取；该只读会话83921已实际exit0关闭，后台完整墙钟未单独核对，故不将上述合计称为完整精确进程实耗。之后未再读大文件。另有政策独立审查2.006517秒、实际Astra规划读取7.9236671秒。未知支持费用如实留待核对，不设新额度。
+
+已完成用户本次政策修改：PR29，仅四个政策/授权文件，经独立只读审查和四blob、预期head、main、merge双parent核验，远端main ad1b48a3b701cfaf951d0e96067d5fb537e74c90。自动推进设置已是无额度政策；失败执行器不在main。local HEAD/index保持用户原状态，无reset、强推或证据删除。
