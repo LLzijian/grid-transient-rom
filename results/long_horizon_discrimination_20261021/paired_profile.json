@@ -1,0 +1,3617 @@
+{
+  "status": "COMPLETED",
+  "scope": "Frozen512 endpoints; synthetic developed stream1 extended to5s; no fitting or model promotion",
+  "source_commit": "3bc4c1dbc36d3004626e433e4d7a30a64e8a3793",
+  "numerical_source_commit": "4533cbab3131b681a892afc4849b0742770883c5",
+  "endpoint_manifest_sha256": "42c624470156e2e2b438671131f3ca7aecfed834b00b9344b7a09a2ac44ad627",
+  "events_per_seed": 16,
+  "structures": [
+    "sin",
+    "cos",
+    "empty"
+  ],
+  "primary_window_future_s": [
+    2,
+    5
+  ],
+  "primary_time_points": 300,
+  "registered_full_rule": true,
+  "maximum_normalized_coarse_fine_difference": 1.07060227305055e-09,
+  "rows": [
+    {
+      "event_count": 16,
+      "failures": {},
+      "fixture": {
+        "formal": true,
+        "prefix_111_sha256": "fa47edc7c62324c2f8c29905775785399946d4b2efdf830a0625a49fc095ec91",
+        "raw": {
+          "bytes": 3924986,
+          "coarse_integration_dt_seconds": 0.01,
+          "coarse_shape": [
+            16,
+            511,
+            30
+          ],
+          "fine_integration_dt_seconds": 0.005,
+          "fine_observation_stride": 2,
+          "fine_shape": [
+            16,
+            511,
+            30
+          ],
+          "observation_dt_seconds": 0.01,
+          "observed_coordinates": 30,
+          "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\long_horizon_discrimination01\\evaluation\\5101\\teacher.npz",
+          "sha256": "edaae6344c47a45fd393d51fc5085760ec64badb7a728d03acdca978a798a401"
+        },
+        "raw_io_seconds": 0.016966200026217848,
+        "steps_coarse": 510,
+        "steps_fine": 1020,
+        "teacher_source_model_sha256": "b561ff3c5209692a083445f32e26de9e4a56f79d84879a4f858e741ecdb1b8a2"
+      },
+      "models": {
+        "cos": {
+          "cumulative_0_2": {
+            "above_0_01": 3,
+            "count": 16,
+            "eligible_count": 16,
+            "indices": [
+              0,
+              200
+            ],
+            "mean": 0.011627654457419938,
+            "median": 0.0018033866274497126,
+            "status": "QUALIFIED",
+            "strong_mean": 0.02289411236867099,
+            "time_points": 200,
+            "weak_mean": 0.0003611965461688845,
+            "worst": 0.10569660456568339
+          },
+          "cumulative_0_5": {
+            "above_0_01": 11,
+            "count": 16,
+            "eligible_count": 16,
+            "indices": [
+              0,
+              500
+            ],
+            "mean": 0.23257649324767524,
+            "median": 0.033368137382117996,
+            "status": "QUALIFIED",
+            "strong_mean": 0.4559728034293062,
+            "time_points": 500,
+            "weak_mean": 0.00918018306604431,
+            "worst": 2.4026850624329277
+          },
+          "primary_2_5": {
+            "above_0_01": 15,
+            "count": 16,
+            "eligible": [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true
+            ],
+            "eligible_count": 16,
+            "indices": [
+              200,
+              500
+            ],
+            "mean": 0.3798757191078454,
+            "median": 0.05460158628562212,
+            "per_event_B": [
+              4.89958903232139e-12,
+              6.400277916986298e-12,
+              5.60602651214922e-12,
+              4.340899929352565e-12,
+              5.013372687290409e-12,
+              2.854930858290073e-12,
+              2.503345302716906e-12,
+              5.086665903790143e-12,
+              2.7592708627386013e-11,
+              1.0603772246711258e-10,
+              1.0440022517872623e-10,
+              8.006101145987176e-11,
+              2.6967652506498457e-11,
+              5.2917647202898876e-11,
+              7.635332264640456e-10,
+              6.230409285682429e-11
+            ],
+            "per_event_mse": [
+              0.01757945062492612,
+              0.021400449525589317,
+              0.01744594240092242,
+              0.010190062653975507,
+              0.014547166889921151,
+              0.014494856014188968,
+              0.009286015665278848,
+              0.015532115526221099,
+              0.15089560285836903,
+              0.48179839732889,
+              0.573223466201882,
+              0.2208971244650491,
+              0.08780272304565492,
+              0.28647975604134707,
+              3.9340107010110894,
+              0.22242767547222114
+            ],
+            "status": "QUALIFIED",
+            "strong_mean": 0.7446919308030628,
+            "time_points": 300,
+            "weak_mean": 0.015059507412627928,
+            "worst": 3.9340107010110894
+          },
+          "reproduction_0_1": {
+            "above_0_01": 0,
+            "count": 16,
+            "eligible_count": 16,
+            "indices": [
+              0,
+              100
+            ],
+            "mean": 0.0009506299586299582,
+            "median": 0.00020494962570487496,
+            "status": "QUALIFIED",
+            "strong_mean": 0.0018671002404729044,
+            "time_points": 100,
+            "weak_mean": 3.415967678701215e-05,
+            "worst": 0.006110663851548222
+          },
+          "secondary_1_2": {
+            "above_0_01": 4,
+            "count": 16,
+            "eligible_count": 16,
+            "indices": [
+              100,
+              200
+            ],
+            "mean": 0.022304678956209918,
+            "median": 0.0033358123056186602,
+            "status": "QUALIFIED",
+            "strong_mean": 0.04392112449686908,
+            "time_points": 100,
+            "weak_mean": 0.0006882334155507569,
+            "worst": 0.20528254527981854
+          }
+        },
+        "empty": {
+          "cumulative_0_2": {
+            "above_0_01": 3,
+            "count": 16,
+            "eligible_count": 16,
+            "indices": [
+              0,
+              200
+            ],
+            "mean": 0.011602148966842626,
+            "median": 0.0018523456672588769,
+            "status": "QUALIFIED",
+            "strong_mean": 0.022831388147285796,
+            "time_points": 200,
+            "weak_mean": 0.0003729097863994554,
+            "worst": 0.10505635972895959
+          },
+          "cumulative_0_5": {
+            "above_0_01": 11,
+            "count": 16,
+            "eligible_count": 16,
+            "indices": [
+              0,
+              500
+            ],
+            "mean": 0.23363529158806134,
+            "median": 0.033534465454665936,
+            "status": "QUALIFIED",
+            "strong_mean": 0.45776163717210655,
+            "time_points": 500,
+            "weak_mean": 0.009508946004016142,
+            "worst": 2.4078529620013223
+          },
+          "primary_2_5": {
+            "above_0_01": 15,
+            "count": 16,
+            "eligible": [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true
+            ],
+            "eligible_count": 16,
+            "indices": [
+              200,
+              500
+            ],
+            "mean": 0.38165738666887383,
+            "median": 0.054862773187646145,
+            "per_event_B": [
+              5.091132408793683e-12,
+              6.518878845998864e-12,
+              5.746572243923989e-12,
+              4.435148700759141e-12,
+              5.074608727301355e-12,
+              2.8550154990773276e-12,
+              2.5417262024661337e-12,
+              5.187944908505439e-12,
+              2.793678748782363e-11,
+              1.0612916193009408e-10,
+              1.0456404055948177e-10,
+              8.128678136449272e-11,
+              2.712397881209401e-11,
+              5.3467506859244626e-11,
+              7.633846873011741e-10,
+              6.143407301998965e-11
+            ],
+            "per_event_mse": [
+              0.018459454948970576,
+              0.022204328067987233,
+              0.01825886439915253,
+              0.010655869643146569,
+              0.014923494886392089,
+              0.014486653050507003,
+              0.009588295875149238,
+              0.016220133654779558,
+              0.15498823384687097,
+              0.48431202878220936,
+              0.5770528729978316,
+              0.2254089933331846,
+              0.08752121830730505,
+              0.2930327700107478,
+              3.943050696849564,
+              0.21635427804818325
+            ],
+            "status": "QUALIFIED",
+            "strong_mean": 0.7477151365219871,
+            "time_points": 300,
+            "weak_mean": 0.0155996368157606,
+            "worst": 3.943050696849564
+          },
+          "reproduction_0_1": {
+            "above_0_01": 0,
+            "count": 16,
+            "eligible_count": 16,
+            "indices": [
+              0,
+              100
+            ],
+            "mean": 0.0009448227246934978,
+            "median": 0.00022351186430042297,
+            "status": "QUALIFIED",
+            "strong_mean": 0.001854623933147971,
+            "time_points": 100,
+            "weak_mean": 3.502151623902473e-05,
+            "worst": 0.005961496249533192
+          },
+          "secondary_1_2": {
+            "above_0_01": 5,
+            "count": 16,
+            "eligible_count": 16,
+            "indices": [
+              100,
+              200
+            ],
+            "mean": 0.022259475208991755,
+            "median": 0.003421898438037441,
+            "status": "QUALIFIED",
+            "strong_mean": 0.04380815236142362,
+            "time_points": 100,
+            "weak_mean": 0.0007107980565598861,
+            "worst": 0.204151223208386
+          }
+        },
+        "sin": {
+          "cumulative_0_2": {
+            "above_0_01": 3,
+            "count": 16,
+            "eligible_count": 16,
+            "indices": [
+              0,
+              200
+            ],
+            "mean": 0.010259062968727627,
+            "median": 0.0018530865209404656,
+            "status": "QUALIFIED",
+            "strong_mean": 0.020175262873687476,
+            "time_points": 200,
+            "weak_mean": 0.00034286306376777757,
+            "worst": 0.09180237800942755
+          },
+          "cumulative_0_5": {
+            "above_0_01": 10,
+            "count": 16,
+            "eligible_count": 16,
+            "indices": [
+              0,
+              500
+            ],
+            "mean": 0.20596942789600373,
+            "median": 0.033731499727777337,
+            "status": "QUALIFIED",
+            "strong_mean": 0.40423369273155224,
+            "time_points": 500,
+            "weak_mean": 0.007705163060455242,
+            "worst": 2.145272078213319
+          },
+          "primary_2_5": {
+            "above_0_01": 14,
+            "count": 16,
+            "eligible": [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true
+            ],
+            "eligible_count": 16,
+            "indices": [
+              200,
+              500
+            ],
+            "mean": 0.3364430045141878,
+            "median": 0.05516512406840217,
+            "per_event_B": [
+              4.3463942875555904e-12,
+              5.761861141321286e-12,
+              4.479176596444375e-12,
+              3.6902775608496985e-12,
+              4.331282270898331e-12,
+              2.8546364987488385e-12,
+              2.3659340458615198e-12,
+              4.26718454056175e-12,
+              2.6664290667786133e-11,
+              9.85006085823586e-11,
+              9.458669020470238e-11,
+              7.576121130438579e-11,
+              2.7975807098060888e-11,
+              5.0877086735095365e-11,
+              7.234268201174336e-10,
+              5.968961712294806e-11
+            ],
+            "per_event_mse": [
+              0.016229509416905104,
+              0.01795644310036827,
+              0.013114357131184631,
+              0.007700616043558328,
+              0.011726117798000778,
+              0.01490701016622536,
+              0.007881366976702458,
+              0.011391483833030153,
+              0.15447035742639467,
+              0.4045814140455675,
+              0.44101071541658216,
+              0.19862186706226476,
+              0.09237380503643607,
+              0.2705092758933114,
+              3.5142518783492465,
+              0.2063618545312268
+            ],
+            "status": "QUALIFIED",
+            "strong_mean": 0.6602726459701287,
+            "time_points": 300,
+            "weak_mean": 0.012613363058246885,
+            "worst": 3.5142518783492465
+          },
+          "reproduction_0_1": {
+            "above_0_01": 0,
+            "count": 16,
+            "eligible_count": 16,
+            "indices": [
+              0,
+              100
+            ],
+            "mean": 0.0008252052624910949,
+            "median": 0.00019763835405818054,
+            "status": "QUALIFIED",
+            "strong_mean": 0.0016087422962380688,
+            "time_points": 100,
+            "weak_mean": 4.1668228744120984e-05,
+            "worst": 0.004793215729847322
+          },
+          "secondary_1_2": {
+            "above_0_01": 4,
+            "count": 16,
+            "eligible_count": 16,
+            "indices": [
+              100,
+              200
+            ],
+            "mean": 0.01969292067496416,
+            "median": 0.0034344453460992156,
+            "status": "QUALIFIED",
+            "strong_mean": 0.03874178345113689,
+            "time_points": 100,
+            "weak_mean": 0.0006440578987914343,
+            "worst": 0.17881154028900778
+          }
+        }
+      },
+      "pairs": {
+        "cos_minus_sin": {
+          "cumulative_0_2": {
+            "count": 16,
+            "events_D_gt_B": 8,
+            "mean_B_sum": 1.157792622583673e-11,
+            "mean_D": 0.0013685914886923107,
+            "sin_advantage_rule": false,
+            "status": "QUALIFIED"
+          },
+          "cumulative_0_5": {
+            "count": 16,
+            "events_D_gt_B": 13,
+            "mean_B_sum": 9.650985575338244e-11,
+            "mean_D": 0.02660706535167152,
+            "sin_advantage_rule": true,
+            "status": "QUALIFIED"
+          },
+          "primary_2_5": {
+            "count": 16,
+            "eligible": [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true
+            ],
+            "events_D_gt_B": 13,
+            "mean_B_sum": 1.5313114210507956e-10,
+            "mean_D": 0.04343271459365758,
+            "per_event_B_sum": [
+              9.24598331987698e-12,
+              1.2162139058307584e-11,
+              1.0085203108593595e-11,
+              8.031177490202264e-12,
+              9.34465495818874e-12,
+              5.7095673570389116e-12,
+              4.869279348578426e-12,
+              9.353850444351893e-12,
+              5.4256999295172146e-11,
+              2.045383310494712e-10,
+              1.9898691538342862e-10,
+              1.5582222276425754e-10,
+              5.494345960455934e-11,
+              1.0379473393799425e-10,
+              1.4869600465814793e-09,
+              1.2199370997977235e-10
+            ],
+            "per_event_D": [
+              0.0013499412080210174,
+              0.003444006425221049,
+              0.004331585269737788,
+              0.002489446610417179,
+              0.002821049091920373,
+              -0.0004121541520363918,
+              0.00140464868857639,
+              0.004140631693190946,
+              -0.00357475456802564,
+              0.0772169832833225,
+              0.13221275078529987,
+              0.022275257402784354,
+              -0.004571081990781142,
+              0.01597048014803565,
+              0.41975882266184295,
+              0.016065820940994346
+            ],
+            "sin_advantage_rule": true,
+            "status": "QUALIFIED"
+          },
+          "reproduction_0_1": {
+            "count": 16,
+            "events_D_gt_B": 7,
+            "mean_B_sum": 1.8710980617618064e-12,
+            "mean_D": 0.0001254246961388634,
+            "sin_advantage_rule": false,
+            "status": "QUALIFIED"
+          },
+          "secondary_1_2": {
+            "count": 16,
+            "events_D_gt_B": 8,
+            "mean_B_sum": 2.128475438991165e-11,
+            "mean_D": 0.002611758281245756,
+            "sin_advantage_rule": false,
+            "status": "QUALIFIED"
+          }
+        },
+        "empty_minus_sin": {
+          "cumulative_0_2": {
+            "count": 16,
+            "events_D_gt_B": 9,
+            "mean_B_sum": 1.1578663434126901e-11,
+            "mean_D": 0.001343085998114999,
+            "sin_advantage_rule": true,
+            "status": "QUALIFIED"
+          },
+          "cumulative_0_5": {
+            "count": 16,
+            "events_D_gt_B": 14,
+            "mean_B_sum": 9.659485001038448e-11,
+            "mean_D": 0.027665863692057625,
+            "sin_advantage_rule": true,
+            "status": "QUALIFIED"
+          },
+          "primary_2_5": {
+            "count": 16,
+            "eligible": [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true
+            ],
+            "events_D_gt_B": 14,
+            "mean_B_sum": 1.5327230772788955e-10,
+            "mean_D": 0.045214382154686046,
+            "per_event_B_sum": [
+              9.437526696349273e-12,
+              1.2280739987320151e-11,
+              1.0225748840368364e-11,
+              8.12542626160884e-12,
+              9.405890998199686e-12,
+              5.709651997826166e-12,
+              4.907660248327653e-12,
+              9.455129449067189e-12,
+              5.460107815560976e-11,
+              2.0462977051245266e-10,
+              1.9915073076418417e-10,
+              1.5704799266887853e-10,
+              5.50997859101549e-11,
+              1.0434459359433999e-10,
+              1.4868115074186076e-09,
+              1.2112369014293773e-10
+            ],
+            "per_event_D": [
+              0.002229945532065472,
+              0.0042478849676189645,
+              0.005144507267967899,
+              0.0029552535995882407,
+              0.003197377088391311,
+              -0.00042035711571835645,
+              0.0017069288984467804,
+              0.0048286498217494055,
+              0.0005178764204762931,
+              0.07973061473664184,
+              0.13604215758124943,
+              0.026787126270919837,
+              -0.0048525867291310115,
+              0.02252349411743637,
+              0.42879881850031776,
+              0.00999242351695645
+            ],
+            "sin_advantage_rule": true,
+            "status": "QUALIFIED"
+          },
+          "reproduction_0_1": {
+            "count": 16,
+            "events_D_gt_B": 7,
+            "mean_B_sum": 1.870061005502194e-12,
+            "mean_D": 0.00011961746220240297,
+            "sin_advantage_rule": false,
+            "status": "QUALIFIED"
+          },
+          "secondary_1_2": {
+            "count": 16,
+            "events_D_gt_B": 9,
+            "mean_B_sum": 2.1287265862751608e-11,
+            "mean_D": 0.002566554534027595,
+            "sin_advantage_rule": true,
+            "status": "QUALIFIED"
+          }
+        }
+      },
+      "primary_status": "QUALIFIED",
+      "rawfiles": {
+        "cos": {
+          "bytes": 3840506,
+          "coarse_integration_dt_seconds": 0.01,
+          "coarse_shape": [
+            16,
+            500,
+            30
+          ],
+          "fine_integration_dt_seconds": 0.005,
+          "fine_observation_stride": 2,
+          "fine_shape": [
+            16,
+            500,
+            30
+          ],
+          "observation_dt_seconds": 0.01,
+          "observed_coordinates": 30,
+          "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\long_horizon_discrimination01\\evaluation\\5101\\cos.npz",
+          "sha256": "71a60f929d26b3ac906f4ed2836b0fbd29e1b465fc5d5dd1e851e50842df6f2b"
+        },
+        "empty": {
+          "bytes": 3840506,
+          "coarse_integration_dt_seconds": 0.01,
+          "coarse_shape": [
+            16,
+            500,
+            30
+          ],
+          "fine_integration_dt_seconds": 0.005,
+          "fine_observation_stride": 2,
+          "fine_shape": [
+            16,
+            500,
+            30
+          ],
+          "observation_dt_seconds": 0.01,
+          "observed_coordinates": 30,
+          "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\long_horizon_discrimination01\\evaluation\\5101\\empty.npz",
+          "sha256": "e0188ac2e7b71683555995616a9ed13d824260281058201ae38d805428dba3bd"
+        },
+        "sin": {
+          "bytes": 3840506,
+          "coarse_integration_dt_seconds": 0.01,
+          "coarse_shape": [
+            16,
+            500,
+            30
+          ],
+          "fine_integration_dt_seconds": 0.005,
+          "fine_observation_stride": 2,
+          "fine_shape": [
+            16,
+            500,
+            30
+          ],
+          "observation_dt_seconds": 0.01,
+          "observed_coordinates": 30,
+          "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\long_horizon_discrimination01\\evaluation\\5101\\sin.npz",
+          "sha256": "a789fae51606db61bdf410bab9548f2030ed753474b7e2a2efe38566c33c5a82"
+        },
+        "teacher": {
+          "bytes": 3924986,
+          "coarse_integration_dt_seconds": 0.01,
+          "coarse_shape": [
+            16,
+            511,
+            30
+          ],
+          "fine_integration_dt_seconds": 0.005,
+          "fine_observation_stride": 2,
+          "fine_shape": [
+            16,
+            511,
+            30
+          ],
+          "observation_dt_seconds": 0.01,
+          "observed_coordinates": 30,
+          "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\long_horizon_discrimination01\\evaluation\\5101\\teacher.npz",
+          "sha256": "edaae6344c47a45fd393d51fc5085760ec64badb7a728d03acdca978a798a401"
+        }
+      },
+      "registered_seed_rule": true,
+      "seed": 5101,
+      "source_commit": "3bc4c1dbc36d3004626e433e4d7a30a64e8a3793",
+      "status": "COMPLETED",
+      "strong_count": 8,
+      "weak_count": 8,
+      "worker_phase_elapsed_seconds": 13.246470600017346,
+      "full_summary": {
+        "path": "results/long_horizon_discrimination_20261021/eval5101_summary.json",
+        "sha256": "a6ccb8beb823276d39d60287f44d5133a941b21eb23cd9872a6f45b1c3644f40"
+      },
+      "qualification_by_horizon": {
+        "teacher": {
+          "1s": {
+            "per_event_eligible": [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true
+            ],
+            "per_event_normalized_step_max": [
+              1.7912407947865026e-11,
+              1.7925331183582723e-11,
+              1.175946118233729e-11,
+              2.376953701495293e-11,
+              2.0290821144318512e-11,
+              1.3902874146573753e-11,
+              1.2773789093311832e-11,
+              1.5050955488462612e-11,
+              5.383630479731422e-11,
+              2.202532349840157e-10,
+              4.167583869580234e-11,
+              5.369578479038603e-11,
+              3.2464678393943903e-11,
+              5.2198943807833454e-11,
+              1.7544130858924932e-10,
+              9.322652815184749e-11
+            ]
+          },
+          "2s": {
+            "per_event_eligible": [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true
+            ],
+            "per_event_normalized_step_max": [
+              2.6435969353592115e-11,
+              3.173254477185803e-11,
+              3.164667690042117e-11,
+              2.7801469433716333e-11,
+              2.8900016296680354e-11,
+              2.3121400616785114e-11,
+              1.9891931972750557e-11,
+              2.0442158652315495e-11,
+              9.764467550910103e-11,
+              2.757036699071126e-10,
+              6.468557677500836e-11,
+              1.0961643591756585e-10,
+              8.795492771403974e-11,
+              9.64123748854235e-11,
+              2.8397278176659726e-10,
+              2.246443881768221e-10
+            ]
+          },
+          "5s": {
+            "per_event_eligible": [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true
+            ],
+            "per_event_normalized_step_max": [
+              8.58887398044037e-11,
+              7.618829732236729e-11,
+              6.981157234192784e-11,
+              7.219854722510447e-11,
+              7.132042775220125e-11,
+              3.9804120178024947e-11,
+              4.365740747553624e-11,
+              6.61468584284485e-11,
+              1.0425313072443803e-10,
+              2.9597038300959393e-10,
+              2.7191440612104513e-10,
+              4.876917791788262e-10,
+              1.532892455181752e-10,
+              1.6483269947011236e-10,
+              8.772167608673063e-10,
+              2.7041647268666487e-10
+            ]
+          }
+        },
+        "models": {
+          "cos": {
+            "1s": {
+              "per_event_eligible": [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true
+              ],
+              "per_event_normalized_step_max": [
+                9.279441506396605e-12,
+                1.2662292504237065e-11,
+                5.97341246712286e-12,
+                1.338881934622303e-11,
+                1.338633439049316e-11,
+                1.0902100173774596e-11,
+                9.531256177647101e-12,
+                1.0521013055544546e-11,
+                8.035729305827935e-11,
+                3.4311114210547987e-11,
+                2.7518067312582688e-11,
+                5.785060909165228e-11,
+                2.7155825989886923e-11,
+                3.8940007990653966e-11,
+                3.8976718582306746e-11,
+                4.4615589940635274e-11
+              ]
+            },
+            "2s": {
+              "per_event_eligible": [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true
+              ],
+              "per_event_normalized_step_max": [
+                2.1478476964101456e-11,
+                1.3134599086343627e-11,
+                2.1763612577637662e-11,
+                1.7311953303471676e-11,
+                1.992599349226123e-11,
+                1.6949143843202128e-11,
+                1.3503728796007452e-11,
+                1.0654349440077298e-11,
+                1.2096011334189378e-10,
+                6.368786187563873e-11,
+                6.043524526128458e-11,
+                5.820894690521904e-11,
+                5.4256983523270654e-11,
+                5.720778019289294e-11,
+                4.789284879358953e-11,
+                4.9668843698719366e-11
+              ]
+            },
+            "5s": {
+              "per_event_eligible": [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true
+              ],
+              "per_event_normalized_step_max": [
+                6.212457402006098e-11,
+                4.513491120877657e-11,
+                4.030203136944275e-11,
+                3.91878846771538e-11,
+                4.382740021452012e-11,
+                2.515812590497635e-11,
+                2.5340371542873334e-11,
+                5.053806227518281e-11,
+                1.211786456958634e-10,
+                7.571069124495291e-11,
+                1.2805504858678394e-10,
+                1.7865019937016667e-10,
+                7.658573113524019e-11,
+                8.739329823018894e-11,
+                1.0835889940288136e-10,
+                7.299784670567704e-11
+              ]
+            }
+          },
+          "empty": {
+            "1s": {
+              "per_event_eligible": [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true
+              ],
+              "per_event_normalized_step_max": [
+                9.106055785660515e-12,
+                1.251819006015176e-11,
+                5.85827344501178e-12,
+                1.3390220680976499e-11,
+                1.3264177260043849e-11,
+                1.088736327668398e-11,
+                9.550874864195661e-12,
+                1.0431697163683366e-11,
+                7.880915093268556e-11,
+                3.425003564532333e-11,
+                2.760209968745954e-11,
+                5.779474829330611e-11,
+                2.752037863209021e-11,
+                3.875077768888172e-11,
+                3.935178394263102e-11,
+                4.471380672893623e-11
+              ]
+            },
+            "2s": {
+              "per_event_eligible": [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true
+              ],
+              "per_event_normalized_step_max": [
+                2.1053075499772948e-11,
+                1.277904978606461e-11,
+                2.1398982751070373e-11,
+                1.7290310466723662e-11,
+                1.993517735566553e-11,
+                1.6871759024038366e-11,
+                1.3518676366711115e-11,
+                1.0686492961992336e-11,
+                1.1805289640818552e-10,
+                6.337209444452381e-11,
+                6.058011502402848e-11,
+                5.8167972088849735e-11,
+                5.4255274897521015e-11,
+                5.689937324508355e-11,
+                4.751287612741436e-11,
+                4.9544845003489406e-11
+              ]
+            },
+            "5s": {
+              "per_event_eligible": [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true
+              ],
+              "per_event_normalized_step_max": [
+                6.131121624194371e-11,
+                4.472178684298568e-11,
+                3.9841947101745465e-11,
+                3.866887033647594e-11,
+                4.34102857917045e-11,
+                2.527452603417034e-11,
+                2.5190700219543502e-11,
+                4.996779104811039e-11,
+                1.182536269692756e-10,
+                7.539554662928398e-11,
+                1.282588484225084e-10,
+                1.7640717346734363e-10,
+                7.647197209046647e-11,
+                8.647988209899008e-11,
+                1.079611214102625e-10,
+                7.29038665360907e-11
+              ]
+            }
+          },
+          "sin": {
+            "1s": {
+              "per_event_eligible": [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true
+              ],
+              "per_event_normalized_step_max": [
+                9.963969533843424e-12,
+                1.3063293235222054e-11,
+                6.822562755192079e-12,
+                1.3373716071657869e-11,
+                1.3873428274973206e-11,
+                1.0932641859049347e-11,
+                9.521602538234318e-12,
+                1.1072101316151931e-11,
+                8.19582267075849e-11,
+                3.379394143465078e-11,
+                2.9043932010445885e-11,
+                6.30109805344771e-11,
+                2.7518632968999053e-11,
+                3.9306081057513594e-11,
+                4.190235116382142e-11,
+                4.563336140940391e-11
+              ]
+            },
+            "2s": {
+              "per_event_eligible": [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true
+              ],
+              "per_event_normalized_step_max": [
+                2.2448981603500258e-11,
+                1.3162232451650287e-11,
+                2.380774948415127e-11,
+                1.8629148360506505e-11,
+                1.945163626851839e-11,
+                1.729449500800138e-11,
+                1.3760951575199679e-11,
+                1.111403972394256e-11,
+                1.2466043084113222e-10,
+                6.506615245760579e-11,
+                6.558180496825456e-11,
+                6.345418379168514e-11,
+                5.329203713116342e-11,
+                5.7434173104719787e-11,
+                4.6338626754762747e-11,
+                5.058717066933328e-11
+              ]
+            },
+            "5s": {
+              "per_event_eligible": [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true
+              ],
+              "per_event_normalized_step_max": [
+                6.612199730390981e-11,
+                4.700901030054415e-11,
+                4.29765972858631e-11,
+                4.1557057767450874e-11,
+                4.604617884773136e-11,
+                2.526758474206244e-11,
+                2.5423444385096217e-11,
+                5.3155539683403236e-11,
+                1.2496613059471893e-10,
+                7.848533405682064e-11,
+                1.4175137971535197e-10,
+                1.8911765358334085e-10,
+                7.696424908217274e-11,
+                9.082351956159977e-11,
+                1.1811121262623923e-10,
+                7.779751801318573e-11
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "event_count": 16,
+      "failures": {},
+      "fixture": {
+        "formal": true,
+        "prefix_111_sha256": "4e7fa615359b660555f04856d5eb939643431e5d6eeaaf3dd0d8030497b73000",
+        "raw": {
+          "bytes": 3924986,
+          "coarse_integration_dt_seconds": 0.01,
+          "coarse_shape": [
+            16,
+            511,
+            30
+          ],
+          "fine_integration_dt_seconds": 0.005,
+          "fine_observation_stride": 2,
+          "fine_shape": [
+            16,
+            511,
+            30
+          ],
+          "observation_dt_seconds": 0.01,
+          "observed_coordinates": 30,
+          "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\long_horizon_discrimination01\\evaluation\\5102\\teacher.npz",
+          "sha256": "4f724853d18e2f3bfbadf38a9e33bc2794f2b8d30b60b6fe765858d05494f1aa"
+        },
+        "raw_io_seconds": 0.01897629996528849,
+        "steps_coarse": 510,
+        "steps_fine": 1020,
+        "teacher_source_model_sha256": "b561ff3c5209692a083445f32e26de9e4a56f79d84879a4f858e741ecdb1b8a2"
+      },
+      "models": {
+        "cos": {
+          "cumulative_0_2": {
+            "above_0_01": 7,
+            "count": 16,
+            "eligible_count": 16,
+            "indices": [
+              0,
+              200
+            ],
+            "mean": 0.02161583262631678,
+            "median": 0.0026299675651928886,
+            "status": "QUALIFIED",
+            "strong_mean": 0.042815998381043725,
+            "time_points": 200,
+            "weak_mean": 0.00041566687158983544,
+            "worst": 0.1290690546033383
+          },
+          "cumulative_0_5": {
+            "above_0_01": 9,
+            "count": 16,
+            "eligible_count": 16,
+            "indices": [
+              0,
+              500
+            ],
+            "mean": 0.22558652220408051,
+            "median": 0.061288630231383465,
+            "status": "QUALIFIED",
+            "strong_mean": 0.44411860375903706,
+            "time_points": 500,
+            "weak_mean": 0.007054440649123955,
+            "worst": 1.1632513836627174
+          },
+          "primary_2_5": {
+            "above_0_01": 13,
+            "count": 16,
+            "eligible": [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true
+            ],
+            "eligible_count": 16,
+            "indices": [
+              200,
+              500
+            ],
+            "mean": 0.3615669819225897,
+            "median": 0.09385849798552914,
+            "per_event_B": [
+              4.190520015197032e-12,
+              1.7353634964377824e-12,
+              6.530612452954935e-12,
+              1.8819022639585977e-12,
+              1.0200214478266285e-12,
+              6.065185730374952e-12,
+              5.827110994246936e-12,
+              5.912062618142491e-12,
+              5.312824619098109e-11,
+              9.400544578602063e-11,
+              6.693084962191302e-11,
+              3.2521376274886434e-10,
+              3.5958606138418276e-10,
+              1.3611520156383635e-10,
+              1.0991170906985779e-10,
+              7.63646972439097e-11
+            ],
+            "per_event_mse": [
+              0.013224486527497213,
+              0.007313355777141059,
+              0.01911523060118674,
+              0.005218237315892963,
+              0.0027689176230198346,
+              0.015245318878610832,
+              0.014709522233145908,
+              0.014247249716679063,
+              0.24003832089092117,
+              0.3061112532300582,
+              0.16860176536987154,
+              1.8527062697023033,
+              1.597612030783281,
+              0.8247187225663809,
+              0.4449385469805122,
+              0.2585024825649324
+            ],
+            "status": "QUALIFIED",
+            "strong_mean": 0.7116536740110326,
+            "time_points": 300,
+            "weak_mean": 0.0114802898341467,
+            "worst": 1.8527062697023033
+          },
+          "reproduction_0_1": {
+            "above_0_01": 2,
+            "count": 16,
+            "eligible_count": 16,
+            "indices": [
+              0,
+              100
+            ],
+            "mean": 0.002196888648152602,
+            "median": 0.00020827358925027518,
+            "status": "QUALIFIED",
+            "strong_mean": 0.004354929027429284,
+            "time_points": 100,
+            "weak_mean": 3.884826887592004e-05,
+            "worst": 0.012167599657298623
+          },
+          "secondary_1_2": {
+            "above_0_01": 7,
+            "count": 16,
+            "eligible_count": 16,
+            "indices": [
+              100,
+              200
+            ],
+            "mean": 0.04103477660448096,
+            "median": 0.005051661541135502,
+            "status": "QUALIFIED",
+            "strong_mean": 0.08127706773465818,
+            "time_points": 100,
+            "weak_mean": 0.0007924854743037508,
+            "worst": 0.24607087434519748
+          }
+        },
+        "empty": {
+          "cumulative_0_2": {
+            "above_0_01": 7,
+            "count": 16,
+            "eligible_count": 16,
+            "indices": [
+              0,
+              200
+            ],
+            "mean": 0.021918736237844124,
+            "median": 0.0027012844044094534,
+            "status": "QUALIFIED",
+            "strong_mean": 0.04338661098430076,
+            "time_points": 200,
+            "weak_mean": 0.00045086149138748907,
+            "worst": 0.125636748824452
+          },
+          "cumulative_0_5": {
+            "above_0_01": 12,
+            "count": 16,
+            "eligible_count": 16,
+            "indices": [
+              0,
+              500
+            ],
+            "mean": 0.23393611780606044,
+            "median": 0.07011173519568227,
+            "status": "QUALIFIED",
+            "strong_mean": 0.45986412045161196,
+            "time_points": 500,
+            "weak_mean": 0.008008115160508934,
+            "worst": 1.160772202448602
+          },
+          "primary_2_5": {
+            "above_0_01": 13,
+            "count": 16,
+            "eligible": [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true
+            ],
+            "eligible_count": 16,
+            "indices": [
+              200,
+              500
+            ],
+            "mean": 0.37528103885153796,
+            "median": 0.10713795859055385,
+            "per_event_B": [
+              4.2927648350118746e-12,
+              1.8329834965013375e-12,
+              6.953217231633814e-12,
+              1.919074862465911e-12,
+              1.0788739548296865e-12,
+              6.239072532141266e-12,
+              6.2307591790798724e-12,
+              6.208049470571502e-12,
+              5.4394185502421586e-11,
+              9.728696845681617e-11,
+              6.930184090032404e-11,
+              3.248189859393063e-10,
+              3.6618198317813157e-10,
+              1.3488641424568936e-10,
+              1.1294975842986234e-10,
+              7.955200112354071e-11
+            ],
+            "per_event_mse": [
+              0.015154670597123419,
+              0.008099980641469726,
+              0.022373925428272146,
+              0.0055314239163967195,
+              0.0031661396850744435,
+              0.0166133432727626,
+              0.01689465208342341,
+              0.016536138561530047,
+              0.25777162317719643,
+              0.33112327486492227,
+              0.19190199175283554,
+              1.850862504864702,
+              1.6848150113442106,
+              0.8164761232064434,
+              0.4804540451767696,
+              0.2867217730514754
+            ],
+            "status": "QUALIFIED",
+            "strong_mean": 0.7375157934298194,
+            "time_points": 300,
+            "weak_mean": 0.013046284273256563,
+            "worst": 1.850862504864702
+          },
+          "reproduction_0_1": {
+            "above_0_01": 2,
+            "count": 16,
+            "eligible_count": 16,
+            "indices": [
+              0,
+              100
+            ],
+            "mean": 0.0021917524477674723,
+            "median": 0.00019055031221349206,
+            "status": "QUALIFIED",
+            "strong_mean": 0.004342886553682673,
+            "time_points": 100,
+            "weak_mean": 4.0618341852271286e-05,
+            "worst": 0.012367124498272526
+          },
+          "secondary_1_2": {
+            "above_0_01": 7,
+            "count": 16,
+            "eligible_count": 16,
+            "indices": [
+              100,
+              200
+            ],
+            "mean": 0.041645720027920774,
+            "median": 0.005212018496605415,
+            "status": "QUALIFIED",
+            "strong_mean": 0.08243033541491884,
+            "time_points": 100,
+            "weak_mean": 0.0008611046409227068,
+            "worst": 0.23992778338384277
+          }
+        },
+        "sin": {
+          "cumulative_0_2": {
+            "above_0_01": 7,
+            "count": 16,
+            "eligible_count": 16,
+            "indices": [
+              0,
+              200
+            ],
+            "mean": 0.021153132882311527,
+            "median": 0.00246048251779942,
+            "status": "QUALIFIED",
+            "strong_mean": 0.04190716892004797,
+            "time_points": 200,
+            "weak_mean": 0.00039909684457508797,
+            "worst": 0.11613050933375164
+          },
+          "cumulative_0_5": {
+            "above_0_01": 9,
+            "count": 16,
+            "eligible_count": 16,
+            "indices": [
+              0,
+              500
+            ],
+            "mean": 0.2142347290284089,
+            "median": 0.06240989696380064,
+            "status": "QUALIFIED",
+            "strong_mean": 0.4218046974289643,
+            "time_points": 500,
+            "weak_mean": 0.006664760627853448,
+            "worst": 1.0516712413600526
+          },
+          "primary_2_5": {
+            "above_0_01": 13,
+            "count": 16,
+            "eligible": [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true
+            ],
+            "eligible_count": 16,
+            "indices": [
+              200,
+              500
+            ],
+            "mean": 0.3429557931258072,
+            "median": 0.09501623270528095,
+            "per_event_B": [
+              3.92125252641357e-12,
+              1.768825745178238e-12,
+              6.163786145878848e-12,
+              1.8300440086927017e-12,
+              1.0448121303813324e-12,
+              5.689734875861925e-12,
+              5.526742592916402e-12,
+              5.5076897746777726e-12,
+              5.144744049139668e-11,
+              9.333532564687114e-11,
+              6.577536019447129e-11,
+              3.111421760116817e-10,
+              3.5060228109989165e-10,
+              1.322469499449846e-10,
+              1.069576393921664e-10,
+              7.784718801496054e-11
+            ],
+            "per_event_mse": [
+              0.01298126155588311,
+              0.007357440663472258,
+              0.01791918281975368,
+              0.004995878353444288,
+              0.0028851614967736433,
+              0.013786767186730407,
+              0.013689113638661992,
+              0.013120152818926123,
+              0.21727706243590544,
+              0.3031259528899481,
+              0.17211328259080821,
+              1.6753650627109204,
+              1.5663060510148967,
+              0.7712941918942842,
+              0.4264106480307934,
+              0.2686654799117131
+            ],
+            "status": "QUALIFIED",
+            "strong_mean": 0.6750697164349087,
+            "time_points": 300,
+            "weak_mean": 0.010841869816705688,
+            "worst": 1.6753650627109204
+          },
+          "reproduction_0_1": {
+            "above_0_01": 2,
+            "count": 16,
+            "eligible_count": 16,
+            "indices": [
+              0,
+              100
+            ],
+            "mean": 0.002201750275157791,
+            "median": 0.00020515059033737187,
+            "status": "QUALIFIED",
+            "strong_mean": 0.004361784296136415,
+            "time_points": 100,
+            "weak_mean": 4.1716254179166455e-05,
+            "worst": 0.013161195210692355
+          },
+          "secondary_1_2": {
+            "above_0_01": 7,
+            "count": 16,
+            "eligible_count": 16,
+            "indices": [
+              100,
+              200
+            ],
+            "mean": 0.04010451548946527,
+            "median": 0.004715814445261468,
+            "status": "QUALIFIED",
+            "strong_mean": 0.07945255354395953,
+            "time_points": 100,
+            "weak_mean": 0.0007564774349710095,
+            "worst": 0.2219318487046995
+          }
+        }
+      },
+      "pairs": {
+        "cos_minus_sin": {
+          "cumulative_0_2": {
+            "count": 16,
+            "events_D_gt_B": 10,
+            "mean_B_sum": 1.99390317435159e-11,
+            "mean_D": 0.0004626997440052522,
+            "sin_advantage_rule": true,
+            "status": "QUALIFIED"
+          },
+          "cumulative_0_5": {
+            "count": 16,
+            "events_D_gt_B": 12,
+            "mean_B_sum": 1.0079658774334873e-10,
+            "mean_D": 0.01135179317567162,
+            "sin_advantage_rule": true,
+            "status": "QUALIFIED"
+          },
+          "primary_2_5": {
+            "count": 16,
+            "eligible": [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true
+            ],
+            "events_D_gt_B": 12,
+            "mean_B_sum": 1.547016250765706e-10,
+            "mean_D": 0.01861118879678246,
+            "per_event_B_sum": [
+              8.1117725416106e-12,
+              3.5041892416160202e-12,
+              1.2694398598833783e-11,
+              3.711946272651299e-12,
+              2.064833578207961e-12,
+              1.1754920606236877e-11,
+              1.1353853587163338e-11,
+              1.1419752392820263e-11,
+              1.0457568668237778e-10,
+              1.8734077143289177e-10,
+              1.327062098163843e-10,
+              6.36355938760546e-10,
+              7.101883424840744e-10,
+              2.683621515088209e-10,
+              2.168693484620242e-10,
+              1.5421188525887026e-10
+            ],
+            "per_event_D": [
+              0.00024322497161410363,
+              -4.40848863311992e-05,
+              0.0011960477814330593,
+              0.0002223589624486752,
+              -0.0001162438737538087,
+              0.0014585516918804251,
+              0.0010204085944839156,
+              0.0011270968977529407,
+              0.022761258455015726,
+              0.002985300340110131,
+              -0.0035115172209366774,
+              0.1773412069913829,
+              0.03130597976838434,
+              0.05342453067209674,
+              0.01852789894971879,
+              -0.010162997346780667
+            ],
+            "sin_advantage_rule": true,
+            "status": "QUALIFIED"
+          },
+          "reproduction_0_1": {
+            "count": 16,
+            "events_D_gt_B": 8,
+            "mean_B_sum": 3.707550933288894e-12,
+            "mean_D": -4.861627005189008e-06,
+            "sin_advantage_rule": false,
+            "status": "QUALIFIED"
+          },
+          "secondary_1_2": {
+            "count": 16,
+            "events_D_gt_B": 10,
+            "mean_B_sum": 3.6170512553742905e-11,
+            "mean_D": 0.0009302611150156922,
+            "sin_advantage_rule": true,
+            "status": "QUALIFIED"
+          }
+        },
+        "empty_minus_sin": {
+          "cumulative_0_2": {
+            "count": 16,
+            "events_D_gt_B": 12,
+            "mean_B_sum": 1.9994510933036463e-11,
+            "mean_D": 0.0007656033555325951,
+            "sin_advantage_rule": true,
+            "status": "QUALIFIED"
+          },
+          "cumulative_0_5": {
+            "count": 16,
+            "events_D_gt_B": 16,
+            "mean_B_sum": 1.0155783619576779e-10,
+            "mean_D": 0.019701388777651548,
+            "sin_advantage_rule": true,
+            "status": "QUALIFIED"
+          },
+          "primary_2_5": {
+            "count": 16,
+            "eligible": [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true
+            ],
+            "events_D_gt_B": 16,
+            "mean_B_sum": 1.55933386370922e-10,
+            "mean_D": 0.03232524572573079,
+            "per_event_B_sum": [
+              8.214017361425444e-12,
+              3.6018092416795756e-12,
+              1.3117003377512663e-11,
+              3.749118871158613e-12,
+              2.1236860852110188e-12,
+              1.1928807408003191e-11,
+              1.1757501771996274e-11,
+              1.1715739245249274e-11,
+              1.0584162599381826e-10,
+              1.906222941036873e-10,
+              1.3507720109479533e-10,
+              6.359611619509879e-10,
+              7.167842642780233e-10,
+              2.6713336419067396e-10,
+              2.1990739782202876e-10,
+              1.5739918913850127e-10
+            ],
+            "per_event_D": [
+              0.002173409041240309,
+              0.0007425399779974681,
+              0.004454742608518466,
+              0.0005355455629524313,
+              0.00028097818830080017,
+              0.0028265760860321926,
+              0.0032055384447614178,
+              0.0034159857426039244,
+              0.040494560741290986,
+              0.027997321974974176,
+              0.019788709162027324,
+              0.1754974421537816,
+              0.1185089603293139,
+              0.045181931312159196,
+              0.05404339714597617,
+              0.018056293139762314
+            ],
+            "sin_advantage_rule": true,
+            "status": "QUALIFIED"
+          },
+          "reproduction_0_1": {
+            "count": 16,
+            "events_D_gt_B": 10,
+            "mean_B_sum": 3.707358072256821e-12,
+            "mean_D": -9.997827390318725e-06,
+            "sin_advantage_rule": false,
+            "status": "QUALIFIED"
+          },
+          "secondary_1_2": {
+            "count": 16,
+            "events_D_gt_B": 13,
+            "mean_B_sum": 3.628166379381611e-11,
+            "mean_D": 0.001541204538455506,
+            "sin_advantage_rule": true,
+            "status": "QUALIFIED"
+          }
+        }
+      },
+      "primary_status": "QUALIFIED",
+      "rawfiles": {
+        "cos": {
+          "bytes": 3840506,
+          "coarse_integration_dt_seconds": 0.01,
+          "coarse_shape": [
+            16,
+            500,
+            30
+          ],
+          "fine_integration_dt_seconds": 0.005,
+          "fine_observation_stride": 2,
+          "fine_shape": [
+            16,
+            500,
+            30
+          ],
+          "observation_dt_seconds": 0.01,
+          "observed_coordinates": 30,
+          "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\long_horizon_discrimination01\\evaluation\\5102\\cos.npz",
+          "sha256": "afee15b4a5b35754b9087c26f01c8f26a91079e4f6a881d6b08b2f4738e2488d"
+        },
+        "empty": {
+          "bytes": 3840506,
+          "coarse_integration_dt_seconds": 0.01,
+          "coarse_shape": [
+            16,
+            500,
+            30
+          ],
+          "fine_integration_dt_seconds": 0.005,
+          "fine_observation_stride": 2,
+          "fine_shape": [
+            16,
+            500,
+            30
+          ],
+          "observation_dt_seconds": 0.01,
+          "observed_coordinates": 30,
+          "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\long_horizon_discrimination01\\evaluation\\5102\\empty.npz",
+          "sha256": "4e88c05b9e5e6d0baf2165cf2a9844894a76192b34ddd886a0a4949c44dfbf08"
+        },
+        "sin": {
+          "bytes": 3840506,
+          "coarse_integration_dt_seconds": 0.01,
+          "coarse_shape": [
+            16,
+            500,
+            30
+          ],
+          "fine_integration_dt_seconds": 0.005,
+          "fine_observation_stride": 2,
+          "fine_shape": [
+            16,
+            500,
+            30
+          ],
+          "observation_dt_seconds": 0.01,
+          "observed_coordinates": 30,
+          "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\long_horizon_discrimination01\\evaluation\\5102\\sin.npz",
+          "sha256": "b21258e12e4b4e56195675a1e9a734820800d5ef96f1d5d5a8d74158576017b4"
+        },
+        "teacher": {
+          "bytes": 3924986,
+          "coarse_integration_dt_seconds": 0.01,
+          "coarse_shape": [
+            16,
+            511,
+            30
+          ],
+          "fine_integration_dt_seconds": 0.005,
+          "fine_observation_stride": 2,
+          "fine_shape": [
+            16,
+            511,
+            30
+          ],
+          "observation_dt_seconds": 0.01,
+          "observed_coordinates": 30,
+          "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\long_horizon_discrimination01\\evaluation\\5102\\teacher.npz",
+          "sha256": "4f724853d18e2f3bfbadf38a9e33bc2794f2b8d30b60b6fe765858d05494f1aa"
+        }
+      },
+      "registered_seed_rule": true,
+      "seed": 5102,
+      "source_commit": "3bc4c1dbc36d3004626e433e4d7a30a64e8a3793",
+      "status": "COMPLETED",
+      "strong_count": 8,
+      "weak_count": 8,
+      "worker_phase_elapsed_seconds": 13.042952899995726,
+      "full_summary": {
+        "path": "results/long_horizon_discrimination_20261021/eval5102_summary.json",
+        "sha256": "62d722b718ad8177da58586c32cb9109f334ef1595f5ce424ab1c17689f10d13"
+      },
+      "qualification_by_horizon": {
+        "teacher": {
+          "1s": {
+            "per_event_eligible": [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true
+            ],
+            "per_event_normalized_step_max": [
+              1.3323914662785967e-11,
+              8.938915246420874e-12,
+              1.551843400167924e-11,
+              9.211275150186438e-12,
+              1.0927325338489108e-11,
+              2.1201228087796307e-11,
+              1.9768830032887447e-11,
+              1.917759736841999e-11,
+              4.767216465574485e-11,
+              1.593454474412573e-10,
+              1.7326031340283122e-10,
+              3.3179854182215925e-10,
+              2.1436738057450198e-10,
+              1.205303829347815e-10,
+              8.705802506420114e-11,
+              1.3348931780072423e-10
+            ]
+          },
+          "2s": {
+            "per_event_eligible": [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true
+            ],
+            "per_event_normalized_step_max": [
+              2.6496236507666356e-11,
+              2.0152179033071628e-11,
+              2.602381069025981e-11,
+              2.127459752923794e-11,
+              1.8790019556630703e-11,
+              3.562080458548642e-11,
+              3.304002493070259e-11,
+              3.299948726325699e-11,
+              9.210650699150102e-11,
+              2.2812229942323492e-10,
+              2.2902798535866955e-10,
+              4.0010511421722666e-10,
+              3.156798395591651e-10,
+              1.517397911348515e-10,
+              2.094380564657943e-10,
+              1.723184418658666e-10
+            ]
+          },
+          "5s": {
+            "per_event_eligible": [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true
+            ],
+            "per_event_normalized_step_max": [
+              5.29972484040627e-11,
+              2.763787388817366e-11,
+              6.275876222501204e-11,
+              3.7970322223446083e-11,
+              2.4946203283893893e-11,
+              5.7803965693886975e-11,
+              7.72527877457449e-11,
+              5.80601778272277e-11,
+              1.8861859683145448e-10,
+              2.9041193380657475e-10,
+              3.0664469824114114e-10,
+              5.729751411094851e-10,
+              5.361529164659144e-10,
+              3.112020262439672e-10,
+              2.606271051117835e-10,
+              2.3534864223841377e-10
+            ]
+          }
+        },
+        "models": {
+          "cos": {
+            "1s": {
+              "per_event_eligible": [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true
+              ],
+              "per_event_normalized_step_max": [
+                1.1731173378447182e-11,
+                8.14686353201104e-12,
+                1.5693246543111735e-11,
+                8.764531736871058e-12,
+                1.1962294298609893e-11,
+                1.3041006843575945e-11,
+                1.3900909608022549e-11,
+                1.1053379527920351e-11,
+                4.334124144895682e-11,
+                4.2496775295532105e-11,
+                4.0476928038279537e-11,
+                3.4904811600407764e-11,
+                1.0510451022672912e-10,
+                3.135932656904207e-11,
+                4.1175558974824385e-11,
+                4.8374752598169256e-11
+              ]
+            },
+            "2s": {
+              "per_event_eligible": [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true
+              ],
+              "per_event_normalized_step_max": [
+                1.9996357689122116e-11,
+                1.7970120525219925e-11,
+                2.0680110465437924e-11,
+                1.6943522518221522e-11,
+                1.8253184344967087e-11,
+                2.111548139798401e-11,
+                2.0346536999514242e-11,
+                1.713699386962795e-11,
+                5.917582607958982e-11,
+                5.845214744149806e-11,
+                6.660897856494741e-11,
+                4.209400688991597e-11,
+                1.253153777702888e-10,
+                6.309939701986986e-11,
+                5.542361290171668e-11,
+                6.226913058749076e-11
+              ]
+            },
+            "5s": {
+              "per_event_eligible": [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true
+              ],
+              "per_event_normalized_step_max": [
+                3.772325970322812e-11,
+                2.1762016212463584e-11,
+                3.3206511388131907e-11,
+                2.6563618910850175e-11,
+                2.2658163470202643e-11,
+                3.7891741638869244e-11,
+                4.727318642829926e-11,
+                3.6463012018938316e-11,
+                1.1079272188108659e-10,
+                7.6875821287474e-11,
+                9.12125567244942e-11,
+                9.318052902664843e-11,
+                1.460161388340306e-10,
+                7.766524491541162e-11,
+                9.351144770715797e-11,
+                1.0019525957213745e-10
+              ]
+            }
+          },
+          "empty": {
+            "1s": {
+              "per_event_eligible": [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true
+              ],
+              "per_event_normalized_step_max": [
+                1.1347650061888544e-11,
+                7.916260097058129e-12,
+                1.5171957512431048e-11,
+                8.218434539716912e-12,
+                1.1800141727344932e-11,
+                1.2279962296654122e-11,
+                1.2996294167564395e-11,
+                1.0786575122481449e-11,
+                4.124538789485322e-11,
+                4.197046773456765e-11,
+                4.0080451519858136e-11,
+                3.44094186489492e-11,
+                9.632850305238469e-11,
+                3.269661364747042e-11,
+                4.012015515368076e-11,
+                4.670327162376846e-11
+              ]
+            },
+            "2s": {
+              "per_event_eligible": [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true
+              ],
+              "per_event_normalized_step_max": [
+                1.83519172738644e-11,
+                1.7155136507645303e-11,
+                1.9920528654311124e-11,
+                1.676898665956862e-11,
+                1.7805296902977944e-11,
+                2.0223571632589917e-11,
+                1.9245899021030265e-11,
+                1.6476238305678638e-11,
+                5.4796761746728676e-11,
+                5.7097201658070466e-11,
+                6.599609515289435e-11,
+                4.128734403312206e-11,
+                1.134265469927334e-10,
+                6.32548997193017e-11,
+                5.548031676176982e-11,
+                6.019378533345575e-11
+              ]
+            },
+            "5s": {
+              "per_event_eligible": [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true
+              ],
+              "per_event_normalized_step_max": [
+                3.4749013443032173e-11,
+                2.068596235123523e-11,
+                3.1513223979299485e-11,
+                2.6278574457388824e-11,
+                2.157485995641985e-11,
+                3.565209625792788e-11,
+                4.486208507278169e-11,
+                3.3956334694206045e-11,
+                1.0130512928795743e-10,
+                7.262368307166371e-11,
+                8.368768492783308e-11,
+                9.205543157424688e-11,
+                1.42298232488031e-10,
+                7.728227132507534e-11,
+                9.193973359426e-11,
+                9.532347029866054e-11
+              ]
+            }
+          },
+          "sin": {
+            "1s": {
+              "per_event_eligible": [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true
+              ],
+              "per_event_normalized_step_max": [
+                1.1273558010845017e-11,
+                8.101722769056132e-12,
+                1.5841689613003567e-11,
+                8.487826161486282e-12,
+                1.2219560635382217e-11,
+                1.2834928605893335e-11,
+                1.3576085953779166e-11,
+                1.1185502206848179e-11,
+                4.185366239355424e-11,
+                4.2161392278239914e-11,
+                4.261876314322995e-11,
+                3.657631299957848e-11,
+                1.0132072976128131e-10,
+                3.425946054393455e-11,
+                4.213508785505172e-11,
+                4.8845106728718865e-11
+              ]
+            },
+            "2s": {
+              "per_event_eligible": [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true
+              ],
+              "per_event_normalized_step_max": [
+                1.854429126314408e-11,
+                1.7074332515197937e-11,
+                2.116222246408463e-11,
+                1.7179315230264065e-11,
+                1.8918259150814766e-11,
+                2.0885927169529946e-11,
+                2.0189257450622456e-11,
+                1.727954229796902e-11,
+                5.6912400897193015e-11,
+                5.703310498754019e-11,
+                6.955238576148891e-11,
+                4.487384506184143e-11,
+                1.1871746939984226e-10,
+                6.674535700572234e-11,
+                5.848215610869403e-11,
+                6.284322119840375e-11
+              ]
+            },
+            "5s": {
+              "per_event_eligible": [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true
+              ],
+              "per_event_normalized_step_max": [
+                3.530110391573463e-11,
+                2.055360372818993e-11,
+                3.3828489818849697e-11,
+                2.7009347170690387e-11,
+                2.26612400087483e-11,
+                3.689066995466019e-11,
+                4.6804466732225515e-11,
+                3.458558175691901e-11,
+                1.0666316161466063e-10,
+                7.52137665813963e-11,
+                8.886391012457434e-11,
+                9.836626271351045e-11,
+                1.5005400518877864e-10,
+                8.052212508761819e-11,
+                9.577591310394961e-11,
+                9.858098169994524e-11
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "event_count": 16,
+      "failures": {},
+      "fixture": {
+        "formal": true,
+        "prefix_111_sha256": "b8c1723d4fa077367dbd7fe956ed3ae14eb38895f427f8e5cc511ae79e3144c8",
+        "raw": {
+          "bytes": 3924986,
+          "coarse_integration_dt_seconds": 0.01,
+          "coarse_shape": [
+            16,
+            511,
+            30
+          ],
+          "fine_integration_dt_seconds": 0.005,
+          "fine_observation_stride": 2,
+          "fine_shape": [
+            16,
+            511,
+            30
+          ],
+          "observation_dt_seconds": 0.01,
+          "observed_coordinates": 30,
+          "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\long_horizon_discrimination01\\evaluation\\5103\\teacher.npz",
+          "sha256": "a34bac21c1ee38afa24cfb61510cc9fa3612811d72157991434ab98edb8d2c60"
+        },
+        "raw_io_seconds": 0.017066400032490492,
+        "steps_coarse": 510,
+        "steps_fine": 1020,
+        "teacher_source_model_sha256": "b561ff3c5209692a083445f32e26de9e4a56f79d84879a4f858e741ecdb1b8a2"
+      },
+      "models": {
+        "cos": {
+          "cumulative_0_2": {
+            "above_0_01": 5,
+            "count": 16,
+            "eligible_count": 16,
+            "indices": [
+              0,
+              200
+            ],
+            "mean": 0.01479137438189526,
+            "median": 0.0013901287062895405,
+            "status": "QUALIFIED",
+            "strong_mean": 0.02931465523846022,
+            "time_points": 200,
+            "weak_mean": 0.0002680935253303012,
+            "worst": 0.0984806801072066
+          },
+          "cumulative_0_5": {
+            "above_0_01": 10,
+            "count": 16,
+            "eligible_count": 16,
+            "indices": [
+              0,
+              500
+            ],
+            "mean": 0.31258379092664573,
+            "median": 0.033893287801691915,
+            "status": "QUALIFIED",
+            "strong_mean": 0.6184170975703659,
+            "time_points": 500,
+            "weak_mean": 0.0067504842829255556,
+            "worst": 2.628307186854559
+          },
+          "primary_2_5": {
+            "above_0_01": 12,
+            "count": 16,
+            "eligible": [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true
+            ],
+            "eligible_count": 16,
+            "indices": [
+              200,
+              500
+            ],
+            "mean": 0.5111120686231461,
+            "median": 0.05370457718629245,
+            "per_event_B": [
+              2.9770928167916277e-12,
+              1.2573301924408798e-12,
+              2.181366702718493e-12,
+              5.303622695808389e-12,
+              5.869765430525198e-12,
+              4.846768368869108e-12,
+              3.020991313034387e-12,
+              1.3859603226991948e-12,
+              2.481499223453647e-10,
+              2.3803681980881065e-11,
+              4.97439112133235e-11,
+              4.6580238207685824e-11,
+              5.825137983726434e-11,
+              3.48249865994562e-10,
+              8.347724667289981e-10,
+              2.939446933966588e-11
+            ],
+            "per_event_mse": [
+              0.009651528543174996,
+              0.005690088073376543,
+              0.008429943302082346,
+              0.013550926167376234,
+              0.016850027396907122,
+              0.012583304339613747,
+              0.01736028830677666,
+              0.0044605188412714875,
+              1.2011420269679283,
+              0.09004886606580824,
+              0.19835237090827856,
+              0.1756585997766766,
+              0.2279115627506509,
+              1.715434127694442,
+              4.3396103041696055,
+              0.14105861466636752
+            ],
+            "status": "QUALIFIED",
+            "strong_mean": 1.0111520591249696,
+            "time_points": 300,
+            "weak_mean": 0.011072078121322392,
+            "worst": 4.3396103041696055
+          },
+          "reproduction_0_1": {
+            "above_0_01": 1,
+            "count": 16,
+            "eligible_count": 16,
+            "indices": [
+              0,
+              100
+            ],
+            "mean": 0.001325830437924961,
+            "median": 0.00019589516008898048,
+            "status": "QUALIFIED",
+            "strong_mean": 0.002619842409159054,
+            "time_points": 100,
+            "weak_mean": 3.1818466690867794e-05,
+            "worst": 0.010794292349925886
+          },
+          "secondary_1_2": {
+            "above_0_01": 6,
+            "count": 16,
+            "eligible_count": 16,
+            "indices": [
+              100,
+              200
+            ],
+            "mean": 0.02825691832586556,
+            "median": 0.0025901476555010845,
+            "status": "QUALIFIED",
+            "strong_mean": 0.05600946806776139,
+            "time_points": 100,
+            "weak_mean": 0.0005043685839697346,
+            "worst": 0.1861670678644873
+          }
+        },
+        "empty": {
+          "cumulative_0_2": {
+            "above_0_01": 5,
+            "count": 16,
+            "eligible_count": 16,
+            "indices": [
+              0,
+              200
+            ],
+            "mean": 0.014760973775430125,
+            "median": 0.0013412282135968198,
+            "status": "QUALIFIED",
+            "strong_mean": 0.02925630155379645,
+            "time_points": 200,
+            "weak_mean": 0.0002656459970637959,
+            "worst": 0.09829595532288371
+          },
+          "cumulative_0_5": {
+            "above_0_01": 10,
+            "count": 16,
+            "eligible_count": 16,
+            "indices": [
+              0,
+              500
+            ],
+            "mean": 0.31276120368724936,
+            "median": 0.03437750288683036,
+            "status": "QUALIFIED",
+            "strong_mean": 0.6187784960723691,
+            "time_points": 500,
+            "weak_mean": 0.00674391130212956,
+            "worst": 2.616726140447732
+          },
+          "primary_2_5": {
+            "above_0_01": 12,
+            "count": 16,
+            "eligible": [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true
+            ],
+            "eligible_count": 16,
+            "indices": [
+              200,
+              500
+            ],
+            "mean": 0.5114280236284622,
+            "median": 0.05439401199205203,
+            "per_event_B": [
+              2.973356171697627e-12,
+              1.2533605833345302e-12,
+              2.182404772980688e-12,
+              5.356316429014283e-12,
+              5.877670375449617e-12,
+              4.9156523329322235e-12,
+              3.0004119821922155e-12,
+              1.3612743661086687e-12,
+              2.484850675720337e-10,
+              2.4249141855726763e-11,
+              5.022267529467855e-11,
+              4.6518573722457384e-11,
+              5.7939225171516276e-11,
+              3.494354036030854e-10,
+              8.339486104605292e-10,
+              2.940281755532113e-11
+            ],
+            "per_event_mse": [
+              0.009613047328564038,
+              0.005653526423252565,
+              0.008490401860795733,
+              0.013687436113704472,
+              0.016842472149680397,
+              0.01277959413716004,
+              0.017114101052313153,
+              0.004321459645250162,
+              1.2040236895450669,
+              0.0916739229317909,
+              0.1995509018458478,
+              0.17784291151819698,
+              0.22317258933137302,
+              1.7372272510719025,
+              4.320837375784063,
+              0.14001769731643424
+            ],
+            "status": "QUALIFIED",
+            "strong_mean": 1.0117932924180844,
+            "time_points": 300,
+            "weak_mean": 0.01106275483884007,
+            "worst": 4.320837375784063
+          },
+          "reproduction_0_1": {
+            "above_0_01": 1,
+            "count": 16,
+            "eligible_count": 16,
+            "indices": [
+              0,
+              100
+            ],
+            "mean": 0.0013181581500842127,
+            "median": 0.00019012497602044633,
+            "status": "QUALIFIED",
+            "strong_mean": 0.0026048436066300547,
+            "time_points": 100,
+            "weak_mean": 3.1472693538370694e-05,
+            "worst": 0.010682238507971502
+          },
+          "secondary_1_2": {
+            "above_0_01": 6,
+            "count": 16,
+            "eligible_count": 16,
+            "indices": [
+              100,
+              200
+            ],
+            "mean": 0.028203789400776034,
+            "median": 0.0024962713915851103,
+            "status": "QUALIFIED",
+            "strong_mean": 0.05590775950096285,
+            "time_points": 100,
+            "weak_mean": 0.000499819300589221,
+            "worst": 0.1859096721377959
+          }
+        },
+        "sin": {
+          "cumulative_0_2": {
+            "above_0_01": 5,
+            "count": 16,
+            "eligible_count": 16,
+            "indices": [
+              0,
+              200
+            ],
+            "mean": 0.01435453179645462,
+            "median": 0.0014728346381260187,
+            "status": "QUALIFIED",
+            "strong_mean": 0.028467197379653822,
+            "time_points": 200,
+            "weak_mean": 0.00024186621325541875,
+            "worst": 0.09650060876922854
+          },
+          "cumulative_0_5": {
+            "above_0_01": 10,
+            "count": 16,
+            "eligible_count": 16,
+            "indices": [
+              0,
+              500
+            ],
+            "mean": 0.3111107757212216,
+            "median": 0.03372908326637316,
+            "status": "QUALIFIED",
+            "strong_mean": 0.6155749938459132,
+            "time_points": 500,
+            "weak_mean": 0.006646557596529931,
+            "worst": 2.6392050658287256
+          },
+          "primary_2_5": {
+            "above_0_01": 12,
+            "count": 16,
+            "eligible": [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true
+            ],
+            "eligible_count": 16,
+            "indices": [
+              200,
+              500
+            ],
+            "mean": 0.5089482716710663,
+            "median": 0.053610068776012154,
+            "per_event_B": [
+              2.967875071190721e-12,
+              1.2373438974965709e-12,
+              2.0950075335164377e-12,
+              5.185167661967865e-12,
+              5.84552847482495e-12,
+              4.971495538821562e-12,
+              2.9479889711061527e-12,
+              1.3872147417770995e-12,
+              2.4624950261086816e-10,
+              2.4722023297555834e-11,
+              4.9761801092309315e-11,
+              4.522651908970755e-11,
+              5.917840328337166e-11,
+              3.4160885926469905e-10,
+              8.376204889345003e-10,
+              3.054004864929425e-11
+            ],
+            "per_event_mse": [
+              0.009633366631721518,
+              0.005445163118251358,
+              0.008133825105365982,
+              0.013316376600150745,
+              0.016723530350552702,
+              0.012946616131356687,
+              0.016593557997627663,
+              0.004538378881343531,
+              1.1898911121964495,
+              0.09049660720147161,
+              0.19948169515873296,
+              0.16637303297653488,
+              0.23145906225358764,
+              1.670513382235128,
+              4.358777886767246,
+              0.148848753131539
+            ],
+            "status": "QUALIFIED",
+            "strong_mean": 1.0069801914900862,
+            "time_points": 300,
+            "weak_mean": 0.010916351852046273,
+            "worst": 4.358777886767246
+          },
+          "reproduction_0_1": {
+            "above_0_01": 1,
+            "count": 16,
+            "eligible_count": 16,
+            "indices": [
+              0,
+              100
+            ],
+            "mean": 0.0012359275006048902,
+            "median": 0.00018309918769262144,
+            "status": "QUALIFIED",
+            "strong_mean": 0.0024447138854523215,
+            "time_points": 100,
+            "weak_mean": 2.7141115757458977e-05,
+            "worst": 0.010384982857992268
+          },
+          "secondary_1_2": {
+            "above_0_01": 6,
+            "count": 16,
+            "eligible_count": 16,
+            "indices": [
+              100,
+              200
+            ],
+            "mean": 0.02747313609230435,
+            "median": 0.0027660531380743723,
+            "status": "QUALIFIED",
+            "strong_mean": 0.05448968087385532,
+            "time_points": 100,
+            "weak_mean": 0.00045659131075337855,
+            "worst": 0.18261623468046484
+          }
+        }
+      },
+      "pairs": {
+        "cos_minus_sin": {
+          "cumulative_0_2": {
+            "count": 16,
+            "events_D_gt_B": 14,
+            "mean_B_sum": 1.6987127181255493e-11,
+            "mean_D": 0.0004368425854406398,
+            "sin_advantage_rule": true,
+            "status": "QUALIFIED"
+          },
+          "cumulative_0_5": {
+            "count": 16,
+            "events_D_gt_B": 9,
+            "mean_B_sum": 1.315698796826387e-10,
+            "mean_D": 0.0014730152054241341,
+            "sin_advantage_rule": true,
+            "status": "QUALIFIED"
+          },
+          "primary_2_5": {
+            "count": 16,
+            "eligible": [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true
+            ],
+            "events_D_gt_B": 9,
+            "mean_B_sum": 2.079583813502275e-10,
+            "mean_D": 0.002163796952079802,
+            "per_event_B_sum": [
+              5.944967887982349e-12,
+              2.4946740899374507e-12,
+              4.2763742362349306e-12,
+              1.0488790357776254e-11,
+              1.171529390535015e-11,
+              9.81826390769067e-12,
+              5.96898028414054e-12,
+              2.7731750644762945e-12,
+              4.943994249562329e-10,
+              4.85257052784369e-11,
+              9.950571230563281e-11,
+              9.180675729739338e-11,
+              1.1742978312063598e-10,
+              6.898587252592611e-10,
+              1.6723929556634984e-09,
+              5.993451798896014e-11
+            ],
+            "per_event_D": [
+              1.816191145347784e-05,
+              0.0002449249551251852,
+              0.0002961181967163634,
+              0.00023454956722548936,
+              0.00012649704635442002,
+              -0.00036331179174294015,
+              0.0007667303091489983,
+              -7.786004007204368e-05,
+              0.01125091477147877,
+              -0.0004477411356633709,
+              -0.0011293242504543943,
+              0.009285566800141726,
+              -0.0035474995029367573,
+              0.044920745459314126,
+              -0.01916758259764073,
+              -0.007790138465171487
+            ],
+            "sin_advantage_rule": true,
+            "status": "QUALIFIED"
+          },
+          "reproduction_0_1": {
+            "count": 16,
+            "events_D_gt_B": 14,
+            "mean_B_sum": 2.4000590288640648e-12,
+            "mean_D": 8.990293732007069e-05,
+            "sin_advantage_rule": true,
+            "status": "QUALIFIED"
+          },
+          "secondary_1_2": {
+            "count": 16,
+            "events_D_gt_B": 14,
+            "mean_B_sum": 3.157419533364692e-11,
+            "mean_D": 0.000783782233561208,
+            "sin_advantage_rule": true,
+            "status": "QUALIFIED"
+          }
+        },
+        "empty_minus_sin": {
+          "cumulative_0_2": {
+            "count": 16,
+            "events_D_gt_B": 14,
+            "mean_B_sum": 1.6997756958081166e-11,
+            "mean_D": 0.0004064419789755045,
+            "sin_advantage_rule": true,
+            "status": "QUALIFIED"
+          },
+          "cumulative_0_5": {
+            "count": 16,
+            "events_D_gt_B": 11,
+            "mean_B_sum": 1.3162412392180993e-10,
+            "mean_D": 0.0016504279660277785,
+            "sin_advantage_rule": true,
+            "status": "QUALIFIED"
+          },
+          "primary_2_5": {
+            "count": 16,
+            "eligible": [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true
+            ],
+            "events_D_gt_B": 10,
+            "mean_B_sum": 2.080417018976291e-10,
+            "mean_D": 0.0024797519573959708,
+            "per_event_B_sum": [
+              5.941231242888348e-12,
+              2.490704480831101e-12,
+              4.277412306497126e-12,
+              1.0541484090982148e-11,
+              1.1723198850274568e-11,
+              9.887147871753785e-12,
+              5.948400953298369e-12,
+              2.7484891078857685e-12,
+              4.947345701829019e-10,
+              4.89711651532826e-11,
+              9.998447638698787e-11,
+              9.174509281216494e-11,
+              1.1711762845488792e-10,
+              6.910442628677844e-10,
+              1.6715690993950294e-09,
+              5.994286620461539e-11
+            ],
+            "per_event_D": [
+              -2.0319303157479568e-05,
+              0.00020836330500120705,
+              0.0003565767554297508,
+              0.0003710595135537273,
+              0.00011894179912769545,
+              -0.00016702199419664672,
+              0.0005205430546854906,
+              -0.00021691923609336913,
+              0.014132577348617392,
+              0.0011773157303192894,
+              6.920668711485334e-05,
+              0.011469878541662093,
+              -0.008286472922214627,
+              0.06671386883677455,
+              -0.03794051098318363,
+              -0.008831055815104766
+            ],
+            "sin_advantage_rule": true,
+            "status": "QUALIFIED"
+          },
+          "reproduction_0_1": {
+            "count": 16,
+            "events_D_gt_B": 14,
+            "mean_B_sum": 2.393516594564604e-12,
+            "mean_D": 8.223064947932243e-05,
+            "sin_advantage_rule": true,
+            "status": "QUALIFIED"
+          },
+          "secondary_1_2": {
+            "count": 16,
+            "events_D_gt_B": 14,
+            "mean_B_sum": 3.1601997321597723e-11,
+            "mean_D": 0.0007306533084716841,
+            "sin_advantage_rule": true,
+            "status": "QUALIFIED"
+          }
+        }
+      },
+      "primary_status": "QUALIFIED",
+      "rawfiles": {
+        "cos": {
+          "bytes": 3840506,
+          "coarse_integration_dt_seconds": 0.01,
+          "coarse_shape": [
+            16,
+            500,
+            30
+          ],
+          "fine_integration_dt_seconds": 0.005,
+          "fine_observation_stride": 2,
+          "fine_shape": [
+            16,
+            500,
+            30
+          ],
+          "observation_dt_seconds": 0.01,
+          "observed_coordinates": 30,
+          "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\long_horizon_discrimination01\\evaluation\\5103\\cos.npz",
+          "sha256": "3972e260a2cb2eee231d923184a158f15a302aba86a5a868f09717abee622a9a"
+        },
+        "empty": {
+          "bytes": 3840506,
+          "coarse_integration_dt_seconds": 0.01,
+          "coarse_shape": [
+            16,
+            500,
+            30
+          ],
+          "fine_integration_dt_seconds": 0.005,
+          "fine_observation_stride": 2,
+          "fine_shape": [
+            16,
+            500,
+            30
+          ],
+          "observation_dt_seconds": 0.01,
+          "observed_coordinates": 30,
+          "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\long_horizon_discrimination01\\evaluation\\5103\\empty.npz",
+          "sha256": "a774fa0cffdb2ae5eafb560617c97f029f24bc8e0c2e1808eef14d9c5cfb899f"
+        },
+        "sin": {
+          "bytes": 3840506,
+          "coarse_integration_dt_seconds": 0.01,
+          "coarse_shape": [
+            16,
+            500,
+            30
+          ],
+          "fine_integration_dt_seconds": 0.005,
+          "fine_observation_stride": 2,
+          "fine_shape": [
+            16,
+            500,
+            30
+          ],
+          "observation_dt_seconds": 0.01,
+          "observed_coordinates": 30,
+          "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\long_horizon_discrimination01\\evaluation\\5103\\sin.npz",
+          "sha256": "f814285155ba92cc519273f4a980558531938a4a0c154805b7ec846522a8cf1f"
+        },
+        "teacher": {
+          "bytes": 3924986,
+          "coarse_integration_dt_seconds": 0.01,
+          "coarse_shape": [
+            16,
+            511,
+            30
+          ],
+          "fine_integration_dt_seconds": 0.005,
+          "fine_observation_stride": 2,
+          "fine_shape": [
+            16,
+            511,
+            30
+          ],
+          "observation_dt_seconds": 0.01,
+          "observed_coordinates": 30,
+          "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\long_horizon_discrimination01\\evaluation\\5103\\teacher.npz",
+          "sha256": "a34bac21c1ee38afa24cfb61510cc9fa3612811d72157991434ab98edb8d2c60"
+        }
+      },
+      "registered_seed_rule": true,
+      "seed": 5103,
+      "source_commit": "3bc4c1dbc36d3004626e433e4d7a30a64e8a3793",
+      "status": "COMPLETED",
+      "strong_count": 8,
+      "weak_count": 8,
+      "worker_phase_elapsed_seconds": 12.90683719998924,
+      "full_summary": {
+        "path": "results/long_horizon_discrimination_20261021/eval5103_summary.json",
+        "sha256": "7486a64b25ed0aa07c7ff159370e7c2e0c69a878f8b43c97cbe31233cede0a14"
+      },
+      "qualification_by_horizon": {
+        "teacher": {
+          "1s": {
+            "per_event_eligible": [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true
+            ],
+            "per_event_normalized_step_max": [
+              1.0155208402436063e-11,
+              8.370791517004457e-12,
+              7.232080625226781e-12,
+              1.9616119379148365e-11,
+              1.438400907611001e-11,
+              2.0063140891310898e-11,
+              1.3116080830583766e-11,
+              1.0723675502679797e-11,
+              2.963685570206459e-10,
+              8.242593015129301e-11,
+              4.344681423852557e-11,
+              8.701232536233404e-11,
+              7.760144639858671e-11,
+              1.7607555424720647e-10,
+              2.2365148264644027e-10,
+              3.9257270685267584e-11
+            ]
+          },
+          "2s": {
+            "per_event_eligible": [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true
+            ],
+            "per_event_normalized_step_max": [
+              1.883567998062656e-11,
+              1.3511658672487112e-11,
+              1.5694448003866218e-11,
+              2.950628378918695e-11,
+              3.719526125219844e-11,
+              3.23063898111395e-11,
+              2.3702615929709142e-11,
+              1.5806368824590796e-11,
+              4.56698807614795e-10,
+              1.1496147761478489e-10,
+              9.875278066790401e-11,
+              1.7995910330043468e-10,
+              1.5562239786863028e-10,
+              2.917663309486885e-10,
+              5.299668347514995e-10,
+              5.5060860217994585e-11
+            ]
+          },
+          "5s": {
+            "per_event_eligible": [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true
+            ],
+            "per_event_normalized_step_max": [
+              3.440542088365588e-11,
+              2.9085267533627627e-11,
+              3.387881072860188e-11,
+              5.809559276833066e-11,
+              5.230073113831395e-11,
+              6.601819993595827e-11,
+              3.865881575834092e-11,
+              3.6143274484529116e-11,
+              6.509992572132189e-10,
+              1.3063862302965353e-10,
+              2.3907349423228224e-10,
+              1.8931391241726477e-10,
+              1.9769551750527874e-10,
+              4.995531550636353e-10,
+              1.07060227305055e-09,
+              1.288798321260129e-10
+            ]
+          }
+        },
+        "models": {
+          "cos": {
+            "1s": {
+              "per_event_eligible": [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true
+              ],
+              "per_event_normalized_step_max": [
+                6.6758243597770654e-12,
+                6.5582647386560155e-12,
+                5.63501347049144e-12,
+                1.4546253018179361e-11,
+                1.1463383502099237e-11,
+                1.590021902415329e-11,
+                1.0132661289064006e-11,
+                6.854342776305213e-12,
+                5.837925982601128e-11,
+                4.6993938418003543e-11,
+                3.4082536939950776e-11,
+                5.892650216785102e-11,
+                3.928038090947016e-11,
+                6.332886901239116e-11,
+                7.079820733375667e-11,
+                2.5573818125919636e-11
+              ]
+            },
+            "2s": {
+              "per_event_eligible": [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true
+              ],
+              "per_event_normalized_step_max": [
+                1.0727820600411351e-11,
+                9.236550138515955e-12,
+                1.0227044083212345e-11,
+                2.1090199494608046e-11,
+                2.031397561212007e-11,
+                1.9126948907103548e-11,
+                1.2743082437864118e-11,
+                1.0189711266215272e-11,
+                9.739542299069558e-11,
+                5.347340265055531e-11,
+                5.505292254068581e-11,
+                7.140695824871e-11,
+                5.4423414342953183e-11,
+                6.986311653400434e-11,
+                7.166344390927018e-11,
+                2.965605847318011e-11
+              ]
+            },
+            "5s": {
+              "per_event_eligible": [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true
+              ],
+              "per_event_normalized_step_max": [
+                1.912332795033328e-11,
+                1.6271921560835948e-11,
+                2.3520399092646495e-11,
+                3.345079289038543e-11,
+                2.8495080892562993e-11,
+                4.477262464736572e-11,
+                2.0789053139850566e-11,
+                2.3730759727459796e-11,
+                1.0500797530102046e-10,
+                9.93843597800918e-11,
+                1.0439228087479942e-10,
+                9.675300198946613e-11,
+                7.472404253037931e-11,
+                1.1704047927742225e-10,
+                9.63548958503711e-11,
+                8.910589473605806e-11
+              ]
+            }
+          },
+          "empty": {
+            "1s": {
+              "per_event_eligible": [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true
+              ],
+              "per_event_normalized_step_max": [
+                6.7158366037929546e-12,
+                6.583396793334753e-12,
+                5.6809254445246115e-12,
+                1.4504900274823509e-11,
+                1.1495214254734005e-11,
+                1.5861579025700968e-11,
+                1.0181686371846129e-11,
+                6.823561760588956e-12,
+                5.835843326277152e-11,
+                4.849104790627642e-11,
+                3.4525633871355613e-11,
+                5.6669165119182586e-11,
+                3.971820777796903e-11,
+                6.276866676966227e-11,
+                7.061333412082255e-11,
+                2.536595300435366e-11
+              ]
+            },
+            "2s": {
+              "per_event_eligible": [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true
+              ],
+              "per_event_normalized_step_max": [
+                1.0771027099201618e-11,
+                9.267237594913926e-12,
+                1.017738074010217e-11,
+                2.1016355310044026e-11,
+                2.0373940642890087e-11,
+                1.9040429282010753e-11,
+                1.2773989071874005e-11,
+                1.0109361305997794e-11,
+                9.728327995786615e-11,
+                5.530573970482187e-11,
+                5.554205065668761e-11,
+                6.835365976044583e-11,
+                5.418470988735912e-11,
+                6.943646095595076e-11,
+                7.148979781453044e-11,
+                2.966429169318932e-11
+              ]
+            },
+            "5s": {
+              "per_event_eligible": [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true
+              ],
+              "per_event_normalized_step_max": [
+                1.9160001615302727e-11,
+                1.6251316870540314e-11,
+                2.3356189651717686e-11,
+                3.349823125138089e-11,
+                2.8613433430195407e-11,
+                4.4868055152017945e-11,
+                2.0776546642844435e-11,
+                2.3727017354728336e-11,
+                1.0514571808996471e-10,
+                1.0050418806505995e-10,
+                1.0440102304576088e-10,
+                9.439424238973428e-11,
+                7.519713258129196e-11,
+                1.1455891416523961e-10,
+                9.622833442760646e-11,
+                8.937684252181574e-11
+              ]
+            }
+          },
+          "sin": {
+            "1s": {
+              "per_event_eligible": [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true
+              ],
+              "per_event_normalized_step_max": [
+                6.784278937212055e-12,
+                6.7002458284347026e-12,
+                5.724321693953227e-12,
+                1.4190699527485342e-11,
+                1.1121459610893504e-11,
+                1.5362440062642516e-11,
+                9.69049995084203e-12,
+                6.606223464209428e-12,
+                5.916906718579567e-11,
+                4.948151119265919e-11,
+                3.2863646141314316e-11,
+                5.87503832785044e-11,
+                3.7984150518304644e-11,
+                5.99052181543515e-11,
+                6.698173562221395e-11,
+                2.5105620963856773e-11
+              ]
+            },
+            "2s": {
+              "per_event_eligible": [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true
+              ],
+              "per_event_normalized_step_max": [
+                1.0646535222337056e-11,
+                8.88443164820359e-12,
+                1.0352003462650852e-11,
+                2.0633166571974184e-11,
+                1.9928926185086586e-11,
+                1.8810474251962795e-11,
+                1.2491311452507824e-11,
+                1.008246377134077e-11,
+                9.793370954827684e-11,
+                5.6329445390221934e-11,
+                5.4168225626968714e-11,
+                7.120719694036548e-11,
+                5.3578336488417135e-11,
+                6.705950376195717e-11,
+                6.774443118488546e-11,
+                2.8898602232332644e-11
+              ]
+            },
+            "5s": {
+              "per_event_eligible": [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true
+              ],
+              "per_event_normalized_step_max": [
+                1.8529797223913525e-11,
+                1.592851005590872e-11,
+                2.3159939344266187e-11,
+                3.225040718192897e-11,
+                2.7491282966667185e-11,
+                4.345362537816271e-11,
+                2.0840963668519855e-11,
+                2.3121314328141566e-11,
+                1.0617570521326423e-10,
+                1.0159357752683155e-10,
+                1.0353285822181948e-10,
+                9.581688363630163e-11,
+                7.450078093351754e-11,
+                1.0872747645810933e-10,
+                9.680186593836268e-11,
+                8.886488593215204e-11
+              ]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "full_evidence": "All16 primary event MSE/D/B and all window aggregates retained here. Complete per-event arrays and failure categories for every window remain in each immutable full_summary reference."
+}
