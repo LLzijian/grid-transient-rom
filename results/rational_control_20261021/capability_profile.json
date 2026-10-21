@@ -1,0 +1,41 @@
+{
+  "work_type": "paired known-form causal benchmark engineering feasibility",
+  "evidence": "QA passed; complete cost measured; formal scientific comparison not admitted",
+  "scientific_result": null,
+  "formal_updates": 0,
+  "formal_512_endpoints": 0,
+  "teacher_law": ".4*q/(1+abs(q))",
+  "learner_forms": [
+    "a*q/(1+abs(q))",
+    "a*tanh(2*q)"
+  ],
+  "scope": "shared40state once100ms initializer; oracle-form advantage; no unknown structure discovery or model promotion",
+  "qa_tests_passed": 8,
+  "qa_native_seconds": 52.62313160003396,
+  "cost_native_seconds": 354.77820149995387,
+  "actual_timing_updates": 384,
+  "timing_counts": {
+    "update": 384,
+    "g_train": 12,
+    "g_val": 12,
+    "v_complete": 12,
+    "save": 48,
+    "restore": 12,
+    "construct": 24,
+    "load": 12,
+    "raw_write": 36,
+    "json_write": 256
+  },
+  "source_commit": "1aa93d60de8199455ef563acfa3e83f9ffc04eb8",
+  "code_sha256": "8d0b19eaeefe168944b8937f207526f3a0ced058b49f51b0262d962c26b31177",
+  "tests_sha256": "95ec213c56958d9c3ecb4b907115f0afdd670391fedfbb67e7425fdf1596122a",
+  "complete_cost_with_25pct_and_support_seconds": 18184.743504732804,
+  "registered_P1_cap_seconds": 12000,
+  "cost_gate": "REJECT",
+  "scientific_adoption": "none",
+  "original_val_test": "closed",
+  "TASK4": "paused",
+  "private_evidence_required": true,
+  "archival_branch": "codex/edge-memory-discrimination-20261021",
+  "retained_checkpoint_files": 152
+}
