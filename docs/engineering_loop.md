@@ -1,5 +1,11 @@
 # Scientific Engineering Loop — Idea-Level Capability Studies
 
+## Current execution authority (2026-10-21)
+
+The human said “不设置进程限制” and explicitly confirmed “全部取消进程额度限制”. Future execution has no process-count, single-process runtime, category process-second or total process-hour cap. Former caps/balances and rejected admissions remain historical records. Actual cost is still recorded; it no longer determines admission. Never substitute a huge numeric timeout for an uncapped process or write a false PASS for a closed budget gate.
+
+Register a finite scientific workload and stopping decision per round (comparisons, seeds, updates, finite repairs), then execute it. Preserve scientific/numerical/data gates, actual PID/creation identity, source checks, recovery and cancellation/exception cleanup. A healthy long-running process may continue without a time cutoff; no automatic kill just because it exceeds the former3600 seconds. Prefer one GPU training job at a time to avoid contention, as an engineering choice rather than a user quota. Astra6 planning, independent review, selective archival/PR integration, original val/test restrictions and TASK4 pause still apply. This new user authority overrides process-quota requirements elsewhere below; it does not rewrite prior outcomes or grant scientific scope/data permissions.
+
 Authority: [AGENTS.md](../AGENTS.md). State: [current_state.md](current_state.md).
 The active roadmap supplies scientific models and task-specific release requirements.
 This replaces future execution mechanics, not historical results, gates or budgets.
