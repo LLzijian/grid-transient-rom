@@ -1,6 +1,6 @@
 # 当前研究状态
 
-任务RUNNING；E:/03-nn_Transfer_Func/kiki。当前独立语法外能力表唯一QA01实际运行，worker100560/creation FILETIME134370219010300897、exec52302，native帽400；源码e761605f2d328dc3be97458863c5df0671eceea9，调用已归档539aaa5d0d6f64db0974e314afa6defe62f9efd1，禁止重复队列。多项式加速轮已关闭，QA02共26通过/4失败，不合main、不切换默认执行、不启动测时或正式训练、无再修复。原项目val/test关闭、TASK4暂停；父目标L1/L2未完成。main仍7419d196fe1d080221db01565835f424c7a47f2c（已核PR26）。
+任务RUNNING；E:/03-nn_Transfer_Func/kiki。独立语法外能力表QA9通过、原生34.1494695秒，源同/0/GONE；唯一cost01实际运行，worker93608/creation FILETIME134370221461946000、exec66703，native帽400，调用9176d34221199809c725ac7cd4a496d00248c917。只有全部T与分阶段费用通过才正式三seed，禁止重复。原项目val/test关闭、TASK4暂停，父目标L1/L2未完成，main仍7419d196fe1d080221db01565835f424c7a47f2c。
 
 **当前结论**：[多项式加速结论](../reports/edge_polynomial_runtime_20261021_conclusion.md)。六候选原单位夹具的值/梯度/完整5s轨迹，以及clip/Adam和新backend32→34精确恢复通过；非单位尺度、直接改变phi四项强制检查失败。完整T和速度未测，正式三seed未开，不能以26通过代替全验收。QA01+QA02各源前后同、GONE/锁清，exec8141/61878已结束，不重复队列；最终源b44014a9ef373e341605ff3190d2117a8a1b2037。全部失败、代码和10份工程checkpoint保留。
 
