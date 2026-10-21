@@ -10,10 +10,11 @@ def require(ok,msg):
     if not ok:raise ValueError(msg)
 def item(binding,key):
     i=binding[key];p=(ROOT/i['path']).resolve();require(p.is_relative_to(ROOT) and sha(p)==i['sha256'],'changed explicit '+key);return p,read(p)
-def plan(phase,group,resume):
+def plan(phase,group,resume,qa_attempt=1):
+    require(qa_attempt in (1,2) and (phase=='qa' or qa_attempt==1),'QA repair attempt only1/2')
     require(phase in ('qa','run','evaluate') and ((phase=='run' and group in GROUPS) or (phase!='run' and group is None)),'fixed scientific role')
     require(not resume or phase=='run','resume only interrupted run')
-    return ('run_'+group if phase=='run' else phase+'01')+('_resume01' if resume else '')
+    return ('run_'+group if phase=='run' else (('qa0'+str(qa_attempt)) if phase=='qa' else phase+'01'))+('_resume01' if resume else '')
 def mathematical_proof(binding):
     _,proof=item(binding,'mathematical_verification');_,old=item(binding,'original_qa_receipt')
     require(proof.get('verified') is True and len(proof.get('exact_ast_closure',[]))==54,'verified54 mathematical closure')
@@ -30,7 +31,7 @@ def execute(a):
     _,authority=item(binding,'authority')
     require(authority.get('user_instruction')=='不设置进程限制' and authority.get('explicit_clarification')=='全部取消进程额度限制' and binding.get('source_commit')==a.source_commit,'explicit human no-process-quota authority and bound source')
     mathematical_proof(binding)
-    name=plan(a.phase,a.group,a.resume);logical='run_'+a.group if a.phase=='run' else a.phase+'01';out=BASE/logical;native=BASE/('native_'+name)
+    name=plan(a.phase,a.group,a.resume,a.qa_attempt);logical='run_'+a.group if a.phase=='run' else ('qa0'+str(a.qa_attempt) if a.phase=='qa' else a.phase+'01');out=BASE/logical;native=BASE/('native_'+name)
     require(not native.exists(),'unique native attempt, never overwrite')
     files={(ROOT/k).resolve():v for k,v in binding['files'].items()}
     files[bp]=sha(bp) # Runtime bind the input JSON itself without a self-hash cycle.
@@ -44,13 +45,19 @@ def execute(a):
     require({p.parent for p in paths}==set(BASE.glob('native_*')),'pending prior native job must be reconciled')
     rows=[read(p) for p in paths]
     for p,r in zip(paths,rows):
-        require(r.get('cleanup_verified') is True and r.get('job_active_processes')==0 and r.get('source_before')==r.get('source_after') and r.get('source_commit')==a.source_commit and files.get(p.resolve())==sha(p),'prior Job closure/source/hash')
-    if a.phase=='qa':require(not paths and not a.resume,'first wiring QA only')
+        require(r.get('cleanup_verified') is True and r.get('job_active_processes')==0 and r.get('source_before')==r.get('source_after') and (r.get('source_commit')==a.source_commit or (p==BASE/'native_qa01/receipt.json' and r.get('phase')=='qa' and r.get('source_commit')=='0a395e3f593a82f8462884e3079b5cb0d54bc70e' and r.get('status')=='UNRESOLVED')) and files.get(p.resolve())==sha(p),'prior Job closure/source/hash')
+    previous_worker_identity=None
+    if a.phase=='qa':
+        require(not a.resume,'QA cannot resume')
+        if a.qa_attempt==1:require(not paths,'first wiring QA only')
+        else:
+            require(paths==[BASE/'native_qa01/receipt.json'] and rows[0].get('status')=='UNRESOLVED','single explicit repair after actual failed QA01')
+            repair=ROOT/'reports/rational_execution_20261021_repair.md';require(files.get(repair.resolve())==sha(repair),'root repair registration must be explicitly bound')
     else:
-        qa=BASE/'native_qa01/receipt.json';require(qa in paths and read(qa).get('status')=='COMPLETED','actual new native QA pass')
+        qa=BASE/'native_qa02/receipt.json';require(qa in paths and read(qa).get('status')=='COMPLETED','actual new native QA pass')
         qa_receipt=read(qa)
         require(all(qa_receipt['source_before'].get(str(p))==files[p]==qa_receipt['source_after'].get(str(p)) for p in required_current),'same actual new QA source and authority protocol')
-        marker=read(BASE/'qa01/complete.json');require(marker['status']=='COMPLETED' and marker['result']['status']=='PASS','actual new worker QA pass')
+        marker=read(BASE/'qa02/complete.json');require(marker['status']=='COMPLETED' and marker['result']['status']=='PASS','actual new worker QA pass')
         completed=[]
         for group in GROUPS:
             markerpath=BASE/('run_'+group)/'complete.json'
@@ -68,6 +75,8 @@ def execute(a):
                 from uncapped_windows_job_20261021 import identity_state
                 require(identity_state(previous['worker'])=='GONE','previous worker exact creation identity must be GONE')
                 require(files.get(previous_path)==sha(previous_path),'resume closure evidence must be source bound')
+                previous_worker_path,previous_worker_identity=item(authorization,'previous_worker_receipt')
+                require(files.get(previous_worker_path)==sha(previous_worker_path) and previous_worker_identity.get('pid')==previous['worker']['pid'] and previous_worker_identity.get('creation_filetime_utc')==previous['worker']['creation_filetime_utc'],'immutable prior worker receipt matches actual closed Job')
                 require(not any('_resume01' in p.parent.name for p in paths),'one external resume for this round')
             else:require(not out.exists(),'new group output must be exclusive')
         else:
@@ -82,13 +91,14 @@ def execute(a):
     args=['-m','experiments.rational_execution_20261021',a.phase,'--output',str(out),'--binding',str(bp),'--source-commit',a.source_commit]
     if a.group:args+=['--group',a.group]
     if a.resume:args+=['--resume']
+    if a.phase=='qa' and a.qa_attempt==2:args+=['--qa-attempt','2']
     command={'executable':str(ROOT/'.venv-gpu/Scripts/python.exe'),'arguments':args}
-    result=supervise(command,native,BASE/'native_active.lock',files,ROOT,worker_receipt=out/'worker.json',provenance={'source_commit':a.source_commit,'phase':a.phase,'group':a.group,'binding_sha256':sha(bp)})
+    result=supervise(command,native,BASE/'native_active.lock',files,ROOT,worker_receipt=out/'worker.json',provenance={'source_commit':a.source_commit,'phase':a.phase,'group':a.group,'qa_attempt':a.qa_attempt if a.phase=='qa' else None,'binding_sha256':sha(bp)},previous_worker_identity=previous_worker_identity)
     if result['status']!='COMPLETED':return 1
     complete=read(out/'complete.json')
     return 0 if complete.get('status')=='COMPLETED' and complete.get('result',{}).get('status') in ('PASS','COMPLETED') else 1
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('phase',choices=('qa','run','evaluate'));p.add_argument('--group',choices=GROUPS);p.add_argument('--binding',type=Path,required=True);p.add_argument('--source-commit',required=True);p.add_argument('--resume',action='store_true');a=p.parse_args()
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('phase',choices=('qa','run','evaluate'));p.add_argument('--group',choices=GROUPS);p.add_argument('--binding',type=Path,required=True);p.add_argument('--source-commit',required=True);p.add_argument('--resume',action='store_true');p.add_argument('--qa-attempt',type=int,choices=(1,2),default=1);a=p.parse_args()
     return execute(a)
 if __name__=='__main__':raise SystemExit(main())
 

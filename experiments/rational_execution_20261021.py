@@ -1,13 +1,35 @@
 """Prospective finite science execution without process quotas or cost admission."""
 from __future__ import annotations
-import argparse,copy,ctypes,json,math,os,shutil,sys,time
+import argparse,copy,ctypes,json,math,os,shutil,sys,time,uuid
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 sys.path[:0]=[str(ROOT/'experiments'),str(ROOT/'src')]
 from finite_grammar_discovery_20261021 import sha,bound,receipt
 import rational_control_20261021 as study
-atomic=study.atomic
 SAVE_STEPS=(0,32,128,512)
+_REPLACE_DELAYS=(.01,.02,.04,.08,.16)
+
+def atomic(path,value):
+    """Bounded Windows sharing-conflict repair for entry metadata only."""
+    path=Path(path);encoded=json.dumps(value,indent=2,sort_keys=True,allow_nan=False).encode('utf-8')
+    if len(encoded)>262144:raise ValueError('registered JSON serialization envelope exceeded')
+    temporary=path.with_name(path.name+'.'+uuid.uuid4().hex+'.tmp')
+    with temporary.open('xb') as file:file.write(encoded)
+    for attempt in range(len(_REPLACE_DELAYS)+1):
+        try:os.replace(temporary,path);return
+        except PermissionError as error:
+            if getattr(error,'winerror',None) not in (5,32,33) or attempt==len(_REPLACE_DELAYS):raise
+            time.sleep(_REPLACE_DELAYS[attempt])
+    # On permanent failure the uniquely named temp file is retained as evidence.
+
+def publish_worker_receipt(out,phase,commit,binding,group,qa_attempt):
+    # Publish source/role and actual creation identity together, avoiding a
+    # supervisor observing an incomplete identity during a later metadata edit.
+    pending=out/('worker_identity_'+uuid.uuid4().hex);pending.mkdir()
+    receipt(pending,phase,commit,binding)
+    value=json.loads((pending/'worker.json').read_text(encoding='utf-8'))
+    value.update(group=group,qa_attempt=qa_attempt)
+    atomic(out/'worker.json',value)
 def new_or_equal(path,value):
     if Path(path).exists():
         if json.loads(Path(path).read_text(encoding='utf-8'))!=value:raise ValueError('existing evidence differs; refusing overwrite')
@@ -176,14 +198,15 @@ def train_group(out,commit,group,resume=False):
                          'raw_files':[study.fileid(p) for p in folder.glob('*.npz')]})
     result={'status':'COMPLETED','source_commit':commit,'group':group,'rows':rows,'all_group_frozen':all(r['status']=='FROZEN' for r in rows)}
     atomic(out/'selection.json',result);return result
-def execute(phase,out,binding,commit,group,resume):
+def execute(phase,out,binding,commit,group,resume,qa_attempt=1):
     if phase=='qa':
+        if qa_attempt not in (1,2):raise ValueError('only registered QA attempts1 or2')
         import subprocess
         command=[sys.executable,'-m','pytest','-q',str(ROOT/'tests/test_rational_execution_20261021.py'),
                  str(ROOT/'tests/test_uncapped_windows_job_20261021.py'),'--basetemp',str(out/'pytest_tmp')]
         result=subprocess.run(command,cwd=ROOT,capture_output=True,text=True)
         (out/'pytest_stdout.txt').write_text(result.stdout,encoding='utf-8');(out/'pytest_stderr.txt').write_text(result.stderr,encoding='utf-8')
-        return {'status':'PASS' if result.returncode==0 else 'FAIL','pytest_returncode':result.returncode,'stdout':result.stdout,'stderr':result.stderr}
+        return {'status':'PASS' if result.returncode==0 else 'FAIL','qa_attempt':qa_attempt,'pytest_returncode':result.returncode,'stdout':result.stdout,'stderr':result.stderr}
     import torch
     torch.set_num_threads(1)
     if phase=='run':return train_group(out,commit,group,resume)
@@ -191,9 +214,12 @@ def execute(phase,out,binding,commit,group,resume):
 def main(argv=None):
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('phase',choices=('qa','run','evaluate'))
     for name in ('output','binding'):p.add_argument('--'+name,required=True,type=Path)
-    p.add_argument('--source-commit',required=True);p.add_argument('--group',choices=study.GROUPS);p.add_argument('--resume',action='store_true');a=p.parse_args(argv)
-    if len(a.source_commit)!=40 or any(c not in '0123456789abcdef' for c in a.source_commit) or (a.phase=='run')!=(a.group is not None) or (a.resume and a.phase!='run'):p.error('full source commit/run-only group and resume required')
+    p.add_argument('--source-commit',required=True);p.add_argument('--group',choices=study.GROUPS);p.add_argument('--resume',action='store_true')
+    p.add_argument('--qa-attempt',type=int,choices=(1,2));a=p.parse_args(argv)
+    if len(a.source_commit)!=40 or any(c not in '0123456789abcdef' for c in a.source_commit) or (a.phase=='run')!=(a.group is not None) or (a.resume and a.phase!='run') or (a.phase!='qa' and a.qa_attempt is not None):p.error('full source commit/run-only group/resume and qa-only attempt required')
     out=a.output.resolve();rootdir=(ROOT/'private_data/closure_mechanism_20261019/P1/rational_execution01').resolve()
+    qa_attempt=(a.qa_attempt or 1) if a.phase=='qa' else None
+    if a.phase=='qa' and out.name!=f'qa{qa_attempt:02d}':raise ValueError('QA attempt must use its own exclusive output directory')
     qa_root=(ROOT/'private_data/closure_mechanism_20261019/P0/rational_execution01').resolve()
     if out in (rootdir,qa_root) or not (out.is_relative_to(rootdir) or (a.phase=='qa' and out.is_relative_to(qa_root))):raise ValueError('exclusive new round output required')
     binding=json.loads(a.binding.read_text(encoding='utf-8'))
@@ -203,9 +229,9 @@ def main(argv=None):
     else:
         if a.resume:raise ValueError('resume requires actual interrupted output')
         out.mkdir(parents=True)
-    receipt(out,a.phase,a.source_commit,a.binding)
+    publish_worker_receipt(out,a.phase,a.source_commit,a.binding,a.group,qa_attempt)
     try:
-        result=execute(a.phase,out,binding,a.source_commit,a.group,a.resume);result['source_commit']=a.source_commit
+        result=execute(a.phase,out,binding,a.source_commit,a.group,a.resume,qa_attempt);result['source_commit']=a.source_commit
         atomic(out/'result.json',result);atomic(out/'complete.json',{'status':'COMPLETED','result':result})
         return 0 if result['status'] in ('PASS','COMPLETED') else 2
     except BaseException as error:

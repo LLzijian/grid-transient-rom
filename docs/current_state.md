@@ -1,10 +1,12 @@
 # 当前研究状态
 
-任务RUNNING；阶段rational_execution_20261021正在实现最小入口与无时限监督，尚无正式训练进程。cwd E:/03-nn_Transfer_Func/kiki。默认模型不变，原项目val/test关闭，TASK4暂停，40状态/100ms一次初始化/全部真实区间/数值要求保持。
+任务RUNNING；阶段rational_execution_20261021正在进行唯一已登记实现修复，尚无正式训练进程。cwd E:/03-nn_Transfer_Func/kiki。默认模型不变，原项目val/test关闭，TASK4暂停，40状态/100ms一次初始化/全部真实区间/数值要求保持。
 
 **现行资源授权**：2026-10-21人类原文“不设置进程限制”，并确认“全部取消进程额度限制”。后续不设进程数量、单进程时长、阶段或总进程小时帽，费用继续记录。旧259200秒/分类余额仅为历史，不再阻止开跑；历史收费/未知hold/预算REJECT不改。每轮比较、seed、更新数和允许修复仍有限，禁止训练到指标通过。[授权](../reports/process_limits_removed_20261021.md)。heartbeat已更新为相同授权并核验保存，保持原30分钟与安静通知意图。
 
 **已登记下一实际执行**：[实际Astra6新方案](../reports/astra6_rational_execution_20261021.md)及[root协议](../reports/rational_execution_20261021_protocol.md)：完整两形式×3seed×0/1%噪声12模型各512更新，总6144；原数据/损失/噪声/学习率/数值标准保持。新增薄entry复用已验收数学核心，deadline=None；Windows Job无时限/无进程quota监督。一次实现修复、一次非择优中断恢复，checkpoint附完整诊断侧文件。全部12端点冻结后一次合成val；不再重测成本。两个工人分离核心/监督实现，独立工人审查；必要QA后直接正式执行。
+
+**新增QA事实**：qa01在新Job下实际结束：15通过2失败，另有venv启动器/真实worker身份不一致；wall32.390715、子树CPU user2.84375/kernel5.5、Job活动0/source同/锁清。原始证据已归档，按protocol进行一次实现修复及qa02相关重验；未改数学/数据/6144有效更新设计，无新进程时限。修复后直接训练，不成本准入。[修复登记](../reports/rational_execution_20261021_repair.md)。
 
 **当前无作业**：actual科学PID/session为空；没有把next_action称为运行中。下一动作核新源/独立挑战/必要QA，启动四组串行训练。单GPU串行是避免争用的实现选择，不是新进程额度。恢复目录private_data/closure_mechanism_20261019/P1/rational_execution01，必须核真实PID+创建身份/Job树空/源一致/sidecar，不以旧timeout或锁年龄终止健康进程。
 

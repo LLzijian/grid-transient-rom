@@ -153,3 +153,53 @@ def test_qa_collects_both_new_suites_only(monkeypatch,tmp_path):
     execution.execute('qa',tmp_path,{},'a'*40,None,False)
     files=[Path(x).name for x in commands[0] if x.endswith('.py')]
     assert files==['test_rational_execution_20261021.py','test_uncapped_windows_job_20261021.py']
+
+
+def sharing_error(code):
+    error=PermissionError('simulated Windows metadata sharing conflict');error.winerror=code;return error
+
+
+def test_metadata_atomic_recovers_transient_sharing_conflict(monkeypatch,tmp_path):
+    actual=execution.os.replace;attempts=[];sleeps=[]
+    def replace(source,target):
+        attempts.append(1)
+        if len(attempts)<=2:raise sharing_error(5 if len(attempts)==1 else 32)
+        return actual(source,target)
+    monkeypatch.setattr(execution.os,'replace',replace);monkeypatch.setattr(execution.time,'sleep',sleeps.append)
+    path=tmp_path/'progress.json';execution.atomic(path,{'last_completed':388})
+    assert json.loads(path.read_text())=={'last_completed':388}
+    assert len(attempts)==3 and sleeps==[.01,.02] and not list(tmp_path.glob('*.tmp'))
+
+
+def test_metadata_atomic_permanent_conflict_preserves_old_and_temp(monkeypatch,tmp_path):
+    attempts=[];sleeps=[];path=tmp_path/'progress.json';path.write_text('{"last_completed":32}')
+    def replace(source,target):attempts.append(1);raise sharing_error(33)
+    monkeypatch.setattr(execution.os,'replace',replace);monkeypatch.setattr(execution.time,'sleep',sleeps.append)
+    with pytest.raises(PermissionError):execution.atomic(path,{'last_completed':128})
+    assert len(attempts)==6 and sleeps==list(execution._REPLACE_DELAYS)
+    assert json.loads(path.read_text())=={'last_completed':32}
+    temporary=list(tmp_path.glob('*.tmp'));assert len(temporary)==1
+    assert json.loads(temporary[0].read_text())=={'last_completed':128}
+
+
+def test_metadata_atomic_does_not_retry_other_permission_errors(monkeypatch,tmp_path):
+    attempts=[]
+    def replace(source,target):attempts.append(1);raise sharing_error(87)
+    monkeypatch.setattr(execution.os,'replace',replace)
+    with pytest.raises(PermissionError):execution.atomic(tmp_path/'progress.json',{'value':1})
+    assert len(attempts)==1
+
+
+def test_second_qa_attempt_has_own_collection_and_no_third(monkeypatch,tmp_path):
+    import subprocess
+    commands=[]
+    def run(command,**kwargs):
+        assert 'timeout' not in kwargs;commands.append(command)
+        return types.SimpleNamespace(returncode=0,stdout='substitute only',stderr='')
+    monkeypatch.setattr(subprocess,'run',run)
+    out=tmp_path/'qa02';out.mkdir()
+    result=execution.execute('qa',out,{},'a'*40,None,False,qa_attempt=2)
+    assert result['qa_attempt']==2 and commands[0][-1]==str(out/'pytest_tmp')
+    with pytest.raises(ValueError,match='attempts1 or2'):execution.execute('qa',out,{},'a'*40,None,False,qa_attempt=3)
+    args=['qa','--output',str(tmp_path/'qa01'),'--binding',str(tmp_path/'missing.json'),'--source-commit','a'*40,'--qa-attempt','2']
+    with pytest.raises(ValueError,match='own exclusive'):execution.main(args)

@@ -45,6 +45,13 @@ def test_exit_before_resume_still_cleans_atomic_job_worker(tmp_path):
  end=time.monotonic()+20
  while j.identity_state(worker)=='RUNNING' and time.monotonic()<end:time.sleep(.02)
  assert j.identity_state(worker)=='GONE' and lock.exists()
+def test_actual_worker_receipt_is_retained_inside_redirector_job(tmp_path):
+ receipt=tmp_path/'worker.json';release=tmp_path/'release'
+ code="import sys,time,pathlib;sys.path.insert(0,"+repr(str(ROOT/'experiments'))+");from uncapped_windows_job_20261021 import identity,atomic;atomic("+repr(str(receipt))+",{**identity(),'phase':'qa','group':None,'source_commit':'"+'b'*40+"','qa_attempt':2});p=pathlib.Path("+repr(str(release))+");exec('while not p.exists():time.sleep(.01)')"
+ r=j.supervise(command(code),tmp_path/'actual',tmp_path/'lock',{},ROOT,worker_receipt=receipt,on_worker_owned=lambda w:release.write_text('owned'),provenance={'phase':'qa','group':None,'source_commit':'b'*40,'qa_attempt':2})
+ assert r['status']=='COMPLETED' and r['launcher_exit_code']==r['worker_exit_code']==0
+ actual=json.loads(receipt.read_text());assert r['worker']['pid']==actual['pid'] and r['worker']['creation_filetime_utc']==actual['creation_filetime_utc']
+ assert r['worker']['physical_image'] and r['launcher']['physical_image'] and r['actual_worker_state']=='GONE' and r['job_active_processes']==0
 def test_stale_creation_and_exclusive_lock(tmp_path):
  current=j.identity();stale={**current,'creation_filetime_utc':current['creation_filetime_utc']+1}
  assert j.identity_state(stale)=='REUSED_PID'

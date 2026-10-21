@@ -4,7 +4,7 @@
 
 标准库环境 `C:/Users/LLLzijian/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe` 运行 `private_data/closure_mechanism_20261019/P1/rational_execution01/make_binding.py qa|run|evaluate --source-commit FULL`；run另带固定group。生成绑定而不执行。随后标准库同目录 `launch.py` 携对应 `--binding`、`--source-commit` 和group启动Job。真实worker是 `.venv-gpu/Scripts/python.exe -m experiments.rational_execution_20261021`。cwd始终项目根，不经其他shell删除或移动文件。
 
-新CLI没有max-seconds和quota；所有数学函数deadline=None。Windows Job创建时以JOB_LIST原子关联挂起worker，限制标志只有关闭句柄时清理作业树，没有时间/CPU/数量帽；500ms等待循环仅使取消可处理，没有累计截止时间。记录真实worker/监督器PID与整数FILETIME、所有源前后哈希、退出、Job活动进程数0、墙钟及累计子树user/kernel CPU时间；墙钟与CPU不相加。实际QA包含新薄入口与新Job两份tests，旧数学8项不重复。
+新CLI没有max-seconds和quota；所有数学函数deadline=None。Windows Job创建时以JOB_LIST原子关联挂起worker，限制标志只有关闭句柄时清理作业树，没有时间/CPU/数量帽；短间隔等待循环仅使取消和真实worker身份核对可处理，没有累计截止时间。记录真实worker/监督器PID与整数FILETIME、所有源前后哈希、退出、Job活动进程数0、墙钟及累计子树user/kernel CPU时间；墙钟与CPU不相加。实际QA包含新薄入口与新Job两份tests，旧数学8项不重复。
 
 QA正常/异常/监督器恢复线程前后硬退出仅使用短小工程子进程，不触及正式seed数据。测试握手观察期限用于判定测试失败，不是正式作业时限。独占锁拒绝重复启动；真正Job清空回执和精确创建身份均核实后才可显式清残留锁，不按年龄猜测。
 
