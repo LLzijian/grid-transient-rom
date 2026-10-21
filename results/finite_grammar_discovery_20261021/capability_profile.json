@@ -1,0 +1,279 @@
+{
+  "status": "CLOSED_COST_ADMISSION_INCOMPLETE_TIMEOUT_NO_FORMAL_TRAINING",
+  "source_commit": "f41cb671a48d102705362fe84f6f2e16e00cbc2a",
+  "core_sha256": "0ad5c3af5c151dd253e12773ae6932d3941ff5f877f02a579bcfbcc7cb3e1d40",
+  "test_sha256": "151eba8974467c361f2eceeceec09cc57f7f40b06d0207586d26ad7564c6c16d",
+  "pool_sha256": "00040fbf83705eb660474de660ef96fec0424a299fd3650df4c1f77b605a8925",
+  "teacher_sha256": "5e31e4a454c45d56aa8ca2586cb39cde1ce96cbcb485fd7316fdbda6af36157c",
+  "QA": {
+    "status": "COMPLETED",
+    "phase_gate_pass": true,
+    "phase": "qa",
+    "source_commit": "f41cb671a48d102705362fe84f6f2e16e00cbc2a",
+    "charged_seconds": 82.34319879999384,
+    "reason": null,
+    "errors": null,
+    "complete": {
+      "result": {
+        "pytest_returncode": 0,
+        "source_commit": "f41cb671a48d102705362fe84f6f2e16e00cbc2a",
+        "status": "PASS",
+        "stderr": "",
+        "stdout": ".......                                                                  [100%]\n7 passed in 77.45s (0:01:17)\n",
+        "worker_phase_elapsed_seconds": 80.54992670001229
+      },
+      "status": "COMPLETED"
+    },
+    "receipt_sha256": "8989b1e74b70c52e0aeb98de79adc3a57d4a53104005a8af93ae1a609dd1c60a",
+    "receipt_path": "private_data/closure_mechanism_20261019/P0/finite_grammar_discovery01/native_qa01/execution.json",
+    "source_equal": true,
+    "bound_file_count": 114,
+    "inner": {
+      "exit_code": 0,
+      "native_receipt_complete": true,
+      "cleanup_verified": true,
+      "fixture_identity_after": "GONE",
+      "supervised_identity_after": "GONE",
+      "owned_child_identity_after": null,
+      "errors": [],
+      "elapsed_seconds": 81.115194,
+      "supervised_pid": 91720,
+      "fixture_pid": 95980,
+      "owned_child_pid": null,
+      "supervised_creation_filetime_utc": "134370166379843118",
+      "fixture_creation_filetime_utc": "134370166380831926",
+      "owned_child_creation_filetime_utc": "None"
+    },
+    "outer": {
+      "exit_code": 0,
+      "native_receipt_complete": true,
+      "cleanup_verified": null,
+      "fixture_identity_after": null,
+      "supervised_identity_after": null,
+      "owned_child_identity_after": null,
+      "errors": null,
+      "elapsed_seconds": null,
+      "supervised_pid": null,
+      "fixture_pid": null,
+      "owned_child_pid": null,
+      "supervised_creation_filetime_utc": "None",
+      "fixture_creation_filetime_utc": "None",
+      "owned_child_creation_filetime_utc": "None"
+    }
+  },
+  "cost": {
+    "status": "UNRESOLVED_EXECUTION",
+    "phase_gate_pass": false,
+    "phase": "cost",
+    "source_commit": "f41cb671a48d102705362fe84f6f2e16e00cbc2a",
+    "charged_seconds": 102.10730629996397,
+    "reason": null,
+    "errors": null,
+    "complete": null,
+    "receipt_sha256": "4116a30e7fdc3235e335f01cb238c07ce3ce299c92ba7442762e1598237f8182",
+    "receipt_path": "private_data/closure_mechanism_20261019/P0/finite_grammar_discovery01/native_cost01/execution.json",
+    "source_equal": true,
+    "bound_file_count": 116,
+    "inner": {
+      "exit_code": 1,
+      "native_receipt_complete": true,
+      "cleanup_verified": true,
+      "fixture_identity_after": "GONE",
+      "supervised_identity_after": "GONE",
+      "owned_child_identity_after": null,
+      "errors": [],
+      "elapsed_seconds": 100.7936618,
+      "supervised_pid": 98544,
+      "fixture_pid": 96096,
+      "owned_child_pid": null,
+      "supervised_creation_filetime_utc": "134370168232708510",
+      "fixture_creation_filetime_utc": "134370168233511118",
+      "owned_child_creation_filetime_utc": "None"
+    },
+    "outer": {
+      "exit_code": 1,
+      "native_receipt_complete": true,
+      "cleanup_verified": null,
+      "fixture_identity_after": null,
+      "supervised_identity_after": null,
+      "owned_child_identity_after": null,
+      "errors": null,
+      "elapsed_seconds": null,
+      "supervised_pid": null,
+      "fixture_pid": null,
+      "owned_child_pid": null,
+      "supervised_creation_filetime_utc": "None",
+      "fixture_creation_filetime_utc": "None",
+      "owned_child_creation_filetime_utc": "None"
+    }
+  },
+  "cost_failure": {
+    "error": "TimeoutError('trajectory stopped at process deadline')",
+    "status": "UNRESOLVED",
+    "traceback": "Traceback (most recent call last):\n  File \"E:\\03-nn_Transfer_Func\\kiki\\experiments\\finite_grammar_discovery_20261021.py\", line 346, in main\n    binding=json.loads(a.binding.read_text(encoding='utf-8'));result=execute(a.phase,out,binding,a.source_commit,deadline)\n                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\03-nn_Transfer_Func\\kiki\\experiments\\finite_grammar_discovery_20261021.py\", line 321, in execute\n    if phase=='cost':return run_cost(out,binding,deadline)\n                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\03-nn_Transfer_Func\\kiki\\experiments\\finite_grammar_discovery_20261021.py\", line 265, in run_cost\n    start=time.perf_counter();metric=rank_model(m,c,f,sc,deadline);torch.cuda.synchronize();ranks.append(time.perf_counter()-start)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\03-nn_Transfer_Func\\kiki\\experiments\\finite_grammar_discovery_20261021.py\", line 115, in rank_model\n    return score(predict(m,coarse,.01,deadline),predict(m,coarse,.005,deadline),coarse[:,11:],fine[:,11:],sc)\n                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\03-nn_Transfer_Func\\kiki\\experiments\\finite_grammar_discovery_20261021.py\", line 97, in predict\n    return trajectory(m,z,500*factor,dt,deadline)[:,factor::factor].cpu().numpy()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\03-nn_Transfer_Func\\kiki\\experiments\\closure_causal_recovery_20261019.py\", line 94, in trajectory\n    raise TimeoutError('trajectory stopped at process deadline')\nTimeoutError: trajectory stopped at process deadline\n"
+  },
+  "cost_estimate_T_seconds": null,
+  "formal_P1_executed": false,
+  "formal_data_generated": false,
+  "cost_only_checkpoints_retained": [
+    {
+      "path": "private_data/closure_mechanism_20261019/P0/finite_grammar_discovery01/cost01/cost_only_0/checkpoint_00000/model.json",
+      "bytes": 111674,
+      "sha256": "25e180b17a959718f8a3df933e96228266596f2ce3addd1314f726ace34f5cd4"
+    },
+    {
+      "path": "private_data/closure_mechanism_20261019/P0/finite_grammar_discovery01/cost01/cost_only_0/checkpoint_00000/training.pt",
+      "bytes": 138797,
+      "sha256": "8686acc3e59d162b8909ec38c2c402fe6760ba1cfdead690fc0cb87bba418591"
+    },
+    {
+      "path": "private_data/closure_mechanism_20261019/P0/finite_grammar_discovery01/cost01/cost_only_0/checkpoint_00001/model.json",
+      "bytes": 113710,
+      "sha256": "111948fb3271cee2a25ef3b73fe58a9ace98d350469bd0e71262824cce01beb5"
+    },
+    {
+      "path": "private_data/closure_mechanism_20261019/P0/finite_grammar_discovery01/cost01/cost_only_0/checkpoint_00001/training.pt",
+      "bytes": 159615,
+      "sha256": "76ee54417bcd85c7c0cd6cfbda1a2056fa24f20c2e70856a8a96091151106cae"
+    },
+    {
+      "path": "private_data/closure_mechanism_20261019/P0/finite_grammar_discovery01/cost01/cost_only_1/checkpoint_00000/model.json",
+      "bytes": 111895,
+      "sha256": "6fdb73dab6269a8a90945f703f218ab5f7ce267567ba9fed0e3a2ffc680909b1"
+    },
+    {
+      "path": "private_data/closure_mechanism_20261019/P0/finite_grammar_discovery01/cost01/cost_only_1/checkpoint_00000/training.pt",
+      "bytes": 138797,
+      "sha256": "0205228a1dacf9feba7c3c30c83c2305b333d14415e89afa54ae51aee4ace2c1"
+    },
+    {
+      "path": "private_data/closure_mechanism_20261019/P0/finite_grammar_discovery01/cost01/cost_only_1/checkpoint_00001/model.json",
+      "bytes": 113929,
+      "sha256": "de838750acc17bddc157a013ecb0c45ea095da37e3eb1ce66b6851c386e80242"
+    },
+    {
+      "path": "private_data/closure_mechanism_20261019/P0/finite_grammar_discovery01/cost01/cost_only_1/checkpoint_00001/training.pt",
+      "bytes": 159615,
+      "sha256": "6dfe3dbe324ad4a126327ea03e5c18bdca58540d73e618fbd67042a5fa2e6649"
+    },
+    {
+      "path": "private_data/closure_mechanism_20261019/P0/finite_grammar_discovery01/cost01/cost_only_2/checkpoint_00000/model.json",
+      "bytes": 111761,
+      "sha256": "b09224b268da076f2c3103e2d4d19b2cd972bd200b8268b4a9c1c9c747bdccd0"
+    },
+    {
+      "path": "private_data/closure_mechanism_20261019/P0/finite_grammar_discovery01/cost01/cost_only_2/checkpoint_00000/training.pt",
+      "bytes": 138797,
+      "sha256": "37c2e8b82a2f57d3c1b45b846201478b1cf9c0d23581adc82d31bd6cf04add1f"
+    },
+    {
+      "path": "private_data/closure_mechanism_20261019/P0/finite_grammar_discovery01/cost01/cost_only_2/checkpoint_00001/model.json",
+      "bytes": 113795,
+      "sha256": "62a4c4284ec1764818408399701b9db8cf161db514f5c0c3c514ffe390b0943d"
+    },
+    {
+      "path": "private_data/closure_mechanism_20261019/P0/finite_grammar_discovery01/cost01/cost_only_2/checkpoint_00001/training.pt",
+      "bytes": 159615,
+      "sha256": "d1382cc785e248ec5980522e385e484fe56b6d0239bdc2d339be8d7050c46ecc"
+    },
+    {
+      "path": "private_data/closure_mechanism_20261019/P0/finite_grammar_discovery01/cost01/cost_only_3/checkpoint_00000/model.json",
+      "bytes": 112151,
+      "sha256": "2a2c371c4aa40135c94659e104cbbb71fff768a9d892fb98901816da6d98ad98"
+    },
+    {
+      "path": "private_data/closure_mechanism_20261019/P0/finite_grammar_discovery01/cost01/cost_only_3/checkpoint_00000/training.pt",
+      "bytes": 138797,
+      "sha256": "e5d734407ba7fbb87f8e46cce735563d9050d1143fe191f982b9c3544d6a44d9"
+    },
+    {
+      "path": "private_data/closure_mechanism_20261019/P0/finite_grammar_discovery01/cost01/cost_only_3/checkpoint_00001/model.json",
+      "bytes": 114185,
+      "sha256": "4c8fb9e341ce3a296fef96d48d490a7eb0a8c7fffa702ecee88cf16c1e681812"
+    },
+    {
+      "path": "private_data/closure_mechanism_20261019/P0/finite_grammar_discovery01/cost01/cost_only_3/checkpoint_00001/training.pt",
+      "bytes": 159615,
+      "sha256": "8b8d56bb0daef604e87a868e3c96884c2d0fd01ca364406eb09c38ab648c4ded"
+    }
+  ],
+  "actual_QA_source_checkpoint": {
+    "source": "C:\\Users\\LLLZIJ~1\\AppData\\Local\\Temp\\pytest-of-LLLzijian\\pytest-147\\test_real_32_checkpoint_resume0\\checkpoint_00032",
+    "retained": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P0\\finite_grammar_discovery01\\qa01\\retained_checkpoint_00032",
+    "files": {
+      "model.json": {
+        "sha256": "e35dbf88d130feb318c4e432960fa45813d723dda0ce55468e1eb1f944c5f14e",
+        "bytes": 113759
+      },
+      "training.pt": {
+        "sha256": "0df6dd02100f915b79b1ad8ec15966ce2a6d909b1e0e086cd89ce5f0e1657262",
+        "bytes": 28799
+      }
+    },
+    "purpose": "Actual QA step32 checkpoint retained; never a scientific candidate",
+    "worker_pid": 95980
+  },
+  "fee": {
+    "scope": "finite grammar discovery only",
+    "status": "CLOSED_COST_ADMISSION_INCOMPLETE_TIMEOUT_NO_FORMAL_TRAINING",
+    "P0_cap_seconds": 1800,
+    "P0_support_held_seconds": 1100,
+    "QA_native_seconds": 82.34319879999384,
+    "cost_native_seconds": 102.10730629996397,
+    "metadata_measured_seconds": 34.94806319999721,
+    "metadata_details": {
+      "freeze_native": 3.8885147999972105,
+      "command_generation_shell_seconds": [
+        3.473571,
+        3.4029965,
+        3.3670505
+      ],
+      "summary_shell_seconds": [
+        2.0221043,
+        2.0421666,
+        1.9893653
+      ],
+      "running_state_shell_seconds": 4.6995196,
+      "retention_shell_seconds": [
+        {
+          "name": "finite_qa_retention_shell_seconds",
+          "seconds": 2.0598358
+        },
+        {
+          "name": "finite_retention_diagnostic_shell_seconds",
+          "seconds": 2.0639743
+        },
+        {
+          "name": "finite_retention_find_shell_seconds",
+          "seconds": 1.9109568000000001
+        },
+        {
+          "name": "finite_qa_retention_success_seconds",
+          "seconds": 2.033131
+        },
+        {
+          "name": "finite_qa_retention_success2_seconds",
+          "seconds": 1.9948766999999998
+        }
+      ]
+    },
+    "closure_held_seconds": 10,
+    "P0_charged_or_held_seconds": 1329.398568299955,
+    "P0_cancelled_unused_seconds": 470.60143170004494,
+    "P1_charged_seconds": 0,
+    "P1_cancelled_entire_allocation_seconds": 900,
+    "P0_remaining_seconds": 4640.889088600023,
+    "P1_remaining_seconds": 929.1834188999633,
+    "parent_charged_or_held_seconds": 141707.2586745,
+    "parent_remaining_seconds": 117492.74132550003,
+    "old_unknown_holds_retained": true,
+    "support_is_exact_spend": false,
+    "all_jobs_gone": true
+  },
+  "main_dependency_review": {
+    "static_sources": 38,
+    "six_existing_differences_are_CRLF_only": true,
+    "new_code_files": 2
+  },
+  "scope": "Tested causal continuation and finite-selection engineering; full timed study unresolved, no model or discovery promotion"
+}
