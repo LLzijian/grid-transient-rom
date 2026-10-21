@@ -1,0 +1,793 @@
+FFFFFFFFFFFF.FFF..............                                           [100%]
+================================== FAILURES ===================================
+_______ test_six_feature_values_gradients_field_and_complete_dual_5s[0] _______
+
+index = 0
+
+    @pytest.mark.parametrize('index',range(6))
+    def test_six_feature_values_gradients_field_and_complete_dual_5s(index):
+        from closure_causal_recovery_20261019 import trajectory
+>       term=terms()[index];ref,m,obs,sc=models(term);assert m.base.polynomial_enabled
+                                         ^^^^^^^^^^^^
+
+tests\test_edge_polynomial_runtime_20261021.py:48: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_edge_polynomial_runtime_20261021.py:26: in models
+    current=new.adapt_wrapper(ref)
+            ^^^^^^^^^^^^^^^^^^^^^^
+experiments\edge_polynomial_runtime_20261021.py:184: in adapt_wrapper
+    result=copy.deepcopy(reference);result.base=adapt_base(reference.base);return result
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\edge_polynomial_runtime_20261021.py:171: in adapt_base
+    payload=reference._export_payload()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\symbolic_closure_rom.py:738: in _export_payload
+    "physical": physical, "counts": self.complexity_counts(),
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\symbolic_closure_rom.py:667: in complexity_counts
+    inherited = super().complexity_counts()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = TrainingClosureROM(
+  (structured): StructuredROM(
+    (storage_gamma): ParameterList()
+    (exchange_kappa): Paramete... containing: [torch.float64 of size  (cuda:0)]
+      (6): Parameter containing: [torch.float64 of size  (cuda:0)]
+  )
+)
+
+    def complexity_counts(self):
+        """Count expanded scalar RHS contributions, not matrix dimensions.
+    
+        First collect constant spatial maps within each named energy primitive;
+        then count each scalar gradient atom propagated by the assembled J-R.
+        Centered trig functions are one atom. Distinct named energy primitives
+        are not collected against each other. This is a reproducible expression
+        convention, not a minimum symbolic complexity or identifiability claim.
+        """
+>       D=self.base_D.detach().numpy(); W=self.W.detach().numpy()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: can't convert cuda:0 device type tensor to numpy. Use Tensor.cpu() to copy the tensor to host memory first.
+
+experiments\local_memory_rom_0098.py:348: TypeError
+_______ test_six_feature_values_gradients_field_and_complete_dual_5s[1] _______
+
+index = 1
+
+    @pytest.mark.parametrize('index',range(6))
+    def test_six_feature_values_gradients_field_and_complete_dual_5s(index):
+        from closure_causal_recovery_20261019 import trajectory
+>       term=terms()[index];ref,m,obs,sc=models(term);assert m.base.polynomial_enabled
+                                         ^^^^^^^^^^^^
+
+tests\test_edge_polynomial_runtime_20261021.py:48: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_edge_polynomial_runtime_20261021.py:26: in models
+    current=new.adapt_wrapper(ref)
+            ^^^^^^^^^^^^^^^^^^^^^^
+experiments\edge_polynomial_runtime_20261021.py:184: in adapt_wrapper
+    result=copy.deepcopy(reference);result.base=adapt_base(reference.base);return result
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\edge_polynomial_runtime_20261021.py:171: in adapt_base
+    payload=reference._export_payload()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\symbolic_closure_rom.py:738: in _export_payload
+    "physical": physical, "counts": self.complexity_counts(),
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\symbolic_closure_rom.py:667: in complexity_counts
+    inherited = super().complexity_counts()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = TrainingClosureROM(
+  (structured): StructuredROM(
+    (storage_gamma): ParameterList()
+    (exchange_kappa): Paramete... containing: [torch.float64 of size  (cuda:0)]
+      (6): Parameter containing: [torch.float64 of size  (cuda:0)]
+  )
+)
+
+    def complexity_counts(self):
+        """Count expanded scalar RHS contributions, not matrix dimensions.
+    
+        First collect constant spatial maps within each named energy primitive;
+        then count each scalar gradient atom propagated by the assembled J-R.
+        Centered trig functions are one atom. Distinct named energy primitives
+        are not collected against each other. This is a reproducible expression
+        convention, not a minimum symbolic complexity or identifiability claim.
+        """
+>       D=self.base_D.detach().numpy(); W=self.W.detach().numpy()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: can't convert cuda:0 device type tensor to numpy. Use Tensor.cpu() to copy the tensor to host memory first.
+
+experiments\local_memory_rom_0098.py:348: TypeError
+_______ test_six_feature_values_gradients_field_and_complete_dual_5s[2] _______
+
+index = 2
+
+    @pytest.mark.parametrize('index',range(6))
+    def test_six_feature_values_gradients_field_and_complete_dual_5s(index):
+        from closure_causal_recovery_20261019 import trajectory
+>       term=terms()[index];ref,m,obs,sc=models(term);assert m.base.polynomial_enabled
+                                         ^^^^^^^^^^^^
+
+tests\test_edge_polynomial_runtime_20261021.py:48: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_edge_polynomial_runtime_20261021.py:26: in models
+    current=new.adapt_wrapper(ref)
+            ^^^^^^^^^^^^^^^^^^^^^^
+experiments\edge_polynomial_runtime_20261021.py:184: in adapt_wrapper
+    result=copy.deepcopy(reference);result.base=adapt_base(reference.base);return result
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\edge_polynomial_runtime_20261021.py:171: in adapt_base
+    payload=reference._export_payload()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\symbolic_closure_rom.py:738: in _export_payload
+    "physical": physical, "counts": self.complexity_counts(),
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\symbolic_closure_rom.py:667: in complexity_counts
+    inherited = super().complexity_counts()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = TrainingClosureROM(
+  (structured): StructuredROM(
+    (storage_gamma): ParameterList()
+    (exchange_kappa): Paramete... containing: [torch.float64 of size  (cuda:0)]
+      (6): Parameter containing: [torch.float64 of size  (cuda:0)]
+  )
+)
+
+    def complexity_counts(self):
+        """Count expanded scalar RHS contributions, not matrix dimensions.
+    
+        First collect constant spatial maps within each named energy primitive;
+        then count each scalar gradient atom propagated by the assembled J-R.
+        Centered trig functions are one atom. Distinct named energy primitives
+        are not collected against each other. This is a reproducible expression
+        convention, not a minimum symbolic complexity or identifiability claim.
+        """
+>       D=self.base_D.detach().numpy(); W=self.W.detach().numpy()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: can't convert cuda:0 device type tensor to numpy. Use Tensor.cpu() to copy the tensor to host memory first.
+
+experiments\local_memory_rom_0098.py:348: TypeError
+_______ test_six_feature_values_gradients_field_and_complete_dual_5s[3] _______
+
+index = 3
+
+    @pytest.mark.parametrize('index',range(6))
+    def test_six_feature_values_gradients_field_and_complete_dual_5s(index):
+        from closure_causal_recovery_20261019 import trajectory
+>       term=terms()[index];ref,m,obs,sc=models(term);assert m.base.polynomial_enabled
+                                         ^^^^^^^^^^^^
+
+tests\test_edge_polynomial_runtime_20261021.py:48: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_edge_polynomial_runtime_20261021.py:26: in models
+    current=new.adapt_wrapper(ref)
+            ^^^^^^^^^^^^^^^^^^^^^^
+experiments\edge_polynomial_runtime_20261021.py:184: in adapt_wrapper
+    result=copy.deepcopy(reference);result.base=adapt_base(reference.base);return result
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\edge_polynomial_runtime_20261021.py:171: in adapt_base
+    payload=reference._export_payload()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\symbolic_closure_rom.py:738: in _export_payload
+    "physical": physical, "counts": self.complexity_counts(),
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\symbolic_closure_rom.py:667: in complexity_counts
+    inherited = super().complexity_counts()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = TrainingClosureROM(
+  (structured): StructuredROM(
+    (storage_gamma): ParameterList()
+    (exchange_kappa): Paramete... containing: [torch.float64 of size  (cuda:0)]
+      (6): Parameter containing: [torch.float64 of size  (cuda:0)]
+  )
+)
+
+    def complexity_counts(self):
+        """Count expanded scalar RHS contributions, not matrix dimensions.
+    
+        First collect constant spatial maps within each named energy primitive;
+        then count each scalar gradient atom propagated by the assembled J-R.
+        Centered trig functions are one atom. Distinct named energy primitives
+        are not collected against each other. This is a reproducible expression
+        convention, not a minimum symbolic complexity or identifiability claim.
+        """
+>       D=self.base_D.detach().numpy(); W=self.W.detach().numpy()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: can't convert cuda:0 device type tensor to numpy. Use Tensor.cpu() to copy the tensor to host memory first.
+
+experiments\local_memory_rom_0098.py:348: TypeError
+_______ test_six_feature_values_gradients_field_and_complete_dual_5s[4] _______
+
+index = 4
+
+    @pytest.mark.parametrize('index',range(6))
+    def test_six_feature_values_gradients_field_and_complete_dual_5s(index):
+        from closure_causal_recovery_20261019 import trajectory
+>       term=terms()[index];ref,m,obs,sc=models(term);assert m.base.polynomial_enabled
+                                         ^^^^^^^^^^^^
+
+tests\test_edge_polynomial_runtime_20261021.py:48: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_edge_polynomial_runtime_20261021.py:26: in models
+    current=new.adapt_wrapper(ref)
+            ^^^^^^^^^^^^^^^^^^^^^^
+experiments\edge_polynomial_runtime_20261021.py:184: in adapt_wrapper
+    result=copy.deepcopy(reference);result.base=adapt_base(reference.base);return result
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\edge_polynomial_runtime_20261021.py:171: in adapt_base
+    payload=reference._export_payload()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\symbolic_closure_rom.py:738: in _export_payload
+    "physical": physical, "counts": self.complexity_counts(),
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\symbolic_closure_rom.py:667: in complexity_counts
+    inherited = super().complexity_counts()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = TrainingClosureROM(
+  (structured): StructuredROM(
+    (storage_gamma): ParameterList()
+    (exchange_kappa): Paramete... containing: [torch.float64 of size  (cuda:0)]
+      (6): Parameter containing: [torch.float64 of size  (cuda:0)]
+  )
+)
+
+    def complexity_counts(self):
+        """Count expanded scalar RHS contributions, not matrix dimensions.
+    
+        First collect constant spatial maps within each named energy primitive;
+        then count each scalar gradient atom propagated by the assembled J-R.
+        Centered trig functions are one atom. Distinct named energy primitives
+        are not collected against each other. This is a reproducible expression
+        convention, not a minimum symbolic complexity or identifiability claim.
+        """
+>       D=self.base_D.detach().numpy(); W=self.W.detach().numpy()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: can't convert cuda:0 device type tensor to numpy. Use Tensor.cpu() to copy the tensor to host memory first.
+
+experiments\local_memory_rom_0098.py:348: TypeError
+_______ test_six_feature_values_gradients_field_and_complete_dual_5s[5] _______
+
+index = 5
+
+    @pytest.mark.parametrize('index',range(6))
+    def test_six_feature_values_gradients_field_and_complete_dual_5s(index):
+        from closure_causal_recovery_20261019 import trajectory
+>       term=terms()[index];ref,m,obs,sc=models(term);assert m.base.polynomial_enabled
+                                         ^^^^^^^^^^^^
+
+tests\test_edge_polynomial_runtime_20261021.py:48: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_edge_polynomial_runtime_20261021.py:26: in models
+    current=new.adapt_wrapper(ref)
+            ^^^^^^^^^^^^^^^^^^^^^^
+experiments\edge_polynomial_runtime_20261021.py:184: in adapt_wrapper
+    result=copy.deepcopy(reference);result.base=adapt_base(reference.base);return result
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\edge_polynomial_runtime_20261021.py:171: in adapt_base
+    payload=reference._export_payload()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\symbolic_closure_rom.py:738: in _export_payload
+    "physical": physical, "counts": self.complexity_counts(),
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\symbolic_closure_rom.py:667: in complexity_counts
+    inherited = super().complexity_counts()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = TrainingClosureROM(
+  (structured): StructuredROM(
+    (storage_gamma): ParameterList()
+    (exchange_kappa): Paramete... containing: [torch.float64 of size  (cuda:0)]
+      (6): Parameter containing: [torch.float64 of size  (cuda:0)]
+  )
+)
+
+    def complexity_counts(self):
+        """Count expanded scalar RHS contributions, not matrix dimensions.
+    
+        First collect constant spatial maps within each named energy primitive;
+        then count each scalar gradient atom propagated by the assembled J-R.
+        Centered trig functions are one atom. Distinct named energy primitives
+        are not collected against each other. This is a reproducible expression
+        convention, not a minimum symbolic complexity or identifiability claim.
+        """
+>       D=self.base_D.detach().numpy(); W=self.W.detach().numpy()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: can't convert cuda:0 device type tensor to numpy. Use Tensor.cpu() to copy the tensor to host memory first.
+
+experiments\local_memory_rom_0098.py:348: TypeError
+___________ test_half_second_raw_gradients_triggered_clip_and_adam ____________
+
+    def test_half_second_raw_gradients_triggered_clip_and_adam():
+>       ref,m,obs,sc=models(terms()[0]);opt=make_optimizer(m);other=make_optimizer(ref)
+                     ^^^^^^^^^^^^^^^^^^
+
+tests\test_edge_polynomial_runtime_20261021.py:77: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_edge_polynomial_runtime_20261021.py:26: in models
+    current=new.adapt_wrapper(ref)
+            ^^^^^^^^^^^^^^^^^^^^^^
+experiments\edge_polynomial_runtime_20261021.py:184: in adapt_wrapper
+    result=copy.deepcopy(reference);result.base=adapt_base(reference.base);return result
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\edge_polynomial_runtime_20261021.py:171: in adapt_base
+    payload=reference._export_payload()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\symbolic_closure_rom.py:738: in _export_payload
+    "physical": physical, "counts": self.complexity_counts(),
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\symbolic_closure_rom.py:667: in complexity_counts
+    inherited = super().complexity_counts()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = TrainingClosureROM(
+  (structured): StructuredROM(
+    (storage_gamma): ParameterList()
+    (exchange_kappa): Paramete... containing: [torch.float64 of size  (cuda:0)]
+      (6): Parameter containing: [torch.float64 of size  (cuda:0)]
+  )
+)
+
+    def complexity_counts(self):
+        """Count expanded scalar RHS contributions, not matrix dimensions.
+    
+        First collect constant spatial maps within each named energy primitive;
+        then count each scalar gradient atom propagated by the assembled J-R.
+        Centered trig functions are one atom. Distinct named energy primitives
+        are not collected against each other. This is a reproducible expression
+        convention, not a minimum symbolic complexity or identifiability claim.
+        """
+>       D=self.base_D.detach().numpy(); W=self.W.detach().numpy()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: can't convert cuda:0 device type tensor to numpy. Use Tensor.cpu() to copy the tensor to host memory first.
+
+experiments\local_memory_rom_0098.py:348: TypeError
+__________ test_nonunit_mass_and_power_scale_preserve_physical_field __________
+
+    def test_nonunit_mass_and_power_scale_preserve_physical_field():
+        term={'channel':'edge','expression':{'op':'mul','args':[{'op':'var','name':'pi'},
+              {'op':'var','name':'qj'},{'op':'var','name':'s'}]}}
+>       ref,m,obs,sc=models(term)
+                     ^^^^^^^^^^^^
+
+tests\test_edge_polynomial_runtime_20261021.py:96: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_edge_polynomial_runtime_20261021.py:26: in models
+    current=new.adapt_wrapper(ref)
+            ^^^^^^^^^^^^^^^^^^^^^^
+experiments\edge_polynomial_runtime_20261021.py:184: in adapt_wrapper
+    result=copy.deepcopy(reference);result.base=adapt_base(reference.base);return result
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\edge_polynomial_runtime_20261021.py:171: in adapt_base
+    payload=reference._export_payload()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\symbolic_closure_rom.py:738: in _export_payload
+    "physical": physical, "counts": self.complexity_counts(),
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\symbolic_closure_rom.py:667: in complexity_counts
+    inherited = super().complexity_counts()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = TrainingClosureROM(
+  (structured): StructuredROM(
+    (storage_gamma): ParameterList()
+    (exchange_kappa): Paramete... containing: [torch.float64 of size  (cuda:0)]
+      (6): Parameter containing: [torch.float64 of size  (cuda:0)]
+  )
+)
+
+    def complexity_counts(self):
+        """Count expanded scalar RHS contributions, not matrix dimensions.
+    
+        First collect constant spatial maps within each named energy primitive;
+        then count each scalar gradient atom propagated by the assembled J-R.
+        Centered trig functions are one atom. Distinct named energy primitives
+        are not collected against each other. This is a reproducible expression
+        convention, not a minimum symbolic complexity or identifiability claim.
+        """
+>       D=self.base_D.detach().numpy(); W=self.W.detach().numpy()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: can't convert cuda:0 device type tensor to numpy. Use Tensor.cpu() to copy the tensor to host memory first.
+
+experiments\local_memory_rom_0098.py:348: TypeError
+_______ test_centering_physical_c_degree_four_and_edge_reversal[expr0] ________
+
+expr = {'op': 'add', 'args': [{'op': 'const', 'value': 1}, {'op': 'var', 'name': 'c'}]}
+
+    @pytest.mark.parametrize('expr',[
+        {'op':'add','args':[{'op':'const','value':1},v('c')]},
+        {'op':'pow4','arg':v('qi')},
+        {'op':'mul','args':[v('pi'),v('qj'),v('s')]},
+    ])
+    def test_centering_physical_c_degree_four_and_edge_reversal(expr):
+>       ref,m,obs,sc=models(edge(expr));assert m.base.polynomial_enabled
+                     ^^^^^^^^^^^^^^^^^^
+
+tests\test_edge_polynomial_runtime_20261021.py:116: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_edge_polynomial_runtime_20261021.py:26: in models
+    current=new.adapt_wrapper(ref)
+            ^^^^^^^^^^^^^^^^^^^^^^
+experiments\edge_polynomial_runtime_20261021.py:184: in adapt_wrapper
+    result=copy.deepcopy(reference);result.base=adapt_base(reference.base);return result
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\edge_polynomial_runtime_20261021.py:171: in adapt_base
+    payload=reference._export_payload()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\symbolic_closure_rom.py:738: in _export_payload
+    "physical": physical, "counts": self.complexity_counts(),
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\symbolic_closure_rom.py:667: in complexity_counts
+    inherited = super().complexity_counts()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = TrainingClosureROM(
+  (structured): StructuredROM(
+    (storage_gamma): ParameterList()
+    (exchange_kappa): Paramete... containing: [torch.float64 of size  (cuda:0)]
+      (6): Parameter containing: [torch.float64 of size  (cuda:0)]
+  )
+)
+
+    def complexity_counts(self):
+        """Count expanded scalar RHS contributions, not matrix dimensions.
+    
+        First collect constant spatial maps within each named energy primitive;
+        then count each scalar gradient atom propagated by the assembled J-R.
+        Centered trig functions are one atom. Distinct named energy primitives
+        are not collected against each other. This is a reproducible expression
+        convention, not a minimum symbolic complexity or identifiability claim.
+        """
+>       D=self.base_D.detach().numpy(); W=self.W.detach().numpy()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: can't convert cuda:0 device type tensor to numpy. Use Tensor.cpu() to copy the tensor to host memory first.
+
+experiments\local_memory_rom_0098.py:348: TypeError
+_______ test_centering_physical_c_degree_four_and_edge_reversal[expr1] ________
+
+expr = {'op': 'pow4', 'arg': {'op': 'var', 'name': 'qi'}}
+
+    @pytest.mark.parametrize('expr',[
+        {'op':'add','args':[{'op':'const','value':1},v('c')]},
+        {'op':'pow4','arg':v('qi')},
+        {'op':'mul','args':[v('pi'),v('qj'),v('s')]},
+    ])
+    def test_centering_physical_c_degree_four_and_edge_reversal(expr):
+>       ref,m,obs,sc=models(edge(expr));assert m.base.polynomial_enabled
+                     ^^^^^^^^^^^^^^^^^^
+
+tests\test_edge_polynomial_runtime_20261021.py:116: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_edge_polynomial_runtime_20261021.py:26: in models
+    current=new.adapt_wrapper(ref)
+            ^^^^^^^^^^^^^^^^^^^^^^
+experiments\edge_polynomial_runtime_20261021.py:184: in adapt_wrapper
+    result=copy.deepcopy(reference);result.base=adapt_base(reference.base);return result
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\edge_polynomial_runtime_20261021.py:171: in adapt_base
+    payload=reference._export_payload()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\symbolic_closure_rom.py:738: in _export_payload
+    "physical": physical, "counts": self.complexity_counts(),
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\symbolic_closure_rom.py:667: in complexity_counts
+    inherited = super().complexity_counts()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = TrainingClosureROM(
+  (structured): StructuredROM(
+    (storage_gamma): ParameterList()
+    (exchange_kappa): Paramete... containing: [torch.float64 of size  (cuda:0)]
+      (6): Parameter containing: [torch.float64 of size  (cuda:0)]
+  )
+)
+
+    def complexity_counts(self):
+        """Count expanded scalar RHS contributions, not matrix dimensions.
+    
+        First collect constant spatial maps within each named energy primitive;
+        then count each scalar gradient atom propagated by the assembled J-R.
+        Centered trig functions are one atom. Distinct named energy primitives
+        are not collected against each other. This is a reproducible expression
+        convention, not a minimum symbolic complexity or identifiability claim.
+        """
+>       D=self.base_D.detach().numpy(); W=self.W.detach().numpy()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: can't convert cuda:0 device type tensor to numpy. Use Tensor.cpu() to copy the tensor to host memory first.
+
+experiments\local_memory_rom_0098.py:348: TypeError
+_______ test_centering_physical_c_degree_four_and_edge_reversal[expr2] ________
+
+expr = {'op': 'mul', 'args': [{'op': 'var', 'name': 'pi'}, {'op': 'var', 'name': 'qj'}, {'op': 'var', 'name': 's'}]}
+
+    @pytest.mark.parametrize('expr',[
+        {'op':'add','args':[{'op':'const','value':1},v('c')]},
+        {'op':'pow4','arg':v('qi')},
+        {'op':'mul','args':[v('pi'),v('qj'),v('s')]},
+    ])
+    def test_centering_physical_c_degree_four_and_edge_reversal(expr):
+>       ref,m,obs,sc=models(edge(expr));assert m.base.polynomial_enabled
+                     ^^^^^^^^^^^^^^^^^^
+
+tests\test_edge_polynomial_runtime_20261021.py:116: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_edge_polynomial_runtime_20261021.py:26: in models
+    current=new.adapt_wrapper(ref)
+            ^^^^^^^^^^^^^^^^^^^^^^
+experiments\edge_polynomial_runtime_20261021.py:184: in adapt_wrapper
+    result=copy.deepcopy(reference);result.base=adapt_base(reference.base);return result
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\edge_polynomial_runtime_20261021.py:171: in adapt_base
+    payload=reference._export_payload()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\symbolic_closure_rom.py:738: in _export_payload
+    "physical": physical, "counts": self.complexity_counts(),
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\symbolic_closure_rom.py:667: in complexity_counts
+    inherited = super().complexity_counts()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = TrainingClosureROM(
+  (structured): StructuredROM(
+    (storage_gamma): ParameterList()
+    (exchange_kappa): Paramete... containing: [torch.float64 of size  (cuda:0)]
+      (6): Parameter containing: [torch.float64 of size  (cuda:0)]
+  )
+)
+
+    def complexity_counts(self):
+        """Count expanded scalar RHS contributions, not matrix dimensions.
+    
+        First collect constant spatial maps within each named energy primitive;
+        then count each scalar gradient atom propagated by the assembled J-R.
+        Centered trig functions are one atom. Distinct named energy primitives
+        are not collected against each other. This is a reproducible expression
+        convention, not a minimum symbolic complexity or identifiability claim.
+        """
+>       D=self.base_D.detach().numpy(); W=self.W.detach().numpy()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: can't convert cuda:0 device type tensor to numpy. Use Tensor.cpu() to copy the tensor to host memory first.
+
+experiments\local_memory_rom_0098.py:348: TypeError
+________________ test_fallback_mixed_channels_and_unsupported _________________
+
+    def test_fallback_mixed_channels_and_unsupported():
+        # A port tanh is legal in the original grammar and forces whole fallback.
+        term={'channel':'port','expression':{'op':'tanh','arg':v('q'),'scale':1.}}
+>       ref,m,obs,sc=models(term);assert not m.base.polynomial_enabled
+                     ^^^^^^^^^^^^
+
+tests\test_edge_polynomial_runtime_20261021.py:134: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_edge_polynomial_runtime_20261021.py:26: in models
+    current=new.adapt_wrapper(ref)
+            ^^^^^^^^^^^^^^^^^^^^^^
+experiments\edge_polynomial_runtime_20261021.py:184: in adapt_wrapper
+    result=copy.deepcopy(reference);result.base=adapt_base(reference.base);return result
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\edge_polynomial_runtime_20261021.py:171: in adapt_base
+    payload=reference._export_payload()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\symbolic_closure_rom.py:738: in _export_payload
+    "physical": physical, "counts": self.complexity_counts(),
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\symbolic_closure_rom.py:667: in complexity_counts
+    inherited = super().complexity_counts()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = TrainingClosureROM(
+  (structured): StructuredROM(
+    (storage_gamma): ParameterList()
+    (exchange_kappa): Paramete... containing: [torch.float64 of size  (cuda:0)]
+      (6): Parameter containing: [torch.float64 of size  (cuda:0)]
+  )
+)
+
+    def complexity_counts(self):
+        """Count expanded scalar RHS contributions, not matrix dimensions.
+    
+        First collect constant spatial maps within each named energy primitive;
+        then count each scalar gradient atom propagated by the assembled J-R.
+        Centered trig functions are one atom. Distinct named energy primitives
+        are not collected against each other. This is a reproducible expression
+        convention, not a minimum symbolic complexity or identifiability claim.
+        """
+>       D=self.base_D.detach().numpy(); W=self.W.detach().numpy()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: can't convert cuda:0 device type tensor to numpy. Use Tensor.cpu() to copy the tensor to host memory first.
+
+experiments\local_memory_rom_0098.py:348: TypeError
+____ test_conversion_rng_flags_export_numpy_cpu_cuda_and_legacy_checkpoint ____
+
+tmp_path = WindowsPath('E:/03-nn_Transfer_Func/kiki/private_data/closure_mechanism_20261019/P0/edge_polynomial_runtime01/qa01/qa_artifacts/test_conversion_rng_flags_expo0')
+
+    def test_conversion_rng_flags_export_numpy_cpu_cuda_and_legacy_checkpoint(tmp_path):
+>       ref,m,obs,sc=models(terms()[0]);cpu=torch.get_rng_state();cuda=torch.cuda.get_rng_state_all()
+                     ^^^^^^^^^^^^^^^^^^
+
+tests\test_edge_polynomial_runtime_20261021.py:151: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_edge_polynomial_runtime_20261021.py:26: in models
+    current=new.adapt_wrapper(ref)
+            ^^^^^^^^^^^^^^^^^^^^^^
+experiments\edge_polynomial_runtime_20261021.py:184: in adapt_wrapper
+    result=copy.deepcopy(reference);result.base=adapt_base(reference.base);return result
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\edge_polynomial_runtime_20261021.py:171: in adapt_base
+    payload=reference._export_payload()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\symbolic_closure_rom.py:738: in _export_payload
+    "physical": physical, "counts": self.complexity_counts(),
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\symbolic_closure_rom.py:667: in complexity_counts
+    inherited = super().complexity_counts()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = TrainingClosureROM(
+  (structured): StructuredROM(
+    (storage_gamma): ParameterList()
+    (exchange_kappa): Paramete... containing: [torch.float64 of size  (cuda:0)]
+      (6): Parameter containing: [torch.float64 of size  (cuda:0)]
+  )
+)
+
+    def complexity_counts(self):
+        """Count expanded scalar RHS contributions, not matrix dimensions.
+    
+        First collect constant spatial maps within each named energy primitive;
+        then count each scalar gradient atom propagated by the assembled J-R.
+        Centered trig functions are one atom. Distinct named energy primitives
+        are not collected against each other. This is a reproducible expression
+        convention, not a minimum symbolic complexity or identifiability claim.
+        """
+>       D=self.base_D.detach().numpy(); W=self.W.detach().numpy()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: can't convert cuda:0 device type tensor to numpy. Use Tensor.cpu() to copy the tensor to host memory first.
+
+experiments\local_memory_rom_0098.py:348: TypeError
+_____________________ test_new_backend_exact_32_resume_34 _____________________
+
+tmp_path = WindowsPath('E:/03-nn_Transfer_Func/kiki/private_data/closure_mechanism_20261019/P0/edge_polynomial_runtime01/qa01/qa_artifacts/test_new_backend_exact_32_resu0')
+
+    def test_new_backend_exact_32_resume_34(tmp_path):
+>       ref,m,obs,sc=models(terms()[0]);opt=make_optimizer(m);rng=np.random.default_rng(8);trace=[];identity={'new_backend_qa':True}
+                     ^^^^^^^^^^^^^^^^^^
+
+tests\test_edge_polynomial_runtime_20261021.py:169: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_edge_polynomial_runtime_20261021.py:26: in models
+    current=new.adapt_wrapper(ref)
+            ^^^^^^^^^^^^^^^^^^^^^^
+experiments\edge_polynomial_runtime_20261021.py:184: in adapt_wrapper
+    result=copy.deepcopy(reference);result.base=adapt_base(reference.base);return result
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\edge_polynomial_runtime_20261021.py:171: in adapt_base
+    payload=reference._export_payload()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\symbolic_closure_rom.py:738: in _export_payload
+    "physical": physical, "counts": self.complexity_counts(),
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\symbolic_closure_rom.py:667: in complexity_counts
+    inherited = super().complexity_counts()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = TrainingClosureROM(
+  (structured): StructuredROM(
+    (storage_gamma): ParameterList()
+    (exchange_kappa): Paramete... containing: [torch.float64 of size  (cuda:0)]
+      (6): Parameter containing: [torch.float64 of size  (cuda:0)]
+  )
+)
+
+    def complexity_counts(self):
+        """Count expanded scalar RHS contributions, not matrix dimensions.
+    
+        First collect constant spatial maps within each named energy primitive;
+        then count each scalar gradient atom propagated by the assembled J-R.
+        Centered trig functions are one atom. Distinct named energy primitives
+        are not collected against each other. This is a reproducible expression
+        convention, not a minimum symbolic complexity or identifiability claim.
+        """
+>       D=self.base_D.detach().numpy(); W=self.W.detach().numpy()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: can't convert cuda:0 device type tensor to numpy. Use Tensor.cpu() to copy the tensor to host memory first.
+
+experiments\local_memory_rom_0098.py:348: TypeError
+_________________ test_shared_basis_limit_and_cache_lifetime __________________
+
+    def test_shared_basis_limit_and_cache_lifetime():
+>       ref,m,obs,sc=models(terms()[0]);z=torch.cat((obs[:2,10],m.encode(obs[:2,:11])),-1)
+                     ^^^^^^^^^^^^^^^^^^
+
+tests\test_edge_polynomial_runtime_20261021.py:184: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_edge_polynomial_runtime_20261021.py:26: in models
+    current=new.adapt_wrapper(ref)
+            ^^^^^^^^^^^^^^^^^^^^^^
+experiments\edge_polynomial_runtime_20261021.py:184: in adapt_wrapper
+    result=copy.deepcopy(reference);result.base=adapt_base(reference.base);return result
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\edge_polynomial_runtime_20261021.py:171: in adapt_base
+    payload=reference._export_payload()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\symbolic_closure_rom.py:738: in _export_payload
+    "physical": physical, "counts": self.complexity_counts(),
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\symbolic_closure_rom.py:667: in complexity_counts
+    inherited = super().complexity_counts()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = TrainingClosureROM(
+  (structured): StructuredROM(
+    (storage_gamma): ParameterList()
+    (exchange_kappa): Paramete... containing: [torch.float64 of size  (cuda:0)]
+      (6): Parameter containing: [torch.float64 of size  (cuda:0)]
+  )
+)
+
+    def complexity_counts(self):
+        """Count expanded scalar RHS contributions, not matrix dimensions.
+    
+        First collect constant spatial maps within each named energy primitive;
+        then count each scalar gradient atom propagated by the assembled J-R.
+        Centered trig functions are one atom. Distinct named energy primitives
+        are not collected against each other. This is a reproducible expression
+        convention, not a minimum symbolic complexity or identifiability claim.
+        """
+>       D=self.base_D.detach().numpy(); W=self.W.detach().numpy()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: can't convert cuda:0 device type tensor to numpy. Use Tensor.cpu() to copy the tensor to host memory first.
+
+experiments\local_memory_rom_0098.py:348: TypeError
+=================================== PASSES ====================================
+=========================== short test summary info ===========================
+PASSED tests/test_edge_polynomial_runtime_20261021.py::test_pure_constant_edge_is_centered_zero_without_changing_model_legality
+PASSED tests/test_edge_polynomial_study_20261021.py::test_counts_and_selection_input_excludes_teacher_val
+PASSED tests/test_edge_polynomial_study_20261021.py::test_invalid_candidate_cannot_be_restored_by_tie
+PASSED tests/test_edge_polynomial_study_20261021.py::test_transitive_interval_chain_is_one_group
+PASSED tests/test_edge_polynomial_study_20261021.py::test_failed_event_keeps_full16_denominator
+PASSED tests/test_edge_polynomial_study_20261021.py::test_val_barrier_checks_all_sources_before_future
+PASSED tests/test_edge_polynomial_study_20261021.py::test_engineering_all_six_constraints
+PASSED tests/test_edge_polynomial_study_20261021.py::test_fixed_timing_count_plan
+PASSED tests/test_finite_grammar_discovery_20261021.py::test_budget_counts_and_selector_isolation
+PASSED tests/test_finite_grammar_discovery_20261021.py::test_pool_rule_and_signature_uniqueness
+PASSED tests/test_finite_grammar_discovery_20261021.py::test_interval_chain_is_transitive_and_invalid_never_revives
+PASSED tests/test_finite_grammar_discovery_20261021.py::test_ranking_integer_window_denominator_and_all_event_qualification
+PASSED tests/test_finite_grammar_discovery_20261021.py::test_teacher_qualification_checks_history_and_all16_events
+PASSED tests/test_finite_grammar_discovery_20261021.py::test_real_32_checkpoint_resume_34_exact_params_adam_rng_output
+PASSED tests/test_finite_grammar_discovery_20261021.py::test_full_ranking_once_history_initialization_and_bound
+FAILED tests/test_edge_polynomial_runtime_20261021.py::test_six_feature_values_gradients_field_and_complete_dual_5s[0]
+FAILED tests/test_edge_polynomial_runtime_20261021.py::test_six_feature_values_gradients_field_and_complete_dual_5s[1]
+FAILED tests/test_edge_polynomial_runtime_20261021.py::test_six_feature_values_gradients_field_and_complete_dual_5s[2]
+FAILED tests/test_edge_polynomial_runtime_20261021.py::test_six_feature_values_gradients_field_and_complete_dual_5s[3]
+FAILED tests/test_edge_polynomial_runtime_20261021.py::test_six_feature_values_gradients_field_and_complete_dual_5s[4]
+FAILED tests/test_edge_polynomial_runtime_20261021.py::test_six_feature_values_gradients_field_and_complete_dual_5s[5]
+FAILED tests/test_edge_polynomial_runtime_20261021.py::test_half_second_raw_gradients_triggered_clip_and_adam
+FAILED tests/test_edge_polynomial_runtime_20261021.py::test_nonunit_mass_and_power_scale_preserve_physical_field
+FAILED tests/test_edge_polynomial_runtime_20261021.py::test_centering_physical_c_degree_four_and_edge_reversal[expr0]
+FAILED tests/test_edge_polynomial_runtime_20261021.py::test_centering_physical_c_degree_four_and_edge_reversal[expr1]
+FAILED tests/test_edge_polynomial_runtime_20261021.py::test_centering_physical_c_degree_four_and_edge_reversal[expr2]
+FAILED tests/test_edge_polynomial_runtime_20261021.py::test_fallback_mixed_channels_and_unsupported
+FAILED tests/test_edge_polynomial_runtime_20261021.py::test_conversion_rng_flags_export_numpy_cpu_cuda_and_legacy_checkpoint
+FAILED tests/test_edge_polynomial_runtime_20261021.py::test_new_backend_exact_32_resume_34
+FAILED tests/test_edge_polynomial_runtime_20261021.py::test_shared_basis_limit_and_cache_lifetime
+15 failed, 15 passed in 88.28s (0:01:28)

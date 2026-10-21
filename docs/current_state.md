@@ -1,6 +1,6 @@
 # 当前研究状态
 
-任务 **RUNNING**；E:/03-nn_Transfer_Func/kiki。当前在运行已登记工程QA01（不是正式训练）：worker PID99488，creation FILETIME134370192532516607，exec session8141。有限语法研究已关闭成本准入，合格工程PR26已合main7419d196fe1d080221db01565835f424c7a47f2c，远端4blob已核；实际Astra6加速方案已采纳：[多项式runtime及条件研究](../reports/edge_polynomial_runtime_20261021_protocol.md)源码和独立静态挑战已归档800692853170ac82916f355d1e690f173615c192，QA调用绑定3fd6e4b514293a827e188dea157b231a974f9cf1；主QA上限650秒，运行中禁止重复队列。原项目val/test关闭、TASK4暂停、默认模型不变，父目标L1/L2未完成。
+任务 **RUNNING**；E:/03-nn_Transfer_Func/kiki。当前无运行作业。已登记QA01退出：15通过/15失败，均由GPU适配器调用旧CPU导出入口提前中断；源前后同，子树GONE/锁清，exec8141结束。正在使用唯一明确缺陷修复额度，尚未开始QA02。有限语法研究已关闭成本准入，合格工程PR26已合main7419d196fe1d080221db01565835f424c7a47f2c，远端4blob已核；实际Astra6加速方案已采纳：[多项式runtime及条件研究](../reports/edge_polynomial_runtime_20261021_protocol.md)源码和独立静态挑战已归档800692853170ac82916f355d1e690f173615c192，QA调用绑定3fd6e4b514293a827e188dea157b231a974f9cf1；主QA上限650秒，运行中禁止重复队列。原项目val/test关闭、TASK4暂停、默认模型不变，父目标L1/L2未完成。
 
 **最新结果**：[有限语法研究](../reports/finite_grammar_discovery_20261021_conclusion.md)7项CUDA检查通过，真实32→34恢复参数/Adam/RNG/输出精确一致。池/独立抽定teacher已冻结，选择器仅收train；正式三seed/数据均未启动。唯一cost在100秒内部帽、第4候选细步长5s排名处截止，完整T未得到，不能准入；不重试/缩档或解释为族失败。完整失败、16测时checkpoint文件及真实QA checkpoint保留本地。
 
