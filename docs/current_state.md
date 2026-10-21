@@ -1,6 +1,6 @@
 # 当前研究状态
 
-任务 **RUNNING**；E:/03-nn_Transfer_Func/kiki。当前无运行科学进程。有限语法研究已关闭成本准入，合格工具正作main精确审查；下一实际Astra6规划已登记。原项目val/test关闭、TASK4暂停、默认模型不变，父目标L1/L2未完成。
+任务 **RUNNING**；E:/03-nn_Transfer_Func/kiki。当前无运行科学进程。有限语法研究已关闭成本准入，合格工程PR26已合main7419d196fe1d080221db01565835f424c7a47f2c，远端4blob已核；下一实际Astra6正在规划。原项目val/test关闭、TASK4暂停、默认模型不变，父目标L1/L2未完成。
 
 **最新结果**：[有限语法研究](../reports/finite_grammar_discovery_20261021_conclusion.md)7项CUDA检查通过，真实32→34恢复参数/Adam/RNG/输出精确一致。池/独立抽定teacher已冻结，选择器仅收train；正式三seed/数据均未启动。唯一cost在100秒内部帽、第4候选细步长5s排名处截止，完整T未得到，不能准入；不重试/缩档或解释为族失败。完整失败、16测时checkpoint文件及真实QA checkpoint保留本地。
 
