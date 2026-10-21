@@ -1,5 +1,11 @@
 # Autonomous Scientific Engineering Rules
 
+## Current user override: no process quotas (2026-10-21)
+
+The human explicitly instructed “不设置进程限制” and confirmed “全部取消进程额度限制”. Prospectively, do not impose process-count, single-process runtime, stage process-second or parent process-hour ceilings. The former259200-second ceiling and category balances remain historical accounting, not active execution gates. Record actual process/subtree cost and ownership; do not fabricate a large finite timeout or a passing historical budget admission.
+
+Keep each scientific round finite through its registered comparisons, seeds, update counts, permitted repairs and decision trigger. Numerical qualification, causal inputs, train/val/test isolation, data-condition quotas, TASK4 pause, evidence preservation, Astra6 planning, independent challenge and conditional PR integration remain binding. No training until a metric passes. Retain historical cost-gate rejections and closed-stage evidence unchanged; the new authority permits a separately registered prospective execution of previously unexecuted science. This explicit user override takes precedence over process-budget wording elsewhere in this file and engineering_loop.
+
 Scientific validity and useful knowledge take priority over passing a target number.
 This file defines authority; [engineering_loop](docs/engineering_loop.md) defines execution.
 [current_state](docs/current_state.md) identifies the active roadmap, idea and baselines.
