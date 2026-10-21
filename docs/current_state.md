@@ -1,14 +1,14 @@
 # 当前研究状态
 
-任务RUNNING；阶段rational_execution_20261021正在进行唯一已登记实现修复，尚无正式训练进程。cwd E:/03-nn_Transfer_Func/kiki。默认模型不变，原项目val/test关闭，TASK4暂停，40状态/100ms一次初始化/全部真实区间/数值要求保持。
+任务RUNNING；阶段rational_execution_20261021已因QA02失败关闭，无正式训练进程。正在实际调用新Astra6分析下一条独立研究路径。cwd E:/03-nn_Transfer_Func/kiki。默认模型不变，原项目val/test关闭，TASK4暂停，40状态/100ms一次初始化/全部真实区间/数值要求保持。
 
 **现行资源授权**：2026-10-21人类原文“不设置进程限制”，并确认“全部取消进程额度限制”。后续不设进程数量、单进程时长、阶段或总进程小时帽，费用继续记录。旧259200秒/分类余额仅为历史，不再阻止开跑；历史收费/未知hold/预算REJECT不改。每轮比较、seed、更新数和允许修复仍有限，禁止训练到指标通过。[授权](../reports/process_limits_removed_20261021.md)。heartbeat已更新为相同授权并核验保存，保持原30分钟与安静通知意图。
 
 **已登记下一实际执行**：[实际Astra6新方案](../reports/astra6_rational_execution_20261021.md)及[root协议](../reports/rational_execution_20261021_protocol.md)：完整两形式×3seed×0/1%噪声12模型各512更新，总6144；原数据/损失/噪声/学习率/数值标准保持。新增薄entry复用已验收数学核心，deadline=None；Windows Job无时限/无进程quota监督。一次实现修复、一次非择优中断恢复，checkpoint附完整诊断侧文件。全部12端点冻结后一次合成val；不再重测成本。两个工人分离核心/监督实现，独立工人审查；必要QA后直接正式执行。
 
-**新增QA事实**：qa01在新Job下实际结束：15通过2失败，另有venv启动器/真实worker身份不一致；wall32.390715、子树CPU user2.84375/kernel5.5、Job活动0/source同/锁清。原始证据已归档，按protocol进行一次实现修复及qa02相关重验；未改数学/数据/6144有效更新设计，无新进程时限。修复后直接训练，不成本准入。[修复登记](../reports/rational_execution_20261021_repair.md)。
+**QA结局**：qa01为15通过2失败；唯一实现修复后qa02为20通过2失败，正常结束仍被监督器标记清理遗留进程。QA02真实worker102048/FILETIME134370564765203912，wall34.5001556、CPU user3.703125/kernel13.828125，最终Job0、source同、真实worker已退出、清理核验。两次原生墙钟累计66.8908706秒。正式更新0、未生成正式合成val。新入口/监督器不合main，不进行QA03或第二修复。[关闭结论](../reports/rational_execution_20261021_conclusion.md)。
 
-**当前无作业**：actual科学PID/session为空；没有把next_action称为运行中。下一动作核新源/独立挑战/必要QA，启动四组串行训练。单GPU串行是避免争用的实现选择，不是新进程额度。恢复目录private_data/closure_mechanism_20261019/P1/rational_execution01，必须核真实PID+创建身份/Job树空/源一致/sidecar，不以旧timeout或锁年龄终止健康进程。
+**当前无科学作业**：actual科学PID/session为空；没有把next_action称为运行中。下一动作归档QA02及关闭决定，接收实际Astra6独立路径分析，登记并实际执行合法下一阶段。原12模型轮次不得绕过QA开跑。证据目录private_data/closure_mechanism_20261019/P1/rational_execution01；源b00db35e23adcd035ed08fb3f3d365fceda09042保留，不因无进程额度而放宽数据、科学或有限修复要求。
 
 **旧阶段证据**：PR28工程已合main454483290b38ad37e52d00b39359205721d9ede0，expected head4536a53210a7f37334b4d1300e853ddc8d2cb7ff及四blob/双parent均远端核。旧QA8passed/native52.6231316，唯一完整cost384更新/native354.7782015，估价18184.7435>旧12000因而REJECT、正式0。旧阶段保持关闭，新授权单独执行尚未运行科学。数学source1aa93d60de8199455ef563acfa3e83f9ffc04eb8；新policy字节更新不假称旧118map全同，复用须核数值闭包。150真实32源文件/指针+2伪512负例本地保留，角色SHA归档。
 
