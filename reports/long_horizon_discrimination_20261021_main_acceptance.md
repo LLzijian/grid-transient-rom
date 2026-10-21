@@ -1,0 +1,5 @@
+# 长时证据main采用
+
+root采纳独立精确文件审查，无须修改。PR25 https://github.com/LLzijian/grid-transient-rom/pull/25 精确两文件：docs/closure_structure_evidence_20261021.md修改、results/long_horizon_discrimination_20261021/paired_profile.json新增。预期head1e630047e78a6d4130150ecba85b5a2227b41bc3、base8879d5f9ec810b3c1074690323171a292f2848df；expected-head普通merge后main2d4ac847a2246a46ef3d7576af3da03ce3cf0ec3。已核PR merged/merge_commit/mainref及递归树两blob b65233620e8069b4702040fe99f2adae6c09f551、3a63d770c2ce872c02ac26d769cb4d5afd93e3cb。
+
+仅采用可复查科学证据，不部署、改变默认或晋升模型。原开发外推范围和所有原门槛保持。localHEAD/index不变，用户修改未动。审查3.6107111秒及root此次相关操作包含关闭研究P1支持460，无新增预算或重复收费。下一实际Astra6规划已经登记P2支持300，尚未授予新的科学执行预算。
