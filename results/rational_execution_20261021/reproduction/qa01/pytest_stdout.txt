@@ -1,0 +1,48 @@
+F...........F....                                                        [100%]
+================================== FAILURES ===================================
+_____________ test_complete_twelve_models_exact_schedule_and_none _____________
+
+fakes = {'updates': [(6301, 'rational', 1, None), (6301, 'rational', 2, None), (6301, 'rational', 3, None), (6301, 'rational',...', 32), ('0_rational_6302', 32), ('0_rational_6303', 32)], 'data': [(6301, 0, None), (6302, 0, None), (6303, 0, None)]}
+tmp_path = WindowsPath('E:/03-nn_Transfer_Func/kiki/private_data/closure_mechanism_20261019/P1/rational_execution01/qa01/pytest_tmp/test_complete_twelve_models_ex0')
+
+    def test_complete_twelve_models_exact_schedule_and_none(fakes,tmp_path):
+        results=[]
+        for group in execution.study.GROUPS:
+>           out=tmp_path/group;out.mkdir();results.append(execution.train_group(out,'a'*40,group))
+                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_rational_execution_20261021.py:45: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+experiments\rational_execution_20261021.py:162: in train_group
+    atomic(out/'progress.json',{'key':key,'last_completed':step,'inflight':step+1,'source_commit':commit})
+experiments\outside_grammar_causal_20261021.py:17: in atomic
+    _atomic(path,value)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+p = WindowsPath('E:/03-nn_Transfer_Func/kiki/private_data/closure_mechanism_20261019/P1/rational_execution01/qa01/pytest_tmp/test_complete_twelve_models_ex0/0_rational/progress.json')
+value = {'key': '0_rational_6303', 'last_completed': 388, 'inflight': 389, 'source_commit': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'}
+
+    def atomic(p,value):
+        p=Path(p);tmp=p.with_name(p.name+'.'+uuid.uuid4().hex+'.tmp')
+>       tmp.write_text(json.dumps(value,indent=2,sort_keys=True,allow_nan=False),encoding='utf-8');os.replace(tmp,p)
+                                                                                                   ^^^^^^^^^^^^^^^^^
+E       PermissionError: [WinError 5] 拒绝访问。: 'E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\rational_execution01\\qa01\\pytest_tmp\\test_complete_twelve_models_ex0\\0_rational\\progress.json.814d7a539ec748b5bd86843e3bf24d55.tmp' -> 'E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\rational_execution01\\qa01\\pytest_tmp\\test_complete_twelve_models_ex0\\0_rational\\progress.json'
+
+experiments\finite_grammar_discovery_20261021.py:14: PermissionError
+__________________ test_normal_owned_subtree_and_exact_role ___________________
+
+tmp_path = WindowsPath('E:/03-nn_Transfer_Func/kiki/private_data/closure_mechanism_20261019/P1/rational_execution01/qa01/pytest_tmp/test_normal_owned_subtree_and_0')
+
+    def test_normal_owned_subtree_and_exact_role(tmp_path):
+     r=j.supervise(command("import subprocess,sys;subprocess.run([sys.executable,'-c','pass'],check=True)"),tmp_path/'normal',tmp_path/'lock',{},ROOT,provenance={'source_commit':'a'*40,'group':'0_rational','phase':'qa'})
+>    assert r['status']=='COMPLETED' and r['job_active_processes']==0 and r['job_total_processes']>=2
+E    AssertionError: assert ('FAILED' == 'COMPLETED'
+E      
+E      - COMPLETED
+E      + FAILED)
+
+tests\test_uncapped_windows_job_20261021.py:19: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_rational_execution_20261021.py::test_complete_twelve_models_exact_schedule_and_none
+FAILED tests/test_uncapped_windows_job_20261021.py::test_normal_owned_subtree_and_exact_role
+2 failed, 15 passed in 27.90s
