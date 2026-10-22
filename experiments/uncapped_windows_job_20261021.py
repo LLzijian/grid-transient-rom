@@ -89,7 +89,7 @@ def owned_pids(k,job):
             return list((ctypes.c_size_t*count).from_buffer(buffer,8))
         if ctypes.get_last_error()!=234:raise ctypes.WinError(ctypes.get_last_error())
         capacity*=2
-def settle_job(k,job,known):
+def settle_job(k,job,known,active_members_observed=None):
     """Distinguish live owned descendants from signaled processes awaiting Job accounting."""
     orphans=False
     while True:
@@ -107,7 +107,15 @@ def settle_job(k,job,known):
                 member=W.BOOL();checked(k.IsProcessInJob(handle,job,ctypes.byref(member)))
                 if member.value:
                     state=k.WaitForSingleObject(handle,0)
-                    if state==258:live=True
+                    if state==258:
+                        live=True
+                        if active_members_observed is not None:
+                            observed={'pid':int(pid),'in_owned_job':True,'wait_result':int(state)}
+                            try:observed.update(times(k,handle))
+                            except Exception as error:observed['creation_identity_error']=repr(error)
+                            try:observed['physical_image']=physical_image(k,handle)
+                            except Exception as error:observed['physical_image_error']=repr(error)
+                            active_members_observed.append(observed)
                     elif state!=0:raise ctypes.WinError(ctypes.get_last_error())
             finally:
                 if temporary:k.CloseHandle(handle)
@@ -120,7 +128,7 @@ def supervise(command,output,lock,files,working_directory,worker_receipt=None,on
     lock.parent.mkdir(parents=True,exist_ok=True)
     with lock.open('x',encoding='utf-8') as f:json.dump(owner,f)
     creation_flags=0x4|0x8|0x80000|0x400 # SUSPENDED | DETACHED | EXTENDED_STARTUPINFO | UNICODE_ENVIRONMENT.
-    record={**(provenance or {}),'status':'UNRESOLVED','supervisor':supervisor,'worker':None,'command':command,'creation_flags':creation_flags,'runtime_limits':None,'cpu_limits':None,'active_process_limit':None}
+    record={**(provenance or {}),'status':'UNRESOLVED','supervisor':supervisor,'worker':None,'command':command,'creation_flags':creation_flags,'runtime_limits':None,'cpu_limits':None,'active_process_limit':None,'active_members_observed':[]}
     actual_handle=None;actual_receipt=None;job=None;pi=PROCESS_INFORMATION();logs=[];attrs=None;attrs_ready=False;assigned=False;clean=False;started=time.perf_counter();raised=None
     try:
         output.mkdir(parents=True,exist_ok=False);record['source_before']=verify_files(files)
@@ -202,7 +210,7 @@ def supervise(command,output,lock,files,working_directory,worker_receipt=None,on
         launch_exit=W.DWORD();checked(k.GetExitCodeProcess(pi.hProcess,ctypes.byref(launch_exit)))
         target=actual_handle or pi.hProcess;worker_exit=W.DWORD();checked(k.GetExitCodeProcess(target,ctypes.byref(worker_exit)))
         record.update(launcher_exit_code=int(launch_exit.value),worker_exit_code=int(worker_exit.value),exit_code=int(worker_exit.value),actual_worker_state='GONE')
-        account,orphans=settle_job(k,job,{int(pi.dwProcessId):pi.hProcess,**({worker['pid']:actual_handle} if actual_handle else {})})
+        account,orphans=settle_job(k,job,{int(pi.dwProcessId):pi.hProcess,**({worker['pid']:actual_handle} if actual_handle else {})},record['active_members_observed'])
         clean=True;record['orphans_cleaned']=orphans;record['job_active_processes']=0
         record['job_cpu_user_seconds']=account.TotalUserTime/1e7;record['job_cpu_kernel_seconds']=account.TotalKernelTime/1e7
         record['job_total_processes']=int(account.TotalProcesses);record['launcher_end']=times(k,pi.hProcess);record['worker_end']=times(k,target)

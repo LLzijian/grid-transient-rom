@@ -12,13 +12,13 @@ def wait_file(path):
   if time.monotonic()>end:raise AssertionError('test handshake absent')
   time.sleep(.02)
  return json.loads(Path(path).read_text(encoding='utf-8'))
-SELECTION=ROOT/'private_data/closure_mechanism_20261019/P1/rational_execution01/reconstruction20261022/runtime_selection.json'
+SELECTION=ROOT/'private_data/closure_mechanism_20261019/P1/rational_execution01/spawn_chain20261022/runtime_selection.json'
 def command(code):return selected_python_command(['-c',code],SELECTION)
 def popen(args):
  cmd=selected_python_command(args,SELECTION)
- return subprocess.Popen([cmd['executable'],*cmd['arguments']],env=command_environment(cmd))
+ return subprocess.Popen([cmd['executable'],*cmd['arguments']],env=command_environment(cmd),creationflags=(subprocess.DETACHED_PROCESS if os.name=='nt' else 0))
 def child_preamble():
- return "import sys,subprocess;sys.path.insert(0,"+repr(str(ROOT))+");from experiments.rational_python_runtime_20261022 import selected_python_command,command_environment;cmd=selected_python_command(['-c',CHILD_CODE],"+repr(str(SELECTION))+");child=subprocess.Popen([cmd['executable'],*cmd['arguments']],env=command_environment(cmd));"
+ return "import os,sys,subprocess;sys.path.insert(0,"+repr(str(ROOT))+");from experiments.rational_python_runtime_20261022 import selected_python_command,command_environment;cmd=selected_python_command(['-c',CHILD_CODE],"+repr(str(SELECTION))+");child=subprocess.Popen([cmd['executable'],*cmd['arguments']],env=command_environment(cmd),creationflags=(subprocess.DETACHED_PROCESS if os.name=='nt' else 0));"
 def spawn_child(code):return child_preamble().replace('CHILD_CODE',repr(code))
 def child_script(path):
  return "import sys,threading;sys.path.insert(0,"+repr(str(ROOT/'experiments'))+");from uncapped_windows_job_20261021 import identity,atomic;atomic("+repr(str(path))+",identity());threading.Event().wait()"
@@ -88,4 +88,61 @@ def test_stale_creation_and_exclusive_lock(tmp_path):
  with pytest.raises(FileExistsError):j.supervise(command('pass'),tmp_path/'never',lock,{},ROOT)
  with pytest.raises(ValueError):j.reconcile_lock(lock,{'supervisor':stale,'worker':None},tmp_path/'missing')
  assert lock.exists() and not (tmp_path/'never').exists()
+
+def test_outer_popen_passes_detached(monkeypatch):
+ calls=[]
+ monkeypatch.setattr(sys.modules[__name__],'selected_python_command',lambda args,selection:{'executable':'python.exe','arguments':args})
+ monkeypatch.setattr(sys.modules[__name__],'command_environment',lambda cmd:{})
+ monkeypatch.setattr(subprocess,'Popen',lambda *args,**kwargs:calls.append((args,kwargs)))
+ popen(['-c','pass'])
+ assert calls[0][1]['creationflags']==subprocess.DETACHED_PROCESS
+ assert calls[0][1]['env']=={}
+
+def test_nested_preamble_passes_detached(monkeypatch):
+ from experiments import rational_python_runtime_20261022 as runtime
+ calls=[]
+ monkeypatch.setattr(runtime,'selected_python_command',lambda args,selection:{'executable':'python.exe','arguments':args})
+ monkeypatch.setattr(runtime,'command_environment',lambda cmd:{})
+ monkeypatch.setattr(subprocess,'Popen',lambda *args,**kwargs:calls.append((args,kwargs)))
+ exec(spawn_child('pass'),{})
+ assert calls[0][1]['creationflags']==subprocess.DETACHED_PROCESS
+ assert calls[0][1]['env']=={}
+
+def test_probe_child_passes_detached_and_preserves_pipes(tmp_path,monkeypatch):
+ import importlib.util
+ path=ROOT/'private_data/closure_mechanism_20261019/P1/rational_execution01/reconstruction20261022/probe_worker.py'
+ spec=importlib.util.spec_from_file_location('spawn_chain_probe',path);probe=importlib.util.module_from_spec(spec);spec.loader.exec_module(probe)
+ calls=[]
+ class Child:pid=123
+ monkeypatch.setattr(probe,'command_environment',lambda cmd:{})
+ monkeypatch.setattr(subprocess,'Popen',lambda *args,**kwargs:(calls.append((args,kwargs)) or Child()))
+ cmd={'executable':'python.exe','logical_executable':'venv/python.exe','arguments':['-c','pass']}
+ probe.start_child(cmd,tmp_path/'trace.json',capture=True)
+ assert calls[0][1]['creationflags']==subprocess.DETACHED_PROCESS
+ assert calls[0][1]['stdout']==calls[0][1]['stderr']==subprocess.PIPE
+ trace=json.loads((tmp_path/'trace.json').read_text(encoding='utf-8'))
+ assert trace==[{'via':'subprocess','creationflags':8,'child_pid':123,**cmd}]
+
+@pytest.mark.parametrize('read_error',[False,True])
+def test_live_owned_observation_never_relaxes_cleanup(monkeypatch,read_error):
+ observations=[];terminations=[]
+ class API:
+  queries=0
+  def QueryInformationJobObject(self,handle,kind,pointer,size,returned):
+   self.queries+=1;pointer._obj.ActiveProcesses=1 if self.queries==1 else 0;return 1
+  def IsProcessInJob(self,handle,owned_job,pointer):pointer._obj.value=True;return 1
+  def WaitForSingleObject(self,handle,delay):return 258
+  def TerminateJobObject(self,handle,code):terminations.append((handle,code));return 1
+ def identity(k,h):
+  if read_error:raise OSError('creation read failed')
+  return {'creation_filetime_utc':2**54}
+ def image(k,h):
+  if read_error:raise OSError('image read failed')
+  return 'python.exe'
+ monkeypatch.setattr(j,'owned_pids',lambda k,h:[123]);monkeypatch.setattr(j,'times',identity);monkeypatch.setattr(j,'physical_image',image)
+ account,orphans=j.settle_job(API(),42,{123:7},observations)
+ assert orphans is True and account.ActiveProcesses==0 and terminations==[(42,125)]
+ assert observations[0]['pid']==123 and observations[0]['in_owned_job'] is True and observations[0]['wait_result']==258
+ if read_error:assert 'creation_identity_error' in observations[0] and 'physical_image_error' in observations[0]
+ else:assert observations[0]['creation_filetime_utc']==2**54 and observations[0]['physical_image']=='python.exe'
 

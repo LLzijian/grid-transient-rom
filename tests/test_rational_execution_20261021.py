@@ -5,6 +5,7 @@ import numpy as np
 import pytest
 ROOT=Path(__file__).resolve().parents[1];sys.path[:0]=[str(ROOT/'experiments'),str(ROOT/'src')]
 import rational_execution_20261021 as execution
+REAL_DESCENDANT_VALIDATOR=execution.validate_descendant_batch
 
 
 @pytest.fixture
@@ -82,7 +83,7 @@ def test_pending_and_changed_checkpoint_rejected(fakes,tmp_path):
 
 def test_evaluate_uses_existing_full_barrier_and_none(monkeypatch,tmp_path):
     # Isolate the unchanged scientific barrier; separate tests exercise QA03 admission.
-    monkeypatch.setattr(execution,'validate_qa05_pass',lambda binding,commit:None)
+    monkeypatch.setattr(execution,'validate_qa06_pass',lambda binding,commit:None)
     def evaluate(out,binding,commit,deadline):
         assert deadline is None
         execution.study.validate_selection({},commit)
@@ -205,7 +206,8 @@ def test_second_qa_attempt_has_own_collection_and_no_unauthorized_third(monkeypa
     with pytest.raises(ValueError,match='repair identity'):execution.execute('qa',out,{},'a'*40,None,False,qa_attempt=3)
     with pytest.raises(ValueError,match='binding role'):execution.execute('qa',out,{},'a'*40,None,False,qa_attempt=4)
     with pytest.raises(ValueError,match='binding role'):execution.execute('qa',out,{},'a'*40,None,False,qa_attempt=5)
-    with pytest.raises(ValueError,match='attempts1 or2'):execution.execute('qa',out,{},'a'*40,None,False,qa_attempt=6)
+    with pytest.raises(ValueError,match='binding role'):execution.execute('qa',out,{},'a'*40,None,False,qa_attempt=6)
+    with pytest.raises(ValueError,match='attempts1 or2'):execution.execute('qa',out,{},'a'*40,None,False,qa_attempt=7)
     args=['qa','--output',str(tmp_path/'qa01'),'--binding',str(tmp_path/'missing.json'),'--source-commit','a'*40,'--qa-attempt','2']
     with pytest.raises(ValueError,match='own exclusive'):execution.main(args)
 
@@ -443,7 +445,11 @@ def test_core_unauthorized_qa04_and_qa05_leave_no_output(monkeypatch,tmp_path):
     execution.atomic(binding,{'source_commit':'a'*40,'phase':'qa','qa_attempt':5,'group':None})
     with pytest.raises(ValueError,match='exact QA05 authority'):execution.main(argv)
     assert not out.exists()
-    argv[-1]='6'
+    argv[-1]='6';out=tmp_path/execution.ROUND_PATH/'qa06';argv[2]=str(out)
+    execution.atomic(binding,{'source_commit':'a'*40,'phase':'qa','qa_attempt':6,'group':None})
+    with pytest.raises(ValueError,match='exact QA06 authority'):execution.main(argv)
+    assert not out.exists()
+    argv[-1]='7'
     with pytest.raises(SystemExit):execution.main(argv)
     assert not out.exists()
 
@@ -543,7 +549,7 @@ def test_formal_execution_requires_qa05_not_qa04(monkeypatch,qa05_binding):
     binding,command=qa05_binding
     # A historical QA04 validator returning successfully cannot grant admission.
     monkeypatch.setattr(execution,'validate_qa04_pass',lambda *args:None)
-    with pytest.raises(ValueError,match='native_qa05'):execution.execute('run',execution.ROOT,binding,'a'*40,'0_rational',False)
+    with pytest.raises(ValueError,match='native_qa05'):execution.validate_qa05_pass(binding,'a'*40)
     install_qa05(binding,command);execution.validate_qa05_pass(binding,'a'*40)
 
 
@@ -620,7 +626,253 @@ def test_qa05_resume_and_attempt6_rejected_without_outputs(monkeypatch,tmp_path)
     argv=['qa','--output',str(out),'--binding',str(binding),'--source-commit','a'*40,'--qa-attempt','5','--resume']
     with pytest.raises(SystemExit):execution.main(argv)
     assert not out.exists()
-    argv=argv[:-1];argv[-1]='6'
+    argv=argv[:-1];argv[-1]='7'
     with pytest.raises(SystemExit):execution.main(argv)
     assert not out.exists()
+
+
+
+def install_qa06(binding,command):
+    base=execution.ROOT/execution.ROUND_PATH
+    source={str((execution.ROOT/name).resolve()):binding['files'][name] for name in execution.qa06_source_names()+(execution.RUNTIME_SELECTION,)}
+    native={'status':'COMPLETED','phase':'qa','qa_attempt':6,'source_commit':'a'*40,'cleanup_verified':True,
+        'job_active_processes':0,'orphans_cleaned':False,'actual_worker_state':'GONE',
+        'exit_code':0,'launcher_exit_code':0,'worker_exit_code':0,
+        'source_before':source,'source_after':dict(source),'command':dict(command,arguments=['-m','qa'])}
+    worker={'pid':12345,'creation_filetime_utc':134370000000000001,
+        'physical_image':command['expected_worker_image'],'logical_executable':command['logical_executable'],
+        'runtime_scheme':command['runtime_scheme'],
+        'runtime_selection':{'path':execution.RUNTIME_SELECTION,'sha256':binding['files'][execution.RUNTIME_SELECTION]}}
+    native.update(worker=worker,worker_receipt=dict(worker),runtime_limits=None,cpu_limits=None,active_process_limit=None)
+    marker={'status':'COMPLETED','result':{'status':'PASS','qa_attempt':6,'source_commit':'a'*40,
+        'pytest_returncode':0,'pytest_creation_flags':8,'runtime_selection_sha256':binding['files'][execution.RUNTIME_SELECTION]}}
+    for name,row in (('native_qa06/receipt.json',native),('qa06/complete.json',marker)):
+        path=base/name;path.parent.mkdir(parents=True,exist_ok=True);execution.atomic(path,row)
+        binding['files'][path.relative_to(execution.ROOT).as_posix()]=execution.sha(path)
+    binding.update(phase='run',group='0_rational',qa_attempt=None)
+    return native,marker
+
+
+@pytest.fixture
+def qa06_binding(monkeypatch,qa05_binding):
+    binding,command=qa05_binding
+    names=set(execution.qa06_source_names());names.add(execution.ROUND_PATH+'/native_qa05/receipt.json')
+    for name in names:
+        path=execution.ROOT/name;path.parent.mkdir(parents=True,exist_ok=True)
+        path.write_bytes((ROOT/name).read_bytes());binding['files'][name]=execution.sha(path)
+    for key,(name,digest) in execution.QA06_INPUTS.items():binding[key]={'path':name,'sha256':digest}
+    binding['prior_receipts'].append(execution.ROUND_PATH+'/native_qa05/receipt.json')
+    binding['qa_attempt']=6
+    monkeypatch.setattr(execution,'validate_descendant_batch',lambda binding,commit:{'fixture_only':True})
+    return binding,command
+
+
+def test_qa06_authority_and_five_failures(qa06_binding):
+    binding,_=qa06_binding;execution.validate_qa_attempt(binding,'a'*40,6)
+    binding['prior_receipts'].pop()
+    with pytest.raises(ValueError,match='immutable QA05'):execution.validate_qa_attempt(binding,'a'*40,6)
+
+
+@pytest.mark.parametrize('key',list(execution.QA06_INPUTS))
+def test_qa06_missing_authority_rejected(qa06_binding,key):
+    binding,_=qa06_binding;binding.pop(key)
+    with pytest.raises(ValueError,match='exact QA06 authority'):execution.validate_qa_attempt(binding,'a'*40,6)
+
+
+@pytest.mark.parametrize('field,value',[('phase','run'),('group','0_rational'),('qa_attempt',5)])
+def test_qa06_wrong_role_rejected(qa06_binding,field,value):
+    binding,_=qa06_binding;binding[field]=value
+    with pytest.raises(ValueError,match='binding role'):execution.validate_qa_attempt(binding,'a'*40,6)
+
+
+def test_qa06_relabelled_qa05_rejected(qa06_binding):
+    binding,_=qa06_binding;name=execution.ROUND_PATH+'/native_qa05/receipt.json'
+    path=execution.ROOT/name;row=json.loads(path.read_text(encoding='utf-8'));row['status']='COMPLETED'
+    execution.atomic(path,row);binding['files'][name]=execution.sha(path)
+    with pytest.raises(ValueError,match='immutable QA05'):execution.validate_qa_attempt(binding,'a'*40,6)
+
+
+def test_formal_execute_requires_qa06(monkeypatch,qa06_binding):
+    binding,command=qa06_binding
+    monkeypatch.setattr(execution,'validate_qa05_pass',lambda *args:None)
+    with pytest.raises(ValueError,match='native_qa06'):execution.execute('run',execution.ROOT,binding,'a'*40,'0_rational',False)
+    install_qa06(binding,command);execution.validate_qa06_pass(binding,'a'*40)
+
+
+@pytest.mark.parametrize('target,field,value',[
+    ('native','status','FAILED'),('native','qa_attempt',5),('native','source_commit','b'*40),
+    ('native','orphans_cleaned',True),('native','worker_exit_code',True),
+    ('inner','status','FAIL'),('inner','pytest_creation_flags',None),('inner','pytest_creation_flags',0),
+    ('inner','pytest_creation_flags',True),('inner','runtime_selection_sha256','f'*64)])
+def test_qa06_bad_native_or_pytest_flags_rejected(qa06_binding,target,field,value):
+    binding,command=qa06_binding;native,marker=install_qa06(binding,command)
+    row=native if target=='native' else marker['result'];row[field]=value
+    name=execution.ROUND_PATH+('/native_qa06/receipt.json' if target=='native' else '/qa06/complete.json')
+    execution.atomic(execution.ROOT/name,native if target=='native' else marker);binding['files'][name]=execution.sha(execution.ROOT/name)
+    with pytest.raises(ValueError,match='QA06 pass'):execution.validate_qa06_pass(binding,'a'*40)
+
+
+def test_qa06_collects_four_suites_and_detached_pytest(monkeypatch,qa06_binding):
+    import subprocess
+    binding,selected=qa06_binding;calls=[]
+    helper=types.SimpleNamespace(selected_python_command=lambda args,path:dict(selected,arguments=list(args)),
+        command_environment=lambda command:{'QA_UTF8':'中文'})
+    monkeypatch.setitem(sys.modules,'rational_python_runtime_20261022',helper)
+    def run(command,**kwargs):
+        calls.append((command,kwargs));return types.SimpleNamespace(returncode=0,stdout='fixture only',stderr='')
+    monkeypatch.setattr(subprocess,'run',run)
+    out=execution.ROOT/execution.ROUND_PATH/'qa06';out.mkdir()
+    result=execution.execute('qa',out,binding,'a'*40,None,False,6)
+    command,kwargs=calls[0]
+    assert command[-2:]==['--basetemp',str(execution.ROOT/'private_data/q6')]
+    assert kwargs['creationflags']==(subprocess.DETACHED_PROCESS if execution.os.name=='nt' else 0)
+    assert result['pytest_creation_flags']==kwargs['creationflags']
+    assert [Path(x).name for x in command if x.endswith('.py')]==[
+        'test_rational_execution_20261021.py','test_uncapped_windows_job_20261021.py',
+        'test_rational_python_runtime_20261022.py','test_rational_control_20261021.py']
+    assert result['runtime_selection_sha256']==binding['files'][execution.RUNTIME_SELECTION]
+
+
+def test_qa06_temp_and_repeat_rejected(qa06_binding):
+    binding,_=qa06_binding;temp=execution.ROOT/'private_data/q6';temp.mkdir()
+    with pytest.raises(ValueError,match='must not exist'):execution.validate_qa_attempt(binding,'a'*40,6)
+    # Use the duplicate-receipt guard independently of temp-directory state.
+    path=execution.ROOT/execution.ROUND_PATH/'native_qa06/receipt.json';path.parent.mkdir();path.write_text('{}',encoding='utf-8')
+    with pytest.raises(ValueError,match='exactly five'):execution.validate_qa_attempt(binding,'a'*40,6)
+
+
+def test_qa06_resume_and_qa07_rejected(monkeypatch,tmp_path):
+    monkeypatch.setattr(execution,'ROOT',tmp_path);binding=tmp_path/'binding.json';execution.atomic(binding,{})
+    out=tmp_path/execution.ROUND_PATH/'qa06'
+    args=['qa','--output',str(out),'--binding',str(binding),'--source-commit','a'*40,'--qa-attempt','6','--resume']
+    with pytest.raises(SystemExit):execution.main(args)
+    args=args[:-1];args[-1]='7'
+    with pytest.raises(SystemExit):execution.main(args)
+    assert not out.exists()
+
+
+@pytest.fixture
+def descendant_fixture(monkeypatch,qa06_binding):
+    binding,command=qa06_binding;selection={'files':{name:digest for name,digest in binding['files'].items() if name.endswith('.py')}}
+    authority=execution.QA06_INPUTS['spawn_chain_authority']
+    selection['files'][authority[0]]=authority[1]
+    def put(name,value):
+        path=execution.ROOT/'raw'/name;path.parent.mkdir(parents=True,exist_ok=True);execution.atomic(path,value)
+        relative=path.relative_to(execution.ROOT).as_posix();digest=execution.sha(path)
+        binding['files'][relative]=selection['files'][relative]=digest
+        return {'path':relative,'sha256':digest}
+    cases=[]
+    source={str((execution.ROOT/name).resolve()):digest for name,digest in selection['files'].items() if name.endswith('.py')}
+    for index,name in enumerate(('normal','grandchild','pipes','orphan','supervisor_exit')):
+        count=3 if name=='grandchild' else 2;identities=[];values=[]
+        for offset in range(count):
+            value={'pid':1000+index*10+offset,'creation_filetime_utc':134370000000000000+index*10+offset,
+                'executable':command['logical_executable']};values.append(value)
+            identities.append(put(name+str(offset)+'.json',value))
+        parent=dict(values[0],physical_image=command['expected_worker_image'])
+        exit_code=121 if name=='supervisor_exit' else 0
+        proof={'source_commit':'a'*40,'phase':'runtime_observation','group':name,
+            'status':'FAILED' if name in ('orphan','supervisor_exit') else 'COMPLETED',
+            'cleanup_verified':True,'job_active_processes':0,'orphans_cleaned':name=='orphan',
+            'exit_code':exit_code,'launcher_exit_code':exit_code,'worker_exit_code':exit_code,
+            'source_before':dict(source),'source_after':dict(source),'command':dict(command,arguments=['fixture']),
+            'worker':parent,'actual_worker_state':'GONE'}
+        if name=='orphan':proof['active_members_observed']=[dict(values[1],in_owned_job=True,wait_result=258)]
+        spawns=[{'via':'native_job' if name=='supervisor_exit' else 'subprocess',
+            'creationflags':525324 if name=='supervisor_exit' else 8,
+            'executable':command['executable'],'logical_executable':command['logical_executable'],
+            'child_pid':value['pid'],'arguments':['fixture']} for value in values[1:]]
+        ends=[put(name+'_end.json',dict(values[1],wait_result=0,exit_code=125))] if name=='supervisor_exit' else []
+        cases.append({'name':name,'receipt':put(name+'_receipt.json',proof),'identities':identities,
+            'spawns':[put(name+'_spawns.json',spawns)],'handle_ends':ends})
+        if name=='pipes':cases[-1]['pipe_result']=put('pipes_result.json',{'stdout':'fixed stdout\n','stderr':'fixed stderr\n','returncode':0})
+    batch={'status':'QUALIFIED','source_commit':'a'*40,'authority':{'path':authority[0],'sha256':authority[1]},'cases':cases}
+    selection.update(observation_source_commit='a'*40,normal_receipt=cases[0]['receipt'],orphan_receipt=cases[3]['receipt'])
+    path=execution.ROOT/execution.DESCENDANT_BATCH;path.parent.mkdir(parents=True,exist_ok=True);execution.atomic(path,batch)
+    ref={'path':execution.DESCENDANT_BATCH,'sha256':execution.sha(path)};binding['descendant_batch']=ref
+    binding['files'][execution.DESCENDANT_BATCH]=selection['files'][execution.DESCENDANT_BATCH]=ref['sha256']
+    execution.atomic(execution.ROOT/execution.RUNTIME_SELECTION,selection)
+    binding['files'][execution.RUNTIME_SELECTION]=execution.sha(execution.ROOT/execution.RUNTIME_SELECTION)
+    binding['runtime_selection']['sha256']=binding['files'][execution.RUNTIME_SELECTION]
+    monkeypatch.setattr(execution,'prior_worker_gone',lambda identity:None)
+    def refresh():
+        selection.update(normal_receipt=batch['cases'][0]['receipt'],orphan_receipt=batch['cases'][3]['receipt'])
+        execution.atomic(path,batch);ref['sha256']=execution.sha(path)
+        binding['files'][execution.DESCENDANT_BATCH]=selection['files'][execution.DESCENDANT_BATCH]=ref['sha256']
+        execution.atomic(execution.ROOT/execution.RUNTIME_SELECTION,selection)
+        binding['files'][execution.RUNTIME_SELECTION]=execution.sha(execution.ROOT/execution.RUNTIME_SELECTION)
+        binding['runtime_selection']['sha256']=binding['files'][execution.RUNTIME_SELECTION]
+    return binding,batch,put,refresh
+
+
+def test_all_five_raw_descendant_cases_required(descendant_fixture):
+    binding,batch,_,refresh=descendant_fixture;REAL_DESCENDANT_VALIDATOR(binding,'a'*40)
+    batch['cases'].pop();refresh()
+    with pytest.raises(ValueError,match='ordered five'):REAL_DESCENDANT_VALIDATOR(binding,'a'*40)
+
+
+@pytest.mark.parametrize('case,field,value',[
+    (0,'status','FAILED'),(1,'orphans_cleaned',True),(2,'source_commit','b'*40),
+    (3,'orphans_cleaned',False),(4,'exit_code',0),(0,'cleanup_verified',False),(4,'orphans_cleaned',True)])
+def test_descendant_bad_native_rehashed(descendant_fixture,case,field,value):
+    binding,batch,put,refresh=descendant_fixture;row=batch['cases'][case];ref=row['receipt']
+    proof=json.loads((execution.ROOT/ref['path']).read_text(encoding='utf-8'));proof[field]=value
+    row['receipt']=put(Path(ref['path']).name,proof);refresh()
+    with pytest.raises(ValueError,match='native case differs'):REAL_DESCENDANT_VALIDATOR(binding,'a'*40)
+
+
+@pytest.mark.parametrize('case,field,value',[(0,'creationflags',0),(1,'child_pid',999),(2,'logical_executable','wrong.exe'),(4,'creationflags',8),(4,'via','subprocess')])
+def test_descendant_spawn_trace_rehashed(descendant_fixture,case,field,value):
+    binding,batch,put,refresh=descendant_fixture;row=batch['cases'][case];ref=row['spawns'][0]
+    records=json.loads((execution.ROOT/ref['path']).read_text(encoding='utf-8'));records[0][field]=value
+    row['spawns']=[put(Path(ref['path']).name,records)];refresh()
+    with pytest.raises(ValueError,match='spawn'):REAL_DESCENDANT_VALIDATOR(binding,'a'*40)
+
+
+def test_descendant_orphan_must_match_live_identity(descendant_fixture):
+    binding,batch,put,refresh=descendant_fixture;row=batch['cases'][3];ref=row['receipt']
+    proof=json.loads((execution.ROOT/ref['path']).read_text(encoding='utf-8'));proof['active_members_observed']=[]
+    row['receipt']=put(Path(ref['path']).name,proof);refresh()
+    with pytest.raises(ValueError,match='handshaken orphan'):REAL_DESCENDANT_VALIDATOR(binding,'a'*40)
+
+
+def test_descendant_supervisor_exit_needs_retained_handle(descendant_fixture):
+    binding,batch,_,refresh=descendant_fixture;batch['cases'][4]['handle_ends']=[];refresh()
+    with pytest.raises(ValueError,match='handle termination'):REAL_DESCENDANT_VALIDATOR(binding,'a'*40)
+
+
+def test_descendant_identity_is_actually_checked(monkeypatch,descendant_fixture):
+    binding,_,_,_=descendant_fixture
+    def alive(identity):raise ValueError('prior worker still alive')
+    monkeypatch.setattr(execution,'prior_worker_gone',alive)
+    with pytest.raises(ValueError,match='still alive'):REAL_DESCENDANT_VALIDATOR(binding,'a'*40)
+
+
+def test_qa06_authority_cannot_skip_descendant_batch(monkeypatch,qa06_binding):
+    binding,_=qa06_binding
+    def missing(binding,commit):raise ValueError('actual batch missing')
+    monkeypatch.setattr(execution,'validate_descendant_batch',missing)
+    with pytest.raises(ValueError,match='actual batch missing'):execution.validate_qa06_authority(binding,'a'*40)
+
+
+def test_descendant_unbound_raw_identity_rejected(descendant_fixture):
+    binding,batch,_,_=descendant_fixture
+    binding['files'].pop(batch['cases'][0]['identities'][1]['path'])
+    with pytest.raises(ValueError,match='source-bound descendant'):REAL_DESCENDANT_VALIDATOR(binding,'a'*40)
+
+
+@pytest.mark.parametrize('field,value',[('wait_result',258),('exit_code',True),('creation_filetime_utc',1)])
+def test_descendant_handle_end_cannot_be_flag_only(descendant_fixture,field,value):
+    binding,batch,put,refresh=descendant_fixture;row=batch['cases'][4];ref=row['handle_ends'][0]
+    proof=json.loads((execution.ROOT/ref['path']).read_text(encoding='utf-8'));proof[field]=value
+    row['handle_ends']=[put(Path(ref['path']).name,proof)];refresh()
+    with pytest.raises(ValueError,match='handle'):REAL_DESCENDANT_VALIDATOR(binding,'a'*40)
+
+
+@pytest.mark.parametrize('field,value',[('stdout','wrong\n'),('stderr','wrong\n'),('returncode',1),('returncode',False)])
+def test_descendant_pipe_output_rehashed_rejected(descendant_fixture,field,value):
+    binding,batch,put,refresh=descendant_fixture;row=batch['cases'][2];ref=row['pipe_result']
+    result=json.loads((execution.ROOT/ref['path']).read_text(encoding='utf-8'));result[field]=value
+    row['pipe_result']=put(Path(ref['path']).name,result);refresh()
+    with pytest.raises(ValueError,match='pipe contents'):REAL_DESCENDANT_VALIDATOR(binding,'a'*40)
 

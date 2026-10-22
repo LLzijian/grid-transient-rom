@@ -1,0 +1,21 @@
+# 子进程链修复：独立静态复查与root处理
+
+复查者/root/reconstruction_independent_review_20261022未参与实现，本次只读未运行pytest/probe/GPU/Git。人类已明确批准固定五例+一次QA06，通过原12GPU。实际Astra6原始规划及root采纳另见astra6_spawn_chain_20261022.md。
+
+独立返回原文：
+
+静态复查发现两项需在冻结源码前补齐的问题：
+
+1. 监督退出例可能由外层清理代替内层Job关闭清理。observe.py和核心validate_descendant_batch均允许该例orphans_cleaned=True。外层可能先杀掉仍活着的孩子，witness随后Wait成功，案例仍通过。最小修正：两处均要求监督退出例外层orphans_cleaned is False，保留真实句柄INFINITE等待及身份终止证据，并增加对应拒绝测试。不得加宽限等待。
+
+2. 管道结果未进入最终资格绑定。observer当场检查了pipes.json，但未将其引用纳入batch/selection，核心准入也未重新读取。最小修正：增加精确管道结果引用，绑定SHA，核心核验固定stdout、stderr和返回码，并增加篡改负例。
+
+其余检查范围内：五例顺序固定、无重试；启动使用低层命令，未形成selection资格循环；正常/孤儿判据严格；取证读取错误不取消清理；所有选定Python源码同时受normal/orphan快照约束。QA06新授权、QA05固定失败历史、新selection/batch、训练、评价及恢复已连接，QA07与QA06恢复均拒绝。四处DETACHED参数及相应测试覆盖已加入。
+
+本次仅静态读取指定源码及规划协议，未编辑、运行测试/probe/GPU或操作Git。未发现新增科学计算改动；未另行执行科学AST历史比对。预计183项与路径可行性仍是静态判断，不能代替实际五例和唯一QA06。
+
+root采纳与处理：
+
+两问题均在首例执行前修正。监督退出例外层必须orphans_cleaned=false；外层on_worker_owned先放行父worker，再等待独立witness持有的具体孩子进程句柄实际终止，然后才进入外层原有settle。witness仅保留PROCESS句柄，不保留内层Job句柄；未创建孩子时实际父身份终止会报告错误，不无限等不存在孩子。该等待是监督退出案例本身的清理证据，无宽限或额外普通案例等待。真实活动成员的Job终止及FAILED规则不变。
+
+pipes案例新增pipe_result精确SHA引用并加入selection.files；核心准入重读真实固定stdout/stderr/typed零返回码，新增篡改拒绝测试。root确认后冻结源，所有计算源在五例与QA06间保持字节不变；本静态处理不声称实际验收通过。
