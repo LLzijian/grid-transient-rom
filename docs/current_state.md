@@ -1,6 +1,6 @@
 # 当前研究状态
 
-任务RUNNING，cwd E:/03-nn_Transfer_Func/kiki。人类2026-10-22最新明确回复“允许复验，通过后继续训练”，授权一次QA05，合格自动继续原12模型GPU。实际gpt-6-astra新方案/root采纳及完整原始返回已保存归档8e0ecfcac78ba9785a911ce20f0a65f336e142b1；有限协议已登记。绑定工人正在改core/测试/launch/make_binding四文件；尚未QA05、正式更新0，无科学PID/队列或锁。
+任务RUNNING，cwd E:/03-nn_Transfer_Func/kiki。人类2026-10-22最新明确回复“允许复验，通过后继续训练”，授权一次QA05，合格自动继续原12模型GPU。实际gpt-6-astra新方案/root采纳及完整原始返回已保存归档8e0ecfcac78ba9785a911ce20f0a65f336e142b1；有限协议已登记。四文件实现及非实现者独立复查完成，预期135项/最长atomic223字符，源冻结待唯一QA05；尚未QA05、正式更新0，无科学PID/队列或锁。
 
 **本次范围**：QA05独立新授权，短pytest临时根private_data/q5，保留原四套完整检查及旧26项准入断言。新增attempt5授权/历史/同源通过准入，真实run/evaluate/恢复切QA05；保留QA04历史验证语义，拒绝6/重复QA5/QA5恢复。静态核全部调用点、最长原子临时路径及固定A2/数学来源，非实现者只读复查后冻结归档，唯一QA05通过即实际GPU执行。新授权results/rational_execution_20261021/qa05_authority_20261022.json，SHA a493f77a01de06d7b3bff49930900ffabb776ec15ddf59a856828c51ce3e0e79，远端00361a2373257cbf1062a675f25ba9d2bfe542b1。
 
