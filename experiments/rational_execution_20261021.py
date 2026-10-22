@@ -455,6 +455,9 @@ def execute(phase,out,binding,commit,group,resume,qa_attempt=1):
                  str(ROOT/'tests/test_uncapped_windows_job_20261021.py'),'--basetemp',str(out/'pytest_tmp')]
         environment=None
         if qa_attempt==4:
+            # Keep nested fixture copies and atomic filenames below Windows MAX_PATH.
+            # QA04's original failed source remains archived; this fix is not rerun authority.
+            command[-1]=str(ROOT/'private_data/q4')
             from rational_python_runtime_20261022 import selected_python_command,command_environment
             arguments=command[1:]
             arguments[5:5]=[str(ROOT/'tests/test_rational_python_runtime_20261022.py'),str(ROOT/'tests/test_rational_control_20261021.py')]

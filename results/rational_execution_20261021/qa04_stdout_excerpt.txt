@@ -1,0 +1,91 @@
+Original full local stdout SHA256: 44a11dee9601bdf630cf4ef56f983b87e54b7d5b0909cc1e64ce2e3958385647 Original path: E:\03-nn_Transfer_Func\kiki\private_data\closure_mechanism_20261019\P1\rational_execution01\qa04\pytest_stdout.txt First representative setup error:
+.........................................EEEEEEEEEEEEEEEEEEEEEE.EEEE.... [ 72%]
+...........................                                              [100%]
+=================================== ERRORS ====================================
+__ ERROR at setup of test_qa04_separate_authority_and_three_actual_failures ___
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001A453AF0E30>
+tmp_path = WindowsPath('E:/03-nn_Transfer_Func/kiki/private_data/closure_mechanism_20261019/P1/rational_execution01/qa04/pytest_tmp/test_qa04_separate_authority_a0')
+
+    @pytest.fixture
+    def reconstruction_binding(monkeypatch,tmp_path):
+        original=execution.ROOT
+        names=set(execution.reconstruction_source_names())
+        names.update(execution.ROUND_PATH+f'/native_qa{i:02d}/receipt.json' for i in (1,2,3))
+        for name in names:
+            path=tmp_path/name;path.parent.mkdir(parents=True,exist_ok=True)
+            path.write_bytes((original/name).read_bytes())
+        monkeypatch.setattr(execution,'ROOT',tmp_path)
+        binding={'source_commit':'a'*40,'phase':'qa','group':None,'qa_attempt':4,
+            'files':{name:execution.sha(tmp_path/name) for name in names},
+            'prior_receipts':[execution.ROUND_PATH+f'/native_qa{i:02d}/receipt.json' for i in (1,2,3)]}
+        for key,(name,digest) in execution.RECONSTRUCTION_INPUTS.items():binding[key]={'path':name,'sha256':digest}
+        path=tmp_path/execution.RUNTIME_SELECTION;path.parent.mkdir(parents=True,exist_ok=True)
+>       execution.atomic(path,{'files':{}})
+
+tests\test_rational_execution_20261021.py:355: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+experiments\rational_execution_20261021.py:245: in atomic
+    with temporary.open('xb') as file:file.write(encoded)
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('E:/03-nn_Transfer_Func/kiki/private_data/closure_mechanism_20261019/P1/rational_execution01/qa04/pytest_t...m_20261019/P1/rational_execution01/reconstruction20261022/runtime_selection.json.735af6e2972e42c99ad1b2a312370bc6.tmp')
+mode = 'xb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\rational_execution01\\qa04\\pytest_tmp\\test_qa04_separate_authority_a0\\private_data\\closure_mechanism_20261019\\P1\\rational_execution01\\reconstruction20261022\\runtime_selection.json.735af6e2972e42c99ad1b2a312370bc6.tmp'
+
+C:\Users\LLLzijian\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py:1013: FileNotFoundError
+_ ERROR at setup of test_qa04_rejects_unbound_or_replaced_authority[reconstruction_authority] _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001A453AF3020>
+tmp_path = WindowsPath('E:/03-nn_Transfer_Func/kiki/private_data/closure_mechanism_20261019/P1/rational_execution01/qa04/pytest_tmp/test_qa04_rejects_unbound_or_r0')
+
+    @pytest.fixture
+    def reconstruction_binding(monkeypatch,tmp_path):
+        original=execution.ROOT
+        names=set(execution.reconstruction_source_names())
+        names.update(execution.ROUND_PATH+f'/native_qa{i:02d}/receipt.json' for i in (1,2,3))
+        for name in names:
+            path=tmp_path/name;path.parent.mkdir(parents=True,exist_ok=True)
+            path.write_bytes((original/name).read_bytes())
+Repeated setup tracebacks omitted; originals retained locally. Complete pytest summary:
+C:\Users\LLLzijian\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py:1013: FileNotFoundError
+=========================== short test summary info ===========================
+ERROR tests/test_rational_execution_20261021.py::test_qa04_separate_authority_and_three_actual_failures
+ERROR tests/test_rational_execution_20261021.py::test_qa04_rejects_unbound_or_replaced_authority[reconstruction_authority]
+ERROR tests/test_rational_execution_20261021.py::test_qa04_rejects_unbound_or_replaced_authority[reconstruction_protocol]
+ERROR tests/test_rational_execution_20261021.py::test_qa04_rejects_unbound_or_replaced_authority[reconstruction_astra_plan]
+ERROR tests/test_rational_execution_20261021.py::test_qa04_rejects_unbound_or_replaced_authority[qa03_failed_summary]
+ERROR tests/test_rational_execution_20261021.py::test_qa04_rejects_wrong_role_before_proof_io[phase-run]
+ERROR tests/test_rational_execution_20261021.py::test_qa04_rejects_wrong_role_before_proof_io[group-0_tanh]
+ERROR tests/test_rational_execution_20261021.py::test_qa04_rejects_wrong_role_before_proof_io[qa_attempt-5]
+ERROR tests/test_rational_execution_20261021.py::test_qa04_rejects_relabelled_historical_qa03
+ERROR tests/test_rational_execution_20261021.py::test_formal_admission_now_requires_inner_outer_qa04
+ERROR tests/test_rational_execution_20261021.py::test_qa04_pass_rejects_rehashed_bad_native_or_inner[native-status-FAILED]
+ERROR tests/test_rational_execution_20261021.py::test_qa04_pass_rejects_rehashed_bad_native_or_inner[native-source_commit-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb]
+ERROR tests/test_rational_execution_20261021.py::test_qa04_pass_rejects_rehashed_bad_native_or_inner[native-qa_attempt-3]
+ERROR tests/test_rational_execution_20261021.py::test_qa04_pass_rejects_rehashed_bad_native_or_inner[native-orphans_cleaned-True]
+ERROR tests/test_rational_execution_20261021.py::test_qa04_pass_rejects_rehashed_bad_native_or_inner[native-job_active_processes-1]
+ERROR tests/test_rational_execution_20261021.py::test_qa04_pass_rejects_rehashed_bad_native_or_inner[native-actual_worker_state-ALIVE]
+ERROR tests/test_rational_execution_20261021.py::test_qa04_pass_rejects_rehashed_bad_native_or_inner[native-exit_code-1]
+ERROR tests/test_rational_execution_20261021.py::test_qa04_pass_rejects_rehashed_bad_native_or_inner[native-launcher_exit_code-True]
+ERROR tests/test_rational_execution_20261021.py::test_qa04_pass_rejects_rehashed_bad_native_or_inner[native-worker_exit_code-None]
+ERROR tests/test_rational_execution_20261021.py::test_qa04_pass_rejects_rehashed_bad_native_or_inner[inner-status-FAIL]
+ERROR tests/test_rational_execution_20261021.py::test_qa04_pass_rejects_rehashed_bad_native_or_inner[inner-pytest_returncode-1]
+ERROR tests/test_rational_execution_20261021.py::test_qa04_pass_rejects_rehashed_bad_native_or_inner[inner-runtime_selection_sha256-ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff]
+ERROR tests/test_rational_execution_20261021.py::test_qa04_collects_all_four_suites_using_selected_runtime
+ERROR tests/test_rational_execution_20261021.py::test_qa04_rejects_rehashed_wrong_runtime_identity[physical_image-wrong.exe]
+ERROR tests/test_rational_execution_20261021.py::test_qa04_rejects_rehashed_wrong_runtime_identity[logical_executable-wrong.exe]
+ERROR tests/test_rational_execution_20261021.py::test_qa04_rejects_rehashed_wrong_runtime_identity[runtime_scheme-venv_pythonw]
+73 passed, 26 errors in 78.81s (0:01:18)
