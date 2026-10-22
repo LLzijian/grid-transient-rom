@@ -1,0 +1,147 @@
+{
+  "status": "QUALIFIED",
+  "source_commit": "5ffe63f5f9bd71c68e417da4759fdbd183299799",
+  "authority": {
+    "path": "results/rational_execution_20261021/spawn_chain_authority_20261022.json",
+    "sha256": "fcef6abc075be703711ff5cc0b88967b34a7c65ed93f910488f0006ec5c3db68"
+  },
+  "cases": [
+    {
+      "name": "normal",
+      "receipt": {
+        "path": "private_data/closure_mechanism_20261019/P1/rational_execution01/spawn_chain20261022/native_normal/receipt.json",
+        "sha256": "f032f1022423e93a8ca4b48132d7a69269e9befebc7a2f75f4974568aa5f19cf"
+      },
+      "identities": [
+        {
+          "path": "private_data/closure_mechanism_20261019/P1/rational_execution01/spawn_chain20261022/normal/worker.json",
+          "sha256": "6a8a1ce119ed192cadfbdba059904e4bc018d87cbea77162df050fb42485b68e"
+        },
+        {
+          "path": "private_data/closure_mechanism_20261019/P1/rational_execution01/spawn_chain20261022/normal/child.json",
+          "sha256": "00fa3b4a4df3e461a7a0a030557ff61b6272b7c0deaee1e99143684e3cb121f1"
+        }
+      ],
+      "spawns": [
+        {
+          "path": "private_data/closure_mechanism_20261019/P1/rational_execution01/spawn_chain20261022/normal/spawns_parent.json",
+          "sha256": "50e78ec3245f18904176a4e3088c54883faea25f1877cdbdf3df75ef37978a12"
+        }
+      ],
+      "handle_ends": []
+    },
+    {
+      "name": "grandchild",
+      "receipt": {
+        "path": "private_data/closure_mechanism_20261019/P1/rational_execution01/spawn_chain20261022/native_grandchild/receipt.json",
+        "sha256": "f5ef03c99152dbfc67550168398e9414e5f8f29cf77f37528e16ded831133619"
+      },
+      "identities": [
+        {
+          "path": "private_data/closure_mechanism_20261019/P1/rational_execution01/spawn_chain20261022/grandchild/worker.json",
+          "sha256": "a3048dec53c6cfd725825f4b4324918615645204d2d4a786cdfa72e79800266d"
+        },
+        {
+          "path": "private_data/closure_mechanism_20261019/P1/rational_execution01/spawn_chain20261022/grandchild/child.json",
+          "sha256": "7a6261b551d717a0ec0201997ae1168e0be64ffc030d614058521fa3cee2d425"
+        },
+        {
+          "path": "private_data/closure_mechanism_20261019/P1/rational_execution01/spawn_chain20261022/grandchild/grandchild.json",
+          "sha256": "9e4b26e9c68c04374165676b295187344f827f02cf785aa11fc8600059b5b375"
+        }
+      ],
+      "spawns": [
+        {
+          "path": "private_data/closure_mechanism_20261019/P1/rational_execution01/spawn_chain20261022/grandchild/spawns_parent.json",
+          "sha256": "e7158908bd5245adc0ddfe75ae7ea7824163ccbefeec3f661e5b8b5952fd5e03"
+        },
+        {
+          "path": "private_data/closure_mechanism_20261019/P1/rational_execution01/spawn_chain20261022/grandchild/spawns_child.json",
+          "sha256": "1a885aafff426fccf255a4b17f033564c2f4cb7fedee54874599def997fde5bc"
+        }
+      ],
+      "handle_ends": []
+    },
+    {
+      "name": "pipes",
+      "receipt": {
+        "path": "private_data/closure_mechanism_20261019/P1/rational_execution01/spawn_chain20261022/native_pipes/receipt.json",
+        "sha256": "30c921017845762da8cf77659933eea4475d18ad536e6005337bd79598350f39"
+      },
+      "identities": [
+        {
+          "path": "private_data/closure_mechanism_20261019/P1/rational_execution01/spawn_chain20261022/pipes/worker.json",
+          "sha256": "daa04f66d91b4fe4e98611868d1c41cc129a2c3f817d41491de63a193cff2a12"
+        },
+        {
+          "path": "private_data/closure_mechanism_20261019/P1/rational_execution01/spawn_chain20261022/pipes/child.json",
+          "sha256": "16eb45ab6313d2c881c72c855f80d09578264bad1dee96863adb828b62404a48"
+        }
+      ],
+      "spawns": [
+        {
+          "path": "private_data/closure_mechanism_20261019/P1/rational_execution01/spawn_chain20261022/pipes/spawns_parent.json",
+          "sha256": "335e0076689fa96b1ff5174ce2e10324fbbf7c728d8ebfc45b045ff579ed2982"
+        }
+      ],
+      "handle_ends": [],
+      "pipe_result": {
+        "path": "private_data/closure_mechanism_20261019/P1/rational_execution01/spawn_chain20261022/pipes/pipes.json",
+        "sha256": "40e2e6d27f7b7938a6743bd9f2fdec2f95ab5091f539d2116ab5de8c36655da6"
+      }
+    },
+    {
+      "name": "orphan",
+      "receipt": {
+        "path": "private_data/closure_mechanism_20261019/P1/rational_execution01/spawn_chain20261022/native_orphan/receipt.json",
+        "sha256": "d5689e12736081bcb27e5e9acf8f71ba039f2e42b40091d1600b4fbe637c950f"
+      },
+      "identities": [
+        {
+          "path": "private_data/closure_mechanism_20261019/P1/rational_execution01/spawn_chain20261022/orphan/worker.json",
+          "sha256": "09daa5d26f5496a06de25ba453ad628a72e4656bc64dcf8875226a1b832046b2"
+        },
+        {
+          "path": "private_data/closure_mechanism_20261019/P1/rational_execution01/spawn_chain20261022/orphan/child.json",
+          "sha256": "f61a8543b827f8957202a9edac3b731df9d2cb7b2f23e12a83f181993076ff84"
+        }
+      ],
+      "spawns": [
+        {
+          "path": "private_data/closure_mechanism_20261019/P1/rational_execution01/spawn_chain20261022/orphan/spawns_parent.json",
+          "sha256": "86df8d86f1ceaf933c0a12c508dd877673d0375333695d324043f7c142c8e63f"
+        }
+      ],
+      "handle_ends": []
+    },
+    {
+      "name": "supervisor_exit",
+      "receipt": {
+        "path": "private_data/closure_mechanism_20261019/P1/rational_execution01/spawn_chain20261022/native_supervisor_exit/receipt.json",
+        "sha256": "b5742dcf2f80c60fce6ba5d3bf3e4dcff7a72a3565d49f397da987e8329a70c2"
+      },
+      "identities": [
+        {
+          "path": "private_data/closure_mechanism_20261019/P1/rational_execution01/spawn_chain20261022/supervisor_exit/worker.json",
+          "sha256": "e9130d8f70ba822815d8533946f4432a60dd404981fb7075b0678062a2ee82a9"
+        },
+        {
+          "path": "private_data/closure_mechanism_20261019/P1/rational_execution01/spawn_chain20261022/supervisor_exit/child.json",
+          "sha256": "19519f4cb721c1c6f15b7a99f82f3ec923ba9f5e8c2aaeabcc39ff6d331370de"
+        }
+      ],
+      "spawns": [
+        {
+          "path": "private_data/closure_mechanism_20261019/P1/rational_execution01/spawn_chain20261022/supervisor_exit/spawns_parent.json",
+          "sha256": "e79b8267567bb5f6d9ef59b01fc9dc872f2f3bc0bde503a25c3dc690e1f2e6e2"
+        }
+      ],
+      "handle_ends": [
+        {
+          "path": "private_data/closure_mechanism_20261019/P1/rational_execution01/spawn_chain20261022/supervisor_exit/handle_end.json",
+          "sha256": "539e8713976fe68c9ea4976a3625078bb570af50a81ac8f370f5060665914267"
+        }
+      ]
+    }
+  ]
+}
