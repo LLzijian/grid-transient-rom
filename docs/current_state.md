@@ -1,15 +1,17 @@
 # 当前研究状态
 
-任务RUNNING，cwd E:/03-nn_Transfer_Func/kiki。六候选有限语法阶段已闭合：正式实际768/计划2304更新，15/45检查点、9/27排名；6101真值14/16事件通过数值资格、6103为13/16，因此两者未训练，6102完成完整768更新并选索引2。真值索引4在32次筛选淘汰；6102最终train(2,5]归一化MSE13.8832153613、数值排名无歧义。这些结果不建立三seed结构恢复或独立预测确认。
+任务RUNNING，cwd E:/03-nn_Transfer_Func/kiki。增长受控边语法的GPU完整比较已实际启动：源c9ec666fc7e8dd5ad04f63d9bea3ada33d4ec7a2，会话39552，worker8544/FILETIME134371580519701416，supervisor46124/FILETIME134371580515422234；Job拥有bounded_edge_grammar01/active.lock，science/6201已生成，无失败信号。禁止重复开跑或修改159项绑定源。
 
-未生成任何本轮合成val，原项目val/test仍关闭。worker56312/FILETIME134371510173320258已GONE，会话85910退出1，原生Job0/无遗留/锁清。source b8cdcaa02db4b969a941cec7035c9daa7e3aa298，157项前后快照及当前字节相同。失败为预登记数值门槛触发，不是执行器缺陷，不将非有限轨迹称为物理失稳；不删事件、不换seed、不放宽阈值、不用一次工程修复重跑科学。[本轮结论](../reports/finite_grammar_execution_20261022_conclusion.md)。
+本轮实际gpt-6-astra(/root/astra6_after_grammar_failure_20261022)方案、root采纳及[有限协议](../reports/bounded_edge_grammar_20261022_protocol.md)已冻结：生产语法按原始及边对称/中心化后q总次数恰1、无p筛选，19个合法机制按固定规则取六项，唯一抽teacher索引2、系数0.15；新seed6201/6202/6203，六项各512共9216更新，不提前淘汰。每模型0/32/128/512保存、32/128真实恢复，共72检查点/36恢复/54排名。32/128无效排名保留为未决，不参加选择；全部18最终512端点计数/Adam/RNG/trace/来源及完整数值资格通过，才一次新合成val评价三份train选中模型。原项目val/test保持关闭。
 
-下一实际动作：实际gpt-6-astra(/root/astra6_after_grammar_failure_20261022)已返回，新原始方案astra6_bounded_edge_20261022_raw.txt/root采纳/协议均保存。正在实际实施增长受控边语法、六候选各512×三新seed6201/2/3，共9216更新；纯语法冻结后一次相关QA、通过才GPU。不是重跑旧teacher或换旧失败seed。独立审查已初步确认实际编译梯度在q总次数1子语法下至多线性增长，非L2稳定/数值保证；候选不足六直接关闭。无早淘汰与新语法作为组合研究，不作单因素归因。当前无训练作业，两个新文件由worker实现，root连接既有Job/helper，尚未生成新正式数据。
+独立解析与静态[审查](../reports/bounded_edge_grammar_20261022_review.md)通过：实际s/c有界、固定骨架/J/R/端口下向量场至多线性增长，得到连续解有限时间存在性，不是L2稳定、全时有界或固定步长数值证明。纯语法freeze源a62c7790fc31cbb10e97ba0502662564883253d5已成功；pool SHA8da2fa832738396eb2f9b9cc291087b6870018dd9064f867adaef2115fdb3ee3，teacher SHA7da92cb94b8272559e7e32b62e1b447a059c2e32f56ce7194c8193bca535b968，sourceA→B冻结输出path/SHA/原生来源核验保持。
 
-本轮实现与17相关QA通过事实保持，CUDA资格36+CPU6与正式768分列；未触发的三模型完整冻结/合成val路径不能称正式通过。模型采用none，本轮集成撤回且main保持bcced8d507cbc5fdd4e0f6fc9d455467f20899a4；新代码/失败/原模型/来源状态全留归档，未合入的不需要revert。[协议](../reports/finite_grammar_execution_20261022_protocol.md)，[QA摘要](../results/finite_grammar_execution_20261022/qa_summary.json)。新入口无外部--resume，内部32/128真实恢复照旧。原始train数组/15检查点/排名/native/QA状态保留private_data/closure_mechanism_20261019/P1/finite_grammar_execution01和private_data/qfg1，完成目录不重用。
+14项相关QA全部通过(pytest154.34秒)，唯一独立9922真实32→34资格36 CUDA更新及CPU2更新另计；160项来源前后及当前字节同、typed0/Job0/无遗留/锁清。[QA摘要](../results/bounded_edge_grammar_20261022/qa_summary.json)。静态已修正CPU复杂度计数后再移CUDA的接口与freeze输出引用，不属于执行重试，实际QA仅一次，无科学修复/择优重训。原始QA状态保留private_data/qbg1。
 
-上一轮12模型各512=6144正式更新，合成val全部数值合格；已知有理形式相对tanh在0%/1%观测噪声下1s合成val归一化MSE三实例均值低14.24%/5.17%，六配对方向同。已知形式对照不等于未知发现或同等收敛。精确六文件PR #31已核main bcced8d507cbc5fdd4e0f6fc9d455467f20899a4；新检查点工程因依赖旧core仅归档。[结果核验](../results/rational_execution_20261021/checkpoint_results_main_verification.json)。PR #30的Job/helper有效工程维持。
+下一实际动作：按登记seed/候选里程碑稀疏监控现有Job，不重复读state只报步数。作业完成后核原生source/费用/退出与所有端点，解释结构恢复和预测范围，独立精确PR审查后决定集成。新入口无外部--resume；中断保留关闭后另登记非择优来源续接，原最多一次界限不重置。当前模型均研究候选、默认采用none，真实L1/L2未完成。
 
-全部进程额度取消，实际费用分列：本轮Job wall1884.5509191秒，CPU user1470.125/kernel358.359375秒；QA wall83.5058926秒另计。上一GPU Job wall2673.6449287及全部旧费用/失败/未知hold/REJECT保留，账本results/closure_mechanism_20261019/cost_snapshot.json。不重跑旧18×5126085.6472446、384测时、五例或QA06，不伪造旧预算PASS。
+上轮六候选阶段已闭合：6101/6103真值数值资格失败，6102完成768更新/15检查点/9排名、32时淘汰teacher4最终选2，合成val为0；不称物理失稳/执行器故障/模型族证伪。代码与全部负结果归档e03b21bf7f72b01067763bc108fde2d2ca29f08c，本轮未采用且未合main。[结论](../reports/finite_grammar_execution_20261022_conclusion.md)。main维持已核PR #31 bcced8d507cbc5fdd4e0f6fc9d455467f20899a4及PR #30有效工程，旧12模型已知有理形式结果不改。
 
-40状态、100ms一次因果、真实区间、失稳样本、物理单位、数据配额、数值及模型门槛保持，TASK4暂停；默认模型none，真实L1/L2尚未完成。归档分支codex/edge-memory-discrimination-20261021最近已核e03b21bf7f72b01067763bc108fde2d2ca29f08c，旧失败证据已同步，新协议待同步。local HEADa95101337855ed3fc1f4abfd710982443d5564cb/index SHA82b060840d50257c41df55e15805fa106f29117cac8bf1868a6b83e490e2df93保持；不reset/强推/删证据，heartbeat继续。
+全部进程额度取消，实际费用分列：本轮freeze wall17.6278757秒、CPU user2.265625/kernel1.890625；QA wall156.7825392秒、CPU user111.8125/kernel25.5；当前正式费用待真实Job回执。上轮wall1884.5509191/CPU1470.125+358.359375及全部旧费用/未知hold/REJECT保留，不相加wall与CPU、不伪造旧PASS。账本results/closure_mechanism_20261019/cost_snapshot.json；不重跑旧18×5126085.6472446、384测时、五例、QA06。
+
+实际命令为标准Python运行private_data/closure_mechanism_20261019/P1/bounded_edge_grammar01/launch.py run --source-commit c9ec666fc7e8dd5ad04f63d9bea3ada33d4ec7a2(已执行，勿重复)。目录内保留pool/teacher/binding/模型/Adam/数组/native，关键文件SHA在摘要；40状态/100ms一次因果/真实区间/失稳样本/单位/数据配额/数值及模型采用门槛保持，TASK4暂停。归档分支codex/edge-memory-discrimination-20261021最近已核62fd5d3540d90e0d04b6ef606cb52246ca9ce858，开跑记录同步中；local HEADa95101337855ed3fc1f4abfd710982443d5564cb和index SHA82b060840d50257c41df55e15805fa106f29117cac8bf1868a6b83e490e2df93保持，不reset/强推/删证据，heartbeat继续。
