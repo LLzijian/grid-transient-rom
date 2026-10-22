@@ -43,7 +43,7 @@ RUNTIME_SELECTION=ROUND_PATH+'/reconstruction20261022/runtime_selection.json'
 def reconstruction_source_names():
     return tuple(dict.fromkeys(repair_source_names()+tuple(p for p,_ in RECONSTRUCTION_INPUTS.values())+(
         'experiments/rational_python_runtime_20261022.py','tests/test_rational_python_runtime_20261022.py',
-        'tests/test_rational_control_20261021.py')))
+        'tests/test_rational_control_20261021.py','reports/executor_reconstruction_20261022_independent_review.md')))
 
 
 def bound_json(binding,name):
