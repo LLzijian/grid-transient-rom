@@ -1,0 +1,11 @@
+# 正常退出后的额外控制台进程
+
+第二次也是最后一次身份观察取得全部五个成员记录，无字段错误。launcher19928及其余三个Python均exit0、等待状态0后，额外成员43596仍listed=true、IsProcessInJob=true、等待状态258（运行中）。首次实测物理映像为C:/Windows/System32/conhost.exe，创建FILETIME134371217754336246，映像查询时点134371217754576158。该映像为当时读取后缓存的身份，后续状态快照不冒称重新查询映像。
+
+原settle_job因此实际清理该成员，记录orphans_cleaned=true、FAILED，最后Job0，原判据未改。观察2回执SHA256 c588178817f66b3130005df2b6c4a0499e3e2075bff10b9eb2aac1ca727d3afa。原监督源22beb521459461895f25034dc98f9524872669d6ca588344021b0f0cd03c43f7前后相同；监督墙钟0.8454312秒，JobCPU user/kernel各0.046875秒，诊断总0.8588635秒、工具1.2543956秒，嵌套墙钟不重复相加。观察1记录失败继续保留。
+
+root据此采纳一次启动修复：CreateProcessW创建标志将CREATE_NO_WINDOW(0x08000000)替换为DETACHED_PROCESS(0x8)，保留CREATE_SUSPENDED(0x4)、EXTENDED_STARTUPINFO_PRESENT(0x80000)、原子JOB_LIST、自有句柄、KILL_ON_JOB_CLOSE及显式继承stdout/stderr。两种标志的定义与组合规则经[Microsoft官方文档](https://learn.microsoft.com/en-us/windows/win32/procthread/process-creation-flags)核对。此修改是否在当前环境消除额外进程，由唯一QA03检验，当前不称已通过。
+
+不按conhost名称自动免责，不跳过活成员、不加入等待若干秒后判成功的逻辑，不放宽orphans_cleaned要求。新增父进程exit0但留下已握手无限等待应用子进程的反例，必须FAILED、实际清理、精确身份GONE及Job0；正常真实venv worker与正常子树必须COMPLETED且无遗留清理。其他来源、恢复、锁、PID及监督器骤停要求保持。
+
+科学内容没有修改。数学54项实际源码已与此前真实合格QA逐字节及Git blob核对，证据math_reuse_20261022.json。QA03前仍需非实现者独立只读审查、源冻结与归档，QA只执行一次；通过后直接原12模型训练。
