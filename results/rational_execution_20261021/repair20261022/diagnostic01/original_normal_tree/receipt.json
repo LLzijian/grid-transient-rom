@@ -1,0 +1,71 @@
+{
+  "purpose": "single normal venv tree identity diagnostic, not QA",
+  "status": "UNRESOLVED",
+  "supervisor": {
+    "pid": 37872,
+    "executable": "C:\\Users\\LLLzijian\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+    "creation_filetime_utc": 134371215373702203,
+    "exit_filetime_utc": 0,
+    "kernel_100ns": 1093750,
+    "user_100ns": 625000
+  },
+  "worker": {
+    "pid": 39812,
+    "executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+    "physical_image": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+    "creation_filetime_utc": 134371215378882310,
+    "exit_filetime_utc": 0,
+    "kernel_100ns": 0,
+    "user_100ns": 0
+  },
+  "command": {
+    "executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+    "arguments": [
+      "-c",
+      "import subprocess,sys,time;subprocess.run([sys.executable,'-c','import time;time.sleep(.3)'],check=True);time.sleep(.1)"
+    ]
+  },
+  "runtime_limits": null,
+  "cpu_limits": null,
+  "active_process_limit": null,
+  "source_before": {
+    "E:\\03-nn_Transfer_Func\\kiki\\experiments\\uncapped_windows_job_20261021.py": "22beb521459461895f25034dc98f9524872669d6ca588344021b0f0cd03c43f7"
+  },
+  "launcher": {
+    "pid": 39812,
+    "executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+    "physical_image": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+    "creation_filetime_utc": 134371215378882310,
+    "exit_filetime_utc": 0,
+    "kernel_100ns": 0,
+    "user_100ns": 0
+  },
+  "launcher_exit_code": 0,
+  "worker_exit_code": 0,
+  "exit_code": 0,
+  "actual_worker_state": "GONE",
+  "error": "PermissionError(13, '\u8fde\u5230\u7cfb\u7edf\u4e0a\u7684\u8bbe\u5907\u6ca1\u6709\u53d1\u6325\u4f5c\u7528\u3002', None, 31)",
+  "traceback": "Traceback (most recent call last):\n  File \"E:\\03-nn_Transfer_Func\\kiki\\experiments\\uncapped_windows_job_20261021.py\", line 187, in supervise\n    account,orphans=settle_job(k,job,{int(pi.dwProcessId):pi.hProcess,**({worker['pid']:actual_handle} if actual_handle else {})})\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\rational_execution01\\additional_repair20261022\\diagnose.py\", line 49, in settle\n    state['before_cleanup']=observe()\n                            ^^^^^^^^^\n  File \"E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\rational_execution01\\additional_repair20261022\\diagnose.py\", line 39, in observe\n    rows.append({'pid':pid,**j.times(k,handle),'physical_image':j.physical_image(k,handle),'IsProcessInJob':bool(member.value),'wait_state':int(k.WaitForSingleObject(handle,0)),'exit_code':int(exitcode.value),'listed_now':pid in pids})\n                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\03-nn_Transfer_Func\\kiki\\experiments\\uncapped_windows_job_20261021.py\", line 82, in physical_image\n    checked(k.QueryFullProcessImageNameW(handle,0,buffer,ctypes.byref(size)));return buffer.value\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\03-nn_Transfer_Func\\kiki\\experiments\\uncapped_windows_job_20261021.py\", line 50, in checked\n    if not value:raise ctypes.WinError(ctypes.get_last_error())\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nPermissionError: [WinError 31] \u8fde\u5230\u7cfb\u7edf\u4e0a\u7684\u8bbe\u5907\u6ca1\u6709\u53d1\u6325\u4f5c\u7528\u3002\n",
+  "job_active_processes": 0,
+  "job_cpu_user_seconds": 0.0625,
+  "job_cpu_kernel_seconds": 0.078125,
+  "job_total_processes": 5,
+  "launcher_end": {
+    "creation_filetime_utc": 134371215378882310,
+    "exit_filetime_utc": 134371215390130425,
+    "kernel_100ns": 0,
+    "user_100ns": 0
+  },
+  "cleanup_verified": true,
+  "wall_seconds": 1.2104835999998613,
+  "supervisor_end": {
+    "creation_filetime_utc": 134371215373702203,
+    "exit_filetime_utc": 0,
+    "kernel_100ns": 1250000,
+    "user_100ns": 625000
+  },
+  "supervisor_end_observed_filetime_utc": 134371215390203210,
+  "source_after": {
+    "E:\\03-nn_Transfer_Func\\kiki\\experiments\\uncapped_windows_job_20261021.py": "22beb521459461895f25034dc98f9524872669d6ca588344021b0f0cd03c43f7"
+  }
+}
