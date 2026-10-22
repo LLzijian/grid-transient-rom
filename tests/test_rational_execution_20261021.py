@@ -415,7 +415,7 @@ def install_qa04(binding,command):
 
 def test_formal_admission_now_requires_inner_outer_qa04(reconstruction_binding):
     binding,command=reconstruction_binding
-    with pytest.raises(ValueError,match='QA04/receipt'):execution.validate_qa04_pass(binding,'a'*40)
+    with pytest.raises(ValueError,match=r'native_qa04/receipt\.json'):execution.validate_qa04_pass(binding,'a'*40)
     install_qa04(binding,command);execution.validate_qa04_pass(binding,'a'*40)
 
 
