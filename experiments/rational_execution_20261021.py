@@ -30,7 +30,7 @@ def repair_source_names():
 
 
 # Separate prospective authority. Historical QA03 admission remains available only
-# to its retained tests; current science always uses validate_qa04_pass below.
+# to its retained tests; current science always uses validate_qa05_pass below.
 RECONSTRUCTION_INPUTS={
     'reconstruction_authority':('results/rational_execution_20261021/reconstruction_authority_20261022.json','4327713dead80850fc1f973c3959113dbc09987de772c79ae1e4a9b2a143ed4c'),
     'reconstruction_protocol':('reports/executor_reconstruction_20261022_protocol.md','5d1aa6a177c991649f6fea02f574c075332f5d5a1840267c8d01668735f85f1a'),
@@ -38,6 +38,53 @@ RECONSTRUCTION_INPUTS={
     'qa03_failed_summary':('results/rational_execution_20261021/qa03_summary.json','8783eca36518ecd722e737216db897ae4137d463a704c2a5edb69b940ef3e4d4')}
 QA03_HISTORY=('95ee7cfe3d0c9dbdc065a306fcdc1d60fd0078d3','FAILED','d2893e3d14924058c3a5e695a3b103329b7fb7d59a5b2590cfdc57883eb19baa')
 RUNTIME_SELECTION=ROUND_PATH+'/reconstruction20261022/runtime_selection.json'
+QA05_INPUTS={
+    'qa05_authority':('results/rational_execution_20261021/qa05_authority_20261022.json','a493f77a01de06d7b3bff49930900ffabb776ec15ddf59a856828c51ce3e0e79'),
+    'qa05_astra_raw':('reports/astra6_qa05_20261022_raw.txt','1b7f849ba85b2695b9aa50967ffe6e1510122a27bc7140a3ef9ded1e1236667f'),
+    'qa05_astra_decision':('reports/astra6_qa05_20261022.md','50062eb20cac73cb0f7223888adaafabf4cb25348ed48945c7eb177ac8b4409c'),
+    'qa05_protocol':('reports/qa05_recheck_20261022_protocol.md','4eeb6514ba048454bfc8614f2070fd5e9f61c154f1e839b46718471c0cad5742'),
+    'qa04_failed_summary':('results/rational_execution_20261021/qa04_summary.json','c218e27718a8524e840286696419d6d694f0e1b8b4d570d4893db6c42bd1fdbc')}
+QA04_HISTORY=('6eb63542ee4da28be4227d653d32f3d48bd8367f','FAILED','d49f6db12049ecef2160460037237fffe46b96178ef13435e6fc1e8c6138aa12')
+
+
+def qa05_source_names():
+    return tuple(dict.fromkeys(reconstruction_source_names()+tuple(p for p,_ in QA05_INPUTS.values())))
+
+
+def validate_qa05_authority(binding,commit):
+    for key,(name,digest) in QA05_INPUTS.items():
+        if (binding.get(key)!={'path':name,'sha256':digest} or binding.get('files',{}).get(name)!=digest
+                or not (ROOT/name).is_file() or sha(ROOT/name)!=digest):
+            raise ValueError('missing/changed exact QA05 authority: '+key)
+    validate_reconstruction_authority(binding,commit)
+    authority=bound_json(binding,QA05_INPUTS['qa05_authority'][0])
+    expected={'human_answer':'允许复验，通过后继续训练','additional_full_acceptance_executions':1,
+        'expected_qa_attempt':5,'original_scientific_models':12,'updates_per_model':512,
+        'no_process_quotas':True,'original_val_test_closed':True,'TASK4_paused':True,
+        'scientific_gates_unchanged':True,'historical_QA01_QA02_QA03_QA04_preserved':True,'requested_model':'gpt-6-astra'}
+    if any(k not in authority or type(authority[k]) is not type(v) or authority[k]!=v for k,v in expected.items()):
+        raise ValueError('exact typed QA05 permission required')
+    for name in qa05_source_names():
+        if not (ROOT/name).is_file() or binding['files'].get(name)!=sha(ROOT/name):
+            raise ValueError('changed current QA05 source: '+name)
+
+
+def validate_qa05_history(binding):
+    validate_qa04_history(binding)
+    name=ROUND_PATH+'/native_qa04/receipt.json';row=bound_json(binding,name)
+    commit,status,digest=QA04_HISTORY
+    if (sha(ROOT/name)!=digest or binding.get('prior_receipts',[]).count(name)!=1
+            or row.get('source_commit')!=commit or row.get('status')!=status or row.get('qa_attempt')!=4
+            or row.get('phase')!='qa' or row.get('cleanup_verified') is not True
+            or type(row.get('job_active_processes')) is not int or row['job_active_processes']!=0
+            or row.get('source_before')!=row.get('source_after')):
+        raise ValueError('actual immutable QA04 failed history required')
+
+
+def require_unused_qa05_temp():
+    path=ROOT/'private_data/q5'
+    if path.exists() or path.is_symlink():raise ValueError('QA05 short temporary root must not exist; preserve existing evidence')
+    return path
 
 
 def reconstruction_source_names():
@@ -159,6 +206,41 @@ def validate_qa04_pass(binding,commit):
         raise ValueError('actual same-source inner QA04 pass required')
 
 
+def validate_qa05_pass(binding,commit):
+    validate_qa05_authority(binding,commit);validate_qa05_history(binding)
+    native=bound_json(binding,ROUND_PATH+'/native_qa05/receipt.json')
+    marker=bound_json(binding,ROUND_PATH+'/qa05/complete.json')
+    command=validate_runtime_binding(binding)
+    if (native.get('status')!='COMPLETED' or native.get('phase')!='qa' or native.get('qa_attempt')!=5
+            or native.get('source_commit')!=commit or native.get('cleanup_verified') is not True
+            or native.get('orphans_cleaned') is not False or native.get('job_active_processes')!=0
+            or native.get('actual_worker_state')!='GONE' or native.get('source_before')!=native.get('source_after')
+            or any(type(native.get(key)) is not int or native[key]!=0 for key in ('exit_code','launcher_exit_code','worker_exit_code'))
+            or native.get('command')!=dict(command,arguments=native.get('command',{}).get('arguments'))):
+        raise ValueError('actual same-source native QA05 pass required')
+    worker=native.get('worker',{});actual=native.get('worker_receipt',{})
+    if (type(worker.get('pid')) is not int or worker['pid']<=0
+            or type(worker.get('creation_filetime_utc')) is not int or worker['creation_filetime_utc']<=0
+            or any(worker.get(key)!=actual.get(key) for key in ('pid','creation_filetime_utc','physical_image','logical_executable','runtime_scheme','runtime_selection'))
+            or Path(worker.get('physical_image','')).resolve()!=Path(command['expected_worker_image']).resolve()
+            or Path(worker.get('logical_executable','')).resolve()!=Path(command['logical_executable']).resolve()
+            or worker.get('runtime_scheme')!=command['runtime_scheme']
+            or worker.get('runtime_selection')!={'path':RUNTIME_SELECTION,'sha256':binding['files'][RUNTIME_SELECTION]}
+            or any(k not in native or native[k] is not None for k in ('runtime_limits','cpu_limits','active_process_limit'))):
+        raise ValueError('actual QA05 selected worker identity differs')
+    runtime_files={(ROOT/name).resolve() for name in bound_json(binding,RUNTIME_SELECTION)['files']}
+    for name,digest in binding['files'].items():
+        if name in (ROUND_PATH+'/native_qa05/receipt.json',ROUND_PATH+'/qa05/complete.json'):continue
+        if name in qa05_source_names() or name==RUNTIME_SELECTION or (ROOT/name).resolve() in runtime_files:
+            if native.get('source_before',{}).get(str((ROOT/name).resolve()))!=digest:
+                raise ValueError('QA05 source/authority/runtime differs')
+    result=marker.get('result',{})
+    if (marker.get('status')!='COMPLETED' or result.get('status')!='PASS' or result.get('source_commit')!=commit
+            or result.get('qa_attempt')!=5 or result.get('pytest_returncode')!=0
+            or result.get('runtime_selection_sha256')!=binding['files'][RUNTIME_SELECTION]):
+        raise ValueError('actual same-source inner QA05 pass required')
+
+
 def validate_repair_authority(binding,commit):
     if len(commit)!=40 or any(c not in '0123456789abcdef' for c in commit) or binding.get('source_commit')!=commit:
         raise ValueError('full same-source repair identity required')
@@ -220,7 +302,15 @@ def validate_qa03_pass(binding,commit):
 
 
 def validate_qa_attempt(binding,commit,attempt):
-    if attempt not in (1,2,3,4):raise ValueError('only registered QA attempts1 or2 or authorized3 or reconstruction4')
+    if attempt not in (1,2,3,4,5):raise ValueError('only registered QA attempts1 or2 or authorized3 or reconstruction4 or recheck5')
+    if attempt==5:
+        if binding.get('phase')!='qa' or binding.get('qa_attempt')!=5 or binding.get('group') is not None:
+            raise ValueError('QA05 binding role differs')
+        validate_qa05_authority(binding,commit);validate_qa05_history(binding)
+        expected={(ROOT/ROUND_PATH/f'native_qa{i:02d}/receipt.json').resolve() for i in (1,2,3,4)}
+        actual={p.resolve() for p in (ROOT/ROUND_PATH).glob('native_*/receipt.json')}
+        if actual!=expected:raise ValueError('QA05 only after exactly four actual failed attempts')
+        require_unused_qa05_temp()
     if attempt==4:
         if binding.get('phase')!='qa' or binding.get('qa_attempt')!=4 or binding.get('group') is not None:
             raise ValueError('QA04 binding role differs')
@@ -257,7 +347,7 @@ def publish_worker_receipt(out,phase,commit,binding,group,qa_attempt):
     receipt(pending,phase,commit,binding)
     value=json.loads((pending/'worker.json').read_text(encoding='utf-8'))
     value.update(group=group,qa_attempt=qa_attempt)
-    if qa_attempt==4 or phase!='qa':
+    if qa_attempt in (4,5) or phase!='qa':
         from rational_python_runtime_20261022 import selected_python_command
         command=selected_python_command([],ROOT/RUNTIME_SELECTION)
         k=ctypes.WinDLL('kernel32',use_last_error=True);k.GetCurrentProcess.restype=ctypes.c_void_p
@@ -369,6 +459,7 @@ def validate_native_resume(binding,approval,worker,commit,group):
                 raise ValueError('resume selected runtime/physical/logical identity differs')
     return proof
 def authorize_resume(out,binding,commit,group,rootdir):
+    if binding.get('reconstruction_authority'):validate_qa05_pass(binding,commit)
     approval=bound(binding,'resume_authorization')
     if (approval.get('source_commit')!=commit or approval.get('group')!=group or Path(approval.get('output','')).resolve()!=out
             or approval.get('nonselective_interruption') is not True or approval.get('previous_job_closed') is not True or approval.get('resume_count')!=1):
@@ -450,14 +541,15 @@ def execute(phase,out,binding,commit,group,resume,qa_attempt=1):
         validate_qa_attempt(binding,commit,qa_attempt)
         if qa_attempt==3 and Path(out).resolve()!=(ROOT/ROUND_PATH/'qa03').resolve():raise ValueError('QA03 requires exact authorized output')
         if qa_attempt==4 and Path(out).resolve()!=(ROOT/ROUND_PATH/'qa04').resolve():raise ValueError('QA04 requires exact authorized output')
+        if qa_attempt==5 and Path(out).resolve()!=(ROOT/ROUND_PATH/'qa05').resolve():raise ValueError('QA05 requires exact authorized output')
         import subprocess
         command=[sys.executable,'-m','pytest','-q',str(ROOT/'tests/test_rational_execution_20261021.py'),
                  str(ROOT/'tests/test_uncapped_windows_job_20261021.py'),'--basetemp',str(out/'pytest_tmp')]
         environment=None
-        if qa_attempt==4:
+        if qa_attempt in (4,5):
             # Keep nested fixture copies and atomic filenames below Windows MAX_PATH.
-            # QA04's original failed source remains archived; this fix is not rerun authority.
-            command[-1]=str(ROOT/'private_data/q4')
+            # QA04 remains historical; QA05 has separate authority for its short root.
+            command[-1]=str(require_unused_qa05_temp() if qa_attempt==5 else ROOT/'private_data/q4')
             from rational_python_runtime_20261022 import selected_python_command,command_environment
             arguments=command[1:]
             arguments[5:5]=[str(ROOT/'tests/test_rational_python_runtime_20261022.py'),str(ROOT/'tests/test_rational_control_20261021.py')]
@@ -466,9 +558,9 @@ def execute(phase,out,binding,commit,group,resume,qa_attempt=1):
         result=subprocess.run(command,cwd=ROOT,capture_output=True,text=True,encoding='utf-8',env=environment)
         (out/'pytest_stdout.txt').write_text(result.stdout,encoding='utf-8');(out/'pytest_stderr.txt').write_text(result.stderr,encoding='utf-8')
         row={'status':'PASS' if result.returncode==0 else 'FAIL','qa_attempt':qa_attempt,'pytest_returncode':result.returncode,'stdout':result.stdout,'stderr':result.stderr}
-        if qa_attempt==4:row['runtime_selection_sha256']=sha(ROOT/RUNTIME_SELECTION)
+        if qa_attempt in (4,5):row['runtime_selection_sha256']=sha(ROOT/RUNTIME_SELECTION)
         return row
-    validate_qa04_pass(binding,commit)
+    validate_qa05_pass(binding,commit)
     import torch
     torch.set_num_threads(1)
     if phase=='run':return train_group(out,commit,group,resume)
@@ -477,21 +569,22 @@ def main(argv=None):
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('phase',choices=('qa','run','evaluate'))
     for name in ('output','binding'):p.add_argument('--'+name,required=True,type=Path)
     p.add_argument('--source-commit',required=True);p.add_argument('--group',choices=study.GROUPS);p.add_argument('--resume',action='store_true')
-    p.add_argument('--qa-attempt',type=int,choices=(1,2,3,4));a=p.parse_args(argv)
+    p.add_argument('--qa-attempt',type=int,choices=(1,2,3,4,5));a=p.parse_args(argv)
     if len(a.source_commit)!=40 or any(c not in '0123456789abcdef' for c in a.source_commit) or (a.phase=='run')!=(a.group is not None) or (a.resume and a.phase!='run') or (a.phase!='qa' and a.qa_attempt is not None):p.error('full source commit/run-only group/resume and qa-only attempt required')
     out=a.output.resolve();rootdir=(ROOT/'private_data/closure_mechanism_20261019/P1/rational_execution01').resolve()
     qa_attempt=(a.qa_attempt or 1) if a.phase=='qa' else None
     if a.phase=='qa' and out.name!=f'qa{qa_attempt:02d}':raise ValueError('QA attempt must use its own exclusive output directory')
     if a.phase=='qa' and qa_attempt==3 and out!=rootdir/'qa03':raise ValueError('QA03 requires exact authorized output')
     if a.phase=='qa' and qa_attempt==4 and out!=rootdir/'qa04':raise ValueError('QA04 requires exact authorized output')
+    if a.phase=='qa' and qa_attempt==5 and out!=rootdir/'qa05':raise ValueError('QA05 requires exact authorized output')
     qa_root=(ROOT/'private_data/closure_mechanism_20261019/P0/rational_execution01').resolve()
     if out in (rootdir,qa_root) or not (out.is_relative_to(rootdir) or (a.phase=='qa' and out.is_relative_to(qa_root))):raise ValueError('exclusive new round output required')
     binding=json.loads(a.binding.read_text(encoding='utf-8'))
-    if a.phase!='qa' or qa_attempt==4:
+    if a.phase!='qa' or qa_attempt in (4,5):
         if (binding.get('phase')!=a.phase or binding.get('group')!=a.group
                 or binding.get('qa_attempt')!=qa_attempt):raise ValueError('exact reconstruction binding role required')
     if a.phase=='qa':validate_qa_attempt(binding,a.source_commit,qa_attempt)
-    else:validate_qa04_pass(binding,a.source_commit)
+    else:validate_qa05_pass(binding,a.source_commit)
     if out.exists():
         if not a.resume:raise ValueError('output exists; explicit verified resume required')
         authorize_resume(out,binding,a.source_commit,a.group,rootdir)
