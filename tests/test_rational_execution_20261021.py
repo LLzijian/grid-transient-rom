@@ -396,6 +396,7 @@ def install_qa04(binding,command):
     source={str((execution.ROOT/name).resolve()):binding['files'][name] for name in execution.reconstruction_source_names()+(execution.RUNTIME_SELECTION,)}
     native={'status':'COMPLETED','phase':'qa','qa_attempt':4,'source_commit':'a'*40,'cleanup_verified':True,
         'job_active_processes':0,'orphans_cleaned':False,'actual_worker_state':'GONE',
+        'exit_code':0,'launcher_exit_code':0,'worker_exit_code':0,
         'source_before':source,'source_after':dict(source),'command':dict(command,arguments=['-m','qa'])}
     worker={'pid':12345,'creation_filetime_utc':134370000000000001,
         'physical_image':command['expected_worker_image'],'logical_executable':command['logical_executable'],
@@ -420,6 +421,7 @@ def test_formal_admission_now_requires_inner_outer_qa04(reconstruction_binding):
 @pytest.mark.parametrize('target,field,value',[
     ('native','status','FAILED'),('native','source_commit','b'*40),('native','qa_attempt',3),
     ('native','orphans_cleaned',True),('native','job_active_processes',1),('native','actual_worker_state','ALIVE'),
+    ('native','exit_code',1),('native','launcher_exit_code',True),('native','worker_exit_code',None),
     ('inner','status','FAIL'),('inner','pytest_returncode',1),('inner','runtime_selection_sha256','f'*64)])
 def test_qa04_pass_rejects_rehashed_bad_native_or_inner(reconstruction_binding,target,field,value):
     binding,command=reconstruction_binding;native,marker=install_qa04(binding,command)

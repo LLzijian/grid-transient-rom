@@ -135,15 +135,17 @@ def validate_selection(selection_path):
     if (not isinstance(candidate['tensor14'],list) or len(candidate['tensor14'])!=14
             or any(isinstance(v,bool) or not isinstance(v,(float,int)) or not __import__('math').isfinite(v) for v in candidate['tensor14'])):
         raise ValueError('actual fixed tensor14 result required')
-    child=read_ref(parity.get('child_identity'))
-    if (type(child.get('pid')) is not int or child['pid']<=0
-            or type(child.get('creation_filetime_utc')) is not int or child['creation_filetime_utc']<=0
-            or child['pid']==proofs['orphan_receipt']['worker']['pid']):raise ValueError('actual handshaken orphan identity required')
     if __package__:
         from .uncapped_windows_job_20261021 import identity_state
     else:
         from uncapped_windows_job_20261021 import identity_state
-    if identity_state(child)!='GONE':raise ValueError('actual handshaken orphan is not GONE')
+    for field,proof_key,label in (('child_identity','orphan_receipt','orphan'),('normal_child_identity','normal_receipt','normal child')):
+        child=read_ref(parity.get(field))
+        if (type(child.get('pid')) is not int or child['pid']<=0
+                or type(child.get('creation_filetime_utc')) is not int or child['creation_filetime_utc']<=0
+                or child['pid']==proofs[proof_key]['worker']['pid']
+                or _absolute(child.get('executable',''))!=command['logical_executable']):raise ValueError('actual handshaken '+label+' identity required')
+        if identity_state(child)!='GONE':raise ValueError('actual handshaken '+label+' is not GONE')
     return selection
 
 

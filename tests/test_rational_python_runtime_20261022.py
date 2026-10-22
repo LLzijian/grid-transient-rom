@@ -70,9 +70,11 @@ def selected_fixture(tmp_path,monkeypatch):
         'deterministic_algorithms':True,'cudnn_deterministic':True,'cudnn_benchmark':False,
         'num_threads':1,'interop_threads':1,'tensor14':list(range(14))}
     baseline=put('baseline.json',metadata);candidate=put('candidate.json',metadata)
-    child=put('child.json',{'pid':4321,'creation_filetime_utc':12345,'executable':command['expected_worker_image']})
+    child=put('child.json',{'pid':4321,'creation_filetime_utc':12345,'executable':command['logical_executable']})
+    normal_child=put('normal_child.json',{'pid':4322,'creation_filetime_utc':12346,'executable':command['logical_executable']})
     selection['baseline_reference']=baseline
-    selection['parity_evidence']=put('parity.json',{'baseline':baseline,'candidate':candidate,'child_identity':child,'checks':{'assertion_only':True}})
+    selection['parity_evidence']=put('parity.json',{'baseline':baseline,'candidate':candidate,'child_identity':child,
+        'normal_child_identity':normal_child,'checks':{'assertion_only':True}})
     source=tmp_path/'probe.py';source.write_text('# frozen observation source\n',encoding='utf-8')
     (tmp_path/'experiments').mkdir()
     sources=[source]

@@ -21,10 +21,14 @@ def main():
     files.update((normal,orphan,baseline,parity,Path(command['logical_executable']).parent.parent/'pyvenv.cfg',Path(read(baseline)['python_dll']['path'])))
     files.update(Path(item['path']) for item in read(parity).values())
     selection['files']={str(path.resolve()):job.sha(path) for path in sorted(files)}
-    temporary=HERE/'proposed_selection.json'
+    temporary=HERE/('proposed_selection_'+scheme+str(attempt)+'.json')
     with temporary.open('x',encoding='utf-8') as stream:json.dump(selection,stream,indent=2)
     validate_selection(temporary)
     target=HERE/'runtime_selection.json'
+    if target.exists():
+        old=read(target)
+        if old['scheme']!=scheme or old['observation_attempt']>=attempt:raise ValueError('only explicit later observation, preserving prior selection')
+        target.rename(HERE/('runtime_selection_'+old['scheme']+str(old['observation_attempt'])+'.json'))
     with target.open('x',encoding='utf-8') as stream:json.dump(selection,stream,indent=2)
     print(json.dumps({'qualified':True,'path':str(target),'sha256':job.sha(target),'files':len(files)}))
 if __name__=='__main__':main()

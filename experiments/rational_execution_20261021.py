@@ -133,6 +133,7 @@ def validate_qa04_pass(binding,commit):
             or native.get('source_commit')!=commit or native.get('cleanup_verified') is not True
             or native.get('orphans_cleaned') is not False or native.get('job_active_processes')!=0
             or native.get('actual_worker_state')!='GONE' or native.get('source_before')!=native.get('source_after')
+            or any(type(native.get(key)) is not int or native[key]!=0 for key in ('exit_code','launcher_exit_code','worker_exit_code'))
             or native.get('command')!=dict(command,arguments=native.get('command',{}).get('arguments'))):
         raise ValueError('actual same-source native QA04 pass required')
     worker=native.get('worker',{});actual=native.get('worker_receipt',{})

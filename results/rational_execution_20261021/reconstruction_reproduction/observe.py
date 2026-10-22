@@ -31,6 +31,7 @@ def main():
     if a.scheme!='reference':
         baseline=HERE/'reference1/normal/metadata.json';candidate=out/'normal/metadata.json';child=out/'orphan/child.json'
         if all(path.is_file() for path in (baseline,candidate,child)):
-            job.atomic(out/'parity.json',{'baseline':ref(baseline),'candidate':ref(candidate),'child_identity':ref(child)})
+            job.atomic(out/'parity.json',{'baseline':ref(baseline),'candidate':ref(candidate),'child_identity':ref(child),
+                'normal_child_identity':ref(out/'normal/child.json')})
     print(json.dumps(summary))
 if __name__=='__main__':main()

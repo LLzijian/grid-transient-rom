@@ -172,7 +172,15 @@ def supervise(command,output,lock,files,working_directory,worker_receipt=None,on
                     if provenance and key in provenance and receipt.get(key)!=provenance[key]:raise ValueError('actual worker source/role differs: '+key)
                 image=physical_image(k,handle)
                 if command.get('expected_worker_image') and Path(image).resolve()!=Path(command['expected_worker_image']).resolve():raise ValueError('actual worker physical executable differs')
-                worker={'pid':pid,'executable':receipt['executable'],'physical_image':image,**observed}
+                if receipt.get('physical_image') and Path(receipt['physical_image']).resolve()!=Path(image).resolve():raise ValueError('published worker physical image differs')
+                if receipt.get('logical_executable') and Path(receipt['logical_executable']).resolve()!=Path(logical).resolve():raise ValueError('published worker logical image differs')
+                if receipt.get('runtime_scheme') and receipt['runtime_scheme']!=command.get('runtime_scheme'):raise ValueError('published worker runtime scheme differs')
+                selection=receipt.get('runtime_selection')
+                if selection is not None:
+                    expected=command.get('runtime_selection',{})
+                    if selection.get('sha256')!=expected.get('sha256') or (Path(working_directory)/selection.get('path','')).resolve()!=Path(expected.get('path','')).resolve():raise ValueError('published worker runtime selection differs')
+                worker={'pid':pid,'executable':receipt['executable'],'physical_image':image,
+                    'logical_executable':logical,'runtime_scheme':command.get('runtime_scheme'),'runtime_selection':selection,**observed}
                 actual_handle=handle;handle=None;actual_receipt=receipt;record['worker']=worker;owner['worker']=worker;atomic(lock,owner)
                 atomic(output/'actual_worker.json',{'worker':worker,'launcher':launcher})
                 if on_worker_owned:on_worker_owned(worker)

@@ -75,10 +75,11 @@ def test_exit_before_resume_still_cleans_atomic_job_worker(tmp_path):
 def test_actual_worker_receipt_is_retained_inside_redirector_job(tmp_path):
  receipt=tmp_path/'worker.json';release=tmp_path/'release'
  code="import sys,time,pathlib;sys.path.insert(0,"+repr(str(ROOT/'experiments'))+");from uncapped_windows_job_20261021 import identity,atomic;atomic("+repr(str(receipt))+",{**identity(),'phase':'qa','group':None,'source_commit':'"+'b'*40+"','qa_attempt':2});p=pathlib.Path("+repr(str(release))+");exec('while not p.exists():time.sleep(.01)')"
- r=j.supervise(command(code),tmp_path/'actual',tmp_path/'lock',{},ROOT,worker_receipt=receipt,on_worker_owned=lambda w:release.write_text('owned'),provenance={'phase':'qa','group':None,'source_commit':'b'*40,'qa_attempt':2})
+ r=j.supervise(command(code),tmp_path/'actual',tmp_path/'lock',{},ROOT,worker_receipt=receipt,on_worker_owned=lambda w:release.write_text('owned',encoding='utf-8'),provenance={'phase':'qa','group':None,'source_commit':'b'*40,'qa_attempt':2})
  assert r['status']=='COMPLETED' and r['launcher_exit_code']==r['worker_exit_code']==0
  actual=json.loads(receipt.read_text(encoding='utf-8'));assert r['worker']['pid']==actual['pid'] and r['worker']['creation_filetime_utc']==actual['creation_filetime_utc']
  assert r['worker']['physical_image'] and r['launcher']['physical_image'] and r['actual_worker_state']=='GONE' and r['job_active_processes']==0
+ assert r['worker']['logical_executable']==command(code)['logical_executable'] and r['worker']['runtime_scheme']==command(code)['runtime_scheme']
  assert r['creation_flags']==0x4|0x8|0x80000|0x400 and not r['orphans_cleaned'] and r['cleanup_verified']
 def test_stale_creation_and_exclusive_lock(tmp_path):
  current=j.identity();stale={**current,'creation_filetime_utc':current['creation_filetime_utc']+1}
