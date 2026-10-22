@@ -1,0 +1,278 @@
+{
+  "status": "PASS",
+  "source_commit": "6bf8f730e4fc180af9e815682a8fb4fe4b7fd020",
+  "actual_validation_updates": 132,
+  "paths": [
+    {
+      "name": "rational_continuous",
+      "form": "rational",
+      "mode": "continuous",
+      "attempted_updates": 33,
+      "completed_updates": 33,
+      "status": "PASS"
+    },
+    {
+      "name": "rational_restored",
+      "form": "rational",
+      "mode": "restored",
+      "attempted_updates": 33,
+      "completed_updates": 33,
+      "status": "PASS"
+    },
+    {
+      "name": "tanh_continuous",
+      "form": "tanh",
+      "mode": "continuous",
+      "attempted_updates": 33,
+      "completed_updates": 33,
+      "status": "PASS"
+    },
+    {
+      "name": "tanh_restored",
+      "form": "tanh",
+      "mode": "restored",
+      "attempted_updates": 33,
+      "completed_updates": 33,
+      "status": "PASS"
+    }
+  ],
+  "comparisons": [
+    {
+      "name": "rational_initial",
+      "exact_equal": true,
+      "components": {
+        "cuda_rng": true,
+        "fit_numpy_rng": true,
+        "gradient": true,
+        "model": true,
+        "optimizer": true,
+        "summary": true,
+        "torch_rng": true,
+        "trace": true
+      }
+    },
+    {
+      "name": "rational_independent_32",
+      "exact_equal": true,
+      "components": {
+        "cuda_rng": true,
+        "fit_numpy_rng": true,
+        "gradient": true,
+        "model": true,
+        "optimizer": true,
+        "summary": true,
+        "torch_rng": true,
+        "trace": true
+      }
+    },
+    {
+      "name": "rational_publication_preserves_32",
+      "exact_equal": true,
+      "components": {
+        "cuda_rng": true,
+        "fit_numpy_rng": true,
+        "gradient": true,
+        "model": true,
+        "optimizer": true,
+        "summary": true,
+        "torch_rng": true,
+        "trace": true
+      }
+    },
+    {
+      "name": "rational_actual_restore_32",
+      "exact_equal": true,
+      "components": {
+        "cuda_rng": true,
+        "fit_numpy_rng": true,
+        "gradient": true,
+        "model": true,
+        "optimizer": true,
+        "summary": true,
+        "torch_rng": true,
+        "trace": true
+      }
+    },
+    {
+      "name": "rational_continuation_33",
+      "exact_equal": true,
+      "components": {
+        "cuda_rng": true,
+        "fit_numpy_rng": true,
+        "gradient": true,
+        "model": true,
+        "optimizer": true,
+        "summary": true,
+        "torch_rng": true,
+        "trace": true
+      }
+    },
+    {
+      "name": "tanh_initial",
+      "exact_equal": true,
+      "components": {
+        "cuda_rng": true,
+        "fit_numpy_rng": true,
+        "gradient": true,
+        "model": true,
+        "optimizer": true,
+        "summary": true,
+        "torch_rng": true,
+        "trace": true
+      }
+    },
+    {
+      "name": "tanh_independent_32",
+      "exact_equal": true,
+      "components": {
+        "cuda_rng": true,
+        "fit_numpy_rng": true,
+        "gradient": true,
+        "model": true,
+        "optimizer": true,
+        "summary": true,
+        "torch_rng": true,
+        "trace": true
+      }
+    },
+    {
+      "name": "tanh_publication_preserves_32",
+      "exact_equal": true,
+      "components": {
+        "cuda_rng": true,
+        "fit_numpy_rng": true,
+        "gradient": true,
+        "model": true,
+        "optimizer": true,
+        "summary": true,
+        "torch_rng": true,
+        "trace": true
+      }
+    },
+    {
+      "name": "tanh_actual_restore_32",
+      "exact_equal": true,
+      "components": {
+        "cuda_rng": true,
+        "fit_numpy_rng": true,
+        "gradient": true,
+        "model": true,
+        "optimizer": true,
+        "summary": true,
+        "torch_rng": true,
+        "trace": true
+      }
+    },
+    {
+      "name": "tanh_continuation_33",
+      "exact_equal": true,
+      "components": {
+        "cuda_rng": true,
+        "fit_numpy_rng": true,
+        "gradient": true,
+        "model": true,
+        "optimizer": true,
+        "summary": true,
+        "torch_rng": true,
+        "trace": true
+      }
+    },
+    {
+      "name": "original_6301_32_vs_qualified_rational32",
+      "exact_equal": true,
+      "components": {
+        "cuda_rng": true,
+        "fit_numpy_rng": true,
+        "gradient": true,
+        "model": true,
+        "optimizer": true,
+        "summary": true,
+        "torch_rng": true,
+        "trace": true
+      }
+    }
+  ],
+  "migrations": [
+    {
+      "key": "0_rational_6301",
+      "status": "PASS",
+      "step": 32,
+      "source_commit": "5ffe63f5f9bd71c68e417da4759fdbd183299799",
+      "new_source_commit": "6bf8f730e4fc180af9e815682a8fb4fe4b7fd020"
+    },
+    {
+      "key": "0_rational_6302",
+      "status": "PASS",
+      "step": 32,
+      "source_commit": "5ffe63f5f9bd71c68e417da4759fdbd183299799",
+      "new_source_commit": "6bf8f730e4fc180af9e815682a8fb4fe4b7fd020"
+    },
+    {
+      "key": "0_rational_6303",
+      "status": "PASS",
+      "step": 32,
+      "source_commit": "5ffe63f5f9bd71c68e417da4759fdbd183299799",
+      "new_source_commit": "6bf8f730e4fc180af9e815682a8fb4fe4b7fd020"
+    }
+  ],
+  "configuration": {
+    "batch_size": 12,
+    "cuda_device_count": 1,
+    "cuda_devices": [
+      "NVIDIA GeForce RTX 4060 Ti"
+    ],
+    "cuda_version": "13.0",
+    "cudnn_allow_tf32": true,
+    "cudnn_benchmark": false,
+    "cudnn_deterministic": false,
+    "cudnn_enabled": true,
+    "deadline": null,
+    "deterministic_algorithms": false,
+    "deterministic_warn_only": false,
+    "dtype": "torch.float64",
+    "fit_rng_seed_sequence": [
+      6301,
+      7
+    ],
+    "float32_matmul_precision": "highest",
+    "interop_threads": 10,
+    "matmul_allow_tf32": false,
+    "num_threads": 1,
+    "torch_version": "2.13.0+cu130"
+  },
+  "qualification_raw": {
+    "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\rational_checkpoint02\\qualification\\result.json",
+    "sha256": "1217e14f05c783ceeb98fe5e8c1794c6c6eea2ef5437abec11c4fca769cf2711"
+  },
+  "run_session": 22995,
+  "actual_worker": {
+    "pid": 32344,
+    "executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+    "creation_filetime_utc": 134371383121302454,
+    "exit_filetime_utc": 0,
+    "kernel_100ns": 13281250,
+    "user_100ns": 3593750,
+    "physical_image": "C:\\Users\\LLLzijian\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+    "logical_executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+    "runtime_scheme": "direct_base_venv",
+    "runtime_selection": {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\rational_execution01\\spawn_chain20261022\\runtime_selection.json",
+      "sha256": "e16c35122388a930d77106885b873ace5da7748ae18bb929adde49631d16551e"
+    },
+    "source_commit": "6bf8f730e4fc180af9e815682a8fb4fe4b7fd020",
+    "phase": "checkpoint_run",
+    "group": null
+  },
+  "formal_progress_observation": [
+    {
+      "group": "0_rational",
+      "inflight": 160,
+      "key": "0_rational_6301",
+      "last_completed": 159,
+      "source_commit": "6bf8f730e4fc180af9e815682a8fb4fe4b7fd020"
+    }
+  ],
+  "model_promotion": "none",
+  "original_val_test_closed": true,
+  "TASK4_paused": true
+}
