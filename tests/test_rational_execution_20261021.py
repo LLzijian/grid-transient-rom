@@ -81,6 +81,8 @@ def test_pending_and_changed_checkpoint_rejected(fakes,tmp_path):
 
 
 def test_evaluate_uses_existing_full_barrier_and_none(monkeypatch,tmp_path):
+    # Isolate the unchanged scientific barrier; separate tests exercise QA03 admission.
+    monkeypatch.setattr(execution,'validate_qa03_pass',lambda binding,commit:None)
     def evaluate(out,binding,commit,deadline):
         assert deadline is None
         execution.study.validate_selection({},commit)
@@ -190,7 +192,7 @@ def test_metadata_atomic_does_not_retry_other_permission_errors(monkeypatch,tmp_
     assert len(attempts)==1
 
 
-def test_second_qa_attempt_has_own_collection_and_no_third(monkeypatch,tmp_path):
+def test_second_qa_attempt_has_own_collection_and_no_unauthorized_third(monkeypatch,tmp_path):
     import subprocess
     commands=[]
     def run(command,**kwargs):
@@ -200,6 +202,136 @@ def test_second_qa_attempt_has_own_collection_and_no_third(monkeypatch,tmp_path)
     out=tmp_path/'qa02';out.mkdir()
     result=execution.execute('qa',out,{},'a'*40,None,False,qa_attempt=2)
     assert result['qa_attempt']==2 and commands[0][-1]==str(out/'pytest_tmp')
-    with pytest.raises(ValueError,match='attempts1 or2'):execution.execute('qa',out,{},'a'*40,None,False,qa_attempt=3)
+    with pytest.raises(ValueError,match='repair identity'):execution.execute('qa',out,{},'a'*40,None,False,qa_attempt=3)
+    with pytest.raises(ValueError,match='attempts1 or2'):execution.execute('qa',out,{},'a'*40,None,False,qa_attempt=4)
     args=['qa','--output',str(tmp_path/'qa01'),'--binding',str(tmp_path/'missing.json'),'--source-commit','a'*40,'--qa-attempt','2']
     with pytest.raises(ValueError,match='own exclusive'):execution.main(args)
+
+
+@pytest.fixture
+def repair_binding(monkeypatch,tmp_path):
+    """Exact archived authority/history copied as read-only fixture inputs."""
+    original=execution.ROOT
+    names=set(execution.repair_source_names())
+    names.update(execution.ROUND_PATH+f'/native_qa{i:02d}/receipt.json' for i in (1,2))
+    for name in names:
+        path=tmp_path/name;path.parent.mkdir(parents=True,exist_ok=True)
+        path.write_bytes((original/name).read_bytes())
+    monkeypatch.setattr(execution,'ROOT',tmp_path)
+    binding={'source_commit':'a'*40,'phase':'qa','group':None,'qa_attempt':3,
+             'files':{name:execution.sha(tmp_path/name) for name in names},
+             'prior_receipts':[execution.ROUND_PATH+f'/native_qa{i:02d}/receipt.json' for i in (1,2)]}
+    for key,(name,digest) in execution.REPAIR_INPUTS.items():binding[key]={'path':name,'sha256':digest}
+    return binding
+
+
+def test_third_qa_requires_exact_actual_authority_and_two_failures(repair_binding):
+    execution.validate_qa_attempt(repair_binding,'a'*40,3)
+
+
+def test_authorized_third_collects_same_two_suites_in_own_directory(monkeypatch,repair_binding):
+    import subprocess
+    commands=[]
+    def run(command,**kwargs):
+        assert 'timeout' not in kwargs;commands.append(command)
+        return types.SimpleNamespace(returncode=0,stdout='substitute only',stderr='')
+    monkeypatch.setattr(subprocess,'run',run)
+    out=execution.ROOT/execution.ROUND_PATH/'qa03';out.mkdir()
+    result=execution.execute('qa',out,repair_binding,'a'*40,None,False,qa_attempt=3)
+    assert result['qa_attempt']==3 and commands[0][-1]==str(out/'pytest_tmp')
+    assert [Path(x).name for x in commands[0] if x.endswith('.py')]==['test_rational_execution_20261021.py','test_uncapped_windows_job_20261021.py']
+
+
+def test_third_qa_missing_declared_history_rejected(repair_binding):
+    repair_binding['prior_receipts'].pop()
+    with pytest.raises(ValueError,match='immutable QA01/QA02'):execution.validate_qa_attempt(repair_binding,'a'*40,3)
+
+
+def test_third_qa_short_or_wrong_source_rejected(repair_binding):
+    for commit in ('a'*39,'b'*40):
+        with pytest.raises(ValueError,match='repair identity'):execution.validate_qa_attempt(repair_binding,commit,3)
+
+
+def test_third_qa_tampered_authority_rejected_even_with_new_binding_hash(repair_binding):
+    name,_=execution.REPAIR_INPUTS['additional_repair_authority'];path=execution.ROOT/name
+    authority=json.loads(path.read_text());authority['additional_qa_executions']=2;path.write_text(json.dumps(authority))
+    repair_binding['additional_repair_authority']['sha256']=repair_binding['files'][name]=execution.sha(path)
+    with pytest.raises(ValueError,match='exact repair authority'):execution.validate_qa_attempt(repair_binding,'a'*40,3)
+
+
+@pytest.mark.parametrize('key',list(execution.REPAIR_INPUTS))
+def test_third_qa_missing_or_forged_authority_rejected(repair_binding,key):
+    del repair_binding[key]
+    with pytest.raises(ValueError,match='exact repair authority'):execution.validate_qa_attempt(repair_binding,'a'*40,3)
+
+
+@pytest.mark.parametrize('attempt',[1,2])
+def test_historical_receipt_cannot_be_relabelled_or_rehashed(repair_binding,attempt):
+    name=execution.ROUND_PATH+f'/native_qa{attempt:02d}/receipt.json';path=execution.ROOT/name
+    row=json.loads(path.read_text());row['status']='COMPLETED';path.write_text(json.dumps(row))
+    repair_binding['files'][name]=execution.sha(path)
+    with pytest.raises(ValueError,match='immutable QA01/QA02'):execution.validate_qa_attempt(repair_binding,'a'*40,3)
+
+
+def test_third_qa_changed_current_source_rejected(repair_binding):
+    name='experiments/rational_execution_20261021.py';(execution.ROOT/name).write_text('# changed')
+    with pytest.raises(ValueError,match='current repair source'):execution.validate_qa_attempt(repair_binding,'a'*40,3)
+
+
+def test_third_qa_rejects_fourth_receipt_and_wrong_role(repair_binding):
+    repair_binding['qa_attempt']=4
+    with pytest.raises(ValueError,match='binding role'):execution.validate_qa_attempt(repair_binding,'a'*40,3)
+    repair_binding['qa_attempt']=3
+    path=execution.ROOT/execution.ROUND_PATH/'native_qa04/receipt.json';path.parent.mkdir();path.write_text('{}')
+    with pytest.raises(ValueError,match='exactly two'):execution.validate_qa_attempt(repair_binding,'a'*40,3)
+
+
+def install_qa03_pass(binding):
+    base=execution.ROOT/execution.ROUND_PATH
+    source={str((execution.ROOT/name).resolve()):binding['files'][name] for name in execution.repair_source_names()}
+    native={'status':'COMPLETED','phase':'qa','qa_attempt':3,'source_commit':'a'*40,'cleanup_verified':True,
+            'job_active_processes':0,'source_before':source,'source_after':dict(source)}
+    marker={'status':'COMPLETED','result':{'status':'PASS','qa_attempt':3,'source_commit':'a'*40}}
+    for name,row in (('native_qa03/receipt.json',native),('qa03/complete.json',marker)):
+        path=base/name;path.parent.mkdir(parents=True,exist_ok=True);path.write_text(json.dumps(row))
+        binding['files'][path.relative_to(execution.ROOT).as_posix()]=execution.sha(path)
+    binding['phase']='run';binding['qa_attempt']=None;binding['group']='0_rational'
+    return native,marker
+
+
+def test_formal_admission_requires_inner_outer_same_source_qa03(repair_binding):
+    with pytest.raises(ValueError,match='QA03 evidence'):execution.validate_qa03_pass(repair_binding,'a'*40)
+    install_qa03_pass(repair_binding);execution.validate_qa03_pass(repair_binding,'a'*40)
+
+
+@pytest.mark.parametrize('target,field,value',[
+    ('native','status','FAILED'),('native','source_commit','b'*40),('native','qa_attempt',2),
+    ('native','cleanup_verified',False),('native','job_active_processes',1),
+    ('marker','status','UNRESOLVED'),('inner','status','FAIL'),('inner','source_commit','b'*40),('inner','qa_attempt',2)])
+def test_formal_admission_rejects_wrong_qa03_even_when_rehashed(repair_binding,target,field,value):
+    native,marker=install_qa03_pass(repair_binding)
+    row={'native':native,'marker':marker,'inner':marker['result']}[target];row[field]=value
+    name='native_qa03/receipt.json' if target=='native' else 'qa03/complete.json'
+    path=execution.ROOT/execution.ROUND_PATH/name;path.write_text(json.dumps(native if target=='native' else marker))
+    repair_binding['files'][path.relative_to(execution.ROOT).as_posix()]=execution.sha(path)
+    with pytest.raises(ValueError,match='QA03 pass'):execution.validate_qa03_pass(repair_binding,'a'*40)
+
+
+def test_formal_admission_rejects_wrong_qa03_authority_snapshot(repair_binding):
+    native,_=install_qa03_pass(repair_binding)
+    name=execution.REPAIR_INPUTS['additional_repair_authority'][0]
+    key=str((execution.ROOT/name).resolve());native['source_before'][key]=native['source_after'][key]='f'*64
+    path=execution.ROOT/execution.ROUND_PATH/'native_qa03/receipt.json';path.write_text(json.dumps(native))
+    repair_binding['files'][path.relative_to(execution.ROOT).as_posix()]=execution.sha(path)
+    with pytest.raises(ValueError,match='authority/amendment differs'):execution.validate_qa03_pass(repair_binding,'a'*40)
+
+
+def test_core_cli_rejects_missing_third_authority_before_creating_output(monkeypatch,tmp_path):
+    monkeypatch.setattr(execution,'ROOT',tmp_path)
+    path=tmp_path/'binding.json';path.write_text('{}');out=tmp_path/execution.ROUND_PATH/'qa03'
+    argv=['qa','--output',str(out),'--binding',str(path),'--source-commit','a'*40,'--qa-attempt','3']
+    with pytest.raises(ValueError,match='repair identity'):execution.main(argv)
+    assert not out.exists()
+    argv[-1]='4'
+    with pytest.raises(SystemExit):execution.main(argv)
+    assert not out.exists()

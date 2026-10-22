@@ -119,7 +119,8 @@ def supervise(command,output,lock,files,working_directory,worker_receipt=None,on
     supervisor=identity();owner={'supervisor':supervisor,'worker':None}
     lock.parent.mkdir(parents=True,exist_ok=True)
     with lock.open('x',encoding='utf-8') as f:json.dump(owner,f)
-    record={**(provenance or {}),'status':'UNRESOLVED','supervisor':supervisor,'worker':None,'command':command,'runtime_limits':None,'cpu_limits':None,'active_process_limit':None}
+    creation_flags=0x4|0x8|0x80000 # CREATE_SUSPENDED | DETACHED_PROCESS | EXTENDED_STARTUPINFO_PRESENT.
+    record={**(provenance or {}),'status':'UNRESOLVED','supervisor':supervisor,'worker':None,'command':command,'creation_flags':creation_flags,'runtime_limits':None,'cpu_limits':None,'active_process_limit':None}
     actual_handle=None;actual_receipt=None;job=None;pi=PROCESS_INFORMATION();logs=[];attrs=None;attrs_ready=False;assigned=False;clean=False;started=time.perf_counter();raised=None
     try:
         output.mkdir(parents=True,exist_ok=False);record['source_before']=verify_files(files)
@@ -139,7 +140,7 @@ def supervise(command,output,lock,files,working_directory,worker_receipt=None,on
         checked(k.UpdateProcThreadAttribute(attrs,0,0x2000D,jobs,ctypes.sizeof(jobs),None,None)) # Atomic creation in Job; unsupported Windows fails closed.
         si=STARTUPINFOEX();si.StartupInfo.cb=ctypes.sizeof(si);si.StartupInfo.dwFlags=0x100;si.StartupInfo.hStdOutput=logs[0];si.StartupInfo.hStdError=logs[1];si.StartupInfo.hStdInput=None;si.lpAttributeList=ctypes.cast(attrs,ctypes.c_void_p)
         exe=str(Path(command['executable']).resolve());args=[exe,*command['arguments']]
-        checked(k.CreateProcessW(exe,ctypes.create_unicode_buffer(subprocess.list2cmdline(args)),None,None,True,0x4|0x08000000|0x80000,None,str(Path(working_directory).resolve()),ctypes.byref(si),ctypes.byref(pi)))
+        checked(k.CreateProcessW(exe,ctypes.create_unicode_buffer(subprocess.list2cmdline(args)),None,None,True,creation_flags,None,str(Path(working_directory).resolve()),ctypes.byref(si),ctypes.byref(pi)))
         assigned=True
         launcher={'pid':int(pi.dwProcessId),'executable':exe,'physical_image':physical_image(k,pi.hProcess),**times(k,pi.hProcess)}
         record['launcher']=launcher;owner['launcher']=launcher

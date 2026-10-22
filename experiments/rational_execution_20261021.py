@@ -8,6 +8,97 @@ from finite_grammar_discovery_20261021 import sha,bound,receipt
 import rational_control_20261021 as study
 SAVE_STEPS=(0,32,128,512)
 _REPLACE_DELAYS=(.01,.02,.04,.08,.16)
+ROUND_PATH='private_data/closure_mechanism_20261019/P1/rational_execution01'
+# Exact archived human authority and actual raw Astra6 return/root adoption.
+REPAIR_INPUTS={
+    'additional_repair_authority':('results/rational_execution_20261021/additional_repair_authority_20261022.json','191281af9ee91d3d125d7bdbfb1c7bb00c4c74e3bcc1929a5cd45984c1ea70b0'),
+    'repair_amendment':('reports/rational_execution_additional_repair_20261022_protocol.md','7062b1355bfa0e595423443fbf39821ad075765f05e65d4b1d91fee172e56dd3'),
+    'repair_astra_plan':('reports/astra6_authorized_executor_repair_20261022.md','902757b852038cf8615ef5de7cb0fa0e84d12084151ff35e8b6dc0db7bb8e2a6'),
+    'recorder_amendment':('reports/rational_execution_recorder_amendment_20261022.md','dffb6b1316942c10aec252c976591897a72b84054e4096e9a28fcf71f2bc79b2')}
+HISTORICAL_QA={
+    1:('0a395e3f593a82f8462884e3079b5cb0d54bc70e','UNRESOLVED','bf71624142ee68ca9c7e99d2cd50cf827c2e618cd0754bc0238d19d4bc0ccdfc'),
+    2:('b00db35e23adcd035ed08fb3f3d365fceda09042','FAILED','7a465f7b5bc87d7b9f1cf3b7e06333c4fa186bf686236ca6c888cede10d850b2')}
+REPAIR_SOURCE_FILES=('AGENTS.md','docs/engineering_loop.md','reports/rational_execution_20261021_protocol.md',
+    'reports/astra6_rational_execution_20261021.md','reports/rational_execution_20261021_repair.md',
+    'results/rational_execution_20261021/authority.json','experiments/rational_execution_20261021.py',
+    'experiments/uncapped_windows_job_20261021.py','tests/test_rational_execution_20261021.py',
+    'tests/test_uncapped_windows_job_20261021.py',ROUND_PATH+'/launch.py',ROUND_PATH+'/make_binding.py')
+
+
+def repair_source_names():
+    return REPAIR_SOURCE_FILES+tuple(path for path,_ in REPAIR_INPUTS.values())
+
+
+def validate_repair_authority(binding,commit):
+    if len(commit)!=40 or any(c not in '0123456789abcdef' for c in commit) or binding.get('source_commit')!=commit:
+        raise ValueError('full same-source repair identity required')
+    files=binding.get('files',{})
+    for key,(name,digest) in REPAIR_INPUTS.items():
+        if binding.get(key)!={'path':name,'sha256':digest} or files.get(name)!=digest or not (ROOT/name).is_file() or sha(ROOT/name)!=digest:
+            raise ValueError('missing/changed exact repair authority: '+key)
+    authority=json.loads((ROOT/REPAIR_INPUTS['additional_repair_authority'][0]).read_text(encoding='utf-8'))
+    expected={'human_answer':'同意修复并继续训练','additional_implementation_repairs':1,'additional_qa_executions':1,
+              'expected_qa_attempt':3,'scientific_models':12,'updates_per_model':512,'original_val_test_closed':True,
+              'TASK4_paused':True,'prior_qa_failures_preserved':True,'no_mathematical_or_selection_changes':True,
+              'requested_model':'gpt-6-astra','process_count_cap':None,'process_runtime_cap_seconds':None,
+              'stage_or_parent_process_cap_seconds':None}
+    if any(k not in authority or type(authority[k]) is not type(v) or authority[k]!=v for k,v in expected.items()):
+        raise ValueError('exact typed additional repair permission required')
+    for name in repair_source_names():
+        if not (ROOT/name).is_file() or files.get(name)!=sha(ROOT/name):raise ValueError('changed current repair source: '+name)
+
+
+def historical_qa_receipt(path,row):
+    for attempt,(commit,status,digest) in HISTORICAL_QA.items():
+        if Path(path).resolve()==(ROOT/ROUND_PATH/f'native_qa{attempt:02d}/receipt.json').resolve():
+            return (sha(path)==digest and row.get('source_commit')==commit and row.get('status')==status
+                    and row.get('phase')=='qa' and row.get('qa_attempt')==(None if attempt==1 else attempt)
+                    and row.get('cleanup_verified') is True and row.get('job_active_processes')==0
+                    and row.get('source_before')==row.get('source_after'))
+    return False
+
+
+def validate_qa03_history(binding):
+    base=ROOT/ROUND_PATH;files=binding.get('files',{})
+    for attempt in HISTORICAL_QA:
+        path=base/f'native_qa{attempt:02d}/receipt.json';name=path.relative_to(ROOT).as_posix()
+        if not path.is_file():raise ValueError('actual immutable QA01/QA02 failure history required')
+        row=json.loads(path.read_text(encoding='utf-8'))
+        if (not historical_qa_receipt(path,row) or files.get(name)!=sha(path)
+                or binding.get('prior_receipts',[]).count(name)!=1):
+            raise ValueError('actual immutable QA01/QA02 failure history required')
+
+
+def validate_qa03_pass(binding,commit):
+    validate_repair_authority(binding,commit);validate_qa03_history(binding)
+    base=ROOT/ROUND_PATH
+    def bound_result(relative):
+        name=(base/relative).relative_to(ROOT).as_posix();path=ROOT/name
+        if not path.is_file() or binding.get('files',{}).get(name)!=sha(path):raise ValueError('source-bound QA03 evidence required')
+        return json.loads(path.read_text(encoding='utf-8'))
+    native=bound_result('native_qa03/receipt.json');marker=bound_result('qa03/complete.json')
+    if (native.get('status')!='COMPLETED' or native.get('phase')!='qa' or native.get('qa_attempt')!=3
+            or native.get('source_commit')!=commit or native.get('cleanup_verified') is not True
+            or native.get('job_active_processes')!=0 or native.get('source_before')!=native.get('source_after')):
+        raise ValueError('actual same-source native QA03 pass required')
+    for name in repair_source_names():
+        if native.get('source_before',{}).get(str((ROOT/name).resolve()))!=binding['files'][name]:
+            raise ValueError('QA03 source/authority/amendment differs')
+    result=marker.get('result',{})
+    if marker.get('status')!='COMPLETED' or result.get('status')!='PASS' or result.get('source_commit')!=commit or result.get('qa_attempt')!=3:
+        raise ValueError('actual same-source inner QA03 pass required')
+
+
+def validate_qa_attempt(binding,commit,attempt):
+    if attempt not in (1,2,3):raise ValueError('only registered QA attempts1 or2 or authorized3')
+    if attempt==3:
+        validate_repair_authority(binding,commit);validate_qa03_history(binding)
+        if binding.get('phase')!='qa' or binding.get('qa_attempt')!=3 or binding.get('group') is not None:
+            raise ValueError('QA03 binding role differs')
+        expected={str((ROOT/ROUND_PATH/f'native_qa{i:02d}/receipt.json').resolve()) for i in (1,2)}
+        actual={str(p.resolve()) for p in (ROOT/ROUND_PATH).glob('native_*/receipt.json')}
+        # The running outer QA03 has its unique native directory but no final receipt yet.
+        if actual!=expected:raise ValueError('QA03 only after exactly two actual failed attempts')
 
 def atomic(path,value):
     """Bounded Windows sharing-conflict repair for entry metadata only."""
@@ -200,13 +291,15 @@ def train_group(out,commit,group,resume=False):
     atomic(out/'selection.json',result);return result
 def execute(phase,out,binding,commit,group,resume,qa_attempt=1):
     if phase=='qa':
-        if qa_attempt not in (1,2):raise ValueError('only registered QA attempts1 or2')
+        validate_qa_attempt(binding,commit,qa_attempt)
+        if qa_attempt==3 and Path(out).resolve()!=(ROOT/ROUND_PATH/'qa03').resolve():raise ValueError('QA03 requires exact authorized output')
         import subprocess
         command=[sys.executable,'-m','pytest','-q',str(ROOT/'tests/test_rational_execution_20261021.py'),
                  str(ROOT/'tests/test_uncapped_windows_job_20261021.py'),'--basetemp',str(out/'pytest_tmp')]
         result=subprocess.run(command,cwd=ROOT,capture_output=True,text=True)
         (out/'pytest_stdout.txt').write_text(result.stdout,encoding='utf-8');(out/'pytest_stderr.txt').write_text(result.stderr,encoding='utf-8')
         return {'status':'PASS' if result.returncode==0 else 'FAIL','qa_attempt':qa_attempt,'pytest_returncode':result.returncode,'stdout':result.stdout,'stderr':result.stderr}
+    validate_qa03_pass(binding,commit)
     import torch
     torch.set_num_threads(1)
     if phase=='run':return train_group(out,commit,group,resume)
@@ -215,14 +308,17 @@ def main(argv=None):
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('phase',choices=('qa','run','evaluate'))
     for name in ('output','binding'):p.add_argument('--'+name,required=True,type=Path)
     p.add_argument('--source-commit',required=True);p.add_argument('--group',choices=study.GROUPS);p.add_argument('--resume',action='store_true')
-    p.add_argument('--qa-attempt',type=int,choices=(1,2));a=p.parse_args(argv)
+    p.add_argument('--qa-attempt',type=int,choices=(1,2,3));a=p.parse_args(argv)
     if len(a.source_commit)!=40 or any(c not in '0123456789abcdef' for c in a.source_commit) or (a.phase=='run')!=(a.group is not None) or (a.resume and a.phase!='run') or (a.phase!='qa' and a.qa_attempt is not None):p.error('full source commit/run-only group/resume and qa-only attempt required')
     out=a.output.resolve();rootdir=(ROOT/'private_data/closure_mechanism_20261019/P1/rational_execution01').resolve()
     qa_attempt=(a.qa_attempt or 1) if a.phase=='qa' else None
     if a.phase=='qa' and out.name!=f'qa{qa_attempt:02d}':raise ValueError('QA attempt must use its own exclusive output directory')
+    if a.phase=='qa' and qa_attempt==3 and out!=rootdir/'qa03':raise ValueError('QA03 requires exact authorized output')
     qa_root=(ROOT/'private_data/closure_mechanism_20261019/P0/rational_execution01').resolve()
     if out in (rootdir,qa_root) or not (out.is_relative_to(rootdir) or (a.phase=='qa' and out.is_relative_to(qa_root))):raise ValueError('exclusive new round output required')
     binding=json.loads(a.binding.read_text(encoding='utf-8'))
+    if a.phase=='qa':validate_qa_attempt(binding,a.source_commit,qa_attempt)
+    else:validate_qa03_pass(binding,a.source_commit)
     if out.exists():
         if not a.resume:raise ValueError('output exists; explicit verified resume required')
         authorize_resume(out,binding,a.source_commit,a.group,rootdir)
