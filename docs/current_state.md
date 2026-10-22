@@ -1,19 +1,17 @@
 # 当前研究状态
 
-任务RUNNING：2026-10-22人类已明确回复“同意修复并继续训练”，实际Astra6方案及采纳已保存。额外一次执行器修复已完成，六文件冻结并通过非实现者只读审查，待归档后执行唯一QA03，科学进程/队列仍为空。旧QA01/QA02失败保留。cwd E:/03-nn_Transfer_Func/kiki。默认模型不变，原项目val/test关闭，TASK4暂停，40状态/100ms一次初始化/全部真实区间/数值要求保持。
+任务BLOCKED_EXECUTION_PATH：人类2026-10-22批准的一次额外执行器修复及一次QA03均已执行完；QA03实际45通过、3失败，未达到训练启动要求。正式训练0、无科学进程/队列、正式合成val未生成。cwd E:/03-nn_Transfer_Func/kiki。原项目val/test关闭，TASK4暂停，40状态/100ms一次初始化/全部真实区间/数值标准保持，默认模型不变。
 
-**现行资源授权**：2026-10-21人类原文“不设置进程限制”，并确认“全部取消进程额度限制”。后续不设进程数量、单进程时长、阶段或总进程小时帽，费用继续记录。旧259200秒/分类余额仅为历史，不再阻止开跑；历史收费/未知hold/预算REJECT不改。每轮比较、seed、更新数和允许修复仍有限，禁止训练到指标通过。[授权](../reports/process_limits_removed_20261021.md)。heartbeat已更新为相同授权并核验保存，保持原30分钟与安静通知意图。
+**资源授权保持无额度**：取消进程数量、单进程时长、阶段及总进程小时帽；实际费用照实记录。旧259200及分类余额仅为历史，未知hold不转成精确实耗，历史REJECT不改PASS。有限科学比较/seed/更新及已明确授权的修复范围仍有效。
 
-**已关闭的完整比较计划**：[实际Astra6方案](../reports/astra6_rational_execution_20261021.md)及[root协议](../reports/rational_execution_20261021_protocol.md)：两形式×3seed×0/1%噪声12模型各512更新，总6144。正式尚未执行，不能把计划当作活动队列。一次实现修复已用完，原数学内容和数值门槛没有变。
+**已执行额外修复**：实际gpt-6-astra方案、root采纳、人类明确授权均保存；原数学54项实际源码与旧合格QA逐字节及Git blob核对。辅助观察1记录器失败未决，经实际Astra6有界前瞻修订后，观察2取得旧启动条件下的额外conhost精确身份；两次原始资产保留。执行器一次改为DETACHED_PROCESS，严格清理/失败判据未放宽。六源冻结、非实现者只读审查后，在源95ee7cfe3d0c9dbdc065a306fcdc1d60fd0078d3执行唯一QA03。
 
-**QA结局**：qa01为15通过2失败；唯一实现修复后qa02为20通过2失败，正常结束仍被监督器标记清理遗留进程。QA02真实worker102048/FILETIME134370564765203912，wall34.5001556、CPU user3.703125/kernel13.828125，最终Job0、source同、真实worker已退出、清理核验。两次原生墙钟累计66.8908706秒。正式更新0、未生成正式合成val。新入口/监督器不合main，不进行QA03或第二修复。[关闭结论](../reports/rational_execution_20261021_conclusion.md)。
+**决定性结果**：QA03 pytest45通过3失败/50.80秒；正常子树与真实venv退出两项仍失败，新增授权负例另因GBK读取UTF-8临时文件失败。原生wall55.9809651秒、子树CPU user4.828125/kernel16.09375秒；worker45756/FILETIME134371222076948518，launcher/worker exit2、Job0、cleanup=true、78项source前后一致、锁已清。QA03不提供额外成员映像，不能套用观察2推断其身份。[结论](../reports/rational_execution_additional_repair_20261022_conclusion.md)、[摘要](../results/rational_execution_20261021/qa03_summary.json)。负证据远端e82a5a3a883b6d7aed5d24eb0e54fdacb68c23fe已核。
 
-**恢复动作**：actual科学PID/session为空。新[人类授权](../results/rational_execution_20261021/additional_repair_authority_20261022.json)已归档b0a33dbe6a124fb728ef73f2adfb0f226fcae0a3。实际Astra6返回后root采纳有限方案，修复仅限执行/监督/QA绑定，不改数学内容；通过独立检查及唯一QA03才启动0_rational、0_tanh、1_rational、1_tanh四组各三seed。旧“无额外修复权限”阻塞已解除，旧监督失败尚未修复，不将授权当作QA通过。证据目录private_data/closure_mechanism_20261019/P1/rational_execution01，旧源b00db35e23adcd035ed08fb3f3d365fceda09042保留。
+**当前恢复动作**：实际Astra6后续决定要求停止此补丁链并提出新执行机制重构范围，不追加QA04、不普通shell绕过、不恢复时间帽、不重复旧盘点。下一步向人类请求有限重构：至多两个预先锁定启动方案、一次最终完整验收；保留真实身份、自有子树清理、来源、恢复及真正遗留应用子进程必须失败的条件。仅新验收通过后继续原12模型。该重构目前未获授权、未实施；收到明确答复前保持阻塞，不重复提问或Astra审计。[实际方案与root决定](../reports/astra6_after_qa03_20261022.md)。旧额外修复请求已获同意并执行，不再称其待回复。
 
-**用户本次修改已完成**：取消额度政策通过独立审查，PR29已合main ad1b48a3b701cfaf951d0e96067d5fb537e74c90，四blob/预期head/双parent/远端均核；失败执行器和新科学代码未合main。heartbeat保存无额度授权及安静通知意图。[核验](../results/rational_execution_20261021/process_policy_main_verification.json)。
+**原科学计划保持**：两形式×6301/6302/6303×0/1%噪声，共12模型各512更新，总6144；固定顺序0_rational、0_tanh、1_rational、1_tanh，原检查点/32处恢复、一次非择优中断恢复和全部12真实端点冻结后一次合成val不变。没有正式模型可声称改进或晋升；父L1/L2目标未完成。旧18×512的6085.6472446秒与384测时不重跑，旧P3条件和24valguard限制不变。
 
-**旧阶段证据**：PR28工程已合main454483290b38ad37e52d00b39359205721d9ede0，expected head4536a53210a7f37334b4d1300e853ddc8d2cb7ff及四blob/双parent均远端核。旧QA8passed/native52.6231316，唯一完整cost384更新/native354.7782015，估价18184.7435>旧12000因而REJECT、正式0。旧阶段保持关闭，新授权单独执行尚未运行科学。数学source1aa93d60de8199455ef563acfa3e83f9ffc04eb8；新policy字节更新不假称旧118map全同，复用须核数值闭包。150真实32源文件/指针+2伪512负例本地保留，角色SHA归档。
+**代码与Git**：新执行器/入口未合main，失败资产保留归档分支codex/edge-memory-discrimination-20261021，不reset/强推/删除证据。取消额度规则PR29已合main ad1b48a3b701cfaf951d0e96067d5fb537e74c90；失败实现不导致回退该政策。local HEADa95101337855ed3fc1f4abfd710982443d5564cb、indexSHA82b060840d50257c41df55e15805fa106f29117cac8bf1868a6b83e490e2df93保护。证据/命令目录private_data/closure_mechanism_20261019/P1/rational_execution01，原QA01/02/03及所有来源均保留。
 
-**历史累计与保护**：旧收费或保守预占147436.1660571，加7次阻塞核查实际20.2520054后147456.4180625；此数含未知hold不冒充精确实耗，后续actual科学作业与支持另行累计。历史上限/余额移入账本快照保存，active caps为null。[完整账本](../results/closure_mechanism_20261019/cost_snapshot.json)。local HEADa95101337855ed3fc1f4abfd710982443d5564cb/indexSHA82b060840d50257c41df55e15805fa106f29117cac8bf1868a6b83e490e2df93保护，不stage/reset用户改动。
-
-父L1/L2目标未完成。旧18×5126085.6472446不重跑，TASK4暂停，P3已用条件配额不增加，旧24valguard不重试/换模型。原数值/物理/数据/模型采用门槛均保持；取消进程额度不授予test或新数据条件权限。所有结果含负例/失败选择性GitHub归档，轮次关闭后实际新Astra6规划并继续下一科学阶段。
+**费用**：旧收费/保守预占147456.4180625为历史快照，不冒充全实耗。取消额度后已知QA与两次身份观察原生wall累计124.9277505秒，子树CPU另列；支持读取/静态费用记录已知部分，未测部分不造精确数。详情见results/closure_mechanism_20261019/cost_snapshot.json。heartbeat仍为无额度政策及安静通知，当前无活动训练。
