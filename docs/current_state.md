@@ -1,6 +1,6 @@
 # 当前研究状态
 
-任务BLOCKED：执行路径未获验证，等待已发送的额外一次有限修复范围请求；不是费用阻塞。阶段rational_execution_20261021已因QA02失败关闭，无科学进程或队列。实际Astra6后续分析及一次已有路径盘点已完成。cwd E:/03-nn_Transfer_Func/kiki。默认模型不变，原项目val/test关闭，TASK4暂停，40状态/100ms一次初始化/全部真实区间/数值要求保持。
+任务RUNNING：2026-10-22人类已明确回复“同意修复并继续训练”，授权额外一次执行器修复和一次复查，通过后继续原12模型。实际gpt-6-astra代理astra6_authorized_executor_repair_20261022正在只读规划，尚未改执行代码、运行QA或排队训练。旧QA01/QA02失败保留。cwd E:/03-nn_Transfer_Func/kiki。默认模型不变，原项目val/test关闭，TASK4暂停，40状态/100ms一次初始化/全部真实区间/数值要求保持。
 
 **现行资源授权**：2026-10-21人类原文“不设置进程限制”，并确认“全部取消进程额度限制”。后续不设进程数量、单进程时长、阶段或总进程小时帽，费用继续记录。旧259200秒/分类余额仅为历史，不再阻止开跑；历史收费/未知hold/预算REJECT不改。每轮比较、seed、更新数和允许修复仍有限，禁止训练到指标通过。[授权](../reports/process_limits_removed_20261021.md)。heartbeat已更新为相同授权并核验保存，保持原30分钟与安静通知意图。
 
@@ -8,7 +8,7 @@
 
 **QA结局**：qa01为15通过2失败；唯一实现修复后qa02为20通过2失败，正常结束仍被监督器标记清理遗留进程。QA02真实worker102048/FILETIME134370564765203912，wall34.5001556、CPU user3.703125/kernel13.828125，最终Job0、source同、真实worker已退出、清理核验。两次原生墙钟累计66.8908706秒。正式更新0、未生成正式合成val。新入口/监督器不合main，不进行QA03或第二修复。[关闭结论](../reports/rational_execution_20261021_conclusion.md)。
 
-**恢复动作**：actual科学PID/session为空。依据[实际Astra6后续方案](../reports/astra6_after_uncapped_qa_failure_20261021.md)，核对已有成功执行器，均要求有限时长，没有已验证无时限模式。固定端点整项Jacobian移除尚未做，但同样依赖未获验证的执行路径。已向人类请求额外一次修改/一次复查范围，等待答复；不重复提问、不QA03、不继续同一修复链、不排队原12模型。获明确授权后先实际Astra6制定有限修复方案并登记，通过必要检查后实际训练；[具体证据和恢复决定](../reports/rational_execution_20261021_recovery_decision.md)。证据目录private_data/closure_mechanism_20261019/P1/rational_execution01，源b00db35e23adcd035ed08fb3f3d365fceda09042保留。
+**恢复动作**：actual科学PID/session为空。新[人类授权](../results/rational_execution_20261021/additional_repair_authority_20261022.json)已归档b0a33dbe6a124fb728ef73f2adfb0f226fcae0a3。实际Astra6返回后root采纳有限方案，修复仅限执行/监督/QA绑定，不改数学内容；通过独立检查及唯一QA03才启动0_rational、0_tanh、1_rational、1_tanh四组各三seed。旧“无额外修复权限”阻塞已解除，旧监督失败尚未修复，不将授权当作QA通过。证据目录private_data/closure_mechanism_20261019/P1/rational_execution01，旧源b00db35e23adcd035ed08fb3f3d365fceda09042保留。
 
 **用户本次修改已完成**：取消额度政策通过独立审查，PR29已合main ad1b48a3b701cfaf951d0e96067d5fb537e74c90，四blob/预期head/双parent/远端均核；失败执行器和新科学代码未合main。heartbeat保存无额度授权及安静通知意图。[核验](../results/rational_execution_20261021/process_policy_main_verification.json)。
 
