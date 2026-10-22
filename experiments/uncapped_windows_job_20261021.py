@@ -119,7 +119,7 @@ def supervise(command,output,lock,files,working_directory,worker_receipt=None,on
     supervisor=identity();owner={'supervisor':supervisor,'worker':None}
     lock.parent.mkdir(parents=True,exist_ok=True)
     with lock.open('x',encoding='utf-8') as f:json.dump(owner,f)
-    creation_flags=0x4|0x8|0x80000 # CREATE_SUSPENDED | DETACHED_PROCESS | EXTENDED_STARTUPINFO_PRESENT.
+    creation_flags=0x4|0x8|0x80000|0x400 # SUSPENDED | DETACHED | EXTENDED_STARTUPINFO | UNICODE_ENVIRONMENT.
     record={**(provenance or {}),'status':'UNRESOLVED','supervisor':supervisor,'worker':None,'command':command,'creation_flags':creation_flags,'runtime_limits':None,'cpu_limits':None,'active_process_limit':None}
     actual_handle=None;actual_receipt=None;job=None;pi=PROCESS_INFORMATION();logs=[];attrs=None;attrs_ready=False;assigned=False;clean=False;started=time.perf_counter();raised=None
     try:
@@ -140,7 +140,14 @@ def supervise(command,output,lock,files,working_directory,worker_receipt=None,on
         checked(k.UpdateProcThreadAttribute(attrs,0,0x2000D,jobs,ctypes.sizeof(jobs),None,None)) # Atomic creation in Job; unsupported Windows fails closed.
         si=STARTUPINFOEX();si.StartupInfo.cb=ctypes.sizeof(si);si.StartupInfo.dwFlags=0x100;si.StartupInfo.hStdOutput=logs[0];si.StartupInfo.hStdError=logs[1];si.StartupInfo.hStdInput=None;si.lpAttributeList=ctypes.cast(attrs,ctypes.c_void_p)
         exe=str(Path(command['executable']).resolve());args=[exe,*command['arguments']]
-        checked(k.CreateProcessW(exe,ctypes.create_unicode_buffer(subprocess.list2cmdline(args)),None,None,True,creation_flags,None,str(Path(working_directory).resolve()),ctypes.byref(si),ctypes.byref(pi)))
+        logical=str(Path(command.get('logical_executable',exe)).resolve())
+        if __package__:
+            from .rational_python_runtime_20261022 import command_environment
+        else:
+            from rational_python_runtime_20261022 import command_environment
+        environment=command_environment(command)
+        environment_block=ctypes.create_unicode_buffer('\0'.join(key+'='+environment[key] for key in sorted(environment,key=str.upper))+'\0\0')
+        checked(k.CreateProcessW(exe,ctypes.create_unicode_buffer(subprocess.list2cmdline(args)),None,None,True,creation_flags,ctypes.cast(environment_block,ctypes.c_void_p),str(Path(working_directory).resolve()),ctypes.byref(si),ctypes.byref(pi)))
         assigned=True
         launcher={'pid':int(pi.dwProcessId),'executable':exe,'physical_image':physical_image(k,pi.hProcess),**times(k,pi.hProcess)}
         record['launcher']=launcher;owner['launcher']=launcher
@@ -156,14 +163,16 @@ def supervise(command,output,lock,files,working_directory,worker_receipt=None,on
             receipt=json.loads(Path(worker_receipt).read_text(encoding='utf-8'))
             if previous_worker_identity is not None and receipt==previous_worker_identity:return # Only the immutable, approved GONE receipt during resume startup.
             pid=receipt.get('pid');ft=receipt.get('creation_filetime_utc')
-            if type(pid) is not int or type(ft) is not int or Path(receipt.get('executable','')).resolve()!=Path(exe):raise ValueError('actual worker typed/logical executable identity')
+            if type(pid) is not int or type(ft) is not int or Path(receipt.get('executable','')).resolve()!=Path(logical):raise ValueError('actual worker typed/logical executable identity')
             handle=checked(k.OpenProcess(0x1000|0x100000,False,pid))
             try:
                 observed=times(k,handle);member=W.BOOL();checked(k.IsProcessInJob(handle,job,ctypes.byref(member)))
                 if observed['creation_filetime_utc']!=ft or not member.value or k.WaitForSingleObject(handle,0)!=258:raise ValueError('actual worker must be live exact creation identity in owned Job')
                 for key in ('source_commit','phase','group','qa_attempt'):
                     if provenance and key in provenance and receipt.get(key)!=provenance[key]:raise ValueError('actual worker source/role differs: '+key)
-                worker={'pid':pid,'executable':receipt['executable'],'physical_image':physical_image(k,handle),**observed}
+                image=physical_image(k,handle)
+                if command.get('expected_worker_image') and Path(image).resolve()!=Path(command['expected_worker_image']).resolve():raise ValueError('actual worker physical executable differs')
+                worker={'pid':pid,'executable':receipt['executable'],'physical_image':image,**observed}
                 actual_handle=handle;handle=None;actual_receipt=receipt;record['worker']=worker;owner['worker']=worker;atomic(lock,owner)
                 atomic(output/'actual_worker.json',{'worker':worker,'launcher':launcher})
                 if on_worker_owned:on_worker_owned(worker)

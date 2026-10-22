@@ -32,7 +32,7 @@ def fakes(monkeypatch):
         execution.atomic(folder/'latest.json',{'updates':step,'checkpoint':directory.name,
                                              'sha256':{n:execution.sha(directory/n) for n in ('model.json','training.pt')}})
     def restore(folder,m,opt,rng,identity):
-        latest=json.loads((folder/'latest.json').read_text());state=json.loads((folder/latest['checkpoint']/'training.pt').read_text())
+        latest=json.loads((folder/'latest.json').read_text(encoding='utf-8'));state=json.loads((folder/latest['checkpoint']/'training.pt').read_text(encoding='utf-8'))
         assert state['identity']==identity;calls['restores'].append((identity['key'],state['completed_updates']))
         return state['completed_updates'],state['trace']
     monkeypatch.setattr(execution,'checkpoint_api',lambda:(checkpoint,restore))
@@ -49,7 +49,7 @@ def test_complete_twelve_models_exact_schedule_and_none(fakes,tmp_path):
     for result in results:
         for row in result['rows']:
             assert [step for key,step in fakes['saves'] if key==row['key']]==[0,32,128,512]
-            trace=json.loads(Path(row['trace']['path']).read_text());assert len(trace['loss'])==512
+            trace=json.loads(Path(row['trace']['path']).read_text(encoding='utf-8'));assert len(trace['loss'])==512
 
 
 def saved(folder,fakes,step=32):
@@ -63,15 +63,15 @@ def test_sidecar_exact_restore_and_missing_fields_rejected(fakes,tmp_path):
     folder=tmp_path/'model';identity,trace,gradient,summary=saved(folder,fakes)
     step,actual,g,s=execution.restore_complete(folder,None,None,None,identity)
     assert step==32 and actual==trace and g==gradient and s==summary
-    sidecar=folder/'checkpoint_00032.diagnostics.json';value=json.loads(sidecar.read_text());del value['gradient']
+    sidecar=folder/'checkpoint_00032.diagnostics.json';value=json.loads(sidecar.read_text(encoding='utf-8'));del value['gradient']
     execution.atomic(sidecar,value)
-    pointer=json.loads((folder/'resume.json').read_text());pointer['diagnostics']['sha256']=execution.sha(sidecar);execution.atomic(folder/'resume.json',pointer)
+    pointer=json.loads((folder/'resume.json').read_text(encoding='utf-8'));pointer['diagnostics']['sha256']=execution.sha(sidecar);execution.atomic(folder/'resume.json',pointer)
     with pytest.raises(ValueError,match='diagnostic fields'):execution.complete_sidecar(folder,identity)
 
 
 def test_latest_ahead_of_sidecar_refuses_fallback(fakes,tmp_path):
     folder=tmp_path/'model';identity,*_=saved(folder,fakes)
-    latest=json.loads((folder/'latest.json').read_text());latest['checkpoint']='checkpoint_00128';latest['updates']=128;execution.atomic(folder/'latest.json',latest)
+    latest=json.loads((folder/'latest.json').read_text(encoding='utf-8'));latest['checkpoint']='checkpoint_00128';latest['updates']=128;execution.atomic(folder/'latest.json',latest)
     with pytest.raises(ValueError,match='ahead'):execution.complete_sidecar(folder,identity)
 
 
@@ -82,7 +82,7 @@ def test_pending_and_changed_checkpoint_rejected(fakes,tmp_path):
 
 def test_evaluate_uses_existing_full_barrier_and_none(monkeypatch,tmp_path):
     # Isolate the unchanged scientific barrier; separate tests exercise QA03 admission.
-    monkeypatch.setattr(execution,'validate_qa03_pass',lambda binding,commit:None)
+    monkeypatch.setattr(execution,'validate_qa04_pass',lambda binding,commit:None)
     def evaluate(out,binding,commit,deadline):
         assert deadline is None
         execution.study.validate_selection({},commit)
@@ -118,7 +118,7 @@ def test_root_gone_does_not_prove_child_subtree_empty(tmp_path,active):
     # Explicit negative engineering fixture: a GONE root/status flag cannot
     # override an actual receipt reporting remaining owned children.
     proof={'source_commit':'a'*40,'group':'0_rational','phase':'run','worker':worker,
-           'worker_identity_after':'GONE','status':'COMPLETED','cleanup_verified':True,
+           'actual_worker_state':'GONE','status':'COMPLETED','cleanup_verified':True,
            'job_active_processes':active,'job_total_processes':3,'job_cpu_user_seconds':.1,
            'job_cpu_kernel_seconds':.1,'wall_seconds':.2,'source_before':{'source.py':'f'*64},
            'source_after':{'source.py':'f'*64},'runtime_limits':None,'cpu_limits':None,'active_process_limit':None}
@@ -169,19 +169,19 @@ def test_metadata_atomic_recovers_transient_sharing_conflict(monkeypatch,tmp_pat
         return actual(source,target)
     monkeypatch.setattr(execution.os,'replace',replace);monkeypatch.setattr(execution.time,'sleep',sleeps.append)
     path=tmp_path/'progress.json';execution.atomic(path,{'last_completed':388})
-    assert json.loads(path.read_text())=={'last_completed':388}
+    assert json.loads(path.read_text(encoding='utf-8'))=={'last_completed':388}
     assert len(attempts)==3 and sleeps==[.01,.02] and not list(tmp_path.glob('*.tmp'))
 
 
 def test_metadata_atomic_permanent_conflict_preserves_old_and_temp(monkeypatch,tmp_path):
-    attempts=[];sleeps=[];path=tmp_path/'progress.json';path.write_text('{"last_completed":32}')
+    attempts=[];sleeps=[];path=tmp_path/'progress.json';path.write_text('{"last_completed":32}',encoding='utf-8')
     def replace(source,target):attempts.append(1);raise sharing_error(33)
     monkeypatch.setattr(execution.os,'replace',replace);monkeypatch.setattr(execution.time,'sleep',sleeps.append)
     with pytest.raises(PermissionError):execution.atomic(path,{'last_completed':128})
     assert len(attempts)==6 and sleeps==list(execution._REPLACE_DELAYS)
-    assert json.loads(path.read_text())=={'last_completed':32}
+    assert json.loads(path.read_text(encoding='utf-8'))=={'last_completed':32}
     temporary=list(tmp_path.glob('*.tmp'));assert len(temporary)==1
-    assert json.loads(temporary[0].read_text())=={'last_completed':128}
+    assert json.loads(temporary[0].read_text(encoding='utf-8'))=={'last_completed':128}
 
 
 def test_metadata_atomic_does_not_retry_other_permission_errors(monkeypatch,tmp_path):
@@ -203,7 +203,8 @@ def test_second_qa_attempt_has_own_collection_and_no_unauthorized_third(monkeypa
     result=execution.execute('qa',out,{},'a'*40,None,False,qa_attempt=2)
     assert result['qa_attempt']==2 and commands[0][-1]==str(out/'pytest_tmp')
     with pytest.raises(ValueError,match='repair identity'):execution.execute('qa',out,{},'a'*40,None,False,qa_attempt=3)
-    with pytest.raises(ValueError,match='attempts1 or2'):execution.execute('qa',out,{},'a'*40,None,False,qa_attempt=4)
+    with pytest.raises(ValueError,match='binding role'):execution.execute('qa',out,{},'a'*40,None,False,qa_attempt=4)
+    with pytest.raises(ValueError,match='attempts1 or2'):execution.execute('qa',out,{},'a'*40,None,False,qa_attempt=5)
     args=['qa','--output',str(tmp_path/'qa01'),'--binding',str(tmp_path/'missing.json'),'--source-commit','a'*40,'--qa-attempt','2']
     with pytest.raises(ValueError,match='own exclusive'):execution.main(args)
 
@@ -254,7 +255,7 @@ def test_third_qa_short_or_wrong_source_rejected(repair_binding):
 
 def test_third_qa_tampered_authority_rejected_even_with_new_binding_hash(repair_binding):
     name,_=execution.REPAIR_INPUTS['additional_repair_authority'];path=execution.ROOT/name
-    authority=json.loads(path.read_text());authority['additional_qa_executions']=2;path.write_text(json.dumps(authority))
+    authority=json.loads(path.read_text(encoding='utf-8'));authority['additional_qa_executions']=2;path.write_text(json.dumps(authority),encoding='utf-8')
     repair_binding['additional_repair_authority']['sha256']=repair_binding['files'][name]=execution.sha(path)
     with pytest.raises(ValueError,match='exact repair authority'):execution.validate_qa_attempt(repair_binding,'a'*40,3)
 
@@ -268,13 +269,13 @@ def test_third_qa_missing_or_forged_authority_rejected(repair_binding,key):
 @pytest.mark.parametrize('attempt',[1,2])
 def test_historical_receipt_cannot_be_relabelled_or_rehashed(repair_binding,attempt):
     name=execution.ROUND_PATH+f'/native_qa{attempt:02d}/receipt.json';path=execution.ROOT/name
-    row=json.loads(path.read_text());row['status']='COMPLETED';path.write_text(json.dumps(row))
+    row=json.loads(path.read_text(encoding='utf-8'));row['status']='COMPLETED';path.write_text(json.dumps(row),encoding='utf-8')
     repair_binding['files'][name]=execution.sha(path)
     with pytest.raises(ValueError,match='immutable QA01/QA02'):execution.validate_qa_attempt(repair_binding,'a'*40,3)
 
 
 def test_third_qa_changed_current_source_rejected(repair_binding):
-    name='experiments/rational_execution_20261021.py';(execution.ROOT/name).write_text('# changed')
+    name='experiments/rational_execution_20261021.py';(execution.ROOT/name).write_text('# changed',encoding='utf-8')
     with pytest.raises(ValueError,match='current repair source'):execution.validate_qa_attempt(repair_binding,'a'*40,3)
 
 
@@ -282,7 +283,7 @@ def test_third_qa_rejects_fourth_receipt_and_wrong_role(repair_binding):
     repair_binding['qa_attempt']=4
     with pytest.raises(ValueError,match='binding role'):execution.validate_qa_attempt(repair_binding,'a'*40,3)
     repair_binding['qa_attempt']=3
-    path=execution.ROOT/execution.ROUND_PATH/'native_qa04/receipt.json';path.parent.mkdir();path.write_text('{}')
+    path=execution.ROOT/execution.ROUND_PATH/'native_qa04/receipt.json';path.parent.mkdir();path.write_text('{}',encoding='utf-8')
     with pytest.raises(ValueError,match='exactly two'):execution.validate_qa_attempt(repair_binding,'a'*40,3)
 
 
@@ -293,7 +294,7 @@ def install_qa03_pass(binding):
             'job_active_processes':0,'source_before':source,'source_after':dict(source)}
     marker={'status':'COMPLETED','result':{'status':'PASS','qa_attempt':3,'source_commit':'a'*40}}
     for name,row in (('native_qa03/receipt.json',native),('qa03/complete.json',marker)):
-        path=base/name;path.parent.mkdir(parents=True,exist_ok=True);path.write_text(json.dumps(row))
+        path=base/name;path.parent.mkdir(parents=True,exist_ok=True);path.write_text(json.dumps(row),encoding='utf-8')
         binding['files'][path.relative_to(execution.ROOT).as_posix()]=execution.sha(path)
     binding['phase']='run';binding['qa_attempt']=None;binding['group']='0_rational'
     return native,marker
@@ -312,7 +313,7 @@ def test_formal_admission_rejects_wrong_qa03_even_when_rehashed(repair_binding,t
     native,marker=install_qa03_pass(repair_binding)
     row={'native':native,'marker':marker,'inner':marker['result']}[target];row[field]=value
     name='native_qa03/receipt.json' if target=='native' else 'qa03/complete.json'
-    path=execution.ROOT/execution.ROUND_PATH/name;path.write_text(json.dumps(native if target=='native' else marker))
+    path=execution.ROOT/execution.ROUND_PATH/name;path.write_text(json.dumps(native if target=='native' else marker),encoding='utf-8')
     repair_binding['files'][path.relative_to(execution.ROOT).as_posix()]=execution.sha(path)
     with pytest.raises(ValueError,match='QA03 pass'):execution.validate_qa03_pass(repair_binding,'a'*40)
 
@@ -321,17 +322,150 @@ def test_formal_admission_rejects_wrong_qa03_authority_snapshot(repair_binding):
     native,_=install_qa03_pass(repair_binding)
     name=execution.REPAIR_INPUTS['additional_repair_authority'][0]
     key=str((execution.ROOT/name).resolve());native['source_before'][key]=native['source_after'][key]='f'*64
-    path=execution.ROOT/execution.ROUND_PATH/'native_qa03/receipt.json';path.write_text(json.dumps(native))
+    path=execution.ROOT/execution.ROUND_PATH/'native_qa03/receipt.json';path.write_text(json.dumps(native),encoding='utf-8')
     repair_binding['files'][path.relative_to(execution.ROOT).as_posix()]=execution.sha(path)
     with pytest.raises(ValueError,match='authority/amendment differs'):execution.validate_qa03_pass(repair_binding,'a'*40)
 
 
 def test_core_cli_rejects_missing_third_authority_before_creating_output(monkeypatch,tmp_path):
     monkeypatch.setattr(execution,'ROOT',tmp_path)
-    path=tmp_path/'binding.json';path.write_text('{}');out=tmp_path/execution.ROUND_PATH/'qa03'
+    path=tmp_path/'binding.json';path.write_text('{}',encoding='utf-8');out=tmp_path/execution.ROUND_PATH/'qa03'
     argv=['qa','--output',str(out),'--binding',str(path),'--source-commit','a'*40,'--qa-attempt','3']
     with pytest.raises(ValueError,match='repair identity'):execution.main(argv)
     assert not out.exists()
     argv[-1]='4'
+    with pytest.raises(ValueError,match='own exclusive|exact authorized output'):execution.main(argv)
+    assert not out.exists()
+
+
+@pytest.fixture
+def reconstruction_binding(monkeypatch,tmp_path):
+    original=execution.ROOT
+    names=set(execution.reconstruction_source_names())
+    names.update(execution.ROUND_PATH+f'/native_qa{i:02d}/receipt.json' for i in (1,2,3))
+    for name in names:
+        path=tmp_path/name;path.parent.mkdir(parents=True,exist_ok=True)
+        path.write_bytes((original/name).read_bytes())
+    monkeypatch.setattr(execution,'ROOT',tmp_path)
+    binding={'source_commit':'a'*40,'phase':'qa','group':None,'qa_attempt':4,
+        'files':{name:execution.sha(tmp_path/name) for name in names},
+        'prior_receipts':[execution.ROUND_PATH+f'/native_qa{i:02d}/receipt.json' for i in (1,2,3)]}
+    for key,(name,digest) in execution.RECONSTRUCTION_INPUTS.items():binding[key]={'path':name,'sha256':digest}
+    path=tmp_path/execution.RUNTIME_SELECTION;path.parent.mkdir(parents=True,exist_ok=True)
+    execution.atomic(path,{'files':{}})
+    binding['files'][execution.RUNTIME_SELECTION]=execution.sha(path)
+    binding['runtime_selection']={'path':execution.RUNTIME_SELECTION,'sha256':execution.sha(path)}
+    # Raw runtime-proof negatives live in the helper suite; isolate admission here.
+    command={'executable':str(tmp_path/'base.exe'),'logical_executable':str(tmp_path/'venv.exe'),
+             'expected_worker_image':str(tmp_path/'base.exe'),'arguments':[],
+             'runtime_scheme':'direct_base_venv','environment_overrides':{'PYTHONIOENCODING':'utf-8'}}
+    monkeypatch.setattr(execution,'validate_runtime_binding',lambda binding:copy.deepcopy(command))
+    return binding,command
+
+
+def test_qa04_separate_authority_and_three_actual_failures(reconstruction_binding):
+    binding,_=reconstruction_binding
+    execution.validate_qa_attempt(binding,'a'*40,4)
+    assert execution.QA03_HISTORY[0]=='95ee7cfe3d0c9dbdc065a306fcdc1d60fd0078d3'
+    binding['prior_receipts'].pop()
+    with pytest.raises(ValueError,match='immutable QA03'):execution.validate_qa_attempt(binding,'a'*40,4)
+
+
+@pytest.mark.parametrize('key',list(execution.RECONSTRUCTION_INPUTS))
+def test_qa04_rejects_unbound_or_replaced_authority(reconstruction_binding,key):
+    binding,_=reconstruction_binding;binding.pop(key)
+    with pytest.raises(ValueError,match='exact reconstruction authority'):execution.validate_qa_attempt(binding,'a'*40,4)
+
+
+@pytest.mark.parametrize('field,value',[('phase','run'),('group','0_tanh'),('qa_attempt',5)])
+def test_qa04_rejects_wrong_role_before_proof_io(reconstruction_binding,field,value):
+    binding,_=reconstruction_binding;binding[field]=value
+    with pytest.raises(ValueError,match='binding role'):execution.validate_qa_attempt(binding,'a'*40,4)
+
+
+def test_qa04_rejects_relabelled_historical_qa03(reconstruction_binding):
+    binding,_=reconstruction_binding
+    name=execution.ROUND_PATH+'/native_qa03/receipt.json';path=execution.ROOT/name
+    row=json.loads(path.read_text(encoding='utf-8'));row['status']='COMPLETED';execution.atomic(path,row)
+    binding['files'][name]=execution.sha(path)
+    with pytest.raises(ValueError,match='immutable QA03'):execution.validate_qa_attempt(binding,'a'*40,4)
+
+
+def install_qa04(binding,command):
+    base=execution.ROOT/execution.ROUND_PATH
+    source={str((execution.ROOT/name).resolve()):binding['files'][name] for name in execution.reconstruction_source_names()+(execution.RUNTIME_SELECTION,)}
+    native={'status':'COMPLETED','phase':'qa','qa_attempt':4,'source_commit':'a'*40,'cleanup_verified':True,
+        'job_active_processes':0,'orphans_cleaned':False,'actual_worker_state':'GONE',
+        'source_before':source,'source_after':dict(source),'command':dict(command,arguments=['-m','qa'])}
+    worker={'pid':12345,'creation_filetime_utc':134370000000000001,
+        'physical_image':command['expected_worker_image'],'logical_executable':command['logical_executable'],
+        'runtime_scheme':command['runtime_scheme'],
+        'runtime_selection':{'path':execution.RUNTIME_SELECTION,'sha256':binding['files'][execution.RUNTIME_SELECTION]}}
+    native.update(worker=worker,worker_receipt=dict(worker),runtime_limits=None,cpu_limits=None,active_process_limit=None)
+    marker={'status':'COMPLETED','result':{'status':'PASS','qa_attempt':4,'source_commit':'a'*40,
+        'pytest_returncode':0,'runtime_selection_sha256':binding['files'][execution.RUNTIME_SELECTION]}}
+    for name,row in (('native_qa04/receipt.json',native),('qa04/complete.json',marker)):
+        path=base/name;path.parent.mkdir(parents=True,exist_ok=True);execution.atomic(path,row)
+        binding['files'][path.relative_to(execution.ROOT).as_posix()]=execution.sha(path)
+    binding.update(phase='run',group='0_rational',qa_attempt=None)
+    return native,marker
+
+
+def test_formal_admission_now_requires_inner_outer_qa04(reconstruction_binding):
+    binding,command=reconstruction_binding
+    with pytest.raises(ValueError,match='QA04/receipt'):execution.validate_qa04_pass(binding,'a'*40)
+    install_qa04(binding,command);execution.validate_qa04_pass(binding,'a'*40)
+
+
+@pytest.mark.parametrize('target,field,value',[
+    ('native','status','FAILED'),('native','source_commit','b'*40),('native','qa_attempt',3),
+    ('native','orphans_cleaned',True),('native','job_active_processes',1),('native','actual_worker_state','ALIVE'),
+    ('inner','status','FAIL'),('inner','pytest_returncode',1),('inner','runtime_selection_sha256','f'*64)])
+def test_qa04_pass_rejects_rehashed_bad_native_or_inner(reconstruction_binding,target,field,value):
+    binding,command=reconstruction_binding;native,marker=install_qa04(binding,command)
+    row=native if target=='native' else marker['result'];row[field]=value
+    name=execution.ROUND_PATH+('/native_qa04/receipt.json' if target=='native' else '/qa04/complete.json')
+    execution.atomic(execution.ROOT/name,native if target=='native' else marker)
+    binding['files'][name]=execution.sha(execution.ROOT/name)
+    with pytest.raises(ValueError,match='QA04 pass'):execution.validate_qa04_pass(binding,'a'*40)
+
+
+def test_core_unauthorized_qa04_and_qa05_leave_no_output(monkeypatch,tmp_path):
+    monkeypatch.setattr(execution,'ROOT',tmp_path)
+    binding=tmp_path/'binding.json';execution.atomic(binding,{});out=tmp_path/execution.ROUND_PATH/'qa04'
+    argv=['qa','--output',str(out),'--binding',str(binding),'--source-commit','a'*40,'--qa-attempt','4']
+    with pytest.raises(ValueError,match='binding role'):execution.main(argv)
+    assert not out.exists()
+    argv[-1]='5'
     with pytest.raises(SystemExit):execution.main(argv)
     assert not out.exists()
+
+
+def test_qa04_collects_all_four_suites_using_selected_runtime(monkeypatch,reconstruction_binding):
+    import subprocess
+    binding,selected=reconstruction_binding;calls=[]
+    def build(arguments,path):
+        assert path==execution.ROOT/execution.RUNTIME_SELECTION
+        return dict(selected,arguments=list(arguments))
+    helper=types.SimpleNamespace(selected_python_command=build,command_environment=lambda command:{'QA_UTF8':'中文'})
+    monkeypatch.setitem(sys.modules,'rational_python_runtime_20261022',helper)
+    def run(command,**kwargs):
+        calls.append((command,kwargs));return types.SimpleNamespace(returncode=0,stdout='fixture only',stderr='')
+    monkeypatch.setattr(subprocess,'run',run)
+    out=execution.ROOT/execution.ROUND_PATH/'qa04';out.mkdir()
+    result=execution.execute('qa',out,binding,'a'*40,None,False,4)
+    command,kwargs=calls[0]
+    assert command[0]==selected['executable'] and kwargs['env']=={'QA_UTF8':'中文'} and kwargs['encoding']=='utf-8'
+    assert [Path(x).name for x in command if x.endswith('.py')]==[
+        'test_rational_execution_20261021.py','test_uncapped_windows_job_20261021.py',
+        'test_rational_python_runtime_20261022.py','test_rational_control_20261021.py']
+    assert result['runtime_selection_sha256']==binding['files'][execution.RUNTIME_SELECTION]
+
+
+@pytest.mark.parametrize('field,value',[('physical_image','wrong.exe'),('logical_executable','wrong.exe'),('runtime_scheme','venv_pythonw')])
+def test_qa04_rejects_rehashed_wrong_runtime_identity(reconstruction_binding,field,value):
+    binding,command=reconstruction_binding;native,_=install_qa04(binding,command)
+    native['worker'][field]=native['worker_receipt'][field]=value
+    name=execution.ROUND_PATH+'/native_qa04/receipt.json';execution.atomic(execution.ROOT/name,native)
+    binding['files'][name]=execution.sha(execution.ROOT/name)
+    with pytest.raises(ValueError,match='worker identity differs'):execution.validate_qa04_pass(binding,'a'*40)
