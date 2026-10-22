@@ -1,15 +1,17 @@
 # 当前研究状态
 
-任务RUNNING，cwd E:/03-nn_Transfer_Func/kiki。检查点续接阶段已完成：12模型各512更新、6144正式更新（旧96+新6048），全部端点冻结后完成一次独立合成val，12个train/合成val数值资格均通过。当前无训练作业，已实际开始下一阶段工程实现，原worker32344/FILETIME134371383121302454已退出，Job0、无遗留、锁清。source 6bf8f730e4fc180af9e815682a8fb4fe4b7fd020；原生182项前后快照相同（179绑定+3资格材料），当前字节亦一致。
+任务RUNNING，cwd E:/03-nn_Transfer_Func/kiki。当前实际GPU作业：有限六候选结构选择，源b8cdcaa02db4b969a941cec7035c9daa7e3aa298，会话85910，worker56312/FILETIME134371510173320258，supervisor40888/FILETIME134371510168681612。原生Job拥有finite_grammar_execution01/active.lock；无失败信号，science目录已实际生成。禁止重复队列或修改绑定源。
 
-结果：0%噪声合成val 1s归一化MSE三实例均值，有理0.000769184、tanh0.000896861；1%噪声有理0.002093202、tanh0.002207423。六配对差同向，有理形式较低。每实例16事件、30观测，尺度固定train标准差；它是已知形式受控比较，不是未知结构恢复，不宣称同等收敛或统计显著。模型均研究候选、默认采用none、真实L1/L2尚未完成。[阶段结论](../reports/checkpoint_continuation_20261022_conclusion.md)，[完整事实](../results/rational_execution_20261021/checkpoint_completion_facts.json)。
+新阶段已实际调用用户指定gpt-6-astra(/root/astra6_after_rational_20261022)，原始返回/root采纳均保存；[协议](../reports/finite_grammar_execution_20261022_protocol.md)固定三seed6101/6102/6103、生产语法六候选、32→两项128→一项512，每seed768、总2304正式更新。只用train自主轨迹排名，三个真实512端点及全来源冻结后才一次独立合成val；不扩有理算子、不重复上一轮合成val。不把池内选择称为开放空间新定律发现。旧finite正式P1=0/费用REJECT保留，旧QA/cost只用9902/7901/7902独立流，69项旧.py字节均未变。[实际Astra6](../reports/astra6_after_rational_20261022.md)。
 
-一次12项CPU资格、四路径132次CUDA资格及三旧32迁移全部通过；132不计正式6144。旧32检查点/96更新和闭合失败完整保留，未重跑旧18×5126085.6472446、384测时、五例或QA06。新工具的实际保存恢复已验证，但依赖旧训练core，当前保持归档、不作为main默认入口。原失败入口完整集成已撤回；既有PR #30六文件Job/helper工程已合main3cab35e4bb9bfe29f282d3ea16267f574d7dabef，源/父提交/树/范围已核。[资格摘要](../results/rational_execution_20261021/checkpoint_cuda_summary.json)，[main核验](../results/rational_execution_20261021/windows_runtime_main_verification.json)。
+相关17项QA全部通过，pytest79.35秒；原生wall83.5058926秒，CPU user46.625/kernel12.5分列。唯一真实32→34CUDA资格36次、三个TinyCPU共6次，与正式2304分列；不重跑全旧QA/384成本。QA实际source155项前后相同、typed0退出、Job0/无遗留/锁清。[QA摘要](../results/finite_grammar_execution_20261022/qa_summary.json)。[独立终审](../reports/finite_grammar_execution_20261022_review.md)通过，当前正式run同源并额外绑定QA回执。绑定154项；运行费用等真实Job结束回执，不造精确进行中费用。
 
-下一实际动作：本轮精确六文件PR #31已通过非实现者结果审查并合main bcced8d507cbc5fdd4e0f6fc9d455467f20899a4，expected head/父提交/树/六个原始字节blob已核。实际gpt-6-astra子代理/root/astra6_after_rational_20261022已返回并保存原始方案与root采纳。新有限六候选结构选择协议finite_grammar_execution_20261022已登记，worker正在实现薄入口与相关QA，root实现现有Job/helper启动连接；三seed分级32/128/512总2304正式更新，旧P1=0及REJECT不改，不扩有理算子。旧正式数据未生成，锁定原6101/6102/6103流。实现与非实现者挑战后冻结源归档，QA通过直接GPU执行，不重复本轮或旧成本测量，不使用本次合成val调参。当前12模型阶段已闭合，mission不标COMPLETED。
+下一实际动作：稀疏监控原生退出或登记阶段里程碑；不能重复加载状态只报步数。作业内按原search_seed真实Adam/RNG接续，保存45份检查点/27排名，验证全部真实计数/trace/来源，三冻结后自动一次合成val。新入口无外部--resume；中断保存关闭再另登记非择优来源续接，最多一次界限不重置。源、协议、QA、binding已归档，模型尚无新结果/不默认采用。
 
-实际复现入口/源/原命令见阶段结论。原始模型/Adam、数组、native完整回执、私有launch与binding保留private_data/closure_mechanism_20261019/P1/rational_checkpoint02；已完成目录禁止重用，原件rational_execution01保留。当前新增入口无外部--resume，内部真实32恢复已实测；中断后另登记，原最多一次非择优界限不重置。
+上一轮12模型已完成各512、正式6144=旧96+新6048，一次合成val全部数值合格。有理端口比tanh端口1s合成val归一化MSE三实例均值低14.24%(无噪声)和5.17%(1%噪声)，六配对方向一致；这是已知形式比较，不是未知结构恢复或同等收敛证明。实际worker32344已GONE/Job0/锁清，source6bf8f730e4fc180af9e815682a8fb4fe4b7fd020，182项前后同。结果精确六文件PR #31已合main bcced8d507cbc5fdd4e0f6fc9d455467f20899a4，expected head/父提交/树/六原字节blob已核。[结论](../reports/checkpoint_continuation_20261022_conclusion.md)，[核验](../results/rational_execution_20261021/checkpoint_results_main_verification.json)。其Job wall2673.6449287、CPU user1883.703125/kernel589.5秒分列；先前CPU资格32.7407797秒另计。
 
-全部进程额度取消，费用照记：本次GPU资格+迁移+正式训练+评价同一原生Job wall2673.6449287秒，CPU user1883.703125/kernel589.5秒分别记录不相加；相关CPU验收wall32.7407797秒另计。六旧QA466.6981428、五例41.5592856、旧首次GPU152.273702秒及旧未知hold/REJECT保留历史；账本results/closure_mechanism_20261019/cost_snapshot.json。
+默认模型采用none，真实L1/L2尚未完成；新检查点模块依赖旧训练core仍仅归档。旧入口命名失败/旧96更新保留，PR #30 Job/helper工程合main及全部旧费用/失败/hold保留。旧18×5126085.6472446、384测时、五例、QA06均未重跑。原项目val/test关闭、TASK4暂停；40状态、100ms一次因果、真实区间、失稳样本、数据配额、物理单位、数值及科学门槛不变。
 
-原项目val/test关闭、TASK4暂停；40状态、100ms一次因果、真实区间、失稳样本、数据配额、数值及科学门槛不变。归档分支codex/edge-memory-discrimination-20261021，最近已核6b6a005735ff34b6a52086a9e3e8463502e6a3e0，本次main核验/下一规划待同步。local HEADa95101337855ed3fc1f4abfd710982443d5564cb、index SHA82b060840d50257c41df55e15805fa106f29117cac8bf1868a6b83e490e2df93保持；不reset/强推/删证据，heartbeat继续。
+当前复现命令：标准Python运行private_data/closure_mechanism_20261019/P1/finite_grammar_execution01/launch.py run --source-commit b8cdcaa02db4b969a941cec7035c9daa7e3aa298(已执行，勿重开)。实际CUDA解释器由已核runtime选择为.venv-gpu/Scripts/python.exe，物理映像为标准Python。原始数组、模型/Adam、QA状态和完整native保留本地及SHA引用；已完成目录不重用。
+
+全部进程额度取消，实际费用账本results/closure_mechanism_20261019/cost_snapshot.json；旧费用历史不转写PASS。归档分支codex/edge-memory-discrimination-20261021，最近已核5f2b7dbf011a0804c6487bf296b6a5b781effa81，本次开跑状态同步中。local HEADa95101337855ed3fc1f4abfd710982443d5564cb、index SHA82b060840d50257c41df55e15805fa106f29117cac8bf1868a6b83e490e2df93保持；不reset/强推/删证据，heartbeat继续。
