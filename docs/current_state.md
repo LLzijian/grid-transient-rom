@@ -1,5 +1,7 @@
 # 当前研究状态
 
+任务RUNNING：人类2026-10-22最新明确回复“允许复验，通过后继续训练”，已授权一次QA05，通过即原12组GPU训练。新授权JSON qa05_authority_20261022.json已远端00361a2373257cbf1062a675f25ba9d2bfe542b1归档。实际gpt-6-astra只读规划进行中，尚未QA05、无科学PID/作业或锁。下列QA04失败与旧授权耗尽记录为历史，已由新授权前瞻覆盖，不再等待同一回复。
+
 任务BLOCKED（执行复验授权），cwd E:/03-nn_Transfer_Func/kiki。重构机制A2已通过，但人类限定的唯一完整QA04实际为73项通过、26项测试设置报错，未满足训练/集成资格。没有活动训练、科学PID或队列，正式更新0，合成val未生成。原项目val/test关闭、TASK4暂停，40状态/100ms一次初始化/全部真实区间/失稳样本与数值标准保持，默认模型不变。
 
 **决定性结果**：QA04源6eb63542ee4da28be4227d653d32f3d48bd8367f，worker47152/FILETIME134371262453630886，pytest78.81秒；native wall81.6594533、CPU user19.375/kernel31.46875，exit2、Job0/cleanup=true/无遗留清理，100文件前后一致、锁已清。native SHA d49f6db12049ecef2160460037237fffe46b96178ef13435e6fc1e8c6138aa12。[结论](../reports/executor_reconstruction_20261022_conclusion.md)、[摘要](../results/rational_execution_20261021/qa04_summary.json)。原8项数学、Job与环境检查通过；26个准入测试在共同fixture设置失败，完整验收不能据此放行。
