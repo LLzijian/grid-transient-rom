@@ -1,0 +1,5 @@
+# root采纳实际Astra6检查点续接方案
+
+指定模型gpt-6-astra，实际子代理/root/astra6_qa05_plan_20261022在当前GPU失败后完成只读规划，完整返回保存astra6_checkpoint_continuation_20261022_raw.txt。root采纳根因与三份32来源迁移路线，固定一次非GPU集合、4条132更新CUDA验证、三份原状态加载核验，再6048正式更新；不重跑旧96、不选择性重训、不QA07、不改旧complete。
+
+具体工程选择：新增rational_checkpoint_recovery_20261022模块与专用测试/入口，不改旧资格所绑定的64个.py或54数值依赖；修正只体现在新增诊断命名/显式迁移/固定续接。旧QA06仍只证明旧已验范围，原失败完整留档。当前完整81文件PR撤回，无已合代码需要revert。新stage在现有连续授权与原12比较内推进，无需再问同一许可。固定细节见checkpoint_continuation_20261022_protocol.md，独立挑战后执行。Root保留科学解释/采用/最终决定。
