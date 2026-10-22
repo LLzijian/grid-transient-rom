@@ -1,0 +1,69 @@
+....................F....................F....F.                         [100%]
+================================== FAILURES ===================================
+____ test_third_qa_tampered_authority_rejected_even_with_new_binding_hash _____
+
+repair_binding = {'source_commit': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'phase': 'qa', 'group': None, 'qa_attempt': 3, ...}
+
+    def test_third_qa_tampered_authority_rejected_even_with_new_binding_hash(repair_binding):
+        name,_=execution.REPAIR_INPUTS['additional_repair_authority'];path=execution.ROOT/name
+>       authority=json.loads(path.read_text());authority['additional_qa_executions']=2;path.write_text(json.dumps(authority))
+                             ^^^^^^^^^^^^^^^^
+
+tests\test_rational_execution_20261021.py:257: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('E:/03-nn_Transfer_Func/kiki/private_data/closure_mechanism_20261019/P1/rational_execution01/qa03/pytest_tmp/test_third_qa_tampered_authori0/results/rational_execution_20261021/additional_repair_authority_20261022.json')
+encoding = 'locale', errors = None
+
+    def read_text(self, encoding=None, errors=None):
+        """
+        Open the file in text mode, read it, and close the file.
+        """
+        encoding = io.text_encoding(encoding)
+        with self.open(mode='r', encoding=encoding, errors=errors) as f:
+>           return f.read()
+                   ^^^^^^^^
+E           UnicodeDecodeError: 'gbk' codec can't decode byte 0xaf in position 80: illegal multibyte sequence
+
+C:\Users\LLLzijian\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py:1028: UnicodeDecodeError
+__________________ test_normal_owned_subtree_and_exact_role ___________________
+
+tmp_path = WindowsPath('E:/03-nn_Transfer_Func/kiki/private_data/closure_mechanism_20261019/P1/rational_execution01/qa03/pytest_tmp/test_normal_owned_subtree_and_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001F7B11B8A40>
+
+    def test_normal_owned_subtree_and_exact_role(tmp_path,monkeypatch):
+     requested_flags=[];real_api=j.api
+     class RecordingAPI:
+      def __init__(self,api):self.api=api
+      def __getattr__(self,name):return getattr(self.api,name)
+      def CreateProcessW(self,*args):
+       requested_flags.append(args[5]);return self.api.CreateProcessW(*args)
+     monkeypatch.setattr(j,'api',lambda:RecordingAPI(real_api()))
+     r=j.supervise(command("import subprocess,sys;subprocess.run([sys.executable,'-c','pass'],check=True)"),tmp_path/'normal',tmp_path/'lock',{},ROOT,provenance={'source_commit':'a'*40,'group':'0_rational','phase':'qa'})
+>    assert r['status']=='COMPLETED' and r['job_active_processes']==0 and r['job_total_processes']>=2
+E    AssertionError: assert ('FAILED' == 'COMPLETED'
+E      
+E      - COMPLETED
+E      + FAILED)
+
+tests\test_uncapped_windows_job_20261021.py:26: AssertionError
+________ test_actual_worker_receipt_is_retained_inside_redirector_job _________
+
+tmp_path = WindowsPath('E:/03-nn_Transfer_Func/kiki/private_data/closure_mechanism_20261019/P1/rational_execution01/qa03/pytest_tmp/test_actual_worker_receipt_is_0')
+
+    def test_actual_worker_receipt_is_retained_inside_redirector_job(tmp_path):
+     receipt=tmp_path/'worker.json';release=tmp_path/'release'
+     code="import sys,time,pathlib;sys.path.insert(0,"+repr(str(ROOT/'experiments'))+");from uncapped_windows_job_20261021 import identity,atomic;atomic("+repr(str(receipt))+",{**identity(),'phase':'qa','group':None,'source_commit':'"+'b'*40+"','qa_attempt':2});p=pathlib.Path("+repr(str(release))+");exec('while not p.exists():time.sleep(.01)')"
+     r=j.supervise(command(code),tmp_path/'actual',tmp_path/'lock',{},ROOT,worker_receipt=receipt,on_worker_owned=lambda w:release.write_text('owned'),provenance={'phase':'qa','group':None,'source_commit':'b'*40,'qa_attempt':2})
+>    assert r['status']=='COMPLETED' and r['launcher_exit_code']==r['worker_exit_code']==0
+E    AssertionError: assert ('FAILED' == 'COMPLETED'
+E      
+E      - COMPLETED
+E      + FAILED)
+
+tests\test_uncapped_windows_job_20261021.py:71: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_rational_execution_20261021.py::test_third_qa_tampered_authority_rejected_even_with_new_binding_hash
+FAILED tests/test_uncapped_windows_job_20261021.py::test_normal_owned_subtree_and_exact_role
+FAILED tests/test_uncapped_windows_job_20261021.py::test_actual_worker_receipt_is_retained_inside_redirector_job
+3 failed, 45 passed in 50.80s
