@@ -10,6 +10,8 @@
 
 保留原make、分组Adam学习率、batch12/clip100/float64/CUDA和每seed事件索引流。每模型固定2048更新，全部12共24576新正式更新；保存0/512/2048共36checkpoint。512真实重建恢复后继续，总12恢复，不早淘汰、不挑checkpoint。长窗口每更新积分200步，短窗口50步；相同更新数不等于相同计算量，报告各组优化积分步数与实际wall/CPU。已有原shared.restore仅用于512，不修改旧来源。最终2048实际Adam/trace/RNG/来源必须核验，不用标记模拟更新。
 
+积分步数的统计口径为批量rollout的RK4时间步，不乘batch12、不乘每步四次RHS计算，且不含评价或QA。训练状态冻结字段与数值资格分开：all_twelve_frozen表示所有实际状态与计数通过，不代表所有评价数值合格；无效评价继续明确标为UNRESOLVED，不支持该配对结论。
+
 ## 一次相关QA与执行
 
 新增experiments/horizon_pair_20261023.py、专用tests及P1/horizon_pair01薄入口/输入绑定。沿用Windows Job/runtime选择、真实创建身份和锁、源前后及退出/清理证明，不建立新调度系统，不设任何进程额度。先核旧完整native/selection/pool/teacher及train输入SHA，无重复Job后方开跑。正式目录排他、不可覆盖旧证据；无任意外部resume，中断闭合后最多一次非择优来源续接须另登记，计数不重置。
