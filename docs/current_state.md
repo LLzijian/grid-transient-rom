@@ -8,10 +8,10 @@
 
 上轮增长受控六机制完整比较已闭合：科学源c9ec666fc7e8dd5ad04f63d9bea3ada33d4ec7a2、会话39552已退出0，原worker8544/FILETIME134371580519701416和supervisor46124/FILETIME134371580515422234已结束，复用PID不属于本轮。typed0/Job0/无孤儿清理/锁清，162项源前后及当时当前字节同；9216正式更新/72检查点/36内部恢复/54排名，全状态冻结PASS，144模型/Adam文件SHA独立核同。全部54排名与唯一一次新合成val数值合格；选择3/0/3均非teacher2，teacher名次3/6/5。18条末期拟合loss仍改善，0.5s拟合与(2,5]排名范围不同，不支持已充分收敛、不可辨识或模型族证伪。[结论](../reports/bounded_edge_grammar_20261022_conclusion.md)、[完成证据](../results/bounded_edge_grammar_20261022/completion_summary.json)。原上上轮teacher数值失败与6102误选保持原分类。
 
-独立结果审查通过，六文件结果文档已由PR #32合main，远端merge e03a6ec09d91bd127f0254655ee88ebbbe1b90f7、预期head6c0c460d7a01e71cb4610835d8f7c38a8b173287、父提交/树/六份原始blob均核验，[证明](../results/bounded_edge_grammar_20261022/main_verification.json)。研究模块仍在归档分支，不随结果文档采用；PR #30工程与PR #31已知形式比较保持。当前全部模型为研究候选，默认采用none；真实L1/L2未完成。
+本轮独立结果审查PASS，精确六文件结果文档已由PR #33合main，远端merge1b19fa9c8034b78e1863a7f35ed81ae55d9a845c、预期head6c55282a7c29845f85a7ddbc570819ee91d2d1a3、父提交/树/六份本地与远端原始blob核验一致，证明results/horizon_pair_20261023/main_verification.json。研究模块与模型均未随结果文档采用；PR #30工程、#31已知形式、#32上轮六机制结果保留。当前默认模型none，真实L1/L2未完成。
 
 全部进程额度取消，保留实际账目，wall与CPU分列不相加冒充wall。上轮正式wall32077.1934998秒、CPU user24505.265625/kernel5598.296875；freeze wall17.6278757、QA wall156.7825392秒及36CUDA/2CPU资格更新另计。完成后只读事实提取tool wall5.9077553秒，未记录PID/CPU保留null，不伪造。本轮QA wall742.8788908秒、CPU user508.125/kernel109.984375，正式训练wall132090.7268424秒、JobCPU user101114.828125/kernel24601.015625秒，完整回执已核；历史失败、REJECT、未知hold不改。账本results/closure_mechanism_20261019/cost_snapshot.json。
 
-原项目val/test关闭、TASK4暂停，40状态/100ms一次初始化/真实区间/失稳样本/单位/数据配额/数值及模型门槛不变。全部源检查点、数组、Adam/trace及不利结果按本地路径留存，大文件以SHA引用；关键设计/结果归档codex/edge-memory-discrimination-20261021，最近已核341bc86f377bc531c62ba64fa765402410206d4c，十一模型完整端点本次选择性归档。local HEADa95101337855ed3fc1f4abfd710982443d5564cb及index SHA82b060840d50257c41df55e15805fa106f29117cac8bf1868a6b83e490e2df93保持，不reset/强推/删证据，heartbeat继续。
+原项目val/test关闭、TASK4暂停，40状态/100ms一次初始化/真实区间/失稳样本/单位/数据配额/数值及模型门槛不变。全部源检查点、数组、Adam/trace及不利结果按本地路径留存，大文件以SHA引用；关键设计/结果归档codex/edge-memory-discrimination-20261021，本轮闭合归档de865691be723ba3b95a1f5a2dca1ba3abbe3ff4，状态更新归档0966eba63a7b423a51e60bdc4442750622f3c7b1；PR #33远端验证证据本次归档。local HEADa95101337855ed3fc1f4abfd710982443d5564cb及index SHA82b060840d50257c41df55e15805fa106f29117cac8bf1868a6b83e490e2df93保持，不reset/强推/删证据，heartbeat继续。
 
 实际已执行命令：标准Python private_data/closure_mechanism_20261019/P1/horizon_pair01/launch.py run --source-commit ebd45248a25905dbf5af4a3cea8c4073a02994db。复现不可重用已存在目录；QA/run仍绑定179文件，科学源/协议/独立review/QA来源期间保持字节不变。

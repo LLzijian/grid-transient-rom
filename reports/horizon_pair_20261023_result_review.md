@@ -57,8 +57,8 @@ completion_facts保留实际拟合loss摘要：短组最后32/前32均值比为0
 |---|---|
 |`reports/horizon_pair_20261023_protocol.md`|`0f35eb831c2d64c6815e17ad7b8f125ab715c8dfef4437eb21ac39289b9efe43`|
 |`reports/horizon_pair_20261023_conclusion.md`|`46d0af62d88f393f7640ed334a24f4a9d96ab58761b02a33ed2fd1e25258b091`|
-|`results/horizon_pair_20261023/completion_summary.json`|`99390f3d0d830ceb492cc984e1efccd660a2b75395aae89dab974013955c097a`|
+|`results/horizon_pair_20261023/completion_summary.json`|`417639670a6a90a829bbd77d1acd10caffff14cbbac25301088e760072f68b92`|
 |`results/horizon_pair_20261023/completion_facts.json`|`d087e3ae94d4dab55941aa50e08ffbffce479096086acf0f7286b0f3d15d8ba3`|
 |`results/horizon_pair_20261023/qa_summary.json`|`612ead3d75fd1a778f533980c422d6699bd830b954eb48a033cf3e75ffc2f794`|
 
-completion_summary的此版status为`COMPLETED_FIXED_WORKLOAD_PENDING_INDEPENDENT_RESULT_REVIEW`；本审查PASS后允许root仅机械更新该status/审查标记，不改科学数据与范围，并记录其最终新SHA。除此之外的结果或主张变更须重新核实际差异。本结论不授权新科学或改变下一阶段参数，不等于真实系统L1/L2、独立确认或默认模型晋升。
+最终completion_summary已核为`COMPLETED_FIXED_WORKLOAD`，scope明确无独立确认、无模型采用；新增completion_facts引用的路径、254318字节及SHA与最终事实文件一致。更新后的24576/12/12/36计数、72文件证明条目数、182来源及全部paired_profile/paired_changes仍与已审实际selection相符，元数据更新不改变本次PASS或上述精确六文件范围。任何后续结果或主张变更须再核实际差异。本结论不授权新科学或改变下一阶段参数，不等于真实系统L1/L2、独立确认或默认模型晋升。
