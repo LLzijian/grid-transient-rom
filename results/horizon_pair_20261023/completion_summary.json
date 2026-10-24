@@ -1,0 +1,840 @@
+{
+  "status": "COMPLETED_FIXED_WORKLOAD",
+  "source_commit": "ebd45248a25905dbf5af4a3cea8c4073a02994db",
+  "observed_utc": "2026-10-24T15:21:46.546454+00:00",
+  "actual_updates": 24576,
+  "actual_restores": 12,
+  "actual_models": 12,
+  "actual_checkpoints": 36,
+  "all_twelve_state_validation": "PASS",
+  "all96_train_windows_valid": true,
+  "paired_profile": [
+    {
+      "competitor_minus_teacher_mse": -0.1372123780831005,
+      "decision": "COMPETITOR",
+      "future": 50,
+      "interval": [
+        -0.13721237835553052,
+        -0.13721237781067047
+      ],
+      "numerical_error_bound": 2.724300111263997e-10,
+      "seed": 6301,
+      "updates": 512,
+      "valid": true
+    },
+    {
+      "competitor_minus_teacher_mse": -0.015912409211052747,
+      "decision": "COMPETITOR",
+      "future": 50,
+      "interval": [
+        -0.01591240947266796,
+        -0.015912408949437535
+      ],
+      "numerical_error_bound": 2.6161521130341324e-10,
+      "seed": 6301,
+      "updates": 2048,
+      "valid": true
+    },
+    {
+      "competitor_minus_teacher_mse": 0.027124633507851353,
+      "decision": "TEACHER",
+      "future": 200,
+      "interval": [
+        0.027124633336640096,
+        0.02712463367906261
+      ],
+      "numerical_error_bound": 1.7121125681424022e-10,
+      "seed": 6301,
+      "updates": 512,
+      "valid": true
+    },
+    {
+      "competitor_minus_teacher_mse": 0.016255988971110913,
+      "decision": "TEACHER",
+      "future": 200,
+      "interval": [
+        0.016255988826074538,
+        0.016255989116147288
+      ],
+      "numerical_error_bound": 1.4503637656303049e-10,
+      "seed": 6301,
+      "updates": 2048,
+      "valid": true
+    },
+    {
+      "competitor_minus_teacher_mse": -0.0332763141517686,
+      "decision": "COMPETITOR",
+      "future": 50,
+      "interval": [
+        -0.033276314267067786,
+        -0.03327631403646941
+      ],
+      "numerical_error_bound": 1.1529918927310732e-10,
+      "seed": 6302,
+      "updates": 512,
+      "valid": true
+    },
+    {
+      "competitor_minus_teacher_mse": -0.014255563412192335,
+      "decision": "COMPETITOR",
+      "future": 50,
+      "interval": [
+        -0.014255563528568075,
+        -0.014255563295816594
+      ],
+      "numerical_error_bound": 1.1637574060674679e-10,
+      "seed": 6302,
+      "updates": 2048,
+      "valid": true
+    },
+    {
+      "competitor_minus_teacher_mse": -0.00028749746867631765,
+      "decision": "COMPETITOR",
+      "future": 200,
+      "interval": [
+        -0.00028749755681377136,
+        -0.00028749738053886393
+      ],
+      "numerical_error_bound": 8.81374537203633e-11,
+      "seed": 6302,
+      "updates": 512,
+      "valid": true
+    },
+    {
+      "competitor_minus_teacher_mse": 0.005277828773265672,
+      "decision": "TEACHER",
+      "future": 200,
+      "interval": [
+        0.005277828697416597,
+        0.005277828849114747
+      ],
+      "numerical_error_bound": 7.584907492966759e-11,
+      "seed": 6302,
+      "updates": 2048,
+      "valid": true
+    },
+    {
+      "competitor_minus_teacher_mse": -0.1277015372979176,
+      "decision": "COMPETITOR",
+      "future": 50,
+      "interval": [
+        -0.12770153749060553,
+        -0.1277015371052297
+      ],
+      "numerical_error_bound": 1.926879335345554e-10,
+      "seed": 6303,
+      "updates": 512,
+      "valid": true
+    },
+    {
+      "competitor_minus_teacher_mse": -0.08427902598091797,
+      "decision": "COMPETITOR",
+      "future": 50,
+      "interval": [
+        -0.08427902616215777,
+        -0.08427902579967816
+      ],
+      "numerical_error_bound": 1.8123979577332736e-10,
+      "seed": 6303,
+      "updates": 2048,
+      "valid": true
+    },
+    {
+      "competitor_minus_teacher_mse": -0.006632166891522712,
+      "decision": "COMPETITOR",
+      "future": 200,
+      "interval": [
+        -0.006632167011463479,
+        -0.006632166771581944
+      ],
+      "numerical_error_bound": 1.1994076698416894e-10,
+      "seed": 6303,
+      "updates": 512,
+      "valid": true
+    },
+    {
+      "competitor_minus_teacher_mse": 0.015663797269855215,
+      "decision": "TEACHER",
+      "future": 200,
+      "interval": [
+        0.015663797167353003,
+        0.015663797372357426
+      ],
+      "numerical_error_bound": 1.0250221109471921e-10,
+      "seed": 6303,
+      "updates": 2048,
+      "valid": true
+    }
+  ],
+  "paired_changes": {
+    "contrasts": [
+      {
+        "comparison": "fixed_window_512_to2048",
+        "direction": "IMPROVED",
+        "from": [
+          50,
+          512
+        ],
+        "interval": [
+          0.12129996833800252,
+          0.12129996940609297
+        ],
+        "numerical_error_bound": 5.340452224298129e-10,
+        "relative_teacher_gain_change": 0.12129996887204775,
+        "seed": 6301,
+        "to": [
+          50,
+          2048
+        ],
+        "valid": true
+      },
+      {
+        "comparison": "fixed_window_512_to2048",
+        "direction": "WORSENED",
+        "from": [
+          200,
+          512
+        ],
+        "interval": [
+          -0.010868644852988074,
+          -0.010868644220492807
+        ],
+        "numerical_error_bound": 3.162476333772707e-10,
+        "relative_teacher_gain_change": -0.01086864453674044,
+        "seed": 6301,
+        "to": [
+          200,
+          2048
+        ],
+        "valid": true
+      },
+      {
+        "comparison": "fixed_endpoint_short_to_long",
+        "direction": "IMPROVED",
+        "from": [
+          50,
+          512
+        ],
+        "interval": [
+          0.16433701114731059,
+          0.1643370120345931
+        ],
+        "numerical_error_bound": 4.4364126794063993e-10,
+        "relative_teacher_gain_change": 0.16433701159095185,
+        "seed": 6301,
+        "to": [
+          200,
+          512
+        ],
+        "valid": true
+      },
+      {
+        "comparison": "fixed_endpoint_short_to_long",
+        "direction": "IMPROVED",
+        "from": [
+          50,
+          2048
+        ],
+        "interval": [
+          0.03216839777551207,
+          0.03216839858881525
+        ],
+        "numerical_error_bound": 4.0665158786644373e-10,
+        "relative_teacher_gain_change": 0.03216839818216366,
+        "seed": 6301,
+        "to": [
+          200,
+          2048
+        ],
+        "valid": true
+      },
+      {
+        "comparison": "fixed_window_512_to2048",
+        "direction": "IMPROVED",
+        "from": [
+          50,
+          512
+        ],
+        "interval": [
+          0.019020750507901335,
+          0.019020750971251194
+        ],
+        "numerical_error_bound": 2.316749298798541e-10,
+        "relative_teacher_gain_change": 0.019020750739576264,
+        "seed": 6302,
+        "to": [
+          50,
+          2048
+        ],
+        "valid": true
+      },
+      {
+        "comparison": "fixed_window_512_to2048",
+        "direction": "IMPROVED",
+        "from": [
+          200,
+          512
+        ],
+        "interval": [
+          0.005565326077955461,
+          0.005565326405928518
+        ],
+        "numerical_error_bound": 1.639865286500309e-10,
+        "relative_teacher_gain_change": 0.00556532624194199,
+        "seed": 6302,
+        "to": [
+          200,
+          2048
+        ],
+        "valid": true
+      },
+      {
+        "comparison": "fixed_endpoint_short_to_long",
+        "direction": "IMPROVED",
+        "from": [
+          50,
+          512
+        ],
+        "interval": [
+          0.03298881647965564,
+          0.032988816886528924
+        ],
+        "numerical_error_bound": 2.0343664299347063e-10,
+        "relative_teacher_gain_change": 0.03298881668309228,
+        "seed": 6302,
+        "to": [
+          200,
+          512
+        ],
+        "valid": true
+      },
+      {
+        "comparison": "fixed_endpoint_short_to_long",
+        "direction": "IMPROVED",
+        "from": [
+          50,
+          2048
+        ],
+        "interval": [
+          0.01953339199323319,
+          0.019533392377682823
+        ],
+        "numerical_error_bound": 1.9222481553641438e-10,
+        "relative_teacher_gain_change": 0.019533392185458007,
+        "seed": 6302,
+        "to": [
+          200,
+          2048
+        ],
+        "valid": true
+      },
+      {
+        "comparison": "fixed_window_512_to2048",
+        "direction": "IMPROVED",
+        "from": [
+          50,
+          512
+        ],
+        "interval": [
+          0.04342251094307192,
+          0.043422511690927375
+        ],
+        "numerical_error_bound": 3.7392772930788277e-10,
+        "relative_teacher_gain_change": 0.043422511316999646,
+        "seed": 6303,
+        "to": [
+          50,
+          2048
+        ],
+        "valid": true
+      },
+      {
+        "comparison": "fixed_window_512_to2048",
+        "direction": "IMPROVED",
+        "from": [
+          200,
+          512
+        ],
+        "interval": [
+          0.02229596393893495,
+          0.022295964383820904
+        ],
+        "numerical_error_bound": 2.2244297807888815e-10,
+        "relative_teacher_gain_change": 0.022295964161377926,
+        "seed": 6303,
+        "to": [
+          200,
+          2048
+        ],
+        "valid": true
+      },
+      {
+        "comparison": "fixed_endpoint_short_to_long",
+        "direction": "IMPROVED",
+        "from": [
+          50,
+          512
+        ],
+        "interval": [
+          0.1210693700937662,
+          0.1210693707190236
+        ],
+        "numerical_error_bound": 3.126287005187243e-10,
+        "relative_teacher_gain_change": 0.1210693704063949,
+        "seed": 6303,
+        "to": [
+          200,
+          512
+        ],
+        "valid": true
+      },
+      {
+        "comparison": "fixed_endpoint_short_to_long",
+        "direction": "IMPROVED",
+        "from": [
+          50,
+          2048
+        ],
+        "interval": [
+          0.09994282296703118,
+          0.09994282353451518
+        ],
+        "numerical_error_bound": 2.8374200686804657e-10,
+        "relative_teacher_gain_change": 0.09994282325077318,
+        "seed": 6303,
+        "to": [
+          200,
+          2048
+        ],
+        "valid": true
+      }
+    ],
+    "long2048_teacher_separated_all_three": true
+  },
+  "planned_counts": {
+    "checkpoints": 36,
+    "dual_step_model_evaluations": 24,
+    "formal_updates": 24576,
+    "models": 12,
+    "optimization_rk4_steps_long": 2457600,
+    "optimization_rk4_steps_short": 614400,
+    "restores": 12,
+    "updates_per_model": 2048
+  },
+  "native": {
+    "wall_seconds": 132090.72684239998,
+    "job_cpu_user_seconds": 101114.828125,
+    "job_cpu_kernel_seconds": 24601.015625,
+    "actual_worker_state": "GONE",
+    "job_active_processes": 0,
+    "exit_code": 0,
+    "worker_exit_code": 0,
+    "launcher_exit_code": 0,
+    "cleanup_verified": true,
+    "orphans_cleaned": false,
+    "worker_end": {
+      "creation_filetime_utc": 134371959572540099,
+      "exit_filetime_utc": 134373280439349613,
+      "kernel_100ns": 246010156250,
+      "user_100ns": 1011148281250
+    },
+    "supervisor_end_observed_filetime_utc": 134373280478935978
+  },
+  "source_snapshot_count": 182,
+  "source_before_after_current_equal": true,
+  "lock_clear": true,
+  "checkpoint_files": [
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6301_candidate2_future50\\checkpoint_00000\\model.json",
+      "sha256": "6a2a4290990bec595a0e06151e5402161c8ff355a51702b860a5e6b9a1f370c0",
+      "bytes": 111417
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6301_candidate2_future50\\checkpoint_00000\\training.pt",
+      "sha256": "117d803d140a5e4ff652d67f083e4c65d3a83d021e000c40a0d16a4ee4da0e39",
+      "bytes": 8109
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6301_candidate2_future50\\checkpoint_00512\\model.json",
+      "sha256": "496328c169456f3f21f3a7fbc25b36c0627a77729968e89eae81bff0f33d7ea0",
+      "bytes": 113199
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6301_candidate2_future50\\checkpoint_00512\\training.pt",
+      "sha256": "f8786fceb31fa76f14541f8628044b8dfaa3ae5a8610d3247bff7e4ccaf0f266",
+      "bytes": 33535
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6301_candidate2_future50\\checkpoint_02048\\model.json",
+      "sha256": "6e9fcc5e136d977f4284615b4a4b3c9b725197d1e3faf1338ec51c1920cb4a2a",
+      "bytes": 113265
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6301_candidate2_future50\\checkpoint_02048\\training.pt",
+      "sha256": "9471c180104b9a48a87f41ceab43b0f68af107668777d0ec930c6736da9f8113",
+      "bytes": 47359
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6301_candidate2_future200\\checkpoint_00000\\model.json",
+      "sha256": "6a2a4290990bec595a0e06151e5402161c8ff355a51702b860a5e6b9a1f370c0",
+      "bytes": 111417
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6301_candidate2_future200\\checkpoint_00000\\training.pt",
+      "sha256": "a0f0ad29e1eb83c87c91aed1e0c8a9749c0b3fac9b07bd89269482c76df244b3",
+      "bytes": 8109
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6301_candidate2_future200\\checkpoint_00512\\model.json",
+      "sha256": "f70b9921e12af22445a0547515b97345ed658759679198b52944f2d3d3d0cf2b",
+      "bytes": 113182
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6301_candidate2_future200\\checkpoint_00512\\training.pt",
+      "sha256": "c8c99c4a13d7f449e3e7c847e4520980ae83c5f7937c2b6e1fd311ee8fad4335",
+      "bytes": 33535
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6301_candidate2_future200\\checkpoint_02048\\model.json",
+      "sha256": "7d1a76f1cebadca609a0124a686fd6059ef1171078c3d8c8da85d64811784aef",
+      "bytes": 113206
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6301_candidate2_future200\\checkpoint_02048\\training.pt",
+      "sha256": "b457ae8409a1a4c6961d7df6f5e055308cd726ea50d5e088653aa7a074797988",
+      "bytes": 47359
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6301_candidate3_future50\\checkpoint_00000\\model.json",
+      "sha256": "1e8b70e5dd63bd0013804c5e2a1cfdee0b1d05492d09749576538b36fbb4b9fc",
+      "bytes": 111994
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6301_candidate3_future50\\checkpoint_00000\\training.pt",
+      "sha256": "ee3d60260d1f2977ed05688aee160affe3e4b7aa3f9cdf109bf5dd3599866d7f",
+      "bytes": 8237
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6301_candidate3_future50\\checkpoint_00512\\model.json",
+      "sha256": "0d81fed891e67ef42f266214723e4d8b3300941fd7e136255058c988b3e3e625",
+      "bytes": 113793
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6301_candidate3_future50\\checkpoint_00512\\training.pt",
+      "sha256": "07e424aca2331054618a4f68f1e45c5b7b56314a16642cafa340b8d11b72a9d6",
+      "bytes": 33663
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6301_candidate3_future50\\checkpoint_02048\\model.json",
+      "sha256": "0e0cf378da537c417acdfb9f76a2575a06b1236c5f1e5c592ee8dc30b47e98aa",
+      "bytes": 113848
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6301_candidate3_future50\\checkpoint_02048\\training.pt",
+      "sha256": "1f6ea21d6251f10c8b889e8095b9b0822025e46c9d12a2e82f2fbab60d733af0",
+      "bytes": 47487
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6301_candidate3_future200\\checkpoint_00000\\model.json",
+      "sha256": "1e8b70e5dd63bd0013804c5e2a1cfdee0b1d05492d09749576538b36fbb4b9fc",
+      "bytes": 111994
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6301_candidate3_future200\\checkpoint_00000\\training.pt",
+      "sha256": "c4ae4000f8b9780b22fa3cfde5b657b9d8abf6ab4049a47bc27462c6af21359b",
+      "bytes": 8237
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6301_candidate3_future200\\checkpoint_00512\\model.json",
+      "sha256": "e7d71d99878aa74eb80a75d9a74c545719d1e1337335ed62f917248d8dc265c1",
+      "bytes": 113750
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6301_candidate3_future200\\checkpoint_00512\\training.pt",
+      "sha256": "da1523dbd9aefaf5395a4280b608bb00f5ab19357b3666d8919b3bc7efbbc3a5",
+      "bytes": 33663
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6301_candidate3_future200\\checkpoint_02048\\model.json",
+      "sha256": "9b203e016f460442fafce17904fbe29f54ce3a1afd558bc4d92d82374eb23206",
+      "bytes": 113793
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6301_candidate3_future200\\checkpoint_02048\\training.pt",
+      "sha256": "1d7eba23830c02c122f1986b1ce28819b5b86cae753e8af7509b3bcf70c2c070",
+      "bytes": 47487
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6302_candidate2_future50\\checkpoint_00000\\model.json",
+      "sha256": "161af5954921c636605b7c7920a5139e24897956df564e6c1336376c73ba8057",
+      "bytes": 111445
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6302_candidate2_future50\\checkpoint_00000\\training.pt",
+      "sha256": "73ac0f7eea6f0eba050021c8c729b46cf1e351817358a8eb7bef7955e3c29bfa",
+      "bytes": 8109
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6302_candidate2_future50\\checkpoint_00512\\model.json",
+      "sha256": "f1fe3919095bf4c0da61d1f0afa6526adf2643773c340c1e64500e1eb04d5522",
+      "bytes": 113223
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6302_candidate2_future50\\checkpoint_00512\\training.pt",
+      "sha256": "0f1b1af4a07e53d27fc586422829a09c0499269c1ed0edfb046a4f68c97fe8c0",
+      "bytes": 33535
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6302_candidate2_future50\\checkpoint_02048\\model.json",
+      "sha256": "66c39532057c36be31b44335664b478a36f7517a421f579b1699f0a52ff3f248",
+      "bytes": 113221
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6302_candidate2_future50\\checkpoint_02048\\training.pt",
+      "sha256": "2d0c1665ddabab897896f28a3dddb64abd0bd4afe0ea40576b9fa81bfcf52b09",
+      "bytes": 47359
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6302_candidate2_future200\\checkpoint_00000\\model.json",
+      "sha256": "161af5954921c636605b7c7920a5139e24897956df564e6c1336376c73ba8057",
+      "bytes": 111445
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6302_candidate2_future200\\checkpoint_00000\\training.pt",
+      "sha256": "1b6a15ff8bfb12b6d7e76576a8827746e3b57be51ba6f1b56d2cb13b03c31eed",
+      "bytes": 8109
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6302_candidate2_future200\\checkpoint_00512\\model.json",
+      "sha256": "3331797c0d3c2431dab80b90b5451db5bc8657ddc45cf93a66c620c99fe29b46",
+      "bytes": 113222
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6302_candidate2_future200\\checkpoint_00512\\training.pt",
+      "sha256": "5e6a60c3ec418fff17aca48f3871fef425dff94e3c92daf972cf260f77acb633",
+      "bytes": 33535
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6302_candidate2_future200\\checkpoint_02048\\model.json",
+      "sha256": "8b500530b127fcf41ddae6474ed0e54acd3060b1e3bb204dd4ea4465ffc31208",
+      "bytes": 113150
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6302_candidate2_future200\\checkpoint_02048\\training.pt",
+      "sha256": "bced2c00a12fa061a24ae443223f7a8d15a78530d52a535c61f0adcc96ec2691",
+      "bytes": 47359
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6302_candidate3_future50\\checkpoint_00000\\model.json",
+      "sha256": "64bb1e354e6f58dc9499b3b3467ff2fff165f944979bb738906349b25a2c1390",
+      "bytes": 112022
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6302_candidate3_future50\\checkpoint_00000\\training.pt",
+      "sha256": "41342d164b6fa07a7eaf486dfd6780f39ed259f0faf9c85099b2d36a131422c3",
+      "bytes": 8237
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6302_candidate3_future50\\checkpoint_00512\\model.json",
+      "sha256": "13255bcdf5cf2233c7c4b1bc562ed1b000c81be2546c038612352cbaceb24051",
+      "bytes": 113811
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6302_candidate3_future50\\checkpoint_00512\\training.pt",
+      "sha256": "500d07a2f82790dd8b49b7c779b8df648ec67dd6125f50facf1c8a7b013b4564",
+      "bytes": 33663
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6302_candidate3_future50\\checkpoint_02048\\model.json",
+      "sha256": "868bb1f780a1c1f859cee15b0d99a2e7d35b9c873a29a415ecfa06cfe65c2f5e",
+      "bytes": 113821
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6302_candidate3_future50\\checkpoint_02048\\training.pt",
+      "sha256": "322c7c40d64e4838edca96fa5e2761a27c2a2ec5f03b74e4f1133934f1ae5ee0",
+      "bytes": 47487
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6302_candidate3_future200\\checkpoint_00000\\model.json",
+      "sha256": "64bb1e354e6f58dc9499b3b3467ff2fff165f944979bb738906349b25a2c1390",
+      "bytes": 112022
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6302_candidate3_future200\\checkpoint_00000\\training.pt",
+      "sha256": "f937552bb1bcc209fa2872ed0504da4fbba4de065a1471d58b30a78d44bfc21b",
+      "bytes": 8237
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6302_candidate3_future200\\checkpoint_00512\\model.json",
+      "sha256": "dc4daa2bd99fff7f9dd773db9b45596d23eabb65eabd2e35627cc925735f2db6",
+      "bytes": 113799
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6302_candidate3_future200\\checkpoint_00512\\training.pt",
+      "sha256": "866d1a5ef8d8e50316c612188d0d3f485837783e0610efc33bba470161dd87e6",
+      "bytes": 33663
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6302_candidate3_future200\\checkpoint_02048\\model.json",
+      "sha256": "04e2fa6a6261ebef1798c1a57d8a7b678f17c7ff62deb3db8b038368025d8eae",
+      "bytes": 113787
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6302_candidate3_future200\\checkpoint_02048\\training.pt",
+      "sha256": "132d8bd5f80f9cde0c52b636f4d0187a14207af3cea7f3c30cb928e169cffd65",
+      "bytes": 47487
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6303_candidate2_future50\\checkpoint_00000\\model.json",
+      "sha256": "1c622f819d9f821818314c1d572b12c327c9dd7bd9cb9f5c0765497ab77d32ce",
+      "bytes": 111417
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6303_candidate2_future50\\checkpoint_00000\\training.pt",
+      "sha256": "f805f089299bb2802bce969efe452c8c3a7252237fed0ded791946bb89af2833",
+      "bytes": 8109
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6303_candidate2_future50\\checkpoint_00512\\model.json",
+      "sha256": "9f2b7ab2f1fddbe3ee2f83f462cd665e3507f324ec9f1e7be878160e87ec2164",
+      "bytes": 113229
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6303_candidate2_future50\\checkpoint_00512\\training.pt",
+      "sha256": "aab9c1e60c52950a46d51fcb375ab8040e7cb64a68f62f2d1d68a129bf32f847",
+      "bytes": 33535
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6303_candidate2_future50\\checkpoint_02048\\model.json",
+      "sha256": "9cd9bc88e13a7b5f4ba62db8788dae65297efe9012edfa50679f2effcacec0e6",
+      "bytes": 113203
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6303_candidate2_future50\\checkpoint_02048\\training.pt",
+      "sha256": "a98e0208e624f2aed4f34856e3cbbd894c45e4f90e0eb22f37e04c20a435d4de",
+      "bytes": 47359
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6303_candidate2_future200\\checkpoint_00000\\model.json",
+      "sha256": "1c622f819d9f821818314c1d572b12c327c9dd7bd9cb9f5c0765497ab77d32ce",
+      "bytes": 111417
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6303_candidate2_future200\\checkpoint_00000\\training.pt",
+      "sha256": "0b9482a68b3b07bceee6022c2ff301b3b4edab3af4bcfad335b0d0f89abc35b6",
+      "bytes": 8109
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6303_candidate2_future200\\checkpoint_00512\\model.json",
+      "sha256": "f08b06b7082efe0d697798df33b49845e36fd4c188ac4b80dfcdb58ae55bffd2",
+      "bytes": 113209
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6303_candidate2_future200\\checkpoint_00512\\training.pt",
+      "sha256": "c907d61bc75008adc3817de5fd60fb999fbe4e67e62a0b4a01c9ca2193a40dc5",
+      "bytes": 33535
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6303_candidate2_future200\\checkpoint_02048\\model.json",
+      "sha256": "af6974b1fcc4d8cec0e7b9bc026d6408c89eb7982b5f7073035ccb4a0523ac11",
+      "bytes": 113143
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6303_candidate2_future200\\checkpoint_02048\\training.pt",
+      "sha256": "5a718b7d6d1820e0ce78d9684e21e8839daee05cd0ad282763980dc1fa929a89",
+      "bytes": 47359
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6303_candidate3_future50\\checkpoint_00000\\model.json",
+      "sha256": "37623754d88ad1a7c296c336b80462336b7f2f818ec4ba893b33a3a701647407",
+      "bytes": 111994
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6303_candidate3_future50\\checkpoint_00000\\training.pt",
+      "sha256": "6b429564573805d85e9e3b570aad721a57c659d580e23a5e3735e634581c9336",
+      "bytes": 8237
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6303_candidate3_future50\\checkpoint_00512\\model.json",
+      "sha256": "8d9cec2a210e9e596d99b91423fa54f09b95f77de7255295418fdccb2073388e",
+      "bytes": 113837
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6303_candidate3_future50\\checkpoint_00512\\training.pt",
+      "sha256": "06e7e11854053c559e507ac620956b98222d14c268afdb3902b086160fa3940e",
+      "bytes": 33663
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6303_candidate3_future50\\checkpoint_02048\\model.json",
+      "sha256": "966d4ddf9904d5ef1feed7d118aadcda11a5f3fef261770dd8737a4e94568924",
+      "bytes": 113757
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6303_candidate3_future50\\checkpoint_02048\\training.pt",
+      "sha256": "80794d631a1e157457e55e31ee1d630d06ec5d6315746514d0895a65eb4312c0",
+      "bytes": 47487
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6303_candidate3_future200\\checkpoint_00000\\model.json",
+      "sha256": "37623754d88ad1a7c296c336b80462336b7f2f818ec4ba893b33a3a701647407",
+      "bytes": 111994
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6303_candidate3_future200\\checkpoint_00000\\training.pt",
+      "sha256": "3cd7bdb62f5f12461630756a0db3ba99cdc157e851ebec5c1c7449ec92dbd7aa",
+      "bytes": 8237
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6303_candidate3_future200\\checkpoint_00512\\model.json",
+      "sha256": "cb800e9dcee83e871d8ca4791a94e5a9ef5b105aa353f4f3e424342617567e25",
+      "bytes": 113763
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6303_candidate3_future200\\checkpoint_00512\\training.pt",
+      "sha256": "71c7835f4ac95d784f04171465eeda1865fb9feded5a3fc16eb23d6a0260143c",
+      "bytes": 33663
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6303_candidate3_future200\\checkpoint_02048\\model.json",
+      "sha256": "1f1a5a759939e55ce8d4a493590378180eabc05659cf07a24f59a79ff9ca47c0",
+      "bytes": 113710
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\6303_candidate3_future200\\checkpoint_02048\\training.pt",
+      "sha256": "6e1a8514cfcc69e031808aca69d241818ad50e71f5ecb0fa659ec0c125e0871e",
+      "bytes": 47487
+    }
+  ],
+  "model_adoption": "none",
+  "synthetic_val_accessed": false,
+  "project_val_accessed": false,
+  "project_test_accessed": false,
+  "scope": "two fixed mechanisms, three old train datasets, no independent confirmation; no model adoption; engineering optimization next",
+  "local_evidence": [
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\run\\complete.json",
+      "sha256": "43576f56c92e22f71cc512dd8578946b8157da6c68a56073de411661d53f6516",
+      "bytes": 530
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\native_run\\receipt.json",
+      "sha256": "819019f810de1804e4bb0fdfff4f0f55ec0b0217b76a95967e0d636428b1cb40",
+      "bytes": 67202
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\science\\selection.json",
+      "sha256": "6f1afa743e189cc1d28f76bd876a183d35fd8f9064c7e2db0bd1b129efbc1a0c",
+      "bytes": 302220
+    },
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\horizon_pair01\\binding.json",
+      "sha256": "8f592612bb6379c2cadeed66f434b246d805f77c02dee7eb49a2e994cc54859c",
+      "bytes": 33320
+    }
+  ],
+  "completion_facts": {
+    "path": "E:\\03-nn_Transfer_Func\\kiki\\results\\horizon_pair_20261023\\completion_facts.json",
+    "sha256": "d087e3ae94d4dab55941aa50e08ffbffce479096086acf0f7286b0f3d15d8ba3",
+    "bytes": 254318
+  }
+}
