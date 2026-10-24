@@ -1,0 +1,55 @@
+{
+  "scope": "Final CPU-only exactness/regression verification; isolated opt-in candidate, not GPU qualification",
+  "implementation": "experiments/compiled_expression_runtime_20261025.py",
+  "implementation_sha256": "fffa57f7ecee120684b8b4ca6d5f0e79142f9f1d1fc5f86171193f24a4ac9fa4",
+  "tests": "tests/test_compiled_expression_runtime_20261025.py",
+  "tests_sha256": "15cd33ea8c0d0d12bac71a0738c5805c1a73601ee665adc2dcfe8ee2e7abd8b1",
+  "exec_session_id": 54353,
+  "exit_code": 0,
+  "passed": 11,
+  "stdout": "...........                                                              [100%]\r\n11 passed in 29.60s\r\n",
+  "pytest_reported_seconds": 29.6,
+  "command": "__PYVENV_LAUNCHER__=E:/03-nn_Transfer_Func/kiki/.venv-gpu/Scripts/python.exe C:/Users/LLLzijian/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe -m pytest -q tests/test_compiled_expression_runtime_20261025.py --basetemp private_data/qce25_final -p no:cacheprovider",
+  "optimizer_updates": 0,
+  "gpu_updates": 0,
+  "precision": "float64",
+  "torch_cpu_threads": 1,
+  "checks": [
+    "Six expression value/feature derivative/backprop cases are exactly equal",
+    "Both current candidate base models, nonzero coefficients and matched nonunit masses/reference angles: field, all trainable parameter gradients, RK4 step, eight-step trajectory AND trajectory parameter backprop exactly equal",
+    "Model export/reload, channel fallback, independent deepcopy/RNG preservation",
+    "No unused node/port stacks in edge-only path; constant cache reuse and end_graph_cache/to(cpu)/load_state_dict invalidation",
+    "Inference-to-autograd kernel and model regression cases: normal graph-free cached constants and exact backward"
+  ],
+  "initial_cpu_qa": "cpu_qa.json",
+  "adverse_regression": "inference_before_fix.json",
+  "source_checkpoints": {
+    "initial_source": {
+      "path": "source_before_fix.py",
+      "sha256": "69227a081798a28ad6d2dabbd5535a6318ac09397677f50d5c8f0731ebee40bc"
+    },
+    "initial_tests": {
+      "path": "tests_initial.py",
+      "sha256": "e118d47cb3b7209671fbee3939da209e16eb079bd392b445f975ff7799c0efe7"
+    },
+    "regression_tests_before_fix": {
+      "path": "tests_inference_before_fix.py",
+      "sha256": "a4bb6234f8aa4707e827d3d00a5eafb7fc607846609597c7c1b1203bae688160"
+    },
+    "preservation_note": "Initial source/tests reconstructed from the exact recorded edit, with SHA256 verified against the initial run. Negative-test version reconstructed from the regression edit. Historical outcomes retained."
+  },
+  "reproduction_dependency": "CPU tests read the existing local horizon_pair01 binding and candidate pool syntax metadata, not train/val/test event arrays; requires those retained local metadata files.",
+  "process_accounting": {
+    "pid": null,
+    "creation_filetime_utc": null,
+    "wall_seconds": null,
+    "cpu_seconds": null,
+    "reason": "Direct CPU pytest sessions did not collect native process/subtree receipts; pytest-reported seconds are not charged as native Job CPU."
+  },
+  "qualification_limits": [
+    "No claimed GPU or whole-training speedup",
+    "No real optimizer update/Adam/training checkpoint qualification",
+    "No full 50/200-step or 16-event numerical qualification",
+    "No default integration and no source edits to the active GPU job"
+  ]
+}

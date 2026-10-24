@@ -10,9 +10,9 @@ GPU工程流水会话40421已实际启动：reference计划208更新，成功后
 - [有限工程协议](../reports/training_efficiency_20261024_protocol.md)、[实际Astra6返回](../reports/astra6_training_efficiency_20261024_raw.txt)、[独立静态审查](../reports/training_efficiency_20261024_static_review.md)。
 - [QA证据](../results/training_efficiency_20261024/qa_summary.json)、[启动身份](../results/training_efficiency_20261024/run_started.json)。
 - 作业目录private_data/closure_mechanism_20261019/P1/training_efficiency01；阶段reference/opt1、native_reference/native_opt1，active.lock；原始命令见启动记录。现有目录禁止覆盖或任意外部resume。
-- 先稀疏核实际Job/失败/完成，不反复加载checkpoint；完成后核实际更新、4工况同步计时/显存、原0/2048轨迹梯度、真实32恢复、Adam/RNG及原全16事件双步长数值资格，再评价采纳。无实测前不报告加速。优化二尚未实现，仅在参考profile支持且root按原有限协议明确决定后可执行；不得临时扩成编译/精度扫描。
+- 先稀疏核实际Job/失败/完成，不反复加载checkpoint；完成后核实际更新、4工况同步计时/显存、原0/2048轨迹梯度、真实32恢复、Adam/RNG及原全16事件双步长数值资格，再评价采纳。无实测前不报告加速。按用户最新要求直接检查代码，不新增定时任务：独立公式执行补丁已实现，最终CPU会话54353退出0、11项通过/29.60秒、0次optimizer/GPU更新；推理切回反传的缓存缺陷已复现、修正并保留不利证据。现有208绑定源复核一致；补丁尚未接入当前作业或完成GPU资格。[代码检查与补丁结论](../reports/code_efficiency_inspection_20261025.md)、[最终CPU证据](../results/code_efficiency_20261025/cpu_qa_final.json)。后续执行仍按现有有限工程方案，不扩成编译/精度扫描。
 - 接受要求：资格全过、四工况等权几何平均加速≥1.10、单工况耗时不恶化>5%、峰值allocated不增>10%；性能不足归档不采用，不触发修复。正常最多608工程更新含条件优化二；唯一明确执行缺陷修复可按原协议追加受影响实现≤200次验证，不训练到通过。全部进程数量/时长/阶段秒/总小时额度已取消，以上为有限工作量而非进程额度。
-- 所有结局归档，合格实现经独立精确范围审查后PR合main、核预期head/远端；工程整合不等于模型晋升。健康作业保持安静，heartbeat仍ACTIVE、120分钟，提示已更新为当前工程阶段。
+- 所有结局归档，合格实现经独立精确范围审查后PR合main、核预期head/远端；工程整合不等于模型晋升。健康作业仅作稀疏监控；本次执行重点为直接代码优化，不以定时任务代替实现。
 
 已关闭科学轮：horizon_pair01完成12×2048=24576实际更新、36检查点/12真实恢复，96个train评价窗口全16事件数值合格；2048时短窗口三个实例均选竞争公式、长窗口三个均选植入公式。结论限两个机制及旧train条件，不是完整候选库/独立val确认。正式wall132090.7268424秒（36小时42分钟），JobCPU user101114.828125/kernel24601.015625秒。182原生源前后/当前一致、worker46860已结束、Job0/锁清；不得重跑。[结论](../reports/horizon_pair_20261023_conclusion.md)、[完整事实](../results/horizon_pair_20261023/completion_facts.json)。独立结果审查通过，六份结果文档PR33已合main，远端1b19fa9c8034b78e1863a7f35ed81ae55d9a845c，父提交/树/六blob核同，[证明](../results/horizon_pair_20261023/main_verification.json)。
 

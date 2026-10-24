@@ -1,0 +1,40 @@
+{
+  "scope": "CPU engineering checks of an isolated opt-in implementation; no production adoption",
+  "implementation": "experiments/compiled_expression_runtime_20261025.py",
+  "implementation_sha256": "69227a081798a28ad6d2dabbd5535a6318ac09397677f50d5c8f0731ebee40bc",
+  "tests": "tests/test_compiled_expression_runtime_20261025.py",
+  "tests_sha256": "e118d47cb3b7209671fbee3939da209e16eb079bd392b445f975ff7799c0efe7",
+  "command": "__PYVENV_LAUNCHER__=E:/03-nn_Transfer_Func/kiki/.venv-gpu/Scripts/python.exe C:/Users/LLLzijian/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe -m pytest -q tests/test_compiled_expression_runtime_20261025.py --basetemp private_data/qce25 -p no:cacheprovider",
+  "exec_session_id": 10645,
+  "exit_code": 0,
+  "stdout": "......... [100%]\n9 passed in 20.53s",
+  "pytest_reported_seconds": 20.53,
+  "process_wall_seconds": null,
+  "process_cpu_seconds": null,
+  "pid": null,
+  "creation_filetime_utc": null,
+  "unavailable_accounting_reason": "This direct CPU pytest invocation was not launched through the native Job accounting wrapper; do not infer process/subtree cost or ownership from the exec session ID.",
+  "optimizer_updates": 0,
+  "gpu_updates": 0,
+  "precision": "float64",
+  "torch_cpu_threads": 1,
+  "checks": [
+    "6 expression cases: strict tensor equality of values, analytic derivatives and feature backpropagation",
+    "2 current candidate base-model cases: nonzero coefficient, matched nonunit physical masses and nonzero reference angles; exact field/all trainable base parameter gradients/one RK4 step/eight-step trajectory",
+    "Original-format model export/reload and explicit unsupported-channel fallback",
+    "Expression cache reuse, independent deep copy and graph-end invalidation; no unused node/port feature stacks on the edge-only path"
+  ],
+  "not_qualified": [
+    "GPU output/gradient equality",
+    "CUDA performance or memory",
+    "optimizer updates/Adam and full training checkpoint resumption",
+    "full 50/200-step trajectories and 16-event numerical qualification"
+  ],
+  "bound_running_source": {
+    "count": 208,
+    "changed": [],
+    "checked_at_utc": "2026-10-24T16:48:01.3913735Z"
+  },
+  "index_sha256_unchanged": "82b060840d50257c41df55e15805fa106f29117cac8bf1868a6b83e490e2df93",
+  "recorded_at_utc": "2026-10-24T16:48:01.3913735Z"
+}

@@ -1,0 +1,16 @@
+{
+  "scope": "Two CPU regression cases added after independent static review",
+  "exec_session_id": 8236,
+  "exit_code": 1,
+  "passed": 1,
+  "failed": 1,
+  "deselected": 9,
+  "pytest_reported_seconds": 156.61,
+  "optimizer_updates": 0,
+  "gpu_updates": 0,
+  "implementation_sha256": "69227a081798a28ad6d2dabbd5535a6318ac09397677f50d5c8f0731ebee40bc",
+  "stdout": "F.                                                                       [100%]\r\n================================== FAILURES ===================================\r\n________________ test_kernel_inference_then_autograd_is_exact _________________\r\n\r\n    def test_kernel_inference_then_autograd_is_exact():\r\n        expression = EXPRESSIONS[0][1]\r\n        kernel = ExpressionKernel(expression, 'node')\r\n        torch.manual_seed(2502)\r\n        features = torch.randn(2, 4, 2, dtype=torch.float64, requires_grad=True)\r\n        other = features.detach().clone().requires_grad_()\r\n        with torch.inference_mode():\r\n            kernel(features.detach())\r\n        expected = _torch_feature_eval(expression, features, _VARIABLES['node'], 'node')\r\n>       actual = kernel(other)\r\n                 ^^^^^^^^^^^^^\r\n\r\ntests\\test_compiled_expression_runtime_20261025.py:138: \r\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\r\nexperiments\\compiled_expression_runtime_20261025.py:89: in __call__\r\n    value, grad = self._evaluate(features)\r\n                  ^^^^^^^^^^^^^^^^^^^^^^^^\r\nexperiments\\compiled_expression_runtime_20261025.py:62: in combine\r\n    args = [child(features) for child in children]\r\n            ^^^^^^^^^^^^^^^\r\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\r\n\r\nfeatures = tensor([[[ 1.6781,  0.5378],\r\n         [-0.5652, -0.4880],\r\n         [ 0.1027,  0.4163],\r\n         [ 0.1979,  1.4929]],\r\n\r\n...-1.4890, -0.5991],\r\n         [ 1.0072,  1.1771],\r\n         [-0.4577, -0.3836]]], dtype=torch.float64, requires_grad=True)\r\n\r\n    def powered(features):\r\n        value, grad = child(features)\r\n>       return value.pow(power), grad * (power * value.pow(power - 1)).unsqueeze(-1)\r\n                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\nE       RuntimeError: Inference tensors cannot be saved for backward. Please do not use Tensors created in inference mode in computation tracked by autograd. To work around this, you can make a clone to get a normal tensor and use it in autograd, or use `torch.no_grad()` instead of `torch.inference_mode()`.\r\n\r\nexperiments\\compiled_expression_runtime_20261025.py:77: RuntimeError\r\n=========================== short test summary info ===========================\r\nFAILED tests/test_compiled_expression_runtime_20261025.py::test_kernel_inference_then_autograd_is_exact\r\n1 failed, 1 passed, 9 deselected in 156.61s (0:02:36)\r\n",
+  "process_cpu_seconds": null,
+  "process_wall_seconds": null,
+  "pid": null
+}
