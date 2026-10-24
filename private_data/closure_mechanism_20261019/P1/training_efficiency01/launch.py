@@ -22,7 +22,7 @@ def check(binding,commit):
         if binding['files'].get(str((ROOT/name).resolve()))!=digest:raise ValueError('missing old closed source')
     names=['experiments/closure_training_efficiency_20261024.py','tests/test_closure_training_efficiency_20261024.py',
         str((BASE/'launch.py').relative_to(ROOT)),str((BASE/'make_binding.py').relative_to(ROOT)),
-        'reports/training_efficiency_20261024_protocol.md','reports/astra6_training_efficiency_20261024_raw.txt','reports/training_efficiency_20261024_review.md']
+        'reports/training_efficiency_20261024_protocol.md','reports/astra6_training_efficiency_20261024_raw.txt','reports/training_efficiency_20261024_static_review.md']
     for name in names:
         if binding['files'].get(str((ROOT/name).resolve()))!=job.sha(ROOT/name):raise ValueError('missing new frozen source')
 def validate_qa(binding,commit):
@@ -35,6 +35,25 @@ def validate_qa(binding,commit):
         or result.get('source_commit')!=commit or result.get('status')!='PASS' or type(result.get('pytest_returncode')) is not int or result['pytest_returncode']!=0):raise ValueError('actual same-source CPU negative QA required')
     for name,digest in binding['files'].items():
         if native['source_before'].get(name)!=digest:raise ValueError('QA source changed')
+def validate_reference(binding,commit):
+    native=read(BASE/'native_reference/receipt.json');complete=read(BASE/'reference/complete.json')
+    result_path=BASE/'reference/benchmark/result.json';result=read(result_path)
+    if (native.get('status')!='COMPLETED' or native.get('source_commit')!=commit or native.get('phase')!='training_efficiency_reference'
+        or native.get('cleanup_verified') is not True or native.get('orphans_cleaned') is not False
+        or native.get('actual_worker_state')!='GONE' or type(native.get('job_active_processes')) is not int or native['job_active_processes']!=0
+        or not native.get('source_before') or native['source_before']!=native.get('source_after')
+        or any(type(native.get(k)) is not int or native[k]!=0 for k in ('exit_code','worker_exit_code','launcher_exit_code'))
+        or complete.get('status')!='COMPLETED' or complete.get('source_commit')!=commit
+        or complete.get('result')!=ref(result_path)
+        or result.get('status')!='PASS' or result.get('source_commit')!=commit or result.get('implementation')!='reference'
+        or [(r['candidate'],r['future']) for r in result.get('rows',[])]!=[(2,50),(2,200),(3,50),(3,200)]):
+        raise ValueError('actual complete same-source four-case reference required')
+    expected=dict(binding['files'])
+    for path in (BASE/'binding.json',BASE/'native_qa/receipt.json',BASE/'qa/complete.json'):
+        expected[str(path.resolve())]=job.sha(path)
+    if native['source_before']!=expected:raise ValueError('reference source closure differs')
+    job.verify_files(expected)
+    return result
 def worker(phase,binding,commit):
     check(binding,commit);out=BASE/phase;out.mkdir(exist_ok=False)
     k=job.api();command=selected_python_command([],SELECTION)
@@ -58,6 +77,7 @@ def worker(phase,binding,commit):
         from experiments import closure_training_efficiency_20261024 as study
         actual=dict(binding)
         if phase=='opt1':
+            validate_reference(binding,commit)
             admitted=read(BASE/'opt1_inputs.json')
             if admitted['source_commit']!=commit:raise ValueError('reference source differs')
             job.verify_files(admitted['files']);actual['reference_result']=admitted['reference_result']
@@ -79,9 +99,9 @@ def main():
         validate_qa(binding,a.source_commit)
         for path in (BASE/'native_qa/receipt.json',BASE/'qa/complete.json'):files[str(path.resolve())]=job.sha(path)
     if a.phase=='opt1':
-        result_path=BASE/'reference/benchmark/result.json';result=read(result_path);native=read(BASE/'native_reference/receipt.json')
-        if result.get('status')!='PASS' or result.get('source_commit')!=a.source_commit or native.get('status')!='COMPLETED' or native.get('source_commit')!=a.source_commit or native['source_before']!=native.get('source_after'):raise ValueError('successful same-source reference required')
+        result_path=BASE/'reference/benchmark/result.json';result=validate_reference(binding,a.source_commit)
         reference_files={str(result_path.resolve()):job.sha(result_path),str((BASE/'native_reference/receipt.json').resolve()):job.sha(BASE/'native_reference/receipt.json')}
+        reference_files[str((BASE/'reference/complete.json').resolve())]=job.sha(BASE/'reference/complete.json')
         for row in result['rows']:
             path=ROOT/row['final_state']['path']
             if job.sha(path)!=row['final_state']['sha256']:raise ValueError('reference state changed')

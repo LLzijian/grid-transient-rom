@@ -39,7 +39,7 @@ def main():
     extras=['experiments/closure_training_efficiency_20261024.py','tests/test_closure_training_efficiency_20261024.py',
         str((BASE/'launch.py').relative_to(ROOT)),str((BASE/'make_binding.py').relative_to(ROOT)),
         'reports/training_efficiency_20261024_protocol.md','reports/astra6_training_efficiency_20261024_raw.txt',
-        'reports/training_efficiency_20261024_review.md']
+        'reports/training_efficiency_20261024_static_review.md']
     for name in extras:files[str((ROOT/name).resolve())]=sha(ROOT/name)
     value['files']=dict(sorted(files.items()))
     with (BASE/'binding.json').open('x',encoding='utf-8') as f:json.dump(value,f,indent=2,sort_keys=True,allow_nan=False)

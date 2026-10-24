@@ -89,11 +89,17 @@ def inspect_model(model,observed,scales):
     path=old.prediction(model,observed)
     loss=((path-observed[:,11:])/scales).square().mean();loss.backward()
     unclipped={n:p.grad.detach().clone() for n,p in model.named_parameters() if p.grad is not None}
+    # Exercise the changed host-read path on the gradients already computed
+    # here, including the nonzero2048 closure, with no optimizer update.
+    original_norms=[float(g.norm()) for g in unclipped.values()]
+    merged_norms=torch.stack([g.norm() for g in unclipped.values()]).detach().cpu().tolist() if unclipped else []
+    exact(original_norms,merged_norms)
     torch.nn.utils.clip_grad_norm_(model.parameters(),100.)
     clipped={n:p.grad.detach().clone() for n,p in model.named_parameters() if p.grad is not None}
     if getattr(model.base,'_runtime_cache',None) is not None:raise ValueError('graph cache leaked')
     return {'field':field.detach(),'rk4':rk4.detach(),'trajectory':path.detach(),'loss':loss.detach(),
-            'unclipped':unclipped,'clipped':clipped}
+            'unclipped':unclipped,'clipped':clipped,
+            'norm_read_check':{'names':list(unclipped),'original':original_norms,'merged':merged_norms,'exact':True}}
 
 
 def model_qualification(case,data,observed,scales,output):
@@ -101,7 +107,10 @@ def model_qualification(case,data,observed,scales,output):
     for step in (0,2048):
         first,_,_=load_snapshot(case,step);a=inspect_model(first,observed,scales)
         second,_,_=load_snapshot(case,step);b=inspect_model(second,observed,scales);exact(a,b)
+        coefficients=second.base.coefficients.detach().cpu().tolist()
+        nonzero_coefficients=int(torch.count_nonzero(second.base.coefficients))
         if step==2048:
+            if not nonzero_coefficients:raise ValueError('original2048 closure must be nonzero')
             metrics=horizon.model_metrics(second,data)
             if not all(v['valid'] for v in metrics.values()):raise ValueError('original full16 dual-step qualification failed')
         else:metrics=None
@@ -122,7 +131,8 @@ def model_qualification(case,data,observed,scales,output):
         exact(second.state_dict(),third.state_dict())
         if getattr(third.base,'_runtime_cache',None) is not None:raise ValueError('export restored transient cache')
         proofs.append({'step':step,'exact_outputs_and_gradients':True,'train_metrics':metrics,
-            'term_kinds':list(second.base._term_kinds),'terms':second.base.terms})
+            'term_kinds':list(second.base._term_kinds),'terms':second.base.terms,
+            'norm_read_check':b['norm_read_check'],'coefficients':coefficients,'nonzero_coefficients':nonzero_coefficients})
         del first,second,third,a,b
     return proofs
 
@@ -229,6 +239,7 @@ def benchmark(output,binding,commit,implementation):
         if implementation=='opt1':
             reference=json.loads(verify_ref(binding['reference_result']).read_text());speed=[];safe=True
             if reference['source_commit']!=commit or reference['implementation']!='reference' or reference['status']!='PASS':raise ValueError('same-source reference required')
+            if [(r['candidate'],r['future']) for r in reference['rows']]!=list(CASES) or [(r['candidate'],r['future']) for r in rows]!=list(CASES):raise ValueError('complete exact four-case ordering required')
             for a,b in zip(reference['rows'],rows):
                 if (a['candidate'],a['future'])!=(b['candidate'],b['future']):raise ValueError('matched case ordering required')
                 state_a=torch.load(verify_ref(a['final_state']),map_location='cpu',weights_only=False)
