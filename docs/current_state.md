@@ -1,17 +1,19 @@
 # 当前研究状态
 
-任务RUNNING，cwd E:/03-nn_Transfer_Func/kiki；horizon_pair01固定12模型比较已实际完成，核验与独立结果审查已通过，正在选择性归档及结果PR整合。正式会话1048已退出0，worker46860/FILETIME134371959572540099及supervisor58056/FILETIME134371959565158826已结束，Job成员0、无孤儿清理、锁清；182项原生源快照前后及当前字节一致。12模型×2048共24576实际更新、36检查点/72文件SHA核同、12次真实内部恢复，完整状态冻结PASS。24端点×4个train时间范围共96项数值资格通过，各16事件；三实例2048短窗口均选竞争机制，长窗口均选植入机制。独立结果审查PASS，限六份结果文档整合，不作模型采用。实际Astra6已返回下一阶段有限代码效率方案，root已采纳并保存原始返回及有限协议，已开始独立新模块实现；尚未执行GPU性能测试。
+任务RUNNING；cwd E:/03-nn_Transfer_Func/kiki。优先完成计算/训练效率优化，之后再开展新科学比较。原val/test关闭，TASK4暂停；40状态、100ms一次因果初始化、真实区间/失稳样本/单位/数据配额/科学及数值门槛保持，默认模型none。
 
-本轮固定12模型：原冻结池teacher2(c*qi)与历史竞争机制3，0.5/2.0s训练窗口，新优化seed6301/6302/6303分别对应旧train6201/6202/6203；从零闭合、共同可对应骨架/GRU参数重训，每模型2048共24576新更新。保存0/512/2048共36状态、512真实内部恢复。复用旧train16事件/原尺度/合格证据，不生成新数据、不读取任何合成或真实val/test。一次相关QA含两窗口72新CUDA资格更新，最多一次明确实现修复及相关复验，科学结果不触发追加更新。新入口private_data/closure_mechanism_20261019/P1/horizon_pair01；科学源已冻结ebd45248a25905dbf5af4a3cea8c4073a02994db，binding SHA8f592612bb6379c2cadeed66f434b246d805f77c02dee7eb49a2e994cc54859c，共179绑定文件；QA/run期间不得修改绑定源。
+当前实际作业：training_efficiency01，来源424a830197908309454f15f3393236aa59963f45，208绑定文件；独立静态审查已PASS。唯一CPU QA会话24870已退出0，9项通过、实际2次CPU更新/0GPU更新，native209项源前后/当前一致，wall44.5270161秒、JobCPU user3.53125/kernel1.71875秒。三处冻结前问题已关闭，正式修复次数0；不重跑QA。
 
-下一实际动作：完成本轮事实核验、独立结果/精确范围审查、归档及合格结果PR；随后按实际Astra6采纳方案执行计算与训练优化。用户2026-10-23指定新优先级：本轮完整任务结束后，先完成计算与训练代码优化，再启动下一科学实验。先由实际Astra6规划有限工程方案，以同源固定规模的GPU同步计时定位耗时，实施并验证加速、精度/梯度/优化与保存恢复一致性及原数值资格，经独立精确范围审查后PR合main；全部结局归档。当前Job运行期间不修改179项绑定源，不启动争用GPU的性能测试或重复训练。QA已通过，不得重复QA。静态审查已PASS，明确实际候选2/3与批量积分步数口径；不把静态PASS当运行验收。原shared.restore只用于512，不修改旧来源以适配2048；最终实际Adam/count/RNG/trace仍须核验。新目录排他，无任意外部resume；中断保留证据后另登记非择优续接，最多一次边界不重置。不重跑旧18×5126085.6472446、384测时、五例、QA06。
+GPU工程流水会话40421已实际启动：reference计划208更新，成功后同会话自动执行opt1的200更新；各阶段原生入口再次核同源、完整四工况与排他锁，不重复排队。初始reference worker54432/FILETIME134373316690097373，supervisor27704/FILETIME134373316685022826；后续阶段身份须读实际锁/回执，不能沿用旧PID。真实进行中更新数及wall/JobCPU待原生回执，不猜测。当前阶段源不可修改。
 
-上轮增长受控六机制完整比较已闭合：科学源c9ec666fc7e8dd5ad04f63d9bea3ada33d4ec7a2、会话39552已退出0，原worker8544/FILETIME134371580519701416和supervisor46124/FILETIME134371580515422234已结束，复用PID不属于本轮。typed0/Job0/无孤儿清理/锁清，162项源前后及当时当前字节同；9216正式更新/72检查点/36内部恢复/54排名，全状态冻结PASS，144模型/Adam文件SHA独立核同。全部54排名与唯一一次新合成val数值合格；选择3/0/3均非teacher2，teacher名次3/6/5。18条末期拟合loss仍改善，0.5s拟合与(2,5]排名范围不同，不支持已充分收敛、不可辨识或模型族证伪。[结论](../reports/bounded_edge_grammar_20261022_conclusion.md)、[完成证据](../results/bounded_edge_grammar_20261022/completion_summary.json)。原上上轮teacher数值失败与6102误选保持原分类。
+恢复导航：
+- [有限工程协议](../reports/training_efficiency_20261024_protocol.md)、[实际Astra6返回](../reports/astra6_training_efficiency_20261024_raw.txt)、[独立静态审查](../reports/training_efficiency_20261024_static_review.md)。
+- [QA证据](../results/training_efficiency_20261024/qa_summary.json)、[启动身份](../results/training_efficiency_20261024/run_started.json)。
+- 作业目录private_data/closure_mechanism_20261019/P1/training_efficiency01；阶段reference/opt1、native_reference/native_opt1，active.lock；原始命令见启动记录。现有目录禁止覆盖或任意外部resume。
+- 先稀疏核实际Job/失败/完成，不反复加载checkpoint；完成后核实际更新、4工况同步计时/显存、原0/2048轨迹梯度、真实32恢复、Adam/RNG及原全16事件双步长数值资格，再评价采纳。无实测前不报告加速。优化二尚未实现，仅在参考profile支持且root按原有限协议明确决定后可执行；不得临时扩成编译/精度扫描。
+- 接受要求：资格全过、四工况等权几何平均加速≥1.10、单工况耗时不恶化>5%、峰值allocated不增>10%；性能不足归档不采用，不触发修复。正常最多608工程更新含条件优化二；唯一明确执行缺陷修复可按原协议追加受影响实现≤200次验证，不训练到通过。全部进程数量/时长/阶段秒/总小时额度已取消，以上为有限工作量而非进程额度。
+- 所有结局归档，合格实现经独立精确范围审查后PR合main、核预期head/远端；工程整合不等于模型晋升。健康作业保持安静，heartbeat仍ACTIVE、120分钟，提示已更新为当前工程阶段。
 
-本轮独立结果审查PASS，精确六文件结果文档已由PR #33合main，远端merge1b19fa9c8034b78e1863a7f35ed81ae55d9a845c、预期head6c55282a7c29845f85a7ddbc570819ee91d2d1a3、父提交/树/六份本地与远端原始blob核验一致，证明results/horizon_pair_20261023/main_verification.json。研究模块与模型均未随结果文档采用；PR #30工程、#31已知形式、#32上轮六机制结果保留。当前默认模型none，真实L1/L2未完成。
+已关闭科学轮：horizon_pair01完成12×2048=24576实际更新、36检查点/12真实恢复，96个train评价窗口全16事件数值合格；2048时短窗口三个实例均选竞争公式、长窗口三个均选植入公式。结论限两个机制及旧train条件，不是完整候选库/独立val确认。正式wall132090.7268424秒（36小时42分钟），JobCPU user101114.828125/kernel24601.015625秒。182原生源前后/当前一致、worker46860已结束、Job0/锁清；不得重跑。[结论](../reports/horizon_pair_20261023_conclusion.md)、[完整事实](../results/horizon_pair_20261023/completion_facts.json)。独立结果审查通过，六份结果文档PR33已合main，远端1b19fa9c8034b78e1863a7f35ed81ae55d9a845c，父提交/树/六blob核同，[证明](../results/horizon_pair_20261023/main_verification.json)。
 
-全部进程额度取消，保留实际账目，wall与CPU分列不相加冒充wall。上轮正式wall32077.1934998秒、CPU user24505.265625/kernel5598.296875；freeze wall17.6278757、QA wall156.7825392秒及36CUDA/2CPU资格更新另计。完成后只读事实提取tool wall5.9077553秒，未记录PID/CPU保留null，不伪造。本轮QA wall742.8788908秒、CPU user508.125/kernel109.984375，正式训练wall132090.7268424秒、JobCPU user101114.828125/kernel24601.015625秒，完整回执已核；历史失败、REJECT、未知hold不改。账本results/closure_mechanism_20261019/cost_snapshot.json。
-
-原项目val/test关闭、TASK4暂停，40状态/100ms一次初始化/真实区间/失稳样本/单位/数据配额/数值及模型门槛不变。全部源检查点、数组、Adam/trace及不利结果按本地路径留存，大文件以SHA引用；关键设计/结果归档codex/edge-memory-discrimination-20261021，本轮闭合归档de865691be723ba3b95a1f5a2dca1ba3abbe3ff4，状态更新归档0966eba63a7b423a51e60bdc4442750622f3c7b1；PR #33远端验证证据本次归档。local HEADa95101337855ed3fc1f4abfd710982443d5564cb及index SHA82b060840d50257c41df55e15805fa106f29117cac8bf1868a6b83e490e2df93保持，不reset/强推/删证据，heartbeat继续。
-
-实际已执行命令：标准Python private_data/closure_mechanism_20261019/P1/horizon_pair01/launch.py run --source-commit ebd45248a25905dbf5af4a3cea8c4073a02994db。复现不可重用已存在目录；QA/run仍绑定179文件，科学源/协议/独立review/QA来源期间保持字节不变。
+原18×512已完成6085.6472446秒、旧384测时、五例与QA06不重跑；PR30/31/32、旧失败/REJECT/未知hold与源检查点保留。账本results/closure_mechanism_20261019/cost_snapshot.json按实际wall与JobCPU分列；参考及优化作业的费用尚待回执。关键资料选择性归档codex/edge-memory-discrimination-20261021；历史大数组/模型/Adam/RNG/trace按本地路径与SHA保留。local HEADa95101337855ed3fc1f4abfd710982443d5564cb及用户未提交工作保持，不reset/强推/删证据。

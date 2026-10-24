@@ -1,0 +1,65 @@
+{
+  "observed_utc": "2026-10-24T16:12:09.839064+00:00",
+  "status": "REFERENCE_RUNNING_OPT1_CONDITIONALLY_QUEUED",
+  "source_commit": "424a830197908309454f15f3393236aa59963f45",
+  "session": 40421,
+  "worker": {
+    "pid": 54432,
+    "executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+    "creation_filetime_utc": 134373316690097373,
+    "exit_filetime_utc": 0,
+    "kernel_100ns": 2343750,
+    "user_100ns": 1406250,
+    "physical_image": "C:\\Users\\LLLzijian\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+    "logical_executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+    "runtime_scheme": "direct_base_venv",
+    "runtime_selection": {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P1\\rational_execution01\\spawn_chain20261022\\runtime_selection.json",
+      "sha256": "e16c35122388a930d77106885b873ace5da7748ae18bb929adde49631d16551e"
+    },
+    "source_commit": "424a830197908309454f15f3393236aa59963f45",
+    "phase": "training_efficiency_reference"
+  },
+  "supervisor": {
+    "pid": 27704,
+    "executable": "C:\\Users\\LLLzijian\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+    "creation_filetime_utc": 134373316685022826,
+    "exit_filetime_utc": 0,
+    "kernel_100ns": 3281250,
+    "user_100ns": 468750
+  },
+  "lock_owned": true,
+  "binding_sha256": "737e6ff17004bb1db6d94b4d1cdfa4eb953df55eebbc03a7ec10e90902310570",
+  "bound_files": 208,
+  "bound_current_equal": true,
+  "reference_planned_gpu_updates": 208,
+  "opt1_planned_gpu_updates": 200,
+  "actual_gpu_updates_in_flight": null,
+  "qa_passed": 9,
+  "actual_cpu_qa_updates": 2,
+  "qa_gpu_updates": 0,
+  "repairs_used": 0,
+  "actual_phase_wall_seconds": null,
+  "actual_phase_job_cpu_user_seconds": null,
+  "actual_phase_job_cpu_kernel_seconds": null,
+  "queue": "same PowerShell session runs opt1 only after reference native command exits0; launcher independently requires full same-source reference PASS and owned source closure",
+  "command": "standard Python training_efficiency01/launch.py reference --source-commit 424a830197908309454f15f3393236aa59963f45; on exit0 run opt1 with identical source",
+  "gpu_snapshot": {
+    "device": "NVIDIA GeForce RTX 4060 Ti",
+    "global_utilization_percent": 42,
+    "global_memory_used_mib": 2305,
+    "total_memory_mib": 8188,
+    "interpretation": "single startup observation; global GPU counters include desktop/other processes; not proof of exclusive benchmark utilization",
+    "other_gpu_compute_workloads": "not established; WDDM process memory unavailable"
+  },
+  "automation": {
+    "id": "kiki-astra6",
+    "status_verified": "ACTIVE",
+    "interval_minutes": 120,
+    "target_thread": "01a145bc-7448-7b03-8f52-44f6fba087a2",
+    "prompt_updated_for_efficiency_stage": true
+  },
+  "speedup_claim": null,
+  "scientific_model_adoption": "none",
+  "project_val_test_accessed": false
+}
