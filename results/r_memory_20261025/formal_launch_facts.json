@@ -1,0 +1,539 @@
+{
+  "scope": "single bounded factual snapshot after calibration and formal queue startup; no optimizer/native launch, model pt load or event-array read by this audit",
+  "observed_at_shanghai": "2026-10-25T19:33:42.986482+08:00",
+  "source_commit": "6409d55f48aff1fd7c0091a26f44252a170502a3",
+  "status": "VERIFIED",
+  "checks": {
+    "selection_A3_B1_C1": true,
+    "A_x1_16complete": true,
+    "A_x1_trial_discarded": true,
+    "A_x3_16complete": true,
+    "A_x3_trial_discarded": true,
+    "B_x1_16complete": true,
+    "B_x1_trial_discarded": true,
+    "B_x3_16complete": true,
+    "B_x3_trial_discarded": true,
+    "C_x1_16complete": true,
+    "C_x1_trial_discarded": true,
+    "C_x3_16complete": true,
+    "C_x3_trial_discarded": true,
+    "calibration_journals96": true,
+    "calibration_native_clean": true,
+    "calibration_native_source": true,
+    "all_listed_closed_receipts_clean_source": true,
+    "retained_old1_QA204": true,
+    "first_fit_exact_start_identity": true
+  },
+  "selection": {
+    "reference": {
+      "path": "private_data/r_memory_20261025/run01_repair01/calibration/selection.json",
+      "sha256": "30a7e39e89aa6a18e453c88fea909cc71aae04e1ef4794ccd4d820cf47713a07"
+    },
+    "selected": {
+      "A": 3,
+      "B": 1,
+      "C": 1
+    },
+    "trial_states_discarded": true
+  },
+  "calibration": {
+    "trials": [
+      {
+        "mode": "A",
+        "multiplier": 1,
+        "result": {
+          "path": "private_data/r_memory_20261025/run01_repair01/calibration/A_x1/result.json",
+          "sha256": "e45edb58c7e1c4e089d32ff6a09d1180654ff45b0fa1c1d81cbbc8bc757e0acc"
+        },
+        "completed_updates": 16,
+        "trial_state_discarded_for_formal": true,
+        "journal": {
+          "exists": true,
+          "path": "private_data/r_memory_20261025/run01_repair01/calibration/A_x1/optimizer_calls.jsonl",
+          "snapshot_sha256": "c2e3dec93b1e7440d9a1a3e35556702beca8905b23ff52b30b64aa0a5278f8b1",
+          "snapshot_bytes": 1664,
+          "attempts": 16,
+          "completed": 16,
+          "ordered": true,
+          "partial_tail": false,
+          "counts_exact_for_snapshot": true
+        }
+      },
+      {
+        "mode": "A",
+        "multiplier": 3,
+        "result": {
+          "path": "private_data/r_memory_20261025/run01_repair01/calibration/A_x3/result.json",
+          "sha256": "5af7851283cfe10276c676614ae740920879e099ce30f17f62d9f937ac61d9a3"
+        },
+        "completed_updates": 16,
+        "trial_state_discarded_for_formal": true,
+        "journal": {
+          "exists": true,
+          "path": "private_data/r_memory_20261025/run01_repair01/calibration/A_x3/optimizer_calls.jsonl",
+          "snapshot_sha256": "c2e3dec93b1e7440d9a1a3e35556702beca8905b23ff52b30b64aa0a5278f8b1",
+          "snapshot_bytes": 1664,
+          "attempts": 16,
+          "completed": 16,
+          "ordered": true,
+          "partial_tail": false,
+          "counts_exact_for_snapshot": true
+        }
+      },
+      {
+        "mode": "B",
+        "multiplier": 1,
+        "result": {
+          "path": "private_data/r_memory_20261025/run01_repair01/calibration/B_x1/result.json",
+          "sha256": "0cf530ac56fb0a2123df0d2e6ed2e99d1e21c3be67c34622544e11f5c696eb48"
+        },
+        "completed_updates": 16,
+        "trial_state_discarded_for_formal": true,
+        "journal": {
+          "exists": true,
+          "path": "private_data/r_memory_20261025/run01_repair01/calibration/B_x1/optimizer_calls.jsonl",
+          "snapshot_sha256": "c2e3dec93b1e7440d9a1a3e35556702beca8905b23ff52b30b64aa0a5278f8b1",
+          "snapshot_bytes": 1664,
+          "attempts": 16,
+          "completed": 16,
+          "ordered": true,
+          "partial_tail": false,
+          "counts_exact_for_snapshot": true
+        }
+      },
+      {
+        "mode": "B",
+        "multiplier": 3,
+        "result": {
+          "path": "private_data/r_memory_20261025/run01_repair01/calibration/B_x3/result.json",
+          "sha256": "bb6b9a3ddcb53bd9fc169a4ebca43fe8962bd2d9497bb54763d0447e19799db2"
+        },
+        "completed_updates": 16,
+        "trial_state_discarded_for_formal": true,
+        "journal": {
+          "exists": true,
+          "path": "private_data/r_memory_20261025/run01_repair01/calibration/B_x3/optimizer_calls.jsonl",
+          "snapshot_sha256": "c2e3dec93b1e7440d9a1a3e35556702beca8905b23ff52b30b64aa0a5278f8b1",
+          "snapshot_bytes": 1664,
+          "attempts": 16,
+          "completed": 16,
+          "ordered": true,
+          "partial_tail": false,
+          "counts_exact_for_snapshot": true
+        }
+      },
+      {
+        "mode": "C",
+        "multiplier": 1,
+        "result": {
+          "path": "private_data/r_memory_20261025/run01_repair01/calibration/C_x1/result.json",
+          "sha256": "4119a0a153e55196937f986a49a774ddbdd50e021ebfd6836bab5897a83adb48"
+        },
+        "completed_updates": 16,
+        "trial_state_discarded_for_formal": true,
+        "journal": {
+          "exists": true,
+          "path": "private_data/r_memory_20261025/run01_repair01/calibration/C_x1/optimizer_calls.jsonl",
+          "snapshot_sha256": "c2e3dec93b1e7440d9a1a3e35556702beca8905b23ff52b30b64aa0a5278f8b1",
+          "snapshot_bytes": 1664,
+          "attempts": 16,
+          "completed": 16,
+          "ordered": true,
+          "partial_tail": false,
+          "counts_exact_for_snapshot": true
+        }
+      },
+      {
+        "mode": "C",
+        "multiplier": 3,
+        "result": {
+          "path": "private_data/r_memory_20261025/run01_repair01/calibration/C_x3/result.json",
+          "sha256": "88b658c57a1b336fcd4b29c4487b319e5b9630d3a4e062ca4d5c834a40d69d2c"
+        },
+        "completed_updates": 16,
+        "trial_state_discarded_for_formal": true,
+        "journal": {
+          "exists": true,
+          "path": "private_data/r_memory_20261025/run01_repair01/calibration/C_x3/optimizer_calls.jsonl",
+          "snapshot_sha256": "c2e3dec93b1e7440d9a1a3e35556702beca8905b23ff52b30b64aa0a5278f8b1",
+          "snapshot_bytes": 1664,
+          "attempts": 16,
+          "completed": 16,
+          "ordered": true,
+          "partial_tail": false,
+          "counts_exact_for_snapshot": true
+        }
+      }
+    ],
+    "attempted_calls": 96,
+    "completed_updates": 96,
+    "native_receipt": {
+      "path": "private_data/r_memory_20261025/run01_repair01/native/calibrate/receipt.json",
+      "sha256": "364092b11ac063280762d644768f7d4da5b54b9b0ddea229e6ffb2522886c3cb"
+    },
+    "native_source_before_count": 99,
+    "native_source_before_equals_after": true,
+    "native_source_closure_matches": true,
+    "native_worker_identity": {
+      "pid_decimal": "30596",
+      "creation_filetime_utc_decimal": "134374005222623052"
+    }
+  },
+  "closed_native_receipts": [
+    {
+      "run": "run01",
+      "phase": "preflight",
+      "receipt": {
+        "path": "private_data/r_memory_20261025/run01/native/preflight/receipt.json",
+        "sha256": "fc838d7ea1d916dc22a1c442f1aa04df224dbcb90a5468bdfe31b258771ef8ac"
+      },
+      "status": "COMPLETED",
+      "source_commit": "59f573b01b08c1ae221f4022c2100d411088161b",
+      "exit_code": 0,
+      "worker_exit_code": 0,
+      "launcher_exit_code": 0,
+      "worker_identity": {
+        "pid_decimal": "41196",
+        "creation_filetime_utc_decimal": "134373993537151439"
+      },
+      "actual_worker_state": "GONE",
+      "job_active_processes": 0,
+      "cleanup_verified": true,
+      "orphans_cleaned": false,
+      "source_before_equals_after": true,
+      "wall_seconds": 107.81097490002867,
+      "job_cpu_user_seconds": 69.3125,
+      "job_cpu_kernel_seconds": 36.625
+    },
+    {
+      "run": "run01",
+      "phase": "prepare",
+      "receipt": {
+        "path": "private_data/r_memory_20261025/run01/native/prepare/receipt.json",
+        "sha256": "67882fff13ed7d782532e366b52ba9ed35418d961832d45d738cc0a424211df6"
+      },
+      "status": "COMPLETED",
+      "source_commit": "59f573b01b08c1ae221f4022c2100d411088161b",
+      "exit_code": 0,
+      "worker_exit_code": 0,
+      "launcher_exit_code": 0,
+      "worker_identity": {
+        "pid_decimal": "56872",
+        "creation_filetime_utc_decimal": "134373992324556999"
+      },
+      "actual_worker_state": "GONE",
+      "job_active_processes": 0,
+      "cleanup_verified": true,
+      "orphans_cleaned": false,
+      "source_before_equals_after": true,
+      "wall_seconds": 64.04284010000993,
+      "job_cpu_user_seconds": 32.671875,
+      "job_cpu_kernel_seconds": 3.703125
+    },
+    {
+      "run": "run01",
+      "phase": "qa",
+      "receipt": {
+        "path": "private_data/r_memory_20261025/run01/native/qa/receipt.json",
+        "sha256": "f82916402d924ce4e3ff2fdfa6bc2eeb1b9521a360560424dffe6e4cf650e04b"
+      },
+      "status": "FAILED",
+      "source_commit": "59f573b01b08c1ae221f4022c2100d411088161b",
+      "exit_code": 1,
+      "worker_exit_code": 1,
+      "launcher_exit_code": 1,
+      "worker_identity": {
+        "pid_decimal": "70348",
+        "creation_filetime_utc_decimal": "134373994789489850"
+      },
+      "actual_worker_state": "GONE",
+      "job_active_processes": 0,
+      "cleanup_verified": true,
+      "orphans_cleaned": false,
+      "source_before_equals_after": true,
+      "wall_seconds": 24.93830059998436,
+      "job_cpu_user_seconds": 9.609375,
+      "job_cpu_kernel_seconds": 6.15625
+    },
+    {
+      "run": "run01",
+      "phase": "runtime_exception",
+      "receipt": {
+        "path": "private_data/r_memory_20261025/run01/native/runtime_exception/receipt.json",
+        "sha256": "930050860e99bf191c5f73b0b39ec8e1d3adb6a303e277960816d2437c5c94c2"
+      },
+      "status": "FAILED",
+      "source_commit": "59f573b01b08c1ae221f4022c2100d411088161b",
+      "exit_code": 1,
+      "worker_exit_code": 1,
+      "launcher_exit_code": 1,
+      "worker_identity": {
+        "pid_decimal": "46780",
+        "creation_filetime_utc_decimal": "134373992145585240"
+      },
+      "actual_worker_state": "GONE",
+      "job_active_processes": 0,
+      "cleanup_verified": true,
+      "orphans_cleaned": false,
+      "source_before_equals_after": true,
+      "wall_seconds": 2.0907255000201985,
+      "job_cpu_user_seconds": 0.359375,
+      "job_cpu_kernel_seconds": 0.34375
+    },
+    {
+      "run": "run01",
+      "phase": "runtime_normal",
+      "receipt": {
+        "path": "private_data/r_memory_20261025/run01/native/runtime_normal/receipt.json",
+        "sha256": "2d2c17f0d3264e0875e47d67f8313aa9241da73b647c5cc9227a73aa372b63cc"
+      },
+      "status": "COMPLETED",
+      "source_commit": "59f573b01b08c1ae221f4022c2100d411088161b",
+      "exit_code": 0,
+      "worker_exit_code": 0,
+      "launcher_exit_code": 0,
+      "worker_identity": {
+        "pid_decimal": "67196",
+        "creation_filetime_utc_decimal": "134373991977608680"
+      },
+      "actual_worker_state": "GONE",
+      "job_active_processes": 0,
+      "cleanup_verified": true,
+      "orphans_cleaned": false,
+      "source_before_equals_after": true,
+      "wall_seconds": 2.287977699947078,
+      "job_cpu_user_seconds": 0.34375,
+      "job_cpu_kernel_seconds": 0.4375
+    },
+    {
+      "run": "run01_repair01",
+      "phase": "calibrate",
+      "receipt": {
+        "path": "private_data/r_memory_20261025/run01_repair01/native/calibrate/receipt.json",
+        "sha256": "364092b11ac063280762d644768f7d4da5b54b9b0ddea229e6ffb2522886c3cb"
+      },
+      "status": "COMPLETED",
+      "source_commit": "6409d55f48aff1fd7c0091a26f44252a170502a3",
+      "exit_code": 0,
+      "worker_exit_code": 0,
+      "launcher_exit_code": 0,
+      "worker_identity": {
+        "pid_decimal": "30596",
+        "creation_filetime_utc_decimal": "134374005222623052"
+      },
+      "actual_worker_state": "GONE",
+      "job_active_processes": 0,
+      "cleanup_verified": true,
+      "orphans_cleaned": false,
+      "source_before_equals_after": true,
+      "wall_seconds": 372.36211869999534,
+      "job_cpu_user_seconds": 318.59375,
+      "job_cpu_kernel_seconds": 145.546875
+    },
+    {
+      "run": "run01_repair01",
+      "phase": "preflight",
+      "receipt": {
+        "path": "private_data/r_memory_20261025/run01_repair01/native/preflight/receipt.json",
+        "sha256": "87f174ccc1c21a60dd88c0ecd912d46d812c4eaba1328422c71ebfbd596e6870"
+      },
+      "status": "COMPLETED",
+      "source_commit": "6409d55f48aff1fd7c0091a26f44252a170502a3",
+      "exit_code": 0,
+      "worker_exit_code": 0,
+      "launcher_exit_code": 0,
+      "worker_identity": {
+        "pid_decimal": "34432",
+        "creation_filetime_utc_decimal": "134374002401552257"
+      },
+      "actual_worker_state": "GONE",
+      "job_active_processes": 0,
+      "cleanup_verified": true,
+      "orphans_cleaned": false,
+      "source_before_equals_after": true,
+      "wall_seconds": 87.73186080000596,
+      "job_cpu_user_seconds": 64.96875,
+      "job_cpu_kernel_seconds": 32.5
+    },
+    {
+      "run": "run01_repair01",
+      "phase": "prepare",
+      "receipt": {
+        "path": "private_data/r_memory_20261025/run01_repair01/native/prepare/receipt.json",
+        "sha256": "a18a1046632291ebec4d58a1b70fc46ee3907ed733e1dc22d9a0e7e576d1a4b6"
+      },
+      "status": "COMPLETED",
+      "source_commit": "6409d55f48aff1fd7c0091a26f44252a170502a3",
+      "exit_code": 0,
+      "worker_exit_code": 0,
+      "launcher_exit_code": 0,
+      "worker_identity": {
+        "pid_decimal": "26564",
+        "creation_filetime_utc_decimal": "134374001597801049"
+      },
+      "actual_worker_state": "GONE",
+      "job_active_processes": 0,
+      "cleanup_verified": true,
+      "orphans_cleaned": false,
+      "source_before_equals_after": true,
+      "wall_seconds": 64.14174659998389,
+      "job_cpu_user_seconds": 33.703125,
+      "job_cpu_kernel_seconds": 3.390625
+    },
+    {
+      "run": "run01_repair01",
+      "phase": "qa",
+      "receipt": {
+        "path": "private_data/r_memory_20261025/run01_repair01/native/qa/receipt.json",
+        "sha256": "923452107aa215c5a07f7a3e36ee06fd882cc8f801f6a57c4748428881a192d3"
+      },
+      "status": "COMPLETED",
+      "source_commit": "6409d55f48aff1fd7c0091a26f44252a170502a3",
+      "exit_code": 0,
+      "worker_exit_code": 0,
+      "launcher_exit_code": 0,
+      "worker_identity": {
+        "pid_decimal": "50384",
+        "creation_filetime_utc_decimal": "134374003820327677"
+      },
+      "actual_worker_state": "GONE",
+      "job_active_processes": 0,
+      "cleanup_verified": true,
+      "orphans_cleaned": false,
+      "source_before_equals_after": true,
+      "wall_seconds": 123.20224390004296,
+      "job_cpu_user_seconds": 92.28125,
+      "job_cpu_kernel_seconds": 45.421875
+    },
+    {
+      "run": "run01_repair01",
+      "phase": "runtime_exception",
+      "receipt": {
+        "path": "private_data/r_memory_20261025/run01_repair01/native/runtime_exception/receipt.json",
+        "sha256": "3c435a94d442f40199df058008e9c18554d1151c04697f8835d6c97ca92c8ea4"
+      },
+      "status": "FAILED",
+      "source_commit": "6409d55f48aff1fd7c0091a26f44252a170502a3",
+      "exit_code": 1,
+      "worker_exit_code": 1,
+      "launcher_exit_code": 1,
+      "worker_identity": {
+        "pid_decimal": "31704",
+        "creation_filetime_utc_decimal": "134374001516949095"
+      },
+      "actual_worker_state": "GONE",
+      "job_active_processes": 0,
+      "cleanup_verified": true,
+      "orphans_cleaned": false,
+      "source_before_equals_after": true,
+      "wall_seconds": 2.7332446000073105,
+      "job_cpu_user_seconds": 0.375,
+      "job_cpu_kernel_seconds": 0.515625
+    },
+    {
+      "run": "run01_repair01",
+      "phase": "runtime_normal",
+      "receipt": {
+        "path": "private_data/r_memory_20261025/run01_repair01/native/runtime_normal/receipt.json",
+        "sha256": "155d9c3a309d5491fd61a9ae97f98c04e39ae5a390d95617536e219810c4e0a3"
+      },
+      "status": "COMPLETED",
+      "source_commit": "6409d55f48aff1fd7c0091a26f44252a170502a3",
+      "exit_code": 0,
+      "worker_exit_code": 0,
+      "launcher_exit_code": 0,
+      "worker_identity": {
+        "pid_decimal": "68188",
+        "creation_filetime_utc_decimal": "134374001434030884"
+      },
+      "actual_worker_state": "GONE",
+      "job_active_processes": 0,
+      "cleanup_verified": true,
+      "orphans_cleaned": false,
+      "source_before_equals_after": true,
+      "wall_seconds": 2.6906236999784596,
+      "job_cpu_user_seconds": 0.4375,
+      "job_cpu_kernel_seconds": 0.453125
+    }
+  ],
+  "closed_native_receipt_totals_observed_only": {
+    "receipt_count": 11,
+    "wall_seconds": 854.0326571000041,
+    "job_cpu_user_seconds": 622.65625,
+    "job_cpu_kernel_seconds": 275.09375,
+    "scope": "Only explicitly listed closed native receipts in old run01 and run01_repair01. Not total engineering CPU; excludes unit checks, outer controllers/drivers, audit, freeze and current unfinished fits. Wall and JobCPU remain separate."
+  },
+  "unfinished_native_directories_not_charged_as_completed": [
+    "private_data/r_memory_20261025/run01_repair01/native/fit_A_25101"
+  ],
+  "optimizer_calls": {
+    "retained_old_failed_QA_actual_Adam_calls": 1,
+    "repair01_QA_completed_updates": 204,
+    "calibration_actual_Adam_calls": 96,
+    "preformal_actual_Adam_calls": 301,
+    "formal_snapshot_attempts": 14,
+    "formal_snapshot_completed_updates": 14,
+    "formal_snapshot_counts_exact": true,
+    "cumulative_actual_Adam_calls_lower_bound_at_snapshot": 315,
+    "cumulative_completed_train_updates_at_snapshot": 314,
+    "scope": "r-memory pipeline QA/calibration/formal snapshot only, retaining failed old QA call; not a new resource ceiling or a project-wide ledger reset."
+  },
+  "formal_runs_at_snapshot": [
+    {
+      "mode": "A",
+      "seed": 25101,
+      "journal": {
+        "exists": true,
+        "path": "private_data/r_memory_20261025/run01_repair01/models/A_25101/optimizer_calls.jsonl",
+        "snapshot_sha256": "97e3a0a8d8d1a415be33a56e828f06be16accb2d275e2503d3d259c678472039",
+        "snapshot_bytes": 1456,
+        "attempts": 14,
+        "completed": 14,
+        "ordered": true,
+        "partial_tail": false,
+        "counts_exact_for_snapshot": true
+      },
+      "latest_checkpoint_pointer": {
+        "directory": "step000000",
+        "checkpoint_sha256": "3502efc70365b3119417bc5db987b371853eab3f0bea89bef660e6bdb94dbcbe"
+      },
+      "complete_json_present": false,
+      "checkpoint_pt_read": false
+    }
+  ],
+  "formal_queue": {
+    "root_session_id": 20271,
+    "source": "root-provided driver identity independently queried once with exact FILETIME; first worker corroborated by original JSON",
+    "processes": {
+      "serial_driver": {
+        "pid_decimal": "51852",
+        "creation_filetime_utc_decimal": "134374012174040563",
+        "state_at_single_observation": "RUNNING"
+      },
+      "first_fit_worker": {
+        "pid_decimal": "61692",
+        "creation_filetime_utc_decimal": "134374012197238172",
+        "state_at_single_observation": "RUNNING"
+      }
+    },
+    "first_fit_actual_worker_record": {
+      "path": "private_data/r_memory_20261025/run01_repair01/native/fit_A_25101/actual_worker.json",
+      "sha256": "674eaeb8174c72d5fda14a26504514be6ee804e71e09d35eb1c290b9670c76fa"
+    },
+    "first_fit_worker_identity": {
+      "pid_decimal": "61692",
+      "creation_filetime_utc_decimal": "134374012197238172"
+    },
+    "formal_endpoint_scientific_result_claimed": false
+  },
+  "audit": {
+    "native_jobs_started": 0,
+    "optimizer_calls_started": 0,
+    "model_pt_read": false,
+    "event_arrays_decoded": false,
+    "cache_arrays_parsed": false,
+    "multi_GB_runtime_rehashed": false,
+    "liveness_observations_per_process": 1,
+    "native_job_cpu_accounting": null
+  }
+}
