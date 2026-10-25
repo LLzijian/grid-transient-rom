@@ -1,6 +1,6 @@
 # 真实系统记忆状态与因果初态比较
 
-2026年10月25日，root事前登记。用户已授权按项目研究建议推进。实际规划模型gpt-6-astra，代理/root/astra6_execution_plan，完整返回见astra6_r_memory_20261025_raw.md。root采纳三模型、固定来源与有限长时适配方案，以下明确科学定义和两项事前修订。实现与结果尚未运行，不开放原val/test，TASK4暂停，默认模型none。
+2026年10月25日，root事前登记。用户已授权按项目研究建议推进。实际规划模型gpt-6-astra，代理/root/astra6_execution_plan，完整返回见astra6_r_memory_20261025_raw.md。root采纳三模型、固定来源与有限长时适配方案，以下明确科学定义与冻结前实施修订。尚未启动校准或正式适配，不开放原val/test，TASK4暂停，默认模型none。
 
 ## 问题与比较
 
@@ -38,17 +38,23 @@ Hbase=πᵀM⁻¹π/2+U(δ,p)，无额外π依赖；H=Hbase+rᵀr/(2κ)。完整
 
 基础学习率：skeleton0.0009、closure及新memory0.00009、encoder0.000027；float64 CUDA、RK4 dt0.01、clip100、Adam原算法。不得启用未完成GPU资格的表达式/同步优化补丁。
 
+校准前先登记一次0optimizer的真实8s可行性检查：prepare后只读fit缓存，按真实长度降序、ID升序选12条稳定且有至少8s未来的事件；不足则保留实际数量返回root，不另换范围。A/B/C从同源初值分别进行一次完整8s目标前向与反传，检查loss及全部梯度有限、缓存退出，记录事件ID、同步wall及allocated/reserved峰值。3次后停止，不按分数调模型或校准设置，不扫描batch/dt/精度。显存/数值失败隔离对应配置，由root作后续科学决定，不在513步才发现工程不可行。
+
 校准：主优化seed25101，fit组内固定12事件面板，按组轮转、尽可能9稳定/3失稳；实际面板先保存。三个模型×整体倍率1/3×每档16次=96次试算后丢弃的更新，校准使用1s自主训练，固定5s部署risk作选择。以各自零更新5s风险的比值（分母下限事前固定1e−12）选档，A独立，B/C平均比值共同选同档，平分选1。仅数值合格档可选；两档均失败则隔离该配置，不追加档位。no-update组不参与校准、尺度、选择或早停。正式训练全部重置到冻结初值、新Adam与登记RNG。
 
 六次正式适配各2048有效更新，共12288。1–256训练1s，257–512训练2s，513–2048逐次交替5/8s；1025起学习率统一乘0.3，Adam矩不断开。固定0/512/2048科学节点，端点按预定步数使用；不按成绩选检查点。每32更新实际保存模型、Adam、CPU/CUDA/NumPy RNG、日程位置、课程及计数。
 
-root事前修订Astra的QA工作量：每种模型用小合成fixture执行连续34与32→真实保存→重建恢复2，共68真实更新，三类型合计204，验证非空Adam和真实32步恢复，不用3更新冒充32。另做定向无更新检查：独立方程/功率、非单位惯性、角度平移/机器重编号、B/C同状态场相同、因果性、无p历史、ragged真实区间、导出恢复、CPU/CUDA梯度、推理回训练、当前运行时所有权。合格即不重复。
+root事前修订Astra的QA工作量：每种模型用小合成fixture执行连续34与32→真实保存→重建恢复2，共68真实更新，三类型合计204，验证非空且至少一项exp_avg非零的Adam和真实32步恢复，不用3更新冒充32。32步刚恢复时，模型/Adam/RNG及参数组必须逐张量精确一致；再继续2步与连续34步的参数/Adam采用事前固定rtol=atol=2e−9数值恢复检查，保留最大差，不宣称逐位重放，全部RNG仍须逐位一致。另做定向无更新检查：独立方程/功率、非单位惯性、角度平移/机器重编号、B/C同状态场相同、因果性、无p历史、ragged真实区间、导出恢复、CPU/CUDA梯度、推理回训练、当前运行时所有权。合格即不重复。
+
+204次QA前先对A/B/C各做一次无optimizer的同源小合成CPU/CUDA配对：field、短轨迹、短目标及全部未裁剪梯度，固定rtol=1e−8、atol=1e−10；记录参数名称、dtype与各最大差，不在看到结果后改容差。该检查不读取真实事件，之后204恢复QA按登记RNG重新开始。科学函数直接调用也明确torch单线程，不能靠CLI设置的副作用。
 
 最多一次明确纯实现缺陷修复，只可重做受影响QA及校准，额外最多300更新；不能改科学公式、门槛、数据或容差来救结果。每个正式run最多一次外部中断恢复，最多重复32次未持久调用，六次合计≤192。非有限/数值发散/效果不佳不是外部中断，不换seed或学习率重来。全轮optimizer调用上界12288+96+204+300+192=13080；这是有限工作量，不是进程额度。各阶段实际调用、wall和JobCPU分别记账，未知不得补造。
 
 ## 评价与下一决定
 
-0/512/2048对每配置各一次共同385评价，最多18队列；同一预测同时汇总fit、no-update、原366、新19及共同385。只复用evaluate_structured_rom的_rollouts/_pair_row/_scored_numerics、summarize_train_local_memory_0098.event_metrics/build_summary、fixed_edge_pair_20261019.scientific_qualification/primary_risk/physical_metrics与active_fom_pair_fit_20261020的真实区间函数，不直接调用强制旧缓存的evaluate_queue，不让r通过enable_linear_cache。事前绑定函数与配置SHA，不以合成单一门槛替代真实系统资格；端点先冻结身份再评价。稳定5s主risk沿用primary_risk，其qualification8仍要求原8s分类一致性及所有可评价1/2/5/8/prefix数值行。任一必要行未决保留原行，受影响总体未决，不删行重算合格分数。
+0/512/2048对每配置各一次共同385评价，正常最多18队列；同一预测同时汇总fit、no-update、原366、新19及共同385。只复用evaluate_structured_rom的_rollouts/_pair_row/_scored_numerics、summarize_train_local_memory_0098.event_metrics/build_summary、fixed_edge_pair_20261019.scientific_qualification/primary_risk/physical_metrics与active_fom_pair_fit_20261020的真实区间函数，不直接调用强制旧缓存的evaluate_queue，不让r通过enable_linear_cache。事前绑定函数与配置SHA，不以合成单一门槛替代真实系统资格；端点先冻结身份再评价。稳定5s主risk沿用primary_risk，其qualification8仍要求原8s分类一致性及所有可评价1/2/5/8/prefix数值行。任一必要行未决保留原行，受影响总体未决，不删行重算合格分数。
+
+冻结评价目录先在唯一pending目录写全身份，再原子发布，避免无身份的半目录。只有root授权的一次fit外部中断恢复、恢复步数正是0/512/2048且原冻结模型/Adam/配置身份全部相同时，允许把对应未完成评价目录原样保存为唯一interrupted1目录，再对同一端点完整重评一次。已完成或数值失败的评价不得重评；普通调用不覆盖或移动。每run最多1次，六run最多增加6队列，因此全轮最多24；不新增训练或选点机会，所有部分数组与错误保留。
 
 完整预测保留到15s以覆盖真实记录，8s与真实区间最多15s资格分别保存。actual范围沿用interval15.numerically_admissible及pair_actual的finite_to_endpoint/los_pair_pass/COI和common阈值；仅8s之后的失败不抹去已合格5/8s分数，但令真实区间总体未决，不称完整双范围能力或安全。C/B风险差同时报告粗细网格评分扰动，差值未超出两者扰动界之和只作数值范围内接近，不据此支持初始化收益；该界不是抽样置信区间。
 
@@ -64,6 +70,14 @@ root事前修订Astra的QA工作量：每种模型用小合成fixture执行连�
 
 旧training_efficiency01按中断结论关闭、旧锁保留。新根目录private_data/r_memory_20261025/run01；当前运行时二进制及依赖绑定重新保存，原生Job无数量/时长/CPU额度，仅负责所有权、退出和后代清理。精确历史锁豁免只限recovery_20261025.json所指SHA/owner，启动前再检查GONE；其他锁拒绝。未知旧Job费用不转成新预算通过。
 
+prepare及所有科学阶段必须核当前绑定对应的两次实际0optimizer运行时探针：正常完成，以及预定异常退出后的真实所有权/清理。分别保留原生COMPLETED/0与FAILED/1，不把负例改成原生成功；两者源前后一致、实际worker身份/退出/Job0与清理成立后才准后续阶段。预定探针不初始化GPU，不复用旧已过时selection。
+
+本轮若发生允许的外部中断，只在root显式resume时处理本轮自己的遗留锁：核同源native started/actual_worker、锁原字节及双方严格GONE，核冻结运行器的匿名不可继承Job闭包，且无failure/complete/既有resume_once、真实完整checkpoint及RNG/Adam/日程均有效。移动前确认源与目标解析绝对路径都在新BASE，目标不存在；将原字节锁保存到本轮ownership对应resume1目录后才建立新锁。保留推断与未知退出/费用，不造Job0/cleanup；按持久调用日志核重放≤32并先落resume_once，拒绝第二次恢复。该操作不适用于旧training_efficiency锁或任何其他作业。
+
 实现使用独立新文件，不改旧绑定源、损失或数据文件。运行前冻结当前源码/协议/数据清单和来源身份，所有不利结果及模型/Adam/RNG留存。关键材料归档codex/r-memory-initialization-20261025；复现依赖原本地私有资产。通过独立范围审查的可复用工程可限定PR合main并核远端；科学模型采用继续受原L1/L2条件约束。
 
-独立只读挑战/root/r_plan_challenge未参与提议或实现，确认来源、严格M3、因果及204次QA/13080上界；要求明确底层评价入口、ceil风险及8s/actual范围与数值评分扰动。root已在执行前采纳以上三项，未改变旧数值门槛。下一步按该有限协议实现、核验和执行，无额外普通许可问题。
+校准与正式适配失败时，另尝试保存当时model、grad、Adam、CPU/CUDA/NumPy/Python RNG及位置/trace的隔离torch快照与SHA，明确QUARANTINED_NOT_RESUMABLE，不导出为正常模型、不改latest、不作为恢复源。若故障同时阻止快照，记录原错误及capture_error，不伪称已完整保存；原正常检查点和调用日志仍保留。no-update缓存可被原生身份核查读取字节求哈希，但校准/训练不解析或用于拟合、选择，不把机械哈希宣称为完全没有读文件。
+
+真实8s可行性检查逐模型记录eligible：三型均合格记PASS，至少一型合格记PARTIAL，全不合格记FAILED。PARTIAL允许其余合格配置继续，不降低任一单型资格。A可独立校准；B/C须同时合格才作共同档位选择及正式配对，否则保留缺失原因、不形成B/C比较。跳过的配置记录0次校准更新及selected=None，正式适配按目标模型资格再核对。小合成QA仍按最多204次登记执行；所有缺失、失败和部分评价均保留，不能宣称完整三模型结论。13080仍是上界，不增加试验机会。
+
+独立只读挑战/root/r_plan_challenge未参与提议或实现，确认来源、严格M3、因果及204次QA/13080上界；要求明确底层评价入口、ceil风险及8s/actual范围与数值评分扰动。实施审查进一步发现运行时探针前置、评价中断恢复、CPU/CUDA配对及失败状态保留四项问题；root在冻结前要求修正，并明确科学函数单线程与逐模型隔离。全部为执行正确性修订，尚未启动科学optimizer，不消耗一次冻结后修复额度；原公式、数据、数值门槛和种子保持。下一步按该有限协议核验和执行，无额外普通许可问题。
