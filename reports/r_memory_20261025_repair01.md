@@ -1,0 +1,13 @@
+# 唯一实现修复：Adam跨设备状态检查
+
+2026年10月25日，root登记。原始冻结来源59f573b01b08c1ae221f4022c2100d411088161b，输出private_data/r_memory_20261025/run01。三型真实8s前向/反传合格；CPU/CUDA场、短轨迹、短目标和全部原始梯度配对也合格。
+
+QA随后在A的第一次Adam更新后失败：Adam的计数位于CPU，动量位于CUDA，原有限性函数将两种设备的布尔张量统一stack。journal只有1条attempt、0条completed；冻结源与异常位置证明Adam.step已执行返回，故实际optimizer调用1，完成one_update核验0。B/C、校准和正式适配未更新。该错误不提供模型预测能力的结论。
+
+原生QA实际FAILED，supervisor/worker/launcher退出均1，cleanup_verified=true、Job0、源码前后一致。wall24.93830059998436秒，JobCPU user9.609375秒、kernel6.15625秒；它与旧工程中断费用无关。三型配对原文件SHA54ce0ebf103781e6aaaf11c6bdecb3fe8572da01fd10f24409a4c54e79ce5870，留在原处。
+
+root启用协议唯一冻结后纯实现修复：只在新study内按张量核查优化器状态有限性，包括恢复后的同根因检查；不修改旧运行库、模型、目标、数据、数值门槛或调参日程。controller只将输出改为private_data/r_memory_20261025/run01_repair01。修前真实源/测试/协议以排他写入保存在results/r_memory_20261025/repair01_before，旧run01的绑定、缓存、日志和收据不改。
+
+重新绑定归档来源并执行同一有限链：两次当前运行时探针、prepare、8s无更新检查、204次QA；通过后按原96次校准、六次2048更新及固定评价推进。重复QA最多204次，占额外300次额度；校准此前未执行，不属于重复。算入旧1调用，完整剩余日程含192次可能重放的总上界12781，原13080上界不变。无第二实现修复；数值或实现失败按登记隔离，不能更改容差救结果。
+
+独立审查者/root/r_plan_challenge在作者停改后已核对精确差异、最终SHA及旧证据不变，确认该唯一修复闭合。20项检查全部通过，包含无optimizer的实际CPU/CUDA混设备回归。root采纳在新目录按同一门槛重做受影响QA；此结论不代表新QA已通过或模型获得采用资格。新study SHA a6d96ce1ad8a6b006ab5e6201d23c21e8d611836128fa3a77f7d17da8f81bd8b，controller SHA951fcc8dccceaad02f84b2de016b499b353f0e451ee50389507486329853621f。
