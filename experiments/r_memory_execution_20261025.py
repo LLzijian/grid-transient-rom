@@ -20,7 +20,7 @@ import time
 import traceback
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE = ROOT / "private_data/r_memory_20261025/run01"
+BASE = ROOT / "private_data/r_memory_20261025/run01_repair01"
 LOGICAL_PYTHON = ROOT / ".venv-gpu/Scripts/python.exe"
 MODES = ("A", "B", "C")
 SEEDS = (25101, 25102)
