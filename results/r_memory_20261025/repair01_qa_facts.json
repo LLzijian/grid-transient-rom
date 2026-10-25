@@ -1,0 +1,389 @@
+{
+  "scope": "bounded read-only QA closure audit from JSON and journals; no model pt load or event tensor decoding",
+  "observed_at_shanghai": "2026-10-25T19:17:21.527512+08:00",
+  "source_commit": "6409d55f48aff1fd7c0091a26f44252a170502a3",
+  "status": "PASS",
+  "checks": {
+    "summary_PASS204": true,
+    "summary_fixture_only": true,
+    "native_source_and_phase": true,
+    "native_COMPLETED_exits0": true,
+    "native_Job0_cleanup": true,
+    "native_source_closure": true,
+    "actual_worker_identity": true,
+    "A_journals34plus34": true,
+    "A_saved32_then2": true,
+    "A_Adam_nonzero_serialization_exact": true,
+    "A_result_summary_identity": true,
+    "B_journals34plus34": true,
+    "B_saved32_then2": true,
+    "B_Adam_nonzero_serialization_exact": true,
+    "B_result_summary_identity": true,
+    "C_journals34plus34": true,
+    "C_saved32_then2": true,
+    "C_Adam_nonzero_serialization_exact": true,
+    "C_result_summary_identity": true,
+    "journals_total204_complete": true,
+    "CPU_CUDA_zero_updates_PASS": true,
+    "CPU_CUDA_summary_identity": true,
+    "old_1_actual_call_retained": true
+  },
+  "summary": {
+    "path": "private_data/r_memory_20261025/run01_repair01/qa/summary.json",
+    "sha256": "15d6d4530934c1f5de77b010b8a4b7c1210772b304c9a92c7e4743b253066389"
+  },
+  "binding": {
+    "path": "private_data/r_memory_20261025/run01_repair01/binding.json",
+    "sha256": "d1573fd80c014d331f569daef419618ac42b0b0b25e40f28fe619513a2501193"
+  },
+  "models": [
+    {
+      "mode": "A",
+      "result": {
+        "path": "private_data/r_memory_20261025/run01_repair01/qa/A/result.json",
+        "sha256": "e7f5163acc43811004765c5a9378587618a8debb8597ac8efb38175a6bb66350"
+      },
+      "journals": {
+        "continuous": {
+          "journal": {
+            "path": "private_data/r_memory_20261025/run01_repair01/qa/A/continuous_calls.jsonl",
+            "sha256": "f6ed59e62908a05cd3d1d87736d47988c47fe4ac54e5d3905c4105bec10c2f43"
+          },
+          "lines": 68,
+          "attempts": 34,
+          "completed_train_updates": 34,
+          "ordered_pairs": true,
+          "worker_pids": [
+            50384
+          ]
+        },
+        "resumed": {
+          "journal": {
+            "path": "private_data/r_memory_20261025/run01_repair01/qa/A/resumed_calls.jsonl",
+            "sha256": "f6ed59e62908a05cd3d1d87736d47988c47fe4ac54e5d3905c4105bec10c2f43"
+          },
+          "lines": 68,
+          "attempts": 34,
+          "completed_train_updates": 34,
+          "ordered_pairs": true,
+          "worker_pids": [
+            50384
+          ]
+        }
+      },
+      "saved_step": 32,
+      "continuous_updates": 34,
+      "before_save_updates": 32,
+      "after_restore_updates": 2,
+      "actual_optimizer_updates": 68,
+      "nonzero_Adam_exp_avg_reported_by_QA": true,
+      "serialization_model_Adam_RNG_exact_reported_by_QA": true,
+      "continuation_parameter_maxabs": 0.0,
+      "continuation_Adam_maxabs": 0.0,
+      "continuation_claim": "same-environment numerical recovery at rtol/atol2e-9; RNG bitwise equal",
+      "runtime": {
+        "executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+        "executable_sha256": "82264b3fe4248d1ff3564a0296cbb4a266ef968799bd85902ab5eaaf3e17eb62",
+        "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+        "torch": "2.13.0+cu130",
+        "cuda": "13.0",
+        "device": "cuda:0",
+        "gpu": "NVIDIA GeForce RTX 4060 Ti",
+        "dtype": "float64",
+        "threads": 1
+      },
+      "checkpoint_binary_loaded_by_audit": false
+    },
+    {
+      "mode": "B",
+      "result": {
+        "path": "private_data/r_memory_20261025/run01_repair01/qa/B/result.json",
+        "sha256": "d33078257ef43ba745f4ee6644fca9976c129c9347b0449f409effb76427553a"
+      },
+      "journals": {
+        "continuous": {
+          "journal": {
+            "path": "private_data/r_memory_20261025/run01_repair01/qa/B/continuous_calls.jsonl",
+            "sha256": "f6ed59e62908a05cd3d1d87736d47988c47fe4ac54e5d3905c4105bec10c2f43"
+          },
+          "lines": 68,
+          "attempts": 34,
+          "completed_train_updates": 34,
+          "ordered_pairs": true,
+          "worker_pids": [
+            50384
+          ]
+        },
+        "resumed": {
+          "journal": {
+            "path": "private_data/r_memory_20261025/run01_repair01/qa/B/resumed_calls.jsonl",
+            "sha256": "f6ed59e62908a05cd3d1d87736d47988c47fe4ac54e5d3905c4105bec10c2f43"
+          },
+          "lines": 68,
+          "attempts": 34,
+          "completed_train_updates": 34,
+          "ordered_pairs": true,
+          "worker_pids": [
+            50384
+          ]
+        }
+      },
+      "saved_step": 32,
+      "continuous_updates": 34,
+      "before_save_updates": 32,
+      "after_restore_updates": 2,
+      "actual_optimizer_updates": 68,
+      "nonzero_Adam_exp_avg_reported_by_QA": true,
+      "serialization_model_Adam_RNG_exact_reported_by_QA": true,
+      "continuation_parameter_maxabs": 0.0,
+      "continuation_Adam_maxabs": 0.0,
+      "continuation_claim": "same-environment numerical recovery at rtol/atol2e-9; RNG bitwise equal",
+      "runtime": {
+        "executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+        "executable_sha256": "82264b3fe4248d1ff3564a0296cbb4a266ef968799bd85902ab5eaaf3e17eb62",
+        "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+        "torch": "2.13.0+cu130",
+        "cuda": "13.0",
+        "device": "cuda:0",
+        "gpu": "NVIDIA GeForce RTX 4060 Ti",
+        "dtype": "float64",
+        "threads": 1
+      },
+      "checkpoint_binary_loaded_by_audit": false
+    },
+    {
+      "mode": "C",
+      "result": {
+        "path": "private_data/r_memory_20261025/run01_repair01/qa/C/result.json",
+        "sha256": "f8143d920895edda6b8bff5d154a1ebfc14c95cfea101b9983dbec34ac61abd4"
+      },
+      "journals": {
+        "continuous": {
+          "journal": {
+            "path": "private_data/r_memory_20261025/run01_repair01/qa/C/continuous_calls.jsonl",
+            "sha256": "f6ed59e62908a05cd3d1d87736d47988c47fe4ac54e5d3905c4105bec10c2f43"
+          },
+          "lines": 68,
+          "attempts": 34,
+          "completed_train_updates": 34,
+          "ordered_pairs": true,
+          "worker_pids": [
+            50384
+          ]
+        },
+        "resumed": {
+          "journal": {
+            "path": "private_data/r_memory_20261025/run01_repair01/qa/C/resumed_calls.jsonl",
+            "sha256": "f6ed59e62908a05cd3d1d87736d47988c47fe4ac54e5d3905c4105bec10c2f43"
+          },
+          "lines": 68,
+          "attempts": 34,
+          "completed_train_updates": 34,
+          "ordered_pairs": true,
+          "worker_pids": [
+            50384
+          ]
+        }
+      },
+      "saved_step": 32,
+      "continuous_updates": 34,
+      "before_save_updates": 32,
+      "after_restore_updates": 2,
+      "actual_optimizer_updates": 68,
+      "nonzero_Adam_exp_avg_reported_by_QA": true,
+      "serialization_model_Adam_RNG_exact_reported_by_QA": true,
+      "continuation_parameter_maxabs": 0.0,
+      "continuation_Adam_maxabs": 0.0,
+      "continuation_claim": "same-environment numerical recovery at rtol/atol2e-9; RNG bitwise equal",
+      "runtime": {
+        "executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+        "executable_sha256": "82264b3fe4248d1ff3564a0296cbb4a266ef968799bd85902ab5eaaf3e17eb62",
+        "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+        "torch": "2.13.0+cu130",
+        "cuda": "13.0",
+        "device": "cuda:0",
+        "gpu": "NVIDIA GeForce RTX 4060 Ti",
+        "dtype": "float64",
+        "threads": 1
+      },
+      "checkpoint_binary_loaded_by_audit": false
+    }
+  ],
+  "cpu_cuda_comparison": {
+    "evidence": {
+      "path": "private_data/r_memory_20261025/run01_repair01/qa/device_comparisons.json",
+      "sha256": "54ce0ebf103781e6aaaf11c6bdecb3fe8572da01fd10f24409a4c54e79ce5870"
+    },
+    "actual_optimizer_updates": 0,
+    "models": [
+      {
+        "mode": "A",
+        "status": "PASS",
+        "rtol": 1e-08,
+        "atol": 1e-10,
+        "field_maxabs": 2.2967738821932926e-15,
+        "short_trajectory_maxabs": 1.126486057212439e-16,
+        "complete_short_objective_maxabs": 7.55976905424463e-20,
+        "maximum_unclipped_gradient_difference": 1.0869814993436826e-19,
+        "field_dtype": "torch.float64",
+        "trajectory_dtype": "torch.float64",
+        "objective_dtype": "torch.float64"
+      },
+      {
+        "mode": "B",
+        "status": "PASS",
+        "rtol": 1e-08,
+        "atol": 1e-10,
+        "field_maxabs": 2.1465034610868017e-15,
+        "short_trajectory_maxabs": 7.237049501340742e-17,
+        "complete_short_objective_maxabs": 2.244637310223896e-20,
+        "maximum_unclipped_gradient_difference": 4.478355836362092e-21,
+        "field_dtype": "torch.float64",
+        "trajectory_dtype": "torch.float64",
+        "objective_dtype": "torch.float64"
+      },
+      {
+        "mode": "C",
+        "status": "PASS",
+        "rtol": 1e-08,
+        "atol": 1e-10,
+        "field_maxabs": 2.1465034610868017e-15,
+        "short_trajectory_maxabs": 3.95516952522712e-16,
+        "complete_short_objective_maxabs": 2.4193378555950953e-20,
+        "maximum_unclipped_gradient_difference": 6.868328780211555e-20,
+        "field_dtype": "torch.float64",
+        "trajectory_dtype": "torch.float64",
+        "objective_dtype": "torch.float64"
+      }
+    ]
+  },
+  "native": {
+    "receipt": {
+      "path": "private_data/r_memory_20261025/run01_repair01/native/qa/receipt.json",
+      "sha256": "923452107aa215c5a07f7a3e36ee06fd882cc8f801f6a57c4748428881a192d3"
+    },
+    "source_commit": "6409d55f48aff1fd7c0091a26f44252a170502a3",
+    "phase": "qa",
+    "status": "COMPLETED",
+    "worker": {
+      "pid": 50384,
+      "executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+      "physical_image": "C:\\Users\\LLLzijian\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "logical_executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+      "runtime_scheme": "direct_base_venv",
+      "runtime_selection": null,
+      "creation_filetime_utc": 134374003820327677,
+      "exit_filetime_utc": 0,
+      "kernel_100ns": 3750000,
+      "user_100ns": 3437500
+    },
+    "supervisor": {
+      "pid": 42520,
+      "executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+      "creation_filetime_utc": 134374003801694584,
+      "exit_filetime_utc": 0,
+      "kernel_100ns": 4531250,
+      "user_100ns": 4531250
+    },
+    "exit_code": 0,
+    "worker_exit_code": 0,
+    "launcher_exit_code": 0,
+    "actual_worker_state": "GONE",
+    "job_active_processes": 0,
+    "job_total_processes": 3,
+    "cleanup_verified": true,
+    "orphans_cleaned": false,
+    "source_before_count": 97,
+    "source_before_equals_after": true,
+    "source_closure_equals_registered_inputs": true,
+    "wall_seconds": 123.20224390004296,
+    "job_cpu_user_seconds": 92.28125,
+    "job_cpu_kernel_seconds": 45.421875,
+    "worker_pid_decimal": "50384",
+    "worker_creation_filetime_utc_decimal": "134374003820327677",
+    "supervisor_pid_decimal": "42520",
+    "supervisor_creation_filetime_utc_decimal": "134374003801694584"
+  },
+  "actual_calls_QA_scope": {
+    "repair01_journal_attempts": 204,
+    "repair01_completed_train_updates": 204,
+    "retained_old_first_attempts": 1,
+    "retained_old_completed_train_updates": 0,
+    "retained_old_actual_Adam_invocations": 1,
+    "cumulative_actual_Adam_calls_QA_scope": 205,
+    "cumulative_completed_train_updates_QA_scope": 204,
+    "old_first_journal": {
+      "path": "private_data/r_memory_20261025/run01/qa/A/continuous_calls.jsonl",
+      "sha256": "ba2a2dbf1e921f277066523274f121394043ea9149c4bce0708874baddc9c9e4"
+    },
+    "scope": "Old failed QA plus repaired QA only; excludes any subsequent calibration or formal adaptation. Original one Adam call is not reset."
+  },
+  "audit": {
+    "native_jobs_started": 0,
+    "optimizer_calls_started": 0,
+    "model_pt_loaded": false,
+    "event_tensor_arrays_decoded": false,
+    "cache_npz_bytes_read": false,
+    "raw_val_test_opened": false,
+    "job_cpu_accounting": null,
+    "status_reads": "initial check absent, then one check after 30-second wait; no repeated polling"
+  },
+  "identity_display_discrepancy": {
+    "initial_fact_status": "ESCALATE",
+    "initial_fact_sha256": "11df12f6c96629dcbb3568217c265c3737bd2c57b0294a73b1c9e07f4687fe65",
+    "root_announcement_decimal": "134374003820327680",
+    "authoritative_native_decimal": "134374003820327677",
+    "native_files": [
+      {
+        "path": "native/qa/receipt.json",
+        "pid_decimal": "50384",
+        "creation_filetime_utc_decimal": "134374003820327677",
+        "file_sha256": "923452107aa215c5a07f7a3e36ee06fd882cc8f801f6a57c4748428881a192d3"
+      },
+      {
+        "path": "native/qa/started.json",
+        "pid_decimal": "50384",
+        "creation_filetime_utc_decimal": "134374003820327677",
+        "file_sha256": "725deb16bff817e8e1f2e8724c8e89cf74148491dada9a8df2f59b48e51b9ffc"
+      },
+      {
+        "path": "native/qa/actual_worker.json",
+        "pid_decimal": "50384",
+        "creation_filetime_utc_decimal": "134374003820327677",
+        "file_sha256": "747274499b6f028127acca7fb04e7b77fb25546bb437dc2a89687aecd9b5dbeb"
+      },
+      {
+        "path": "ownership/qa/worker.json",
+        "pid_decimal": "50384",
+        "creation_filetime_utc_decimal": "134374003820327677",
+        "file_sha256": "4efbcf961c2cd5636adeebf40d3cefbdd666f9827c4b5731779be5d8d8d25d7b"
+      }
+    ],
+    "all_four_exact_native_identities_match": true,
+    "binary64_round_trip_decimal": "134374003820327680",
+    "root_resolution": "Root confirmed original JSON Python-int decimal677 is authoritative; prior Node JSON.parse display rounded unsafe integer. Original native files remain unchanged.",
+    "resolved_by": "root",
+    "raw_native_source_modified": false
+  },
+  "calibrate_startup_identity_observation": {
+    "records": [
+      {
+        "path": "native/calibrate/actual_worker.json",
+        "pid_decimal": "30596",
+        "creation_filetime_utc_decimal": "134374005222623052",
+        "source_commit": null,
+        "phase": null,
+        "file_sha256": "b2da9f386b34d4b6dff16b9b4f8bc70340c7da776735501a761828a0f7b75ad4"
+      },
+      {
+        "path": "ownership/calibrate/worker.json",
+        "pid_decimal": "30596",
+        "creation_filetime_utc_decimal": "134374005222623052",
+        "source_commit": "6409d55f48aff1fd7c0091a26f44252a170502a3",
+        "phase": "calibrate",
+        "file_sha256": "4c1f82c52c814fd8c66b8aad00e6485150fad25cd15a90c2baee3d5f3c350808"
+      }
+    ],
+    "scope": "exact startup identity only; no liveness/completion or calibration outcome claimed"
+  }
+}
