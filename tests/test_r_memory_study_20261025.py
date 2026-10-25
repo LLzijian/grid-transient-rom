@@ -358,3 +358,33 @@ def test_preflight_ineligible_modes_consume_zero_calibration_updates(tmp_path, m
     assert not result["no_update_cache_parsed"] and not result["no_update_data_used"]
     assert all(row["status"] == "SKIPPED_PREFLIGHT" and row["completed_updates"] == 0
         for variants in result["scores"].values() for row in variants.values())
+
+
+def test_adam_state_finite_checks_reject_nonfinite_counters_and_moments():
+    finite = {"step": torch.tensor(1.), "exp_avg": torch.ones(2, dtype=torch.float64),
+              "exp_avg_sq": torch.ones(2, dtype=torch.float64)}
+    assert study._adam_states_finite([finite])
+    assert study._adam_states_finite([])
+    for key in finite:
+        bad = {name: value.clone() for name, value in finite.items()}
+        bad[key].fill_(float("nan"))
+        assert not study._adam_states_finite([bad])
+
+
+def test_adam_cpu_step_cuda_moments_finite_regression_without_optimizer_step():
+    if not torch.cuda.is_available():
+        pytest.skip("this regression explicitly requires CPU plus CUDA tensors")
+    cpu_step = torch.tensor(1., device="cpu")
+    cuda_mean = torch.ones(3, dtype=torch.float64, device="cuda")
+    cuda_square = torch.ones(3, dtype=torch.float64, device="cuda")
+    state = {"step": cpu_step, "exp_avg": cuda_mean, "exp_avg_sq": cuda_square}
+    # Retain a direct reproduction of the original mixed-device failure.
+    with pytest.raises(RuntimeError, match="same device"):
+        study.all_finite(list(state.values()))
+    assert study._adam_states_finite([state])
+    assert cpu_step.device.type == "cpu" and cuda_mean.device.type == "cuda"
+    cuda_mean[1] = float("nan")
+    assert not study._adam_states_finite([state])
+    cuda_mean[1] = 1.
+    cpu_step.fill_(float("inf"))
+    assert not study._adam_states_finite([state])
