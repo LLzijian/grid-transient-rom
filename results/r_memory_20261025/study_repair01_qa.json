@@ -1,0 +1,75 @@
+{
+  "scope": "registered sole pure implementation repair01: Adam CPU counters plus CUDA moments; no scientific change",
+  "worker": "/root/source_model_audit",
+  "optimizer_updates_in_this_repair_worker": 0,
+  "GPU_optimizer_updates_in_this_repair_worker": 0,
+  "real_event_arrays_read": false,
+  "original_val_test_read": false,
+  "actual_old_QA_Adam_calls": 1,
+  "completed_old_QA_one_updates": 0,
+  "old_QA_count_evidence": [
+    {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\r_memory_20261025\\run01\\qa\\A\\continuous_calls.jsonl",
+      "sha256": "ba2a2dbf1e921f277066523274f121394043ea9149c4bce0708874baddc9c9e4",
+      "attempts": 1,
+      "completed_one_updates": 0
+    }
+  ],
+  "actual_call_proof": "failure traceback occurs in post-optimizer.step Adam finite check; one attempted call and zero qualified-return markers",
+  "old_QA_failure": {
+    "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\r_memory_20261025\\run01\\ownership\\qa\\failure.json",
+    "sha256": "f43a06139edbe35668b1db039d0aead5627987dc80d3a48c46931a0dac8fbcc5",
+    "error": "RuntimeError('Expected all tensors to be on the same device, but got tensors is on cuda:0, different from other tensors on cpu (when checking argument in method wrapper_CUDA_cat)')",
+    "source_commit": "59f573b01b08c1ae221f4022c2100d411088161b"
+  },
+  "old_fault_memory_model_Adam_snapshot_persisted": false,
+  "old_fault_snapshot_note": "the failed QA worker exited without a fault-time in-memory model/Adam snapshot; no reconstruction is claimed; initial source, call journal and exception evidence are retained",
+  "original_device_comparisons": {
+    "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\r_memory_20261025\\run01\\qa\\device_comparisons.json",
+    "sha256": "54ce0ebf103781e6aaaf11c6bdecb3fe8572da01fd10f24409a4c54e79ce5870",
+    "models": [
+      {
+        "mode": "A",
+        "status": "PASS",
+        "actual_optimizer_updates": 0,
+        "maximum_unclipped_gradient_difference": 1.0869814993436826e-19
+      },
+      {
+        "mode": "B",
+        "status": "PASS",
+        "actual_optimizer_updates": 0,
+        "maximum_unclipped_gradient_difference": 4.478355836362092e-21
+      },
+      {
+        "mode": "C",
+        "status": "PASS",
+        "actual_optimizer_updates": 0,
+        "maximum_unclipped_gradient_difference": 6.868328780211555e-20
+      }
+    ]
+  },
+  "repair": "study-local device-grouped finite checking for every Adam tensor in one_update and restore_checkpoint; old closure_training_runtime.py unchanged",
+  "legacy_runtime_sha256": "80aeff279bf0e1e498205fcb7b591a680b721643efc98e0e4e993d61d8ac90b0",
+  "regression": {
+    "passed": 20,
+    "failed": 0,
+    "skipped": 0,
+    "pytest_seconds": 16.09,
+    "optimizer_updates": 0,
+    "CUDA_test_scope": "synthetic CPU step plus CUDA exp_avg/exp_avg_sq; retained direct old-failure reproduction; NaN/Inf rejection remains strict",
+    "command": ".venv-gpu/Scripts/python.exe -B -m pytest -q -p no:cacheprovider tests/test_r_memory_study_20261025.py --basetemp private_data/r_memory_20261025/pure_study_repair01_tests01"
+  },
+  "source_hashes": {
+    "experiments/r_memory_study_20261025.py": "a6d96ce1ad8a6b006ab5e6201d23c21e8d611836128fa3a77f7d17da8f81bd8b",
+    "tests/test_r_memory_study_20261025.py": "98168b49443ccda1f38540fbd45737912096057364bee45d301b3ee05f6efb5d"
+  },
+  "before_repair": {
+    "r_memory_study_20261025.py": "c580e08a039ac749012d603c7ec2f347bb011af65454674ae8eaab582474857c",
+    "test_r_memory_study_20261025.py": "279c2c0978f86e595d4601e18f601a4d83b33c456facedfb5f737132f2f080a1",
+    "study_device_comparisons_original.json": "54ce0ebf103781e6aaaf11c6bdecb3fe8572da01fd10f24409a4c54e79ce5870"
+  },
+  "repair204_QA_executed_by_this_worker": false,
+  "new_scientific_output_base_owned_by_root": "private_data/r_memory_20261025/run01_repair01",
+  "first_QA_evidence_untouched": true,
+  "no_second_repair_authorized": true
+}
