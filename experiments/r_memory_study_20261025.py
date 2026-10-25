@@ -326,6 +326,16 @@ def make_optimizer(model, mode, multiplier=1):
         "lr": RATES[block] * multiplier} for block, params in groups.items()])
 
 
+def _adam_states_finite(states):
+    """Check every Adam tensor without stacking CPU counters with CUDA moments."""
+    by_device = {}
+    for state in states:
+        for value in state.values():
+            if torch.is_tensor(value):
+                by_device.setdefault(value.device, []).append(torch.isfinite(value).all())
+    return all(bool(torch.stack(checks).all()) for checks in by_device.values())
+
+
 def one_update(model, mode, optimizer, store, samples, horizon, *, call_journal=None):
     device = model.mass.device; synchronize(device); started = time.perf_counter()
     optimizer.zero_grad(set_to_none=True)
@@ -347,9 +357,8 @@ def one_update(model, mode, optimizer, store, samples, horizon, *, call_journal=
     optimizer.step(); synchronize(device)
     if not all_finite(parameters):
         raise FloatingPointError("nonfinite parameter after Adam")
-    for state in optimizer.state.values():
-        if not all_finite([v for v in state.values() if torch.is_tensor(v)]):
-            raise FloatingPointError("nonfinite Adam state")
+    if not _adam_states_finite(optimizer.state.values()):
+        raise FloatingPointError("nonfinite Adam state")
     if call_journal:
         with Path(call_journal).open("a", encoding="utf-8") as stream:
             stream.write(json.dumps({"event": "optimizer_step_completed", "pid": os.getpid()}) + "\n")
@@ -493,8 +502,8 @@ def restore_checkpoint(output, device, expected_identity, *, multiplier=1):
             moment = optimizer.state.get(parameter)
             if meta["step"] and (not moment or int(moment["step"]) != meta["step"]):
                 raise ValueError("Adam counter is not the persisted real update count")
-            if moment and not all_finite([v for v in moment.values() if torch.is_tensor(v)]):
-                raise FloatingPointError("restored Adam contains nonfinite state")
+    if not _adam_states_finite(optimizer.state.values()):
+        raise FloatingPointError("restored Adam contains nonfinite state")
     rng = np.random.default_rng(); rng.bit_generator.state = state["numpy_rng"]
     np.random.set_state(state["numpy_global_rng"]); random.setstate(state["python_rng"])
     torch.set_rng_state(state["torch_rng"])
