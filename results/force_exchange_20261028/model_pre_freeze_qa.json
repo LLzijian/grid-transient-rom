@@ -1,0 +1,543 @@
+{
+  "runs": [
+    {
+      "exit_code": 1,
+      "wall_seconds": 8.69407868385315,
+      "measurements": {},
+      "cpu": true,
+      "dtype": "float64",
+      "optimizer_calls": 0,
+      "real_event_arrays_read": false,
+      "val_read": false,
+      "test_read": false,
+      "source_selection": null,
+      "files": {
+        "tests\\test_force_exchange_model_20261028.py": "39eed816df1ab4af225046a1516f18385b45d272200923adab619556e0f3ae0e",
+        "experiments\\force_exchange_model_20261028.py": "cde3ae07ca57ab0deb107d747a6b6f3b257cf5ad8c2cbecbbff48b0abc2d82d5",
+        "experiments\\force_graph_model_20261028.py": "44e5fe2e1403bc7e072d2fb87100eaa694b15da5b4694169de141cc6059089af"
+      },
+      "limitations": [
+        "CUDA parity, real-source qualification and optimizer/RNG recovery are not tested here",
+        "No full-horizon real-data precision or cost claim; original objective used on short synthetic data"
+      ],
+      "formulation": "single unscaled augmented exponential",
+      "observed_passed": 15,
+      "observed_failed": 3
+    },
+    {
+      "exit_code": 1,
+      "wall_seconds": 8.329948425292969,
+      "measurements": {
+        "L": {
+          "zero_gamma_J": 0.297561318371166,
+          "old_raw_gradient_max_error": {
+            "kappa_raw": 5.827586677109586e-19,
+            "lambda_raw": 7.806255641895632e-18
+          },
+          "gamma_gradient": -0.00348203686296675,
+          "gamma_centered_fd": -0.0034820368671750752,
+          "zero_gamma_init_max_error": 5.551115123125783e-15
+        },
+        "S": {
+          "zero_gamma_J": 0.29758956752579735,
+          "old_raw_gradient_max_error": {
+            "kappa_raw": 5.692061405548898e-19,
+            "lambda_raw": 7.37257477290143e-18,
+            "k_bar": 1.5178830414797062e-18
+          },
+          "gamma_gradient": -0.0034614759387088263,
+          "gamma_centered_fd": -0.0034614759392148637,
+          "zero_gamma_init_max_error": 5.773159728050814e-15
+        },
+        "M": {
+          "zero_gamma_J": 0.29726303297769313,
+          "old_raw_gradient_max_error": {
+            "kappa_raw": 1.531435568635775e-18,
+            "lambda_raw": 6.960577947356938e-17,
+            "a_bar": 9.71445146547012e-17
+          },
+          "gamma_gradient": -0.0034583843616281364,
+          "gamma_centered_fd": -0.003458384359444899,
+          "zero_gamma_init_max_error": 1.1324274851176597e-14
+        }
+      },
+      "cpu": true,
+      "dtype": "float64",
+      "optimizer_calls": 0,
+      "real_event_arrays_read": false,
+      "val_read": false,
+      "test_read": false,
+      "source_selection": null,
+      "files": {
+        "tests\\test_force_exchange_model_20261028.py": "f4ea3734e5fc6cab461461ae9280ea03364d19932690937d58ef9bfb1c4bb237",
+        "experiments\\force_exchange_model_20261028.py": "cde3ae07ca57ab0deb107d747a6b6f3b257cf5ad8c2cbecbbff48b0abc2d82d5",
+        "experiments\\force_graph_model_20261028.py": "44e5fe2e1403bc7e072d2fb87100eaa694b15da5b4694169de141cc6059089af"
+      },
+      "limitations": [
+        "CUDA parity, real-source qualification and optimizer/RNG recovery are not tested here",
+        "No full-horizon real-data precision or cost claim; original objective used on short synthetic data"
+      ],
+      "formulation": "single unscaled augmented exponential; error magnitudes captured",
+      "observed_passed": 15,
+      "observed_failed": 3
+    },
+    {
+      "exit_code": 1,
+      "wall_seconds": 7.547155141830444,
+      "measurements": {},
+      "tests": [
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_zero_gamma_original_field_init_rollout_full_J_and_all_raw_gradients[L]",
+          "phase": "call",
+          "outcome": "failed",
+          "error": "mode = 'L'\n\n    @pytest.mark.parametrize(\"mode\", MODES)\n    def test_zero_gamma_original_field_init_rollout_full_J_and_all_raw_gradients(mode):\n        old, new = pair(mode)\n        h, z = history(), state()\n        assert torch.allclose(old.field(z), new.field(z), atol=1e-12, rtol=0)\n>       assert torch.allclose(old.initialize(h), new.initialize(h), atol=1e-12, rtol=0)\nE       assert False\nE        +  where False = <built-in method allclose of type object at 0x00007FF8A5FEA480>(tensor([[ 9.4035e-02, -3.3722e-02,  6.9978e-02, -2.8894e-02,  2.5752e-02,\\n          2.3393e-03, -5.1013e-02,  5.6977e-...  1.0759e+00,  1.1402e+00, -2.8858e-01, -1.1220e+00, -2.3809e+00]],\\n       dtype=torch.float64, grad_fn=<CatBackward0>), tensor([[ 9.4035e-02, -3.3722e-02,  6.9978e-02, -2.8894e-02,  2.5752e-02,\\n          2.3393e-03, -5.1013e-02,  5.6977e-...  1.0759e+00,  1.1402e+00, -2.8858e-01, -1.1220e+00, -2.3809e+00]],\\n       dtype=torch.float64, grad_fn=<CatBackward0>), atol=1e-12, rtol=0)\nE        +    where <built-in method allclose of type object at 0x00007FF8A5FEA480> = torch.allclose\nE        +    and   tensor([[ 9.4035e-02, -3.3722e-02,  6.9978e-02, -2.8894e-02,  2.5752e-02,\\n          2.3393e-03, -5.1013e-02,  5.6977e-...  1.0759e+00,  1.1402e+00, -2.8858e-01, -1.1220e+00, -2.3809e+00]],\\n       dtype=torch.float64, grad_fn=<CatBackward0>) = initialize(tensor([[[ 7.4118e-02,  1.2378e-02,  7.5721e-02,  1.6427e-02, -2.1028e-02,\\n           2.1196e-02,  8.5926e-02, -5.9330... -1.7455e-02,\\n           5.8598e-02,  2.6624e-02, -1.8720e-02, -6.6798e-02,  1.3252e-01]]],\\n       dtype=torch.float64))\nE        +      where initialize = ForceGraphROM().initialize\nE        +    and   tensor([[ 9.4035e-02, -3.3722e-02,  6.9978e-02, -2.8894e-02,  2.5752e-02,\\n          2.3393e-03, -5.1013e-02,  5.6977e-...  1.0759e+00,  1.1402e+00, -2.8858e-01, -1.1220e+00, -2.3809e+00]],\\n       dtype=torch.float64, grad_fn=<CatBackward0>) = initialize(tensor([[[ 7.4118e-02,  1.2378e-02,  7.5721e-02,  1.6427e-02, -2.1028e-02,\\n           2.1196e-02,  8.5926e-02, -5.9330... -1.7455e-02,\\n           5.8598e-02,  2.6624e-02, -1.8720e-02, -6.6798e-02,  1.3252e-01]]],\\n       dtype=torch.float64))\nE        +      where initialize = ForceExchangeROM().initialize\n\ntests\\test_force_exchange_model_20261028.py:59: AssertionError"
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_zero_gamma_original_field_init_rollout_full_J_and_all_raw_gradients[S]",
+          "phase": "call",
+          "outcome": "failed",
+          "error": "mode = 'S'\n\n    @pytest.mark.parametrize(\"mode\", MODES)\n    def test_zero_gamma_original_field_init_rollout_full_J_and_all_raw_gradients(mode):\n        old, new = pair(mode)\n        h, z = history(), state()\n        assert torch.allclose(old.field(z), new.field(z), atol=1e-12, rtol=0)\n>       assert torch.allclose(old.initialize(h), new.initialize(h), atol=1e-12, rtol=0)\nE       assert False\nE        +  where False = <built-in method allclose of type object at 0x00007FF8A5FEA480>(tensor([[ 9.4035e-02, -3.3722e-02,  6.9978e-02, -2.8894e-02,  2.5752e-02,\\n          2.3393e-03, -5.1013e-02,  5.6977e-...  1.0740e+00,  1.1363e+00, -2.8726e-01, -1.1211e+00, -2.3789e+00]],\\n       dtype=torch.float64, grad_fn=<CatBackward0>), tensor([[ 9.4035e-02, -3.3722e-02,  6.9978e-02, -2.8894e-02,  2.5752e-02,\\n          2.3393e-03, -5.1013e-02,  5.6977e-...  1.0740e+00,  1.1363e+00, -2.8726e-01, -1.1211e+00, -2.3789e+00]],\\n       dtype=torch.float64, grad_fn=<CatBackward0>), atol=1e-12, rtol=0)\nE        +    where <built-in method allclose of type object at 0x00007FF8A5FEA480> = torch.allclose\nE        +    and   tensor([[ 9.4035e-02, -3.3722e-02,  6.9978e-02, -2.8894e-02,  2.5752e-02,\\n          2.3393e-03, -5.1013e-02,  5.6977e-...  1.0740e+00,  1.1363e+00, -2.8726e-01, -1.1211e+00, -2.3789e+00]],\\n       dtype=torch.float64, grad_fn=<CatBackward0>) = initialize(tensor([[[ 7.4118e-02,  1.2378e-02,  7.5721e-02,  1.6427e-02, -2.1028e-02,\\n           2.1196e-02,  8.5926e-02, -5.9330... -1.7455e-02,\\n           5.8598e-02,  2.6624e-02, -1.8720e-02, -6.6798e-02,  1.3252e-01]]],\\n       dtype=torch.float64))\nE        +      where initialize = ForceGraphROM().initialize\nE        +    and   tensor([[ 9.4035e-02, -3.3722e-02,  6.9978e-02, -2.8894e-02,  2.5752e-02,\\n          2.3393e-03, -5.1013e-02,  5.6977e-...  1.0740e+00,  1.1363e+00, -2.8726e-01, -1.1211e+00, -2.3789e+00]],\\n       dtype=torch.float64, grad_fn=<CatBackward0>) = initialize(tensor([[[ 7.4118e-02,  1.2378e-02,  7.5721e-02,  1.6427e-02, -2.1028e-02,\\n           2.1196e-02,  8.5926e-02, -5.9330... -1.7455e-02,\\n           5.8598e-02,  2.6624e-02, -1.8720e-02, -6.6798e-02,  1.3252e-01]]],\\n       dtype=torch.float64))\nE        +      where initialize = ForceExchangeROM().initialize\n\ntests\\test_force_exchange_model_20261028.py:59: AssertionError"
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_zero_gamma_original_field_init_rollout_full_J_and_all_raw_gradients[M]",
+          "phase": "call",
+          "outcome": "failed",
+          "error": "mode = 'M'\n\n    @pytest.mark.parametrize(\"mode\", MODES)\n    def test_zero_gamma_original_field_init_rollout_full_J_and_all_raw_gradients(mode):\n        old, new = pair(mode)\n        h, z = history(), state()\n        assert torch.allclose(old.field(z), new.field(z), atol=1e-12, rtol=0)\n>       assert torch.allclose(old.initialize(h), new.initialize(h), atol=1e-12, rtol=0)\nE       assert False\nE        +  where False = <built-in method allclose of type object at 0x00007FF8A5FEA480>(tensor([[ 9.4035e-02, -3.3722e-02,  6.9978e-02, -2.8894e-02,  2.5752e-02,\\n          2.3393e-03, -5.1013e-02,  5.6977e-...  1.0719e+00,  1.1084e+00, -2.8117e-01, -1.1417e+00, -2.3588e+00]],\\n       dtype=torch.float64, grad_fn=<CatBackward0>), tensor([[ 9.4035e-02, -3.3722e-02,  6.9978e-02, -2.8894e-02,  2.5752e-02,\\n          2.3393e-03, -5.1013e-02,  5.6977e-...  1.0719e+00,  1.1084e+00, -2.8117e-01, -1.1417e+00, -2.3588e+00]],\\n       dtype=torch.float64, grad_fn=<CatBackward0>), atol=1e-12, rtol=0)\nE        +    where <built-in method allclose of type object at 0x00007FF8A5FEA480> = torch.allclose\nE        +    and   tensor([[ 9.4035e-02, -3.3722e-02,  6.9978e-02, -2.8894e-02,  2.5752e-02,\\n          2.3393e-03, -5.1013e-02,  5.6977e-...  1.0719e+00,  1.1084e+00, -2.8117e-01, -1.1417e+00, -2.3588e+00]],\\n       dtype=torch.float64, grad_fn=<CatBackward0>) = initialize(tensor([[[ 7.4118e-02,  1.2378e-02,  7.5721e-02,  1.6427e-02, -2.1028e-02,\\n           2.1196e-02,  8.5926e-02, -5.9330... -1.7455e-02,\\n           5.8598e-02,  2.6624e-02, -1.8720e-02, -6.6798e-02,  1.3252e-01]]],\\n       dtype=torch.float64))\nE        +      where initialize = ForceGraphROM().initialize\nE        +    and   tensor([[ 9.4035e-02, -3.3722e-02,  6.9978e-02, -2.8894e-02,  2.5752e-02,\\n          2.3393e-03, -5.1013e-02,  5.6977e-...  1.0719e+00,  1.1084e+00, -2.8117e-01, -1.1417e+00, -2.3588e+00]],\\n       dtype=torch.float64, grad_fn=<CatBackward0>) = initialize(tensor([[[ 7.4118e-02,  1.2378e-02,  7.5721e-02,  1.6427e-02, -2.1028e-02,\\n           2.1196e-02,  8.5926e-02, -5.9330... -1.7455e-02,\\n           5.8598e-02,  2.6624e-02, -1.8720e-02, -6.6798e-02,  1.3252e-01]]],\\n       dtype=torch.float64))\nE        +      where initialize = ForceExchangeROM().initialize\n\ntests\\test_force_exchange_model_20261028.py:59: AssertionError"
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_exchange_nonunit_matrix_power_and_true_RK4[-1.4-L]",
+          "phase": "call",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_exchange_nonunit_matrix_power_and_true_RK4[-1.4-S]",
+          "phase": "call",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_exchange_nonunit_matrix_power_and_true_RK4[-1.4-M]",
+          "phase": "call",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_exchange_nonunit_matrix_power_and_true_RK4[0.0-L]",
+          "phase": "call",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_exchange_nonunit_matrix_power_and_true_RK4[0.0-S]",
+          "phase": "call",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_exchange_nonunit_matrix_power_and_true_RK4[0.0-M]",
+          "phase": "call",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_exchange_nonunit_matrix_power_and_true_RK4[1.7-L]",
+          "phase": "call",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_exchange_nonunit_matrix_power_and_true_RK4[1.7-S]",
+          "phase": "call",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_exchange_nonunit_matrix_power_and_true_RK4[1.7-M]",
+          "phase": "call",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_reverse_20D_independent_fine_RK4_Simpson_signs_and_affine_ridge[-1.3]",
+          "phase": "call",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_reverse_20D_independent_fine_RK4_Simpson_signs_and_affine_ridge[0.0]",
+          "phase": "call",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_reverse_20D_independent_fine_RK4_Simpson_signs_and_affine_ridge[1.6]",
+          "phase": "call",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_causality_machine_permutation_full_gradients_cache_and_exports[L]",
+          "phase": "call",
+          "outcome": "failed",
+          "error": "mode = 'L'\n\n    @pytest.mark.parametrize(\"mode\", MODES)\n    def test_causality_machine_permutation_full_gradients_cache_and_exports(mode):\n        _, m = pair(mode)\n        with torch.no_grad(): m.raw_gamma.fill_(-.7)\n        h=history(); z=state()\n        polluted=h.clone(); polluted[:,:10,20:]=float(\"nan\")\n        assert torch.equal(m.encode(h),m.encode(polluted))\n        perm=torch.tensor([7,0,9,4,2,6,1,8,3,5])\n        cfg=copy.deepcopy(m._source_config)\n        for key,value in list(cfg.items()):\n            if key==\"D\": cfg[key]=torch.tensor(value)[:,perm].tolist()\n            elif len(value)==10: cfg[key]=torch.tensor(value,dtype=DTYPE)[perm].tolist()\n        p=ForceExchangeROM(cfg,mode)\n        with torch.no_grad():\n            p.kappa_raw.copy_(m.kappa_raw); p.lambda_raw.copy_(m.lambda_raw); p.raw_gamma.copy_(m.raw_gamma)\n            if mode!=\"L\":\n                source=m.k_bar if mode==\"S\" else m.a_bar\n                target=p.k_bar if mode==\"S\" else p.a_bar\n                for e,(i,j) in enumerate(PAIRS): target[e]=source[PAIRS.index(tuple(sorted((int(perm[i]),int(perm[j])))))]\n        ix=torch.cat(tuple(perm+offset for offset in (0,10,20,30)))\n        assert torch.allclose(p.field(z[:,ix]),m.field(z)[:,ix],atol=1e-12,rtol=0)\n        assert torch.allclose(p.encode(h[:,:,ix[:30]]),m.encode(h)[:,perm],atol=1e-12,rtol=0)\n        # F and q must participate in backward, not merely in the forward solve.\n        s=m.history_system(h)\n        grads=torch.autograd.grad(s[\"r0\"].square().sum(),(s[\"F\"],s[\"q\"]),retain_graph=True)\n        assert all(torch.isfinite(g).all() and g.abs().max()>1e-12 for g in grads)\n        m.rollout(h,3,.01).square().sum().backward()\n        assert all(v.grad is not None and torch.isfinite(v.grad).all() for v in m.parameters())\n        with torch.inference_mode():\n            m.begin_graph_cache(); m.encode(h)\n        m.encode(h).square().sum().backward(); assert m._cache is None\n        for name, param in m.named_parameters():\n            m.begin_graph_cache(); m.encode(h)\n            with torch.no_grad(): param.add_(.001)\n            m.encode(h); assert m._cache is None\n        m.begin_graph_cache(); m.train(); assert m._cache is None\n        m.begin_graph_cache(); m.cpu(); assert m._cache is None\n        m.begin_graph_cache(); m.load_state_dict(m.state_dict()); assert m._cache is None\n        with tempfile.TemporaryDirectory(prefix=\"exchange-fixture-\") as folder:\n            path=Path(folder)/\"model.json\"\n            for train_gamma in (False, True):\n                m.raw_gamma.requires_grad_(train_gamma)\n                m.export(path); loaded=ForceExchangeROM.from_export(path)\n                assert loaded.raw_gamma.requires_grad==train_gamma\n                assert loaded.source_identity==m.source_identity\n                assert all(torch.equal(v,loaded.state_dict()[k]) for k,v in m.state_dict().items())\n                assert torch.equal(m.encode(h),loaded.encode(h))\n                assert torch.equal(m.field(z),loaded.field(z))\n            old,_=pair(mode); old.export(path)\n            imported=ForceExchangeROM.from_force_graph_export(path,train_gamma=False)\n            assert imported.source_identity[\"force_graph_export_sha256\"]==hashlib.sha256(path.read_bytes()).hexdigest()\n>           assert torch.allclose(old.encode(h),imported.encode(h),atol=1e-12,rtol=0)\nE           assert False\nE            +  where False = <built-in method allclose of type object at 0x00007FF8A5FEA480>(tensor([[ 0.3591, -0.5325, -0.4928, -1.4389, -1.6055,  1.0240,  0.6696,  0.6957,\\n         -0.8236, -0.4454],\\n        [...  0.5434,  0.6985,  1.0759,  1.1402, -0.2886,\\n         -1.1220, -2.3809]], dtype=torch.float64, grad_fn=<AddBackward0>), tensor([[ 0.3591, -0.5325, -0.4928, -1.4389, -1.6055,  1.0240,  0.6696,  0.6957,\\n         -0.8236, -0.4454],\\n        [...  0.5434,  0.6985,  1.0759,  1.1402, -0.2886,\\n         -1.1220, -2.3809]], dtype=torch.float64, grad_fn=<MulBackward0>), atol=1e-12, rtol=0)\nE            +    where <built-in method allclose of type object at 0x00007FF8A5FEA480> = torch.allclose\nE            +    and   tensor([[ 0.3591, -0.5325, -0.4928, -1.4389, -1.6055,  1.0240,  0.6696,  0.6957,\\n         -0.8236, -0.4454],\\n        [...  0.5434,  0.6985,  1.0759,  1.1402, -0.2886,\\n         -1.1220, -2.3809]], dtype=torch.float64, grad_fn=<AddBackward0>) = encode(tensor([[[ 7.4118e-02,  1.2378e-02,  7.5721e-02,  1.6427e-02, -2.1028e-02,\\n           2.1196e-02,  8.5926e-02, -5.9330... -1.7455e-02,\\n           5.8598e-02,  2.6624e-02, -1.8720e-02, -6.6798e-02,  1.3252e-01]]],\\n       dtype=torch.float64))\nE            +      where encode = ForceGraphROM().encode\nE            +    and   tensor([[ 0.3591, -0.5325, -0.4928, -1.4389, -1.6055,  1.0240,  0.6696,  0.6957,\\n         -0.8236, -0.4454],\\n        [...  0.5434,  0.6985,  1.0759,  1.1402, -0.2886,\\n         -1.1220, -2.3809]], dtype=torch.float64, grad_fn=<MulBackward0>) = encode(tensor([[[ 7.4118e-02,  1.2378e-02,  7.5721e-02,  1.6427e-02, -2.1028e-02,\\n           2.1196e-02,  8.5926e-02, -5.9330... -1.7455e-02,\\n           5.8598e-02,  2.6624e-02, -1.8720e-02, -6.6798e-02,  1.3252e-01]]],\\n       dtype=torch.float64))\nE            +      where encode = ForceExchangeROM().encode\n\ntests\\test_force_exchange_model_20261028.py:227: AssertionError"
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_causality_machine_permutation_full_gradients_cache_and_exports[S]",
+          "phase": "call",
+          "outcome": "failed",
+          "error": "mode = 'S'\n\n    @pytest.mark.parametrize(\"mode\", MODES)\n    def test_causality_machine_permutation_full_gradients_cache_and_exports(mode):\n        _, m = pair(mode)\n        with torch.no_grad(): m.raw_gamma.fill_(-.7)\n        h=history(); z=state()\n        polluted=h.clone(); polluted[:,:10,20:]=float(\"nan\")\n        assert torch.equal(m.encode(h),m.encode(polluted))\n        perm=torch.tensor([7,0,9,4,2,6,1,8,3,5])\n        cfg=copy.deepcopy(m._source_config)\n        for key,value in list(cfg.items()):\n            if key==\"D\": cfg[key]=torch.tensor(value)[:,perm].tolist()\n            elif len(value)==10: cfg[key]=torch.tensor(value,dtype=DTYPE)[perm].tolist()\n        p=ForceExchangeROM(cfg,mode)\n        with torch.no_grad():\n            p.kappa_raw.copy_(m.kappa_raw); p.lambda_raw.copy_(m.lambda_raw); p.raw_gamma.copy_(m.raw_gamma)\n            if mode!=\"L\":\n                source=m.k_bar if mode==\"S\" else m.a_bar\n                target=p.k_bar if mode==\"S\" else p.a_bar\n                for e,(i,j) in enumerate(PAIRS): target[e]=source[PAIRS.index(tuple(sorted((int(perm[i]),int(perm[j])))))]\n        ix=torch.cat(tuple(perm+offset for offset in (0,10,20,30)))\n        assert torch.allclose(p.field(z[:,ix]),m.field(z)[:,ix],atol=1e-12,rtol=0)\n        assert torch.allclose(p.encode(h[:,:,ix[:30]]),m.encode(h)[:,perm],atol=1e-12,rtol=0)\n        # F and q must participate in backward, not merely in the forward solve.\n        s=m.history_system(h)\n        grads=torch.autograd.grad(s[\"r0\"].square().sum(),(s[\"F\"],s[\"q\"]),retain_graph=True)\n        assert all(torch.isfinite(g).all() and g.abs().max()>1e-12 for g in grads)\n        m.rollout(h,3,.01).square().sum().backward()\n        assert all(v.grad is not None and torch.isfinite(v.grad).all() for v in m.parameters())\n        with torch.inference_mode():\n            m.begin_graph_cache(); m.encode(h)\n        m.encode(h).square().sum().backward(); assert m._cache is None\n        for name, param in m.named_parameters():\n            m.begin_graph_cache(); m.encode(h)\n            with torch.no_grad(): param.add_(.001)\n            m.encode(h); assert m._cache is None\n        m.begin_graph_cache(); m.train(); assert m._cache is None\n        m.begin_graph_cache(); m.cpu(); assert m._cache is None\n        m.begin_graph_cache(); m.load_state_dict(m.state_dict()); assert m._cache is None\n        with tempfile.TemporaryDirectory(prefix=\"exchange-fixture-\") as folder:\n            path=Path(folder)/\"model.json\"\n            for train_gamma in (False, True):\n                m.raw_gamma.requires_grad_(train_gamma)\n                m.export(path); loaded=ForceExchangeROM.from_export(path)\n                assert loaded.raw_gamma.requires_grad==train_gamma\n                assert loaded.source_identity==m.source_identity\n                assert all(torch.equal(v,loaded.state_dict()[k]) for k,v in m.state_dict().items())\n                assert torch.equal(m.encode(h),loaded.encode(h))\n                assert torch.equal(m.field(z),loaded.field(z))\n            old,_=pair(mode); old.export(path)\n            imported=ForceExchangeROM.from_force_graph_export(path,train_gamma=False)\n            assert imported.source_identity[\"force_graph_export_sha256\"]==hashlib.sha256(path.read_bytes()).hexdigest()\n>           assert torch.allclose(old.encode(h),imported.encode(h),atol=1e-12,rtol=0)\nE           assert False\nE            +  where False = <built-in method allclose of type object at 0x00007FF8A5FEA480>(tensor([[ 0.3596, -0.5233, -0.4935, -1.4418, -1.6064,  1.0263,  0.6663,  0.6972,\\n         -0.8280, -0.4468],\\n        [...  0.5411,  0.7042,  1.0740,  1.1363, -0.2873,\\n         -1.1211, -2.3789]], dtype=torch.float64, grad_fn=<AddBackward0>), tensor([[ 0.3596, -0.5233, -0.4935, -1.4418, -1.6064,  1.0263,  0.6663,  0.6972,\\n         -0.8280, -0.4468],\\n        [...  0.5411,  0.7042,  1.0740,  1.1363, -0.2873,\\n         -1.1211, -2.3789]], dtype=torch.float64, grad_fn=<MulBackward0>), atol=1e-12, rtol=0)\nE            +    where <built-in method allclose of type object at 0x00007FF8A5FEA480> = torch.allclose\nE            +    and   tensor([[ 0.3596, -0.5233, -0.4935, -1.4418, -1.6064,  1.0263,  0.6663,  0.6972,\\n         -0.8280, -0.4468],\\n        [...  0.5411,  0.7042,  1.0740,  1.1363, -0.2873,\\n         -1.1211, -2.3789]], dtype=torch.float64, grad_fn=<AddBackward0>) = encode(tensor([[[ 7.4118e-02,  1.2378e-02,  7.5721e-02,  1.6427e-02, -2.1028e-02,\\n           2.1196e-02,  8.5926e-02, -5.9330... -1.7455e-02,\\n           5.8598e-02,  2.6624e-02, -1.8720e-02, -6.6798e-02,  1.3252e-01]]],\\n       dtype=torch.float64))\nE            +      where encode = ForceGraphROM().encode\nE            +    and   tensor([[ 0.3596, -0.5233, -0.4935, -1.4418, -1.6064,  1.0263,  0.6663,  0.6972,\\n         -0.8280, -0.4468],\\n        [...  0.5411,  0.7042,  1.0740,  1.1363, -0.2873,\\n         -1.1211, -2.3789]], dtype=torch.float64, grad_fn=<MulBackward0>) = encode(tensor([[[ 7.4118e-02,  1.2378e-02,  7.5721e-02,  1.6427e-02, -2.1028e-02,\\n           2.1196e-02,  8.5926e-02, -5.9330... -1.7455e-02,\\n           5.8598e-02,  2.6624e-02, -1.8720e-02, -6.6798e-02,  1.3252e-01]]],\\n       dtype=torch.float64))\nE            +      where encode = ForceExchangeROM().encode\n\ntests\\test_force_exchange_model_20261028.py:227: AssertionError"
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_causality_machine_permutation_full_gradients_cache_and_exports[M]",
+          "phase": "call",
+          "outcome": "failed",
+          "error": "mode = 'M'\n\n    @pytest.mark.parametrize(\"mode\", MODES)\n    def test_causality_machine_permutation_full_gradients_cache_and_exports(mode):\n        _, m = pair(mode)\n        with torch.no_grad(): m.raw_gamma.fill_(-.7)\n        h=history(); z=state()\n        polluted=h.clone(); polluted[:,:10,20:]=float(\"nan\")\n        assert torch.equal(m.encode(h),m.encode(polluted))\n        perm=torch.tensor([7,0,9,4,2,6,1,8,3,5])\n        cfg=copy.deepcopy(m._source_config)\n        for key,value in list(cfg.items()):\n            if key==\"D\": cfg[key]=torch.tensor(value)[:,perm].tolist()\n            elif len(value)==10: cfg[key]=torch.tensor(value,dtype=DTYPE)[perm].tolist()\n        p=ForceExchangeROM(cfg,mode)\n        with torch.no_grad():\n            p.kappa_raw.copy_(m.kappa_raw); p.lambda_raw.copy_(m.lambda_raw); p.raw_gamma.copy_(m.raw_gamma)\n            if mode!=\"L\":\n                source=m.k_bar if mode==\"S\" else m.a_bar\n                target=p.k_bar if mode==\"S\" else p.a_bar\n                for e,(i,j) in enumerate(PAIRS): target[e]=source[PAIRS.index(tuple(sorted((int(perm[i]),int(perm[j])))))]\n        ix=torch.cat(tuple(perm+offset for offset in (0,10,20,30)))\n        assert torch.allclose(p.field(z[:,ix]),m.field(z)[:,ix],atol=1e-12,rtol=0)\n        assert torch.allclose(p.encode(h[:,:,ix[:30]]),m.encode(h)[:,perm],atol=1e-12,rtol=0)\n        # F and q must participate in backward, not merely in the forward solve.\n        s=m.history_system(h)\n        grads=torch.autograd.grad(s[\"r0\"].square().sum(),(s[\"F\"],s[\"q\"]),retain_graph=True)\n        assert all(torch.isfinite(g).all() and g.abs().max()>1e-12 for g in grads)\n        m.rollout(h,3,.01).square().sum().backward()\n        assert all(v.grad is not None and torch.isfinite(v.grad).all() for v in m.parameters())\n        with torch.inference_mode():\n            m.begin_graph_cache(); m.encode(h)\n        m.encode(h).square().sum().backward(); assert m._cache is None\n        for name, param in m.named_parameters():\n            m.begin_graph_cache(); m.encode(h)\n            with torch.no_grad(): param.add_(.001)\n            m.encode(h); assert m._cache is None\n        m.begin_graph_cache(); m.train(); assert m._cache is None\n        m.begin_graph_cache(); m.cpu(); assert m._cache is None\n        m.begin_graph_cache(); m.load_state_dict(m.state_dict()); assert m._cache is None\n        with tempfile.TemporaryDirectory(prefix=\"exchange-fixture-\") as folder:\n            path=Path(folder)/\"model.json\"\n            for train_gamma in (False, True):\n                m.raw_gamma.requires_grad_(train_gamma)\n                m.export(path); loaded=ForceExchangeROM.from_export(path)\n                assert loaded.raw_gamma.requires_grad==train_gamma\n                assert loaded.source_identity==m.source_identity\n                assert all(torch.equal(v,loaded.state_dict()[k]) for k,v in m.state_dict().items())\n                assert torch.equal(m.encode(h),loaded.encode(h))\n                assert torch.equal(m.field(z),loaded.field(z))\n            old,_=pair(mode); old.export(path)\n            imported=ForceExchangeROM.from_force_graph_export(path,train_gamma=False)\n            assert imported.source_identity[\"force_graph_export_sha256\"]==hashlib.sha256(path.read_bytes()).hexdigest()\n>           assert torch.allclose(old.encode(h),imported.encode(h),atol=1e-12,rtol=0)\nE           assert False\nE            +  where False = <built-in method allclose of type object at 0x00007FF8A5FEA480>(tensor([[ 0.3542, -0.5370, -0.4893, -1.4224, -1.5873,  1.0294,  0.6473,  0.6933,\\n         -0.8256, -0.4515],\\n        [...  0.5481,  0.6670,  1.0719,  1.1084, -0.2812,\\n         -1.1417, -2.3588]], dtype=torch.float64, grad_fn=<AddBackward0>), tensor([[ 0.3542, -0.5370, -0.4893, -1.4224, -1.5873,  1.0294,  0.6473,  0.6933,\\n         -0.8256, -0.4515],\\n        [...  0.5481,  0.6670,  1.0719,  1.1084, -0.2812,\\n         -1.1417, -2.3588]], dtype=torch.float64, grad_fn=<MulBackward0>), atol=1e-12, rtol=0)\nE            +    where <built-in method allclose of type object at 0x00007FF8A5FEA480> = torch.allclose\nE            +    and   tensor([[ 0.3542, -0.5370, -0.4893, -1.4224, -1.5873,  1.0294,  0.6473,  0.6933,\\n         -0.8256, -0.4515],\\n        [...  0.5481,  0.6670,  1.0719,  1.1084, -0.2812,\\n         -1.1417, -2.3588]], dtype=torch.float64, grad_fn=<AddBackward0>) = encode(tensor([[[ 7.4118e-02,  1.2378e-02,  7.5721e-02,  1.6427e-02, -2.1028e-02,\\n           2.1196e-02,  8.5926e-02, -5.9330... -1.7455e-02,\\n           5.8598e-02,  2.6624e-02, -1.8720e-02, -6.6798e-02,  1.3252e-01]]],\\n       dtype=torch.float64))\nE            +      where encode = ForceGraphROM().encode\nE            +    and   tensor([[ 0.3542, -0.5370, -0.4893, -1.4224, -1.5873,  1.0294,  0.6473,  0.6933,\\n         -0.8256, -0.4515],\\n        [...  0.5481,  0.6670,  1.0719,  1.1084, -0.2812,\\n         -1.1417, -2.3588]], dtype=torch.float64, grad_fn=<MulBackward0>) = encode(tensor([[[ 7.4118e-02,  1.2378e-02,  7.5721e-02,  1.6427e-02, -2.1028e-02,\\n           2.1196e-02,  8.5926e-02, -5.9330... -1.7455e-02,\\n           5.8598e-02,  2.6624e-02, -1.8720e-02, -6.6798e-02,  1.3252e-01]]],\\n       dtype=torch.float64))\nE            +      where encode = ForceExchangeROM().encode\n\ntests\\test_force_exchange_model_20261028.py:227: AssertionError"
+        }
+      ],
+      "cpu": true,
+      "dtype": "float64",
+      "optimizer_calls": 0,
+      "real_event_arrays_read": false,
+      "val_read": false,
+      "test_read": false,
+      "source_selection": null,
+      "files": {
+        "tests\\test_force_exchange_model_20261028.py": "7deab7cba5aac21b26c420f7e5bd578e3466855b60009f60b5214b5d9baefe03",
+        "experiments\\force_exchange_model_20261028.py": "cbd272430084956a23d2bbc2a99f0b548230b491de716a0ba75d1a0858852f08",
+        "experiments\\force_graph_model_20261028.py": "44e5fe2e1403bc7e072d2fb87100eaa694b15da5b4694169de141cc6059089af"
+      },
+      "limitations": [
+        "CUDA parity, real-source qualification and optimizer/RNG recovery are not tested here",
+        "No full-horizon real-data precision or cost claim; original objective used on short synthetic data"
+      ],
+      "formulation": "four quarter-step augmented exponentials",
+      "observed_passed": 12,
+      "observed_failed": 6
+    },
+    {
+      "exit_code": 1,
+      "wall_seconds": 7.473745107650757,
+      "measurements": {},
+      "tests": [
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_zero_gamma_original_field_init_rollout_full_J_and_all_raw_gradients[L]",
+          "phase": "call",
+          "outcome": "failed",
+          "error": "mode = 'L'\n\n    @pytest.mark.parametrize(\"mode\", MODES)\n    def test_zero_gamma_original_field_init_rollout_full_J_and_all_raw_gradients(mode):\n        old, new = pair(mode)\n        h, z = history(), state()\n        assert torch.allclose(old.field(z), new.field(z), atol=1e-12, rtol=0)\n>       assert torch.allclose(old.initialize(h), new.initialize(h), atol=1e-12, rtol=0)\nE       assert False\nE        +  where False = <built-in method allclose of type object at 0x00007FF8A5FEA480>(tensor([[ 9.4035e-02, -3.3722e-02,  6.9978e-02, -2.8894e-02,  2.5752e-02,\\n          2.3393e-03, -5.1013e-02,  5.6977e-...  1.0759e+00,  1.1402e+00, -2.8858e-01, -1.1220e+00, -2.3809e+00]],\\n       dtype=torch.float64, grad_fn=<CatBackward0>), tensor([[ 9.4035e-02, -3.3722e-02,  6.9978e-02, -2.8894e-02,  2.5752e-02,\\n          2.3393e-03, -5.1013e-02,  5.6977e-...  1.0759e+00,  1.1402e+00, -2.8858e-01, -1.1220e+00, -2.3809e+00]],\\n       dtype=torch.float64, grad_fn=<CatBackward0>), atol=1e-12, rtol=0)\nE        +    where <built-in method allclose of type object at 0x00007FF8A5FEA480> = torch.allclose\nE        +    and   tensor([[ 9.4035e-02, -3.3722e-02,  6.9978e-02, -2.8894e-02,  2.5752e-02,\\n          2.3393e-03, -5.1013e-02,  5.6977e-...  1.0759e+00,  1.1402e+00, -2.8858e-01, -1.1220e+00, -2.3809e+00]],\\n       dtype=torch.float64, grad_fn=<CatBackward0>) = initialize(tensor([[[ 7.4118e-02,  1.2378e-02,  7.5721e-02,  1.6427e-02, -2.1028e-02,\\n           2.1196e-02,  8.5926e-02, -5.9330... -1.7455e-02,\\n           5.8598e-02,  2.6624e-02, -1.8720e-02, -6.6798e-02,  1.3252e-01]]],\\n       dtype=torch.float64))\nE        +      where initialize = ForceGraphROM().initialize\nE        +    and   tensor([[ 9.4035e-02, -3.3722e-02,  6.9978e-02, -2.8894e-02,  2.5752e-02,\\n          2.3393e-03, -5.1013e-02,  5.6977e-...  1.0759e+00,  1.1402e+00, -2.8858e-01, -1.1220e+00, -2.3809e+00]],\\n       dtype=torch.float64, grad_fn=<CatBackward0>) = initialize(tensor([[[ 7.4118e-02,  1.2378e-02,  7.5721e-02,  1.6427e-02, -2.1028e-02,\\n           2.1196e-02,  8.5926e-02, -5.9330... -1.7455e-02,\\n           5.8598e-02,  2.6624e-02, -1.8720e-02, -6.6798e-02,  1.3252e-01]]],\\n       dtype=torch.float64))\nE        +      where initialize = ForceExchangeROM().initialize\n\ntests\\test_force_exchange_model_20261028.py:59: AssertionError"
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_zero_gamma_original_field_init_rollout_full_J_and_all_raw_gradients[S]",
+          "phase": "call",
+          "outcome": "failed",
+          "error": "mode = 'S'\n\n    @pytest.mark.parametrize(\"mode\", MODES)\n    def test_zero_gamma_original_field_init_rollout_full_J_and_all_raw_gradients(mode):\n        old, new = pair(mode)\n        h, z = history(), state()\n        assert torch.allclose(old.field(z), new.field(z), atol=1e-12, rtol=0)\n>       assert torch.allclose(old.initialize(h), new.initialize(h), atol=1e-12, rtol=0)\nE       assert False\nE        +  where False = <built-in method allclose of type object at 0x00007FF8A5FEA480>(tensor([[ 9.4035e-02, -3.3722e-02,  6.9978e-02, -2.8894e-02,  2.5752e-02,\\n          2.3393e-03, -5.1013e-02,  5.6977e-...  1.0740e+00,  1.1363e+00, -2.8726e-01, -1.1211e+00, -2.3789e+00]],\\n       dtype=torch.float64, grad_fn=<CatBackward0>), tensor([[ 9.4035e-02, -3.3722e-02,  6.9978e-02, -2.8894e-02,  2.5752e-02,\\n          2.3393e-03, -5.1013e-02,  5.6977e-...  1.0740e+00,  1.1363e+00, -2.8726e-01, -1.1211e+00, -2.3789e+00]],\\n       dtype=torch.float64, grad_fn=<CatBackward0>), atol=1e-12, rtol=0)\nE        +    where <built-in method allclose of type object at 0x00007FF8A5FEA480> = torch.allclose\nE        +    and   tensor([[ 9.4035e-02, -3.3722e-02,  6.9978e-02, -2.8894e-02,  2.5752e-02,\\n          2.3393e-03, -5.1013e-02,  5.6977e-...  1.0740e+00,  1.1363e+00, -2.8726e-01, -1.1211e+00, -2.3789e+00]],\\n       dtype=torch.float64, grad_fn=<CatBackward0>) = initialize(tensor([[[ 7.4118e-02,  1.2378e-02,  7.5721e-02,  1.6427e-02, -2.1028e-02,\\n           2.1196e-02,  8.5926e-02, -5.9330... -1.7455e-02,\\n           5.8598e-02,  2.6624e-02, -1.8720e-02, -6.6798e-02,  1.3252e-01]]],\\n       dtype=torch.float64))\nE        +      where initialize = ForceGraphROM().initialize\nE        +    and   tensor([[ 9.4035e-02, -3.3722e-02,  6.9978e-02, -2.8894e-02,  2.5752e-02,\\n          2.3393e-03, -5.1013e-02,  5.6977e-...  1.0740e+00,  1.1363e+00, -2.8726e-01, -1.1211e+00, -2.3789e+00]],\\n       dtype=torch.float64, grad_fn=<CatBackward0>) = initialize(tensor([[[ 7.4118e-02,  1.2378e-02,  7.5721e-02,  1.6427e-02, -2.1028e-02,\\n           2.1196e-02,  8.5926e-02, -5.9330... -1.7455e-02,\\n           5.8598e-02,  2.6624e-02, -1.8720e-02, -6.6798e-02,  1.3252e-01]]],\\n       dtype=torch.float64))\nE        +      where initialize = ForceExchangeROM().initialize\n\ntests\\test_force_exchange_model_20261028.py:59: AssertionError"
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_zero_gamma_original_field_init_rollout_full_J_and_all_raw_gradients[M]",
+          "phase": "call",
+          "outcome": "failed",
+          "error": "mode = 'M'\n\n    @pytest.mark.parametrize(\"mode\", MODES)\n    def test_zero_gamma_original_field_init_rollout_full_J_and_all_raw_gradients(mode):\n        old, new = pair(mode)\n        h, z = history(), state()\n        assert torch.allclose(old.field(z), new.field(z), atol=1e-12, rtol=0)\n>       assert torch.allclose(old.initialize(h), new.initialize(h), atol=1e-12, rtol=0)\nE       assert False\nE        +  where False = <built-in method allclose of type object at 0x00007FF8A5FEA480>(tensor([[ 9.4035e-02, -3.3722e-02,  6.9978e-02, -2.8894e-02,  2.5752e-02,\\n          2.3393e-03, -5.1013e-02,  5.6977e-...  1.0719e+00,  1.1084e+00, -2.8117e-01, -1.1417e+00, -2.3588e+00]],\\n       dtype=torch.float64, grad_fn=<CatBackward0>), tensor([[ 9.4035e-02, -3.3722e-02,  6.9978e-02, -2.8894e-02,  2.5752e-02,\\n          2.3393e-03, -5.1013e-02,  5.6977e-...  1.0719e+00,  1.1084e+00, -2.8117e-01, -1.1417e+00, -2.3588e+00]],\\n       dtype=torch.float64, grad_fn=<CatBackward0>), atol=1e-12, rtol=0)\nE        +    where <built-in method allclose of type object at 0x00007FF8A5FEA480> = torch.allclose\nE        +    and   tensor([[ 9.4035e-02, -3.3722e-02,  6.9978e-02, -2.8894e-02,  2.5752e-02,\\n          2.3393e-03, -5.1013e-02,  5.6977e-...  1.0719e+00,  1.1084e+00, -2.8117e-01, -1.1417e+00, -2.3588e+00]],\\n       dtype=torch.float64, grad_fn=<CatBackward0>) = initialize(tensor([[[ 7.4118e-02,  1.2378e-02,  7.5721e-02,  1.6427e-02, -2.1028e-02,\\n           2.1196e-02,  8.5926e-02, -5.9330... -1.7455e-02,\\n           5.8598e-02,  2.6624e-02, -1.8720e-02, -6.6798e-02,  1.3252e-01]]],\\n       dtype=torch.float64))\nE        +      where initialize = ForceGraphROM().initialize\nE        +    and   tensor([[ 9.4035e-02, -3.3722e-02,  6.9978e-02, -2.8894e-02,  2.5752e-02,\\n          2.3393e-03, -5.1013e-02,  5.6977e-...  1.0719e+00,  1.1084e+00, -2.8117e-01, -1.1417e+00, -2.3588e+00]],\\n       dtype=torch.float64, grad_fn=<CatBackward0>) = initialize(tensor([[[ 7.4118e-02,  1.2378e-02,  7.5721e-02,  1.6427e-02, -2.1028e-02,\\n           2.1196e-02,  8.5926e-02, -5.9330... -1.7455e-02,\\n           5.8598e-02,  2.6624e-02, -1.8720e-02, -6.6798e-02,  1.3252e-01]]],\\n       dtype=torch.float64))\nE        +      where initialize = ForceExchangeROM().initialize\n\ntests\\test_force_exchange_model_20261028.py:59: AssertionError"
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_exchange_nonunit_matrix_power_and_true_RK4[-1.4-L]",
+          "phase": "call",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_exchange_nonunit_matrix_power_and_true_RK4[-1.4-S]",
+          "phase": "call",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_exchange_nonunit_matrix_power_and_true_RK4[-1.4-M]",
+          "phase": "call",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_exchange_nonunit_matrix_power_and_true_RK4[0.0-L]",
+          "phase": "call",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_exchange_nonunit_matrix_power_and_true_RK4[0.0-S]",
+          "phase": "call",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_exchange_nonunit_matrix_power_and_true_RK4[0.0-M]",
+          "phase": "call",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_exchange_nonunit_matrix_power_and_true_RK4[1.7-L]",
+          "phase": "call",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_exchange_nonunit_matrix_power_and_true_RK4[1.7-S]",
+          "phase": "call",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_exchange_nonunit_matrix_power_and_true_RK4[1.7-M]",
+          "phase": "call",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_reverse_20D_independent_fine_RK4_Simpson_signs_and_affine_ridge[-1.3]",
+          "phase": "call",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_reverse_20D_independent_fine_RK4_Simpson_signs_and_affine_ridge[0.0]",
+          "phase": "call",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_reverse_20D_independent_fine_RK4_Simpson_signs_and_affine_ridge[1.6]",
+          "phase": "call",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_causality_machine_permutation_full_gradients_cache_and_exports[L]",
+          "phase": "call",
+          "outcome": "failed",
+          "error": "mode = 'L'\n\n    @pytest.mark.parametrize(\"mode\", MODES)\n    def test_causality_machine_permutation_full_gradients_cache_and_exports(mode):\n        _, m = pair(mode)\n        with torch.no_grad(): m.raw_gamma.fill_(-.7)\n        h=history(); z=state()\n        polluted=h.clone(); polluted[:,:10,20:]=float(\"nan\")\n        assert torch.equal(m.encode(h),m.encode(polluted))\n        perm=torch.tensor([7,0,9,4,2,6,1,8,3,5])\n        cfg=copy.deepcopy(m._source_config)\n        for key,value in list(cfg.items()):\n            if key==\"D\": cfg[key]=torch.tensor(value)[:,perm].tolist()\n            elif len(value)==10: cfg[key]=torch.tensor(value,dtype=DTYPE)[perm].tolist()\n        p=ForceExchangeROM(cfg,mode)\n        with torch.no_grad():\n            p.kappa_raw.copy_(m.kappa_raw); p.lambda_raw.copy_(m.lambda_raw); p.raw_gamma.copy_(m.raw_gamma)\n            if mode!=\"L\":\n                source=m.k_bar if mode==\"S\" else m.a_bar\n                target=p.k_bar if mode==\"S\" else p.a_bar\n                for e,(i,j) in enumerate(PAIRS): target[e]=source[PAIRS.index(tuple(sorted((int(perm[i]),int(perm[j])))))]\n        ix=torch.cat(tuple(perm+offset for offset in (0,10,20,30)))\n        assert torch.allclose(p.field(z[:,ix]),m.field(z)[:,ix],atol=1e-12,rtol=0)\n        assert torch.allclose(p.encode(h[:,:,ix[:30]]),m.encode(h)[:,perm],atol=1e-12,rtol=0)\n        # F and q must participate in backward, not merely in the forward solve.\n        s=m.history_system(h)\n        grads=torch.autograd.grad(s[\"r0\"].square().sum(),(s[\"F\"],s[\"q\"]),retain_graph=True)\n        assert all(torch.isfinite(g).all() and g.abs().max()>1e-12 for g in grads)\n        m.rollout(h,3,.01).square().sum().backward()\n        assert all(v.grad is not None and torch.isfinite(v.grad).all() for v in m.parameters())\n        with torch.inference_mode():\n            m.begin_graph_cache(); m.encode(h)\n        m.encode(h).square().sum().backward(); assert m._cache is None\n        for name, param in m.named_parameters():\n            m.begin_graph_cache(); m.encode(h)\n            with torch.no_grad(): param.add_(.001)\n            m.encode(h); assert m._cache is None\n        m.begin_graph_cache(); m.train(); assert m._cache is None\n        m.begin_graph_cache(); m.cpu(); assert m._cache is None\n        m.begin_graph_cache(); m.load_state_dict(m.state_dict()); assert m._cache is None\n        with tempfile.TemporaryDirectory(prefix=\"exchange-fixture-\") as folder:\n            path=Path(folder)/\"model.json\"\n            for train_gamma in (False, True):\n                m.raw_gamma.requires_grad_(train_gamma)\n                m.export(path); loaded=ForceExchangeROM.from_export(path)\n                assert loaded.raw_gamma.requires_grad==train_gamma\n                assert loaded.source_identity==m.source_identity\n                assert all(torch.equal(v,loaded.state_dict()[k]) for k,v in m.state_dict().items())\n                assert torch.equal(m.encode(h),loaded.encode(h))\n                assert torch.equal(m.field(z),loaded.field(z))\n            old,_=pair(mode); old.export(path)\n            imported=ForceExchangeROM.from_force_graph_export(path,train_gamma=False)\n            assert imported.source_identity[\"force_graph_export_sha256\"]==hashlib.sha256(path.read_bytes()).hexdigest()\n>           assert torch.allclose(old.encode(h),imported.encode(h),atol=1e-12,rtol=0)\nE           assert False\nE            +  where False = <built-in method allclose of type object at 0x00007FF8A5FEA480>(tensor([[ 0.3591, -0.5325, -0.4928, -1.4389, -1.6055,  1.0240,  0.6696,  0.6957,\\n         -0.8236, -0.4454],\\n        [...  0.5434,  0.6985,  1.0759,  1.1402, -0.2886,\\n         -1.1220, -2.3809]], dtype=torch.float64, grad_fn=<AddBackward0>), tensor([[ 0.3591, -0.5325, -0.4928, -1.4389, -1.6055,  1.0240,  0.6696,  0.6957,\\n         -0.8236, -0.4454],\\n        [...  0.5434,  0.6985,  1.0759,  1.1402, -0.2886,\\n         -1.1220, -2.3809]], dtype=torch.float64, grad_fn=<MulBackward0>), atol=1e-12, rtol=0)\nE            +    where <built-in method allclose of type object at 0x00007FF8A5FEA480> = torch.allclose\nE            +    and   tensor([[ 0.3591, -0.5325, -0.4928, -1.4389, -1.6055,  1.0240,  0.6696,  0.6957,\\n         -0.8236, -0.4454],\\n        [...  0.5434,  0.6985,  1.0759,  1.1402, -0.2886,\\n         -1.1220, -2.3809]], dtype=torch.float64, grad_fn=<AddBackward0>) = encode(tensor([[[ 7.4118e-02,  1.2378e-02,  7.5721e-02,  1.6427e-02, -2.1028e-02,\\n           2.1196e-02,  8.5926e-02, -5.9330... -1.7455e-02,\\n           5.8598e-02,  2.6624e-02, -1.8720e-02, -6.6798e-02,  1.3252e-01]]],\\n       dtype=torch.float64))\nE            +      where encode = ForceGraphROM().encode\nE            +    and   tensor([[ 0.3591, -0.5325, -0.4928, -1.4389, -1.6055,  1.0240,  0.6696,  0.6957,\\n         -0.8236, -0.4454],\\n        [...  0.5434,  0.6985,  1.0759,  1.1402, -0.2886,\\n         -1.1220, -2.3809]], dtype=torch.float64, grad_fn=<MulBackward0>) = encode(tensor([[[ 7.4118e-02,  1.2378e-02,  7.5721e-02,  1.6427e-02, -2.1028e-02,\\n           2.1196e-02,  8.5926e-02, -5.9330... -1.7455e-02,\\n           5.8598e-02,  2.6624e-02, -1.8720e-02, -6.6798e-02,  1.3252e-01]]],\\n       dtype=torch.float64))\nE            +      where encode = ForceExchangeROM().encode\n\ntests\\test_force_exchange_model_20261028.py:227: AssertionError"
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_causality_machine_permutation_full_gradients_cache_and_exports[S]",
+          "phase": "call",
+          "outcome": "failed",
+          "error": "mode = 'S'\n\n    @pytest.mark.parametrize(\"mode\", MODES)\n    def test_causality_machine_permutation_full_gradients_cache_and_exports(mode):\n        _, m = pair(mode)\n        with torch.no_grad(): m.raw_gamma.fill_(-.7)\n        h=history(); z=state()\n        polluted=h.clone(); polluted[:,:10,20:]=float(\"nan\")\n        assert torch.equal(m.encode(h),m.encode(polluted))\n        perm=torch.tensor([7,0,9,4,2,6,1,8,3,5])\n        cfg=copy.deepcopy(m._source_config)\n        for key,value in list(cfg.items()):\n            if key==\"D\": cfg[key]=torch.tensor(value)[:,perm].tolist()\n            elif len(value)==10: cfg[key]=torch.tensor(value,dtype=DTYPE)[perm].tolist()\n        p=ForceExchangeROM(cfg,mode)\n        with torch.no_grad():\n            p.kappa_raw.copy_(m.kappa_raw); p.lambda_raw.copy_(m.lambda_raw); p.raw_gamma.copy_(m.raw_gamma)\n            if mode!=\"L\":\n                source=m.k_bar if mode==\"S\" else m.a_bar\n                target=p.k_bar if mode==\"S\" else p.a_bar\n                for e,(i,j) in enumerate(PAIRS): target[e]=source[PAIRS.index(tuple(sorted((int(perm[i]),int(perm[j])))))]\n        ix=torch.cat(tuple(perm+offset for offset in (0,10,20,30)))\n        assert torch.allclose(p.field(z[:,ix]),m.field(z)[:,ix],atol=1e-12,rtol=0)\n        assert torch.allclose(p.encode(h[:,:,ix[:30]]),m.encode(h)[:,perm],atol=1e-12,rtol=0)\n        # F and q must participate in backward, not merely in the forward solve.\n        s=m.history_system(h)\n        grads=torch.autograd.grad(s[\"r0\"].square().sum(),(s[\"F\"],s[\"q\"]),retain_graph=True)\n        assert all(torch.isfinite(g).all() and g.abs().max()>1e-12 for g in grads)\n        m.rollout(h,3,.01).square().sum().backward()\n        assert all(v.grad is not None and torch.isfinite(v.grad).all() for v in m.parameters())\n        with torch.inference_mode():\n            m.begin_graph_cache(); m.encode(h)\n        m.encode(h).square().sum().backward(); assert m._cache is None\n        for name, param in m.named_parameters():\n            m.begin_graph_cache(); m.encode(h)\n            with torch.no_grad(): param.add_(.001)\n            m.encode(h); assert m._cache is None\n        m.begin_graph_cache(); m.train(); assert m._cache is None\n        m.begin_graph_cache(); m.cpu(); assert m._cache is None\n        m.begin_graph_cache(); m.load_state_dict(m.state_dict()); assert m._cache is None\n        with tempfile.TemporaryDirectory(prefix=\"exchange-fixture-\") as folder:\n            path=Path(folder)/\"model.json\"\n            for train_gamma in (False, True):\n                m.raw_gamma.requires_grad_(train_gamma)\n                m.export(path); loaded=ForceExchangeROM.from_export(path)\n                assert loaded.raw_gamma.requires_grad==train_gamma\n                assert loaded.source_identity==m.source_identity\n                assert all(torch.equal(v,loaded.state_dict()[k]) for k,v in m.state_dict().items())\n                assert torch.equal(m.encode(h),loaded.encode(h))\n                assert torch.equal(m.field(z),loaded.field(z))\n            old,_=pair(mode); old.export(path)\n            imported=ForceExchangeROM.from_force_graph_export(path,train_gamma=False)\n            assert imported.source_identity[\"force_graph_export_sha256\"]==hashlib.sha256(path.read_bytes()).hexdigest()\n>           assert torch.allclose(old.encode(h),imported.encode(h),atol=1e-12,rtol=0)\nE           assert False\nE            +  where False = <built-in method allclose of type object at 0x00007FF8A5FEA480>(tensor([[ 0.3596, -0.5233, -0.4935, -1.4418, -1.6064,  1.0263,  0.6663,  0.6972,\\n         -0.8280, -0.4468],\\n        [...  0.5411,  0.7042,  1.0740,  1.1363, -0.2873,\\n         -1.1211, -2.3789]], dtype=torch.float64, grad_fn=<AddBackward0>), tensor([[ 0.3596, -0.5233, -0.4935, -1.4418, -1.6064,  1.0263,  0.6663,  0.6972,\\n         -0.8280, -0.4468],\\n        [...  0.5411,  0.7042,  1.0740,  1.1363, -0.2873,\\n         -1.1211, -2.3789]], dtype=torch.float64, grad_fn=<MulBackward0>), atol=1e-12, rtol=0)\nE            +    where <built-in method allclose of type object at 0x00007FF8A5FEA480> = torch.allclose\nE            +    and   tensor([[ 0.3596, -0.5233, -0.4935, -1.4418, -1.6064,  1.0263,  0.6663,  0.6972,\\n         -0.8280, -0.4468],\\n        [...  0.5411,  0.7042,  1.0740,  1.1363, -0.2873,\\n         -1.1211, -2.3789]], dtype=torch.float64, grad_fn=<AddBackward0>) = encode(tensor([[[ 7.4118e-02,  1.2378e-02,  7.5721e-02,  1.6427e-02, -2.1028e-02,\\n           2.1196e-02,  8.5926e-02, -5.9330... -1.7455e-02,\\n           5.8598e-02,  2.6624e-02, -1.8720e-02, -6.6798e-02,  1.3252e-01]]],\\n       dtype=torch.float64))\nE            +      where encode = ForceGraphROM().encode\nE            +    and   tensor([[ 0.3596, -0.5233, -0.4935, -1.4418, -1.6064,  1.0263,  0.6663,  0.6972,\\n         -0.8280, -0.4468],\\n        [...  0.5411,  0.7042,  1.0740,  1.1363, -0.2873,\\n         -1.1211, -2.3789]], dtype=torch.float64, grad_fn=<MulBackward0>) = encode(tensor([[[ 7.4118e-02,  1.2378e-02,  7.5721e-02,  1.6427e-02, -2.1028e-02,\\n           2.1196e-02,  8.5926e-02, -5.9330... -1.7455e-02,\\n           5.8598e-02,  2.6624e-02, -1.8720e-02, -6.6798e-02,  1.3252e-01]]],\\n       dtype=torch.float64))\nE            +      where encode = ForceExchangeROM().encode\n\ntests\\test_force_exchange_model_20261028.py:227: AssertionError"
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_causality_machine_permutation_full_gradients_cache_and_exports[M]",
+          "phase": "call",
+          "outcome": "failed",
+          "error": "mode = 'M'\n\n    @pytest.mark.parametrize(\"mode\", MODES)\n    def test_causality_machine_permutation_full_gradients_cache_and_exports(mode):\n        _, m = pair(mode)\n        with torch.no_grad(): m.raw_gamma.fill_(-.7)\n        h=history(); z=state()\n        polluted=h.clone(); polluted[:,:10,20:]=float(\"nan\")\n        assert torch.equal(m.encode(h),m.encode(polluted))\n        perm=torch.tensor([7,0,9,4,2,6,1,8,3,5])\n        cfg=copy.deepcopy(m._source_config)\n        for key,value in list(cfg.items()):\n            if key==\"D\": cfg[key]=torch.tensor(value)[:,perm].tolist()\n            elif len(value)==10: cfg[key]=torch.tensor(value,dtype=DTYPE)[perm].tolist()\n        p=ForceExchangeROM(cfg,mode)\n        with torch.no_grad():\n            p.kappa_raw.copy_(m.kappa_raw); p.lambda_raw.copy_(m.lambda_raw); p.raw_gamma.copy_(m.raw_gamma)\n            if mode!=\"L\":\n                source=m.k_bar if mode==\"S\" else m.a_bar\n                target=p.k_bar if mode==\"S\" else p.a_bar\n                for e,(i,j) in enumerate(PAIRS): target[e]=source[PAIRS.index(tuple(sorted((int(perm[i]),int(perm[j])))))]\n        ix=torch.cat(tuple(perm+offset for offset in (0,10,20,30)))\n        assert torch.allclose(p.field(z[:,ix]),m.field(z)[:,ix],atol=1e-12,rtol=0)\n        assert torch.allclose(p.encode(h[:,:,ix[:30]]),m.encode(h)[:,perm],atol=1e-12,rtol=0)\n        # F and q must participate in backward, not merely in the forward solve.\n        s=m.history_system(h)\n        grads=torch.autograd.grad(s[\"r0\"].square().sum(),(s[\"F\"],s[\"q\"]),retain_graph=True)\n        assert all(torch.isfinite(g).all() and g.abs().max()>1e-12 for g in grads)\n        m.rollout(h,3,.01).square().sum().backward()\n        assert all(v.grad is not None and torch.isfinite(v.grad).all() for v in m.parameters())\n        with torch.inference_mode():\n            m.begin_graph_cache(); m.encode(h)\n        m.encode(h).square().sum().backward(); assert m._cache is None\n        for name, param in m.named_parameters():\n            m.begin_graph_cache(); m.encode(h)\n            with torch.no_grad(): param.add_(.001)\n            m.encode(h); assert m._cache is None\n        m.begin_graph_cache(); m.train(); assert m._cache is None\n        m.begin_graph_cache(); m.cpu(); assert m._cache is None\n        m.begin_graph_cache(); m.load_state_dict(m.state_dict()); assert m._cache is None\n        with tempfile.TemporaryDirectory(prefix=\"exchange-fixture-\") as folder:\n            path=Path(folder)/\"model.json\"\n            for train_gamma in (False, True):\n                m.raw_gamma.requires_grad_(train_gamma)\n                m.export(path); loaded=ForceExchangeROM.from_export(path)\n                assert loaded.raw_gamma.requires_grad==train_gamma\n                assert loaded.source_identity==m.source_identity\n                assert all(torch.equal(v,loaded.state_dict()[k]) for k,v in m.state_dict().items())\n                assert torch.equal(m.encode(h),loaded.encode(h))\n                assert torch.equal(m.field(z),loaded.field(z))\n            old,_=pair(mode); old.export(path)\n            imported=ForceExchangeROM.from_force_graph_export(path,train_gamma=False)\n            assert imported.source_identity[\"force_graph_export_sha256\"]==hashlib.sha256(path.read_bytes()).hexdigest()\n>           assert torch.allclose(old.encode(h),imported.encode(h),atol=1e-12,rtol=0)\nE           assert False\nE            +  where False = <built-in method allclose of type object at 0x00007FF8A5FEA480>(tensor([[ 0.3542, -0.5370, -0.4893, -1.4224, -1.5873,  1.0294,  0.6473,  0.6933,\\n         -0.8256, -0.4515],\\n        [...  0.5481,  0.6670,  1.0719,  1.1084, -0.2812,\\n         -1.1417, -2.3588]], dtype=torch.float64, grad_fn=<AddBackward0>), tensor([[ 0.3542, -0.5370, -0.4893, -1.4224, -1.5873,  1.0294,  0.6473,  0.6933,\\n         -0.8256, -0.4515],\\n        [...  0.5481,  0.6670,  1.0719,  1.1084, -0.2812,\\n         -1.1417, -2.3588]], dtype=torch.float64, grad_fn=<MulBackward0>), atol=1e-12, rtol=0)\nE            +    where <built-in method allclose of type object at 0x00007FF8A5FEA480> = torch.allclose\nE            +    and   tensor([[ 0.3542, -0.5370, -0.4893, -1.4224, -1.5873,  1.0294,  0.6473,  0.6933,\\n         -0.8256, -0.4515],\\n        [...  0.5481,  0.6670,  1.0719,  1.1084, -0.2812,\\n         -1.1417, -2.3588]], dtype=torch.float64, grad_fn=<AddBackward0>) = encode(tensor([[[ 7.4118e-02,  1.2378e-02,  7.5721e-02,  1.6427e-02, -2.1028e-02,\\n           2.1196e-02,  8.5926e-02, -5.9330... -1.7455e-02,\\n           5.8598e-02,  2.6624e-02, -1.8720e-02, -6.6798e-02,  1.3252e-01]]],\\n       dtype=torch.float64))\nE            +      where encode = ForceGraphROM().encode\nE            +    and   tensor([[ 0.3542, -0.5370, -0.4893, -1.4224, -1.5873,  1.0294,  0.6473,  0.6933,\\n         -0.8256, -0.4515],\\n        [...  0.5481,  0.6670,  1.0719,  1.1084, -0.2812,\\n         -1.1417, -2.3588]], dtype=torch.float64, grad_fn=<MulBackward0>) = encode(tensor([[[ 7.4118e-02,  1.2378e-02,  7.5721e-02,  1.6427e-02, -2.1028e-02,\\n           2.1196e-02,  8.5926e-02, -5.9330... -1.7455e-02,\\n           5.8598e-02,  2.6624e-02, -1.8720e-02, -6.6798e-02,  1.3252e-01]]],\\n       dtype=torch.float64))\nE            +      where encode = ForceExchangeROM().encode\n\ntests\\test_force_exchange_model_20261028.py:227: AssertionError"
+        }
+      ],
+      "cpu": true,
+      "dtype": "float64",
+      "optimizer_calls": 0,
+      "real_event_arrays_read": false,
+      "val_read": false,
+      "test_read": false,
+      "source_selection": null,
+      "files": {
+        "tests\\test_force_exchange_model_20261028.py": "7deab7cba5aac21b26c420f7e5bd578e3466855b60009f60b5214b5d9baefe03",
+        "experiments\\force_exchange_model_20261028.py": "010ff2210fb84767fa6a5dee4cfe38826ea8526787a277e09db08e5c7b02d1b4",
+        "experiments\\force_graph_model_20261028.py": "44e5fe2e1403bc7e072d2fb87100eaa694b15da5b4694169de141cc6059089af"
+      },
+      "limitations": [
+        "CUDA parity, real-source qualification and optimizer/RNG recovery are not tested here",
+        "No full-horizon real-data precision or cost claim; original objective used on short synthetic data"
+      ],
+      "formulation": "unit reverse interval, delta_omega",
+      "observed_passed": 12,
+      "observed_failed": 6
+    },
+    {
+      "exit_code": 1,
+      "wall_seconds": 8.601660013198853,
+      "measurements": {
+        "L": {
+          "zero_gamma_J": 0.297561318371166,
+          "old_raw_gradient_max_error": {
+            "kappa_raw": 2.870425251655373e-17,
+            "lambda_raw": 7.118871464539822e-16
+          },
+          "gamma_gradient": -0.0034820368629611374,
+          "gamma_centered_fd": -0.0034820368588484025,
+          "zero_gamma_init_max_error": 1.390665360645471e-12,
+          "zero_gamma_short_rollout_max_error": 1.390665360645471e-12,
+          "historical_force_max_error": 1.4636070133633439e-12,
+          "ridge_argument_max_error": 2.495559314752427e-12,
+          "momentum_residual_max_error": 4.224176564093796e-12,
+          "J_absolute_error": 1.3100631690576847e-14
+        },
+        "S": {
+          "zero_gamma_J": 0.29758956752579735,
+          "old_raw_gradient_max_error": {
+            "kappa_raw": 2.8758462625178005e-17,
+            "lambda_raw": 7.127545081919706e-16,
+            "k_bar": 2.916503843986007e-16
+          },
+          "gamma_gradient": -0.0034614759387032188,
+          "gamma_centered_fd": -0.0034614759392148637,
+          "zero_gamma_init_max_error": 1.3894441153183834e-12,
+          "zero_gamma_short_rollout_max_error": 1.3894441153183834e-12,
+          "historical_force_max_error": 1.464051102573194e-12,
+          "ridge_argument_max_error": 2.496003403962277e-12,
+          "momentum_residual_max_error": 4.224176564093796e-12,
+          "J_absolute_error": 1.304512053934559e-14
+        },
+        "M": {
+          "zero_gamma_J": 0.29726303297769313,
+          "old_raw_gradient_max_error": {
+            "kappa_raw": 2.938187887435717e-17,
+            "lambda_raw": 2.8579569266717897e-16,
+            "a_bar": 4.924446267429161e-16
+          },
+          "gamma_gradient": -0.003458384361620456,
+          "gamma_centered_fd": -0.003458384364996014,
+          "zero_gamma_init_max_error": 1.6332490915260678e-12,
+          "zero_gamma_short_rollout_max_error": 1.6332490915260678e-12,
+          "historical_force_max_error": 2.160827072827942e-12,
+          "ridge_argument_max_error": 3.6839420403111944e-12,
+          "momentum_residual_max_error": 5.6203930398623925e-12,
+          "J_absolute_error": 1.1546319456101628e-14
+        }
+      },
+      "tests": [
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_zero_gamma_original_field_init_rollout_full_J_and_all_raw_gradients[L]",
+          "phase": "call",
+          "outcome": "failed",
+          "error": "mode = 'L'\n\n    @pytest.mark.parametrize(\"mode\", MODES)\n    def test_zero_gamma_original_field_init_rollout_full_J_and_all_raw_gradients(mode):\n        old, new = pair(mode)\n        h, z = history(), state()\n        assert torch.allclose(old.field(z), new.field(z), atol=1e-12, rtol=0)\n        init_error = float((old.initialize(h) - new.initialize(h)).detach().abs().max())\n        rollout_error = float((old.rollout(h, 4, .01) - new.rollout(h, 4, .01)).detach().abs().max())\n        a, b = old.history_system(h), new.history_system(h)\n        u_error = float((a[\"u\"] - b[\"u\"]).detach().abs().max())\n        # Equal ridge penalizes the same historical force, not the terminal force.\n        penalty = b[\"s\"] @ b[\"F\"].T + b[\"q\"]\n        penalty_error = float((penalty - a[\"s\"]).detach().abs().max())\n        residual_a = a[\"s\"] @ a[\"A\"].T - a[\"bscaled\"]\n        residual_b = b[\"s\"] @ b[\"A\"].T - b[\"bscaled\"]\n        residual_error = float((residual_a - residual_b).detach().abs().max())\n        store, samples = synthetic_store()\n        losses = []\n        for m in (old, new):\n            m.begin_graph_cache()\n            J, _ = objective(m, store, samples, .08, method=\"rk4\")\n            J.backward()\n            m.end_graph_cache()\n            losses.append(J.detach())\n        assert torch.allclose(*losses, atol=1e-12, rtol=0)\n        grad_errors = {}\n        for name, p in old.named_parameters():\n            other = dict(new.named_parameters())[name]\n            assert p.grad is not None and other.grad is not None\n            assert torch.allclose(p.grad, other.grad, atol=1e-10, rtol=1e-8)\n            grad_errors[name] = float((p.grad - other.grad).abs().max())\n        assert torch.isfinite(new.raw_gamma.grad) and abs(float(new.raw_gamma.grad)) > 1e-10\n        eps = 1e-5\n        values = []\n        with torch.no_grad():\n            for gamma in (-eps, eps):\n                new.raw_gamma.fill_(gamma)\n                values.append(objective(new, store, samples, .08)[0])\n            new.raw_gamma.zero_()\n        fd = (values[1] - values[0]) / (2 * eps)\n        assert torch.allclose(fd, new.raw_gamma.grad, atol=1e-9, rtol=1e-6)\n        MEASUREMENTS[mode] = {\"zero_gamma_J\": float(losses[0]), \"old_raw_gradient_max_error\": grad_errors,\n                              \"gamma_gradient\": float(new.raw_gamma.grad), \"gamma_centered_fd\": float(fd),\n                              \"zero_gamma_init_max_error\": init_error,\"zero_gamma_short_rollout_max_error\":rollout_error,\n                              \"historical_force_max_error\":u_error,\"ridge_argument_max_error\":penalty_error,\n                              \"momentum_residual_max_error\":residual_error,\"J_absolute_error\":float(abs(losses[1]-losses[0]))}\n        # Keep every original strict gate and report all decisive measurements even\n        # if one floating-point comparison is unresolved.\n>       assert max(init_error,rollout_error,u_error,penalty_error,residual_error) <= 1e-12, MEASUREMENTS[mode]\nE       AssertionError: {'zero_gamma_J': 0.297561318371166, 'old_raw_gradient_max_error': {'kappa_raw': 2.870425251655373e-17, 'lambda_raw': 7.118871464539822e-16}, 'gamma_gradient': -0.0034820368629611374, 'gamma_centered_fd': -0.0034820368588484025, ...}\nE       assert 4.224176564093796e-12 <= 1e-12\nE        +  where 4.224176564093796e-12 = max(1.390665360645471e-12, 1.390665360645471e-12, 1.4636070133633439e-12, 2.495559314752427e-12, 4.224176564093796e-12)\n\ntests\\test_force_exchange_model_20261028.py:101: AssertionError"
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_zero_gamma_original_field_init_rollout_full_J_and_all_raw_gradients[S]",
+          "phase": "call",
+          "outcome": "failed",
+          "error": "mode = 'S'\n\n    @pytest.mark.parametrize(\"mode\", MODES)\n    def test_zero_gamma_original_field_init_rollout_full_J_and_all_raw_gradients(mode):\n        old, new = pair(mode)\n        h, z = history(), state()\n        assert torch.allclose(old.field(z), new.field(z), atol=1e-12, rtol=0)\n        init_error = float((old.initialize(h) - new.initialize(h)).detach().abs().max())\n        rollout_error = float((old.rollout(h, 4, .01) - new.rollout(h, 4, .01)).detach().abs().max())\n        a, b = old.history_system(h), new.history_system(h)\n        u_error = float((a[\"u\"] - b[\"u\"]).detach().abs().max())\n        # Equal ridge penalizes the same historical force, not the terminal force.\n        penalty = b[\"s\"] @ b[\"F\"].T + b[\"q\"]\n        penalty_error = float((penalty - a[\"s\"]).detach().abs().max())\n        residual_a = a[\"s\"] @ a[\"A\"].T - a[\"bscaled\"]\n        residual_b = b[\"s\"] @ b[\"A\"].T - b[\"bscaled\"]\n        residual_error = float((residual_a - residual_b).detach().abs().max())\n        store, samples = synthetic_store()\n        losses = []\n        for m in (old, new):\n            m.begin_graph_cache()\n            J, _ = objective(m, store, samples, .08, method=\"rk4\")\n            J.backward()\n            m.end_graph_cache()\n            losses.append(J.detach())\n        assert torch.allclose(*losses, atol=1e-12, rtol=0)\n        grad_errors = {}\n        for name, p in old.named_parameters():\n            other = dict(new.named_parameters())[name]\n            assert p.grad is not None and other.grad is not None\n            assert torch.allclose(p.grad, other.grad, atol=1e-10, rtol=1e-8)\n            grad_errors[name] = float((p.grad - other.grad).abs().max())\n        assert torch.isfinite(new.raw_gamma.grad) and abs(float(new.raw_gamma.grad)) > 1e-10\n        eps = 1e-5\n        values = []\n        with torch.no_grad():\n            for gamma in (-eps, eps):\n                new.raw_gamma.fill_(gamma)\n                values.append(objective(new, store, samples, .08)[0])\n            new.raw_gamma.zero_()\n        fd = (values[1] - values[0]) / (2 * eps)\n        assert torch.allclose(fd, new.raw_gamma.grad, atol=1e-9, rtol=1e-6)\n        MEASUREMENTS[mode] = {\"zero_gamma_J\": float(losses[0]), \"old_raw_gradient_max_error\": grad_errors,\n                              \"gamma_gradient\": float(new.raw_gamma.grad), \"gamma_centered_fd\": float(fd),\n                              \"zero_gamma_init_max_error\": init_error,\"zero_gamma_short_rollout_max_error\":rollout_error,\n                              \"historical_force_max_error\":u_error,\"ridge_argument_max_error\":penalty_error,\n                              \"momentum_residual_max_error\":residual_error,\"J_absolute_error\":float(abs(losses[1]-losses[0]))}\n        # Keep every original strict gate and report all decisive measurements even\n        # if one floating-point comparison is unresolved.\n>       assert max(init_error,rollout_error,u_error,penalty_error,residual_error) <= 1e-12, MEASUREMENTS[mode]\nE       AssertionError: {'zero_gamma_J': 0.29758956752579735, 'old_raw_gradient_max_error': {'kappa_raw': 2.8758462625178005e-17, 'lambda_raw'...r': 2.916503843986007e-16}, 'gamma_gradient': -0.0034614759387032188, 'gamma_centered_fd': -0.0034614759392148637, ...}\nE       assert 4.224176564093796e-12 <= 1e-12\nE        +  where 4.224176564093796e-12 = max(1.3894441153183834e-12, 1.3894441153183834e-12, 1.464051102573194e-12, 2.496003403962277e-12, 4.224176564093796e-12)\n\ntests\\test_force_exchange_model_20261028.py:101: AssertionError"
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_zero_gamma_original_field_init_rollout_full_J_and_all_raw_gradients[M]",
+          "phase": "call",
+          "outcome": "failed",
+          "error": "mode = 'M'\n\n    @pytest.mark.parametrize(\"mode\", MODES)\n    def test_zero_gamma_original_field_init_rollout_full_J_and_all_raw_gradients(mode):\n        old, new = pair(mode)\n        h, z = history(), state()\n        assert torch.allclose(old.field(z), new.field(z), atol=1e-12, rtol=0)\n        init_error = float((old.initialize(h) - new.initialize(h)).detach().abs().max())\n        rollout_error = float((old.rollout(h, 4, .01) - new.rollout(h, 4, .01)).detach().abs().max())\n        a, b = old.history_system(h), new.history_system(h)\n        u_error = float((a[\"u\"] - b[\"u\"]).detach().abs().max())\n        # Equal ridge penalizes the same historical force, not the terminal force.\n        penalty = b[\"s\"] @ b[\"F\"].T + b[\"q\"]\n        penalty_error = float((penalty - a[\"s\"]).detach().abs().max())\n        residual_a = a[\"s\"] @ a[\"A\"].T - a[\"bscaled\"]\n        residual_b = b[\"s\"] @ b[\"A\"].T - b[\"bscaled\"]\n        residual_error = float((residual_a - residual_b).detach().abs().max())\n        store, samples = synthetic_store()\n        losses = []\n        for m in (old, new):\n            m.begin_graph_cache()\n            J, _ = objective(m, store, samples, .08, method=\"rk4\")\n            J.backward()\n            m.end_graph_cache()\n            losses.append(J.detach())\n        assert torch.allclose(*losses, atol=1e-12, rtol=0)\n        grad_errors = {}\n        for name, p in old.named_parameters():\n            other = dict(new.named_parameters())[name]\n            assert p.grad is not None and other.grad is not None\n            assert torch.allclose(p.grad, other.grad, atol=1e-10, rtol=1e-8)\n            grad_errors[name] = float((p.grad - other.grad).abs().max())\n        assert torch.isfinite(new.raw_gamma.grad) and abs(float(new.raw_gamma.grad)) > 1e-10\n        eps = 1e-5\n        values = []\n        with torch.no_grad():\n            for gamma in (-eps, eps):\n                new.raw_gamma.fill_(gamma)\n                values.append(objective(new, store, samples, .08)[0])\n            new.raw_gamma.zero_()\n        fd = (values[1] - values[0]) / (2 * eps)\n        assert torch.allclose(fd, new.raw_gamma.grad, atol=1e-9, rtol=1e-6)\n        MEASUREMENTS[mode] = {\"zero_gamma_J\": float(losses[0]), \"old_raw_gradient_max_error\": grad_errors,\n                              \"gamma_gradient\": float(new.raw_gamma.grad), \"gamma_centered_fd\": float(fd),\n                              \"zero_gamma_init_max_error\": init_error,\"zero_gamma_short_rollout_max_error\":rollout_error,\n                              \"historical_force_max_error\":u_error,\"ridge_argument_max_error\":penalty_error,\n                              \"momentum_residual_max_error\":residual_error,\"J_absolute_error\":float(abs(losses[1]-losses[0]))}\n        # Keep every original strict gate and report all decisive measurements even\n        # if one floating-point comparison is unresolved.\n>       assert max(init_error,rollout_error,u_error,penalty_error,residual_error) <= 1e-12, MEASUREMENTS[mode]\nE       AssertionError: {'zero_gamma_J': 0.29726303297769313, 'old_raw_gradient_max_error': {'kappa_raw': 2.938187887435717e-17, 'lambda_raw':...bar': 4.924446267429161e-16}, 'gamma_gradient': -0.003458384361620456, 'gamma_centered_fd': -0.003458384364996014, ...}\nE       assert 5.6203930398623925e-12 <= 1e-12\nE        +  where 5.6203930398623925e-12 = max(1.6332490915260678e-12, 1.6332490915260678e-12, 2.160827072827942e-12, 3.6839420403111944e-12, 5.6203930398623925e-12)\n\ntests\\test_force_exchange_model_20261028.py:101: AssertionError"
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_exchange_nonunit_matrix_power_and_true_RK4[-1.4-L]",
+          "phase": "call",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_exchange_nonunit_matrix_power_and_true_RK4[-1.4-S]",
+          "phase": "call",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_exchange_nonunit_matrix_power_and_true_RK4[-1.4-M]",
+          "phase": "call",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_exchange_nonunit_matrix_power_and_true_RK4[0.0-L]",
+          "phase": "call",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_exchange_nonunit_matrix_power_and_true_RK4[0.0-S]",
+          "phase": "call",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_exchange_nonunit_matrix_power_and_true_RK4[0.0-M]",
+          "phase": "call",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_exchange_nonunit_matrix_power_and_true_RK4[1.7-L]",
+          "phase": "call",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_exchange_nonunit_matrix_power_and_true_RK4[1.7-S]",
+          "phase": "call",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_exchange_nonunit_matrix_power_and_true_RK4[1.7-M]",
+          "phase": "call",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_reverse_20D_independent_fine_RK4_Simpson_signs_and_affine_ridge[-1.3]",
+          "phase": "call",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_reverse_20D_independent_fine_RK4_Simpson_signs_and_affine_ridge[0.0]",
+          "phase": "call",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_reverse_20D_independent_fine_RK4_Simpson_signs_and_affine_ridge[1.6]",
+          "phase": "call",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_causality_machine_permutation_full_gradients_cache_and_exports[L]",
+          "phase": "call",
+          "outcome": "failed",
+          "error": "mode = 'L'\n\n    @pytest.mark.parametrize(\"mode\", MODES)\n    def test_causality_machine_permutation_full_gradients_cache_and_exports(mode):\n        _, m = pair(mode)\n        with torch.no_grad(): m.raw_gamma.fill_(-.7)\n        h=history(); z=state()\n        polluted=h.clone(); polluted[:,:10,20:]=float(\"nan\")\n        assert torch.equal(m.encode(h),m.encode(polluted))\n        perm=torch.tensor([7,0,9,4,2,6,1,8,3,5])\n        cfg=copy.deepcopy(m._source_config)\n        for key,value in list(cfg.items()):\n            if key==\"D\": cfg[key]=torch.tensor(value)[:,perm].tolist()\n            elif len(value)==10: cfg[key]=torch.tensor(value,dtype=DTYPE)[perm].tolist()\n        p=ForceExchangeROM(cfg,mode)\n        with torch.no_grad():\n            p.kappa_raw.copy_(m.kappa_raw); p.lambda_raw.copy_(m.lambda_raw); p.raw_gamma.copy_(m.raw_gamma)\n            if mode!=\"L\":\n                source=m.k_bar if mode==\"S\" else m.a_bar\n                target=p.k_bar if mode==\"S\" else p.a_bar\n                for e,(i,j) in enumerate(PAIRS): target[e]=source[PAIRS.index(tuple(sorted((int(perm[i]),int(perm[j])))))]\n        ix=torch.cat(tuple(perm+offset for offset in (0,10,20,30)))\n        assert torch.allclose(p.field(z[:,ix]),m.field(z)[:,ix],atol=1e-12,rtol=0)\n        assert torch.allclose(p.encode(h[:,:,ix[:30]]),m.encode(h)[:,perm],atol=1e-12,rtol=0)\n        # F and q must participate in backward, not merely in the forward solve.\n        s=m.history_system(h)\n        grads=torch.autograd.grad(s[\"r0\"].square().sum(),(s[\"F\"],s[\"q\"]),retain_graph=True)\n        assert all(torch.isfinite(g).all() and g.abs().max()>1e-12 for g in grads)\n        m.rollout(h,3,.01).square().sum().backward()\n        assert all(v.grad is not None and torch.isfinite(v.grad).all() for v in m.parameters())\n        with torch.inference_mode():\n            m.begin_graph_cache(); m.encode(h)\n        m.encode(h).square().sum().backward(); assert m._cache is None\n        for name, param in m.named_parameters():\n            m.begin_graph_cache(); m.encode(h)\n            with torch.no_grad(): param.add_(.001)\n            m.encode(h); assert m._cache is None\n        m.begin_graph_cache(); m.train(); assert m._cache is None\n        m.begin_graph_cache(); m.cpu(); assert m._cache is None\n        m.begin_graph_cache(); m.load_state_dict(m.state_dict()); assert m._cache is None\n        with tempfile.TemporaryDirectory(prefix=\"exchange-fixture-\") as folder:\n            path=Path(folder)/\"model.json\"\n            for train_gamma in (False, True):\n                m.raw_gamma.requires_grad_(train_gamma)\n                m.export(path); loaded=ForceExchangeROM.from_export(path)\n                assert loaded.raw_gamma.requires_grad==train_gamma\n                assert loaded.source_identity==m.source_identity\n                assert all(torch.equal(v,loaded.state_dict()[k]) for k,v in m.state_dict().items())\n                assert torch.equal(m.encode(h),loaded.encode(h))\n                assert torch.equal(m.field(z),loaded.field(z))\n            old,_=pair(mode); old.export(path)\n            imported=ForceExchangeROM.from_force_graph_export(path,train_gamma=False)\n            assert imported.source_identity[\"force_graph_export_sha256\"]==hashlib.sha256(path.read_bytes()).hexdigest()\n>           assert torch.allclose(old.encode(h),imported.encode(h),atol=1e-12,rtol=0)\nE           assert False\nE            +  where False = <built-in method allclose of type object at 0x00007FF8A5FEA480>(tensor([[ 0.3591, -0.5325, -0.4928, -1.4389, -1.6055,  1.0240,  0.6696,  0.6957,\\n         -0.8236, -0.4454],\\n        [...  0.5434,  0.6985,  1.0759,  1.1402, -0.2886,\\n         -1.1220, -2.3809]], dtype=torch.float64, grad_fn=<AddBackward0>), tensor([[ 0.3591, -0.5325, -0.4928, -1.4389, -1.6055,  1.0240,  0.6696,  0.6957,\\n         -0.8236, -0.4454],\\n        [...  0.5434,  0.6985,  1.0759,  1.1402, -0.2886,\\n         -1.1220, -2.3809]], dtype=torch.float64, grad_fn=<MulBackward0>), atol=1e-12, rtol=0)\nE            +    where <built-in method allclose of type object at 0x00007FF8A5FEA480> = torch.allclose\nE            +    and   tensor([[ 0.3591, -0.5325, -0.4928, -1.4389, -1.6055,  1.0240,  0.6696,  0.6957,\\n         -0.8236, -0.4454],\\n        [...  0.5434,  0.6985,  1.0759,  1.1402, -0.2886,\\n         -1.1220, -2.3809]], dtype=torch.float64, grad_fn=<AddBackward0>) = encode(tensor([[[ 7.4118e-02,  1.2378e-02,  7.5721e-02,  1.6427e-02, -2.1028e-02,\\n           2.1196e-02,  8.5926e-02, -5.9330... -1.7455e-02,\\n           5.8598e-02,  2.6624e-02, -1.8720e-02, -6.6798e-02,  1.3252e-01]]],\\n       dtype=torch.float64))\nE            +      where encode = ForceGraphROM().encode\nE            +    and   tensor([[ 0.3591, -0.5325, -0.4928, -1.4389, -1.6055,  1.0240,  0.6696,  0.6957,\\n         -0.8236, -0.4454],\\n        [...  0.5434,  0.6985,  1.0759,  1.1402, -0.2886,\\n         -1.1220, -2.3809]], dtype=torch.float64, grad_fn=<MulBackward0>) = encode(tensor([[[ 7.4118e-02,  1.2378e-02,  7.5721e-02,  1.6427e-02, -2.1028e-02,\\n           2.1196e-02,  8.5926e-02, -5.9330... -1.7455e-02,\\n           5.8598e-02,  2.6624e-02, -1.8720e-02, -6.6798e-02,  1.3252e-01]]],\\n       dtype=torch.float64))\nE            +      where encode = ForceExchangeROM().encode\n\ntests\\test_force_exchange_model_20261028.py:232: AssertionError"
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_causality_machine_permutation_full_gradients_cache_and_exports[S]",
+          "phase": "call",
+          "outcome": "failed",
+          "error": "mode = 'S'\n\n    @pytest.mark.parametrize(\"mode\", MODES)\n    def test_causality_machine_permutation_full_gradients_cache_and_exports(mode):\n        _, m = pair(mode)\n        with torch.no_grad(): m.raw_gamma.fill_(-.7)\n        h=history(); z=state()\n        polluted=h.clone(); polluted[:,:10,20:]=float(\"nan\")\n        assert torch.equal(m.encode(h),m.encode(polluted))\n        perm=torch.tensor([7,0,9,4,2,6,1,8,3,5])\n        cfg=copy.deepcopy(m._source_config)\n        for key,value in list(cfg.items()):\n            if key==\"D\": cfg[key]=torch.tensor(value)[:,perm].tolist()\n            elif len(value)==10: cfg[key]=torch.tensor(value,dtype=DTYPE)[perm].tolist()\n        p=ForceExchangeROM(cfg,mode)\n        with torch.no_grad():\n            p.kappa_raw.copy_(m.kappa_raw); p.lambda_raw.copy_(m.lambda_raw); p.raw_gamma.copy_(m.raw_gamma)\n            if mode!=\"L\":\n                source=m.k_bar if mode==\"S\" else m.a_bar\n                target=p.k_bar if mode==\"S\" else p.a_bar\n                for e,(i,j) in enumerate(PAIRS): target[e]=source[PAIRS.index(tuple(sorted((int(perm[i]),int(perm[j])))))]\n        ix=torch.cat(tuple(perm+offset for offset in (0,10,20,30)))\n        assert torch.allclose(p.field(z[:,ix]),m.field(z)[:,ix],atol=1e-12,rtol=0)\n        assert torch.allclose(p.encode(h[:,:,ix[:30]]),m.encode(h)[:,perm],atol=1e-12,rtol=0)\n        # F and q must participate in backward, not merely in the forward solve.\n        s=m.history_system(h)\n        grads=torch.autograd.grad(s[\"r0\"].square().sum(),(s[\"F\"],s[\"q\"]),retain_graph=True)\n        assert all(torch.isfinite(g).all() and g.abs().max()>1e-12 for g in grads)\n        m.rollout(h,3,.01).square().sum().backward()\n        assert all(v.grad is not None and torch.isfinite(v.grad).all() for v in m.parameters())\n        with torch.inference_mode():\n            m.begin_graph_cache(); m.encode(h)\n        m.encode(h).square().sum().backward(); assert m._cache is None\n        for name, param in m.named_parameters():\n            m.begin_graph_cache(); m.encode(h)\n            with torch.no_grad(): param.add_(.001)\n            m.encode(h); assert m._cache is None\n        m.begin_graph_cache(); m.train(); assert m._cache is None\n        m.begin_graph_cache(); m.cpu(); assert m._cache is None\n        m.begin_graph_cache(); m.load_state_dict(m.state_dict()); assert m._cache is None\n        with tempfile.TemporaryDirectory(prefix=\"exchange-fixture-\") as folder:\n            path=Path(folder)/\"model.json\"\n            for train_gamma in (False, True):\n                m.raw_gamma.requires_grad_(train_gamma)\n                m.export(path); loaded=ForceExchangeROM.from_export(path)\n                assert loaded.raw_gamma.requires_grad==train_gamma\n                assert loaded.source_identity==m.source_identity\n                assert all(torch.equal(v,loaded.state_dict()[k]) for k,v in m.state_dict().items())\n                assert torch.equal(m.encode(h),loaded.encode(h))\n                assert torch.equal(m.field(z),loaded.field(z))\n            old,_=pair(mode); old.export(path)\n            imported=ForceExchangeROM.from_force_graph_export(path,train_gamma=False)\n            assert imported.source_identity[\"force_graph_export_sha256\"]==hashlib.sha256(path.read_bytes()).hexdigest()\n>           assert torch.allclose(old.encode(h),imported.encode(h),atol=1e-12,rtol=0)\nE           assert False\nE            +  where False = <built-in method allclose of type object at 0x00007FF8A5FEA480>(tensor([[ 0.3596, -0.5233, -0.4935, -1.4418, -1.6064,  1.0263,  0.6663,  0.6972,\\n         -0.8280, -0.4468],\\n        [...  0.5411,  0.7042,  1.0740,  1.1363, -0.2873,\\n         -1.1211, -2.3789]], dtype=torch.float64, grad_fn=<AddBackward0>), tensor([[ 0.3596, -0.5233, -0.4935, -1.4418, -1.6064,  1.0263,  0.6663,  0.6972,\\n         -0.8280, -0.4468],\\n        [...  0.5411,  0.7042,  1.0740,  1.1363, -0.2873,\\n         -1.1211, -2.3789]], dtype=torch.float64, grad_fn=<MulBackward0>), atol=1e-12, rtol=0)\nE            +    where <built-in method allclose of type object at 0x00007FF8A5FEA480> = torch.allclose\nE            +    and   tensor([[ 0.3596, -0.5233, -0.4935, -1.4418, -1.6064,  1.0263,  0.6663,  0.6972,\\n         -0.8280, -0.4468],\\n        [...  0.5411,  0.7042,  1.0740,  1.1363, -0.2873,\\n         -1.1211, -2.3789]], dtype=torch.float64, grad_fn=<AddBackward0>) = encode(tensor([[[ 7.4118e-02,  1.2378e-02,  7.5721e-02,  1.6427e-02, -2.1028e-02,\\n           2.1196e-02,  8.5926e-02, -5.9330... -1.7455e-02,\\n           5.8598e-02,  2.6624e-02, -1.8720e-02, -6.6798e-02,  1.3252e-01]]],\\n       dtype=torch.float64))\nE            +      where encode = ForceGraphROM().encode\nE            +    and   tensor([[ 0.3596, -0.5233, -0.4935, -1.4418, -1.6064,  1.0263,  0.6663,  0.6972,\\n         -0.8280, -0.4468],\\n        [...  0.5411,  0.7042,  1.0740,  1.1363, -0.2873,\\n         -1.1211, -2.3789]], dtype=torch.float64, grad_fn=<MulBackward0>) = encode(tensor([[[ 7.4118e-02,  1.2378e-02,  7.5721e-02,  1.6427e-02, -2.1028e-02,\\n           2.1196e-02,  8.5926e-02, -5.9330... -1.7455e-02,\\n           5.8598e-02,  2.6624e-02, -1.8720e-02, -6.6798e-02,  1.3252e-01]]],\\n       dtype=torch.float64))\nE            +      where encode = ForceExchangeROM().encode\n\ntests\\test_force_exchange_model_20261028.py:232: AssertionError"
+        },
+        {
+          "test": "tests/test_force_exchange_model_20261028.py::test_causality_machine_permutation_full_gradients_cache_and_exports[M]",
+          "phase": "call",
+          "outcome": "failed",
+          "error": "mode = 'M'\n\n    @pytest.mark.parametrize(\"mode\", MODES)\n    def test_causality_machine_permutation_full_gradients_cache_and_exports(mode):\n        _, m = pair(mode)\n        with torch.no_grad(): m.raw_gamma.fill_(-.7)\n        h=history(); z=state()\n        polluted=h.clone(); polluted[:,:10,20:]=float(\"nan\")\n        assert torch.equal(m.encode(h),m.encode(polluted))\n        perm=torch.tensor([7,0,9,4,2,6,1,8,3,5])\n        cfg=copy.deepcopy(m._source_config)\n        for key,value in list(cfg.items()):\n            if key==\"D\": cfg[key]=torch.tensor(value)[:,perm].tolist()\n            elif len(value)==10: cfg[key]=torch.tensor(value,dtype=DTYPE)[perm].tolist()\n        p=ForceExchangeROM(cfg,mode)\n        with torch.no_grad():\n            p.kappa_raw.copy_(m.kappa_raw); p.lambda_raw.copy_(m.lambda_raw); p.raw_gamma.copy_(m.raw_gamma)\n            if mode!=\"L\":\n                source=m.k_bar if mode==\"S\" else m.a_bar\n                target=p.k_bar if mode==\"S\" else p.a_bar\n                for e,(i,j) in enumerate(PAIRS): target[e]=source[PAIRS.index(tuple(sorted((int(perm[i]),int(perm[j])))))]\n        ix=torch.cat(tuple(perm+offset for offset in (0,10,20,30)))\n        assert torch.allclose(p.field(z[:,ix]),m.field(z)[:,ix],atol=1e-12,rtol=0)\n        assert torch.allclose(p.encode(h[:,:,ix[:30]]),m.encode(h)[:,perm],atol=1e-12,rtol=0)\n        # F and q must participate in backward, not merely in the forward solve.\n        s=m.history_system(h)\n        grads=torch.autograd.grad(s[\"r0\"].square().sum(),(s[\"F\"],s[\"q\"]),retain_graph=True)\n        assert all(torch.isfinite(g).all() and g.abs().max()>1e-12 for g in grads)\n        m.rollout(h,3,.01).square().sum().backward()\n        assert all(v.grad is not None and torch.isfinite(v.grad).all() for v in m.parameters())\n        with torch.inference_mode():\n            m.begin_graph_cache(); m.encode(h)\n        m.encode(h).square().sum().backward(); assert m._cache is None\n        for name, param in m.named_parameters():\n            m.begin_graph_cache(); m.encode(h)\n            with torch.no_grad(): param.add_(.001)\n            m.encode(h); assert m._cache is None\n        m.begin_graph_cache(); m.train(); assert m._cache is None\n        m.begin_graph_cache(); m.cpu(); assert m._cache is None\n        m.begin_graph_cache(); m.load_state_dict(m.state_dict()); assert m._cache is None\n        with tempfile.TemporaryDirectory(prefix=\"exchange-fixture-\") as folder:\n            path=Path(folder)/\"model.json\"\n            for train_gamma in (False, True):\n                m.raw_gamma.requires_grad_(train_gamma)\n                m.export(path); loaded=ForceExchangeROM.from_export(path)\n                assert loaded.raw_gamma.requires_grad==train_gamma\n                assert loaded.source_identity==m.source_identity\n                assert all(torch.equal(v,loaded.state_dict()[k]) for k,v in m.state_dict().items())\n                assert torch.equal(m.encode(h),loaded.encode(h))\n                assert torch.equal(m.field(z),loaded.field(z))\n            old,_=pair(mode); old.export(path)\n            imported=ForceExchangeROM.from_force_graph_export(path,train_gamma=False)\n            assert imported.source_identity[\"force_graph_export_sha256\"]==hashlib.sha256(path.read_bytes()).hexdigest()\n>           assert torch.allclose(old.encode(h),imported.encode(h),atol=1e-12,rtol=0)\nE           assert False\nE            +  where False = <built-in method allclose of type object at 0x00007FF8A5FEA480>(tensor([[ 0.3542, -0.5370, -0.4893, -1.4224, -1.5873,  1.0294,  0.6473,  0.6933,\\n         -0.8256, -0.4515],\\n        [...  0.5481,  0.6670,  1.0719,  1.1084, -0.2812,\\n         -1.1417, -2.3588]], dtype=torch.float64, grad_fn=<AddBackward0>), tensor([[ 0.3542, -0.5370, -0.4893, -1.4224, -1.5873,  1.0294,  0.6473,  0.6933,\\n         -0.8256, -0.4515],\\n        [...  0.5481,  0.6670,  1.0719,  1.1084, -0.2812,\\n         -1.1417, -2.3588]], dtype=torch.float64, grad_fn=<MulBackward0>), atol=1e-12, rtol=0)\nE            +    where <built-in method allclose of type object at 0x00007FF8A5FEA480> = torch.allclose\nE            +    and   tensor([[ 0.3542, -0.5370, -0.4893, -1.4224, -1.5873,  1.0294,  0.6473,  0.6933,\\n         -0.8256, -0.4515],\\n        [...  0.5481,  0.6670,  1.0719,  1.1084, -0.2812,\\n         -1.1417, -2.3588]], dtype=torch.float64, grad_fn=<AddBackward0>) = encode(tensor([[[ 7.4118e-02,  1.2378e-02,  7.5721e-02,  1.6427e-02, -2.1028e-02,\\n           2.1196e-02,  8.5926e-02, -5.9330... -1.7455e-02,\\n           5.8598e-02,  2.6624e-02, -1.8720e-02, -6.6798e-02,  1.3252e-01]]],\\n       dtype=torch.float64))\nE            +      where encode = ForceGraphROM().encode\nE            +    and   tensor([[ 0.3542, -0.5370, -0.4893, -1.4224, -1.5873,  1.0294,  0.6473,  0.6933,\\n         -0.8256, -0.4515],\\n        [...  0.5481,  0.6670,  1.0719,  1.1084, -0.2812,\\n         -1.1417, -2.3588]], dtype=torch.float64, grad_fn=<MulBackward0>) = encode(tensor([[[ 7.4118e-02,  1.2378e-02,  7.5721e-02,  1.6427e-02, -2.1028e-02,\\n           2.1196e-02,  8.5926e-02, -5.9330... -1.7455e-02,\\n           5.8598e-02,  2.6624e-02, -1.8720e-02, -6.6798e-02,  1.3252e-01]]],\\n       dtype=torch.float64))\nE            +      where encode = ForceExchangeROM().encode\n\ntests\\test_force_exchange_model_20261028.py:232: AssertionError"
+        }
+      ],
+      "formulation": "unit reverse interval, delta_omega; all zero-gamma diagnostics retained",
+      "cpu": true,
+      "dtype": "float64",
+      "optimizer_calls": 0,
+      "real_event_arrays_read": false,
+      "val_read": false,
+      "test_read": false,
+      "source_selection": null,
+      "files": {
+        "tests\\test_force_exchange_model_20261028.py": "c2aeb94df828514da3df6e40da3a51d09a3ab7aeefa19c9be7b928f4d8ab9105",
+        "experiments\\force_exchange_model_20261028.py": "010ff2210fb84767fa6a5dee4cfe38826ea8526787a277e09db08e5c7b02d1b4",
+        "experiments\\force_graph_model_20261028.py": "44e5fe2e1403bc7e072d2fb87100eaa694b15da5b4694169de141cc6059089af"
+      },
+      "limitations": [
+        "CUDA parity, real-source qualification and optimizer/RNG recovery are not tested here",
+        "No full-horizon real-data precision or cost claim; original objective used on short synthetic data"
+      ],
+      "observed_passed": 12,
+      "observed_failed": 6
+    }
+  ],
+  "status": "NUMERICAL_UNRESOLVED",
+  "training_admission": false,
+  "disposition": "No tolerance change, no source selection, no optimizer, no real event data. Scaled formulation passes independent fine reference but fails original strict 1e-12 initializer equivalence; stop numerical route pending root decision.",
+  "small_exponential_diagnostic": {
+    "direct_expm_vs_scipy_max_error": 1.6360177101937268e-13,
+    "two_half_steps_vs_scipy_max_error": 1.025741991345086e-14
+  },
+  "post_QA_test_harness_sha256": "671c94b5c54478e863b9597f85fc758c3ffa49b529adb7f10fe609c08a39f6ae"
+}
