@@ -1,0 +1,303 @@
+{
+  "runs": [
+    {
+      "status": "UNRESOLVED_CPU_MATHEMATICAL_QA",
+      "tests": [
+        {
+          "test": "tests/test_state_gated_memory_model_20261028.py::test_independent_constant_or_noncommuting_LTV_reference_and_affine_prior[A]",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_state_gated_memory_model_20261028.py::test_independent_constant_or_noncommuting_LTV_reference_and_affine_prior[B]",
+          "outcome": "failed",
+          "error": "mode = 'B'\n\n    @pytest.mark.parametrize(\"mode\",GATE_MODES)\n    def test_independent_constant_or_noncommuting_LTV_reference_and_affine_prior(mode):\n        m=model(mode);h=history(1)[0]\n        h[:,:10]=torch.sin(torch.arange(11,dtype=DTYPE)[:,None]*.7+torch.arange(10,dtype=DTYPE)[None,:])*.8\n        if mode==\"A\": h[:,10:20]=torch.linspace(-.03,.06,10,dtype=DTYPE)+torch.arange(11,dtype=DTYPE)[:,None]*.002\n        with torch.no_grad():\n            s=m.history_system(h);v=independent_flow(m,h,constant=mode==\"A\");expected,F,q=reference_initial(m,h,v)\n            ref=torch.from_numpy(v)\n            errZ=(s[\"Zr\"]-ref[:,10:,1:]).abs().max().item()\n            errv=((s[\"rbar\"]-ref[:,10:,0])/m.rstar).abs().max().item()\n            errp=((s[\"p_history\"]-ref[:,:10,0])/m.p_scale).abs().max().item()\n            errinit=((s[\"r0\"]-expected)/m.rstar).abs().max().item()\n>           assert max(errZ,errv,errp,errinit)<1e-7\nE           assert 1.4278683159469092e-07 < 1e-07\nE            +  where 1.4278683159469092e-07 = max(4.761771421613048e-08, 4.510908585439242e-10, 1.3118772165194134e-12, 1.4278683159469092e-07)\n\ntests\\test_state_gated_memory_model_20261028.py:88: AssertionError"
+        },
+        {
+          "test": "tests/test_state_gated_memory_model_20261028.py::test_independent_constant_or_noncommuting_LTV_reference_and_affine_prior[C]",
+          "outcome": "failed",
+          "error": "mode = 'C'\n\n    @pytest.mark.parametrize(\"mode\",GATE_MODES)\n    def test_independent_constant_or_noncommuting_LTV_reference_and_affine_prior(mode):\n        m=model(mode);h=history(1)[0]\n        h[:,:10]=torch.sin(torch.arange(11,dtype=DTYPE)[:,None]*.7+torch.arange(10,dtype=DTYPE)[None,:])*.8\n        if mode==\"A\": h[:,10:20]=torch.linspace(-.03,.06,10,dtype=DTYPE)+torch.arange(11,dtype=DTYPE)[:,None]*.002\n        with torch.no_grad():\n            s=m.history_system(h);v=independent_flow(m,h,constant=mode==\"A\");expected,F,q=reference_initial(m,h,v)\n            ref=torch.from_numpy(v)\n            errZ=(s[\"Zr\"]-ref[:,10:,1:]).abs().max().item()\n            errv=((s[\"rbar\"]-ref[:,10:,0])/m.rstar).abs().max().item()\n            errp=((s[\"p_history\"]-ref[:,:10,0])/m.p_scale).abs().max().item()\n            errinit=((s[\"r0\"]-expected)/m.rstar).abs().max().item()\n>           assert max(errZ,errv,errp,errinit)<1e-7\nE           assert 1.9376443705401758e-07 < 1e-07\nE            +  where 1.9376443705401758e-07 = max(5.720074369719441e-08, 6.511251878366094e-10, 1.3118573911079218e-12, 1.9376443705401758e-07)\n\ntests\\test_state_gated_memory_model_20261028.py:88: AssertionError"
+        },
+        {
+          "test": "tests/test_state_gated_memory_model_20261028.py::test_power_nonunit_chainrule_permutation_angle_translation_and_exports[A]",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_state_gated_memory_model_20261028.py::test_power_nonunit_chainrule_permutation_angle_translation_and_exports[B]",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_state_gated_memory_model_20261028.py::test_power_nonunit_chainrule_permutation_angle_translation_and_exports[C]",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_state_gated_memory_model_20261028.py::test_all_raw_and_history_gradients_finite_difference[A]",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_state_gated_memory_model_20261028.py::test_all_raw_and_history_gradients_finite_difference[B]",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_state_gated_memory_model_20261028.py::test_all_raw_and_history_gradients_finite_difference[C]",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_state_gated_memory_model_20261028.py::test_trace_single_edge_zero_graph_near_zero_control_derivatives_and_cache",
+          "outcome": "failed",
+          "error": "def test_trace_single_edge_zero_graph_near_zero_control_derivatives_and_cache():\n        B,C=model(\"B\"),model(\"C\");z=state()*3;d=z[:,:10]\n        torch.testing.assert_close(B.memory_matrix(d).diagonal(dim1=-2,dim2=-1).sum(-1),C.memory_matrix(d).diagonal(dim1=-2,dim2=-1).sum(-1),atol=1e-12,rtol=0)\n        for m in (B,C):\n            with torch.no_grad(): m.a_bar.zero_();m.a_bar[9]=.02\n        torch.testing.assert_close(B.field(z),C.field(z),atol=1e-12,rtol=0)\n        # Fixed near-zero relative directions preserve the full ratio derivative.\n        for scale in (1.,1e-12):\n            with torch.no_grad(): B.a_bar.copy_(torch.linspace(.01,.03,45,dtype=DTYPE)*scale)\n            delta=d.detach().clone().requires_grad_();value=B.memory_matrix(delta).square().sum()\n            ga,gd=torch.autograd.grad(value,(B.a_bar,delta));assert torch.isfinite(ga).all() and torch.isfinite(gd).all()\n            direction=torch.linspace(.2,1.,45,dtype=DTYPE)*B.a_bar.detach().sum()\n            original=B.a_bar.detach().clone();step=1e-5\n            with torch.no_grad():\n                B.a_bar.copy_(original+step*direction);plus=B.memory_matrix(delta).square().sum()\n                B.a_bar.copy_(original-step*direction);minus=B.memory_matrix(delta).square().sum();B.a_bar.copy_(original)\n            torch.testing.assert_close((ga*direction).sum(),(plus-minus)/(2*step),atol=2e-7,rtol=2e-5)\n        for mode in GATE_MODES:\n            m=model(mode)\n            with torch.no_grad(): m.a_bar.zero_();q=m.memory_matrix(d)\n            torch.testing.assert_close(q,(m.lambda_*m.W).expand(3,10,10),atol=1e-12,rtol=0)\n            if mode==\"B\":\n                with pytest.raises(ControlDegenerate): m.field(z)\n                m.begin_graph_cache()\n                with pytest.raises(ControlDegenerate): m.project_runtime_()\n                assert m._cache is None\n                with tempfile.TemporaryDirectory(prefix=\"gated-zero-\") as folder: m.export(Path(folder)/\"zero.json\")\n            else: m.field(z).square().sum().backward();assert torch.isfinite(m.a_bar.grad).all()\n        m=model(\"C\");m.begin_graph_cache();before=m.memory_matrix(d).detach()\n        with torch.no_grad(): m.a_bar.add_(.01)\n>       assert not torch.equal(before,m.memory_matrix(d));assert m._cache is None\n                                                          ^^^^^^^^^^^^^^^^^^^^^^^\nE       AssertionError: assert {'kappa': tensor(1.5506, dtype=torch.float64, grad_fn=<MulBackward0>), 'lambda_': tensor(0.8437, dtype=torch.float64, ..., 0.0000,\\n        0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000],\\n       dtype=torch.float64)} is None\nE        +  where {'kappa': tensor(1.5506, dtype=torch.float64, grad_fn=<MulBackward0>), 'lambda_': tensor(0.8437, dtype=torch.float64, ..., 0.0000,\\n        0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000],\\n       dtype=torch.float64)} = StateGatedMemoryROM()._cache\n\ntests\\test_state_gated_memory_model_20261028.py:189: AssertionError"
+        }
+      ],
+      "measurements": {
+        "A": {
+          "Z_absolute_error": 8.006928453596629e-13,
+          "normalized_rbar_error": 4.962325780098754e-13,
+          "normalized_p_error": 1.1116240500699309e-13,
+          "normalized_initial_error": 8.049112700084173e-13
+        }
+      },
+      "wall_seconds": 7.844998359680176,
+      "optimizer_calls": 0,
+      "device": "cpu",
+      "dtype": "float64",
+      "real_event_arrays_read": false,
+      "cuda_executed": false,
+      "training_admission": false,
+      "old_legacy_drop_in_qualification": "FAILED_NOT_ADOPTED",
+      "files": {
+        "tests\\test_state_gated_memory_model_20261028.py": "c5997cee06bec7595b28b5693711ae96a5708df6ffbcbc3ed3f1ef567198e533",
+        "experiments\\state_gated_memory_model_20261028.py": "c2f5701e236895acfe844bbc5d7864072db86e8c29238c804941c0374766d80c"
+      },
+      "unverified": [
+        "unique source real-data numerical qualification",
+        "CUDA parity",
+        "full8s cost",
+        "real Adam/RNG recovery",
+        "scientific mechanism evidence"
+      ]
+    },
+    {
+      "status": "UNRESOLVED_CPU_MATHEMATICAL_QA",
+      "tests": [
+        {
+          "test": "tests/test_state_gated_memory_model_20261028.py::test_independent_constant_or_noncommuting_LTV_reference_and_affine_prior[A]",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_state_gated_memory_model_20261028.py::test_independent_constant_or_noncommuting_LTV_reference_and_affine_prior[B]",
+          "outcome": "failed",
+          "error": "mode = 'B'\n\n    @pytest.mark.parametrize(\"mode\",GATE_MODES)\n    def test_independent_constant_or_noncommuting_LTV_reference_and_affine_prior(mode):\n        m=model(mode);h=history(1)[0]\n        h[:,:10]=torch.sin(torch.arange(11,dtype=DTYPE)[:,None]*.7+torch.arange(10,dtype=DTYPE)[None,:])*.8\n        if mode==\"A\": h[:,10:20]=torch.linspace(-.03,.06,10,dtype=DTYPE)+torch.arange(11,dtype=DTYPE)[:,None]*.002\n        with torch.no_grad():\n            s=m.history_system(h);v=independent_flow(m,h,constant=mode==\"A\");expected,F,q=reference_initial(m,h,v)\n            ref=torch.from_numpy(v)\n            errZ=(s[\"Zr\"]-ref[:,10:,1:]).abs().max().item()\n            errv=((s[\"rbar\"]-ref[:,10:,0])/m.rstar).abs().max().item()\n            errp=((s[\"p_history\"]-ref[:,:10,0])/m.p_scale).abs().max().item()\n            errinit=((s[\"r0\"]-expected)/m.rstar).abs().max().item()\n            MEASUREMENTS[mode]=dict(Z_absolute_error=errZ,normalized_rbar_error=errv,normalized_p_error=errp,normalized_initial_error=errinit,\n                raw_initial_absolute_error=float((s[\"r0\"]-expected).abs().max()),history_dt=.005,\n                independent_reference=\"SciPy expm\" if mode==\"A\" else \"independent physical DOP853 rtol1e-12 atol1e-13\")\n            if mode==\"C\":\n                q0=independent_Q(m,h[0,:10].numpy());q1=independent_Q(m,h[5,:10].numpy())\n                commutator_norm=float(np.linalg.norm(q0@q1-q1@q0))\n                MEASUREMENTS[mode][\"Q_commutator_norm\"]=commutator_norm\n                assert commutator_norm>1e-5\n>           assert max(errZ,errv,errp,errinit)<1e-7\nE           assert 1.4278683159469092e-07 < 1e-07\nE            +  where 1.4278683159469092e-07 = max(4.761771421613048e-08, 4.510908585439242e-10, 1.3118772165194134e-12, 1.4278683159469092e-07)\n\ntests\\test_state_gated_memory_model_20261028.py:96: AssertionError"
+        },
+        {
+          "test": "tests/test_state_gated_memory_model_20261028.py::test_independent_constant_or_noncommuting_LTV_reference_and_affine_prior[C]",
+          "outcome": "failed",
+          "error": "mode = 'C'\n\n    @pytest.mark.parametrize(\"mode\",GATE_MODES)\n    def test_independent_constant_or_noncommuting_LTV_reference_and_affine_prior(mode):\n        m=model(mode);h=history(1)[0]\n        h[:,:10]=torch.sin(torch.arange(11,dtype=DTYPE)[:,None]*.7+torch.arange(10,dtype=DTYPE)[None,:])*.8\n        if mode==\"A\": h[:,10:20]=torch.linspace(-.03,.06,10,dtype=DTYPE)+torch.arange(11,dtype=DTYPE)[:,None]*.002\n        with torch.no_grad():\n            s=m.history_system(h);v=independent_flow(m,h,constant=mode==\"A\");expected,F,q=reference_initial(m,h,v)\n            ref=torch.from_numpy(v)\n            errZ=(s[\"Zr\"]-ref[:,10:,1:]).abs().max().item()\n            errv=((s[\"rbar\"]-ref[:,10:,0])/m.rstar).abs().max().item()\n            errp=((s[\"p_history\"]-ref[:,:10,0])/m.p_scale).abs().max().item()\n            errinit=((s[\"r0\"]-expected)/m.rstar).abs().max().item()\n            MEASUREMENTS[mode]=dict(Z_absolute_error=errZ,normalized_rbar_error=errv,normalized_p_error=errp,normalized_initial_error=errinit,\n                raw_initial_absolute_error=float((s[\"r0\"]-expected).abs().max()),history_dt=.005,\n                independent_reference=\"SciPy expm\" if mode==\"A\" else \"independent physical DOP853 rtol1e-12 atol1e-13\")\n            if mode==\"C\":\n                q0=independent_Q(m,h[0,:10].numpy());q1=independent_Q(m,h[5,:10].numpy())\n                commutator_norm=float(np.linalg.norm(q0@q1-q1@q0))\n                MEASUREMENTS[mode][\"Q_commutator_norm\"]=commutator_norm\n                assert commutator_norm>1e-5\n>           assert max(errZ,errv,errp,errinit)<1e-7\nE           assert 1.9376443705401758e-07 < 1e-07\nE            +  where 1.9376443705401758e-07 = max(5.720074369719441e-08, 6.511251878366094e-10, 1.3118573911079218e-12, 1.9376443705401758e-07)\n\ntests\\test_state_gated_memory_model_20261028.py:96: AssertionError"
+        },
+        {
+          "test": "tests/test_state_gated_memory_model_20261028.py::test_power_nonunit_chainrule_permutation_angle_translation_and_exports[A]",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_state_gated_memory_model_20261028.py::test_power_nonunit_chainrule_permutation_angle_translation_and_exports[B]",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_state_gated_memory_model_20261028.py::test_power_nonunit_chainrule_permutation_angle_translation_and_exports[C]",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_state_gated_memory_model_20261028.py::test_all_raw_and_history_gradients_finite_difference[A]",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_state_gated_memory_model_20261028.py::test_all_raw_and_history_gradients_finite_difference[B]",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_state_gated_memory_model_20261028.py::test_all_raw_and_history_gradients_finite_difference[C]",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_state_gated_memory_model_20261028.py::test_trace_single_edge_zero_graph_near_zero_control_derivatives_and_cache",
+          "outcome": "passed",
+          "error": null
+        }
+      ],
+      "measurements": {
+        "A": {
+          "Z_absolute_error": 8.006928453596629e-13,
+          "normalized_rbar_error": 4.962325780098754e-13,
+          "normalized_p_error": 1.1116240500699309e-13,
+          "normalized_initial_error": 8.049112700084173e-13,
+          "raw_initial_absolute_error": 2.6978419498391304e-13,
+          "history_dt": 0.005,
+          "independent_reference": "SciPy expm"
+        },
+        "B": {
+          "Z_absolute_error": 4.761771421613048e-08,
+          "normalized_rbar_error": 4.510908585439242e-10,
+          "normalized_p_error": 1.3118772165194134e-12,
+          "normalized_initial_error": 1.4278683159469092e-07,
+          "raw_initial_absolute_error": 6.327468504707667e-08,
+          "history_dt": 0.005,
+          "independent_reference": "independent physical DOP853 rtol1e-12 atol1e-13"
+        },
+        "C": {
+          "Z_absolute_error": 5.720074369719441e-08,
+          "normalized_rbar_error": 6.511251878366094e-10,
+          "normalized_p_error": 1.3118573911079218e-12,
+          "normalized_initial_error": 1.9376443705401758e-07,
+          "raw_initial_absolute_error": 9.376317944287393e-08,
+          "history_dt": 0.005,
+          "independent_reference": "independent physical DOP853 rtol1e-12 atol1e-13",
+          "Q_commutator_norm": 0.0009661491350699392
+        }
+      },
+      "wall_seconds": 6.458942651748657,
+      "optimizer_calls": 0,
+      "device": "cpu",
+      "dtype": "float64",
+      "real_event_arrays_read": false,
+      "cuda_executed": false,
+      "training_admission": false,
+      "old_legacy_drop_in_qualification": "FAILED_NOT_ADOPTED",
+      "files": {
+        "tests\\test_state_gated_memory_model_20261028.py": "f9a922616fb6b3bd7be8e3dd582a761c0909fb6452f9cfc91a9c5074a83c8b27",
+        "experiments\\state_gated_memory_model_20261028.py": "04b98e125f5ccbea21550c7b612b61aa3af0561d6d70abbef491992c1dfca92a"
+      },
+      "unverified": [
+        "unique source real-data numerical qualification",
+        "CUDA parity",
+        "full8s cost",
+        "real Adam/RNG recovery",
+        "scientific mechanism evidence"
+      ]
+    },
+    {
+      "status": "UNRESOLVED_CPU_MATHEMATICAL_QA",
+      "tests": [
+        {
+          "test": "tests/test_state_gated_memory_model_20261028.py::test_independent_constant_or_noncommuting_LTV_reference_and_affine_prior[A]",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_state_gated_memory_model_20261028.py::test_independent_constant_or_noncommuting_LTV_reference_and_affine_prior[B]",
+          "outcome": "failed",
+          "error": "mode = 'B'\n\n    @pytest.mark.parametrize(\"mode\",GATE_MODES)\n    def test_independent_constant_or_noncommuting_LTV_reference_and_affine_prior(mode):\n        m=model(mode);h=history(1)[0]\n        h[:,:10]=torch.sin(torch.arange(11,dtype=DTYPE)[:,None]*.7+torch.arange(10,dtype=DTYPE)[None,:])*.8\n        if mode==\"A\": h[:,10:20]=torch.linspace(-.03,.06,10,dtype=DTYPE)+torch.arange(11,dtype=DTYPE)[:,None]*.002\n        with torch.no_grad():\n            s=m.history_system(h);v=independent_flow(m,h,constant=mode==\"A\");expected,F,q=reference_initial(m,h,v)\n            ref=torch.from_numpy(v)\n            errZ=(s[\"Zr\"]-ref[:,10:,1:]).abs().max().item()\n            errv=((s[\"rbar\"]-ref[:,10:,0])/m.rstar).abs().max().item()\n            errp=((s[\"p_history\"]-ref[:,:10,0])/m.p_scale).abs().max().item()\n            errinit=((s[\"r0\"]-expected)/m.rstar).abs().max().item()\n            MEASUREMENTS[mode]=dict(Z_absolute_error=errZ,normalized_rbar_error=errv,normalized_p_error=errp,normalized_initial_error=errinit,\n                raw_initial_absolute_error=float((s[\"r0\"]-expected).abs().max()),history_dt=.005,\n                independent_reference=\"SciPy expm\" if mode==\"A\" else \"independent physical DOP853 rtol1e-12 atol1e-13\")\n            if mode==\"C\":\n                q0=independent_Q(m,h[0,:10].numpy());q1=independent_Q(m,h[5,:10].numpy())\n                commutator_norm=float(np.linalg.norm(q0@q1-q1@q0))\n                MEASUREMENTS[mode][\"Q_commutator_norm\"]=commutator_norm\n                assert commutator_norm>1e-5\n>           assert max(errZ,errv,errp,errinit)<1e-7\nE           assert 1.4278683159469092e-07 < 1e-07\nE            +  where 1.4278683159469092e-07 = max(4.761771421613048e-08, 4.510908585439242e-10, 1.3118772165194134e-12, 1.4278683159469092e-07)\n\ntests\\test_state_gated_memory_model_20261028.py:96: AssertionError"
+        },
+        {
+          "test": "tests/test_state_gated_memory_model_20261028.py::test_independent_constant_or_noncommuting_LTV_reference_and_affine_prior[C]",
+          "outcome": "failed",
+          "error": "mode = 'C'\n\n    @pytest.mark.parametrize(\"mode\",GATE_MODES)\n    def test_independent_constant_or_noncommuting_LTV_reference_and_affine_prior(mode):\n        m=model(mode);h=history(1)[0]\n        h[:,:10]=torch.sin(torch.arange(11,dtype=DTYPE)[:,None]*.7+torch.arange(10,dtype=DTYPE)[None,:])*.8\n        if mode==\"A\": h[:,10:20]=torch.linspace(-.03,.06,10,dtype=DTYPE)+torch.arange(11,dtype=DTYPE)[:,None]*.002\n        with torch.no_grad():\n            s=m.history_system(h);v=independent_flow(m,h,constant=mode==\"A\");expected,F,q=reference_initial(m,h,v)\n            ref=torch.from_numpy(v)\n            errZ=(s[\"Zr\"]-ref[:,10:,1:]).abs().max().item()\n            errv=((s[\"rbar\"]-ref[:,10:,0])/m.rstar).abs().max().item()\n            errp=((s[\"p_history\"]-ref[:,:10,0])/m.p_scale).abs().max().item()\n            errinit=((s[\"r0\"]-expected)/m.rstar).abs().max().item()\n            MEASUREMENTS[mode]=dict(Z_absolute_error=errZ,normalized_rbar_error=errv,normalized_p_error=errp,normalized_initial_error=errinit,\n                raw_initial_absolute_error=float((s[\"r0\"]-expected).abs().max()),history_dt=.005,\n                independent_reference=\"SciPy expm\" if mode==\"A\" else \"independent physical DOP853 rtol1e-12 atol1e-13\")\n            if mode==\"C\":\n                q0=independent_Q(m,h[0,:10].numpy());q1=independent_Q(m,h[5,:10].numpy())\n                commutator_norm=float(np.linalg.norm(q0@q1-q1@q0))\n                MEASUREMENTS[mode][\"Q_commutator_norm\"]=commutator_norm\n                assert commutator_norm>1e-5\n>           assert max(errZ,errv,errp,errinit)<1e-7\nE           assert 1.9376443705401758e-07 < 1e-07\nE            +  where 1.9376443705401758e-07 = max(5.720074369719441e-08, 6.511251878366094e-10, 1.3118573911079218e-12, 1.9376443705401758e-07)\n\ntests\\test_state_gated_memory_model_20261028.py:96: AssertionError"
+        },
+        {
+          "test": "tests/test_state_gated_memory_model_20261028.py::test_power_nonunit_chainrule_permutation_angle_translation_and_exports[A]",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_state_gated_memory_model_20261028.py::test_power_nonunit_chainrule_permutation_angle_translation_and_exports[B]",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_state_gated_memory_model_20261028.py::test_power_nonunit_chainrule_permutation_angle_translation_and_exports[C]",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_state_gated_memory_model_20261028.py::test_all_raw_and_history_gradients_finite_difference[A]",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_state_gated_memory_model_20261028.py::test_all_raw_and_history_gradients_finite_difference[B]",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_state_gated_memory_model_20261028.py::test_all_raw_and_history_gradients_finite_difference[C]",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_state_gated_memory_model_20261028.py::test_trace_single_edge_zero_graph_near_zero_control_derivatives_and_cache",
+          "outcome": "passed",
+          "error": null
+        }
+      ],
+      "measurements": {
+        "A": {
+          "Z_absolute_error": 8.006928453596629e-13,
+          "normalized_rbar_error": 4.962325780098754e-13,
+          "normalized_p_error": 1.1116240500699309e-13,
+          "normalized_initial_error": 8.049112700084173e-13,
+          "raw_initial_absolute_error": 2.6978419498391304e-13,
+          "history_dt": 0.005,
+          "independent_reference": "SciPy expm"
+        },
+        "B": {
+          "Z_absolute_error": 4.761771421613048e-08,
+          "normalized_rbar_error": 4.510908585439242e-10,
+          "normalized_p_error": 1.3118772165194134e-12,
+          "normalized_initial_error": 1.4278683159469092e-07,
+          "raw_initial_absolute_error": 6.327468504707667e-08,
+          "history_dt": 0.005,
+          "independent_reference": "independent physical DOP853 rtol1e-12 atol1e-13"
+        },
+        "C": {
+          "Z_absolute_error": 5.720074369719441e-08,
+          "normalized_rbar_error": 6.511251878366094e-10,
+          "normalized_p_error": 1.3118573911079218e-12,
+          "normalized_initial_error": 1.9376443705401758e-07,
+          "raw_initial_absolute_error": 9.376317944287393e-08,
+          "history_dt": 0.005,
+          "independent_reference": "independent physical DOP853 rtol1e-12 atol1e-13",
+          "Q_commutator_norm": 0.0009661491350699392
+        }
+      },
+      "wall_seconds": 6.275963306427002,
+      "optimizer_calls": 0,
+      "device": "cpu",
+      "dtype": "float64",
+      "real_event_arrays_read": false,
+      "cuda_executed": false,
+      "training_admission": false,
+      "old_legacy_drop_in_qualification": "FAILED_NOT_ADOPTED",
+      "files": {
+        "tests\\test_state_gated_memory_model_20261028.py": "e5329645739d252f451d9bbcde1daf88c625204bd2cc6d4960d50e99de613bf0",
+        "experiments\\state_gated_memory_model_20261028.py": "04b98e125f5ccbea21550c7b612b61aa3af0561d6d70abbef491992c1dfca92a"
+      },
+      "unverified": [
+        "unique source real-data numerical qualification",
+        "CUDA parity",
+        "full8s cost",
+        "real Adam/RNG recovery",
+        "scientific mechanism evidence"
+      ]
+    }
+  ],
+  "status": "UNRESOLVED_CPU_MATHEMATICAL_QA",
+  "training_admission": false,
+  "last_run_index": 2,
+  "per_variant_qualified": {
+    "A": true,
+    "B": false,
+    "C": false
+  },
+  "shared_checks_qualified": true
+}
