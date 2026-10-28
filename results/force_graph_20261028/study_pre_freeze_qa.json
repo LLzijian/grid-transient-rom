@@ -1,0 +1,63 @@
+{
+  "status": "PASS_DATAFREE",
+  "date": "2026-10-28",
+  "implementation": "experiments/force_graph_study_20261028.py",
+  "implementation_sha256": "ff21b8e0f34859659c43b2e75282f784e4dac248d0fe8afeff1a1bcd3004cba2",
+  "tests": "tests/test_force_graph_study_20261028.py",
+  "tests_sha256": "b44864702f7f1fc20e9aa7edadaa5eae107223603dcc4763f11a41ea2deab706",
+  "model_sha256_unchanged": "44e5fe2e1403bc7e072d2fb87100eaa694b15da5b4694169de141cc6059089af",
+  "command": ".venv-gpu/Scripts/python.exe -m pytest tests/test_force_graph_study_20261028.py -q --basetemp private_data/force_graph_20261028/datfree_tmp_03",
+  "result": "23 passed in 8.28s",
+  "exit_code": 0,
+  "actual_optimizer_step_calls": 0,
+  "real_event_cache_payload_reads": 0,
+  "historical_checkpoint_tensor_loads": 0,
+  "original_val_read": false,
+  "original_test_read": false,
+  "checks": [
+    "registered 192-step alternating horizons and rejected out-of-range indices",
+    "8 random plus 4 distinct coverage samples, endpoint10, first75 covers297, deterministic seeds28101/28102",
+    "group and ID round-robin strict36 stable plus12 unstable panel quota",
+    "single causal initialization and genuine ragged intervals with original point-error and ceil risk",
+    "stop/extension improvement, perturbation, classification, unstable risk, clipping and relative-update gates",
+    "independent per-mode calibration multipliers and smaller-multiplier tie break",
+    "backup structure selection, dominance, missing-mode and numerical-unresolved exclusion",
+    "nonnegative projection retains independent moment tensors",
+    "synthetic fake-Adam checkpoint serialization, layout, counters, RNG, hashes, immutable publication",
+    "nonfinite quarantine retains adverse synthetic state without resume pointer",
+    "optimizer attempt/completion category accounting and registered bound",
+    "common fast method cannot bypass true fine-RK4 qualification",
+    "import performs no event preparation, tensor loading or optimizer construction"
+  ],
+  "source_hashes_verified_by_bytes_only": {
+    "A512": {
+      "directory": "private_data/r_memory_20261025/run01_repair01/models/A_25101/checkpoints/step000512",
+      "model.json": "6710d648b2edc8e4c579480ba76e3282ed03b9647b507f4ef51b21fca0e65636",
+      "checkpoint.json": "87607ea701fda7a4834255dad4782d06ce123a058f24f90d4a4d42dcbcb4b5aa",
+      "training.pt": "61871814c64f7ca4f947a3896e6aef5f1619fa6ff30639f1fb7cb2d118fdb96c"
+    },
+    "N6101": {
+      "directory": "private_data/closure_mechanism_20261019/P2/quartic_memory01/models/6101_N/checkpoints/step001024",
+      "model.json": "c926caa685f2105d908c5d642f5944cc78f467744b3f9bd24831085eeca700a5",
+      "checkpoint.json": "08af27cd4c53b9698e6c8f88a84de54886c220c359446435878f8e71d13f12c7",
+      "training.pt": "7fc8d7b9fd79d2356dcd21b808f1632db7b5ec701bea5d92b6c879290855ccaf"
+    }
+  },
+  "registered_native_checks_not_run": [
+    "prepare fit297 and no-update88/original366/fresh19 identity checks against existing locked train caches",
+    "three modes each one true-RK4 and fast eight-second complete-objective backward, zero optimizer, synchronized runtime and memory",
+    "fast coarse/fine AND fast versus fine-RK4 original physical numerical thresholds, common fallback across all modes",
+    "real CUDA QA three modes continuous18 versus real16 save/rebuild plus2, actual108 optimizer calls",
+    "48 calibration updates, finite formal primary and conditional backup runs, final385/noise88 reporting"
+  ],
+  "API": {
+    "prepare(base)": "prepare.json",
+    "qualify(base, device='cuda')": "qualification/summary.json",
+    "qa(base, device='cuda')": "qa/summary.json",
+    "calibrate(base, device='cuda')": "calibration/summary.json",
+    "study(base, device='cuda')": "study/summary.json",
+    "summary(base)": "summary.json"
+  },
+  "execution_boundary": "Normal pipeline has no automatic resume or QA repair. Complete checkpoint restore exists for QA. Protocol-authorized extra repair/replay requires a separate explicit root action and is not claimed as a supported automatic interface.",
+  "prior_test_invocation_notes": "Initial pytest default temporary directory denied access; next explicit base lacked its parent; after creating only the workspace test parent, all23 passed. No optimizer calls or real events in any invocation."
+}
