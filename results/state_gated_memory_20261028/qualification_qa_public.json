@@ -1,0 +1,549 @@
+{
+  "recorded_at_utc": "2026-10-28T16:37:35.128774+00:00",
+  "source_commit": "0215a9f6a5582d93bd7f7ebfd5e34d7be1d1e1c6",
+  "scope": "completed qualification and actual CUDA recovery QA108 only; formal study RUNNING; no scientific promotion",
+  "source_files": [
+    {
+      "path": "private_data/state_gated_memory_20261028/study01/qualification/summary.json",
+      "sha256": "a169a7e798b87ce244b0c45eb27b6ce75e38f55ed014e28382e71d918c113288"
+    },
+    {
+      "path": "private_data/state_gated_memory_20261028/study01/qualification/R_N_A_cross_model.json",
+      "sha256": "d1144d7b4b90bfd095172d46c814c089896ffae91407b4faf77360ed7301ffe3"
+    },
+    {
+      "path": "private_data/state_gated_memory_20261028/study01/qa/summary.json",
+      "sha256": "e0bbedb386a0b406bf12648922ec8de3e0ce2c985ef7f421dbacae082422545c"
+    },
+    {
+      "path": "private_data/state_gated_memory_20261028/study01/native/prepare/receipt.json",
+      "sha256": "be1dd0a7e21d22c44f918fafc5bf0f66054253c8ff6c4d5370e71ec5a0951a0d"
+    },
+    {
+      "path": "private_data/state_gated_memory_20261028/study01/native/qualify/receipt.json",
+      "sha256": "5212ca178c3bb0b5ce5c8741fc6d5dccd961d99c33b672dfcca7f455b6bdb1cd"
+    },
+    {
+      "path": "private_data/state_gated_memory_20261028/study01/native/qa/receipt.json",
+      "sha256": "aed62d7a6b6d2eaaf06d1f8988a6921d1643a24677152db1d47eec14318e2fca"
+    }
+  ],
+  "qualification": {
+    "status": "COMPLETED",
+    "per_variant": {
+      "A": {
+        "status": "PASS",
+        "training_admission": true,
+        "cpu_qualified": true,
+        "R_N_A_cross_model": {
+          "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\state_gated_memory_20261028\\study01\\qualification\\R_N_A_cross_model.json",
+          "sha256": "d1144d7b4b90bfd095172d46c814c089896ffae91407b4faf77360ed7301ffe3"
+        },
+        "R_N_A_cross_model_qualified": true,
+        "cpu_cuda_pair_pass": true,
+        "device_comparison": {
+          "variant": "A",
+          "status": "PASS",
+          "differences": {
+            "field": 2.146937141955796e-15,
+            "initialize": 3.5475095083725705e-16,
+            "short_RK4": 3.5475095083725705e-16,
+            "J": 2.034864306880448e-22,
+            "gradient_kappa_raw": 4.071279577409433e-24,
+            "gradient_lambda_raw": 5.324975193310116e-24,
+            "gradient_a_bar": 1.6926183284366329e-22
+          },
+          "atol": 1e-10,
+          "rtol": 1e-08,
+          "optimizer_calls": 0
+        },
+        "finite_12x8_backward": true,
+        "cost12_seconds": 17.104377399999066,
+        "peak_cuda_bytes": 88500224,
+        "initialization_seconds": 0.2927845999984129,
+        "initialization_calls": 1,
+        "fullfit297_qualified": true,
+        "zero_profile": {
+          "horizon_risks": {
+            "5": {
+              "value": 0.8304206726663265,
+              "coarse_value": 0.8304206631047821,
+              "numerical_score_perturbation": 9.561544334069083e-09,
+              "eligible": 267,
+              "unresolved_ids": []
+            },
+            "8": {
+              "value": 0.5917623840121116,
+              "coarse_value": 0.5917623638840607,
+              "numerical_score_perturbation": 2.01280508926871e-08,
+              "eligible": 267,
+              "unresolved_ids": []
+            }
+          },
+          "classification_8s": {
+            "event_count": 297,
+            "unstable_count": 30,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 4,
+            "false_los_resolved_stable": 0
+          },
+          "unstable_interval_risk": 3.512358079805074,
+          "unstable_interval_eligible": 30,
+          "common_frequency_rmse_8s": 0.30814707827629867,
+          "normalized_p_rmse_8s": 0.44260701576989575,
+          "all_8s_rows_qualified": true,
+          "parameter_count": 47,
+          "qualified_inference_seconds_per_event": 0.8337806148148148,
+          "timing_scope": "CPU float64 one thread; 15s RK4 .005/.01 including causal initialization, outputs and metrics",
+          "unstable_interval_coarse_risk": 3.512357882878469,
+          "unstable_interval_numerical_score_perturbation": 1.969266048007512e-07,
+          "unstable_interval_unresolved_ids": [],
+          "unstable_interval_definition": "same actual per-event interval up to8s; original 0.8mean+0.2ceil-top10 risk",
+          "J_actual_intervals_up_to8_fine": 9.356874457664059,
+          "J_actual_intervals_up_to8_coarse": 9.356873855604634,
+          "classification_actual15s": {
+            "event_count": 297,
+            "unstable_count": 30,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 21,
+            "false_los_resolved_stable": 0
+          },
+          "unstable_actual15_risk": 3.512358079805074,
+          "unstable_actual15_coarse_risk": 3.512357882878469,
+          "unstable_actual15_numerical_score_perturbation": 1.969266048007512e-07,
+          "unstable_actual15_eligible": 30,
+          "unstable_actual15_unresolved_ids": [],
+          "all_actual15_rows_qualified": true,
+          "all_required_rows_qualified": true,
+          "timing_actual15_local_event_count": 297,
+          "timing_actual15_scope": "per-event timing fields retained only in hash-bound local qualification/summary.json",
+          "unstable_actual15_steps_summary": {
+            "event_count": 30,
+            "min": 3,
+            "max": 144,
+            "step_seconds": 0.01
+          }
+        }
+      },
+      "B": {
+        "status": "PASS",
+        "training_admission": true,
+        "cpu_qualified": true,
+        "cpu_cuda_pair_pass": true,
+        "device_comparison": {
+          "variant": "B",
+          "status": "PASS",
+          "differences": {
+            "field": 2.146937141955796e-15,
+            "initialize": 3.5431726996826285e-16,
+            "short_RK4": 3.5431726996826285e-16,
+            "J": 1.2200914035157158e-22,
+            "gradient_kappa_raw": 1.0216973034737006e-23,
+            "gradient_lambda_raw": 2.0679515313825692e-24,
+            "gradient_a_bar": 2.2654409026296045e-22
+          },
+          "atol": 1e-10,
+          "rtol": 1e-08,
+          "optimizer_calls": 0
+        },
+        "finite_12x8_backward": true,
+        "cost12_seconds": 26.182659099999,
+        "peak_cuda_bytes": 144452608,
+        "initialization_seconds": 0.3885145999993256,
+        "initialization_calls": 1,
+        "fullfit297_qualified": true,
+        "zero_profile": {
+          "horizon_risks": {
+            "5": {
+              "value": 0.8115217611160983,
+              "coarse_value": 0.8115217502643906,
+              "numerical_score_perturbation": 1.0851707754611084e-08,
+              "eligible": 267,
+              "unresolved_ids": []
+            },
+            "8": {
+              "value": 0.581109101988327,
+              "coarse_value": 0.5811090788822456,
+              "numerical_score_perturbation": 2.3106081381563115e-08,
+              "eligible": 267,
+              "unresolved_ids": []
+            }
+          },
+          "classification_8s": {
+            "event_count": 297,
+            "unstable_count": 30,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 4,
+            "false_los_resolved_stable": 0
+          },
+          "unstable_interval_risk": 3.776302015944536,
+          "unstable_interval_eligible": 30,
+          "common_frequency_rmse_8s": 0.30719415090215224,
+          "normalized_p_rmse_8s": 0.43989344184194146,
+          "all_8s_rows_qualified": true,
+          "parameter_count": 47,
+          "qualified_inference_seconds_per_event": 1.0322097131313228,
+          "timing_scope": "CPU float64 one thread; 15s RK4 .005/.01 including causal initialization, outputs and metrics",
+          "unstable_interval_coarse_risk": 3.7763018319595973,
+          "unstable_interval_numerical_score_perturbation": 1.8398493883964306e-07,
+          "unstable_interval_unresolved_ids": [],
+          "unstable_interval_definition": "same actual per-event interval up to8s; original 0.8mean+0.2ceil-top10 risk",
+          "J_actual_intervals_up_to8_fine": 9.597980832507218,
+          "J_actual_intervals_up_to8_coarse": 9.597980179907884,
+          "classification_actual15s": {
+            "event_count": 297,
+            "unstable_count": 30,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 24,
+            "false_los_resolved_stable": 0
+          },
+          "unstable_actual15_risk": 3.776302015944536,
+          "unstable_actual15_coarse_risk": 3.7763018319595973,
+          "unstable_actual15_numerical_score_perturbation": 1.8398493883964306e-07,
+          "unstable_actual15_eligible": 30,
+          "unstable_actual15_unresolved_ids": [],
+          "all_actual15_rows_qualified": true,
+          "all_required_rows_qualified": true,
+          "timing_actual15_local_event_count": 297,
+          "timing_actual15_scope": "per-event timing fields retained only in hash-bound local qualification/summary.json",
+          "unstable_actual15_steps_summary": {
+            "event_count": 30,
+            "min": 3,
+            "max": 144,
+            "step_seconds": 0.01
+          }
+        }
+      },
+      "C": {
+        "status": "PASS",
+        "training_admission": true,
+        "cpu_qualified": true,
+        "cpu_cuda_pair_pass": true,
+        "device_comparison": {
+          "variant": "C",
+          "status": "PASS",
+          "differences": {
+            "field": 2.146937141955796e-15,
+            "initialize": 3.5518463170625125e-16,
+            "short_RK4": 3.5518463170625125e-16,
+            "J": 4.342698215903395e-22,
+            "gradient_kappa_raw": 1.725447058997331e-24,
+            "gradient_lambda_raw": 3.90972086402017e-23,
+            "gradient_a_bar": 4.142106917359286e-22
+          },
+          "atol": 1e-10,
+          "rtol": 1e-08,
+          "optimizer_calls": 0
+        },
+        "finite_12x8_backward": true,
+        "cost12_seconds": 20.668855100000656,
+        "peak_cuda_bytes": 134130688,
+        "initialization_seconds": 0.20613779999985127,
+        "initialization_calls": 1,
+        "fullfit297_qualified": true,
+        "zero_profile": {
+          "horizon_risks": {
+            "5": {
+              "value": 0.7855273246946589,
+              "coarse_value": 0.7855273241752683,
+              "numerical_score_perturbation": 5.193906416067762e-10,
+              "eligible": 267,
+              "unresolved_ids": []
+            },
+            "8": {
+              "value": 0.5677711793113918,
+              "coarse_value": 0.5677711670402948,
+              "numerical_score_perturbation": 1.227109691637196e-08,
+              "eligible": 267,
+              "unresolved_ids": []
+            }
+          },
+          "classification_8s": {
+            "event_count": 297,
+            "unstable_count": 30,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 5,
+            "false_los_resolved_stable": 0
+          },
+          "unstable_interval_risk": 4.439763510221608,
+          "unstable_interval_eligible": 30,
+          "common_frequency_rmse_8s": 0.30579089931960174,
+          "normalized_p_rmse_8s": 0.4356788345739444,
+          "all_8s_rows_qualified": true,
+          "parameter_count": 47,
+          "qualified_inference_seconds_per_event": 0.8060353680134739,
+          "timing_scope": "CPU float64 one thread; 15s RK4 .005/.01 including causal initialization, outputs and metrics",
+          "unstable_interval_coarse_risk": 4.4397634315480206,
+          "unstable_interval_numerical_score_perturbation": 7.867358764457322e-08,
+          "unstable_interval_unresolved_ids": [],
+          "unstable_interval_definition": "same actual per-event interval up to8s; original 0.8mean+0.2ceil-top10 risk",
+          "J_actual_intervals_up_to8_fine": 10.342866728040025,
+          "J_actual_intervals_up_to8_coarse": 10.34286628409108,
+          "classification_actual15s": {
+            "event_count": 297,
+            "unstable_count": 30,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 23,
+            "false_los_resolved_stable": 0
+          },
+          "unstable_actual15_risk": 4.439763510221608,
+          "unstable_actual15_coarse_risk": 4.4397634315480206,
+          "unstable_actual15_numerical_score_perturbation": 7.867358764457322e-08,
+          "unstable_actual15_eligible": 30,
+          "unstable_actual15_unresolved_ids": [],
+          "all_actual15_rows_qualified": true,
+          "all_required_rows_qualified": true,
+          "timing_actual15_local_event_count": 297,
+          "timing_actual15_scope": "per-event timing fields retained only in hash-bound local qualification/summary.json",
+          "unstable_actual15_steps_summary": {
+            "event_count": 30,
+            "min": 3,
+            "max": 144,
+            "step_seconds": 0.01
+          }
+        }
+      }
+    },
+    "eligible_variants": [
+      "A",
+      "B",
+      "C"
+    ],
+    "R_N_profile": {
+      "horizon_risks": {
+        "5": {
+          "value": 0.8304206726680337,
+          "coarse_value": 0.8304206631319229,
+          "numerical_score_perturbation": 9.536110789909458e-09,
+          "eligible": 267,
+          "unresolved_ids": []
+        },
+        "8": {
+          "value": 0.5917623840131517,
+          "coarse_value": 0.5917623639005956,
+          "numerical_score_perturbation": 2.011255617606622e-08,
+          "eligible": 267,
+          "unresolved_ids": []
+        }
+      },
+      "classification_8s": {
+        "event_count": 297,
+        "unstable_count": 30,
+        "numerical_unresolved": 0,
+        "missed_resolved_unstable": 4,
+        "false_los_resolved_stable": 0
+      },
+      "unstable_interval_risk": 3.512358079792409,
+      "unstable_interval_eligible": 30,
+      "common_frequency_rmse_8s": 0.3081470782764491,
+      "normalized_p_rmse_8s": 0.4426070157702325,
+      "all_8s_rows_qualified": true,
+      "parameter_count": 47,
+      "qualified_inference_seconds_per_event": 0.6562578437710436,
+      "timing_scope": "CPU float64 one thread; 15s RK4 .005/.01 including causal initialization, outputs and metrics",
+      "unstable_interval_coarse_risk": 3.512357882677189,
+      "unstable_interval_numerical_score_perturbation": 1.9711522014631555e-07,
+      "unstable_interval_unresolved_ids": [],
+      "unstable_interval_definition": "same actual per-event interval up to8s; original 0.8mean+0.2ceil-top10 risk",
+      "J_actual_intervals_up_to8_fine": 9.356874457657927,
+      "J_actual_intervals_up_to8_coarse": 9.356873855507216,
+      "classification_actual15s": {
+        "event_count": 297,
+        "unstable_count": 30,
+        "numerical_unresolved": 0,
+        "missed_resolved_unstable": 21,
+        "false_los_resolved_stable": 0
+      },
+      "unstable_actual15_risk": 3.512358079792409,
+      "unstable_actual15_coarse_risk": 3.512357882677189,
+      "unstable_actual15_numerical_score_perturbation": 1.9711522014631555e-07,
+      "unstable_actual15_eligible": 30,
+      "unstable_actual15_unresolved_ids": [],
+      "all_actual15_rows_qualified": true,
+      "all_required_rows_qualified": true,
+      "timing_actual15_local_event_count": 297,
+      "timing_actual15_scope": "per-event timing fields retained only in hash-bound local qualification/summary.json",
+      "unstable_actual15_steps_summary": {
+        "event_count": 30,
+        "min": 3,
+        "max": 144,
+        "step_seconds": 0.01
+      }
+    },
+    "training_method": "rk4",
+    "history_dt_main": 0.0025,
+    "history_dt_reference": 0.00125,
+    "full_matched_comparison_qualified": true,
+    "val_read": false,
+    "test_read": false
+  },
+  "cross_model": {
+    "status": "PASS",
+    "qualified": true,
+    "record_count": 297,
+    "scope": "R_N_A_same_source_fit297_bidirectional_RK4_fine005_base01_8s_actual15",
+    "bidirectional": true,
+    "predictions_recomputed": false,
+    "alignment": {
+      "fine_dt": 0.005,
+      "output_dt": 0.01,
+      "stride": 2,
+      "coarse_stride": 2,
+      "history_rows": 11,
+      "history_dt": 0.01,
+      "initial_observation_index": 10,
+      "eight_second_shapes": [
+        1601,
+        801
+      ],
+      "actual_interval": "n=min(1500,len(x)-11); 2n+1 fine and n+1 decimated; original classification/history offset"
+    },
+    "aggregates": {
+      "8s": {
+        "event_count": 297,
+        "qualified_count": 297
+      },
+      "actual15": {
+        "event_count": 297,
+        "qualified_count": 297
+      }
+    }
+  },
+  "qa": {
+    "status": "COMPLETED",
+    "models": [
+      {
+        "variant": "A",
+        "status": "PASS",
+        "actual_optimizer_calls": 36,
+        "checkpoint": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\state_gated_memory_20261028\\study01\\qa\\A\\checkpoints\\step000016",
+        "parameter_maxabs": 0.0,
+        "Adam_maxabs": 0.0,
+        "snapshot_model_Adam_RNG_layout_exact": true,
+        "nonzero_Adam_moment": true,
+        "continuation_atol": 2e-09,
+        "continuation_rtol": 2e-09
+      },
+      {
+        "variant": "B",
+        "status": "PASS",
+        "actual_optimizer_calls": 36,
+        "checkpoint": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\state_gated_memory_20261028\\study01\\qa\\B\\checkpoints\\step000016",
+        "parameter_maxabs": 0.0,
+        "Adam_maxabs": 0.0,
+        "snapshot_model_Adam_RNG_layout_exact": true,
+        "nonzero_Adam_moment": true,
+        "continuation_atol": 2e-09,
+        "continuation_rtol": 2e-09
+      },
+      {
+        "variant": "C",
+        "status": "PASS",
+        "actual_optimizer_calls": 36,
+        "checkpoint": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\state_gated_memory_20261028\\study01\\qa\\C\\checkpoints\\step000016",
+        "parameter_maxabs": 0.0,
+        "Adam_maxabs": 0.0,
+        "snapshot_model_Adam_RNG_layout_exact": true,
+        "nonzero_Adam_moment": true,
+        "continuation_atol": 2e-09,
+        "continuation_rtol": 2e-09
+      }
+    ],
+    "calls": {
+      "attempts": 108,
+      "completed": 108,
+      "by_category": {
+        "qa": {
+          "attempts": 108,
+          "completed": 108
+        }
+      },
+      "pending": []
+    },
+    "actual_optimizer_updates": 108,
+    "eligible_variants": [
+      "A",
+      "B",
+      "C"
+    ],
+    "training_admission": true,
+    "val_read": false,
+    "test_read": false
+  },
+  "native_completed_phases": [
+    {
+      "source_commit": "0215a9f6a5582d93bd7f7ebfd5e34d7be1d1e1c6",
+      "phase": "prepare",
+      "status": "COMPLETED",
+      "exit_code": 0,
+      "actual_worker_state": "GONE",
+      "job_active_processes": 0,
+      "job_cpu_user_seconds": 4.125,
+      "job_cpu_kernel_seconds": 2.046875,
+      "job_total_processes": 3,
+      "cleanup_verified": true,
+      "wall_seconds": 9.514679500000057,
+      "runtime_limits": null,
+      "cpu_limits": null,
+      "active_process_limit": null
+    },
+    {
+      "source_commit": "0215a9f6a5582d93bd7f7ebfd5e34d7be1d1e1c6",
+      "phase": "qualify",
+      "status": "COMPLETED",
+      "exit_code": 0,
+      "actual_worker_state": "GONE",
+      "job_active_processes": 0,
+      "job_cpu_user_seconds": 1548.0625,
+      "job_cpu_kernel_seconds": 667.109375,
+      "job_total_processes": 3,
+      "cleanup_verified": true,
+      "wall_seconds": 1114.9673686999995,
+      "runtime_limits": null,
+      "cpu_limits": null,
+      "active_process_limit": null
+    },
+    {
+      "source_commit": "0215a9f6a5582d93bd7f7ebfd5e34d7be1d1e1c6",
+      "phase": "qa",
+      "status": "COMPLETED",
+      "exit_code": 0,
+      "actual_worker_state": "GONE",
+      "job_active_processes": 0,
+      "job_cpu_user_seconds": 92.4375,
+      "job_cpu_kernel_seconds": 58.515625,
+      "job_total_processes": 3,
+      "cleanup_verified": true,
+      "wall_seconds": 80.8018849,
+      "runtime_limits": null,
+      "cpu_limits": null,
+      "active_process_limit": null
+    }
+  ],
+  "completed_native_wall_seconds": 1205.2839330999996,
+  "completed_native_job_cpu_seconds": 2372.296875,
+  "cost_scope": "three completed native stages only; excludes ongoing study, outer controller and preparation",
+  "complete_12_stable_8s_forward_backward_cost": {
+    "A": {
+      "cost12_seconds": 17.104377399999066,
+      "initialization_seconds": 0.2927845999984129,
+      "initialization_calls": 1,
+      "peak_cuda_bytes": 88500224
+    },
+    "B": {
+      "cost12_seconds": 26.182659099999,
+      "initialization_seconds": 0.3885145999993256,
+      "initialization_calls": 1,
+      "peak_cuda_bytes": 144452608
+    },
+    "C": {
+      "cost12_seconds": 20.668855100000656,
+      "initialization_seconds": 0.20613779999985127,
+      "initialization_calls": 1,
+      "peak_cuda_bytes": 134130688
+    }
+  },
+  "all_formal_updates_full_8s_benchmark_projection_seconds": 24559.06237439951,
+  "projection_scope": "two seeds times192 each per model, each update as the full12 stable8s benchmark; actual odd5/even8 and genuine unstable durations differ; excludes evaluation and IO, not a total runtime promise",
+  "protected": "original val/test closed; TASK4 paused; default none; old .005 numerical failure and legacy6FAIL unchanged"
+}
