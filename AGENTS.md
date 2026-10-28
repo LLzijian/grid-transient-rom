@@ -1,5 +1,37 @@
 # Autonomous Scientific Engineering Rules
 
+## Physics-AI research and execution update (2026-10-28)
+
+The user renewed continuous experimental authorization with physical-system structure
+discovery and identification as the research contribution, aiming at leading AI venues.
+Prioritize a discriminating algorithm/architecture hypothesis over repeated coefficient
+changes. Autonomous accuracy, critical events, identifiability assumptions, complexity and
+same-precision cost jointly establish its value; prediction alone is not structure recovery.
+Keep original L1/L2 scientific requirements, causal inputs, data gates and TASK4 pause.
+
+Actually use `gpt-6-astra` for each new scientific design and `gpt-6.1-sol` to advance
+implementation/execution. Assign simple bounded work to cheaper capable agents such as
+Luna. Root retains scientific decisions, claim scope, protected models and test authority.
+
+For long code, a temporary thread heartbeat may preserve liveness and retrieve results.
+The executable loop advances registered work itself. Delete the temporary heartbeat on
+completion or actionable failure and return to the standard loop in that same turn;
+do not wait for the next timer to perform available scientific work. Before a planned
+task exceeding roughly four hours, consider and, where useful, verify code/computation
+optimization. Four hours is not a new runtime kill limit or process quota.
+
+Protect usable-model archives and their accepted scope. Separately retain a small scientific
+candidate frontier across accuracy, critical events, complexity and cost. New stages may
+start from different justified candidates with explicit ancestry and information exposure;
+do not always reset to one source and repeat the same curriculum after a failed promotion.
+
+Use learning curves, residuals and capability changes to decide finite stopping/extension.
+Reaching an update count does not establish adequate optimization, and possible remaining
+improvement does not permit endless extension. Preregister finite bounds and decision
+triggers, keep adverse evidence and original classifications, and never lower gates after
+observing results. Apply [the detailed update](docs/research_execution_20261028.md)
+prospectively; it does not restart retired budgets or authorize original val/test access.
+
 ## Current user override: no process quotas (2026-10-21)
 
 The human explicitly instructed “不设置进程限制” and confirmed “全部取消进程额度限制”. Prospectively, do not impose process-count, single-process runtime, stage process-second or parent process-hour ceilings. The former259200-second ceiling and category balances remain historical accounting, not active execution gates. Record actual process/subtree cost and ownership; do not fabricate a large finite timeout or a passing historical budget admission.
