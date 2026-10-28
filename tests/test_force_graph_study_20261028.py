@@ -8,6 +8,7 @@ import importlib.util
 from pathlib import Path
 import random
 import sys
+from types import SimpleNamespace
 
 import numpy as np
 import pytest
@@ -142,6 +143,51 @@ def test_each_model_calibration_independent_and_ties_prefer_one():
         "S": {"1": {"qualified": False, "ratio": .1}, "3": {"qualified": True, "ratio": .8}},
         "M": {"1": {"qualified": False, "ratio": .1}, "3": {"qualified": False, "ratio": .1}}}
     assert study.select_multipliers(scores) == {"L": 1, "S": 3, "M": None}
+
+
+@pytest.mark.parametrize("pending", (False, True))
+def test_calibration_early_trial_failure_keeps_healthy_trials_and_actual_pending(tmp_path, monkeypatch, pending):
+    from experiments import force_graph_execution_20261028 as control
+    event = {"id": "MOCK_fit"}
+    rng = np.random.default_rng(28101)
+    schedule = {"initial": {"rng": rng.bit_generator.state, "coverage": {}}, "rows": [
+        {"step": i, "sample_ids": [event["id"]], "horizon_s": study.horizon_for(i),
+         "rng_after": rng.bit_generator.state, "coverage_after": {}} for i in range(1, 9)]}
+    study.write(tmp_path / "qa/summary.json", {"status": "PASS"})
+    study.write(tmp_path / "schedule.json", {"28101": schedule})
+    monkeypatch.setattr(study, "_method", lambda base: "rk4")
+    monkeypatch.setattr(study, "checked_preparation", lambda base: ({"panel_ids": [event["id"]]}, [event]))
+    monkeypatch.setattr(study, "EventStore", lambda *args: None)
+    monkeypatch.setattr(study, "build_model", lambda mode, **kwargs: SimpleNamespace(mode=mode, mass=SimpleNamespace(device="cpu")))
+    monkeypatch.setattr(study, "make_optimizer", lambda model, multiplier: SimpleNamespace(multiplier=multiplier))
+    monkeypatch.setattr(study, "score_panel", lambda *args: profile())
+    captured = []
+    monkeypatch.setattr(study.old, "quarantine_failure", lambda *args: captured.append(args) or {"status": "MOCK_ONLY"})
+    def mock_update(model, optimizer, *args, base, category, run_id, step, **kwargs):
+        fail = model.mode == "L" and optimizer.multiplier == 1 and step == 3
+        if fail and not pending:
+            raise FloatingPointError("MOCK failure before optimizer")
+        study._journal(base, "optimizer_step_attempt", category, run_id=run_id, step=step)
+        if fail:
+            raise FloatingPointError("MOCK optimizer exception with pending attempt")
+        study._journal(base, "optimizer_step_completed", category, run_id=run_id, step=step)
+        return {"step": step, "MOCK_ONLY": True}
+    monkeypatch.setattr(study, "one_update", mock_update)
+    result = study.calibrate(tmp_path, device="cpu")
+    assert result["all_trials_processed"] and result["actual_optimizer_updates"] == 42
+    assert result["actual_optimizer_attempts"] == 42 + pending
+    assert result["multipliers"] == {"L": 3, "S": 1, "M": 1}
+    assert len(captured) == 1 and captured[0][5] == 2
+    assert not result["scores"]["L"]["1"]["qualified"]
+    counts = control.call_counts(tmp_path)
+    if pending:
+        assert result["status"] == "UNRESOLVED"
+        assert counts["pending_attempts"] == [{"category": "calibration", "run_id": "cal_L_1", "step": 3}]
+        with pytest.raises(ValueError):
+            control.validate_calibration(result)
+    else:
+        assert result["status"] == "COMPLETED" and counts["pending_attempts"] == []
+        assert control.validate_calibration(result) == {"attempted": 42, "completed": 42}
 
 
 def test_backup_selection_only_qualified_gain_and_competitive_control():
