@@ -1,17 +1,15 @@
 # 当前研究状态
 
-任务 **RUNNING**；cwd `E:/03-nn_Transfer_Func/kiki`。核心是物理系统的结构发现与识别；预测、关键事件、条件辨识、复杂度和同精度成本共同评价。原val/test关闭，TASK4暂停；默认none，可用模型及原接受范围保持。
+任务 **RUNNING**；cwd E:/03-nn_Transfer_Func/kiki。核心为物理系统结构发现与识别；原val/test关闭，TASK4暂停，默认none，可用模型及原接受范围保持。
 
-**force_graph_20261028正式运行中。** L96、S192、M192已完整评价共同train385，必要数值行均合格。稳定342的5/8s风险分别为L .858630/.579123、S .732162/.516601、M .685761/.503166；失稳43的8s漏判分别15、10、8，误报均0。各为登记适配端点，S到上限仍改善，不能写充分优化。风险不是RMSE。全部是已见train的发展证据；fit297决策，不追加更新88仅报告。
+**force_graph_20261028已COMPLETED。** 五端点L96/S192/M192及N来源M192/S192、完整385和五端点noise88均完成。实际1020次optimizer调用全部闭合：QA108+校准48+正式864，pending/repair/replay均0；未用284关闭不转用。6份原生回执exit0、Job空/清理通过，worker均GONE，锁正常移除。临时heartbeat kiki-force-graph已实际删除且配置不存在。六阶段wall合计5188.7666207s，JobCPU9409.265625s；不含外层controller未计成本、旧中断阶段或新模型CPU准备。
 
-既定fit-only选择M为结构、S为对照，备用来源N6101/种子28102已自动启动，最近核实N_M第87次更新。之后仍须完成N_S及最多五端点的固定噪声报告，不跳过分支。此前108次真实CUDA保存恢复QA、48次校准全部闭合；三模式均选倍率3，校准状态丢弃。fast未全过原精度门槛，统一真正RK4。
+共同fit297的同192结构比较：A512来源M/S稳定5s风险.741331/.794168、8s .544965/.561642，8s漏3/30与6/30；N来源M/S为.830421/.868420、.591762/.596747，漏4/30与6/30。M的共同频率误差有代价，真实可用区间的失稳缺口仍在。均为train发展证据，来源见过全部385，不追加更新88不作确认。原来的可用模型及历史候选资产保全。见[本轮结论](../reports/force_graph_20261028_conclusion.md)和[公开聚合证据](../results/force_graph_20261028/completed_stage_public.json)。
 
-实际命令 `experiments/force_graph_execution_20261028.py run --source-commit fc5e4ea9c434ad442cfd1d99ebf6bc7e22600875`，exec session16410；supervisor PID5432/FILETIME134376602622344859，study worker PID32588/FILETIME134376611306402684。输出 `private_data/force_graph_20261028/study01`，binding SHA ddcd61c0345c1db8dc5f4e3ed5c5cddb794620bcd9c84b12bec341d681027b16。最近已核新轮至少723次真实完整调用（QA108+cal48+主源480+N_M87），不是最终总计。study原生总成本待关闭回执；无进程数量/时长/CPU小时上限，科学调用上界1304不变。
+**下一轮force_exchange_20261028为PREPARING，当前无科学作业/定时任务。** root已按完整fit事前规则选F=A512_M_28101 step192（五合法端点中8s漏判唯一最少3/30）；模型SHA01d5220dce065ec186e8fe9f98d91eb9c8805bed75bbc2caf81db9b25de3e1d8。来源目录 private_data/force_graph_20261028/study01/study/A512_M_28101/checkpoints/step000192。实际Astra设计共同40D内单gamma的p-r互易交换；C0继续原47参数，C1加gamma，主要比较共同96。父F原实现冻结，准确联合估计器由C0/C1共同使用；旧严格父替换6FAIL保持，不改判。新增CPU匹配7/7、study15/15、controller24/24纯检查已完成，真实CUDA、唯一F/C0资格与Adam72尚未执行。独立执行审查发现的F/C0整段预测cross-model物理pair缺漏已由6.1补齐，双向fine对齐/实际区间/297身份/子步有限性和对应准入均局部复核通过，无剩余代码阻断。原门槛不变。
 
-**下一动作**：6.1继续已登记pipeline并稀疏检查；root在全部端点与原生清理闭合后评价、独立挑战、选择性归档/决定集成，接续合法新科学阶段。临时heartbeat实际ID `kiki-force-graph` ACTIVE/20分钟，仅保活；完成或需行动即删除，同次回标准loop。
+**下一可执行动作**：将父轮结论/结果与新方案/最终源码/全部失败和资格记录选择性批量提交并核远端blob+commit；再由6.1实际运行 experiments/force_exchange_execution_20261028.py run --source-commit <已核实新commit>。新输出 private_data/force_exchange_20261028/study01 尚不存在；不把此占位命令当启动记录。流程自动prepare→qualification→真实QA72→主种子/条件第二种子→385与noise报告→summary，零校准，总调用上界976（formal768+QA72+一次修复QA72+真实外部重放64）。预留无自动入口，不重置旧费用；无进程数量/时长/CPU额度。见[唯一协议](../reports/force_exchange_20261028_protocol.md)、[独立挑战](../reports/force_exchange_20261028_design_review.md)、[执行前审查](../reports/force_exchange_20261028_pre_execution_review.md)。
 
-**后续准备，不是新作业。** 实际Astra复议不执行两图筛查：数据共享同一故障后系统，条件选图会增加1bit模式。推荐共同40D内单gamma的p-r互易交换；独立数学挑战通过，root仅采纳独立新模块和CPU零optimizer准备。F来源待当前轮完整闭合再按fit规则选定；新轮不提前训练。见[设计补充](../reports/astra6_next_identification_20261028_addendum.md)及[独立挑战与root决定](../reports/force_exchange_20261028_design_review.md)。
+归档分支codex/force-memory-20261028；父轮冻结执行源fc5e4ea9c434ad442cfd1d99ebf6bc7e22600875、complete SHA807b99a7814e4c16d03cec99a6100bc30b3a865eff959c3c128ec7ba9c36e71d。父轮结论/公开结果与新数学模型/旧失败/新CPU匹配已逐blob核至8fe8e8b5c038ac1de505e6467c3f0b67a27992ea；最终study/controller及审查正归档，未核新commit不得启动。规则PR34已审查合并并核远端main 6f1d97deec28cece1d93a1b7e29dfe217de881a4；科学模型尚未采用。本地HEAD a95101337855ed3fc1f4abfd710982443d5564cb和无关改动保持。
 
-**恢复与档案。** 旧r_memory停止续跑，状态INTERRUPTED_RUNTIME；1165次完整更新只保存至1152，退出原因及正式总成本UNKNOWN，旧锁/证据保持。R0已完成1152冻结评价，0更新；原N/A0、A512、A1152保留科学候选，未替换可用模型。旧阶段调用1466、完整1465，已关闭11份Job部分成本不含中断正式fit；R0单独wall154.5262543s、user118.09375s、kernel9.0625s。见[R0结论](../reports/r_memory_20261028_conclusion.md)和[原恢复](../results/r_memory_20261025/recovery_20261028.json)。
-
-归档 `codex/force-memory-20261028`，冻结执行源已逐blob/远端head核实，见[source_verification](../results/force_graph_20261028/source_verification.json)。本地HEAD a95101337855ed3fc1f4abfd710982443d5564cb与无关改动不动。规则PR34已独立审查并合入远端main 6f1d97deec28cece1d93a1b7e29dfe217de881a4；科学候选尚未采用。导航：[本轮协议](../reports/force_graph_20261028_protocol.md)、[after101](TASK2_after_loop_101.md)、[执行规则](engineering_loop.md)。旧关闭/失败分类不重写。
+旧r_memory保持INTERRUPTED_RUNTIME，1165实际完成仅1152持久，退出原因/正式总成本UNKNOWN；原锁和证据不动。其范围累计1466调用/1465完整，R0已0更新完成。两个已核范围合计2486实际调用（更早项目不在此数）。导航：[R0结论](../reports/r_memory_20261028_conclusion.md)、[after101](TASK2_after_loop_101.md)、[执行规则](engineering_loop.md)。原关闭/失败与接受身份不重写。
