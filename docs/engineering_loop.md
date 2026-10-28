@@ -1,5 +1,23 @@
 # Scientific Engineering Loop — Idea-Level Capability Studies
 
+## Physics-AI execution update (2026-10-28)
+
+The current user instruction makes algorithmic structure discovery/identification the
+research narrative and requires actual Astra design, 6.1 execution and cheaper bounded
+workers. Apply [research_execution_20261028](research_execution_20261028.md): preserve
+accepted usable models separately from a small non-dominated scientific candidate set;
+choose justified sources rather than repeating one reset and coefficient curriculum.
+Stop or extend finite experiments from matched learning curves, residuals and capability
+changes, never from an update count alone or an indefinite convergence argument.
+
+Before a task expected to exceed about four hours, consider mathematical/computational
+optimization and verify useful changes without altering numerical/data meaning. No four-hour
+kill or process-count cap is introduced. A temporary heartbeat is only long-code liveness:
+registered executable stages progress automatically; on completion or actionable failure,
+delete the heartbeat and resume the standard loop immediately, rather than waiting for a
+later tick. All old evidence, retired budgets, scientific gates and pause/test boundaries
+remain historical/operative as applicable; prospective changes do not relabel old outcomes.
+
 ## Current execution authority (2026-10-21)
 
 The human said “不设置进程限制” and explicitly confirmed “全部取消进程额度限制”. Future execution has no process-count, single-process runtime, category process-second or total process-hour cap. Former caps/balances and rejected admissions remain historical records. Actual cost is still recorded; it no longer determines admission. Never substitute a huge numeric timeout for an uncapped process or write a false PASS for a closed budget gate.
@@ -300,9 +318,10 @@ Keep source checkpoints, all adverse outcomes and reproduction details on the ar
 branch and locally as appropriate. Never interpret rollback as deletion of scientific
 records or resetting the unrelated local checkout.
 
-Thread heartbeat `kiki-astra6` is ACTIVE at30-minute intervals. Each wake first checks
-current_state, actual processes and cumulative ledger. Healthy unchanged jobs remain
-quiet; new work starts only when no duplicate job exists. Notify on meaningful results,
-completion, failure/rollback or required user action. The heartbeat is scheduling, not a
-scientific budget extension. Respect pause/resource/test boundaries and do not modify
-other projects' automations. Existing TASK4 pause remains independent.
+Project progression belongs to the registered executable loop. When a long job needs
+liveness, create a temporary heartbeat on the current chat, bound to that actual job and
+source. Each wake checks current_state, exact process identity and real milestones; a
+healthy unchanged job stays quiet and no duplicate job starts. Completion or actionable
+failure deletes that temporary heartbeat before the same turn resumes the normal loop.
+It grants no scientific scope, budget or test access and must not modify other projects'
+automations. Existing TASK4 pause remains independent.
