@@ -545,9 +545,9 @@ def paired_evaluate_model(model, events, output, prepared, *, noisy=False):
     timing = {"initialization_seconds": 0., "initialization_calls": 0, "rollout_seconds": 0.}
     original_encode = candidate.encode
 
-    def timed_encode(history):
+    def timed_encode(*args, **kwargs):
         tick = time.perf_counter()
-        result = original_encode(history)
+        result = original_encode(*args, **kwargs)
         timing["initialization_seconds"] += time.perf_counter() - tick
         timing["initialization_calls"] += 1
         return result

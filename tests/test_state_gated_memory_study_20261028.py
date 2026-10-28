@@ -99,3 +99,44 @@ def test_B_degenerate_completed_update_saved_before_stop(tmp_path,monkeypatch):
     monkeypatch.setattr(s.old,'quarantine_failure',lambda *a:{'MOCK_ONLY':True})
     r=s.formal_run(tmp_path,'B',28311,{'source':{},'code':{},'schedule_sha256':'MOCK'},[{'id':'e'}],[],'cpu')
     assert r['status']=='CONTROL_DEGENERATE' and r['updates']==1 and saved==[0,1]
+
+def test_paired_evaluator_encode_initialize_history_keyword_chain(tmp_path,monkeypatch):
+    """Exercise the real evaluator wrapper; all physics/metrics are MOCK_ONLY."""
+    import evaluate_structured_rom as evaluation
+    import summarize_train_local_memory_0098 as metrics
+    import fixed_edge_pair_20261019 as qualification
+    import active_fom_pair_fit_20261020 as intervals
+    calls=[]
+    class InterfaceFixture(torch.nn.Module):
+        def __init__(self):
+            super().__init__();self.history_dt=.0025;self._cache=None
+            self.register_buffer('mass',torch.ones(10,dtype=torch.float64))
+            self.register_buffer('p_scale',torch.ones(10,dtype=torch.float64))
+        def encode(self,history,*,history_dt):
+            calls.append({'history_dt':history_dt,'persistent_history_dt':self.history_dt})
+            return torch.zeros((len(history),40),dtype=torch.float64)
+        def initialize(self,history,*,history_dt):
+            return self.encode(history,history_dt=history_dt)
+        def rollout(self,history,steps,dt,*,history_dt):
+            return self.initialize(history,history_dt=history_dt)[:,None,:].repeat(1,steps+1,1)
+        def begin_graph_cache(self):self._cache={}
+        def end_graph_cache(self):self._cache=None
+        def complexity_counts(self):return {'MOCK_ONLY':True,'raw_trainable_scalar_count':47}
+    def pair(fine,coarse,*args,**kwargs):
+        assert np.isfinite(fine).all() and np.isfinite(coarse).all()
+        return {'MOCK_ONLY':True,'finite_to_endpoint':True,'los_pair_pass':True}
+    monkeypatch.setattr(evaluation,'_pair_row',pair)
+    monkeypatch.setattr(metrics,'event_metrics',lambda *a:{k:[] for k in ('records','common_frequency','normalized_p','objective_point_error','numerical')})
+    monkeypatch.setattr(qualification,'scientific_qualification',lambda *a:True)
+    monkeypatch.setattr(qualification,'physical_metrics',lambda *a:{'MOCK_ONLY':True})
+    monkeypatch.setattr(intervals,'actual_interval_predictions',lambda event,f,c:(f[:9],c[:5],4))
+    monkeypatch.setattr(intervals,'interval15',lambda *a:{'MOCK_ONLY':True})
+    monkeypatch.setattr(s.old,'group_summary',lambda *a:{'MOCK_ONLY':True})
+    model=InterfaceFixture();event={'id':'MOCK_EVENT','label':'stable','group':'MOCK_GROUP','x':np.zeros((15,30)),'classification_meta':{}}
+    result=s.paired_evaluate_model(model,[event],tmp_path/'MOCK_EVALUATION',{'fit_ids':['MOCK_EVENT'],'no_update_ids':[],'fresh19_ids':[]})
+    assert calls==[{'history_dt':s.HISTORY_DT_REFERENCE,'persistent_history_dt':s.HISTORY_DT_MAIN},
+                   {'history_dt':s.HISTORY_DT_MAIN,'persistent_history_dt':s.HISTORY_DT_MAIN}]
+    assert result['timing']['initialization_calls']==2
+    assert all(row['exception'] is None for row in result['extras'])
+    assert model.history_dt==s.HISTORY_DT_MAIN and model._cache is None
+    assert 'encode' not in model.__dict__
