@@ -21,7 +21,7 @@ class ControlDegenerate(RuntimeError):
 
 
 class StateGatedMemoryROM(ForceGraphROM):
-    def __init__(self,source,gate_mode="A",*,history_dt=.005,source_identity=None):
+    def __init__(self,source,gate_mode="A",*,history_dt=.0025,source_identity=None):
         if gate_mode not in GATE_MODES: raise ValueError("gate mode must be A/B/C")
         self._history_dt(history_dt)
         super().__init__(source,"M",source_identity=source_identity)
@@ -30,10 +30,12 @@ class StateGatedMemoryROM(ForceGraphROM):
 
     @staticmethod
     def _history_dt(dt):
-        if isinstance(dt,bool) or dt not in (.005,.0025): raise ValueError("history dt fixed to .005/.0025")
+        if isinstance(dt,bool) or dt not in (.005,.0025,.00125):
+            raise ValueError("history dt must be legacy .005, primary .0025 or reference .00125")
 
     def _stamp(self):
-        return super()._stamp()+(tuple(b._version for b in self.buffers()),tuple(p.requires_grad for p in self.parameters()))
+        return super()._stamp()+(tuple(b._version for b in self.buffers()),tuple(p.requires_grad for p in self.parameters()),
+                                 self.gate_mode,self.history_dt)
 
     def _new_context(self):
         return dict(kappa=self.kappa,lambda_=self.lambda_,coupling=self.reference_coupling45)
@@ -93,9 +95,26 @@ class StateGatedMemoryROM(ForceGraphROM):
 
     def fast_step(self,*args,**kwargs): raise ValueError("only true RK4 is registered for state-dependent Q")
 
-    def rollout(self,history,steps,dt,*,method="rk4"):
+    def encode(self,history,*,history_dt=None):
+        return self.history_system(history,history_dt=history_dt)["r0"]
+
+    def initialize(self,history,*,history_dt=None):
+        h=self._tensor(history)
+        return torch.cat((h[...,-1,:30],self.encode(h,history_dt=history_dt)),-1)
+
+    def rollout(self,history,steps,dt,*,method="rk4",history_dt=None):
         if method!="rk4": raise ValueError("only true RK4 is registered")
-        return super().rollout(history,steps,dt,method=method)
+        if type(steps) is not int or steps<0: raise ValueError("finite nonnegative rollout step count required")
+        self._dt(dt)
+        owns_cache=self._cache is None
+        if owns_cache: self.begin_graph_cache()
+        try:
+            state=self.initialize(history,history_dt=history_dt);out=[state]
+            for _ in range(steps):
+                state=self.rk4(state,dt);out.append(state)
+            return torch.stack(out,-2)
+        finally:
+            if owns_cache: self.end_graph_cache()
 
     def history_system(self,history,*,history_dt=None):
         dt=self.history_dt if history_dt is None else history_dt;self._history_dt(dt)
@@ -167,6 +186,8 @@ class StateGatedMemoryROM(ForceGraphROM):
 
     def export(self,path):
         if self._cache is not None: raise RuntimeError("close graph cache before export")
+        if self.history_dt not in (.005,.0025):
+            raise ValueError("reference history step is qualification only; cannot publish a training checkpoint")
         payload=dict(format=FORMAT,mode="M",gate_mode=self.gate_mode,history_dt=self.history_dt,ridge=RIDGE,
           config=copy.deepcopy(self._source_config),source_identity=copy.deepcopy(self.source_identity),
           state_dict={k:v.detach().cpu().tolist() for k,v in self.state_dict().items()},
@@ -175,7 +196,7 @@ class StateGatedMemoryROM(ForceGraphROM):
         return payload
 
     @classmethod
-    def from_force_graph_export(cls,path,gate_mode="A",*,history_dt=.005):
+    def from_force_graph_export(cls,path,gate_mode="A",*,history_dt=.0025):
         path=Path(path);parent=ForceGraphROM.from_export(path)
         if parent.mode!="M": raise ValueError("state gated source must have M physical parameterization")
         identity=dict(source_path=str(path.resolve()),source_sha256=hashlib.sha256(path.read_bytes()).hexdigest(),parent=parent.source_identity)

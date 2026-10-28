@@ -289,15 +289,132 @@
         "real Adam/RNG recovery",
         "scientific mechanism evidence"
       ]
+    },
+    {
+      "status": "PASS_CPU_MATHEMATICAL_QA",
+      "tests": [
+        {
+          "test": "tests/test_state_gated_memory_model_20261028.py::test_independent_constant_or_noncommuting_LTV_reference_and_affine_prior[A]",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_state_gated_memory_model_20261028.py::test_independent_constant_or_noncommuting_LTV_reference_and_affine_prior[B]",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_state_gated_memory_model_20261028.py::test_independent_constant_or_noncommuting_LTV_reference_and_affine_prior[C]",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_state_gated_memory_model_20261028.py::test_power_nonunit_chainrule_permutation_angle_translation_and_exports[A]",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_state_gated_memory_model_20261028.py::test_power_nonunit_chainrule_permutation_angle_translation_and_exports[B]",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_state_gated_memory_model_20261028.py::test_power_nonunit_chainrule_permutation_angle_translation_and_exports[C]",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_state_gated_memory_model_20261028.py::test_all_raw_and_history_gradients_finite_difference[A]",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_state_gated_memory_model_20261028.py::test_all_raw_and_history_gradients_finite_difference[B]",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_state_gated_memory_model_20261028.py::test_all_raw_and_history_gradients_finite_difference[C]",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_state_gated_memory_model_20261028.py::test_trace_single_edge_zero_graph_near_zero_control_derivatives_and_cache",
+          "outcome": "passed",
+          "error": null
+        },
+        {
+          "test": "tests/test_state_gated_memory_model_20261028.py::test_precision_pair_separate_initialization_configuration_and_legacy_export",
+          "outcome": "passed",
+          "error": null
+        }
+      ],
+      "measurements": {
+        "A": {
+          "Z_absolute_error": 5.0182080713057076e-14,
+          "normalized_rbar_error": 3.1070928739897354e-14,
+          "normalized_p_error": 1.1116240500699309e-13,
+          "normalized_initial_error": 2.0309696274799985e-13,
+          "raw_initial_absolute_error": 1.191269305422793e-13,
+          "history_dt": 0.0025,
+          "independent_reference": "SciPy expm"
+        },
+        "B": {
+          "Z_absolute_error": 2.961427769676561e-09,
+          "normalized_rbar_error": 2.794064054555267e-11,
+          "normalized_p_error": 1.3118772165194134e-12,
+          "normalized_initial_error": 8.88005035445458e-09,
+          "raw_initial_absolute_error": 3.935680892297455e-09,
+          "history_dt": 0.0025,
+          "independent_reference": "independent physical DOP853 rtol1e-12 atol1e-13"
+        },
+        "C": {
+          "Z_absolute_error": 3.5578304746763934e-09,
+          "normalized_rbar_error": 4.019068064747251e-11,
+          "normalized_p_error": 1.3118573911079218e-12,
+          "normalized_initial_error": 1.2051303339731995e-08,
+          "raw_initial_absolute_error": 5.8323299523266314e-09,
+          "history_dt": 0.0025,
+          "independent_reference": "independent physical DOP853 rtol1e-12 atol1e-13",
+          "Q_commutator_norm": 0.0009661491350699392
+        }
+      },
+      "wall_seconds": 10.502679824829102,
+      "optimizer_calls": 0,
+      "device": "cpu",
+      "dtype": "float64",
+      "real_event_arrays_read": false,
+      "cuda_executed": false,
+      "training_admission": false,
+      "old_legacy_drop_in_qualification": "FAILED_NOT_ADOPTED",
+      "precision_revision": {
+        "history_primary": 0.0025,
+        "history_reference": 0.00125,
+        "future_primary": 0.01,
+        "future_reference": 0.005,
+        "reason": "root adopted prospective Astra precision revision; not a pure bug repair; original .005 failure retained"
+      },
+      "files": {
+        "tests\\test_state_gated_memory_model_20261028.py": "505ea08d774cf1b09ca031a125248be35f6e2b913cd37008d63dca5cfd6ae6c2",
+        "experiments\\state_gated_memory_model_20261028.py": "ad788b1c7533ee8a803b15805f4b06af2341d7ecad4df55b541a9de0618c697b"
+      },
+      "unverified": [
+        "unique source real-data numerical qualification",
+        "CUDA parity",
+        "full8s cost",
+        "real Adam/RNG recovery",
+        "scientific mechanism evidence"
+      ]
     }
   ],
-  "status": "UNRESOLVED_CPU_MATHEMATICAL_QA",
+  "status": "PASS_CPU_MATHEMATICAL_QA",
   "training_admission": false,
-  "last_run_index": 2,
+  "last_run_index": 3,
   "per_variant_qualified": {
     "A": true,
-    "B": false,
-    "C": false
+    "B": true,
+    "C": true
   },
-  "shared_checks_qualified": true
+  "shared_checks_qualified": true,
+  "legacy_history_005_qualification": "FAILED_NUMERICAL_QUALIFICATION"
 }

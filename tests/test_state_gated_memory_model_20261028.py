@@ -86,7 +86,7 @@ def test_independent_constant_or_noncommuting_LTV_reference_and_affine_prior(mod
         errp=((s["p_history"]-ref[:,:10,0])/m.p_scale).abs().max().item()
         errinit=((s["r0"]-expected)/m.rstar).abs().max().item()
         MEASUREMENTS[mode]=dict(Z_absolute_error=errZ,normalized_rbar_error=errv,normalized_p_error=errp,normalized_initial_error=errinit,
-            raw_initial_absolute_error=float((s["r0"]-expected).abs().max()),history_dt=.005,
+            raw_initial_absolute_error=float((s["r0"]-expected).abs().max()),history_dt=m.history_dt,
             independent_reference="SciPy expm" if mode=="A" else "independent physical DOP853 rtol1e-12 atol1e-13")
         if mode=="C":
             q0=independent_Q(m,h[0,:10].numpy());q1=independent_Q(m,h[5,:10].numpy())
@@ -101,7 +101,7 @@ def test_independent_constant_or_noncommuting_LTV_reference_and_affine_prior(mod
         residual=s["A"]@s["s"]-s["bscaled"];prior=s["F"]@s["s"]+s["q"]
         assert (s["A"].T@residual+RIDGE*s["F"].T@prior).abs().max()<1e-10
         assert torch.equal(m.initialize(h)[:30],h[-1])
-        fine=m.history_system(h,history_dt=.0025)
+        fine=m.history_system(h,history_dt=.00125)
         torch.testing.assert_close(s["r0"],fine["r0"],atol=1e-7,rtol=1e-7)
         if mode=="C":
             q0=independent_Q(m,h[0,:10].numpy());q1=independent_Q(m,h[5,:10].numpy())
@@ -214,6 +214,25 @@ def test_trace_single_edge_zero_graph_near_zero_control_derivatives_and_cache():
     assert sum(p.numel() for p in m.parameters())==47 and not hasattr(m,"raw_gamma")
 
 
+def test_precision_pair_separate_initialization_configuration_and_legacy_export():
+    m=model("C");h=history()
+    assert m.history_dt==.0025
+    coarse=m.rollout(h,1,.01)
+    fine=m.rollout(h,2,.005,history_dt=.00125)
+    assert torch.equal(coarse[:,0],m.initialize(h,history_dt=.0025))
+    assert torch.equal(fine[:,0],m.initialize(h,history_dt=.00125))
+    assert m.history_dt==.0025 and m._cache is None
+    assert not torch.equal(coarse[:,0,30:],fine[:,0,30:])
+    with tempfile.TemporaryDirectory(prefix="gated-precision-export-") as folder:
+        path=Path(folder)/"model.json";m.export(path)
+        assert StateGatedMemoryROM.from_export(path).history_dt==.0025
+        legacy=StateGatedMemoryROM(fixture(),"C",history_dt=.005);spatial(legacy);legacy.export(path)
+        loaded=StateGatedMemoryROM.from_export(path)
+        assert loaded.history_dt==.005 and torch.equal(loaded.initialize(h),legacy.initialize(h))
+        ref=StateGatedMemoryROM(fixture(),"C",history_dt=.00125)
+        with pytest.raises(ValueError,match="qualification only"): ref.export(path)
+
+
 class Reports:
     def __init__(self): self.rows=[]
     def pytest_runtest_logreport(self,report):
@@ -231,11 +250,14 @@ if __name__=="__main__":
     prior["runs"].append(dict(status="PASS_CPU_MATHEMATICAL_QA" if code==0 else "UNRESOLVED_CPU_MATHEMATICAL_QA",
       tests=reports.rows,measurements=MEASUREMENTS,wall_seconds=time.time()-tick,optimizer_calls=0,device="cpu",dtype="float64",
       real_event_arrays_read=False,cuda_executed=False,training_admission=False,old_legacy_drop_in_qualification="FAILED_NOT_ADOPTED",
+      precision_revision=dict(history_primary=.0025,history_reference=.00125,future_primary=.01,future_reference=.005,
+          reason="root adopted prospective Astra precision revision; not a pure bug repair; original .005 failure retained"),
       files={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in (Path(__file__),ROOT/"experiments/state_gated_memory_model_20261028.py")},
       unverified=["unique source real-data numerical qualification","CUDA parity","full8s cost","real Adam/RNG recovery","scientific mechanism evidence"]))
     qualified={mode:all(row["outcome"]=="passed" for row in reports.rows if row["test"].endswith("["+mode+"]"))
                and len([row for row in reports.rows if row["test"].endswith("["+mode+"]")])==3 for mode in GATE_MODES}
     shared=[row for row in reports.rows if "independent_constant_or_noncommuting_LTV_reference" not in row["test"]]
     prior.update(status=prior["runs"][-1]["status"],training_admission=False,last_run_index=len(prior["runs"])-1,
-                 per_variant_qualified=qualified,shared_checks_qualified=len(shared)==7 and all(row["outcome"]=="passed" for row in shared))
+                 per_variant_qualified=qualified,shared_checks_qualified=len(shared)==8 and all(row["outcome"]=="passed" for row in shared),
+                 legacy_history_005_qualification="FAILED_NUMERICAL_QUALIFICATION")
     path.write_text(json.dumps(prior,indent=2,allow_nan=False)+"\n",encoding="utf-8");raise SystemExit(code)
