@@ -639,7 +639,7 @@ def calibrate(base, device="cuda"):
     prepared, events = checked_preparation(base); panel = [e for e in events if e["id"] in prepared["panel_ids"]]
     output = base / "calibration"; output.mkdir(exist_ok=False); schedule = read(base / "schedule.json")["28101"]
     lookup = {e["id"]: e for e in events}; store = EventStore(events, resolve_device(device)); scores = {mode: {} for mode in MODES}
-    calls_before = call_counts(base)["completed"]
+    calls_before = call_counts(base)
     for mode in MODES:
         zero = score_panel(build_model(mode, device="cpu"), panel); write(output / f"{mode}_zero.json", zero, exclusive=True)
         for multiplier in (1, 3):
@@ -647,22 +647,29 @@ def calibrate(base, device="cuda"):
             model = build_model(mode, device=device); optimizer = make_optimizer(model, multiplier); _seed(28101, model.mass.device)
             rng = np.random.default_rng(); rng.bit_generator.state = schedule["initial"]["rng"]
             coverage = copy.deepcopy(schedule["initial"]["coverage"]); trace = []
+            trial_before = call_counts(base)
             try:
                 for row in schedule["rows"][:8]:
                     trace.append(one_update(model, optimizer, store, [(lookup[eid], 10) for eid in row["sample_ids"]], row["horizon_s"],
                         method=method, base=base, category="calibration", run_id=f"cal_{mode}_{multiplier}", step=row["step"], source="A512"))
                     rng.bit_generator.state = row["rng_after"]; coverage = copy.deepcopy(row["coverage_after"])
                 profile = score_panel(model, panel)
-                valid = _valid_profile(zero) and _valid_profile(profile)
+                valid = len(trace) == 8 and _valid_profile(zero) and _valid_profile(profile)
                 ratio = sum(profile["horizon_risks"][h]["value"] / max(zero["horizon_risks"][h]["value"], 1e-12) for h in ("5", "8")) / 2 if valid else None
                 entry = {"qualified": valid, "ratio": ratio, "profile": profile, "trace": trace, "trial_state_discarded": True}
             except BaseException as exc:
                 quarantine = old.quarantine_failure(folder, model, optimizer, rng, coverage, len(trace), trace, exc)
                 entry = {"qualified": False, "ratio": None, "error": repr(exc), "quarantine": quarantine, "trace": trace, "trial_state_discarded": True}
+            trial_after = call_counts(base)
+            entry["optimizer_attempts"] = trial_after["attempts"] - trial_before["attempts"]
+            entry["optimizer_completed"] = trial_after["completed"] - trial_before["completed"]
             scores[mode][str(multiplier)] = entry; write(folder / "result.json", entry, exclusive=True)
-    actual = call_counts(base)["completed"] - calls_before
-    result = {"status": "COMPLETED" if actual == 48 else "UNRESOLVED", "multipliers": select_multipliers(scores),
-        "actual_optimizer_updates": actual, "scores": scores, "training_method": method, "no_update_data_used": False,
+    calls_after = call_counts(base)
+    actual = calls_after["completed"] - calls_before["completed"]
+    attempts = calls_after["attempts"] - calls_before["attempts"]
+    result = {"status": "COMPLETED" if actual == attempts and attempts <= 48 else "UNRESOLVED", "multipliers": select_multipliers(scores),
+        "actual_optimizer_updates": actual, "actual_optimizer_attempts": attempts, "all_trials_processed": True,
+        "scores": scores, "training_method": method, "no_update_data_used": False,
         "val_read": False, "test_read": False}
     write(output / "summary.json", result, exclusive=True); return result
 
@@ -717,8 +724,11 @@ def _formal_run(base, source, mode, seed, multiplier, prepared, fit, panel, meth
 def study(base, device="cuda"):
     torch.set_num_threads(1)
     base = Path(base); method = _method(base); calibration = read(base / "calibration/summary.json")
-    if calibration["status"] != "COMPLETED" or calibration["actual_optimizer_updates"] != 48:
-        raise ValueError("completed fixed48 calibration required")
+    from experiments.force_graph_execution_20261028 import validate_calibration, call_counts as checked_calls
+    totals = validate_calibration(calibration)
+    calls = checked_calls(base)
+    if calls["pending_attempts"] or calls["categories"]["calibration"] != totals:
+        raise ValueError("calibration requires an actual reconciled optimizer journal")
     prepared, fit = checked_preparation(base, fit_only=True)
     panel = [e for e in fit if e["id"] in prepared["panel_ids"]]
     output = base / "study"; output.mkdir(exist_ok=False)
