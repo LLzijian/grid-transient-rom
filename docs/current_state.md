@@ -6,10 +6,9 @@
 
 **意义与边界。** 给定正确骨架的条件恢复有支持，真实起点未准入，未完成两起点自治比较。失稳30中21有弱窗/9无窗；原297/30自治范围不删样本。本次有效边14条、分量[0]与[1..9]不是真实线路图。原A96/N/M-A512/互易交换候选与全部端点证据保全，不用边界解重写旧分类。
 
-**下一实际动作。** 已实际调用gpt-6-astra，新建议正在形成：在同40D/力坐标与100ms因果输入中，比较一个受限能量保守记忆转运方向与原对称传播、同参数量额外耗散。root尚未采用，预算尚未登记，未计算新来源谱/fixture/真实数据。先把本轮结果选择性归档核远端，再对Astra单一方案独立挑战、root登记有限比较/优化与停止、6.1实现核验执行。不得仅放宽lambda或重跑弱解救回原轮；标准loop同次继续，不等待timer。
-
+**下一实际动作：memory_transport_20261029。** 实际gpt-6-astra设计及独立挑战后，root已登记[唯一协议](../reports/memory_transport_20261029_protocol.md)：同40D/原47系数，A47续训、S48固定二维保守转运、P48同平面额外耗散。P可能是原对称边族的冗余优化路径，48=48不是独立容量匹配；不救回旧lambda0。源仍A96、R_N保护，固定Helmert9D源谱一次选面，人工plane预定Helmert前两列分开。新1848=正式1536+QA108+一次修复QA108+外部重放96独立注册，不滚旧976。30311/条件30312、128基础/最多256，学习曲线与原保护决定延长，真实risk始终受R_N保护。尚未运行任何新源谱/fixture/性能/训练；gpt-6.1-sol仅已写新model/test。注册精度句已修并局部PASS；模型静态未见方程错误，正式选面残差及主历史导出限制两小项待完善后复核。先归档源/审查，再有限释放CPU数学（显式排除CUDA方法），之后才分别放行后续准备/实际数据。标准loop同次继续，不等待timer。
 **保留的上一证据。** SGM三组各96、396实际调用=QA108+正式288，原locality NOT_RETAINED/无延长或seed2，unused1068关闭。fit297稳定267/失稳30，R_N/A/B/C真实≤15漏均21/30、8s为4/3/4/6；A96失稳风险2.369721优于R_N3.512358但稳定5/8风险1.052106/.718705差于R_N .830421/.591762。A96只是科学候选，risk不是RMSE。三端点385/noise88报告齐全，train88不是独立确认。SGM native wall8725.0118421s/JobCPU16671.390625s，外层/CPU准备/perf原型另计，见[结论](../reports/state_gated_memory_20261028_conclusion.md)。
 
 **历史与保全。** force_graph1020与force_exchange264调用完整；旧r_memory仍INTERRUPTED_RUNTIME，1165实际/1152持久、原因及正式总成本UNKNOWN，不动旧锁证据。上述已核关闭范围仍3146 optimizer调用/3145完整，不是项目总成本（本轮新增NNLS不计optimizer）。所有源码、源检查点、Adam/RNG、预测、矩阵、失效/边界/首次metadata冻结失败保留。没有进程数/时长/CPU额度；每轮仍以注册比较、更新数、实际修复与决定触发有限。
 
-**归档与main。** 本轮启动证据上一已核5da628f19ee440aa99e6a0b3b02bf758c8013634，源保持3b01；终态/结论正在归档。SGM终态/弱方案f99、初始实现1424、纯检查b9eb/1860、首metadata失败42fd→a062→3b01修订历史保全。main规则PR34和条件证明PR35已审查合并，main已核ba3bf3982243e9813556b6ebedcccb8b1fbcdcd9；[条件内域](conditional_rom_domain.md)不是实际端点认证/完整L2/FOM安全，科学模型未采用。本地HEAD和无关改动保持，不重置/强推。[执行规则](engineering_loop.md)、[Oct28更新](research_execution_20261028.md)。
+**归档与main。** weak终态/结论已推验919a33217a06e47690c8153e78dbf9d4f3591413，源保持3b01；新方案/实现准备正在归档。SGM终态/弱方案f99、初始实现1424、纯检查b9eb/1860、首metadata失败42fd→a062→3b01修订历史保全。main规则PR34和条件证明PR35已审查合并，main已核ba3bf3982243e9813556b6ebedcccb8b1fbcdcd9；[条件内域](conditional_rom_domain.md)不是实际端点认证/完整L2/FOM安全，科学模型未采用。本地HEAD和无关改动保持，不重置/强推。[执行规则](engineering_loop.md)、[Oct28更新](research_execution_20261028.md)。
