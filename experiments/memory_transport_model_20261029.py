@@ -72,12 +72,21 @@ def _prepare_plane_values(source_export,*,expected_sha256):
             restricted_eigenvalues=eigenvalues.tolist(),cutoff_gap=gap,cutoff_threshold=threshold,
             cutoff_pass=gap>threshold,claim_scope='numerical fixed-plane selection; no physical-mode identification')
         if not record['cutoff_pass']:
-            return dict(record,status='PLANE_UNRESOLVED',u=None,v=None)
+            return dict(record,status='PLANE_UNRESOLVED',u=None,v=None,plane_checks=None)
         plane=basis@eigenvectors[:,:2]
         for column in range(2):
             index=int(plane[:,column].abs().argmax())
             if plane[index,column]<0:plane[:,column].neg_()
-        return dict(record,status='COMPLETED',u=plane[:,0].tolist(),v=plane[:,1].tolist())
+        residual=Q@plane-plane*eigenvalues[:2][None,:]
+        scale=max(1.,norm)  # s^-1, the same fixed scale used by the cutoff rule.
+        checks=dict(orthogonality_frobenius=float(torch.linalg.vector_norm(plane.T@plane-torch.eye(2,dtype=torch.float64))),
+            vector_norms=torch.linalg.vector_norm(plane,dim=0).tolist(),
+            zero_sum_components=plane.sum(0).tolist(),zero_sum_l2=float(torch.linalg.vector_norm(plane.sum(0))),
+            eigenpair_residual_l2_per_mode=torch.linalg.vector_norm(residual,dim=0).tolist(),
+            eigenpair_residual_units='per_second',eigenpair_normalization_scale_per_second=scale,
+            normalized_eigenpair_residual_l2_per_mode=(torch.linalg.vector_norm(residual,dim=0)/scale).tolist(),
+            scope='measured checks only; no additional selection or changed cutoff gate')
+        return dict(record,status='COMPLETED',u=plane[:,0].tolist(),v=plane[:,1].tolist(),plane_checks=checks)
 
 
 class MemoryTransportROM(StateGatedMemoryROM):
@@ -265,6 +274,7 @@ class MemoryTransportROM(StateGatedMemoryROM):
 
     def export(self,path):
         if self._cache is not None:raise RuntimeError('close graph cache before export')
+        if self.history_dt!=.0025:raise ValueError('only primary history .0025 may be a deployable/resumable checkpoint')
         self._validate_plane()
         if not torch.isfinite(self.kappa) or not torch.isfinite(self.lambda_) or self.kappa<=0 or self.lambda_<=0 or (self.a_bar<0).any() or self.variant=='P' and self.d_raw<0:
             raise ValueError('strict physical parameter domain required')
@@ -280,7 +290,7 @@ class MemoryTransportROM(StateGatedMemoryROM):
     def from_export(cls,path):
         payload=json.loads(Path(path).read_text(encoding='utf-8'))
         if (payload.get('format')!=FORMAT or payload.get('mode')!='M' or payload.get('gate_mode')!='A'
-                or payload.get('ridge')!=RIDGE or payload.get('T_ref_seconds')!=1.):
+                or payload.get('ridge')!=RIDGE or payload.get('T_ref_seconds')!=1. or payload.get('history_dt')!=.0025):
             raise ValueError('wrong transport model format')
         m=cls(payload['config'],payload['variant'],u=payload['plane']['u'],v=payload['plane']['v'],
               history_dt=payload['history_dt'],source_identity=payload['source_identity'],plane_identity=payload['plane_identity'])

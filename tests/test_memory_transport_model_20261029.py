@@ -294,7 +294,9 @@ def test_plane_cutoff_and_internal_double_root_with_mocked_single_eigh():
         path=Path(folder)/'artificial_A.json';original.export(path)
         digest=hashlib.sha256(path.read_bytes()).hexdigest()
         for separated in (True,False):
-            eigenvalues=torch.tensor([1.,1.,2.,3.,4.,5.,6.,7.,8.] if separated else [1.]*9,dtype=DTYPE)
+            # Deliberately non-exact mocked eigenvalues also verify that the
+            # source residual is measured, rather than hardcoded to zero.
+            eigenvalues=torch.tensor([.5,.5,2.,3.,4.,5.,6.,7.,8.] if separated else [1.]*9,dtype=DTYPE)
             with patch('torch.linalg.eigh',return_value=(eigenvalues,torch.eye(9,dtype=DTYPE))) as decomposition:
                 output=Path(folder)/('separated' if separated else 'unresolved')
                 result=prepare_plane(path,expected_sha256=digest,output_directory=output)
@@ -306,8 +308,17 @@ def test_plane_cutoff_and_internal_double_root_with_mocked_single_eigh():
                 np.testing.assert_allclose(np.c_[u,v].T@np.c_[u,v],np.eye(2),atol=1e-12,rtol=0)
                 assert abs(u.sum())<1e-12 and abs(v.sum())<1e-12
                 assert u[np.argmax(abs(u))]>0 and v[np.argmax(abs(v))]>0
+                frame=np.c_[u,v];Q=original.memory_matrix(torch.zeros(10,dtype=DTYPE)).detach().numpy()
+                checks=result['plane_checks'];residual=np.linalg.norm(Q@frame-frame*np.asarray([.5,.5])[None,:],axis=0)
+                np.testing.assert_allclose(checks['eigenpair_residual_l2_per_mode'],residual,atol=1e-15,rtol=0)
+                assert min(checks['eigenpair_residual_l2_per_mode'])>.1
+                assert checks['eigenpair_normalization_scale_per_second']==8.
+                np.testing.assert_allclose(checks['normalized_eigenpair_residual_l2_per_mode'],residual/8.,atol=1e-15,rtol=0)
+                np.testing.assert_allclose(checks['zero_sum_components'],frame.sum(0),atol=1e-15,rtol=0)
+                assert checks['orthogonality_frobenius']<=1e-12
             else:
                 assert result['status']=='PLANE_UNRESOLVED' and result['u'] is None and result['v'] is None
+                assert result['plane_checks'] is None
             assert json.loads((output/'result.json').read_text(encoding='utf-8'))==result
             with patch('torch.linalg.eigh') as forbidden_repeat:
                 with pytest.raises(FileExistsError):prepare_plane(path,expected_sha256=digest,output_directory=output)
@@ -331,6 +342,23 @@ def test_export_rejects_lambda_boundary_and_corrupt_plane_or_variant_layout():
             with pytest.raises(ValueError):MemoryTransportROM.from_export(bad)
         with torch.no_grad():m.lambda_raw.fill_(-1000.)
         with pytest.raises(ValueError):m.export(Path(folder)/'no_boundary_rescue.json')
+
+
+@pytest.mark.parametrize('variant',VARIANTS)
+def test_reference_history_can_compute_but_cannot_export_or_restore_checkpoint(variant):
+    main=model(variant);reference=MemoryTransportROM(main._source_config,variant,u=main.u,v=main.v,history_dt=.00125)
+    reference.load_state_dict(main.state_dict());h=history()
+    with torch.no_grad():
+        torch.testing.assert_close(reference.initialize(h),main.initialize(h,history_dt=.00125),atol=0,rtol=0)
+    with tempfile.TemporaryDirectory() as folder:
+        folder=Path(folder);ref_path=folder/'forbidden_reference.json'
+        with pytest.raises(ValueError):reference.export(ref_path)
+        assert not ref_path.exists()
+        path=folder/'primary.json';payload=main.export(path)
+        assert MemoryTransportROM.from_export(path).history_dt==.0025
+        payload['history_dt']=.00125
+        tampered=folder/'tampered_reference.json';tampered.write_text(json.dumps(payload),encoding='utf-8')
+        with pytest.raises(ValueError):MemoryTransportROM.from_export(tampered)
 
 
 class UncachedTransportReference(MemoryTransportROM):

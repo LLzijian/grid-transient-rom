@@ -32,3 +32,14 @@ CPU选择包含已登记固定人工M3、Helmert前两列、A/S/P非零s/d、独
 | tests/test_memory_transport_model_20261029.py | `fdd48f5d2eadd22bdd0fd7642b2b4d012f2a40291138ca807c0f0e1020be20d1` |
 
 只写本报告，原科学门、协议、代码及结果未改。后续真实源/正式检查点小项由root选择最小实现并归档，不扩成通用认证框架。
+
+## 两项小修的局部复核
+
+2026-10-29，实际 `gpt-6.1-sol`，仅只读原两处及新增测试定义。**局部PASS，选面记录与主历史导出限制均已闭合，无此次范围内残余项。** 原发现、初版SHA及“尚未执行数学资格”的事实保留。
+
+- 新model:80–89由同一个实际Q、所选plane及原特征值计算正交Frobenius、列范数、零和与各特征向量残差，另按原固定cutoff尺度记录归一化残差及单位。未增加eigh或新选择门；cutoff未过时:75输出plane_checks=None，没有伪造合格残差。新增mock定义用不吻合实际Q的特征对核残差确实测量而非硬编码0，仅为定义，未运行。
+- 新model:275–277在写文件前硬拒history_dt非.0025；:290–294加载入口也硬拒参考history。细.00125仍可通过关键字或参考对象计算，不能导出/恢复为候选。新增测试 `test_reference_history_can_compute_but_cannot_export_or_restore_checkpoint` 对A/S/P分别定义细路径可计算、细export无文件、主checkpoint可恢复、篡改为细history拒载的检查，没有改变原数学门或主/细精度。
+
+实际新SHA256：model `c9040bd65026edd0939b6c1046e21205388ffe1d2d5d69752d67144416101494`；test `0e043c1200aed9de6d11e21dc57900c23ec6922dd75d71ea649e9dc39ba9989a`。
+
+root归档核验后可按已定授权仅选择CPU数学套件，显式排除 `test_actual_CUDA_field_initialize_short_complete_J_all_gradients`。本次没有执行测试/编译/源谱/数据；CPU合格后CUDA仍须分别显式授权，skip不作PASS，真实资格与训练均未由本报告释放。
