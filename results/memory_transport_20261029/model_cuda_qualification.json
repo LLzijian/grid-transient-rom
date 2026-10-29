@@ -1,0 +1,92 @@
+{
+  "schema": "memory_transport_model_cuda_qualification_v1",
+  "status": "PASS_ACTUAL_CUDA_ARTIFICIAL_PAIR_ONLY",
+  "source_archive_commit": "b854d85900339e47c2b7fa286f24b77ebed9af3a",
+  "preceding_cpu_qa_archive_commit": "ea4ac3ea5384e8c0fec24e45383caeb2f4f92317",
+  "sources": {
+    "experiments/memory_transport_model_20261029.py": "c9040bd65026edd0939b6c1046e21205388ffe1d2d5d69752d67144416101494",
+    "tests/test_memory_transport_model_20261029.py": "0e043c1200aed9de6d11e21dc57900c23ec6922dd75d71ea649e9dc39ba9989a",
+    "reports/memory_transport_20261029_protocol.md": "3fcb1ed8ece5a6465c2b912e83645c2b90a1306a9a299ba5e351728e659d0509"
+  },
+  "source_hashes_unchanged_after_execution": true,
+  "execution": {
+    "command": "python -B -m pytest -q tests/test_memory_transport_model_20261029.py -k \"actual_CUDA_field_initialize_short_complete_J_all_gradients\"",
+    "invocations": 1,
+    "started_at_utc": "2026-10-29T01:43:50.9402950Z",
+    "python_exit_code": 0,
+    "shell_exit_code": 0,
+    "shell_propagates_python_exit_code": true,
+    "process_command_wall_seconds": 18.0258403,
+    "pytest_reported_seconds": 14.51,
+    "tool_wait_wall_seconds": [
+      10.0077632,
+      0.6257162
+    ],
+    "passed": 3,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "deselected": 34,
+    "warnings": 0,
+    "pytest_summary": "3 passed, 34 deselected in 14.51s",
+    "stdout": "...                                                                      [100%]\r\n3 passed, 34 deselected in 14.51s\r\n",
+    "stderr": "",
+    "temporary_directory_scope": "workspace temporary directory via TMP/TEMP; no scientific setting changed"
+  },
+  "raw_output": {
+    "stdout_sha256": "088391eb33938f56e6983bd9c5f473cfdd037d223d659b37392873c64ae3a339",
+    "stdout_bytes": 116,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_bytes": 0,
+    "complete_original_retained_locally": true
+  },
+  "qualification_scope": {
+    "actual_cuda_required": true,
+    "actual_cuda_executed": true,
+    "no_CPU_substitution": true,
+    "variants": [
+      "A",
+      "S",
+      "P"
+    ],
+    "per_variant_artificial_cpu_cuda_pair_pass": {
+      "A": true,
+      "S": true,
+      "P": true
+    },
+    "fixed_artificial_Helmert_plane": true,
+    "compared_outputs": [
+      "field",
+      "initialize",
+      "short_RK4",
+      "complete_J",
+      "all_raw_parameter_gradients"
+    ],
+    "all_raw_parameter_gradients_finite": true,
+    "atol": 1e-10,
+    "rtol": 1e-8,
+    "CPU34_deselected_not_rerun": true,
+    "skipped_cases_are_not_passes": true
+  },
+  "actual_scope": {
+    "real_A96_source_opened": false,
+    "actual_source_eigh_calls": 0,
+    "real_event_reads": 0,
+    "endpoint_reads": 0,
+    "performance_12x8_executed": false,
+    "optimizer_calls": 0,
+    "study_or_native_loop_invocations": 0,
+    "new_native_jobs": 0,
+    "timers_created": 0,
+    "repairs": 0,
+    "retries": 0,
+    "original_val_read": false,
+    "original_test_read": false
+  },
+  "training_admission": false,
+  "execution_release": false,
+  "interpretation": "Actual CUDA artificial CPU/CUDA pairing only. Does not replace actual-source full scientific numerical qualification, 12x8 forward/back cost measurement, optimizer recovery QA or formal release.",
+  "files_changed": [
+    "results/memory_transport_20261029/model_cuda_qualification.json"
+  ]
+}
