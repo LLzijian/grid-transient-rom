@@ -93,16 +93,21 @@ class ExecutionGuards(unittest.TestCase):
             profile=sgm/'study/A_28311/fit000096/state_gated_profile.json';write(profile,{})
             plane=root/'source_plane01/result.json';public=root/'source_plane_public.json'
             qualified={str(root/'CPU.json'):'c'*64,str(root/'CUDA.json'):'d'*64}
-            with patch.multiple(execution,BASE=base,DOCUMENTS=(),RELEASE_RECORD=root/'release.json'), \
+            parent=root/'closed_execution'
+            records={parent/'binding.json':dict(files={str(profile):'f'*64}),
+                sgm/'qualification/R_N_fit297/evidence.json':dict(prediction_files=[]),
+                sgm/'study/A_28311/fit000096/evidence.json':dict(prediction_files=[])}
+            with patch.multiple(execution,BASE=base,PARENT=parent,DOCUMENTS=(),RELEASE_RECORD=root/'release.json'), \
                     patch.object(execution,'require_release'),patch.object(execution,'check_locks'), \
                     patch.object(execution,'source_closure',return_value=[]),patch.object(execution,'sha',return_value='f'*64), \
-                    patch.object(execution,'read',return_value={'prediction_files':[]}), \
+                    patch.object(execution,'read',side_effect=lambda path:records[Path(path)]), \
                     patch.object(execution,'fixed_evidence',return_value=qualified), \
                     patch.object(execution,'parent_proof',return_value=({'files':[]},{'synthetic_closed':True})), \
                     patch.multiple(study,SOURCE=root/'source',SOURCE_SHA={'model.json':'b'*64},SGM=sgm,EVIDENCE_SHA={},PLANE=plane,PLANE_PUBLIC=public), \
                     patch.object(study,'source_identity') as identity:
                 binding=execution.freeze('a'*40,base)
             self.assertEqual(binding['files'][str(plane)],study.PLANE_SHA)
+            self.assertEqual(binding['files'][str(profile)],'f'*64)
             for name,digest in qualified.items():self.assertEqual(binding['files'][name],digest)
             self.assertEqual(binding['source_eigh_calls_this_loop'],0)
             self.assertEqual(binding['NNLS_calls'],0)

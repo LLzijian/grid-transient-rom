@@ -37,3 +37,15 @@ root应在纯guard检查通过、精确四文件及本审查归档核远端、�
 | tests/test_memory_transport_execution_20261029.py | `d846e518bcf5d180798f7dacbc1e4a29c8650d8729dc23a5ad2cba7acd2c81af` |
 
 除本报告未写其他文件。本次有界独立实现审查结束，root保留科学与释放权。
+
+## 首轮guard失败后两处fixture的局部复核
+
+2026-10-29，实际 `gpt-6.1-sol`。root报告首轮实际guard为25 PASS/2 FAIL，两个fixture接口问题使原目标断言未到达；失败已归档 `1a50cd222b3d49a90b3175e52fd6c712a7b85b37`。本次仅只读下列fixture修订，没有运行复查，也没有把原失败改判为已通过。
+
+**局部PASS：两处为stub接口修正，原断言及生产门未弱化。** study test:192只把Windows路径匹配统一成 `Path(path).as_posix().endswith('qa/summary.json')`；:211–213仍要求仅主种子三组、128失败不得由好256救回，以及报告使用新loader。fake返回QA摘要的分支现在可正确匹配Windows路径，未改科学比较输入或预期。
+
+execution test:96–107增加独立fake closed_execution parent，read用严格 `records[Path(path)]` 映射：只提供parent binding.files中的原profile哈希和两份空prediction_files旧evidence，未知路径仍KeyError。生产freeze的profile哈希查找/比较路径未被替换，既有合成sha stub范围不变；新增:110断言新binding保留该profile哈希。原plane、CPU/CUDA记录、无新eigh/NNLS/数学suite断言均保留。这验证合成接口传递，不冒充真实源哈希或metadata冻结已通过。
+
+实际新test SHA256：study `0bd70750950d4a13dc0ce87bb95b055dedc1fb6e839e513afc2e555e02157e40`；execution `d31ebe64afdab8a69e3cb40604ce66ea0a2dd1f6f17bd33f4f69a54382e4205f`。两生产源码实核仍为原 `1cb35ae27317a3ecf4b852895e6eb8564e5517d9b9cb75e14231dcfde16e252f` / `11292e42ef5456afb61ce3b07c43463d740c55704227a57da89c6a98aed91458`，没有代码、门或科学参数修订。
+
+旧25/2、初版SHA和原审查保留。root可在既定授权内决定同27项的一次复查，结果使用新artifact，不能覆盖首失败；本局部PASS不等于复查PASS或真实执行释放。未读私有数据、运行测试/编译或新增计算。

@@ -189,7 +189,7 @@ class StudyGuards(unittest.TestCase):
         fit, all_events = [dict(id='fit')], [dict(id='fit'), dict(id='held')]
         writes = {}
         fake_sgm = types.SimpleNamespace(valid=lambda p: p.get('valid', False))
-        fake_sgm.read = lambda path: (dict(eligible_variants=list(study.VARIANTS)) if str(path).endswith('qa/summary.json')
+        fake_sgm.read = lambda path: (dict(eligible_variants=list(study.VARIANTS)) if Path(path).as_posix().endswith('qa/summary.json')
             else dict(R_N_profile=good['R_N'], A96_profile=profile()))
         fake_sgm.write = lambda path, value, **kw: writes.__setitem__(Path(path).name, value)
         fake_sgm.evaluate = Mock()
