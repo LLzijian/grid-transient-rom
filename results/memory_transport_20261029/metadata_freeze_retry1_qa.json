@@ -1,0 +1,108 @@
+{
+  "schema": "memory_transport_metadata_freeze_retry1_qa_v1",
+  "status": "PASS_METADATA_FREEZE_RETRY1_ONLY",
+  "source_commit": "181d7f8bba2eb530a0ad5afe0130035755e974a2",
+  "execution": {
+    "command": "python -B experiments/memory_transport_execution_20261029.py freeze --source-commit 181d7f8bba2eb530a0ad5afe0130035755e974a2",
+    "invocations_this_authorization": 1,
+    "started_at_utc": "2026-10-29T09:19:30.3595458Z",
+    "python_exit_code": 0,
+    "shell_exit_code": 0,
+    "shell_propagates_python_exit_code": true,
+    "process_command_wall_seconds": 7.5319794,
+    "tool_wall_seconds": 8.0917546,
+    "stdout": "",
+    "stderr": "",
+    "raw_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "raw_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "raw_stdout_bytes": 0,
+    "raw_stderr_bytes": 0,
+    "raw_output_retained_locally": true,
+    "cost_scope": "Only this metadata freeze command wall time. No native Job or Job CPU measured."
+  },
+  "binding_sha256": "edc9863941d2febae32bb799b85fa9969c84e50f511cdb13ed3ce57fd95768f8",
+  "binding_file_count": 181,
+  "public_source_files_matching_current_rows_and_binding": 100,
+  "protected_source_metadata_unchanged": true,
+  "original_evidence_preserved": {
+    "old_binding_sha256": "67c9a2a10baf84c3274bd6152f21cb1915de3361befa0b8e311fc03bfd103832",
+    "first_failure_sha256": "8e9e9306690a84baca480c3765595dc463ad650aa34f860e70cf73f7232ce14c",
+    "old_source_verification_sha256": "17c6599ee25b656f2780856bdaf1bec11ec8689e2695e83e2f183c0fdf41a2b6",
+    "old_metadata_freeze_qa_sha256": "ec75e247f7a5190a5db7682c3b4fb271df6bff69b938e5cfeab28b9e4667a526"
+  },
+  "lock_proofs": {
+    "retained_training_lock": {
+      "lock_sha256": "f9d72f0d5fccd8b5349907d69299aad543aa9b936f3e016971a7e24acd57c3e4",
+      "recovery_sha256": "e53d9b82c8a19d5a3899cbd04682a298f16874bce27215e18d2b297e654e709a",
+      "historical_owner_states": {
+        "supervisor": "GONE",
+        "worker": "GONE"
+      },
+      "current_owner_states_observed_during_freeze": {
+        "supervisor": "GONE",
+        "worker": "REUSED_PID"
+      },
+      "reused_process_touched": false,
+      "measured_old_job_accounting_claimed": false
+    },
+    "retained_r_memory_lock": {
+      "lock_sha256": "d764e2c272182acc6c54dda0a9edf1309c3475b1e79916305652b2adfeb123bf",
+      "recovery_sha256": "6ebbe0897f23530709f8acf67899414285ad3c865f05f1f6da0e92b9eb7865f2",
+      "historical_owner_states": {
+        "supervisor": "GONE",
+        "worker": "GONE"
+      },
+      "current_owner_states_observed_during_freeze": {
+        "supervisor": "REUSED_PID",
+        "worker": "GONE"
+      },
+      "reused_process_touched": false,
+      "measured_old_job_accounting_claimed": false
+    }
+  },
+  "identity_proof_scope": "Only the exact recorded historical identities are absent. No measured historical Job cleanup or cost is inferred.",
+  "same_scientific_optimizer_upper_bound": 1848,
+  "no_budget_reset": true,
+  "prelaunch_retry_ordinal": 1,
+  "source_plane_previously_consumed": 1,
+  "source_eigh_calls_this_loop": 0,
+  "original_prelaunch_native_jobs": 0,
+  "original_optimizer_calls_spent": 0,
+  "runtime": {
+    "proof_reached": true,
+    "retained_file_count": 15,
+    "prior_closed_parent_digests_reused": true,
+    "new_large_binary_scan": false,
+    "new_native_probe": false
+  },
+  "parent_six_original_native_closures_validated": true,
+  "new_active_lock_present": false,
+  "old_base_active_lock_present": false,
+  "source_verification_candidate": {
+    "path": "results/memory_transport_20261029/source_verification_prelaunch_retry1.json",
+    "sha256": "b417d20ef77ab37f7ee01a53356153ffd20ee7c29653aa6e71be2c4e5e46a090",
+    "bytes": 30002,
+    "remote_verified": false
+  },
+  "actual_scope": {
+    "metadata_only": true,
+    "model_or_optimizer_state_loaded": false,
+    "actual_events_loaded": false,
+    "prediction_arrays_evaluated": false,
+    "actual_eigh_calls": 0,
+    "NNLS_calls": 0,
+    "qualify_calls": 0,
+    "performance_calls": 0,
+    "CUDA_calls": 0,
+    "optimizer_calls": 0,
+    "native_jobs_started": 0,
+    "run_calls": 0,
+    "timers_created": 0,
+    "automatic_retries": 0,
+    "original_val_read": false,
+    "original_test_read": false
+  },
+  "no_process_quotas": true,
+  "scientific_execution_started": false,
+  "next_action": "Stop. Root verifies this new binding and source candidate, archives the evidence, and must explicitly authorize the single actual retry run."
+}
