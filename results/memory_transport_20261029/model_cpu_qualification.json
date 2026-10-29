@@ -1,0 +1,102 @@
+{
+  "schema": "memory_transport_model_cpu_qualification_v1",
+  "status": "PASS_CPU_MATHEMATICAL_AND_FIXED_ARTIFICIAL_ONLY",
+  "source_archive_commit": "b854d85900339e47c2b7fa286f24b77ebed9af3a",
+  "archive_verification": "Parent reports revised model, tests and model review three remote blobs/head verified; executor checked four authorized local hashes before and after the single test run.",
+  "sources": {
+    "experiments/memory_transport_model_20261029.py": "c9040bd65026edd0939b6c1046e21205388ffe1d2d5d69752d67144416101494",
+    "tests/test_memory_transport_model_20261029.py": "0e043c1200aed9de6d11e21dc57900c23ec6922dd75d71ea649e9dc39ba9989a",
+    "reports/memory_transport_20261029_protocol.md": "3fcb1ed8ece5a6465c2b912e83645c2b90a1306a9a299ba5e351728e659d0509",
+    "reports/memory_transport_20261029_model_review.md": "969b65946abf31beec462cbd4f0cb139138a5d470d6efff1aee072e295586942"
+  },
+  "source_hashes_unchanged_after_execution": true,
+  "execution": {
+    "command": "python -B -m pytest -q tests/test_memory_transport_model_20261029.py -k \"not actual_CUDA_field_initialize_short_complete_J_all_gradients\"",
+    "invocations": 1,
+    "started_at_utc": "2026-10-29T01:32:50.9640370Z",
+    "python_exit_code": 0,
+    "shell_exit_code": 0,
+    "shell_propagates_python_exit_code": true,
+    "process_command_wall_seconds": 65.9792158,
+    "pytest_reported_seconds": 61.78,
+    "tool_wait_wall_seconds": [
+      10.0069816,
+      0.000008
+    ],
+    "passed": 34,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "deselected": 3,
+    "warnings": 1,
+    "pytest_summary": "34 passed, 3 deselected, 1 warning in 61.78s (0:01:01)",
+    "temporary_directory_scope": "workspace temporary directory via TMP/TEMP; no scientific setting changed"
+  },
+  "outputs": {
+    "raw_stdout": {
+      "sha256": "afef9476e8e154736a05d7e5f4a082a0e15e5269e38680555cc188b1b8525746",
+      "bytes": 818,
+      "retained_locally": true
+    },
+    "raw_stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "retained_locally": true
+    },
+    "raw_stdout_not_embedded_reason": "Pytest warning prints local absolute paths; complete original retained locally and referenced by raw hash.",
+    "warning": "A test assertion converts a gradient-enabled tensor to scalar when checking the dissipative operator eigenvalue. PyTorch reports a UserWarning; the test passed. No code was modified."
+  },
+  "qualification_scope": {
+    "variants": [
+      "A",
+      "S",
+      "P"
+    ],
+    "artificial_mass": "fixed M3 fixture",
+    "plane": "first two fixed Helmert columns; artificial plane-selection outputs mocked",
+    "mathematical_checks": [
+      "nonzero operator decomposition, power and linear generator",
+      "negative-time history reference and causal prior at registered main/reference steps",
+      "translation and simultaneous machine/plane permutation",
+      "raw-coordinate and causal-history finite differences",
+      "legal zero damping one-sided derivative",
+      "exact zero embedding, export and restoration",
+      "cached/uncached operators, all gradients and lifecycle",
+      "fixed known-ROM causal future classical RK4 against DOP853",
+      "mocked single spectral call cutoff and internal double root",
+      "boundary/corrupt-plane/layout refusal",
+      "fine history may compute but cannot export or restore as training checkpoint",
+      "complete objective cache equivalence and all gradients"
+    ],
+    "per_variant_cpu_suite_passed": {
+      "A": true,
+      "S": true,
+      "P": true
+    },
+    "explicitly_excluded": "actual_CUDA_field_initialize_short_complete_J_all_gradients[A/S/P]",
+    "cuda_exclusions_are_not_passes": true
+  },
+  "actual_scope": {
+    "real_A96_source_opened": false,
+    "actual_source_eigh_calls": 0,
+    "real_event_reads": 0,
+    "endpoint_reads": 0,
+    "cuda_checks_executed": 0,
+    "cuda_initialization_or_computation": false,
+    "performance_12x8_executed": false,
+    "optimizer_calls": 0,
+    "study_or_native_loop_invocations": 0,
+    "new_native_jobs": 0,
+    "timers_created": 0,
+    "repairs": 0,
+    "retries": 0,
+    "original_val_read": false,
+    "original_test_read": false
+  },
+  "training_admission": false,
+  "execution_release": false,
+  "interpretation": "Only the registered CPU mathematical and fixed artificial tests executed once. Actual-source plane preparation, real CPU/CUDA pairing, full scientific numerical qualification, optimizer recovery QA and formal training remain unexecuted and require separate root authorization.",
+  "files_changed": [
+    "results/memory_transport_20261029/model_cpu_qualification.json"
+  ]
+}
