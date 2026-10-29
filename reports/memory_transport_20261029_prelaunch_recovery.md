@@ -1,0 +1,23 @@
+# memory_transport_20261029：首次启动前的身份恢复
+
+实际设计模型：gpt-6-astra，子代理 astra_prelaunch_identity_recovery。root采纳日期2026-10-29。本记录是原科学轮的前瞻性工程修复登记，不改变[原协议](memory_transport_20261029_protocol.md)的模型、数据、指标、1848次optimizer类别、种子或延长条件。
+
+首次run源c5707e4fb677eb0cb64ba378e59196c5b89b58db在prepare原生启动前exit1，没有Job、真实评估、性能、QA、optimizer、ownership或新活动锁。原binding SHA67c9a2a10baf84c3274bd6152f21cb1915de3361befa0b8e311fc03bfd103832、首失败SHA8e9e9306690a84baca480c3765595dc463ad650aa34f860e70cf73f7232ce14c保全，已推验6a00a600889939a291b88791c05802a8fc89916a。旧training_efficiency锁SHAf9d72f0d5fccd8b5349907d69299aad543aa9b936f3e016971a7e24acd57c3e4、恢复记录SHAe53d9b82c8a19d5a3899cbd04682a298f16874bce27215e18d2b297e654e709a未变；当前supervisor GONE、worker REUSED_PID，原完整身份不存在，现复用进程不是原任务。[独立身份核查](memory_transport_20261029_prelaunch_identity_review.md)只支持该精确证据下的身份判断，不证明旧Job完整成本或全部子树曾清理。
+
+## Astra实际返回方案
+
+建议采用一次前瞻性工程恢复，条件是root核实首次失败确实发生在任何Job、科学计算及优化更新之前。
+
+1. 仅修改新controller及对应测试。新增本地retained_training_lock_proof：保留旧函数的唯一绝对路径、锁SHA、历史恢复状态、lock_preserved、两组严格整数PID／完整FILETIME、历史GONE核验；另固定恢复SHA。当前只接受真实identity_state返回的GONE或REUSED_PID，原样记录；异常、未知及RUNNING均拒绝，不将REUSED_PID映射成GONE。
+2. 新check_locks显式复现weak、SGM、FG限定目录与当前锁、P1 native_active.lock及全部子目录active.lock、FG retained r-memory锁的原严格核验。仅training_efficiency唯一历史锁调用新证明；其余和当前所有权规则保持。避免旧模块修改或运行时替换旧函数，独立审查逐项核覆盖。
+3. 原study01整目录原位保留，固定旧binding、首次exit1及源码。唯一新目录study01_prelaunch_retry1，全部入口拒旧目录。恢复授权关联旧binding、失败、修复审查和新提交；新freeze排他并写关联，累计1848；重复freeze、其他目录、第二次重试拒绝，不改称第一次冻结。
+4. 最小测试涵盖两允许状态真实记录、其他状态/异常拒绝；路径/两SHA/历史与身份篡改拒绝；其他历史锁和三父当前锁拒绝；新锁完整所有权；旧目录/重复冻结/无恢复授权拒绝；合成重试五阶段。数学资格和plane不重跑。
+5. 独立审查覆盖、零科学消耗、不可覆盖后root释放。先归档核远端，后一次新源冻结和一次run。成本累计，失败保留并停止该重试，不自动递归恢复。
+
+## Root采纳与有限边界
+
+采纳上述方案。旧training_efficiency原helper及全部旧源码、锁、历史恢复记录不改；FG retained r-memory仍沿原严格规则，不能把本次例外扩成通用跳过历史锁。新controller仅复现已有检查与明确的这一处身份语义，所有真实状态据实保存，不操作被复用PID。原study01不覆盖、改名或继续执行；新study01_prelaunch_retry1关联同一科学额度，原1848未消耗，不是新实验余额。原release077ca8767b915242c09084cbddd8ab51e6d780acd278700514517c8f2342049a保持，另由root生成恢复release后才能准入。
+
+6.1负责新controller及合成守卫定义，独立6.1审查精确diff和检查覆盖。纯守卫实际执行需root另行释放；已通过CPU34/CUDA3和原数学套件不重跑，源plane不重算，A96/R_N缓存复用。源归档和所有公开文件远端/冻结绑定一致后，允许一次新metadata freeze及一次run retry。一次重试若再失败，不自动重试或延长；保留分类和可用科学工作，root同次决定后续合法行动。没有进程数/时长/CPU额度。
+
+本记录本身不表示新增守卫、恢复freeze、数值资格、性能、恢复QA或训练已通过。原val/test关闭、TASK4暂停、新FOM0、default none、可用档案/候选前沿、科学采用门及独立挑战保持。
