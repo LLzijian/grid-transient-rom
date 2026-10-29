@@ -23,6 +23,8 @@ PARENT_SUMMARY_SHA='7e77c7f4140d0522a8bb8bd373a3d0a793bbcffeda3b867c0fab67cb821e
 PARENT_QUALIFICATION_SHA='a169a7e798b87ce244b0c45eb27b6ce75e38f55ed014e28382e71d918c113288'
 RELEASE_RECORD=ROOT/'results/weak_force_identification_20261029/execution_release.json'
 RELEASE_SHA='UNKNOWN'  # Root binds after actual review + parent public remote archival.
+FIXED_CPU_QA=('results/state_gated_memory_20261028/model_pre_freeze_qa.json',
+              'ee71648e4b9769ec253a717482db8f32624add1ad382e7a7e97b588c76ea384e')
 PHASES=('prepare','weak','qualify','qa','study','summary')
 OUTPUTS=dict(prepare='prepare.json',weak='weak/summary.json',qualify='qualification/summary.json',
              qa='qa/summary.json',study='study/summary.json',summary='summary.json')
@@ -51,6 +53,16 @@ def require_release():
     if value.get('parent_complete_sha256')!=PARENT_COMPLETE_SHA or value.get('optimizer_upper_bound')!=976:
         raise ValueError('root release parent identity or finite scientific allowance differs')
     return value
+
+
+def fixed_cpu_qualification():
+    path=ROOT/FIXED_CPU_QA[0]
+    if sha(path)!=FIXED_CPU_QA[1]:raise ValueError('frozen original CPU mathematical qualification changed')
+    record=read(path)
+    if (record.get('shared_checks_qualified') is not True or record.get('per_variant_qualified',{}).get('A') is not True
+            or record.get('training_admission') is not False):
+        raise ValueError('original CPU-only mathematical evidence must not grant training admission')
+    return {str(path):FIXED_CPU_QA[1]}
 
 
 def parent_proof(files,*,state=None):
@@ -99,6 +111,7 @@ def freeze(source_commit,base=BASE):
     from experiments import weak_force_study_20261029 as study
     paths=source_closure(ROOT,SOURCE_ROOTS)+[ROOT/p for p in DOCUMENTS]+[RELEASE_RECORD]
     files={str(p.resolve()):sha(p) for p in paths}
+    files.update(fixed_cpu_qualification())
     for name,digest in study.SOURCE_SHA.items():
         path=study.SOURCE/name
         if sha(path)!=digest:raise ValueError('frozen A96 asset changed')
@@ -129,6 +142,8 @@ def check_binding(binding,base=BASE):
     if binding.get('base')!=str(base) or binding.get('release_sha256')!=RELEASE_SHA or binding.get('optimizer_call_upper_bound')!=976 or binding.get('category_limits')!=study.LIMITS or binding.get('no_process_quotas') is not True:
         raise ValueError('current finite root-reviewed binding required')
     commit_id(binding['source_commit']);job.verify_files(binding['files'])
+    for name,digest in fixed_cpu_qualification().items():
+        if binding['files'].get(name)!=digest:raise ValueError('old CPU qualification missing from current binding')
     command=python_command([])
     if any(command.get(k)!=v for k,v in binding['runtime']['command'].items()):raise ValueError('runtime command changed')
     return command
@@ -137,6 +152,80 @@ def check_binding(binding,base=BASE):
 def clean_receipt(value,source_commit,phase):
     from experiments import state_gated_memory_execution_20261028 as sgm
     return sgm.clean_receipt(value,source_commit,phase)
+
+
+def cross_model_evidence(base,result):
+    """Revalidate the D0/A96 evidence itself, not just its summary boolean."""
+    path=(base/'qualification/D_A96_compatibility.json').resolve()
+    link=result.get('D_A96_compatibility',{})
+    if (result.get('D_A96_compatibility_qualified') is not True or link.get('path')!=str(path)
+            or link.get('sha256')!=sha(path)):
+        raise ValueError('D0/A96 exact path/hash and explicit qualification required')
+    value=read(path);prepared=read(base/'prepare.json');ids=prepared.get('fit_ids',[])
+    from experiments import weak_force_study_20261029 as study
+    if (value.get('qualified') is not True or value.get('record_count')!=297
+            or len(ids)!=297 or len(set(ids))!=297 or value.get('event_ids')!=ids
+            or value.get('original_schema_aliases')!={'R_N':'frozen_A96','A':'current_D0'}
+            or value.get('source_evidence_sha256')!=study.EVIDENCE_SHA['study/A_28311/fit000096/evidence.json']
+            or value.get('source_A96_prediction_recomputed') is not False
+            or value.get('scope')!='A96_D0_fit297_bidirectional_RK4_fine005_base01_8s_actual15'
+            or value.get('bidirectional') is not True
+            or any(value.get(k)!=v for k,v in dict(history_rows=11,initial_observation_index=10,fine_dt=.005,output_dt=.01,coarse_stride=2).items())):
+        raise ValueError('D0/A96 registered identity/alignment/scope differs')
+    rows=value.get('rows',[])
+    if len(rows)!=297 or [r.get('event_id') for r in rows]!=ids:
+        raise ValueError('D0/A96 requires all unique registered fit297 rows')
+    from fixed_edge_pair_20261019 import scientific_qualification
+    from frequency_dissipation_20261021 import actual15_qualified
+    for row in rows:
+        n=row.get('actual_steps')
+        if type(n) is not int or not 1<=n<=1500 or row.get('qualified') is not True:
+            raise ValueError('D0/A96 genuine interval or row is unresolved')
+        for scope in ('8s','actual15'):
+            interval=row.get('intervals',{}).get(scope,{})
+            if (interval.get('qualified') is not True or interval.get('actual_output_steps')!=(800 if scope=='8s' else n)
+                    or interval.get('full_R_N_fine_finite') is not True or interval.get('full_A_fine_finite') is not True
+                    or any(not isinstance(interval.get(key),dict) for key in ('R_N_to_A_pair','A_to_R_N_pair'))
+                    or any(not isinstance(interval.get(key),list) for key in ('R_N_to_A_scored_numerics','A_to_R_N_scored_numerics'))
+                    or scope=='actual15' and any(not isinstance(interval.get(key),dict) for key in ('R_N_to_A_actual_interval','A_to_R_N_actual_interval'))):
+                raise ValueError('D0/A96 original bidirectional qualification/scope is incomplete')
+            for direction in ('R_N_to_A','A_to_R_N'):
+                pair=interval[direction+'_pair'];scored=interval[direction+'_scored_numerics']
+                if not scientific_qualification(pair,scored):
+                    raise ValueError('D0/A96 original bidirectional scoring gate failed')
+                if scope=='actual15' and not actual15_qualified(interval[direction+'_actual_interval'],pair):
+                    raise ValueError('D0/A96 original genuine-interval qualification failed')
+    return {str(path):sha(path)}
+
+
+def qa_evidence(base,result):
+    """Bind immutable QA projection while permitting later formal ledger growth."""
+    from experiments import weak_force_study_20261029 as study
+    models=result.get('models',[])
+    if (result.get('eligible_variants')!=['D','W'] or len(models)!=2
+            or sorted(r.get('variant','') for r in models)!=['D','W']
+            or any(r.get('status')!='PASS' or r.get('actual_optimizer_calls')!=36 for r in models)):
+        raise ValueError('unique D/W actual 36+36 QA required')
+    counts=study.counts(base)
+    if counts['categories']['qa']!={'attempted':72,'completed':72} or any(r['category']=='qa' for r in counts['pending']):
+        raise ValueError('actual QA ledger must close 72 attempts and 72 completions')
+    records=[json.loads(line) for line in (base/'optimizer_calls.jsonl').read_text(encoding='utf-8').splitlines()]
+    projection=[r for r in records if r['category']=='qa']
+    qa_positions=[j for j,r in enumerate(records) if r['category']=='qa']
+    if any(r['category']=='formal' and j<max(qa_positions) for j,r in enumerate(records)):
+        raise ValueError('formal optimizer call preceded completion of QA')
+    for variant in ('D','W'):
+        for label in ('continuous','restored'):
+            run=f'qa_{variant}_{label}';calls=[r for r in projection if r['run_id']==run]
+            for event in ('optimizer_step_attempt','optimizer_step_completed'):
+                if sorted(r['step'] for r in calls if r['event']==event)!=list(range(1,19)):
+                    raise ValueError('each D/W QA path must have actual steps 1..18')
+    if any(r['run_id'] not in {f'qa_{v}_{label}' for v in ('D','W') for label in ('continuous','restored')} for r in projection):
+        raise ValueError('unregistered QA trajectory')
+    path=(base/'qa/optimizer_projection.json').resolve();link=result.get('qa_journal_projection',{})
+    if link.get('path')!=str(path) or link.get('sha256')!=sha(path) or read(path)!=projection:
+        raise ValueError('immutable QA projection differs from actual QA journal')
+    return {str(path):sha(path)}
 
 
 def completed_phase(base,source_commit,phase):
@@ -151,15 +240,16 @@ def completed_phase(base,source_commit,phase):
     if complete.get('status')!='COMPLETED' or complete.get('source_commit')!=source_commit or complete.get('phase')!=phase or complete.get('scientific_output_sha256')!=sha(result_path):
         raise ValueError('phase completion/result differs')
     if result.get('val_read') is not False or result.get('test_read') is not False:raise ValueError('closed val/test must be explicit')
+    extra={}
     if phase=='qualify' and result.get('training_admission'):
         if result.get('eligible_variants')!=['D','W']:raise ValueError('no unpaired training admission')
         for v in ('D','W'):
             if any(result['per_variant'][v].get(k) is not True for k in ('cpu_qualified','cpu_cuda_pair_pass','finite_12x8_backward','fullfit297_qualified','training_admission')):
                 raise ValueError('D/W original numerical guard missing')
+        extra.update(cross_model_evidence(base,result['per_variant']['D']))
     if phase=='qa' and result.get('training_admission'):
-        if result.get('eligible_variants')!=['D','W'] or len(result.get('models',[]))!=2 or any(r.get('status')!='PASS' or r.get('actual_optimizer_calls')!=36 for r in result['models']):
-            raise ValueError('paired actual 36+36 QA required')
-    return {str(receipt_path):sha(receipt_path),str(result_path):sha(result_path)},result
+        extra.update(qa_evidence(base,result))
+    return {str(receipt_path):sha(receipt_path),str(result_path):sha(result_path),**extra},result
 
 
 def phase_inputs(base,source_commit,phase):

@@ -244,11 +244,19 @@ def qualify(base,device='cuda'):
                 old_evidence=sgm.read(PARENT/'study/A_28311/fit000096/evidence.json')
                 a=sgm._fine_cache(old_evidence,fit,prepared['fit_ids'])
                 d=sgm._fine_cache(evidence,fit,prepared['fit_ids'])
-                rows=[sgm._cross_event(model,e,a[e['id']],d[e['id']]) for e in fit]
+                byid={e['id']:e for e in fit}
+                rows=[sgm._cross_event(model,byid[eid],a[eid],d[eid]) for eid in prepared['fit_ids']]
                 cross=dict(qualified=len(rows)==297 and all(r['qualified'] for r in rows),
+                    record_count=len(rows),event_ids=list(prepared['fit_ids']),
+                    scope='A96_D0_fit297_bidirectional_RK4_fine005_base01_8s_actual15',
+                    bidirectional=True,history_rows=11,initial_observation_index=10,
+                    fine_dt=.005,output_dt=.01,coarse_stride=2,
                     original_schema_aliases=dict(R_N='frozen_A96',A='current_D0'),rows=rows,
                     source_A96_prediction_recomputed=False,source_evidence_sha256=EVIDENCE_SHA['study/A_28311/fit000096/evidence.json'])
                 sgm.write(output/'D_A96_compatibility.json',cross,exclusive=True)
+                row['D_A96_compatibility_qualified']=cross['qualified']
+                row['D_A96_compatibility']=dict(path=str((output/'D_A96_compatibility.json').resolve()),
+                                               sha256=sgm.sha(output/'D_A96_compatibility.json'))
                 if not cross['qualified']:raise ValueError('D0/A96 original bidirectional compatibility failed')
             m=build_model(variant,base,device);store=sgm.EventStore(selected,m.mass.device)
             sgm.synchronize(m.mass.device);tick=time.perf_counter()
@@ -311,8 +319,18 @@ def qa(base,device='cuda'):
         row['seconds']=time.perf_counter()-tick_variant
         sgm.write(folder/'result.json',row,exclusive=True);results.append(row)
     passed=len(results)==2 and all(r['status']=='PASS' for r in results)
+    # This immutable projection binds only QA calls. The append-only global ledger
+    # necessarily grows during formal training and must not become a frozen input.
+    records=[]
+    ledger=base/'optimizer_calls.jsonl'
+    if ledger.exists():
+        records=[json.loads(line) for line in ledger.read_text(encoding='utf-8').splitlines()]
+    projection=[r for r in records if r['category']=='qa']
+    sgm.write(output/'optimizer_projection.json',projection,exclusive=True)
     result=dict(status='COMPLETED' if passed else 'CANDIDATE_NOT_ADMITTED',models=results,
-        eligible_variants=list(VARIANTS) if passed else [],training_admission=passed,calls=counts(base),val_read=False,test_read=False)
+        eligible_variants=list(VARIANTS) if passed else [],training_admission=passed,calls=counts(base),
+        qa_journal_projection=dict(path=str((output/'optimizer_projection.json').resolve()),
+                                   sha256=sgm.sha(output/'optimizer_projection.json')),val_read=False,test_read=False)
     sgm.write(output/'summary.json',result,exclusive=True);return result
 
 

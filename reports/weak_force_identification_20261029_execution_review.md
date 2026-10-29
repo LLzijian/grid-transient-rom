@@ -39,3 +39,24 @@
 | tests/test_weak_force_execution_20261029.py | `ae9eaf8a369046e548a9c09e7d3d29a433b75261b9a80c2e266aa6380c14a536` |
 
 除本报告未改其他文件。待上述准入检查最小修订后，仅局部复核对应证据与最终SHA；在此之前不把当前实现标为真实事件执行PASS。
+
+## Q1/Q2/Q3冻结前局部复核
+
+2026-10-29，实际 `gpt-6.1-sol`。仅只读复核上述三项修订及相应测试定义，原发现与原始SHA保留。**局部PASS：原Q1/Q2/Q3均已解除，本次范围无剩余代码阻断。** 未运行任何检查或计算；这不是人工资格、真实NNLS、CUDA或QA72通过。release仍UNKNOWN，须由root完成纯检查、归档冻结及授权才进入正式loop。
+
+- **Q1**：execution:201–228核唯一D/W各一、宣称各36与真实qa attempted=completed72，四条实际QA轨迹各有1..18的attempt/completed，原call_id匹配仍由现有counts核。study:322–334保存独占QA投影及path/SHA；controller核该投影等于全局journal中的全部QA记录，并将其绑定到下一阶段。后续formal可以追加，不冻结仍需增长的全局账本；有formal早于QA结束则拒绝。部分QA没有训练准入，保留实际数量，不伪造72。
+- **Q2**：study:243–260按prepare的固定297顺序写cross身份、源evidence SHA、别名/对齐、qualification flag及path/SHA，继续复用原fine缓存。execution:157–198重核上述内容、297唯一ID、两范围步数/全部细子步finite声明，且对两个方向实际调用原scientific_qualification、actual15_qualified，而不是仅信summary。:244–249将cross作为配对qualify准入条件，返回哈希进入phase.inputs；没有新增来源预测。
+- **Q3**：execution:26–27、58–65固定旧CPU JSON的原SHA `ee71648e4b9769ec253a717482db8f32624add1ad382e7a7e97b588c76ea384e`，核shared/A合格且training_admission=false。:114写入新binding，:145–146每次核其实际哈希及在binding中存在，所以每个worker都绑定同一CPU-only证据。旧数学套件及失败记录未重解释。
+
+新增execution纯测试定义包含QA投影及后续formal增长、缺调用/提前formal、唯一D/W、cross缺失/重复ID/双向原门失败及旧CPU哈希/训练声明错误。这里只核定义，没有运行它们，也未因原core纯unit已通过而称这些新测试通过。
+
+作者停止后的实际SHA256：
+
+| 文件 | SHA256 |
+|---|---|
+| experiments/weak_force_study_20261029.py | `fcd59dc6e0d782f9851034f049e8303ba51f47754511ac845f92b766632c5ebd` |
+| experiments/weak_force_execution_20261029.py | `fe026b53102041432446f049ee6e1b92162ad9b6e58f0775a2608c536379ad8f` |
+| tests/test_weak_force_study_20261029.py | `ff1be267ad1451d8fe8b0bba5d9693d73db2d2068856145e83533ff24a35c53b` |
+| tests/test_weak_force_execution_20261029.py | `fdb019976e400cd2960c80958a0deba1792ca8bf4e88067b4084d21ea29ff9ee` |
+
+本次局部复核到此结束，原协议、source/core、数据权限及历史分类未改。正式loop只有一个固定人工资格入口的root约定继续有效。
