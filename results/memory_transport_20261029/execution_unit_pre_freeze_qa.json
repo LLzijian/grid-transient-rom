@@ -1,0 +1,96 @@
+{
+  "schema": "memory_transport_execution_unit_pre_freeze_qa_v1",
+  "status": "FAILED_PURE_GUARDS",
+  "source_archive_commit": "abd54c77b77f48c051c315477b652ceb77a47ade",
+  "independent_static_review_archive_commit": "149ef1a9e90af337f4a5f72b578c1744ecd8dbf8",
+  "sources": {
+    "experiments/memory_transport_study_20261029.py": "1cb35ae27317a3ecf4b852895e6eb8564e5517d9b9cb75e14231dcfde16e252f",
+    "experiments/memory_transport_execution_20261029.py": "11292e42ef5456afb61ce3b07c43463d740c55704227a57da89c6a98aed91458",
+    "tests/test_memory_transport_study_20261029.py": "756f894e44cad150fe25cba08ae18286c52c8912020dcd8bc37fc0d0fe1fcd2a",
+    "tests/test_memory_transport_execution_20261029.py": "d846e518bcf5d180798f7dacbc1e4a29c8650d8729dc23a5ad2cba7acd2c81af",
+    "reports/memory_transport_20261029_protocol.md": "3fcb1ed8ece5a6465c2b912e83645c2b90a1306a9a299ba5e351728e659d0509",
+    "reports/memory_transport_20261029_execution_review.md": "7ad14a5c531854c4b222847b7f914e541f97d101560cb9339d0277c0751dbd65"
+  },
+  "source_hashes_unchanged_after_execution": true,
+  "execution": {
+    "command": "python -B -m pytest -q tests/test_memory_transport_study_20261029.py tests/test_memory_transport_execution_20261029.py",
+    "invocations": 1,
+    "started_at_utc": "2026-10-29T02:58:04.0190448Z",
+    "python_exit_code": 1,
+    "shell_exit_code": 1,
+    "shell_propagates_python_exit_code": true,
+    "process_command_wall_seconds": 14.5417202,
+    "pytest_reported_seconds": 10.59,
+    "tool_wait_wall_seconds": [
+      10.0157221,
+      0.0000108
+    ],
+    "passed": 25,
+    "failed": 2,
+    "errors": 0,
+    "skipped": 0,
+    "deselected": 0,
+    "subtests_passed": 2,
+    "subtest_passes_not_counted_as_test_function_passes": true,
+    "pytest_summary": "2 failed, 25 passed, 2 subtests passed in 10.59s",
+    "temporary_directory_scope": "workspace temporary directory via TMP/TEMP"
+  },
+  "failures": [
+    {
+      "test": "tests/test_memory_transport_study_20261029.py::StudyGuards::test_common128_failure_cannot_be_rescued_by_a_good256_endpoint",
+      "exception": "KeyError: eligible_variants",
+      "location": "experiments/memory_transport_study_20261029.py:426",
+      "observed_fixture_issue": "The fake read dispatch matches a slash-containing suffix on str(WindowsPath); it returns the reference record rather than the fake QA record.",
+      "affected_guard_claim": "Common128-versus256 scenario did not reach its intended assertion."
+    },
+    {
+      "test": "tests/test_memory_transport_execution_20261029.py::ExecutionGuards::test_metadata_freeze_includes_plane_and_qualified_bytes_without_new_source_work",
+      "exception": "KeyError: files",
+      "location": "experiments/memory_transport_execution_20261029.py:106",
+      "observed_fixture_issue": "The fake read return contains prediction_files only, while the metadata freeze also requires the closed parent binding files mapping to check the frozen source profile.",
+      "affected_guard_claim": "Mock metadata binding scenario did not reach its intended binding assertions."
+    }
+  ],
+  "raw_output": {
+    "stdout": {
+      "sha256": "8bd3d27a5c66fa7a5511eda879d864c764396b001ebb4060bc294717805a267a",
+      "bytes": 7335,
+      "complete_original_retained_locally": true
+    },
+    "stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "complete_original_retained_locally": true
+    },
+    "not_embedded_reason": "Failure traceback includes local machine and temporary absolute paths; unaltered original is retained locally and referenced by raw hash."
+  },
+  "scope": {
+    "fake_profiles_and_journals_only": true,
+    "synthetic_loader_records_only": true,
+    "native_supervision_mocked": true,
+    "actual_source_plane_eigh_calls": 0,
+    "real_source_assets_loaded": 0,
+    "actual_event_reads": 0,
+    "CUDA_calls": 0,
+    "actual_performance_runs": 0,
+    "actual_optimizer_calls": 0,
+    "actual_Adam_calls": 0,
+    "new_native_jobs": 0,
+    "driver_runs": 0,
+    "actual_QA108_executed": false,
+    "repairs": 0,
+    "retries": 0,
+    "timers_created": 0,
+    "original_val_read": false,
+    "original_test_read": false
+  },
+  "interpretation": "Two test-fixture interface failures are preserved. They do not establish a numerical/scientific model failure or successful coverage of the two intended guard paths. No implementation, protocol or test was modified and no second execution was attempted.",
+  "release_status": "UNKNOWN",
+  "training_admission": false,
+  "metadata_freeze_authorized": false,
+  "scientific_loop_authorized": false,
+  "next_action": "Parent may review and separately authorize bounded fixture corrections and any rerun; executor stops.",
+  "files_changed": [
+    "results/memory_transport_20261029/execution_unit_pre_freeze_qa.json"
+  ]
+}
