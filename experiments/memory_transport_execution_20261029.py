@@ -4,7 +4,20 @@ import argparse,importlib,json,math,sys,time,traceback
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
 from experiments.r_memory_execution_20261025 import read,sha,write_new,commit_id,source_closure,python_command,typed_identity
-BASE=ROOT/'private_data/memory_transport_20261029/study01'
+from experiments import r_memory_execution_20261025 as legacy
+BASE=ROOT/'private_data/memory_transport_20261029/study01_prelaunch_retry1'
+OLD_BASE=ROOT/'private_data/memory_transport_20261029/study01'
+OLD_SOURCE_COMMIT='c5707e4fb677eb0cb64ba378e59196c5b89b58db'
+OLD_BINDING_SHA='67c9a2a10baf84c3274bd6152f21cb1915de3361befa0b8e311fc03bfd103832'
+FAILED_ATTEMPT_RECORD=ROOT/'results/memory_transport_20261029/execution_attempt01_public.json'
+FAILED_ATTEMPT_SHA='8e9e9306690a84baca480c3765595dc463ad650aa34f860e70cf73f7232ce14c'
+RECOVERY_RECORD=ROOT/'results/memory_transport_20261029/prelaunch_recovery_release.json'
+RECOVERY_SHA='UNKNOWN'
+RETAINED_TRAINING_LOCK=legacy.LEGACY_LOCK
+RETAINED_TRAINING_LOCK_SHA='f9d72f0d5fccd8b5349907d69299aad543aa9b936f3e016971a7e24acd57c3e4'
+RETAINED_TRAINING_RECOVERY=legacy.RECOVERY
+RETAINED_TRAINING_RECOVERY_SHA='e53d9b82c8a19d5a3899cbd04682a298f16874bce27215e18d2b297e654e709a'
+RETAINED_TRAINING_IDENTITIES=dict(legacy.LEGACY_IDENTITIES)
 PARENT=ROOT/'private_data/weak_force_identification_20261029/study01'
 PARENT_COMMIT='3b01f19055203734c370d32eba4cea8a0555f8d3'
 PARENT_COMPLETE_SHA='e834b61ee975192946f1fe8ecdaf1cdd9d4eaea0bc22b0f25a1ee3fe26e7c611'
@@ -15,13 +28,20 @@ OUTPUTS=dict(prepare='prepare.json',qualify='qualification/summary.json',qa='qa/
 STUDY_MODULE='experiments.memory_transport_study_20261029'
 SOURCE_ROOTS=('experiments/memory_transport_execution_20261029.py','experiments/memory_transport_study_20261029.py',
  'experiments/memory_transport_model_20261029.py','tests/test_memory_transport_model_20261029.py',
- 'tests/test_memory_transport_execution_20261029.py','tests/test_memory_transport_study_20261029.py')
+ 'tests/test_memory_transport_execution_20261029.py','tests/test_memory_transport_study_20261029.py',
+ 'tests/test_memory_transport_prelaunch_recovery_20261029.py')
 DOCUMENTS=('AGENTS.md','docs/engineering_loop.md','docs/research_execution_20261028.md',
  'reports/memory_transport_20261029_protocol.md','reports/astra6_force_structure_next_20261029.md',
  'reports/force_structure_next_20261029_challenge.md','reports/memory_transport_20261029_model_review.md',
  'reports/memory_transport_20261029_registration_review.md','reports/memory_transport_20261029_execution_review.md',
  'results/memory_transport_20261029/execution_unit_pre_freeze_qa.json',
- 'results/memory_transport_20261029/execution_unit_repaired_qa.json')
+ 'results/memory_transport_20261029/execution_unit_repaired_qa.json',
+ 'results/memory_transport_20261029/execution_attempt01_public.json',
+ 'reports/memory_transport_20261029_prelaunch_recovery.md',
+ 'reports/memory_transport_20261029_prelaunch_identity_review.md')
+RECOVERY_DOCUMENTS={'reports/memory_transport_20261029_prelaunch_recovery.md':'82820fabb3775b7aa57ef6ba4f0a5fe5201931ac300d3f63a8d70ce0e20457b8',
+ 'reports/memory_transport_20261029_prelaunch_identity_review.md':'ddc56560d7906173e4794695e9218bd46b3f30e0c935741aad5160d8334eef9f',
+ 'results/memory_transport_20261029/execution_attempt01_public.json':FAILED_ATTEMPT_SHA}
 FIXED_RECORDS={'experiments/memory_transport_model_20261029.py':'c9040bd65026edd0939b6c1046e21205388ffe1d2d5d69752d67144416101494',
  'tests/test_memory_transport_model_20261029.py':'0e043c1200aed9de6d11e21dc57900c23ec6922dd75d71ea649e9dc39ba9989a',
  'reports/memory_transport_20261029_protocol.md':'3fcb1ed8ece5a6465c2b912e83645c2b90a1306a9a299ba5e351728e659d0509',
@@ -31,7 +51,7 @@ FIXED_RECORDS={'experiments/memory_transport_model_20261029.py':'c9040bd65026edd
 
 def checked_base(base=BASE):
     base=Path(base).resolve()
-    if base!=BASE.resolve():raise ValueError('registered memory transport study01 only')
+    if base!=BASE.resolve():raise ValueError('only registered study01_prelaunch_retry1; original study01 stays preserved')
     return base
 
 
@@ -42,7 +62,74 @@ def require_release():
     if any(value.get(k) is not True for k in ('parent_remote_archival_verified','independent_implementation_review_passed','root_execution_authorized')):
         raise ValueError('actual archival/review/execution release incomplete')
     if value.get('parent_complete_sha256')!=PARENT_COMPLETE_SHA or value.get('optimizer_upper_bound')!=1848:raise ValueError('released parent/scope differs')
+    recovery_gate()
     return value
+
+
+def original_prelaunch_evidence():
+    """Protect the unsuccessful original metadata base; never run or overwrite it."""
+    if sha(OLD_BASE/'binding.json')!=OLD_BINDING_SHA or sha(FAILED_ATTEMPT_RECORD)!=FAILED_ATTEMPT_SHA:
+        raise ValueError('original prelaunch binding/failure evidence changed')
+    binding=read(OLD_BASE/'binding.json');attempt=read(FAILED_ATTEMPT_RECORD)
+    if (binding.get('source_commit')!=OLD_SOURCE_COMMIT or Path(binding.get('base','')).resolve()!=OLD_BASE.resolve()
+            or binding.get('optimizer_call_upper_bound')!=1848 or attempt.get('source_commit')!=OLD_SOURCE_COMMIT
+            or attempt.get('status')!='REJECTED_PRELAUNCH_LEGACY_IDENTITY'
+            or attempt.get('python_exit_code')!=1 or attempt.get('shell_exit_code')!=1
+            or attempt.get('execution_cost',{}).get('native_jobs_started')!=0
+            or attempt.get('binding',{}).get('sha256')!=OLD_BINDING_SHA):
+        raise ValueError('original source or zero-work prelaunch failure differs')
+    scope=attempt.get('actual_scientific_scope',{})
+    if (any(scope.get(k)!=0 for k in ('performance_attempts','actual_source_eigh_calls','NNLS_calls','real_optimizer_attempts','real_optimizer_completed','formal_training_runs','new_FOM_calls'))
+            or any(scope.get(k) is not False for k in ('prepare_executed','qualify_executed','original_val_read','original_test_read'))):
+        raise ValueError('original attempt must have zero scientific work; no budget reset')
+    forbidden=('active.lock','optimizer_calls.jsonl','ownership','native','prepare.json','schedule.json','qualification','qa','study','summary.json','complete.json')
+    if any((OLD_BASE/name).exists() for name in forbidden):raise ValueError('original base gained an owner/ledger/phase output; root reconciliation required')
+    return dict(old_source_commit=OLD_SOURCE_COMMIT,old_binding_sha256=OLD_BINDING_SHA,failed_attempt_sha256=FAILED_ATTEMPT_SHA,
+                original_base_preserved=True,native_jobs_started=0,optimizer_calls_spent=0,same_scientific_optimizer_upper_bound=1848)
+
+
+def recovery_gate():
+    if len(RECOVERY_SHA)!=64 or any(c not in '0123456789abcdef' for c in RECOVERY_SHA):
+        raise ValueError('prelaunch recovery release UNKNOWN; no executable entrance admitted')
+    if sha(RECOVERY_RECORD)!=RECOVERY_SHA:raise ValueError('immutable root recovery release changed')
+    record=read(RECOVERY_RECORD)
+    if any(record.get(k) is not True for k in ('root_recovery_authorized','independent_recovery_review_passed','old_base_preserved','one_prelaunch_retry')):
+        raise ValueError('root-adopted independent recovery release incomplete')
+    required=dict(original_execution_release_sha256=RELEASE_SHA,old_source_commit=OLD_SOURCE_COMMIT,
+        old_binding_sha256=OLD_BINDING_SHA,failed_attempt_sha256=FAILED_ATTEMPT_SHA,retry_base='study01_prelaunch_retry1',
+        optimizer_upper_bound=1848,optimizer_calls_spent=0,source_plane_previously_consumed=1,source_eigh_calls_this_loop=0,automatic_retry=False)
+    if any(record.get(k)!=v for k,v in required.items()):raise ValueError('recovery identity/scope differs; same1848 without reset')
+    evidence=record.get('evidence',{})
+    for name,digest in RECOVERY_DOCUMENTS.items():
+        if evidence.get(name)!=digest or sha(ROOT/name)!=digest:raise ValueError('fixed root recovery design/review/failure evidence differs')
+    original_prelaunch_evidence()
+    return record
+
+
+def retained_training_lock_proof(path=None,*,root=None,state=None):
+    """The sole reviewed training-efficiency exception; never fake GONE."""
+    root=Path(ROOT if root is None else root).resolve();expected_path=(root/RETAINED_TRAINING_LOCK).resolve()
+    path=expected_path if path is None else Path(path).resolve()
+    if path!=expected_path or sha(path)!=RETAINED_TRAINING_LOCK_SHA or sha(root/RETAINED_TRAINING_RECOVERY)!=RETAINED_TRAINING_RECOVERY_SHA:
+        raise ValueError('only exact retained training lock/recovery bytes may be excepted')
+    value=read(path);recovery=read(root/RETAINED_TRAINING_RECOVERY)
+    if recovery.get('status')!='INTERRUPTED_RUNTIME' or recovery.get('lock_sha256')!=RETAINED_TRAINING_LOCK_SHA or recovery.get('lock_preserved') is not True:
+        raise ValueError('original root interrupted/preserved record required')
+    if state is None:
+        from experiments.uncapped_windows_job_20261021 import identity_state
+        state=identity_state
+    identities={};historical={};current={}
+    for name,expected in RETAINED_TRAINING_IDENTITIES.items():
+        identity=typed_identity(value.get(name));recorded=recovery.get(name,{})
+        if ((identity['pid'],identity['creation_filetime_utc'])!=expected
+                or (recorded.get('pid'),recorded.get('creation_filetime_utc'),recorded.get('state'))!=(*expected,'GONE')):
+            raise ValueError('original typed identity/history GONE reconciliation differs')
+        now=state(identity)
+        if now not in ('GONE','REUSED_PID'):raise ValueError('retained old identity is live/unknown: '+str(now))
+        identities[name]=dict(identity);historical[name]='GONE';current[name]=now
+    return dict(path=str(path),lock_sha256=RETAINED_TRAINING_LOCK_SHA,recovery_sha256=RETAINED_TRAINING_RECOVERY_SHA,
+        recorded_owner_identities=identities,historical_owner_states=historical,current_owner_states=current,
+        basis='exact reviewed historical interruption; old identities absent',reused_process_touched=False,measured_old_job_accounting_claimed=False)
 
 
 def fixed_evidence():
@@ -79,21 +166,69 @@ def parent_proof(files,*,state=None):
         parent_optimizer_updates=0,parent_QA_executed=False)
 
 
-def check_locks(base=BASE,owned_identity=None):
-    from experiments import weak_force_execution_20261029 as old
-    checked_base(base);old.check_locks(PARENT);path=Path(base)/'active.lock'
+def _retained_fg_r_memory_proof(*,root,state):
+    """Unchanged FG retained r-memory checks: current state MUST be GONE."""
+    from experiments import force_graph_execution_20261028 as fg
+    old=root/fg.OLD/'active.lock';recovery=read(root/'results/r_memory_20261025/recovery_20261028.json')
+    if (sha(old)!=fg.OLD_LOCK_SHA or recovery.get('lock_sha256')!=fg.OLD_LOCK_SHA
+            or recovery.get('lock_preserved') is not True or recovery.get('status')!='INTERRUPTED_RUNTIME'):
+        raise ValueError('only exact retained interrupted r-memory lock is exempt')
+    value=read(old);owners={}
+    for name,expected in fg.OLD_IDENTITIES.items():
+        identity=typed_identity(value.get(name));recorded=recovery['owners'][name]
+        if ((identity['pid'],identity['creation_filetime_utc'])!=expected
+                or recorded['pid_decimal']!=str(expected[0]) or recorded['creation_filetime_utc_decimal']!=str(expected[1])
+                or recorded['identity_state']!='GONE' or state(identity)!='GONE'):
+            raise ValueError('FG retained owner changed/live/unknown/reused; its original GONE rule is unchanged')
+        owners[name]=dict(pid_decimal=str(expected[0]),creation_filetime_utc_decimal=str(expected[1]),state='GONE')
+    return dict(path=str(old),sha256=fg.OLD_LOCK_SHA,owners=owners,old_lock_preserved=True,old_JobCPU=None,
+                recovery_path=str(root/'results/r_memory_20261025/recovery_20261028.json'),
+                recovery_sha256=sha(root/'results/r_memory_20261025/recovery_20261028.json'))
+
+
+def check_locks(base=BASE,owned_identity=None,*,state=None):
+    from experiments import weak_force_execution_20261029 as weak
+    from experiments import state_gated_memory_execution_20261028 as sgm
+    from experiments import force_graph_execution_20261028 as fg
+    from experiments import uncapped_windows_job_20261021 as job
+    base=checked_base(base);root=ROOT.resolve();state=job.identity_state if state is None else state
+    # Explicitly retain all three historical controllers' base restrictions and
+    # unowned-current-lock rejection. No old function/global is patched.
+    parents=(weak.checked_base(PARENT),sgm.checked_base(weak.PARENT),fg.checked_base(sgm.PARENT))
+    for parent in parents:
+        if (parent/'active.lock').exists():raise ValueError('closed parent has unowned active lock: '+str(parent))
+    if (OLD_BASE/'active.lock').exists():raise ValueError('original failed base has an active lock')
+    p1=root/'private_data/closure_mechanism_20261019/P1'
+    paths=[p1/'rational_execution01/native_active.lock',*p1.glob('*/active.lock')];training=None
+    for candidate in dict.fromkeys(paths):
+        if candidate.exists():
+            if candidate.resolve()!=(root/RETAINED_TRAINING_LOCK).resolve():raise ValueError('unrelated P1 lock requires separate reconciliation: '+str(candidate))
+            training=retained_training_lock_proof(candidate,root=root,state=state)
+    if training is None:training=retained_training_lock_proof(root=root,state=state)
+    retained=_retained_fg_r_memory_proof(root=root,state=state)
+    path=base/'active.lock'
     if path.exists():
         actual=typed_identity(read(path).get('worker'))
         if owned_identity is None or any(actual[k]!=owned_identity[k] for k in ('pid','creation_filetime_utc')):raise ValueError('new native lock is not owned')
     elif owned_identity is not None:raise ValueError('owned worker requires actual native lock')
+    return dict(checked_parent_bases=[str(p) for p in parents],retained_training_lock=training,
+                retained_r_memory_lock=retained,new_active_lock_owned=owned_identity is not None)
 
 
 def freeze(source_commit,base=BASE):
     require_release();commit_id(source_commit);base=checked_base(base)
     if base.exists():raise FileExistsError('preserve sole source freeze and scientific outputs')
-    check_locks(base)
+    lock_proof=check_locks(base)
     from experiments import memory_transport_study_20261029 as study
-    files={str(p.resolve()):sha(p) for p in source_closure(ROOT,SOURCE_ROOTS)+[ROOT/n for n in DOCUMENTS]+[RELEASE_RECORD]};files.update(fixed_evidence())
+    recovery=recovery_gate()
+    files={str(p.resolve()):sha(p) for p in source_closure(ROOT,SOURCE_ROOTS)+[ROOT/n for n in DOCUMENTS]+[RELEASE_RECORD,RECOVERY_RECORD,OLD_BASE/'binding.json']};files.update(fixed_evidence())
+    for name,digest in recovery['evidence'].items():
+        path=(ROOT/name).resolve()
+        if not path.is_relative_to(ROOT.resolve()) or Path(name).is_absolute() or sha(path)!=digest:raise ValueError('recovery review/evidence path or bytes differ')
+        files[str(path)]=digest
+    for path in (ROOT/RETAINED_TRAINING_LOCK,ROOT/RETAINED_TRAINING_RECOVERY,
+                 Path(lock_proof['retained_r_memory_lock']['path']),Path(lock_proof['retained_r_memory_lock']['recovery_path'])):
+        files[str(path.resolve())]=sha(path)
     study.source_identity()
     for name,digest in study.SOURCE_SHA.items():files[str(study.SOURCE/name)]=digest
     files[str(study.PLANE)]=study.PLANE_SHA;files[str(study.PLANE_PUBLIC)]=study.PLANE_PUBLIC_SHA
@@ -111,7 +246,9 @@ def freeze(source_commit,base=BASE):
     files[str(profile)]=previous_profile_sha
     runtime,proof=parent_proof(files)
     binding=dict(source_commit=source_commit,base=str(base),files=files,runtime=runtime,parent_proof=proof,
-        release_sha256=RELEASE_SHA,no_process_quotas=True,optimizer_call_upper_bound=1848,category_limits=study.LIMITS,
+        release_sha256=RELEASE_SHA,recovery_release_sha256=RECOVERY_SHA,historical_locks=lock_proof,
+        original_prelaunch_evidence=original_prelaunch_evidence(),prelaunch_retry_ordinal=1,
+        same_scientific_round=True,no_budget_reset=True,no_process_quotas=True,optimizer_call_upper_bound=1848,category_limits=study.LIMITS,
         source_plane_previously_consumed=1,source_eigh_calls_this_loop=0,NNLS_calls=0,mathematical_suite_rerun=False,
         automatic_resume=False,project_val_test_accessed=False)
     base.mkdir(parents=True,exist_ok=False);write_new(base/'binding.json',binding);return binding
@@ -121,10 +258,13 @@ def check_binding(binding,base=BASE):
     require_release();base=checked_base(base)
     from experiments import uncapped_windows_job_20261021 as job
     from experiments import memory_transport_study_20261029 as study
-    if (binding.get('base')!=str(base) or binding.get('release_sha256')!=RELEASE_SHA or binding.get('optimizer_call_upper_bound')!=1848
+    if (binding.get('base')!=str(base) or binding.get('release_sha256')!=RELEASE_SHA or binding.get('recovery_release_sha256')!=RECOVERY_SHA
+            or binding.get('prelaunch_retry_ordinal')!=1 or binding.get('no_budget_reset') is not True or binding.get('optimizer_call_upper_bound')!=1848
             or binding.get('category_limits')!=study.LIMITS or binding.get('no_process_quotas') is not True
             or binding.get('source_eigh_calls_this_loop')!=0 or binding.get('NNLS_calls')!=0):raise ValueError('current finite reviewed binding required')
     commit_id(binding['source_commit']);job.verify_files(binding['files'])
+    if binding['files'].get(str(RECOVERY_RECORD.resolve()))!=RECOVERY_SHA or binding['files'].get(str((OLD_BASE/'binding.json').resolve()))!=OLD_BINDING_SHA:
+        raise ValueError('recovery record/original failed binding not preserved in current source')
     for name,digest in fixed_evidence().items():
         if binding['files'].get(name)!=digest:raise ValueError('required qualified bytes missing from native binding')
     command=python_command([])
