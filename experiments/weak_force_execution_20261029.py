@@ -81,11 +81,18 @@ def parent_proof(files,*,state=None):
     if binding['source_commit']!=PARENT_COMMIT:raise ValueError('parent source commit differs')
     if (PARENT/'active.lock').exists():raise ValueError('parent active lock still present')
     state=job.identity_state if state is None else state
-    receipt_hashes={}
+    receipt_hashes={};current_identities={}
     for phase in sgm.PHASES:
         paths,_=sgm._completed_phase(PARENT,PARENT_COMMIT,phase);files.update(paths)
         receipt_path=PARENT/'native'/phase/'receipt.json';receipt=sgm.clean_receipt(read(receipt_path),PARENT_COMMIT,phase)
-        if state(receipt['worker'])!='GONE':raise ValueError('parent owner is live/unknown/reused')
+        current_state=state(receipt['worker'])
+        # A reused numeric PID has a different creation time: it is not the
+        # recorded closed worker. Never act on that unrelated current process.
+        # Query errors propagate; all states other than these two remain refused.
+        if current_state not in ('GONE','REUSED_PID'):
+            raise ValueError('recorded parent owner is live or its identity is unresolved: '+str(current_state))
+        current_identities[phase]=dict(recorded_worker_identity=dict(receipt['worker']),
+                                      current_identity_state=current_state)
         receipt_hashes[phase]=sha(receipt_path)
     for name in ('complete.json','summary.json','qualification/summary.json','binding.json','prepare.json','schedule.json'):
         files[str(PARENT/name)]=sha(PARENT/name)
@@ -95,7 +102,8 @@ def parent_proof(files,*,state=None):
         if name not in binding['files']:raise ValueError('runtime not in proven parent binding')
         files[name]=binding['files'][name]
     return runtime,dict(parent_complete_sha256=PARENT_COMPLETE_SHA,parent_summary_sha256=PARENT_SUMMARY_SHA,
-                        five_parent_receipt_hashes=receipt_hashes,parent_source_commit=PARENT_COMMIT)
+                        five_parent_receipt_hashes=receipt_hashes,parent_source_commit=PARENT_COMMIT,
+                        current_parent_worker_identities=current_identities)
 
 
 def check_locks(base=BASE,owned_identity=None):

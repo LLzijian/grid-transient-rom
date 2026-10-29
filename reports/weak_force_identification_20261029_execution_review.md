@@ -60,3 +60,25 @@
 | tests/test_weak_force_execution_20261029.py | `fdb019976e400cd2960c80958a0deba1792ca8bf4e88067b4084d21ea29ff9ee` |
 
 本次局部复核到此结束，原协议、source/core、数据权限及历史分类未改。正式loop只有一个固定人工资格入口的root约定继续有效。
+
+## 独立工程挑战：已闭合父worker的PID复用
+
+2026-10-29，实际 `gpt-6.1-sol`。此次仅核身份函数与parent_proof源码，不探测进程、不读私有receipt、不运行。root传入事实为：父轮五个固定回执已核干净闭合、active=0、锁缺失，固定complete/summary/qualification哈希匹配；当前五个旧worker身份中四个GONE、QA为REUSED_PID；新base尚不存在，科学计算仍0。以下结论以这些已核事实和完整整数FILETIME身份为前提，不冒称本审查重新核了机器状态。
+
+**条件结论：仅在parent_proof的旧owner终止证明处允许GONE或REUSED_PID成立，可作最小工程修订。** `uncapped_windows_job_20261021.py:58–69` 以查询/同步权限打开PID，并先核GetProcessTimes的完整creation FILETIME；与旧身份不同才返回REUSED_PID。Windows同一时刻的PID不能同时标识两个活进程，所以这表示旧 `(pid,creation FILETIME)` 已终止、该数字现属于另一身份，而不是旧worker仍活着。此函数只查询、等待0毫秒及关闭自己的句柄，没有终止、分配Job或操作新进程的权限/调用。
+
+必要保留条件：`parent_proof:76–87` 的固定父轮哈希、source commit、父锁缺失、五个原干净receipt和source证据核对不变；`r_memory_execution_20261025.py:92–96,258–271` 先要求PID/FILETIME为正整数，并核历史actual_worker_state=GONE、cleanup_verified、active0及真实exit0，不把旧回执改写为当前REUSED_PID。不能传入字符串/截断FILETIME，仅凭PID或错误类型比较来判复用。
+
+最小修订是读一次 `owner_state=state(receipt['worker'])`，仅接受 `('GONE','REUSED_PID')`，其余返回值仍拒绝；OpenProcess/GetProcessTimes/Wait失败、ACCESS_DENIED等异常继续传播拒绝，实际函数的活态名称是RUNNING。当前QA身份已被不同FILETIME排除后，不得对该PID执行kill、等待其退出或将其认作旧Job成员；只用于旧owner证明。可在现有父proof中保留每phase当前状态以解释这次准入，不改历史回执。
+
+该放宽不能传播到共享identity_state、旧锁删除/reconcile、当前worker认领或runtime资格。`reconcile_lock:70–78` 的用途包含删除锁，与本次无锁、只读的父终态证明不同；本次不授权改它。新runtime复用检查尚未到达，允许旧owner已终止不代表runtime已合格。若固定闭合证据、类型或完整FILETIME前提缺失，REUSED_PID不能单独替代这些事实，应继续拒绝。
+
+本次所读helper SHA256 `551560fc332497c5f5580cac91c85877c444ebbf0f1886238b4110bf9a361cb3`；当前execution SHA `fb212edb843210829cebd5dedf9c718d9be19a0154a6d32bd45361c39d854fc5`（root绑定release后的版本，parent_proof:88仍为仅GONE）。原metadata freeze失败及stderr须保留，修订由root决定、重新归档核源后才重试；不改变科学协议、调用预算或任何历史科学分类。
+
+### PID复用修订的局部复核
+
+2026-10-29，实际 `gpt-6.1-sol`，只读原工程修订及新增回归定义。**局部PASS，无此次修订范围内残余项。** execution:85–96仍先委托原_completed_phase并调用真实clean_receipt，再查询一次原worker的完整身份，只接受GONE/REUSED_PID；查询异常没有吞掉，其余状态明确拒绝。逐phase保留完整旧worker身份、当前状态和旧receipt哈希。父锁、固定终态/source/回执以及之后runtime复用条件保持，没有操作复用PID的新进程。
+
+测试:136–187使用临时五phase合成schema，仅mock只读_completed_phase委托，仍调用真实clean_receipt；定义明确断言五次按原phase顺序委托，核GONE/QA复用的逐phase身份记录，并覆盖RUNNING/UNKNOWN/ACCESS_DENIED/ALIVE、查询异常、坏cleanup/active/exit/source与父锁存在的拒绝。这里只审查定义，没有运行回归或探测任何实际身份。helper仍为原SHA，未改锁逻辑、旧receipt或科学定义。
+
+实际新SHA256：execution `0409f7444fa59d880b01784181c3c2f30735d2776a2ec1f0ea589f035b1215e2`；tests/execution `ff5010dc59a0a010d5e57fe92ee90e239a9b8b23ca1e1737c42885abbe3b36ef`。原metadata freeze失败记录和前述工程挑战保留。本结论仅允许root按已定流程决定一次metadata retry，不声称该retry、runtime复用或任何科学资格已经通过。

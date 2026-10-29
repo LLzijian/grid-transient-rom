@@ -133,5 +133,58 @@ class ExecutionAdmission(unittest.TestCase):
         with patch.object(execution,'sha',return_value=execution.FIXED_CPU_QA[1]),patch.object(execution,'read',return_value=invalid):
             with self.assertRaises(ValueError):execution.fixed_cpu_qualification()
 
+    def test_closed_parent_identity_reuse_keeps_original_receipt_guards(self):
+        """Actual clean_receipt checks a finite five-phase synthetic parent.
+
+        Only the existing read-only _completed_phase delegation is mocked; no
+        Windows API, process, event, runtime probe or scientific work is started.
+        """
+        from experiments import state_gated_memory_execution_20261028 as sgm
+        from experiments.r_memory_execution_20261025 import LOGICAL_PYTHON
+        with tempfile.TemporaryDirectory() as folder:
+            parent=Path(folder)
+            for name,value in {'complete.json':dict(status='COMPLETED'),
+                'summary.json':dict(status='COMPLETED'),'qualification/summary.json':dict(status='COMPLETED'),
+                'binding.json':dict(source_commit=execution.PARENT_COMMIT,runtime=dict(files=[]),files={}),
+                'prepare.json':{},'schedule.json':{}}.items():
+                path=parent/name;path.parent.mkdir(parents=True,exist_ok=True)
+                path.write_text(json.dumps(value),encoding='utf-8')
+            receipts={}
+            for j,phase in enumerate(sgm.PHASES):
+                value=dict(source_commit=execution.PARENT_COMMIT,phase=phase,status='COMPLETED',
+                    cleanup_verified=True,orphans_cleaned=False,actual_worker_state='GONE',job_active_processes=0,
+                    exit_code=0,worker_exit_code=0,launcher_exit_code=0,
+                    source_before={'synthetic_immutable_source':'a'*64},source_after={'synthetic_immutable_source':'a'*64},
+                    worker=dict(pid=100+j,creation_filetime_utc=1000+j,logical_executable=str(LOGICAL_PYTHON)))
+                path=parent/'native'/phase/'receipt.json';path.parent.mkdir(parents=True)
+                path.write_text(json.dumps(value),encoding='utf-8');receipts[phase]=value
+            patches=dict(PARENT=parent,PARENT_COMPLETE_SHA=execution.sha(parent/'complete.json'),
+                PARENT_SUMMARY_SHA=execution.sha(parent/'summary.json'),
+                PARENT_QUALIFICATION_SHA=execution.sha(parent/'qualification/summary.json'))
+            with patch.multiple(execution,**patches),patch.object(sgm,'_completed_phase',return_value=({},{})) as completed:
+                for reused in (False,True):
+                    completed.reset_mock()
+                    states={100+j:('REUSED_PID' if reused and phase=='qa' else 'GONE') for j,phase in enumerate(sgm.PHASES)}
+                    _,proof=execution.parent_proof({},state=lambda identity:states[identity['pid']])
+                    self.assertEqual(completed.call_count,5)
+                    self.assertEqual([call.args[2] for call in completed.call_args_list],list(sgm.PHASES))
+                    for phase in sgm.PHASES:
+                        saved=proof['current_parent_worker_identities'][phase]
+                        self.assertEqual(saved['recorded_worker_identity'],receipts[phase]['worker'])
+                        self.assertEqual(saved['current_identity_state'],states[receipts[phase]['worker']['pid']])
+                        self.assertEqual(proof['five_parent_receipt_hashes'][phase],execution.sha(parent/'native'/phase/'receipt.json'))
+                for refused in ('RUNNING','UNKNOWN','ACCESS_DENIED','ALIVE'):
+                    with self.assertRaises(ValueError):execution.parent_proof({},state=lambda identity:refused)
+                def unavailable(identity):raise OSError('synthetic identity query denied')
+                with self.assertRaises(OSError):execution.parent_proof({},state=unavailable)
+                # Reused PID cannot bypass any original native closure condition.
+                first=sgm.PHASES[0];path=parent/'native'/first/'receipt.json'
+                for key,value in (('cleanup_verified',False),('job_active_processes',1),('worker_exit_code',1),('source_commit','b'*40)):
+                    broken=dict(receipts[first]);broken[key]=value;path.write_text(json.dumps(broken),encoding='utf-8')
+                    with self.assertRaises(ValueError):execution.parent_proof({},state=lambda identity:'REUSED_PID')
+                path.write_text(json.dumps(receipts[first]),encoding='utf-8')
+                (parent/'active.lock').write_text('{}',encoding='utf-8')
+                with self.assertRaises(ValueError):execution.parent_proof({},state=lambda identity:'REUSED_PID')
+
 
 if __name__=='__main__':unittest.main()
