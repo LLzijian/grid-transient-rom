@@ -1,0 +1,79 @@
+{
+  "schema": "weak_force_metadata_identity_regression_qa_v1",
+  "status": "PASS_GUARDS_ONLY",
+  "source_archive_commit": "a0624e52e8586988ae2eea1eb61909268338ae9a",
+  "remote_archive_verification": "Parent reports four selected blobs and branch head verified; executor checked the authorized two local source hashes before and after this single execution.",
+  "source_hashes": {
+    "experiments/weak_force_execution_20261029.py": "0409f7444fa59d880b01784181c3c2f30735d2776a2ec1f0ea589f035b1215e2",
+    "tests/test_weak_force_execution_20261029.py": "ff5010dc59a0a010d5e57fe92ee90e239a9b8b23ca1e1737c42885abbe3b36ef"
+  },
+  "source_hashes_unchanged_after_execution": true,
+  "execution": {
+    "command": "python -B tests/test_weak_force_execution_20261029.py",
+    "invocations": 1,
+    "started_at_utc": "2026-10-29T00:23:20.3726914Z",
+    "python_exit_code": 0,
+    "shell_exit_code": 0,
+    "shell_propagates_python_exit_code": true,
+    "tests_run": 8,
+    "unittest_reported_seconds": 9.955,
+    "process_command_wall_seconds": 12.8460472,
+    "tool_call_wall_seconds": [
+      10.014198,
+      0.000012
+    ],
+    "stdout": "",
+    "stderr": "........\r\n----------------------------------------------------------------------\r\nRan 8 tests in 9.955s\r\n\r\nOK\r\n",
+    "interpreter": "registered direct-base interpreter with known GPU venv packages; CPU only"
+  },
+  "regression_scope": {
+    "synthetic_parent_only": true,
+    "actual_clean_receipt_validator_exercised": true,
+    "completed_phase_delegation_mocked": true,
+    "all_five_synthetic_phases_checked": true,
+    "accepted_synthetic_identity_states": [
+      "GONE",
+      "REUSED_PID"
+    ],
+    "proof_retains_recorded_identity_and_current_state": true,
+    "refused_synthetic_states": [
+      "RUNNING",
+      "UNKNOWN",
+      "ACCESS_DENIED",
+      "ALIVE"
+    ],
+    "identity_query_exception_propagates": true,
+    "invalid_original_closure_still_refused": [
+      "cleanup_verified false",
+      "active Job member",
+      "worker exit nonzero",
+      "source commit mismatch",
+      "active parent lock"
+    ],
+    "existing_seven_guard_tests_also_passed": true
+  },
+  "scientific_scope": {
+    "source_model_changed": false,
+    "scientific_gates_changed": false,
+    "optimizer_upper_bound": 976,
+    "real_nnls_calls": 0,
+    "optimizer_calls": 0,
+    "cuda_calls": 0,
+    "actual_event_reads": 0,
+    "actual_endpoint_reads": 0,
+    "fixed_fixture_executions": 0,
+    "freeze_executions": 0,
+    "native_jobs_started": 0,
+    "actual_process_identity_api_queries": 0,
+    "actual_QA72_executed": false,
+    "study_tests_rerun": false,
+    "core_tests_rerun": false,
+    "repairs": 0,
+    "retries": 0,
+    "timers_created": 0
+  },
+  "interpretation": "Pure regression PASS only. Prior metadata freeze failure remains retained; no second freeze or scientific run is authorized by this result. Root must refresh release and source binding, verify the remote source, and explicitly authorize any metadata retry.",
+  "files_changed": [
+    "results/weak_force_identification_20261029/metadata_identity_regression_qa.json"
+  ]
+}

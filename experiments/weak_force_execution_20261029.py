@@ -22,7 +22,7 @@ PARENT_COMPLETE_SHA='dc10355064f293f4b05eb26f92429317c4d6038ebe4f94159d146bb62bc
 PARENT_SUMMARY_SHA='7e77c7f4140d0522a8bb8bd373a3d0a793bbcffeda3b867c0fab67cb821eb525'
 PARENT_QUALIFICATION_SHA='a169a7e798b87ce244b0c45eb27b6ce75e38f55ed014e28382e71d918c113288'
 RELEASE_RECORD=ROOT/'results/weak_force_identification_20261029/execution_release.json'
-RELEASE_SHA='2cf56c1e104e74afbd76542c68f72d786f25a43e891fcfe50221b324dc29507f'  # Root release; final remote source verification required.
+RELEASE_SHA='e90e3c4e1ed3f95690ba569df0d2c7def90d624a2387d265ffd23b46653b7b81'  # Root release; final remote source verification required.
 FIXED_CPU_QA=('results/state_gated_memory_20261028/model_pre_freeze_qa.json',
               'ee71648e4b9769ec253a717482db8f32624add1ad382e7a7e97b588c76ea384e')
 PHASES=('prepare','weak','qualify','qa','study','summary')
@@ -38,7 +38,9 @@ DOCUMENTS=('AGENTS.md','docs/engineering_loop.md','reports/weak_force_identifica
  'reports/weak_force_identification_20261029_core_review.md',
  'reports/weak_force_identification_20261029_execution_review.md',
  'results/weak_force_identification_20261029/core_unit_pre_freeze_qa.json',
- 'results/weak_force_identification_20261029/execution_unit_pre_freeze_qa.json')
+ 'results/weak_force_identification_20261029/execution_unit_pre_freeze_qa.json',
+ 'results/weak_force_identification_20261029/metadata_identity_regression_qa.json',
+ 'results/weak_force_identification_20261029/metadata_freeze_attempt01.json')
 STUDY_MODULE='experiments.weak_force_study_20261029'
 
 
