@@ -1,0 +1,119 @@
+{
+  "schema": "memory_transport_prelaunch_attempt01_public_v1",
+  "status": "REJECTED_PRELAUNCH_LEGACY_IDENTITY",
+  "source_commit": "c5707e4fb677eb0cb64ba378e59196c5b89b58db",
+  "command": "python -B experiments/memory_transport_execution_20261029.py run --source-commit c5707e4fb677eb0cb64ba378e59196c5b89b58db",
+  "actual_run_invocations": 1,
+  "python_exit_code": 1,
+  "shell_exit_code": 1,
+  "shell_propagates_python_exit_code": true,
+  "selected_phase": "prepare",
+  "failure_position": "before prepare ownership/admission and native Job launch",
+  "exception": "ValueError: historical owner is live, unknown, or reused",
+  "exception_location": "experiments/r_memory_execution_20261025.py:118 legacy_lock_allowed",
+  "call_chain": [
+    "memory_transport_execution_20261029.launch/check_locks",
+    "weak_force_execution_20261029.check_locks",
+    "state_gated_memory_execution_20261028.check_locks",
+    "force_graph_execution_20261028.check_locks",
+    "r_memory_execution_20261025.legacy_lock_allowed"
+  ],
+  "legacy_lock": {
+    "logical_name": "retained_training_efficiency01",
+    "frozen_lock_sha256": "f9d72f0d5fccd8b5349907d69299aad543aa9b936f3e016971a7e24acd57c3e4",
+    "actual_lock_sha256": "f9d72f0d5fccd8b5349907d69299aad543aa9b936f3e016971a7e24acd57c3e4",
+    "recorded_supervisor_and_worker_creation_identities_match_original_constants": true,
+    "read_only_current_identity_states": {
+      "supervisor": "GONE",
+      "worker": "REUSED_PID"
+    },
+    "recovery_record": "results/training_efficiency_20261024/recovery_20261025.json",
+    "recovery_sha256": "e53d9b82c8a19d5a3899cbd04682a298f16874bce27215e18d2b297e654e709a",
+    "recovery_status": "INTERRUPTED_RUNTIME",
+    "lock_preserved": true,
+    "root_recorded_prior_identity_state": "GONE",
+    "unrelated_reused_process_touched": false
+  },
+  "binding": {
+    "preserved": true,
+    "sha256": "67c9a2a10baf84c3274bd6152f21cb1915de3361befa0b8e311fc03bfd103832",
+    "file_count": 167,
+    "second_freeze_attempted": false
+  },
+  "source_hashes_after_failure": {
+    "experiments/memory_transport_model_20261029.py": "c9040bd65026edd0939b6c1046e21205388ffe1d2d5d69752d67144416101494",
+    "experiments/memory_transport_study_20261029.py": "1cb35ae27317a3ecf4b852895e6eb8564e5517d9b9cb75e14231dcfde16e252f",
+    "experiments/memory_transport_execution_20261029.py": "bac737ba259d14f9665915a560c45332e66e8d7308038c2f805622bc8b306a59",
+    "tests/test_memory_transport_model_20261029.py": "0e043c1200aed9de6d11e21dc57900c23ec6922dd75d71ea649e9dc39ba9989a",
+    "tests/test_memory_transport_study_20261029.py": "0bd70750950d4a13dc0ce87bb95b055dedc1fb6e839e513afc2e555e02157e40",
+    "tests/test_memory_transport_execution_20261029.py": "d31ebe64afdab8a69e3cb40604ce66ea0a2dd1f6f17bd33f4f69a54382e4205f",
+    "reports/memory_transport_20261029_protocol.md": "3fcb1ed8ece5a6465c2b912e83645c2b90a1306a9a299ba5e351728e659d0509",
+    "results/memory_transport_20261029/execution_release.json": "077ca8767b915242c09084cbddd8ab51e6d780acd278700514517c8f2342049a",
+    "results/memory_transport_20261029/source_verification.json": "17c6599ee25b656f2780856bdaf1bec11ec8689e2695e83e2f183c0fdf41a2b6"
+  },
+  "critical_source_hashes_unchanged": true,
+  "raw_evidence": {
+    "tool_result_sha256": "9b8c40f5ccb4a6b278a9d6e673f5786c453f8a6bd04e9c427fc11269836f3976",
+    "tool_result_bytes": 2378,
+    "unaltered_tool_output_retained_locally": true,
+    "capture_type": "Combined output returned by the running command tool; separate stdout/stderr were not captured.",
+    "public_traceback_omitted": "Original traceback includes local machine absolute paths."
+  },
+  "execution_cost": {
+    "native_jobs_started": 0,
+    "native_receipts": 0,
+    "native_stage_wall_seconds": 0,
+    "native_Job_CPU_seconds": 0,
+    "outer_controller_wall_seconds": null,
+    "outer_controller_CPU_seconds": null,
+    "outer_controller_cost_note": "Outer-controller full process wall/CPU was not instrumented. No native Job existed. Tool wait durations are not total process wall.",
+    "tool_wait_wall_seconds": [
+      10.0033313,
+      0.0000116
+    ]
+  },
+  "actual_scientific_scope": {
+    "prepare_executed": false,
+    "qualify_executed": false,
+    "performance_attempts": 0,
+    "CPU_or_CUDA_mathematical_suite_reruns": 0,
+    "actual_source_eigh_calls": 0,
+    "NNLS_calls": 0,
+    "real_optimizer_attempts": 0,
+    "real_optimizer_completed": 0,
+    "optimizer_pending": [],
+    "formal_training_runs": 0,
+    "new_FOM_calls": 0,
+    "original_val_read": false,
+    "original_test_read": false
+  },
+  "scientific_allowance": {
+    "registered_optimizer_upper_bound": 1848,
+    "categories": {
+      "formal": 1536,
+      "qa": 108,
+      "repair": 108,
+      "replay": 96
+    },
+    "optimizer_calls_spent": 0,
+    "unused": 1848,
+    "exhausted": false,
+    "prior_closed_balances_not_transferred": true
+  },
+  "ownership": {
+    "new_ownership_directory_present": false,
+    "new_native_directory_present": false,
+    "new_active_lock_present": false,
+    "new_optimizer_ledger_present": false,
+    "new_process_identity_claimed": false
+  },
+  "no_process_quotas": true,
+  "TASK4_paused": true,
+  "default_model": null,
+  "model_adopted": false,
+  "repairs_or_retries_after_failure": 0,
+  "timers_created_by_executor": 0,
+  "old_lock_or_source_mutated": false,
+  "classification": "Host historical-identity preflight refusal; no physical instability, numerical model failure or scientific budget exhaustion is established.",
+  "next_action": "Stop. Root may independently review an exact, finite engineering reconciliation; no automatic retry or action on the unrelated reused process."
+}
