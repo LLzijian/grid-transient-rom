@@ -46,7 +46,8 @@ class ExecutionGuards(unittest.TestCase):
     def test_release_requires_parent_review_authority_and_new1848_not_old_balance(self):
         value=dict(parent_remote_archival_verified=True,independent_implementation_review_passed=True,
             root_execution_authorized=True,parent_complete_sha256=execution.PARENT_COMPLETE_SHA,optimizer_upper_bound=1848)
-        with patch.object(execution,'RELEASE_SHA','a'*64),patch.object(execution,'sha',return_value='a'*64):
+        with patch.object(execution,'RELEASE_SHA','a'*64),patch.object(execution,'sha',return_value='a'*64), \
+                patch.object(execution,'recovery_gate'):
             with patch.object(execution,'read',return_value=value):self.assertEqual(execution.require_release(),value)
             for key, bad in [('parent_remote_archival_verified',False),('independent_implementation_review_passed',False),
                     ('root_execution_authorized',False),('optimizer_upper_bound',976),('parent_complete_sha256','0'*64)]:
@@ -97,8 +98,12 @@ class ExecutionGuards(unittest.TestCase):
             records={parent/'binding.json':dict(files={str(profile):'f'*64}),
                 sgm/'qualification/R_N_fit297/evidence.json':dict(prediction_files=[]),
                 sgm/'study/A_28311/fit000096/evidence.json':dict(prediction_files=[])}
-            with patch.multiple(execution,BASE=base,PARENT=parent,DOCUMENTS=(),RELEASE_RECORD=root/'release.json'), \
-                    patch.object(execution,'require_release'),patch.object(execution,'check_locks'), \
+            lock_proof=dict(retained_r_memory_lock=dict(path=str(root/'retained_r.lock'),recovery_path=str(root/'retained_r_recovery.json')))
+            with patch.multiple(execution,ROOT=root,BASE=base,PARENT=parent,OLD_BASE=root/'old_study01',DOCUMENTS=(),
+                    RELEASE_RECORD=root/'release.json',RECOVERY_RECORD=root/'recovery_release.json'), \
+                    patch.object(execution,'require_release'),patch.object(execution,'check_locks',return_value=lock_proof), \
+                    patch.object(execution,'recovery_gate',return_value={'evidence':{}}), \
+                    patch.object(execution,'original_prelaunch_evidence',return_value={'native_jobs_started':0,'optimizer_calls_spent':0}), \
                     patch.object(execution,'source_closure',return_value=[]),patch.object(execution,'sha',return_value='f'*64), \
                     patch.object(execution,'read',side_effect=lambda path:records[Path(path)]), \
                     patch.object(execution,'fixed_evidence',return_value=qualified), \

@@ -18,6 +18,7 @@ RETAINED_TRAINING_LOCK_SHA='f9d72f0d5fccd8b5349907d69299aad543aa9b936f3e016971a7
 RETAINED_TRAINING_RECOVERY=legacy.RECOVERY
 RETAINED_TRAINING_RECOVERY_SHA='e53d9b82c8a19d5a3899cbd04682a298f16874bce27215e18d2b297e654e709a'
 RETAINED_TRAINING_IDENTITIES=dict(legacy.LEGACY_IDENTITIES)
+RETAINED_R_MEMORY_RECOVERY_SHA='6ebbe0897f23530709f8acf67899414285ad3c865f05f1f6da0e92b9eb7865f2'
 PARENT=ROOT/'private_data/weak_force_identification_20261029/study01'
 PARENT_COMMIT='3b01f19055203734c370d32eba4cea8a0555f8d3'
 PARENT_COMPLETE_SHA='e834b61ee975192946f1fe8ecdaf1cdd9d4eaea0bc22b0f25a1ee3fe26e7c611'
@@ -39,7 +40,7 @@ DOCUMENTS=('AGENTS.md','docs/engineering_loop.md','docs/research_execution_20261
  'results/memory_transport_20261029/execution_attempt01_public.json',
  'reports/memory_transport_20261029_prelaunch_recovery.md',
  'reports/memory_transport_20261029_prelaunch_identity_review.md')
-RECOVERY_DOCUMENTS={'reports/memory_transport_20261029_prelaunch_recovery.md':'82820fabb3775b7aa57ef6ba4f0a5fe5201931ac300d3f63a8d70ce0e20457b8',
+RECOVERY_DOCUMENTS={'reports/memory_transport_20261029_prelaunch_recovery.md':'d648bdb659c11296d7e9af5446f04de52e18f9cee7baa42b73f7c2532768ab32',
  'reports/memory_transport_20261029_prelaunch_identity_review.md':'ddc56560d7906173e4794695e9218bd46b3f30e0c935741aad5160d8334eef9f',
  'results/memory_transport_20261029/execution_attempt01_public.json':FAILED_ATTEMPT_SHA}
 FIXED_RECORDS={'experiments/memory_transport_model_20261029.py':'c9040bd65026edd0939b6c1046e21205388ffe1d2d5d69752d67144416101494',
@@ -167,23 +168,30 @@ def parent_proof(files,*,state=None):
 
 
 def _retained_fg_r_memory_proof(*,root,state):
-    """Unchanged FG retained r-memory checks: current state MUST be GONE."""
+    """Second exact root-reviewed retained lock; preserve historical/current states."""
     from experiments import force_graph_execution_20261028 as fg
-    old=root/fg.OLD/'active.lock';recovery=read(root/'results/r_memory_20261025/recovery_20261028.json')
-    if (sha(old)!=fg.OLD_LOCK_SHA or recovery.get('lock_sha256')!=fg.OLD_LOCK_SHA
+    old=root/fg.OLD/'active.lock';recovery_path=root/'results/r_memory_20261025/recovery_20261028.json'
+    if sha(old)!=fg.OLD_LOCK_SHA or sha(recovery_path)!=RETAINED_R_MEMORY_RECOVERY_SHA:
+        raise ValueError('only exact retained r-memory lock and fixed recovery bytes are exempt')
+    recovery=read(recovery_path)
+    if (recovery.get('lock_sha256')!=fg.OLD_LOCK_SHA
             or recovery.get('lock_preserved') is not True or recovery.get('status')!='INTERRUPTED_RUNTIME'):
         raise ValueError('only exact retained interrupted r-memory lock is exempt')
-    value=read(old);owners={}
+    value=read(old);owners={};identities={};historical={};current={}
     for name,expected in fg.OLD_IDENTITIES.items():
         identity=typed_identity(value.get(name));recorded=recovery['owners'][name]
         if ((identity['pid'],identity['creation_filetime_utc'])!=expected
                 or recorded['pid_decimal']!=str(expected[0]) or recorded['creation_filetime_utc_decimal']!=str(expected[1])
-                or recorded['identity_state']!='GONE' or state(identity)!='GONE'):
-            raise ValueError('FG retained owner changed/live/unknown/reused; its original GONE rule is unchanged')
-        owners[name]=dict(pid_decimal=str(expected[0]),creation_filetime_utc_decimal=str(expected[1]),state='GONE')
+                or recorded['identity_state']!='GONE'):
+            raise ValueError('original FG typed identity and historical GONE reconciliation differ')
+        now=state(identity)
+        if now not in ('GONE','REUSED_PID'):raise ValueError('retained FG old identity is live/unknown: '+str(now))
+        owners[name]=dict(pid_decimal=str(expected[0]),creation_filetime_utc_decimal=str(expected[1]),state=now,historical_state='GONE')
+        identities[name]=dict(identity);historical[name]='GONE';current[name]=now
     return dict(path=str(old),sha256=fg.OLD_LOCK_SHA,owners=owners,old_lock_preserved=True,old_JobCPU=None,
-                recovery_path=str(root/'results/r_memory_20261025/recovery_20261028.json'),
-                recovery_sha256=sha(root/'results/r_memory_20261025/recovery_20261028.json'))
+                recovery_path=str(recovery_path),recovery_sha256=RETAINED_R_MEMORY_RECOVERY_SHA,
+                recorded_owner_identities=identities,historical_owner_states=historical,current_owner_states=current,
+                reused_process_touched=False,measured_old_job_accounting_claimed=False)
 
 
 def check_locks(base=BASE,owned_identity=None,*,state=None):

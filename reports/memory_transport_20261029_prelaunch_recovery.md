@@ -21,3 +21,12 @@
 6.1负责新controller及合成守卫定义，独立6.1审查精确diff和检查覆盖。纯守卫实际执行需root另行释放；已通过CPU34/CUDA3和原数学套件不重跑，源plane不重算，A96/R_N缓存复用。源归档和所有公开文件远端/冻结绑定一致后，允许一次新metadata freeze及一次run retry。一次重试若再失败，不自动重试或延长；保留分类和可用科学工作，root同次决定后续合法行动。没有进程数/时长/CPU额度。
 
 本记录本身不表示新增守卫、恢复freeze、数值资格、性能、恢复QA或训练已通过。原val/test关闭、TASK4暂停、新FOM0、default none、可用档案/候选前沿、科学采用门及独立挑战保持。
+
+## 释放前的前瞻性修订：第二份精确历史身份
+
+本修订发生在任何新增guard运行、恢复freeze、run retry或科学计算之前，仍是同一工程恢复，不增加重试次数。独立6.1核FG retained r-memory：锁SHA d764e2c272182acc6c54dda0a9edf1309c3475b1e79916305652b2adfeb123bf、恢复SHA 6ebbe0897f23530709f8acf67899414285ad3c865f05f1f6da0e92b9eb7865f2，原FG完整OLD_IDENTITIES、十进制历史GONE字段、INTERRUPTED_RUNTIME与保留字段均一致；唯一当下查询得到supervisor REUSED_PID、worker GONE。因此前版继续GONE-only会拒绝。前版controller b3d66ea7bea97933d4cc8ced47ff25ac034d7418a0f2535e123ead8663aa11b1未释放，已推验3ec4a3a87804acf36da044d8ff5035315fb1b435，不抹去其原分类。
+
+实际gpt-6-astra再次返回：“同意前瞻性修订：新controller对两份唯一、精确匹配的历史保留锁采用同一判据——原PID＋完整FILETIME对应的进程身份已不存在，当前状态允许GONE或真实REUSED_PID。这是确认原身份消失，不是豁免仍存活的任务。第二份锁必须固定完整锁SHA和完整恢复文件SHA，逐项核验FG原OLD_IDENTITIES、历史十进制身份字段、GONE记录、恢复状态及保留标记；完整SHA经独立审查落实前不得释放。两份证明均如实保存当前状态，禁止状态改写和终止复用PID的进程。其余锁、当前父任务锁，以及live／unknown／查询错误继续拒绝。原源码、锁、binding和历史不变。仍只允许同一study01_prelaunch_retry1的一次新冻结和一次run；1848上限累计不重置，不重算plane或数学资格检查。将本修订及两份身份检查纳入释放前审查，不运行已知会失败的旧方案。”
+
+Root采纳此次修订，以此替代上文要求FG retained r-memory当下必须GONE的局部安排；其他范围保持。新controller只在该第二精确锁的证明中加入冻结恢复SHA，并据实允许GONE/REUSED_PID；原FG helper、锁与恢复记录不改。全套独立审查和纯守卫仍待实际完成，不能据此宣布通过、启动或消耗新科学额度。一个原完整身份消失的结论，不扩展成原Job成本已知或旧全子树清理证明。
+
