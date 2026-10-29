@@ -9,7 +9,7 @@ PARENT=ROOT/'private_data/weak_force_identification_20261029/study01'
 PARENT_COMMIT='3b01f19055203734c370d32eba4cea8a0555f8d3'
 PARENT_COMPLETE_SHA='e834b61ee975192946f1fe8ecdaf1cdd9d4eaea0bc22b0f25a1ee3fe26e7c611'
 PARENT_SUMMARY_SHA='be95331073bd0fc039e5d23561c44724bd04334ef120e212b917d4bd7bada94e'
-RELEASE_RECORD=ROOT/'results/memory_transport_20261029/execution_release.json';RELEASE_SHA='UNKNOWN'
+RELEASE_RECORD=ROOT/'results/memory_transport_20261029/execution_release.json';RELEASE_SHA='077ca8767b915242c09084cbddd8ab51e6d780acd278700514517c8f2342049a'
 PHASES=('prepare','qualify','qa','study','summary')
 OUTPUTS=dict(prepare='prepare.json',qualify='qualification/summary.json',qa='qa/summary.json',study='study/summary.json',summary='summary.json')
 STUDY_MODULE='experiments.memory_transport_study_20261029'
@@ -18,7 +18,10 @@ SOURCE_ROOTS=('experiments/memory_transport_execution_20261029.py','experiments/
  'tests/test_memory_transport_execution_20261029.py','tests/test_memory_transport_study_20261029.py')
 DOCUMENTS=('AGENTS.md','docs/engineering_loop.md','docs/research_execution_20261028.md',
  'reports/memory_transport_20261029_protocol.md','reports/astra6_force_structure_next_20261029.md',
- 'reports/force_structure_next_20261029_challenge.md','reports/memory_transport_20261029_model_review.md')
+ 'reports/force_structure_next_20261029_challenge.md','reports/memory_transport_20261029_model_review.md',
+ 'reports/memory_transport_20261029_registration_review.md','reports/memory_transport_20261029_execution_review.md',
+ 'results/memory_transport_20261029/execution_unit_pre_freeze_qa.json',
+ 'results/memory_transport_20261029/execution_unit_repaired_qa.json')
 FIXED_RECORDS={'experiments/memory_transport_model_20261029.py':'c9040bd65026edd0939b6c1046e21205388ffe1d2d5d69752d67144416101494',
  'tests/test_memory_transport_model_20261029.py':'0e043c1200aed9de6d11e21dc57900c23ec6922dd75d71ea649e9dc39ba9989a',
  'reports/memory_transport_20261029_protocol.md':'3fcb1ed8ece5a6465c2b912e83645c2b90a1306a9a299ba5e351728e659d0509',
