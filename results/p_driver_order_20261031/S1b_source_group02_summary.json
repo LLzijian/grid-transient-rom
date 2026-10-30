@@ -1,0 +1,533 @@
+{
+  "status": "COMPLETED",
+  "stage": "S1b_source_group02",
+  "commit": "eda5163c9ee8d19945a1dd5d1771fec5da608c27",
+  "files": {
+    "tgov1.py": {
+      "official_path": "andes/models/governor/tgov1.py",
+      "bytes": 8932,
+      "sha256": "8de6af2beeb8084316971d05e5a9b760abd9287679b689d2b178c6fab328fc37",
+      "git_blob_sha": "d68e5378526213520115e4826efe08758f06b153",
+      "git_blob_verified": true,
+      "direct_imports": [
+        {
+          "line": 1,
+          "module": "andes.core",
+          "level": 0,
+          "names": [
+            "Algeb",
+            "AntiWindup",
+            "ConstService",
+            "LagAntiWindup",
+            "LeadLag",
+            "NumParam",
+            "State"
+          ]
+        },
+        {
+          "line": 3,
+          "module": "andes.core.block",
+          "level": 0,
+          "names": [
+            "DeadBand1"
+          ]
+        },
+        {
+          "line": 4,
+          "module": "andes.models.governor.tgbase",
+          "level": 0,
+          "names": [
+            "TGBase",
+            "TGBaseData"
+          ]
+        }
+      ]
+    },
+    "tgbase.py": {
+      "official_path": "andes/models/governor/tgbase.py",
+      "bytes": 4889,
+      "sha256": "88efe598b0a76b6171e22a1d451ba37896529a2fb84e4a001f01cf3c49447fef",
+      "git_blob_sha": "b3981107ff3a4df1ad4989dfe36a838f66c3628b",
+      "git_blob_verified": true,
+      "direct_imports": [
+        {
+          "line": 5,
+          "module": "andes.core",
+          "level": 0,
+          "names": [
+            "Algeb",
+            "ConstService",
+            "ExtAlgeb",
+            "ExtParam",
+            "ExtService",
+            "ExtState",
+            "IdxParam",
+            "Model",
+            "ModelData",
+            "NumParam"
+          ]
+        },
+        {
+          "line": 7,
+          "module": "andes.core.service",
+          "level": 0,
+          "names": [
+            "NumSelect"
+          ]
+        }
+      ]
+    },
+    "core___init__.py": {
+      "official_path": "andes/core/__init__.py",
+      "bytes": 1095,
+      "sha256": "dfd670b0f3d0333dac78533b13808efb0663b16b266aacbd9739b48f43fc558d",
+      "git_blob_sha": "45c67c388063894373abbf35da4dd5ea901abf02",
+      "git_blob_verified": true,
+      "direct_imports": [
+        {
+          "line": 5,
+          "module": "andes.core.block",
+          "level": 0,
+          "names": [
+            "Block",
+            "Lag",
+            "LagAntiWindup",
+            "LeadLag",
+            "LeadLagLimit",
+            "Piecewise",
+            "Washout"
+          ]
+        },
+        {
+          "line": 7,
+          "module": "andes.core.common",
+          "level": 0,
+          "names": [
+            "Config",
+            "JacTriplet"
+          ]
+        },
+        {
+          "line": 8,
+          "module": "andes.core.discrete",
+          "level": 0,
+          "names": [
+            "AntiWindup",
+            "DeadBand",
+            "DeadBandRT",
+            "Discrete",
+            "HardLimiter",
+            "LessThan",
+            "Limiter",
+            "Selector",
+            "SortedLimiter",
+            "Switcher",
+            "IsEqual"
+          ]
+        },
+        {
+          "line": 11,
+          "module": "andes.core.model",
+          "level": 0,
+          "names": [
+            "Model",
+            "ModelCall",
+            "ModelData"
+          ]
+        },
+        {
+          "line": 12,
+          "module": "andes.core.param",
+          "level": 0,
+          "names": [
+            "BaseParam",
+            "DataParam",
+            "ExtParam",
+            "IdxParam",
+            "NumParam",
+            "TimerParam"
+          ]
+        },
+        {
+          "line": 14,
+          "module": "andes.core.service",
+          "level": 0,
+          "names": [
+            "BackRef",
+            "BaseService",
+            "ConstService",
+            "ExtService",
+            "IdxRepeat",
+            "NumReduce",
+            "NumRepeat",
+            "OperationService",
+            "RandomService"
+          ]
+        },
+        {
+          "line": 17,
+          "module": "andes.core.var",
+          "level": 0,
+          "names": [
+            "Algeb",
+            "BaseVar",
+            "ExtAlgeb",
+            "ExtState",
+            "ExtVar",
+            "State"
+          ]
+        },
+        {
+          "line": 19,
+          "module": "andes.core.symprocessor",
+          "level": 0,
+          "names": [
+            "SymProcessor"
+          ]
+        },
+        {
+          "line": 20,
+          "module": "andes.core.connman",
+          "level": 0,
+          "names": [
+            "ConnMan"
+          ]
+        }
+      ]
+    },
+    "block.py": {
+      "official_path": "andes/core/block.py",
+      "bytes": 65466,
+      "sha256": "3f68dba3365d7cf91d8e43d990aac71b5455f71be220a7f78df24f07f3a59b9a",
+      "git_blob_sha": "3d9516cd8ab5e58106946ac65ad93b172bc1ce68",
+      "git_blob_verified": true,
+      "direct_imports": [
+        {
+          "line": 11,
+          "module": "collections",
+          "level": 0,
+          "names": [
+            "OrderedDict"
+          ]
+        },
+        {
+          "line": 12,
+          "module": "typing",
+          "level": 0,
+          "names": [
+            "Iterable",
+            "List",
+            "Optional",
+            "Tuple",
+            "Union"
+          ]
+        },
+        {
+          "line": 14,
+          "module": "andes.core.common",
+          "level": 0,
+          "names": [
+            "JacTriplet",
+            "ModelFlags",
+            "dummify"
+          ]
+        },
+        {
+          "line": 15,
+          "module": "andes.core.discrete",
+          "level": 0,
+          "names": [
+            "AntiWindup",
+            "AntiWindupRate",
+            "DeadBand",
+            "HardLimiter",
+            "LessThan",
+            "RateLimiter"
+          ]
+        },
+        {
+          "line": 17,
+          "module": "andes.core.service",
+          "level": 0,
+          "names": [
+            "EventFlag"
+          ]
+        },
+        {
+          "line": 18,
+          "module": "andes.core.observable",
+          "level": 0,
+          "names": [
+            "Observable"
+          ]
+        },
+        {
+          "line": 19,
+          "module": "andes.core.var",
+          "level": 0,
+          "names": [
+            "Algeb",
+            "State"
+          ]
+        }
+      ]
+    }
+  },
+  "observed_mechanical_facts": {
+    "omega_measurement": {
+      "file": "tgbase.py",
+      "lines": [
+        90,
+        96
+      ],
+      "fact": "ExtState links SynGen.omega through syn; not an independent measured trajectory."
+    },
+    "reference_and_load_paths": {
+      "file": "tgbase.py",
+      "lines": [
+        49,
+        50,
+        81,
+        126
+      ],
+      "facts": [
+        "pref0 ConstService uses tm0; TGOV1N pref equation is pref0-pref.",
+        "paux0 declared initial0, paux equation paux0-paux; base exposes pref/paux setpoint mapping.",
+        "wref0 default1, wref equation wref0-wref.",
+        "No evidence in this stage establishes that references stayed fixed in historical train."
+      ]
+    },
+    "tm_coupling": {
+      "file": "tgbase.py",
+      "lines": [
+        104,
+        111
+      ],
+      "target": "SynGen.tm indexed by syn",
+      "algebraic_contribution": "ue*(pout-tm0)",
+      "comparison_to_prior_GenBase": "Prior GenBase contribution tm0-tm plus this governor contribution is not tm0-tm alone. Under additive assembly and ue=1, formal combined equation gives tm=pout."
+    },
+    "TGOV1N_input": {
+      "file": "tgov1.py",
+      "lines": [
+        68,
+        113
+      ],
+      "equations": [
+        "gain=ue/R",
+        "wd=ue*(omega-wref)",
+        "pref=pref0",
+        "paux=paux0",
+        "pd=ue*(-wd*gain+pref+paux)",
+        "pout=ue*(LL_y-Dt*wd)"
+      ]
+    },
+    "valve_lag": {
+      "file": "block.py",
+      "class": "LagAntiWindup",
+      "lines": [
+        1110,
+        1176
+      ],
+      "state": "LAG_y",
+      "unlimited_equation": "T1*d(LAG_y)/dt=pd-LAG_y",
+      "initial_value": "LAG_y=pd",
+      "limiter_configuration": "AntiWindup attached to y.discrete, bounds VMIN and VMAX; clipping/freezing algorithm lives in unlisted core.discrete and is not qualified here."
+    },
+    "lead_lag": {
+      "file": "block.py",
+      "class": "LeadLag",
+      "lines": [
+        1442,
+        1546
+      ],
+      "TGOV1_argument_mapping": "block T1=controller T2; block T2=controller T3; K default1",
+      "equations": [
+        "T3*d(LL_x)/dt=LAG_y-LL_x",
+        "T3*LL_y=T2*(LAG_y-LL_x)+T3*LL_x when positive-lag branch"
+      ],
+      "conditional_bypass": "zero_out=True config creates LessThan(T2,0,equal=True) flag and adds LT_z1*(y-K*u) to output algebraic equation; exact LessThan evaluation is unlisted core.discrete."
+    },
+    "Tn_source_default_and_mapping": {
+      "file": "tgbase.py",
+      "lines": [
+        23,
+        27,
+        55,
+        68
+      ],
+      "observed": [
+        "Tn NumParam declared default0.0, unit MVA; info says equals Sn if not provided.",
+        "Sg ExtParam reads SynGen.Sn through syn.",
+        "Sn=NumSelect(Tn,fallback=Sg)."
+      ],
+      "not_verified": "NumParam missing-cell handling, NumSelect zero-selection behavior and unit/base conversion are unlisted dependencies; do not replace the10 blank static Tn values with asserted effective numbers."
+    },
+    "conditional_nominal_relation": {
+      "status": "conditional_symbolic_source_relation_only",
+      "conditions": [
+        "Additive tm contributions used as declared",
+        "ue=1",
+        "fixed pref0,paux0,wref0",
+        "LagAntiWindup inactive",
+        "T1>0,T3>0",
+        "parameters interpreted as effective source coordinates after unspecified framework conversion"
+      ],
+      "equations": [
+        "T1*v_dot=pd-v",
+        "T3*x_dot=v-x",
+        "z=(T2/T3)*(v-x)+x",
+        "tm=z-Dt*(omega-wref)",
+        "delta_tm(s)/delta_omega(s)=-(1/R)*(1+s*T2)/((1+s*T1)*(1+s*T3))-Dt"
+      ],
+      "not_a_qualified_historical_transfer": "Limiter algorithm, effective base conversion and historical reference/activation identities are not closed by this group."
+    }
+  },
+  "explicit_unresolved_unlisted_dependencies": [
+    {
+      "dependency": "andes.core.service.NumSelect",
+      "seen_in": "tgbase.py line7",
+      "not_downloaded": true,
+      "blocks": "Exact missing/zero Tn selection and resulting rating."
+    },
+    {
+      "dependency": "andes.core.discrete.AntiWindup and LessThan",
+      "seen_in": "block.py direct imports; core namespace reexport",
+      "not_downloaded": true,
+      "blocks": "Full limiter and flag branch algorithm."
+    },
+    {
+      "dependency": "andes.core.param.NumParam and framework unit/base conversion",
+      "seen_in": "core/__init__.py reexport and tgov1 parameter flags ipower/power",
+      "not_downloaded": true,
+      "blocks": "Exact effective parameters from static case and rating defaults."
+    }
+  ],
+  "facts_sha256": "a21fa73ad2987d57755974bf7816069e25430818fe57d60fd389bb637f169384",
+  "tool_calls": [
+    {
+      "official_path": "andes/models/governor/tgov1.py",
+      "observable_attempts": 1,
+      "basis": "Actual prior governor package initializer line6 imports TGOV1N from andes.models.governor.tgov1.",
+      "decoded_bytes": 8932,
+      "decoded_sha256": "8de6af2beeb8084316971d05e5a9b760abd9287679b689d2b178c6fab328fc37",
+      "git_blob_sha": "d68e5378526213520115e4826efe08758f06b153",
+      "git_blob_verified": true,
+      "returned_display_url": "https://github.com/CURENT/andes/blob/eda5163c9ee8d19945a1dd5d1771fec5da608c27/andes/models/governor/tgov1.py",
+      "encoding": "base64",
+      "tool_wall_seconds": 0.722,
+      "HTTP_status": null,
+      "internal_retry_count": null
+    },
+    {
+      "official_path": "andes/models/governor/tgbase.py",
+      "observable_attempts": 1,
+      "basis": "Persisted tgov1_import_basis.json: tgov1.py line4 imports TGBase and TGBaseData from andes.models.governor.tgbase.",
+      "decoded_bytes": 4889,
+      "decoded_sha256": "88efe598b0a76b6171e22a1d451ba37896529a2fb84e4a001f01cf3c49447fef",
+      "git_blob_sha": "b3981107ff3a4df1ad4989dfe36a838f66c3628b",
+      "git_blob_verified": true,
+      "returned_display_url": "https://github.com/CURENT/andes/blob/eda5163c9ee8d19945a1dd5d1771fec5da608c27/andes/models/governor/tgbase.py",
+      "encoding": "base64",
+      "tool_wall_seconds": 0.526,
+      "HTTP_status": null,
+      "internal_retry_count": null
+    },
+    {
+      "official_path": "andes/core/__init__.py",
+      "observable_attempts": 1,
+      "basis": "Persisted tgov1_import_basis.json: line1 imports required LagAntiWindup and LeadLag via andes.core; namespace resolution only.",
+      "decoded_bytes": 1095,
+      "decoded_sha256": "dfd670b0f3d0333dac78533b13808efb0663b16b266aacbd9739b48f43fc558d",
+      "git_blob_sha": "45c67c388063894373abbf35da4dd5ea901abf02",
+      "git_blob_verified": true,
+      "returned_display_url": "https://github.com/CURENT/andes/blob/eda5163c9ee8d19945a1dd5d1771fec5da608c27/andes/core/__init__.py",
+      "encoding": "base64",
+      "tool_wall_seconds": 0.484,
+      "HTTP_status": null,
+      "internal_retry_count": null
+    },
+    {
+      "official_path": "andes/core/block.py",
+      "observable_attempts": 1,
+      "basis": "Persisted block_import_basis.json: core initializer line5 explicitly re-exports required LagAntiWindup and LeadLag from andes.core.block; tgov1 also directly names core.block at line3.",
+      "decoded_bytes": 65466,
+      "decoded_sha256": "3f68dba3365d7cf91d8e43d990aac71b5455f71be220a7f78df24f07f3a59b9a",
+      "git_blob_sha": "3d9516cd8ab5e58106946ac65ad93b172bc1ce68",
+      "git_blob_verified": true,
+      "returned_display_url": "https://github.com/CURENT/andes/blob/eda5163c9ee8d19945a1dd5d1771fec5da608c27/andes/core/block.py",
+      "encoding": "base64",
+      "tool_wall_seconds": 0.654,
+      "HTTP_status": null,
+      "internal_retry_count": null
+    }
+  ],
+  "outputs": {
+    "tgov1.py": {
+      "bytes": 8932,
+      "sha256": "8de6af2beeb8084316971d05e5a9b760abd9287679b689d2b178c6fab328fc37"
+    },
+    "call01_return.json": {
+      "bytes": 13174,
+      "sha256": "925f77714b9eabb5f0f6ce23596ee77e3f9aea2b99564415860ec3ab6f8f49c0"
+    },
+    "tgbase.py": {
+      "bytes": 4889,
+      "sha256": "88efe598b0a76b6171e22a1d451ba37896529a2fb84e4a001f01cf3c49447fef"
+    },
+    "call02_return.json": {
+      "bytes": 7734,
+      "sha256": "ae5ddb9bd54f261e027f6ddb40854bcf7a7bea7337b6d249406ef982bd6dbf67"
+    },
+    "core___init__.py": {
+      "bytes": 1095,
+      "sha256": "dfd670b0f3d0333dac78533b13808efb0663b16b266aacbd9739b48f43fc558d"
+    },
+    "call03_return.json": {
+      "bytes": 2502,
+      "sha256": "85a9cd082d91f14143683ba30f6edad399bb1dcf8587f79d981744e363a67c57"
+    },
+    "block.py": {
+      "bytes": 65466,
+      "sha256": "3f68dba3365d7cf91d8e43d990aac71b5455f71be220a7f78df24f07f3a59b9a"
+    },
+    "call04_return.json": {
+      "bytes": 91239,
+      "sha256": "d67fd43ada8addc71452b907569d1478a72b0adadaa04c91f22c22b99f19586b"
+    }
+  },
+  "observable_tool_attempts": 4,
+  "HTTP_status": null,
+  "internal_retry_count": null,
+  "budget": {
+    "official_code_files_cumulative": 8,
+    "official_code_files_max": 16,
+    "source_content_files_cumulative": 21,
+    "source_content_files_max": 33,
+    "lineage_slots": 4,
+    "case_files": 1,
+    "case_sheets": 3,
+    "metadata_enumerations": 3
+  },
+  "functional_dependency_depth_max": 1,
+  "namespace_initializer_used_only_as_mapping": true,
+  "case_rows_read": 0,
+  "metadata_enumerations_this_stage": 0,
+  "source_import_execution": 0,
+  "additional_unlisted_dependencies_fetched": 0,
+  "ANDES_calls": 0,
+  "cache_weight_trajectory_reads": 0,
+  "parameter_estimates": 0,
+  "new_FOM": 0,
+  "mathematics_recalculations": 0,
+  "model_writes": 0,
+  "historical_execution_source_identity": "unknown",
+  "actual_train_reference_or_limit_activity": "unknown",
+  "further_sources_automatically_released": false,
+  "cost": {
+    "tool_call_seconds_sum": 2.386,
+    "static_extraction_wall_seconds": 0.03331560001242906,
+    "stage_total_wall_seconds": null,
+    "cpu_seconds": null
+  }
+}

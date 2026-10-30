@@ -1,0 +1,418 @@
+{
+  "status": "COMPLETED",
+  "stage": "S1b_source_group01",
+  "official_repository": "CURENT/andes",
+  "commit": "eda5163c9ee8d19945a1dd5d1771fec5da608c27",
+  "TGOV1N_mapping": [
+    {
+      "class": "TGOV1N",
+      "module": "andes.models.governor.tgov1",
+      "import_line": 6,
+      "explicit_definition_path_candidate": "andes/models/governor/tgov1.py"
+    }
+  ],
+  "source_files": {
+    "governor___init__.py": {
+      "official_path": "andes/models/governor/__init__.py",
+      "sha256": "ed5ef73a9f813df0443ec2f352fd89342def445e56aef9296f39225329696d3c",
+      "bytes": 461,
+      "direct_imports": [
+        {
+          "line": 1,
+          "module": "andes.models.governor.gast",
+          "level": 0,
+          "names": [
+            "GAST"
+          ]
+        },
+        {
+          "line": 2,
+          "module": "andes.models.governor.ieeeg1",
+          "level": 0,
+          "names": [
+            "IEEEG1"
+          ]
+        },
+        {
+          "line": 3,
+          "module": "andes.models.governor.ieesgo",
+          "level": 0,
+          "names": [
+            "IEESGO"
+          ]
+        },
+        {
+          "line": 4,
+          "module": "andes.models.governor.tg2",
+          "level": 0,
+          "names": [
+            "TG2"
+          ]
+        },
+        {
+          "line": 5,
+          "module": "andes.models.governor.tgov1",
+          "level": 0,
+          "names": [
+            "TGOV1NDB"
+          ]
+        },
+        {
+          "line": 6,
+          "module": "andes.models.governor.tgov1",
+          "level": 0,
+          "names": [
+            "TGOV1",
+            "TGOV1DB",
+            "TGOV1N"
+          ]
+        },
+        {
+          "line": 7,
+          "module": "andes.models.governor.hygov",
+          "level": 0,
+          "names": [
+            "HYGOV",
+            "HYGOVDB"
+          ]
+        },
+        {
+          "line": 8,
+          "module": "andes.models.governor.hygov4",
+          "level": 0,
+          "names": [
+            "HYGOV4"
+          ]
+        }
+      ],
+      "classes": [],
+      "field_declarations": []
+    },
+    "genbase.py": {
+      "official_path": "andes/models/synchronous/genbase.py",
+      "sha256": "423dcd590748d328fe8a3ad7e41ff321810a790a476d4fab41066305d54d5702",
+      "bytes": 12443,
+      "direct_imports": [
+        {
+          "line": 1,
+          "module": null,
+          "names": [
+            "logging"
+          ]
+        },
+        {
+          "line": 3,
+          "module": "andes.core",
+          "level": 0,
+          "names": [
+            "ModelData",
+            "IdxParam",
+            "NumParam",
+            "Model",
+            "State",
+            "ExtAlgeb",
+            "Algeb",
+            "ExtParam",
+            "ExtService",
+            "ConstService"
+          ]
+        },
+        {
+          "line": 5,
+          "module": "andes.core.service",
+          "level": 0,
+          "names": [
+            "InitChecker"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "line": 10,
+          "name": "GENBaseData",
+          "bases": [
+            "ModelData"
+          ]
+        },
+        {
+          "line": 95,
+          "name": "GENBase",
+          "bases": [
+            "Model"
+          ]
+        },
+        {
+          "line": 260,
+          "name": "Flux0",
+          "bases": []
+        },
+        {
+          "line": 281,
+          "name": "Flux1",
+          "bases": []
+        },
+        {
+          "line": 302,
+          "name": "Flux2",
+          "bases": []
+        }
+      ],
+      "field_declarations": [
+        {
+          "field": "delta",
+          "line_start": 121,
+          "line_end": 125,
+          "constructor": "State",
+          "declarative_keywords": {
+            "info": "rotor angle",
+            "unit": "rad",
+            "v_str": "delta0",
+            "e_str": "ue * (2 * pi * fn) * (omega - 1)"
+          }
+        },
+        {
+          "field": "omega",
+          "line_start": 126,
+          "line_end": 132,
+          "constructor": "State",
+          "declarative_keywords": {
+            "info": "rotor speed",
+            "unit": "pu (Hz)",
+            "v_str": "u",
+            "e_str": "ue * (tm - te - D * (omega - 1))",
+            "t_const": "self.M"
+          }
+        },
+        {
+          "field": "tm",
+          "line_start": 180,
+          "line_end": 184,
+          "constructor": "Algeb",
+          "declarative_keywords": {
+            "info": "mechanical torque",
+            "v_str": "tm0",
+            "e_str": "tm0 - tm"
+          }
+        },
+        {
+          "field": "te",
+          "line_start": 185,
+          "line_end": 189,
+          "constructor": "Algeb",
+          "declarative_keywords": {
+            "info": "electric torque",
+            "v_str": "u * tm0",
+            "e_str": "ue * (psid * Iq - psiq * Id) - te"
+          }
+        }
+      ]
+    },
+    "genrou.py": {
+      "official_path": "andes/models/synchronous/genrou.py",
+      "sha256": "40786db556f11497dac97e9683f64711e4f05cb37065746dd1da316d78b3af61",
+      "bytes": 10811,
+      "direct_imports": [
+        {
+          "line": 5,
+          "module": null,
+          "names": [
+            "logging"
+          ]
+        },
+        {
+          "line": 7,
+          "module": "andes.core",
+          "level": 0,
+          "names": [
+            "NumParam",
+            "ConstService",
+            "Algeb",
+            "LessThan",
+            "State"
+          ]
+        },
+        {
+          "line": 8,
+          "module": "andes.core.service",
+          "level": 0,
+          "names": [
+            "InitChecker",
+            "FlagValue"
+          ]
+        },
+        {
+          "line": 9,
+          "module": "andes.models.exciter",
+          "level": 0,
+          "names": [
+            "ExcQuadSat"
+          ]
+        },
+        {
+          "line": 10,
+          "module": "andes.models.synchronous.genbase",
+          "level": 0,
+          "names": [
+            "GENBaseData",
+            "GENBase",
+            "Flux0"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "line": 15,
+          "name": "GENROUData",
+          "bases": [
+            "GENBaseData"
+          ]
+        },
+        {
+          "line": 47,
+          "name": "GENROUModel",
+          "bases": []
+        },
+        {
+          "line": 223,
+          "name": "GENROU",
+          "bases": [
+            "GENROUData",
+            "GENBase",
+            "GENROUModel",
+            "Flux0"
+          ]
+        }
+      ],
+      "field_declarations": [
+        {
+          "field": "tm0",
+          "line_start": 131,
+          "line_end": 132,
+          "constructor": "ConstService",
+          "declarative_keywords": {
+            "v_str": "u * ((vq0 + ra * Iq0) * Iq0 + (vd0 + ra * Id0) * Id0)"
+          }
+        }
+      ]
+    }
+  },
+  "tool_calls": [
+    {
+      "official_path": "andes/models/governor/__init__.py",
+      "observable_attempts": 1,
+      "decoded_bytes": 461,
+      "decoded_sha256": "ed5ef73a9f813df0443ec2f352fd89342def445e56aef9296f39225329696d3c",
+      "returned_git_blob_sha": "d7bdeaa6066589b1e18fa27456970e908a41aace",
+      "returned_display_url": "https://github.com/CURENT/andes/blob/eda5163c9ee8d19945a1dd5d1771fec5da608c27/andes/models/governor/__init__.py",
+      "encoding": "base64",
+      "tool_wall_seconds": 0.721,
+      "HTTP_status": null,
+      "internal_retry_count": null,
+      "raw_return_sha256": "e02cbc13061913c2a903f94e7bd5f046abf1994064b9beeea8ef4cbef31ad21d"
+    },
+    {
+      "official_path": "andes/models/synchronous/genbase.py",
+      "observable_attempts": 1,
+      "decoded_bytes": 12443,
+      "decoded_sha256": "423dcd590748d328fe8a3ad7e41ff321810a790a476d4fab41066305d54d5702",
+      "returned_git_blob_sha": "3eae4bfeccfaa8953d888c8aa88220edfb92f94e",
+      "returned_display_url": "https://github.com/CURENT/andes/blob/eda5163c9ee8d19945a1dd5d1771fec5da608c27/andes/models/synchronous/genbase.py",
+      "encoding": "base64",
+      "tool_wall_seconds": 0.548,
+      "HTTP_status": null,
+      "internal_retry_count": null,
+      "raw_return_sha256": "90759316c9c430e3d613debbbe0101f66d79c98a8088b99ae25d24f9d1a4cace"
+    },
+    {
+      "official_path": "andes/models/synchronous/genrou.py",
+      "observable_attempts": 1,
+      "decoded_bytes": 10811,
+      "decoded_sha256": "40786db556f11497dac97e9683f64711e4f05cb37065746dd1da316d78b3af61",
+      "returned_git_blob_sha": "86078f20ecf39822aff62159d3db31911f91c788",
+      "returned_display_url": "https://github.com/CURENT/andes/blob/eda5163c9ee8d19945a1dd5d1771fec5da608c27/andes/models/synchronous/genrou.py",
+      "encoding": "base64",
+      "tool_wall_seconds": 0.497,
+      "HTTP_status": null,
+      "internal_retry_count": null,
+      "raw_return_sha256": "93806f71895a7f369b05b98177f315a0ce442947818f856ec856371da8c22346"
+    }
+  ],
+  "artifacts": {
+    "governor___init__.py": {
+      "bytes": 461,
+      "sha256": "ed5ef73a9f813df0443ec2f352fd89342def445e56aef9296f39225329696d3c"
+    },
+    "call01_return.json": {
+      "bytes": 1507,
+      "sha256": "e02cbc13061913c2a903f94e7bd5f046abf1994064b9beeea8ef4cbef31ad21d"
+    },
+    "genbase.py": {
+      "bytes": 12443,
+      "sha256": "423dcd590748d328fe8a3ad7e41ff321810a790a476d4fab41066305d54d5702"
+    },
+    "call02_return.json": {
+      "bytes": 18018,
+      "sha256": "90759316c9c430e3d613debbbe0101f66d79c98a8088b99ae25d24f9d1a4cace"
+    },
+    "genrou.py": {
+      "bytes": 10811,
+      "sha256": "40786db556f11497dac97e9683f64711e4f05cb37065746dd1da316d78b3af61"
+    },
+    "call03_return.json": {
+      "bytes": 15767,
+      "sha256": "93806f71895a7f369b05b98177f315a0ce442947818f856ec856371da8c22346"
+    }
+  },
+  "facts_sha256": "a9dbcd563dbf6dc29d7bf3dfc0c8e090e0dbccf6c0beae0779d64491fada8a0d",
+  "static_scope_note": "GENBase declarations are source contributions, not a complete coupled tm equation; linked governor source is not read in this release.",
+  "budget": {
+    "official_code_files_cumulative": 4,
+    "official_code_files_max": 16,
+    "source_content_files_cumulative": 17,
+    "source_content_files_max": 33,
+    "lineage_slots_cumulative": 4,
+    "case_files": 1,
+    "case_sheets": 3,
+    "metadata_enumerations_cumulative": 3
+  },
+  "case_cell_reads_this_stage": 0,
+  "metadata_enumerations_this_stage": 0,
+  "observable_tool_attempts": 3,
+  "HTTP_status": null,
+  "internal_retries": null,
+  "cost": {
+    "tool_call_seconds_sum": 1.766,
+    "static_extraction_wall_seconds": 0.014637699990998954,
+    "total_stage_wall_seconds": null,
+    "cpu_seconds": null,
+    "inclusion": "Each recorded tool latency is separate from local static extraction; end-to-end stage wall not measured."
+  },
+  "direct_dependency_files_downloaded": 0,
+  "further_source_reads_automatically_released": false,
+  "historical_execution_source_identity": "unknown",
+  "train_operating_limit_activation": "unknown",
+  "source_import_execution": 0,
+  "ANDES_calls": 0,
+  "cache_weight_trajectory_reads": 0,
+  "parameter_estimates": 0,
+  "FOM_calls": 0,
+  "mathematics_recalculations": 0,
+  "model_writes": 0,
+  "decoded_git_blob_identity_checks": {
+    "andes/models/governor/__init__.py": {
+      "git_blob_verified": true,
+      "git_blob_sha": "d7bdeaa6066589b1e18fa27456970e908a41aace",
+      "decoded_sha256": "ed5ef73a9f813df0443ec2f352fd89342def445e56aef9296f39225329696d3c"
+    },
+    "andes/models/synchronous/genbase.py": {
+      "git_blob_verified": true,
+      "git_blob_sha": "3eae4bfeccfaa8953d888c8aa88220edfb92f94e",
+      "decoded_sha256": "423dcd590748d328fe8a3ad7e41ff321810a790a476d4fab41066305d54d5702"
+    },
+    "andes/models/synchronous/genrou.py": {
+      "git_blob_verified": true,
+      "git_blob_sha": "86078f20ecf39822aff62159d3db31911f91c788",
+      "decoded_sha256": "40786db556f11497dac97e9683f64711e4f05cb37065746dd1da316d78b3af61"
+    }
+  }
+}

@@ -1,0 +1,394 @@
+{
+  "stage": "S1b_initial_static_tables_and_registry",
+  "status": "COMPLETED",
+  "fixed_official_commit": "eda5163c9ee8d19945a1dd5d1771fec5da608c27",
+  "case_sha256": "9c2048dc94201ee48ffe816de65d53831fa1f4b0e7fdf32f24c50f1017edcfe5",
+  "selected_sheets": {
+    "GENROU": {
+      "headers": [
+        "uid",
+        "idx",
+        "u",
+        "name",
+        "bus",
+        "gen",
+        "coi",
+        "Sn",
+        "Vn",
+        "fn",
+        "D",
+        "M",
+        "ra",
+        "xl",
+        "xd1",
+        "kp",
+        "kw",
+        "S10",
+        "S12",
+        "xd",
+        "xq",
+        "xd2",
+        "xq1",
+        "xq2",
+        "Td10",
+        "Td20",
+        "Tq10",
+        "Tq20"
+      ],
+      "rows_including_header": 11,
+      "data_rows": 10,
+      "unresolved_formula_cells": 0
+    },
+    "TGOV1N": {
+      "headers": [
+        "uid",
+        "idx",
+        "u",
+        "name",
+        "syn",
+        "Tn",
+        "wref0",
+        "R",
+        "VMAX",
+        "VMIN",
+        "T1",
+        "T2",
+        "T3",
+        "Dt"
+      ],
+      "rows_including_header": 11,
+      "data_rows": 10,
+      "unresolved_formula_cells": 0
+    },
+    "Toggler": {
+      "headers": [
+        "uid",
+        "idx",
+        "u",
+        "name",
+        "model",
+        "dev",
+        "t"
+      ],
+      "rows_including_header": 2,
+      "data_rows": 1,
+      "unresolved_formula_cells": 0
+    }
+  },
+  "ten_machine_governor_linkage": {
+    "qualified": true,
+    "generator_rows": 10,
+    "governor_rows": 10,
+    "unique_generator_ids": 10,
+    "unique_syn_links": 10,
+    "all_links_resolved": true,
+    "generator_u_value_counts": {
+      "1": 10
+    },
+    "governor_u_value_counts": {
+      "1": 10
+    }
+  },
+  "governor_parameter_ranges_static": {
+    "u": {
+      "known": 10,
+      "denominator": 10,
+      "min": 1.0,
+      "max": 1.0
+    },
+    "wref0": {
+      "known": 10,
+      "denominator": 10,
+      "min": 1.0,
+      "max": 1.0
+    },
+    "R": {
+      "known": 10,
+      "denominator": 10,
+      "min": 0.05,
+      "max": 0.05
+    },
+    "VMAX": {
+      "known": 10,
+      "denominator": 10,
+      "min": 1.01,
+      "max": 1.05
+    },
+    "VMIN": {
+      "known": 10,
+      "denominator": 10,
+      "min": 0.1,
+      "max": 0.1
+    },
+    "T1": {
+      "known": 10,
+      "denominator": 10,
+      "min": 0.05,
+      "max": 0.05
+    },
+    "T2": {
+      "known": 10,
+      "denominator": 10,
+      "min": 1.0,
+      "max": 1.0
+    },
+    "T3": {
+      "known": 10,
+      "denominator": 10,
+      "min": 2.1,
+      "max": 2.1
+    },
+    "Dt": {
+      "known": 10,
+      "denominator": 10,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "Tn": {
+      "known": 0,
+      "denominator": 10,
+      "min": null,
+      "max": null,
+      "status": "blank_or_missing_in_static_case; no source default inferred before controller source release"
+    }
+  },
+  "generator_parameter_ranges_static": {
+    "u": {
+      "known": 10,
+      "denominator": 10,
+      "min": 1.0,
+      "max": 1.0
+    },
+    "Sn": {
+      "known": 10,
+      "denominator": 10,
+      "min": 836.0,
+      "max": 1684.1
+    },
+    "Vn": {
+      "known": 10,
+      "denominator": 10,
+      "min": 12.5,
+      "max": 345.0
+    },
+    "fn": {
+      "known": 10,
+      "denominator": 10,
+      "min": 60.0,
+      "max": 60.0
+    },
+    "D": {
+      "known": 10,
+      "denominator": 10,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "M": {
+      "known": 10,
+      "denominator": 10,
+      "min": 4.86,
+      "max": 100.0
+    },
+    "ra": {
+      "known": 10,
+      "denominator": 10,
+      "min": 0.001,
+      "max": 0.0615
+    },
+    "xl": {
+      "known": 10,
+      "denominator": 10,
+      "min": 0.03,
+      "max": 0.54
+    },
+    "xd1": {
+      "known": 10,
+      "denominator": 10,
+      "min": 0.06,
+      "max": 1.32
+    },
+    "kp": {
+      "known": 10,
+      "denominator": 10,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "kw": {
+      "known": 10,
+      "denominator": 10,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "S10": {
+      "known": 10,
+      "denominator": 10,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "S12": {
+      "known": 10,
+      "denominator": 10,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "xd": {
+      "known": 10,
+      "denominator": 10,
+      "min": 0.2,
+      "max": 6.7
+    },
+    "xq": {
+      "known": 10,
+      "denominator": 10,
+      "min": 0.19,
+      "max": 6.2
+    },
+    "xd2": {
+      "known": 10,
+      "denominator": 10,
+      "min": 0.0026,
+      "max": 0.46538
+    },
+    "xq1": {
+      "known": 10,
+      "denominator": 10,
+      "min": 0.06,
+      "max": 1.32
+    },
+    "xq2": {
+      "known": 10,
+      "denominator": 10,
+      "min": 0.0026,
+      "max": 0.46538
+    },
+    "Td10": {
+      "known": 10,
+      "denominator": 10,
+      "min": 4.79,
+      "max": 10.2
+    },
+    "Td20": {
+      "known": 10,
+      "denominator": 10,
+      "min": 0.03,
+      "max": 0.03
+    },
+    "Tq10": {
+      "known": 10,
+      "denominator": 10,
+      "min": 0.4,
+      "max": 1.96
+    },
+    "Tq20": {
+      "known": 10,
+      "denominator": 10,
+      "min": 0.04,
+      "max": 0.04
+    }
+  },
+  "Toggler_static_metadata": {
+    "rows": 1,
+    "u_value_counts": {
+      "0": 1
+    },
+    "model_name_counts": {
+      "GENROU": 1
+    },
+    "numeric_ranges": {
+      "u": {
+        "known": 1,
+        "denominator": 1,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "t": {
+        "known": 1,
+        "denominator": 1,
+        "min": 12.0,
+        "max": 12.0
+      }
+    }
+  },
+  "registry_mapping": {
+    "TGOV1N": {
+      "registered_module": "governor",
+      "module_qualified_name": "andes.models.governor"
+    },
+    "GENROU": {
+      "registered_module": "synchronous",
+      "module_qualified_name": "andes.models.synchronous"
+    },
+    "Toggle": {
+      "registered_module": "timer",
+      "module_qualified_name": "andes.models.timer"
+    },
+    "SHAFT5": {
+      "registered_module": "shaft",
+      "module_qualified_name": "andes.models.shaft"
+    }
+  },
+  "Toggler_alias": "Toggle",
+  "registry_sha256": "5fff5193a20378466d3db6e70e220b7d95713a574fbff73dd23d1dea82565ee5",
+  "registry_bytes": 2027,
+  "observable_registry_tool_attempts": 1,
+  "HTTP_status": null,
+  "internal_retry_count": null,
+  "original_registry_encoding": "base64",
+  "metadata_mapping_reads_this_stage": 1,
+  "metadata_enumerations_cumulative": 3,
+  "source_code_content_files_used": 1,
+  "source_code_content_files_max": 16,
+  "case_sheets_read": 3,
+  "case_sheets_max": 6,
+  "source_content_files_cumulative": 14,
+  "source_content_files_max": 33,
+  "lineage_slots_cumulative": 4,
+  "parser_sha256": "23763fd9a606e237b3aff37325a4e0f1079995bf149144b2cd094d95b4a3bef9",
+  "summary_parser_sha256": "3fafefd546945772ae2f5b9d29a40843baf57e0d44ecb354eaeeed066868cd02",
+  "outputs": {
+    "sheet_xml_mapping.json": {
+      "bytes": 830,
+      "sha256": "2541c7fb65014d537aef26c6eec1a29fe078418744a108a38ed6c079e57a5f4e"
+    },
+    "selected_static_rows.json": {
+      "bytes": 76766,
+      "sha256": "e6f16f16623586e5505431b4a96ed1e0c5860ad1762415b67e3f9083338916ca"
+    },
+    "models___init__.py": {
+      "bytes": 2027,
+      "sha256": "5fff5193a20378466d3db6e70e220b7d95713a574fbff73dd23d1dea82565ee5"
+    },
+    "registry_tool_return.json": {
+      "bytes": 3647,
+      "sha256": "99969987abe7b2ab701e7a4b069add040b678ca256442f0b3cec6eeba3868f2b"
+    },
+    "parsed_static_linkage.json": {
+      "bytes": 12841,
+      "sha256": "17995372401826b6fbcd59ad0b600709348927e670d8d0ea32467eff530f52ea"
+    }
+  },
+  "cost": {
+    "worksheet_parser_native_wall_seconds": 0.1876926,
+    "worksheet_parser_tool_wall_seconds": 0.02606730000115931,
+    "registry_tool_wall_seconds": 0.734,
+    "summary_extraction_wall_seconds_before_publication": 0.015160200011450797,
+    "stage_total_native_wall_seconds": null,
+    "cpu_seconds": null,
+    "inclusion": "Worksheet tool wall is inside parser native wall; registry call latency is separate. End-to-end stage wall not measured."
+  },
+  "other_source_files_released": false,
+  "other_worksheet_values_released": false,
+  "formula_evaluations": 0,
+  "ANDES_imports_or_execution": 0,
+  "cache_weight_trajectory_reads": 0,
+  "mathematics_recalculations": 0,
+  "historical_execution_config_identity": "unknown",
+  "actual_train_limit_activation": "unknown",
+  "scope": "Exact byte-matched static case and same official commit registry only; no historical runtime or dynamic activation inference.",
+  "unknowns": {
+    "Tn_static_values": 10,
+    "historical_execution_config_identity": "unknown",
+    "actual_train_limit_activation": "unknown",
+    "TGOV1N_concrete_class_definition_file": "not yet resolved beyond registry module andes.models.governor; no next file guessed or fetched"
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "run_id": "p_driver_order_20261031",
+  "stage": "S1b_source_group02",
+  "released": true,
+  "recorded_utc": "2026-10-30T21:28:29.200012+00:00",
+  "parent_summary_sha256": "c2ad01852e7e3012cb2680f7f1a67a1e16f5a36abb0acf9aa4b004d571793dcf",
+  "repository": "CURENT/andes",
+  "commit": "eda5163c9ee8d19945a1dd5d1771fec5da608c27",
+  "tool": "mcp__codex_apps__github_fetch_file",
+  "encoding": "base64",
+  "files": [
+    {
+      "path": "andes/models/governor/tgov1.py",
+      "condition": "required",
+      "basis": "Actual governor package initializer line6 explicitly imports TGOV1N from .tgov1."
+    },
+    {
+      "path": "andes/models/governor/tgbase.py",
+      "condition": "Only if actual tgov1 direct import names andes.models.governor.tgbase; no lookup on absent mapping.",
+      "basis": "Conditional direct governor base definition, not a guessed request."
+    },
+    {
+      "path": "andes/core/block.py",
+      "condition": "Only if actual tgov1 direct import names andes.core.block, or allowed core/__init__ explicit re-export maps required named Lag/LeadLag block to .block.",
+      "basis": "At most one functional dependency layer: named controller block definition."
+    },
+    {
+      "path": "andes/core/__init__.py",
+      "condition": "Only if actual tgov1 uses a required symbol via andes.core package and explicit alias/default resolution is needed.",
+      "basis": "Namespace mapping metadata only; no execution or recursive functional traversal."
+    }
+  ],
+  "request_order": "tgov1 first; each conditional source requires a persisted exact observed import/alias before its sole request; skip unused entries",
+  "observable_attempts_per_allowed_file": 1,
+  "no_unlisted_paths_or_imports_followed": true,
+  "functional_dependency_depth_max": 1,
+  "stop": "Any missing mapping, non-whitelisted dependency or excess source budget leaves dependent conclusion unknown; do not fetch guessed alternatives.",
+  "budget_before": {
+    "official_source_files": 4,
+    "source_content_files": 17,
+    "lineage_files": 4,
+    "case_files": 1,
+    "case_sheets": 3,
+    "metadata_enumerations": 3
+  },
+  "budget_after_upper_bound": {
+    "official_source_files": 8,
+    "source_content_files": 21,
+    "lineage_files": 4,
+    "case_files": 1,
+    "case_sheets": 3,
+    "metadata_enumerations": 3
+  },
+  "absolute_budgets": {
+    "official_source_files": 16,
+    "source_content_files": 33,
+    "lineage_files": 8,
+    "case_files": 1,
+    "case_sheets": 6,
+    "metadata_enumerations": 3
+  },
+  "case_row_reads_this_release": 0,
+  "metadata_enumerations_this_release": 0,
+  "ANDES_execution": 0,
+  "real_trajectory_reads": 0,
+  "new_FOM": 0,
+  "parameter_estimates": 0,
+  "matrix_recalculations": 0,
+  "model_writes": 0,
+  "extract": "static equations, exact named block differential/algebraic contribution, Tn/default/unit mapping, references and limiter assumptions; actual train activity remains unknown",
+  "history_execution_source_identity": "unknown"
+}

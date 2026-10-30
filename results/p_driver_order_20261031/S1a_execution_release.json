@@ -1,0 +1,81 @@
+{
+  "run_id": "p_driver_order_20261031",
+  "stage": "S1a_official_static_case_identity",
+  "recorded_utc": "2026-10-30T21:09:24.101329+00:00",
+  "released": true,
+  "scientific_revision_kind": "prospective_source_qualification_only",
+  "addendum_sha256": "f0bb6fa6a9f5a2a818f0b0712ed0fc25a6f8cdf4044f6441ac439ded3cf20ef1",
+  "S0_summary_sha256": "18e0888258244c6eca593649f418b353a289a1122dd0c894cc4d9610a6105877",
+  "S0_receipt_sha256": "695b0d8d38e68dc92404f880cc1b64594d919083fd3d628469c39d23d5ac7f3b",
+  "old_case_identity_source": {
+    "bound_file": "private_data/p_port_diagnostic_20261031/manifest.json",
+    "bound_file_sha256": "4b5b2d7e2085518a2ef78ac6b50efd6e2b3535bbe31b29e7dd75884bded3a746",
+    "key": [
+      "M0_source_metadata",
+      "metadata_fragment",
+      "case_sha256"
+    ],
+    "case_sha256": "9c2048dc94201ee48ffe816de65d53831fa1f4b0e7fdf32f24c50f1017edcfe5",
+    "S0_extraction_sha256": "14a09bd9fbd0c9a45eeb2e09a0eafbb4bc2ae9843ed8595670c9bef3f9f9cc9b"
+  },
+  "repository": "CURENT/andes",
+  "unique_tag": "v2.0.0",
+  "tag_request": {
+    "tool": "mcp__codex_apps__github_fetch",
+    "url": "https://api.github.com/repos/CURENT/andes/git/ref/tags/v2.0.0",
+    "maximum_observable_tool_attempts": 1
+  },
+  "annotated_tag_request": {
+    "allowed_only_if_first_object_type": "tag",
+    "tool": "mcp__codex_apps__github_fetch",
+    "url_template": "https://api.github.com/repos/CURENT/andes/git/tags/<returned_tag_object_sha>",
+    "maximum_observable_tool_attempts": 1,
+    "target_must_be": "commit",
+    "further_nested_tags_allowed": false
+  },
+  "case_request": {
+    "tool": "mcp__codex_apps__github_fetch_file",
+    "repository_full_name": "CURENT/andes",
+    "path": "andes/cases/ieee39/ieee39_full.xlsx",
+    "ref": "<resolved_commit_sha>",
+    "encoding": "base64",
+    "maximum_observable_tool_attempts": 1,
+    "canonical_raw_url_template": "https://raw.githubusercontent.com/CURENT/andes/<resolved_commit_sha>/andes/cases/ieee39/ieee39_full.xlsx",
+    "byte_SHA256_must_match_old_case": true
+  },
+  "transport_contract": {
+    "save_tool_return_record": true,
+    "case_SHA_is_over_decoded_original_bytes_not_base64_or_JSON": true,
+    "unreturned_HTTP_status_or_internal_retries": "unknown",
+    "do_not_claim_exact_HTTP_request_count": true,
+    "read_only": true,
+    "no_fallback_version_path_mirror_or_retry": true,
+    "no_source_instructions_executed": true
+  },
+  "limits": {
+    "S0_source_files_already_read": 11,
+    "lineage_slots_already_used": 3,
+    "new_lineage_responses_upper_bound": 2,
+    "case_files_upper_bound": 1,
+    "API_record_bytes_upper_bound": 1048576,
+    "case_bytes_safety_upper_bound": 4194304,
+    "all_source_content_files_upper_bound": 33,
+    "official_source_code_files_upper_bound": 16,
+    "case_sheets_upper_bound": 6,
+    "rows_per_sheet_upper_bound": 200,
+    "S1b_released": false,
+    "case_cell_values_may_be_read": false,
+    "ANDES_execution": 0,
+    "new_FOM": 0,
+    "real_trajectory_reads": 0,
+    "parameter_estimates": 0,
+    "model_writes": 0
+  },
+  "stop": "Tool/source/encoding ambiguity, nested tag, missing resource or SHA mismatch stops dependent stages as unknown. No extra attempt.",
+  "old_S0_status_preserved": "unknown beyond L1",
+  "historical_execution_source_identity": "unknown",
+  "train_limit_activation": "unknown",
+  "root_adoption": "Exact existing case SHA supports a single official static identity test, without new high-order conditions or package installation. New semantics are prospective and preserve old unknown evidence.",
+  "review_snapshot_path": "results/p_driver_order_20261031/review_at_S1a_release.md",
+  "review_snapshot_sha256": "38a22d5e68fdabc141e34eb7336d632a83ae6717e1fde5307f2c0fdcd543b813"
+}
