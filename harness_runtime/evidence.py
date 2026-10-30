@@ -49,6 +49,7 @@ FLAGS = {
 REFERENCE_FIELDS = {
     "comparison_reference", "effect_reference", "budget_reference",
     "optimization_adequacy_reference", "probe_reference", "probe_not_applicable_reference",
+    "optimizer_health_not_applicable_reference",
     "margin_registration_reference", "uncertainty_reference", "selection_accounting_reference",
     "registered_prediction_reference", "alternative_explanations_reference",
     "evaluation_contract_reference", "critical_events_reference", "verification_reference",
@@ -176,6 +177,7 @@ def assess_record(record: dict) -> dict:
             check.issue("SCHEMA_TYPE", "inference." + key, "Expected a boolean; truthy strings are not evidence.", "error")
     refs = {key: check.reference(inf.get(key), "inference." + key) for key in REFERENCE_FIELDS}
     target = check.enum(inf.get("claim_target"), TARGETS, "inference.claim_target", "unknown")
+    empirical_target = target in {"algorithm_performance", "registered_functional_prediction"}
     direction = check.enum(inf.get("effect_direction"), {"candidate_gain_positive"},
                            "inference.effect_direction", "candidate_gain_positive")
     margin = inf.get("practical_margin")
@@ -192,7 +194,6 @@ def assess_record(record: dict) -> dict:
     # observation. A wholly opposite-sign interval contradicts its own summary;
     # keep the record, but require reconciliation before any effect-based gate.
     effect_consistent = not (interval_valid
-        and target in {"algorithm_performance", "registered_functional_prediction"}
         and ((observed["effect"] == "gain" and interval[1] < 0)
              or (observed["effect"] == "loss" and interval[0] > 0)))
     if not effect_consistent:
@@ -298,7 +299,9 @@ def assess_record(record: dict) -> dict:
                               and reviewed_for("falsified_by_proof", [proof.get("proof_reference"), proof.get("claim_reference"), proof.get("assumptions_reference")]))
 
     validity = observed["validity"] == "valid"
-    empirical_health = observed["optimizer_health"] != "unhealthy"
+    empirical_health = (observed["optimizer_health"] == "healthy"
+                        or (observed["optimizer_health"] == "not_applicable"
+                            and refs["optimizer_health_not_applicable_reference"]))
     comparison = bool(observed["comparison"] == "matched" and refs["comparison_reference"]
                       and refs["effect_reference"] and refs["evaluation_contract_reference"])
     adequacy = bool(observed["optimization_adequacy"] == "supported" and refs["optimization_adequacy_reference"]
@@ -307,7 +310,7 @@ def assess_record(record: dict) -> dict:
     common_equivalence = {
         "valid evidence": validity,
         "effect summary consistent with supplied interval": effect_consistent,
-        "no unresolved known optimizer pathology": empirical_health,
+        "explicit optimizer health or referenced nonapplicability": empirical_health,
         "reported effect summary": observed["effect"] != "unknown",
         "matched comparison with effect/evaluation references": comparison,
         "scoped optimization adequacy with reference": adequacy,
@@ -317,25 +320,30 @@ def assess_record(record: dict) -> dict:
         "justified uncertainty interval with reference": bool(interval_valid and inf.get("uncertainty_justified") is True and refs["uncertainty_reference"] and _text(inf.get("effect_metric"))),
         "whole interval contained in the equivalence margin": contained,
         "adaptive selection addressed with reference": selection,
-        "performance or registered functional target": target in {"algorithm_performance", "registered_functional_prediction"},
+        "performance or registered functional target": empirical_target,
         "effect direction is candidate gain positive": direction == "candidate_gain_positive",
     }
     equivalence = all(common_equivalence.values())
+    equivalence_prerequisites = all(value for name, value in common_equivalence.items()
+                                   if name != "scoped repetition with frozen protocol and exposure records")
     budget_gain = bool(validity and effect_consistent and comparison and refs["budget_reference"] and observed["effect"] == "gain"
-                       and target in {"algorithm_performance", "registered_functional_prediction"})
-    tradeoff = bool(validity and effect_consistent and comparison and observed["effect"] == "tradeoff")
-    mechanism_supported = bool(validity and effect_consistent and empirical_health and comparison and adequacy and confirm_ok and functional_probe
+                       and empirical_target)
+    tradeoff = bool(validity and empirical_target and effect_consistent and comparison and observed["effect"] == "tradeoff")
+    mechanism_prerequisites = bool(validity and effect_consistent and empirical_health and comparison and adequacy and functional_probe
                                and observed["effect"] in {"gain", "tradeoff"} and selection
                                and refs["alternative_explanations_reference"]
                                and reviewed_for("mechanism_supported_within_scope", [inf.get("registered_prediction_reference"),
                                    probe.get("results_reference"), inf.get("alternative_explanations_reference"), inf.get("effect_reference")]))
-    functional_null = bool(equivalence and functional_probe
+    mechanism_supported = mechanism_prerequisites and confirm_ok
+    functional_null_prerequisites = bool(equivalence_prerequisites and functional_probe
                            and reviewed_for("mechanism_null_within_scope", [inf.get("registered_prediction_reference"),
                                probe.get("results_reference"), inf.get("uncertainty_reference"), inf.get("comparison_reference")]))
+    functional_null = functional_null_prerequisites and repeated
     promotion_checks = {
         "valid evidence": validity,
         "effect summary consistent with supplied interval": effect_consistent,
-        "no unresolved known optimizer pathology": empirical_health,
+        "explicit optimizer health or referenced nonapplicability": empirical_health,
+        "performance or registered functional target": empirical_target,
         "matched referenced comparison": comparison,
         "documented gain, tradeoff or practical equivalence": observed["effect"] in {"gain", "tradeoff"} or equivalence,
         "no critical-event regression with reference": observed["critical_events"] == "pass" and refs["critical_events_reference"],
@@ -362,7 +370,7 @@ def assess_record(record: dict) -> dict:
     if mathematical_proof:
         allowed_science.add("falsified_within_scope")
     allowed_models = {"retain_evidence", "ineligible"}
-    if validity and effect_consistent and comparison and observed["effect"] in {"gain", "tradeoff"} and refs["frontier_comparison_reference"]:
+    if validity and empirical_target and effect_consistent and comparison and observed["effect"] in {"gain", "tradeoff"} and refs["frontier_comparison_reference"]:
         allowed_models.add("add_frontier")
     if promotion:
         allowed_models.add("promote_incumbent")
@@ -382,8 +390,11 @@ def assess_record(record: dict) -> dict:
         check.issue("PERFORMANCE_EQUIVALENCE_IS_NOT_MECHANISM_NULL", "proposal.science_decision", "A registered functional prediction, matched probe and scoped independent review are additionally required; this never asserts that a physical mechanism is absent.")
     if observed["optimizer_health"] == "healthy" and observed["optimization_adequacy"] != "supported":
         check.issue("HEALTH_IS_NOT_ADEQUACY", "evidence", "Healthy optimization diagnostics do not establish adequate optimization.")
-    if not empirical_health and observed["optimization_adequacy"] == "supported":
+    if observed["optimizer_health"] == "unhealthy" and observed["optimization_adequacy"] == "supported":
         check.issue("OPTIMIZATION_EVIDENCE_CONFLICT", "evidence", "Known unhealthy optimization conflicts with an unqualified adequacy assertion; repair or resolve that conflict before strong empirical claims or promotion.")
+    if not empirical_health and observed["optimizer_health"] != "unhealthy":
+        check.issue("OPTIMIZER_HEALTH_UNSUPPORTED", "evidence.optimizer_health",
+                    "Strong empirical claims and promotion require explicit healthy status or indexed optimizer_health_not_applicable_reference; adequacy does not supply health evidence.")
     if observed["effect"] in {"no_clear_gain", "loss", "equivalence"} and not equivalence:
         check.issue("NEGATIVE_OBSERVATION_NOT_NULL", "evidence.effect", "Keep the negative observation; lack of a clear gain or a narrow budget is not a null-mechanism conclusion.")
     check.issue("RECORD_CHECK_NOT_CERTIFICATION", "record", NOTICE)
@@ -410,19 +421,40 @@ def assess_record(record: dict) -> dict:
         recommended = "confirm"
     else:
         recommended = "continue_registered"
-    strong_request = pclaim in {"no_practical_gain_within_scope", "mechanism_supported_within_scope"} or pmodel == "promote_incumbent" or pscience == "mechanism_null_within_scope"
+    # Each proposed strong claim contributes its own prerequisites and scoped
+    # confirmation requirement. A complete promotion record cannot waive a
+    # simultaneously requested equivalence claim's repetition requirement.
+    strong_requests = []
+    if pclaim == "no_practical_gain_within_scope":
+        strong_requests.append((equivalence_prerequisites, repeated))
+    if pclaim == "mechanism_supported_within_scope":
+        strong_requests.append((mechanism_prerequisites, confirm_ok))
+    if pscience == "mechanism_null_within_scope":
+        strong_requests.append((functional_null_prerequisites, repeated))
+    if pmodel == "promote_incumbent":
+        effect_observation = observed["effect"] in {"gain", "tradeoff"}
+        promotion_prerequisites = all(value for name, value in promotion_checks.items()
+            if name not in {"scoped confirmation and known exposure", "documented gain, tradeoff or practical equivalence"})
+        strong_requests.append((promotion_prerequisites and (effect_observation or equivalence_prerequisites),
+                                confirm_ok and (effect_observation or repeated)))
     if not schema_valid or observed["validity"] != "valid" or not effect_consistent:
         confirmation_need = "diagnose_first"
-    elif mathematical_proof:
+    elif mathematical_proof and not strong_requests:
         confirmation_need = "not_required_for_this_claim"
-    elif not empirical_health or observed["mechanism_probe"] in {"failed", "unidentifiable"} or observed["critical_events"] == "regressed":
+    elif observed["optimizer_health"] == "unhealthy" or observed["mechanism_probe"] in {"failed", "unidentifiable"} or observed["critical_events"] == "regressed":
         confirmation_need = "diagnose_first"
-    elif (pclaim in {"no_practical_gain_within_scope", "mechanism_supported_within_scope"} or pscience == "mechanism_null_within_scope") and not adequacy:
+    elif strong_requests and not all(prerequisites for prerequisites, _ in strong_requests):
         confirmation_need = "diagnose_first"
-    elif pclaim in {"observation_only", "budget_specific_gain", "tradeoff", "unresolved"} and not strong_request:
+        if recommended not in {"repair", "adapt"}:
+            recommended = "discriminate"
+    elif strong_requests:
+        confirmation_need = "not_required_for_this_claim" if all(confirmed for _, confirmed in strong_requests) else "needed"
+        if confirmation_need == "needed":
+            recommended = "confirm"
+            check.issue("CONFIRMATION_REQUIREMENTS_MISSING", "inference.confirmation_record",
+                        "At least one proposed claim still lacks its scoped confirmation or repetition record. Unit count alone does not establish scientific adequacy.")
+    elif pclaim in {"observation_only", "budget_specific_gain", "tradeoff", "unresolved"}:
         confirmation_need = "not_required_for_this_claim"
-    elif strong_request:
-        confirmation_need = "not_required_for_this_claim" if confirm_ok else "needed"
     else:
         confirmation_need = "undetermined"
     science_basis = {}

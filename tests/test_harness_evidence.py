@@ -307,6 +307,149 @@ class EvidenceTests(unittest.TestCase):
                 self.assertTrue(result["proposed_claim_eligible"])
                 self.assertNotIn("EFFECT_INTERVAL_CONFLICT", {issue["code"] for issue in result["issues"]})
 
+    def test_effect_conflict_cannot_be_hidden_by_missing_or_different_target(self):
+        for target in (None, "unknown", "mathematical_statement", "algorithm_performance", "registered_functional_prediction"):
+            with self.subTest(target=target):
+                record = promotion_record()
+                record["evidence"]["effect"] = "gain"
+                record["inference"]["effect_interval"] = [-0.2, -0.1]
+                record["inference"]["frontier_comparison_reference"] = REF
+                if target is None:
+                    record["inference"].pop("claim_target")
+                else:
+                    record["inference"]["claim_target"] = target
+                result = evidence.assess_record(record)
+                self.assertTrue(result["schema_valid"])
+                self.assertIn("EFFECT_INTERVAL_CONFLICT", {issue["code"] for issue in result["issues"]})
+                self.assertFalse(result["promotion_eligible"])
+                self.assertNotIn("add_frontier", result["allowed_model_decisions"])
+                self.assertEqual(result["confirmation_need"], "diagnose_first")
+
+    def test_effect_based_model_decisions_require_an_empirical_target(self):
+        for effect in ("gain", "tradeoff"):
+            for target in (None, "unknown", "mathematical_statement"):
+                with self.subTest(effect=effect, target=target):
+                    record = promotion_record()
+                    record["evidence"]["effect"] = effect
+                    record["inference"]["effect_interval"] = [0.1, 0.2]
+                    record["inference"]["frontier_comparison_reference"] = REF
+                    if target is None:
+                        record["inference"].pop("claim_target")
+                    else:
+                        record["inference"]["claim_target"] = target
+                    result = evidence.assess_record(record)
+                    self.assertTrue(result["schema_valid"])
+                    self.assertEqual(set(result["allowed_claims"]), {"observation_only", "unresolved"})
+                    self.assertNotIn("add_frontier", result["allowed_model_decisions"])
+                    self.assertFalse(result["promotion_eligible"])
+
+    def test_unknown_health_cannot_be_supplied_by_supported_adequacy(self):
+        for health in (None, "unknown", "not_applicable", "unhealthy"):
+            for name in ("performance_equivalence", "functional_prediction_equivalence"):
+                with self.subTest(health=health, fixture=name):
+                    record = fixture(name)
+                    if health is None:
+                        record["evidence"].pop("optimizer_health")
+                    else:
+                        record["evidence"]["optimizer_health"] = health
+                    result = self.assert_denied(record)
+                    self.assertTrue(result["schema_valid"])
+                    self.assertNotIn("mechanism_null_within_scope", result["allowed_science_decisions"])
+                    self.assertEqual(result["confirmation_need"], "diagnose_first")
+                    self.assertEqual(result["recommended_next"], "repair" if health == "unhealthy" else "discriminate")
+                    if name == "functional_prediction_equivalence":
+                        record["evidence"]["effect"] = "gain"
+                        record["inference"]["effect_interval"] = [0.1, 0.2]
+                        record["inference"]["alternative_explanations_reference"] = REF
+                        record["inference"]["review_record"]["supports"] = ["mechanism_supported_within_scope"]
+                        self.assert_denied(record, "mechanism_supported_within_scope")
+            record = promotion_record()
+            if health is None:
+                record["evidence"].pop("optimizer_health")
+            else:
+                record["evidence"]["optimizer_health"] = health
+            self.assertFalse(evidence.assess_record(record)["promotion_eligible"])
+
+    def test_health_nonapplicability_requires_indexed_reference(self):
+        record = promotion_record()
+        record["evidence"]["optimizer_health"] = "not_applicable"
+        for reference in (None, "reports/not_indexed.md", REF):
+            with self.subTest(reference=reference):
+                record["inference"]["optimizer_health_not_applicable_reference"] = reference
+                result = evidence.assess_record(record)
+                self.assertEqual(result["promotion_eligible"], reference == REF)
+                self.assertEqual("no_practical_gain_within_scope" in result["allowed_claims"], reference == REF)
+
+    def test_unknown_health_preserves_budget_observation_and_mathematical_proof(self):
+        for health in (None, "unknown", "not_applicable"):
+            for name in ("single_matched_gain", "reviewed_counterexample"):
+                with self.subTest(health=health, fixture=name):
+                    record = fixture(name)
+                    if health is None:
+                        record["evidence"].pop("optimizer_health")
+                    else:
+                        record["evidence"]["optimizer_health"] = health
+                    result = evidence.assess_record(record)
+                    self.assertTrue(result["proposed_claim_eligible"])
+                    self.assertEqual(result["confirmation_need"], "not_required_for_this_claim")
+
+    def test_mathematical_proof_does_not_waive_simultaneous_promotion_requirements(self):
+        record = fixture("reviewed_counterexample")
+        record["proposal"]["model_decision"] = "promote_incumbent"
+        result = evidence.assess_record(record)
+        self.assertTrue(result["proposed_claim_eligible"])
+        self.assertTrue(result["proposed_science_decision_eligible"])
+        self.assertFalse(result["promotion_eligible"])
+        self.assertFalse(result["proposed_model_decision_eligible"])
+        self.assertEqual(result["confirmation_need"], "diagnose_first")
+        self.assertEqual(result["recommended_next"], "discriminate")
+
+    def test_confirmation_advice_covers_all_proposed_strong_claims(self):
+        record = promotion_record()
+        record["evidence"]["confirmation"] = "new_conditions"
+        confirmation = record["inference"]["confirmation_record"]
+        confirmation.update(kind="new_conditions", data_exposure="unseen_for_selection")
+        confirmation["units"] = confirmation["units"][:1]
+        result = self.assert_denied(record)
+        self.assertFalse(result["promotion_eligible"])
+        self.assertEqual(result["confirmation_need"], "needed")
+        self.assertEqual(result["recommended_next"], "confirm")
+        # Gain can meet the promotion record gate while the simultaneous
+        # equivalence request still lacks its own repetition requirement.
+        record["evidence"]["effect"] = "gain"
+        record["inference"]["effect_interval"] = [0.01, 0.02]
+        result = self.assert_denied(record)
+        self.assertTrue(result["promotion_eligible"])
+        self.assertEqual(result["confirmation_need"], "needed")
+        # Repetition alone does not replace the other evidence prerequisites.
+        confirmation["units"].append({"unit_id": "another_unit", "reference": REF})
+        record["inference"].pop("uncertainty_reference")
+        result = self.assert_denied(record)
+        self.assertEqual(result["confirmation_need"], "diagnose_first")
+        self.assertEqual(result["recommended_next"], "discriminate")
+
+    def test_deleting_target_health_or_supporting_records_never_adds_eligibility(self):
+        records = [promotion_record(), fixture("functional_prediction_equivalence")]
+        conflicting = promotion_record()
+        conflicting["evidence"]["effect"] = "gain"
+        conflicting["inference"]["effect_interval"] = [-0.2, -0.1]
+        records.append(conflicting)
+        paths = [("inference", "claim_target"), ("evidence", "optimizer_health"),
+                 ("inference", "optimization_adequacy_reference"), ("inference", "uncertainty_reference"),
+                 ("inference", "comparison_reference"), ("inference", "confirmation_record"),
+                 ("inference", "review_record")]
+        for record in records:
+            baseline = evidence.assess_record(record)
+            for group, field in paths:
+                with self.subTest(run=record["run_id"], removed=(group, field)):
+                    variant = deepcopy(record)
+                    variant[group].pop(field, None)
+                    result = evidence.assess_record(variant)
+                    self.assertTrue(result["schema_valid"])
+                    for output in ("allowed_claims", "allowed_science_decisions", "allowed_model_decisions"):
+                        self.assertLessEqual(set(result[output]), set(baseline[output]))
+                    self.assertLessEqual(result["promotion_eligible"], baseline["promotion_eligible"])
+
     def test_exact_reviewed_counterexample_does_not_require_optimization_or_seeds(self):
         record = fixture("reviewed_counterexample")
         result = evidence.assess_record(record)

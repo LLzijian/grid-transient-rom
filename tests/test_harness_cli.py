@@ -99,6 +99,28 @@ class CLITests(unittest.TestCase):
         self.assertTrue(target.is_file())
         self.assertFalse(json.loads(output)["dispatch_performed"])
 
+    def test_render_distinguishes_unknown_and_explicit_job_counts(self):
+        for fields, expected in (({}, "unknown"), ({"active_jobs": None}, "unknown"),
+                                 ({"active_jobs": []}, "0 active job"),
+                                 ({"active_jobs": [{"id": "a"}, {"id": "b"}]}, "2 active job")):
+            with self.subTest(fields=fields):
+                path = self.write_json("snapshot.json", {"task_state": "PAUSED_BY_USER", **fields})
+                code, output = self.invoke("render-state", "--registry", str(path))
+                self.assertEqual(code, 0, output)
+                jobs_section = output.split("## Active jobs in the supplied snapshot", 1)[1].split("## Pointers", 1)[0]
+                self.assertIn(expected, jobs_section)
+                if expected == "unknown":
+                    self.assertNotIn("0 active job", jobs_section)
+                self.assertIn("Live process state was not inspected", jobs_section)
+        for invalid in ({}, "none", 0, False):
+            with self.subTest(invalid=invalid):
+                path = self.write_json("snapshot.json", {"task_state": "PAUSED_BY_USER", "active_jobs": invalid})
+                target = self.root / "must-not-write.md"
+                code, output = self.invoke("render-state", "--registry", str(path), "--output", str(target))
+                self.assertEqual(code, 2)
+                self.assertFalse(json.loads(output)["valid"])
+                self.assertFalse(target.exists())
+
     def test_check_does_not_require_registry_or_read_private_payloads(self):
         self.public_fixture()
         secret = self.root / "private_data/never_read.json"
@@ -132,6 +154,63 @@ class CLITests(unittest.TestCase):
         self.assertFalse(result["valid"])
         codes = {row["code"] for row in result["issues"]}
         self.assertTrue({"reference_outside_root", "missing_reference", "invalid_public_metadata"} <= codes)
+
+    def test_check_parses_uppercase_discovered_and_manifest_metadata(self):
+        self.public_fixture()
+        contents = {"JSON": "{broken", "MD": "[absent](missing-file.md)", "PY": "def broken("}
+        manifest_files = []
+        for suffix, content in contents.items():
+            for directory in ("harness", "extras"):
+                name = f"{directory}/custom.{suffix}"
+                path = self.root / name
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text(content, encoding="utf-8")
+                if directory == "extras":
+                    manifest_files.append(name)
+        self.write_json("manifest.json", {"files": manifest_files})
+        result = cli.check_root(self.root)
+        self.assertFalse(result["valid"])
+        errors = {Path(issue["path"]).relative_to(self.root.resolve()).as_posix()
+                  for issue in result["issues"] if issue["severity"] == "error"}
+        self.assertEqual(errors, {f"{directory}/custom.{suffix}"
+                                  for directory in ("harness", "extras") for suffix in contents})
+
+    def test_reference_resolution_failure_returns_structured_error(self):
+        self.public_fixture()
+        (self.root / "README.md").write_text("[loop](loop)\n", encoding="utf-8")
+        resolve = Path.resolve
+
+        def failed_loop(path, *args, **kwargs):
+            if path.name == "loop":
+                raise RuntimeError("Symlink loop from test fixture")
+            return resolve(path, *args, **kwargs)
+
+        with patch.object(Path, "resolve", failed_loop):
+            code, output = self.invoke("check", "--root", str(self.root))
+        self.assertEqual(code, 1)
+        result = json.loads(output)
+        self.assertFalse(result["valid"])
+        self.assertTrue(any(issue["severity"] == "error" and "loop" in issue["message"].lower()
+                            for issue in result["issues"]))
+
+    def test_real_symlink_loop_reference_is_invalid_without_reading_target(self):
+        self.public_fixture()
+        loop = self.root / "loop"
+        try:
+            loop.symlink_to("loop")
+        except (OSError, NotImplementedError):
+            self.skipTest("symlinks unavailable on this host")
+        (self.root / "README.md").write_text("[loop](loop)\n", encoding="utf-8")
+        actual_read = Path.read_text
+
+        def guarded_read(path, *args, **kwargs):
+            self.assertNotEqual(path, loop)
+            return actual_read(path, *args, **kwargs)
+
+        with patch.object(Path, "read_text", guarded_read):
+            result = cli.check_root(self.root)
+        self.assertFalse(result["valid"])
+        self.assertTrue(any(issue["severity"] == "error" for issue in result["issues"]))
 
     def test_overlay_missing_existing_repository_reference_is_explicit_warning(self):
         base = self.public_fixture(self.root / "overlay")

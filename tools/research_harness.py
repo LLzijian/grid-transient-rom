@@ -105,10 +105,14 @@ def render_state(registry):
         raise ValueError("registry task_state is required and must use a known task state")
     snapshot = registry.get("snapshot", {})
     current = registry.get("current_run", {})
-    jobs = registry.get("active_jobs", [])
+    jobs = registry.get("active_jobs")
     pointers = registry.get("pointers", {})
-    if not isinstance(snapshot, dict) or not isinstance(current, dict) or not isinstance(jobs, list) or not isinstance(pointers, dict):
-        raise ValueError("snapshot/current_run/pointers must be objects and active_jobs a list")
+    if not isinstance(snapshot, dict) or not isinstance(current, dict) or not isinstance(pointers, dict):
+        raise ValueError("snapshot/current_run/pointers must be objects")
+    if jobs is not None and not isinstance(jobs, list):
+        raise ValueError("active_jobs must be a list, null, or absent")
+    job_summary = ("The snapshot's active job count is unknown." if jobs is None
+                   else f"The snapshot records {len(jobs)} active job(s).")
 
     def text(value):
         if value is None:
@@ -128,7 +132,7 @@ def render_state(registry):
         "- Run: " + text(current.get("run_id")),
         "- Recorded status: " + text(current.get("status")), "",
         "## Active jobs in the supplied snapshot", "",
-        f"The snapshot records {len(jobs)} active job(s). Live process state was not inspected.", "",
+        job_summary + " Live process state was not inspected.", "",
         "## Pointers", "", "| Pointer | Recorded value |", "|---|---|",
     ]
     for key, value in pointers.items():
@@ -190,7 +194,7 @@ def _controlled_files(directory):
             continue
         if path.is_dir():
             yield from _controlled_files(path)
-        elif path.suffix.lower() in {".json", ".md"}:
+        elif path.suffix.lower() in {".json", ".md", ".py"}:
             yield path
 
 
@@ -247,7 +251,12 @@ def check_root(root_path):
         # JSON evidence references use repository-relative paths. Markdown links
         # use the containing document's directory, as GitHub does.
         target = (root if json_ref else source.parent) / path
-        if not _inside(target, root):
+        try:
+            inside = _inside(target, root)
+        except (OSError, RuntimeError) as exc:
+            issue("reference_resolution_error", "cannot resolve reference " + ref + ": " + str(exc), source)
+            return
+        if not inside:
             issue("reference_outside_root", "reference escapes the repository: " + ref, source)
             return
         if _private(target.relative_to(root)):
@@ -312,9 +321,9 @@ def check_root(root_path):
                                     issue("invalid_manifest_size", "bytes must be a nonnegative integer", name)
                                 elif len(payload) != expected_size:
                                     issue("manifest_size_mismatch", "overlay byte count differs from manifest", name)
-                        if target.suffix in {".json", ".md", ".py"}:
+                        if target.suffix.lower() in {".json", ".md", ".py"}:
                             files.add(target)
-        except (OSError, ValueError) as exc:
+        except (OSError, ValueError, RuntimeError) as exc:
             issue("invalid_manifest", str(exc), manifest)
 
     for path in sorted(files):
@@ -324,7 +333,8 @@ def check_root(root_path):
         checked.append(path.relative_to(root).as_posix())
         try:
             content = path.read_text(encoding="utf-8")
-            if path.suffix == ".json":
+            suffix = path.suffix.lower()
+            if suffix == ".json":
                 data = json.loads(content)
                 if path == root / "harness/policy.json":
                     if not isinstance(data, dict) or data.get("schema_version") != 2 or not isinstance(data.get("permissions"), dict):
@@ -348,12 +358,12 @@ def check_root(root_path):
                         issue(row["code"], row["message"], path, row.get("severity", "error"))
                 for ref in _json_references(data):
                     reference(ref, path, json_ref=True)
-            elif path.suffix == ".md":
+            elif suffix == ".md":
                 for ref in LINK_PATTERN.findall(content):
                     reference(ref, path)
-            elif path.suffix == ".py":
+            elif suffix == ".py":
                 ast.parse(content, filename=str(path))
-        except (OSError, UnicodeError, ValueError, SyntaxError) as exc:
+        except (OSError, UnicodeError, ValueError, SyntaxError, RuntimeError) as exc:
             issue("invalid_public_metadata", str(exc), path)
     return {
         "valid": not any(row["severity"] == "error" for row in issues), "issues": issues,
@@ -400,7 +410,7 @@ def main(argv=None):
             result = check_root(args.root)
         emit(result)
         return 0 if result.get("valid") is True else 1
-    except (OSError, UnicodeError, ValueError, TypeError) as exc:
+    except (OSError, UnicodeError, ValueError, TypeError, RuntimeError) as exc:
         emit({"valid": False, "issues": [{"severity": "error", "code": "input_error", "message": str(exc)}], "dispatch_performed": False})
         return 2
 
