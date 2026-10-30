@@ -25,6 +25,7 @@ E=κD（见 [Astra 条件准备](../reports/astra6_next_structure_preparation_20
 | memory_transport_20261029 | 固定平面保守转运 S 与耗散路径 P | 共同 128 NOT_RETAINED；无延长/第二种子 | reports/memory_transport_20261029_conclusion.md |
 | closure_probe_20261030 | 残差四分解 + r₀ 条件数 + COI 预算 + 64/128 | H2 不支持为主要解释；H1 降级未否证；H3 强支持；H4 开放 | reports/closure_probe_20261030_conclusion.md |
 | checkpoint_selection_20261030 | 九点完整关键事件与固定时机选择审计；optimizer 0 | 无全门点；step16稳定收益与实际区间代价、step96实际检出收益与8 s新增漏判均保留；不晋升 | reports/checkpoint_selection_20261030_conclusion.md |
+| p_port_diagnostic_20261031 | 冻结p坐标的来源、滤波、共享常数与历史反推诊断 | M2混合来源；平衡基准差0；反推块未过冻结数值门，M3归因unknown；0optimizer/0新预测 | reports/p_port_diagnostic_20261031_conclusion.md |
 
 ## 当前认识与未决
 
@@ -48,3 +49,12 @@ Astra草案reports/p_port_diagnostic_20261030_scientist_draft.md仅DRAFT_UNADOPT
 
 R_N 保护档案、A96 来源、各 Run 端点与失败证据、已关闭余额均不因本 Campaign 改变；
 原 val/test 关闭、旧已消费 test 永久退出、新 FOM=0、TASK4 暂停、default none。
+
+## 2026-10-31 自动推进更新
+
+用户已要求按harness开展实验并自动迭代，既定方向有界科学执行恢复，每小时本聊天接续。
+已完成p端口诊断：来源297/297、base.pm_star与来源平衡Pm差0；M1自身闭合全通过，
+M2稳定和失稳队列均为ω传导与固定p残差混合。反推buffer重建最大差1.5673e−10未过1e−12门，
+M3十次离线共享参数估计均未形成归因资格，结构建议为空。未修改旧门、模型或数据。
+上游tm为转矩字段的补证限制物理功率解释；当前结果只按冻结p坐标使用。
+下一独立probe定位反推误差来源/真实调用路径/影响；设计可先准备，执行必须等待本轮归档完成。
