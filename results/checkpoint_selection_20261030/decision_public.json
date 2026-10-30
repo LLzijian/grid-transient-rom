@@ -1,0 +1,839 @@
+{
+  "schema": "checkpoint_selection_decision_20261030_v1",
+  "status": "COMPLETED",
+  "scope": "consumed train fit297; 267 stable/30 unstable; nine exposed checkpoints; no independent confirmation",
+  "eligible_checkpoints": [],
+  "pareto_front": [],
+  "suggested_adaptation_source": null,
+  "selection_opportunities": 9,
+  "model_adopted": false,
+  "model_decision": "retain_evidence",
+  "scientific_status": "unresolved",
+  "future_training_executed": false,
+  "optimizer_calls": 0,
+  "val_read": false,
+  "test_read": false,
+  "new_fom": 0,
+  "source": {
+    "decider": {
+      "path": "experiments/checkpoint_selection_decision_20261030.py",
+      "sha256": "4e3ab696ece65f61f252ad35d8a7bded74363251f9ec79a4ff3300282e0b9559"
+    },
+    "scientist": {
+      "path": "reports/checkpoint_selection_20261030_scientist.md",
+      "sha256": "e3e22f83ea6587ca6f574ce351cc113e0cf5d5f8dc2275bd1f89f5b17c753b27"
+    },
+    "protocol": {
+      "path": "reports/checkpoint_selection_20261030_protocol.md",
+      "sha256": "c2c1325229377bed6d0151a45891020a71c376b91f91bc1a71a5320134f76ffb"
+    },
+    "original_efficiency_target": {
+      "path": "experiments/memory_transport_study_20261029.py",
+      "sha256": "1cb35ae27317a3ecf4b852895e6eb8564e5517d9b9cb75e14231dcfde16e252f"
+    }
+  },
+  "protected_detection_sets": {
+    "8s": {
+      "sha256": "d20ee9beb9ca989ea732039fcdc7beaaeb6268048fb1ee4e3e06436e50f94f97",
+      "count": 27
+    },
+    "actual15": {
+      "sha256": "b8d0de2479590e83bea92e882c59ce0471c25fae9164d60b9eb7e79b1da4338b",
+      "count": 9
+    }
+  },
+  "T_anchor": {
+    "sha256": "b8d0de2479590e83bea92e882c59ce0471c25fae9164d60b9eb7e79b1da4338b",
+    "count": 9,
+    "valid": true,
+    "reference_metrics": {
+      "A96": {
+        "E": 0.020000000000000004,
+        "u": 0.0
+      },
+      "R_N": {
+        "E": 0.015555555555555553,
+        "u": 0.0
+      }
+    },
+    "reference_truth_mismatch_count": 0
+  },
+  "candidates": {
+    "step000000": {
+      "step": 0,
+      "eligible": false,
+      "gates": {
+        "numerical_qualification": true,
+        "stable_risk_5s": false,
+        "stable_risk_8s": false,
+        "common_omega_rmse_8s": false,
+        "normalized_p_rmse_8s": false,
+        "unstable_actual15_risk": true,
+        "actual15_misses": true,
+        "misses_8s": true,
+        "false_los_8s": true,
+        "false_los_actual15": true,
+        "actual_improvement": false,
+        "original_efficiency_target": false,
+        "protected_detection_8s": true,
+        "protected_detection_actual15": true,
+        "T_anchor_nonempty_and_refs_valid": true,
+        "T_anchor_coverage": true,
+        "T_truth_equal": true,
+        "T_E_vs_A96": true,
+        "T_E_vs_R_N": true
+      },
+      "failed_gates": [
+        "stable_risk_5s",
+        "stable_risk_8s",
+        "common_omega_rmse_8s",
+        "normalized_p_rmse_8s",
+        "actual_improvement",
+        "original_efficiency_target"
+      ],
+      "first_failure": "stable_risk_5s",
+      "pareto_components": [
+        21,
+        3,
+        2.3697211016504296,
+        1.0521060422026562,
+        0.7187045393795044,
+        0.3402539248314365,
+        0.4942845166457811,
+        0.020000000000000004
+      ],
+      "source_optimization_health": {
+        "status": "insufficient_history",
+        "audited": false,
+        "gate_applied": false
+      },
+      "current_optimizer_health": "not_applicable",
+      "current_optimizer_calls": 0,
+      "timing_metrics": {
+        "E": 0.020000000000000004,
+        "u": 0.0
+      },
+      "identity_changes": {
+        "8s": {
+          "A96": {
+            "new_missed_count": 0,
+            "repaired_missed_count": 0,
+            "new_false_los_count": 0,
+            "unresolved_count": 0
+          },
+          "R_N": {
+            "new_missed_count": 0,
+            "repaired_missed_count": 1,
+            "new_false_los_count": 0,
+            "unresolved_count": 0
+          }
+        },
+        "actual15": {
+          "A96": {
+            "new_missed_count": 0,
+            "repaired_missed_count": 0,
+            "new_false_los_count": 0,
+            "unresolved_count": 0
+          },
+          "R_N": {
+            "new_missed_count": 0,
+            "repaired_missed_count": 0,
+            "new_false_los_count": 0,
+            "unresolved_count": 0
+          }
+        }
+      }
+    },
+    "step000016": {
+      "step": 16,
+      "eligible": false,
+      "gates": {
+        "numerical_qualification": true,
+        "stable_risk_5s": true,
+        "stable_risk_8s": true,
+        "common_omega_rmse_8s": true,
+        "normalized_p_rmse_8s": true,
+        "unstable_actual15_risk": false,
+        "actual15_misses": false,
+        "misses_8s": false,
+        "false_los_8s": true,
+        "false_los_actual15": true,
+        "actual_improvement": false,
+        "original_efficiency_target": false,
+        "protected_detection_8s": false,
+        "protected_detection_actual15": false,
+        "T_anchor_nonempty_and_refs_valid": true,
+        "T_anchor_coverage": false,
+        "T_truth_equal": true,
+        "T_E_vs_A96": false,
+        "T_E_vs_R_N": false
+      },
+      "failed_gates": [
+        "unstable_actual15_risk",
+        "actual15_misses",
+        "misses_8s",
+        "actual_improvement",
+        "original_efficiency_target",
+        "protected_detection_8s",
+        "protected_detection_actual15",
+        "T_anchor_coverage",
+        "T_E_vs_A96",
+        "T_E_vs_R_N"
+      ],
+      "first_failure": "unstable_actual15_risk",
+      "pareto_components": [
+        22,
+        4,
+        4.096469296701626,
+        0.7520829913727409,
+        0.5761733664581854,
+        0.31982940638728413,
+        0.416251389276566,
+        null
+      ],
+      "source_optimization_health": {
+        "status": "insufficient_history",
+        "audited": false,
+        "gate_applied": false
+      },
+      "current_optimizer_health": "not_applicable",
+      "current_optimizer_calls": 0,
+      "timing_metrics": {
+        "E": null,
+        "u": null
+      },
+      "identity_changes": {
+        "8s": {
+          "A96": {
+            "new_missed_count": 1,
+            "repaired_missed_count": 0,
+            "new_false_los_count": 0,
+            "unresolved_count": 0
+          },
+          "R_N": {
+            "new_missed_count": 0,
+            "repaired_missed_count": 0,
+            "new_false_los_count": 0,
+            "unresolved_count": 0
+          }
+        },
+        "actual15": {
+          "A96": {
+            "new_missed_count": 1,
+            "repaired_missed_count": 0,
+            "new_false_los_count": 0,
+            "unresolved_count": 0
+          },
+          "R_N": {
+            "new_missed_count": 1,
+            "repaired_missed_count": 0,
+            "new_false_los_count": 0,
+            "unresolved_count": 0
+          }
+        }
+      }
+    },
+    "step000032": {
+      "step": 32,
+      "eligible": false,
+      "gates": {
+        "numerical_qualification": true,
+        "stable_risk_5s": true,
+        "stable_risk_8s": true,
+        "common_omega_rmse_8s": true,
+        "normalized_p_rmse_8s": true,
+        "unstable_actual15_risk": true,
+        "actual15_misses": true,
+        "misses_8s": false,
+        "false_los_8s": true,
+        "false_los_actual15": true,
+        "actual_improvement": false,
+        "original_efficiency_target": false,
+        "protected_detection_8s": false,
+        "protected_detection_actual15": true,
+        "T_anchor_nonempty_and_refs_valid": true,
+        "T_anchor_coverage": true,
+        "T_truth_equal": true,
+        "T_E_vs_A96": true,
+        "T_E_vs_R_N": true
+      },
+      "failed_gates": [
+        "misses_8s",
+        "actual_improvement",
+        "original_efficiency_target",
+        "protected_detection_8s"
+      ],
+      "first_failure": "misses_8s",
+      "pareto_components": [
+        21,
+        4,
+        3.469358062289167,
+        0.8177835186489222,
+        0.5937411543896343,
+        0.31326522832641107,
+        0.44110095233958974,
+        0.016666666666666666
+      ],
+      "source_optimization_health": {
+        "status": "insufficient_history",
+        "audited": false,
+        "gate_applied": false
+      },
+      "current_optimizer_health": "not_applicable",
+      "current_optimizer_calls": 0,
+      "timing_metrics": {
+        "E": 0.016666666666666666,
+        "u": 0.0
+      },
+      "identity_changes": {
+        "8s": {
+          "A96": {
+            "new_missed_count": 1,
+            "repaired_missed_count": 0,
+            "new_false_los_count": 0,
+            "unresolved_count": 0
+          },
+          "R_N": {
+            "new_missed_count": 0,
+            "repaired_missed_count": 0,
+            "new_false_los_count": 0,
+            "unresolved_count": 0
+          }
+        },
+        "actual15": {
+          "A96": {
+            "new_missed_count": 0,
+            "repaired_missed_count": 0,
+            "new_false_los_count": 0,
+            "unresolved_count": 0
+          },
+          "R_N": {
+            "new_missed_count": 0,
+            "repaired_missed_count": 0,
+            "new_false_los_count": 0,
+            "unresolved_count": 0
+          }
+        }
+      }
+    },
+    "step000048": {
+      "step": 48,
+      "eligible": false,
+      "gates": {
+        "numerical_qualification": true,
+        "stable_risk_5s": true,
+        "stable_risk_8s": true,
+        "common_omega_rmse_8s": true,
+        "normalized_p_rmse_8s": true,
+        "unstable_actual15_risk": false,
+        "actual15_misses": false,
+        "misses_8s": false,
+        "false_los_8s": true,
+        "false_los_actual15": true,
+        "actual_improvement": false,
+        "original_efficiency_target": false,
+        "protected_detection_8s": false,
+        "protected_detection_actual15": false,
+        "T_anchor_nonempty_and_refs_valid": true,
+        "T_anchor_coverage": false,
+        "T_truth_equal": true,
+        "T_E_vs_A96": false,
+        "T_E_vs_R_N": false
+      },
+      "failed_gates": [
+        "unstable_actual15_risk",
+        "actual15_misses",
+        "misses_8s",
+        "actual_improvement",
+        "original_efficiency_target",
+        "protected_detection_8s",
+        "protected_detection_actual15",
+        "T_anchor_coverage",
+        "T_E_vs_A96",
+        "T_E_vs_R_N"
+      ],
+      "first_failure": "unstable_actual15_risk",
+      "pareto_components": [
+        22,
+        4,
+        3.578086580281166,
+        0.8034200787717808,
+        0.5905120096945317,
+        0.3140730639388143,
+        0.43631973054355394,
+        null
+      ],
+      "source_optimization_health": {
+        "status": "insufficient_history",
+        "audited": false,
+        "gate_applied": false
+      },
+      "current_optimizer_health": "not_applicable",
+      "current_optimizer_calls": 0,
+      "timing_metrics": {
+        "E": null,
+        "u": null
+      },
+      "identity_changes": {
+        "8s": {
+          "A96": {
+            "new_missed_count": 1,
+            "repaired_missed_count": 0,
+            "new_false_los_count": 0,
+            "unresolved_count": 0
+          },
+          "R_N": {
+            "new_missed_count": 0,
+            "repaired_missed_count": 0,
+            "new_false_los_count": 0,
+            "unresolved_count": 0
+          }
+        },
+        "actual15": {
+          "A96": {
+            "new_missed_count": 1,
+            "repaired_missed_count": 0,
+            "new_false_los_count": 0,
+            "unresolved_count": 0
+          },
+          "R_N": {
+            "new_missed_count": 1,
+            "repaired_missed_count": 0,
+            "new_false_los_count": 0,
+            "unresolved_count": 0
+          }
+        }
+      }
+    },
+    "step000064": {
+      "step": 64,
+      "eligible": false,
+      "gates": {
+        "numerical_qualification": true,
+        "stable_risk_5s": true,
+        "stable_risk_8s": true,
+        "common_omega_rmse_8s": true,
+        "normalized_p_rmse_8s": true,
+        "unstable_actual15_risk": true,
+        "actual15_misses": false,
+        "misses_8s": false,
+        "false_los_8s": true,
+        "false_los_actual15": true,
+        "actual_improvement": false,
+        "original_efficiency_target": false,
+        "protected_detection_8s": false,
+        "protected_detection_actual15": false,
+        "T_anchor_nonempty_and_refs_valid": true,
+        "T_anchor_coverage": false,
+        "T_truth_equal": true,
+        "T_E_vs_A96": false,
+        "T_E_vs_R_N": false
+      },
+      "failed_gates": [
+        "actual15_misses",
+        "misses_8s",
+        "actual_improvement",
+        "original_efficiency_target",
+        "protected_detection_8s",
+        "protected_detection_actual15",
+        "T_anchor_coverage",
+        "T_E_vs_A96",
+        "T_E_vs_R_N"
+      ],
+      "first_failure": "actual15_misses",
+      "pareto_components": [
+        22,
+        4,
+        3.4238852152272834,
+        0.8172485484178242,
+        0.5989693104826442,
+        0.31609535106043724,
+        0.4416262549657567,
+        null
+      ],
+      "source_optimization_health": {
+        "status": "unknown",
+        "audited": false,
+        "gate_applied": false
+      },
+      "current_optimizer_health": "not_applicable",
+      "current_optimizer_calls": 0,
+      "timing_metrics": {
+        "E": null,
+        "u": null
+      },
+      "identity_changes": {
+        "8s": {
+          "A96": {
+            "new_missed_count": 1,
+            "repaired_missed_count": 0,
+            "new_false_los_count": 0,
+            "unresolved_count": 0
+          },
+          "R_N": {
+            "new_missed_count": 0,
+            "repaired_missed_count": 0,
+            "new_false_los_count": 0,
+            "unresolved_count": 0
+          }
+        },
+        "actual15": {
+          "A96": {
+            "new_missed_count": 1,
+            "repaired_missed_count": 0,
+            "new_false_los_count": 0,
+            "unresolved_count": 0
+          },
+          "R_N": {
+            "new_missed_count": 1,
+            "repaired_missed_count": 0,
+            "new_false_los_count": 0,
+            "unresolved_count": 0
+          }
+        }
+      }
+    },
+    "step000080": {
+      "step": 80,
+      "eligible": false,
+      "gates": {
+        "numerical_qualification": true,
+        "stable_risk_5s": true,
+        "stable_risk_8s": true,
+        "common_omega_rmse_8s": true,
+        "normalized_p_rmse_8s": true,
+        "unstable_actual15_risk": false,
+        "actual15_misses": false,
+        "misses_8s": false,
+        "false_los_8s": true,
+        "false_los_actual15": true,
+        "actual_improvement": false,
+        "original_efficiency_target": false,
+        "protected_detection_8s": false,
+        "protected_detection_actual15": false,
+        "T_anchor_nonempty_and_refs_valid": true,
+        "T_anchor_coverage": false,
+        "T_truth_equal": true,
+        "T_E_vs_A96": false,
+        "T_E_vs_R_N": false
+      },
+      "failed_gates": [
+        "unstable_actual15_risk",
+        "actual15_misses",
+        "misses_8s",
+        "actual_improvement",
+        "original_efficiency_target",
+        "protected_detection_8s",
+        "protected_detection_actual15",
+        "T_anchor_coverage",
+        "T_E_vs_A96",
+        "T_E_vs_R_N"
+      ],
+      "first_failure": "unstable_actual15_risk",
+      "pareto_components": [
+        22,
+        4,
+        3.9223057369130165,
+        0.7633464265172717,
+        0.5821756407008156,
+        0.3198482687502614,
+        0.4212238095203723,
+        null
+      ],
+      "source_optimization_health": {
+        "status": "unknown",
+        "audited": false,
+        "gate_applied": false
+      },
+      "current_optimizer_health": "not_applicable",
+      "current_optimizer_calls": 0,
+      "timing_metrics": {
+        "E": null,
+        "u": null
+      },
+      "identity_changes": {
+        "8s": {
+          "A96": {
+            "new_missed_count": 1,
+            "repaired_missed_count": 0,
+            "new_false_los_count": 0,
+            "unresolved_count": 0
+          },
+          "R_N": {
+            "new_missed_count": 0,
+            "repaired_missed_count": 0,
+            "new_false_los_count": 0,
+            "unresolved_count": 0
+          }
+        },
+        "actual15": {
+          "A96": {
+            "new_missed_count": 1,
+            "repaired_missed_count": 0,
+            "new_false_los_count": 0,
+            "unresolved_count": 0
+          },
+          "R_N": {
+            "new_missed_count": 1,
+            "repaired_missed_count": 0,
+            "new_false_los_count": 0,
+            "unresolved_count": 0
+          }
+        }
+      }
+    },
+    "step000096": {
+      "step": 96,
+      "eligible": false,
+      "gates": {
+        "numerical_qualification": true,
+        "stable_risk_5s": true,
+        "stable_risk_8s": true,
+        "common_omega_rmse_8s": true,
+        "normalized_p_rmse_8s": true,
+        "unstable_actual15_risk": true,
+        "actual15_misses": true,
+        "misses_8s": false,
+        "false_los_8s": true,
+        "false_los_actual15": true,
+        "actual_improvement": true,
+        "original_efficiency_target": false,
+        "protected_detection_8s": false,
+        "protected_detection_actual15": true,
+        "T_anchor_nonempty_and_refs_valid": true,
+        "T_anchor_coverage": true,
+        "T_truth_equal": true,
+        "T_E_vs_A96": true,
+        "T_E_vs_R_N": true
+      },
+      "failed_gates": [
+        "misses_8s",
+        "original_efficiency_target",
+        "protected_detection_8s"
+      ],
+      "first_failure": "misses_8s",
+      "pareto_components": [
+        20,
+        4,
+        3.1523456708832702,
+        0.8665650636560813,
+        0.6162984323403257,
+        0.3171890294450437,
+        0.4565988980608282,
+        0.015555555555555553
+      ],
+      "source_optimization_health": {
+        "status": "unknown",
+        "audited": false,
+        "gate_applied": false
+      },
+      "current_optimizer_health": "not_applicable",
+      "current_optimizer_calls": 0,
+      "timing_metrics": {
+        "E": 0.015555555555555553,
+        "u": 0.0
+      },
+      "identity_changes": {
+        "8s": {
+          "A96": {
+            "new_missed_count": 1,
+            "repaired_missed_count": 0,
+            "new_false_los_count": 0,
+            "unresolved_count": 0
+          },
+          "R_N": {
+            "new_missed_count": 0,
+            "repaired_missed_count": 0,
+            "new_false_los_count": 0,
+            "unresolved_count": 0
+          }
+        },
+        "actual15": {
+          "A96": {
+            "new_missed_count": 0,
+            "repaired_missed_count": 1,
+            "new_false_los_count": 0,
+            "unresolved_count": 0
+          },
+          "R_N": {
+            "new_missed_count": 0,
+            "repaired_missed_count": 1,
+            "new_false_los_count": 0,
+            "unresolved_count": 0
+          }
+        }
+      }
+    },
+    "step000112": {
+      "step": 112,
+      "eligible": false,
+      "gates": {
+        "numerical_qualification": true,
+        "stable_risk_5s": false,
+        "stable_risk_8s": false,
+        "common_omega_rmse_8s": true,
+        "normalized_p_rmse_8s": false,
+        "unstable_actual15_risk": true,
+        "actual15_misses": true,
+        "misses_8s": false,
+        "false_los_8s": true,
+        "false_los_actual15": true,
+        "actual_improvement": false,
+        "original_efficiency_target": false,
+        "protected_detection_8s": false,
+        "protected_detection_actual15": true,
+        "T_anchor_nonempty_and_refs_valid": true,
+        "T_anchor_coverage": true,
+        "T_truth_equal": true,
+        "T_E_vs_A96": true,
+        "T_E_vs_R_N": true
+      },
+      "failed_gates": [
+        "stable_risk_5s",
+        "stable_risk_8s",
+        "normalized_p_rmse_8s",
+        "misses_8s",
+        "actual_improvement",
+        "original_efficiency_target",
+        "protected_detection_8s"
+      ],
+      "first_failure": "stable_risk_5s",
+      "pareto_components": [
+        21,
+        4,
+        2.9001845848275494,
+        0.9133146361636026,
+        0.6421163565225796,
+        0.3231122336801234,
+        0.4679825529050034,
+        0.017777777777777778
+      ],
+      "source_optimization_health": {
+        "status": "unknown",
+        "audited": false,
+        "gate_applied": false
+      },
+      "current_optimizer_health": "not_applicable",
+      "current_optimizer_calls": 0,
+      "timing_metrics": {
+        "E": 0.017777777777777778,
+        "u": 0.0
+      },
+      "identity_changes": {
+        "8s": {
+          "A96": {
+            "new_missed_count": 1,
+            "repaired_missed_count": 0,
+            "new_false_los_count": 0,
+            "unresolved_count": 0
+          },
+          "R_N": {
+            "new_missed_count": 0,
+            "repaired_missed_count": 0,
+            "new_false_los_count": 0,
+            "unresolved_count": 0
+          }
+        },
+        "actual15": {
+          "A96": {
+            "new_missed_count": 0,
+            "repaired_missed_count": 0,
+            "new_false_los_count": 0,
+            "unresolved_count": 0
+          },
+          "R_N": {
+            "new_missed_count": 0,
+            "repaired_missed_count": 0,
+            "new_false_los_count": 0,
+            "unresolved_count": 0
+          }
+        }
+      }
+    },
+    "step000128": {
+      "step": 128,
+      "eligible": false,
+      "gates": {
+        "numerical_qualification": true,
+        "stable_risk_5s": true,
+        "stable_risk_8s": false,
+        "common_omega_rmse_8s": true,
+        "normalized_p_rmse_8s": true,
+        "unstable_actual15_risk": true,
+        "actual15_misses": true,
+        "misses_8s": false,
+        "false_los_8s": true,
+        "false_los_actual15": true,
+        "actual_improvement": false,
+        "original_efficiency_target": false,
+        "protected_detection_8s": false,
+        "protected_detection_actual15": true,
+        "T_anchor_nonempty_and_refs_valid": true,
+        "T_anchor_coverage": true,
+        "T_truth_equal": true,
+        "T_E_vs_A96": true,
+        "T_E_vs_R_N": true
+      },
+      "failed_gates": [
+        "stable_risk_8s",
+        "misses_8s",
+        "actual_improvement",
+        "original_efficiency_target",
+        "protected_detection_8s"
+      ],
+      "first_failure": "stable_risk_8s",
+      "pareto_components": [
+        21,
+        4,
+        3.045603054019912,
+        0.8675373355146678,
+        0.6255711284192054,
+        0.32140212114056005,
+        0.45687819084414505,
+        0.016666666666666666
+      ],
+      "source_optimization_health": {
+        "status": "unknown",
+        "audited": false,
+        "gate_applied": false
+      },
+      "current_optimizer_health": "not_applicable",
+      "current_optimizer_calls": 0,
+      "timing_metrics": {
+        "E": 0.016666666666666666,
+        "u": 0.0
+      },
+      "identity_changes": {
+        "8s": {
+          "A96": {
+            "new_missed_count": 1,
+            "repaired_missed_count": 0,
+            "new_false_los_count": 0,
+            "unresolved_count": 0
+          },
+          "R_N": {
+            "new_missed_count": 0,
+            "repaired_missed_count": 0,
+            "new_false_los_count": 0,
+            "unresolved_count": 0
+          }
+        },
+        "actual15": {
+          "A96": {
+            "new_missed_count": 0,
+            "repaired_missed_count": 0,
+            "new_false_los_count": 0,
+            "unresolved_count": 0
+          },
+          "R_N": {
+            "new_missed_count": 0,
+            "repaired_missed_count": 0,
+            "new_false_los_count": 0,
+            "unresolved_count": 0
+          }
+        }
+      }
+    }
+  },
+  "private_decision_sha256": "6e9f55de3293f0f3a8319b5f8d07f2b365692053136e6cc786a75e8018289891"
+}

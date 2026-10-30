@@ -1,0 +1,72 @@
+{
+  "schema": "checkpoint_selection_20261030_v1",
+  "checkpoint": "step000128",
+  "status": "COMPLETED",
+  "manifest_sha256": "9413d62bab914500c2049506f01fd8a70998ac1c7f011c06f8574242a4bc0686",
+  "cohort": {
+    "train": "fit297",
+    "event_count": 297,
+    "stable": 267,
+    "unstable": 30
+  },
+  "current_audit_seconds": 16.195543500012718,
+  "fresh_rollouts": false,
+  "optimizer_calls": 0,
+  "val_read": false,
+  "test_read": false,
+  "new_fom": 0,
+  "model_adopted": false,
+  "metrics": {
+    "horizon_risks": {
+      "5": {
+        "value": 0.8675373355146678,
+        "coarse_value": 0.8675373339413789,
+        "numerical_score_perturbation": 1.5732889435682296e-09,
+        "eligible": 267
+      },
+      "8": {
+        "value": 0.6255711284192054,
+        "coarse_value": 0.6255711084802726,
+        "numerical_score_perturbation": 1.993893272711489e-08,
+        "eligible": 267
+      }
+    },
+    "common_frequency_rmse_8s": 0.32140212114056005,
+    "normalized_p_rmse_8s": 0.45687819084414505,
+    "unstable_interval_risk": 3.045603054019912,
+    "unstable_actual15_risk": 3.045603054019912,
+    "all_required_rows_qualified": true
+  },
+  "classification": {
+    "8s": {
+      "original_counts": {
+        "event_count": 297,
+        "unstable_count": 30,
+        "numerical_unresolved": 0,
+        "missed_resolved_unstable": 4,
+        "false_los_resolved_stable": 0
+      },
+      "denominator": 297,
+      "missed_count": 4,
+      "false_los_count": 0,
+      "numerical_unresolved_count": 0,
+      "latency_uncovered_count": 0,
+      "window_no_los_unsettled_count": 2
+    },
+    "actual15": {
+      "original_counts": {
+        "event_count": 297,
+        "unstable_count": 30,
+        "numerical_unresolved": 0,
+        "missed_resolved_unstable": 21,
+        "false_los_resolved_stable": 0
+      },
+      "denominator": 297,
+      "missed_count": 21,
+      "false_los_count": 0,
+      "numerical_unresolved_count": 0,
+      "latency_uncovered_count": 0,
+      "window_no_los_unsettled_count": 21
+    }
+  }
+}

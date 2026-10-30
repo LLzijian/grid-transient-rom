@@ -1,0 +1,623 @@
+{
+  "schema": "checkpoint_source_health_20261030_v1",
+  "current_optimizer_calls": 0,
+  "current_training_seconds": 0.0,
+  "new_rollouts": 0,
+  "event_payloads_read": false,
+  "val_read": false,
+  "test_read": false,
+  "optimization_sufficiency": "not_established_by_health_checks",
+  "wall_seconds": 2.8868490000022575,
+  "source_sha256": "1de3cf11769b652989c04d2336ea0576b657ca6db9002d798645dd528c5827f3",
+  "original_health_rule_sha256": "1cb35ae27317a3ecf4b852895e6eb8564e5517d9b9cb75e14231dcfde16e252f",
+  "checkpoints": {
+    "step000000": {
+      "step": 0,
+      "status": "insufficient_history",
+      "checks": {
+        "model_sha_matches_metadata": true,
+        "training_sha_matches_metadata": true,
+        "model_all_numeric_finite": true,
+        "training_tensors_finite": true,
+        "step_counters_match": true,
+        "trace_steps_exact": true,
+        "trace_matches_endpoint_prefix": true,
+        "trace_finite": true,
+        "Adam_state_complete": true,
+        "Adam_counters_match": true,
+        "Adam_finite": true,
+        "Adam_layout_matches": true,
+        "Adam_moment_shapes_match_model": true,
+        "source_code_hashes_match": true,
+        "source_A96_hashes_match": true,
+        "formal_journal_accounted": true,
+        "project_journal_accounted": true
+      },
+      "trace_length": 0,
+      "gradient_norm": {
+        "count": 0,
+        "min": null,
+        "max": null,
+        "mean": null
+      },
+      "clip_threshold": 100.0,
+      "clip_count": 0,
+      "block_updates": {},
+      "Adam_step_counters": {},
+      "recorded_source_training_seconds": 0,
+      "original_last64_rule": null
+    },
+    "step000016": {
+      "step": 16,
+      "status": "insufficient_history",
+      "checks": {
+        "model_sha_matches_metadata": true,
+        "training_sha_matches_metadata": true,
+        "model_all_numeric_finite": true,
+        "training_tensors_finite": true,
+        "step_counters_match": true,
+        "trace_steps_exact": true,
+        "trace_matches_endpoint_prefix": true,
+        "trace_finite": true,
+        "Adam_state_complete": true,
+        "Adam_counters_match": true,
+        "Adam_finite": true,
+        "Adam_layout_matches": true,
+        "Adam_moment_shapes_match_model": true,
+        "source_code_hashes_match": true,
+        "source_A96_hashes_match": true,
+        "formal_journal_accounted": true,
+        "project_journal_accounted": true
+      },
+      "trace_length": 16,
+      "gradient_norm": {
+        "count": 16,
+        "min": 0.735243851479037,
+        "max": 22.888330276394843,
+        "mean": 5.566837382761993
+      },
+      "clip_threshold": 100.0,
+      "clip_count": 0,
+      "block_updates": {
+        "a_bar": {
+          "count": 16,
+          "min": 0.01282120674151321,
+          "max": 0.050683335146251896,
+          "mean": 0.024729615192139655,
+          "large_change_count_above_0_25": 0
+        },
+        "kappa_raw": {
+          "count": 16,
+          "min": 6.502605640198409e-05,
+          "max": 0.025391274239312093,
+          "mean": 0.01085139969337834,
+          "large_change_count_above_0_25": 0
+        },
+        "lambda_raw": {
+          "count": 16,
+          "min": 0.0045430560634546506,
+          "max": 0.017904680238854963,
+          "mean": 0.010162805456809495,
+          "large_change_count_above_0_25": 0
+        }
+      },
+      "Adam_step_counters": {
+        "0": 16.0,
+        "1": 16.0,
+        "2": 16.0
+      },
+      "recorded_source_training_seconds": 229.65253340003255,
+      "original_last64_rule": null
+    },
+    "step000032": {
+      "step": 32,
+      "status": "insufficient_history",
+      "checks": {
+        "model_sha_matches_metadata": true,
+        "training_sha_matches_metadata": true,
+        "model_all_numeric_finite": true,
+        "training_tensors_finite": true,
+        "step_counters_match": true,
+        "trace_steps_exact": true,
+        "trace_matches_endpoint_prefix": true,
+        "trace_finite": true,
+        "Adam_state_complete": true,
+        "Adam_counters_match": true,
+        "Adam_finite": true,
+        "Adam_layout_matches": true,
+        "Adam_moment_shapes_match_model": true,
+        "source_code_hashes_match": true,
+        "source_A96_hashes_match": true,
+        "formal_journal_accounted": true,
+        "project_journal_accounted": true
+      },
+      "trace_length": 32,
+      "gradient_norm": {
+        "count": 32,
+        "min": 0.735243851479037,
+        "max": 64.94271294053081,
+        "mean": 7.646324949923768
+      },
+      "clip_threshold": 100.0,
+      "clip_count": 0,
+      "block_updates": {
+        "a_bar": {
+          "count": 32,
+          "min": 0.01096337964509706,
+          "max": 0.050683335146251896,
+          "mean": 0.02021412331593591,
+          "large_change_count_above_0_25": 0
+        },
+        "kappa_raw": {
+          "count": 32,
+          "min": 3.2211071651009846e-05,
+          "max": 0.025391274239312093,
+          "mean": 0.007553010079518755,
+          "large_change_count_above_0_25": 0
+        },
+        "lambda_raw": {
+          "count": 32,
+          "min": 0.00016466830526875914,
+          "max": 0.017904680238854963,
+          "mean": 0.006370377834911571,
+          "large_change_count_above_0_25": 0
+        }
+      },
+      "Adam_step_counters": {
+        "0": 32.0,
+        "1": 32.0,
+        "2": 32.0
+      },
+      "recorded_source_training_seconds": 463.95869350002613,
+      "original_last64_rule": null
+    },
+    "step000048": {
+      "step": 48,
+      "status": "insufficient_history",
+      "checks": {
+        "model_sha_matches_metadata": true,
+        "training_sha_matches_metadata": true,
+        "model_all_numeric_finite": true,
+        "training_tensors_finite": true,
+        "step_counters_match": true,
+        "trace_steps_exact": true,
+        "trace_matches_endpoint_prefix": true,
+        "trace_finite": true,
+        "Adam_state_complete": true,
+        "Adam_counters_match": true,
+        "Adam_finite": true,
+        "Adam_layout_matches": true,
+        "Adam_moment_shapes_match_model": true,
+        "source_code_hashes_match": true,
+        "source_A96_hashes_match": true,
+        "formal_journal_accounted": true,
+        "project_journal_accounted": true
+      },
+      "trace_length": 48,
+      "gradient_norm": {
+        "count": 48,
+        "min": 0.735243851479037,
+        "max": 64.94271294053081,
+        "mean": 7.800094297574247
+      },
+      "clip_threshold": 100.0,
+      "clip_count": 0,
+      "block_updates": {
+        "a_bar": {
+          "count": 48,
+          "min": 0.007016555102430779,
+          "max": 0.050683335146251896,
+          "mean": 0.016757027993958454,
+          "large_change_count_above_0_25": 0
+        },
+        "kappa_raw": {
+          "count": 48,
+          "min": 3.2211071651009846e-05,
+          "max": 0.025391274239312093,
+          "mean": 0.006307991955139946,
+          "large_change_count_above_0_25": 0
+        },
+        "lambda_raw": {
+          "count": 48,
+          "min": 0.00016466830526875914,
+          "max": 0.017904680238854963,
+          "mean": 0.005071231246513796,
+          "large_change_count_above_0_25": 0
+        }
+      },
+      "Adam_step_counters": {
+        "0": 48.0,
+        "1": 48.0,
+        "2": 48.0
+      },
+      "recorded_source_training_seconds": 715.5324198000162,
+      "original_last64_rule": null
+    },
+    "step000064": {
+      "step": 64,
+      "status": "healthy_on_recorded_checks",
+      "checks": {
+        "model_sha_matches_metadata": true,
+        "training_sha_matches_metadata": true,
+        "model_all_numeric_finite": true,
+        "training_tensors_finite": true,
+        "step_counters_match": true,
+        "trace_steps_exact": true,
+        "trace_matches_endpoint_prefix": true,
+        "trace_finite": true,
+        "Adam_state_complete": true,
+        "Adam_counters_match": true,
+        "Adam_finite": true,
+        "Adam_layout_matches": true,
+        "Adam_moment_shapes_match_model": true,
+        "source_code_hashes_match": true,
+        "source_A96_hashes_match": true,
+        "formal_journal_accounted": true,
+        "project_journal_accounted": true
+      },
+      "trace_length": 64,
+      "gradient_norm": {
+        "count": 64,
+        "min": 0.5410040166755712,
+        "max": 64.94271294053081,
+        "mean": 6.963797315802105
+      },
+      "clip_threshold": 100.0,
+      "clip_count": 0,
+      "block_updates": {
+        "a_bar": {
+          "count": 64,
+          "min": 0.005699929587932347,
+          "max": 0.050683335146251896,
+          "mean": 0.01455763737709467,
+          "large_change_count_above_0_25": 0
+        },
+        "kappa_raw": {
+          "count": 64,
+          "min": 3.2211071651009846e-05,
+          "max": 0.025391274239312093,
+          "mean": 0.005399033540654775,
+          "large_change_count_above_0_25": 0
+        },
+        "lambda_raw": {
+          "count": 64,
+          "min": 0.00016466830526875914,
+          "max": 0.017904680238854963,
+          "mean": 0.00459192855604687,
+          "large_change_count_above_0_25": 0
+        }
+      },
+      "Adam_step_counters": {
+        "0": 64.0,
+        "1": 64.0,
+        "2": 64.0
+      },
+      "recorded_source_training_seconds": 959.7993342000118,
+      "original_last64_rule": {
+        "optimization_unresolved": false,
+        "clip_count_last64": 0,
+        "large_change_counts_last64": {
+          "kappa_raw": 0,
+          "a_bar": 0,
+          "lambda_raw": 0
+        }
+      }
+    },
+    "step000080": {
+      "step": 80,
+      "status": "healthy_on_recorded_checks",
+      "checks": {
+        "model_sha_matches_metadata": true,
+        "training_sha_matches_metadata": true,
+        "model_all_numeric_finite": true,
+        "training_tensors_finite": true,
+        "step_counters_match": true,
+        "trace_steps_exact": true,
+        "trace_matches_endpoint_prefix": true,
+        "trace_finite": true,
+        "Adam_state_complete": true,
+        "Adam_counters_match": true,
+        "Adam_finite": true,
+        "Adam_layout_matches": true,
+        "Adam_moment_shapes_match_model": true,
+        "source_code_hashes_match": true,
+        "source_A96_hashes_match": true,
+        "formal_journal_accounted": true,
+        "project_journal_accounted": true
+      },
+      "trace_length": 80,
+      "gradient_norm": {
+        "count": 80,
+        "min": 0.5410040166755712,
+        "max": 64.94271294053081,
+        "mean": 6.302797316924397
+      },
+      "clip_threshold": 100.0,
+      "clip_count": 0,
+      "block_updates": {
+        "a_bar": {
+          "count": 80,
+          "min": 0.005152185857949692,
+          "max": 0.050683335146251896,
+          "mean": 0.012942612459201388,
+          "large_change_count_above_0_25": 0
+        },
+        "kappa_raw": {
+          "count": 80,
+          "min": 3.2211071651009846e-05,
+          "max": 0.025391274239312093,
+          "mean": 0.0049682541876150755,
+          "large_change_count_above_0_25": 0
+        },
+        "lambda_raw": {
+          "count": 80,
+          "min": 0.00016466830526875914,
+          "max": 0.017904680238854963,
+          "mean": 0.004235815190882922,
+          "large_change_count_above_0_25": 0
+        }
+      },
+      "Adam_step_counters": {
+        "0": 80.0,
+        "1": 80.0,
+        "2": 80.0
+      },
+      "recorded_source_training_seconds": 1241.889801300029,
+      "original_last64_rule": {
+        "optimization_unresolved": false,
+        "clip_count_last64": 0,
+        "large_change_counts_last64": {
+          "kappa_raw": 0,
+          "a_bar": 0,
+          "lambda_raw": 0
+        }
+      }
+    },
+    "step000096": {
+      "step": 96,
+      "status": "healthy_on_recorded_checks",
+      "checks": {
+        "model_sha_matches_metadata": true,
+        "training_sha_matches_metadata": true,
+        "model_all_numeric_finite": true,
+        "training_tensors_finite": true,
+        "step_counters_match": true,
+        "trace_steps_exact": true,
+        "trace_matches_endpoint_prefix": true,
+        "trace_finite": true,
+        "Adam_state_complete": true,
+        "Adam_counters_match": true,
+        "Adam_finite": true,
+        "Adam_layout_matches": true,
+        "Adam_moment_shapes_match_model": true,
+        "source_code_hashes_match": true,
+        "source_A96_hashes_match": true,
+        "formal_journal_accounted": true,
+        "project_journal_accounted": true
+      },
+      "trace_length": 96,
+      "gradient_norm": {
+        "count": 96,
+        "min": 0.5410040166755712,
+        "max": 64.94271294053081,
+        "mean": 7.22329296090198
+      },
+      "clip_threshold": 100.0,
+      "clip_count": 0,
+      "block_updates": {
+        "a_bar": {
+          "count": 96,
+          "min": 0.005152185857949692,
+          "max": 0.050683335146251896,
+          "mean": 0.012797785822854143,
+          "large_change_count_above_0_25": 0
+        },
+        "kappa_raw": {
+          "count": 96,
+          "min": 6.710562907233328e-06,
+          "max": 0.025391274239312093,
+          "mean": 0.005197293222056742,
+          "large_change_count_above_0_25": 0
+        },
+        "lambda_raw": {
+          "count": 96,
+          "min": 8.200439407777707e-05,
+          "max": 0.017904680238854963,
+          "mean": 0.004414026292792995,
+          "large_change_count_above_0_25": 0
+        }
+      },
+      "Adam_step_counters": {
+        "0": 96.0,
+        "1": 96.0,
+        "2": 96.0
+      },
+      "recorded_source_training_seconds": 1506.8299241000204,
+      "original_last64_rule": {
+        "optimization_unresolved": false,
+        "clip_count_last64": 0,
+        "large_change_counts_last64": {
+          "kappa_raw": 0,
+          "a_bar": 0,
+          "lambda_raw": 0
+        }
+      }
+    },
+    "step000112": {
+      "step": 112,
+      "status": "healthy_on_recorded_checks",
+      "checks": {
+        "model_sha_matches_metadata": true,
+        "training_sha_matches_metadata": true,
+        "model_all_numeric_finite": true,
+        "training_tensors_finite": true,
+        "step_counters_match": true,
+        "trace_steps_exact": true,
+        "trace_matches_endpoint_prefix": true,
+        "trace_finite": true,
+        "Adam_state_complete": true,
+        "Adam_counters_match": true,
+        "Adam_finite": true,
+        "Adam_layout_matches": true,
+        "Adam_moment_shapes_match_model": true,
+        "source_code_hashes_match": true,
+        "source_A96_hashes_match": true,
+        "formal_journal_accounted": true,
+        "project_journal_accounted": true
+      },
+      "trace_length": 112,
+      "gradient_norm": {
+        "count": 112,
+        "min": 0.5410040166755712,
+        "max": 64.94271294053081,
+        "mean": 7.252640760364854
+      },
+      "clip_threshold": 100.0,
+      "clip_count": 0,
+      "block_updates": {
+        "a_bar": {
+          "count": 112,
+          "min": 0.005063663554344734,
+          "max": 0.050683335146251896,
+          "mean": 0.012279437733990881,
+          "large_change_count_above_0_25": 0
+        },
+        "kappa_raw": {
+          "count": 112,
+          "min": 6.710562907233328e-06,
+          "max": 0.025391274239312093,
+          "mean": 0.00514675982141972,
+          "large_change_count_above_0_25": 0
+        },
+        "lambda_raw": {
+          "count": 112,
+          "min": 5.177159792957767e-05,
+          "max": 0.017904680238854963,
+          "mean": 0.00421802449148105,
+          "large_change_count_above_0_25": 0
+        }
+      },
+      "Adam_step_counters": {
+        "0": 112.0,
+        "1": 112.0,
+        "2": 112.0
+      },
+      "recorded_source_training_seconds": 1765.8128972000413,
+      "original_last64_rule": {
+        "optimization_unresolved": false,
+        "clip_count_last64": 0,
+        "large_change_counts_last64": {
+          "kappa_raw": 0,
+          "a_bar": 0,
+          "lambda_raw": 0
+        }
+      }
+    },
+    "step000128": {
+      "step": 128,
+      "status": "healthy_on_recorded_checks",
+      "checks": {
+        "model_sha_matches_metadata": true,
+        "training_sha_matches_metadata": true,
+        "model_all_numeric_finite": true,
+        "training_tensors_finite": true,
+        "step_counters_match": true,
+        "trace_steps_exact": true,
+        "trace_matches_endpoint_prefix": true,
+        "trace_finite": true,
+        "Adam_state_complete": true,
+        "Adam_counters_match": true,
+        "Adam_finite": true,
+        "Adam_layout_matches": true,
+        "Adam_moment_shapes_match_model": true,
+        "source_code_hashes_match": true,
+        "source_A96_hashes_match": true,
+        "formal_journal_accounted": true,
+        "project_journal_accounted": true
+      },
+      "trace_length": 128,
+      "gradient_norm": {
+        "count": 128,
+        "min": 0.5410040166755712,
+        "max": 67.905374149226,
+        "mean": 7.410364922119491
+      },
+      "clip_threshold": 100.0,
+      "clip_count": 0,
+      "block_updates": {
+        "a_bar": {
+          "count": 128,
+          "min": 0.005063663554344734,
+          "max": 0.050683335146251896,
+          "mean": 0.011721557558580313,
+          "large_change_count_above_0_25": 0
+        },
+        "kappa_raw": {
+          "count": 128,
+          "min": 6.710562907233328e-06,
+          "max": 0.025391274239312093,
+          "mean": 0.005050044157047116,
+          "large_change_count_above_0_25": 0
+        },
+        "lambda_raw": {
+          "count": 128,
+          "min": 5.177159792957767e-05,
+          "max": 0.017904680238854963,
+          "mean": 0.0039752840909486505,
+          "large_change_count_above_0_25": 0
+        }
+      },
+      "Adam_step_counters": {
+        "0": 128.0,
+        "1": 128.0,
+        "2": 128.0
+      },
+      "recorded_source_training_seconds": 2033.3032329000416,
+      "original_last64_rule": {
+        "optimization_unresolved": false,
+        "clip_count_last64": 0,
+        "large_change_counts_last64": {
+          "kappa_raw": 0,
+          "a_bar": 0,
+          "lambda_raw": 0
+        }
+      }
+    }
+  },
+  "journal": {
+    "project_completed": 492,
+    "project_attempted": 492,
+    "completed_by_category": {
+      "formal": 384,
+      "qa": 108
+    },
+    "expected_original_project_completed": 492,
+    "A_30311_formal_completed": 128,
+    "A_30311_accounted": true,
+    "project_accounted": true,
+    "project_pending_count": 0,
+    "A_30311_pending_count": 0
+  },
+  "A0_A96_compatibility": {
+    "status": "qualified_existing_bidirectional_evidence",
+    "checks": {
+      "compatibility_hash_matches_qualification": true,
+      "qualified": true,
+      "bidirectional": true,
+      "scope_original_8s_actual15": true,
+      "fit_ids_exact": true,
+      "all_297_rows_qualified": true,
+      "A96_evidence_hash_matches": true,
+      "zero_evidence_receipt_matches": true,
+      "common_exported_state_exact": true,
+      "only_fixed_plane_extra_state": true,
+      "A0_variant_A": true,
+      "history_dt_equal": true
+    },
+    "record_count": 297,
+    "scope": "A96_A0_fit297_bidirectional_RK4_fine005_base01_8s_actual15",
+    "event_ids_sha256": "902bb6a22934b5a3c38a34dc4693f4d516afe3787f0960e1e6491fa9e149a3a3",
+    "no_new_rollout": true
+  },
+  "private_source_health_sha256": "c78cc9d89a7110516029b0927a43e9e50ef4615f975e62a88500daf5de946893"
+}

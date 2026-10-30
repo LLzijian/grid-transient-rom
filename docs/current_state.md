@@ -1,15 +1,44 @@
 # 当前研究状态
 
-**训练未恢复；`closure_probe_20261030` 已完成（probe，optimizer 调用 0）。** 用户 2026-10-30 指令“按项目规划开始推进”后，本轮只做了已授权数据上的无训练分析：未开 val/test、未新增 FOM、未训练、未晋升模型；TASK4 暂停、default none 不变。执行状态与训练授权状态分开记录，本轮不扩大训练授权。
+**训练未恢复；checkpoint_selection_20261030 已完成（无训练选择审计，optimizer 0）。**
+用户2026-10-30指令“根据项目工程设计，在最新结果的基础上，向前推进”后，本轮实际取得Astra有界设计，
+经独立Reviewer审查，完成train fit297的9个A检查点与R_N/A96参照核验。
+原val/test关闭、新FOM=0、TASK4暂停、default none；模型与工作指针未改。
 
-**本轮结论。** 冻结 train fit297（已消费，非独立确认）上：H2 初始隐力可辨识性**不支持**为主要解释（r₀ 设计 cond 1.613、297 条事件逐事件相同，ridge 对 σmin 贡献 9.9e−6，ridge 扫描 r₀ 变化 median 2.7e−5；A/S/P 适配族内 r₀ 差异 ~1%，A96 4.5%）；H1 共同模态闭合**降级、未否证**（COI 预算中 Δr 占 75–77%，但标量闭合残差主要跟随 W1 轨迹差异，放大倍数 1.02–1.09、W1 差异解释 64–71%；A−R_N 稳定差距不在共同项）；**H3 优化/选择强支持**（全队列 128 比 64 差 5 s +0.050289、8 s +0.026602；九点曲线非单调，5/8 s 最小值都在 step16：0.752083/0.576173，两项都优于 R_N 0.830421/0.591762）；H4 机械体/端口**开放**（D、q_p 非均匀；p 通道约 1/3 误差来自固定 p 动力学，探索性、非预登记）。step16/64 只是事后中间 checkpoint，**不晋升、不选为模型**，也不改写已冻结的 128 结论。
+**结论。** 已存A_30311九点没有同时通过原精度/关键事件目标及本轮身份/时机守卫。
+step16稳定5/8 s风险最低（0.752083/0.576173），但失稳真实区间风险4.096469、漏判22/30，
+8 s漏判4/30；R_N对应3.512358、21/30、4/30，A96对应2.369721、21/30、3/30。
+step96真实区间漏判20/30、风险3.152346，保住原9个真实区间检出并修复1个漏判；
+但8 s相对A96新增1个漏判，仍为4/30，因此不准入。原门本身已无全通过点，不是新增守卫单独导致。
 
-**证据与指针。** 结论 [closure_probe_20261030_conclusion.md](../reports/closure_probe_20261030_conclusion.md)、协议 [closure_probe_20261030_protocol.md](../reports/closure_probe_20261030_protocol.md)、简报 v2 [architecture_brief_20261030.md](../reports/architecture_brief_20261030.md)、挑战 [architecture_brief_20261030_challenge.md](../reports/architecture_brief_20261030_challenge.md)、Campaign [force_memory_closure_20261030.md](../campaigns/force_memory_closure_20261030.md)；公开包 `results/closure_probe_20261030/`、`results/coi_budget_20261030/public_budget.json`；harness 记录 `harness/runs/closure_probe_20261030.json`（assess valid=true，promotion_eligible=false）。
+**证据有效性与来源。** 11个评价对象数值资格均通过；两时域误报均0/267，数值未决0。
+候选读出前已冻结检出保护集（8 s 27、真实区间9）与T_anchor（9）；缺T覆盖的点E/u为null，
+没有通过缩小比较集合获得时机收益。来源模型/Adam/trace/journal对账通过；
+step64–128通过原最近64步健康门，step0/16/32/48保留insufficient_history；优化充分性unknown。
+A0/A96原双向297事件兼容与共享状态对账通过。同一已消费train、单来源单日程，不是独立确认。
 
-**成本。** P1 23.6 s、P2 2.8 s、P3 52.7 s、P4 111.3 s、P4b 408.7 s；CPU float64、单进程；optimizer 0、模型 rollout 0（P4/P4b 为前向评估，不是训练）。旧 `memory_transport_20261029` 的 492 次调用与 7472.72 s wall 是上轮范围，本轮不混用；`memory_transport` 未用 1356 仍关闭、不转入下一轮。
+**三决定。** 代码retain_branch；模型retain_evidence，建议来源null，不晋升；科学unresolved。
+H3说明稳定精度收益受端点选择影响；本轮进一步定位了这条已存路径的稳定/失稳权衡，未否定A族。
+step96的真实区间收益与不利的8 s事件身份均保留，不以总分抵消。
 
-**上轮与档案。** `memory_transport_20261029` 维持 COMPLETED / NOT_RETAINED（A/S/P 各 128，无延长、无第二种子）；R_N 保护档案、A96 来源、S/P 端点、失败与恢复证据原位置保全；旧 `r_memory` 仍为 INTERRUPTED_RUNTIME，1165 实际/1152 持久，正式总成本 UNKNOWN，不得用本轮成本代替全项目账目。
+**成本与执行。** 8个新主细评价、3个冻结完整结果复用；CPU float64、最多4个单线程worker。
+Stage1审计34.541507 s，Stage2 controller wall562.870089 s，来源核查2.886849 s；
+单点并发耗时不相加冒充经过时间；决策进程独立wall null，CPU总进程秒unknown。
+所有候选一次完成，无retry；三个原生阶段退出码0；本Run17个已登记PID/创建身份均已退出，活动0。
+旧memory_transport的492调用、7472.72 s是旧范围，1356未用余额仍关闭，不转入本轮。
 
-**下一动作（均未启动）。** (1) 首选：登记一个**有限、预登记的优化/选择 Run**，在 key events（失稳漏判、误报、真实区间风险、时机）上评价 checkpoint 曲线并写死选择规则与确认方式；属 adaptation/discrimination，需新的 Astra 有界设计，不能沿用 E/s 余额。(2) 若追 L1 精度：先做 **p 端口预登记诊断**（固定 p 动力学 vs 最小扩展）。(3) E/s 结构扩展只在出现不依赖机械反演混淆的闭合不足证据后再考虑。以上都需用户确认或新的 Astra 设计；本轮不自动开始。
+**材料。** [结论](../reports/checkpoint_selection_20261030_conclusion.md)、
+[协议](../reports/checkpoint_selection_20261030_protocol.md)、
+[Scientist设计](../reports/checkpoint_selection_20261030_scientist.md)、
+[独立审查](../reports/checkpoint_selection_20261030_review.md)、
+[公开决策](../results/checkpoint_selection_20261030/decision_public.json)、
+[执行回执](../results/checkpoint_selection_20261030/execution_receipt.json)。
+私有预测、完整逐事件身份、manifest与完成回执留在private_data/checkpoint_selection_20261030/。
 
-**代码决定：** probe 实现、测试、报告与公开结果选择性提交到研究分支，未改 main 科学模型。**模型决定：** no_change（default none，step16/64 仅证据）。**科学决定：** 共同模态闭合问题 unresolved；H2 不作主要解释；H3 为优化/选择贡献因素；H4 开放。
+**下一问题。** 先诊断机械p端口失配的归属：离散滤波近似、常数/量纲、角速度误差传导还是方程形式。
+Astra已写[草案](../reports/p_port_diagnostic_20261030_scientist_draft.md)，DRAFT_UNADOPTED，
+未登记新Run、未计算或训练；须冻结协议与独立审查后方可执行无训练诊断。E/s暂不作为首选。
+
+**前序证据。** closure_probe_20261030已完成：H2不作主要解释，H1降级未否证，H3贡献因素，H4开放；
+见[报告](../reports/closure_probe_20261030_conclusion.md)。旧r_memory保持INTERRUPTED_RUNTIME，
+1165实际/1152持久，正式总成本UNKNOWN；R_N保护档案、A96来源、S/P端点与失败证据均原位保全。

@@ -24,6 +24,7 @@ E=κD（见 [Astra 条件准备](../reports/astra6_next_structure_preparation_20
 | weak_force_identification_20261029 | 消去隐力后一次直接辨识 | λ=0，CANDIDATE_NOT_ADMITTED | reports/weak_force_identification_20261029_conclusion.md |
 | memory_transport_20261029 | 固定平面保守转运 S 与耗散路径 P | 共同 128 NOT_RETAINED；无延长/第二种子 | reports/memory_transport_20261029_conclusion.md |
 | closure_probe_20261030 | 残差四分解 + r₀ 条件数 + COI 预算 + 64/128 | H2 不支持为主要解释；H1 降级未否证；H3 强支持；H4 开放 | reports/closure_probe_20261030_conclusion.md |
+| checkpoint_selection_20261030 | 九点完整关键事件与固定时机选择审计；optimizer 0 | 无全门点；step16稳定收益与实际区间代价、step96实际检出收益与8 s新增漏判均保留；不晋升 | reports/checkpoint_selection_20261030_conclusion.md |
 
 ## 当前认识与未决
 
@@ -36,8 +37,12 @@ H1 降级、未否证；全队列 128 比 64 差，九点曲线非单调、最�
 两项都优于 R_N），**H3 强支持**；p 通道约 1/3 误差来自固定 p 动力学（探索性），H4 开放。
 未决：共同模态闭式的确切必要性（需不依赖机械反演的检验）；p 端口最小扩展；失稳窗口过短。
 已排除：在本轮范围内，固定平面转运 S 的 40 维端点没有带来登记收益；这不否定一般非互易记忆族。
-下一有判别力的问题：在登记选择规则下能否把全队列最优点变成可复现的候选（优化/选择 Run），
-以及 p 端口模型形式是否是最小可行的下一结构扩展；E/s 暂不作为首选。
+checkpoint_selection_20261030已完成：9点无全门点。step16稳定5/8 s风险0.752083/0.576173，
+实际区间风险4.096469、漏判22/30；step96实际区间风险3.152346、漏判20/30，保原9检出并修复1个，
+但8 s相对A96新增1个漏判，仍4/30。全部数值资格通过，来源健康/兼容已对账，优化充分性unknown。
+固定T为9，缺覆盖点不缩分母。单一已消费train路径支持权衡观察，不是独立确认或A族否证。
+下一有判别力的问题：p端口误差来自离散滤波、常数/量纲、转速传导还是方程形式；
+Astra草案reports/p_port_diagnostic_20261030_scientist_draft.md仅DRAFT_UNADOPTED，未执行。E/s暂不作为首选。
 
 ## 保护与边界
 
