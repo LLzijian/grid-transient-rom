@@ -1,13 +1,15 @@
 # 当前研究状态
 
-**PAUSED_BY_USER。** 用户要求本轮完成后暂停；2026-10-30继续授权的工作为实验材料整理、GitHub同步与Git清理，不启动新的科学Run。原val/test关闭，TASK4暂停，新FOM条件0，默认模型none；L1高精度自治预测与同模型L2尚未完成。
+**训练未恢复；`closure_probe_20261030` 已完成（probe，optimizer 调用 0）。** 用户 2026-10-30 指令“按项目规划开始推进”后，本轮只做了已授权数据上的无训练分析：未开 val/test、未新增 FOM、未训练、未晋升模型；TASK4 暂停、default none 不变。执行状态与训练授权状态分开记录，本轮不扩大训练授权。
 
-**当前Run：memory_transport_20261029，COMPLETED。** A/S/P各128步，共492次optimizer尝试且全部完成（QA108＋正式384），repair/replay0、pending为空。共同128步决定NOT_RETAINED，无延长、无第二种子；未用1356已关闭且不得转入下一Run。三组真实区间≤15s漏检均21/30、8s均4/30、误报均0/267；范围为train fit297（267稳定、30失稳）。详细指标、分母、曲线、成本和三个决定见[本轮结论](../reports/memory_transport_20261029_conclusion.md)与[最终公开包](../results/memory_transport_20261029/completed_stage_public.json)。
+**本轮结论。** 冻结 train fit297（已消费，非独立确认）上：H2 初始隐力可辨识性**不支持**为主要解释（r₀ 设计 cond 1.613、297 条事件逐事件相同，ridge 对 σmin 贡献 9.9e−6，ridge 扫描 r₀ 变化 median 2.7e−5；A/S/P 适配族内 r₀ 差异 ~1%，A96 4.5%）；H1 共同模态闭合**降级、未否证**（COI 预算中 Δr 占 75–77%，但标量闭合残差主要跟随 W1 轨迹差异，放大倍数 1.02–1.09、W1 差异解释 64–71%；A−R_N 稳定差距不在共同项）；**H3 优化/选择强支持**（全队列 128 比 64 差 5 s +0.050289、8 s +0.026602；九点曲线非单调，5/8 s 最小值都在 step16：0.752083/0.576173，两项都优于 R_N 0.830421/0.591762）；H4 机械体/端口**开放**（D、q_p 非均匀；p 通道约 1/3 误差来自固定 p 动力学，探索性、非预登记）。step16/64 只是事后中间 checkpoint，**不晋升、不选为模型**，也不改写已冻结的 128 结论。
 
-**运行已收尾。** prepare/qualify/qa/study/summary五阶段均exit0，清理核验通过、Job内活动进程0、源码前后相同；活动锁已移除。临时保活任务kiki-memory-transport已删除，配置无残留，无运行中的本轮科学作业。成功五阶段合计wall7472.720580s、Job CPU12326.25s；不含外层controller、首次启动失败、metadata冻结及前置数学/守卫/平面准备，未知成本不记0。首次启动失败与全部恢复证据原样保全。
+**证据与指针。** 结论 [closure_probe_20261030_conclusion.md](../reports/closure_probe_20261030_conclusion.md)、协议 [closure_probe_20261030_protocol.md](../reports/closure_probe_20261030_protocol.md)、简报 v2 [architecture_brief_20261030.md](../reports/architecture_brief_20261030.md)、挑战 [architecture_brief_20261030_challenge.md](../reports/architecture_brief_20261030_challenge.md)、Campaign [force_memory_closure_20261030.md](../campaigns/force_memory_closure_20261030.md)；公开包 `results/closure_probe_20261030/`、`results/coi_budget_20261030/public_budget.json`；harness 记录 `harness/runs/closure_probe_20261030.json`（assess valid=true，promotion_eligible=false）。
 
-**来源与指针。** 执行源`181d7f8bba2eb530a0ad5afe0130035755e974a2`；逻辑位置`memory_transport_20261029/study01_prelaunch_retry1`，来源N_M192→SGM A_28311 step96（A96），参照R_N。binding SHA256为`edc9863941d2febae32bb799b85fa9969c84e50f511cdb13ed3ce57fd95768f8`，181文件，100公开源已核对。最终公开包SHA256为`f30159152865b672bcf3e61a031cbc491f2f5525a212f38bfda90d383192284f`。原始预测、checkpoint、Adam/RNG和native回执保持原位置，恢复命令保留在[协议](../reports/memory_transport_20261029_protocol.md)，暂停期间不得重启。
+**成本。** P1 23.6 s、P2 2.8 s、P3 52.7 s、P4 111.3 s、P4b 408.7 s；CPU float64、单进程；optimizer 0、模型 rollout 0（P4/P4b 为前向评估，不是训练）。旧 `memory_transport_20261029` 的 492 次调用与 7472.72 s wall 是上轮范围，本轮不混用；`memory_transport` 未用 1356 仍关闭、不转入下一轮。
 
-**档案与历史。** 可用模型档案及原接受范围受保护；R_N、A96、M-A512、交换候选及A/S/P端点的证据均保全，本轮没有晋升模型或自动重置研究起点。近期五阶段的问题、结论和材料见[近期实验导航](recent_experiments_20261029.md)。旧r_memory仍为INTERRUPTED_RUNTIME，1165实际/1152持久，原因和正式总成本UNKNOWN；不得用近期已知合计代替全项目账目。
+**上轮与档案。** `memory_transport_20261029` 维持 COMPLETED / NOT_RETAINED（A/S/P 各 128，无延长、无第二种子）；R_N 保护档案、A96 来源、S/P 端点、失败与恢复证据原位置保全；旧 `r_memory` 仍为 INTERRUPTED_RUNTIME，1165 实际/1152 持久，正式总成本 UNKNOWN，不得用本轮成本代替全项目账目。
 
-**代码与科学决定分开。** 规则PR34/36、条件证明PR35已合入main；条件内域证明不是实际端点认证、完整L2或FOM安全保证。当前研究代码保留在研究分支，本轮不改变main科学模型。[Astra下一结构条件准备](../reports/astra6_next_structure_preparation_20261029.md)未采用、未注册、未分配预算。材料整理与Git归档收尾已完成，见[Git整理记录](../reports/git_cleanup_20261030.md)；下一科学动作等待用户明确恢复。
+**下一动作（均未启动）。** (1) 首选：登记一个**有限、预登记的优化/选择 Run**，在 key events（失稳漏判、误报、真实区间风险、时机）上评价 checkpoint 曲线并写死选择规则与确认方式；属 adaptation/discrimination，需新的 Astra 有界设计，不能沿用 E/s 余额。(2) 若追 L1 精度：先做 **p 端口预登记诊断**（固定 p 动力学 vs 最小扩展）。(3) E/s 结构扩展只在出现不依赖机械反演混淆的闭合不足证据后再考虑。以上都需用户确认或新的 Astra 设计；本轮不自动开始。
+
+**代码决定：** probe 实现、测试、报告与公开结果选择性提交到研究分支，未改 main 科学模型。**模型决定：** no_change（default none，step16/64 仅证据）。**科学决定：** 共同模态闭合问题 unresolved；H2 不作主要解释；H3 为优化/选择贡献因素；H4 开放。
