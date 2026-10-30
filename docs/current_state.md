@@ -1,46 +1,51 @@
 # 当前研究状态
 
-**2026-10-31：p_driver_order_20261031完成并通过独立审查，否证限命题P的条件精确实现；下一方向为同阶耗散交叉作用草案。**
-用户已要求按harness开展实验并自动迭代，每小时本聊天接续kiki保持启用；显式暂停优先。
-原val/test关闭、旧消费test永久退出、新FOM=0、TASK4暂停，default none及四指针不变。
-部署仅11点因果δ/ω历史、末点真p₀后共享自治ODE；R_N保护、SGM A96原范围及A_30311候选不变。
+**2026-10-31：p_dissipative_identifiability已完成唯一P/E/Q。零基机1/2/5/9满足操作性R型及弱式相容门；0/3/4/6/7/8符号跨零且残差可分辨。最终独立审查已通过；归档以本次提交及私有核验回执为准。**
+用户已授权按harness自动迭代，本聊天kiki每小时接续保持启用；显式暂停优先。
+原val/test关闭、旧消费test永久退出选择、新FOM=0、TASK4暂停，default none及四指针不变。
+部署仍11点100 ms因果δ/ω、末点真p₀后共享自治ODE；R_N、SGM A96原范围及A_30311不变。
 
-**最新科学判断。** 在固定参考、未限幅、有效正lag、Dt=0、正增益与0<T1<T2<T3的明示条件下，
-TGOV1N两极点关系精确匹配纯反对称p–q交换必须满足k=(1/T2−1/T1)(1/T2−1/T3)<0；
-候选却要求k=b²S≥0，故命题P为false。结论只针对该同坐标零初态有理映射的精确实现。
-它不否定有限时域近似、所有二阶/pH族或真实train机制；不继续训练验证已被符号矛盾排除的P。
-同样一个q的对称耗散交叉作用有代数线索，状态数不再增加，但仍DRAFT_UNADOPTED。
-其完整功率账、原模型嵌套与合法联合r/q初始化须在下一架构简报中重新完成，旧六例不能直接迁移。
+**本轮新增认识。** 十个共享四系数无约束主目标各一次SVD，全封存后各一次同目标QR；
+全部秩4、唯一、原1e−12数值门通过。四机取得R型的范围内正向信息，六机不能选择R/J。
+三个事件组（all297/稳定267/失稳30）×40/80 ms共60格，24相容、36可分辨；不作机组投票。
+六机同一主目标欠求解已不是相符解释；不由当前点残差或k跨零否证整个二阶/耗散族。
+R/J约束不能降低同一主Q平方残差最小值，但ν随参数变化，不能外推所有参数的比值门。
 
-**源证据分层。** 唯一官方v2.0.0固定commit eda5163c9ee8d19945a1dd5d1771fec5da608c27；
-case38449B原字节SHA9c2048dc94201ee48ffe816de65d53831fa1f4b0e7fdf32f24c50f1017edcfe5与旧M0一致。
-只读GENROU/TGOV1N/Toggler三表；十机链接完整、静态u均1，T1=.05/T2=1/T3=2.1/Dt0。
-8份官方源码原字节/Gitblob核验，得到tm耦合贡献、速度/参考路径及条件lag/LeadLag声明。
-Tn空值的有效默认/框架换算、有效历史时间参数、历史执行源码、参考变化及限幅活动仍unknown。
-旧S0的unknown不回填，case同字节不等于历史全运行资格；p沿冻结数值坐标，不认证SI功率/能量。
+**数据与指标范围。** 来源与297成员、16格W及raw目标均已独立核验；W最大绝对误差7.11e−15。
+完整80 ms窗27126，同覆盖40 ms窗54252，原分母保留；主结果含历史/跨界/纯未来。
+纯未来80/40 ms覆盖289/294事件（失稳22/27），不足尾段未评分，不补齐或删事件。
+记录起点切除后0.0001 s，x[10]为0.1001 s，未重采样。残差单位归一化p二阶变化率1/s²。
+单一残差型半径及向外盒传播均按数据前协议；这是Q/L表示操作性范围，非严格浮点/噪声/统计证书。
 
-**数学与执行。** 三份推导及六固定人工线性例完成；23×5合法历史映射不使用历史p/p'或真r/q。
-理论/数值秩4/5/5/5/5/5，b0只有不影响预测的q方向不可观；近解耦原坐标κ约2.26e9，不据满秩称真实信息可靠。
-实际6SciPy+6MP100指数，最大幂差1.55431e−15、观测矩阵差8.88178e−16，原1e−12门通过。
-S0/M各唯一exit0并核创建身份退出；静态parser有同步exit0/命令code hash，PID/创建时刻未捕获，保留unknown。
-登记工具任务均闭合，10可观测连接器调用；HTTP状态/内部retry/真实请求数unknown。
-最终99项已封存产物身份核验，M在取源后不变；无新增轨迹、估计、optimizer、自主ROM/FOM或模型写入。
+**五项判断。** 证据有效；当前优化健康not_applicable，来源ODE健康unknown。
+线性主目标充分性supported，来源ODE/R约束轨迹/子组单独最优性unknown。
+机制局部四机可辨、整体未决；没有真实器件识别、合法联合r/q初始化、自主收益或新数据确认。
+更换初态不能修补同一消元关系的观测残差；四机相容也不能证明q/r可部署初始化。
 
-**三决定、预算与成本。** 代码retain_branch，模型retain_evidence，科学falsified_within_scope仅P；Campaign active。
-来源21/33、谱系4/8、代码8/16、case1/1、表3/6、元数据3/3；实际修复/科学重试0，未用机会关闭不转移。
-S0原生/工具wall=.2815085/.0502207 s，M=1.2881297/1.0337514 s，三表parser=.1876926/.0260673 s，均为包含关系。
-来源各组调用latency之和1.441/.734/1.766/2.386 s，不能当整体来源墙钟；整体wall/CPU/LLM/总helper进程数unknown。
-当前优化健康/充分性not_applicable，来源训练两项unknown；没有新真实轨迹效应或新数据确认。
-实际Scientist配置gpt-6-astra，sol实现/执行/独立审查；server-resolved字段未返回，保留null。
+**执行、成本、预算。** 三正常阶段均唯一exit0，Q后E的50槽及4阶段文件原字节未变。
+P launcher创建身份退出已核、实际解释器PID不存在但创建时刻unknown；E/Q两创建身份均捕获并核退出。
+实际1准备/16格资格/10主SVD/10同目标QR/1固定分析；0执行后repair或科学retry。
+滤波/初始化/optimizer/自主ROM/FOM/模型写入均0。源码实现前的敏感公式/B1留存修订有原版与审查链。
+P/E/Q原生wall=7.0976712/5.4368451/13.1308458 s；工具wall=6.8456913/5.1703808/12.6067776 s，均为包含关系。
+E/Q解释器阶段CPU=4.65625/12.03125 s，P及整体CPU/LLM/总helper成本unknown。预算关闭，未用机会不转移。
 
-**父证据不变。** p_history_transfer已核远端6958a48及35原字节：20共享弱式目标充分求解后十机各有F_A剩余证据，
-H历史/短响应改善与失稳持续代价并存，具体机制未知；纯真ω响应不作自治收益。
-p_form归档55057a：纯未来40/80 ms覆盖缺2/3例，按预设停止，估计0/C/F unknown；旧10次余额关闭。
-解析反推资格9768acc的两候选各297/2790通过、原科学准入false；旧反推失败/M3unknown不回写。
-其他已关闭余额、r_memory中断/UNKNOWN账目与已接受模型范围不改。
+**三决定。** 代码retain_branch、模型retain_evidence、科学continue，harness observation_only，Campaign active。
+实际Scientist配置gpt-6-astra，sol实现/执行及独立审查；server-resolved未返回，保持null。
+不采用50维模型；固定父F=G*S、S=F/g的架构仍是未来完整构造合同，未读取权重或构造S/d。
 
-**材料与下一动作。** [本轮结论](../reports/p_driver_order_20261031_conclusion.md)、
-[条件证明](../reports/p_driver_order_20261031_source_comparison.md)、[独立审查](../reports/p_driver_order_20261031_review.md)、
-[完整收尾证据](../results/p_driver_order_20261031/closure_evidence_digest.json)、[root决定](../results/p_driver_order_20261031/root_adoption.json)。
-私有源/静态行、矩阵原件和原生身份留本地。选择性普通推送、原字节和远端核验后，再由Astra设计同阶耗散候选。
-新Run与训练均未释放；接续先核本Run私有archival_verified.json、真实作业及远端HEAD，不重放完成/未知作业。
+**父证据保持。** p_driver_order远端80f515b、42原字节：条件P精确反例只否定明示源条件的qJ实现。
+官方case与旧M0同字节，但Tn有效换算、历史执行、实际参考/限幅与物理单位仍unknown。
+p_history_transfer归档6958a48/35原字节，十机F_A固定一阶目标残差证据不外推自治收益。
+p_form归档55057a的纯未来覆盖未过，原估计0/C/F unknown；解析反推资格9768acc不追溯原科学准入。
+其他关闭余额、r_memory中断/UNKNOWN账目与受保护模型范围不回写。
+
+**下一动作。** 先核本Run选择性普通提交/推送的原字节与远端回执；归档未确认前不启动下一Run。
+随后由Astra为固定系数的历史/跨界/纯未来残差定位作新有限设计，提名最多120格，尚未登记或释放。
+只先核三份既有清单可否复用封存残差/标签；缺项或不能区分解释则停止，不追加拟合或扫描最佳时段。
+下一更强方法采用仍需完整初始化与相符确认，当前无训练释放；有未知Job先对账，不重放。
+
+[本轮结论](../reports/p_dissipative_identifiability_20261031_conclusion.md)、
+[科学判读](../reports/p_dissipative_identifiability_20261031_scientific_assessment.md)、
+[执行独立审查](../reports/p_dissipative_identifiability_20261031_execution_review.md)、
+[128项核心身份](../results/p_dissipative_identifiability_20261031/evidence_digest.json)。
+私有系数/端点/向量/尺度/原生身份留本地；接续先核本Runarchival_verified.json、真实作业及远端HEAD。
