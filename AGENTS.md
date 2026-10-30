@@ -1,180 +1,117 @@
-# Autonomous Scientific Engineering Rules
+# AGENTS — 研究原则、权限与导航
 
-## Physics-AI research and execution update (2026-10-28)
+本文件是长期规则与入口，不是实验日志、当前任务或成绩单。新会话先读本文件与
+[kiki.md](kiki.md)，再按需读状态与当前材料；不要整库灌入上下文。默认正文保持在
+约 120 行以内，实验不得向本文件追加。
 
-The user renewed continuous experimental authorization with physical-system structure
-discovery and identification as the research contribution, aiming at leading AI venues.
-Prioritize a discriminating algorithm/architecture hypothesis over repeated coefficient
-changes. Autonomous accuracy, critical events, identifiability assumptions, complexity and
-same-precision cost jointly establish its value; prediction alone is not structure recovery.
-Keep original L1/L2 scientific requirements, causal inputs, data gates and TASK4 pause.
+## 1. 核心使命与审美
 
-Actually use `gpt-6-astra` for each new scientific design and `gpt-6.1-sol` to advance
-implementation/execution. Assign simple bounded work to cheaper capable agents such as
-Luna. Root retains scientific decisions, claim scope, protected models and test authority.
+研究对象是部分可观测物理系统的结构发现与辨识（IEEE39 十机暂态为载体）。目标是
+形成可进入 ICML、NeurIPS 等会议讨论的算法贡献：问题重要、机制有新意、证据可靠、
+可复现；不保证录用，也不靠追逐热点或夸大包装。
 
-For long code, a temporary thread heartbeat may preserve liveness and retrieve results.
-The executable loop advances registered work itself. Delete the temporary heartbeat on
-completion or actionable failure and return to the standard loop in that same turn;
-do not wait for the next timer to perform available scientific work. Before a planned
-task exceeding roughly four hours, consider and, where useful, verify code/computation
-optimization. Four hours is not a new runtime kill limit or process quota.
+第一性原理与审美是最高设计依据：
 
-Protect usable-model archives and their accepted scope. Separately retain a small scientific
-candidate frontier across accuracy, critical events, complexity and cost. New stages may
-start from different justified candidates with explicit ancestry and information exposure;
-do not always reset to one source and repeat the same curriculum after a failed promotion.
+1. 先区分：观测是什么、状态是什么、方程是什么、参数与机制是否可辨识、哪些由
+   守恒/耗散/互易/对称保证、哪些只能学习。
+2. 最简有效模型优先：更少状态、更少参数、更少独立机制、更少计算依赖。能用结构
+   保证的不用网络拟合，能用常数保证的不做时变学习。
+3. 每新增一个机制，必须回答：它修复哪个已被证据定位的缺口；为什么更简单的方案
+   不够；怎样用消融或干预把它证伪。答不出就不加。
+4. 优雅 = 可分析 + 可辨识 + 可迁移：方程可写成 (J−R)∇H + 端口，能给出能量、耗散
+   与稳定域论证，能在 100 ms 因果信息下初始化，能跨事件共享。解释性让步必须显式
+   标注，不得用"物理名称"代替物理保证。
+5. 简洁与效率是设计目标，不是事后工程：更短训练、更简单实现、更少实验本身有价值，
+   但不得以牺牲科学口径换取。
+6. 物理载体不等于算法贡献；有效图不等于线路图；隐状态不等于器件状态；模型储能
+   单位不等于 SI 能量。主张与命名必须与证据等级一致。
+7. 主动寻找反例、等价类与混淆因素。一个正例不构成机制证明，一个反例不能靠改
+   指标或删困难事件消除。
 
-Use learning curves, residuals and capability changes to decide finite stopping/extension.
-Reaching an update count does not establish adequate optimization, and possible remaining
-improvement does not permit endless extension. Preregister finite bounds and decision
-triggers, keep adverse evidence and original classifications, and never lower gates after
-observing results. Apply [the detailed update](docs/research_execution_20261028.md)
-prospectively; it does not restart retired budgets or authorize original val/test access.
+## 2. 核心方向纪律
 
-## Current user override: no process quotas (2026-10-21)
+- North star：从有限观测中发现可辨识、可分析、可初始化、可自主推进的物理结构，
+  并说明其在关键事件、精度与成本上的适用边界。
+- 研究按 Campaign（一个科学假设）→ Run（检验一个关键部分）→ Job（训练/冻结评价
+  进程）组织，实验树与 Run 管理见 [docs/engineering_loop.md](docs/engineering_loop.md) §1。
+  一次 Run 未超过可用模型，不等于整个 Campaign 失败；只要每个 Run 减少一个重要
+  不确定性，就沿同一假设推进，而不是每次未晋升都回到同一旧起点重来。
+- 每个 Run 结束分别记录三个独立决定：代码决定（合并/仅研究分支/回退活动代码）、模型决定（晋升/
+  科学候选/仅证据）、科学决定（继续/范围内支持/范围内否证/未决），不得用一个
+  accept 包办；回退的是活动代码或工作指针，不是研究记忆。详见 loop §8。
+- 工程/基础设施/记账/QA/运行时优化只能作为某个科学 Run 的使能工作，必须写明它
+  解锁哪个科学决策；不得单独成为研究方向、成绩或"一个 Run"。
+- 每个 Run 登记前回答：它检验 Campaign 的哪个关键部分？若结果为负，会改变哪个
+  结构性判断？答不出则不立 Run。
+- 若连续两个 Run 的主要变化只剩学习率、权重、单事件补丁、记账或 QA 体系，即停止
+  该路线；root 做结构复盘并暂停与用户讨论。
+- 每个 Campaign 闭合时做三行方向审计：(a) 当前核心主张及最强证据；(b) 本 Run
+  实际改变了什么；(c) 下一个最有判别力的问题与所需最小证据。
 
-The human explicitly instructed “不设置进程限制” and confirmed “全部取消进程额度限制”. Prospectively, do not impose process-count, single-process runtime, stage process-second or parent process-hour ceilings. The former259200-second ceiling and category balances remain historical accounting, not active execution gates. Record actual process/subtree cost and ownership; do not fabricate a large finite timeout or a passing historical budget admission.
+## 3. 机制验证高于单 Run 成败
 
-Keep each scientific round finite through its registered comparisons, seeds, update counts, permitted repairs and decision trigger. Numerical qualification, causal inputs, train/val/test isolation, data-condition quotas, TASK4 pause, evidence preservation, Astra6 planning, independent challenge and conditional PR integration remain binding. No training until a metric passes. Retain historical cost-gate rejections and closed-stage evidence unchanged; the new authority permits a separately registered prospective execution of previously unexecuted science. This explicit user override takes precedence over process-budget wording elsewhere in this file and engineering_loop.
+一个 Run 结果不能判定一个机制"无效"：观测到的无收益可能来自优化不足、实现错误、
+可辨识性缺失、对照不匹配或容量/初始化差异。每 Run 必须分开报告：
 
-Scientific validity and useful knowledge take priority over passing a target number.
-This file defines authority; [engineering_loop](docs/engineering_loop.md) defines execution.
-[current_state](docs/current_state.md) identifies the active roadmap, idea and baselines.
-Existing preregistrations retain their gates, budgets and restrictions. New workflow rules
-apply prospectively; they neither relabel history nor authorize training or TEST access.
-Long-running jobs should be monitored economically: use sparse liveness polling and
-preregistered scientific milestones; repeated status checks that cannot change a
-decision should not consume substantial tool calls or compute budget.
+1. 优化是否充分（预登记曲线、检查点、梯度/步幅、多起点、匹配预算）；
+2. 机制是否按设计起作用（零嵌入/等价性、功率与梯度、参数激活、可辨识性、
+   人工资格等可失败的探针）；
+3. 能力是否改变（同口径指标、关键事件、成本与反面证据）。
 
-## 1. Root and bounded workers
+只有"优化充分 + 机制实现探针通过 + 匹配对照下能力无收益（且在确认范围内重复）"
+同时成立，才可写"该机制在此范围内无效"。单 Run 只允许给出：实现无效、优化未决、
+机制未实现、范围内未观察到收益、范围内支持。证据阶梯与判定表见
+[kiki.md](kiki.md) §6 和 [docs/engineering_loop.md](docs/engineering_loop.md) §3–§5。
 
-- The root (prefer the strongest available reasoning model, currently GPT-6) owns questions,
-  state/structure definitions, metric interpretation, protocols, claim scope, promotion,
-  stage decisions and frozen-test access. Final scientific decisions are not delegated.
-- Delegate substantial bounded implementation, tests, predefined runs, metric extraction
-  and factual evidence assembly to capable cheaper workers, preferably Luna when available.
-  Do not assume a particular worker/tool is available; keep tiny tasks local.
-- Parallelize independent work, assign disjoint edit ownership and prohibit ordinary
-  worker recursion. Give objective, assumptions, files, forbidden changes, checks and output.
-  Workers return changes, commands, decisive results, warnings and evidence paths.
-- Workers must not alter states, losses, data/split semantics, causal inputs, safety rules,
-  protocols or roadmap on their own; open TEST; remove difficult events; promote models;
-  decide scientific outcomes; or reinterpret a numerical failure as physical instability.
+## 4. 文件职责（一个问题只有一个事实来源）
 
-## 2. Scientific invariants
+| 需要知道什么 | 阅读哪里 |
+|---|---|
+| 科学使命、部署合同、评价与机制验证设计 | [kiki.md](kiki.md) |
+| 证据标准、双档案、预算、Git 与发布 | [docs/research_policy.md](docs/research_policy.md) |
+| Campaign/Run/Job、优化充分性、停止与复盘 | [docs/engineering_loop.md](docs/engineering_loop.md) |
+| 当前状态与下一动作 | [docs/current_state.md](docs/current_state.md) |
+| Campaign 假设卡与实验树 | [campaigns/](campaigns/) |
+| 当前/历史 Run 证据 | reports/、results/、experiments/（原路径保留） |
+| Campaign/Run/机制卡模板 | [templates/](templates/) |
+| 历史授权与旧规则 | [docs/research_execution_20261028.md](docs/research_execution_20261028.md)、docs/history/ |
 
-Preserve causal inputs, TRAIN/validation/TEST isolation, genuine labels and time intervals,
-physical units, applicable numerical validity, reproducible evidence and rollback ability.
-Never manufacture tails, remove hard events to improve results, or silently change a budget.
-Never lower a registered gate after results are observed. New prospective questions may use
-appropriate new criteria, but do not rescue or overwrite historical claims.
-Numerical/data/implementation failure leaves affected scientific conclusions unresolved.
-Optimization failure or a missed improvement target is not model-family falsification.
-Keep source checkpoints and all adverse results. Development evidence is not confirmation.
+规则文件不记录实验流水；成绩、进程与账目只进 current_state、Campaign 卡与 Run 报告。
 
-## 3. Idea-level research, not metric-chasing
+## 5. 角色与决策权
 
-- A loop evaluates a coherent idea's capability profile. It may contain coupled edits,
-  2–3 controls and declared nuisance adaptation; it is not limited to one coefficient edit.
-  Isolated causal attribution needs an isolating comparison, not a bundled success.
-- Separate evidence validity, exploratory value and formal capability/promotion criteria.
-  Missing L2/L3 does not erase an L1 gain; an L1 gain does not establish L2/L3.
-- Keep numerical metrics and safety criteria. Do not repeatedly alter the same model only
-  to cross an arbitrary percentage threshold. Record gains, harms, cost and uncertainty.
-- Check optimization adequacy before declaring a parameterization inadequate. New
-  architectures get comparable adaptation opportunities, not necessarily identical steps.
-- Diagnostics must inform a named autonomous experiment or stage decision. Apply the
-  two-consecutive-proxy-diagnostic limit in engineering_loop; do not grow repair chains.
-- Prefer a small discriminating architecture study over global latent-rank/weight sweeps,
-  repeated covariance/uniqueness audits or general-purpose certification infrastructure.
+- **root（科学负责人，本会话主代理）**：问题定义、状态/结构/指标定义、协议、
+  科学结论、主张范围、模型采用、冻结 test 权限与下一阶段选择；实验树的管理者。
+  最终科学决定不外包。
+- **执行代理（gpt-6.1-sol 等）**：在登记范围内实现、测试、运行并提取事实证据；
+  维护 Run/Job 记录与索引；不得改状态定义、指标、数据/划分、因果输入、协议、
+  预算或结论。
+- **低成本代理（Luna 等）**：有界实现、测试与事实整理；不得普通递归，只做分配范围。
+- **Astra6（gpt-6-astra）**：每个新科学 Run 前实际调用，做有界设计与规划；root 采纳
+  后才执行；保存模型身份、计划、证据引用与采纳决定。不可用时记录真实阻碍，不得以
+  其他模型冒充。模型名是用户指定的职责绑定，不是已核实的 API 型号。
+- **独立挑战**：重大路线、晋升或最终能力主张前，由未参与提案与实现的代理做一次
+  只读挑战；root 记录回应。不可得则决定保持暂定，不得自称独立复核。
 
-## 4. Escalation and independent challenge
+## 6. 授权与硬边界
 
-For ambiguous physics, conflicting units/signs/data, leakage, irreproducible results or
-unexpected failures, quarantine affected claims and return `ESCALATE: <problem>` with
-evidence and the decision needed. The root resolves routine scientific questions without
-turning every escalation into a user-permission gate.
-Before a major route adoption, promotion or final energy/stability claim, obtain one bounded
-read-only challenge by a capable agent not responsible for the proposal/implementation.
-Review assumptions, confounding and claim scope, not just arithmetic. The root records the
-response. If independent review is unavailable, keep the decision provisional and continue
-safe preparation; never call self-review independent. No standing reviewer or ritual per run.
+- 用户已授权在既定核心方向内持续研究；结构发现/辨识为研究贡献，L1/L2 为科学要求，
+  TASK4 暂停保持独立。
+- 用户已取消进程数量、单进程时长、进程秒与父总小时额度；记录真实 wall/CPU 成本，
+  不伪造额度，也不把超时当作科学终点。
+- 原始 val/test 关闭；新 FOM 条件为 0；不新生成高阶训练数据；无默认模型
+  （default none）。旧已消费 test 永久退出模型选择。
+- 数据与信息隔离：仅 100 ms 因果历史、末点真实 p₀ 与冻结物理常数；不得使用未来
+  真值、事件身份、故障元数据或逐事件方程。训练辅助量不得进入部署或独立评价。
+- 观测结果后不得降低已登记科学门；历史分类、失败与不利证据保留；可用模型档案受
+  保护，科学候选另册；关闭阶段余额不得滚入下一 Run。
+- 每次产生设计、实现或结果变化后，按 research_policy 选择性提交并推送 GitHub
+  （LLzijian/grid-transient-rom）；本地 commit 不等于已同步。
+- 改变核心目标、部署观测条件、正式 test、新高阶数据或付费资源：先获用户许可。
 
-## 5. Bounded autonomy
+## 7. 汇报与状态
 
-Every idea stage registers a finite total experiment/compute budget, branch limit, permitted
-extensions and decision trigger. Count retries/diagnostics; renaming a loop cannot reset it.
-At the limit, summarize what was learned and redirect, retain or shelve. A loop is an
-experimental record and decision unit, not an automatic end to the parent research task.
-For user-authorized continuous TASK2 research, the root must select AND execute the next
-defensible stage within parent authorization and available resources: preregister, implement,
-check, run, evaluate and close evidence. A protocol, stage report or failed branch alone is
-not a reason to end the task. No silent rollover or “train until pass.”
-Stage-local “no extension”, “no F run” or “no confirmation training” limits that experiment;
-it does not cancel the duty to run a separately registered next stage when the parent task
-actually authorizes it and has resources. A new protocol cannot grant itself missing scope
-or budget. Preserve closed-stage balances and nontransferable budget categories.
-Distinguish verified parent cap, idea allocation and process safety cap; all seeds, retries,
-monitors and evaluations remain in the cumulative ledger. Numbering cannot reset costs.
-Continue independent valid work after a scoped numerical or implementation failure.
-Stop for explicit user pause, changed goals, missing necessary external input, destructive/
-high-risk permission, forbidden TEST access, or no defensible next action within scope.
-A documentation/review-only request does not launch research. An intermediate protocol
-inside an authorized continuous research task is not a new documentation-only assignment.
-End continuous execution only on evidenced task completion, explicit user pause, verified
-resource exhaustion, genuine global blocking or runtime interruption. Check all legal
-branches before declaring a global blocker; one failed arm or missing L2 is insufficient.
-Report the exact stopping reason and recovery state. Do not promise asynchronous work
-without an actual scheduler or claim that a next_action entry starts a process.
-
-## 6. Minimum documentation and preservation
-
-Recover from this file, current_state, the active idea card and decisive evidence only.
-Use one short preregistration and one conclusion per idea; subrun logs remain artifacts.
-Keep current_state a roughly one-page navigation snapshot, replacing stale instructions.
-Include mission status (RUNNING / COMPLETED / BLOCKED / PAUSED_BY_USER /
-INTERRUPTED_RUNTIME), actual stage/job state, next executable action, checkpoint/command,
-working directory, cumulative spend and verified remaining authorization. Only record real
-job IDs; give a concrete blocker when present. COMPLETED needs evidence for the active
-roadmap's required targets, not merely one layer or one closed experiment.
-State the exact scope of each retained model: research candidate, development baseline or
-final model. Complementary candidates do not silently become deployment defaults.
-Preserve historical accepted/failed classifications, useful tested code and model artifacts.
-Revert inappropriate integration changes, not evidence or infrastructure merely to label a
-scientific failure. Do not create registries, schemas or orchestration systems without need.
-
-## 7. GitHub archival after each execution
-
-Repository: `https://github.com/LLzijian/grid-transient-rom.git`.
-After every execution that produces or changes a project design, implementation or
-experimental result, commit and push the key design decisions, decisive results and
-reproduction information, regardless of acceptance, rejection, failure or unresolved
-outcome. Follow the selective archival procedure in `docs/engineering_loop.md`.
-Disposable intermediate data need not be uploaded; preserve required local evidence,
-source checkpoints and adverse results under the existing retention rules.
-Review and stage only relevant files, protect unrelated working-tree edits, and verify
-the remote commit before reporting synchronization complete. If a push is blocked,
-retain the local commit and record the exact blocker and retry action. After a runtime
-interruption, reconcile pending archival on recovery before starting another experiment.
-
-## 8. Astra6 planning and conditional main integration
-
-User authorization dated2026-10-19 requires automatic progression within the existing
-scientific scope and verified budget. Before each new scientific round, actually invoke
-`gpt-6-astra` (Astra6) for bounded analysis and planning. Save model identity, its returned
-plan, evidence references and root's adoption decision before execution. A heartbeat or
-liveness check is not a new scientific round. Never silently substitute another model;
-if Astra6 cannot be invoked, preserve safe preparation and record the specific blocker.
-
-After root adopts a finite preregistered plan, implement, verify, execute and evaluate it.
-Merge qualified substantive progress to `main` through a reviewed, scope-limited PR and
-verify the remote merge. Reusable engineering progress requires relevant correctness and
-recovery checks; scientific model adoption requires its original scientific gates. Failed
-model thresholds cannot be bypassed by describing code work as model improvement.
-If acceptance conditions are unmet, withdraw that round's integration/default adoption,
-retaining useful tested tools and all positive/negative evidence on the archival branch.
-If an unacceptable change was already merged, use a normal revert commit; never erase
-evidence, reset user edits or force-push. The detailed procedure is in engineering_loop.
-This instruction authorizes routine PR merge/rollback within task scope, not test access,
-additional budget, destructive cleanup or resurrection of closed budgets.
+中文直述、结论先行；说明事实、范围、证据与下一动作，不写过程流水账，不主动削弱
+有证据的结论。指标按原定义报告（risk 不是 RMSE；漏检/误报须给分母、时域与数据
+范围）。任务状态仅用 RUNNING / COMPLETED / BLOCKED / PAUSED_BY_USER /
+INTERRUPTED_RUNTIME；Campaign 状态与 Run 决定按 research_policy §6 分开记录。
