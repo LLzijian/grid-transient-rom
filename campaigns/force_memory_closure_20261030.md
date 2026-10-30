@@ -27,6 +27,7 @@ E=κD（见 [Astra 条件准备](../reports/astra6_next_structure_preparation_20
 | checkpoint_selection_20261030 | 九点完整关键事件与固定时机选择审计；optimizer 0 | 无全门点；step16稳定收益与实际区间代价、step96实际检出收益与8 s新增漏判均保留；不晋升 | reports/checkpoint_selection_20261030_conclusion.md |
 | p_port_diagnostic_20261031 | 冻结p坐标的来源、滤波、共享常数与历史反推诊断 | M2混合来源；平衡基准差0；反推块未过冻结数值门，M3归因unknown；0optimizer/0新预测 | reports/p_port_diagnostic_20261031_conclusion.md |
 | p_reverse_precision_20261031 | 已失败反推门的数值来源/活跃调用/初值敏感性 | 当前Torch64逐位复现旧buffer差；297事件递推/QR/场差核对通过；不追认父M3，无采用 | reports/p_reverse_precision_20261031_conclusion.md |
+| analytic_p_backward_qualification_20261031 | 两套固定权重的解析反推完整数值行为资格 | 两候选各297事件/2790区间全通过；分类身份不变，原科学准入均false；仅显式数值入口，不晋升 | reports/analytic_p_backward_qualification_20261031_conclusion.md |
 
 ## 当前认识与未决
 
@@ -43,8 +44,10 @@ checkpoint_selection_20261030已完成：9点无全门点。step16稳定5/8 s风
 实际区间风险4.096469、漏判22/30；step96实际区间风险3.152346、漏判20/30，保原9检出并修复1个，
 但8 s相对A96新增1个漏判，仍4/30。全部数值资格通过，来源健康/兼容已对账，优化充分性unknown。
 固定T为9，缺覆盖点不缩分母。单一已消费train路径支持权衡观察，不是独立确认或A族否证。
-下一有判别力的问题：p端口误差来自离散滤波、常数/量纲、转速传导还是方程形式；
-Astra草案reports/p_port_diagnostic_20261030_scientist_draft.md仅DRAFT_UNADOPTED，未执行。E/s暂不作为首选。
+最新p端口证据：M2为转速误差传导与固定p残差混合；原反推精度失败已定位当前可复现算法差，
+解析数值候选在完整登记范围内保持原行为。旧M3 unknown和上游tm含义限制保留。
+下一有判别力的问题：在已合格显式数值入口上，用新的前瞻设计区分共享p常数不匹配与方程形式误差；
+不以旧已暴露β作新确认，不因数值资格启动训练或改状态。E/s暂不作为首选。
 
 ## 保护与边界
 
@@ -66,3 +69,18 @@ M3十次离线共享参数估计均未形成归因资格，结构建议为空。
 maxΔr₀约1.306e−9、maxΔωdot约8.612e−9，长期预测影响未评价。
 原p诊断失败门/M3unknown保留。下一解析反推数值候选资格草案仅DRAFT_UNADOPTED，
 最多两个固定候选，数值资格与原绝对科学门/固定T_anchor分开，不晋升原不合格检查点。
+
+## 2026-10-31 解析数值入口资格结果
+
+analytic_p_backward_qualification_20261031已执行正常两份paired，0optimizer/0拟合/0新FOM。
+每个候选297/297事件、2790/2790必要区间合格；最大COI归一化RMSE为5.19124e−9/1.91852e−9，
+五项主指标新旧差均在各自原主细误差和内。两时域完整分类ID集合一致，fine/coarse分类与窗口变化0。
+SGM A96解析候选8 s/真实区间漏判3/30、21/30，MemoryTransport A_30311 step16解析候选4/30、22/30，
+均与各自父版相同，两时域稳定误报均0/267、数值未决0。T_base9/8完整覆盖，科学T_anchor仍9。
+两者implementation_qualified=true而science_entry_eligible=false，数值实现资格没有改写原科学门。
+
+代码retain_branch，允许后续冻结协议显式引用两个合格overlay身份；模型retain_evidence，四指针/default none不变；
+科学continue，下一投入回到p形式归因。旧反推失败与M3unknown不回填；单一已消费train上的数值资格不扩成物理确认。
+19项人工测试，唯一prepare及各候选一次paired、summary一次退出0；真实修复0、额外预测未释放且余额关闭。
+原生wall：prepare25.079 s；两个候选228.938/192.738 s（并行重叠228.944 s，单项和421.676 s）；
+summary4.464 s，CPU总进程秒unknown。最终审查与远端归档核验后进入下一Run；不重复已完成Job。

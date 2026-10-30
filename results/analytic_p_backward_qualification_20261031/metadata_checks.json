@@ -1,0 +1,33 @@
+{
+  "checks": [
+    {
+      "command": "check --root .",
+      "exit_code": 0,
+      "valid": true,
+      "issues": [],
+      "proposed_claim_eligible": null,
+      "proposed_model_decision_eligible": null,
+      "proposed_science_decision_eligible": null,
+      "promotion_eligible": null,
+      "notice": "Record/metadata check only; not scientific certification."
+    },
+    {
+      "command": "assess --record harness/runs/analytic_p_backward_qualification_20261031.json",
+      "exit_code": 0,
+      "valid": true,
+      "issues": [
+        {
+          "code": "RECORD_CHECK_NOT_CERTIFICATION",
+          "message": "Record requirements only: this evaluator does not read evidence, verify its truth, certify statistics or mathematics, or authorize a scientific conclusion or promotion.",
+          "path": "record",
+          "severity": "warning"
+        }
+      ],
+      "proposed_claim_eligible": true,
+      "proposed_model_decision_eligible": true,
+      "proposed_science_decision_eligible": true,
+      "promotion_eligible": false,
+      "notice": "Record/metadata check only; not scientific certification."
+    }
+  ]
+}
