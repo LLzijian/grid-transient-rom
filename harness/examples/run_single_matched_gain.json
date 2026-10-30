@@ -1,0 +1,37 @@
+{
+  "schema_version": 2,
+  "synthetic": true,
+  "run_id": "synthetic_single_matched_gain",
+  "purpose": "discrimination",
+  "scope": "synthetic: registered normalized trajectory error comparison on fixture cohort",
+  "evidence": {
+    "validity": "valid",
+    "optimizer_health": "healthy",
+    "optimization_adequacy": "insufficient",
+    "mechanism_probe": "unknown",
+    "comparison": "matched",
+    "confirmation": "none",
+    "effect": "gain",
+    "critical_events": "pass",
+    "references": [
+      "harness/examples/synthetic_evidence.md"
+    ]
+  },
+  "inference": {
+    "claim_target": "algorithm_performance",
+    "comparison_reference": "harness/examples/synthetic_evidence.md",
+    "effect_reference": "harness/examples/synthetic_evidence.md",
+    "evaluation_contract_reference": "harness/examples/synthetic_evidence.md",
+    "budget_reference": "harness/examples/synthetic_evidence.md"
+  },
+  "proposal": {
+    "scientific_claim": "budget_specific_gain",
+    "model_decision": "retain_evidence",
+    "science_decision": "supported_within_scope",
+    "next_action": "confirm"
+  },
+  "fixture_expected": {
+    "budget_specific_gain_eligible": true,
+    "promotion_eligible": false
+  }
+}

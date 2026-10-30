@@ -1,0 +1,60 @@
+{
+  "schema_version": 2,
+  "synthetic": true,
+  "run_id": "synthetic_two_seeds_not_null",
+  "purpose": "discrimination",
+  "scope": "synthetic: registered normalized trajectory error comparison on fixture cohort",
+  "evidence": {
+    "validity": "valid",
+    "optimizer_health": "healthy",
+    "optimization_adequacy": "unknown",
+    "mechanism_probe": "unknown",
+    "comparison": "matched",
+    "confirmation": "seed_replication",
+    "effect": "no_clear_gain",
+    "critical_events": "unknown",
+    "references": [
+      "harness/examples/synthetic_evidence.md"
+    ]
+  },
+  "inference": {
+    "claim_target": "algorithm_performance",
+    "comparison_reference": "harness/examples/synthetic_evidence.md",
+    "effect_reference": "harness/examples/synthetic_evidence.md",
+    "evaluation_contract_reference": "harness/examples/synthetic_evidence.md",
+    "budget_reference": "harness/examples/synthetic_evidence.md",
+    "practical_margin": 0.05,
+    "margin_preregistered": true,
+    "effect_interval": [
+      -0.2,
+      0.2
+    ],
+    "uncertainty_justified": true,
+    "selection_accounted_for": true,
+    "confirmation_record": {
+      "kind": "seed_replication",
+      "scope": "synthetic: registered normalized trajectory error comparison on fixture cohort",
+      "data_exposure": "development_seen",
+      "units": [
+        {
+          "unit_id": "seed_A",
+          "reference": "harness/examples/synthetic_evidence.md"
+        },
+        {
+          "unit_id": "seed_B",
+          "reference": "harness/examples/synthetic_evidence.md"
+        }
+      ]
+    }
+  },
+  "proposal": {
+    "scientific_claim": "no_practical_gain_within_scope",
+    "model_decision": "retain_evidence",
+    "science_decision": "mechanism_null_within_scope",
+    "next_action": "discriminate"
+  },
+  "fixture_expected": {
+    "proposed_claim_eligible": false,
+    "proposed_science_decision_eligible": false
+  }
+}

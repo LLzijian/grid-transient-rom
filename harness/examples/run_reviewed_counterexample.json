@@ -1,0 +1,61 @@
+{
+  "schema_version": 2,
+  "synthetic": true,
+  "run_id": "synthetic_reviewed_counterexample",
+  "purpose": "probe",
+  "scope": "synthetic: smooth scalar autonomous ODEs with equilibrium at zero",
+  "evidence": {
+    "validity": "valid",
+    "optimizer_health": "not_applicable",
+    "optimization_adequacy": "not_applicable",
+    "mechanism_probe": "not_applicable",
+    "comparison": "none",
+    "confirmation": "none",
+    "effect": "unknown",
+    "critical_events": "not_applicable",
+    "references": [
+      "harness/examples/synthetic_evidence.md"
+    ]
+  },
+  "inference": {
+    "claim_target": "mathematical_statement",
+    "proof_reviewed": true,
+    "proof_reference": "harness/examples/synthetic_evidence.md",
+    "independent_review": true,
+    "independent_review_reference": "harness/examples/synthetic_evidence.md",
+    "proof_record": {
+      "kind": "exact_counterexample",
+      "target_statement": "Every smooth scalar autonomous ODE with an equilibrium at zero has a Lyapunov-stable zero equilibrium.",
+      "scope": "synthetic: smooth scalar autonomous ODEs with equilibrium at zero",
+      "claim_reference": "harness/examples/synthetic_evidence.md",
+      "assumptions_reference": "harness/examples/synthetic_evidence.md",
+      "proof_reference": "harness/examples/synthetic_evidence.md"
+    },
+    "review_record": {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "scope": "synthetic: smooth scalar autonomous ODEs with equilibrium at zero",
+      "reviewer_id": "synthetic_math_reviewer_B",
+      "evidence_author_ids": [
+        "synthetic_proof_author_A"
+      ],
+      "reviewed_references": [
+        "harness/examples/synthetic_evidence.md"
+      ],
+      "verdict": "supports",
+      "supports": [
+        "falsified_by_proof"
+      ]
+    }
+  },
+  "proposal": {
+    "scientific_claim": "falsified_by_proof",
+    "model_decision": "ineligible",
+    "science_decision": "falsified_within_scope",
+    "next_action": "synthesize"
+  },
+  "fixture_expected": {
+    "falsified_by_proof_eligible": true,
+    "empirical_replication_required": false,
+    "promotion_eligible": false
+  }
+}
