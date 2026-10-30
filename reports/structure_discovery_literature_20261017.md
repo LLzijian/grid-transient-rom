@@ -115,4 +115,3 @@ Yang等的 *Discovering Symbolic Differential Equations with Symmetry Invariants
 通过用户指定的Sider Scholar进行候选发现，随后用PMLR、NeurIPS正式论文、作者全文和出版列表核实。主要检索词为physics structure discovery、dynamical systems symbolic discovery、conservation laws discovery、invariant function learning、symmetry groups flow matching和symbolic differential equations symmetry；限定近期记录后按与动力系统结构发现的相关性筛选。未以引用数排行，也未声称穷尽会议全部论文。
 
 Sider检索记录：invariant function learning `e7ba20b3-4125-4681-a581-9869bdea16c6`；symmetry groups flow matching `0a899183-dc22-4aa4-86cb-0842d0a612ac`；symbolic differential equations symmetry `09265c6c-a56f-493d-80eb-6c7530d316f1`。文献标题按题名去重，会议身份以正式论文集为准。本报告没有产生新实验结果。
-

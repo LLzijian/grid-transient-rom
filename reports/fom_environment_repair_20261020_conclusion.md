@@ -11,3 +11,5 @@ FOM解释器为E:/03-nn_Transfer_Func/kron-reduce/.venv/Scripts/python.exe，GPU
 复现入口为private_data/closure_mechanism_20261019/repair/fom_environment01/launch_qa.py，GPU解释器运行，参数`--source-commit eeae1563f734c0ad3023892200725a492ae9047f --attempt qa01 --cap 450`；实际命令JSON、入口源码和绑定摘要见本结果目录及reproduction子目录。私有原生完整回执为同目录native_qa01/execution.json，公开证据给出路径与SHA256。复现需要本地两个环境和许可的train公共物理元数据；现有输出不得覆盖或重复执行。
 
 本次没有物理求解、轨迹或模型权重读取、更新、val/test访问。工程验收支持后续生产批次调用同一preflight，不代表FOM数值合格、模型晋升或L2证书。原48条件96次缺ANDES失败与原档关闭保持。后续同条件首次物理执行须另外保存实际Astra6方案、root窄政策、完整科学预算与独立挑战。可复用工程待有限PR审查与远端合并核验，默认模型保持。
+
+独立[实际验收审查](fom_environment_repair_20261020_acceptance_review.md)支持有限工程集成；root核对28文件精确PR范围后，PR14以预期head069973d02067745588175c9bd791e301a931bf29合并，远端main核实为6b17be3535cc57985c1e1be4138decabc7c0f033。工程合并不改变上述科学边界或默认模型。
