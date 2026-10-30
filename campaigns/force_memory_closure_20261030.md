@@ -26,6 +26,7 @@ E=κD（见 [Astra 条件准备](../reports/astra6_next_structure_preparation_20
 | closure_probe_20261030 | 残差四分解 + r₀ 条件数 + COI 预算 + 64/128 | H2 不支持为主要解释；H1 降级未否证；H3 强支持；H4 开放 | reports/closure_probe_20261030_conclusion.md |
 | checkpoint_selection_20261030 | 九点完整关键事件与固定时机选择审计；optimizer 0 | 无全门点；step16稳定收益与实际区间代价、step96实际检出收益与8 s新增漏判均保留；不晋升 | reports/checkpoint_selection_20261030_conclusion.md |
 | p_port_diagnostic_20261031 | 冻结p坐标的来源、滤波、共享常数与历史反推诊断 | M2混合来源；平衡基准差0；反推块未过冻结数值门，M3归因unknown；0optimizer/0新预测 | reports/p_port_diagnostic_20261031_conclusion.md |
+| p_reverse_precision_20261031 | 已失败反推门的数值来源/活跃调用/初值敏感性 | 当前Torch64逐位复现旧buffer差；297事件递推/QR/场差核对通过；不追认父M3，无采用 | reports/p_reverse_precision_20261031_conclusion.md |
 
 ## 当前认识与未决
 
@@ -58,3 +59,10 @@ M2稳定和失稳队列均为ω传导与固定p残差混合。反推buffer重建
 M3十次离线共享参数估计均未形成归因资格，结构建议为空。未修改旧门、模型或数据。
 上游tm为转矩字段的补证限制物理功率解释；当前结果只按冻结p坐标使用。
 下一独立probe定位反推误差来源/真实调用路径/影响；设计可先准备，执行必须等待本轮归档完成。
+
+反推精度probe已完成：固定binary64输入下当前Torch64逐位复现旧buffer，相对舍入高精度参考
+差1.5673e−10，SciPy64对同参考差3.469e−18（对未舍入MP120差1.06285e−16）。
+两模型两历史步长均实际使用buffer；297事件上p历史/QR/r₀/初始导数的传播核对全通过，
+maxΔr₀约1.306e−9、maxΔωdot约8.612e−9，长期预测影响未评价。
+原p诊断失败门/M3unknown保留。下一解析反推数值候选资格草案仅DRAFT_UNADOPTED，
+最多两个固定候选，数值资格与原绝对科学门/固定T_anchor分开，不晋升原不合格检查点。

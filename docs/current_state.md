@@ -1,39 +1,44 @@
 # 当前研究状态
 
-**2026-10-31已恢复既定方向内有界科学推进；p_port_diagnostic_20261031已完成，正在归档。**
-用户要求“根据harness设计开展实验设计与推进，自动迭代更新”；本聊天每小时自动接续kiki已启用。
-每个新Run仍须实际Astra设计、有限协议、冻结实现、适当独立审查与真实执行回执。
-原val/test关闭、新FOM=0、TASK4暂停；100 ms部署合同/default none/模型与工作指针未改。
-本轮无训练或新ROM预测，完成10次离线共享参数估计，不称无拟合。
+**2026-10-31已连续完成两轮实验与独立判读，自动接续已启用。**
+用户要求按harness开展实验并自动迭代，既定方向有界科学推进已恢复；本聊天每小时接续kiki已启用。
+新Run实际Astra设计、冻结有限协议、sol实现执行、独立审查、真实回执与远端归档逐轮保留。
+原val/test关闭、新FOM=0、TASK4暂停；100 ms部署合同/default none/模型与工作指针不变。
+本次两轮均无训练或新ROM预测；首轮10次离线共享参数估计，第二轮0拟合，不混称无拟合。
 
-**最新结论。** train fit297=267稳定+30失稳，A96与A_30311 step16来源和坐标均通过，
-base.pm_star与来源平衡Pm逐节点差0。M1人工16例和所有队列自身轨迹闭合均通过。
-M2六个模型×队列格均为固定p方程残差与ω误差传导混合，保留全平方/交叉项，不报互斥贡献率。
-稳定8 s固定残差归一化RMS为0.322312，ω传导A96为0.308464、A16为0.270997；
-失稳真实区间固定残差0.352741，ω传导A96为0.472603、A16为0.651629。
-上述是坐标内归一化RMS，不是原risk或物理功率RMSE。
+**最新结果。** 反推精度probe定位了父Run失败门的当前可复现来源：
+同一binary64输入下，Torch64逐位复现旧p_backward，相对舍入高精度B_ref差1.56730184e−10。
+SciPy64对B_ref差3.46945e−18，对未舍入MP120差1.06285e−16；两种误差口径已分列。
+JSON读取相对已存binary64逐位一致，装配对照差8.67362e−19；历史唯一生成原因仍unknown。
 
-**资格与三决定。** p_backward加载/重建最大差1.5673e−10，未过冻结atol=rtol=1e−12；
-M4反推块与解析路径最大差4.60337e−9，块资格两模型均0/297。
-十机共享常数设计rank2、条件门/积分敏感性/符号均通过，但60格归因interpretation均unknown，结构建议为空。
-代码retain_branch；模型retain_evidence、不晋升；科学unresolved。不改旧门追认，不据小差直接称初始化实质受损。
-上游ANDES v2.0.0的tm标为转矩，仓库Pm保留该字段；数值按冻结p坐标解释，物理功率/能量含义仍受限。
+**实际影响。** 两模型两步长均实际命中10次反推buffer调用，确为活跃路径。
+4个对照格均297/297，8组真实初始化+8组初始场；递推/QR/场差恒等式均通过。
+maxΔp历史4.60337e−9，maxΔr₀约1.30593e−9（模型坐标），maxΔωdot约8.61130e−9 rad/s²；
+设计矩阵与末点观测逐位不变，Δṗ=0。无未来积分，不能由小初值差宣称长期风险或漏判不变。
 
-**执行与成本。** 23项人工测试通过。首包装启动在输出目录守卫退出，科学工作0，证据完整保留；
-唯一技术修复后完成一套分析。原生两次wall为0.5667913+116.2046471=116.7714384 s，
-成功工具内部105.4528938 s（读取19.6117、滤波84.5876、估计1.16264）；两种成本不相加。
-optimizer0、新ROM rollout0、FOM0；本轮修复额度1已用，余额不转移。CPU总进程秒unknown。
+**父Run结论保留。** p_port_diagnostic_20261031来源/平衡297/297对齐、基准差0，
+M1自身闭合通过，M2六格为固定p残差与ω误差传导混合；原反推1e−12门未过，M3六十格归因unknown。
+新probe不改旧门、不追认旧M3。上游tm标机械转矩，p仅按冻结数值坐标解释，不独立认证物理功率/能量。
 
-**材料。** [结论](../reports/p_port_diagnostic_20261031_conclusion.md)、
-[协议](../reports/p_port_diagnostic_20261031_protocol.md)、[设计](../reports/p_port_diagnostic_20261031_scientist.md)、
-[审查](../reports/p_port_diagnostic_20261031_review.md)、[来源补证](../reports/p_port_diagnostic_20261031_source_note.md)、
-[公开结果](../results/p_port_diagnostic_20261031/public_diagnostic.json)。
-完整数据/残差/回执留private_data/p_port_diagnostic_20261031；原包装失败单独保全。
+**三决定。** 代码retain_branch；模型retain_evidence，副本丢弃、不晋升、不改默认或保护档案；
+科学continue：数值来源/活跃路径/初值传递已在登记范围解释，p物理形式与长期性能仍未决。
 
-**下一动作。** 独立p_reverse_precision_20261031探针准备中：定位1e−10差值来源，
-检查buffer是否处于真实因果初始化调用路径，再量化p历史/r0敏感性；0训练/0新ROM预测/0参数拟合。
-先完成当前Run独立判读审查与远端归档，再冻结下一Run执行，不重写本轮资格。
+**执行成本。** 首轮一次包装失败0科学工作+唯一技术修订后完成一套：原生wall累计116.7714384 s。
+第二轮唯一原生启动exit0，wall6.7080261 s，工具总5.9114941 s、发布前5.7339353 s分别记录不相加。
+第二轮17项人工测试；两轮当前测试共23+17通过。第二轮实际修复0，执行前代码审查修订单列。
+CPU总进程秒、QA/LLM/全项目总成本unknown；原checkpoint/失败记录及关闭余额不变。
 
-**前序与保护。** checkpoint_selection_20261030九点无全门点；step96真实区间漏判20/30，
-但8 s漏判4/30未守A96的3/30；R_N保护档案及全部候选/失败证据保留。
-旧memory_transport的492调用与未用1356关闭余额、r_memory的INTERRUPTED_RUNTIME和UNKNOWN总成本均保持原记录。
+**材料。** [精度probe结论](../reports/p_reverse_precision_20261031_conclusion.md)、
+[协议](../reports/p_reverse_precision_20261031_protocol.md)、[审查](../reports/p_reverse_precision_20261031_review.md)、
+[公开结果](../results/p_reverse_precision_20261031/public_probe.json)；
+[父p诊断结论](../reports/p_port_diagnostic_20261031_conclusion.md)已归档远端f48987a。
+私有历史、残差、调用和原生身份留各Run私有目录，未上传。
+各Run远端归档核验见其私有archival_verified.json，不由COMPLETED推断推送成功。
+
+**下一动作。** 解析p_backward数值候选资格草案已由Astra准备，DRAFT_UNADOPTED；
+最多固定A96/A16两个仅buffer改变的数值候选，原因果/主细/逐事件/T资格和原科学准入门分开。
+采用新有限协议与独立审查后才可运行新paired预测；不由当前probe自动采用解析buffer或扩大结构。
+每小时接续从该草案继续，不重复已完成/身份不明Job；用户后续暂停优先。
+
+**保护。** checkpoint九点原全门失败、step96的真实区间20/30与8 s 4/30权衡、R_N保护档案均保留。
+旧memory_transport关闭1356余额、r_memory INTERRUPTED_RUNTIME及UNKNOWN全项目账目不改。
