@@ -28,6 +28,7 @@ E=κD（见 [Astra 条件准备](../reports/astra6_next_structure_preparation_20
 | p_port_diagnostic_20261031 | 冻结p坐标的来源、滤波、共享常数与历史反推诊断 | M2混合来源；平衡基准差0；反推块未过冻结数值门，M3归因unknown；0optimizer/0新预测 | reports/p_port_diagnostic_20261031_conclusion.md |
 | p_reverse_precision_20261031 | 已失败反推门的数值来源/活跃调用/初值敏感性 | 当前Torch64逐位复现旧buffer差；297事件递推/QR/场差核对通过；不追认父M3，无采用 | reports/p_reverse_precision_20261031_conclusion.md |
 | analytic_p_backward_qualification_20261031 | 两套固定权重的解析反推完整数值行为资格 | 两候选各297事件/2790区间全通过；分类身份不变，原科学准入均false；仅显式数值入口，不晋升 | reports/analytic_p_backward_qualification_20261031_conclusion.md |
+| p_form_discrimination_20261031 | 共享40 ms常数跨20/40/80 ms及oracle响应辨别 | prepare发现2例无40 ms窗、3例无80 ms窗，按预设条件停止；估计/分析0，C/F unknown | reports/p_form_discrimination_20261031_conclusion.md |
 
 ## 当前认识与未决
 
@@ -46,7 +47,8 @@ checkpoint_selection_20261030已完成：9点无全门点。step16稳定5/8 s风
 固定T为9，缺覆盖点不缩分母。单一已消费train路径支持权衡观察，不是独立确认或A族否证。
 最新p端口证据：M2为转速误差传导与固定p残差混合；原反推精度失败已定位当前可复现算法差，
 解析数值候选在完整登记范围内保持原行为。旧M3 unknown和上游tm含义限制保留。
-下一有判别力的问题：在已合格显式数值入口上，用新的前瞻设计区分共享p常数不匹配与方程形式误差；
+下一有判别力的问题仍是共享p常数与闭合解释，但全297未来40/80 ms覆盖条件不满足；
+先明确一个由已有时间信息支持、保留完整事件范围的新离线目标，不删事件或回写旧M3。
 不以旧已暴露β作新确认，不因数值资格启动训练或改状态。E/s暂不作为首选。
 
 ## 保护与边界
@@ -84,3 +86,25 @@ SGM A96解析候选8 s/真实区间漏判3/30、21/30，MemoryTransport A_30311 
 19项人工测试，唯一prepare及各候选一次paired、summary一次退出0；真实修复0、额外预测未释放且余额关闭。
 原生wall：prepare25.079 s；两个候选228.938/192.738 s（并行重叠228.944 s，单项和421.676 s）；
 summary4.464 s，CPU总进程秒unknown。最终审查与远端归档核验后进入下一Run；不重复已完成Job。
+
+## 2026-10-31 02:18 前瞻辨别准备
+
+父解析数值资格已核远端9768acc与冻结原始字节，旧4个记录Job均退出，最近41份元数据闭合。
+新Run p_form_discrimination_20261031设计由实际gpt-6-astra给出并root采用，正在sol实现与独立审查。
+唯一10次40 ms共享参数估计，固定系数跨20/40/80 ms弱式及局部/持续真ω驱动p响应检验；
+这是新增跨时长/响应形式预测，0optimizer、0新自主ROM预测，未开始实际估计。
+只判断已消费train的冻结采样表示内相容性；不追认旧M3，不把插值敏感性当连续真值误差界。
+
+## 2026-10-31 前瞻辨别的覆盖停止
+
+唯一prepare退出0：来源/原资格及共享g/a/p_scale均通过；267稳定完整8 s，30失稳本次未来区间0.03–1.44 s。
+20 ms全297有窗；40 ms仅295/297（失稳28/30），80 ms仅294/297（失稳27/30）。
+按冻结协议未释放estimate/analyze，不删样本、不重配权重、不改窗口；实际估计/QR/滤波/新自主ROM预测均0。
+这关闭的是该全队列测量方案的可执行性问题，C/F科学判读仍unknown，不是p形式或常数的阴性证据。
+
+本Run代码retain_branch、模型retain_evidence（无新模型/参数）、科学unresolved；Campaign保持active。
+计划10次估计与其他未用工作关闭，技术修复0，最终26项人工测试；原生wall13.4642824 s、工具10.6368106 s包含其中。
+Astra已给DRAFT_UNADOPTED条件方案：先核真历史p来源与阶段方程假设，再考察100 ms历史估计向未来响应转移，
+以完整已有记录估计为对照，建议最多20次新估计但尚未登记或释放；不恢复未来80 ms覆盖、不转移旧余额。
+不借换ID消除覆盖事实或重置已暴露信息。
+最终收尾审查与远端归档后才登记新的有限目标，部署/数据/单位约定保持原合同。
