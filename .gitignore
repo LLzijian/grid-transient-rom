@@ -33,11 +33,25 @@ private_data/task2_control_modes_0078/*
 !private_data/task2_control_modes_0078/evidence.json
 !private_data/task2_control_modes_0078/modal_arrays.npz
 
-# Local curated publication staging
+# Publication staging remains local (preserved from the remote archive rules).
 /_selected_private_data/
 /_release_assets/
 /_build_curated.py
-# Original-data publication staging
 /_original_assets/
 /_build_original.py
 external_data/
+
+# Local runtime state and environments. These may contain retained evidence;
+# ignoring them is not permission to delete them.
+/.tmp/
+/.tmp_*/
+/tmp/
+/.venv-*/
+
+# Raw process identities, machine-specific commands and training traces.
+# Publish a sanitized summary explicitly; keep the originals locally.
+/results/**/reproduction/
+/results/**/training_runs/
+/results/**/identity.json
+/results/**/child.log
+/results/**/wall_receipt.json

@@ -1,327 +1,192 @@
-# Scientific Engineering Loop — Idea-Level Capability Studies
+# 研究 loop — 按科学问题推进，而非按编号或时钟推进
 
-## Physics-AI execution update (2026-10-28)
+本文件只定义稳定流程：Campaign/Run/Job、机制验证、优化充分性、停止与复盘。当前
+研究什么、做到哪里，见 [current_state.md](current_state.md) 与 Campaign 卡；本文件
+不追加进度、成绩或进程回执。科学任务设计见 [../kiki.md](../kiki.md)，证据与预算
+政策见 [research_policy.md](research_policy.md)。
 
-The current user instruction makes algorithmic structure discovery/identification the
-research narrative and requires actual Astra design, 6.1 execution and cheaper bounded
-workers. Apply [research_execution_20261028](research_execution_20261028.md): preserve
-accepted usable models separately from a small non-dominated scientific candidate set;
-choose justified sources rather than repeating one reset and coefficient curriculum.
-Stop or extend finite experiments from matched learning curves, residuals and capability
-changes, never from an update count alone or an indefinite convergence argument.
+## 1. 三个时间尺度：Campaign → Run → Job
 
-Before a task expected to exceed about four hours, consider mathematical/computational
-optimization and verify useful changes without altering numerical/data meaning. No four-hour
-kill or process-count cap is introduced. A temporary heartbeat is only long-code liveness:
-registered executable stages progress automatically; on completion or actionable failure,
-delete the heartbeat and resume the standard loop immediately, rather than waiting for a
-later tick. All old evidence, retired budgets, scientific gates and pause/test boundaries
-remain historical/operative as applicable; prospective changes do not relabel old outcomes.
+研究按实验树组织（借鉴 AI-Scientist-v2 的实验树与管理代理思想）：
 
-## Current execution authority (2026-10-21)
+- **Campaign（一个科学假设）**：可被证据支持/削弱/否证的科学问题，跨多 Run、
+  多会话。Campaign 卡记录当前信念、替代解释、已排除解释、仍需证据与 Run 树
+  （模板见 [templates/campaign.md](../templates/campaign.md)）。
+  例："传播记忆/力坐标导纳能改善动态闭合"或"节点幅值与相位状态能改善动态闭合"
+  可以是一个 Campaign。
+- **Run（检验一个关键部分）**：固定来源、设计、信息、评价口径与有限预算的一次
+  可复现比较；可含 2–3 个对照臂、一次条件延长与一个机制卡。一个 Campaign 的
+  不同 Run 可以分别：验证作用重建/机制实现；修正实现或完成必要适配；区分两个
+  竞争解释；判别自主预测是否真正改善。Run 协议/闭合模板见
+  [templates/run_protocol.md](../templates/run_protocol.md) 与
+  [templates/run_closure.md](../templates/run_closure.md)。
+- **Job（进程/尝试）**：训练、冻结评价、资格检查等真实进程。限时恢复、崩溃重启
+  或同一冻结计算的重新运行是同一 Run 的新 Job，不改科学身份，不得用新 ID 清除
+  负面证据或重置延长次数。
 
-The human said “不设置进程限制” and explicitly confirmed “全部取消进程额度限制”. Future execution has no process-count, single-process runtime, category process-second or total process-hour cap. Former caps/balances and rejected admissions remain historical records. Actual cost is still recorded; it no longer determines admission. Never substitute a huge numeric timeout for an uncapped process or write a false PASS for a closed budget gate.
+**一次 Run 没有超过可用模型，不等于整个 Campaign 失败。** 一个 Run 也不要求产出
+新模型。只要每个 Run 在减少一个重要不确定性，就可以沿同一假设推进，而不是每次
+未晋升都回到同一个旧起点重来。工程 bug 导致的无效实验标 invalid，不能当作算法
+负结论。
 
-Register a finite scientific workload and stopping decision per round (comparisons, seeds, updates, finite repairs), then execute it. Preserve scientific/numerical/data gates, actual PID/creation identity, source checks, recovery and cancellation/exception cleanup. A healthy long-running process may continue without a time cutoff; no automatic kill just because it exceeds the former3600 seconds. Prefer one GPU training job at a time to avoid contention, as an engineering choice rather than a user quota. Astra6 planning, independent review, selective archival/PR integration, original val/test restrictions and TASK4 pause still apply. This new user authority overrides process-quota requirements elsewhere below; it does not rewrite prior outcomes or grant scientific scope/data permissions.
+实验树：每个 Run 记录所属 Campaign、父 Run/父候选、目的类型（probe / adaptation /
+discrimination / confirmation）与结果链接。树是研究记忆，不是排行榜；换编号不能
+重置同一路线的延长次数。root 是实验树的管理者，负责 Campaign 信念、Run 分工与
+下一判别动作；执行代理维护 Run/Job 记录、索引与证据链接。
 
-Authority: [AGENTS.md](../AGENTS.md). State: [current_state.md](current_state.md).
-The active roadmap supplies scientific models and task-specific release requirements.
-This replaces future execution mechanics, not historical results, gates or budgets.
-A documentation/review request does not authorize training or remove an explicit pause.
-During an already authorized continuous research task, intermediate preregistration is
-part of execution; it is not a new documentation-only request. The continuous-execution
-rules below are prospectively merged from TASK2_continuous_execution_patch.md (2026-09-23),
-without changing the then-active after97 roadmap, existing scientific protocols or their
-resource caps. The prospective after101 roadmap now supplies the active priorities.
+## 2. 主流程
 
-## 1. Unit of work: one coherent idea, not one target number
+RECONCILE → DIRECTION CHECK → DESIGN → L0 实现 → L1 优化 → L2 机制探针
+→ L3 匹配对照 → L4 确认 → DECIDE → RECORD → DIRECTION AUDIT → ADVANCE
 
-A research loop studies what one modeling/algorithmic idea achieves within declared data,
-optimization and resource conditions. It may include 2–3 controls, coupled model/encoder
-changes and bounded nuisance-parameter adaptation. A coherent architecture change need
-not be split into a loop for every loss, parameter, smoke test or coefficient repair.
-A bundled result supports that bundle; do not claim an isolated causal contribution.
-Diagnostics and implementation QA are subruns unless they change a separate major decision.
-The goal is an informative capability profile, not repeated attempts to exceed a chosen
-5%/10% gain. Quantitative definitions remain essential; quantitative hopes are not truth.
+- **RECONCILE**：核对 current_state、Campaign/Run 树、活动作业与控制器、检查点、
+  Git/归档与授权；先接续已存在的工作，不重复启动。
+- **DIRECTION CHECK**：用三行回答——本 Run 检验 Campaign 的哪个关键部分？若结果为
+  负会改变哪个结构性判断？为什么现在做它而不是别的？（见 §7）
+- **DESIGN**：写协议与机制卡（见 kiki.md §6.4）：问题、机制、对照、信息范围、
+  评价口径、优化充分性判据、探针、确认条件、有限预算、停止规则。
+- **L0 实现**：实现与数学一致性、零嵌入/极限、全梯度、功率/结构恒等式、人工资格
+  与反例；失败先修实现，不进入科学比较。
+- **L1 优化**：按登记面板训练与监控；在预登记检查点判断优化是否充分（§3）。
+- **L2 机制探针**：验证机制是否按设计起作用，且探针能失败（§4）。
+- **L3 匹配对照**：同来源/信息/课程/预算下只切换机制，报告能力、残差与成本三曲线。
+- **L4 确认**：第二种子或独立确认 Run 重复关键判断；给出范围化结论与措辞。
+- **DECIDE**：分别作代码、模型档案与科学假设决定（§8）。
+- **RECORD**：封存证据、成本、来源与解释，更新 Campaign 卡与 current_state，
+  提交并推送。
+- **DIRECTION AUDIT**：三行审计（§7），决定同 Campaign 继续、开新 Run 或暂停用户。
+- **ADVANCE**：只在授权范围内进入下一 Run；登记不是额外审批门。
 
-## 2. Recover and write one short idea card
+普通步骤完成即转下一状态；只有真实作业、外部依赖、明确用户复核或安全阻碍才等待。
+Markdown 不是执行引擎；后台连续性需要真实控制器，不得声称"下一动作"已在运行。
 
-Read current_state, the active roadmap and the evidence needed for this decision only.
-Record starting commit, data/split identity, source assets and unrelated working-tree edits.
-Use one preregistration for the loop, with these fields (plain text; no new registry):
+## 3. 优化充分性（先于任何能力结论）
 
-| Field | Required content |
-|---|---|
-| Question | Idea being tested; plausible benefit, tradeoff and bounded negative outcome |
-| Comparison | Controls, information parity, scientific changes and unavoidable confounds |
-| Fitted objects | What learns jointly; fixed physics; permitted nuisance settings |
-| Evaluation | Common metrics/cohorts; expected effects; any actual claim/release gates |
-| Budget | All trials/seeds/diagnostics, staged extensions, wall time, stop rules |
-| Adequacy | How optimization/resource limitation will be distinguished from a weak idea |
-| Next decision | Which result would justify continue, compare, redirect or shelve |
+每个新参数化/新机制在比较前登记：固定监控面板与检查点（例如 0/64/128，条件延长
+最多到 256）、能力曲线与固定口径残差、梯度范数/裁剪计数、参数位移、非有限检查、
+匹配对照的适配机会。判断"优化充分"至少要求：
 
-Distinguish scientific choices from nuisance optimization settings. Allocate a small,
-comparable adaptation opportunity to each architecture; do not require the same learning
-rate to be optimal for different parameterizations. Changes outside the card require a
-prospective amendment for future runs, retaining old outcomes; never relabel past failures.
-Never retroactively promote exploration to confirmation.
+1. 预登记检查点上能力曲线未持续上升，且最近相邻检查间无预登记幅度的新收益；
+2. 参数位移/梯度健康，未长期贴边、无 NaN，不存在明显的实现性瓶颈；
+3. 匹配对照获得了同等信息与同等适配机会；
+4. 残差与代理诊断不指向"欠训练/初始化/协调失败"是主导解释。
 
-## 3. Keep three standards separate
+达到更新数、clip=0、训练 loss 下降、loss 曲线好看都不单独构成充分优化。
+仍上升或诊断显示优化主导时，结论只能写 optimization_unresolved；允许在预先限定的
+一次延长内继续，但延长必须绑定同一架构/目标/来源谱系并登记触发条件，不能无限续。
+到预算上限仍在改善 → 记"优化受限"，不是模型族反证，也不是"能力上限"。
+充分优化也不等于收敛或全局最优；写"本预算下未再观察到主导性优化缺口"。
 
-**Evidence validity (mandatory):** causal inputs; train/validation/test isolation; units,
-state definitions and equations; genuine labels/time intervals; appropriate numerical checks;
-reproducible configurations, denominators and retained adverse results. A failure invalidates
-or limits the affected evidence, not automatically the entire idea or unrelated results.
+## 4. 机制验证执行（区分优化无效与机制无效）
 
-**Exploration value:** improvements, regressions, useful structural simplicity, new capability,
-training behavior, cost and uncertainty. A candidate can be informative without beating every
-metric. Report all predeclared metrics; do not hunt for an unregistered favorable subgroup.
-An unexpected benefit is exploratory and needs prospective confirmation.
+机制验证按 kiki.md §6 的 L0–L4 阶梯执行。执行要求：
 
-**Claim / deployment eligibility:** precise thresholds for the stated capability, safety,
-noninferiority and independent confirmation. These remain binding once registered. A missed
-threshold means the claim is unsupported, not that all scientific value is zero. Worse safety
-cannot be averaged away; such models may remain explicitly non-deployable research artifacts.
-Exploratory Pareto retention is not promotion. Historical gates remain unchanged.
+- **探针必须先于能力比较**，且探针设计必须可能失败（预设"若机制不工作，探针会
+  给出什么不同结果"）。零嵌入、人工资格、可辨识性、参数激活与一步 RHS 干预等
+  证据至少给出一项；无探针的机制只算假设。
+- **匹配对照。** 同来源/检查点、同信息、同课程、同总适配预算；只切换待测机制。
+  不同信息、不同起点、不同预算的对比只算探索性，不用于机制归因。对可能冗余的
+  参数化（如对称锥内的额外耗散项）先做代数/约束检查，再谈"新增机制"。
+- **三曲线分开。** 自主能力（同口径误差、FP/FN 身份、关键事件、确认时机 T）、
+  固定口径残差、成本与复杂度。不能拼成一个总 loss 或单一分数；某条曲线下降而
+  能力不升时，要检查参考拟合、初始化与自主传播的差距，而不是继续加步数。
+- **可辨识性。** 秩、条件数、激励充分性、静止/单方向/共线反例、参数规模代偿都要
+  报告；"参数非零/门激活"不等于结构被识别。
+- **确认。** 收益或无效主张至少重复（第二种子或一次独立确认 Run）；资源不足时写
+  unresolved_within_budget，不得写成机制无效或能力上限。
+- **措辞。** 允许：实现/数值无效；优化未决；机制未实现；范围内未观察到收益（暂定）；
+  mechanism_null_within_scope（确认后，限范围）；mechanism_supported_within_scope；
+  tradeoff。禁止：由单 Run 结果写"机制无效/模型族无效/架构已被否定/已达能力上限"。
+  可以写"本登记的方法联合主张在该范围内不成立"，但不能外推到整个模型族或物理假设。
 
-## 4. Implement the idea and establish meaningful optimization
+## 5. 快速迭代与科学判定的边界
 
-Run changed-code tests, dimension/unit/sign checks, finite gradients and a short smoke.
-Reuse valid unchanged checks; no per-subrun full audit ceremony. For a new parameterization,
-use a small fixed TRAIN capability panel when needed; it is not a generalization benchmark.
-Then use the full declared training pool. Preserve every event and its eligibility status.
-Train representation, dynamics and structural objects jointly when the hypothesis requires
-it. Short regression/oracle/conditioned fits may initialize or diagnose; they cannot replace
-autonomous training and evaluation. Report warm-start mismatch and information advantages.
-Record per-task learning curves and cost, not just the last scalar training loss.
+在 Run 内部允许借鉴快速"修改—训练—比较—保留/丢弃"小循环（autoresearch 式），
+用于实现修正、适配与试错；但它不能替代科学判定：
 
-## 5. Run bounded staged exploration
+1. 不改变登记的数据、信息、评价口径、数值门与停止规则；
+2. 不用固定短时间或单指标贪心决定结构假设是否成立；结构判定仍走 L0–L4 与确认；
+3. 每次试错计入 Run 预算/成本与实验树，丢弃的实现与原因保留；
+4. 快速循环不能反复延长同一路线；延长次数绑定架构/目标/来源谱系。
 
-Use the card's extension rules, based on TRAIN or a declared inner-TRAIN group split.
-Do not eliminate a new parameterization solely because its absolute loss starts above a
-mature incumbent. Show fixed-compute comparisons AND the best observed results obtained
-under each declared total budget. Equal steps are not evidence of equivalent optimization.
-At the cap, a still-improving or poorly optimized run is optimization-limited, not proof of
-model-family impossibility. A plateau under a finite search is also not a global optimum.
-Count tuning, retries, diagnostics and all seeds; renaming a loop cannot reset the budget.
-Use limited development evaluation at planned stages; it remains selection evidence.
-Freeze confirmation configuration/checkpoint rules separately. Keep TEST entirely closed.
+## 6. 诊断链与工程修复
 
-## 6. Limit diagnostic chains; return to the scientific experiment
+- 诊断前必须说明它能改变哪个模型决策、以及随后的自主比较是什么；不能改变决策的
+  诊断不做。同一分支连续最多两次代理/条件化/冻结块诊断，之后返回自主联合实验，
+  或带着已知限制关闭分支。不得靠改名、换指标或换 block 绕过。
+- 工程修复（锁、运行时、记账、恢复、QA 接口）必须前瞻登记并绑定到某个 Run；
+  一个阶段最多一次有界实现修复，第二次须重新登记并由 root 审查。修复计入 repair
+  类别与真实成本，不占科学结论；修复成功只记工程验收，不产生新物理结论。
+- 不得用工程故障当算法反证；也不得为让流程跑通而改评价合同、删事件或降精度。
+- 关键晋升与最终能力主张须有一次未参与实现的独立复核/挑战。
 
-Before a diagnostic, state which model decision it can change and the autonomous comparison
-that will follow. If it cannot change a decision, skip it or defer it to a finalist.
-After at most TWO consecutive proxy/conditioned/frozen-block diagnostics on the same branch,
-return to a joint autonomous experiment OR close/shelve the branch with its known limitation.
-Do not evade this by renaming the metric, coefficient block or loop. More analysis requires
-an explicit stage review and a genuinely decision-changing question, not a routine rollover.
-Leakage, invalid units or irreproducible numerics must still be resolved before affected
-results are used; quarantine blocked work and continue independent valid work where possible.
-Never force an unsafe fit merely to satisfy the two-diagnostic limit.
+## 7. 停止、延长与预算
 
-## 7. Close with a capability profile, not a single pass/fail stamp
+- 每个 Run 在开跑前登记有限比较、种子、更新数与停止/延长规则；不允许"训练到指标
+  通过"。
+- 延长须有一个可验证问题与预登记触发（例如预登记检查点仍有预登记幅度的能力收益）；
+  阶段上限、总调用类别与旧余额不因换编号而重置或挪用。
+- 达到 Run 上限：记录已学到的、仍未决的与下一步；不得无限续或换 ID 重启同一路线。
+- 数值/实现失败先修或标 invalid；数值未决保留原始行，不把未决分数当有效分数。
+- 关闭阶段剩余额度不自动转给下一 Run；历史退休余额不复活；具体规则见
+  research_policy。
+- 用户取消的是进程数/时长/进程秒/总小时额度，不是有限科学工作量与停止判断。
 
-Use one short conclusion report: what was compared, valid results, limitations, cost and the
-next decision. Keep trial traces and detailed evidence in artifacts. Record fields separately:
+## 8. 三个决定（不得用一个 accept 包办）
 
-| Field | Values / purpose |
-|---|---|
-| Work type | idea study / diagnostic / implementation QA / confirmation |
-| Evidence | valid / valid within scope / inconclusive / implementation-data-numerical issue |
-| Capability | Exact gains and harms per L1/L2/L3 or the active task's comparable dimensions |
-| Optimization | evaluated at declared budget / improving at cap / insufficient / unresolved |
-| Decision | advance / retain complementary candidate / redirect / shelve / repair |
-| Promotion | none / scoped development baseline / final confirmed model |
+每个 Run 结束分别记录：
 
-A QA or diagnostic success is not model success. A model can support one capability and
-fail another. Preserve at most 2–3 substantively complementary candidates, considering
-uncertainty and complexity; no arbitrary weighted score that hides severe-event harm.
-State “best observed under this protocol,” not “maximum achievable by this family.”
-
-## 8. Confirmation and autonomy
-
-Only shortlisted candidates receive additional seeds, honest end-to-end held-out-group
-refits, physical interventions or expensive certification appropriate to the claim.
-All data-fitted preprocessing, encoders, support selection and warm starts respect the
-confirmation split. Repeated development use is not independent confirmation. Keep original
-safety definitions and expose latency-uncovered, unresolved and adverse cases.
-For final TEST, obey the active release configuration and
-[confirmatory release runbook](confirmatory_release_runbook_v1.md); this file grants no access.
-Obtain the bounded independent challenge required by AGENTS.md before major claims/promotions.
-
-A stage ends after its finite budget and decision review. The root must select and execute
-the next authorized stage unless the mission is complete, explicitly paused, genuinely
-blocked, resource-limited or interrupted by the runtime. Ordinary registration is not an
-extra approval gate. Never silently prolong an old protocol until it passes.
-
-Recover current_state, actual jobs, authorization and cumulative costs. While the mission
-is incomplete: honor pause/runtime boundaries; inspect pending work and all legal branches;
-choose the action that best resolves a current capability gap; allocate only verified
-unassigned parent resources; register a short protocol; implement/check/run/evaluate it;
-preserve outcomes and costs; update capability gaps and return to this outer decision.
-Do not end an authorized task merely by delivering its next protocol or recommendation.
-This describes root's execution duties, not an already installed scheduler.
-
-| Event | Scope stopped | Required outer action |
+| 决定 | 选项 | 说明 |
 |---|---|---|
-| NaN, gradient or implementation failure | Affected process/evidence | Use permitted repair, valid control or shelve that arm; continue independent work |
-| Numerically unresolved horizon | Affected claims/runs | Preserve raw rows; use registered checks or another valid scope; do not treat unresolved scores as valid |
-| Arm/stage step or cost cap | That experiment | Close it; select a separate authorized stage only if parent resources permit |
-| An idea is shelved or one capability gained | That idea/layer | Preserve gains and harms; continue the active roadmap's remaining objectives |
-| Verified parent resources exhausted | Work needing new resources | BLOCKED with reason BLOCKED_RESOURCE, spent/remaining totals and next actual action |
-| Every defensible branch needs unavailable external input/permission | Whole task | BLOCKED with reason BLOCKED_EXTERNAL and alternatives already considered |
-| Explicit user pause | User-specified scope | PAUSED_BY_USER; no automatic wakeup |
-| Host/session interruption | Current execution | INTERRUPTED_RUNTIME with checkpoints/commands; do not claim scientific completion |
+| 代码决定 | merge / retain_branch / revert_active / no_change | 实现正确且可复用 → 合并；只对本次假设有用 → 保留研究分支；无益实现不合并，但证据提交 |
+| 模型决定 | promote_incumbent / add_frontier / retain_evidence / ineligible | 晋升可用模型 / 加入科学候选 / 只保留证据 / 不合格 |
+| 科学决定 | continue / supported_within_scope / falsified_within_scope / unresolved / abandon | 继续检验 / 当前范围支持 / 当前范围否证 / 未决 / 放弃 |
 
-Under the active after101 roadmap, mission completion requires linked evidence for an
-exportable low-complexity autonomous ODE and100ms initializer, high-accuracy L1
-transient/classification with qualified cost, and the claimed L2 structural stability-domain
-scope in one model. L3 system-feature correspondence is report-only and optional; retain
-the original one-to-one match definition and historical outcomes. Candidate regions and
-strict certificates remain distinct. Negative local poles, a power identity, an eigenvalue
-export or a short-time gain cannot substitute for the relevant L1/L2 evidence. A finite
-unsuccessful search may leave the mission blocked within authorization; it is neither
-completion nor model-family impossibility.
+允许组合：代码合并 + 模型不晋升 + 假设继续；方法无收益 + 代码不进主干 + 完整结果
+与负面认识仍提交推送。回退的是活动代码或工作指针，不是研究记忆。三个决定可不同步，
+不得因为一个决定（如未晋升）自动改变另一个（如科学判定）；也不得用一个 accept
+同时包办三者。
 
-Parent authorization, stage allocation and per-process cap are separate. The root may
-allocate future stages only from genuinely authorized, transferable parent resources.
-Closed-stage leftovers and nontransferable categories are not revived. Count all seeds,
-repairs, monitors and evaluations across stages. Specifically,0099 remains capped at20000
-new process-seconds;0098 ancestry remains8623.47 charged seconds and its unused3376.53
-seconds remain retired. This rules patch grants no further E2/E3/confirmation allowance;
-verify any parent balance from actual user authorization, never assume unlimited continuation.
-The prospective after101 rule may return a newly closed stage's unused allocation to the
-parent pool only for a separately registered next stage and with explicit budget authority
-and an adjustment record. Previously retired 0099/0100/0101 balances do not revive merely
-because the roadmap changes; the original cumulative charge and parent ceiling persist.
-“No F run” or “no added confirmation” in0099 limits0099, not a separately authorized stage.
+## 9. 方向纪律（防止局部工程优化压倒核心问题）
 
-Loop0099's registered work is closed and remains historical evidence. For a new after101
-stage, register feasible milestones and complete the authorized comparison without waiting
-for a message at ordinary milestones. Numerical, data, TEST, pause and resource boundaries
-still bind. After closure select and execute a next active-roadmap branch only within verified
-scope and remaining resources. If none is legal, record the concrete global blocker.
+- 每个 Run 标注所在层：信息 / 坐标 / 物理作用 / 闭合 / 空间结构 / 优化。连续两个
+  Run 只剩学习率、权重、单事件补丁、记账、运行时或 QA 体系时，停止同路径，root
+  做结构复盘并暂停与用户讨论。
+- 工程/基础设施只有在解锁已登记科学决策时才做；不得单独成为"一个 Run"或成绩。
+  更多代码、更多 QA、更多实验编号、更长运行都不是科学进展。
+- 每个 Run 的 DIRECTION CHECK 与 Campaign 闭合的三行审计写入 Run 闭合报告：
+  当前核心主张与最强证据、本 Run 实际改变、下一个最有判别力的问题与最小证据。
+  若答不出，不立 Run。
+- Campaign 层面维护"当前信念 / 替代解释 / 已排除解释 / 仍需证据"，不把推测写成
+  事实。
+- 阶段目标达成、重大改向、长期无新认识或连续工程打转时，root 明确提出里程碑复核
+  并暂停用户；普通 Run 之间可自主继续。
 
-Honor external/high-risk permission boundaries. A saved next_action is not a running job;
-runtime continuation requires an actual host/scheduler. Never fabricate background work or
-use automation to bypass a pause or budget. Stage reports are progress updates; a final stop
-must identify completion, pause, resource/global blockage or actual runtime interruption.
+## 10. 状态与 current_state
 
-## 9. Preserve and maintain
+Run 结束更新 [current_state.md](current_state.md)，约一页：任务状态
+（RUNNING / COMPLETED / BLOCKED / PAUSED_BY_USER / INTERRUPTED_RUNTIME）、
+当前 Campaign/Run 与来源、可用模型/候选指针、下一可执行动作与恢复命令、累计成本、
+未决阻碍。Run 结论与任务状态分开写；只记真实作业 ID，不写虚构的下一次运行。
+状态文件不是日记，也不重复规则或成绩表。
 
-Keep historic report locations/classifications; add new idea reports under the existing
-reports directory without reorganizing history. Preserve candidate artifacts and default
-checkpoints. Revert unsafe integration changes, not useful tested infrastructure merely
-because one scientific idea underperformed. Record exact active/default model explicitly.
-Replace stale current_state entries with a concise snapshot: active idea, retained models,
-capability gaps, budgets, evidence, pause/job status and TEST state. Do not append a diary.
-Include mission status RUNNING / COMPLETED / BLOCKED / PAUSED_BY_USER /
-INTERRUPTED_RUNTIME separately from a loop's closed/rejected/retained state, plus next
-action, recovery checkpoint/command and cwd, cumulative spend, verified remaining resources
-and real job IDs only. Keep these fields in the existing snapshot, not a new registry.
-Use one current capability table in the report or state, not a new framework or dashboard.
+## 11. 长作业与监控
 
-## GitHub archival after each execution
+优先：进程退出回调/事件 → 持久控制器等待 → 必要的临时唤回。临时任务只绑定一个
+真实 Job，带 owner、期限与去重身份；它不启动下一研究、不改阈值、不晋升模型。
+健康长作业默认 3–5 分钟一次轻量查看，科学监控只在预登记里程碑执行；不在每次
+少量更新时轮询或重复解析大文件。拿到完成/失败/需行动信号后先清理该监控，再进入
+分析；清理需区分"已请求"与"已验证删除"，失败要记录阻碍。宿主机离线或没有实际
+调度器时，不得声称 loop 仍在推进。
 
-Repository: `https://github.com/LLzijian/grid-transient-rom.git`.
-Every execution that produces or changes a project design, implementation or experimental
-result closes with a selective Git commit and push. This applies equally to accepted,
-rejected, failed, inconclusive and blocked outcomes; model acceptance is not an archival
-condition. A read-only check with no new material needs no empty commit. For long-running
-work, synchronize at meaningful execution/stage boundaries and before handing control back;
-do not create a commit for every optimizer update or liveness check.
+## 12. 新 Run 规划、独立挑战与归档
 
-1. **Save the durable record.** Include the key design/protocol and amendments, necessary
-   source/configuration changes, decisive experimental results (including adverse results),
-   numerical qualification, evaluation scope, resource cost and stage decision. Include
-   the actual reproduction command, source checkpoint identifiers and hashes, and required
-   environment/data references. Update `docs/current_state.md` when research state changes.
-   Documentation-only work archives its changed documents without inventing an experiment.
-2. **Select the evidence.** Track concise reports, essential tables/figures and compact
-   evidence needed to inspect the conclusion. Raw datasets, disposable caches, temporary
-   outputs, redundant per-step logs and intermediate checkpoints stay local by default.
-   A decisive large/private artifact may remain in its existing storage with a path, hash
-   and access/reproduction instructions in the report; state explicitly when reproduction
-   requires an artifact not available from GitHub. Upload a selected model artifact only
-   when needed and appropriate. Exclusion from GitHub does not authorize deleting evidence,
-   adverse outcomes or source checkpoints, and does not authorize reading frozen test data.
-3. **Review and commit.** Inspect the selected diff and file list for relevance, sensitive
-   data and accidental bulk artifacts. Stage explicit paths or hunks; never sweep unrelated
-   working-tree edits into a commit. Keep useful rejected implementations reproducible in
-   history without adopting them as the default. Preserve existing unrelated local work.
-4. **Push and verify.** Push the relevant commit to the repository's appropriate branch
-   using a normal, non-force push; pushing does not require merging a candidate into `main`.
-   Verify that the remote branch points to the intended commit and report the branch/commit.
-   A local commit alone is not a completed synchronization. If network, authentication or
-   branch permissions prevent pushing, retain the commit and record the exact blocker,
-   commit and retry action in the handoff (and current state when it affects recovery).
-   Reconcile pending archival after interruption before starting another experiment.
-
-This archival step uses the existing reports, artifacts and Git history. It creates no
-new registry, changes no scientific gate and grants no extra training or test allowance.
-
-## Long-running process monitoring
-
-For long-running training, simulation, or evaluation jobs, avoid frequent polling that
-does not change a scientific or safety decision.
-
-- Do not poll progress on every few training steps or at sub-minute intervals merely
-  to report that a process is still running.
-- Default progress polling interval for a healthy long-running job is no more frequent
-  than once every 3–5 minutes, unless the process is expected to finish sooner.
-- If step counters are available, normally wait at least 50–100 optimization steps
-  between lightweight progress checks.
-- Full scientific monitoring/evaluation is performed only at preregistered milestones
-  (for example 0/200/400/600/800 updates in Loop0099), not at arbitrary intermediate steps.
-- Between milestones, lightweight checks should only verify:
-  process alive / exit status, non-finite failure, memory/resource limit, or an explicit
-  safety-stop condition.
-- Do not repeatedly deserialize checkpoints, recompute metrics, read large evidence files,
-  or launch Python subprocesses only to print incremental step counts.
-- Prefer waiting for the next meaningful milestone or process completion over repeated
-  status narration.
-- Increase polling frequency only when:
-  1. approaching a wall-time/resource cap,
-  2. a failure signal has appeared,
-  3. a process is expected to terminate imminently, or
-  4. a preregistered decision point is near.
-- Progress messages to the user should correspond to meaningful milestones, decisions,
-  failures, or completion—not routine liveness polling.
-
-## GPU execution for future closure training
-
-For new 40-state closure training, use `experiments/train_closure.py` in the dedicated CUDA environment; its default is CUDA and unavailable CUDA is an explicit error. CPU execution must be requested for reproduction or debugging. Preserve float64, registered step sizes, batch/split semantics and scientific gates. The historical runners remain reproduction assets. Use a new output directory and bind source, train, code, optimizer and CPU/CUDA RNG identities. GPU availability does not itself establish a speed gain; use synchronized, scope-matched timing. See [GPU execution guide](gpu_training.md). This engineering default grants no additional scientific experiment or test access.
-
-## Automatic rounds with Astra6 and conditional merge
-
-2026-10-19 user instruction: progress automatically within the authorized research and
-budget; before each new round invoke `gpt-6-astra` (Astra6) for a bounded read-only plan.
-Record its model identifier, returned plan, root decision, finite costs, acceptance and
-rollback conditions before execution. Do not confuse a queued next action with execution.
-The root retains final scientific responsibility and obtains an independent challenge
-when required by AGENTS.md. Astra6 unavailable means explicit planning blocker, never a
-different model presented as Astra6.
-
-At closure separate engineering acceptance, scientific capability and model adoption.
-Relevant checks passing plus a reusable implementation/fix is substantive engineering
-progress eligible for main; a scientific candidate needs the locked scientific gate.
-A diagnostic or failed known-support control does not establish structure discovery.
-An informative negative conclusion is preserved with its code and cost, without adopting
-the unsuccessful model. A round with no qualified integration leaves main unchanged.
-
-Select only accepted code/documentation/evidence, review the exact diff against current
-main, create and attach a PR, merge with expected-head verification and verify the remote
-merge commit. No blanket staging of local dirty files. Rejected model/configuration
-integration is removed prospectively; already merged defects use a normal revert commit.
-Keep source checkpoints, all adverse outcomes and reproduction details on the archival
-branch and locally as appropriate. Never interpret rollback as deletion of scientific
-records or resetting the unrelated local checkout.
-
-Project progression belongs to the registered executable loop. When a long job needs
-liveness, create a temporary heartbeat on the current chat, bound to that actual job and
-source. Each wake checks current_state, exact process identity and real milestones; a
-healthy unchanged job stays quiet and no duplicate job starts. Completion or actionable
-failure deletes that temporary heartbeat before the same turn resumes the normal loop.
-It grants no scientific scope, budget or test access and must not modify other projects'
-automations. Existing TASK4 pause remains independent.
+- 每个新科学 Run 前实际调用 Astra6（gpt-6-astra）做有界只读设计与规划；保存模型
+  身份、返回计划、证据引用与 root 采纳决定。采纳前不得执行；不可用时记录具体阻碍，
+  不得以其他模型冒充。实现/执行按用户授权由 gpt-6.1-sol 推进，低成本代理承担有界
+  实现、测试与事实整理。
+- 重大路线、晋升或最终能力主张前，由未参与提案/实现的代理做一次只读独立挑战；
+  root 记录回应。不可得则决定保持暂定，不得自称独立复核。
+- 每个 Run 结束按 [research_policy.md](research_policy.md) 选择性提交、推送并核验
+  远端；失败/拒绝/未决同样归档；不把实时 PID、私有数据或密钥上传。
+- 归档与推送完成后才进入下一 Run；中断恢复先对账未完成归档。
