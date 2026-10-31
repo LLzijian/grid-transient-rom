@@ -31,6 +31,8 @@ E=κD（见 [Astra 条件准备](../reports/astra6_next_structure_preparation_20
 | p_form_discrimination_20261031 | 共享40 ms常数跨20/40/80 ms及oracle响应辨别 | prepare发现2例无40 ms窗、3例无80 ms窗，按预设条件停止；估计/分析0，C/F unknown | reports/p_form_discrimination_20261031_conclusion.md |
 | p_history_transfer_20261031 | 历史共享常数到未来响应转移，完整分析段为对照 | H/A各10最优目标均可辨识且符号合法；十机各满足F_A，原常数调优不能消除该弱式目标残差；0自主ROM/optimizer | reports/p_history_transfer_20261031_conclusion.md |
 | p_driver_order_20261031 | 一p内部状态的源实现约束与合法历史预测等价 | 纯交换精确实现条件命题P由k符号矛盾否证；六例数学资格通过，真实机制/近似未知；耗散同阶替代仅草案 | reports/p_driver_order_20261031_conclusion.md |
+| p_dissipative_identifiability_20261031 | 二阶弱式R/J操作性可辨性 | 十目标充分求解；机1/2/5/9为R充分且弱式相容，六机k跨零且残差可分辨；不采用模型 | reports/p_dissipative_identifiability_20261031_conclusion.md |
+| p_residual_stage_20261031 | 固定残差的历史/跨界/纯未来定位 | 六机两组纯未来40/80ms均可分辨，四机全阶段相容；原权重/分母保留，无新拟合 | reports/p_residual_stage_20261031_conclusion.md |
 
 ## 当前认识与未决
 
@@ -220,3 +222,27 @@ P解释器创建身份与CPUunknown保留，E/Q两创建身份退出已核；总
 归档后优先提名固定系数的阶段残差定位与结构复盘，最多120格；先核三清单证据可复用性，缺项或无辨别力即停。
 不扫描最佳时段、不把自适应定位冒充确认，不立即训练/增加状态；下一Run须新Astra有界设计、冻结和独立审查。
 参见reports/p_dissipative_identifiability_20261031_conclusion.md及scientific_assessment.md；最终文本审查通过；归档以本次提交及私有核验回执为准。
+
+## 2026-10-31 固定系数的阶段残差定位登记
+
+父p_dissipative已实核远端01dadd1/41原字节/128核心与6进程退出，预算关闭；无具体本项目未知Job风险。
+新实际Astra设计p_residual_stage前瞻固定原权重的μ、平方贡献C及条件RMS，不重新让可用事件等权。
+root采用120基础格（十机×稳定/失稳×历史/跨界/纯未来×40/80ms）及60父整体闭合，先源对齐/闭合再阶段判读。
+整文件只核bytes/hash，Q容器仅定点解码fixed_residuals.all与machine，不解码参数/矩阵；禁止新Xθ−y或拟合。
+实际载荷对齐not_yet_verified，运行未放行；当前只实现与协议审查。两窗纯未来resolved限聚合条件RMS，不指逐时/每事件持续。
+父四R/六未决不重写，新工作不继承关闭余额，不恢复训练/模型采用，所有原数据/部署边界不变。
+
+## 2026-10-31 阶段定位结果与下一结构复盘
+
+p_residual_stage唯一aggregate exit0，24源177700096B原字节不变、十机全连接；60父直接及60分割闭合通过。
+120阶段项72可分辨/48相容：机0/3/4/6/7/8的稳定与失稳有覆盖纯未来40/80ms均可分辨，12配对两窗一致；
+机1/2/5/9的8配对及其他阶段均相容。固定相位首纯未来窗x12/x16，部署后20/60ms属跨界，不外推逐时/每事件持续。
+原267/30不重权，未来可用稳定267、失稳80ms22/40ms27，尾段不补；总体贡献与条件RMS分列。
+“只在早期”不足以解释六机聚合结果，早期贡献仍可能占较大比例；不归因限幅/驱动/初值、不证明更高阶必要。
+
+代码retain_branch、模型retain_evidence、科学continue/observation_only，Campaign active；父R/J符号与条件P不重写。
+0新fit/QR/残差/积分/bound/filter/init/optimizer/ROM/FOM/model，执行后repair/retry0；预算关闭不转移。
+原生wall6.5129064s包含工具6.1744394s，解释器阶段CPU5.8125s；完整CPU/LLM/helper成本unknown，两个创建身份已核退出。
+新一轮有价值问题是先核共享常值项h与中心化的数学/已有来源合同；若该解释仍有效才设计固定θ的签名残差分解。
+最多10新常数估计只是DRAFT提名，当前不执行、不称零估计、不再扫窗口；无可检验差异则暂存并列重开证据。
+最终文本独立审查通过；归档以本次提交及私有核验回执为准，详见p_residual_stage_20261031_conclusion及scientific_assessment。
