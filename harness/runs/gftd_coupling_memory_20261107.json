@@ -1,0 +1,152 @@
+{
+  "schema_version": 2,
+  "synthetic": false,
+  "run_id": "gftd_coupling_memory_20261107",
+  "purpose": "discrimination",
+  "scope": "Registered artificial static three-node family with fixed edge shape and constants; one shared unknown c and free event memory initial states; 11 causal theta/omega observations over 100 ms and exact endpoint p. Two noiseless shared batches are the primary accuracy claim; noisy inputs are diagnostics only.",
+  "execution": {
+    "status": "COMPLETED",
+    "phase": "completed_reviewed_selective_archive",
+    "action_id": "gftd-coupling-memory-20261107-01",
+    "exit_code": 0,
+    "normal_scientific_jobs_executed": 1,
+    "source_unchanged": true
+  },
+  "scientific_work": {
+    "budget_status": "closed",
+    "normal_job_limit": 1,
+    "artificial_trajectories": 9,
+    "generation_step_sizes": [
+      0.0025,
+      0.00125
+    ],
+    "legal_observation_packages": 27,
+    "algebra_problem_settings": 66,
+    "max_algebraic_solves": 264,
+    "max_postlaunch_technical_repairs": 2,
+    "scientific_replays": 0,
+    "new_FOM_executed": 0,
+    "executed_algebraic_problems": 264,
+    "executed_observation_packages": 27,
+    "executed_generation_runs": 18,
+    "postlaunch_technical_repairs": 0,
+    "unused_work_transferred": false,
+    "private_scientific_payload_reads": 0,
+    "shared_artificial_scalar_regression_problems": 264,
+    "iterative_optimization_tasks": 0
+  },
+  "evidence": {
+    "validity": "valid",
+    "optimizer_health": "healthy",
+    "optimization_adequacy": "supported",
+    "mechanism_probe": "passed",
+    "comparison": "matched",
+    "confirmation": "none",
+    "effect": "tradeoff",
+    "critical_events": "not_applicable",
+    "references": [
+      "reports/gftd_coupling_memory_20261107_protocol.md",
+      "reports/gftd_coupling_memory_20261107_design_review.md",
+      "reports/gftd_coupling_memory_20261107_implementation_review.md",
+      "reports/gftd_coupling_memory_20261107_scientific_assessment.md",
+      "reports/gftd_coupling_memory_20261107_result_review.md",
+      "reports/gftd_coupling_memory_20261107_conclusion.md",
+      "results/gftd_coupling_memory_20261107/qualification_A.json",
+      "results/gftd_coupling_memory_20261107/estimates.json",
+      "results/gftd_coupling_memory_20261107/summary.json",
+      "results/gftd_coupling_memory_20261107/execution_receipt.json",
+      "results/gftd_coupling_memory_20261107/execution_host_receipt.json",
+      "results/gftd_coupling_memory_20261107/evidence_digest.json",
+      "results/gftd_coupling_memory_20261107/execution_release.json",
+      "results/gftd_coupling_memory_20261107/qualification_receipt.json",
+      "results/gftd_coupling_memory_20261107/root_adoption.json",
+      "results/gftd_coupling_memory_20261107/parent_archive_reconciliation.json"
+    ]
+  },
+  "proposal": {
+    "scientific_claim": "observation_only",
+    "model_decision": "retain_evidence",
+    "science_decision": "supported_within_scope",
+    "next_action": "discriminate"
+  },
+  "inference": {
+    "claim_target": "registered_functional_prediction",
+    "evaluation_contract_reference": "reports/gftd_coupling_memory_20261107_protocol.md",
+    "comparison_reference": "reports/gftd_coupling_memory_20261107_protocol.md",
+    "budget_reference": "reports/gftd_coupling_memory_20261107_protocol.md",
+    "optimization_adequacy_reference": "reports/gftd_coupling_memory_20261107_result_review.md",
+    "optimization_scope": "Saved fixed-matrix unconstrained linear subproblem with SVD truncation; not the continuous noisy physical inverse problem.",
+    "probe_reference": "results/gftd_coupling_memory_20261107/evidence_digest.json",
+    "probe_scope": "Registered artificial static three-node family with fixed edge shape and constants; one shared unknown c and free event memory initial states; 11 causal theta/omega observations over 100 ms and exact endpoint p. Two noiseless shared batches are the primary accuracy claim; noisy inputs are diagnostics only.",
+    "effect_reference": "reports/gftd_coupling_memory_20261107_conclusion.md",
+    "alternative_explanations_reference": "reports/gftd_coupling_memory_20261107_scientific_assessment.md",
+    "data_exposure": "development_seen",
+    "selection_accounted_for": true,
+    "selection_accounting_reference": "reports/gftd_coupling_memory_20261107_protocol.md",
+    "independent_review": true,
+    "independent_review_reference": "reports/gftd_coupling_memory_20261107_result_review.md",
+    "review_record": {
+      "reference": "reports/gftd_coupling_memory_20261107_result_review.md",
+      "reviewer_id": "/root/loop_review",
+      "scope": "Registered artificial static three-node family with fixed edge shape and constants; one shared unknown c and free event memory initial states; 11 causal theta/omega observations over 100 ms and exact endpoint p. Two noiseless shared batches are the primary accuracy claim; noisy inputs are diagnostics only.",
+      "evidence_author_ids": [
+        "/root",
+        "/root/code_review",
+        "/root/repair_design"
+      ],
+      "reviewed_references": [
+        "reports/gftd_coupling_memory_20261107_protocol.md",
+        "results/gftd_coupling_memory_20261107/qualification_A.json",
+        "results/gftd_coupling_memory_20261107/estimates.json",
+        "results/gftd_coupling_memory_20261107/summary.json",
+        "reports/gftd_coupling_memory_20261107_scientific_assessment.md"
+      ],
+      "verdict": "supports",
+      "supports": [
+        "observation_only",
+        "retain_evidence",
+        "supported_within_scope"
+      ]
+    }
+  },
+  "root_decisions": {
+    "code": "retain_branch",
+    "model": "retain_evidence",
+    "science": "supported_within_scope",
+    "supported_claim": "Both preregistered noiseless shared batches recover c within absolute error .01 and pass numerical qualification.",
+    "working_parameter_probe": "Port-complete four-test weak regression with event-memory elimination; unconstrained discrete linear diagnostic only.",
+    "working_initializer_changed": false,
+    "model_promoted": false,
+    "default": "none",
+    "incumbent_changed": false,
+    "protected_anchors_changed": false,
+    "campaign_scientific_status": "active",
+    "finite_scientific_window_closed": true,
+    "unused_work_transferred": false,
+    "normal_scientific_jobs_executed": 1,
+    "postlaunch_technical_repairs": 0,
+    "scientific_replays": 0,
+    "next_Run_released": false
+  },
+  "observations": {
+    "finite_noiseless_shared_claim": true,
+    "all_single_test_negative_calibrations": true,
+    "single_test_settings": 66,
+    "integration_unresolved_settings": 0,
+    "rank_sensitive_outputs": 0,
+    "max_main_fine_c_difference": 2.1200432698265104e-06,
+    "max_main_fine_scaled_rho_difference": 1.3399997226583304e-06
+  },
+  "cost": {
+    "scientific_runner_wall_seconds": 3.6858637999976054,
+    "execution_tool_wall_seconds": 9.3519257,
+    "qualification_total_pytest_seconds": 12.46,
+    "final_qualification_passed": 26,
+    "algebraic_problems": 264,
+    "generation_runs": 18,
+    "port_reconstructions_B": 54,
+    "iterative_optimization": false,
+    "CPU_seconds": null,
+    "LLM_seconds": null
+  }
+}

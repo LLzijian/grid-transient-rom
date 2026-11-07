@@ -1,0 +1,24 @@
+{
+  "recorded_utc": "2026-11-07T12:01:28.747967+00:00",
+  "decision": "accept_design_for_implementation",
+  "scientist_task": "/root/repair_design",
+  "scientist_configured_model": "gpt-6-astra",
+  "reviewer_task": "/root/loop_review",
+  "reviewer_configured_model": "gpt-6.1-sol",
+  "modeler_task": "/root/code_review",
+  "modeler_configured_model": "gpt-6.1-sol",
+  "server_resolved_models": null,
+  "source_sha256": {
+    "reports/gftd_coupling_memory_20261107_protocol.md": "d0f17289ec3382e751c591ac48e72131d577acac071fbbd709dabf46041f05db",
+    "reports/gftd_coupling_memory_20261107_design_review.md": "dc7c86f49a413d783f4f35685b0d7ec6afae3cfcf62e0a4ba640622d128758ee"
+  },
+  "root_reason": "The single-test-function weak dictionary loses coupling information to free event memory; fixed multiple tests and port-complete analytic elimination directly test this problem without nonlinear optimization. Boole fixes a proven polynomial quadrature defect before any scientific output; observations alone determine rank.",
+  "prelaunch_revisions": [
+    "Boole quadrature with unchanged nodes, tests and tolerances",
+    "No label-dependent null for noisy equilibrium",
+    "E3 is a symmetry calibration, not an independent dynamic excitation"
+  ],
+  "scientific_action_released": false,
+  "model_promoted": false,
+  "default": "none"
+}

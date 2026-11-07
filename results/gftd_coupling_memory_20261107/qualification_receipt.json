@@ -1,0 +1,45 @@
+{
+  "recorded_utc": "2026-11-07T12:13:39.451362+00:00",
+  "status": "passed_final_26_independently_reviewed",
+  "qualification_runs": [
+    {
+      "command": ".venv-gpu/Scripts/python.exe -B -m pytest -p no:cacheprovider --basetemp .tmp/gftd_coupling_unit_20261107_01 tests/test_gftd_coupling_memory_20261107.py -q --maxfail=1",
+      "passed": 24,
+      "failed": 0,
+      "pytest_seconds": 8.24,
+      "tool_launch_chunk": "f170ff",
+      "tool_completion_chunk": "efaae4",
+      "tool_wall_seconds": null,
+      "source_sha256": {
+        "experiments/gftd_coupling_memory_20261107.py": "bcbd5c910d58470a3765f0ccb0265c755743e3c2e47faf35cab7718918ee7e22",
+        "tests/test_gftd_coupling_memory_20261107.py": "cda838379d4f9b48beb5205abdac14d714867268d654ceff20dd3a2bfe086da3"
+      }
+    },
+    {
+      "command": ".venv-gpu/Scripts/python.exe -B -m pytest -p no:cacheprovider --basetemp .tmp/gftd_coupling_unit_20261107_02 tests/test_gftd_coupling_memory_20261107.py -q --maxfail=1",
+      "passed": 26,
+      "failed": 0,
+      "pytest_seconds": 4.22,
+      "tool_chunk": "73dddf",
+      "tool_wall_seconds": 6.4207473,
+      "source_sha256": {
+        "experiments/gftd_coupling_memory_20261107.py": "d9819dbaecba4cb992652c058e267943e7749ea6630ceed5caddf4174ae500c2",
+        "tests/test_gftd_coupling_memory_20261107.py": "f656b4ce978dbf220d5b689a6b3e0ddf0881f07bb0c3b89262626ee3d49d4cc9"
+      }
+    }
+  ],
+  "formal_trajectory_generation": false,
+  "actual_140000_seed_sampling": false,
+  "formal_algebraic_solves": 0,
+  "scope": "Pure polynomial and matrix arithmetic, analytic linear forcing, mocked scheduling and early-stop persistence; no complete project suite.",
+  "prelaunch_review_findings": [
+    {
+      "finding": "An additional coarse-grid p/r reconstruction gate was not in the frozen protocol.",
+      "disposition": "Keep coarse diagnostics; gate only fine-grid p/r reconstruction as preregistered. Weak residual and generation consistency checks unchanged.",
+      "scientific_outputs_seen": false,
+      "postlaunch_repair_budget_consumed": false,
+      "implemented": true
+    }
+  ],
+  "total_pytest_seconds": 12.46
+}
