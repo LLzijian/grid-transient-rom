@@ -25,6 +25,7 @@ paper/*.synctex.gz
 # Keep private_data available for selected research artifacts. Raw/generated
 # contents remain local unless an individual path is explicitly allowed.
 private_data/*
+!private_data/README.md
 !private_data/task2_m3_0020/
 private_data/task2_m3_0020/*
 !private_data/task2_m3_0020/model.npz
@@ -46,6 +47,9 @@ external_data/
 /.tmp/
 /.tmp_*/
 /tmp/
+# Local experiment payloads and reversible storage-maintenance receipts.
+/artifacts/
+/local_backups/
 /.venv-*/
 
 # Raw process identities, machine-specific commands and training traces.
