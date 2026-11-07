@@ -1,0 +1,815 @@
+{
+  "schema": "gftd_fit297_fit_only_extraction_v1",
+  "recorded_utc": "2026-11-07T17:07:45.694892+00:00",
+  "scope": "train fit297 all297 static weak fit; fixed24 shared nonlinear adaptation; fit-only reporting preparation, no L1 judgment",
+  "input_sha256": {
+    "private_data/gftd_fit297_20261107/static_model.json": "97714cfed13b4e243924d87a6de7590f76bd7fded68c4322d22d4f907fa4c032",
+    "private_data/gftd_fit297_20261107/static_fit_details.json": "cc45d51b6231e80b9245bbcd5c66c5307e496593ada6738d67d2ce4a4b344b6c",
+    "private_data/gftd_fit297_20261107/modulated_model.json": "86adef0b5db08f56594ebbd4b78924e6b9fb43e7aa2c47f1d8fc91baec1ea7a5",
+    "private_data/gftd_fit297_20261107/modulated_fit_details.json": "f208b8a282fd13705a40e630324a0b68ff06e5500d51fa44b5a32c5e84b15e97"
+  },
+  "execution_receipt_snapshot": {
+    "path": "results/gftd_fit297_20261107/execution.partial.json",
+    "sha256": "98c570de7f466c2d7397faf021f8433cc7be7ac7070c1bd866c77a5a48f719d9",
+    "status": "RUNNING",
+    "release_sha256": "f10a023faf1783db600230c0ab370cb9f919e73dbeaf08b470a0b9c0bd160443"
+  },
+  "models": {
+    "static": {
+      "status": "completed",
+      "training_count": 297,
+      "adaptation_count": 24,
+      "prior_only": false,
+      "from_data": true,
+      "preparation_numerically_unresolved": false,
+      "edge_threshold_inconsistent": false,
+      "mod_threshold_inconsistent": false,
+      "accepted_proposal_indices": [],
+      "null_reasons": {
+        "k": [],
+        "beta": [
+          "fixed_by_model"
+        ]
+      },
+      "selected_objective": 0.016752688799064573,
+      "joint_identifiability": "unknown",
+      "preparation_cache_hit": false,
+      "wall_seconds": 544.032870199997,
+      "recorded_artifacts": [
+        {
+          "path": "private_data\\gftd_fit297_20261107\\static_model.json",
+          "sha256": "97714cfed13b4e243924d87a6de7590f76bd7fded68c4322d22d4f907fa4c032"
+        },
+        {
+          "path": "private_data\\gftd_fit297_20261107\\static_fit_details.json",
+          "sha256": "cc45d51b6231e80b9245bbcd5c66c5307e496593ada6738d67d2ce4a4b344b6c",
+          "bytes": 52129440
+        }
+      ],
+      "support": {
+        "raw_edge_count": 35,
+        "raw_modulation_count": 0,
+        "identified_edge_count": 35,
+        "identified_edge_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          7,
+          8,
+          9,
+          10,
+          11,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          30,
+          31,
+          33,
+          35,
+          38,
+          39,
+          40,
+          42,
+          43,
+          44
+        ],
+        "identified_modulation_count": null,
+        "identified_modulation_indices": null
+      },
+      "fit_state_coefficients": {
+        "k": {
+          "length": 45,
+          "nonzero": 35,
+          "zero": 10,
+          "minimum": 0.0,
+          "maximum": 19.888464753782852,
+          "minimum_positive": 0.13489063423145722,
+          "all_finite": true
+        },
+        "beta": {
+          "length": 45,
+          "nonzero": 0,
+          "zero": 45,
+          "minimum": 0.0,
+          "maximum": 0.0,
+          "minimum_positive": null,
+          "all_finite": true
+        },
+        "scope": "Stored fit_state coefficients; summaries only, no refitting or new physical analysis"
+      },
+      "information": {
+        "status": "completed",
+        "rank_signatures_agree": true,
+        "k_qualified": true,
+        "beta_qualified": false,
+        "beta_status": "fixed_by_model",
+        "joint_identifiability": "unknown"
+      },
+      "counts": {
+        "algebra_terms_planned": 32764,
+        "algebra_terms_actual": 943,
+        "algebra_terms_skipped": 31821,
+        "nnls_attempts": 943,
+        "nnls_completed": 943,
+        "nnls_qualified": 943,
+        "reconstruction_attempts": 594,
+        "reconstructions": 594,
+        "optimization_tasks": 192,
+        "actual_residual_calls": 37951,
+        "integrations_attempted": 37975,
+        "integrations_completed": 37975,
+        "rk4_steps_attempted": 1519960,
+        "rk4_steps_completed": 1519960,
+        "information_svd": 186,
+        "conditional_projections": 135,
+        "memory_svd": 594,
+        "information_history_steps": 1920
+      },
+      "initial_objective": 0.016752688799064573,
+      "selected_proxy": {
+        "status": "completed",
+        "objective": 0.016752688799064573,
+        "event_count": 24,
+        "task_count": 48,
+        "task_status": {
+          "converged": 6,
+          "budget_limited": 42
+        },
+        "termination_reason": {
+          "`ftol` termination condition is satisfied.": 5,
+          "actual historical residual call budget reached": 42,
+          "Both `ftol` and `xtol` termination conditions are satisfied.": 1
+        },
+        "scipy_success": {
+          "True": 6,
+          "None": 42
+        },
+        "optimization_sufficiency": {
+          "unknown": 48
+        },
+        "actual_residual_calls": 9499,
+        "projected_gradient_kkt": {
+          "present": 6,
+          "missing": 42,
+          "minimum": 6715.492318108678,
+          "maximum": 10219248.87475586
+        },
+        "observation_projected_gradient_kkt": {
+          "present": 6,
+          "missing": 42,
+          "minimum": 6.715492318108679e-13,
+          "maximum": 1.021924887475586e-09
+        },
+        "final_accepted_step_norm": {
+          "present": 48,
+          "missing": 0,
+          "minimum": 1.2547270359573286e-10,
+          "maximum": 0.06965088619804752
+        },
+        "active_bounds_task_count": 47
+      },
+      "proposal_history": [
+        {
+          "iteration": 0,
+          "accepted": false,
+          "incumbent_objective": 0.016752688799064573,
+          "weak_before_reinference": 3.338694088489038e-05,
+          "weak_after_reinference": 3.338694088489038e-05,
+          "reason": "no_improvement",
+          "candidate_objective": 0.03993425664149401,
+          "candidate_status": "completed",
+          "coefficient_status": "qualified"
+        },
+        {
+          "iteration": 1,
+          "accepted": false,
+          "incumbent_objective": 0.016752688799064573,
+          "weak_before_reinference": 3.338694088489038e-05,
+          "weak_after_reinference": 3.338694088489038e-05,
+          "reason": "no_improvement",
+          "candidate_objective": 0.03993425664149401,
+          "candidate_status": "completed",
+          "coefficient_status": "qualified"
+        },
+        {
+          "iteration": 2,
+          "accepted": false,
+          "incumbent_objective": 0.016752688799064573,
+          "weak_before_reinference": 3.338694088489038e-05,
+          "weak_after_reinference": 3.338694088489038e-05,
+          "reason": "no_improvement",
+          "candidate_objective": 0.03993425664149401,
+          "candidate_status": "completed",
+          "coefficient_status": "qualified"
+        }
+      ],
+      "optimization_phases": [
+        {
+          "role": "initial_candidate",
+          "summary": {
+            "status": "completed",
+            "objective": 0.016752688799064573,
+            "event_count": 24,
+            "task_count": 48,
+            "task_status": {
+              "converged": 6,
+              "budget_limited": 42
+            },
+            "termination_reason": {
+              "`ftol` termination condition is satisfied.": 5,
+              "actual historical residual call budget reached": 42,
+              "Both `ftol` and `xtol` termination conditions are satisfied.": 1
+            },
+            "scipy_success": {
+              "True": 6,
+              "None": 42
+            },
+            "optimization_sufficiency": {
+              "unknown": 48
+            },
+            "actual_residual_calls": 9499,
+            "projected_gradient_kkt": {
+              "present": 6,
+              "missing": 42,
+              "minimum": 6715.492318108678,
+              "maximum": 10219248.87475586
+            },
+            "observation_projected_gradient_kkt": {
+              "present": 6,
+              "missing": 42,
+              "minimum": 6.715492318108679e-13,
+              "maximum": 1.021924887475586e-09
+            },
+            "final_accepted_step_norm": {
+              "present": 48,
+              "missing": 0,
+              "minimum": 1.2547270359573286e-10,
+              "maximum": 0.06965088619804752
+            },
+            "active_bounds_task_count": 47
+          }
+        },
+        {
+          "role": "proposal_0",
+          "summary": {
+            "status": "completed",
+            "objective": 0.03993425664149401,
+            "event_count": 24,
+            "task_count": 48,
+            "task_status": {
+              "converged": 9,
+              "budget_limited": 39
+            },
+            "termination_reason": {
+              "`ftol` termination condition is satisfied.": 6,
+              "actual historical residual call budget reached": 39,
+              "`xtol` termination condition is satisfied.": 2,
+              "Both `ftol` and `xtol` termination conditions are satisfied.": 1
+            },
+            "scipy_success": {
+              "True": 9,
+              "None": 39
+            },
+            "optimization_sufficiency": {
+              "unknown": 48
+            },
+            "actual_residual_calls": 9484,
+            "projected_gradient_kkt": {
+              "present": 9,
+              "missing": 39,
+              "minimum": 98991.4697086811,
+              "maximum": 8145197.1423316
+            },
+            "observation_projected_gradient_kkt": {
+              "present": 9,
+              "missing": 39,
+              "minimum": 9.899146970868112e-12,
+              "maximum": 8.145197142331601e-10
+            },
+            "final_accepted_step_norm": {
+              "present": 48,
+              "missing": 0,
+              "minimum": 0.0,
+              "maximum": 0.08626055260120156
+            },
+            "active_bounds_task_count": 46
+          }
+        },
+        {
+          "role": "proposal_1",
+          "summary": {
+            "status": "completed",
+            "objective": 0.03993425664149401,
+            "event_count": 24,
+            "task_count": 48,
+            "task_status": {
+              "converged": 9,
+              "budget_limited": 39
+            },
+            "termination_reason": {
+              "`ftol` termination condition is satisfied.": 6,
+              "actual historical residual call budget reached": 39,
+              "`xtol` termination condition is satisfied.": 2,
+              "Both `ftol` and `xtol` termination conditions are satisfied.": 1
+            },
+            "scipy_success": {
+              "True": 9,
+              "None": 39
+            },
+            "optimization_sufficiency": {
+              "unknown": 48
+            },
+            "actual_residual_calls": 9484,
+            "projected_gradient_kkt": {
+              "present": 9,
+              "missing": 39,
+              "minimum": 98991.4697086811,
+              "maximum": 8145197.1423316
+            },
+            "observation_projected_gradient_kkt": {
+              "present": 9,
+              "missing": 39,
+              "minimum": 9.899146970868112e-12,
+              "maximum": 8.145197142331601e-10
+            },
+            "final_accepted_step_norm": {
+              "present": 48,
+              "missing": 0,
+              "minimum": 0.0,
+              "maximum": 0.08626055260120156
+            },
+            "active_bounds_task_count": 46
+          }
+        },
+        {
+          "role": "proposal_2",
+          "summary": {
+            "status": "completed",
+            "objective": 0.03993425664149401,
+            "event_count": 24,
+            "task_count": 48,
+            "task_status": {
+              "converged": 9,
+              "budget_limited": 39
+            },
+            "termination_reason": {
+              "`ftol` termination condition is satisfied.": 6,
+              "actual historical residual call budget reached": 39,
+              "`xtol` termination condition is satisfied.": 2,
+              "Both `ftol` and `xtol` termination conditions are satisfied.": 1
+            },
+            "scipy_success": {
+              "True": 9,
+              "None": 39
+            },
+            "optimization_sufficiency": {
+              "unknown": 48
+            },
+            "actual_residual_calls": 9484,
+            "projected_gradient_kkt": {
+              "present": 9,
+              "missing": 39,
+              "minimum": 98991.4697086811,
+              "maximum": 8145197.1423316
+            },
+            "observation_projected_gradient_kkt": {
+              "present": 9,
+              "missing": 39,
+              "minimum": 9.899146970868112e-12,
+              "maximum": 8.145197142331601e-10
+            },
+            "final_accepted_step_norm": {
+              "present": 48,
+              "missing": 0,
+              "minimum": 0.0,
+              "maximum": 0.08626055260120156
+            },
+            "active_bounds_task_count": 46
+          }
+        }
+      ],
+      "optimization_health": "Recorded task termination/integration/NNLS diagnostics below; no independent adequacy judgment",
+      "optimization_adequacy": "unknown"
+    },
+    "modulated": {
+      "status": "completed",
+      "training_count": 297,
+      "adaptation_count": 24,
+      "prior_only": false,
+      "from_data": true,
+      "preparation_numerically_unresolved": false,
+      "edge_threshold_inconsistent": false,
+      "mod_threshold_inconsistent": false,
+      "accepted_proposal_indices": [
+        0
+      ],
+      "null_reasons": {
+        "k": [],
+        "beta": []
+      },
+      "selected_objective": 0.03695449214307391,
+      "joint_identifiability": "unknown",
+      "preparation_cache_hit": true,
+      "wall_seconds": 838.4292133999988,
+      "recorded_artifacts": [
+        {
+          "path": "private_data\\gftd_fit297_20261107\\modulated_model.json",
+          "sha256": "86adef0b5db08f56594ebbd4b78924e6b9fb43e7aa2c47f1d8fc91baec1ea7a5"
+        },
+        {
+          "path": "private_data\\gftd_fit297_20261107\\modulated_fit_details.json",
+          "sha256": "f208b8a282fd13705a40e630324a0b68ff06e5500d51fa44b5a32c5e84b15e97",
+          "bytes": 80383441
+        }
+      ],
+      "support": {
+        "raw_edge_count": 35,
+        "raw_modulation_count": 25,
+        "identified_edge_count": 35,
+        "identified_edge_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          13,
+          14,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          31,
+          33,
+          35,
+          37,
+          39,
+          40,
+          42,
+          43,
+          44
+        ],
+        "identified_modulation_count": 25,
+        "identified_modulation_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          9,
+          10,
+          13,
+          14,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          24,
+          25,
+          26,
+          28,
+          33,
+          37,
+          42,
+          43
+        ]
+      },
+      "fit_state_coefficients": {
+        "k": {
+          "length": 45,
+          "nonzero": 35,
+          "zero": 10,
+          "minimum": 0.0,
+          "maximum": 28.278749403167332,
+          "minimum_positive": 0.2409873984640526,
+          "all_finite": true
+        },
+        "beta": {
+          "length": 45,
+          "nonzero": 25,
+          "zero": 20,
+          "minimum": 0.0,
+          "maximum": 9.085288873061366,
+          "minimum_positive": 0.28459253073193663,
+          "all_finite": true
+        },
+        "scope": "Stored fit_state coefficients; summaries only, no refitting or new physical analysis"
+      },
+      "information": {
+        "status": "completed",
+        "rank_signatures_agree": true,
+        "k_qualified": true,
+        "beta_qualified": true,
+        "beta_status": "conditional_only",
+        "joint_identifiability": "unknown"
+      },
+      "counts": {
+        "algebra_terms_planned": 24573,
+        "algebra_terms_actual": 2817,
+        "algebra_terms_skipped": 21756,
+        "nnls_attempts": 2817,
+        "nnls_completed": 2817,
+        "nnls_qualified": 2817,
+        "reconstruction_attempts": 0,
+        "reconstructions": 0,
+        "optimization_tasks": 192,
+        "actual_residual_calls": 38400,
+        "integrations_attempted": 38424,
+        "integrations_completed": 38424,
+        "rk4_steps_attempted": 1537920,
+        "rk4_steps_completed": 1537920,
+        "information_svd": 230,
+        "conditional_projections": 180,
+        "memory_svd": 0,
+        "information_history_steps": 1920
+      },
+      "initial_objective": 0.03745907916930988,
+      "selected_proxy": {
+        "status": "completed",
+        "objective": 0.03695449214307391,
+        "event_count": 24,
+        "task_count": 48,
+        "task_status": {
+          "budget_limited": 48
+        },
+        "termination_reason": {
+          "actual historical residual call budget reached": 48
+        },
+        "scipy_success": {
+          "None": 48
+        },
+        "optimization_sufficiency": {
+          "unknown": 48
+        },
+        "actual_residual_calls": 9600,
+        "projected_gradient_kkt": {
+          "present": 0,
+          "missing": 48,
+          "minimum": null,
+          "maximum": null
+        },
+        "observation_projected_gradient_kkt": {
+          "present": 0,
+          "missing": 48,
+          "minimum": null,
+          "maximum": null
+        },
+        "final_accepted_step_norm": {
+          "present": 48,
+          "missing": 0,
+          "minimum": 0.2840181291296259,
+          "maximum": 4.919359157793735
+        },
+        "active_bounds_task_count": 0
+      },
+      "proposal_history": [
+        {
+          "iteration": 0,
+          "accepted": true,
+          "incumbent_objective": 0.03745907916930988,
+          "weak_before_reinference": 3.307159503161929e-05,
+          "weak_after_reinference": 3.4475709258925995e-05,
+          "reason": "strict_subset_history_improvement",
+          "candidate_objective": 0.03695449214307391,
+          "candidate_status": "completed",
+          "coefficient_status": "qualified"
+        },
+        {
+          "iteration": 1,
+          "accepted": false,
+          "incumbent_objective": 0.03695449214307391,
+          "weak_before_reinference": 3.32077651163924e-05,
+          "weak_after_reinference": 3.328984922489154e-05,
+          "reason": "no_improvement",
+          "candidate_objective": 0.039603831563744626,
+          "candidate_status": "completed",
+          "coefficient_status": "qualified"
+        },
+        {
+          "iteration": 2,
+          "accepted": false,
+          "incumbent_objective": 0.03695449214307391,
+          "weak_before_reinference": 3.32077651163924e-05,
+          "weak_after_reinference": 3.328984922489154e-05,
+          "reason": "no_improvement",
+          "candidate_objective": 0.039603831563744626,
+          "candidate_status": "completed",
+          "coefficient_status": "qualified"
+        }
+      ],
+      "optimization_phases": [
+        {
+          "role": "initial_candidate",
+          "summary": {
+            "status": "completed",
+            "objective": 0.03745907916930988,
+            "event_count": 24,
+            "task_count": 48,
+            "task_status": {
+              "budget_limited": 48
+            },
+            "termination_reason": {
+              "actual historical residual call budget reached": 48
+            },
+            "scipy_success": {
+              "None": 48
+            },
+            "optimization_sufficiency": {
+              "unknown": 48
+            },
+            "actual_residual_calls": 9600,
+            "projected_gradient_kkt": {
+              "present": 0,
+              "missing": 48,
+              "minimum": null,
+              "maximum": null
+            },
+            "observation_projected_gradient_kkt": {
+              "present": 0,
+              "missing": 48,
+              "minimum": null,
+              "maximum": null
+            },
+            "final_accepted_step_norm": {
+              "present": 48,
+              "missing": 0,
+              "minimum": 1.1441113037017028,
+              "maximum": 4.776341245153348
+            },
+            "active_bounds_task_count": 0
+          }
+        },
+        {
+          "role": "proposal_0",
+          "summary": {
+            "status": "completed",
+            "objective": 0.03695449214307391,
+            "event_count": 24,
+            "task_count": 48,
+            "task_status": {
+              "budget_limited": 48
+            },
+            "termination_reason": {
+              "actual historical residual call budget reached": 48
+            },
+            "scipy_success": {
+              "None": 48
+            },
+            "optimization_sufficiency": {
+              "unknown": 48
+            },
+            "actual_residual_calls": 9600,
+            "projected_gradient_kkt": {
+              "present": 0,
+              "missing": 48,
+              "minimum": null,
+              "maximum": null
+            },
+            "observation_projected_gradient_kkt": {
+              "present": 0,
+              "missing": 48,
+              "minimum": null,
+              "maximum": null
+            },
+            "final_accepted_step_norm": {
+              "present": 48,
+              "missing": 0,
+              "minimum": 0.2840181291296259,
+              "maximum": 4.919359157793735
+            },
+            "active_bounds_task_count": 0
+          }
+        },
+        {
+          "role": "proposal_1",
+          "summary": {
+            "status": "completed",
+            "objective": 0.039603831563744626,
+            "event_count": 24,
+            "task_count": 48,
+            "task_status": {
+              "budget_limited": 48
+            },
+            "termination_reason": {
+              "actual historical residual call budget reached": 48
+            },
+            "scipy_success": {
+              "None": 48
+            },
+            "optimization_sufficiency": {
+              "unknown": 48
+            },
+            "actual_residual_calls": 9600,
+            "projected_gradient_kkt": {
+              "present": 0,
+              "missing": 48,
+              "minimum": null,
+              "maximum": null
+            },
+            "observation_projected_gradient_kkt": {
+              "present": 0,
+              "missing": 48,
+              "minimum": null,
+              "maximum": null
+            },
+            "final_accepted_step_norm": {
+              "present": 48,
+              "missing": 0,
+              "minimum": 1.9686103177457257,
+              "maximum": 4.694070093467651
+            },
+            "active_bounds_task_count": 0
+          }
+        },
+        {
+          "role": "proposal_2",
+          "summary": {
+            "status": "completed",
+            "objective": 0.039603831563744626,
+            "event_count": 24,
+            "task_count": 48,
+            "task_status": {
+              "budget_limited": 48
+            },
+            "termination_reason": {
+              "actual historical residual call budget reached": 48
+            },
+            "scipy_success": {
+              "None": 48
+            },
+            "optimization_sufficiency": {
+              "unknown": 48
+            },
+            "actual_residual_calls": 9600,
+            "projected_gradient_kkt": {
+              "present": 0,
+              "missing": 48,
+              "minimum": null,
+              "maximum": null
+            },
+            "observation_projected_gradient_kkt": {
+              "present": 0,
+              "missing": 48,
+              "minimum": null,
+              "maximum": null
+            },
+            "final_accepted_step_norm": {
+              "present": 48,
+              "missing": 0,
+              "minimum": 1.9686103177457257,
+              "maximum": 4.694070093467651
+            },
+            "active_bounds_task_count": 0
+          }
+        }
+      ],
+      "optimization_health": "Recorded task termination/integration/NNLS diagnostics below; no independent adequacy judgment",
+      "optimization_adequacy": "unknown"
+    }
+  },
+  "extraction_rules": [
+    "Read only four frozen model/fit_details files and execution.partial artifact records",
+    "Task diagnostics use initial_candidate plus each proposal candidate exactly once; selected_proxy is separately labeled and is not added to totals",
+    "Parameter summary is min/max/nonzero count of stored k/beta arrays; no spectrum, state/trajectory evaluation, optimization, or SVD",
+    "No initialization artifact, future, event payload, val/test or actual L2/L3 result reads; no extra selection or gate",
+    "Joint identifiability and optimization adequacy remain unknown as recorded; static beta null reason fixed_by_model means beta is fixed zero"
+  ],
+  "validation": {
+    "input_hashes_match_execution_artifacts": true,
+    "task_counts_match_fit_counts": true,
+    "residual_counts_match_fit_counts": true,
+    "frozen_inputs_unchanged": true
+  }
+}

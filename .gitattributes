@@ -154,3 +154,18 @@
 
 # Preserve the fit297 prelaunch contracts and engineering evidence bytes.
 /results/gftd_fit297_20261107/** -text
+
+# Preserve exact Run3 fit297 implementation and review bytes.
+/src/kiki/models/gftd_fit297.py -text
+/experiments/gftd_fit297_20261107.py -text
+/experiments/gftd_fit297_l1_20261107.py -text
+/experiments/gftd_fit297_analysis_20261107.py -text
+/tests/test_gftd_fit297_engine.py -text
+/tests/test_gftd_fit297_runner.py -text
+/tests/test_gftd_fit297_l1.py -text
+/tests/test_gftd_fit297_analysis.py -text
+/harness/runs/gftd_fit297_20261107.json -text
+
+# Preserve the bounded Run3 I/O continuation and its tests.
+/experiments/gftd_fit297_20261107_resume01.py -text
+/tests/test_gftd_fit297_resume01.py -text

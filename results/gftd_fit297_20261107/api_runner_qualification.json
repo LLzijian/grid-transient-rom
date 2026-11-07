@@ -1,0 +1,141 @@
+{
+  "status": "required_review_repairs_engineering_passed_pending_independent_recheck",
+  "protocol_sha256": "ca22743c53fe4fe398960e111838a373f8c4686eab0974c5daf6d9c28435062f",
+  "parent_commit": "66f1308c25ee38c3d7217bd86ee43b61a042a5b6",
+  "scientific_execution_released": false,
+  "fit297_event_payload_read": false,
+  "scientific_fit_executed": false,
+  "scientific_spectrum_or_certificate_executed": false,
+  "source_sha256": {
+    "src/kiki/models/base.py": "95f5d5a002ceae3a48ce1d7f82000355de87361c09aa56c48eab7e44d5093638",
+    "src/kiki/models/gftd_kuramoto.py": "8a981125bba23e1b771e29b17a22b2e585f82a05fb26a4d64a87f2f86e029f35",
+    "experiments/gftd_fit297_20261107.py": "7e680abf096d2296903bbb4ace52a6018c27c3f7551874a22e1249b1d13dffc4",
+    "experiments/gftd_fit297_l1_20261107.py": "674708294a71338487856063799d189d0f693a3055c4768d7d70890ca9b79129",
+    "tests/test_gftd_fit297_runner.py": "4929f1eee08c70434d09d51be7bc4364cee4a5d8fd0faca79cfed70e76136724",
+    "tests/test_gftd_fit297_l1.py": "a3e694660936a7e18c57615a26128e25385b9c84f1eea1e008c9ad7f9f03a933"
+  },
+  "checks": [
+    {
+      "command": ".venv-gpu/Scripts/python.exe -m pytest tests/test_gftd_fit297_runner.py tests/test_gftd_fit297_l1.py tests/test_gftd_model_fit.py tests/test_gftd_fit297_analysis.py -q --basetemp private_data/gftd_fit297_20261107/engineering_pytest_06",
+      "exit_code": 0,
+      "passed": 45,
+      "elapsed_s": 82.75,
+      "tool_chunk_id": "10bead"
+    },
+    {
+      "command": ".venv-gpu/Scripts/python.exe -m py_compile src/kiki/models/base.py src/kiki/models/gftd_kuramoto.py experiments/gftd_fit297_20261107.py experiments/gftd_fit297_l1_20261107.py tests/test_gftd_fit297_runner.py tests/test_gftd_fit297_l1.py",
+      "exit_code": 0,
+      "tool_chunk_id": "b02a03"
+    },
+    {
+      "command": "git diff --check -- src/kiki/models/base.py src/kiki/models/gftd_kuramoto.py",
+      "exit_code": 0,
+      "tool_chunk_id": "b02a03"
+    },
+    {
+      "command": ".venv-gpu/Scripts/python.exe -c \"import sys;sys.path.insert(0,'experiments');import gftd_fit297_20261107 as r; m,s,c=r.frozen_model();print({'constants':c,'shapes':{k:len(v) for k,v in s.items()},'sources':len(r.dependency_sources()),'required_assets':r.required_asset_paths(),'environment':r.environment()})\"",
+      "exit_code": 0,
+      "tool_chunk_id": "a9487a",
+      "scope": "frozen R_N JSON constants and static imports only",
+      "constants": {
+        "k_ref": 1.737409701777866,
+        "kappa": 0.8562738253910093,
+        "lambda": 0.26689754129312004
+      }
+    },
+    {
+      "command": ".venv-gpu/Scripts/python.exe -m pytest tests/test_gftd_fit297_runner.py::test_execution_budget_charges_each_scope_once_and_preserves_limit_failure -q --basetemp private_data/gftd_fit297_20261107/engineering_pytest_07",
+      "exit_code": 0,
+      "passed": 1,
+      "elapsed_s": 108.54,
+      "tool_chunk_id": "62d5a7"
+    },
+    {
+      "command": ".venv-gpu/Scripts/python.exe -m pytest tests/test_gftd_fit297_runner.py tests/test_gftd_fit297_l1.py tests/test_gftd_model_fit.py tests/test_gftd_fit297_analysis.py -q --basetemp private_data/gftd_fit297_20261107/engineering_pytest_review02",
+      "exit_code": 0,
+      "passed": 54,
+      "elapsed_s": 167.77,
+      "tool_chunk_id": "50e2f9",
+      "revision": 2
+    },
+    {
+      "command": ".venv-gpu/Scripts/python.exe -m py_compile experiments/gftd_fit297_20261107.py tests/test_gftd_fit297_runner.py",
+      "exit_code": 0,
+      "tool_chunk_id": "b97a35",
+      "revision": 2
+    },
+    {
+      "command": ".venv-gpu/Scripts/python.exe -c \"import sys;sys.path.insert(0,'experiments');import gftd_fit297_20261107 as r;m,s,c=r.frozen_model();print(c);print({k:len(v) for k,v in s.items()})\"",
+      "exit_code": 0,
+      "tool_chunk_id": "370da5",
+      "revision": 2,
+      "scope": "JSON effective buffers only; no parent constructor or matrix_exp",
+      "constants": {
+        "k_ref": 1.737409701777866,
+        "kappa": 0.8562738253910093,
+        "lambda": 0.26689754129312004
+      }
+    }
+  ],
+  "initial_environment_issue": {
+    "command": ".venv-gpu/Scripts/python.exe -m pytest tests/test_gftd_fit297_runner.py tests/test_gftd_fit297_l1.py tests/test_gftd_model_fit.py -q",
+    "result": "20 passed; 11 tmp_path setup errors due to Windows temp directory permissions",
+    "tool_chunk_id": "4e46a9",
+    "resolution": "use explicit workspace-private --basetemp; subsequent regression passed"
+  },
+  "coverage": [
+    "explicit new-fit config dispatch and atomic candidate update",
+    "legacy API load/save regression and private fit details excluded from checkpoints",
+    "fixed Unicode ID ordering and uniform <=24 indices",
+    "five-key causal packets, p0 copy, invalid IDs retained under original denominator",
+    "exclusive action claim before event bytes and no unknown replay",
+    "atomic per-event outputs and stale pending refusal",
+    "mock entire runner: all fits and initializers frozen before future integration",
+    "50-state and original fine-substep finiteness, strict full path lengths",
+    "point-error/risk and pooled common-omega/p RMSE algebra",
+    "raw/gated LOS, latency, numerical unresolved, resolved misses, unsettled status",
+    "timing restricted to true and predicted triggers inside scoring/record window",
+    "fixed 297/267/30/594 denominators and null official summaries on incomplete coverage",
+    "per-scope actual budget sum and same-point paired grids"
+  ],
+  "limits": [
+    "Current revision uses engineering fixtures/mocks and JSON-only frozen constants; no train event was read. The v1 parent-constructor matrix exponential is explicitly retained under review_repairs.",
+    "Root release, independent implementation review, actual fit297 optimizer adequacy and scientific L1/L2/L3 results remain outstanding.",
+    "Execution runner refuses unknown existing started.json; interruption requires explicit reconciliation rather than automatic replay.",
+    "Source hashes freeze these writer-owned paths; full execution dependency/asset/environment binding is assembled by root after all writers stop."
+  ],
+  "qualified_test_cases": 54,
+  "pre_review_v1": {
+    "qualification_path": "results/gftd_fit297_20261107/pre_review_api_v1/api_runner_qualification.json",
+    "qualification_sha256": "49be47491c2d984d7e90fa900b0b21a12bd7a13a0121423564630ae035251ce3",
+    "source_sha256": {
+      "src/kiki/models/base.py": "95f5d5a002ceae3a48ce1d7f82000355de87361c09aa56c48eab7e44d5093638",
+      "src/kiki/models/gftd_kuramoto.py": "8a981125bba23e1b771e29b17a22b2e585f82a05fb26a4d64a87f2f86e029f35",
+      "experiments/gftd_fit297_20261107.py": "881509f59bb8e01d1014fc9b524bf00ef39348e565b6edabba8340b734ec9395",
+      "experiments/gftd_fit297_l1_20261107.py": "674708294a71338487856063799d189d0f693a3055c4768d7d70890ca9b79129",
+      "tests/test_gftd_fit297_runner.py": "3e171936c16294ca744faee53832590a0588493637e164fe9ace47693b88c28f",
+      "tests/test_gftd_fit297_l1.py": "a3e694660936a7e18c57615a26128e25385b9c84f1eea1e008c9ad7f9f03a933"
+    },
+    "qualified_test_cases": 46,
+    "review_status": "three required repairs identified after initial engineering pass"
+  },
+  "revision": 2,
+  "review_repairs": [
+    {
+      "issue": "v1 frozen_model constructed ForceGraphROM while extracting constants",
+      "historical_fact": "The static engineering command recorded as tool a9487a called ForceGraphROM.from_export once. Its constructor computed p_backward using torch.matrix_exp(-.01*P) before loading stored buffers. No event was opened, fit or rollout executed, or spectrum/certificate computed. The v1 snapshot and original command receipt remain preserved; the earlier description as static imports/constants omitted this constructor computation.",
+      "repair": "Read effective binary64 state_dict buffers directly from the frozen JSON; kappa/lambda are stored reference times math.exp(stored raw scalar). No parent model is constructed.",
+      "check": "Mock forbids ForceGraphROM.from_export and torch.matrix_exp; real static JSON-only extraction returned identical displayed binary64 constants."
+    },
+    {
+      "issue": "v1 ROM rhs_calls limit 197 omitted equilibrium checks",
+      "repair": "Use <=217 total RHS calls: <=21 equilibrium residual checks plus 196 fixed two-grid Jacobian RHS calls. No scientific numerical gate or work opportunity changed.",
+      "check": "198 and 217 accepted; 218 rejected by receipt budget helper."
+    },
+    {
+      "issue": "v1 task counts could be lost if the first output write failed",
+      "repair": "Charge returned/typed-failure fit and initialization counts in memory before any artifact/persist I/O. Preserve stage elapsed time in finally. Returned future/L2/FOM/Kron counts also precede artifact writes.",
+      "check": "Four fault-injection cases retain exact consumed RK4 counts and forbid retries: fit success/failure then persist failure, initialization success then npz/diagnostic write failure."
+    }
+  ]
+}

@@ -1,23 +1,29 @@
 # 当前研究状态
 
-**2026-11-07：三步主线前两步已完成。Run 1有限K4静态恢复通过；Run 2接通fit→存取→完整initialize→自治预测，48/48数值合格、30/48达到1 s预测门，动态调制恢复未获支持。独立结果复核完成，正选择性归档；下一步执行已审train fit297协议。**
+**2026-11-08：三步主线已实现并运行。Run 3完成两次fit、594组初始化和47组双步长预测；静态46/297、调制1/297数值合格，两模型的30个失稳样本均未覆盖，总体L1效应与调制识别未决。Scientist和独立结果审查已完成，本轮工作量关闭，正选择性归档。**
 
-## 范围与指针
+## 当前范围与指针
 
-用户持续授权未知拓扑→隐幅值调制→fit297同期比较，范围内自主推进。原val/test关闭、旧test退出选择、新FOM=0、TASK4暂停；部署仍为11点100 ms theta/omega历史及末点真p，随后共享自治ODE。default none、incumbent和protected anchors不变。代码retain_branch，模型retain_evidence，科学continue；调制恢复主张unresolved。
+- Campaign：[GFTD 结构发现](../campaigns/gftd_kuramoto_discovery_20261106.md)；架构入口：[current_design](current_design.md)。
+- 当前 Run：[fit297 登记](../harness/runs/gftd_fit297_20261107.json)，执行状态COMPLETED、科学主张unresolved、预算closed；[结论](../reports/gftd_fit297_20261107_conclusion.md)、[最终执行回执](../results/gftd_fit297_20261107/resume01/execution.json)、[root决定](../results/gftd_fit297_20261107/root_adoption.json)。
+- 用户持续授权未知拓扑、隐幅值调制和 train fit297 同期比较；原 val/test 关闭，旧 test 退出选择，新 FOM=0，TASK4 暂停。
+- 部署维持 11 点、100 ms 相角与转速历史及末点真实 p，随后共享自治 ODE。
+- 代码 retain_branch；模型 retain_evidence；科学 continue。调制恢复主张 unresolved。
+- default none、incumbent 与 protected anchors 不变。父证据提交为 `66f1308c25ee38c3d7217bd86ee43b61a042a5b6`，已推送并核验原字节。
 
-## 前两步的有效证据
+## 已闭合证据
 
-Run 1已推送并核验提交3fd58f4313195d5f65ba1fa1a8931575b7638f45：四个无噪K4图支撑正确、最大边权误差2.0612e-4；含噪支撑正确但高档权重误差约.264；24平衡设置null。结论限登记条件。
+| 工作 | 结论与范围 | 证据 |
+|---|---|---|
+| Run 1：K4 静态恢复 | 四个无噪图支撑正确；含噪支撑正确但权重精度下降；平衡设置返回 null | [结论](../reports/gftd_sparse_topology_20261107_conclusion.md) |
+| Run 2：调制与完整接口 | 48/48 数值合格，30/48 达到 1 s 预测门；动态调制恢复未获支持，联合优化充分性 unknown | [结论](../reports/gftd_modulation_20261107_conclusion.md)、[科学判读](../reports/gftd_modulation_20261107_scientific_assessment.md)、[独立复核](../reports/gftd_modulation_20261107_result_review.md) |
 
-[Run 2结果](../reports/gftd_modulation_20261107_conclusion.md)：16个共享模型、48完整初始化，数值门全过；无噪预测24/24、含噪6/24过门。无噪Modulated最终beta=0、误差.55、调制支撑null；含噪同族漏3调制边。预测通过不证明调制发现。312代理任务中120到限，联合充分性unknown；1449 NNLS经独立复算全部合格。
+Run 3的646个初始化优化任务均收敛，但数值资格有547项未通过，其中14项指数溢出；共享适配351/384任务到限，充分性unknown。原Windows保存失败后41组结果完整保留，一次技术续跑只完成余下553组，没有重拟合或重放。总1030任务、215231残差、9145365尝试RK4步，原/续宿主合计3996.005 s；原始数据和轨迹留本地。
 
-原action写第39项时I/O失败；前38项持久保存。该项与已有项的模型/输入逐位相同，repair01无重放复用输出并只完成剩9项，原诊断覆盖47/48。原失败回执和49文件快照保留。总408任务、52326残差，原预算关闭、不转移；内部694.883 s、宿主704.022 s。原/续进程均已结束，started仅为历史启动凭据。
-
-[科学判读](../reports/gftd_modulation_20261107_scientific_assessment.md)、[独立复核](../reports/gftd_modulation_20261107_result_review.md)、[root决定](../results/gftd_modulation_20261107/root_adoption.json)已分别保存。149 MB原始人工产物留本地并逐字节索引，小体积来源/证据进入选择性Git归档。
+Run 3两模型各35条条件耦合边，调制25条条件调制边；总体L1为null。L2两模型局部证书成立但47实点均未获覆盖；L3各10/13模态配对，K与绝对Kron导纳相关0.440/0.483。详见[科学判读](../reports/gftd_fit297_20261107_scientific_assessment.md)、[独立复核](../reports/gftd_fit297_20261107_result_review.md)和[最终摘要](../results/gftd_fit297_20261107/evidence_digest.json)。
 
 ## 下一授权动作
 
-[Run 3协议](../reports/gftd_fit297_20261107_protocol.md)已独立接受：全体合法fit297静态弱拟合、按ID固定最多24包共享非线性适配、全297完整初始化和L1评价；两模型同机会。L2用同一50维ODE的严格舍入残差证书，L3使用已核官方case的PQZ端电压Kron及原699维descriptor全部13个已接受参考模式。接口实现、工程检查和冻结源码独立复核仍须完成。
-
-原ieee39_full.xlsx已找回且hash与生成清单完全一致；已保存的全阶descriptor也已定位。只读静态参数和元数据用于准备，尚未读取fit297事件、执行IEEE39拟合或计算实际L2/L3。先核验Run 2归档，再改动其冻结来源进入Run 3，不新增人工前置研究。
+先完成本轮选择性提交、普通推送与原字节核验。下一主线在既有授权内前瞻区分冻结ROM的积分精度不足与参数/初始化所产生的动力学问题；下一科学动作尚未释放，不回填本轮通过数，不转移关闭余额。
+标准IEEE39工作簿已找回并与原生成清单哈希一致；全阶descriptor与13参考模式身份已核。L2为ROM局部证明，不能替代全阶安全结论；历史R_N的21/30漏检不作本轮同期成绩。
+部署后全体条件信息分析因原进程缓存丢失保持unknown，未重复端口重建/SVD；原24包拟合信息仍保留。

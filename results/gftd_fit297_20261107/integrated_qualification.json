@@ -1,0 +1,319 @@
+{
+  "run_id": "gftd_fit297_20261107",
+  "qualification_kind": "integrated_engineering_only",
+  "status": "PASSED",
+  "configured_experimenter": "gpt-6.1-sol",
+  "server_resolved_model": null,
+  "scientific_release_present": false,
+  "scientific_executions": 0,
+  "fit297_event_reads": 0,
+  "real_model_certificate_or_modal_evaluations": 0,
+  "pytest_invocations": 1,
+  "command": "$env:PYTHONDONTWRITEBYTECODE='1'\n$env:OMP_NUM_THREADS='1'\n$env:MKL_NUM_THREADS='1'\n$env:OPENBLAS_NUM_THREADS='1'\nif (Test-Path -LiteralPath '.tmp/gftd_fit297_joint_01') { throw 'Joint basetemp already exists' }\n$taskStartUtc=[DateTime]::UtcNow.ToString('o')\n$taskTimer=[System.Diagnostics.Stopwatch]::StartNew()\nWrite-Output ('HOST_START_UTC='+$taskStartUtc)\n& ./.venv-gpu/Scripts/python.exe -B -m pytest -p no:cacheprovider --basetemp .tmp/gftd_fit297_joint_01 tests/test_gftd_fit297_engine.py tests/test_gftd_fit297_runner.py tests/test_gftd_fit297_l1.py tests/test_gftd_fit297_analysis.py tests/test_gftd_fitting.py tests/test_gftd_discovery.py tests/test_gftd_kuramoto_architecture.py tests/test_gftd_modulation_gradient.py tests/test_gftd_model_fit.py tests/test_gftd_modulation_20261107.py tests/test_gftd_modulation_resume01.py -q --maxfail=1 1> results/gftd_fit297_20261107/integrated_pytest_joint01.stdout.txt 2> results/gftd_fit297_20261107/integrated_pytest_joint01.stderr.txt\n$taskExit=$LASTEXITCODE\n$taskTimer.Stop()\nGet-Content -LiteralPath 'results/gftd_fit297_20261107/integrated_pytest_joint01.stdout.txt'\nGet-Content -LiteralPath 'results/gftd_fit297_20261107/integrated_pytest_joint01.stderr.txt'\nWrite-Output ('HOST_END_UTC='+[DateTime]::UtcNow.ToString('o'))\nWrite-Output ('HOST_WALL_SECONDS='+$taskTimer.Elapsed.TotalSeconds.ToString('R',[System.Globalization.CultureInfo]::InvariantCulture))\nWrite-Output ('PROGRAM_EXIT_CODE='+$taskExit)\nexit $taskExit",
+  "cwd": "E:\\03-nn_Transfer_Func\\kiki",
+  "environment_overrides": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "OMP_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1"
+  },
+  "basetemp": ".tmp/gftd_fit297_joint_01",
+  "basetemp_confirmed_absent_before_launch": true,
+  "test_files": [
+    "tests/test_gftd_fit297_engine.py",
+    "tests/test_gftd_fit297_runner.py",
+    "tests/test_gftd_fit297_l1.py",
+    "tests/test_gftd_fit297_analysis.py",
+    "tests/test_gftd_fitting.py",
+    "tests/test_gftd_discovery.py",
+    "tests/test_gftd_kuramoto_architecture.py",
+    "tests/test_gftd_modulation_gradient.py",
+    "tests/test_gftd_model_fit.py",
+    "tests/test_gftd_modulation_20261107.py",
+    "tests/test_gftd_modulation_resume01.py"
+  ],
+  "test_file_count": 11,
+  "passed": 177,
+  "failed": 0,
+  "skipped": 0,
+  "pytest_elapsed_seconds": 298.66,
+  "start_utc": "2026-11-07T16:14:10.8970558Z",
+  "end_utc": "2026-11-07T16:19:24.6076848Z",
+  "host_wall_seconds": 313.5609633,
+  "host_wall_method": "System.Diagnostics.Stopwatch around the sole pytest invocation; excludes subsequent log display",
+  "session_id": 7862,
+  "initial_chunk_id": "39258f",
+  "final_chunk_id": "f63f1f",
+  "exit_code": 0,
+  "source_hash_count": 21,
+  "source_unchanged": true,
+  "source_sha256_before": [
+    {
+      "path": "src/kiki/models/base.py",
+      "sha256": "95f5d5a002ceae3a48ce1d7f82000355de87361c09aa56c48eab7e44d5093638"
+    },
+    {
+      "path": "src/kiki/models/gftd_fitting.py",
+      "sha256": "57effaab858200bf77a33de6661210104bb01bae2def4e8db718c08254d982f4"
+    },
+    {
+      "path": "src/kiki/models/gftd_kuramoto.py",
+      "sha256": "8a981125bba23e1b771e29b17a22b2e585f82a05fb26a4d64a87f2f86e029f35"
+    },
+    {
+      "path": "src/kiki/physics/kuramoto_functional.py",
+      "sha256": "5a709bc2b5b984fbdd4c376f69852e0a53a12929dee3f525a453b5934caec021"
+    },
+    {
+      "path": "src/kiki/models/gftd_fit297.py",
+      "sha256": "43f937b6973490c771aea2e1ac8694a2c356a48fb2f26337a73c9e991c6e334b"
+    },
+    {
+      "path": "experiments/gftd_fit297_20261107.py",
+      "sha256": "7e680abf096d2296903bbb4ace52a6018c27c3f7551874a22e1249b1d13dffc4"
+    },
+    {
+      "path": "experiments/gftd_fit297_l1_20261107.py",
+      "sha256": "674708294a71338487856063799d189d0f693a3055c4768d7d70890ca9b79129"
+    },
+    {
+      "path": "experiments/gftd_fit297_analysis_20261107.py",
+      "sha256": "2faa8cdd83a98f71c044e20983b2b08d0f394f76b64c15b24f2c63617dab929e"
+    },
+    {
+      "path": "src/kiki/models/gftd_discovery.py",
+      "sha256": "9245b0726cb3fca15d3248106b43bd1673ed6607ed3a852b67c533f768a1b27f"
+    },
+    {
+      "path": "src/kiki/physics/graph.py",
+      "sha256": "724dd978e7627ccceec0ad94067eef304c8e5562a378641516d544e1d8ca8dfe"
+    },
+    {
+      "path": "tests/test_gftd_fit297_engine.py",
+      "sha256": "8d331d31c5aed79d44150bc01839cd48cc8c776e4264e9d7acc79b9c6cb1e9a6"
+    },
+    {
+      "path": "tests/test_gftd_fit297_runner.py",
+      "sha256": "4929f1eee08c70434d09d51be7bc4364cee4a5d8fd0faca79cfed70e76136724"
+    },
+    {
+      "path": "tests/test_gftd_fit297_l1.py",
+      "sha256": "a3e694660936a7e18c57615a26128e25385b9c84f1eea1e008c9ad7f9f03a933"
+    },
+    {
+      "path": "tests/test_gftd_fit297_analysis.py",
+      "sha256": "55f1e706c4f25bc04dfbf1526b3a6200b97d5fae1d4dca9eb0f6062a3ed0256f"
+    },
+    {
+      "path": "tests/test_gftd_fitting.py",
+      "sha256": "79cd24f299c5c8fed3f0f6f7430ce339394cd34085bcbf24c95a89d2cf7ecc02"
+    },
+    {
+      "path": "tests/test_gftd_discovery.py",
+      "sha256": "232f16df69c4e0932e3d585359f37cd4e5fc9eccf9b852f6f0d33f0d6b6764c0"
+    },
+    {
+      "path": "tests/test_gftd_kuramoto_architecture.py",
+      "sha256": "6eb6ed2fdaa1fc9b57eca6b7528871bf43b54ee76d508512011c3b3a030473f0"
+    },
+    {
+      "path": "tests/test_gftd_modulation_gradient.py",
+      "sha256": "c2a14931bf639aa591b0d1fadf6e08c9210303cd192241e9b4e9d699976eadff"
+    },
+    {
+      "path": "tests/test_gftd_model_fit.py",
+      "sha256": "2a0b11956e54c2a2f4d90f58887a39ebda83978becf7fdac2b1c6f6696411658"
+    },
+    {
+      "path": "tests/test_gftd_modulation_20261107.py",
+      "sha256": "28f06eb1829aa9b1b0c93ecf9d2e50b6547bdbdc4d867d1230e1ace62cf3b9a0"
+    },
+    {
+      "path": "tests/test_gftd_modulation_resume01.py",
+      "sha256": "7b994b92b650f230c96bb8eb4b488aa42bc7210fffef126683694bb66c7c225a"
+    }
+  ],
+  "source_sha256_after": [
+    {
+      "path": "src/kiki/models/base.py",
+      "sha256": "95f5d5a002ceae3a48ce1d7f82000355de87361c09aa56c48eab7e44d5093638"
+    },
+    {
+      "path": "src/kiki/models/gftd_fitting.py",
+      "sha256": "57effaab858200bf77a33de6661210104bb01bae2def4e8db718c08254d982f4"
+    },
+    {
+      "path": "src/kiki/models/gftd_kuramoto.py",
+      "sha256": "8a981125bba23e1b771e29b17a22b2e585f82a05fb26a4d64a87f2f86e029f35"
+    },
+    {
+      "path": "src/kiki/physics/kuramoto_functional.py",
+      "sha256": "5a709bc2b5b984fbdd4c376f69852e0a53a12929dee3f525a453b5934caec021"
+    },
+    {
+      "path": "src/kiki/models/gftd_fit297.py",
+      "sha256": "43f937b6973490c771aea2e1ac8694a2c356a48fb2f26337a73c9e991c6e334b"
+    },
+    {
+      "path": "experiments/gftd_fit297_20261107.py",
+      "sha256": "7e680abf096d2296903bbb4ace52a6018c27c3f7551874a22e1249b1d13dffc4"
+    },
+    {
+      "path": "experiments/gftd_fit297_l1_20261107.py",
+      "sha256": "674708294a71338487856063799d189d0f693a3055c4768d7d70890ca9b79129"
+    },
+    {
+      "path": "experiments/gftd_fit297_analysis_20261107.py",
+      "sha256": "2faa8cdd83a98f71c044e20983b2b08d0f394f76b64c15b24f2c63617dab929e"
+    },
+    {
+      "path": "src/kiki/models/gftd_discovery.py",
+      "sha256": "9245b0726cb3fca15d3248106b43bd1673ed6607ed3a852b67c533f768a1b27f"
+    },
+    {
+      "path": "src/kiki/physics/graph.py",
+      "sha256": "724dd978e7627ccceec0ad94067eef304c8e5562a378641516d544e1d8ca8dfe"
+    },
+    {
+      "path": "tests/test_gftd_fit297_engine.py",
+      "sha256": "8d331d31c5aed79d44150bc01839cd48cc8c776e4264e9d7acc79b9c6cb1e9a6"
+    },
+    {
+      "path": "tests/test_gftd_fit297_runner.py",
+      "sha256": "4929f1eee08c70434d09d51be7bc4364cee4a5d8fd0faca79cfed70e76136724"
+    },
+    {
+      "path": "tests/test_gftd_fit297_l1.py",
+      "sha256": "a3e694660936a7e18c57615a26128e25385b9c84f1eea1e008c9ad7f9f03a933"
+    },
+    {
+      "path": "tests/test_gftd_fit297_analysis.py",
+      "sha256": "55f1e706c4f25bc04dfbf1526b3a6200b97d5fae1d4dca9eb0f6062a3ed0256f"
+    },
+    {
+      "path": "tests/test_gftd_fitting.py",
+      "sha256": "79cd24f299c5c8fed3f0f6f7430ce339394cd34085bcbf24c95a89d2cf7ecc02"
+    },
+    {
+      "path": "tests/test_gftd_discovery.py",
+      "sha256": "232f16df69c4e0932e3d585359f37cd4e5fc9eccf9b852f6f0d33f0d6b6764c0"
+    },
+    {
+      "path": "tests/test_gftd_kuramoto_architecture.py",
+      "sha256": "6eb6ed2fdaa1fc9b57eca6b7528871bf43b54ee76d508512011c3b3a030473f0"
+    },
+    {
+      "path": "tests/test_gftd_modulation_gradient.py",
+      "sha256": "c2a14931bf639aa591b0d1fadf6e08c9210303cd192241e9b4e9d699976eadff"
+    },
+    {
+      "path": "tests/test_gftd_model_fit.py",
+      "sha256": "2a0b11956e54c2a2f4d90f58887a39ebda83978becf7fdac2b1c6f6696411658"
+    },
+    {
+      "path": "tests/test_gftd_modulation_20261107.py",
+      "sha256": "28f06eb1829aa9b1b0c93ecf9d2e50b6547bdbdc4d867d1230e1ace62cf3b9a0"
+    },
+    {
+      "path": "tests/test_gftd_modulation_resume01.py",
+      "sha256": "7b994b92b650f230c96bb8eb4b488aa42bc7210fffef126683694bb66c7c225a"
+    }
+  ],
+  "hash_preflight_tool": {
+    "chunk_id": "343a6d",
+    "wall_time_seconds": 2.0115897,
+    "exit_code": 0,
+    "original_token_count": 636,
+    "output": "[{\"path\":\"src/kiki/models/base.py\",\"sha256\":\"95f5d5a002ceae3a48ce1d7f82000355de87361c09aa56c48eab7e44d5093638\"},{\"path\":\"src/kiki/models/gftd_fitting.py\",\"sha256\":\"57effaab858200bf77a33de6661210104bb01bae2def4e8db718c08254d982f4\"},{\"path\":\"src/kiki/models/gftd_kuramoto.py\",\"sha256\":\"8a981125bba23e1b771e29b17a22b2e585f82a05fb26a4d64a87f2f86e029f35\"},{\"path\":\"src/kiki/physics/kuramoto_functional.py\",\"sha256\":\"5a709bc2b5b984fbdd4c376f69852e0a53a12929dee3f525a453b5934caec021\"},{\"path\":\"src/kiki/models/gftd_fit297.py\",\"sha256\":\"43f937b6973490c771aea2e1ac8694a2c356a48fb2f26337a73c9e991c6e334b\"},{\"path\":\"experiments/gftd_fit297_20261107.py\",\"sha256\":\"7e680abf096d2296903bbb4ace52a6018c27c3f7551874a22e1249b1d13dffc4\"},{\"path\":\"experiments/gftd_fit297_l1_20261107.py\",\"sha256\":\"674708294a71338487856063799d189d0f693a3055c4768d7d70890ca9b79129\"},{\"path\":\"experiments/gftd_fit297_analysis_20261107.py\",\"sha256\":\"2faa8cdd83a98f71c044e20983b2b08d0f394f76b64c15b24f2c63617dab929e\"},{\"path\":\"src/kiki/models/gftd_discovery.py\",\"sha256\":\"9245b0726cb3fca15d3248106b43bd1673ed6607ed3a852b67c533f768a1b27f\"},{\"path\":\"src/kiki/physics/graph.py\",\"sha256\":\"724dd978e7627ccceec0ad94067eef304c8e5562a378641516d544e1d8ca8dfe\"},{\"path\":\"tests/test_gftd_fit297_engine.py\",\"sha256\":\"8d331d31c5aed79d44150bc01839cd48cc8c776e4264e9d7acc79b9c6cb1e9a6\"},{\"path\":\"tests/test_gftd_fit297_runner.py\",\"sha256\":\"4929f1eee08c70434d09d51be7bc4364cee4a5d8fd0faca79cfed70e76136724\"},{\"path\":\"tests/test_gftd_fit297_l1.py\",\"sha256\":\"a3e694660936a7e18c57615a26128e25385b9c84f1eea1e008c9ad7f9f03a933\"},{\"path\":\"tests/test_gftd_fit297_analysis.py\",\"sha256\":\"55f1e706c4f25bc04dfbf1526b3a6200b97d5fae1d4dca9eb0f6062a3ed0256f\"},{\"path\":\"tests/test_gftd_fitting.py\",\"sha256\":\"79cd24f299c5c8fed3f0f6f7430ce339394cd34085bcbf24c95a89d2cf7ecc02\"},{\"path\":\"tests/test_gftd_discovery.py\",\"sha256\":\"232f16df69c4e0932e3d585359f37cd4e5fc9eccf9b852f6f0d33f0d6b6764c0\"},{\"path\":\"tests/test_gftd_kuramoto_architecture.py\",\"sha256\":\"6eb6ed2fdaa1fc9b57eca6b7528871bf43b54ee76d508512011c3b3a030473f0\"},{\"path\":\"tests/test_gftd_modulation_gradient.py\",\"sha256\":\"c2a14931bf639aa591b0d1fadf6e08c9210303cd192241e9b4e9d699976eadff\"},{\"path\":\"tests/test_gftd_model_fit.py\",\"sha256\":\"2a0b11956e54c2a2f4d90f58887a39ebda83978becf7fdac2b1c6f6696411658\"},{\"path\":\"tests/test_gftd_modulation_20261107.py\",\"sha256\":\"28f06eb1829aa9b1b0c93ecf9d2e50b6547bdbdc4d867d1230e1ace62cf3b9a0\"},{\"path\":\"tests/test_gftd_modulation_resume01.py\",\"sha256\":\"7b994b92b650f230c96bb8eb4b488aa42bc7210fffef126683694bb66c7c225a\"}]\r\n"
+  },
+  "hash_postcheck_tool": {
+    "chunk_id": "206c32",
+    "wall_time_seconds": 0.6106595,
+    "exit_code": 0,
+    "original_token_count": 740,
+    "output": "[{\"path\":\"src/kiki/models/base.py\",\"sha256\":\"95f5d5a002ceae3a48ce1d7f82000355de87361c09aa56c48eab7e44d5093638\"},{\"path\":\"src/kiki/models/gftd_fitting.py\",\"sha256\":\"57effaab858200bf77a33de6661210104bb01bae2def4e8db718c08254d982f4\"},{\"path\":\"src/kiki/models/gftd_kuramoto.py\",\"sha256\":\"8a981125bba23e1b771e29b17a22b2e585f82a05fb26a4d64a87f2f86e029f35\"},{\"path\":\"src/kiki/physics/kuramoto_functional.py\",\"sha256\":\"5a709bc2b5b984fbdd4c376f69852e0a53a12929dee3f525a453b5934caec021\"},{\"path\":\"src/kiki/models/gftd_fit297.py\",\"sha256\":\"43f937b6973490c771aea2e1ac8694a2c356a48fb2f26337a73c9e991c6e334b\"},{\"path\":\"experiments/gftd_fit297_20261107.py\",\"sha256\":\"7e680abf096d2296903bbb4ace52a6018c27c3f7551874a22e1249b1d13dffc4\"},{\"path\":\"experiments/gftd_fit297_l1_20261107.py\",\"sha256\":\"674708294a71338487856063799d189d0f693a3055c4768d7d70890ca9b79129\"},{\"path\":\"experiments/gftd_fit297_analysis_20261107.py\",\"sha256\":\"2faa8cdd83a98f71c044e20983b2b08d0f394f76b64c15b24f2c63617dab929e\"},{\"path\":\"src/kiki/models/gftd_discovery.py\",\"sha256\":\"9245b0726cb3fca15d3248106b43bd1673ed6607ed3a852b67c533f768a1b27f\"},{\"path\":\"src/kiki/physics/graph.py\",\"sha256\":\"724dd978e7627ccceec0ad94067eef304c8e5562a378641516d544e1d8ca8dfe\"},{\"path\":\"tests/test_gftd_fit297_engine.py\",\"sha256\":\"8d331d31c5aed79d44150bc01839cd48cc8c776e4264e9d7acc79b9c6cb1e9a6\"},{\"path\":\"tests/test_gftd_fit297_runner.py\",\"sha256\":\"4929f1eee08c70434d09d51be7bc4364cee4a5d8fd0faca79cfed70e76136724\"},{\"path\":\"tests/test_gftd_fit297_l1.py\",\"sha256\":\"a3e694660936a7e18c57615a26128e25385b9c84f1eea1e008c9ad7f9f03a933\"},{\"path\":\"tests/test_gftd_fit297_analysis.py\",\"sha256\":\"55f1e706c4f25bc04dfbf1526b3a6200b97d5fae1d4dca9eb0f6062a3ed0256f\"},{\"path\":\"tests/test_gftd_fitting.py\",\"sha256\":\"79cd24f299c5c8fed3f0f6f7430ce339394cd34085bcbf24c95a89d2cf7ecc02\"},{\"path\":\"tests/test_gftd_discovery.py\",\"sha256\":\"232f16df69c4e0932e3d585359f37cd4e5fc9eccf9b852f6f0d33f0d6b6764c0\"},{\"path\":\"tests/test_gftd_kuramoto_architecture.py\",\"sha256\":\"6eb6ed2fdaa1fc9b57eca6b7528871bf43b54ee76d508512011c3b3a030473f0\"},{\"path\":\"tests/test_gftd_modulation_gradient.py\",\"sha256\":\"c2a14931bf639aa591b0d1fadf6e08c9210303cd192241e9b4e9d699976eadff\"},{\"path\":\"tests/test_gftd_model_fit.py\",\"sha256\":\"2a0b11956e54c2a2f4d90f58887a39ebda83978becf7fdac2b1c6f6696411658\"},{\"path\":\"tests/test_gftd_modulation_20261107.py\",\"sha256\":\"28f06eb1829aa9b1b0c93ecf9d2e50b6547bdbdc4d867d1230e1ace62cf3b9a0\"},{\"path\":\"tests/test_gftd_modulation_resume01.py\",\"sha256\":\"7b994b92b650f230c96bb8eb4b488aa42bc7210fffef126683694bb66c7c225a\"}]\r\n\r\nAlgorithm : SHA256\r\nHash      : 065E5D2763D73C66A6EB5616FCC79AB820B2DEAF527B580528ABABBB2C6265C0\r\nPath      : E:\\03-nn_Transfer_Func\\kiki\\results\\gftd_fit297_20261107\\integrated_pytest_joint01.stdout.txt\r\n\r\nAlgorithm : SHA256\r\nHash      : E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855\r\nPath      : E:\\03-nn_Transfer_Func\\kiki\\results\\gftd_fit297_20261107\\integrated_pytest_joint01.stderr.txt\r\n\r\n"
+  },
+  "tool_receipts": [
+    {
+      "chunk_id": "39258f",
+      "wall_time_seconds": 10.0063713,
+      "session_id": 7862,
+      "original_token_count": 12,
+      "output": "HOST_START_UTC=2026-11-07T16:14:10.8970558Z\r\n"
+    },
+    {
+      "chunk_id": "940328",
+      "wall_time_seconds": 5.0036323,
+      "session_id": 7862,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "ecb4a5",
+      "wall_time_seconds": 5.0086093,
+      "session_id": 7862,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "a2bf48",
+      "wall_time_seconds": 5.0027374,
+      "session_id": 7862,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "25f9e7",
+      "wall_time_seconds": 5.0035764,
+      "session_id": 7862,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "236f86",
+      "wall_time_seconds": 10.0124319,
+      "session_id": 7862,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "6bcb9b",
+      "wall_time_seconds": 5.0018161,
+      "session_id": 7862,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "4f7454",
+      "wall_time_seconds": 10.0090452,
+      "session_id": 7862,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "f63f1f",
+      "wall_time_seconds": 0.0000112,
+      "exit_code": 0,
+      "original_token_count": 93,
+      "output": "........................................................................ [ 40%]\r\n........................................................................ [ 81%]\r\n.................................                                        [100%]\r\n177 passed in 298.66s (0:04:58)\r\nHOST_END_UTC=2026-11-07T16:19:24.6076848Z\r\nHOST_WALL_SECONDS=313.5609633\r\nPROGRAM_EXIT_CODE=0\r\n"
+    }
+  ],
+  "artifacts": {
+    "stdout": {
+      "path": "results/gftd_fit297_20261107/integrated_pytest_joint01.stdout.txt",
+      "sha256": "065e5d2763d73c66a6eb5616fcc79ab820b2deaf527b580528ababbb2c6265c0",
+      "complete": true
+    },
+    "stderr": {
+      "path": "results/gftd_fit297_20261107/integrated_pytest_joint01.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "empty": true
+    },
+    "command": {
+      "path": "results/gftd_fit297_20261107/integrated_pytest_joint01.command.txt"
+    }
+  },
+  "scope": "Only the eleven specified engineering test files, using deterministic fixtures/mocks and algebra. No scientific fit297 job, real-model L2/L3 analysis, new FOM, val/test or implementation changes.",
+  "implementation_edits_during_check": false,
+  "followup": "Stopped after engineering qualification. Science awaits root's separate unique release."
+}

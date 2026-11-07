@@ -244,10 +244,11 @@ class GeneratingFunctionalKuramoto:
         psi = bregman_kuramoto_potential(phi, self.eta_edge)
         mod, di, dj = latent_coupling_modulation(z_amp, self.edges, self.gamma_amp, self.gates)
         active_k = self.gates.s_edge * self.k_edge
-        grad_amp = self.lambda_amp * z_amp
-        for e, (i, j) in enumerate(self.edges):
-            grad_amp[i] += active_k[e] * di[e] * psi[e]
-            grad_amp[j] += active_k[e] * dj[e] * psi[e]
+        absolute_incidence = np.abs(self.incidence)
+        with np.errstate(over="raise", under="raise", invalid="raise"):
+            exp_h = np.exp(absolute_incidence.T @ (self.gamma_amp * z_amp))
+        grad_amp = self.lambda_amp * z_amp + self.gamma_amp * (
+            absolute_incidence @ (active_k * self.gates.s_mod * exp_h * psi))
         return (
             self.incidence @ (active_k * mod * bregman_kuramoto_force(phi, self.eta_edge)),
             self.mass * omega, self.storage_p * p, grad_amp, self.lambda_mem * z_mem,
@@ -255,6 +256,8 @@ class GeneratingFunctionalKuramoto:
 
     def dissipative_operators(self, state: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
         theta, omega, _, z_amp, z_mem = self.split_state(state)
+        if self.gate_weight_amp is None and self.gate_weight_mem is None:
+            return 1. / self.tau_amp, np.diag(1. / self.tau_mem_sync)
         omega_diff = omega - self.coi_weights @ omega
         node_sin_sq = np.abs(self.incidence) @ np.sin(.5 * (self.incidence.T @ theta))**2
         gate_a = np.ones(self.n_nodes)

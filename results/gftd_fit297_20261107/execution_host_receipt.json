@@ -1,0 +1,918 @@
+{
+  "configured_model": "gpt-6.1-sol",
+  "action_id": "gftd-fit297-20261107-01",
+  "formal_invocations": 1,
+  "command": ".venv-gpu/Scripts/python.exe -B experiments/gftd_fit297_20261107.py",
+  "shell_command_exact": "$env:OMP_NUM_THREADS='1'\n$env:MKL_NUM_THREADS='1'\n$env:OPENBLAS_NUM_THREADS='1'\n$env:PYTHONDONTWRITEBYTECODE='1'\n$taskEnvironment=[ordered]@{OMP_NUM_THREADS=$env:OMP_NUM_THREADS;MKL_NUM_THREADS=$env:MKL_NUM_THREADS;OPENBLAS_NUM_THREADS=$env:OPENBLAS_NUM_THREADS;PYTHONDONTWRITEBYTECODE=$env:PYTHONDONTWRITEBYTECODE}\nWrite-Output ('HOST_ENV_JSON='+($taskEnvironment|ConvertTo-Json -Compress))\n$taskReleasePath='results/gftd_fit297_20261107/execution_release.json'\n$taskRelease=Get-Content -LiteralPath $taskReleasePath -Raw | ConvertFrom-Json\n$taskStartUtc=[DateTime]::UtcNow.ToString('o')\n$taskTimer=[System.Diagnostics.Stopwatch]::StartNew()\n[ordered]@{action_id='gftd-fit297-20261107-01';command='.venv-gpu/Scripts/python.exe -B experiments/gftd_fit297_20261107.py';host_start_utc=$taskStartUtc;release_sha256='f10a023faf1783db600230c0ab370cb9f919e73dbeaf08b470a0b9c0bd160443';source_sha256=$taskRelease.source_sha256;thread_environment_readback=$taskEnvironment;formal_invocations=1;fit_cache_bytes_read_by_host=$false} | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath 'results/gftd_fit297_20261107/execution_host_start.json' -Encoding utf8\nWrite-Output ('HOST_START_UTC='+$taskStartUtc)\n& ./.venv-gpu/Scripts/python.exe -B experiments/gftd_fit297_20261107.py 1> results/gftd_fit297_20261107/execution.stdout.txt 2> results/gftd_fit297_20261107/execution.stderr.txt\n$taskExit=$LASTEXITCODE\n$taskTimer.Stop()\nWrite-Output ('HOST_END_UTC='+[DateTime]::UtcNow.ToString('o'))\nWrite-Output ('HOST_WALL_SECONDS='+$taskTimer.Elapsed.TotalSeconds.ToString('R',[System.Globalization.CultureInfo]::InvariantCulture))\nWrite-Output ('PROGRAM_EXIT_CODE='+$taskExit)\nexit $taskExit",
+  "session_id": 35491,
+  "launcher_pid": 55472,
+  "python_pid": 25564,
+  "host_start_utc": "2026-11-07T16:33:08.2587143Z",
+  "host_end_utc": "2026-11-07T17:06:59.4286147Z",
+  "host_stopwatch_seconds": 2031.1645234,
+  "exit_code": 1,
+  "execution_status": "technical_io_failure",
+  "runner_final_status": null,
+  "runner_final_receipt_missing": true,
+  "external_toolmodel": null,
+  "science_calls": [
+    {
+      "chunk_id": "2be1a6",
+      "wall_time_seconds": 10.0148061,
+      "session_id": 35491,
+      "original_token_count": 41,
+      "output": "HOST_ENV_JSON={\"OMP_NUM_THREADS\":\"1\",\"MKL_NUM_THREADS\":\"1\",\"OPENBLAS_NUM_THREADS\":\"1\",\"PYTHONDONTWRITEBYTECODE\":\"1\"}\r\nHOST_START_UTC=2026-11-07T16:33:08.2587143Z\r\n"
+    },
+    {
+      "chunk_id": "7fdde0",
+      "wall_time_seconds": 5.0023338,
+      "session_id": 35491,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "3162d9",
+      "wall_time_seconds": 5.0032079,
+      "session_id": 35491,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "17f4a7",
+      "wall_time_seconds": 5.0128192,
+      "session_id": 35491,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "671e1f",
+      "wall_time_seconds": 5.00342,
+      "session_id": 35491,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "9b65c5",
+      "wall_time_seconds": 5.0015337,
+      "session_id": 35491,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "bf6f04",
+      "wall_time_seconds": 5.0127861,
+      "session_id": 35491,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "a504d3",
+      "wall_time_seconds": 5.0143173,
+      "session_id": 35491,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "ab8604",
+      "wall_time_seconds": 5.0121572,
+      "session_id": 35491,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "9ed3ff",
+      "wall_time_seconds": 5.010398,
+      "session_id": 35491,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "0a47ed",
+      "wall_time_seconds": 5.0137574,
+      "session_id": 35491,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "9b24b9",
+      "wall_time_seconds": 5.0152114,
+      "session_id": 35491,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "2fb72f",
+      "wall_time_seconds": 5.0042112,
+      "session_id": 35491,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "6b47b1",
+      "wall_time_seconds": 5.0066433,
+      "session_id": 35491,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "ae0d4c",
+      "wall_time_seconds": 5.012696,
+      "session_id": 35491,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "d8374d",
+      "wall_time_seconds": 1.09E-05,
+      "exit_code": 1,
+      "original_token_count": 24,
+      "output": "HOST_END_UTC=2026-11-07T17:06:59.4286147Z\r\nHOST_WALL_SECONDS=2031.1645234\r\nPROGRAM_EXIT_CODE=1\r\n"
+    }
+  ],
+  "preflight": {
+    "chunk_id": "80bea1",
+    "wall_time_seconds": 0.7478916,
+    "exit_code": 0,
+    "original_token_count": 522,
+    "output": "{\"utc\":\"2026-11-07T16:32:15.5969650Z\",\"source_count\":51,\"all_sources_matched\":true,\"bindings_matched\":4,\"started_existed\":false,\"project_python_processes\":0,\"OMP_NUM_THREADS\":\"1\",\"MKL_NUM_THREADS\":\"1\",\"OPENBLAS_NUM_THREADS\":\"1\",\"PYTHONDONTWRITEBYTECODE\":\"1\",\"fit_cache_bytes_read\":false}\r\n454:            receipt['artifacts'].append(write_json(PRIVATE/'fom_modes.json',fom))\r\n456:                content=read_json(PRIVATE/(mode+'_l2_l3.json'))\r\n458:                receipt['artifacts'].append(write_json(PRIVATE/(mode+'_modal_match.json'),matched))\r\n461:                receipt['artifacts'].append(write_json(PRIVATE/(mode+'_graph_correspondence.json'),correspondence))\r\n463:            receipt['analysis_budget']=fit_engine.analysis_budget_snapshot(key)\r\n464:        checks=model_analysis_budget_checks(receipt['analysis'],models)\r\n465:        receipt['analysis_budget_checks']=checks\r\n467:        receipt['execution_budget']=execution_budget(counts)\r\n468:        if not receipt['execution_budget']['within_limits']: raise RuntimeError('registered execution budget exceeded')\r\n469:        receipt['status']='COMPLETED'\r\n471:        receipt.update(status='INTERRUPTED_RUNTIME',error=dict(type=type(error).__name__,message=str(error)),\r\n474:            receipt['artifacts'].append(write_json(PRIVATE/'interruption_diagnostics.json',error.diagnostics))\r\n477:        receipt['execution_budget']=execution_budget(counts)\r\n478:        receipt['wall_seconds']=time.perf_counter()-begin\r\n479:        receipt['source_unchanged']=all(digest(ROOT/p)==sha for p,sha in release['source_sha256'].items())\r\n480:        receipt['release_unchanged']=digest(release_path)==claim['release_sha256']\r\n481:        receipt['evidence_binding_valid']=bool(receipt['source_unchanged'] and receipt['release_unchanged'])\r\n482:        if not receipt['evidence_binding_valid']: receipt['status']='INTERRUPTED_SOURCE_CHANGED'\r\n483:        for cost in receipt['costs'].values():\r\n486:        receipt['FOM_speedup']='未比较'\r\n487:        persist();write_json(OUTPUT/'execution.json',receipt)\r\n488:    return receipt\r\n"
+  },
+  "failure_preservation_tool": {
+    "chunk_id": "5a80b6",
+    "wall_time_seconds": 4.0690914,
+    "exit_code": 0,
+    "original_token_count": 70,
+    "output": "{\"archive_root\":\"private_data\\\\gftd_fit297_20261107\\\\failure_evidence01\",\"file_count\":118,\"bytes\":null,\"source_count\":51,\"source_unchanged\":true,\"process_count\":0,\"manifest_sha256\":\"0ea5075a3d6cf4a5d86ac42a3247cdf5cc7f4e676716d4c7eb502e0633c39262\",\"diagnostics\":41,\"states\":8}\r\n"
+  },
+  "preservation_command": "$ErrorActionPreference='Stop'\n$workspace=(Get-Location).Path\n$runRoot='results/gftd_fit297_20261107'\n$privateRoot='private_data/gftd_fit297_20261107'\n$archiveRoot=Join-Path $privateRoot 'failure_evidence01'\nif(Test-Path -LiteralPath $archiveRoot){throw 'Failure archive already exists; refusing overwrite'}\n$release=Get-Content -LiteralPath \"$runRoot/execution_release.json\" -Raw|ConvertFrom-Json\n$partial=Get-Content -LiteralPath \"$runRoot/execution.partial.json\" -Raw|ConvertFrom-Json\n$temp=Get-Content -LiteralPath \"$runRoot/execution.partial.json.tmp\" -Raw|ConvertFrom-Json\n$files=[System.Collections.Generic.List[string]]::new()\nforeach($property in $release.source_sha256.PSObject.Properties){$files.Add($property.Name)}\nGet-ChildItem -LiteralPath $runRoot -File|Where-Object {$_.Name -like 'execution*' -or $_.Name -eq 'started.json'}|ForEach-Object {$files.Add([System.IO.Path]::GetRelativePath($workspace,$_.FullName))}\nGet-ChildItem -LiteralPath $privateRoot -File|ForEach-Object {$files.Add([System.IO.Path]::GetRelativePath($workspace,$_.FullName))}\nGet-ChildItem -LiteralPath \"$privateRoot/initializations\" -File|ForEach-Object {$files.Add([System.IO.Path]::GetRelativePath($workspace,$_.FullName))}\n$entries=@(foreach($relative in $files){\n  $item=Get-Item -LiteralPath $relative\n  $before=(Get-FileHash -LiteralPath $relative -Algorithm SHA256).Hash.ToLower()\n  $dest=Join-Path $archiveRoot $relative\n  $parent=Split-Path -Parent $dest\n  [System.IO.Directory]::CreateDirectory($parent)|Out-Null\n  Copy-Item -LiteralPath $relative -Destination $dest\n  $after=(Get-FileHash -LiteralPath $relative -Algorithm SHA256).Hash.ToLower()\n  $copy=(Get-FileHash -LiteralPath $dest -Algorithm SHA256).Hash.ToLower()\n  if($before -ne $after -or $before -ne $copy){throw \"Snapshot changed: $relative\"}\n  [ordered]@{path=$relative;bytes=$item.Length;sha256=$before;archive_path=$dest;archive_sha256=$copy}\n})\n$sourceChecks=@(foreach($property in $release.source_sha256.PSObject.Properties){\n  $actual=(Get-FileHash -LiteralPath $property.Name -Algorithm SHA256).Hash.ToLower()\n  [ordered]@{path=$property.Name;expected=$property.Value;actual=$actual;matched=($actual -eq $property.Value)}\n})\n$diagRows=@(Get-ChildItem -LiteralPath \"$privateRoot/initializations\" -Filter '*.json'|Sort-Object Name|ForEach-Object{\n  $detail=Get-Content -LiteralPath $_.FullName -Raw|ConvertFrom-Json\n  [ordered]@{file=$_.Name;event_id=$detail.event_id;status=$detail.diagnostics.status;stage1_status=$detail.diagnostics.stage1.status;stage1_numerical_passed=$detail.diagnostics.stage1_numerical.passed;counts=$detail.diagnostics.counts;state=$detail.state}\n})\n$processes=@(Get-Process -Id 25564,55472 -ErrorAction SilentlyContinue|Select-Object Id,CPU,WorkingSet64)\n$record=[ordered]@{\n  recorded_utc=[DateTimeOffset]::UtcNow.ToString('o');action_id=$release.action_id\n  purpose='Byte preservation after sole scientific process exited; no replay or science recomputation'\n  release_sha256=(Get-FileHash -LiteralPath \"$runRoot/execution_release.json\" -Algorithm SHA256).Hash.ToLower()\n  archive_root=$archiveRoot;files=$entries;source_checks=$sourceChecks\n  source_count=$sourceChecks.Count;source_unchanged=(@($sourceChecks|Where-Object {-not $_.matched}).Count -eq 0)\n  partial_snapshot=@{path=\"$runRoot/execution.partial.json\";status=$partial.status;current=$partial.current;counts=$partial.counts;costs=$partial.costs;last_artifact=$partial.artifacts[-1]}\n  interrupted_temp_snapshot=@{path=\"$runRoot/execution.partial.json.tmp\";status=$temp.status;current=$temp.current;counts=$temp.counts;costs=$temp.costs;last_artifact=$temp.artifacts[-1];is_final_receipt=$false}\n  durable_diagnostics=$diagRows;durable_diag_count=$diagRows.Count\n  durable_state_count=@(Get-ChildItem -LiteralPath \"$privateRoot/initializations\" -Filter '*.npz').Count\n  next_unstarted=@{mode='static';zero_based_index=41;event_id=$temp.input_identity.legal_ids[41];diag_exists=(Test-Path -LiteralPath \"$privateRoot/initializations/static_041.json\");proof='Traceback at line386 tail persist after static_040 detail write, before next loop iteration'}\n  process_check_utc=[DateTimeOffset]::UtcNow.ToString('o');processes=$processes\n  execution_json_exists=(Test-Path -LiteralPath \"$runRoot/execution.json\")\n  error_cause='unknown';share_lock_cause='possible, not established';original_artifacts_modified=$false\n}\n$json=$record|ConvertTo-Json -Depth 30\n[System.IO.File]::WriteAllText((Join-Path $workspace \"$runRoot/failure_preservation_manifest.json\"),$json+[Environment]::NewLine,[System.Text.UTF8Encoding]::new($false))\n[ordered]@{archive_root=$archiveRoot;file_count=$entries.Count;bytes=($entries|Measure-Object bytes -Sum).Sum;source_count=$sourceChecks.Count;source_unchanged=$record.source_unchanged;process_count=$processes.Count;manifest_sha256=(Get-FileHash \"$runRoot/failure_preservation_manifest.json\" -Algorithm SHA256).Hash.ToLower();diagnostics=$diagRows.Count;states=$record.durable_state_count}|ConvertTo-Json -Compress",
+  "diagnostic_reason_count_tool": {
+    "chunk_id": "664bcd",
+    "exit_code": 0,
+    "wall_time_seconds": 1.2449274
+  },
+  "terminal_stderr_read_tool": {
+    "chunk_id": "35f542",
+    "exit_code": 0,
+    "wall_time_seconds": 0.6544935
+  },
+  "snapshot_comparison_tool": {
+    "chunk_id": "070240",
+    "exit_code": 0,
+    "wall_time_seconds": 0.6753824
+  },
+  "failure_reasons_from_persisted_diagnostics": {
+    "utc": "2026-11-08T01:08:15.552214+08:00",
+    "persisted_diagnostics": 41,
+    "attempted": 41,
+    "completed": 8,
+    "by_reason": [
+      {
+        "reason": "static, blocked_by_stage1:numerical_gate",
+        "count": 33
+      },
+      {
+        "reason": "static, completed",
+        "count": 8
+      }
+    ],
+    "stage1_status": [
+      {
+        "status": "converged",
+        "count": 41
+      }
+    ]
+  },
+  "first_error": {
+    "type": "PermissionError",
+    "winerror": 5,
+    "callsite": "experiments/gftd_fit297_20261107.py:75",
+    "caller": "run:386 -> persist:313 -> write_json:80 -> atomic_bytes:75",
+    "operation": "os.replace(execution.partial.json.tmp, execution.partial.json)"
+  },
+  "secondary_error": {
+    "type": "FileExistsError",
+    "errno": 17,
+    "callsite": "experiments/gftd_fit297_20261107.py:71",
+    "caller": "run finally:487 -> persist:313 -> write_json:80 -> atomic_bytes:71",
+    "operation": "temp.open('xb')"
+  },
+  "failure_root_cause": "unknown",
+  "monitor_or_read_share_lock_cause": "possible, not confirmed",
+  "no_replay": true,
+  "no_source_edits": true,
+  "no_threshold_changes": true,
+  "monitor_note": "One monitor receipt mutation failed before job exit; scientific process/session remained alive. Monitor used append-only progress afterward. No effect on scientific calls established.",
+  "original_artifacts_preserved": true,
+  "technical_repair_started": false,
+  "raw_tool_history_scope": "All 16 actual scientific exec/poll receipts captured; not every unchanged monitoring snapshot tool call retained. Meaningful snapshots are in execution_host_progress.jsonl.",
+  "release_sha256": "f10a023faf1783db600230c0ab370cb9f919e73dbeaf08b470a0b9c0bd160443",
+  "source_sha256": {
+    "experiments/closure_probe_20261030.py": "f4a3f2f766ebe02fdf2dd8ecaa3a13884628612e7f452b48976eedc7564eb78c",
+    "experiments/closure_training_runtime.py": "80aeff279bf0e1e498205fcb7b591a680b721643efc98e0e4e993d61d8ac90b0",
+    "experiments/evaluate_l1_latent.py": "5882dc6814f13ef4210d94db07fd87ca88d8130aa984dbda7757c53088662314",
+    "experiments/evaluate_long_latent.py": "8a52a2c8138d768cd636a1aef8a07fd871b86ed62f78e8785e0d069066ac890c",
+    "experiments/evaluate_structured_rom.py": "38aacbf79e61081449adcb254d99f0556f65021d2bd5b8d46cf17c5d757e01d9",
+    "experiments/force_exchange_model_20261028.py": "010ff2210fb84767fa6a5dee4cfe38826ea8526787a277e09db08e5c7b02d1b4",
+    "experiments/force_exchange_study_20261028.py": "e0e3201e37bd2bfaa1640ed22b148a56c834e243411fb4a00abdfeee43a26f29",
+    "experiments/force_graph_model_20261028.py": "44e5fe2e1403bc7e072d2fb87100eaa694b15da5b4694169de141cc6059089af",
+    "experiments/force_graph_study_20261028.py": "ab25309d202550fcfa204f1829e185efcb65547872e9e259fdda88e6d0637bc3",
+    "experiments/frequency_dissipation_20261021.py": "f83edeedf24c40078dd92e2bdaaf3af9739b838027b4179167341218d6188c7f",
+    "experiments/gftd_fit297_20261107.py": "7e680abf096d2296903bbb4ace52a6018c27c3f7551874a22e1249b1d13dffc4",
+    "experiments/gftd_fit297_analysis_20261107.py": "2faa8cdd83a98f71c044e20983b2b08d0f394f76b64c15b24f2c63617dab929e",
+    "experiments/gftd_fit297_l1_20261107.py": "674708294a71338487856063799d189d0f693a3055c4768d7d70890ca9b79129",
+    "experiments/local_memory_rom_0098.py": "cb73ce129c1c095f8c5ac1288a725b072144bcd7978d4711e44afb4ea075636d",
+    "experiments/r_memory_study_20261025.py": "a6d96ce1ad8a6b006ab5e6201d23c21e8d611836128fa3a77f7d17da8f81bd8b",
+    "experiments/run_private_m2.py": "25698fe4fa77b35982b85d1fa84b5e2ec0c9ab728d095e951b8ac0fe9479f972",
+    "experiments/state_gated_memory_model_20261028.py": "ad788b1c7533ee8a803b15805f4b06af2341d7ecad4df55b541a9de0618c697b",
+    "experiments/state_gated_memory_study_20261028.py": "dcb5d2cac1462d4f71241e888ee77db34a143f2f7a80091a34b249e18e6967b9",
+    "experiments/structure_grammar.py": "0325a0a1f50d7f22510cd3d7da5dbc28d8c3e186ea7288e7717f7a3a8704d28d",
+    "experiments/structured_rom.py": "921b6dedb2e8b5218c5f4ec84fc6a35ac4844ebc0e310f8a6639bb0c7bcf88f3",
+    "experiments/symbolic_closure_rom.py": "01bd836ef2e06b0fbca40065f26cb98a23f8042a3328d86b265bfb114940dbc9",
+    "experiments/train_joint_campaign.py": "0914e609f76cacd27632a0c52081da836a39456121cfea3c4633cbaf0c03593b",
+    "experiments/train_joint_latent.py": "57dc52517897608572afe2cd5028f0c8ede540d524c99f8366426fe685b22735",
+    "experiments/train_local_memory_0098.py": "e73de06b9a1d66b05de4bb1d29504a19cc7b486bc3694ddd341d451f403ae667",
+    "experiments/train_structured_rom.py": "6afa2186411a0a23ea5f5d62f9cfeacb3192c6023f62676c7c134ef9bb365482",
+    "src/kiki/__init__.py": "3e5ee9a8509b412c44e2f556e44103296523a44ad798edea8456ee8570d8c125",
+    "src/kiki/data/__init__.py": "050a5a8225e7c5968a298457e8564522ff81a7ed509ac14956038294ac91b4c7",
+    "src/kiki/data/adapter.py": "307840683d775347c322c107f1e47500105be4b35c8a09d07d282c4baead3158",
+    "src/kiki/data/contracts.py": "3a027f8b7cafc69877e03779894370548d48f1b507f5c46a39e3f7edf79e691b",
+    "src/kiki/data/private_dataset.py": "615ec905047a81f681620d3f214b6dfa60be3c78af7059de21b232c593d941ee",
+    "src/kiki/data/schema.py": "0fcd4c51f734ea20f5cd62504598cc407eae9685592b7096aaad6b3dc131bfdb",
+    "src/kiki/data/splits.py": "78fabed80b331063d185181b02e7ec9f7d01fe90c0a121877ed6b2d659f03ce8",
+    "src/kiki/data/store.py": "e408c61994932b0bd09f6c7a27780d56c56bda60ee8c13f07e2bf08002114524",
+    "src/kiki/evaluation/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/kiki/evaluation/modal.py": "ab18e50266a28b29a0035b52880ffb15344bfec46b472baf513250ffd2f7eddc",
+    "src/kiki/models/__init__.py": "3b096d85616829ef7717f0dc9fe40eae1cada21ed44c43381b041ccde4190984",
+    "src/kiki/models/base.py": "95f5d5a002ceae3a48ce1d7f82000355de87361c09aa56c48eab7e44d5093638",
+    "src/kiki/models/gftd_discovery.py": "9245b0726cb3fca15d3248106b43bd1673ed6607ed3a852b67c533f768a1b27f",
+    "src/kiki/models/gftd_fit297.py": "43f937b6973490c771aea2e1ac8694a2c356a48fb2f26337a73c9e991c6e334b",
+    "src/kiki/models/gftd_fitting.py": "57effaab858200bf77a33de6661210104bb01bae2def4e8db718c08254d982f4",
+    "src/kiki/models/gftd_kuramoto.py": "8a981125bba23e1b771e29b17a22b2e585f82a05fb26a4d64a87f2f86e029f35",
+    "src/kiki/models/private_pm.py": "adea9a1675cb9bdbd955b6fdf881bed5da915ba431e9d61a57fc33aa29606841",
+    "src/kiki/models/private_rom.py": "eced34511e8ba726ed3ee06f58c0826f26957bb27feecadc30c4cf44ba6062e4",
+    "src/kiki/physics/__init__.py": "883b5e039b6955995ca38ab64b81f8e281325e0b04ca98d582ab57087447b7de",
+    "src/kiki/physics/aggregation.py": "4c9aa927f4278404f11b43baa62163e7112c8c02ae97984fca454daa613336ab",
+    "src/kiki/physics/constants.py": "5fa4a9a9c45f68b6aff57ab3b3f9ee1156295fde7bd4fe047c5fadc025ad99da",
+    "src/kiki/physics/coordinates.py": "9a738d46647ab631407f8e4b5814fe0a7868c717e31fda13963861c10e373089",
+    "src/kiki/physics/graph.py": "724dd978e7627ccceec0ad94067eef304c8e5562a378641516d544e1d8ca8dfe",
+    "src/kiki/physics/kuramoto_benchmarks.py": "9a87b64a70d2b4a7e5d4dce60f98b263a044a163201b5e0c10db4cf3373493ec",
+    "src/kiki/physics/kuramoto_functional.py": "5a709bc2b5b984fbdd4c376f69852e0a53a12929dee3f525a453b5934caec021",
+    "src/kiki/physics/units.py": "11f6e09ef577a1c09a7996743deaef1530a36ecf26be82edaa5cd3e01187dd46"
+  },
+  "source_checks": [
+    {
+      "path": "experiments/closure_probe_20261030.py",
+      "expected": "f4a3f2f766ebe02fdf2dd8ecaa3a13884628612e7f452b48976eedc7564eb78c",
+      "actual": "f4a3f2f766ebe02fdf2dd8ecaa3a13884628612e7f452b48976eedc7564eb78c",
+      "matched": true
+    },
+    {
+      "path": "experiments/closure_training_runtime.py",
+      "expected": "80aeff279bf0e1e498205fcb7b591a680b721643efc98e0e4e993d61d8ac90b0",
+      "actual": "80aeff279bf0e1e498205fcb7b591a680b721643efc98e0e4e993d61d8ac90b0",
+      "matched": true
+    },
+    {
+      "path": "experiments/evaluate_l1_latent.py",
+      "expected": "5882dc6814f13ef4210d94db07fd87ca88d8130aa984dbda7757c53088662314",
+      "actual": "5882dc6814f13ef4210d94db07fd87ca88d8130aa984dbda7757c53088662314",
+      "matched": true
+    },
+    {
+      "path": "experiments/evaluate_long_latent.py",
+      "expected": "8a52a2c8138d768cd636a1aef8a07fd871b86ed62f78e8785e0d069066ac890c",
+      "actual": "8a52a2c8138d768cd636a1aef8a07fd871b86ed62f78e8785e0d069066ac890c",
+      "matched": true
+    },
+    {
+      "path": "experiments/evaluate_structured_rom.py",
+      "expected": "38aacbf79e61081449adcb254d99f0556f65021d2bd5b8d46cf17c5d757e01d9",
+      "actual": "38aacbf79e61081449adcb254d99f0556f65021d2bd5b8d46cf17c5d757e01d9",
+      "matched": true
+    },
+    {
+      "path": "experiments/force_exchange_model_20261028.py",
+      "expected": "010ff2210fb84767fa6a5dee4cfe38826ea8526787a277e09db08e5c7b02d1b4",
+      "actual": "010ff2210fb84767fa6a5dee4cfe38826ea8526787a277e09db08e5c7b02d1b4",
+      "matched": true
+    },
+    {
+      "path": "experiments/force_exchange_study_20261028.py",
+      "expected": "e0e3201e37bd2bfaa1640ed22b148a56c834e243411fb4a00abdfeee43a26f29",
+      "actual": "e0e3201e37bd2bfaa1640ed22b148a56c834e243411fb4a00abdfeee43a26f29",
+      "matched": true
+    },
+    {
+      "path": "experiments/force_graph_model_20261028.py",
+      "expected": "44e5fe2e1403bc7e072d2fb87100eaa694b15da5b4694169de141cc6059089af",
+      "actual": "44e5fe2e1403bc7e072d2fb87100eaa694b15da5b4694169de141cc6059089af",
+      "matched": true
+    },
+    {
+      "path": "experiments/force_graph_study_20261028.py",
+      "expected": "ab25309d202550fcfa204f1829e185efcb65547872e9e259fdda88e6d0637bc3",
+      "actual": "ab25309d202550fcfa204f1829e185efcb65547872e9e259fdda88e6d0637bc3",
+      "matched": true
+    },
+    {
+      "path": "experiments/frequency_dissipation_20261021.py",
+      "expected": "f83edeedf24c40078dd92e2bdaaf3af9739b838027b4179167341218d6188c7f",
+      "actual": "f83edeedf24c40078dd92e2bdaaf3af9739b838027b4179167341218d6188c7f",
+      "matched": true
+    },
+    {
+      "path": "experiments/gftd_fit297_20261107.py",
+      "expected": "7e680abf096d2296903bbb4ace52a6018c27c3f7551874a22e1249b1d13dffc4",
+      "actual": "7e680abf096d2296903bbb4ace52a6018c27c3f7551874a22e1249b1d13dffc4",
+      "matched": true
+    },
+    {
+      "path": "experiments/gftd_fit297_analysis_20261107.py",
+      "expected": "2faa8cdd83a98f71c044e20983b2b08d0f394f76b64c15b24f2c63617dab929e",
+      "actual": "2faa8cdd83a98f71c044e20983b2b08d0f394f76b64c15b24f2c63617dab929e",
+      "matched": true
+    },
+    {
+      "path": "experiments/gftd_fit297_l1_20261107.py",
+      "expected": "674708294a71338487856063799d189d0f693a3055c4768d7d70890ca9b79129",
+      "actual": "674708294a71338487856063799d189d0f693a3055c4768d7d70890ca9b79129",
+      "matched": true
+    },
+    {
+      "path": "experiments/local_memory_rom_0098.py",
+      "expected": "cb73ce129c1c095f8c5ac1288a725b072144bcd7978d4711e44afb4ea075636d",
+      "actual": "cb73ce129c1c095f8c5ac1288a725b072144bcd7978d4711e44afb4ea075636d",
+      "matched": true
+    },
+    {
+      "path": "experiments/r_memory_study_20261025.py",
+      "expected": "a6d96ce1ad8a6b006ab5e6201d23c21e8d611836128fa3a77f7d17da8f81bd8b",
+      "actual": "a6d96ce1ad8a6b006ab5e6201d23c21e8d611836128fa3a77f7d17da8f81bd8b",
+      "matched": true
+    },
+    {
+      "path": "experiments/run_private_m2.py",
+      "expected": "25698fe4fa77b35982b85d1fa84b5e2ec0c9ab728d095e951b8ac0fe9479f972",
+      "actual": "25698fe4fa77b35982b85d1fa84b5e2ec0c9ab728d095e951b8ac0fe9479f972",
+      "matched": true
+    },
+    {
+      "path": "experiments/state_gated_memory_model_20261028.py",
+      "expected": "ad788b1c7533ee8a803b15805f4b06af2341d7ecad4df55b541a9de0618c697b",
+      "actual": "ad788b1c7533ee8a803b15805f4b06af2341d7ecad4df55b541a9de0618c697b",
+      "matched": true
+    },
+    {
+      "path": "experiments/state_gated_memory_study_20261028.py",
+      "expected": "dcb5d2cac1462d4f71241e888ee77db34a143f2f7a80091a34b249e18e6967b9",
+      "actual": "dcb5d2cac1462d4f71241e888ee77db34a143f2f7a80091a34b249e18e6967b9",
+      "matched": true
+    },
+    {
+      "path": "experiments/structure_grammar.py",
+      "expected": "0325a0a1f50d7f22510cd3d7da5dbc28d8c3e186ea7288e7717f7a3a8704d28d",
+      "actual": "0325a0a1f50d7f22510cd3d7da5dbc28d8c3e186ea7288e7717f7a3a8704d28d",
+      "matched": true
+    },
+    {
+      "path": "experiments/structured_rom.py",
+      "expected": "921b6dedb2e8b5218c5f4ec84fc6a35ac4844ebc0e310f8a6639bb0c7bcf88f3",
+      "actual": "921b6dedb2e8b5218c5f4ec84fc6a35ac4844ebc0e310f8a6639bb0c7bcf88f3",
+      "matched": true
+    },
+    {
+      "path": "experiments/symbolic_closure_rom.py",
+      "expected": "01bd836ef2e06b0fbca40065f26cb98a23f8042a3328d86b265bfb114940dbc9",
+      "actual": "01bd836ef2e06b0fbca40065f26cb98a23f8042a3328d86b265bfb114940dbc9",
+      "matched": true
+    },
+    {
+      "path": "experiments/train_joint_campaign.py",
+      "expected": "0914e609f76cacd27632a0c52081da836a39456121cfea3c4633cbaf0c03593b",
+      "actual": "0914e609f76cacd27632a0c52081da836a39456121cfea3c4633cbaf0c03593b",
+      "matched": true
+    },
+    {
+      "path": "experiments/train_joint_latent.py",
+      "expected": "57dc52517897608572afe2cd5028f0c8ede540d524c99f8366426fe685b22735",
+      "actual": "57dc52517897608572afe2cd5028f0c8ede540d524c99f8366426fe685b22735",
+      "matched": true
+    },
+    {
+      "path": "experiments/train_local_memory_0098.py",
+      "expected": "e73de06b9a1d66b05de4bb1d29504a19cc7b486bc3694ddd341d451f403ae667",
+      "actual": "e73de06b9a1d66b05de4bb1d29504a19cc7b486bc3694ddd341d451f403ae667",
+      "matched": true
+    },
+    {
+      "path": "experiments/train_structured_rom.py",
+      "expected": "6afa2186411a0a23ea5f5d62f9cfeacb3192c6023f62676c7c134ef9bb365482",
+      "actual": "6afa2186411a0a23ea5f5d62f9cfeacb3192c6023f62676c7c134ef9bb365482",
+      "matched": true
+    },
+    {
+      "path": "src/kiki/__init__.py",
+      "expected": "3e5ee9a8509b412c44e2f556e44103296523a44ad798edea8456ee8570d8c125",
+      "actual": "3e5ee9a8509b412c44e2f556e44103296523a44ad798edea8456ee8570d8c125",
+      "matched": true
+    },
+    {
+      "path": "src/kiki/data/__init__.py",
+      "expected": "050a5a8225e7c5968a298457e8564522ff81a7ed509ac14956038294ac91b4c7",
+      "actual": "050a5a8225e7c5968a298457e8564522ff81a7ed509ac14956038294ac91b4c7",
+      "matched": true
+    },
+    {
+      "path": "src/kiki/data/adapter.py",
+      "expected": "307840683d775347c322c107f1e47500105be4b35c8a09d07d282c4baead3158",
+      "actual": "307840683d775347c322c107f1e47500105be4b35c8a09d07d282c4baead3158",
+      "matched": true
+    },
+    {
+      "path": "src/kiki/data/contracts.py",
+      "expected": "3a027f8b7cafc69877e03779894370548d48f1b507f5c46a39e3f7edf79e691b",
+      "actual": "3a027f8b7cafc69877e03779894370548d48f1b507f5c46a39e3f7edf79e691b",
+      "matched": true
+    },
+    {
+      "path": "src/kiki/data/private_dataset.py",
+      "expected": "615ec905047a81f681620d3f214b6dfa60be3c78af7059de21b232c593d941ee",
+      "actual": "615ec905047a81f681620d3f214b6dfa60be3c78af7059de21b232c593d941ee",
+      "matched": true
+    },
+    {
+      "path": "src/kiki/data/schema.py",
+      "expected": "0fcd4c51f734ea20f5cd62504598cc407eae9685592b7096aaad6b3dc131bfdb",
+      "actual": "0fcd4c51f734ea20f5cd62504598cc407eae9685592b7096aaad6b3dc131bfdb",
+      "matched": true
+    },
+    {
+      "path": "src/kiki/data/splits.py",
+      "expected": "78fabed80b331063d185181b02e7ec9f7d01fe90c0a121877ed6b2d659f03ce8",
+      "actual": "78fabed80b331063d185181b02e7ec9f7d01fe90c0a121877ed6b2d659f03ce8",
+      "matched": true
+    },
+    {
+      "path": "src/kiki/data/store.py",
+      "expected": "e408c61994932b0bd09f6c7a27780d56c56bda60ee8c13f07e2bf08002114524",
+      "actual": "e408c61994932b0bd09f6c7a27780d56c56bda60ee8c13f07e2bf08002114524",
+      "matched": true
+    },
+    {
+      "path": "src/kiki/evaluation/__init__.py",
+      "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matched": true
+    },
+    {
+      "path": "src/kiki/evaluation/modal.py",
+      "expected": "ab18e50266a28b29a0035b52880ffb15344bfec46b472baf513250ffd2f7eddc",
+      "actual": "ab18e50266a28b29a0035b52880ffb15344bfec46b472baf513250ffd2f7eddc",
+      "matched": true
+    },
+    {
+      "path": "src/kiki/models/__init__.py",
+      "expected": "3b096d85616829ef7717f0dc9fe40eae1cada21ed44c43381b041ccde4190984",
+      "actual": "3b096d85616829ef7717f0dc9fe40eae1cada21ed44c43381b041ccde4190984",
+      "matched": true
+    },
+    {
+      "path": "src/kiki/models/base.py",
+      "expected": "95f5d5a002ceae3a48ce1d7f82000355de87361c09aa56c48eab7e44d5093638",
+      "actual": "95f5d5a002ceae3a48ce1d7f82000355de87361c09aa56c48eab7e44d5093638",
+      "matched": true
+    },
+    {
+      "path": "src/kiki/models/gftd_discovery.py",
+      "expected": "9245b0726cb3fca15d3248106b43bd1673ed6607ed3a852b67c533f768a1b27f",
+      "actual": "9245b0726cb3fca15d3248106b43bd1673ed6607ed3a852b67c533f768a1b27f",
+      "matched": true
+    },
+    {
+      "path": "src/kiki/models/gftd_fit297.py",
+      "expected": "43f937b6973490c771aea2e1ac8694a2c356a48fb2f26337a73c9e991c6e334b",
+      "actual": "43f937b6973490c771aea2e1ac8694a2c356a48fb2f26337a73c9e991c6e334b",
+      "matched": true
+    },
+    {
+      "path": "src/kiki/models/gftd_fitting.py",
+      "expected": "57effaab858200bf77a33de6661210104bb01bae2def4e8db718c08254d982f4",
+      "actual": "57effaab858200bf77a33de6661210104bb01bae2def4e8db718c08254d982f4",
+      "matched": true
+    },
+    {
+      "path": "src/kiki/models/gftd_kuramoto.py",
+      "expected": "8a981125bba23e1b771e29b17a22b2e585f82a05fb26a4d64a87f2f86e029f35",
+      "actual": "8a981125bba23e1b771e29b17a22b2e585f82a05fb26a4d64a87f2f86e029f35",
+      "matched": true
+    },
+    {
+      "path": "src/kiki/models/private_pm.py",
+      "expected": "adea9a1675cb9bdbd955b6fdf881bed5da915ba431e9d61a57fc33aa29606841",
+      "actual": "adea9a1675cb9bdbd955b6fdf881bed5da915ba431e9d61a57fc33aa29606841",
+      "matched": true
+    },
+    {
+      "path": "src/kiki/models/private_rom.py",
+      "expected": "eced34511e8ba726ed3ee06f58c0826f26957bb27feecadc30c4cf44ba6062e4",
+      "actual": "eced34511e8ba726ed3ee06f58c0826f26957bb27feecadc30c4cf44ba6062e4",
+      "matched": true
+    },
+    {
+      "path": "src/kiki/physics/__init__.py",
+      "expected": "883b5e039b6955995ca38ab64b81f8e281325e0b04ca98d582ab57087447b7de",
+      "actual": "883b5e039b6955995ca38ab64b81f8e281325e0b04ca98d582ab57087447b7de",
+      "matched": true
+    },
+    {
+      "path": "src/kiki/physics/aggregation.py",
+      "expected": "4c9aa927f4278404f11b43baa62163e7112c8c02ae97984fca454daa613336ab",
+      "actual": "4c9aa927f4278404f11b43baa62163e7112c8c02ae97984fca454daa613336ab",
+      "matched": true
+    },
+    {
+      "path": "src/kiki/physics/constants.py",
+      "expected": "5fa4a9a9c45f68b6aff57ab3b3f9ee1156295fde7bd4fe047c5fadc025ad99da",
+      "actual": "5fa4a9a9c45f68b6aff57ab3b3f9ee1156295fde7bd4fe047c5fadc025ad99da",
+      "matched": true
+    },
+    {
+      "path": "src/kiki/physics/coordinates.py",
+      "expected": "9a738d46647ab631407f8e4b5814fe0a7868c717e31fda13963861c10e373089",
+      "actual": "9a738d46647ab631407f8e4b5814fe0a7868c717e31fda13963861c10e373089",
+      "matched": true
+    },
+    {
+      "path": "src/kiki/physics/graph.py",
+      "expected": "724dd978e7627ccceec0ad94067eef304c8e5562a378641516d544e1d8ca8dfe",
+      "actual": "724dd978e7627ccceec0ad94067eef304c8e5562a378641516d544e1d8ca8dfe",
+      "matched": true
+    },
+    {
+      "path": "src/kiki/physics/kuramoto_benchmarks.py",
+      "expected": "9a87b64a70d2b4a7e5d4dce60f98b263a044a163201b5e0c10db4cf3373493ec",
+      "actual": "9a87b64a70d2b4a7e5d4dce60f98b263a044a163201b5e0c10db4cf3373493ec",
+      "matched": true
+    },
+    {
+      "path": "src/kiki/physics/kuramoto_functional.py",
+      "expected": "5a709bc2b5b984fbdd4c376f69852e0a53a12929dee3f525a453b5934caec021",
+      "actual": "5a709bc2b5b984fbdd4c376f69852e0a53a12929dee3f525a453b5934caec021",
+      "matched": true
+    },
+    {
+      "path": "src/kiki/physics/units.py",
+      "expected": "11f6e09ef577a1c09a7996743deaef1530a36ecf26be82edaa5cd3e01187dd46",
+      "actual": "11f6e09ef577a1c09a7996743deaef1530a36ecf26be82edaa5cd3e01187dd46",
+      "matched": true
+    }
+  ],
+  "source_unchanged": true,
+  "thread_environment_readback": {
+    "OMP_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "started_claim": {
+    "action_id": "gftd-fit297-20261107-01",
+    "release_sha256": "f10a023faf1783db600230c0ab370cb9f919e73dbeaf08b470a0b9c0bd160443",
+    "status": "RUNNING",
+    "parent_commit": "66f1308c25ee38c3d7217bd86ee43b61a042a5b6",
+    "protocol_sha256": "ca22743c53fe4fe398960e111838a373f8c4686eab0974c5daf6d9c28435062f",
+    "started_unix": 1794069654.9596949,
+    "environment": {
+      "python_executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+      "python_version": "3.12.14",
+      "numpy": "2.5.2",
+      "scipy": "1.18.0",
+      "torch": "2.13.0+cu130",
+      "device": "cpu",
+      "dtype": "float64"
+    },
+    "source_sha256": {
+      "experiments/closure_probe_20261030.py": "f4a3f2f766ebe02fdf2dd8ecaa3a13884628612e7f452b48976eedc7564eb78c",
+      "experiments/closure_training_runtime.py": "80aeff279bf0e1e498205fcb7b591a680b721643efc98e0e4e993d61d8ac90b0",
+      "experiments/evaluate_l1_latent.py": "5882dc6814f13ef4210d94db07fd87ca88d8130aa984dbda7757c53088662314",
+      "experiments/evaluate_long_latent.py": "8a52a2c8138d768cd636a1aef8a07fd871b86ed62f78e8785e0d069066ac890c",
+      "experiments/evaluate_structured_rom.py": "38aacbf79e61081449adcb254d99f0556f65021d2bd5b8d46cf17c5d757e01d9",
+      "experiments/force_exchange_model_20261028.py": "010ff2210fb84767fa6a5dee4cfe38826ea8526787a277e09db08e5c7b02d1b4",
+      "experiments/force_exchange_study_20261028.py": "e0e3201e37bd2bfaa1640ed22b148a56c834e243411fb4a00abdfeee43a26f29",
+      "experiments/force_graph_model_20261028.py": "44e5fe2e1403bc7e072d2fb87100eaa694b15da5b4694169de141cc6059089af",
+      "experiments/force_graph_study_20261028.py": "ab25309d202550fcfa204f1829e185efcb65547872e9e259fdda88e6d0637bc3",
+      "experiments/frequency_dissipation_20261021.py": "f83edeedf24c40078dd92e2bdaaf3af9739b838027b4179167341218d6188c7f",
+      "experiments/gftd_fit297_20261107.py": "7e680abf096d2296903bbb4ace52a6018c27c3f7551874a22e1249b1d13dffc4",
+      "experiments/gftd_fit297_analysis_20261107.py": "2faa8cdd83a98f71c044e20983b2b08d0f394f76b64c15b24f2c63617dab929e",
+      "experiments/gftd_fit297_l1_20261107.py": "674708294a71338487856063799d189d0f693a3055c4768d7d70890ca9b79129",
+      "experiments/local_memory_rom_0098.py": "cb73ce129c1c095f8c5ac1288a725b072144bcd7978d4711e44afb4ea075636d",
+      "experiments/r_memory_study_20261025.py": "a6d96ce1ad8a6b006ab5e6201d23c21e8d611836128fa3a77f7d17da8f81bd8b",
+      "experiments/run_private_m2.py": "25698fe4fa77b35982b85d1fa84b5e2ec0c9ab728d095e951b8ac0fe9479f972",
+      "experiments/state_gated_memory_model_20261028.py": "ad788b1c7533ee8a803b15805f4b06af2341d7ecad4df55b541a9de0618c697b",
+      "experiments/state_gated_memory_study_20261028.py": "dcb5d2cac1462d4f71241e888ee77db34a143f2f7a80091a34b249e18e6967b9",
+      "experiments/structure_grammar.py": "0325a0a1f50d7f22510cd3d7da5dbc28d8c3e186ea7288e7717f7a3a8704d28d",
+      "experiments/structured_rom.py": "921b6dedb2e8b5218c5f4ec84fc6a35ac4844ebc0e310f8a6639bb0c7bcf88f3",
+      "experiments/symbolic_closure_rom.py": "01bd836ef2e06b0fbca40065f26cb98a23f8042a3328d86b265bfb114940dbc9",
+      "experiments/train_joint_campaign.py": "0914e609f76cacd27632a0c52081da836a39456121cfea3c4633cbaf0c03593b",
+      "experiments/train_joint_latent.py": "57dc52517897608572afe2cd5028f0c8ede540d524c99f8366426fe685b22735",
+      "experiments/train_local_memory_0098.py": "e73de06b9a1d66b05de4bb1d29504a19cc7b486bc3694ddd341d451f403ae667",
+      "experiments/train_structured_rom.py": "6afa2186411a0a23ea5f5d62f9cfeacb3192c6023f62676c7c134ef9bb365482",
+      "src/kiki/__init__.py": "3e5ee9a8509b412c44e2f556e44103296523a44ad798edea8456ee8570d8c125",
+      "src/kiki/data/__init__.py": "050a5a8225e7c5968a298457e8564522ff81a7ed509ac14956038294ac91b4c7",
+      "src/kiki/data/adapter.py": "307840683d775347c322c107f1e47500105be4b35c8a09d07d282c4baead3158",
+      "src/kiki/data/contracts.py": "3a027f8b7cafc69877e03779894370548d48f1b507f5c46a39e3f7edf79e691b",
+      "src/kiki/data/private_dataset.py": "615ec905047a81f681620d3f214b6dfa60be3c78af7059de21b232c593d941ee",
+      "src/kiki/data/schema.py": "0fcd4c51f734ea20f5cd62504598cc407eae9685592b7096aaad6b3dc131bfdb",
+      "src/kiki/data/splits.py": "78fabed80b331063d185181b02e7ec9f7d01fe90c0a121877ed6b2d659f03ce8",
+      "src/kiki/data/store.py": "e408c61994932b0bd09f6c7a27780d56c56bda60ee8c13f07e2bf08002114524",
+      "src/kiki/evaluation/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/kiki/evaluation/modal.py": "ab18e50266a28b29a0035b52880ffb15344bfec46b472baf513250ffd2f7eddc",
+      "src/kiki/models/__init__.py": "3b096d85616829ef7717f0dc9fe40eae1cada21ed44c43381b041ccde4190984",
+      "src/kiki/models/base.py": "95f5d5a002ceae3a48ce1d7f82000355de87361c09aa56c48eab7e44d5093638",
+      "src/kiki/models/gftd_discovery.py": "9245b0726cb3fca15d3248106b43bd1673ed6607ed3a852b67c533f768a1b27f",
+      "src/kiki/models/gftd_fit297.py": "43f937b6973490c771aea2e1ac8694a2c356a48fb2f26337a73c9e991c6e334b",
+      "src/kiki/models/gftd_fitting.py": "57effaab858200bf77a33de6661210104bb01bae2def4e8db718c08254d982f4",
+      "src/kiki/models/gftd_kuramoto.py": "8a981125bba23e1b771e29b17a22b2e585f82a05fb26a4d64a87f2f86e029f35",
+      "src/kiki/models/private_pm.py": "adea9a1675cb9bdbd955b6fdf881bed5da915ba431e9d61a57fc33aa29606841",
+      "src/kiki/models/private_rom.py": "eced34511e8ba726ed3ee06f58c0826f26957bb27feecadc30c4cf44ba6062e4",
+      "src/kiki/physics/__init__.py": "883b5e039b6955995ca38ab64b81f8e281325e0b04ca98d582ab57087447b7de",
+      "src/kiki/physics/aggregation.py": "4c9aa927f4278404f11b43baa62163e7112c8c02ae97984fca454daa613336ab",
+      "src/kiki/physics/constants.py": "5fa4a9a9c45f68b6aff57ab3b3f9ee1156295fde7bd4fe047c5fadc025ad99da",
+      "src/kiki/physics/coordinates.py": "9a738d46647ab631407f8e4b5814fe0a7868c717e31fda13963861c10e373089",
+      "src/kiki/physics/graph.py": "724dd978e7627ccceec0ad94067eef304c8e5562a378641516d544e1d8ca8dfe",
+      "src/kiki/physics/kuramoto_benchmarks.py": "9a87b64a70d2b4a7e5d4dce60f98b263a044a163201b5e0c10db4cf3373493ec",
+      "src/kiki/physics/kuramoto_functional.py": "5a709bc2b5b984fbdd4c376f69852e0a53a12929dee3f525a453b5934caec021",
+      "src/kiki/physics/units.py": "11f6e09ef577a1c09a7996743deaef1530a36ecf26be82edaa5cd3e01187dd46"
+    }
+  },
+  "latest_public_partial": {
+    "counts": {
+      "fits_attempted": 2,
+      "fits_completed": 2,
+      "initializations_attempted": 41,
+      "initializations_completed": 8,
+      "future_pairs_attempted": 0,
+      "future_pairs_persisted": 0,
+      "future_pairs_completed": 0,
+      "future_pairs_failed": 0,
+      "rk4_attempted": 0,
+      "rk4_completed": 0,
+      "scoring_attempted": 0,
+      "scoring_completed": 0,
+      "fit": {
+        "static": {
+          "algebra_terms_planned": 32764,
+          "algebra_terms_actual": 943,
+          "algebra_terms_skipped": 31821,
+          "nnls_attempts": 943,
+          "nnls_completed": 943,
+          "nnls_qualified": 943,
+          "reconstruction_attempts": 594,
+          "reconstructions": 594,
+          "optimization_tasks": 192,
+          "actual_residual_calls": 37951,
+          "integrations_attempted": 37975,
+          "integrations_completed": 37975,
+          "rk4_steps_attempted": 1519960,
+          "rk4_steps_completed": 1519960,
+          "information_svd": 186,
+          "conditional_projections": 135,
+          "memory_svd": 594,
+          "information_history_steps": 1920
+        },
+        "modulated": {
+          "algebra_terms_planned": 24573,
+          "algebra_terms_actual": 2817,
+          "algebra_terms_skipped": 21756,
+          "nnls_attempts": 2817,
+          "nnls_completed": 2817,
+          "nnls_qualified": 2817,
+          "reconstruction_attempts": 0,
+          "reconstructions": 0,
+          "optimization_tasks": 192,
+          "actual_residual_calls": 38400,
+          "integrations_attempted": 38424,
+          "integrations_completed": 38424,
+          "rk4_steps_attempted": 1537920,
+          "rk4_steps_completed": 1537920,
+          "information_svd": 230,
+          "conditional_projections": 180,
+          "memory_svd": 0,
+          "information_history_steps": 1920
+        }
+      },
+      "initialization": {
+        "algebra_terms_planned": 0,
+        "algebra_terms_actual": 0,
+        "algebra_terms_skipped": 0,
+        "nnls_attempts": 0,
+        "nnls_completed": 0,
+        "nnls_qualified": 0,
+        "reconstruction_attempts": 0,
+        "reconstructions": 0,
+        "optimization_tasks": 48,
+        "actual_residual_calls": 9130,
+        "integrations_attempted": 9370,
+        "integrations_completed": 9370,
+        "rk4_steps_attempted": 386800,
+        "rk4_steps_completed": 386800
+      },
+      "coverage": {}
+    },
+    "current": {
+      "stage": "initialize",
+      "mode": "static",
+      "event_id": "expansion_0043"
+    },
+    "last_artifact": {
+      "path": "private_data\\gftd_fit297_20261107\\initializations\\static_039.json",
+      "sha256": "4a79a244bf4385ac18f6dfcd79800407571f1e1936775fada066a942179e64e2",
+      "bytes": 79785
+    },
+    "path": "results/gftd_fit297_20261107/execution.partial.json",
+    "status": "RUNNING",
+    "costs": {
+      "static": {
+        "fit_seconds": 544.6554949999554,
+        "initialization_seconds": 131.4957992999116,
+        "integration_seconds": 0.0
+      },
+      "modulated": {
+        "fit_seconds": 840.0897345000412,
+        "initialization_seconds": 0.0,
+        "integration_seconds": 0.0
+      }
+    }
+  },
+  "interrupted_temp_snapshot": {
+    "counts": {
+      "fits_attempted": 2,
+      "fits_completed": 2,
+      "initializations_attempted": 41,
+      "initializations_completed": 8,
+      "future_pairs_attempted": 0,
+      "future_pairs_persisted": 0,
+      "future_pairs_completed": 0,
+      "future_pairs_failed": 0,
+      "rk4_attempted": 0,
+      "rk4_completed": 0,
+      "scoring_attempted": 0,
+      "scoring_completed": 0,
+      "fit": {
+        "static": {
+          "algebra_terms_planned": 32764,
+          "algebra_terms_actual": 943,
+          "algebra_terms_skipped": 31821,
+          "nnls_attempts": 943,
+          "nnls_completed": 943,
+          "nnls_qualified": 943,
+          "reconstruction_attempts": 594,
+          "reconstructions": 594,
+          "optimization_tasks": 192,
+          "actual_residual_calls": 37951,
+          "integrations_attempted": 37975,
+          "integrations_completed": 37975,
+          "rk4_steps_attempted": 1519960,
+          "rk4_steps_completed": 1519960,
+          "information_svd": 186,
+          "conditional_projections": 135,
+          "memory_svd": 594,
+          "information_history_steps": 1920
+        },
+        "modulated": {
+          "algebra_terms_planned": 24573,
+          "algebra_terms_actual": 2817,
+          "algebra_terms_skipped": 21756,
+          "nnls_attempts": 2817,
+          "nnls_completed": 2817,
+          "nnls_qualified": 2817,
+          "reconstruction_attempts": 0,
+          "reconstructions": 0,
+          "optimization_tasks": 192,
+          "actual_residual_calls": 38400,
+          "integrations_attempted": 38424,
+          "integrations_completed": 38424,
+          "rk4_steps_attempted": 1537920,
+          "rk4_steps_completed": 1537920,
+          "information_svd": 230,
+          "conditional_projections": 180,
+          "memory_svd": 0,
+          "information_history_steps": 1920
+        }
+      },
+      "initialization": {
+        "algebra_terms_planned": 0,
+        "algebra_terms_actual": 0,
+        "algebra_terms_skipped": 0,
+        "nnls_attempts": 0,
+        "nnls_completed": 0,
+        "nnls_qualified": 0,
+        "reconstruction_attempts": 0,
+        "reconstructions": 0,
+        "optimization_tasks": 49,
+        "actual_residual_calls": 9347,
+        "integrations_attempted": 9593,
+        "integrations_completed": 9593,
+        "rk4_steps_attempted": 396020,
+        "rk4_steps_completed": 396020
+      },
+      "coverage": {}
+    },
+    "current": {
+      "stage": "initialize",
+      "mode": "static",
+      "event_id": "expansion_0043"
+    },
+    "last_artifact": {
+      "path": "private_data\\gftd_fit297_20261107\\initializations\\static_040.json",
+      "sha256": "bce870863cfc4ed284eef71006bae7a0fb4aebbe45926e4400f92393507dfcdd",
+      "bytes": 79391
+    },
+    "path": "results/gftd_fit297_20261107/execution.partial.json.tmp",
+    "status": "RUNNING",
+    "is_final_receipt": false,
+    "costs": {
+      "static": {
+        "fit_seconds": 544.6554949999554,
+        "initialization_seconds": 134.6587577998871,
+        "integration_seconds": 0.0
+      },
+      "modulated": {
+        "fit_seconds": 840.0897345000412,
+        "initialization_seconds": 0.0,
+        "integration_seconds": 0.0
+      }
+    }
+  },
+  "denominators": {
+    "all": 297,
+    "stable": 267,
+    "unstable": 30,
+    "initializations": 594
+  },
+  "durable_diagnostics_count": 41,
+  "durable_state_count": 8,
+  "next_unstarted": {
+    "mode": "static",
+    "zero_based_index": 41,
+    "diag_exists": false,
+    "proof": "Traceback at line386 tail persist after static_040 detail write, before next loop iteration",
+    "event_id": "expansion_0044"
+  },
+  "initialization_count_delta": {
+    "algebra_terms_planned": 0,
+    "algebra_terms_actual": 0,
+    "algebra_terms_skipped": 0,
+    "nnls_attempts": 0,
+    "nnls_completed": 0,
+    "nnls_qualified": 0,
+    "reconstruction_attempts": 0,
+    "reconstructions": 0,
+    "optimization_tasks": 1,
+    "actual_residual_calls": 217,
+    "integrations_attempted": 223,
+    "integrations_completed": 223,
+    "rk4_steps_attempted": 9220,
+    "rk4_steps_completed": 9220
+  },
+  "durable_diagnostic_counts_sum": {
+    "algebra_terms_planned": 0,
+    "algebra_terms_actual": 0,
+    "algebra_terms_skipped": 0,
+    "nnls_attempts": 0,
+    "nnls_completed": 0,
+    "nnls_qualified": 0,
+    "reconstruction_attempts": 0,
+    "reconstructions": 0,
+    "optimization_tasks": 49,
+    "actual_residual_calls": 9347,
+    "integrations_attempted": 9593,
+    "integrations_completed": 9593,
+    "rk4_steps_attempted": 396020,
+    "rk4_steps_completed": 396020
+  },
+  "diagnostic_sum_equals_temp_counts": true,
+  "stdout": {
+    "path": "results/gftd_fit297_20261107/execution.stdout.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0,
+    "raw_text": null
+  },
+  "stderr": {
+    "path": "results/gftd_fit297_20261107/execution.stderr.txt",
+    "sha256": "7093c56b51900cfa2b4512abc107de4106c7f123a7fa62de464ff09644940c2f",
+    "bytes": 2705,
+    "raw_text_utf8": "Traceback (most recent call last):\r\n  File \"E:\\03-nn_Transfer_Func\\kiki\\experiments\\gftd_fit297_20261107.py\", line 386, in run\r\n    receipt['artifacts'].append(detail);persist()\r\n                                        ^^^^^^^^^\r\n  File \"E:\\03-nn_Transfer_Func\\kiki\\experiments\\gftd_fit297_20261107.py\", line 313, in persist\r\n    def persist(): write_json(OUTPUT/'execution.partial.json',receipt)\r\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n  File \"E:\\03-nn_Transfer_Func\\kiki\\experiments\\gftd_fit297_20261107.py\", line 80, in write_json\r\n    return atomic_bytes(path, (json.dumps(safe(data),ensure_ascii=False,indent=2,allow_nan=False)+'\\n').encode('utf-8'))\r\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n  File \"E:\\03-nn_Transfer_Func\\kiki\\experiments\\gftd_fit297_20261107.py\", line 75, in atomic_bytes\r\n    os.replace(temp, path)\r\nPermissionError: [WinError 5] �ܾ����ʡ�: 'E:\\\\03-nn_Transfer_Func\\\\kiki\\\\results\\\\gftd_fit297_20261107\\\\execution.partial.json.tmp' -> 'E:\\\\03-nn_Transfer_Func\\\\kiki\\\\results\\\\gftd_fit297_20261107\\\\execution.partial.json'\r\n\r\nDuring handling of the above exception, another exception occurred:\r\n\r\nTraceback (most recent call last):\r\n  File \"E:\\03-nn_Transfer_Func\\kiki\\experiments\\gftd_fit297_20261107.py\", line 492, in <module>\r\n    run()\r\n  File \"E:\\03-nn_Transfer_Func\\kiki\\experiments\\gftd_fit297_20261107.py\", line 487, in run\r\n    persist();write_json(OUTPUT/'execution.json',receipt)\r\n    ^^^^^^^^^\r\n  File \"E:\\03-nn_Transfer_Func\\kiki\\experiments\\gftd_fit297_20261107.py\", line 313, in persist\r\n    def persist(): write_json(OUTPUT/'execution.partial.json',receipt)\r\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n  File \"E:\\03-nn_Transfer_Func\\kiki\\experiments\\gftd_fit297_20261107.py\", line 80, in write_json\r\n    return atomic_bytes(path, (json.dumps(safe(data),ensure_ascii=False,indent=2,allow_nan=False)+'\\n').encode('utf-8'))\r\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n  File \"E:\\03-nn_Transfer_Func\\kiki\\experiments\\gftd_fit297_20261107.py\", line 71, in atomic_bytes\r\n    with temp.open('xb') as stream:\r\n         ^^^^^^^^^^^^^^^\r\n  File \"C:\\Users\\LLLzijian\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\pathlib.py\", line 1013, in open\r\n    return io.open(self, mode, buffering, encoding, errors, newline)\r\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\nFileExistsError: [Errno 17] File exists: 'E:\\\\03-nn_Transfer_Func\\\\kiki\\\\results\\\\gftd_fit297_20261107\\\\execution.partial.json.tmp'\r\n"
+  },
+  "preservation": {
+    "manifest_path": "results/gftd_fit297_20261107/failure_preservation_manifest.json",
+    "manifest_sha256": "0ea5075a3d6cf4a5d86ac42a3247cdf5cc7f4e676716d4c7eb502e0633c39262",
+    "archive_root": "private_data\\gftd_fit297_20261107\\failure_evidence01",
+    "files": 118,
+    "bytes": 178143829.0,
+    "originals_unchanged": true
+  },
+  "process_absence": {
+    "checked_utc": "2026-11-07T17:14:07.4247035+00:00",
+    "processes": []
+  },
+  "recorded_utc": "2026-11-07T17:14:07.4349631+00:00"
+}

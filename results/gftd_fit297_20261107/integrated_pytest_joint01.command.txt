@@ -1,0 +1,17 @@
+$env:PYTHONDONTWRITEBYTECODE='1'
+$env:OMP_NUM_THREADS='1'
+$env:MKL_NUM_THREADS='1'
+$env:OPENBLAS_NUM_THREADS='1'
+if (Test-Path -LiteralPath '.tmp/gftd_fit297_joint_01') { throw 'Joint basetemp already exists' }
+$taskStartUtc=[DateTime]::UtcNow.ToString('o')
+$taskTimer=[System.Diagnostics.Stopwatch]::StartNew()
+Write-Output ('HOST_START_UTC='+$taskStartUtc)
+& ./.venv-gpu/Scripts/python.exe -B -m pytest -p no:cacheprovider --basetemp .tmp/gftd_fit297_joint_01 tests/test_gftd_fit297_engine.py tests/test_gftd_fit297_runner.py tests/test_gftd_fit297_l1.py tests/test_gftd_fit297_analysis.py tests/test_gftd_fitting.py tests/test_gftd_discovery.py tests/test_gftd_kuramoto_architecture.py tests/test_gftd_modulation_gradient.py tests/test_gftd_model_fit.py tests/test_gftd_modulation_20261107.py tests/test_gftd_modulation_resume01.py -q --maxfail=1 1> results/gftd_fit297_20261107/integrated_pytest_joint01.stdout.txt 2> results/gftd_fit297_20261107/integrated_pytest_joint01.stderr.txt
+$taskExit=$LASTEXITCODE
+$taskTimer.Stop()
+Get-Content -LiteralPath 'results/gftd_fit297_20261107/integrated_pytest_joint01.stdout.txt'
+Get-Content -LiteralPath 'results/gftd_fit297_20261107/integrated_pytest_joint01.stderr.txt'
+Write-Output ('HOST_END_UTC='+[DateTime]::UtcNow.ToString('o'))
+Write-Output ('HOST_WALL_SECONDS='+$taskTimer.Elapsed.TotalSeconds.ToString('R',[System.Globalization.CultureInfo]::InvariantCulture))
+Write-Output ('PROGRAM_EXIT_CODE='+$taskExit)
+exit $taskExit

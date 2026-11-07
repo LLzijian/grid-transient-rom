@@ -68,6 +68,9 @@ def _config(f, mode, sigma):
 
 
 def validate_config(functional, config):
+    if isinstance(config, dict) and config.get("format") == "gftd_causal_two_stage_fit297_v1":
+        from .gftd_fit297 import validate_config as validate_fit297_config
+        return validate_fit297_config(functional, config)
     try:
         if not isinstance(config, dict) or config.get("mode") not in ("static", "modulated"):
             raise ValueError("a complete frozen causal initialization config is required")
@@ -161,12 +164,18 @@ class _BudgetReached(RuntimeError):
     pass
 
 
-def infer_endpoint(f, packet, *, mode, role, call_limit, initial=None, feasible=None):
+def infer_endpoint(f, packet, *, mode, role, call_limit, initial=None, feasible=None, config=None):
     """A finite local task; every residual evaluation, including Jac, is counted."""
     packet = core.validate_observation(packet, f.n_nodes)
     _, low, high = _layout(f.n_nodes, float(packet["sigma"]), mode, role)
     initial = np.zeros_like(low) if initial is None else np.asarray(initial, dtype=np.float64).copy()
-    _endpoint(packet, f, initial, mode, role)
+    endpoint_builder = lambda u: _endpoint(packet, f, u, mode, role)
+    residual_builder = lambda predicted: core.history_residual(f, predicted, packet)
+    if config is not None:
+        from .gftd_fit297 import endpoint, history_residual
+        endpoint_builder = lambda u: endpoint(packet, f, u, mode, role, config)
+        residual_builder = lambda predicted: history_residual(f, predicted, packet, config)
+    endpoint_builder(initial)
     counts, trace, jacobian = _counts(), [], None
     counts["optimization_tasks"] = 1
     best, baseline, result = None, None, None
@@ -177,9 +186,9 @@ def infer_endpoint(f, packet, *, mode, role, call_limit, initial=None, feasible=
         if counts["actual_residual_calls"] >= call_limit:
             raise _BudgetReached("actual historical residual call budget reached")
         counts["actual_residual_calls"] += 1
-        state = _endpoint(packet, f, u, mode, role)
+        state = endpoint_builder(u)
         history = _integrate(f, state, .0025, .1, counts, backward=True, dense=True)
-        raw = core.history_residual(f, history[::4], packet)
+        raw = residual_builder(history[::4])
         sse = float(raw@raw)
         if not np.isfinite(sse):
             raise FloatingPointError("nonfinite historical loss")
@@ -262,7 +271,14 @@ def numerical_check(f, state, packet):
 
 
 def initialize_complete(functional, p_end_packet, config):
+    if isinstance(config, dict) and config.get("format") == "gftd_causal_two_stage_fit297_v1":
+        from .gftd_fit297 import initialize_complete as initialize_fit297
+        return initialize_fit297(functional, p_end_packet, config)
     config = validate_config(functional, config)
+    return _initialize_validated(functional, p_end_packet, config)
+
+
+def _initialize_validated(functional, p_end_packet, config):
     try:
         packet = core.validate_observation(p_end_packet, functional.n_nodes)
     except (ValueError, TypeError) as exc:
@@ -272,7 +288,8 @@ def initialize_complete(functional, p_end_packet, config):
     mode, counts = config["mode"], _counts()
     diagnostics = dict(status="blocked_by_stage1", counts=counts, stage1=None, stage2=None,
                        stage1_numerical=None, final_numerical=None, returned_point=None)
-    first = infer_endpoint(functional, packet, mode=mode, role="simple", call_limit=600)
+    extra = dict(config=config) if config["format"] == "gftd_causal_two_stage_fit297_v1" else {}
+    first = infer_endpoint(functional, packet, mode=mode, role="simple", call_limit=600, **extra)
     diagnostics["stage1"] = first
     _add(counts, first["counts"])
     if first["best"] is None or first["status"] not in ("converged", "budget_limited"):
@@ -286,7 +303,7 @@ def initialize_complete(functional, p_end_packet, config):
     feasible = np.zeros_like(low)
     feasible[-functional.n_nodes:] = first["best"]["u"]
     second = infer_endpoint(functional, packet, mode=mode, role="smooth", call_limit=1200,
-                            initial=feasible, feasible=feasible)
+                            initial=feasible, feasible=feasible, **extra)
     diagnostics["stage2"] = second
     _add(counts, second["counts"])
     if second["best"] is None:
@@ -390,22 +407,22 @@ def _edge_values(coefficients, e):
     return coefficients[:e]+coefficients[e:], coefficients[e:].copy()
 
 
-def _threshold_and_debias(X, y, selected, e, counts):
+def _threshold_and_debias(X, y, selected, e, counts, k_ref=1.):
     k, beta = _edge_values(selected["coefficients"], e)
-    edge_mask, mod_mask = k >= .05, (k >= .05) & (beta >= .025)
+    edge_mask, mod_mask = k >= .05*k_ref, (k >= .05*k_ref) & (beta >= .025*k_ref)
     debias = _solve_mask(X, y, edge_mask, mod_mask, counts)
     if debias["coefficients"] is None:
         return dict(status="solver_unresolved", debias=debias, raw_k=None, raw_beta=None,
                     edge_mask=edge_mask, mod_mask=mod_mask, threshold_inconsistent=True,
                     edge_threshold_inconsistent=True, mod_threshold_inconsistent=True)
     k, beta = _edge_values(debias["coefficients"], e)
-    edge_bad, mod_bad = bool(np.any(k[edge_mask] < .05)), bool(np.any(beta[mod_mask] < .025))
+    edge_bad, mod_bad = bool(np.any(k[edge_mask] < .05*k_ref)), bool(np.any(beta[mod_mask] < .025*k_ref))
     return dict(status=debias["status"], debias=debias, raw_k=k, raw_beta=beta,
                 edge_mask=edge_mask, mod_mask=mod_mask, threshold_inconsistent=edge_bad or mod_bad,
                 edge_threshold_inconsistent=edge_bad, mod_threshold_inconsistent=mod_bad)
 
 
-def backward_select(X, y, sigma, edge_mask, mod_mask, counts):
+def backward_select(X, y, sigma, edge_mask, mod_mask, counts, *, k_ref=1.):
     """Finite deterministic deletion; unresolved comparisons invalidate this proposal."""
     e = len(edge_mask)
     capacity, start = 2*e*(2*e+1)+1, counts["algebra_terms_actual"]
@@ -445,7 +462,7 @@ def backward_select(X, y, sigma, edge_mask, mod_mask, counts):
             if best is current:
                 break
             current = best
-        record.update(selected=current, **_threshold_and_debias(X, y, current, e, counts))
+        record.update(selected=current, **_threshold_and_debias(X, y, current, e, counts, k_ref))
         return record
     finally:
         skipped = capacity-(counts["algebra_terms_actual"]-start)
@@ -530,14 +547,15 @@ def _build_preparation(f, packets, counts):
     return dict(grids=grids, initial_static=selected, initial_information=info, references=references, counts=counts)
 
 
-def _proxy_candidate(f, packets, mode, edge_mask, mod_mask):
+def _proxy_candidate(f, packets, mode, edge_mask, mod_mask, *, config=None):
     counts, events = _counts(), []
     for packet in packets:
         slices, low, _ = _layout(f.n_nodes, float(packet["sigma"]), mode, "proxy")
         starts = [np.zeros_like(low), np.zeros_like(low)]
         alternate = (-1.)**np.arange(f.n_nodes)
         starts[1][slices[2] if mode == "modulated" else slices[3]] = (.2 if mode == "modulated" else .1)*alternate
-        tasks = [infer_endpoint(f, packet, mode=mode, role="proxy", call_limit=200, initial=start) for start in starts]
+        extra = dict(config=config) if config is not None else {}
+        tasks = [infer_endpoint(f, packet, mode=mode, role="proxy", call_limit=200, initial=start, **extra) for start in starts]
         for task in tasks:
             _add(counts, task["counts"])
         eligible = [index for index, task in enumerate(tasks) if task["best"] is not None and task["status"] in ("converged", "budget_limited")]

@@ -1,0 +1,120 @@
+{
+  "status": "engineering_qualified_pending_independent_review",
+  "technical_continuation_index": 1,
+  "new_scientific_run": false,
+  "parent_action_id": "gftd-fit297-20261107-01",
+  "scientific_execution_released": false,
+  "source_sha256": {
+    "experiments/gftd_fit297_20261107_resume01.py": "21af1edcbe2c5d5740866b62098e5e1390a496a98132d3101f7349d3210b0ff5",
+    "tests/test_gftd_fit297_resume01.py": "9bea043b8a75566b859a6b956fc5e0c7b2f544d82d95299075b041a8d1dbcd30"
+  },
+  "original_scientific_sources_byte_exact": true,
+  "parent_host_receipt_sha256": "78ab5d6594c29ebe143f7bdef9eb02fc13b6bbc8285a8b5c75c645aa87f78c6a",
+  "design_review_sha256": "3f16b5a11a5f7d44110fc2c472a51538a2f03278023efbb94c2ec64e8e21d5a3",
+  "implementation_adoption_sha256": "505044e2a6d86b4048f70afa6c1bad19276d76edf36a2d20787355515f2d6c5a",
+  "checks": [
+    {
+      "command": ".venv-gpu/Scripts/python.exe -m pytest tests/test_gftd_fit297_resume01.py -q --basetemp private_data/gftd_fit297_20261107/engineering_resume01_tests01",
+      "exit_code": 1,
+      "passed": 13,
+      "failed": 1,
+      "elapsed_s": 33.88,
+      "tool_chunk_id": "0dcfd4",
+      "reason": "Coverage cache-unavailable mock omitted fit_request in its stub config; production model config unchanged.",
+      "fix": "Add the required fixture config key."
+    },
+    {
+      "command": ".venv-gpu/Scripts/python.exe -m pytest tests/test_gftd_fit297_resume01.py -q --basetemp private_data/gftd_fit297_20261107/engineering_resume01_tests02",
+      "exit_code": 1,
+      "passed": 14,
+      "failed": 1,
+      "elapsed_s": 17.66,
+      "tool_chunk_id": "36f223",
+      "reason": "Full553 fixture omitted fit_state.preparation_key; real stored models have this key.",
+      "fix": "Restore the complete fixture key and explicitly validate checkpoint/config preparation identity."
+    },
+    {
+      "command": ".venv-gpu/Scripts/python.exe -m pytest tests/test_gftd_fit297_resume01.py -q --basetemp private_data/gftd_fit297_20261107/engineering_resume01_tests03",
+      "exit_code": 0,
+      "passed": 18,
+      "elapsed_s": 10.32,
+      "tool_chunk_id": "e1b129",
+      "scope": "before final provenance schema changes"
+    },
+    {
+      "command": ".venv-gpu/Scripts/python.exe -m pytest tests/test_gftd_fit297_resume01.py -q --basetemp private_data/gftd_fit297_20261107/engineering_resume01_tests04",
+      "exit_code": 0,
+      "passed": 21,
+      "elapsed_s": 14.86,
+      "tool_chunk_id": "85ffd2",
+      "scope": "final source and test hashes listed above"
+    },
+    {
+      "command": ".venv-gpu/Scripts/python.exe -m py_compile experiments/gftd_fit297_20261107_resume01.py tests/test_gftd_fit297_resume01.py",
+      "exit_code": 0,
+      "tool_chunk_id": "e97d54"
+    },
+    {
+      "command": "Read-only SHA256 comparison of original runner, fit297 engine, fitting engine, model API, L1 and L2/L3 against original execution_release.source_sha256",
+      "exit_code": 0,
+      "all_equal": true,
+      "tool_chunk_id": "e97d54"
+    }
+  ],
+  "qualification_cases": 21,
+  "scope": {
+    "real_training_calls": 0,
+    "real_initialization_calls": 0,
+    "real_future_integration_calls": 0,
+    "real_spectrum_or_certificate_calls": 0,
+    "raw_train_event_reader_calls": 0,
+    "saved_artifact_inspection": "Read-only minimal repair design: input/model/diagnostic structure, hashes, counts; tests use mock artifacts only."
+  },
+  "continuation": {
+    "restored_pairs": 41,
+    "restored_successful_states": 8,
+    "restored_typed_failures": 33,
+    "remaining_static": 256,
+    "remaining_modulated": 297,
+    "remaining_pairs": 553,
+    "new_task_cap": 1106,
+    "new_residual_cap": 995400,
+    "original_denominators": {
+      "all": 297,
+      "stable": 267,
+      "unstable": 30,
+      "model_event_pairs": 594
+    },
+    "initialization_consumed": {
+      "optimization_tasks": 49,
+      "actual_residual_calls": 9347,
+      "rk4_steps_attempted": 396020
+    },
+    "inherited_analysis_ledger": {
+      "information_svd": 416,
+      "conditional_projections": 315,
+      "memory_svd": 594
+    },
+    "cache_rebuilt": false,
+    "coverage_information": "unknown: matching preparation cache unavailable; explicit interruption provenance retained"
+  },
+  "io": {
+    "replace_attempt_cap": 100,
+    "replace_retry_delay_s": 0.05,
+    "retry_only": "PermissionError from os.replace for the same already-computed bytes and same unique temporary file",
+    "numerical_retries": false,
+    "primary_exception_preserved": true,
+    "emergency_receipt": "unique exclusive-create JSON with flush/fsync"
+  },
+  "cost_scope": {
+    "original_runner_wall_seconds": null,
+    "combined_host_seconds": null,
+    "resume_wall_seconds": "body after claim, excludes imports/preflight",
+    "parent_host_seconds": 2031.1645234
+  },
+  "limitations": [
+    "Independent implementation review and exact root release remain required.",
+    "Lost deployment-coverage preparation is not rebuilt; corresponding auxiliary information remains unknown.",
+    "No scientific formula, numerical threshold, optimizer opportunity, fitted model or first41 result is changed."
+  ]
+}

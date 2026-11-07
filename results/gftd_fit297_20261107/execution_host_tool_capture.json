@@ -1,0 +1,207 @@
+{
+  "configured_model": "gpt-6.1-sol",
+  "action_id": "gftd-fit297-20261107-01",
+  "formal_invocations": 1,
+  "command": ".venv-gpu/Scripts/python.exe -B experiments/gftd_fit297_20261107.py",
+  "shell_command_exact": "$env:OMP_NUM_THREADS='1'\n$env:MKL_NUM_THREADS='1'\n$env:OPENBLAS_NUM_THREADS='1'\n$env:PYTHONDONTWRITEBYTECODE='1'\n$taskEnvironment=[ordered]@{OMP_NUM_THREADS=$env:OMP_NUM_THREADS;MKL_NUM_THREADS=$env:MKL_NUM_THREADS;OPENBLAS_NUM_THREADS=$env:OPENBLAS_NUM_THREADS;PYTHONDONTWRITEBYTECODE=$env:PYTHONDONTWRITEBYTECODE}\nWrite-Output ('HOST_ENV_JSON='+($taskEnvironment|ConvertTo-Json -Compress))\n$taskReleasePath='results/gftd_fit297_20261107/execution_release.json'\n$taskRelease=Get-Content -LiteralPath $taskReleasePath -Raw | ConvertFrom-Json\n$taskStartUtc=[DateTime]::UtcNow.ToString('o')\n$taskTimer=[System.Diagnostics.Stopwatch]::StartNew()\n[ordered]@{action_id='gftd-fit297-20261107-01';command='.venv-gpu/Scripts/python.exe -B experiments/gftd_fit297_20261107.py';host_start_utc=$taskStartUtc;release_sha256='f10a023faf1783db600230c0ab370cb9f919e73dbeaf08b470a0b9c0bd160443';source_sha256=$taskRelease.source_sha256;thread_environment_readback=$taskEnvironment;formal_invocations=1;fit_cache_bytes_read_by_host=$false} | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath 'results/gftd_fit297_20261107/execution_host_start.json' -Encoding utf8\nWrite-Output ('HOST_START_UTC='+$taskStartUtc)\n& ./.venv-gpu/Scripts/python.exe -B experiments/gftd_fit297_20261107.py 1> results/gftd_fit297_20261107/execution.stdout.txt 2> results/gftd_fit297_20261107/execution.stderr.txt\n$taskExit=$LASTEXITCODE\n$taskTimer.Stop()\nWrite-Output ('HOST_END_UTC='+[DateTime]::UtcNow.ToString('o'))\nWrite-Output ('HOST_WALL_SECONDS='+$taskTimer.Elapsed.TotalSeconds.ToString('R',[System.Globalization.CultureInfo]::InvariantCulture))\nWrite-Output ('PROGRAM_EXIT_CODE='+$taskExit)\nexit $taskExit",
+  "session_id": 35491,
+  "launcher_pid": 55472,
+  "python_pid": 25564,
+  "host_start_utc": "2026-11-07T16:33:08.2587143Z",
+  "host_end_utc": "2026-11-07T17:06:59.4286147Z",
+  "host_stopwatch_seconds": 2031.1645234,
+  "exit_code": 1,
+  "execution_status": "technical_io_failure",
+  "runner_final_status": null,
+  "runner_final_receipt_missing": true,
+  "external_toolmodel": null,
+  "science_calls": [
+    {
+      "chunk_id": "2be1a6",
+      "wall_time_seconds": 10.0148061,
+      "session_id": 35491,
+      "original_token_count": 41,
+      "output": "HOST_ENV_JSON={\"OMP_NUM_THREADS\":\"1\",\"MKL_NUM_THREADS\":\"1\",\"OPENBLAS_NUM_THREADS\":\"1\",\"PYTHONDONTWRITEBYTECODE\":\"1\"}\r\nHOST_START_UTC=2026-11-07T16:33:08.2587143Z\r\n"
+    },
+    {
+      "chunk_id": "7fdde0",
+      "wall_time_seconds": 5.0023338,
+      "session_id": 35491,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "3162d9",
+      "wall_time_seconds": 5.0032079,
+      "session_id": 35491,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "17f4a7",
+      "wall_time_seconds": 5.0128192,
+      "session_id": 35491,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "671e1f",
+      "wall_time_seconds": 5.00342,
+      "session_id": 35491,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "9b65c5",
+      "wall_time_seconds": 5.0015337,
+      "session_id": 35491,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "bf6f04",
+      "wall_time_seconds": 5.0127861,
+      "session_id": 35491,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "a504d3",
+      "wall_time_seconds": 5.0143173,
+      "session_id": 35491,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "ab8604",
+      "wall_time_seconds": 5.0121572,
+      "session_id": 35491,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "9ed3ff",
+      "wall_time_seconds": 5.010398,
+      "session_id": 35491,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "0a47ed",
+      "wall_time_seconds": 5.0137574,
+      "session_id": 35491,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "9b24b9",
+      "wall_time_seconds": 5.0152114,
+      "session_id": 35491,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "2fb72f",
+      "wall_time_seconds": 5.0042112,
+      "session_id": 35491,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "6b47b1",
+      "wall_time_seconds": 5.0066433,
+      "session_id": 35491,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "ae0d4c",
+      "wall_time_seconds": 5.012696,
+      "session_id": 35491,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "d8374d",
+      "wall_time_seconds": 0.0000109,
+      "exit_code": 1,
+      "original_token_count": 24,
+      "output": "HOST_END_UTC=2026-11-07T17:06:59.4286147Z\r\nHOST_WALL_SECONDS=2031.1645234\r\nPROGRAM_EXIT_CODE=1\r\n"
+    }
+  ],
+  "preflight": {
+    "chunk_id": "80bea1",
+    "wall_time_seconds": 0.7478916,
+    "exit_code": 0,
+    "original_token_count": 522,
+    "output": "{\"utc\":\"2026-11-07T16:32:15.5969650Z\",\"source_count\":51,\"all_sources_matched\":true,\"bindings_matched\":4,\"started_existed\":false,\"project_python_processes\":0,\"OMP_NUM_THREADS\":\"1\",\"MKL_NUM_THREADS\":\"1\",\"OPENBLAS_NUM_THREADS\":\"1\",\"PYTHONDONTWRITEBYTECODE\":\"1\",\"fit_cache_bytes_read\":false}\r\n454:            receipt['artifacts'].append(write_json(PRIVATE/'fom_modes.json',fom))\r\n456:                content=read_json(PRIVATE/(mode+'_l2_l3.json'))\r\n458:                receipt['artifacts'].append(write_json(PRIVATE/(mode+'_modal_match.json'),matched))\r\n461:                receipt['artifacts'].append(write_json(PRIVATE/(mode+'_graph_correspondence.json'),correspondence))\r\n463:            receipt['analysis_budget']=fit_engine.analysis_budget_snapshot(key)\r\n464:        checks=model_analysis_budget_checks(receipt['analysis'],models)\r\n465:        receipt['analysis_budget_checks']=checks\r\n467:        receipt['execution_budget']=execution_budget(counts)\r\n468:        if not receipt['execution_budget']['within_limits']: raise RuntimeError('registered execution budget exceeded')\r\n469:        receipt['status']='COMPLETED'\r\n471:        receipt.update(status='INTERRUPTED_RUNTIME',error=dict(type=type(error).__name__,message=str(error)),\r\n474:            receipt['artifacts'].append(write_json(PRIVATE/'interruption_diagnostics.json',error.diagnostics))\r\n477:        receipt['execution_budget']=execution_budget(counts)\r\n478:        receipt['wall_seconds']=time.perf_counter()-begin\r\n479:        receipt['source_unchanged']=all(digest(ROOT/p)==sha for p,sha in release['source_sha256'].items())\r\n480:        receipt['release_unchanged']=digest(release_path)==claim['release_sha256']\r\n481:        receipt['evidence_binding_valid']=bool(receipt['source_unchanged'] and receipt['release_unchanged'])\r\n482:        if not receipt['evidence_binding_valid']: receipt['status']='INTERRUPTED_SOURCE_CHANGED'\r\n483:        for cost in receipt['costs'].values():\r\n486:        receipt['FOM_speedup']='未比较'\r\n487:        persist();write_json(OUTPUT/'execution.json',receipt)\r\n488:    return receipt\r\n"
+  },
+  "failure_preservation_tool": {
+    "chunk_id": "5a80b6",
+    "wall_time_seconds": 4.0690914,
+    "exit_code": 0,
+    "original_token_count": 70,
+    "output": "{\"archive_root\":\"private_data\\\\gftd_fit297_20261107\\\\failure_evidence01\",\"file_count\":118,\"bytes\":null,\"source_count\":51,\"source_unchanged\":true,\"process_count\":0,\"manifest_sha256\":\"0ea5075a3d6cf4a5d86ac42a3247cdf5cc7f4e676716d4c7eb502e0633c39262\",\"diagnostics\":41,\"states\":8}\r\n"
+  },
+  "preservation_command": "$ErrorActionPreference='Stop'\n$workspace=(Get-Location).Path\n$runRoot='results/gftd_fit297_20261107'\n$privateRoot='private_data/gftd_fit297_20261107'\n$archiveRoot=Join-Path $privateRoot 'failure_evidence01'\nif(Test-Path -LiteralPath $archiveRoot){throw 'Failure archive already exists; refusing overwrite'}\n$release=Get-Content -LiteralPath \"$runRoot/execution_release.json\" -Raw|ConvertFrom-Json\n$partial=Get-Content -LiteralPath \"$runRoot/execution.partial.json\" -Raw|ConvertFrom-Json\n$temp=Get-Content -LiteralPath \"$runRoot/execution.partial.json.tmp\" -Raw|ConvertFrom-Json\n$files=[System.Collections.Generic.List[string]]::new()\nforeach($property in $release.source_sha256.PSObject.Properties){$files.Add($property.Name)}\nGet-ChildItem -LiteralPath $runRoot -File|Where-Object {$_.Name -like 'execution*' -or $_.Name -eq 'started.json'}|ForEach-Object {$files.Add([System.IO.Path]::GetRelativePath($workspace,$_.FullName))}\nGet-ChildItem -LiteralPath $privateRoot -File|ForEach-Object {$files.Add([System.IO.Path]::GetRelativePath($workspace,$_.FullName))}\nGet-ChildItem -LiteralPath \"$privateRoot/initializations\" -File|ForEach-Object {$files.Add([System.IO.Path]::GetRelativePath($workspace,$_.FullName))}\n$entries=@(foreach($relative in $files){\n  $item=Get-Item -LiteralPath $relative\n  $before=(Get-FileHash -LiteralPath $relative -Algorithm SHA256).Hash.ToLower()\n  $dest=Join-Path $archiveRoot $relative\n  $parent=Split-Path -Parent $dest\n  [System.IO.Directory]::CreateDirectory($parent)|Out-Null\n  Copy-Item -LiteralPath $relative -Destination $dest\n  $after=(Get-FileHash -LiteralPath $relative -Algorithm SHA256).Hash.ToLower()\n  $copy=(Get-FileHash -LiteralPath $dest -Algorithm SHA256).Hash.ToLower()\n  if($before -ne $after -or $before -ne $copy){throw \"Snapshot changed: $relative\"}\n  [ordered]@{path=$relative;bytes=$item.Length;sha256=$before;archive_path=$dest;archive_sha256=$copy}\n})\n$sourceChecks=@(foreach($property in $release.source_sha256.PSObject.Properties){\n  $actual=(Get-FileHash -LiteralPath $property.Name -Algorithm SHA256).Hash.ToLower()\n  [ordered]@{path=$property.Name;expected=$property.Value;actual=$actual;matched=($actual -eq $property.Value)}\n})\n$diagRows=@(Get-ChildItem -LiteralPath \"$privateRoot/initializations\" -Filter '*.json'|Sort-Object Name|ForEach-Object{\n  $detail=Get-Content -LiteralPath $_.FullName -Raw|ConvertFrom-Json\n  [ordered]@{file=$_.Name;event_id=$detail.event_id;status=$detail.diagnostics.status;stage1_status=$detail.diagnostics.stage1.status;stage1_numerical_passed=$detail.diagnostics.stage1_numerical.passed;counts=$detail.diagnostics.counts;state=$detail.state}\n})\n$processes=@(Get-Process -Id 25564,55472 -ErrorAction SilentlyContinue|Select-Object Id,CPU,WorkingSet64)\n$record=[ordered]@{\n  recorded_utc=[DateTimeOffset]::UtcNow.ToString('o');action_id=$release.action_id\n  purpose='Byte preservation after sole scientific process exited; no replay or science recomputation'\n  release_sha256=(Get-FileHash -LiteralPath \"$runRoot/execution_release.json\" -Algorithm SHA256).Hash.ToLower()\n  archive_root=$archiveRoot;files=$entries;source_checks=$sourceChecks\n  source_count=$sourceChecks.Count;source_unchanged=(@($sourceChecks|Where-Object {-not $_.matched}).Count -eq 0)\n  partial_snapshot=@{path=\"$runRoot/execution.partial.json\";status=$partial.status;current=$partial.current;counts=$partial.counts;costs=$partial.costs;last_artifact=$partial.artifacts[-1]}\n  interrupted_temp_snapshot=@{path=\"$runRoot/execution.partial.json.tmp\";status=$temp.status;current=$temp.current;counts=$temp.counts;costs=$temp.costs;last_artifact=$temp.artifacts[-1];is_final_receipt=$false}\n  durable_diagnostics=$diagRows;durable_diag_count=$diagRows.Count\n  durable_state_count=@(Get-ChildItem -LiteralPath \"$privateRoot/initializations\" -Filter '*.npz').Count\n  next_unstarted=@{mode='static';zero_based_index=41;event_id=$temp.input_identity.legal_ids[41];diag_exists=(Test-Path -LiteralPath \"$privateRoot/initializations/static_041.json\");proof='Traceback at line386 tail persist after static_040 detail write, before next loop iteration'}\n  process_check_utc=[DateTimeOffset]::UtcNow.ToString('o');processes=$processes\n  execution_json_exists=(Test-Path -LiteralPath \"$runRoot/execution.json\")\n  error_cause='unknown';share_lock_cause='possible, not established';original_artifacts_modified=$false\n}\n$json=$record|ConvertTo-Json -Depth 30\n[System.IO.File]::WriteAllText((Join-Path $workspace \"$runRoot/failure_preservation_manifest.json\"),$json+[Environment]::NewLine,[System.Text.UTF8Encoding]::new($false))\n[ordered]@{archive_root=$archiveRoot;file_count=$entries.Count;bytes=($entries|Measure-Object bytes -Sum).Sum;source_count=$sourceChecks.Count;source_unchanged=$record.source_unchanged;process_count=$processes.Count;manifest_sha256=(Get-FileHash \"$runRoot/failure_preservation_manifest.json\" -Algorithm SHA256).Hash.ToLower();diagnostics=$diagRows.Count;states=$record.durable_state_count}|ConvertTo-Json -Compress",
+  "diagnostic_reason_count_tool": {
+    "chunk_id": "664bcd",
+    "exit_code": 0,
+    "wall_time_seconds": 1.2449274
+  },
+  "terminal_stderr_read_tool": {
+    "chunk_id": "35f542",
+    "exit_code": 0,
+    "wall_time_seconds": 0.6544935
+  },
+  "snapshot_comparison_tool": {
+    "chunk_id": "070240",
+    "exit_code": 0,
+    "wall_time_seconds": 0.6753824
+  },
+  "failure_reasons_from_persisted_diagnostics": {
+    "utc": "2026-11-07T17:08:15.5522140+00:00",
+    "persisted_diagnostics": 41,
+    "attempted": 41,
+    "completed": 8,
+    "by_reason": [
+      {
+        "reason": "static, blocked_by_stage1:numerical_gate",
+        "count": 33
+      },
+      {
+        "reason": "static, completed",
+        "count": 8
+      }
+    ],
+    "stage1_status": [
+      {
+        "status": "converged",
+        "count": 41
+      }
+    ]
+  },
+  "first_error": {
+    "type": "PermissionError",
+    "winerror": 5,
+    "callsite": "experiments/gftd_fit297_20261107.py:75",
+    "caller": "run:386 -> persist:313 -> write_json:80 -> atomic_bytes:75",
+    "operation": "os.replace(execution.partial.json.tmp, execution.partial.json)"
+  },
+  "secondary_error": {
+    "type": "FileExistsError",
+    "errno": 17,
+    "callsite": "experiments/gftd_fit297_20261107.py:71",
+    "caller": "run finally:487 -> persist:313 -> write_json:80 -> atomic_bytes:71",
+    "operation": "temp.open('xb')"
+  },
+  "failure_root_cause": "unknown",
+  "monitor_or_read_share_lock_cause": "possible, not confirmed",
+  "no_replay": true,
+  "no_source_edits": true,
+  "no_threshold_changes": true,
+  "monitor_note": "One monitor receipt mutation failed before job exit; scientific process/session remained alive. Monitor used append-only progress afterward. No effect on scientific calls established.",
+  "original_artifacts_preserved": true,
+  "technical_repair_started": false,
+  "raw_tool_history_scope": "All 16 actual scientific exec/poll receipts captured; not every unchanged monitoring snapshot tool call retained. Meaningful snapshots are in execution_host_progress.jsonl."
+}

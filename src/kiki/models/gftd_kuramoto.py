@@ -324,6 +324,7 @@ class GFTDKuramotoModel(DynamicsModel):
         self.initialization_mode = "legacy_static"
         self.inference_config = None
         self.fit_state = None
+        self.fit_private_details = None
         self.last_initialization = None
         self.n_nodes = int(n_nodes)
         self.mass = (
@@ -377,7 +378,12 @@ class GFTDKuramotoModel(DynamicsModel):
             packets.append(validate_observation(packet, self.n_nodes))
         if any(packet["sigma"] != packets[0]["sigma"] for packet in packets):
             raise ValueError("all observations must have the same sigma")
-        result = engine.fit_shared(copy.deepcopy(self.functional), packets, mode=self.fit_mode)
+        if run_context.gftd_fit297_v1 is None:
+            result = engine.fit_shared(copy.deepcopy(self.functional), packets, mode=self.fit_mode)
+        else:
+            from . import gftd_fit297
+            result = gftd_fit297.fit_shared(copy.deepcopy(self.functional), packets,
+                mode=self.fit_mode, config=copy.deepcopy(run_context.gftd_fit297_v1))
         functional = result["functional"]
         functional.__post_init__()
         if functional.n_nodes != self.n_nodes:
@@ -393,6 +399,7 @@ class GFTDKuramotoModel(DynamicsModel):
         self.functional, self.gates = functional, functional.gates
         self.mass, self.damping = functional.mass.copy(), functional.damping.copy()
         self.inference_config, self.fit_state = config, fit_state
+        self.fit_private_details = copy.deepcopy(result.get("private_details"))
         self.initialization_mode = "causal_two_stage"
         self.parent_initializer = None
         self.last_initialization = None
