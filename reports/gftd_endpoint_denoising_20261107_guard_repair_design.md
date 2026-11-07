@@ -1,0 +1,42 @@
+# 端点诊断：同点跨算术路径守卫的有界修复设计
+
+结论：可以在严格同点证据完整成立时，将冗余的跨算术路径标量比较改判为“不适用，已由同点及同一步长守卫覆盖”，再仅用已保存指标重算分类和采用条件。不是给损失加浮点容差，也不是改变科学门限。原fits、summary、源码及释放记录均保留不动。本文件只设计纠正附录，不执行重分类，不运行积分/拟合/确认。
+
+Scientist configured_model=gpt-6-astra，server_resolved_model=null。原诊断fits SHA256=38416c6e88cfc660418c79de735a0d4853662d39e692376e05c3ec818517877b，summary SHA256=c5f8b17e45ef861cb1d912795e2e10016b375d0432507055adf283e8b6710a29，须由附录执行器重新核验绑定。
+
+## 已读证据与数学理由
+
+只读比较了input_020/023/026/043的anchor记录与父噪声确认fits。四条best.u的3个元素及best.state的15个元素均与父best逐binary64位相同；两者history_step均为.0025；新best.observation_loss高于父冻结标量恰1 ULP；objective_guard_passed均为true。
+
+父初始化源码在收敛返回时使用raw=result.fun*scale重建残差，再计算raw@raw/2；新诊断残差函数直接从history_residual得到raw并计算raw@raw/2。除法后乘法在binary64中不保证逐位还原原数，因此不同算术路径允许相邻浮点损失。父raw未保存，本次未逐元素重演具体1 ULP舍入成因；该路径差异是可能解释，同点数学等价才是修复依据。
+
+同一状态、同一输入、模型、积分器及步长定义同一数学预测和目标。若候选正是父可行点，则“候选目标不劣于该父点”在同一目标定义下为恒等关系；跨路径标量差不能证明优化退步。恰1 ULP只是此次症状，不作为可接受误差阈值。不同点即使只差1 ULP，也不满足此同点证明。
+
+## 附录允许的唯一修正规则
+
+使用一般身份谓词扫描全部256个已执行main任务，不硬编码ID作为通过条件；现有四个anchor ID只是预期受影响项。对跨路径guard为false者，same_point_certificate仅由下列1–4及6的身份与同目标证据确定；第5为证书成立后的独立资格复核，不参与证书筛选：
+
+1. 原/父fits、原summary、观测、配置、共享动力学/历史残差/积分源文件与各自执行回执哈希完整核对；父子推断包装器可以不同，但共同数学RHS、参数、模型坐标、历史残差定义、观测数组/时间、sigma及积分实现必须证明相同。所谓同源是共同算子源，不要求两个不同runner文件哈希相等。
+2. 观测白名单每字段及数组内容一致，固定参数相同，dt逐位相同，float64及版本符合冻结回执。不能用未来评分作为同点证据。
+3. 候选best.state与父best逐元素binary64位相同；anchor的best.u、initial、feasible_parent还须与父u逐位相同；smooth若涉及不同维数坐标，须通过冻结端点坐标映射证明其与父点身份（不能直接比较不同维u），缺该证据则不予修复。shape必须一致，所有值有限；不使用allclose或小数打印后的字符串相等。
+4. 新记录parent_same_step_loss、initial_same_step_loss、best.observation_loss均有限且逐位相等，objective_guard_passed=true；非failed、有合法best，未发生需要解释的数值异常。
+5. 证书成立后，独立复查原numerical记录、往返两值、history主细RMS、future主细RMS/peak、numerical_error、p硬约束及主细预测判定，全部沿用原门。同点但预测未达标仍可消除冗余guard，随后分类prediction_fail；主细预测判定不一致或其他数值门失败仍分类未决。不得以预测通过筛选同点证书。
+6. 审查确认父标量与新标量来自上述两个冻结算术路径。附录记录两原值、位模式和ULP差以说明事实，但不以ULP<=某常数为准入条件。
+
+满足身份条件1–4及6时新增字段cross_path_guard_applicability='redundant_identical_point'、same_point_certificate=true，effective_guard=原objective_guard_passed；原frozen_parent_objective_guard=false保持原样并复制到附录。禁止把原false覆写为true或删除旧未决历史。
+
+任何身份条件不满足则不能消除该冗余guard：包括只有u相同但state不同、输入/参数/步长不一致、同路径guard不通过、原点不有限或源谱系无法核实。数值或预测失败不否定已经成立的同点身份，但其原失败分类必须独立保留。不同点的更小损失需要按已有同路径比较规则处理，不能借此方案批准。本次扫描预期只改变四条anchor；若谓词发现额外待改记录，暂停附录发布并提交独立复核，不自动扩大修正。本修复不改变input_072的真实父/anchor预测失败。
+
+## 有限执行与独立谱系
+
+允许新增只读后处理程序或附录执行器，但不改原科学runner或旧产物；运行时不得导入会执行rhs/积分/优化的入口。操作限JSON读取、哈希、binary64位比较、原门限比较、已保存指标聚合。一次证据审计及一次后处理；若失败则停止，返回缺证据项，不补跑模型求有利证据。
+
+输出独立目录（建议results/gftd_endpoint_guard_correction_20261107/）中的证书、纠正分类附录及回执，包含父原哈希、修复设计哈希、执行器哈希、四条条件布尔值及失败原因、原分类→有效分类和不变字段。须证明除四条anchor分类及其确定性聚合下游字段外，没有任何拟合点、损失、预测指标、噪声、数值门或选择索引改变。
+
+用原summary已有主/细指标按完整132输入重算parent/anchor/smooth分类、配对回退/改善、最坏值、高噪均值、all_numerically_valid、主细采用一致性及完整worth_independent_confirmation。不得只手工改总开关，也不因smooth132通过跳过同预算anchor比较。无fine情形仍保留原fine缺失定义，不编造细步重拟合结果。附录必须同时显示原worth=false及纠正后的值和理由，不能重写运行当时的执行结论。
+
+独立Reviewer需复算至少四条证书与全部聚合，并核查原产物哈希仍不变。只有完成纠正附录、结果复核且完整采用条件真实满足后，root才可决定是否释放已冻结条件确认；本设计不是确认释放凭证。若修复后仍有其他失败，继续保留未采用结论。
+
+## 科学意义与边界
+
+这是对重复资格判断的数学一致性修复，不增加新的实验成功证据。它可恢复本已相同的父/anchor点的可比性，不能证明优化充分、平滑唯一因果机制、真实系统收益或总体噪声覆盖。原预测反例、比较分母及科学阈值全部保留。代码决定、模型决定、科学决定由纠正后完整证据另行给出。

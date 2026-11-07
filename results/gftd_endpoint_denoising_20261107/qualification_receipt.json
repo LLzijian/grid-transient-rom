@@ -1,0 +1,35 @@
+{
+  "recorded_utc": "2026-11-07T08:36:07.132709+00:00",
+  "scientific_fits_executed": 0,
+  "optimizer_mocked": true,
+  "final_tests_passed": 15,
+  "qualification_runs": [
+    {
+      "chunk": "00abe3",
+      "passed": 14,
+      "pytest_seconds": 1.62,
+      "tool_wall_seconds": 2.6334719
+    },
+    {
+      "chunk": "95cf9e",
+      "passed": 15,
+      "pytest_seconds": 1.54,
+      "tool_wall_seconds": 2.4169419
+    },
+    {
+      "chunk": "0c926e",
+      "passed": 15,
+      "pytest_seconds": 1.42,
+      "tool_wall_seconds": 2.5204416
+    }
+  ],
+  "pytest_seconds_total": 4.58,
+  "tool_wall_seconds_total": 7.5708554,
+  "command": ".venv-gpu/Scripts/python.exe -B -m pytest -p no:cacheprovider --basetemp .tmp/gftd_endpoint_unit_20261107_03 tests/test_gftd_endpoint_denoising_20261107.py -q --maxfail=1",
+  "scope": "Geometry/RHS algebra,mocked optimizer and integration,real saved-JSON metric scoring;no scientific optimizer run.",
+  "pre_release_refinements": "Added noisy JSON score-path and nonhistory-refit exclusion tests,renamed endpoint estimation error,added parent-source references and132-input scope guard.No failure-driven scientific threshold change.",
+  "source_sha256": {
+    "experiments/gftd_endpoint_denoising_20261107.py": "a5d437032468839498585391195153169a1e27b82e563d52af9dd309c060e2f7",
+    "tests/test_gftd_endpoint_denoising_20261107.py": "11aecf47047518c10df2f5a9003eac84459fc4fee33fa86053b1c7e129081583"
+  }
+}

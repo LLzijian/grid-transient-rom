@@ -1,0 +1,174 @@
+{
+  "schema_version": 2,
+  "synthetic": false,
+  "run_id": "gftd_endpoint_denoising_20261107",
+  "purpose": "discrimination",
+  "scope": "All132 exposed artificial inputs;128 paired endpoint-estimation versus hard-anchor continuation fits,4 noiseless reused;known shared dynamics.",
+  "execution": {
+    "status": "COMPLETED",
+    "phase": "completed_reviewed_with_nonoverwriting_correction_selective_archive",
+    "action_id": "gftd-endpoint-denoising-20261107-01",
+    "exit_code": 0,
+    "normal_scientific_jobs_executed": 1,
+    "source_unchanged": true
+  },
+  "scientific_work": {
+    "budget_status": "closed",
+    "normal_job_limit": 1,
+    "main_optimization_tasks": 256,
+    "max_numerical_refits": 4,
+    "max_total_optimization_tasks": 260,
+    "max_total_optimizer_residual_calls": 312000,
+    "max_residual_calls_per_task": 1200,
+    "executed_inputs": 132,
+    "executed_optimization_tasks": 256,
+    "actual_optimizer_residual_calls": 27064,
+    "executed_fine_refits": 0,
+    "scientific_replays": 0,
+    "post_launch_technical_repairs": 1,
+    "new_FOM_executed": 0,
+    "shared_parameter_fits": 0,
+    "private_scientific_payload_reads": 0,
+    "unused_work_transferred": false,
+    "extra_scientific_integrations": 0
+  },
+  "evidence": {
+    "validity": "valid",
+    "optimizer_health": "healthy",
+    "optimization_adequacy": "unknown",
+    "mechanism_probe": "passed",
+    "comparison": "matched",
+    "confirmation": "none",
+    "effect": "gain",
+    "critical_events": "not_applicable",
+    "references": [
+      "reports/gftd_endpoint_denoising_20261107_protocol.md",
+      "reports/gftd_endpoint_denoising_20261107_design_review.md",
+      "reports/gftd_endpoint_denoising_20261107_implementation_review.md",
+      "reports/gftd_endpoint_denoising_20261107_guard_repair_design.md",
+      "reports/gftd_endpoint_denoising_20261107_guard_repair_review.md",
+      "reports/gftd_endpoint_denoising_20261107_guard_implementation_review.md",
+      "reports/gftd_endpoint_denoising_20261107_scientific_assessment.md",
+      "reports/gftd_endpoint_denoising_20261107_result_review.md",
+      "reports/gftd_endpoint_denoising_20261107_conclusion.md",
+      "results/gftd_endpoint_denoising_20261107/execution_release.json",
+      "results/gftd_endpoint_denoising_20261107/execution_receipt.json",
+      "results/gftd_endpoint_denoising_20261107/fits_frozen.json",
+      "results/gftd_endpoint_denoising_20261107/fits.json",
+      "results/gftd_endpoint_denoising_20261107/summary.json",
+      "results/gftd_endpoint_denoising_20261107/evidence_digest.json",
+      "results/gftd_endpoint_denoising_20261107/root_adoption.json",
+      "results/gftd_endpoint_guard_correction_20261107/execution_release.json",
+      "results/gftd_endpoint_guard_correction_20261107/execution_receipt.json",
+      "results/gftd_endpoint_guard_correction_20261107/certificates.json",
+      "results/gftd_endpoint_guard_correction_20261107/effective_classification_appendix.json"
+    ]
+  },
+  "proposal": {
+    "scientific_claim": "observation_only",
+    "model_decision": "retain_evidence",
+    "science_decision": "continue",
+    "next_action": "confirm"
+  },
+  "inference": {
+    "claim_target": "algorithm_performance",
+    "evaluation_contract_reference": "reports/gftd_endpoint_denoising_20261107_protocol.md",
+    "comparison_reference": "reports/gftd_endpoint_denoising_20261107_protocol.md",
+    "budget_reference": "reports/gftd_endpoint_denoising_20261107_protocol.md",
+    "optimization_adequacy_reference": "reports/gftd_endpoint_denoising_20261107_scientific_assessment.md",
+    "probe_reference": "results/gftd_endpoint_guard_correction_20261107/effective_classification_appendix.json",
+    "probe_scope": "All132 exposed artificial inputs;128 paired endpoint-estimation versus hard-anchor continuation fits,4 noiseless reused;known shared dynamics.",
+    "effect_reference": "reports/gftd_endpoint_denoising_20261107_conclusion.md",
+    "alternative_explanations_reference": "reports/gftd_endpoint_denoising_20261107_scientific_assessment.md",
+    "data_exposure": "development_seen",
+    "selection_accounted_for": true,
+    "selection_accounting_reference": "reports/gftd_endpoint_denoising_20261107_protocol.md",
+    "independent_review": true,
+    "independent_review_reference": "reports/gftd_endpoint_denoising_20261107_result_review.md",
+    "review_record": {
+      "reference": "reports/gftd_endpoint_denoising_20261107_result_review.md",
+      "reviewer_id": "/root/loop_review",
+      "scope": "All132 exposed artificial inputs;128 paired endpoint-estimation versus hard-anchor continuation fits,4 noiseless reused;known shared dynamics.",
+      "evidence_author_ids": [
+        "/root",
+        "/root/repair_design",
+        "/root/code_review"
+      ],
+      "reviewed_references": [
+        "reports/gftd_endpoint_denoising_20261107_protocol.md",
+        "reports/gftd_endpoint_denoising_20261107_result_review.md",
+        "results/gftd_endpoint_denoising_20261107/fits.json",
+        "results/gftd_endpoint_denoising_20261107/summary.json",
+        "results/gftd_endpoint_guard_correction_20261107/certificates.json",
+        "results/gftd_endpoint_guard_correction_20261107/effective_classification_appendix.json"
+      ],
+      "verdict": "supports",
+      "supports": [
+        "observation_only",
+        "retain_evidence",
+        "continue"
+      ]
+    }
+  },
+  "root_decisions": {
+    "code": "retain_branch",
+    "model": "retain_evidence",
+    "science": "continue",
+    "working_candidate": "Frozen lawful simple600 then endpoint-estimation1200;independent new-direction confirmation required.",
+    "model_promoted": false,
+    "default": "none",
+    "incumbent_changed": false,
+    "protected_anchors_changed": false,
+    "finite_scientific_window_closed": true,
+    "unused_work_transferred": false,
+    "post_launch_technical_repairs": 1,
+    "extra_scientific_fits": 0,
+    "extra_scientific_integrations": 0,
+    "scientific_replays": 0
+  },
+  "observations": {
+    "classification_counts": {
+      "parent": {
+        "pass": 131,
+        "prediction_fail": 1,
+        "numerically_unresolved": 0,
+        "optimization_no_output": 0,
+        "planned": 0,
+        "not_run": 0
+      },
+      "anchor": {
+        "pass": 131,
+        "prediction_fail": 1,
+        "numerically_unresolved": 0,
+        "optimization_no_output": 0,
+        "planned": 0,
+        "not_run": 0
+      },
+      "smooth": {
+        "pass": 132,
+        "prediction_fail": 0,
+        "numerically_unresolved": 0,
+        "optimization_no_output": 0,
+        "planned": 0,
+        "not_run": 0
+      }
+    },
+    "original_adoption": false,
+    "effective_adoption": true,
+    "prediction_error_improved": 113,
+    "prediction_error_worsened": 15,
+    "prediction_error_same": 4,
+    "source_of_effective_classification": "results/gftd_endpoint_guard_correction_20261107/effective_classification_appendix.json"
+  },
+  "cost": {
+    "scientific_wall_seconds": 391.53095829999074,
+    "optimization_tasks": 256,
+    "actual_residual_calls": 27064,
+    "fine_refits": 0,
+    "qualification_pytest_seconds": 4.58,
+    "full_project_CPU_seconds": null,
+    "LLM_seconds": null,
+    "identity_correction_wall_seconds": 1.6274393000057898,
+    "correction_qualification_pytest_seconds": 4.65
+  }
+}
