@@ -1,0 +1,28 @@
+{
+  "recorded_utc": "2026-11-07T13:34:42.805504+00:00",
+  "type": "prelaunch_engineering_repair_qualification",
+  "parent_qualification": "results/gftd_sparse_topology_20261107/qualification_receipt.json",
+  "reported_by": "/root/code_review",
+  "configured_model": "gpt-6.1-sol",
+  "server_resolved_model": null,
+  "command": ".venv-gpu/Scripts/python.exe -B -m pytest -p no:cacheprovider --basetemp .tmp/gftd_sparse_unit_20261107_04 tests/test_gftd_sparse_topology_20261107.py -q --maxfail=1",
+  "final": {
+    "tool_chunk_id": "41ca4a",
+    "exit_code": 0,
+    "passed": 27,
+    "pytest_wall_seconds": 1.44,
+    "exec_wall_seconds": 2.4662256,
+    "session_id": null
+  },
+  "source_sha256": {
+    "experiments/gftd_sparse_topology_20261107.py": "2eebb1e659e1b17cacd5ed168745bf1638101195937bad70cf708485f55f7c7b",
+    "tests/test_gftd_sparse_topology_20261107.py": "152cc4d22a25022bd6e9495af9426603937592e184c036748a597d3b1fde3ec5",
+    "reports/gftd_sparse_topology_20261107_protocol.md": "040b03bec2bf2021df7bb4ff1d18ba769095d5023aa73e6178ce38924e510368"
+  },
+  "change": "Compare complete ranks of X, Z and all six conditional dictionaries across grids; preserve insufficient negative calibration. Eight counterexamples added. Scientific samples, thresholds, solver, penalty unchanged.",
+  "prelaunch_source_snapshot": "results/gftd_sparse_topology_20261107/prelaunch_v1",
+  "scientific_sampling": false,
+  "formal_noise_directions_generated": 0,
+  "real_data_reads": false,
+  "total_qualification_wall_seconds": null
+}

@@ -5,6 +5,8 @@
 前序版本已归档于 [history/architecture_design_before_gftd_kuramoto_20261106](history/architecture_design_before_gftd_kuramoto_20261106.md)。
 2026-11-07 更正了数学和实现主张，原始字节保存在 `.tmp/gftd_resume_20261107/original/docs/`。当前采用的方程与资格范围见 [5N 修订设计](gftd_repair_design_20261107.md)，经独立设计与实现审查；下文 v2.0 公式用于说明设计空间，不覆盖该修订的明确机械功率端口和坐标合同。
 
+2026-11-07 主线实施补充采用[未知拓扑→动态调制→IEEE39 三步设计](../reports/gftd_mainline_20261107_architecture.md)。先用完整端口弱形式字典恢复 K4 的未知非负边权，再以 beta=k*s 与精确指数列建立层级筛选，并在每次候选改变后重推幅值。通用 fit/initialize 经人工资格后进入 train fit297 同期比较；绝对激励及逐边歧义在拓扑 Run 内判断。这个实施顺序不改变 5N 方程、部署信息或数据边界。
+
 ## 1. 普适问题定义：从部分观测发现广义藏本网络结构
 
 本研究的算法本体针对**具有惯性与耗散的广义藏本网络（Generalized Inertial Kuramoto Networks）在部分观测下的结构发现与低阶暂态闭合**；高阶电力系统（IEEE 39 十机暂态）作为含未观测内部电磁、励磁与调速动态的**非理想真实物理验证场景**。
