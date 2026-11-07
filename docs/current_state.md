@@ -1,38 +1,32 @@
 # 当前研究状态
 
-**2026-10-31：p_constant_norm唯一分析完成，六机发布数值必要条件交集为空、四机未排除；39核心与公开整数证书独立复核通过，最终独立文本审查通过，归档以本次提交及私有核验回执为准。**
-用户已明确授权父1fcfd53的37文件向https://github.com/LLzijian/grid-transient-rom.git研究分支推送，并在核验后继续harness自动迭代；父推送/核验已完成。
-显式暂停优先。原val/test关闭、旧消费test永久退出选择、新FOM=0、TASK4暂停、default none/四指针/受保护模型原范围不变。
-部署仍11点100ms因果δ/ω与末点真p₀后共享自治ODE，不增加未来真值、事件身份或元数据。
+**2026-11-07：用户已明确指示“按照此方案开始研究和推进”，GFTD 修正与研究推进恢复。**
+已修正联合储能与独立机械功率状态，完成首轮人工局部观测探针；范围内推进无需逐轮再次请示用户。
 
-**新增知识。** 固定父θ，以已发布binary64 R/ν为精确常量、门限为整数10精确乘ν，机0/3/4/6/7/8的36条必要约束各无共同|z|。
-机1/2/5/9未被排除，非空不保证实际z可行、共同符号或完整模型/初始化成立。相对父“已选η不足”，新增发布统计层面的全常数幅值冲突。
-结论仅此发布数值系统；原聚合/平方根误差包络unknown，不升级原有限残差、父binary64乘法门或连续物理系统的否证。
-固定θ结果不扩成重新估计的仿射二阶族无效，不归因真实变化驱动、限幅、坐标偏移或更高阶必要。
+## 当前范围与指针
 
-**执行与证据。** 实际Astra设计f2609ff0及判读8fdc16d2，sol实现/执行与不同作者的独立审查，server-resolved未返回为null。
-协议f0b6ac79、authorizatione5edca5e、bindings65cf35d5、源码c7f1e9c4/测试2bb549ae、实施审查快照2e80a8f8与release457ac5d3冻结。
-唯一analyze exit0，八源及所有控制前后未变：180格/720字段→360约束/十交集→720端点重建/720极值不等式核验全部完成。
-公开summary9489dadc、receipt3e63f9fe、39核心digestd4b58a27；阶段独立审查a45dc6f8另对全公开证书作整数复核。
-两原生创建身份已捕获并核退出；私有collector/guard/verify及辅助档案、原生身份保留本地，公开仅派生既有公开数值的端点/证人及hash。
-N_original为all297/stable267/unstable30，失稳有窗history30、cross_t0两窗27、future40/80ms为27/22；两者分开且权重不改。
-阶段w/μ归一，不把有窗事件重新等权；原相位、x10部署/x12与x16纯未来首窗及尾段保持。R/ν/端点s⁻²、C s⁻⁴、μ无量纲。
+- 原始 val/test 关闭；旧消费 test 永久退出选择；新 FOM=0；TASK4 继续暂停。
+- 部署仍为 11 点、100 ms 因果 δ/ω 历史与末点真实 p₀，随后共享自治 ODE。
+- default none；incumbent 与 protected anchors 保留原模型及原适用范围。新 GFTD 是工作候选，未晋升。
+- 现有 train fit297 暴露谱系不变；人工算例仅支撑其明确生成条件下的结论。
+- 授权及父归档见 [authorization](../results/gftd_repair_20261107/authorization.json) 与 [parent_archive_reconciliation](../results/gftd_repair_20261107/parent_archive_reconciliation.json)。
 
-**五轴与三决定。** 冻结输入/解析/精确算术证据有效；当前优化健康与充分性not_applicable，来源ODE两项unknown。
-机制对象是发布必要条件，不是物理驱动识别；获得解释排除信息，无自主预测收益或新数据确认，仍为已消费train探索。
-代码retain_branch、模型retain_evidence、科学continue/harness observation_only；关闭常数支线，不晋升/采用新模型。
-本轮预算关闭，0执行后修复/重试，未用机会不转移。0新参数估计/私有科学载荷读取/源聚合重算/新残差/QR/积分/敏感界/滤波/初始化/optimizer/ROM/FOM/训练/下载/模型读写。
-原生wall0.328663s包含工具wall0.0321724s，worker阶段CPU0.03125s，不相加；完整CPU/LLM/helper与精确操作总数unknown。
-22项最终工程测试通过。历史覆盖澄清及协议/授权快照保留，不改变原样本或科学目标。
+## 已核实事实
 
-**父归档。** 1fcfd53在明确授权后普通推送6aa502、核远端415872；37原字节/147核心/28来源和六创建退出核一致。
-父private archival_verified SHA46c5df1a...已取代历史push阻碍；p_residual_stage23842e2、p_dissipative01dadd1、p_driver_order80f515b及更早关闭余额均不变。
-父10η/10MP的充分性仍限主80Q/all297目标，180格108可分辨/72相容及条件R/J/P不回写；来源参考/有效时间/限幅/单位资格unknown保持。
+前轮 p_constant_norm_20261031 已完成普通归档。2026-11-07 再核远端 codex/force-memory-20261028 为 bd4db257daf6f1bc925880a996f717d401faae6b，与本地历史回执一致；33 个公开归档文件原字节匹配。无须重放该 Run。
 
-**下一动作。** 先核本Run选择性普通提交/推送的远端、原字节及本地归档回执；归档未确认不新开Run。
-不追加常数拟合、符号/组/逐事件偏置、窗口扫描或私有残差精确重算。
-唯一下一提名DRAFT为共同参考来源合同：先判现有材料是否已回答/是否有决策辨别力，再考虑一次四类片段核对p中心与调速器参考平衡的对象来源与相等关系。
-缺可信历史绑定或无辨别力则unknown并暂存，不用当前代码追认历史，不读原HDF/私人条件或拟合代替。
-当前无下一Run/训练释放；归档未核验先对账，不重放完成或未知作业。
+该轮仍只证明固定父参数、已发布 binary64 范数与精确整数门限下，六机共享常数必要条件交集为空。它不排除重新拟合模型族、其他合法初始化或优化改善，也不识别真实物理失配原因。常数支线及旧工作量余额继续关闭。
 
-[本轮结论](../reports/p_constant_norm_20261031_conclusion.md)、[科学判读](../reports/p_constant_norm_20261031_scientific_assessment.md)、[最终独立审查](../reports/p_constant_norm_20261031_final_review.md)、[39项核心身份](../results/p_constant_norm_20261031/evidence_digest.json)。
+GFTD 原有 6 个单测通过，但未证明旧 40 维基线嵌入、全状态域功率恒等式、COI 动力学解耦或部分观测结构恢复。系统评估已给出指数截断梯度和 COI 交叉作用反例。当前任务优先消除这些实现与命题不一致。
+
+## 当前执行与下一动作
+
+gftd_repair_20261107 已完成独立设计/实现审查及 43 项冻结资格测试，采用 5N 独立 p/a/r 和精确父映射。另有执行后的[两图梯度/功率补充检查](../results/gftd_repair_20261107/power_supplement_receipt.json)：16 个状态 × 2 门共 32 项通过，单独保留原释放时的覆盖范围。非零调制部署初始化与部分观测拟合尚未实现，不晋升模型。
+
+gftd_observability_20261107 已完成，唯一 action 为 gftd-observability-20261107-01，8 个固定三节点条件 × 6 种数值设置全部完成，耗时 76.36 s。三个开启调制的非平衡条件均为局部 7 秩，条件数约 124 万—182 万；平衡与关闭调制的负校准成立。此结果限于登记尺度下的局部信息，不证明噪声下恢复或真实系统收益。详见[科学判读](../reports/gftd_observability_20261107_scientific_assessment.md)和[独立结果复核](../reports/gftd_observability_20261107_result_review.md)。
+
+代码决定 retain_branch；模型决定 retain_evidence；科学决定 continue。本次有限工作量关闭，不转移余额。下一项工作是先冻结观测误差和未来误差尺度，再设计已知共享参数下的合法隐状态初始化比较；固定共享调制参数，比较 a=0 简单初始化与 a/r 推断，检验噪声敏感性。新 Run 尚未释放，IEEE39 训练尚未启动。
+
+执行结果以[完成回执](../results/gftd_observability_20261107/execution_receipt.json)为准；started.json 是不可重放的启动记录，其中 RUNNING 不是当前进程状态。汇总见[本轮推进报告](../reports/gftd_progress_20261107.md)。
+
+旧状态原文保存在 [恢复前状态](history/current_state_before_gftd_resume_20261107.md)。原[结论](../reports/p_constant_norm_20261031_conclusion.md)、[科学判读](../reports/p_constant_norm_20261031_scientific_assessment.md)和[最终独立审查](../reports/p_constant_norm_20261031_final_review.md)保留不改。
