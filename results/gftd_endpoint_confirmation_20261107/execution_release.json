@@ -1,0 +1,76 @@
+{
+  "released": true,
+  "recorded_utc": "2026-11-07T09:32:10.027437+00:00",
+  "action_id": "gftd-endpoint-confirmation-20261107-01",
+  "parent_commit": "ec8c8750c8804780ffd164ad63dc046ad762e25f",
+  "root_adoption": "Reviewed diagnostic meets all prospective conditions;14 mock engineering checks and independent frozen implementation review accepted.Complete lawful simple600-to-smooth1200 on64 new paired Gaussian directions at four fixedstates.",
+  "scientist_task": "/root/repair_design",
+  "configured_scientist": "gpt-6-astra",
+  "reviewer_task": "/root/loop_review",
+  "configured_reviewer": "gpt-6.1-sol",
+  "modeler_task": "/root/code_review",
+  "configured_modeler": "gpt-6.1-sol",
+  "server_resolved_models": null,
+  "normal_job_limit": 1,
+  "base_inputs": 132,
+  "new_noise_directions": 64,
+  "paired_noise_inputs": 128,
+  "reused_noiseless_inputs": 4,
+  "max_main_optimization_tasks": 256,
+  "max_numerical_refits": 4,
+  "max_total_optimization_tasks": 260,
+  "max_total_optimizer_residual_calls": 235200,
+  "stage1_call_limit": 600,
+  "stage2_call_limit": 1200,
+  "history_steps": [
+    0.0025,
+    0.00125
+  ],
+  "future_steps": [
+    0.01,
+    0.005
+  ],
+  "reference_sources": {
+    "truth": {
+      "path": "results/gftd_noise_confirmation_20261107/isolated_truth.json",
+      "sha256": "eed9efcdac4918701cb565ca4819e202acbe7f1a8b8b00233f0cfff19394f4d6"
+    },
+    "noiseless_observations": {
+      "path": "results/gftd_noise_confirmation_20261107/observations.json",
+      "sha256": "0565d3cf5227fe65f1f7b838839c1d962567193f5f12ef6d30f563fe480340cf"
+    },
+    "noiseless_summary": {
+      "path": "results/gftd_noise_confirmation_20261107/summary.json",
+      "sha256": "761baf907a84cd5fecc4708a45feb7709ecd86dad45a5dd1487a366d9fa0e790"
+    },
+    "case_to_source_input": {
+      "0": "input_000",
+      "1": "input_033",
+      "2": "input_066",
+      "3": "input_099"
+    }
+  },
+  "command": ".venv-gpu/Scripts/python.exe -B experiments/gftd_endpoint_confirmation_20261107.py",
+  "source_sha256": {
+    "experiments/gftd_endpoint_confirmation_20261107.py": "147b84850897a5764b85c5675fde4b1ed88fed867c5c030f2e79896a8c5de3c4",
+    "experiments/gftd_endpoint_denoising_20261107.py": "a5d437032468839498585391195153169a1e27b82e563d52af9dd309c060e2f7",
+    "experiments/gftd_initialization_20261107.py": "890c7ffbcb75f308be3522b5e413f6ee168f383d8fed471f2db55ec121738749",
+    "experiments/gftd_noise_confirmation_20261107.py": "0ada2d02200778b4e339f2202ef6f9e186916b16b8662275af2fec986d17ef36",
+    "experiments/gftd_observability_20261107.py": "b8e7e1aa96afbe0e4757d799002310c1939d2e10191f07c03fbdf603cacaabcc",
+    "reports/gftd_endpoint_confirmation_20261107_design_review.md": "ec04c211723b9b01cb5ccfa168e14445a3e57e9e0b90774a491f1a49ede23014",
+    "reports/gftd_endpoint_confirmation_20261107_implementation_review.md": "a38417d89445aa6d87d03e35dbddb2a81e0a7eff8133ac57306b32efcc6d656d",
+    "reports/gftd_endpoint_confirmation_20261107_protocol.md": "4bba5ceb4a5e33c5a80bf8fbeb9d9d5158b896a0687d3f70db73d6f96d01a2f0",
+    "reports/gftd_endpoint_denoising_20261107_result_review.md": "1d7d1d1e5cff117fc53d2271f8a76ed89e992a5bec6bca7ec82f40abf81a8191",
+    "results/gftd_endpoint_confirmation_20261107/qualification_receipt.json": "11e9edacc1025386f83ecd3e3f9709210091ec970da868e33e68d39143d04fd4",
+    "results/gftd_endpoint_denoising_20261107/root_adoption.json": "f7493e4629471d3658cc66eafdfa62ef5ab42ef3cf4d2cd40c4ca42373c10511",
+    "results/gftd_endpoint_guard_correction_20261107/certificates.json": "b2e91f254b2ffa3b93d4961daad5b6462030a4f2933b60af61435efe9c118812",
+    "results/gftd_endpoint_guard_correction_20261107/effective_classification_appendix.json": "c33bf421d24083bd6d959eb68385f51ab828943632dffbe2eb780b8e7244a187",
+    "results/gftd_endpoint_guard_correction_20261107/execution_receipt.json": "0b7bac0fa3deb1bc73c4868e1ebbadfd6292e5f16b013d895310aca7302c6e32",
+    "results/gftd_noise_confirmation_20261107/isolated_truth.json": "eed9efcdac4918701cb565ca4819e202acbe7f1a8b8b00233f0cfff19394f4d6",
+    "results/gftd_noise_confirmation_20261107/observations.json": "0565d3cf5227fe65f1f7b838839c1d962567193f5f12ef6d30f563fe480340cf",
+    "results/gftd_noise_confirmation_20261107/summary.json": "761baf907a84cd5fecc4708a45feb7709ecd86dad45a5dd1487a366d9fa0e790",
+    "src/kiki/physics/graph.py": "724dd978e7627ccceec0ad94067eef304c8e5562a378641516d544e1d8ca8dfe",
+    "src/kiki/physics/kuramoto_functional.py": "2155837548ddb196df5f65d727000f091e59411ea816941076a21a27fdc27452",
+    "tests/test_gftd_endpoint_confirmation_20261107.py": "f87414f5f272a1eff19e23b677a37b66a2d0f70e9a235001859e3bf00fd8550f"
+  }
+}
