@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+import copy
 import json
 from pathlib import Path
 from typing import Any
@@ -315,7 +316,15 @@ class GFTDKuramotoModel(DynamicsModel):
         mass: np.ndarray | None = None,
         damping: np.ndarray | None = None,
         seed: int = 324,
+        fit_mode: str = "modulated",
     ) -> None:
+        if fit_mode not in {"static", "modulated"}:
+            raise ValueError("fit_mode must be static or modulated")
+        self.fit_mode = fit_mode
+        self.initialization_mode = "legacy_static"
+        self.inference_config = None
+        self.fit_state = None
+        self.last_initialization = None
         self.n_nodes = int(n_nodes)
         self.mass = (
             np.ones(self.n_nodes, dtype=np.float64)
@@ -353,10 +362,41 @@ class GFTDKuramotoModel(DynamicsModel):
     def fit(
         self, train: list[dict[str, Any]], val: list[dict[str, Any]], run_context: RunContext
     ) -> FitResult:
-        raise NotImplementedError(
-            "Partial-observation latent inference and deployment-kernel fitting are not implemented. "
-            "WeakFormVariationalProjector is a conditional known-dictionary tool only."
-        )
+        if val:
+            raise ValueError("val is closed for GFTD fitting")
+        if not train:
+            raise ValueError("fit requires a nonempty observation batch")
+        from . import gftd_fitting as engine
+        from .gftd_discovery import validate_observation
+        packets = []
+        for sample in train:
+            if set(sample) != {"theta_history", "omega_history", "history_times", "p0", "sigma"}:
+                raise ValueError("fit accepts exactly history, p0 and sigma")
+            packet = {("p_end" if key == "p0" else key): copy.deepcopy(value)
+                      for key, value in sample.items()}
+            packets.append(validate_observation(packet, self.n_nodes))
+        if any(packet["sigma"] != packets[0]["sigma"] for packet in packets):
+            raise ValueError("all observations must have the same sigma")
+        result = engine.fit_shared(copy.deepcopy(self.functional), packets, mode=self.fit_mode)
+        functional = result["functional"]
+        functional.__post_init__()
+        if functional.n_nodes != self.n_nodes:
+            raise engine.FitFailure("fitted node count changed", {"status": "invalid_output"})
+        config = copy.deepcopy(result["config"])
+        engine.validate_config(functional, config)
+        fit_state = copy.deepcopy(result["fit_state"])
+        json.dumps(dict(config=config, fit_state=fit_state), allow_nan=False)
+        status = result["status"]
+        if status not in {"completed", "not_identified"}:
+            raise engine.FitFailure("no legal fitted candidate", fit_state)
+        fit_result = FitResult(self.method_name, status, (), (), None, copy.deepcopy(fit_state))
+        self.functional, self.gates = functional, functional.gates
+        self.mass, self.damping = functional.mass.copy(), functional.damping.copy()
+        self.inference_config, self.fit_state = config, fit_state
+        self.initialization_mode = "causal_two_stage"
+        self.parent_initializer = None
+        self.last_initialization = None
+        return fit_result
 
     @classmethod
     def from_parent(cls, parent):
@@ -407,6 +447,23 @@ class GFTDKuramotoModel(DynamicsModel):
             raise ValueError("history_times must cover -0.1 to 0 seconds at 0.01 seconds")
         if p0.shape != (self.n_nodes,) or not all(np.isfinite(v).all() for v in (theta, omega, times, p0)):
             raise ValueError("history and p0 must be finite and node-aligned")
+        if self.initialization_mode == "causal_two_stage":
+            from . import gftd_fitting as engine
+            try:
+                engine.validate_config(self.functional, self.inference_config)
+                packet = dict(theta_history=theta, omega_history=omega, history_times=times,
+                              p_end=p0, sigma=self.inference_config["sigma"])
+                state, diagnostics = engine.initialize_complete(self.functional, packet, self.inference_config)
+                state = np.asarray(state, dtype=np.float64)
+                if state.shape != (5*self.n_nodes,) or not np.isfinite(state).all():
+                    raise engine.InitializationFailure("invalid initialized state", {"status": "invalid_output"})
+                if not np.array_equal(state[2*self.n_nodes:3*self.n_nodes], p0):
+                    raise engine.InitializationFailure("p_end hard constraint changed", {"status": "invalid_output"})
+            except engine.InitializationFailure as error:
+                self.last_initialization = copy.deepcopy(error.diagnostics)
+                raise
+            self.last_initialization = copy.deepcopy(diagnostics)
+            return state
         if np.any(self.functional.gates.s_mod != 0):
             raise NotImplementedError("nonzero-modulation causal latent initialization is not implemented")
         amp = np.zeros(self.n_nodes)
@@ -453,9 +510,13 @@ class GFTDKuramotoModel(DynamicsModel):
             -.1, .1, (5, self.n_nodes)))
         return dict(self.functional.power_balance_audit(state), method=self.method_name,
                     state_dimension=5*self.n_nodes, coi_dynamics_decoupled=False,
-                    partial_observation_fit_implemented=False)
+                    partial_observation_fit_implemented=True,
+                    initialization_mode=self.initialization_mode)
 
     def save(self, path: str | Path) -> None:
+        if self.initialization_mode == "causal_two_stage":
+            from .gftd_fitting import validate_config
+            validate_config(self.functional, self.inference_config)
         from dataclasses import fields
         def serial(value):
             return value.tolist() if isinstance(value, np.ndarray) else value
@@ -464,7 +525,10 @@ class GFTDKuramotoModel(DynamicsModel):
             for field in fields(self.functional) if field.name != "gates"
         }
         parent = self.parent_initializer
-        payload = dict(format="gftd_kuramoto_5n_v1", seed=self.seed, functional=functional,
+        payload = dict(format="gftd_kuramoto_5n_v2", seed=self.seed, functional=functional,
+                       initialization_mode=self.initialization_mode, fit_mode=self.fit_mode,
+                       inference_config=self.inference_config, fit_state=self.fit_state,
+                       last_initialization=self.last_initialization,
                        delta_star=self.delta_star.tolist(),
                        gates={field.name: serial(getattr(self.functional.gates, field.name))
                               for field in fields(self.functional.gates)},
@@ -482,7 +546,7 @@ class GFTDKuramotoModel(DynamicsModel):
     @classmethod
     def load(cls, path: str | Path):
         payload = json.loads(Path(path).read_text(encoding="utf-8"))
-        if payload.get("format") != "gftd_kuramoto_5n_v1":
+        if payload.get("format") not in {"gftd_kuramoto_5n_v1", "gftd_kuramoto_5n_v2"}:
             raise ValueError("only the explicit 5N format is supported; old 4N checkpoints are incompatible")
         kwargs = payload["functional"]
         gates = StructuralGates(**payload["gates"])
@@ -514,4 +578,17 @@ class GFTDKuramotoModel(DynamicsModel):
                 key: torch.as_tensor(value, dtype=template[key].dtype)
                 for key, value in parent["state_dict"].items()}, strict=True)
             model.parent_initializer = initializer.eval()
+        if payload["format"] == "gftd_kuramoto_5n_v2":
+            mode = payload["initialization_mode"]
+            if mode not in {"legacy_static", "causal_two_stage"}:
+                raise ValueError("unknown initialization dispatch")
+            if payload["fit_mode"] not in {"static", "modulated"}:
+                raise ValueError("unknown fit mode")
+            model.initialization_mode, model.fit_mode = mode, payload["fit_mode"]
+            model.inference_config = payload["inference_config"]
+            model.fit_state = payload["fit_state"]
+            model.last_initialization = payload["last_initialization"]
+            if mode == "causal_two_stage":
+                from .gftd_fitting import validate_config
+                validate_config(functional, model.inference_config)
         return model

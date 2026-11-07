@@ -224,9 +224,9 @@ def test_roundtrip_all_rhs_parameters_and_parent_initializer(tmp_path):
         GFTDKuramotoModel.load(checkpoint)
 
 
-def test_unimplemented_discovery_and_modulated_initializer_fail_explicitly():
+def test_empty_fit_and_legacy_modulated_initializer_fail_explicitly():
     model = GFTDKuramotoModel(n_nodes=3)
-    with pytest.raises(NotImplementedError):
+    with pytest.raises(ValueError):
         model.fit([], [], RunContext())
     model.gates = StructuralGates.overcomplete(3,3)
     model.functional.gates = model.gates

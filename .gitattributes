@@ -135,3 +135,22 @@
 /tests/test_gftd_sparse_topology_20261107.py -text
 /harness/runs/gftd_sparse_topology_20261107.json -text
 /results/gftd_sparse_topology_20261107/** -text
+
+# Preserve the exact modulation/interface implementation and evidence bytes.
+/src/kiki/models/gftd_discovery.py -text
+/src/kiki/models/gftd_fitting.py -text
+/src/kiki/models/base.py -text
+/tests/test_gftd_discovery.py -text
+/tests/test_gftd_fitting.py -text
+/tests/test_gftd_model_fit.py -text
+/experiments/gftd_modulation_20261107.py -text
+/tests/test_gftd_modulation_20261107.py -text
+/harness/runs/gftd_modulation_20261107.json -text
+/results/gftd_modulation_20261107/** -text
+
+# Preserve the bounded Run2 I/O recovery without rewriting original sources.
+/experiments/gftd_modulation_20261107_resume01.py -text
+/tests/test_gftd_modulation_resume01.py -text
+
+# Preserve the fit297 prelaunch contracts and engineering evidence bytes.
+/results/gftd_fit297_20261107/** -text

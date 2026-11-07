@@ -1,0 +1,218 @@
+{
+  "action_id": "gftd-modulation-20261107-01",
+  "status": "FAILED",
+  "release_sha256": "72140d277ec13405c0d7ddfdbecf5b97f36e986e6c93c9fd7e197ec9aea99808",
+  "command": "$env:PYTHONDONTWRITEBYTECODE='1'\n$taskStartUtc = [DateTime]::UtcNow.ToString('o')\n$taskHostTimer = [System.Diagnostics.Stopwatch]::StartNew()\nWrite-Output ('HOST_START_UTC=' + $taskStartUtc)\n& ./.venv-gpu/Scripts/python.exe -B experiments/gftd_modulation_20261107.py\n$taskProgramExit = $LASTEXITCODE\n$taskHostTimer.Stop()\nWrite-Output ('HOST_END_UTC=' + [DateTime]::UtcNow.ToString('o'))\nWrite-Output ('HOST_WALL_SECONDS=' + $taskHostTimer.Elapsed.TotalSeconds.ToString('R', [System.Globalization.CultureInfo]::InvariantCulture))\nWrite-Output ('PROGRAM_EXIT_CODE=' + $taskProgramExit)\nexit $taskProgramExit",
+  "cwd": "E:\\03-nn_Transfer_Func\\kiki",
+  "environment_overrides": {
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "configured_role_model": "gpt-6.1-sol",
+  "server_resolved_model": null,
+  "preflight": {
+    "chunk_id": "9ec87d",
+    "wall_time_seconds": 0.8276747,
+    "exit_code": 0,
+    "original_token_count": 53,
+    "output": "{\"release_hash\":\"72140d277ec13405c0d7ddfdbecf5b97f36e986e6c93c9fd7e197ec9aea99808\",\"source_hashes_matched\":42,\"started_exists\":false,\"project_python_processes\":0,\"checked_utc\":\"2026-11-07T14:42:55.2959437Z\"}\r\n"
+  },
+  "process_start_utc": "2026-11-07T14:43:11.4086496Z",
+  "initial_chunk_id": "413123",
+  "session_id": 78948,
+  "formal_invocations": 1,
+  "tool_calls": [
+    {
+      "chunk_id": "413123",
+      "wall_time_seconds": 10.0113632,
+      "session_id": 78948,
+      "original_token_count": 12,
+      "output": "HOST_START_UTC=2026-11-07T14:43:11.4086496Z\r\n"
+    },
+    {
+      "chunk_id": "4a4aa0",
+      "wall_time_seconds": 5.0066483,
+      "session_id": 78948,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "9fa3fa",
+      "wall_time_seconds": 5.0048225,
+      "session_id": 78948,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "c1959e",
+      "wall_time_seconds": 10.0059673,
+      "session_id": 78948,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "76033e",
+      "wall_time_seconds": 5.0016339,
+      "session_id": 78948,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "8537d1",
+      "wall_time_seconds": 10.0028361,
+      "session_id": 78948,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "1136e9",
+      "wall_time_seconds": 10.0008685,
+      "session_id": 78948,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "451043",
+      "wall_time_seconds": 10.0165913,
+      "session_id": 78948,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "7b5763",
+      "wall_time_seconds": 10.0109226,
+      "session_id": 78948,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "6d98fa",
+      "wall_time_seconds": 10.0038354,
+      "session_id": 78948,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "6f8548",
+      "wall_time_seconds": 10.0053397,
+      "session_id": 78948,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "b38f41",
+      "wall_time_seconds": 5.0558273,
+      "exit_code": 1,
+      "original_token_count": 851,
+      "output": "{\"action_id\": \"gftd-modulation-20261107-01\", \"status\": \"FAILED\", \"counts\": {\"fits_attempted\": 16, \"fits_completed\": 16, \"initializations_attempted\": 39, \"initializations_completed\": 39, \"fit\": {\"algebra_terms_planned\": 9832, \"algebra_terms_actual\": 1461, \"algebra_terms_skipped\": 8371, \"nnls_attempts\": 1449, \"nnls_completed\": 1449, \"nnls_qualified\": 1449, \"reconstruction_attempts\": 48, \"reconstructions\": 48, \"optimization_tasks\": 312, \"actual_residual_calls\": 43886, \"integrations_attempted\": 43934, \"integrations_completed\": 43934, \"rk4_steps_attempted\": 1759280, \"rk4_steps_completed\": 1759280}, \"initialization\": {\"algebra_terms_planned\": 0, \"algebra_terms_actual\": 0, \"algebra_terms_skipped\": 0, \"nnls_attempts\": 0, \"nnls_completed\": 0, \"nnls_qualified\": 0, \"reconstruction_attempts\": 0, \"reconstructions\": 0, \"optimization_tasks\": 78, \"actual_residual_calls\": 5936, \"integrations_attempted\": 6278, \"integrations_completed\": 6278, \"rk4_steps_attempted\": 268220, \"rk4_steps_completed\": 268220}, \"evaluation\": {\"integrations_attempted\": 78, \"rk4_steps_attempted\": 11700, \"rk4_steps_completed\": 11700, \"integrations_completed\": 78}, \"generation\": {\"integrations_attempted\": 48, \"rk4_steps_attempted\": 5040, \"rk4_steps_completed\": 5040, \"integrations_completed\": 48, \"generated_history_grids\": 24, \"generated_future_grids\": 24, \"observation_packages\": 24}, \"qualification\": {\"integrations_attempted\": 24, \"rk4_steps_attempted\": 1440, \"rk4_steps_completed\": 1440, \"integrations_completed\": 24}}, \"release_sha256\": \"72140d277ec13405c0d7ddfdbecf5b97f36e986e6c93c9fd7e197ec9aea99808\", \"numpy\": \"2.5.2\", \"scipy\": \"1.18.0\", \"real_data_reads\": false, \"error\": \"OSError(22, 'Invalid argument')\", \"wall_seconds\": 655.6800195000251, \"release_unchanged\": true, \"source_unchanged\": true, \"protocol_unchanged\": true}\r\nTraceback (most recent call last):\r\n  File \"E:\\03-nn_Transfer_Func\\kiki\\experiments\\gftd_modulation_20261107.py\", line 473, in <module>\r\n    main()\r\n  File \"E:\\03-nn_Transfer_Func\\kiki\\experiments\\gftd_modulation_20261107.py\", line 451, in main\r\n    initialized_sha=initialize_frozen(OUTPUT,frozen,observed,counts)\r\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n  File \"E:\\03-nn_Transfer_Func\\kiki\\experiments\\gftd_modulation_20261107.py\", line 292, in initialize_frozen\r\n    write_json(output/'initializations.partial.json',dict(rows=rows,counts=counts))\r\n  File \"E:\\03-nn_Transfer_Func\\kiki\\experiments\\gftd_modulation_20261107.py\", line 47, in write_json\r\n    Path(path).write_text(json.dumps(value, default=serial, indent=2, allow_nan=False)+'\\n', encoding='utf-8')\r\n  File \"C:\\Users\\LLLzijian\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\pathlib.py\", line 1047, in write_text\r\n    with self.open(mode='w', encoding=encoding, errors=errors, newline=newline) as f:\r\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n  File \"C:\\Users\\LLLzijian\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\pathlib.py\", line 1013, in open\r\n    return io.open(self, mode, buffering, encoding, errors, newline)\r\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\nOSError: [Errno 22] Invalid argument: 'E:\\\\03-nn_Transfer_Func\\\\kiki\\\\results\\\\gftd_modulation_20261107\\\\initializations.partial.json'\r\nHOST_END_UTC=2026-11-07T14:54:13.7886490Z\r\nHOST_WALL_SECONDS=662.3721958\r\nPROGRAM_EXIT_CODE=1\r\n"
+    }
+  ],
+  "stdout": "HOST_START_UTC=2026-11-07T14:43:11.4086496Z\r\n{\"action_id\": \"gftd-modulation-20261107-01\", \"status\": \"FAILED\", \"counts\": {\"fits_attempted\": 16, \"fits_completed\": 16, \"initializations_attempted\": 39, \"initializations_completed\": 39, \"fit\": {\"algebra_terms_planned\": 9832, \"algebra_terms_actual\": 1461, \"algebra_terms_skipped\": 8371, \"nnls_attempts\": 1449, \"nnls_completed\": 1449, \"nnls_qualified\": 1449, \"reconstruction_attempts\": 48, \"reconstructions\": 48, \"optimization_tasks\": 312, \"actual_residual_calls\": 43886, \"integrations_attempted\": 43934, \"integrations_completed\": 43934, \"rk4_steps_attempted\": 1759280, \"rk4_steps_completed\": 1759280}, \"initialization\": {\"algebra_terms_planned\": 0, \"algebra_terms_actual\": 0, \"algebra_terms_skipped\": 0, \"nnls_attempts\": 0, \"nnls_completed\": 0, \"nnls_qualified\": 0, \"reconstruction_attempts\": 0, \"reconstructions\": 0, \"optimization_tasks\": 78, \"actual_residual_calls\": 5936, \"integrations_attempted\": 6278, \"integrations_completed\": 6278, \"rk4_steps_attempted\": 268220, \"rk4_steps_completed\": 268220}, \"evaluation\": {\"integrations_attempted\": 78, \"rk4_steps_attempted\": 11700, \"rk4_steps_completed\": 11700, \"integrations_completed\": 78}, \"generation\": {\"integrations_attempted\": 48, \"rk4_steps_attempted\": 5040, \"rk4_steps_completed\": 5040, \"integrations_completed\": 48, \"generated_history_grids\": 24, \"generated_future_grids\": 24, \"observation_packages\": 24}, \"qualification\": {\"integrations_attempted\": 24, \"rk4_steps_attempted\": 1440, \"rk4_steps_completed\": 1440, \"integrations_completed\": 24}}, \"release_sha256\": \"72140d277ec13405c0d7ddfdbecf5b97f36e986e6c93c9fd7e197ec9aea99808\", \"numpy\": \"2.5.2\", \"scipy\": \"1.18.0\", \"real_data_reads\": false, \"error\": \"OSError(22, 'Invalid argument')\", \"wall_seconds\": 655.6800195000251, \"release_unchanged\": true, \"source_unchanged\": true, \"protocol_unchanged\": true}\r\nTraceback (most recent call last):\r\n  File \"E:\\03-nn_Transfer_Func\\kiki\\experiments\\gftd_modulation_20261107.py\", line 473, in <module>\r\n    main()\r\n  File \"E:\\03-nn_Transfer_Func\\kiki\\experiments\\gftd_modulation_20261107.py\", line 451, in main\r\n    initialized_sha=initialize_frozen(OUTPUT,frozen,observed,counts)\r\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n  File \"E:\\03-nn_Transfer_Func\\kiki\\experiments\\gftd_modulation_20261107.py\", line 292, in initialize_frozen\r\n    write_json(output/'initializations.partial.json',dict(rows=rows,counts=counts))\r\n  File \"E:\\03-nn_Transfer_Func\\kiki\\experiments\\gftd_modulation_20261107.py\", line 47, in write_json\r\n    Path(path).write_text(json.dumps(value, default=serial, indent=2, allow_nan=False)+'\\n', encoding='utf-8')\r\n  File \"C:\\Users\\LLLzijian\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\pathlib.py\", line 1047, in write_text\r\n    with self.open(mode='w', encoding=encoding, errors=errors, newline=newline) as f:\r\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n  File \"C:\\Users\\LLLzijian\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\pathlib.py\", line 1013, in open\r\n    return io.open(self, mode, buffering, encoding, errors, newline)\r\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\nOSError: [Errno 22] Invalid argument: 'E:\\\\03-nn_Transfer_Func\\\\kiki\\\\results\\\\gftd_modulation_20261107\\\\initializations.partial.json'\r\nHOST_END_UTC=2026-11-07T14:54:13.7886490Z\r\nHOST_WALL_SECONDS=662.3721958\r\nPROGRAM_EXIT_CODE=1\r\n",
+  "host_wall_seconds": 662.3721958,
+  "exit_code": 1,
+  "last_observed_progress": {
+    "checked_utc": "2026-11-07T14:54:18.2071295Z",
+    "fits_completed": 16,
+    "initializations_attempted": 38,
+    "initializations_completed": 38,
+    "initialization_counts": {
+      "algebra_terms_planned": 0,
+      "algebra_terms_actual": 0,
+      "algebra_terms_skipped": 0,
+      "nnls_attempts": 0,
+      "nnls_completed": 0,
+      "nnls_qualified": 0,
+      "reconstruction_attempts": 0,
+      "reconstructions": 0,
+      "optimization_tasks": 76,
+      "actual_residual_calls": 5915,
+      "integrations_attempted": 6251,
+      "integrations_completed": 6251,
+      "rk4_steps_attempted": 266840,
+      "rk4_steps_completed": 266840
+    }
+  },
+  "final_chunk_id": "b38f41",
+  "process_end_utc": "2026-11-07T14:54:13.7886490Z",
+  "host_wall_method": "System.Diagnostics.Stopwatch wrapping the single registered Python command",
+  "runner_receipt_from_stdout": {
+    "action_id": "gftd-modulation-20261107-01",
+    "status": "FAILED",
+    "counts": {
+      "fits_attempted": 16,
+      "fits_completed": 16,
+      "initializations_attempted": 39,
+      "initializations_completed": 39,
+      "fit": {
+        "algebra_terms_planned": 9832,
+        "algebra_terms_actual": 1461,
+        "algebra_terms_skipped": 8371,
+        "nnls_attempts": 1449,
+        "nnls_completed": 1449,
+        "nnls_qualified": 1449,
+        "reconstruction_attempts": 48,
+        "reconstructions": 48,
+        "optimization_tasks": 312,
+        "actual_residual_calls": 43886,
+        "integrations_attempted": 43934,
+        "integrations_completed": 43934,
+        "rk4_steps_attempted": 1759280,
+        "rk4_steps_completed": 1759280
+      },
+      "initialization": {
+        "algebra_terms_planned": 0,
+        "algebra_terms_actual": 0,
+        "algebra_terms_skipped": 0,
+        "nnls_attempts": 0,
+        "nnls_completed": 0,
+        "nnls_qualified": 0,
+        "reconstruction_attempts": 0,
+        "reconstructions": 0,
+        "optimization_tasks": 78,
+        "actual_residual_calls": 5936,
+        "integrations_attempted": 6278,
+        "integrations_completed": 6278,
+        "rk4_steps_attempted": 268220,
+        "rk4_steps_completed": 268220
+      },
+      "evaluation": {
+        "integrations_attempted": 78,
+        "rk4_steps_attempted": 11700,
+        "rk4_steps_completed": 11700,
+        "integrations_completed": 78
+      },
+      "generation": {
+        "integrations_attempted": 48,
+        "rk4_steps_attempted": 5040,
+        "rk4_steps_completed": 5040,
+        "integrations_completed": 48,
+        "generated_history_grids": 24,
+        "generated_future_grids": 24,
+        "observation_packages": 24
+      },
+      "qualification": {
+        "integrations_attempted": 24,
+        "rk4_steps_attempted": 1440,
+        "rk4_steps_completed": 1440,
+        "integrations_completed": 24
+      }
+    },
+    "release_sha256": "72140d277ec13405c0d7ddfdbecf5b97f36e986e6c93c9fd7e197ec9aea99808",
+    "numpy": "2.5.2",
+    "scipy": "1.18.0",
+    "real_data_reads": false,
+    "error": "OSError(22, 'Invalid argument')",
+    "wall_seconds": 655.6800195000251,
+    "release_unchanged": true,
+    "source_unchanged": true,
+    "protocol_unchanged": true
+  },
+  "retries": 0,
+  "last_observed_checkpoint": {
+    "fits_completed": 16,
+    "initializations_attempted": 38,
+    "initializations_completed": 38,
+    "actual_initialization_residual_calls": 5915
+  },
+  "checkpoint_discrepancy": "Runner receipt includes 39 completed initialization computations; the last readable partial includes 38 because writing the next partial failed. Completion is not claimed for the undurable 39th row.",
+  "error_cause": "unknown; exact traceback retained in stdout. No technical correction or replay attempted."
+}

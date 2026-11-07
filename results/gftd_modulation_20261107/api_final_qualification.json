@@ -1,0 +1,80 @@
+{
+  "reported_by": "/root/api_modeler",
+  "status": "passed",
+  "engineering_scope": "Mock engine API and existing RMemoryROM parent fixtures; successful mock refit drops legacy initializer; no actual GFTD shared fit or complete optimizer initialization.",
+  "source_sha256": {
+    "src/kiki/models/base.py": "f374726bca448ec73c8a138e41ede55939b0137830dfd038c13530df3ea8039d",
+    "src/kiki/models/gftd_kuramoto.py": "395ea4d7ca50aeb07247049cb96ad0bdb9a884ec141f3c7591ebc780331fc901",
+    "tests/test_gftd_kuramoto_architecture.py": "6eb6ed2fdaa1fc9b57eca6b7528871bf43b54ee76d508512011c3b3a030473f0",
+    "tests/test_gftd_model_fit.py": "2a0b11956e54c2a2f4d90f58887a39ebda83978becf7fdac2b1c6f6696411658"
+  },
+  "historical_qualification": {
+    "path": "results/gftd_modulation_20261107/api_qualification_v1.json",
+    "sha256": "81deb748877eef018c0c35e2ff8c2b78fb6e71530a6bc8739953ee85799de70a",
+    "record": {
+      "reported_by": "/root/api_modeler",
+      "source_sha256": {
+        "src/kiki/models/base.py": "f374726bca448ec73c8a138e41ede55939b0137830dfd038c13530df3ea8039d",
+        "src/kiki/models/gftd_kuramoto.py": "c39ee8d694e1005b5eb1b32aedb160d8dd5d0321c39b0574943bc59a755b6539",
+        "tests/test_gftd_kuramoto_architecture.py": "6eb6ed2fdaa1fc9b57eca6b7528871bf43b54ee76d508512011c3b3a030473f0",
+        "tests/test_gftd_model_fit.py": "0119d3ffac4ae4d176ba26504b25f3c766b8d2501517b0643b69ca25608b3481"
+      },
+      "engineering_scope": "Mock engine API plus old parent numerical fixtures; no actual GFTD shared fitting or full initialization.",
+      "attempts": [
+        {
+          "exec_chunk": "cb1ff5",
+          "session": 99938,
+          "final_chunk": "0509cd",
+          "exit_code": 1,
+          "pytest_seconds": 59.59,
+          "passed": 27,
+          "errors": 6,
+          "reason": "pytest temporary directory permission; fixed by workspace basetemp"
+        },
+        {
+          "exec_chunk": "651516",
+          "session": 73006,
+          "final_chunk": "c302b6",
+          "exit_code": 0,
+          "pytest_seconds": 15.22,
+          "passed": 37,
+          "reason": "final explicit workspace basetemp"
+        }
+      ],
+      "format_check": {
+        "plain_chunk": "8ccd94",
+        "result": "existing CRLF flagged; not passed",
+        "final_chunk": "f37994",
+        "exit_code": 0,
+        "setting": "core.whitespace=cr-at-eol"
+      },
+      "total_qualification_seconds": null,
+      "formal_sampling": false,
+      "real_data_reads": false
+    }
+  },
+  "final_attempt": {
+    "command": ".venv-gpu/Scripts/python.exe -m pytest tests/test_gftd_model_fit.py tests/test_gftd_kuramoto_architecture.py -q --basetemp .tmp/pytest_api_parent_cleanup_20261107",
+    "exec_chunk": "583e96",
+    "session": 63568,
+    "initial_tool_wall_seconds": 10.0146766,
+    "final_chunk": "fe6f22",
+    "final_tool_wall_seconds": 1.21e-05,
+    "exit_code": 0,
+    "pytest_seconds": 9.56,
+    "passed": 38,
+    "failed": 0,
+    "errors": 0
+  },
+  "format_check": {
+    "command": "git -c core.whitespace=cr-at-eol diff --check -- src/kiki/models/gftd_kuramoto.py tests/test_gftd_model_fit.py",
+    "chunk": "1cb6ca",
+    "exit_code": 0,
+    "tool_wall_seconds": 0.6840678
+  },
+  "total_qualification_seconds": null,
+  "cumulative_host_cost": null,
+  "formal_sampling": false,
+  "real_data_reads": false,
+  "frozen_source_modified_by_receipt_task": false
+}

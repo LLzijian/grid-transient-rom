@@ -39,7 +39,7 @@ class FitResult:
     status: str
     train_case_ids: tuple[str, ...]
     val_case_ids: tuple[str, ...]
-    best_validation_loss: float
+    best_validation_loss: float | None
     details: dict[str, Any] = field(default_factory=dict)
 
 

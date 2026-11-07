@@ -1,0 +1,200 @@
+{
+  "action_id": "gftd-modulation-20261107-repair01",
+  "parent_action_id": "gftd-modulation-20261107-01",
+  "status": "COMPLETED",
+  "repair_release_sha256": "e557b76a2a9c8b2552abf1c396e7090a496dcec9caab68356214ae853724d1ae",
+  "command": "$env:PYTHONDONTWRITEBYTECODE='1'\n$taskStartUtc = [DateTime]::UtcNow.ToString('o')\n$taskTimer = [System.Diagnostics.Stopwatch]::StartNew()\nWrite-Output ('HOST_START_UTC=' + $taskStartUtc)\n& ./.venv-gpu/Scripts/python.exe -B experiments/gftd_modulation_20261107_resume01.py\n$taskExit = $LASTEXITCODE\n$taskTimer.Stop()\nWrite-Output ('HOST_END_UTC=' + [DateTime]::UtcNow.ToString('o'))\nWrite-Output ('HOST_WALL_SECONDS=' + $taskTimer.Elapsed.TotalSeconds.ToString('R',[System.Globalization.CultureInfo]::InvariantCulture))\nWrite-Output ('PROGRAM_EXIT_CODE=' + $taskExit)\nexit $taskExit",
+  "cwd": "E:\\03-nn_Transfer_Func\\kiki",
+  "configured_role_model": "gpt-6.1-sol",
+  "server_resolved_model": null,
+  "formal_invocations": 1,
+  "retries": 0,
+  "start_utc": "2026-11-07T15:14:02.0871907Z",
+  "initial_chunk_id": "590d0b",
+  "session_id": 19357,
+  "preflight": {
+    "chunk_id": "562cbe",
+    "wall_time_seconds": 0.7719495,
+    "exit_code": 0,
+    "original_token_count": 31,
+    "output": "{\"hashes_matched\":10,\"started01_existed\":false,\"project_python_processes\":0,\"checked_utc\":\"2026-11-07T15:13:58.6120163Z\"}\r\n"
+  },
+  "tool_calls": [
+    {
+      "chunk_id": "590d0b",
+      "wall_time_seconds": 10.010101,
+      "session_id": 19357,
+      "original_token_count": 12,
+      "output": "HOST_START_UTC=2026-11-07T15:14:02.0871907Z\r\n"
+    },
+    {
+      "chunk_id": "a4f3ac",
+      "wall_time_seconds": 10.0138625,
+      "session_id": 19357,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "3bb09d",
+      "wall_time_seconds": 0.0000112,
+      "exit_code": 0,
+      "original_token_count": 918,
+      "output": "{\"action_id\": \"gftd-modulation-20261107-repair01\", \"parent_action_id\": \"gftd-modulation-20261107-01\", \"status\": \"COMPLETED\", \"counts\": {\"fits_attempted\": 16, \"fits_completed\": 16, \"initializations_attempted\": 48, \"initializations_completed\": 48, \"fit\": {\"algebra_terms_planned\": 9832, \"algebra_terms_actual\": 1461, \"algebra_terms_skipped\": 8371, \"nnls_attempts\": 1449, \"nnls_completed\": 1449, \"nnls_qualified\": 1449, \"reconstruction_attempts\": 48, \"reconstructions\": 48, \"optimization_tasks\": 312, \"actual_residual_calls\": 43886, \"integrations_attempted\": 43934, \"integrations_completed\": 43934, \"rk4_steps_attempted\": 1759280, \"rk4_steps_completed\": 1759280}, \"initialization\": {\"algebra_terms_planned\": 0, \"algebra_terms_actual\": 0, \"algebra_terms_skipped\": 0, \"nnls_attempts\": 0, \"nnls_completed\": 0, \"nnls_qualified\": 0, \"reconstruction_attempts\": 0, \"reconstructions\": 0, \"optimization_tasks\": 96, \"actual_residual_calls\": 8440, \"integrations_attempted\": 8872, \"integrations_completed\": 8872, \"rk4_steps_attempted\": 376480, \"rk4_steps_completed\": 376480}, \"evaluation\": {\"integrations_attempted\": 96, \"rk4_steps_attempted\": 14400, \"rk4_steps_completed\": 14400, \"integrations_completed\": 96}, \"generation\": {\"integrations_attempted\": 48, \"rk4_steps_attempted\": 5040, \"rk4_steps_completed\": 5040, \"integrations_completed\": 48, \"generated_history_grids\": 24, \"generated_future_grids\": 24, \"observation_packages\": 24}, \"qualification\": {\"integrations_attempted\": 24, \"rk4_steps_attempted\": 1440, \"rk4_steps_completed\": 1440, \"integrations_completed\": 24}}, \"original_lost_consumed_counts\": {\"fits_attempted\": 0, \"fits_completed\": 0, \"initializations_attempted\": 1, \"initializations_completed\": 1, \"fit\": {\"algebra_terms_planned\": 0, \"algebra_terms_actual\": 0, \"algebra_terms_skipped\": 0, \"nnls_attempts\": 0, \"nnls_completed\": 0, \"nnls_qualified\": 0, \"reconstruction_attempts\": 0, \"reconstructions\": 0, \"optimization_tasks\": 0, \"actual_residual_calls\": 0, \"integrations_attempted\": 0, \"integrations_completed\": 0, \"rk4_steps_attempted\": 0, \"rk4_steps_completed\": 0}, \"initialization\": {\"algebra_terms_planned\": 0, \"algebra_terms_actual\": 0, \"algebra_terms_skipped\": 0, \"nnls_attempts\": 0, \"nnls_completed\": 0, \"nnls_qualified\": 0, \"reconstruction_attempts\": 0, \"reconstructions\": 0, \"optimization_tasks\": 2, \"actual_residual_calls\": 21, \"integrations_attempted\": 27, \"integrations_completed\": 27, \"rk4_steps_attempted\": 1380, \"rk4_steps_completed\": 1380}, \"evaluation\": {\"integrations_attempted\": 2, \"rk4_steps_attempted\": 300, \"rk4_steps_completed\": 300, \"integrations_completed\": 2}, \"generation\": {\"integrations_attempted\": 0, \"rk4_steps_attempted\": 0, \"rk4_steps_completed\": 0, \"integrations_completed\": 0, \"generated_history_grids\": 0, \"generated_future_grids\": 0, \"observation_packages\": 0}, \"qualification\": {\"integrations_attempted\": 0, \"rk4_steps_attempted\": 0, \"rk4_steps_completed\": 0, \"integrations_completed\": 0}}, \"original_lost_optimizer_trace\": null, \"original_lost_elapsed_seconds\": null, \"io_root_cause\": \"unknown\", \"real_data_reads\": false, \"repair_release_sha256\": \"e557b76a2a9c8b2552abf1c396e7090a496dcec9caab68356214ae853724d1ae\", \"remaining_optimization_pairs\": 9, \"artifact_recovered_pairs\": 1, \"initializations_sha256\": \"de88a80556c8a0d988fdbfba7aa137808237adbc5eeffc651d52fe7f88f52f6e\", \"summary_sha256\": \"8e547f94cf831a19c3f05428d22d3b774c671090fb4a8ce7fcf9bf592cd9d142\", \"wall_seconds\": 39.20285599998897, \"original_evidence_unchanged\": true, \"repair_source_unchanged\": true, \"repair_release_unchanged\": true, \"original_receipt_preserved\": true}\r\nHOST_END_UTC=2026-11-07T15:14:43.7431267Z\r\nHOST_WALL_SECONDS=41.6493473\r\nPROGRAM_EXIT_CODE=0\r\n"
+    }
+  ],
+  "stdout": "HOST_START_UTC=2026-11-07T15:14:02.0871907Z\r\n{\"action_id\": \"gftd-modulation-20261107-repair01\", \"parent_action_id\": \"gftd-modulation-20261107-01\", \"status\": \"COMPLETED\", \"counts\": {\"fits_attempted\": 16, \"fits_completed\": 16, \"initializations_attempted\": 48, \"initializations_completed\": 48, \"fit\": {\"algebra_terms_planned\": 9832, \"algebra_terms_actual\": 1461, \"algebra_terms_skipped\": 8371, \"nnls_attempts\": 1449, \"nnls_completed\": 1449, \"nnls_qualified\": 1449, \"reconstruction_attempts\": 48, \"reconstructions\": 48, \"optimization_tasks\": 312, \"actual_residual_calls\": 43886, \"integrations_attempted\": 43934, \"integrations_completed\": 43934, \"rk4_steps_attempted\": 1759280, \"rk4_steps_completed\": 1759280}, \"initialization\": {\"algebra_terms_planned\": 0, \"algebra_terms_actual\": 0, \"algebra_terms_skipped\": 0, \"nnls_attempts\": 0, \"nnls_completed\": 0, \"nnls_qualified\": 0, \"reconstruction_attempts\": 0, \"reconstructions\": 0, \"optimization_tasks\": 96, \"actual_residual_calls\": 8440, \"integrations_attempted\": 8872, \"integrations_completed\": 8872, \"rk4_steps_attempted\": 376480, \"rk4_steps_completed\": 376480}, \"evaluation\": {\"integrations_attempted\": 96, \"rk4_steps_attempted\": 14400, \"rk4_steps_completed\": 14400, \"integrations_completed\": 96}, \"generation\": {\"integrations_attempted\": 48, \"rk4_steps_attempted\": 5040, \"rk4_steps_completed\": 5040, \"integrations_completed\": 48, \"generated_history_grids\": 24, \"generated_future_grids\": 24, \"observation_packages\": 24}, \"qualification\": {\"integrations_attempted\": 24, \"rk4_steps_attempted\": 1440, \"rk4_steps_completed\": 1440, \"integrations_completed\": 24}}, \"original_lost_consumed_counts\": {\"fits_attempted\": 0, \"fits_completed\": 0, \"initializations_attempted\": 1, \"initializations_completed\": 1, \"fit\": {\"algebra_terms_planned\": 0, \"algebra_terms_actual\": 0, \"algebra_terms_skipped\": 0, \"nnls_attempts\": 0, \"nnls_completed\": 0, \"nnls_qualified\": 0, \"reconstruction_attempts\": 0, \"reconstructions\": 0, \"optimization_tasks\": 0, \"actual_residual_calls\": 0, \"integrations_attempted\": 0, \"integrations_completed\": 0, \"rk4_steps_attempted\": 0, \"rk4_steps_completed\": 0}, \"initialization\": {\"algebra_terms_planned\": 0, \"algebra_terms_actual\": 0, \"algebra_terms_skipped\": 0, \"nnls_attempts\": 0, \"nnls_completed\": 0, \"nnls_qualified\": 0, \"reconstruction_attempts\": 0, \"reconstructions\": 0, \"optimization_tasks\": 2, \"actual_residual_calls\": 21, \"integrations_attempted\": 27, \"integrations_completed\": 27, \"rk4_steps_attempted\": 1380, \"rk4_steps_completed\": 1380}, \"evaluation\": {\"integrations_attempted\": 2, \"rk4_steps_attempted\": 300, \"rk4_steps_completed\": 300, \"integrations_completed\": 2}, \"generation\": {\"integrations_attempted\": 0, \"rk4_steps_attempted\": 0, \"rk4_steps_completed\": 0, \"integrations_completed\": 0, \"generated_history_grids\": 0, \"generated_future_grids\": 0, \"observation_packages\": 0}, \"qualification\": {\"integrations_attempted\": 0, \"rk4_steps_attempted\": 0, \"rk4_steps_completed\": 0, \"integrations_completed\": 0}}, \"original_lost_optimizer_trace\": null, \"original_lost_elapsed_seconds\": null, \"io_root_cause\": \"unknown\", \"real_data_reads\": false, \"repair_release_sha256\": \"e557b76a2a9c8b2552abf1c396e7090a496dcec9caab68356214ae853724d1ae\", \"remaining_optimization_pairs\": 9, \"artifact_recovered_pairs\": 1, \"initializations_sha256\": \"de88a80556c8a0d988fdbfba7aa137808237adbc5eeffc651d52fe7f88f52f6e\", \"summary_sha256\": \"8e547f94cf831a19c3f05428d22d3b774c671090fb4a8ce7fcf9bf592cd9d142\", \"wall_seconds\": 39.20285599998897, \"original_evidence_unchanged\": true, \"repair_source_unchanged\": true, \"repair_release_unchanged\": true, \"original_receipt_preserved\": true}\r\nHOST_END_UTC=2026-11-07T15:14:43.7431267Z\r\nHOST_WALL_SECONDS=41.6493473\r\nPROGRAM_EXIT_CODE=0\r\n",
+  "exit_code": 0,
+  "host_wall_seconds": 41.6493473,
+  "final_chunk_id": "3bb09d",
+  "end_utc": "2026-11-07T15:14:43.7431267Z",
+  "host_wall_method": "System.Diagnostics.Stopwatch around the single registered resume command",
+  "runner_receipt_from_stdout": {
+    "action_id": "gftd-modulation-20261107-repair01",
+    "parent_action_id": "gftd-modulation-20261107-01",
+    "status": "COMPLETED",
+    "counts": {
+      "fits_attempted": 16,
+      "fits_completed": 16,
+      "initializations_attempted": 48,
+      "initializations_completed": 48,
+      "fit": {
+        "algebra_terms_planned": 9832,
+        "algebra_terms_actual": 1461,
+        "algebra_terms_skipped": 8371,
+        "nnls_attempts": 1449,
+        "nnls_completed": 1449,
+        "nnls_qualified": 1449,
+        "reconstruction_attempts": 48,
+        "reconstructions": 48,
+        "optimization_tasks": 312,
+        "actual_residual_calls": 43886,
+        "integrations_attempted": 43934,
+        "integrations_completed": 43934,
+        "rk4_steps_attempted": 1759280,
+        "rk4_steps_completed": 1759280
+      },
+      "initialization": {
+        "algebra_terms_planned": 0,
+        "algebra_terms_actual": 0,
+        "algebra_terms_skipped": 0,
+        "nnls_attempts": 0,
+        "nnls_completed": 0,
+        "nnls_qualified": 0,
+        "reconstruction_attempts": 0,
+        "reconstructions": 0,
+        "optimization_tasks": 96,
+        "actual_residual_calls": 8440,
+        "integrations_attempted": 8872,
+        "integrations_completed": 8872,
+        "rk4_steps_attempted": 376480,
+        "rk4_steps_completed": 376480
+      },
+      "evaluation": {
+        "integrations_attempted": 96,
+        "rk4_steps_attempted": 14400,
+        "rk4_steps_completed": 14400,
+        "integrations_completed": 96
+      },
+      "generation": {
+        "integrations_attempted": 48,
+        "rk4_steps_attempted": 5040,
+        "rk4_steps_completed": 5040,
+        "integrations_completed": 48,
+        "generated_history_grids": 24,
+        "generated_future_grids": 24,
+        "observation_packages": 24
+      },
+      "qualification": {
+        "integrations_attempted": 24,
+        "rk4_steps_attempted": 1440,
+        "rk4_steps_completed": 1440,
+        "integrations_completed": 24
+      }
+    },
+    "original_lost_consumed_counts": {
+      "fits_attempted": 0,
+      "fits_completed": 0,
+      "initializations_attempted": 1,
+      "initializations_completed": 1,
+      "fit": {
+        "algebra_terms_planned": 0,
+        "algebra_terms_actual": 0,
+        "algebra_terms_skipped": 0,
+        "nnls_attempts": 0,
+        "nnls_completed": 0,
+        "nnls_qualified": 0,
+        "reconstruction_attempts": 0,
+        "reconstructions": 0,
+        "optimization_tasks": 0,
+        "actual_residual_calls": 0,
+        "integrations_attempted": 0,
+        "integrations_completed": 0,
+        "rk4_steps_attempted": 0,
+        "rk4_steps_completed": 0
+      },
+      "initialization": {
+        "algebra_terms_planned": 0,
+        "algebra_terms_actual": 0,
+        "algebra_terms_skipped": 0,
+        "nnls_attempts": 0,
+        "nnls_completed": 0,
+        "nnls_qualified": 0,
+        "reconstruction_attempts": 0,
+        "reconstructions": 0,
+        "optimization_tasks": 2,
+        "actual_residual_calls": 21,
+        "integrations_attempted": 27,
+        "integrations_completed": 27,
+        "rk4_steps_attempted": 1380,
+        "rk4_steps_completed": 1380
+      },
+      "evaluation": {
+        "integrations_attempted": 2,
+        "rk4_steps_attempted": 300,
+        "rk4_steps_completed": 300,
+        "integrations_completed": 2
+      },
+      "generation": {
+        "integrations_attempted": 0,
+        "rk4_steps_attempted": 0,
+        "rk4_steps_completed": 0,
+        "integrations_completed": 0,
+        "generated_history_grids": 0,
+        "generated_future_grids": 0,
+        "observation_packages": 0
+      },
+      "qualification": {
+        "integrations_attempted": 0,
+        "rk4_steps_attempted": 0,
+        "rk4_steps_completed": 0,
+        "integrations_completed": 0
+      }
+    },
+    "original_lost_optimizer_trace": null,
+    "original_lost_elapsed_seconds": null,
+    "io_root_cause": "unknown",
+    "real_data_reads": false,
+    "repair_release_sha256": "e557b76a2a9c8b2552abf1c396e7090a496dcec9caab68356214ae853724d1ae",
+    "remaining_optimization_pairs": 9,
+    "artifact_recovered_pairs": 1,
+    "initializations_sha256": "de88a80556c8a0d988fdbfba7aa137808237adbc5eeffc651d52fe7f88f52f6e",
+    "summary_sha256": "8e547f94cf831a19c3f05428d22d3b774c671090fb4a8ce7fcf9bf592cd9d142",
+    "wall_seconds": 39.20285599998897,
+    "original_evidence_unchanged": true,
+    "repair_source_unchanged": true,
+    "repair_release_unchanged": true,
+    "original_receipt_preserved": true
+  },
+  "checks": {
+    "pairs_completed": 48,
+    "local_optimization_tasks": 408,
+    "local_optimization_task_limit": 480,
+    "actual_history_residual_calls": 52326,
+    "history_residual_call_limit": 163200,
+    "all_unchanged": true
+  },
+  "original_lost_optimizer_trace": null,
+  "original_lost_elapsed_seconds": null,
+  "original_diagnostic_coverage": "47/48; lost original trace/timing remain unknown",
+  "scientific_replays": 0
+}
