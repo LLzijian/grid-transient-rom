@@ -3,6 +3,10 @@
 新协议保存到 `campaigns/<run_id>_protocol.md` 并由 Campaign 引用；算法方案引用 `designs/`，结果与分析归 `reports/`。
 旧冻结协议不迁改正文或身份以套用新目录规则。
 
+实现入口：`experiments/<run_id>/run.py`；复用模型、初始化、积分与评价从 `src/kiki/` 导入，
+不要通过旧实验runner获得公共数学工具。通用NumPy自治RK4可用 `kiki.numerics.rk4_step`；
+模型特定的推进、投影和步长仍按本协议冻结，实际导入模块加入本次源码身份清单，不回填旧Run。
+
 状态/日期/授权；Campaign、architecture、algorithm_instance 与父候选；source/hash。
 目的：probe / adaptation / discrimination / confirmation。
 关键问题：<一个>；如果结果为负，会改变哪个结构或推断判断？

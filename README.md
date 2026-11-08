@@ -16,6 +16,7 @@ GitHub repository: [LLzijian/grid-transient-rom](https://github.com/LLzijian/gri
 - [docs/architecture_design.md](docs/architecture_design.md): first-level learning problem, physical assumptions, identifiability and competing explanations.
 - [docs/current_design.md](docs/current_design.md): versioned current architecture, separate from the deployment contract.
 - [designs/](designs/README.md): algorithm specifications and revisions; superseded designs live in designs/history/.
+- [实验代码入口与历史恢复](experiments/README.md)：公共数值实现、按 Run 保存的新入口和原位保护的旧依赖。
 - [agents/runtime.md](agents/runtime.md): task ownership, model identity, dependencies and resource scheduling.
 - [docs/engineering_loop.md](docs/engineering_loop.md): Campaign → Run → Job tree,
   optimization adequacy vs mechanism evidence, three independent decisions,

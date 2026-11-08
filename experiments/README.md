@@ -1,19 +1,17 @@
-# Experiment entry points
+# 实验代码入口与历史恢复
 
-Development experiments use train/validation data only. Validation metrics are
-post-selection diagnostics when the validation fold selected hyperparameters or
-modules; they are not called confirmatory out-of-sample results.
+新科学比较按 `experiments/<run_id>/run.py` 保存入口，需要独立后处理时再建 `analyze.py`。公共模型、初始化、积分和评价实现在 `src/kiki/`；入口负责组织比较、来源冻结与执行回执。
 
-- `run_refit_v2.py`: corrected five-fold backbone/full/prune experiment.
-- `summarize_refit_v2.py`: recompute trajectory/modal evidence from saved event
-  rows with model and dependency hash checks, without dataset payload reads.
-- `run_e1_m0.py`, `run_e2.py`, `run_e6.py`: historical development entry points.
-- `run_modal_validation.py`: modal diagnostic on final pruned models; complete
-  Hungarian assignments and event-macro aggregation, with no best-pair picking.
-- `run_test_release.py`: the only allowed confirmatory holdout payload reader.
-  It is currently blocked by `configs/test_release_v1.json` because the legacy
-  dataset build has already been consumed.
+## 共享实现
 
-The removed E6b/E6c/E8 entry points independently reopened the same test data
-and therefore could not support a one-time-test claim. Their historical outputs
-remain under `results/` as audit inputs only.
+- 现有模型与 GFTD 推断实现从 `kiki.models` 使用；模型特定的部署和数值合同沿冻结协议。
+- 新的通用 NumPy 自治 RK4 可直接导入 `from kiki.numerics import rk4_step`。它支持向前／向后一步，调用者负责状态坐标、投影、步长和数值资格；库不加载数据或模型。
+- 旧执行继续绑定原源码和完整原版本。新公共模块的等价性检查没有重算任何旧实验，也不把旧释放清单回填成新模块。
+
+## 原位保留与历史归档
+
+[代码清单](../results/repository_organization/20261109_code06/code_index.csv)覆盖整理前238个顶层Python脚本，列出入口／共享实现线索、具体调用者及路径处理。没有调用线索不等于可以删除；仍待核实的脚本保持原位。
+
+[早期 E 系列代码](history/early_e_series/README.md)保存已闭合入口。其 `ROOT` 与导入可能依赖旧目录深度，应按说明恢复完整原提交后阅读或复现，不直接在更深的归档位置运行。
+
+归档和公开数值模块不释放训练、原val/test、新FOM或历史作业重跑。实际执行仍由[当前状态](../docs/current_state.md)和相应协议决定。

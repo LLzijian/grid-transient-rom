@@ -9,6 +9,8 @@
 
 数值模态结果可从[纠正后的 e11 摘要](../../../results/e11_modal_validation_v2/summary.json)回查，适用范围仍以综合审计为准，不作为新确认。
 
+旧执行入口集中在[代码档案](../../../experiments/history/early_e_series/README.md)。原件按旧目录深度工作，阅读与恢复方式另有说明，不从归档位置直接重跑。
+
 | 问题 | 后续记录支持的认识 | 优先阅读 |
 |---|---|---|
 | 加入记忆模块，是否在所有交叉验证组都值得采用？ | 修正总采用门后，F1/F3/F5 采用模块，F2/F4 回退主干；五组交叉验证的结果不能写成所有组都采用。 | [五组重拟合验收](originals/accepted/0009_five_fold_refit_acceptance.md) |
