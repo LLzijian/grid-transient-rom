@@ -34,3 +34,5 @@
 - [联合训练与初始化的前期研究](../private_rom/README.md)
 - [本批迁移与累计位置](../../../results/repository_organization/20261108_early_history04/migration.json)
 - [整理批次总表](../../../results/repository_organization/README.md)
+
+10-19已知支撑对照的[旧批入口](../../../experiments/history/closure_discovery/README.md)已原样归档；完整旧版本保留同目录子脚本关系。

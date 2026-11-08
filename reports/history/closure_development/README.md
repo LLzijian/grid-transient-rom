@@ -29,3 +29,5 @@
 [材料表](catalog.md)列出本主题原件、原标题、原位置及固定提交阅读入口；[保护表](protected.md)列出仍受路径约束的相关材料。跟随冻结原文内部链接时使用固定提交版本，本地原件不改写链接。
 
 这一阶段继承 [A—E 闭合发现](../closure_discovery/README.md)，后续进入 [R-memory、空间作用与 p 通道](../force_memory/README.md)。这些联系描述研究问题的推进，不补造历史 Run 或独立确认。
+
+5份规划原始返回已与原整理稿同目录保存，位置见[第七批原件表](../../../results/repository_organization/20261109_history07/originals.md)。QA05原始返回仍被旧执行器绑定路径和哈希，继续原位保护。

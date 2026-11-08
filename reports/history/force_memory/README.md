@@ -21,3 +21,5 @@
 - [正式 Run 中文总表](../../run_index.md)连接已登记的 p 通道工作；字段未记录的采用决定显示 unknown，不用提议值代替 root 决定。
 
 所有指标沿原模型、train 范围、时域和尺度解释。风险不是 RMSE，历史 21/30 漏检不作为后来 GFTD 的同期成绩；原 val/test 的暴露和关闭历史保持不变。
+
+另可阅读[2026-10-29项目概览](project_overview_20261029_reading.html)：这是修复链接的历史阅读版，字节不变原件与来源快照另存。恢复评价和p通道检查的[旧代码入口](../../../experiments/history/force_memory/README.md)按原报告回查。

@@ -12,3 +12,5 @@
 | 接口修复后的科学结果在哪里 | 固定12模型续行的预测结果属于科学比较，另在历史研究主题阅读；本页不把它重复计为工程成绩。 | [闭合函数形式比较](../../history/closure_development/originals/checkpoint_continuation_20261022_conclusion.md) |
 
 [完整材料表](catalog.md)与[路径保护表](protected.md)保留咨询、协议、审查、失败原因与恢复条件。当前通用执行边界见[代理运行规则](../../../agents/runtime.md)，不从旧执行回执推断现有进程活性。
+
+[QA05后续准备补丁](originals/qa05_followup_prepared.diff)作为历史来源原样保存，补丁中的源码和私有目录仍按原版本解释，本次没有重新应用。

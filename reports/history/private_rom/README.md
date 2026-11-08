@@ -55,3 +55,5 @@
 - [历史设计入口](../../../designs/history/README.md)：设计原件已经在此前批次整理，本轮不移动或改写。
 - [本批迁移与当前累计路径](../../../results/repository_organization/20261108_early_history04/migration.json)
 - [整理批次总表](../../../results/repository_organization/README.md)
+
+已闭合的15个历史代码入口另见[代码档案](../../../experiments/history/private_rom/README.md)；报告与科学库原始字节不变，旧执行按完整旧版本恢复。

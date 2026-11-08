@@ -10,8 +10,10 @@
 
 ## 原位保留与历史归档
 
-[代码清单](../results/repository_organization/20261109_code06/code_index.csv)覆盖整理前238个顶层Python脚本，列出入口／共享实现线索、具体调用者及路径处理。没有调用线索不等于可以删除；仍待核实的脚本保持原位。
+[当前代码清单](../results/repository_organization/20261109_history07/code_index.csv)覆盖整理前238个顶层Python脚本，列出入口／共享实现线索、具体调用者及路径处理。29项已归档，209项有依赖或明确保留理由；旧清单的22项已逐项复核。没有调用线索不等于可以删除。
 
 [早期 E 系列代码](history/early_e_series/README.md)保存已闭合入口。其 `ROOT` 与导入可能依赖旧目录深度，应按说明恢复完整原提交后阅读或复现，不直接在更深的归档位置运行。
 
 归档和公开数值模块不释放训练、原val/test、新FOM或历史作业重跑。实际执行仍由[当前状态](../docs/current_state.md)和相应协议决定。
+
+[TASK2历史入口](history/private_rom/README.md)、[已知支撑对照](history/closure_discovery/README.md)与[力记忆检查](history/force_memory/README.md)分别按原问题查找，保留完整原版本恢复方式。

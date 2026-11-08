@@ -1,0 +1,1868 @@
+{
+  "kind": "ARCHIVE07_PREFLIGHT",
+  "source_commit": "46656233c430a3304ae38222e2caef273931384f",
+  "previous_batch": "results/repository_organization/20261109_code06/migration.json",
+  "items": [
+    {
+      "path": "experiments/audit_electrical_port_balance.py",
+      "sha256": "fd518bbb76a6c6521df5811542a94f81a1a336892eb78f55b4d1acdaeaac309a",
+      "bytes": 7426,
+      "references": [
+        {
+          "source": "reports/accepted/0048_electrical_port_balance.md",
+          "target": "experiments/audit_electrical_port_balance.py",
+          "kind": "literal_path_clue",
+          "line": 4
+        },
+        {
+          "source": "reports/accepted/0048_electrical_port_balance.md",
+          "line": 4,
+          "kind": "fresh_literal",
+          "excerpt": "Python command `experiments/audit_electrical_port_balance.py --output"
+        }
+      ],
+      "docstring": "Raw electrical load/loss balance explains the generator-only net residual.",
+      "imports": [
+        "import argparse",
+        "import hashlib",
+        "import json",
+        "import logging",
+        "import subprocess",
+        "from pathlib import Path",
+        "import andes",
+        "import h5py",
+        "import numpy as np",
+        "from andes.shared import matrix as dense_matrix",
+        "from generate_private_dataset import physical_parameters",
+        "from kiki.models.private_pm import MechanicalROM"
+      ],
+      "path_lines": [
+        {
+          "line": 18,
+          "text": "def main():"
+        },
+        {
+          "line": 19,
+          "text": "    parser = argparse.ArgumentParser()"
+        },
+        {
+          "line": 113,
+          "text": "if __name__ == '__main__':"
+        }
+      ],
+      "closure_evidence": "reports/accepted/0048_electrical_port_balance.md",
+      "decision": "archive",
+      "current_path": "experiments/history/private_rom/audit_electrical_port_balance.py",
+      "reason": "历史任务专用入口；AST与原报告确认用途，公开源码／配置／小体积来源元数据未发现外部可执行消费者。归档后按完整旧提交恢复，不在新深度直接运行。"
+    },
+    {
+      "path": "experiments/audit_holdout_supplement.py",
+      "sha256": "268f6d5a4f662d08e2a5249a41b928b4937b5ac49ac3f076d30c9da92592c55b",
+      "bytes": 3451,
+      "references": [
+        {
+          "source": "reports/accepted/0047_holdout_duration_supplement.md",
+          "target": "experiments/audit_holdout_supplement.py",
+          "kind": "literal_path_clue",
+          "line": 11
+        },
+        {
+          "source": "reports/history/private_rom/originals/accepted/0047_holdout_duration_supplement.md",
+          "line": 11,
+          "kind": "fresh_literal",
+          "excerpt": "QA: scientific venv `experiments/audit_holdout_supplement.py`. All raw checks"
+        }
+      ],
+      "docstring": "Mechanical TEST coverage QA only; never compute a predictor score.",
+      "imports": [
+        "import csv",
+        "import hashlib",
+        "import json",
+        "import subprocess",
+        "from pathlib import Path",
+        "import h5py",
+        "import numpy as np",
+        "from audit_private_dataset import audit"
+      ],
+      "path_lines": [
+        {
+          "line": 13,
+          "text": "def main():"
+        },
+        {
+          "line": 60,
+          "text": "if __name__ == '__main__':"
+        }
+      ],
+      "closure_evidence": "reports/accepted/0047_holdout_duration_supplement.md",
+      "decision": "archive",
+      "current_path": "experiments/history/private_rom/audit_holdout_supplement.py",
+      "reason": "历史任务专用入口；AST与原报告确认用途，公开源码／配置／小体积来源元数据未发现外部可执行消费者。归档后按完整旧提交恢复，不在新深度直接运行。"
+    },
+    {
+      "path": "experiments/audit_private_energy.py",
+      "sha256": "c460486d19475f0e898fa163fb280191d9e74c32bede46d119931fe4fe07486d",
+      "bytes": 7810,
+      "references": [
+        {
+          "source": "reports/accepted/0028_m3_energy.md",
+          "target": "experiments/audit_private_energy.py",
+          "kind": "literal_path_clue",
+          "line": 4
+        },
+        {
+          "source": "reports/history/private_rom/originals/accepted/0028_m3_energy.md",
+          "line": 4,
+          "kind": "fresh_literal",
+          "excerpt": "`python experiments/audit_private_energy.py --output private_data/task2_energy_0028`."
+        },
+        {
+          "source": "reports/history/private_rom/originals/accepted/0036_m3_energy_boundary.md",
+          "line": 4,
+          "kind": "fresh_literal",
+          "excerpt": "`python experiments/audit_private_energy_boundary.py --output"
+        }
+      ],
+      "docstring": "Exact frozen-M3 storage identity and separate full-order trajectory audit.",
+      "imports": [
+        "import argparse",
+        "import json",
+        "import subprocess",
+        "import time",
+        "from pathlib import Path",
+        "import numpy as np",
+        "from run_private_m2 import development_data",
+        "from scipy.integrate import cumulative_trapezoid, solve_ivp",
+        "from scipy.stats import rankdata, spearmanr",
+        "from kiki.models.private_pm import MechanicalROM"
+      ],
+      "path_lines": [
+        {
+          "line": 29,
+          "text": "def main():"
+        },
+        {
+          "line": 30,
+          "text": "    parser = argparse.ArgumentParser()"
+        },
+        {
+          "line": 117,
+          "text": "if __name__ == \"__main__\":"
+        }
+      ],
+      "closure_evidence": "reports/accepted/0028_m3_energy.md",
+      "decision": "archive",
+      "current_path": "experiments/history/private_rom/audit_private_energy.py",
+      "reason": "历史任务专用入口；AST与原报告确认用途，公开源码／配置／小体积来源元数据未发现外部可执行消费者。归档后按完整旧提交恢复，不在新深度直接运行。"
+    },
+    {
+      "path": "experiments/audit_private_energy_boundary.py",
+      "sha256": "573d2544a5352bd961e57c05f62d3f76138b62ffce5acaf0518bf7e6107ad945",
+      "bytes": 9227,
+      "references": [
+        {
+          "source": "reports/accepted/0036_m3_energy_boundary.md",
+          "target": "experiments/audit_private_energy_boundary.py",
+          "kind": "literal_path_clue",
+          "line": 4
+        },
+        {
+          "source": "reports/history/private_rom/originals/accepted/0036_m3_energy_boundary.md",
+          "line": 4,
+          "kind": "fresh_literal",
+          "excerpt": "`python experiments/audit_private_energy_boundary.py --output"
+        }
+      ],
+      "docstring": "Exact-rational conservative M3 barrier; finite-horizon probes are separate.",
+      "imports": [
+        "import argparse",
+        "import json",
+        "import subprocess",
+        "from fractions import Fraction as F",
+        "from pathlib import Path",
+        "import h5py",
+        "import numpy as np",
+        "from run_private_m2 import development_data",
+        "from scipy.integrate import solve_ivp",
+        "from scipy.stats import rankdata, spearmanr",
+        "from kiki.data.private_dataset import los_index",
+        "from kiki.models.private_pm import MechanicalROM"
+      ],
+      "path_lines": [
+        {
+          "line": 60,
+          "text": "def main():"
+        },
+        {
+          "line": 61,
+          "text": "    parser = argparse.ArgumentParser()"
+        },
+        {
+          "line": 156,
+          "text": "if __name__ == \"__main__\":"
+        }
+      ],
+      "closure_evidence": "reports/accepted/0036_m3_energy_boundary.md",
+      "decision": "archive",
+      "current_path": "experiments/history/private_rom/audit_private_energy_boundary.py",
+      "reason": "历史任务专用入口；AST与原报告确认用途，公开源码／配置／小体积来源元数据未发现外部可执行消费者。归档后按完整旧提交恢复，不在新深度直接运行。"
+    },
+    {
+      "path": "experiments/audit_private_expansion.py",
+      "sha256": "efe112ff0b1f8f01e83805ebc9c4fee1cf8de5c6c9ee3c6ae5ec2e59bbb19450",
+      "bytes": 4279,
+      "references": [
+        {
+          "source": "reports/history/private_rom/originals/accepted/0039_formal_expansion.md",
+          "line": 7,
+          "kind": "fresh_literal",
+          "excerpt": "cross-shard `audit_private_expansion.py` check. No model fitting in this loop."
+        }
+      ],
+      "docstring": "Cross-shard identity/coverage QA; never a model score or test feature fit.",
+      "imports": [
+        "import csv",
+        "import hashlib",
+        "import json",
+        "from pathlib import Path",
+        "import h5py",
+        "import numpy as np",
+        "from scipy.spatial.distance import cdist",
+        "from kiki.data.private_dataset import canonical_arrays"
+      ],
+      "path_lines": [
+        {
+          "line": 14,
+          "text": "def main():"
+        },
+        {
+          "line": 74,
+          "text": "if __name__==\"__main__\":"
+        }
+      ],
+      "closure_evidence": "reports/history/private_rom/originals/accepted/0039_formal_expansion.md",
+      "decision": "archive",
+      "current_path": "experiments/history/private_rom/audit_private_expansion.py",
+      "reason": "历史任务专用入口；AST与原报告确认用途，公开源码／配置／小体积来源元数据未发现外部可执行消费者。归档后按完整旧提交恢复，不在新深度直接运行。"
+    },
+    {
+      "path": "experiments/audit_private_reachable_boundary.py",
+      "sha256": "453a0d729e9757456a1211448de7c9e7cf62ccc55735897a20964e54be79c7ae",
+      "bytes": 6192,
+      "references": [
+        {
+          "source": "reports/accepted/0037_m3_reachable_boundary.md",
+          "target": "experiments/audit_private_reachable_boundary.py",
+          "kind": "literal_path_clue",
+          "line": 4
+        },
+        {
+          "source": "reports/history/private_rom/originals/accepted/0037_m3_reachable_boundary.md",
+          "line": 4,
+          "kind": "fresh_literal",
+          "excerpt": "`python experiments/audit_private_reachable_boundary.py --output"
+        }
+      ],
+      "docstring": "Fixed physical-amplitude ray probes; numerical LOS boundary, not full ROA.",
+      "imports": [
+        "import argparse",
+        "import json",
+        "import subprocess",
+        "from pathlib import Path",
+        "import h5py",
+        "import numpy as np",
+        "from run_private_m2 import development_data",
+        "from scipy.integrate import solve_ivp",
+        "from kiki.data.private_dataset import los_index",
+        "from kiki.models.private_pm import MechanicalROM"
+      ],
+      "path_lines": [
+        {
+          "line": 16,
+          "text": "def main():"
+        },
+        {
+          "line": 17,
+          "text": "    parser = argparse.ArgumentParser()"
+        },
+        {
+          "line": 108,
+          "text": "if __name__ == \"__main__\":"
+        }
+      ],
+      "closure_evidence": "reports/accepted/0037_m3_reachable_boundary.md",
+      "decision": "archive",
+      "current_path": "experiments/history/private_rom/audit_private_reachable_boundary.py",
+      "reason": "历史任务专用入口；AST与原报告确认用途，公开源码／配置／小体积来源元数据未发现外部可执行消费者。归档后按完整旧提交恢复，不在新深度直接运行。"
+    },
+    {
+      "path": "experiments/check_boundary_probe_0077.py",
+      "sha256": "0b839fb20a07f458018639c34a6d3c9a9572ed2d75f46099282623cfc450b98e",
+      "bytes": 6558,
+      "references": [],
+      "docstring": "Independent read-only QA for completed Loop0077 artifacts.",
+      "imports": [
+        "from __future__ import annotations",
+        "import csv, hashlib, json",
+        "from pathlib import Path",
+        "import h5py",
+        "import numpy as np"
+      ],
+      "path_lines": [
+        {
+          "line": 8,
+          "text": "ROOT = Path(__file__).resolve().parents[1]"
+        },
+        {
+          "line": 66,
+          "text": "def run(source=ROOT/'private_data/ieee39_boundary_fine_0075', output=ROOT/'private_data/task2_boundary_probe_0077'):"
+        },
+        {
+          "line": 93,
+          "text": "    result={'scope':'independent selected-TRAIN payload QA','source_event_ids':list(IDS),'source_train_only_asserted':True,'old_payloads_read':3,'statuses':statuses,'comparisons':comparisons,'timing_and_residual_summary':timing,'runner_metric_max_abs_discrepancy':max(metric_discrepancies,default=0.0),'source_hashes':{n:hashlib.sha256((source/n).read_bytes()).hexdigest() for n in ('dataset.h5','dataset_index.csv','splits.json')},'test_read':False}"
+        },
+        {
+          "line": 96,
+          "text": "if __name__=='__main__':"
+        }
+      ],
+      "closure_evidence": "reports/task2_boundary_probe_0077_conclusion.md",
+      "decision": "archive",
+      "current_path": "experiments/history/private_rom/check_boundary_probe_0077.py",
+      "reason": "历史任务专用入口；AST与原报告确认用途，公开源码／配置／小体积来源元数据未发现外部可执行消费者。归档后按完整旧提交恢复，不在新深度直接运行。"
+    },
+    {
+      "path": "experiments/check_long_step.py",
+      "sha256": "285924ecf12d5c4c654fdcd0debfb5fa5181749a89f04e316203fb2d3c8bf85c",
+      "bytes": 5829,
+      "references": [],
+      "docstring": "Registered .0025-step convergence diagnostic for saved Loop0060 forecasts.",
+      "imports": [
+        "import argparse",
+        "import hashlib",
+        "import json",
+        "from pathlib import Path",
+        "import numpy as np",
+        "import torch",
+        "from evaluate_long_latent import BASE, NETWORK, SCALES, _construct",
+        "from kiki.models.private_pm import MechanicalROM"
+      ],
+      "path_lines": [
+        {
+          "line": 80,
+          "text": "def main():"
+        },
+        {
+          "line": 81,
+          "text": "    parser = argparse.ArgumentParser()"
+        },
+        {
+          "line": 109,
+          "text": "              'code_sha256': digest(__file__), 'dt_old': .005, 'dt_new': .0025, 'output_dt': .01,"
+        },
+        {
+          "line": 118,
+          "text": "if __name__ == '__main__':"
+        }
+      ],
+      "closure_evidence": "reports/accepted/0060_long_horizon_campaign.md",
+      "decision": "archive",
+      "current_path": "experiments/history/private_rom/check_long_step.py",
+      "reason": "历史任务专用入口；AST与原报告确认用途，公开源码／配置／小体积来源元数据未发现外部可执行消费者。归档后按完整旧提交恢复，不在新深度直接运行。"
+    },
+    {
+      "path": "experiments/check_structure_prototype.py",
+      "sha256": "9f982364b0be942bf42c6b8fa2b471dcd0c61a299573f923a2e52cb95df273dd",
+      "bytes": 19566,
+      "references": [
+        {
+          "source": "reports/accepted/0076_structure_prototype.md",
+          "target": "experiments/check_structure_prototype.py",
+          "kind": "literal_path_clue",
+          "line": 20
+        },
+        {
+          "source": "reports/history/private_rom/originals/accepted/0076_structure_prototype.md",
+          "line": 20,
+          "kind": "fresh_literal",
+          "excerpt": "`python experiments/check_structure_prototype.py --output private_data/task2_structure_prototype_0076`."
+        }
+      ],
+      "docstring": "Loop 0076 prototype QA runner (synthetic and M3 assets only).\n\nThis runner deliberately performs no fitting and never opens event/H5 data.\nIt records numerical checks and trajectories; interpretation remains with the\nroot scientific agent.",
+      "imports": [
+        "from __future__ import annotations",
+        "import argparse",
+        "import hashlib",
+        "import json",
+        "import sys",
+        "import subprocess",
+        "from pathlib import Path",
+        "import numpy as np",
+        "import torch",
+        "from structured_rom import (  # noqa: E402\n    AnchoredGRUEncoder,\n    DissipationSpec,\n    ExchangeSpec,\n    StructuredROM,\n    numpy_field,\n)",
+        "from structure_grammar import PrimitiveSpec",
+        "from kiki.models.private_pm import MechanicalROM"
+      ],
+      "path_lines": [
+        {
+          "line": 19,
+          "text": "ROOT = Path(__file__).resolve().parents[1]"
+        },
+        {
+          "line": 20,
+          "text": "sys.path.insert(0, str(Path(__file__).resolve().parent))"
+        },
+        {
+          "line": 21,
+          "text": "sys.path.insert(0, str(ROOT / \"src\"))"
+        },
+        {
+          "line": 322,
+          "text": "def main():"
+        },
+        {
+          "line": 323,
+          "text": "    parser = argparse.ArgumentParser(); parser.add_argument(\"--output\", type=Path, required=True); parser.add_argument(\"--m3\", type=Path, default=Path(\"private_data/task2_m3_0020/model.npz\")); args = parser.parse_args()"
+        },
+        {
+          "line": 331,
+          "text": "    evidence = {\"seed\": SEED, \"torch_seed\": SEED, \"test_read\": False, \"m3_path\": str(args.m3), \"checks\": checks, \"synthetic_metrics\": cases[\"metrics\"], \"gates\": gates, \"thresholds\": {\"identity\": TOL_IDENTITY, \"gradient\": TOL_GRADIENT, \"fd\": TOL_FD, \"synthetic_shared_grid\": 1e-4, \"synthetic_work\": 1e-6}, \"export\": payload.get(\"counts\", {}), \"provenance\": {\"command\": \" \".join(sys.argv), \"code_sha256\": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(), \"grammar_sha256\": hashlib.sha256((Path(__file__).resolve().parent / \"structure_grammar.py\").read_bytes()).hexdigest(), \"structured_rom_sha256\": hashlib.sha256((Path(__file__).resolve().parent / \"structured_rom.py\").read_bytes()).hexdigest(), \"m3_sha256\": hashlib.sha256(args.m3.read_bytes()).hexdigest()}}"
+        },
+        {
+          "line": 333,
+          "text": "        [\"git\", \"rev-parse\", \"HEAD\"], cwd=ROOT, text=True).strip()"
+        },
+        {
+          "line": 338,
+          "text": "if __name__ == \"__main__\":"
+        }
+      ],
+      "closure_evidence": "reports/accepted/0076_structure_prototype.md",
+      "decision": "archive",
+      "current_path": "experiments/history/private_rom/check_structure_prototype.py",
+      "reason": "历史任务专用入口；AST与原报告确认用途，公开源码／配置／小体积来源元数据未发现外部可执行消费者。归档后按完整旧提交恢复，不在新深度直接运行。"
+    },
+    {
+      "path": "experiments/closure_known_controls_20261019.py",
+      "sha256": "a8f3c81a077690b3129971b3837e32d57f4cb63da351ca5126c1cc03177ba087",
+      "bytes": 3802,
+      "references": [
+        {
+          "source": "reports/closure_mechanism_20261019_progress.md",
+          "target": "experiments/closure_known_controls_20261019.py",
+          "kind": "literal_path_clue",
+          "line": 21
+        },
+        {
+          "source": "reports/history/closure_discovery/originals/mechanism_20261019/closure_mechanism_20261019_progress.md",
+          "line": 21,
+          "kind": "fresh_literal",
+          "excerpt": "批入口为`experiments/closure_known_controls_20261019.py`，具体模型采用`closure_causal_recovery_20261019.py`与GPU运行模块。它只读取合成观察，train/独立合成留出各16条，不提供q/RHS/干净导数监督。每项保留模型、Adam与随机状态；失败恢复为显式整次重启，旧尝试留存，不声称逐更新恢复。批账本`private_data/closure_mechanism_20261019/P1/known_controls/batch.json`记录真实PID、命令、状态与累计"
+        }
+      ],
+      "docstring": "Run the registered P1 known-support controls sequentially within one cap.\n\nThis is the fitting-adequacy substage, not a completed structure search. Parent\nwall time includes children once. Failed/partial attempts remain immutable.",
+      "imports": [
+        "import argparse, hashlib, json, os, subprocess, sys, time",
+        "from pathlib import Path"
+      ],
+      "path_lines": [
+        {
+          "line": 12,
+          "text": "def main():"
+        },
+        {
+          "line": 13,
+          "text": "    p=argparse.ArgumentParser(description=__doc__)"
+        },
+        {
+          "line": 18,
+          "text": "    script=Path(__file__).with_name('closure_causal_recovery_20261019.py')"
+        },
+        {
+          "line": 19,
+          "text": "    source_sha=hashlib.sha256(script.read_bytes()).hexdigest()"
+        },
+        {
+          "line": 21,
+          "text": "    state=json.loads(state_path.read_text()) if state_path.exists() else {'jobs':[],'source_sha256':source_sha,'prior_seconds':0.}"
+        },
+        {
+          "line": 22,
+          "text": "    if state['source_sha256']!=source_sha:raise ValueError('cannot mix control code versions')"
+        },
+        {
+          "line": 60,
+          "text": "if __name__=='__main__':main()"
+        }
+      ],
+      "closure_evidence": "reports/closure_mechanism_20261019_progress.md",
+      "decision": "archive",
+      "current_path": "experiments/history/closure_discovery/closure_known_controls_20261019.py",
+      "reason": "历史任务专用入口；AST与原报告确认用途，公开源码／配置／小体积来源元数据未发现外部可执行消费者。归档后按完整旧提交恢复，不在新深度直接运行。"
+    },
+    {
+      "path": "experiments/diagnose_electrical_residual_atlas.py",
+      "sha256": "0989525c676b6ce5ce58bda9f0f35b889301b97fd551a7d0b14e8e0f9305d80b",
+      "bytes": 9022,
+      "references": [
+        {
+          "source": "reports/accepted/0040_electrical_residual_atlas.md",
+          "target": "experiments/diagnose_electrical_residual_atlas.py",
+          "kind": "literal_path_clue",
+          "line": 4
+        },
+        {
+          "source": "reports/history/private_rom/originals/accepted/0040_electrical_residual_atlas.md",
+          "line": 4,
+          "kind": "fresh_literal",
+          "excerpt": "Command: scientific venv Python `experiments/diagnose_electrical_residual_atlas.py"
+        }
+      ],
+      "docstring": "TRAIN-only residual decomposition and hidden-state association diagnostics.",
+      "imports": [
+        "import argparse",
+        "import csv",
+        "import hashlib",
+        "import json",
+        "import subprocess",
+        "from pathlib import Path",
+        "import h5py",
+        "import numpy as np",
+        "from kiki.models.private_pm import MechanicalROM"
+      ],
+      "path_lines": [
+        {
+          "line": 33,
+          "text": "def main():"
+        },
+        {
+          "line": 34,
+          "text": "    parser=argparse.ArgumentParser()"
+        },
+        {
+          "line": 164,
+          "text": "if __name__==\"__main__\":"
+        }
+      ],
+      "closure_evidence": "reports/accepted/0040_electrical_residual_atlas.md",
+      "decision": "archive",
+      "current_path": "experiments/history/private_rom/diagnose_electrical_residual_atlas.py",
+      "reason": "历史任务专用入口；AST与原报告确认用途，公开源码／配置／小体积来源元数据未发现外部可执行消费者。归档后按完整旧提交恢复，不在新深度直接运行。"
+    },
+    {
+      "path": "experiments/diagnose_private_memory.py",
+      "sha256": "f403e53cbba22da78be744f4c65c65996a0909a369bff39224533b149c1afab0",
+      "bytes": 10321,
+      "references": [
+        {
+          "source": "reports/accepted/0027_memory_oracles.md",
+          "target": "experiments/diagnose_private_memory.py",
+          "kind": "literal_path_clue",
+          "line": 6
+        },
+        {
+          "source": "reports/accepted/0030_uncentered_oracle.md",
+          "target": "experiments/diagnose_private_memory.py",
+          "kind": "literal_path_clue",
+          "line": 4
+        },
+        {
+          "source": "reports/history/private_rom/originals/accepted/0027_memory_oracles.md",
+          "line": 6,
+          "kind": "fresh_literal",
+          "excerpt": "`python experiments/diagnose_private_memory.py --output private_data/task2_oracle_0027`."
+        },
+        {
+          "source": "reports/history/private_rom/originals/accepted/0030_uncentered_oracle.md",
+          "line": 4,
+          "kind": "fresh_literal",
+          "excerpt": "`python experiments/diagnose_private_memory.py --uncentered --output private_data/task2_uncentered_oracle_0030`."
+        }
+      ],
+      "docstring": "Post0026 numerical oracles: explicitly noncausal diagnostics, never a model.",
+      "imports": [
+        "import argparse",
+        "import json",
+        "import subprocess",
+        "import time",
+        "from dataclasses import dataclass",
+        "from pathlib import Path",
+        "import h5py",
+        "import numpy as np",
+        "from run_private_m2 import development_data, evaluate, training_scales",
+        "from scipy.optimize import minimize_scalar",
+        "from kiki.models.private_pm import MechanicalROM",
+        "from kiki.physics import coi_project"
+      ],
+      "path_lines": [
+        {
+          "line": 128,
+          "text": "def main():"
+        },
+        {
+          "line": 129,
+          "text": "    parser = argparse.ArgumentParser()"
+        },
+        {
+          "line": 183,
+          "text": "if __name__ == \"__main__\":"
+        }
+      ],
+      "closure_evidence": "reports/accepted/0027_memory_oracles.md",
+      "decision": "archive",
+      "current_path": "experiments/history/private_rom/diagnose_private_memory.py",
+      "reason": "历史任务专用入口；AST与原报告确认用途，公开源码／配置／小体积来源元数据未发现外部可执行消费者。归档后按完整旧提交恢复，不在新深度直接运行。"
+    },
+    {
+      "path": "experiments/diagnose_topology_force_capacity.py",
+      "sha256": "7f32add2a0b050abae25fce88c99df0e88ad0941985cb708feb8ddb80080a09a",
+      "bytes": 8767,
+      "references": [
+        {
+          "source": "reports/accepted/0045_topology_force_capacity.md",
+          "target": "experiments/diagnose_topology_force_capacity.py",
+          "kind": "literal_path_clue",
+          "line": 4
+        },
+        {
+          "source": "reports/history/private_rom/originals/accepted/0045_topology_force_capacity.md",
+          "line": 4,
+          "kind": "fresh_literal",
+          "excerpt": "command `experiments/diagnose_topology_force_capacity.py --output"
+        }
+      ],
+      "docstring": "Noncausal forcing controls isolate geometry, coordinate and ODE failures.",
+      "imports": [
+        "import argparse",
+        "import csv",
+        "import json",
+        "import subprocess",
+        "from collections import defaultdict",
+        "from pathlib import Path",
+        "import h5py",
+        "import numpy as np",
+        "from run_private_m2 import aggregate",
+        "from kiki.data.private_dataset import load_private_event",
+        "from kiki.models.private_pm import MechanicalROM",
+        "from kiki.physics import coi_project"
+      ],
+      "path_lines": [
+        {
+          "line": 47,
+          "text": "def main():"
+        },
+        {
+          "line": 48,
+          "text": "    parser = argparse.ArgumentParser()"
+        },
+        {
+          "line": 144,
+          "text": "if __name__ == '__main__':"
+        }
+      ],
+      "closure_evidence": "reports/accepted/0045_topology_force_capacity.md",
+      "decision": "archive",
+      "current_path": "experiments/history/private_rom/diagnose_topology_force_capacity.py",
+      "reason": "历史任务专用入口；AST与原报告确认用途，公开源码／配置／小体积来源元数据未发现外部可执行消费者。归档后按完整旧提交恢复，不在新深度直接运行。"
+    },
+    {
+      "path": "experiments/evaluate_joint_adequacy_0099.py",
+      "sha256": "2dbcfb4945f5f1a196afa63da828965c132b4b8e3d6dd9a9b90b4336444adff4",
+      "bytes": 4137,
+      "references": [],
+      "docstring": "Bounded reuse of the frozen trajectory/mode and full-TRAIN evaluators.\n\nThe nested files retain their inherited implementation label 0098; this outer\nmanifest identifies the actual experiment/checkpoint without rewriting evidence.\nNo fitting, checkpoint selection or TEST access is performed here.",
+      "imports": [
+        "from __future__ import annotations",
+        "import argparse",
+        "import hashlib",
+        "import json",
+        "import os",
+        "from pathlib import Path",
+        "import subprocess",
+        "import sys",
+        "import time"
+      ],
+      "path_lines": [
+        {
+          "line": 17,
+          "text": "ROOT = Path(__file__).resolve().parents[1]"
+        },
+        {
+          "line": 26,
+          "text": "    paths = [checkpoint / 'model.pt', checkpoint / 'checkpoint.json', Path(__file__),"
+        },
+        {
+          "line": 27,
+          "text": "             ROOT / 'experiments/evaluate_local_memory_0098.py',"
+        },
+        {
+          "line": 28,
+          "text": "             ROOT / 'experiments/summarize_train_local_memory_0098.py']"
+        },
+        {
+          "line": 42,
+          "text": "            command = [sys.executable, str(ROOT/'experiments'/script),"
+        },
+        {
+          "line": 49,
+          "text": "                    result = subprocess.run(command, cwd=ROOT, env=environment,"
+        },
+        {
+          "line": 75,
+          "text": "if __name__ == '__main__':"
+        },
+        {
+          "line": 76,
+          "text": "    parser = argparse.ArgumentParser(description=__doc__)"
+        }
+      ],
+      "closure_evidence": "reports/history/private_rom/originals/capabilities/0099_joint_adequacy_capability.md",
+      "decision": "archive",
+      "current_path": "experiments/history/private_rom/evaluate_joint_adequacy_0099.py",
+      "reason": "历史任务专用入口；AST与原报告确认用途，公开源码／配置／小体积来源元数据未发现外部可执行消费者。归档后按完整旧提交恢复，不在新深度直接运行。"
+    },
+    {
+      "path": "experiments/export_private_fullorder_modes.py",
+      "sha256": "c55bf9db23520ce26da6aa50a87579d9bbc788d6410c2bb19f5db468915b62f8",
+      "bytes": 3515,
+      "references": [
+        {
+          "source": "reports/accepted/0035_m3_modes.md",
+          "target": "experiments/export_private_fullorder_modes.py",
+          "kind": "literal_path_clue",
+          "line": 4
+        },
+        {
+          "source": "results/gftd_fit297_20261107/static_identity_audit.json",
+          "target": "experiments/export_private_fullorder_modes.py",
+          "kind": "literal_path_clue",
+          "line": 133
+        },
+        {
+          "source": "reports/history/private_rom/originals/accepted/0035_m3_modes.md",
+          "line": 4,
+          "kind": "fresh_literal",
+          "excerpt": "`python experiments/export_private_fullorder_modes.py --output"
+        },
+        {
+          "source": "results/gftd_fit297_20261107/static_identity_audit.json",
+          "line": 133,
+          "kind": "fresh_literal",
+          "excerpt": "    \"export_source_path\": \"experiments/export_private_fullorder_modes.py\","
+        }
+      ],
+      "docstring": "Export unchanged full-order equilibrium linearization using installed ANDES.",
+      "imports": [
+        "import argparse",
+        "import hashlib",
+        "import json",
+        "import logging",
+        "import subprocess",
+        "from pathlib import Path",
+        "import andes",
+        "import h5py",
+        "import numpy as np",
+        "from andes.shared import matrix as dense_matrix",
+        "from generate_private_dataset import physical_parameters"
+      ],
+      "path_lines": [
+        {
+          "line": 16,
+          "text": "def main():"
+        },
+        {
+          "line": 17,
+          "text": "    parser = argparse.ArgumentParser()"
+        },
+        {
+          "line": 68,
+          "text": "if __name__ == \"__main__\":"
+        }
+      ],
+      "decision": "protected",
+      "reason": "fit297静态身份审计将本文件记为全阶线性化的导出来源，并记录历史／当前源码哈希；不在本次代码归档中改变这条来源路径。",
+      "consumer": "results/gftd_fit297_20261107/static_identity_audit.json:133",
+      "release_condition": "在fit297来源链另行核准路径别名、原版本读取与审计入口后再迁移；不改写原哈希。"
+    },
+    {
+      "path": "experiments/p_channel_diagnostic_20261030.py",
+      "sha256": "451e3a02a8fcaa625b4bf8f39e691b7b73feb4867e2b75c86f0e3cb097665b76",
+      "bytes": 5179,
+      "references": [
+        {
+          "source": "reports/closure_probe_20261030_conclusion.md",
+          "target": "experiments/p_channel_diagnostic_20261030.py",
+          "kind": "markdown_link",
+          "line": 123
+        },
+        {
+          "source": "reports/closure_probe_20261030_conclusion.md",
+          "line": 123,
+          "kind": "fresh_literal",
+          "excerpt": "可复现脚本 [p_channel_diagnostic_20261030.py](../experiments/p_channel_diagnostic_20261030.py)"
+        }
+      ],
+      "docstring": "EXPLORATORY / POST-HOC: p-channel error decomposition (not pre-registered).\n\nRead-only. Frozen A128 predictions + truth on train fit297 stable events; no training,\nno model rollout. The frozen model's p dynamics is a fixed linear filter of omega:\n\n    pdot_i = -jpi_p_i * omega_i - rpp_i * storage_base_i * p_i.\n\nWe split the p error into three parts at each 0.01 s output:\n    p_pred - p_true = [p_pred - F(omega_pred)]     (integration/implementation)\n                    + [F(omega_pred) - F(omega_true)]  (omega-induced)\n                    + [F(omega_true) - p_true]         (p-model-form)\nwhere F(omega) is the same RK4 filter integrated from the frozen p(0). All parts are\nreported in the frozen normalized metric mean_i((.)/p_scale_i)^2. The parts are not\northogonal; a sum-of-parts / total ratio is reported.\n\nScope: this is a diagnostic of the fixed p channel, not a mechanism proof, not a model\ndecision, and it was added after the pre-registered probe results were seen.",
+      "imports": [
+        "from __future__ import annotations",
+        "import argparse",
+        "import json",
+        "from pathlib import Path",
+        "import sys",
+        "import numpy as np"
+      ],
+      "path_lines": [
+        {
+          "line": 28,
+          "text": "ROOT = Path(__file__).resolve().parents[1]"
+        },
+        {
+          "line": 29,
+          "text": "sys.path[:0] = [str(ROOT), str(ROOT / \"experiments\"), str(ROOT / \"src\")]"
+        },
+        {
+          "line": 31,
+          "text": "MODEL = ROOT / \"private_data/memory_transport_20261029/study01_prelaunch_retry1/study/A_30311/checkpoints/step000128/model.json\""
+        },
+        {
+          "line": 32,
+          "text": "PRED = ROOT / \"private_data/memory_transport_20261029/study01_prelaunch_retry1/study/A_30311/fit000128\""
+        },
+        {
+          "line": 33,
+          "text": "SGM = ROOT / \"private_data/state_gated_memory_20261028/study01\""
+        },
+        {
+          "line": 55,
+          "text": "def main(argv=None):"
+        },
+        {
+          "line": 56,
+          "text": "    ap = argparse.ArgumentParser()"
+        },
+        {
+          "line": 119,
+          "text": "if __name__ == \"__main__\":"
+        }
+      ],
+      "closure_evidence": "reports/closure_probe_20261030_conclusion.md",
+      "decision": "archive",
+      "current_path": "experiments/history/force_memory/p_channel_diagnostic_20261030.py",
+      "reason": "历史任务专用入口；AST与原报告确认用途，公开源码／配置／小体积来源元数据未发现外部可执行消费者。归档后按完整旧提交恢复，不在新深度直接运行。"
+    },
+    {
+      "path": "experiments/probe64_20261030.py",
+      "sha256": "38189aaf4e14435dc3d85a6f58b54e130122037051806888756b2ebe213dbbe4",
+      "bytes": 31631,
+      "references": [],
+      "docstring": "P4 (H3 cheap check): frozen A step64 versus step128 forward evaluation.\n\nRead-only except the declared P4 outputs.\n\n* No training, no optimizer, no new data and no checkpoint writes.\n* Both frozen checkpoints are rolled forward on the 267 stable ``fit297`` events with the\n  registered fine path (0.005 s true RK4, history dt 0.00125, graph cache, CPU float64,\n  one thread), exactly the pipeline that produced the frozen 0.005 s prediction files.\n* Only the first 8 s are integrated because the requested metrics are stable 5 s / 8 s.\n* ``step128`` is a comparability gate: its 5 s / 8 s risks must reproduce the published\n  ``0.8675373355146678`` / ``0.6255711284192054`` at atol 1e-9.  If that gate fails the\n  step64 numbers are not released.\n* Only per-event scalar risks are retained; no trajectory arrays are stored.",
+      "imports": [
+        "from __future__ import annotations",
+        "import argparse",
+        "import json",
+        "import sys",
+        "import time",
+        "from pathlib import Path",
+        "import numpy as np",
+        "import torch",
+        "import closure_probe_20261030 as probe"
+      ],
+      "path_lines": [
+        {
+          "line": 26,
+          "text": "ROOT = Path(__file__).resolve().parents[1]"
+        },
+        {
+          "line": 27,
+          "text": "sys.path[:0] = [str(ROOT), str(ROOT / \"experiments\"), str(ROOT / \"src\")]"
+        },
+        {
+          "line": 35,
+          "text": "P4_PRIVATE = probe.PRIVATE_ROOT / \"p4_step64\""
+        },
+        {
+          "line": 36,
+          "text": "P4_PUBLIC = probe.RESULTS_ROOT / \"p4_step64_public.json\""
+        },
+        {
+          "line": 41,
+          "text": "PANEL48_PUBLIC = ROOT / \"results/memory_transport_20261029/A_30311_completed_public.json\""
+        },
+        {
+          "line": 55,
+          "text": "CURVE_PRIVATE = probe.PRIVATE_ROOT / \"p4b_curve\""
+        },
+        {
+          "line": 56,
+          "text": "CURVE_PUBLIC = probe.RESULTS_ROOT / \"p4b_curve_public.json\""
+        },
+        {
+          "line": 59,
+          "text": "    64: probe.PRIVATE_ROOT / \"p4_step64/p4_step64.json\","
+        },
+        {
+          "line": 60,
+          "text": "    128: probe.PRIVATE_ROOT / \"p4_step64/p4_step128.json\","
+        },
+        {
+          "line": 90,
+          "text": "        \"source\": PANEL48_PUBLIC.relative_to(ROOT).as_posix(),"
+        },
+        {
+          "line": 208,
+          "text": "            \"path\": checkpoint.relative_to(ROOT).as_posix(),"
+        },
+        {
+          "line": 250,
+          "text": "    p1_path = probe.PRIVATE_ROOT / \"p1.json\""
+        },
+        {
+          "line": 255,
+          "text": "    result = {\"source\": p1_path.relative_to(ROOT).as_posix(), \"sha256\": _sha(p1_path)}"
+        },
+        {
+          "line": 308,
+          "text": "    private_dir.relative_to(probe._resolve(probe.PRIVATE_ROOT))"
+        },
+        {
+          "line": 309,
+          "text": "    public_path = probe.guard_output(public_path, probe.RESULTS_ROOT)"
+        },
+        {
+          "line": 392,
+          "text": "                \"path\": CHECKPOINTS[\"step64\"].relative_to(ROOT).as_posix(),"
+        },
+        {
+          "line": 452,
+          "text": "                \"source\": path.relative_to(ROOT).as_posix(),"
+        },
+        {
+          "line": 523,
+          "text": "    private_dir.relative_to(probe._resolve(probe.PRIVATE_ROOT))"
+        },
+        {
+          "line": 524,
+          "text": "    public_path = probe.guard_output(public_path, probe.RESULTS_ROOT)"
+        },
+        {
+          "line": 538,
+          "text": "    private_dir.relative_to(probe._resolve(probe.PRIVATE_ROOT))"
+        },
+        {
+          "line": 539,
+          "text": "    public_path = probe.guard_output(public_path, probe.RESULTS_ROOT)"
+        },
+        {
+          "line": 675,
+          "text": "def build_parser() -> argparse.ArgumentParser:"
+        },
+        {
+          "line": 676,
+          "text": "    parser = argparse.ArgumentParser("
+        },
+        {
+          "line": 695,
+          "text": "def main(argv: list[str] | None = None) -> int:"
+        },
+        {
+          "line": 746,
+          "text": "if __name__ == \"__main__\":"
+        }
+      ],
+      "closure_evidence": "reports/closure_probe_20261030_conclusion.md",
+      "decision": "archive",
+      "current_path": "experiments/history/force_memory/probe64_20261030.py",
+      "reason": "历史任务专用入口；AST与原报告确认用途，公开源码／配置／小体积来源元数据未发现外部可执行消费者。归档后按完整旧提交恢复，不在新深度直接运行。"
+    },
+    {
+      "path": "experiments/r_memory_recovery_evaluate_20261028.py",
+      "sha256": "82aaebbce9c4ec1e82b2af109e4afc2550934e5f4f6e05063ae3fe9687bc71ae",
+      "bytes": 16773,
+      "references": [
+        {
+          "source": "reports/history/force_memory/protected.md",
+          "line": 110,
+          "kind": "fresh_literal",
+          "excerpt": "| [r_memory_recovery_20261028_protocol.md](../../r_memory_recovery_20261028_protocol.md) | 源码、配置或路径哈希身份引用：[reports/r_memory_20261028_conclusion.md](../../r_memory_20261028_conclusion.md)（第5行）；[experiments/r_memory_recovery_evaluate_20261028.py](../../../experiments/r_memory_recov"
+        },
+        {
+          "source": "reports/r_memory_recovery_20261028_protocol.md",
+          "line": 11,
+          "kind": "fresh_literal",
+          "excerpt": "实现入口experiments/r_memory_recovery_evaluate_20261028.py，输出private_data/r_memory_20261028/recovery_eval01。先保存冻结身份与绑定，再调用原study的checked_preparation(fit_only=False)、load_export及evaluate_model。CPU float64单线程，完全沿用原coarse/fine与8s/actual15s资格函数、风险、共同频率/p及失稳分类。不得修改旧MILESTONES，不得覆盖旧输出。"
+        }
+      ],
+      "docstring": "R0: one new CPU evaluation of the fixed, latest durable A/25101 model.\n\nThe old optimizer, six-fit queue, locks, and evaluations are never resumed or\nwritten. ``check`` uses only Python source and JSON metadata, without torch or\nevent-array imports. ``run`` requires the root-verified remote source commit.",
+      "imports": [
+        "from __future__ import annotations",
+        "import argparse",
+        "import ast",
+        "import json",
+        "from pathlib import Path",
+        "import sys",
+        "import time",
+        "import traceback",
+        "from experiments.r_memory_execution_20261025 import commit_id, read, sha, write_new"
+      ],
+      "path_lines": [
+        {
+          "line": 17,
+          "text": "ROOT = Path(__file__).resolve().parents[1]"
+        },
+        {
+          "line": 18,
+          "text": "sys.path.insert(0, str(ROOT))"
+        },
+        {
+          "line": 21,
+          "text": "BASE = ROOT / \"private_data/r_memory_20261028/recovery_eval01\""
+        },
+        {
+          "line": 22,
+          "text": "OLD = ROOT / \"private_data/r_memory_20261025/run01_repair01\""
+        },
+        {
+          "line": 24,
+          "text": "RECOVERY = ROOT / \"results/r_memory_20261025/recovery_20261028.json\""
+        },
+        {
+          "line": 25,
+          "text": "PROTOCOL = ROOT / \"reports/r_memory_recovery_20261028_protocol.md\""
+        },
+        {
+          "line": 38,
+          "text": "    expected = ROOT / \"private_data/r_memory_20261028/recovery_eval01\""
+        },
+        {
+          "line": 44,
+          "text": "    path = ROOT / \"experiments/r_memory_study_20261025.py\""
+        },
+        {
+          "line": 132,
+          "text": "    for p in (Path(__file__).resolve(), PROTOCOL, RECOVERY, OLD / \"binding.json\","
+        },
+        {
+          "line": 287,
+          "text": "    command = python_command([\"-B\", str(Path(__file__).resolve()), \"run\","
+        },
+        {
+          "line": 298,
+          "text": "        files, ROOT, worker_receipt=folder / \"worker.json\", on_worker_owned=owned,"
+        },
+        {
+          "line": 310,
+          "text": "def main(argv=None):"
+        },
+        {
+          "line": 311,
+          "text": "    parser = argparse.ArgumentParser(description=__doc__)"
+        },
+        {
+          "line": 330,
+          "text": "if __name__ == \"__main__\":"
+        }
+      ],
+      "closure_evidence": "reports/r_memory_20261028_conclusion.md",
+      "decision": "archive",
+      "current_path": "experiments/history/force_memory/r_memory_recovery_evaluate_20261028.py",
+      "reason": "历史任务专用入口；AST与原报告确认用途，公开源码／配置／小体积来源元数据未发现外部可执行消费者。归档后按完整旧提交恢复，不在新深度直接运行。"
+    },
+    {
+      "path": "experiments/rational_checkpoint_qualification_20261022.py",
+      "sha256": "d045f9dc709a205b7c9a1b342ed3544a9e1cc72e3f426a82724749e7f2f29a34",
+      "bytes": 13535,
+      "references": [
+        {
+          "source": "reports/checkpoint_continuation_20261022_result_review.md",
+          "target": "experiments/rational_checkpoint_qualification_20261022.py",
+          "kind": "literal_path_clue",
+          "line": 68
+        },
+        {
+          "source": "reports/history/closure_development/originals/checkpoint_continuation_20261022_result_review.md",
+          "line": 68,
+          "kind": "fresh_literal",
+          "excerpt": "**本次不集成依赖旧core的三个新工程文件：** `experiments/rational_checkpoint_recovery_20261022.py`、`experiments/rational_checkpoint_qualification_20261022.py`、`tests/test_rational_checkpoint_recovery_20261022.py`。亦不集成旧已知命名冲突的`rational_execution_20261021.py`或私有launcher。main获得本次可核对的研究结果，不获得一个宣称自包含或默"
+        }
+      ],
+      "docstring": "One-shot, train-only CUDA checkpoint qualification for the registered repair.\n\nThis module has no command-line entry point. The source-bound native worker calls\nqualify_cuda once and keeps the returned migrated models alive for continuation.",
+      "imports": [
+        "from __future__ import annotations",
+        "import copy",
+        "import hashlib",
+        "import math",
+        "import traceback",
+        "from pathlib import Path"
+      ],
+      "path_lines": [],
+      "decision": "protected",
+      "reason": "模块文档明确由source-bound私有native worker调用qualify_cuda；本轮未打开该worker或其绑定，不能由公开扫描无调用者推断可迁移。",
+      "consumer": "experiments/rational_checkpoint_qualification_20261022.py:3; reports/history/closure_development/originals/checkpoint_continuation_20261022_result_review.md:68",
+      "release_condition": "核查对应私有worker的明确关闭边界、动态导入及冻结绑定；保留完整旧版本恢复后单独解除。"
+    },
+    {
+      "path": "experiments/run_private_m3.py",
+      "sha256": "c2efb325d4ed2f3d22a0b2ff51cdc9cca0ac652bd745fbfe42cc5eb645811d29",
+      "bytes": 5125,
+      "references": [
+        {
+          "source": "reports/accepted/0020_private_m3_pm.md",
+          "target": "experiments/run_private_m3.py",
+          "kind": "literal_path_clue",
+          "line": 5
+        },
+        {
+          "source": "reports/history/private_rom/originals/accepted/0020_private_m3_pm.md",
+          "line": 5,
+          "kind": "fresh_literal",
+          "excerpt": "`python experiments/run_private_m3.py --output private_data/task2_m3_0020`."
+        }
+      ],
+      "docstring": "One fit, true-speed diagnostic and autonomous M3-Pm contribution screen.",
+      "imports": [
+        "import argparse",
+        "import json",
+        "import subprocess",
+        "import time",
+        "from pathlib import Path",
+        "import h5py",
+        "import numpy as np",
+        "from run_private_m2 import development_data, evaluate, training_scales",
+        "from kiki.models.private_pm import fit_mechanical, forced_pm",
+        "from kiki.models.private_rom import SwingROM"
+      ],
+      "path_lines": [
+        {
+          "line": 44,
+          "text": "def main():"
+        },
+        {
+          "line": 45,
+          "text": "    parser = argparse.ArgumentParser()"
+        },
+        {
+          "line": 88,
+          "text": "if __name__ == \"__main__\":"
+        }
+      ],
+      "closure_evidence": "reports/accepted/0020_private_m3_pm.md",
+      "decision": "archive",
+      "current_path": "experiments/history/private_rom/run_private_m3.py",
+      "reason": "历史任务专用入口；AST与原报告确认用途，公开源码／配置／小体积来源元数据未发现外部可执行消费者。归档后按完整旧提交恢复，不在新深度直接运行。"
+    },
+    {
+      "path": "experiments/summarize_refit_v2.py",
+      "sha256": "c2fdb506ea89e2eba3ab409bf3cb0f1ec099ecdb46bf74f71565c679c1987ace",
+      "bytes": 6218,
+      "references": [
+        {
+          "source": "reports/accepted/0010_project_conclusion_audit.md",
+          "target": "experiments/summarize_refit_v2.py",
+          "kind": "literal_path_clue",
+          "line": 80
+        },
+        {
+          "source": "reports/records_retention_audit_20260922.md",
+          "target": "experiments/summarize_refit_v2.py",
+          "kind": "markdown_link",
+          "line": 57
+        },
+        {
+          "source": "reports/accepted/0010_project_conclusion_audit.md",
+          "line": 80,
+          "kind": "fresh_literal",
+          "excerpt": "较强表述。`experiments/summarize_refit_v2.py` 从保存的逐事件记录复算汇总，"
+        },
+        {
+          "source": "reports/history/early_e_series/originals/records_retention_audit_20260922.md",
+          "line": 57,
+          "kind": "fresh_literal",
+          "excerpt": "- [summarize_refit_v2.py](../experiments/summarize_refit_v2.py) 第 34–42/88 行读取"
+        }
+      ],
+      "docstring": "Recompute audited development evidence from saved event rows, without payload reads.",
+      "imports": [
+        "from __future__ import annotations",
+        "import json",
+        "import sys",
+        "from collections import Counter",
+        "from pathlib import Path",
+        "import numpy as np",
+        "from experiments.run_refit_v2 import atomic_write_json, sha256_file",
+        "from kiki.evaluation.metrics import aggregate_trajectory_metrics",
+        "from kiki.evaluation.modal import summarize_event_modal_matches"
+      ],
+      "path_lines": [
+        {
+          "line": 12,
+          "text": "ROOT = Path(__file__).resolve().parents[1]"
+        },
+        {
+          "line": 13,
+          "text": "sys.path.insert(0, str(ROOT))"
+        },
+        {
+          "line": 14,
+          "text": "sys.path.insert(0, str(ROOT / \"src\"))"
+        },
+        {
+          "line": 21,
+          "text": "def main() -> None:"
+        },
+        {
+          "line": 22,
+          "text": "    output = ROOT / \"results\" / \"e12_refit_audit\" / \"summary.json\""
+        },
+        {
+          "line": 34,
+          "text": "            directory = ROOT / \"results\" / \"e10_refit_v2\" / fold / stage"
+        },
+        {
+          "line": 37,
+          "text": "            sources[str(path.relative_to(ROOT))] = sha256_file(path)"
+        },
+        {
+          "line": 42,
+          "text": "                if sha256_file(ROOT / dependency[\"path\"]) != dependency[\"sha256\"]:"
+        },
+        {
+          "line": 88,
+          "text": "    modal_path = ROOT / \"results\" / \"e11_modal_validation_v2\" / \"summary.json\""
+        },
+        {
+          "line": 90,
+          "text": "    sources[str(modal_path.relative_to(ROOT))] = sha256_file(modal_path)"
+        },
+        {
+          "line": 127,
+          "text": "if __name__ == \"__main__\":"
+        }
+      ],
+      "closure_evidence": "reports/accepted/0010_project_conclusion_audit.md",
+      "decision": "archive",
+      "current_path": "experiments/history/early_e_series/summarize_refit_v2.py",
+      "reason": "历史任务专用入口；AST与原报告确认用途，公开源码／配置／小体积来源元数据未发现外部可执行消费者。归档后按完整旧提交恢复，不在新深度直接运行。"
+    },
+    {
+      "path": "experiments/summarize_shared_closure_0101.py",
+      "sha256": "baa2963a8d2ea1d14c417a4e1c7e742622e4184f6c3ed7f4059c5f53249e81b8",
+      "bytes": 15338,
+      "references": [
+        {
+          "source": "reports/0101_shared_closure_FS_capability.md",
+          "target": "experiments/summarize_shared_closure_0101.py",
+          "kind": "literal_path_clue",
+          "line": 156
+        },
+        {
+          "source": "reports/0101_shared_closure_FS_capability.md",
+          "line": 156,
+          "kind": "fresh_literal",
+          "excerpt": "`E:/03-nn_Transfer_Func/kron-reduce/.venv/Scripts/python.exe experiments/summarize_shared_closure_0101.py`。"
+        }
+      ],
+      "docstring": "Pure-JSON, read-only 0101 evidence extraction; no model or data loading.",
+      "imports": [
+        "from __future__ import annotations",
+        "import argparse",
+        "from collections import Counter",
+        "from datetime import datetime, timezone",
+        "import hashlib",
+        "import json",
+        "from pathlib import Path",
+        "import time",
+        "from summarize_joint_numerical_pair_0100 import Reader, finite, statistics, monitor_summary"
+      ],
+      "path_lines": [
+        {
+          "line": 12,
+          "text": "ROOT=Path(__file__).resolve().parents[1]"
+        },
+        {
+          "line": 13,
+          "text": "DATA=ROOT/'private_data/task2_shared_closure_FS_0101'"
+        },
+        {
+          "line": 224,
+          "text": "    report['extractor_code']={'path':str(Path(__file__).resolve()),'sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}"
+        },
+        {
+          "line": 230,
+          "text": "if __name__=='__main__':"
+        },
+        {
+          "line": 231,
+          "text": "    p=argparse.ArgumentParser(description=__doc__)"
+        }
+      ],
+      "closure_evidence": "reports/0101_shared_closure_FS_capability.md",
+      "decision": "archive",
+      "current_path": "experiments/history/private_rom/summarize_shared_closure_0101.py",
+      "reason": "历史任务专用入口；AST与原报告确认用途，公开源码／配置／小体积来源元数据未发现外部可执行消费者。归档后按完整旧提交恢复，不在新深度直接运行。"
+    },
+    {
+      "path": "reports/astra6_after_rational_20261022_raw.txt",
+      "sha256": "261dc699486d344ce7e810db7cfcfdfa94e56e1e2f59bcca7505482aea9e6985",
+      "bytes": 7717,
+      "references": [
+        {
+          "source": "reports/history/closure_development/originals/astra6_after_rational_20261022.md",
+          "line": 3,
+          "kind": "fresh_literal",
+          "excerpt": "真实调用：collaboration.spawn_agent(task_name=\"astra6_after_rational_20261022\", model=\"gpt-6-astra\", fork_turns=\"none\")，返回task_name /root/astra6_after_rational_20261022；模型覆盖来自实际调用参数，不以自称替代。完整原始返回见astra6_after_rational_20261022_raw.txt。只读，无训练/评价/状态加载/文件修改。"
+        }
+      ],
+      "beginning": "规划模型：本任务指定 `gpt-6-astra`；请 root 将实际调用工具返回的模型字段一并保存，作为模型身份凭证。本次只读取文件，没有训练、评价、加载模型、联网或修改文件。\n\n建议下一轮直接执行**有限生成语法中的自主结构选择**，复用已经实现而因历史费用门槛未执行的六候选研究。新登记取消进程额度，旧费用 REJECT 原样保留。暂不扩展有理运算，也不直接转到真实网格比较：现有最小缺口是结构选择算法尚无完整执行证据，已有实现可以直接回答这一问题。\n\n已核到：\n\n- `rational_checkpoint02/science/selection.json` 为 `all_twelve_frozen: true`，来源 `6bf8f730e4fc180af9e815682a8fb4fe4b7fd020`。\n- `rational_checkpoint02/evaluate01/result.json` 为 `COMPLETED`，读取到对应数值合格评价。六配对差及费用采用 root 提供的完整摘要，本次未独立重算。\n- `docs/current_state.md` 仍停在九模型里",
+      "decision": "archive",
+      "current_path": "reports/history/closure_development/originals/astra6_after_rational_20261022_raw.txt",
+      "reason": "历史规划原始返回／准备补丁／项目概览；没有公开执行器、配置或哈希消费者。仅归档原件；旧内部路径经链接解析表或完整旧版本恢复。"
+    },
+    {
+      "path": "reports/astra6_bounded_edge_20261022_raw.txt",
+      "sha256": "e62170fde0f022e803e05296075f2a435742b81e17e226d3f4ea03f76cff0c5e",
+      "bytes": 6178,
+      "references": [
+        {
+          "source": "reports/history/closure_development/originals/astra6_bounded_edge_20261022.md",
+          "line": 3,
+          "kind": "fresh_literal",
+          "excerpt": "真实调用：collaboration.spawn_agent(task_name=\"astra6_after_grammar_failure_20261022\",model=\"gpt-6-astra\",fork_turns=\"none\")，返回/root/astra6_after_grammar_failure_20261022。完整原始返回astra6_bounded_edge_20261022_raw.txt。只读，无数据生成/训练/评价/文件修改。不能以模型自称代替本次实际工具调用参数。"
+        }
+      ],
+      "beginning": "规划调用标识：`gpt-6-astra`；任务 `/root/astra6_after_grammar_failure_20261022`。本次仅阅读源码和决定性材料，未生成数据、训练、评价或改文件。\n\n建议关闭本轮科学结果为“教师数值资格不足，完整结构恢复未决”，然后执行独立的新问题：**在具有至多线性增长向量场的边闭合语法中，能否从100ms部分观测自主选回生成机制？** 不复跑旧teacher，不延长6102。\n\n旧teacher冻结表达式为 `0.15*(qi^3-qj)*s`，index 4。生产编译器对边表达式作对称处理并形成能量与梯度；不能把原始AST直接当成单条动力学方程。`symbolic_closure_rom.py`保留正的q二次能量，但一般三次q交叉能量可沿某些方向压过二次项，梯度随q呈二次或三次增长。语法合法、哈希抽取和非零机制去重均没有保证全局增长控制。因此，现有高斯强激励与5.1s轨迹资格之间没有先验保证。已观察的非有限值和双步长差证明数值资格失败；它们不证明连续系统有限时间爆破或真实物理失稳。6102的短窗拟合后长窗误差上升另说明训练目标与长窗排名可能失",
+      "decision": "archive",
+      "current_path": "reports/history/closure_development/originals/astra6_bounded_edge_20261022_raw.txt",
+      "reason": "历史规划原始返回／准备补丁／项目概览；没有公开执行器、配置或哈希消费者。仅归档原件；旧内部路径经链接解析表或完整旧版本恢复。"
+    },
+    {
+      "path": "reports/astra6_checkpoint_continuation_20261022_raw.txt",
+      "sha256": "154d953085b9870a73cc3f7bb6c79289c076fd463826ce82d4e8d1137cf172fe",
+      "bytes": 7499,
+      "references": [
+        {
+          "source": "reports/history/closure_development/originals/astra6_checkpoint_continuation_20261022.md",
+          "line": 3,
+          "kind": "fresh_literal",
+          "excerpt": "指定模型gpt-6-astra，实际子代理/root/astra6_qa05_plan_20261022在当前GPU失败后完成只读规划，完整返回保存astra6_checkpoint_continuation_20261022_raw.txt。root采纳根因与三份32来源迁移路线，固定一次非GPU集合、4条132更新CUDA验证、三份原状态加载核验，再6048正式更新；不重跑旧96、不选择性重训、不QA07、不改旧complete。"
+        },
+        {
+          "source": "reports/history/closure_development/originals/checkpoint_continuation_20261022_protocol.md",
+          "line": 3,
+          "kind": "fresh_literal",
+          "excerpt": "实际指定gpt-6-astra(/root/astra6_qa05_plan_20261022)原始方案另存astra6_checkpoint_continuation_20261022_raw.txt。root采用有限迁移与原比较续接路线；依据AGENTS连续自主授权及人类原训练许可，不重复询问，不追加QA07/不重跑五例或QA06。旧三UNRESOLVED组闭合、96更新、检查点原件与费用不改。"
+        }
+      ],
+      "beginning": "本次为指定 **gpt-6-astra（Astra6）有界只读规划**。已读取相关保存/恢复代码、原协议、实际组结果及6301的JSON和文件hash；未反序列化 training.pt，未运行GPU、测试或修改文件。\n\n根因明确：诊断侧文件的名称与共享恢复函数的检查点扫描规则冲突。建议关闭当前失败执行，在连续自主研究权限内登记一个有限的“保存恢复修复与原比较续接”阶段；不用追加QA07，也不把已完成的失败组伪装成中断恢复。\n\n1. 具体根因与最小修复\n\npublish_checkpoint 在模型文件夹创建 checkpoint_00032.diagnostics.json。共享 restore 使用：\nany(p.name > directory.name for p in folder.glob('checkpoint_*'))\n该扫描同时匹配目录和侧文件，而字符串 checkpoint_00032.diagnostics.json 大于 checkpoint_00032，于是合法侧文件被判作未提交检查点。发生位置在模型/Adam/RNG加载之前。这与三个seed都在32步失败吻",
+      "decision": "archive",
+      "current_path": "reports/history/closure_development/originals/astra6_checkpoint_continuation_20261022_raw.txt",
+      "reason": "历史规划原始返回／准备补丁／项目概览；没有公开执行器、配置或哈希消费者。仅归档原件；旧内部路径经链接解析表或完整旧版本恢复。"
+    },
+    {
+      "path": "reports/astra6_horizon_pair_20261023_raw.txt",
+      "sha256": "715bef2f575f759267ec0807573aacd7a163ab924732bc57d59122a485faafce",
+      "bytes": 6379,
+      "references": [
+        {
+          "source": "reports/astra6_horizon_pair_20261023.md",
+          "line": 3,
+          "kind": "fresh_literal",
+          "excerpt": "真实工具调用collaboration.spawn_agent(task_name=\"astra6_after_bounded_edge_20261023\",model=\"gpt-6-astra\",fork_turns=\"none\")返回/root/astra6_after_bounded_edge_20261023；完整原始返回保存astra6_horizon_pair_20261023_raw.txt。子代理只读，未执行训练/生成/新评价。root在读取已完成18模型事实后采纳该唯一训练窗口×固定更新数比较，不把该规划称为独立结果审查。"
+        }
+      ],
+      "beginning": "建议下一轮执行一个固定的“训练时长 × 更新次数”联合比较，直接检验：**当前0.5s拟合窗口是否没有约束住用于结构排名的(2,5]s行为，还是512次更新尚未提供足够适应机会。** 本轮保留原40状态、30观测和100ms一次初始化，不改变潜状态结构。这样能够先排除一个具体、可执行的训练条件解释，再决定是否值得改架构。\n\n读取依据包括AGENTS.md、current_state、engineering_loop、现行协议、selection和evaluate结果。规划时`completion_facts.json`尚未存在，因而不依据尚未取得的学习曲线断言“已收敛”或“仍改善”。现有证据是teacher2最终排名3/6/5，选择3/0/3，所有最终端点数值合格；这支持开展训练条件比较，不支持归因于数值失败或不可辨识。方案文字按anti-defensive-writing的证据范围原则组织。\n\n**唯一执行方案**\n\n| 项目 | 固定设置 |\n|---|---|\n| 机制 | 原冻结池teacher2与候选3，两者AST和系数参数化不变 |\n| 选择候选3的理由 | 它是上轮三个t",
+      "decision": "archive",
+      "current_path": "reports/history/closure_development/originals/astra6_horizon_pair_20261023_raw.txt",
+      "reason": "历史规划原始返回／准备补丁／项目概览；没有公开执行器、配置或哈希消费者。仅归档原件；旧内部路径经链接解析表或完整旧版本恢复。"
+    },
+    {
+      "path": "reports/astra6_qa05_20261022_raw.txt",
+      "sha256": "1b7f849ba85b2695b9aa50967ffe6e1510122a27bc7140a3ef9ded1e1236667f",
+      "bytes": 6490,
+      "references": [
+        {
+          "source": "experiments/rational_execution_20261021.py",
+          "target": "reports/astra6_qa05_20261022_raw.txt",
+          "kind": "literal_path_clue",
+          "line": 193
+        },
+        {
+          "source": "experiments/rational_execution_20261021.py",
+          "line": 193,
+          "kind": "fresh_literal",
+          "excerpt": "    'qa05_astra_raw':('reports/astra6_qa05_20261022_raw.txt','1b7f849ba85b2695b9aa50967ffe6e1510122a27bc7140a3ef9ded1e1236667f'),"
+        },
+        {
+          "source": "reports/astra6_qa05_20261022.md",
+          "line": 3,
+          "kind": "fresh_literal",
+          "excerpt": "实际调用模型gpt-6-astra，agent /root/astra6_qa05_plan_20261022，fork_turns none，reasoning high。完整原始返回单独保存于astra6_qa05_20261022_raw.txt；以下为方案排版记录，root采纳位于末尾。"
+        }
+      ],
+      "beginning": "本次为父代理指定的 **gpt-6-astra（Astra6）只读规划调用**。我已读取指定状态、规则、QA04证据和入口代码；未修改文件、运行测试、启动 probe 或训练，也未递归委派。以下为原始方案，最终采用与科学决定由 root 负责。\n\n建议采用 QA05：**一次完整复验，成功后自动执行原12模型计划**。只修正临时路径及 QA05 的授权、历史核验和执行准入连接，不修改已合格的 A2 运行机制或科学实现。\n\n1. **根因与证据**\n\n   `results/rational_execution_20261021/qa04_summary.json` 和结论报告一致：QA04为73项通过、26项 fixture 设置报错。错误发生于286字符的原子临时文件名，父目录存在；不能把26项计为已执行断言，也不能由73项通过推导完整合格。\n\n   QA04固定历史为源 `6eb63542ee4da28be4227d653d32f3d48bd8367f`、native SHA `d49f6db12049ecef2160460037237fffe46b96178ef13435e6fc",
+      "decision": "protected",
+      "reason": "旧rational执行器的QA05来源表直接绑定该路径和SHA256。",
+      "consumer": "experiments/rational_execution_20261021.py:193",
+      "release_condition": "在该执行器及其冻结QA05绑定的独立迁移中核准旧路径恢复方案；本轮不改执行器或原始返回。"
+    },
+    {
+      "path": "reports/astra6_training_efficiency_20261024_raw.txt",
+      "sha256": "79b3deed4ef26a3e0ca91e7340fe5d9c7c81d38144c8f7f17bdba29346ca555c",
+      "bytes": 8434,
+      "references": [
+        {
+          "source": "reports/history/closure_development/originals/training_efficiency_20261024_protocol.md",
+          "line": 3,
+          "kind": "fresh_literal",
+          "excerpt": "实际规划调用：2026-10-24，子代理/root/astra6_training_efficiency_20261024，spawn_agent model=gpt-6-astra、fork_turns=none，真实返回保存在astra6_training_efficiency_20261024_raw.txt。root采纳该有限工程方案；其关于current_state仍运行的观察来自规划读取时点，实际正式Job已完成，不改变原记录。"
+        }
+      ],
+      "beginning": "模型身份：本任务由父代理以 `gpt-6-astra`（Astra6）指派调用；调用配置以父代理工具记录为准。本次仅只读分析，未修改文件、启动训练或访问 val/test。\n\n已核实 `run/complete.json` 和 `science/selection.json`：24576 次更新、12 次恢复、36 个检查点、`all_twelve_frozen=true`。这只证明训练状态完整，数值资格仍按各评价记录判断。`current_state.md` 仍描述最后一模型运行中，根代理应先完成本轮闭合、独立审查与归档，再执行以下工程工作。\n\n建议登记一个有限工程轮，最多两个优化，不开展新科学比较。\n\n**实际调用路径与待测问题**\n\n- `horizon_pair_20261023.run_study` 使用 `closure_causal_history_residual_20261019.train_update`；其 `prediction` 仅用前11点初始化，然后调用 `closure_causal_recovery_20261019.trajectory`，按50或2",
+      "decision": "archive",
+      "current_path": "reports/history/closure_development/originals/astra6_training_efficiency_20261024_raw.txt",
+      "reason": "历史规划原始返回／准备补丁／项目概览；没有公开执行器、配置或哈希消费者。仅归档原件；旧内部路径经链接解析表或完整旧版本恢复。"
+    },
+    {
+      "path": "reports/kiki_project_overview_20261029.html",
+      "sha256": "83e8376c47e3daa46e34551bee72d20757a5c241aa743d0951a7ede723790d77",
+      "bytes": 47849,
+      "references": [],
+      "resources": [
+        "#summary",
+        "#task",
+        "#data",
+        "#models",
+        "#equations",
+        "#symbolic",
+        "#training",
+        "#metrics",
+        "#results",
+        "#science",
+        "#roadmap",
+        "#sources",
+        "accepted/0058_joint_tail_risk.md",
+        "closure_discovery_20261017_final.md",
+        "state_gated_memory_20261028_conclusion.md",
+        "../docs/current_state.md",
+        "../docs/TASK2_after_loop_101.md",
+        "../configs/dataset.json",
+        "../configs/private_dataset.json",
+        "../experiments/train_local_memory_0098.py",
+        "closure_discovery_20261017_final.md",
+        "force_graph_20261028_protocol.md",
+        "accepted/0058_joint_tail_risk.md",
+        "task2_structure_campaign_0078.md",
+        "0078_C3000_evidence.md",
+        "../experiments/local_memory_rom_0098.py",
+        "../experiments/force_graph_model_20261028.py",
+        "state_gated_memory_20261028_protocol.md",
+        "../experiments/force_graph_model_20261028.py",
+        "../experiments/state_gated_memory_model_20261028.py",
+        "state_gated_memory_20261028_protocol.md",
+        "closure_discovery_20261017_final.md",
+        "closure_discovery_20261017_stage_E.md",
+        "../results/closure_discovery_20261017/E/packages/main_2701/equations.md",
+        "../results/closure_discovery_20261017/E/packages/main_2701/README.md",
+        "../experiments/train_joint_latent.py",
+        "task2_structure_campaign_0078.md",
+        "../experiments/extend_structure_0078.py",
+        "../experiments/train_local_memory_0098.py",
+        "../experiments/discover_closure.py",
+        "../configs/closure_discovery_20261017.json",
+        "state_gated_memory_20261028_protocol.md",
+        "../docs/gpu_training.md",
+        "../experiments/train_structured_rom.py",
+        "../experiments/train_local_memory_0098.py",
+        "state_gated_memory_20261028_protocol.md",
+        "accepted/0058_joint_tail_risk.md",
+        "0078_C3000_evidence.md",
+        "0098_local_memory_capability.md",
+        "closure_discovery_20261017_final.md",
+        "state_gated_memory_20261028_conclusion.md",
+        "force_graph_20261028_conclusion.md",
+        "force_exchange_20261028_conclusion.md",
+        "closure_discovery_20261017_stage_E.md",
+        "closure_discovery_20261017_stage_A.md",
+        "../docs/conditional_rom_domain.md",
+        "weak_force_identification_20261029_conclusion.md",
+        "memory_transport_20261029_protocol.md",
+        "../docs/current_state.md",
+        "../results/memory_transport_20261029/execution_attempt01_public.json",
+        "../docs/research_execution_20261028.md",
+        "../README.md",
+        "../docs/current_state.md",
+        "../docs/TASK2_after_loop_101.md",
+        "../configs/private_dataset.json",
+        "../configs/dataset.json",
+        "../experiments/train_local_memory_0098.py",
+        "../experiments/local_memory_rom_0098.py",
+        "../experiments/train_structured_rom.py",
+        "../experiments/force_graph_model_20261028.py",
+        "../experiments/state_gated_memory_model_20261028.py",
+        "../experiments/discover_closure.py",
+        "../configs/closure_discovery_20261017.json",
+        "../docs/gpu_training.md",
+        "accepted/0058_joint_tail_risk.md",
+        "0078_C3000_evidence.md",
+        "0098_local_memory_capability.md",
+        "closure_discovery_20261017_final.md",
+        "closure_discovery_20261017_stage_E.md",
+        "../results/closure_discovery_20261017/E/packages/main_2701/equations.md",
+        "force_graph_20261028_conclusion.md",
+        "force_exchange_20261028_conclusion.md",
+        "state_gated_memory_20261028_protocol.md",
+        "state_gated_memory_20261028_conclusion.md",
+        "../docs/conditional_rom_domain.md",
+        "weak_force_identification_20261029_conclusion.md",
+        "memory_transport_20261029_protocol.md",
+        "kiki_project_overview_20261029_sources.json"
+      ],
+      "embedded_scripts": [],
+      "decision": "archive",
+      "current_path": "reports/history/force_memory/originals/kiki_project_overview_20261029.html",
+      "reason": "历史规划原始返回／准备补丁／项目概览；没有公开执行器、配置或哈希消费者。仅归档原件；旧内部路径经链接解析表或完整旧版本恢复。"
+    },
+    {
+      "path": "reports/kiki_project_overview_20261029_sources.json",
+      "sha256": "5857446a3278ea8f9409efe3c99a7e3ebca210d1bf967c5bccb6c75c9bb987b7",
+      "bytes": 4764,
+      "references": [
+        {
+          "source": "reports/history/force_memory/protected.md",
+          "line": 33,
+          "kind": "fresh_literal",
+          "excerpt": "| [force_exchange_20261028_conclusion.md](../../force_exchange_20261028_conclusion.md) | 源码、配置或路径哈希身份引用：[reports/kiki_project_overview_20261029_sources.json](../../kiki_project_overview_20261029_sources.json)（第62行）；[reports/kiki_project_overview_20261029_sources.json](../../kiki_"
+        },
+        {
+          "source": "reports/history/force_memory/protected.md",
+          "line": 38,
+          "kind": "fresh_literal",
+          "excerpt": "| [force_graph_20261028_conclusion.md](../../force_graph_20261028_conclusion.md) | 源码、配置或路径哈希身份引用：[reports/force_exchange_20261028_pre_execution_review.md](../../force_exchange_20261028_pre_execution_review.md)（第36行）；[reports/kiki_project_overview_20261029_sources.json](../../kik"
+        },
+        {
+          "source": "reports/history/force_memory/protected.md",
+          "line": 41,
+          "kind": "fresh_literal",
+          "excerpt": "| [force_graph_20261028_protocol.md](../../force_graph_20261028_protocol.md) | 源码、配置或路径哈希身份引用：[reports/force_graph_20261028_conclusion.md](../../force_graph_20261028_conclusion.md)（第69行）；[reports/force_graph_20261028_problem_connections.md](../../force_graph_20261028_problem_conn"
+        },
+        {
+          "source": "reports/history/force_memory/protected.md",
+          "line": 50,
+          "kind": "fresh_literal",
+          "excerpt": "| [memory_transport_20261029_protocol.md](../../memory_transport_20261029_protocol.md) | 源码、配置或路径哈希身份引用：[reports/architecture_brief_20261030_challenge.md](../../architecture_brief_20261030_challenge.md)（第182行）；[reports/kiki_project_overview_20261029_sources.json](../../kiki_proje"
+        },
+        {
+          "source": "reports/history/force_memory/protected.md",
+          "line": 111,
+          "kind": "fresh_literal",
+          "excerpt": "| [state_gated_memory_20261028_conclusion.md](../../state_gated_memory_20261028_conclusion.md) | 源码、配置或路径哈希身份引用：[reports/kiki_project_overview_20261029_sources.json](../../kiki_project_overview_20261029_sources.json)（第70行）；[reports/kiki_project_overview_20261029_sources.json](../"
+        },
+        {
+          "source": "reports/history/force_memory/protected.md",
+          "line": 113,
+          "kind": "fresh_literal",
+          "excerpt": "| [state_gated_memory_20261028_protocol.md](../../state_gated_memory_20261028_protocol.md) | 源码、配置或路径哈希身份引用：[reports/kiki_project_overview_20261029_sources.json](../../kiki_project_overview_20261029_sources.json)（第66行）；[reports/kiki_project_overview_20261029_sources.json](../../k"
+        },
+        {
+          "source": "reports/history/force_memory/protected.md",
+          "line": 115,
+          "kind": "fresh_literal",
+          "excerpt": "| [weak_force_identification_20261029_conclusion.md](../../weak_force_identification_20261029_conclusion.md) | 源码、配置或路径哈希身份引用：[reports/force_structure_next_20261029_challenge.md](../../force_structure_next_20261029_challenge.md)（第45行）；[reports/kiki_project_overview_20261029_sourc"
+        },
+        {
+          "source": "reports/kiki_project_overview_20261029.html",
+          "line": 34,
+          "kind": "fresh_literal",
+          "excerpt": "<section id=\"sources\"><h2><small>12 / TRACEABLE SOURCES</small>证据索引与复查入口</h2><p>本页所有数字均保留所属模型、数据范围、时域与指标定义。相对链接指向同仓库中的实际文件；离线阅读本页不需要外部服务，打开来源需要保留仓库目录结构。源文件行号用于快速定位，文件更新后以对应冻结结果和协议身份为准。</p><ol class=\"sources\"><li><a href=\"../README.md\">README</a>：项目入口与独立运行包导航。</li><li><a href=\"../"
+        }
+      ],
+      "beginning": "{\r\n  \"title\": \"Kiki项目算法与结果报告：来源快照\",\r\n  \"as_of_date\": \"2026-10-29\",\r\n  \"timezone\": \"Asia/Shanghai\",\r\n  \"scope\": \"Existing reports and source only; no new training, simulation, raw val/test access, or scientific promotion\",\r\n  \"sources\": [\r\n    {\r\n      \"path\": \"docs/current_state.md\",\r\n      \"sha256\": \"31330c378380ae22c39b6a78d2632ac97d0778bd5c6663dcec6cbc4d022e4830\",\r\n      \"initial_read_sha256\": \"fca21bb0125e7623f374282f91a0f0549ca4d564871f741fc7013da74c404f7e\",\r\n      \"note\": \"Refreshed during",
+      "decision": "archive",
+      "current_path": "reports/history/force_memory/originals/kiki_project_overview_20261029_sources.json",
+      "reason": "历史规划原始返回／准备补丁／项目概览；没有公开执行器、配置或哈希消费者。仅归档原件；旧内部路径经链接解析表或完整旧版本恢复。"
+    },
+    {
+      "path": "reports/qa05_followup_prepared.diff",
+      "sha256": "6683c1c532ea646bb47c344ddb0da759d53cdf8f0c90fa50461c938b4a042002",
+      "bytes": 8331,
+      "references": [
+        {
+          "source": "reports/maintenance/execution_runtime/originals/descendant_spawn_repair_20261022_proposal.md",
+          "line": 3,
+          "kind": "fresh_literal",
+          "excerpt": "状态AUTHORIZED_20261022：人类已明确回复“允许修复、验收并继续训练”，固定五例+一次完整验收的新授权归档e870c195e069a22fe1b7f917d2d1ca1ee47e5ef4。以下为此前待批准提案，旧NOT_AUTHORIZED版本保留在49c2b6f990d26e820c197ad148d7196da37902f9；本次执行以spawn_chain_repair_20261022_protocol.md及实际Astra6新轮次决定为准。已有可审查补丁qa05_followup_prepared.diff，SHA256 668"
+        },
+        {
+          "source": "reports/spawn_chain_repair_20261022_protocol.md",
+          "line": 5,
+          "kind": "fresh_literal",
+          "excerpt": "采用经独立静态复查的qa05_followup_prepared.diff：四处实际Python派生显式DETACHED；保留原命令、venv环境、管道和等待，不混NO_WINDOW/不breakaway。Job仅增加已核所属句柄的活动成员PID/FILETIME/映像/wait取证，读取错误保留，立即按原严格规则清理并FAILED，无宽限或名称免责。准确正则修复保持拒绝与后续正例。科学54项及train_group/检查点数学不动。"
+        }
+      ],
+      "patch_targets": [
+        "experiments/rational_execution_20261021.py",
+        "tests/test_uncapped_windows_job_20261021.py",
+        "private_data/closure_mechanism_20261019/P1/rational_execution01/reconstruction20261022/probe_worker.py",
+        "experiments/uncapped_windows_job_20261021.py",
+        "tests/test_rational_execution_20261021.py"
+      ],
+      "decision": "archive",
+      "current_path": "reports/maintenance/execution_runtime/originals/qa05_followup_prepared.diff",
+      "reason": "历史规划原始返回／准备补丁／项目概览；没有公开执行器、配置或哈希消费者。仅归档原件；旧内部路径经链接解析表或完整旧版本恢复。"
+    }
+  ],
+  "moves": [
+    {
+      "old_path": "experiments/audit_electrical_port_balance.py",
+      "new_path": "experiments/history/private_rom/audit_electrical_port_balance.py",
+      "bytes": 7426,
+      "sha256": "fd518bbb76a6c6521df5811542a94f81a1a336892eb78f55b4d1acdaeaac309a",
+      "reason": "历史任务专用入口；AST与原报告确认用途，公开源码／配置／小体积来源元数据未发现外部可执行消费者。归档后按完整旧提交恢复，不在新深度直接运行。",
+      "rollback": "核对SHA256及原路径空闲后原样移回；需执行旧入口时恢复完整1458475提交及其原合法输入，不直接运行归档深层路径。",
+      "original_version": "145847532bacd3454dca8869e819778efc8258f6"
+    },
+    {
+      "old_path": "experiments/audit_holdout_supplement.py",
+      "new_path": "experiments/history/private_rom/audit_holdout_supplement.py",
+      "bytes": 3451,
+      "sha256": "268f6d5a4f662d08e2a5249a41b928b4937b5ac49ac3f076d30c9da92592c55b",
+      "reason": "历史任务专用入口；AST与原报告确认用途，公开源码／配置／小体积来源元数据未发现外部可执行消费者。归档后按完整旧提交恢复，不在新深度直接运行。",
+      "rollback": "核对SHA256及原路径空闲后原样移回；需执行旧入口时恢复完整1458475提交及其原合法输入，不直接运行归档深层路径。",
+      "original_version": "145847532bacd3454dca8869e819778efc8258f6"
+    },
+    {
+      "old_path": "experiments/audit_private_energy.py",
+      "new_path": "experiments/history/private_rom/audit_private_energy.py",
+      "bytes": 7810,
+      "sha256": "c460486d19475f0e898fa163fb280191d9e74c32bede46d119931fe4fe07486d",
+      "reason": "历史任务专用入口；AST与原报告确认用途，公开源码／配置／小体积来源元数据未发现外部可执行消费者。归档后按完整旧提交恢复，不在新深度直接运行。",
+      "rollback": "核对SHA256及原路径空闲后原样移回；需执行旧入口时恢复完整1458475提交及其原合法输入，不直接运行归档深层路径。",
+      "original_version": "145847532bacd3454dca8869e819778efc8258f6"
+    },
+    {
+      "old_path": "experiments/audit_private_energy_boundary.py",
+      "new_path": "experiments/history/private_rom/audit_private_energy_boundary.py",
+      "bytes": 9227,
+      "sha256": "573d2544a5352bd961e57c05f62d3f76138b62ffce5acaf0518bf7e6107ad945",
+      "reason": "历史任务专用入口；AST与原报告确认用途，公开源码／配置／小体积来源元数据未发现外部可执行消费者。归档后按完整旧提交恢复，不在新深度直接运行。",
+      "rollback": "核对SHA256及原路径空闲后原样移回；需执行旧入口时恢复完整1458475提交及其原合法输入，不直接运行归档深层路径。",
+      "original_version": "145847532bacd3454dca8869e819778efc8258f6"
+    },
+    {
+      "old_path": "experiments/audit_private_expansion.py",
+      "new_path": "experiments/history/private_rom/audit_private_expansion.py",
+      "bytes": 4279,
+      "sha256": "efe112ff0b1f8f01e83805ebc9c4fee1cf8de5c6c9ee3c6ae5ec2e59bbb19450",
+      "reason": "历史任务专用入口；AST与原报告确认用途，公开源码／配置／小体积来源元数据未发现外部可执行消费者。归档后按完整旧提交恢复，不在新深度直接运行。",
+      "rollback": "核对SHA256及原路径空闲后原样移回；需执行旧入口时恢复完整1458475提交及其原合法输入，不直接运行归档深层路径。",
+      "original_version": "145847532bacd3454dca8869e819778efc8258f6"
+    },
+    {
+      "old_path": "experiments/audit_private_reachable_boundary.py",
+      "new_path": "experiments/history/private_rom/audit_private_reachable_boundary.py",
+      "bytes": 6192,
+      "sha256": "453a0d729e9757456a1211448de7c9e7cf62ccc55735897a20964e54be79c7ae",
+      "reason": "历史任务专用入口；AST与原报告确认用途，公开源码／配置／小体积来源元数据未发现外部可执行消费者。归档后按完整旧提交恢复，不在新深度直接运行。",
+      "rollback": "核对SHA256及原路径空闲后原样移回；需执行旧入口时恢复完整1458475提交及其原合法输入，不直接运行归档深层路径。",
+      "original_version": "145847532bacd3454dca8869e819778efc8258f6"
+    },
+    {
+      "old_path": "experiments/check_boundary_probe_0077.py",
+      "new_path": "experiments/history/private_rom/check_boundary_probe_0077.py",
+      "bytes": 6558,
+      "sha256": "0b839fb20a07f458018639c34a6d3c9a9572ed2d75f46099282623cfc450b98e",
+      "reason": "历史任务专用入口；AST与原报告确认用途，公开源码／配置／小体积来源元数据未发现外部可执行消费者。归档后按完整旧提交恢复，不在新深度直接运行。",
+      "rollback": "核对SHA256及原路径空闲后原样移回；需执行旧入口时恢复完整1458475提交及其原合法输入，不直接运行归档深层路径。",
+      "original_version": "145847532bacd3454dca8869e819778efc8258f6"
+    },
+    {
+      "old_path": "experiments/check_long_step.py",
+      "new_path": "experiments/history/private_rom/check_long_step.py",
+      "bytes": 5829,
+      "sha256": "285924ecf12d5c4c654fdcd0debfb5fa5181749a89f04e316203fb2d3c8bf85c",
+      "reason": "历史任务专用入口；AST与原报告确认用途，公开源码／配置／小体积来源元数据未发现外部可执行消费者。归档后按完整旧提交恢复，不在新深度直接运行。",
+      "rollback": "核对SHA256及原路径空闲后原样移回；需执行旧入口时恢复完整1458475提交及其原合法输入，不直接运行归档深层路径。",
+      "original_version": "145847532bacd3454dca8869e819778efc8258f6"
+    },
+    {
+      "old_path": "experiments/check_structure_prototype.py",
+      "new_path": "experiments/history/private_rom/check_structure_prototype.py",
+      "bytes": 19566,
+      "sha256": "9f982364b0be942bf42c6b8fa2b471dcd0c61a299573f923a2e52cb95df273dd",
+      "reason": "历史任务专用入口；AST与原报告确认用途，公开源码／配置／小体积来源元数据未发现外部可执行消费者。归档后按完整旧提交恢复，不在新深度直接运行。",
+      "rollback": "核对SHA256及原路径空闲后原样移回；需执行旧入口时恢复完整1458475提交及其原合法输入，不直接运行归档深层路径。",
+      "original_version": "145847532bacd3454dca8869e819778efc8258f6"
+    },
+    {
+      "old_path": "experiments/closure_known_controls_20261019.py",
+      "new_path": "experiments/history/closure_discovery/closure_known_controls_20261019.py",
+      "bytes": 3802,
+      "sha256": "a8f3c81a077690b3129971b3837e32d57f4cb63da351ca5126c1cc03177ba087",
+      "reason": "历史任务专用入口；AST与原报告确认用途，公开源码／配置／小体积来源元数据未发现外部可执行消费者。归档后按完整旧提交恢复，不在新深度直接运行。",
+      "rollback": "核对SHA256及原路径空闲后原样移回；需执行旧入口时恢复完整1458475提交及其原合法输入，不直接运行归档深层路径。",
+      "original_version": "145847532bacd3454dca8869e819778efc8258f6"
+    },
+    {
+      "old_path": "experiments/diagnose_electrical_residual_atlas.py",
+      "new_path": "experiments/history/private_rom/diagnose_electrical_residual_atlas.py",
+      "bytes": 9022,
+      "sha256": "0989525c676b6ce5ce58bda9f0f35b889301b97fd551a7d0b14e8e0f9305d80b",
+      "reason": "历史任务专用入口；AST与原报告确认用途，公开源码／配置／小体积来源元数据未发现外部可执行消费者。归档后按完整旧提交恢复，不在新深度直接运行。",
+      "rollback": "核对SHA256及原路径空闲后原样移回；需执行旧入口时恢复完整1458475提交及其原合法输入，不直接运行归档深层路径。",
+      "original_version": "145847532bacd3454dca8869e819778efc8258f6"
+    },
+    {
+      "old_path": "experiments/diagnose_private_memory.py",
+      "new_path": "experiments/history/private_rom/diagnose_private_memory.py",
+      "bytes": 10321,
+      "sha256": "f403e53cbba22da78be744f4c65c65996a0909a369bff39224533b149c1afab0",
+      "reason": "历史任务专用入口；AST与原报告确认用途，公开源码／配置／小体积来源元数据未发现外部可执行消费者。归档后按完整旧提交恢复，不在新深度直接运行。",
+      "rollback": "核对SHA256及原路径空闲后原样移回；需执行旧入口时恢复完整1458475提交及其原合法输入，不直接运行归档深层路径。",
+      "original_version": "145847532bacd3454dca8869e819778efc8258f6"
+    },
+    {
+      "old_path": "experiments/diagnose_topology_force_capacity.py",
+      "new_path": "experiments/history/private_rom/diagnose_topology_force_capacity.py",
+      "bytes": 8767,
+      "sha256": "7f32add2a0b050abae25fce88c99df0e88ad0941985cb708feb8ddb80080a09a",
+      "reason": "历史任务专用入口；AST与原报告确认用途，公开源码／配置／小体积来源元数据未发现外部可执行消费者。归档后按完整旧提交恢复，不在新深度直接运行。",
+      "rollback": "核对SHA256及原路径空闲后原样移回；需执行旧入口时恢复完整1458475提交及其原合法输入，不直接运行归档深层路径。",
+      "original_version": "145847532bacd3454dca8869e819778efc8258f6"
+    },
+    {
+      "old_path": "experiments/evaluate_joint_adequacy_0099.py",
+      "new_path": "experiments/history/private_rom/evaluate_joint_adequacy_0099.py",
+      "bytes": 4137,
+      "sha256": "2dbcfb4945f5f1a196afa63da828965c132b4b8e3d6dd9a9b90b4336444adff4",
+      "reason": "历史任务专用入口；AST与原报告确认用途，公开源码／配置／小体积来源元数据未发现外部可执行消费者。归档后按完整旧提交恢复，不在新深度直接运行。",
+      "rollback": "核对SHA256及原路径空闲后原样移回；需执行旧入口时恢复完整1458475提交及其原合法输入，不直接运行归档深层路径。",
+      "original_version": "145847532bacd3454dca8869e819778efc8258f6"
+    },
+    {
+      "old_path": "experiments/p_channel_diagnostic_20261030.py",
+      "new_path": "experiments/history/force_memory/p_channel_diagnostic_20261030.py",
+      "bytes": 5179,
+      "sha256": "451e3a02a8fcaa625b4bf8f39e691b7b73feb4867e2b75c86f0e3cb097665b76",
+      "reason": "历史任务专用入口；AST与原报告确认用途，公开源码／配置／小体积来源元数据未发现外部可执行消费者。归档后按完整旧提交恢复，不在新深度直接运行。",
+      "rollback": "核对SHA256及原路径空闲后原样移回；需执行旧入口时恢复完整1458475提交及其原合法输入，不直接运行归档深层路径。",
+      "original_version": "145847532bacd3454dca8869e819778efc8258f6"
+    },
+    {
+      "old_path": "experiments/probe64_20261030.py",
+      "new_path": "experiments/history/force_memory/probe64_20261030.py",
+      "bytes": 31631,
+      "sha256": "38189aaf4e14435dc3d85a6f58b54e130122037051806888756b2ebe213dbbe4",
+      "reason": "历史任务专用入口；AST与原报告确认用途，公开源码／配置／小体积来源元数据未发现外部可执行消费者。归档后按完整旧提交恢复，不在新深度直接运行。",
+      "rollback": "核对SHA256及原路径空闲后原样移回；需执行旧入口时恢复完整1458475提交及其原合法输入，不直接运行归档深层路径。",
+      "original_version": "145847532bacd3454dca8869e819778efc8258f6"
+    },
+    {
+      "old_path": "experiments/r_memory_recovery_evaluate_20261028.py",
+      "new_path": "experiments/history/force_memory/r_memory_recovery_evaluate_20261028.py",
+      "bytes": 16773,
+      "sha256": "82aaebbce9c4ec1e82b2af109e4afc2550934e5f4f6e05063ae3fe9687bc71ae",
+      "reason": "历史任务专用入口；AST与原报告确认用途，公开源码／配置／小体积来源元数据未发现外部可执行消费者。归档后按完整旧提交恢复，不在新深度直接运行。",
+      "rollback": "核对SHA256及原路径空闲后原样移回；需执行旧入口时恢复完整1458475提交及其原合法输入，不直接运行归档深层路径。",
+      "original_version": "145847532bacd3454dca8869e819778efc8258f6"
+    },
+    {
+      "old_path": "experiments/run_private_m3.py",
+      "new_path": "experiments/history/private_rom/run_private_m3.py",
+      "bytes": 5125,
+      "sha256": "c2efb325d4ed2f3d22a0b2ff51cdc9cca0ac652bd745fbfe42cc5eb645811d29",
+      "reason": "历史任务专用入口；AST与原报告确认用途，公开源码／配置／小体积来源元数据未发现外部可执行消费者。归档后按完整旧提交恢复，不在新深度直接运行。",
+      "rollback": "核对SHA256及原路径空闲后原样移回；需执行旧入口时恢复完整1458475提交及其原合法输入，不直接运行归档深层路径。",
+      "original_version": "145847532bacd3454dca8869e819778efc8258f6"
+    },
+    {
+      "old_path": "experiments/summarize_refit_v2.py",
+      "new_path": "experiments/history/early_e_series/summarize_refit_v2.py",
+      "bytes": 6218,
+      "sha256": "c2fdb506ea89e2eba3ab409bf3cb0f1ec099ecdb46bf74f71565c679c1987ace",
+      "reason": "历史任务专用入口；AST与原报告确认用途，公开源码／配置／小体积来源元数据未发现外部可执行消费者。归档后按完整旧提交恢复，不在新深度直接运行。",
+      "rollback": "核对SHA256及原路径空闲后原样移回；需执行旧入口时恢复完整1458475提交及其原合法输入，不直接运行归档深层路径。",
+      "original_version": "145847532bacd3454dca8869e819778efc8258f6"
+    },
+    {
+      "old_path": "experiments/summarize_shared_closure_0101.py",
+      "new_path": "experiments/history/private_rom/summarize_shared_closure_0101.py",
+      "bytes": 15338,
+      "sha256": "baa2963a8d2ea1d14c417a4e1c7e742622e4184f6c3ed7f4059c5f53249e81b8",
+      "reason": "历史任务专用入口；AST与原报告确认用途，公开源码／配置／小体积来源元数据未发现外部可执行消费者。归档后按完整旧提交恢复，不在新深度直接运行。",
+      "rollback": "核对SHA256及原路径空闲后原样移回；需执行旧入口时恢复完整1458475提交及其原合法输入，不直接运行归档深层路径。",
+      "original_version": "145847532bacd3454dca8869e819778efc8258f6"
+    },
+    {
+      "old_path": "reports/astra6_after_rational_20261022_raw.txt",
+      "new_path": "reports/history/closure_development/originals/astra6_after_rational_20261022_raw.txt",
+      "bytes": 7717,
+      "sha256": "261dc699486d344ce7e810db7cfcfdfa94e56e1e2f59bcca7505482aea9e6985",
+      "reason": "历史规划原始返回／准备补丁／项目概览；没有公开执行器、配置或哈希消费者。仅归档原件；旧内部路径经链接解析表或完整旧版本恢复。",
+      "rollback": "核对SHA256及原路径空闲后原样移回；需执行旧入口时恢复完整1458475提交及其原合法输入，不直接运行归档深层路径。",
+      "original_version": "145847532bacd3454dca8869e819778efc8258f6"
+    },
+    {
+      "old_path": "reports/astra6_bounded_edge_20261022_raw.txt",
+      "new_path": "reports/history/closure_development/originals/astra6_bounded_edge_20261022_raw.txt",
+      "bytes": 6178,
+      "sha256": "e62170fde0f022e803e05296075f2a435742b81e17e226d3f4ea03f76cff0c5e",
+      "reason": "历史规划原始返回／准备补丁／项目概览；没有公开执行器、配置或哈希消费者。仅归档原件；旧内部路径经链接解析表或完整旧版本恢复。",
+      "rollback": "核对SHA256及原路径空闲后原样移回；需执行旧入口时恢复完整1458475提交及其原合法输入，不直接运行归档深层路径。",
+      "original_version": "145847532bacd3454dca8869e819778efc8258f6"
+    },
+    {
+      "old_path": "reports/astra6_checkpoint_continuation_20261022_raw.txt",
+      "new_path": "reports/history/closure_development/originals/astra6_checkpoint_continuation_20261022_raw.txt",
+      "bytes": 7499,
+      "sha256": "154d953085b9870a73cc3f7bb6c79289c076fd463826ce82d4e8d1137cf172fe",
+      "reason": "历史规划原始返回／准备补丁／项目概览；没有公开执行器、配置或哈希消费者。仅归档原件；旧内部路径经链接解析表或完整旧版本恢复。",
+      "rollback": "核对SHA256及原路径空闲后原样移回；需执行旧入口时恢复完整1458475提交及其原合法输入，不直接运行归档深层路径。",
+      "original_version": "145847532bacd3454dca8869e819778efc8258f6"
+    },
+    {
+      "old_path": "reports/astra6_horizon_pair_20261023_raw.txt",
+      "new_path": "reports/history/closure_development/originals/astra6_horizon_pair_20261023_raw.txt",
+      "bytes": 6379,
+      "sha256": "715bef2f575f759267ec0807573aacd7a163ab924732bc57d59122a485faafce",
+      "reason": "历史规划原始返回／准备补丁／项目概览；没有公开执行器、配置或哈希消费者。仅归档原件；旧内部路径经链接解析表或完整旧版本恢复。",
+      "rollback": "核对SHA256及原路径空闲后原样移回；需执行旧入口时恢复完整1458475提交及其原合法输入，不直接运行归档深层路径。",
+      "original_version": "145847532bacd3454dca8869e819778efc8258f6"
+    },
+    {
+      "old_path": "reports/astra6_training_efficiency_20261024_raw.txt",
+      "new_path": "reports/history/closure_development/originals/astra6_training_efficiency_20261024_raw.txt",
+      "bytes": 8434,
+      "sha256": "79b3deed4ef26a3e0ca91e7340fe5d9c7c81d38144c8f7f17bdba29346ca555c",
+      "reason": "历史规划原始返回／准备补丁／项目概览；没有公开执行器、配置或哈希消费者。仅归档原件；旧内部路径经链接解析表或完整旧版本恢复。",
+      "rollback": "核对SHA256及原路径空闲后原样移回；需执行旧入口时恢复完整1458475提交及其原合法输入，不直接运行归档深层路径。",
+      "original_version": "145847532bacd3454dca8869e819778efc8258f6"
+    },
+    {
+      "old_path": "reports/kiki_project_overview_20261029.html",
+      "new_path": "reports/history/force_memory/originals/kiki_project_overview_20261029.html",
+      "bytes": 47849,
+      "sha256": "83e8376c47e3daa46e34551bee72d20757a5c241aa743d0951a7ede723790d77",
+      "reason": "历史规划原始返回／准备补丁／项目概览；没有公开执行器、配置或哈希消费者。仅归档原件；旧内部路径经链接解析表或完整旧版本恢复。",
+      "rollback": "核对SHA256及原路径空闲后原样移回；需执行旧入口时恢复完整1458475提交及其原合法输入，不直接运行归档深层路径。",
+      "original_version": "145847532bacd3454dca8869e819778efc8258f6"
+    },
+    {
+      "old_path": "reports/kiki_project_overview_20261029_sources.json",
+      "new_path": "reports/history/force_memory/originals/kiki_project_overview_20261029_sources.json",
+      "bytes": 4764,
+      "sha256": "5857446a3278ea8f9409efe3c99a7e3ebca210d1bf967c5bccb6c75c9bb987b7",
+      "reason": "历史规划原始返回／准备补丁／项目概览；没有公开执行器、配置或哈希消费者。仅归档原件；旧内部路径经链接解析表或完整旧版本恢复。",
+      "rollback": "核对SHA256及原路径空闲后原样移回；需执行旧入口时恢复完整1458475提交及其原合法输入，不直接运行归档深层路径。",
+      "original_version": "145847532bacd3454dca8869e819778efc8258f6"
+    },
+    {
+      "old_path": "reports/qa05_followup_prepared.diff",
+      "new_path": "reports/maintenance/execution_runtime/originals/qa05_followup_prepared.diff",
+      "bytes": 8331,
+      "sha256": "6683c1c532ea646bb47c344ddb0da759d53cdf8f0c90fa50461c938b4a042002",
+      "reason": "历史规划原始返回／准备补丁／项目概览；没有公开执行器、配置或哈希消费者。仅归档原件；旧内部路径经链接解析表或完整旧版本恢复。",
+      "rollback": "核对SHA256及原路径空闲后原样移回；需执行旧入口时恢复完整1458475提交及其原合法输入，不直接运行归档深层路径。",
+      "original_version": "145847532bacd3454dca8869e819778efc8258f6"
+    }
+  ],
+  "limits": "静态公开源码、配置、文档与<=1MiB命名明确的公开来源元数据；不打开私有worker、原始轨迹、权重或数据集，不核验实时进程。"
+}
