@@ -3,6 +3,9 @@
 一个 Campaign 管理一个有范围的科学假说及竞争解释；Run 检验关键部分，Job 是真实执行。
 算法实例/适配/seed 以父引用保持谱系，不能换编号清除历史。
 用 [模板](../templates/campaign.md) 写当前认识与下一判别问题，不抄实验流水账。
+具体算法方案引用 [designs/](../designs/README.md)，旧版本归 `designs/history/`。
+新 Run 协议保存在本目录，由 Campaign 卡引用；结果、分析和审查报告放 `reports/`。
+旧冻结协议保持原路径与身份，目录整理不改写历史预登记。
 
 - [gftd_kuramoto_discovery_20261106.md](gftd_kuramoto_discovery_20261106.md)：面向部分观测广义藏本网络的生成泛函自上而下结构发现（GFTD-Kuramoto v2.0）主线 Campaign 规划（Stage I 受控复振子/广义藏本恢复 $\to$ Stage II IEEE 39 真实电力暂态验证）。
 - [retrospective_force_memory_20261030.md](retrospective_force_memory_20261030.md)：对既有 40 维力记忆材料的追溯索引，不是当时预登记或新的活动训练授权。

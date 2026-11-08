@@ -4,7 +4,7 @@
 - **当前科学状态**。`active`，三步主线均已实现并执行。Run 1四个无噪K4图支撑恢复通过；Run 2接口闭环完成但调制恢复未获支持；Run 3真实train fit297完成594组初始化，静态46/297、调制1/297数值合格，失稳覆盖均0/30，总体L1与调制识别未决。两模型L2局部证书成立而实际点未获覆盖，L3对应已完成。2026-11-08独立复核后保留代码与证据、不晋升；下一问题为冻结ROM积分精度与候选动力学的区分。
 - **授权引用**。用户 2026-11-06 确定 GFTD 核心方向，2026-11-07 明确恢复按评估方案研究推进。范围内正常推进无需逐轮用户确认，数据、部署与 TASK4 边界沿用 [kiki.md](../kiki.md)，真实状态以 [current_state](../docs/current_state.md) 为准。
 - **范围明确的假说**。在给定观测与激励条件下，仅用合法因果信息，联合储能与弱形式结构选择能否区分静态耦合、动态调制和加性记忆，在可区分时选择简洁共享自治闭合，并改善 L1 预测。功率一致性、L2 证明和 L3 对应分别判断。
-- **架构版本**。[v2.0 草案及更正](../docs/gftd_kuramoto_architecture_brief.md)；当前方程采用独立审查后的 [5N 修订](../docs/gftd_repair_design_20261107.md)，实施顺序采用[三步主线](../reports/gftd_mainline_20261107_architecture.md)。
+- **架构版本**。[v2.0 草案及更正](../designs/gftd_kuramoto_architecture_brief.md)；当前方程采用独立审查后的 [5N 修订](../designs/gftd_repair_design_20261107.md)，实施顺序采用[三步主线](../designs/gftd_mainline_20261107_architecture.md)。
 
 ---
 

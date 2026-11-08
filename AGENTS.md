@@ -2,6 +2,9 @@
 
 本文件只放长期原则与导航。先读本文件和 [kiki.md](kiki.md)，再按任务读取材料。
 运行事实不追加到规则文件；默认正文保持约 120 行以内。
+`docs/` 只保留下表六个通用规范和当前入口；具体算法设计放 `designs/`，旧设计放
+`designs/history/`。Campaign 组织假说、协议与设计引用；`reports/` 保存结果、分析、
+审查及其冻结来源，不作为活动设计目录。冻结旧协议不因整理而改写，不回填 `docs/`。
 
 ## 1. 使命与物理品味
 
@@ -74,7 +77,7 @@ IEEE39 暂态是研究载体；目标是可迁移、可分析、可复现的算�
 | 问题 | 来源 |
 |---|---|
 | 稳定使命、部署、数据和能力口径 | [kiki.md](kiki.md) |
-| 一级算法设计与论文主张 | [docs/architecture_design.md](docs/architecture_design.md) |
+| 一级算法设计方法与主张组织 | [docs/architecture_design.md](docs/architecture_design.md) |
 | 当前架构实例与待解决问题 | [docs/current_design.md](docs/current_design.md) |
 | 证据、档案、预算与发布规则 | [docs/research_policy.md](docs/research_policy.md) |
 | 实验树、适配/辨别/确认和闭环 | [docs/engineering_loop.md](docs/engineering_loop.md) |

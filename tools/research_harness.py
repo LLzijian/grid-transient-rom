@@ -238,6 +238,61 @@ def check_root(root_path):
             row["path"] = str(path)
         issues.append(row)
 
+    # This fixed map preserves documentation provenance, never scientific authority.
+    migrations = {}
+    migration = root / "harness/documentation_migration_20261108.json"
+    if migration.exists() or _link_or_reparse(migration):
+        try:
+            if not _safe_public_path(migration, root):
+                raise ValueError("migration map must be a safe public local file")
+            body = load_json(migration)
+            if (not isinstance(body, dict) or type(body.get("schema_version")) is not int
+                    or body["schema_version"] != 1
+                    or not isinstance(body.get("source_commit"), str) or not body["source_commit"]
+                    or not isinstance(body.get("entries"), list)):
+                raise ValueError("migration requires schema_version=1, source_commit and entries")
+            seen = set()
+            for entry in body["entries"]:
+                if not isinstance(entry, dict):
+                    raise ValueError("migration entry must be an object")
+                old, new = entry.get("old_path"), entry.get("new_path")
+                for name, prefixes in ((old, {"docs", "reports"}), (new, {"reports", "designs"})):
+                    if (not isinstance(name, str) or "\\" in name or ":" in name
+                            or not name.endswith(".md")
+                            or name.split("/")[0] not in prefixes
+                            or len(name.split("/")) < 2
+                            or any(part in {"", ".", ".."} for part in name.split("/"))
+                            or not _safe_public_path(root / name, root)):
+                        raise ValueError("migration paths must be canonical public docs/reports sources and reports/designs targets")
+                if old in seen:
+                    raise ValueError("duplicate migration old_path: " + old)
+                seen.add(old)
+                digest, size = entry.get("sha256"), entry.get("bytes")
+                if (not isinstance(digest, str) or not re.fullmatch(r"[0-9a-fA-F]{64}", digest)
+                        or type(size) is not int or size < 0):
+                    raise ValueError("migration requires sha256 and nonnegative integer bytes")
+                target = root / new
+                if not target.is_file():
+                    raise ValueError("migration target is absent: " + new)
+                payload = target.read_bytes()
+                if len(payload) != size or hashlib.sha256(payload).hexdigest() != digest.lower():
+                    raise ValueError("migration target bytes differ: " + new)
+                migrations[old] = target
+        except (OSError, ValueError, RuntimeError) as exc:
+            migrations.clear()
+            issue("invalid_documentation_migration", str(exc), migration)
+        approved_docs = {"architecture_design.md", "engineering_loop.md", "research_policy.md",
+                         "harness_evolution.md", "current_design.md", "current_state.md"}
+        docs = root / "docs"
+        if not _safe_public_path(docs, root) or not docs.is_dir():
+            issue("invalid_documentation_scope", "docs must contain exactly six approved public files", docs)
+        else:
+            actual_docs = {path.name for path in docs.iterdir()}
+            if actual_docs != approved_docs or any(
+                    not _safe_public_path(docs / name, root) or not (docs / name).is_file()
+                    for name in approved_docs):
+                issue("invalid_documentation_scope", "docs must contain exactly six approved public files", docs)
+
     def reference(ref, source, json_ref=False):
         if not ref or ref.startswith("#") or "<" in ref or ">" in ref:
             return
@@ -264,11 +319,17 @@ def check_root(root_path):
             return
         refs.append({"source": source.relative_to(root).as_posix(), "reference": ref})
         if not target.exists():
+            # Active paths always win; frozen records and manifests remain untouched.
+            old = target.resolve().relative_to(root.resolve()).as_posix()
+            if old in migrations:
+                return
             bundled = target.relative_to(root).parts[:1] in [("harness",), ("harness_runtime",), ("tools",), ("templates",)]
             severity = "warning" if package_mode and not bundled else "error"
             issue("missing_reference", "relative reference is absent: " + ref, source, severity)
 
     files = set()
+    if migration.exists():
+        files.add(root / "docs/current_state.md")
     for name in REQUIRED_FILES:
         path = root / name
         if not _safe_public_path(path, root) or not path.is_file():

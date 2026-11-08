@@ -1,5 +1,7 @@
 # 架构简报：<版本与标题>
 
+保存位置：`designs/<方案与版本>.md`；旧版本归 `designs/history/`，由 Campaign 和当前设计入口引用。
+
 状态：DRAFT / ADOPTED / REVISED / PARKED；作者/实际模型回执；source commit；日期。
 此卡不是实验授权。沿用的部署/数据合同：<引用>。
 

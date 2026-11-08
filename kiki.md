@@ -1,7 +1,7 @@
 # kiki — 科学使命与稳定合同
 
 此文件定义问题、部署信息、数据和能力口径。当前模型见
-[current_design](docs/current_design.md)，算法设计见 [architecture_design](docs/architecture_design.md)。
+[current_design](docs/current_design.md)，设计方法见 [architecture_design](docs/architecture_design.md)。
 结果、状态和余额不写入此文件。核心目标或部署合同改变需要用户授权。
 
 ## 1. 研究问题
@@ -23,7 +23,7 @@ IEEE39 十机故障切除后的暂态是研究载体。算法贡献应能解释�
    电压/功率/RHS、事件身份或故障元数据。不同事件只通过合法初态不同。
 3. 不逐事件拟合方程或缩放坐标；历史与未来使用同一结构矩阵和一致的初始化方程。
 4. 机械功率的动态作用必须正确表达，不能静默变成恒定输入。
-5. 当前 40 维、每机一个记忆变量属于已采用的架构实例，不是永恒状态维数定律。
+5. 状态表示和维数由 [current_design](docs/current_design.md) 指向的架构版本定义。
    改状态表示必须走一级算法设计与新协议，不能在旧 Run 中静默替换。
 
 数值合同：未来主步长 0.01 s、细参考 0.005 s；历史主/细 0.0025/0.00125 s；float64。
@@ -32,7 +32,7 @@ IEEE39 十机故障切除后的暂态是研究载体。算法贡献应能解释�
 ## 3. 数据与信息
 
 数据来源为私有高阶仿真（ANDES 2.0.0、IEEE39 完整系统及控制器）；故障开始 1 s，
-目标 15 s，采样 0.01 s，积分步 0.005 s。细节沿用 docs/research_execution_20261028.md
+目标 15 s，采样 0.01 s，积分步 0.005 s。来源细节沿用[历史执行记录](reports/history/docs/research_execution_20261028.md)
 和原协议，不由 harness 推断新的授权。
 
 - train fit297 = 267 稳定 + 30 失稳，用于训练与结构决定。

@@ -155,6 +155,98 @@ class CLITests(unittest.TestCase):
         codes = {row["code"] for row in result["issues"]}
         self.assertTrue({"reference_outside_root", "missing_reference", "invalid_public_metadata"} <= codes)
 
+    def migration_fixture(self):
+        self.public_fixture()
+        (self.root / "docs/current_state.md").write_text("# Current\n", encoding="utf-8")
+        payload = b"# Frozen documentation\r\n"
+        archived = self.root / "reports/history/docs/retired.md"
+        archived.parent.mkdir(parents=True)
+        archived.write_bytes(payload)
+        entry = {"old_path": "docs/retired.md", "new_path": "reports/history/docs/retired.md",
+                 "sha256": hashlib.sha256(payload).hexdigest(), "bytes": len(payload)}
+        manifest = self.write_json("harness/documentation_migration_20261108.json",
+                                   {"schema_version": 1, "source_commit": "synthetic", "entries": [entry]})
+        record = self.write_json("harness/examples/frozen.json", {"references": [entry["old_path"]]})
+        return manifest, archived, record
+
+    def test_documentation_migration_preserves_frozen_reference_and_active_path(self):
+        manifest, archived, record = self.migration_fixture()
+        before = record.read_bytes()
+        body = json.loads(manifest.read_text(encoding="utf-8"))
+        body["entries"].append(dict(body["entries"][0], old_path="docs/current_design.md"))
+        manifest.write_text(json.dumps(body), encoding="utf-8")
+        (self.root / "docs/current_design.md").write_text("[bad](absent.md)\n", encoding="utf-8")
+        result = cli.check_root(self.root)
+        self.assertFalse(result["valid"])
+        self.assertEqual([row["code"] for row in result["issues"]], ["missing_reference"])
+        (self.root / "docs/current_design.md").write_text("# Current\n", encoding="utf-8")
+        self.assertTrue(cli.check_root(self.root)["valid"])
+        self.assertEqual(record.read_bytes(), before)
+        manifest.unlink()
+        self.assertFalse(cli.check_root(self.root)["valid"])
+
+    def test_documentation_migration_preserves_frozen_reports_reference_to_designs(self):
+        manifest, archived, record = self.migration_fixture()
+        body = json.loads(manifest.read_text(encoding="utf-8"))
+        target = self.root / "designs/history/retired.md"
+        target.parent.mkdir(parents=True)
+        archived.replace(target)
+        body["entries"][0].update(old_path="reports/retired.md", new_path="designs/history/retired.md")
+        manifest.write_text(json.dumps(body), encoding="utf-8")
+        record.write_text(json.dumps({"references": ["reports/retired.md"]}), encoding="utf-8")
+        before = record.read_bytes()
+        self.assertTrue(cli.check_root(self.root)["valid"])
+        self.assertEqual(record.read_bytes(), before)
+
+        for name in ("designs/../README.md", "designs/private_data/secret.md", "designs/payload.bin"):
+            with self.subTest(target=name):
+                body["entries"][0]["new_path"] = name
+                manifest.write_text(json.dumps(body), encoding="utf-8")
+                result = cli.check_root(self.root)
+                self.assertIn("invalid_documentation_migration", {row["code"] for row in result["issues"]})
+
+    def test_documentation_migration_rejects_invalid_targets_and_scope(self):
+        manifest, archived, _ = self.migration_fixture()
+        original = manifest.read_bytes()
+        payload = archived.read_bytes()
+        for change in ("tamper", "missing", "traversal", "private", "duplicate", "extra_docs", "symlink", "old_binary", "new_binary"):
+            with self.subTest(change=change):
+                manifest.write_bytes(original)
+                archived.write_bytes(payload)
+                body = json.loads(original)
+                if change == "tamper":
+                    archived.write_bytes(b"changed")
+                elif change == "missing":
+                    archived.unlink()
+                elif change in {"traversal", "private"}:
+                    body["entries"][0]["new_path"] = ("reports/../README.md" if change == "traversal"
+                                                        else "reports/private_data/secret.md")
+                    manifest.write_text(json.dumps(body), encoding="utf-8")
+                elif change == "duplicate":
+                    body["entries"].append(body["entries"][0])
+                    manifest.write_text(json.dumps(body), encoding="utf-8")
+                elif change == "extra_docs":
+                    (self.root / "docs/stub.md").write_text("redirect", encoding="utf-8")
+                elif change in {"old_binary", "new_binary"}:
+                    name = "docs/payload.bin" if change == "old_binary" else "reports/history/docs/payload.bin"
+                    (self.root / name).write_bytes(payload)
+                    key = "old_path" if change == "old_binary" else "new_path"
+                    body["entries"][0][key] = name
+                    manifest.write_text(json.dumps(body), encoding="utf-8")
+                if change == "symlink":
+                    original_check = cli._link_or_reparse
+                    with patch.object(cli, "_link_or_reparse", side_effect=lambda path: path == archived.resolve() or original_check(path)):
+                        result = cli.check_root(self.root)
+                else:
+                    result = cli.check_root(self.root)
+                self.assertFalse(result["valid"], result["issues"])
+                self.assertTrue(any(row["code"] in {"invalid_documentation_migration", "invalid_documentation_scope"}
+                                    for row in result["issues"]))
+                if change in {"old_binary", "new_binary"}:
+                    self.assertIn("invalid_documentation_migration", {row["code"] for row in result["issues"]})
+                    (self.root / name).unlink()
+                (self.root / "docs/stub.md").unlink(missing_ok=True)
+
     def test_check_parses_uppercase_discovered_and_manifest_metadata(self):
         self.public_fixture()
         contents = {"JSON": "{broken", "MD": "[absent](missing-file.md)", "PY": "def broken("}

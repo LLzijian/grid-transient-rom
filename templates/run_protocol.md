@@ -1,5 +1,8 @@
 # Run 协议：<id>
 
+新协议保存到 `campaigns/<run_id>_protocol.md` 并由 Campaign 引用；算法方案引用 `designs/`，结果与分析归 `reports/`。
+旧冻结协议不迁改正文或身份以套用新目录规则。
+
 状态/日期/授权；Campaign、architecture、algorithm_instance 与父候选；source/hash。
 目的：probe / adaptation / discrimination / confirmation。
 关键问题：<一个>；如果结果为负，会改变哪个结构或推断判断？
