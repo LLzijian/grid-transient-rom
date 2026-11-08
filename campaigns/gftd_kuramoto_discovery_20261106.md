@@ -25,30 +25,6 @@
 下面保留原假说、架构和 Run 谱系；竞争解释表中的证据与缺口按上列原始来源更新。尚未释放的旧规划不构成新执行授权，科学状态、执行状态与工作量状态分别阅读。
 
 
-追溯编号：`gftd_kuramoto_discovery_20261106`。本页的当前综合于 2026-11-09 整理，直接依据闭合结论、审查与决定；不新增实验或改变采用决定。整理前的[完整规划与状态原件](../reports/history/gftd_campaign/originals/gftd_kuramoto_discovery_before_synthesis_20261109.md)逐字节保存，原始预测与释放范围以原协议为准。
-
-**当前研究候选是 GFTD 5N、十机共 50 维自治 ODE；代码与模型证据保留，模型没有晋升，`default=none`。人工静态拓扑恢复得到登记条件内的支持；预测达标尚不足以证明调制恢复。真实 train fit297 的同期流程已经完成，当前总体预测收益因数值合格输出覆盖不足而未决。**
-
-## 当前认识：先按问题阅读
-
-| 问题 | 当前判断与范围 | 原始来源与材料导航 |
-|---|---|---|
-| 什么信息条件支持静态边与权重恢复？ | 登记的四个 K4 无噪图均恢复正确支撑；含噪支撑仍正确，高噪最大边权误差约 0.264；平衡设置返回 null。此结论不扩张为任意图或 K10 保证。 | [原结论](../reports/gftd_sparse_topology_20261107_conclusion.md)、[独立审查](../reports/gftd_sparse_topology_20261107_result_review.md)、[数值摘要](../results/gftd_sparse_topology_20261107/summary.json)、[Run 导航](../reports/gftd_sparse_topology_20261107/README.md) |
-| 预测通过能否证明隐幅值调制已恢复？ | 人工条件中 48/48 配对数值合格、30/48 达到预测门；无噪调制条件中 beta=0 仍可通过预测门。机制采用门未通过，联合优化充分性 unknown；保留静态替代、信息不足与欠优化解释。 | [原结论](../reports/gftd_modulation_20261107_conclusion.md)、[独立审查](../reports/gftd_modulation_20261107_result_review.md)、[数值摘要](../results/gftd_modulation_20261107/summary.json)、[Run 导航](../reports/gftd_modulation_20261107/README.md) |
-| 真实暂态同期比较现在说明了什么？ | train fit297 全部 297 包均进入流程，静态 46/297、调制 1/297 有数值合格输出；两模型对 30 个失稳样本均无合格输出。总体 L1 指标为 null，不能比较不同覆盖样本的均值，也不能把未覆盖写作零漏检。 | [原结论](../reports/gftd_fit297_20261107_conclusion.md)、[独立审查](../reports/gftd_fit297_20261107_result_review.md)、[证据摘要](../results/gftd_fit297_20261107/evidence_digest.json)、[Run 导航](../reports/gftd_fit297_20261107/README.md) |
-| 局部证书与物理对应分别支持什么？ | 两个冻结 ROM 均有非空局部吸引集证明，47 个可检查实际初态均未获覆盖；每模型为 10/13 模态配对，图相关使用 K(a=0) 与绝对 Kron 导纳。ROM 证书不等于全阶安全，球外不等于失稳，物理对应不等于真线路恢复。 | [结论中的 L2／L3](../reports/gftd_fit297_20261107_conclusion.md)、[L3 解释更正依据](../reports/gftd_fit297_20261107_result_review.md)、[root 决定](../results/gftd_fit297_20261107/root_adoption.json) |
-
-### 认识修订与事件关系
-
-- **真实比较的缺口已变化**：原“没有同期真实系统证据”更新为“同期流程已完成，总体效应因数值覆盖不足未决”，依据 fit297 的结论、独立审查和原分母结果。
-- **L3 的局部解释更正**：[科学判读](../reports/gftd_fit297_20261107_scientific_assessment.md)中“参考角度有效刚度”的措辞由[独立审查](../reports/gftd_fit297_20261107_result_review.md)澄清为 K(a=0) 对绝对 Kron 导纳；[最终结论](../reports/gftd_fit297_20261107_conclusion.md)采用更正，相关数值不变。其余分析按原范围保留。
-- **技术续跑不增加科学重复**：fit297 原执行保存 41 项后发生 I/O 故障，[续跑回执](../results/gftd_fit297_20261107/resume01/execution.json)继承这 41 项、完成余下 553 项，没有重拟合或重放；仍是同一 Run 的一次比较。
-- **采用决定与归档完成属于两个时点**：[root 决定](../results/gftd_fit297_20261107/root_adoption.json)保留当时待归档动作，随后[归档回执](../results/gftd_fit297_20261107/archive_verified.json)记录推送核验完成。不回写旧决定来消除时间差。
-
-### 原规划与当前综合的边界
-
-下面保留原假说、架构和 Run 谱系；竞争解释表中的证据与缺口按上列原始来源更新。尚未释放的旧规划不构成新执行授权，科学状态、执行状态与工作量状态分别阅读。
-
 - **登记性质**：`PROSPECTIVE_ARCHITECTURE_CAMPAIGN`（顶层设计规划，2026-11-06）
 - **当前科学状态**。`active`，三步主线均已实现并执行。Run 1四个无噪K4图支撑恢复通过；Run 2接口闭环完成但调制恢复未获支持；Run 3真实train fit297完成594组初始化，静态46/297、调制1/297数值合格，失稳覆盖均0/30，总体L1与调制识别未决。两模型L2局部证书成立而实际点未获覆盖，L3对应已完成。2026-11-08独立复核后保留代码与证据、不晋升；下一问题为冻结ROM积分精度与候选动力学的区分。
 - **授权引用**。用户 2026-11-06 确定 GFTD 核心方向，2026-11-07 明确恢复按评估方案研究推进。范围内正常推进无需逐轮用户确认，数据、部署与 TASK4 边界沿用 [kiki.md](../kiki.md)，真实状态以 [current_state](../docs/current_state.md) 为准。

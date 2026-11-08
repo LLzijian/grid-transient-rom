@@ -67,3 +67,5 @@ validation diagnostic until confirmed on a fresh holdout.
 The historical E6b/E6c/E8 outputs came from multiple reads of the same test
 build. That build is listed as contaminated in `configs/test_release_v1.json`
 and cannot be re-armed as a confirmatory release.
+
+独立于上述96个目录的[旧CPU向量场等价检查回执](state_gated_memory_20261029_perf_check.json)，可从[来源补关联](repository_organization/20261109_completion09/extra_sources.json)查到已迁入artifacts的原本地组；它只记录当时工程检查，不构成训练准入或模型采用。
