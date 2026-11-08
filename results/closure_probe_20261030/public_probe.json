@@ -1,0 +1,1863 @@
+{
+  "schema": "closure_probe_20261030_public_v1",
+  "status": "COMPLETED",
+  "scope": "Read-only scientific probe. P1 descriptively decomposes the registered point-error risk of four frozen fit297 prediction sets and reproduces published risk/RMSE/denominator gates; P2 reports conditioning and prior sensitivity of the frozen initial hidden force system. No training, no model selection, no mechanism or identifiability claim.",
+  "generated_at_utc": "2026-10-30T07:28:38Z",
+  "source": {
+    "p1": {
+      "checkpoints": {
+        "R_N": {
+          "path": "private_data/force_graph_20261028/study01/study/N6101_M_28102/checkpoints/step000192/model.json",
+          "sha256": "937f00b740875913923487b8d772f40d2a8145a88eba2cdaf61f2d889715bfc9"
+        },
+        "A": {
+          "path": "private_data/memory_transport_20261029/study01_prelaunch_retry1/study/A_30311/checkpoints/step000128/model.json",
+          "sha256": "a74ea3093dbc4d357baa24af5d84072caa0840a2bc76cf2ca5040c964ab2ef03"
+        },
+        "S": {
+          "path": "private_data/memory_transport_20261029/study01_prelaunch_retry1/study/S_30311/checkpoints/step000128/model.json",
+          "sha256": "cfe0264368543d2d4cef9f2561f962c75b75b984e3486d91a4898aded04187db"
+        },
+        "P": {
+          "path": "private_data/memory_transport_20261029/study01_prelaunch_retry1/study/P_30311/checkpoints/step000128/model.json",
+          "sha256": "74e82b1635e42f0adea0172cfaf51ce85fa7b9de5182c7c3b5fc69dcae73c9c4"
+        }
+      },
+      "prediction_manifest_sha256": "a6741e611d84d5579337eec986e8ba11c3238a48cd31ac5c71753d3c107ee5b5",
+      "prediction_files": 76,
+      "scales": {
+        "mass": [
+          0.23172959714179966,
+          0.13438406774907274,
+          0.16023963708071434,
+          0.17824971654428856,
+          0.14899661359081665,
+          0.20044164518925014,
+          0.1435857699388738,
+          0.12507382188808308,
+          0.3082377656102201,
+          3.1804462794530424
+        ],
+        "p_scale": [
+          0.3992764927880838,
+          0.5194290668735476,
+          0.5511126892482401,
+          0.5345526891567607,
+          0.5240140125801449,
+          0.5173564423363574,
+          0.4652199303177382,
+          0.3292289724162482,
+          0.7433608362339378,
+          0.3559398305391048
+        ],
+        "sha256": "4abb952506b8238d7c80604f6fd089d3cfd6528cb27534c629d51895b8b13874"
+      }
+    },
+    "p2": {
+      "checkpoint": "private_data/memory_transport_20261029/study01_prelaunch_retry1/study/A_30311/checkpoints/step000128/model.json",
+      "sha256": "a74ea3093dbc4d357baa24af5d84072caa0840a2bc76cf2ca5040c964ab2ef03",
+      "history_dt": 0.0025,
+      "events": 297,
+      "stable": 267,
+      "unstable": 30
+    }
+  },
+  "definitions": {
+    "point_error": "train_structured_rom._point_error, four terms as registered",
+    "risk": "train_local_memory_0098.risk = 0.8*mean + 0.2*mean(worst ceil(10%)), float64",
+    "terms": [
+      "delta_coi",
+      "omega_coi",
+      "common_omega",
+      "p_normalized"
+    ],
+    "fine_path": "fine[::2][1:steps+1, :30] versus x[11:11+steps, :30]",
+    "coarse_path": "coarse[1:steps+1, :30] versus the same truth, cross-check only",
+    "public_scopes": {
+      "5": "stable events, fine[::2][1:501] vs x[11:511]",
+      "8": "stable events, fine[::2][1:801] vs x[11:811]",
+      "prefix": "unstable events, fine[::2][1:n+1] vs x[11:11+n], n=min(1500,len(x)-11)"
+    },
+    "pooled_rmse_8s": "sqrt(sum SSE / sum n) over stable complete-8s rows, same fine path",
+    "acceptance_atol": 1e-09,
+    "term_sum_atol": 1e-12
+  },
+  "evidence": {
+    "observed": [
+      "twelve published risk values (4 models x 5 s / 8 s / unstable actual interval)",
+      "published A/R_N pooled common-omega and normalized-p RMSE at 8 s",
+      "stable/unstable denominators 267/30 with eligible counts",
+      "per-timestep four-term identity against _point_error",
+      "coarse-path cross values for every scope",
+      "A128 singular spectrum, condition number and effective rank of [A; sqrt(ridge)F]",
+      "ridge-block contribution to sigma_min",
+      "QR reconstruction of the returned r0 (max abs difference)",
+      "rstar vector (identical across A128/S128/P128/A96)"
+    ],
+    "diagnostic": [
+      "four-term risk shares per model/scope (arithmetic decomposition of nonlinear risk)",
+      "A-R_N, A-S and A-P event-mean and risk-level gap decomposition",
+      "ridge scan 1e-4 / 1e-6 / 1e-8 (relative r0 change and weakest-direction cosine)",
+      "r0 model dependence across A128/S128/P128/A96 initializers (no rollout)"
+    ],
+    "unverified": [
+      "any attribution of differences to common-mode closure, short-window initialization or optimization",
+      "any error-bar, noise model or out-of-fit generalization claim",
+      "any model selection, adoption or mechanism conclusion",
+      "data identifiability of r0 under measurement noise or model error",
+      "downstream effect of ridge/r0 changes on 8 s risk (P2b not run)",
+      "any mechanism, optimization-sufficiency or model-selection conclusion"
+    ]
+  },
+  "p1": {
+    "role": "descriptive decomposition; not mechanism discrimination or model comparison",
+    "acceptance": {
+      "passed": true,
+      "risk_gate": {
+        "passed": true,
+        "atol": 1e-09,
+        "max_abs_error": 0.0,
+        "rows": [
+          {
+            "model": "R_N",
+            "scope": "5",
+            "expected": 0.8304206726680337,
+            "actual": 0.8304206726680337,
+            "abs_error": 0.0,
+            "eligible": 267,
+            "expected_events": 267,
+            "coarse_value": 0.8304206631319229,
+            "coarse_gap": 9.536110789909458e-09,
+            "passed": true
+          },
+          {
+            "model": "R_N",
+            "scope": "8",
+            "expected": 0.5917623840131517,
+            "actual": 0.5917623840131517,
+            "abs_error": 0.0,
+            "eligible": 267,
+            "expected_events": 267,
+            "coarse_value": 0.5917623639005956,
+            "coarse_gap": 2.011255617606622e-08,
+            "passed": true
+          },
+          {
+            "model": "R_N",
+            "scope": "prefix",
+            "expected": 3.512358079792409,
+            "actual": 3.512358079792409,
+            "abs_error": 0.0,
+            "eligible": 30,
+            "expected_events": 30,
+            "coarse_value": 3.512357882677189,
+            "coarse_gap": 1.9711522014631555e-07,
+            "passed": true
+          },
+          {
+            "model": "A",
+            "scope": "5",
+            "expected": 0.8675373355146678,
+            "actual": 0.8675373355146678,
+            "abs_error": 0.0,
+            "eligible": 267,
+            "expected_events": 267,
+            "coarse_value": 0.8675373339413789,
+            "coarse_gap": 1.5732889435682296e-09,
+            "passed": true
+          },
+          {
+            "model": "A",
+            "scope": "8",
+            "expected": 0.6255711284192054,
+            "actual": 0.6255711284192054,
+            "abs_error": 0.0,
+            "eligible": 267,
+            "expected_events": 267,
+            "coarse_value": 0.6255711084802726,
+            "coarse_gap": 1.993893272711489e-08,
+            "passed": true
+          },
+          {
+            "model": "A",
+            "scope": "prefix",
+            "expected": 3.045603054019912,
+            "actual": 3.045603054019912,
+            "abs_error": 0.0,
+            "eligible": 30,
+            "expected_events": 30,
+            "coarse_value": 3.0456028401752944,
+            "coarse_gap": 2.1384461756923656e-07,
+            "passed": true
+          },
+          {
+            "model": "S",
+            "scope": "5",
+            "expected": 0.8697658541541666,
+            "actual": 0.8697658541541666,
+            "abs_error": 0.0,
+            "eligible": 267,
+            "expected_events": 267,
+            "coarse_value": 0.8697658500810316,
+            "coarse_gap": 4.073135051463339e-09,
+            "passed": true
+          },
+          {
+            "model": "S",
+            "scope": "8",
+            "expected": 0.6260437277394373,
+            "actual": 0.6260437277394373,
+            "abs_error": 0.0,
+            "eligible": 267,
+            "expected_events": 267,
+            "coarse_value": 0.6260437032289529,
+            "coarse_gap": 2.4510484419870693e-08,
+            "passed": true
+          },
+          {
+            "model": "S",
+            "scope": "prefix",
+            "expected": 3.0611703963049894,
+            "actual": 3.0611703963049894,
+            "abs_error": 0.0,
+            "eligible": 30,
+            "expected_events": 30,
+            "coarse_value": 3.061170185080014,
+            "coarse_gap": 2.1122497528835993e-07,
+            "passed": true
+          },
+          {
+            "model": "P",
+            "scope": "5",
+            "expected": 0.868234834825832,
+            "actual": 0.868234834825832,
+            "abs_error": 0.0,
+            "eligible": 267,
+            "expected_events": 267,
+            "coarse_value": 0.8682348333520761,
+            "coarse_gap": 1.4737558950983498e-09,
+            "passed": true
+          },
+          {
+            "model": "P",
+            "scope": "8",
+            "expected": 0.6259765602702372,
+            "actual": 0.6259765602702372,
+            "abs_error": 0.0,
+            "eligible": 267,
+            "expected_events": 267,
+            "coarse_value": 0.6259765404573099,
+            "coarse_gap": 1.9812927298801242e-08,
+            "passed": true
+          },
+          {
+            "model": "P",
+            "scope": "prefix",
+            "expected": 3.0375187293837564,
+            "actual": 3.0375187293837564,
+            "abs_error": 0.0,
+            "eligible": 30,
+            "expected_events": 30,
+            "coarse_value": 3.0375185152648347,
+            "coarse_gap": 2.1411892170419833e-07,
+            "passed": true
+          }
+        ],
+        "note": "all twelve published risk values (four models x three scopes) at atol 1e-9"
+      },
+      "rmse_gate": {
+        "passed": true,
+        "atol": 1e-09,
+        "max_abs_error": 2.220446049250313e-16,
+        "rows": [
+          {
+            "model": "A",
+            "metric": "common_omega_rmse_8s",
+            "expected": 0.32140212114056005,
+            "actual": 0.3214021211405602,
+            "abs_error": 1.6653345369377348e-16,
+            "passed": true
+          },
+          {
+            "model": "R_N",
+            "metric": "common_omega_rmse_8s",
+            "expected": 0.3081470782764491,
+            "actual": 0.30814707827644905,
+            "abs_error": 5.551115123125783e-17,
+            "passed": true
+          },
+          {
+            "model": "A",
+            "metric": "normalized_p_rmse_8s",
+            "expected": 0.45687819084414505,
+            "actual": 0.4568781908441448,
+            "abs_error": 2.220446049250313e-16,
+            "passed": true
+          },
+          {
+            "model": "R_N",
+            "metric": "normalized_p_rmse_8s",
+            "expected": 0.4426070157702325,
+            "actual": 0.4426070157702324,
+            "abs_error": 5.551115123125783e-17,
+            "passed": true
+          }
+        ],
+        "note": "published A/R_N pooled common-omega and normalized-p RMSE at 8 s"
+      },
+      "term_sum_gate": {
+        "passed": true,
+        "atol": 1e-12,
+        "max_abs_gap": 0.0,
+        "checked_event_rows": 2256,
+        "note": "per-timestep four-term sum versus _point_error, max over all model/scope/event rows"
+      },
+      "denominator_gate": {
+        "passed": true,
+        "rows": [
+          {
+            "scope": "5",
+            "expected": 267,
+            "actual": 267,
+            "passed": true
+          },
+          {
+            "scope": "8",
+            "expected": 267,
+            "actual": 267,
+            "passed": true
+          },
+          {
+            "scope": "prefix",
+            "expected": 30,
+            "actual": 30,
+            "passed": true
+          }
+        ],
+        "note": "stable 267 for 5/8 s and unstable 30 for the actual prefix"
+      }
+    },
+    "models": {
+      "R_N": {
+        "scopes": {
+          "5": {
+            "expected_events": 267,
+            "eligible": 267,
+            "missing_ids": [],
+            "unresolved_ids": [],
+            "event_count": 267,
+            "risk_total": 0.8304206726680337,
+            "risk_term": {
+              "delta_coi": 0.042466538561681144,
+              "omega_coi": 0.1459988403826604,
+              "common_omega": 0.1916052275073532,
+              "p_normalized": 0.4570622641119474
+            },
+            "risk_term_sum": 0.8371328705636422,
+            "risk_term_sum_residual": 0.006712197895608507,
+            "risk_term_share": {
+              "delta_coi": 0.05113858548973941,
+              "omega_coi": 0.17581310917222845,
+              "common_omega": 0.2307327283794014,
+              "p_normalized": 0.5503984656878372
+            },
+            "risk_coarse": 0.8304206631319229,
+            "numerical_perturbation": 9.536110789909458e-09,
+            "mean_total": 0.5317491685544516,
+            "mean_term": {
+              "delta_coi": 0.02667129585037416,
+              "omega_coi": 0.09090626348222157,
+              "common_omega": 0.11876254211105365,
+              "p_normalized": 0.2954090671108022
+            },
+            "mean_term_share": {
+              "delta_coi": 0.05015766347670931,
+              "omega_coi": 0.1709570392547077,
+              "common_omega": 0.22334316466146434,
+              "p_normalized": 0.5555421326071186
+            }
+          },
+          "8": {
+            "expected_events": 267,
+            "eligible": 267,
+            "missing_ids": [],
+            "unresolved_ids": [],
+            "event_count": 267,
+            "risk_total": 0.5917623840131517,
+            "risk_term": {
+              "delta_coi": 0.033891463363735566,
+              "omega_coi": 0.09864829066779146,
+              "common_omega": 0.15658395737655167,
+              "p_normalized": 0.306465620347022
+            },
+            "risk_term_sum": 0.5955893317551008,
+            "risk_term_sum_residual": 0.003826947741949027,
+            "risk_term_share": {
+              "delta_coi": 0.05727208129366725,
+              "omega_coi": 0.1667025369182625,
+              "common_omega": 0.26460613517649956,
+              "p_normalized": 0.5178862810925321
+            },
+            "risk_coarse": 0.5917623639005956,
+            "numerical_perturbation": 2.011255617606622e-08,
+            "mean_total": 0.3721977474031936,
+            "mean_term": {
+              "delta_coi": 0.020646385525641745,
+              "omega_coi": 0.0613319273573012,
+              "common_omega": 0.09431846411121984,
+              "p_normalized": 0.19590097040903098
+            },
+            "mean_term_share": {
+              "delta_coi": 0.05547154884652209,
+              "omega_coi": 0.16478317718258964,
+              "common_omega": 0.25340955115734953,
+              "p_normalized": 0.5263357228135391
+            }
+          },
+          "prefix": {
+            "expected_events": 30,
+            "eligible": 30,
+            "missing_ids": [],
+            "unresolved_ids": [],
+            "event_count": 30,
+            "risk_total": 3.512358079792409,
+            "risk_term": {
+              "delta_coi": 0.5887392702533873,
+              "omega_coi": 1.3827824002617586,
+              "common_omega": 0.8256529374303827,
+              "p_normalized": 0.7793144214191021
+            },
+            "risk_term_sum": 3.5764890293646308,
+            "risk_term_sum_residual": 0.06413094957222176,
+            "risk_term_share": {
+              "delta_coi": 0.16761937617937395,
+              "omega_coi": 0.3936906115060698,
+              "common_omega": 0.23507083237913523,
+              "p_normalized": 0.22187783925070703
+            },
+            "risk_coarse": 3.512357882677189,
+            "numerical_perturbation": 1.9711522014631555e-07,
+            "mean_total": 1.7515202727376868,
+            "mean_term": {
+              "delta_coi": 0.23691823495548942,
+              "omega_coi": 0.7611911794724883,
+              "common_omega": 0.4078525219898928,
+              "p_normalized": 0.3455583363198164
+            },
+            "mean_term_share": {
+              "delta_coi": 0.13526434072337512,
+              "omega_coi": 0.4345888490817866,
+              "common_omega": 0.2328562953784173,
+              "p_normalized": 0.19729051481642104
+            }
+          }
+        },
+        "pooled_rmse": {
+          "common_omega_rmse_8s": 0.30814707827644905,
+          "normalized_p_rmse_8s": 0.4426070157702324,
+          "common_omega_n": 213600,
+          "normalized_p_n": 2136000,
+          "definition": "pooled sqrt(sum SSE / sum n) over stable complete-8s rows; same fine[::2] path"
+        }
+      },
+      "A": {
+        "scopes": {
+          "5": {
+            "expected_events": 267,
+            "eligible": 267,
+            "missing_ids": [],
+            "unresolved_ids": [],
+            "event_count": 267,
+            "risk_total": 0.8675373355146678,
+            "risk_term": {
+              "delta_coi": 0.04731403513703093,
+              "omega_coi": 0.15296652625551593,
+              "common_omega": 0.1912166506287964,
+              "p_normalized": 0.48234042295005397
+            },
+            "risk_term_sum": 0.8738376349713972,
+            "risk_term_sum_residual": 0.006300299456729386,
+            "risk_term_share": {
+              "delta_coi": 0.05453832728589348,
+              "omega_coi": 0.17632270104521588,
+              "common_omega": 0.22041316586721518,
+              "p_normalized": 0.5559880862809262
+            },
+            "risk_coarse": 0.8675373339413789,
+            "numerical_perturbation": 1.5732889435682296e-09,
+            "mean_total": 0.562674720577758,
+            "mean_term": {
+              "delta_coi": 0.029448508713741255,
+              "omega_coi": 0.09472457187103561,
+              "common_omega": 0.12614268076425694,
+              "p_normalized": 0.3123589592287245
+            },
+            "mean_term_share": {
+              "delta_coi": 0.052336647865579136,
+              "omega_coi": 0.16834694790228324,
+              "common_omega": 0.22418401991604106,
+              "p_normalized": 0.555132384316097
+            }
+          },
+          "8": {
+            "expected_events": 267,
+            "eligible": 267,
+            "missing_ids": [],
+            "unresolved_ids": [],
+            "event_count": 267,
+            "risk_total": 0.6255711284192054,
+            "risk_term": {
+              "delta_coi": 0.039602974821304066,
+              "omega_coi": 0.10402060297015557,
+              "common_omega": 0.16035959512351688,
+              "p_normalized": 0.3253310791360269
+            },
+            "risk_term_sum": 0.6293142520510034,
+            "risk_term_sum_residual": 0.003743123631798073,
+            "risk_term_share": {
+              "delta_coi": 0.06330690951383784,
+              "omega_coi": 0.16628101624992142,
+              "common_omega": 0.2563411062923245,
+              "p_normalized": 0.5200544979723188
+            },
+            "risk_coarse": 0.6255711084802726,
+            "numerical_perturbation": 1.993893272711489e-08,
+            "mean_total": 0.39934552355942937,
+            "mean_term": {
+              "delta_coi": 0.023729437798103634,
+              "omega_coi": 0.06427114489917249,
+              "common_omega": 0.10260725959313427,
+              "p_normalized": 0.20873768126901884
+            },
+            "mean_term_share": {
+              "delta_coi": 0.05942081830941644,
+              "omega_coi": 0.1609411927954361,
+              "common_omega": 0.25693854955122486,
+              "p_normalized": 0.5226994393439223
+            }
+          },
+          "prefix": {
+            "expected_events": 30,
+            "eligible": 30,
+            "missing_ids": [],
+            "unresolved_ids": [],
+            "event_count": 30,
+            "risk_total": 3.045603054019912,
+            "risk_term": {
+              "delta_coi": 0.4727670408209381,
+              "omega_coi": 1.125622978201604,
+              "common_omega": 0.7988453206174191,
+              "p_normalized": 0.6826225370529115
+            },
+            "risk_term_sum": 3.0798578766928726,
+            "risk_term_sum_residual": 0.03425482267296065,
+            "risk_term_share": {
+              "delta_coi": 0.15522936917105126,
+              "omega_coi": 0.3695895224152362,
+              "common_omega": 0.2622946281732341,
+              "p_normalized": 0.22413378399785666
+            },
+            "risk_coarse": 3.0456028401752944,
+            "numerical_perturbation": 2.1384461756923656e-07,
+            "mean_total": 1.5514820213089413,
+            "mean_term": {
+              "delta_coi": 0.19330172040231902,
+              "omega_coi": 0.6593016042715567,
+              "common_omega": 0.38977497358512037,
+              "p_normalized": 0.30910372304994543
+            },
+            "mean_term_share": {
+              "delta_coi": 0.12459165994023949,
+              "omega_coi": 0.4249495612687298,
+              "common_omega": 0.25122751551853517,
+              "p_normalized": 0.19923126327249568
+            }
+          }
+        },
+        "pooled_rmse": {
+          "common_omega_rmse_8s": 0.3214021211405602,
+          "normalized_p_rmse_8s": 0.4568781908441448,
+          "common_omega_n": 213600,
+          "normalized_p_n": 2136000,
+          "definition": "pooled sqrt(sum SSE / sum n) over stable complete-8s rows; same fine[::2] path"
+        }
+      },
+      "S": {
+        "scopes": {
+          "5": {
+            "expected_events": 267,
+            "eligible": 267,
+            "missing_ids": [],
+            "unresolved_ids": [],
+            "event_count": 267,
+            "risk_total": 0.8697658541541666,
+            "risk_term": {
+              "delta_coi": 0.04679642016837886,
+              "omega_coi": 0.1529456546159417,
+              "common_omega": 0.19144783697027534,
+              "p_normalized": 0.4848590025134069
+            },
+            "risk_term_sum": 0.8760489142680028,
+            "risk_term_sum_residual": 0.00628306011383617,
+            "risk_term_share": {
+              "delta_coi": 0.05380346899670789,
+              "omega_coi": 0.17584692924589332,
+              "common_omega": 0.2201142250594044,
+              "p_normalized": 0.5574592290530013
+            },
+            "risk_coarse": 0.8697658500810316,
+            "numerical_perturbation": 4.073135051463339e-09,
+            "mean_total": 0.5661658070332546,
+            "mean_term": {
+              "delta_coi": 0.029275262687725994,
+              "omega_coi": 0.0949058379997047,
+              "common_omega": 0.12733637187994118,
+              "p_normalized": 0.31464833446588264
+            },
+            "mean_term_share": {
+              "delta_coi": 0.051707931358713204,
+              "omega_coi": 0.16762905286883611,
+              "common_omega": 0.2249100357140817,
+              "p_normalized": 0.5557529800583688
+            }
+          },
+          "8": {
+            "expected_events": 267,
+            "eligible": 267,
+            "missing_ids": [],
+            "unresolved_ids": [],
+            "event_count": 267,
+            "risk_total": 0.6260437277394373,
+            "risk_term": {
+              "delta_coi": 0.039844423546217755,
+              "omega_coi": 0.10417411528882742,
+              "common_omega": 0.15904796569556395,
+              "p_normalized": 0.32677246308723684
+            },
+            "risk_term_sum": 0.629838967617846,
+            "risk_term_sum_residual": 0.003795239878408685,
+            "risk_term_share": {
+              "delta_coi": 0.06364479313624113,
+              "omega_coi": 0.1664007012177674,
+              "common_omega": 0.2540524865089944,
+              "p_normalized": 0.5219642791840913
+            },
+            "risk_coarse": 0.6260437032289529,
+            "numerical_perturbation": 2.4510484419870693e-08,
+            "mean_total": 0.4010501773084956,
+            "mean_term": {
+              "delta_coi": 0.023825460275856206,
+              "omega_coi": 0.06445722162919007,
+              "common_omega": 0.10264990566140428,
+              "p_normalized": 0.21011758974204475
+            },
+            "mean_term_share": {
+              "delta_coi": 0.05940767919803012,
+              "omega_coi": 0.16072108996877046,
+              "common_omega": 0.2559527746635154,
+              "p_normalized": 0.5239184561696832
+            }
+          },
+          "prefix": {
+            "expected_events": 30,
+            "eligible": 30,
+            "missing_ids": [],
+            "unresolved_ids": [],
+            "event_count": 30,
+            "risk_total": 3.0611703963049894,
+            "risk_term": {
+              "delta_coi": 0.4826726123872518,
+              "omega_coi": 1.1495648687175857,
+              "common_omega": 0.7842124580132513,
+              "p_normalized": 0.6832530083939724
+            },
+            "risk_term_sum": 3.0997029475120614,
+            "risk_term_sum_residual": 0.038532551207072,
+            "risk_term_share": {
+              "delta_coi": 0.15767583959712458,
+              "omega_coi": 0.37553115961959427,
+              "common_omega": 0.256180596467234,
+              "p_normalized": 0.2231999268053482
+            },
+            "risk_coarse": 3.061170185080014,
+            "numerical_perturbation": 2.1122497528835993e-07,
+            "mean_total": 1.5544238432830526,
+            "mean_term": {
+              "delta_coi": 0.196723379637874,
+              "omega_coi": 0.6658159056502934,
+              "common_omega": 0.38323536922656426,
+              "p_normalized": 0.3086491887683211
+            },
+            "mean_term_share": {
+              "delta_coi": 0.12655710377060375,
+              "omega_coi": 0.4283361378734665,
+              "common_omega": 0.2465449631917278,
+              "p_normalized": 0.19856179516420197
+            }
+          }
+        },
+        "pooled_rmse": {
+          "common_omega_rmse_8s": 0.3214689054643896,
+          "normalized_p_rmse_8s": 0.45838585246715996,
+          "common_omega_n": 213600,
+          "normalized_p_n": 2136000,
+          "definition": "pooled sqrt(sum SSE / sum n) over stable complete-8s rows; same fine[::2] path"
+        }
+      },
+      "P": {
+        "scopes": {
+          "5": {
+            "expected_events": 267,
+            "eligible": 267,
+            "missing_ids": [],
+            "unresolved_ids": [],
+            "event_count": 267,
+            "risk_total": 0.868234834825832,
+            "risk_term": {
+              "delta_coi": 0.047364892285221845,
+              "omega_coi": 0.15321611064637966,
+              "common_omega": 0.19129821880693332,
+              "p_normalized": 0.48265668927700844
+            },
+            "risk_term_sum": 0.8745359110155433,
+            "risk_term_sum_residual": 0.006301076189711319,
+            "risk_term_share": {
+              "delta_coi": 0.05455308907839807,
+              "omega_coi": 0.17646851347206638,
+              "common_omega": 0.22033004336356507,
+              "p_normalized": 0.5559056949999356
+            },
+            "risk_coarse": 0.8682348333520761,
+            "numerical_perturbation": 1.4737558950983498e-09,
+            "mean_total": 0.5631057009890003,
+            "mean_term": {
+              "delta_coi": 0.02948250855158334,
+              "omega_coi": 0.09485951315796361,
+              "common_omega": 0.12621287446832194,
+              "p_normalized": 0.3125508048111315
+            },
+            "mean_term_share": {
+              "delta_coi": 0.052356970458303446,
+              "omega_coi": 0.16845773891359803,
+              "common_omega": 0.22413709228418446,
+              "p_normalized": 0.5550481983439143
+            }
+          },
+          "8": {
+            "expected_events": 267,
+            "eligible": 267,
+            "missing_ids": [],
+            "unresolved_ids": [],
+            "event_count": 267,
+            "risk_total": 0.6259765602702372,
+            "risk_term": {
+              "delta_coi": 0.039621844916976096,
+              "omega_coi": 0.10415891278904374,
+              "common_omega": 0.16041117347367226,
+              "p_normalized": 0.32552045668892615
+            },
+            "risk_term_sum": 0.6297123878686183,
+            "risk_term_sum_residual": 0.003735827598381092,
+            "risk_term_share": {
+              "delta_coi": 0.06329605201170975,
+              "omega_coi": 0.1663942700092122,
+              "common_omega": 0.2562574761655963,
+              "p_normalized": 0.5200202009934642
+            },
+            "risk_coarse": 0.6259765404573099,
+            "numerical_perturbation": 1.9812927298801242e-08,
+            "mean_total": 0.3995985644795394,
+            "mean_term": {
+              "delta_coi": 0.0237458731989692,
+              "omega_coi": 0.06434425924998505,
+              "common_omega": 0.10265334959893077,
+              "p_normalized": 0.20885508243165438
+            },
+            "mean_term_share": {
+              "delta_coi": 0.059424320580073194,
+              "omega_coi": 0.1610222482500426,
+              "common_omega": 0.25689118711583087,
+              "p_normalized": 0.5226622440540533
+            }
+          },
+          "prefix": {
+            "expected_events": 30,
+            "eligible": 30,
+            "missing_ids": [],
+            "unresolved_ids": [],
+            "event_count": 30,
+            "risk_total": 3.0375187293837564,
+            "risk_term": {
+              "delta_coi": 0.4702268220982255,
+              "omega_coi": 1.1216581943831032,
+              "common_omega": 0.799446829913794,
+              "p_normalized": 0.6805122967472836
+            },
+            "risk_term_sum": 3.0718441431424064,
+            "risk_term_sum_residual": 0.03432541375864995,
+            "risk_term_share": {
+              "delta_coi": 0.1548062296865652,
+              "omega_coi": 0.3692679105259911,
+              "common_omega": 0.2631907491401653,
+              "p_normalized": 0.22403558870741322
+            },
+            "risk_coarse": 3.0375185152648347,
+            "numerical_perturbation": 2.1411892170419833e-07,
+            "mean_total": 1.548445112219027,
+            "mean_term": {
+              "delta_coi": 0.19238748987856785,
+              "omega_coi": 0.6577808593051052,
+              "common_omega": 0.38998006482355757,
+              "p_normalized": 0.308296698211796
+            },
+            "mean_term_share": {
+              "delta_coi": 0.12424559860753702,
+              "omega_coi": 0.4248008883973036,
+              "common_omega": 0.25185268870440597,
+              "p_normalized": 0.19910082429075313
+            }
+          }
+        },
+        "pooled_rmse": {
+          "common_omega_rmse_8s": 0.32147429811202066,
+          "normalized_p_rmse_8s": 0.4570066546907761,
+          "common_omega_n": 213600,
+          "normalized_p_n": 2136000,
+          "definition": "pooled sqrt(sum SSE / sum n) over stable complete-8s rows; same fine[::2] path"
+        }
+      }
+    },
+    "gaps": {
+      "A-R_N": {
+        "5": {
+          "cohort": 267,
+          "event_mean_gap_total": 0.03092555202330638,
+          "event_mean_gap_term": {
+            "delta_coi": 0.0027772128633671146,
+            "omega_coi": 0.0038183083888139913,
+            "common_omega": 0.007380138653203214,
+            "p_normalized": 0.01694989211792218
+          },
+          "event_mean_gap_term_sum": 0.0309255520233065,
+          "event_mean_gap_additive_residual": 1.214306433183765e-16,
+          "risk_gap_total": 0.037116662846634174,
+          "risk_gap_term": {
+            "delta_coi": 0.004847496575349788,
+            "omega_coi": 0.006967685872855539,
+            "common_omega": -0.0003885768785568122,
+            "p_normalized": 0.02527815883810658
+          },
+          "risk_gap_term_sum": 0.036704764407755094,
+          "risk_gap_residual": -0.00041189843887907973,
+          "dominant_event_mean_term": "p_normalized",
+          "dominant_risk_term": "p_normalized",
+          "risk_gap_additivity": "non-additive through the upper-tail 0.2 term; residual reported"
+        },
+        "8": {
+          "cohort": 267,
+          "event_mean_gap_total": 0.02714777615623576,
+          "event_mean_gap_term": {
+            "delta_coi": 0.0030830522724618952,
+            "omega_coi": 0.002939217541871389,
+            "common_omega": 0.00828879548191438,
+            "p_normalized": 0.012836710859988163
+          },
+          "event_mean_gap_term_sum": 0.02714777615623583,
+          "event_mean_gap_additive_residual": 6.938893903907228e-17,
+          "risk_gap_total": 0.03380874440605364,
+          "risk_gap_term": {
+            "delta_coi": 0.005711511457568499,
+            "omega_coi": 0.00537231230236411,
+            "common_omega": 0.0037756377469652103,
+            "p_normalized": 0.018865458789004863
+          },
+          "risk_gap_term_sum": 0.03372492029590268,
+          "risk_gap_residual": -8.382411015095403e-05,
+          "dominant_event_mean_term": "p_normalized",
+          "dominant_risk_term": "p_normalized",
+          "risk_gap_additivity": "non-additive through the upper-tail 0.2 term; residual reported"
+        },
+        "prefix": {
+          "cohort": 30,
+          "event_mean_gap_total": -0.20003825142874554,
+          "event_mean_gap_term": {
+            "delta_coi": -0.043616514553170366,
+            "omega_coi": -0.10188957520093175,
+            "common_omega": -0.018077548404772412,
+            "p_normalized": -0.036454613269871115
+          },
+          "event_mean_gap_term_sum": -0.20003825142874565,
+          "event_mean_gap_additive_residual": -1.1102230246251565e-16,
+          "risk_gap_total": -0.46675502577249706,
+          "risk_gap_term": {
+            "delta_coi": -0.11597222943244923,
+            "omega_coi": -0.2571594220601545,
+            "common_omega": -0.02680761681296362,
+            "p_normalized": -0.09669188436619058
+          },
+          "risk_gap_term_sum": -0.49663115267175795,
+          "risk_gap_residual": -0.02987612689926089,
+          "dominant_event_mean_term": "omega_coi",
+          "dominant_risk_term": "omega_coi",
+          "risk_gap_additivity": "non-additive through the upper-tail 0.2 term; residual reported"
+        }
+      },
+      "A-S": {
+        "5": {
+          "cohort": 267,
+          "event_mean_gap_total": -0.0034910864554965615,
+          "event_mean_gap_term": {
+            "delta_coi": 0.0001732460260152754,
+            "omega_coi": -0.00018126612866909653,
+            "common_omega": -0.0011936911156843904,
+            "p_normalized": -0.002289375237158142
+          },
+          "event_mean_gap_term_sum": -0.0034910864554963533,
+          "event_mean_gap_additive_residual": 2.0816681711721685e-16,
+          "risk_gap_total": -0.0022285186394988,
+          "risk_gap_term": {
+            "delta_coi": 0.0005176149686520748,
+            "omega_coi": 2.0871639574232548e-05,
+            "common_omega": -0.00023118634147895056,
+            "p_normalized": -0.0025185795633529406
+          },
+          "risk_gap_term_sum": -0.002211279296605584,
+          "risk_gap_residual": 1.7239342893216048e-05,
+          "dominant_event_mean_term": "p_normalized",
+          "dominant_risk_term": "p_normalized",
+          "risk_gap_additivity": "non-additive through the upper-tail 0.2 term; residual reported"
+        },
+        "8": {
+          "cohort": 267,
+          "event_mean_gap_total": -0.0017046537490662539,
+          "event_mean_gap_term": {
+            "delta_coi": -9.60224777525618e-05,
+            "omega_coi": -0.00018607673001754527,
+            "common_omega": -4.264606827021089e-05,
+            "p_normalized": -0.0013799084730259036
+          },
+          "event_mean_gap_term_sum": -0.0017046537490662216,
+          "event_mean_gap_additive_residual": 3.230922474006803e-17,
+          "risk_gap_total": -0.00047259932023191453,
+          "risk_gap_term": {
+            "delta_coi": -0.00024144872491368985,
+            "omega_coi": -0.00015351231867184734,
+            "common_omega": 0.0013116294279529317,
+            "p_normalized": -0.0014413839512099624
+          },
+          "risk_gap_term_sum": -0.0005247155668425679,
+          "risk_gap_residual": -5.2116246610653394e-05,
+          "dominant_event_mean_term": "p_normalized",
+          "dominant_risk_term": "p_normalized",
+          "risk_gap_additivity": "non-additive through the upper-tail 0.2 term; residual reported"
+        },
+        "prefix": {
+          "cohort": 30,
+          "event_mean_gap_total": -0.0029418219741113028,
+          "event_mean_gap_term": {
+            "delta_coi": -0.0034216592355550105,
+            "omega_coi": -0.006514301378736667,
+            "common_omega": 0.00653960435855613,
+            "p_normalized": 0.00045453428162431933
+          },
+          "event_mean_gap_term_sum": -0.002941821974111228,
+          "event_mean_gap_additive_residual": 7.45931094670027e-17,
+          "risk_gap_total": -0.015567342285077501,
+          "risk_gap_term": {
+            "delta_coi": -0.009905571566313665,
+            "omega_coi": -0.023941890515981612,
+            "common_omega": 0.01463286260416774,
+            "p_normalized": -0.0006304713410608676
+          },
+          "risk_gap_term_sum": -0.019845070819188404,
+          "risk_gap_residual": -0.004277728534110903,
+          "dominant_event_mean_term": "common_omega",
+          "dominant_risk_term": "omega_coi",
+          "risk_gap_additivity": "non-additive through the upper-tail 0.2 term; residual reported"
+        }
+      },
+      "A-P": {
+        "5": {
+          "cohort": 267,
+          "event_mean_gap_total": -0.0004309804112422322,
+          "event_mean_gap_term": {
+            "delta_coi": -3.399983784206304e-05,
+            "omega_coi": -0.00013494128692806615,
+            "common_omega": -7.01937040650925e-05,
+            "p_normalized": -0.00019184558240691233
+          },
+          "event_mean_gap_term_sum": -0.000430980411242134,
+          "event_mean_gap_additive_residual": 9.817450671856243e-17,
+          "risk_gap_total": -0.0006974993111641403,
+          "risk_gap_term": {
+            "delta_coi": -5.0857148190912305e-05,
+            "omega_coi": -0.0002495843908637274,
+            "common_omega": -8.156817813692596e-05,
+            "p_normalized": -0.000316266326954473
+          },
+          "risk_gap_term_sum": -0.0006982760441460387,
+          "risk_gap_residual": -7.767329818983426e-07,
+          "dominant_event_mean_term": "p_normalized",
+          "dominant_risk_term": "p_normalized",
+          "risk_gap_additivity": "non-additive through the upper-tail 0.2 term; residual reported"
+        },
+        "8": {
+          "cohort": 267,
+          "event_mean_gap_total": -0.0002530409201100259,
+          "event_mean_gap_term": {
+            "delta_coi": -1.6435400865557695e-05,
+            "omega_coi": -7.311435081251827e-05,
+            "common_omega": -4.609000579657458e-05,
+            "p_normalized": -0.00011740116263533946
+          },
+          "event_mean_gap_term_sum": -0.00025304092010999,
+          "event_mean_gap_additive_residual": 3.5887091909270197e-17,
+          "risk_gap_total": -0.00040543185103181223,
+          "risk_gap_term": {
+            "delta_coi": -1.887009567203002e-05,
+            "omega_coi": -0.00013830981888816873,
+            "common_omega": -5.157835015537349e-05,
+            "p_normalized": -0.0001893775528992725
+          },
+          "risk_gap_term_sum": -0.00039813581761484473,
+          "risk_gap_residual": 7.296033416967496e-06,
+          "dominant_event_mean_term": "p_normalized",
+          "dominant_risk_term": "p_normalized",
+          "risk_gap_additivity": "non-additive through the upper-tail 0.2 term; residual reported"
+        },
+        "prefix": {
+          "cohort": 30,
+          "event_mean_gap_total": 0.0030369090899142748,
+          "event_mean_gap_term": {
+            "delta_coi": 0.0009142305237511664,
+            "omega_coi": 0.001520744966451277,
+            "common_omega": -0.00020509123843710368,
+            "p_normalized": 0.0008070248381493742
+          },
+          "event_mean_gap_term_sum": 0.0030369090899147137,
+          "event_mean_gap_additive_residual": 4.388850394221322e-16,
+          "risk_gap_total": 0.008084324636155493,
+          "risk_gap_term": {
+            "delta_coi": 0.002540218722712595,
+            "omega_coi": 0.00396478381850085,
+            "common_omega": -0.0006015092963749247,
+            "p_normalized": 0.0021102403056278973
+          },
+          "risk_gap_term_sum": 0.008013733550466418,
+          "risk_gap_residual": -7.059108568907568e-05,
+          "dominant_event_mean_term": "omega_coi",
+          "dominant_risk_term": "omega_coi",
+          "risk_gap_additivity": "non-additive through the upper-tail 0.2 term; residual reported"
+        }
+      }
+    },
+    "denominators": {
+      "events": 297,
+      "stable": 267,
+      "unstable": 30,
+      "scopes": {
+        "5": {
+          "cohort": "stable",
+          "expected": 267,
+          "eligible": 267,
+          "required_steps": 500,
+          "actual_steps": [
+            500
+          ]
+        },
+        "8": {
+          "cohort": "stable",
+          "expected": 267,
+          "eligible": 267,
+          "required_steps": 800,
+          "actual_steps": [
+            800
+          ]
+        },
+        "prefix": {
+          "cohort": "unstable",
+          "expected": 30,
+          "eligible": 30,
+          "required_steps": "min(1500,len(x)-11)",
+          "actual_steps": [
+            3,
+            4,
+            8,
+            9,
+            13,
+            14,
+            20,
+            21,
+            25,
+            26,
+            27,
+            29,
+            33,
+            34,
+            35,
+            36,
+            40,
+            51,
+            56,
+            57,
+            67,
+            121,
+            128,
+            144
+          ]
+        }
+      }
+    },
+    "evidence": {
+      "observed": [
+        "twelve published risk values (4 models x 5 s / 8 s / unstable actual interval)",
+        "published A/R_N pooled common-omega and normalized-p RMSE at 8 s",
+        "stable/unstable denominators 267/30 with eligible counts",
+        "per-timestep four-term identity against _point_error",
+        "coarse-path cross values for every scope"
+      ],
+      "diagnostic": [
+        "four-term risk shares per model/scope (arithmetic decomposition of nonlinear risk)",
+        "A-R_N, A-S and A-P event-mean and risk-level gap decomposition"
+      ],
+      "unverified": [
+        "any attribution of differences to common-mode closure, short-window initialization or optimization",
+        "any error-bar, noise model or out-of-fit generalization claim",
+        "any model selection, adoption or mechanism conclusion"
+      ]
+    }
+  },
+  "p2": {
+    "role": "conditioning / prior-sensitivity probe; not a data-identifiability test",
+    "design": {
+      "shape": [
+        297,
+        60,
+        10
+      ],
+      "augmented": "[A; sqrt(ridge) * F]",
+      "target": "[beta; -sqrt(ridge) * q]",
+      "ridge": 0.0001,
+      "beta_source_field": "bscaled",
+      "design_spread_across_events": {
+        "max_abs_A": 0.0,
+        "max_abs_F": 0.0
+      },
+      "design_event_independent": true
+    },
+    "spectrum": {
+      "singular_value_stats": {
+        "sigma_1": {
+          "count": 297,
+          "min": 3.589079269893888,
+          "median": 3.589079269893888,
+          "p90": 3.589079269893888,
+          "max": 3.589079269893888,
+          "mean": 3.589079269893888
+        },
+        "sigma_2": {
+          "count": 297,
+          "min": 3.2054759542486946,
+          "median": 3.2054759542486946,
+          "p90": 3.2054759542486946,
+          "max": 3.2054759542486946,
+          "mean": 3.2054759542486946
+        },
+        "sigma_3": {
+          "count": 297,
+          "min": 3.087025201299397,
+          "median": 3.087025201299397,
+          "p90": 3.087025201299397,
+          "max": 3.087025201299397,
+          "mean": 3.087025201299397
+        },
+        "sigma_4": {
+          "count": 297,
+          "min": 2.822646128969925,
+          "median": 2.822646128969925,
+          "p90": 2.822646128969925,
+          "max": 2.822646128969925,
+          "mean": 2.822646128969925
+        },
+        "sigma_5": {
+          "count": 297,
+          "min": 2.7132725477806963,
+          "median": 2.7132725477806963,
+          "p90": 2.7132725477806963,
+          "max": 2.7132725477806963,
+          "mean": 2.7132725477806967
+        },
+        "sigma_6": {
+          "count": 297,
+          "min": 2.6418320896330623,
+          "median": 2.6418320896330623,
+          "p90": 2.6418320896330623,
+          "max": 2.6418320896330623,
+          "mean": 2.6418320896330623
+        },
+        "sigma_7": {
+          "count": 297,
+          "min": 2.587598851665569,
+          "median": 2.587598851665569,
+          "p90": 2.587598851665569,
+          "max": 2.587598851665569,
+          "mean": 2.5875988516655686
+        },
+        "sigma_8": {
+          "count": 297,
+          "min": 2.4792906255565414,
+          "median": 2.4792906255565414,
+          "p90": 2.4792906255565414,
+          "max": 2.4792906255565414,
+          "mean": 2.479290625556541
+        },
+        "sigma_9": {
+          "count": 297,
+          "min": 2.4533573411527296,
+          "median": 2.4533573411527296,
+          "p90": 2.4533573411527296,
+          "max": 2.4533573411527296,
+          "mean": 2.45335734115273
+        },
+        "sigma_10": {
+          "count": 297,
+          "min": 2.2246230061251024,
+          "median": 2.2246230061251024,
+          "p90": 2.2246230061251024,
+          "max": 2.2246230061251024,
+          "mean": 2.224623006125103
+        }
+      },
+      "sigma_max": {
+        "count": 297,
+        "min": 3.589079269893888,
+        "median": 3.589079269893888,
+        "p90": 3.589079269893888,
+        "max": 3.589079269893888,
+        "mean": 3.589079269893888
+      },
+      "sigma_min": {
+        "count": 297,
+        "min": 2.2246230061251024,
+        "median": 2.2246230061251024,
+        "p90": 2.2246230061251024,
+        "max": 2.2246230061251024,
+        "mean": 2.224623006125103
+      },
+      "condition": {
+        "count": 297,
+        "min": 1.613342692227851,
+        "median": 1.613342692227851,
+        "p90": 1.613342692227851,
+        "max": 1.613342692227851,
+        "mean": 1.613342692227851
+      },
+      "effective_rank": {
+        "factor": 1e-08,
+        "counts": {
+          "10": 297
+        },
+        "min": 10,
+        "max": 10
+      },
+      "raw_A_sigma_min": {
+        "count": 297,
+        "min": 2.2246009477735695,
+        "median": 2.2246009477735695,
+        "p90": 2.2246009477735695,
+        "max": 2.2246009477735695,
+        "mean": 2.22460094777357
+      },
+      "raw_A_condition": {
+        "count": 297,
+        "min": 1.613325440649688,
+        "median": 1.613325440649688,
+        "p90": 1.613325440649688,
+        "max": 1.613325440649688,
+        "mean": 1.6133254406496884
+      }
+    },
+    "ridge_contribution": {
+      "definition": "(sigma_min([A; sqrt(ridge)F]) - sigma_min(A)) / sigma_min([A; sqrt(ridge)F])",
+      "stats": {
+        "count": 297,
+        "min": 9.915545902461508e-06,
+        "median": 9.915545902461508e-06,
+        "p90": 9.915545902461508e-06,
+        "max": 9.915545902461508e-06,
+        "mean": 9.915545902461508e-06
+      },
+      "dominated_count": 0
+    },
+    "r0_coordinate_scaling": {
+      "definition": "secondary diagnostic: the registered design acts on the dimensionless coefficients s (r0 = rstar * s); scaling its columns by 1/rstar expresses the same system in r0 coordinates",
+      "rstar_max_over_min": 2.3525268508592703,
+      "condition": {
+        "count": 297,
+        "min": 2.6305035378174857,
+        "median": 2.6305035378174857,
+        "p90": 2.6305035378174857,
+        "max": 2.6305035378174857,
+        "mean": 2.6305035378174857
+      }
+    },
+    "scan": {
+      "0.0001": {
+        "ridge": 0.0001,
+        "diagnostic_only": true,
+        "relative_change": {
+          "count": 297,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0,
+          "mean": 0.0
+        },
+        "relative_change_events_over_10pct": 0,
+        "abs_cosine_with_weakest_direction": {
+          "count": 0,
+          "min": null,
+          "median": null,
+          "p90": null,
+          "max": null,
+          "mean": null
+        },
+        "abs_cosine_definition": "|cos(Delta r0, diag(rstar) v_min)| with v_min the right singular vector of the baseline [A; sqrt(1e-4) F] design; null when Delta r0 is zero"
+      },
+      "1e-06": {
+        "ridge": 1e-06,
+        "diagnostic_only": true,
+        "relative_change": {
+          "count": 297,
+          "min": 2.2419915916904037e-05,
+          "median": 2.7049224830421754e-05,
+          "p90": 2.969853501761289e-05,
+          "max": 3.136492180401972e-05,
+          "mean": 2.7165980593562636e-05
+        },
+        "relative_change_events_over_10pct": 0,
+        "abs_cosine_with_weakest_direction": {
+          "count": 297,
+          "min": 0.009063999257473138,
+          "median": 0.28433680398806654,
+          "p90": 0.5240982338786936,
+          "max": 0.8281448546206234,
+          "mean": 0.29922190606953214
+        },
+        "abs_cosine_definition": "|cos(Delta r0, diag(rstar) v_min)| with v_min the right singular vector of the baseline [A; sqrt(1e-4) F] design; null when Delta r0 is zero"
+      },
+      "1e-08": {
+        "ridge": 1e-08,
+        "diagnostic_only": true,
+        "relative_change": {
+          "count": 297,
+          "min": 2.2644120212951083e-05,
+          "median": 2.7319725486551683e-05,
+          "p90": 2.999553008053544e-05,
+          "max": 3.167858195134516e-05,
+          "mean": 2.7437648510633803e-05
+        },
+        "relative_change_events_over_10pct": 0,
+        "abs_cosine_with_weakest_direction": {
+          "count": 297,
+          "min": 0.009063941141661295,
+          "median": 0.2843367008281321,
+          "p90": 0.524098136165939,
+          "max": 0.8281448381034959,
+          "mean": 0.2992218101242703
+        },
+        "abs_cosine_definition": "|cos(Delta r0, diag(rstar) v_min)| with v_min the right singular vector of the baseline [A; sqrt(1e-4) F] design; null when Delta r0 is zero"
+      }
+    },
+    "counts": {
+      "events": 297,
+      "effective_rank_lt_full": 0,
+      "ridge_dominated": 0,
+      "relative_change_gt_10pct": {
+        "0.0001": 0,
+        "1e-06": 0,
+        "1e-08": 0
+      },
+      "ridge_dominance_threshold": 0.5,
+      "effective_rank_threshold_factor": 1e-08
+    },
+    "grouped": {
+      "stable": {
+        "events": 267,
+        "condition": {
+          "count": 267,
+          "min": 1.613342692227851,
+          "median": 1.613342692227851,
+          "p90": 1.613342692227851,
+          "max": 1.613342692227851,
+          "mean": 1.6133426922278506
+        },
+        "sigma_min": {
+          "count": 267,
+          "min": 2.2246230061251024,
+          "median": 2.2246230061251024,
+          "p90": 2.2246230061251024,
+          "max": 2.2246230061251024,
+          "mean": 2.2246230061251033
+        },
+        "ridge_sigma_min_contribution": {
+          "count": 267,
+          "min": 9.915545902461508e-06,
+          "median": 9.915545902461508e-06,
+          "p90": 9.915545902461508e-06,
+          "max": 9.915545902461508e-06,
+          "mean": 9.915545902461506e-06
+        },
+        "effective_rank_counts": {
+          "10": 267
+        },
+        "relative_change": {
+          "0.0001": {
+            "count": 267,
+            "min": 0.0,
+            "median": 0.0,
+            "p90": 0.0,
+            "max": 0.0,
+            "mean": 0.0
+          },
+          "1e-06": {
+            "count": 267,
+            "min": 2.2419915916904037e-05,
+            "median": 2.7400694405920815e-05,
+            "p90": 2.980448275213818e-05,
+            "max": 3.136492180401972e-05,
+            "mean": 2.7434279750499965e-05
+          },
+          "1e-08": {
+            "count": 267,
+            "min": 2.2644120212951083e-05,
+            "median": 2.767470947738218e-05,
+            "p90": 3.0102537635676573e-05,
+            "max": 3.167858195134516e-05,
+            "mean": 2.7708630838000655e-05
+          }
+        }
+      },
+      "unstable": {
+        "events": 30,
+        "condition": {
+          "count": 30,
+          "min": 1.613342692227851,
+          "median": 1.613342692227851,
+          "p90": 1.613342692227851,
+          "max": 1.613342692227851,
+          "mean": 1.6133426922278515
+        },
+        "sigma_min": {
+          "count": 30,
+          "min": 2.2246230061251024,
+          "median": 2.2246230061251024,
+          "p90": 2.2246230061251024,
+          "max": 2.2246230061251024,
+          "mean": 2.224623006125102
+        },
+        "ridge_sigma_min_contribution": {
+          "count": 30,
+          "min": 9.915545902461508e-06,
+          "median": 9.915545902461508e-06,
+          "p90": 9.915545902461508e-06,
+          "max": 9.915545902461508e-06,
+          "mean": 9.91554590246151e-06
+        },
+        "effective_rank_counts": {
+          "10": 30
+        },
+        "relative_change": {
+          "0.0001": {
+            "count": 30,
+            "min": 0.0,
+            "median": 0.0,
+            "p90": 0.0,
+            "max": 0.0,
+            "mean": 0.0
+          },
+          "1e-06": {
+            "count": 30,
+            "min": 2.262020617494161e-05,
+            "median": 2.4985098460179062e-05,
+            "p90": 2.613686590673833e-05,
+            "max": 2.6420128160894106e-05,
+            "mean": 2.4778118096820384e-05
+          },
+          "1e-08": {
+            "count": 30,
+            "min": 2.2846413049343692e-05,
+            "median": 2.5234956072954383e-05,
+            "p90": 2.6398241800873483e-05,
+            "max": 2.668433713734733e-05,
+            "mean": 2.5025905797068846e-05
+          }
+        }
+      }
+    },
+    "r0": {
+      "norm": {
+        "count": 297,
+        "min": 0.5827176642060746,
+        "median": 3.3681701838173095,
+        "p90": 7.738124780333395,
+        "max": 32.90725122423077,
+        "mean": 4.199494121330396
+      },
+      "reconstruction_max_abs_diff": 0.0,
+      "reconstruction_passed": true
+    },
+    "model_dependence": {
+      "baseline": "A128",
+      "systems": {
+        "A128": {
+          "checkpoint": "private_data/memory_transport_20261029/study01_prelaunch_retry1/study/A_30311/checkpoints/step000128/model.json",
+          "sha256": "a74ea3093dbc4d357baa24af5d84072caa0840a2bc76cf2ca5040c964ab2ef03",
+          "history_dt": 0.0025
+        },
+        "S128": {
+          "checkpoint": "private_data/memory_transport_20261029/study01_prelaunch_retry1/study/S_30311/checkpoints/step000128/model.json",
+          "sha256": "cfe0264368543d2d4cef9f2561f962c75b75b984e3486d91a4898aded04187db",
+          "history_dt": 0.0025
+        },
+        "P128": {
+          "checkpoint": "private_data/memory_transport_20261029/study01_prelaunch_retry1/study/P_30311/checkpoints/step000128/model.json",
+          "sha256": "74e82b1635e42f0adea0172cfaf51ce85fa7b9de5182c7c3b5fc69dcae73c9c4",
+          "history_dt": 0.0025
+        },
+        "A96": {
+          "checkpoint": "private_data/state_gated_memory_20261028/study01/study/A_28311/checkpoints/step000096/model.json",
+          "sha256": "ec8c78cbff0b6dd65bd3ba6dfc5a0ed65e7fa418227c90adc3a703311aebadf4",
+          "history_dt": 0.0025
+        }
+      },
+      "events": 297,
+      "rstar_identical_across_initializers": true,
+      "rstar_max_over_min": 2.3525268508592703,
+      "comparisons": {
+        "S128": {
+          "r0_relative_change": {
+            "count": 297,
+            "min": 0.00245851975636292,
+            "median": 0.01104721251066667,
+            "p90": 0.013385929471517753,
+            "max": 0.01569912268692899,
+            "mean": 0.010316552983435506
+          },
+          "coefficient_relative_change": {
+            "count": 297,
+            "min": 0.002136947125711759,
+            "median": 0.010949746267718845,
+            "p90": 0.012852643873013589,
+            "max": 0.015005947976527708,
+            "mean": 0.010193585753118533
+          },
+          "delta_sum_r0_over_10": {
+            "count": 297,
+            "min": -0.00599581260089721,
+            "median": 6.435685927992374e-05,
+            "p90": 0.00021165133668840335,
+            "max": 0.0005717625656346925,
+            "mean": -0.0001399944106400886
+          },
+          "abs_delta_sum_r0_over_10": {
+            "count": 297,
+            "min": 2.4321018736728207e-07,
+            "median": 0.00016403135020044425,
+            "p90": 0.0007520779786617035,
+            "max": 0.00599581260089721,
+            "mean": 0.00032294894263373944
+          },
+          "r0_norm": {
+            "count": 297,
+            "min": 0.5840528612790097,
+            "median": 3.3996634574798077,
+            "p90": 7.790246426400817,
+            "max": 33.01441834778775,
+            "mean": 4.22309857674367
+          },
+          "grouped": {
+            "stable": {
+              "events": 267,
+              "r0_relative_change": {
+                "count": 267,
+                "min": 0.00245851975636292,
+                "median": 0.01124577009422834,
+                "p90": 0.01345591354033603,
+                "max": 0.01569912268692899,
+                "mean": 0.010497771602794095
+              },
+              "coefficient_relative_change": {
+                "count": 267,
+                "min": 0.002136947125711759,
+                "median": 0.011154687876238637,
+                "p90": 0.012897198178692804,
+                "max": 0.015005947976527708,
+                "mean": 0.010355192557965714
+              },
+              "abs_delta_sum_r0_over_10": {
+                "count": 267,
+                "min": 2.4321018736728207e-07,
+                "median": 0.00015169425600092268,
+                "p90": 0.0004398547263331132,
+                "max": 0.0029055756386950904,
+                "mean": 0.00022961687681355682
+              }
+            },
+            "unstable": {
+              "events": 30,
+              "r0_relative_change": {
+                "count": 30,
+                "min": 0.005166902051474271,
+                "median": 0.008769515335979038,
+                "p90": 0.011151714451905695,
+                "max": 0.014576558154063477,
+                "mean": 0.008703707271144053
+              },
+              "coefficient_relative_change": {
+                "count": 30,
+                "min": 0.004913199724084404,
+                "median": 0.00892314539104782,
+                "p90": 0.010684031461988736,
+                "max": 0.014689604266068133,
+                "mean": 0.00875528518997859
+              },
+              "abs_delta_sum_r0_over_10": {
+                "count": 30,
+                "min": 7.529619140651533e-05,
+                "median": 0.0007543664395187833,
+                "p90": 0.002208888101122746,
+                "max": 0.00599581260089721,
+                "mean": 0.0011536043284333648
+              }
+            }
+          }
+        },
+        "P128": {
+          "r0_relative_change": {
+            "count": 297,
+            "min": 0.0006976781638993072,
+            "median": 0.0015702586541068496,
+            "p90": 0.0018818932776442786,
+            "max": 0.0023113421403452477,
+            "mean": 0.0015307625965435992
+          },
+          "coefficient_relative_change": {
+            "count": 297,
+            "min": 0.0006479084291624085,
+            "median": 0.0014643803768661845,
+            "p90": 0.0017472140641967785,
+            "max": 0.002057071868215019,
+            "mean": 0.0014292703779443514
+          },
+          "delta_sum_r0_over_10": {
+            "count": 297,
+            "min": -0.0005936275045112183,
+            "median": -0.00012844017791326933,
+            "p90": 2.30937156029132e-05,
+            "max": 0.0003279850390512706,
+            "mean": -0.0001335149513533234
+          },
+          "abs_delta_sum_r0_over_10": {
+            "count": 297,
+            "min": 5.39162776336255e-07,
+            "median": 0.00012986914324528698,
+            "p90": 0.00028572768880113847,
+            "max": 0.0005936275045112183,
+            "mean": 0.0001454565440197587
+          },
+          "r0_norm": {
+            "count": 297,
+            "min": 0.5825022861005928,
+            "median": 3.364149835926245,
+            "p90": 7.731582139805781,
+            "max": 32.87848043685961,
+            "mean": 4.196277352565199
+          },
+          "grouped": {
+            "stable": {
+              "events": 267,
+              "r0_relative_change": {
+                "count": 267,
+                "min": 0.000759580530025262,
+                "median": 0.0015986418206098468,
+                "p90": 0.001896167496399804,
+                "max": 0.0023113421403452477,
+                "mean": 0.0015744361897865725
+              },
+              "coefficient_relative_change": {
+                "count": 267,
+                "min": 0.0006479084291624085,
+                "median": 0.0014942336647266268,
+                "p90": 0.0017559363273410857,
+                "max": 0.002057071868215019,
+                "mean": 0.0014624894279661876
+              },
+              "abs_delta_sum_r0_over_10": {
+                "count": 267,
+                "min": 5.39162776336255e-07,
+                "median": 0.00011970949448274482,
+                "p90": 0.0002801480025133074,
+                "max": 0.0003985316595226607,
+                "mean": 0.00013767419086962586
+              }
+            },
+            "unstable": {
+              "events": 30,
+              "r0_relative_change": {
+                "count": 30,
+                "min": 0.0006976781638993072,
+                "median": 0.00111396662960489,
+                "p90": 0.001421520028824559,
+                "max": 0.0021133998731225085,
+                "mean": 0.001142067616681136
+              },
+              "coefficient_relative_change": {
+                "count": 30,
+                "min": 0.0007010604720796893,
+                "median": 0.0011334462624523122,
+                "p90": 0.0014459273161706325,
+                "max": 0.0019798656774951628,
+                "mean": 0.0011336208327500095
+              },
+              "abs_delta_sum_r0_over_10": {
+                "count": 30,
+                "min": 4.14548904139167e-05,
+                "median": 0.00020299793116809186,
+                "p90": 0.00033019071628853425,
+                "max": 0.0005936275045112183,
+                "mean": 0.00021471948705594103
+              }
+            }
+          }
+        },
+        "A96": {
+          "r0_relative_change": {
+            "count": 297,
+            "min": 0.015115706552287864,
+            "median": 0.04507589331102923,
+            "p90": 0.052574001033271395,
+            "max": 0.056978866207069635,
+            "mean": 0.04358678576454557
+          },
+          "coefficient_relative_change": {
+            "count": 297,
+            "min": 0.014810777748372491,
+            "median": 0.044783416533629716,
+            "p90": 0.049604190856825936,
+            "max": 0.05364851314062502,
+            "mean": 0.04256191258710176
+          },
+          "delta_sum_r0_over_10": {
+            "count": 297,
+            "min": -0.04780357698335926,
+            "median": -0.011578472719813871,
+            "p90": -0.003608253096023456,
+            "max": -0.0003017259453448551,
+            "mean": -0.012950397074170299
+          },
+          "abs_delta_sum_r0_over_10": {
+            "count": 297,
+            "min": 0.0003017259453448551,
+            "median": 0.011578472719813871,
+            "p90": 0.02391035407599173,
+            "max": 0.04780357698335926,
+            "mean": 0.012950397074170299
+          },
+          "r0_norm": {
+            "count": 297,
+            "min": 0.5786942334542168,
+            "median": 3.3077707102516616,
+            "p90": 7.6742410187998065,
+            "max": 33.890897870391555,
+            "mean": 4.1678657919002156
+          },
+          "grouped": {
+            "stable": {
+              "events": 267,
+              "r0_relative_change": {
+                "count": 267,
+                "min": 0.016988468126292938,
+                "median": 0.04606641822053693,
+                "p90": 0.052641916682125665,
+                "max": 0.056978866207069635,
+                "mean": 0.04452176692913583
+              },
+              "coefficient_relative_change": {
+                "count": 267,
+                "min": 0.017178543432451378,
+                "median": 0.0452755959999196,
+                "p90": 0.0499005688349966,
+                "max": 0.05364851314062502,
+                "mean": 0.043375568437226696
+              },
+              "abs_delta_sum_r0_over_10": {
+                "count": 267,
+                "min": 0.0003017259453448551,
+                "median": 0.010644200548330396,
+                "p90": 0.02255590246654343,
+                "max": 0.032194526397910116,
+                "mean": 0.011801901535026731
+              }
+            },
+            "unstable": {
+              "events": 30,
+              "r0_relative_change": {
+                "count": 30,
+                "min": 0.015115706552287864,
+                "median": 0.03626480657715012,
+                "p90": 0.04598642138333144,
+                "max": 0.05117244163417238,
+                "mean": 0.035265453399692184
+              },
+              "coefficient_relative_change": {
+                "count": 30,
+                "min": 0.014810777748372491,
+                "median": 0.03754328907382759,
+                "p90": 0.04410373395107468,
+                "max": 0.048336825824324574,
+                "mean": 0.03532037552098977
+              },
+              "abs_delta_sum_r0_over_10": {
+                "count": 30,
+                "min": 0.01133598292460949,
+                "median": 0.021914075514655275,
+                "p90": 0.029513625810098,
+                "max": 0.04780357698335926,
+                "mean": 0.02317200737254805
+              }
+            }
+          }
+        }
+      },
+      "definition": "per-event ||r0_model - r0_A128|| / ||r0_A128|| with rstar scaling retained; coefficient change uses s = r0/rstar; mean-total drift is Delta(1'r0)/10",
+      "evidence_class": "diagnostic (initializer sensitivity; no rollout)",
+      "history_windows": 297
+    },
+    "evidence": {
+      "observed": [
+        "A128 singular spectrum, condition number and effective rank of [A; sqrt(ridge)F]",
+        "ridge-block contribution to sigma_min",
+        "QR reconstruction of the returned r0 (max abs difference)",
+        "rstar vector (identical across A128/S128/P128/A96)"
+      ],
+      "diagnostic": [
+        "ridge scan 1e-4 / 1e-6 / 1e-8 (relative r0 change and weakest-direction cosine)",
+        "r0 model dependence across A128/S128/P128/A96 initializers (no rollout)"
+      ],
+      "unverified": [
+        "data identifiability of r0 under measurement noise or model error",
+        "downstream effect of ridge/r0 changes on 8 s risk (P2b not run)",
+        "any mechanism, optimization-sufficiency or model-selection conclusion"
+      ]
+    },
+    "interpretation_scope": "Conditioning and prior sensitivity of the registered ridge least-squares operator only: singular spectrum, condition number, effective rank, ridge contribution and a diagnostic ridge scan. This is not a data-identifiability claim under a noise model, and no model/mechanism conclusion is made."
+  },
+  "boundaries": [
+    "P1 reproduces published risks, pooled RMSE, denominators and the four-term identity at the stated tolerances; it is descriptive and does not discriminate mechanisms.",
+    "P2 reports conditioning and prior sensitivity of the frozen initializer; the ridge scan and r0 model-dependence comparison are diagnostics, not data-identifiability results.",
+    "P2b (ridge to 8 s risk) was not run; no downstream-risk claim is made.",
+    "No val/test payload is read, no optimizer is created and no model is trained or selected.",
+    "No mechanism, optimization-sufficiency or model-adoption conclusion is asserted."
+  ]
+}

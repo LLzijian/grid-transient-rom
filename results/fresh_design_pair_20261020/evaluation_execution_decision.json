@@ -1,0 +1,27 @@
+{
+  "decision": "prospective execution safety envelopes before first evaluation; no science/category budget change",
+  "reviewer": "/root/fixed_edge_final_review",
+  "review": "18 CLI/source/frozen separation checks pass; previous self80 only20s until second batch and self180 only120s until23rd batch; current15s batch16 CPU evaluation cost not measured",
+  "existing_evidence_seconds": {
+    "P2_full8_366_8s_batch32": 67.7124,
+    "P2_delete7_366_8s_batch32": 59.1453
+  },
+  "new_caps": {
+    "original_after": {
+      "native": 360,
+      "self": 300,
+      "last_batch_start_limit_from_main": 240
+    },
+    "new_after_and_new_before": {
+      "native": 180,
+      "self": 120,
+      "second_batch_start_limit_from_main": 60
+    }
+  },
+  "total_actual_category_cap": 3125,
+  "root_rationale": "retain exactly18 fixed evaluations, allow adequate cleanup/load/15s inference margin; sequential native actual cost controls expenditure, not sum of independent worst-case caps; stop before any next launch that cannot fit; no additional measurement/retry or transfer",
+  "all_evaluations_started": false,
+  "val_generated": false,
+  "current_training_binding_changed": false,
+  "previous_pending_command_archive": "9fc5105c60843a00cb188719f8fb3d7cc2537dbd"
+}

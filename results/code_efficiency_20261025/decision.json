@@ -1,0 +1,36 @@
+{
+  "recorded_at_utc": "2026-10-24 17:01:51 UTC",
+  "root_decision": "RETAIN_CPU_VERIFIED_OPT_IN_CANDIDATE; pending GPU/full-training/performance qualification, no default/main adoption",
+  "user_scope": "Direct code inspection and optimization; no new timers and no new scientific training. Existing GPU job remains bound to its original 208 sources.",
+  "existing_astra_plan": "reports/training_efficiency_20261024_protocol.md optional immutable-expression-metadata branch; existing returned plan reports/astra6_training_efficiency_20261024_raw.txt",
+  "independent_review": {
+    "agent": "/root/reconstruction_independent_review_20261022",
+    "path": "reports/compiled_expression_20261025_review.md",
+    "sha256": "09cafc415c93b8db182e7dce88f62e7a01bba1eef3355bc28be21c066e226d3c",
+    "verdict": "PASS within CPU-only opt-in scope"
+  },
+  "inspected_report_sha256": "44b794d6be001c99a18e291d1a1031f0db3f8666f13372933b34552816249d5a",
+  "accepted_changes": [
+    "Precompute AST structure, variable indices and origin values/gradients",
+    "Reuse bounded graph-free unit/zero gradients and origin constants",
+    "Construct only consumed node/edge storage features",
+    "Create normal constants across inference/autograd modes and clear caches on lifecycle transitions"
+  ],
+  "execution_history": {
+    "initial_cpu_passed": 9,
+    "negative_regression": {
+      "passed": 1,
+      "failed": 1,
+      "deselected": 9
+    },
+    "final_cpu_passed": 11,
+    "total_optimizer_updates": 0,
+    "total_gpu_updates": 0
+  },
+  "qualification": "CPU exactness and short-trajectory parameter backprop/export/caches verified; no GPU speed, full training restore/Adam or scientific promotion claimed",
+  "default_changed": false,
+  "existing_job_sources_changed": false,
+  "created_automations": 0,
+  "pending_formal_decision": "Once the current fixed benchmark closes, use its results and existing finite engineering protocol to decide GPU qualification of this candidate; do not inject it into the running benchmark.",
+  "preservation": "All code, reviewed facts, adverse regression and exact initial source/tests selectively archived; user worktree/index preserved"
+}

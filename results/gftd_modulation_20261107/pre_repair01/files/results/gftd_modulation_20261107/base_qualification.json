@@ -1,0 +1,45 @@
+{
+  "role": "base_numerical_primitives_qualification",
+  "reported_by": "/root/code_review",
+  "source_sha256": {
+    "src/kiki/models/gftd_discovery.py": "9245b0726cb3fca15d3248106b43bd1673ed6607ed3a852b67c533f768a1b27f",
+    "tests/test_gftd_discovery.py": "232f16df69c4e0932e3d585359f37cd4e5fc9eccf9b852f6f0d33f0d6b6764c0"
+  },
+  "final": {
+    "chunk_id": "b1509b",
+    "exit_code": 0,
+    "passed": 26,
+    "pytest_wall_seconds": 0.98,
+    "exec_wall_seconds": 1.9464949
+  },
+  "attempts": [
+    {
+      "chunk_id": "cc411f",
+      "result": "16 passed then assertion failed; independent Z arithmetic association differed 8.7e-19; engineering assertion made approximate"
+    },
+    {
+      "chunk_id": "4fa04d",
+      "result": "23 passed then orthogonality assertion too strict for N10; use 8N machine epsilon engineering check"
+    },
+    {
+      "chunk_id": "972bae",
+      "result": "26 passed",
+      "pytest_wall_seconds": 0.94,
+      "exec_wall_seconds": 1.9691491
+    },
+    {
+      "chunk_id": "63f485",
+      "result": "20 passed then incorrect test expectation; X large,y=k=0 is valid trivial optimum; corrected nonfinite-audit fixture",
+      "shell_exit_code": 0,
+      "shell_exit_note": "later hash command masked pytest failure; not counted as successful qualification"
+    },
+    {
+      "chunk_id": "b1509b",
+      "result": "26 passed; explicit pytest exit propagation"
+    }
+  ],
+  "total_qualification_seconds": null,
+  "formal_sampling": false,
+  "formal_seed_family_consumed": false,
+  "real_data_reads": false
+}

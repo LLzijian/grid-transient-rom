@@ -1,0 +1,40 @@
+$ErrorActionPreference='Stop'
+$env:OMP_NUM_THREADS='1'
+$env:MKL_NUM_THREADS='1'
+$env:OPENBLAS_NUM_THREADS='1'
+$env:PYTHONDONTWRITEBYTECODE='1'
+$runRoot='results/gftd_fit297_20261107/resume01'
+$releasePath="$runRoot/execution_release.json"
+$releaseHash=(Get-FileHash -LiteralPath $releasePath -Algorithm SHA256).Hash.ToLower()
+if($releaseHash -ne '60398c70d1b0971f58c990a9b74a1a385f52d3eaca24b326d88531c1960e92e3'){throw 'Release hash mismatch'}
+$release=Get-Content -LiteralPath $releasePath -Raw|ConvertFrom-Json
+if(Test-Path -LiteralPath "$runRoot/started.json"){throw 'Continuation claim already exists'}
+$checks=@(foreach($p in $release.source_sha256.PSObject.Properties){$actual=(Get-FileHash -LiteralPath $p.Name -Algorithm SHA256).Hash.ToLower(); [ordered]@{path=$p.Name;expected=$p.Value;actual=$actual;matched=($actual -eq $p.Value)}})
+if($checks.Count -ne 53 -or @($checks|Where-Object {-not $_.matched}).Count){throw 'Frozen source check failed'}
+$allPython=@(Get-Process -Name python,pythonw -ErrorAction SilentlyContinue|Select-Object Id,Path,StartTime)
+$duplicates=@($allPython|Where-Object {$_.Path -like '*03-nn_Transfer_Func*kiki*.venv-gpu*' -or $_.Id -in @(25564,55472)})
+if(@($allPython|Where-Object {-not $_.Path}).Count){throw 'Python process executable path unavailable'}
+if($duplicates.Count){throw ('Project scientific Python already present: '+($duplicates|ConvertTo-Json -Compress))}
+$environment=[ordered]@{OMP_NUM_THREADS=$env:OMP_NUM_THREADS;MKL_NUM_THREADS=$env:MKL_NUM_THREADS;OPENBLAS_NUM_THREADS=$env:OPENBLAS_NUM_THREADS;PYTHONDONTWRITEBYTECODE=$env:PYTHONDONTWRITEBYTECODE}
+$preflight=[ordered]@{utc=[DateTimeOffset]::UtcNow.ToString('o');release_sha256=$releaseHash;source_checks=$checks;source_count=$checks.Count;started_exists=$false;project_python_count=$duplicates.Count;thread_environment_readback=$environment;runtime_environment_verification='frozen runner verifies imported versions before exclusive continuation claim';fit_cache_bytes_read_by_host=$false}
+$encoding=[System.Text.UTF8Encoding]::new($false)
+[System.IO.File]::WriteAllText((Join-Path (Get-Location) "$runRoot/execution_host_preflight.json"),($preflight|ConvertTo-Json -Depth 8)+[Environment]::NewLine,$encoding)
+foreach($name in @('execution_host_start.json','execution.stdout.txt','execution.stderr.txt')){if(Test-Path -LiteralPath "$runRoot/$name"){throw "Host artifact exists: $name"}}
+$hostStart=[DateTimeOffset]::UtcNow.ToString('o')
+$clock=[Diagnostics.Stopwatch]::StartNew()
+$start=[ordered]@{action_id=$release.action_id;command=$release.command;host_start_utc=$hostStart;release_sha256=$releaseHash;source_sha256=$release.source_sha256;thread_environment_readback=$environment;formal_continuation_invocations=1;parent_host_seconds=2031.1645234;launcher_pid=$PID}
+[System.IO.File]::WriteAllText((Join-Path (Get-Location) "$runRoot/execution_host_start.json"),($start|ConvertTo-Json -Depth 8)+[Environment]::NewLine,$encoding)
+Write-Output ('HOST_ENV_JSON='+($environment|ConvertTo-Json -Compress))
+Write-Output ('HOST_START_UTC='+$hostStart)
+Write-Output ('HOST_LAUNCHER_PID='+$PID)
+& ./.venv-gpu/Scripts/python.exe -B experiments/gftd_fit297_20261107_resume01.py 1> "$runRoot/execution.stdout.txt" 2> "$runRoot/execution.stderr.txt"
+$scientificExit=$LASTEXITCODE
+$clock.Stop()
+$hostEnd=[DateTimeOffset]::UtcNow.ToString('o')
+$end=[ordered]@{host_end_utc=$hostEnd;host_stopwatch_seconds=$clock.Elapsed.TotalSeconds;parent_host_seconds=2031.1645234;combined_host_seconds=(2031.1645234+$clock.Elapsed.TotalSeconds);exit_code=$scientificExit}
+[System.IO.File]::WriteAllText((Join-Path (Get-Location) "$runRoot/execution_host_end.json"),($end|ConvertTo-Json -Depth 5)+[Environment]::NewLine,$encoding)
+Write-Output ('HOST_END_UTC='+$hostEnd)
+Write-Output ('HOST_WALL_SECONDS='+$clock.Elapsed.TotalSeconds.ToString('R',[Globalization.CultureInfo]::InvariantCulture))
+Write-Output ('COMBINED_HOST_SECONDS='+(2031.1645234+$clock.Elapsed.TotalSeconds).ToString('R',[Globalization.CultureInfo]::InvariantCulture))
+Write-Output ('PROGRAM_EXIT_CODE='+$scientificExit)
+exit $scientificExit

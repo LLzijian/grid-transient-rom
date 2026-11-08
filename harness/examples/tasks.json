@@ -1,0 +1,146 @@
+{
+  "schema_version": 2,
+  "synthetic": true,
+  "task_state": "PAUSED_BY_USER",
+  "note": "Illustrative dependencies only; review/implementation/science require real adoption and authorization, which are not provided by this fixture.",
+  "tasks": [
+    {
+      "task_id": "math",
+      "role": "modeler",
+      "question": "Which mechanisms can change the common-mode balance?",
+      "inputs": [
+        {
+          "path": "docs/architecture_design.md",
+          "sha256": "578fb05d4b7fc9cf749a0912e62187ddfe13135487b505b308d12b96064c8b2b"
+        }
+      ],
+      "outputs": [
+        "A concise evidence-backed handoff to root"
+      ],
+      "write_paths": [],
+      "depends_on": [],
+      "resources": {},
+      "status": "pending",
+      "acceptance": "Frozen evidence and explicit unresolved alternatives are available",
+      "stop_condition": "Stop at scope or authorization boundary; never launch science from this example"
+    },
+    {
+      "task_id": "related_work",
+      "role": "fact_extractor",
+      "question": "What is learned versus imposed in the closest primary papers?",
+      "inputs": [
+        {
+          "path": "docs/architecture_design.md",
+          "sha256": "578fb05d4b7fc9cf749a0912e62187ddfe13135487b505b308d12b96064c8b2b"
+        }
+      ],
+      "outputs": [
+        "A concise evidence-backed handoff to root"
+      ],
+      "write_paths": [],
+      "depends_on": [],
+      "resources": {},
+      "status": "pending",
+      "acceptance": "Frozen evidence and explicit unresolved alternatives are available",
+      "stop_condition": "Stop at scope or authorization boundary; never launch science from this example"
+    },
+    {
+      "task_id": "design",
+      "role": "scientist",
+      "question": "Which first-level learning problem best discriminates the remaining explanations?",
+      "inputs": [
+        {
+          "path": "docs/architecture_design.md",
+          "sha256": "578fb05d4b7fc9cf749a0912e62187ddfe13135487b505b308d12b96064c8b2b"
+        }
+      ],
+      "outputs": [
+        "A concise evidence-backed handoff to root"
+      ],
+      "write_paths": [
+        "reports/next_architecture_draft.md"
+      ],
+      "depends_on": [
+        "math",
+        "related_work"
+      ],
+      "resources": {},
+      "status": "pending",
+      "acceptance": "Frozen evidence and explicit unresolved alternatives are available",
+      "stop_condition": "Stop at scope or authorization boundary; never launch science from this example"
+    },
+    {
+      "task_id": "review",
+      "role": "reviewer",
+      "question": "Does the frozen brief distinguish observation, optimization and structural identifiability?",
+      "inputs": [
+        {
+          "path": "docs/architecture_design.md",
+          "sha256": "578fb05d4b7fc9cf749a0912e62187ddfe13135487b505b308d12b96064c8b2b"
+        },
+        "After design completes, the host must bind its reports/next_architecture_draft.md output to an actual frozen commit/hash before this reviewer starts."
+      ],
+      "outputs": [
+        "A concise evidence-backed handoff to root"
+      ],
+      "write_paths": [],
+      "depends_on": [
+        "design"
+      ],
+      "resources": {},
+      "status": "pending",
+      "acceptance": "Frozen evidence and explicit unresolved alternatives are available",
+      "stop_condition": "Stop at scope or authorization boundary; never launch science from this example"
+    },
+    {
+      "task_id": "implementation",
+      "role": "modeler",
+      "question": "Implement only the prospectively adopted minimal change",
+      "inputs": [
+        {
+          "path": "docs/architecture_design.md",
+          "sha256": "578fb05d4b7fc9cf749a0912e62187ddfe13135487b505b308d12b96064c8b2b"
+        }
+      ],
+      "outputs": [
+        "A concise evidence-backed handoff to root"
+      ],
+      "write_paths": [
+        "src/kiki/example_candidate.py"
+      ],
+      "depends_on": [
+        "review"
+      ],
+      "resources": {},
+      "status": "pending",
+      "acceptance": "Frozen evidence and explicit unresolved alternatives are available",
+      "stop_condition": "Stop at scope or authorization boundary; never launch science from this example"
+    },
+    {
+      "task_id": "science_job",
+      "role": "experimenter",
+      "question": "Execute a new authorized frozen scientific Run",
+      "inputs": [
+        {
+          "path": "docs/architecture_design.md",
+          "sha256": "578fb05d4b7fc9cf749a0912e62187ddfe13135487b505b308d12b96064c8b2b"
+        }
+      ],
+      "outputs": [
+        "A concise evidence-backed handoff to root"
+      ],
+      "write_paths": [
+        "results/example_new_run"
+      ],
+      "depends_on": [
+        "implementation"
+      ],
+      "resources": {
+        "gpu:0": 1
+      },
+      "status": "pending",
+      "acceptance": "Frozen evidence and explicit unresolved alternatives are available",
+      "stop_condition": "Stop at scope or authorization boundary; never launch science from this example"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "date_local": "2026-10-31",
+  "root_authorized": true,
+  "same_scientific_run": "p_port_diagnostic_20261031",
+  "repair_number": 1,
+  "technical_repair_upper_bound": 1,
+  "prelaunch_failure": "The native wrapper created the immutable diagnostic output directory for its logs before invoking the tool; the tool rejected it before started/manifest or scientific computation.",
+  "failed_process_reconciled_exited": true,
+  "actual_parameter_estimates_before_repair": 0,
+  "actual_optimizer_calls_before_repair": 0,
+  "actual_new_rom_rollouts_before_repair": 0,
+  "preserve_failure_directory_as": "private_data/p_port_diagnostic_20261031_prelaunch_attempt01",
+  "preserve_failed_public_receipt_as": "results/p_port_diagnostic_20261031/execution_prelaunch_failure_public.json",
+  "new_wrapper_log_directory": "private_data/p_port_diagnostic_20261031_execution",
+  "require_absolute_workspace_path_checks_before_directory_move": true,
+  "require_original_output_directory_and_public_diagnostic_absent_before_relaunch": true,
+  "command_unchanged": ".venv-gpu/Scripts/python.exe experiments/p_port_diagnostic_20261031.py run",
+  "implementation_sha256_unchanged": "7bf434c421b9714c6dac48c3bddac3c82054b446bedeca80adef5598149dbb04",
+  "scientific_protocol_data_thresholds_models_unchanged": true,
+  "additional_retries_authorized": 1,
+  "budget_reset": false,
+  "decision": "Preserve the original zero-scientific-work failure and launch the same command once with wrapper logs outside its immutable diagnostic directory. No source-code repair or scientific rerun is authorized."
+}

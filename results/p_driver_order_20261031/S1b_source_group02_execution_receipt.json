@@ -1,0 +1,127 @@
+{
+  "status": "COMPLETED",
+  "stage": "S1b_source_group02",
+  "release_sha256": "66553d868b3c2eb526604298772bafa20cb881f62bab8deb015d9341a43bcf1b",
+  "summary_sha256": "c3f863fec22d0f1c86063c23462cad7977ac4ff2b1acfd1baedd974bb9de0d65",
+  "facts_sha256": "a21fa73ad2987d57755974bf7816069e25430818fe57d60fd389bb637f169384",
+  "parser_sha256": "43abe3c008443f751633fcf64e7b2c2354446a142c177266924687ad0aa41f02",
+  "tool_calls": [
+    {
+      "official_path": "andes/models/governor/tgov1.py",
+      "observable_attempts": 1,
+      "basis": "Actual prior governor package initializer line6 imports TGOV1N from andes.models.governor.tgov1.",
+      "decoded_bytes": 8932,
+      "decoded_sha256": "8de6af2beeb8084316971d05e5a9b760abd9287679b689d2b178c6fab328fc37",
+      "git_blob_sha": "d68e5378526213520115e4826efe08758f06b153",
+      "git_blob_verified": true,
+      "returned_display_url": "https://github.com/CURENT/andes/blob/eda5163c9ee8d19945a1dd5d1771fec5da608c27/andes/models/governor/tgov1.py",
+      "encoding": "base64",
+      "tool_wall_seconds": 0.722,
+      "HTTP_status": null,
+      "internal_retry_count": null
+    },
+    {
+      "official_path": "andes/models/governor/tgbase.py",
+      "observable_attempts": 1,
+      "basis": "Persisted tgov1_import_basis.json: tgov1.py line4 imports TGBase and TGBaseData from andes.models.governor.tgbase.",
+      "decoded_bytes": 4889,
+      "decoded_sha256": "88efe598b0a76b6171e22a1d451ba37896529a2fb84e4a001f01cf3c49447fef",
+      "git_blob_sha": "b3981107ff3a4df1ad4989dfe36a838f66c3628b",
+      "git_blob_verified": true,
+      "returned_display_url": "https://github.com/CURENT/andes/blob/eda5163c9ee8d19945a1dd5d1771fec5da608c27/andes/models/governor/tgbase.py",
+      "encoding": "base64",
+      "tool_wall_seconds": 0.526,
+      "HTTP_status": null,
+      "internal_retry_count": null
+    },
+    {
+      "official_path": "andes/core/__init__.py",
+      "observable_attempts": 1,
+      "basis": "Persisted tgov1_import_basis.json: line1 imports required LagAntiWindup and LeadLag via andes.core; namespace resolution only.",
+      "decoded_bytes": 1095,
+      "decoded_sha256": "dfd670b0f3d0333dac78533b13808efb0663b16b266aacbd9739b48f43fc558d",
+      "git_blob_sha": "45c67c388063894373abbf35da4dd5ea901abf02",
+      "git_blob_verified": true,
+      "returned_display_url": "https://github.com/CURENT/andes/blob/eda5163c9ee8d19945a1dd5d1771fec5da608c27/andes/core/__init__.py",
+      "encoding": "base64",
+      "tool_wall_seconds": 0.484,
+      "HTTP_status": null,
+      "internal_retry_count": null
+    },
+    {
+      "official_path": "andes/core/block.py",
+      "observable_attempts": 1,
+      "basis": "Persisted block_import_basis.json: core initializer line5 explicitly re-exports required LagAntiWindup and LeadLag from andes.core.block; tgov1 also directly names core.block at line3.",
+      "decoded_bytes": 65466,
+      "decoded_sha256": "3f68dba3365d7cf91d8e43d990aac71b5455f71be220a7f78df24f07f3a59b9a",
+      "git_blob_sha": "3d9516cd8ab5e58106946ac65ad93b172bc1ce68",
+      "git_blob_verified": true,
+      "returned_display_url": "https://github.com/CURENT/andes/blob/eda5163c9ee8d19945a1dd5d1771fec5da608c27/andes/core/block.py",
+      "encoding": "base64",
+      "tool_wall_seconds": 0.654,
+      "HTTP_status": null,
+      "internal_retry_count": null
+    }
+  ],
+  "outputs": {
+    "tgov1.py": {
+      "bytes": 8932,
+      "sha256": "8de6af2beeb8084316971d05e5a9b760abd9287679b689d2b178c6fab328fc37"
+    },
+    "call01_return.json": {
+      "bytes": 13174,
+      "sha256": "925f77714b9eabb5f0f6ce23596ee77e3f9aea2b99564415860ec3ab6f8f49c0"
+    },
+    "tgbase.py": {
+      "bytes": 4889,
+      "sha256": "88efe598b0a76b6171e22a1d451ba37896529a2fb84e4a001f01cf3c49447fef"
+    },
+    "call02_return.json": {
+      "bytes": 7734,
+      "sha256": "ae5ddb9bd54f261e027f6ddb40854bcf7a7bea7337b6d249406ef982bd6dbf67"
+    },
+    "core___init__.py": {
+      "bytes": 1095,
+      "sha256": "dfd670b0f3d0333dac78533b13808efb0663b16b266aacbd9739b48f43fc558d"
+    },
+    "call03_return.json": {
+      "bytes": 2502,
+      "sha256": "85a9cd082d91f14143683ba30f6edad399bb1dcf8587f79d981744e363a67c57"
+    },
+    "block.py": {
+      "bytes": 65466,
+      "sha256": "3f68dba3365d7cf91d8e43d990aac71b5455f71be220a7f78df24f07f3a59b9a"
+    },
+    "call04_return.json": {
+      "bytes": 91239,
+      "sha256": "d67fd43ada8addc71452b907569d1478a72b0adadaa04c91f22c22b99f19586b"
+    }
+  },
+  "budget": {
+    "official_code_files_cumulative": 8,
+    "official_code_files_max": 16,
+    "source_content_files_cumulative": 21,
+    "source_content_files_max": 33,
+    "lineage_slots": 4,
+    "case_files": 1,
+    "case_sheets": 3,
+    "metadata_enumerations": 3
+  },
+  "cost": {
+    "tool_call_seconds_sum": 2.386,
+    "static_extraction_wall_seconds": 0.03331560001242906,
+    "stage_total_wall_seconds": null,
+    "cpu_seconds": null
+  },
+  "all_conditional_sources_have_persisted_actual_import_basis": true,
+  "source_code_executed": false,
+  "unlisted_paths_fetched": 0,
+  "case_cell_reads": 0,
+  "metadata_enumerations_this_stage": 0,
+  "matrix_recalculations": 0,
+  "new_ROM_rollouts": 0,
+  "FOM_calls": 0,
+  "parameter_estimates": 0,
+  "model_writes": 0,
+  "dependent_full_source_transfer_qualified": false
+}

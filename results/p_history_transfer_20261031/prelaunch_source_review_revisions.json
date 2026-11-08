@@ -1,0 +1,18 @@
+{
+  "run": "p_history_transfer_20261031",
+  "revision_stage": "prelaunch_source_review",
+  "old_source_sha256": "d4ca92cf531bbaac45857024030c3adece07d45f8511626f4c1b5f850f4e265c",
+  "old_tests_sha256": "2642366b218a00cc911e58c79789d3142ff0fe2e50d087e7eb35cceed03c8c71",
+  "reason": "Explicit invalid cached time could be overridden by indirect producer-grid evidence. Present time must independently satisfy finite relative grid starting at zero and 0.01 s intervals; only an absent time key may use indirect evidence.",
+  "actual_source_executions": 0,
+  "actual_parameter_estimates": 0,
+  "actual_qr_checks": 0,
+  "actual_scalar_filters": 0,
+  "actual_autonomous_rom_rollouts": 0,
+  "real_technical_repair_budget_consumed": 0,
+  "status": "REVISED_ARTIFICIAL_TESTS_PASSED_PENDING_REVIEW",
+  "new_source_sha256": "01f610d227326a1bc77d70aa305307fd2f97f813d9c3004918859d1ed6699548",
+  "new_tests_sha256": "6903fb70e626c07f4520455fc8e101337732528ff8ab29ba7831e31ffb1b877d",
+  "artificial_tests_passed": 34,
+  "test_command": ".venv-gpu/Scripts/python.exe -m pytest tests/test_p_history_transfer_20261031_source.py -q --basetemp=private_data/p_history_transfer_source_artificial_tests_20261031e"
+}

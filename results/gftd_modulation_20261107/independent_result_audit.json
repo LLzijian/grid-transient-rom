@@ -1,0 +1,1237 @@
+{
+  "scope": "independent saved JSON/float64 matrix algebra only; no solver, RHS, integration or sampling; not independent experimental evidence",
+  "hashes": {
+    "summary.json": "8e547f94cf831a19c3f05428d22d3b774c671090fb4a8ce7fcf9bf592cd9d142",
+    "fits.json": "e61ab567fe273c1b3bc3c2e663b89a30ff2a8600047083a11a1e1147f26cbdd4",
+    "fits_frozen.json": "7d50f649b71247eb6b7aea05f87b406d3e1dbb6e2d6c02908a086c672638ecf9",
+    "initializations.json": "de88a80556c8a0d988fdbfba7aa137808237adbc5eeffc651d52fe7f88f52f6e",
+    "initializations_frozen.json": "5f158fa5778e5e76ffafd91c3bcad423103fc315af69fd6e45bdce5537ee5e67",
+    "execution_receipt.json": "87089a7af1ec53c24cc038427935e793a7ec124192209008406d34cba7f2ddae",
+    "execution_host_receipt.json": "12a63e87febb481fffd8c41c3ad707bc81397761f3eaacdf2920c2b2eb24b6f9",
+    "execution_release.json": "72140d277ec13405c0d7ddfdbecf5b97f36e986e6c93c9fd7e197ec9aea99808",
+    "resume_execution_receipt.json": "26adfd7419ad50980ec376016ed1949b252e28784453b1e43a41f1b3669114b0",
+    "resume_execution_host_receipt.json": "453a5995644c9fb226aff6c30e209a27fad12aadb70062596591c70af9c50a65",
+    "repair_release01.json": "e557b76a2a9c8b2552abf1c396e7090a496dcec9caab68356214ae853724d1ae",
+    "accounting.json": "889423b17d9de4d5056a838883ecfd9938d7c2ba3faf48053785738d42dadea5",
+    "io_failure_identity_audit.json": "faf652029db757a21ee04e61a8f397e749460c819ea568db79b444e067f9078e",
+    "pre_repair01/manifest.json": "c01eee331f7a694d283b689ba1276ac0baa76ddd0b0526e03e3015905f52425a",
+    "qualification_A.json": "6061dbe2a0927cb2250b1833cd55c611e91dc2457501261f936793cdaa1dd31b",
+    "observations.json": "5e961a57ae4b262e876384460d64c253c13f97125de700307d5d534330554dc4",
+    "observation_plan.json": "b31cf21b2b5e30caa1f94fed951c009a5d0685db9856887615ef4adc59a26ec3",
+    "isolated_truth.json": "03591f82bc543014df3cd69696cfd8d77a5ee4964228af58b79ec9f779ecf802"
+  },
+  "checks": {
+    "original49_mismatches": [],
+    "execution_release.json_source_mismatches": [],
+    "repair_release01.json_source_mismatches": [],
+    "qualification_A": true,
+    "proxy_start_selection_exact_saved_mse_checks": 156,
+    "proxy_start_selection_exact_saved_mse_errors": [],
+    "all406_saved_tasks_within_local_call_limit": true,
+    "actual_cost_not_replayed": true
+  },
+  "limits": {},
+  "errors": [],
+  "linear": {
+    "algebra_items": 1461,
+    "nonempty_nnls": 1449,
+    "max_relative_kkt": 2.1500445538422607e-16,
+    "minimum_coefficient": 0.0,
+    "max_loss_absolute_difference": 2.0679515313825692e-25,
+    "max_saved_gradient_absolute_difference": 0.0,
+    "max_mapping_absolute_difference": 0.0,
+    "records": []
+  },
+  "optimization": {
+    "proxy_tasks": 312,
+    "initialization_tasks_with_saved_diagnostics": 94,
+    "task_statuses": {
+      "converged": 286,
+      "budget_limited": 120
+    },
+    "budget_limited": 120,
+    "active_boundary_tasks": 41,
+    "same_point_kkt_null": 125,
+    "max_history_sse_absolute_difference": 5.551115123125783e-17,
+    "proxy_calls": 43886,
+    "saved_initialization_calls": 8419,
+    "history_decisions": [
+      {
+        "batch_id": 0,
+        "mode": "static",
+        "iteration": 0,
+        "old": 3.0000853878854017e-12,
+        "new": 3.0000853878854017e-12,
+        "accepted": false,
+        "reason": "no_improvement"
+      },
+      {
+        "batch_id": 0,
+        "mode": "static",
+        "iteration": 1,
+        "old": 3.0000853878854017e-12,
+        "new": 3.0000853878854017e-12,
+        "accepted": false,
+        "reason": "no_improvement"
+      },
+      {
+        "batch_id": 0,
+        "mode": "static",
+        "iteration": 2,
+        "old": 3.0000853878854017e-12,
+        "new": 3.0000853878854017e-12,
+        "accepted": false,
+        "reason": "no_improvement"
+      },
+      {
+        "batch_id": 0,
+        "mode": "modulated",
+        "iteration": 0,
+        "old": 3.705036669217399e-05,
+        "new": 3.000085387885371e-12,
+        "accepted": true,
+        "reason": "strict_history_objective_improvement"
+      },
+      {
+        "batch_id": 0,
+        "mode": "modulated",
+        "iteration": 1,
+        "old": 3.000085387885371e-12,
+        "new": 3.000085387885371e-12,
+        "accepted": false,
+        "reason": "no_improvement"
+      },
+      {
+        "batch_id": 0,
+        "mode": "modulated",
+        "iteration": 2,
+        "old": 3.000085387885371e-12,
+        "new": 3.000085387885371e-12,
+        "accepted": false,
+        "reason": "no_improvement"
+      },
+      {
+        "batch_id": 1,
+        "mode": "static",
+        "iteration": 0,
+        "old": 8.397739116607326e-09,
+        "new": 8.397739116607326e-09,
+        "accepted": false,
+        "reason": "no_improvement"
+      },
+      {
+        "batch_id": 1,
+        "mode": "static",
+        "iteration": 1,
+        "old": 8.397739116607326e-09,
+        "new": 8.397739116607326e-09,
+        "accepted": false,
+        "reason": "no_improvement"
+      },
+      {
+        "batch_id": 1,
+        "mode": "static",
+        "iteration": 2,
+        "old": 8.397739116607326e-09,
+        "new": 8.397739116607326e-09,
+        "accepted": false,
+        "reason": "no_improvement"
+      },
+      {
+        "batch_id": 1,
+        "mode": "modulated",
+        "iteration": 0,
+        "old": 3.551877233792751e-05,
+        "new": 8.397739116827717e-09,
+        "accepted": true,
+        "reason": "strict_history_objective_improvement"
+      },
+      {
+        "batch_id": 1,
+        "mode": "modulated",
+        "iteration": 1,
+        "old": 8.397739116827717e-09,
+        "new": 8.397739116827717e-09,
+        "accepted": false,
+        "reason": "no_improvement"
+      },
+      {
+        "batch_id": 1,
+        "mode": "modulated",
+        "iteration": 2,
+        "old": 8.397739116827717e-09,
+        "new": 8.397739116827717e-09,
+        "accepted": false,
+        "reason": "no_improvement"
+      },
+      {
+        "batch_id": 2,
+        "mode": "static",
+        "iteration": 0,
+        "old": 3.185550967348991e-12,
+        "new": 3.185550967348991e-12,
+        "accepted": false,
+        "reason": "no_improvement"
+      },
+      {
+        "batch_id": 2,
+        "mode": "static",
+        "iteration": 1,
+        "old": 3.185550967348991e-12,
+        "new": 3.185550967348991e-12,
+        "accepted": false,
+        "reason": "no_improvement"
+      },
+      {
+        "batch_id": 2,
+        "mode": "static",
+        "iteration": 2,
+        "old": 3.185550967348991e-12,
+        "new": 3.185550967348991e-12,
+        "accepted": false,
+        "reason": "no_improvement"
+      },
+      {
+        "batch_id": 2,
+        "mode": "modulated",
+        "iteration": 0,
+        "old": 3.8262492243129694e-05,
+        "new": 3.1855509673507172e-12,
+        "accepted": true,
+        "reason": "strict_history_objective_improvement"
+      },
+      {
+        "batch_id": 2,
+        "mode": "modulated",
+        "iteration": 1,
+        "old": 3.1855509673507172e-12,
+        "new": 3.1855509673507172e-12,
+        "accepted": false,
+        "reason": "no_improvement"
+      },
+      {
+        "batch_id": 2,
+        "mode": "modulated",
+        "iteration": 2,
+        "old": 3.1855509673507172e-12,
+        "new": 3.1855509673507172e-12,
+        "accepted": false,
+        "reason": "no_improvement"
+      },
+      {
+        "batch_id": 3,
+        "mode": "static",
+        "iteration": 0,
+        "old": 7.499415229158029e-09,
+        "new": 7.499415229158029e-09,
+        "accepted": false,
+        "reason": "no_improvement"
+      },
+      {
+        "batch_id": 3,
+        "mode": "static",
+        "iteration": 1,
+        "old": 7.499415229158029e-09,
+        "new": 7.499415229158029e-09,
+        "accepted": false,
+        "reason": "no_improvement"
+      },
+      {
+        "batch_id": 3,
+        "mode": "static",
+        "iteration": 2,
+        "old": 7.499415229158029e-09,
+        "new": 7.499415229158029e-09,
+        "accepted": false,
+        "reason": "no_improvement"
+      },
+      {
+        "batch_id": 3,
+        "mode": "modulated",
+        "iteration": 0,
+        "old": 3.660215881326872e-05,
+        "new": 7.499415278424549e-09,
+        "accepted": true,
+        "reason": "strict_history_objective_improvement"
+      },
+      {
+        "batch_id": 3,
+        "mode": "modulated",
+        "iteration": 1,
+        "old": 7.499415278424549e-09,
+        "new": 7.499415278424549e-09,
+        "accepted": false,
+        "reason": "no_improvement"
+      },
+      {
+        "batch_id": 3,
+        "mode": "modulated",
+        "iteration": 2,
+        "old": 7.499415278424549e-09,
+        "new": 7.499415278424549e-09,
+        "accepted": false,
+        "reason": "no_improvement"
+      },
+      {
+        "batch_id": 4,
+        "mode": "static",
+        "iteration": 0,
+        "old": 3.0000723936845995e-12,
+        "new": 3.0000723936845995e-12,
+        "accepted": false,
+        "reason": "no_improvement"
+      },
+      {
+        "batch_id": 4,
+        "mode": "static",
+        "iteration": 1,
+        "old": 3.0000723936845995e-12,
+        "new": 3.0000723936845995e-12,
+        "accepted": false,
+        "reason": "no_improvement"
+      },
+      {
+        "batch_id": 4,
+        "mode": "static",
+        "iteration": 2,
+        "old": 3.0000723936845995e-12,
+        "new": 3.0000723936845995e-12,
+        "accepted": false,
+        "reason": "no_improvement"
+      },
+      {
+        "batch_id": 4,
+        "mode": "modulated",
+        "iteration": 0,
+        "old": 7.595496895526163e-05,
+        "new": 3.0000723936845765e-12,
+        "accepted": true,
+        "reason": "strict_history_objective_improvement"
+      },
+      {
+        "batch_id": 4,
+        "mode": "modulated",
+        "iteration": 1,
+        "old": 3.0000723936845765e-12,
+        "new": 3.0000723936845765e-12,
+        "accepted": false,
+        "reason": "no_improvement"
+      },
+      {
+        "batch_id": 4,
+        "mode": "modulated",
+        "iteration": 2,
+        "old": 3.0000723936845765e-12,
+        "new": 3.0000723936845765e-12,
+        "accepted": false,
+        "reason": "no_improvement"
+      },
+      {
+        "batch_id": 5,
+        "mode": "static",
+        "iteration": 0,
+        "old": 0.0013377431992392527,
+        "new": 0.0013377431992392527,
+        "accepted": false,
+        "reason": "no_improvement"
+      },
+      {
+        "batch_id": 5,
+        "mode": "static",
+        "iteration": 1,
+        "old": 0.0013377431992392527,
+        "new": 0.0013377431992392527,
+        "accepted": false,
+        "reason": "no_improvement"
+      },
+      {
+        "batch_id": 5,
+        "mode": "static",
+        "iteration": 2,
+        "old": 0.0013377431992392527,
+        "new": 0.0013377431992392527,
+        "accepted": false,
+        "reason": "no_improvement"
+      },
+      {
+        "batch_id": 5,
+        "mode": "modulated",
+        "iteration": 0,
+        "old": 7.382070742302455e-05,
+        "new": 0.0013380443235837159,
+        "accepted": false,
+        "reason": "no_improvement"
+      },
+      {
+        "batch_id": 5,
+        "mode": "modulated",
+        "iteration": 1,
+        "old": 7.382070742302455e-05,
+        "new": 0.0013380443235837159,
+        "accepted": false,
+        "reason": "no_improvement"
+      },
+      {
+        "batch_id": 5,
+        "mode": "modulated",
+        "iteration": 2,
+        "old": 7.382070742302455e-05,
+        "new": 0.0013380443235837159,
+        "accepted": false,
+        "reason": "no_improvement"
+      }
+    ]
+  },
+  "numerical_and_predictions": {
+    "rows": 48,
+    "numerically_passed": 48,
+    "true_p_max_error": 0.0,
+    "recovered_rows": 1,
+    "max_future_rms": 3.1366826291755428e-09,
+    "max_future_peak": 1.2887358846747077e-08,
+    "max_history_main_fine_rms": 1.6551144091785085e-12,
+    "max_roundtrip_scaled": 2.275957200481571e-14,
+    "prediction_passed": 30,
+    "max_score_absolute_difference": 3.469446951953614e-18
+  },
+  "grouped_predictions": [
+    {
+      "family": "Static",
+      "sigma": 0.0,
+      "mode": "static",
+      "n": 3,
+      "passed": 3,
+      "max_rms": 6.455515052864025e-06,
+      "max_peak": 3.174477633227646e-05
+    },
+    {
+      "family": "Static",
+      "sigma": 0.0,
+      "mode": "modulated",
+      "n": 3,
+      "passed": 3,
+      "max_rms": 6.455515052864025e-06,
+      "max_peak": 3.174477633227646e-05
+    },
+    {
+      "family": "Static",
+      "sigma": 0.0001,
+      "mode": "static",
+      "n": 3,
+      "passed": 0,
+      "max_rms": 0.006407380657806408,
+      "max_peak": 0.03228382093147375
+    },
+    {
+      "family": "Static",
+      "sigma": 0.0001,
+      "mode": "modulated",
+      "n": 3,
+      "passed": 0,
+      "max_rms": 0.006407380606927389,
+      "max_peak": 0.032283820844180466
+    },
+    {
+      "family": "Modulated",
+      "sigma": 0.0,
+      "mode": "static",
+      "n": 3,
+      "passed": 3,
+      "max_rms": 0.00033919629066093856,
+      "max_peak": 0.0015140991300646167
+    },
+    {
+      "family": "Modulated",
+      "sigma": 0.0,
+      "mode": "modulated",
+      "n": 3,
+      "passed": 3,
+      "max_rms": 0.00033919629066093856,
+      "max_peak": 0.0015140991300646167
+    },
+    {
+      "family": "Modulated",
+      "sigma": 0.0001,
+      "mode": "static",
+      "n": 3,
+      "passed": 0,
+      "max_rms": 0.018526636230081724,
+      "max_peak": 0.08711997893640344
+    },
+    {
+      "family": "Modulated",
+      "sigma": 0.0001,
+      "mode": "modulated",
+      "n": 3,
+      "passed": 0,
+      "max_rms": 0.018526636231996216,
+      "max_peak": 0.08711997894837553
+    },
+    {
+      "family": "Memory",
+      "sigma": 0.0,
+      "mode": "static",
+      "n": 3,
+      "passed": 3,
+      "max_rms": 7.012517895081776e-06,
+      "max_peak": 3.305189752000892e-05
+    },
+    {
+      "family": "Memory",
+      "sigma": 0.0,
+      "mode": "modulated",
+      "n": 3,
+      "passed": 3,
+      "max_rms": 7.012517895081776e-06,
+      "max_peak": 3.305189752000892e-05
+    },
+    {
+      "family": "Memory",
+      "sigma": 0.0001,
+      "mode": "static",
+      "n": 3,
+      "passed": 0,
+      "max_rms": 0.2513694726796663,
+      "max_peak": 0.7137477935685296
+    },
+    {
+      "family": "Memory",
+      "sigma": 0.0001,
+      "mode": "modulated",
+      "n": 3,
+      "passed": 0,
+      "max_rms": 0.0704648259019514,
+      "max_peak": 0.284072573393548
+    },
+    {
+      "family": "Equilibrium",
+      "sigma": 0.0,
+      "mode": "static",
+      "n": 3,
+      "passed": 3,
+      "max_rms": 0.0,
+      "max_peak": 0.0
+    },
+    {
+      "family": "Equilibrium",
+      "sigma": 0.0,
+      "mode": "modulated",
+      "n": 3,
+      "passed": 3,
+      "max_rms": 0.0,
+      "max_peak": 0.0
+    },
+    {
+      "family": "Equilibrium",
+      "sigma": 0.0001,
+      "mode": "static",
+      "n": 3,
+      "passed": 3,
+      "max_rms": 0.00037084597947472086,
+      "max_peak": 0.0012260238299220119
+    },
+    {
+      "family": "Equilibrium",
+      "sigma": 0.0001,
+      "mode": "modulated",
+      "n": 3,
+      "passed": 3,
+      "max_rms": 0.00037119154145354535,
+      "max_peak": 0.0012287790872276957
+    }
+  ],
+  "fit_results": [
+    {
+      "batch_id": 0,
+      "family": "Static",
+      "sigma": 0.0,
+      "mode": "static",
+      "status": "completed",
+      "support": [
+        0,
+        3,
+        5
+      ],
+      "modulation_support": null,
+      "k": [
+        0.7000126778778475,
+        0.0,
+        0.0,
+        0.9000252464626742,
+        0.0,
+        1.1000843750145608
+      ],
+      "beta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "prior_only": false,
+      "accepted": [],
+      "null_reasons": {
+        "k": [],
+        "beta": [
+          "fixed_by_model"
+        ]
+      }
+    },
+    {
+      "batch_id": 0,
+      "family": "Static",
+      "sigma": 0.0,
+      "mode": "modulated",
+      "status": "not_identified",
+      "support": [
+        0,
+        3,
+        5
+      ],
+      "modulation_support": null,
+      "k": [
+        0.7000126778778475,
+        0.0,
+        0.0,
+        0.9000252464626742,
+        0.0,
+        1.1000843750145608
+      ],
+      "beta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "prior_only": false,
+      "accepted": [
+        0
+      ],
+      "null_reasons": {
+        "k": [],
+        "beta": [
+          "conditional_information_not_qualified"
+        ]
+      }
+    },
+    {
+      "batch_id": 1,
+      "family": "Static",
+      "sigma": 0.0001,
+      "mode": "static",
+      "status": "completed",
+      "support": [
+        0,
+        3,
+        5
+      ],
+      "modulation_support": null,
+      "k": [
+        0.7036938900258284,
+        0.0,
+        0.0,
+        0.87331220760023,
+        0.0,
+        1.0157892684113874
+      ],
+      "beta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "prior_only": false,
+      "accepted": [],
+      "null_reasons": {
+        "k": [],
+        "beta": [
+          "fixed_by_model"
+        ]
+      }
+    },
+    {
+      "batch_id": 1,
+      "family": "Static",
+      "sigma": 0.0001,
+      "mode": "modulated",
+      "status": "not_identified",
+      "support": [
+        0,
+        3,
+        5
+      ],
+      "modulation_support": null,
+      "k": [
+        0.7036938900258284,
+        0.0,
+        0.0,
+        0.87331220760023,
+        0.0,
+        1.0157892684113874
+      ],
+      "beta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "prior_only": false,
+      "accepted": [
+        0
+      ],
+      "null_reasons": {
+        "k": [],
+        "beta": [
+          "conditional_information_not_qualified"
+        ]
+      }
+    },
+    {
+      "batch_id": 2,
+      "family": "Modulated",
+      "sigma": 0.0,
+      "mode": "static",
+      "status": "completed",
+      "support": [
+        0,
+        3,
+        5
+      ],
+      "modulation_support": null,
+      "k": [
+        0.6990034846277497,
+        0.0,
+        0.0,
+        0.9048114225028536,
+        0.0,
+        1.1019951743130343
+      ],
+      "beta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "prior_only": false,
+      "accepted": [],
+      "null_reasons": {
+        "k": [],
+        "beta": [
+          "fixed_by_model"
+        ]
+      }
+    },
+    {
+      "batch_id": 2,
+      "family": "Modulated",
+      "sigma": 0.0,
+      "mode": "modulated",
+      "status": "not_identified",
+      "support": [
+        0,
+        3,
+        5
+      ],
+      "modulation_support": null,
+      "k": [
+        0.6990034846277497,
+        0.0,
+        0.0,
+        0.9048114225028536,
+        0.0,
+        1.1019951743130343
+      ],
+      "beta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "prior_only": false,
+      "accepted": [
+        0
+      ],
+      "null_reasons": {
+        "k": [],
+        "beta": [
+          "conditional_information_not_qualified"
+        ]
+      }
+    },
+    {
+      "batch_id": 3,
+      "family": "Modulated",
+      "sigma": 0.0001,
+      "mode": "static",
+      "status": "completed",
+      "support": [
+        0,
+        3,
+        5
+      ],
+      "modulation_support": null,
+      "k": [
+        0.6372317143798066,
+        0.0,
+        0.0,
+        1.036187370903596,
+        0.0,
+        0.7849458846481177
+      ],
+      "beta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "prior_only": false,
+      "accepted": [],
+      "null_reasons": {
+        "k": [],
+        "beta": [
+          "fixed_by_model"
+        ]
+      }
+    },
+    {
+      "batch_id": 3,
+      "family": "Modulated",
+      "sigma": 0.0001,
+      "mode": "modulated",
+      "status": "completed",
+      "support": [
+        0,
+        3,
+        5
+      ],
+      "modulation_support": [],
+      "k": [
+        0.6372317143798066,
+        0.0,
+        0.0,
+        1.036187370903596,
+        0.0,
+        0.7849458846481177
+      ],
+      "beta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "prior_only": false,
+      "accepted": [
+        0
+      ],
+      "null_reasons": {
+        "k": [],
+        "beta": []
+      }
+    },
+    {
+      "batch_id": 4,
+      "family": "Memory",
+      "sigma": 0.0,
+      "mode": "static",
+      "status": "completed",
+      "support": [
+        0,
+        3,
+        5
+      ],
+      "modulation_support": null,
+      "k": [
+        0.7000150418641492,
+        0.0,
+        0.0,
+        0.9000067044795755,
+        0.0,
+        1.100098669633946
+      ],
+      "beta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "prior_only": false,
+      "accepted": [],
+      "null_reasons": {
+        "k": [],
+        "beta": [
+          "fixed_by_model"
+        ]
+      }
+    },
+    {
+      "batch_id": 4,
+      "family": "Memory",
+      "sigma": 0.0,
+      "mode": "modulated",
+      "status": "not_identified",
+      "support": [
+        0,
+        3,
+        5
+      ],
+      "modulation_support": null,
+      "k": [
+        0.7000150418641492,
+        0.0,
+        0.0,
+        0.9000067044795755,
+        0.0,
+        1.100098669633946
+      ],
+      "beta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "prior_only": false,
+      "accepted": [
+        0
+      ],
+      "null_reasons": {
+        "k": [],
+        "beta": [
+          "conditional_information_not_qualified"
+        ]
+      }
+    },
+    {
+      "batch_id": 5,
+      "family": "Memory",
+      "sigma": 0.0001,
+      "mode": "static",
+      "status": "completed",
+      "support": [
+        2,
+        4,
+        5
+      ],
+      "modulation_support": null,
+      "k": [
+        0.0,
+        0.0,
+        0.9402465007786698,
+        0.0,
+        4.5872463538292,
+        2.5544216795670076
+      ],
+      "beta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "prior_only": false,
+      "accepted": [],
+      "null_reasons": {
+        "k": [],
+        "beta": [
+          "fixed_by_model"
+        ]
+      }
+    },
+    {
+      "batch_id": 5,
+      "family": "Memory",
+      "sigma": 0.0001,
+      "mode": "modulated",
+      "status": "not_identified",
+      "support": null,
+      "modulation_support": null,
+      "k": [
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2
+      ],
+      "beta": [
+        0.05,
+        0.05,
+        0.05,
+        0.05,
+        0.05,
+        0.05
+      ],
+      "prior_only": true,
+      "accepted": [],
+      "null_reasons": {
+        "k": [
+          "prior_only"
+        ],
+        "beta": [
+          "prior_only"
+        ]
+      }
+    },
+    {
+      "batch_id": 6,
+      "family": "Equilibrium",
+      "sigma": 0.0,
+      "mode": "static",
+      "status": "not_identified",
+      "support": null,
+      "modulation_support": null,
+      "k": [
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2
+      ],
+      "beta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "prior_only": true,
+      "accepted": [],
+      "null_reasons": {
+        "k": [
+          "prior_only",
+          "conditional_information_not_qualified"
+        ],
+        "beta": [
+          "fixed_by_model"
+        ]
+      }
+    },
+    {
+      "batch_id": 6,
+      "family": "Equilibrium",
+      "sigma": 0.0,
+      "mode": "modulated",
+      "status": "not_identified",
+      "support": null,
+      "modulation_support": null,
+      "k": [
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2
+      ],
+      "beta": [
+        0.05,
+        0.05,
+        0.05,
+        0.05,
+        0.05,
+        0.05
+      ],
+      "prior_only": true,
+      "accepted": [],
+      "null_reasons": {
+        "k": [
+          "prior_only",
+          "conditional_information_not_qualified"
+        ],
+        "beta": [
+          "prior_only",
+          "conditional_information_not_qualified"
+        ]
+      }
+    },
+    {
+      "batch_id": 7,
+      "family": "Equilibrium",
+      "sigma": 0.0001,
+      "mode": "static",
+      "status": "not_identified",
+      "support": null,
+      "modulation_support": null,
+      "k": [
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2
+      ],
+      "beta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "prior_only": true,
+      "accepted": [],
+      "null_reasons": {
+        "k": [
+          "prior_only",
+          "conditional_information_not_qualified"
+        ],
+        "beta": [
+          "fixed_by_model"
+        ]
+      }
+    },
+    {
+      "batch_id": 7,
+      "family": "Equilibrium",
+      "sigma": 0.0001,
+      "mode": "modulated",
+      "status": "not_identified",
+      "support": null,
+      "modulation_support": null,
+      "k": [
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2
+      ],
+      "beta": [
+        0.05,
+        0.05,
+        0.05,
+        0.05,
+        0.05,
+        0.05
+      ],
+      "prior_only": true,
+      "accepted": [],
+      "null_reasons": {
+        "k": [
+          "prior_only",
+          "conditional_information_not_qualified"
+        ],
+        "beta": [
+          "prior_only",
+          "conditional_information_not_qualified"
+        ]
+      }
+    }
+  ],
+  "mechanism_gate_passed_recomputed": false,
+  "counts": {
+    "fit": {
+      "algebra_terms_planned": 9832,
+      "algebra_terms_actual": 1461,
+      "algebra_terms_skipped": 8371,
+      "nnls_attempts": 1449,
+      "nnls_completed": 1449,
+      "nnls_qualified": 1449,
+      "reconstruction_attempts": 48,
+      "reconstructions": 48,
+      "optimization_tasks": 312,
+      "actual_residual_calls": 43886,
+      "integrations_attempted": 43934,
+      "integrations_completed": 43934,
+      "rk4_steps_attempted": 1759280,
+      "rk4_steps_completed": 1759280
+    },
+    "initialization": {
+      "algebra_terms_planned": 0,
+      "algebra_terms_actual": 0,
+      "algebra_terms_skipped": 0,
+      "nnls_attempts": 0,
+      "nnls_completed": 0,
+      "nnls_qualified": 0,
+      "reconstruction_attempts": 0,
+      "reconstructions": 0,
+      "optimization_tasks": 96,
+      "actual_residual_calls": 8440,
+      "integrations_attempted": 8872,
+      "integrations_completed": 8872,
+      "rk4_steps_attempted": 376480,
+      "rk4_steps_completed": 376480
+    },
+    "total": {
+      "algebra_terms_planned": 9832,
+      "algebra_terms_actual": 1461,
+      "algebra_terms_skipped": 8371,
+      "nnls_attempts": 1449,
+      "nnls_completed": 1449,
+      "nnls_qualified": 1449,
+      "reconstruction_attempts": 48,
+      "reconstructions": 48,
+      "optimization_tasks": 408,
+      "actual_residual_calls": 52326,
+      "integrations_attempted": 52806,
+      "integrations_completed": 52806,
+      "rk4_steps_attempted": 2135760,
+      "rk4_steps_completed": 2135760
+    },
+    "remaining_pairs_executed": 9,
+    "lost_diagnostic_tasks": 2,
+    "lost_calls": 21,
+    "diagnostic_row_coverage": 47,
+    "output_rows": 48
+  },
+  "limitations": [
+    "No re-integration of historical coarse/fine or roundtrip: only saved metrics and independent future-array differences verified.",
+    "No raw A/Z/b were reconstructed; evaluated stored restricted X/y coefficient problems audited by KKT.",
+    "Lost ordinal39 actual optimizer trajectory/timing remain unknown; state/futures reused from certified identical frozen model/input.",
+    "48 predictions share generated trajectories, paired noise and fitted batches; they are not 48 independent replicates.",
+    "Independent historical loss was formed by projecting the error, an algebraically equivalent order with <=5.56e-17 SSE difference. Exact near-tie start selection is verified against the original saved MSE ordering, not reordered by this alternative floating arithmetic."
+  ],
+  "all_checks_passed": true,
+  "selected_initialization_diagnostics": {
+    "returned_stage1": 23,
+    "selected_converged": 47,
+    "selected_task_kkt_null": 2,
+    "selected_task_boundary": 7,
+    "returned_stage2": 24,
+    "summary_selected_kkt_null": 25,
+    "rows_with_actual_diagnostics": 47,
+    "lost_actual_diagnostics_unknown": 1
+  },
+  "execution_wall_records": {
+    "execution_receipt.json": {
+      "status": "FAILED",
+      "wall_seconds": 655.6800195000251
+    },
+    "resume_execution_receipt.json": {
+      "status": "COMPLETED",
+      "wall_seconds": 39.20285599998897
+    },
+    "execution_host_receipt.json": {
+      "status": "FAILED",
+      "host_wall_seconds": 662.3721958,
+      "exit_code": 1,
+      "host_wall_method": "System.Diagnostics.Stopwatch wrapping the single registered Python command"
+    },
+    "resume_execution_host_receipt.json": {
+      "status": "COMPLETED",
+      "exit_code": 0,
+      "host_wall_seconds": 41.6493473,
+      "host_wall_method": "System.Diagnostics.Stopwatch around the single registered resume command"
+    }
+  }
+}

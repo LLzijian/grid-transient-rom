@@ -1,0 +1,7 @@
+# 独立工程合并复查：精确六文件
+
+复查者/root/reconstruction_independent_review_20261022，原已读Job/helper及五例和QA06。本次只读新六文件范围，没有新测试/GPU/状态加载或Git操作。
+
+返回原文：该精确6文件工程子集可合并，未发现范围或依赖阻塞。两个工程模块仅依赖标准库及彼此；16项运行环境测试使用隔离合成证据，除pytest外不依赖旧训练入口、CUDA或本机历史资产。此为静态依赖判断，未重新收集或执行测试。报告准确区分Job/helper已验证范围与训练入口的已知故障，保留旧失败及96更新，未宣称模型晋升。完整实测证据链接指向归档来源，口径成立。ROOT仍须核实实际PR仅含这6文件、代码blob与已验收冻结源一致，并确认expected head及远端合并。本次未触碰运行源或执行测试/GPU/load/Git。
+
+root采用范围：experiments/uncapped_windows_job_20261021.py、experiments/rational_python_runtime_20261022.py、tests/test_rational_python_runtime_20261022.py、reports/windows_job_runtime_20261022_engineering.md、results/rational_execution_20261021/qa06_summary.json、results/rational_execution_20261021/spawn_chain_summary.json。完整81文件旧训练入口不合。新检查点续接相关模块另行验证和采用，不混入本PR。

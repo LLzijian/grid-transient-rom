@@ -1,0 +1,30 @@
+{
+  "schema": "analytic_p_backward_paired_release_v1",
+  "released_at_utc": "2026-10-30T17:43:25.173901+00:00",
+  "decision": "release_one_normal_full_paired_evaluation_per_fixed_candidate",
+  "reason": "Frozen original baselines reproduce all registered main scores and both mathematical/causal/serialization entries pass; original T_base counts9/8 remain distinct from scientific T_anchor9.",
+  "execution_release_sha256": "d9464d55c9ea61946583737cc65a9f6e5ebb3af034a9c2d357b497be324f430f",
+  "prepare_receipt_sha256": "087498ffb9c2b66738f19b2924501a24fe2604beb18f4eda56162d6feed68af3",
+  "manifest_sha256": "abe0a2e120597436a446b452d657513105c2362da1b70609aee42e887864de58",
+  "baselines_sha256": "6b44144df10988c8a2f03fa9767deed50db8d548d0e1631a12ff273aaa7f4d2b",
+  "science_anchors_sha256": "30fe3b59a37d1f9c59f9cb32b18bf94e6ba2a8636f03f7923b7695722b942d5c",
+  "source_sha256": "ee8429d0fe558b73550ed9d47a04b47fda957e676bddd3a3ccdb48d08f10bc1a",
+  "candidates": [
+    "A96_analytic",
+    "A16_analytic"
+  ],
+  "normal_full_paired_limit": 2,
+  "maximum_concurrent_cpu_workers": 2,
+  "cpu_threads_per_worker": 1,
+  "parallel_condition": "Refresh actual available memory before launch; use sequential execution if capacity is inadequate.",
+  "candidate_evaluations_prior_attempts": 0,
+  "candidate_attempt_limit_each": 1,
+  "automatic_retry_allowed": false,
+  "repair_predictions_released": false,
+  "summary_after_both_terminal_and_complete": true,
+  "candidate_qualification_failure_is_not_implementation_repair": true,
+  "no_optimizer_or_parameter_estimate": true,
+  "model_adoption_authorized": false,
+  "default_changed": false,
+  "all_original_scientific_gates_retained": true
+}

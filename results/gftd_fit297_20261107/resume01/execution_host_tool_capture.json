@@ -1,0 +1,104 @@
+{
+  "action_id": "gftd-fit297-20261107-resume01",
+  "parent_action_id": "gftd-fit297-20261107-01",
+  "configured_model": "gpt-6.1-sol",
+  "external_toolmodel": null,
+  "formal_continuation_invocations": 1,
+  "science_command": ".venv-gpu/Scripts/python.exe -B experiments/gftd_fit297_20261107_resume01.py",
+  "shell_command_exact": "$ErrorActionPreference='Stop'\n$env:OMP_NUM_THREADS='1'\n$env:MKL_NUM_THREADS='1'\n$env:OPENBLAS_NUM_THREADS='1'\n$env:PYTHONDONTWRITEBYTECODE='1'\n$runRoot='results/gftd_fit297_20261107/resume01'\n$releasePath=\"$runRoot/execution_release.json\"\n$releaseHash=(Get-FileHash -LiteralPath $releasePath -Algorithm SHA256).Hash.ToLower()\nif($releaseHash -ne '60398c70d1b0971f58c990a9b74a1a385f52d3eaca24b326d88531c1960e92e3'){throw 'Release hash mismatch'}\n$release=Get-Content -LiteralPath $releasePath -Raw|ConvertFrom-Json\nif(Test-Path -LiteralPath \"$runRoot/started.json\"){throw 'Continuation claim already exists'}\n$checks=@(foreach($p in $release.source_sha256.PSObject.Properties){$actual=(Get-FileHash -LiteralPath $p.Name -Algorithm SHA256).Hash.ToLower(); [ordered]@{path=$p.Name;expected=$p.Value;actual=$actual;matched=($actual -eq $p.Value)}})\nif($checks.Count -ne 53 -or @($checks|Where-Object {-not $_.matched}).Count){throw 'Frozen source check failed'}\n$allPython=@(Get-Process -Name python,pythonw -ErrorAction SilentlyContinue|Select-Object Id,Path,StartTime)\n$duplicates=@($allPython|Where-Object {$_.Path -like '*03-nn_Transfer_Func*kiki*.venv-gpu*' -or $_.Id -in @(25564,55472)})\nif(@($allPython|Where-Object {-not $_.Path}).Count){throw 'Python process executable path unavailable'}\nif($duplicates.Count){throw ('Project scientific Python already present: '+($duplicates|ConvertTo-Json -Compress))}\n$environment=[ordered]@{OMP_NUM_THREADS=$env:OMP_NUM_THREADS;MKL_NUM_THREADS=$env:MKL_NUM_THREADS;OPENBLAS_NUM_THREADS=$env:OPENBLAS_NUM_THREADS;PYTHONDONTWRITEBYTECODE=$env:PYTHONDONTWRITEBYTECODE}\n$preflight=[ordered]@{utc=[DateTimeOffset]::UtcNow.ToString('o');release_sha256=$releaseHash;source_checks=$checks;source_count=$checks.Count;started_exists=$false;project_python_count=$duplicates.Count;thread_environment_readback=$environment;runtime_environment_verification='frozen runner verifies imported versions before exclusive continuation claim';fit_cache_bytes_read_by_host=$false}\n$encoding=[System.Text.UTF8Encoding]::new($false)\n[System.IO.File]::WriteAllText((Join-Path (Get-Location) \"$runRoot/execution_host_preflight.json\"),($preflight|ConvertTo-Json -Depth 8)+[Environment]::NewLine,$encoding)\nforeach($name in @('execution_host_start.json','execution.stdout.txt','execution.stderr.txt')){if(Test-Path -LiteralPath \"$runRoot/$name\"){throw \"Host artifact exists: $name\"}}\n$hostStart=[DateTimeOffset]::UtcNow.ToString('o')\n$clock=[Diagnostics.Stopwatch]::StartNew()\n$start=[ordered]@{action_id=$release.action_id;command=$release.command;host_start_utc=$hostStart;release_sha256=$releaseHash;source_sha256=$release.source_sha256;thread_environment_readback=$environment;formal_continuation_invocations=1;parent_host_seconds=2031.1645234;launcher_pid=$PID}\n[System.IO.File]::WriteAllText((Join-Path (Get-Location) \"$runRoot/execution_host_start.json\"),($start|ConvertTo-Json -Depth 8)+[Environment]::NewLine,$encoding)\nWrite-Output ('HOST_ENV_JSON='+($environment|ConvertTo-Json -Compress))\nWrite-Output ('HOST_START_UTC='+$hostStart)\nWrite-Output ('HOST_LAUNCHER_PID='+$PID)\n& ./.venv-gpu/Scripts/python.exe -B experiments/gftd_fit297_20261107_resume01.py 1> \"$runRoot/execution.stdout.txt\" 2> \"$runRoot/execution.stderr.txt\"\n$scientificExit=$LASTEXITCODE\n$clock.Stop()\n$hostEnd=[DateTimeOffset]::UtcNow.ToString('o')\n$end=[ordered]@{host_end_utc=$hostEnd;host_stopwatch_seconds=$clock.Elapsed.TotalSeconds;parent_host_seconds=2031.1645234;combined_host_seconds=(2031.1645234+$clock.Elapsed.TotalSeconds);exit_code=$scientificExit}\n[System.IO.File]::WriteAllText((Join-Path (Get-Location) \"$runRoot/execution_host_end.json\"),($end|ConvertTo-Json -Depth 5)+[Environment]::NewLine,$encoding)\nWrite-Output ('HOST_END_UTC='+$hostEnd)\nWrite-Output ('HOST_WALL_SECONDS='+$clock.Elapsed.TotalSeconds.ToString('R',[Globalization.CultureInfo]::InvariantCulture))\nWrite-Output ('COMBINED_HOST_SECONDS='+(2031.1645234+$clock.Elapsed.TotalSeconds).ToString('R',[Globalization.CultureInfo]::InvariantCulture))\nWrite-Output ('PROGRAM_EXIT_CODE='+$scientificExit)\nexit $scientificExit",
+  "session_id": 27467,
+  "launcher_pid": 32728,
+  "observed_venv_process_pid": 3252,
+  "host_start_utc": "2026-11-07T17:35:45.5691716+00:00",
+  "host_end_utc": "2026-11-07T18:08:30.4112236+00:00",
+  "host_stopwatch_seconds": 1964.8406499,
+  "parent_host_seconds": 2031.1645234,
+  "combined_original_plus_resume_host_seconds": 3996.0051733,
+  "exit_code": 0,
+  "scientific_session_tool_calls": [
+    {
+      "chunk_id": "d5cf21",
+      "wall_time_seconds": 10.0129244,
+      "session_id": 27467,
+      "original_token_count": 49,
+      "output": "HOST_ENV_JSON={\"OMP_NUM_THREADS\":\"1\",\"MKL_NUM_THREADS\":\"1\",\"OPENBLAS_NUM_THREADS\":\"1\",\"PYTHONDONTWRITEBYTECODE\":\"1\"}\r\nHOST_START_UTC=2026-11-07T17:35:45.5691716+00:00\r\nHOST_LAUNCHER_PID=32728\r\n"
+    },
+    {
+      "chunk_id": "01dcbb",
+      "wall_time_seconds": 5.0135364,
+      "session_id": 27467,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "b40178",
+      "wall_time_seconds": 5.0050218,
+      "session_id": 27467,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "5ce8cf",
+      "wall_time_seconds": 5.0151233,
+      "session_id": 27467,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "86ff92",
+      "wall_time_seconds": 5.0011915,
+      "session_id": 27467,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "c7314a",
+      "wall_time_seconds": 5.0112363,
+      "session_id": 27467,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "8ffa8a",
+      "wall_time_seconds": 0.000011,
+      "exit_code": 0,
+      "original_token_count": 35,
+      "output": "HOST_END_UTC=2026-11-07T18:08:30.4112236+00:00\r\nHOST_WALL_SECONDS=1964.8406499\r\nCOMBINED_HOST_SECONDS=3996.0051733\r\nPROGRAM_EXIT_CODE=0\r\n"
+    }
+  ],
+  "prelaunch_failed_before_python_calls": [
+    {
+      "chunk_id": "612d17",
+      "wall_time_seconds": 1.0218088,
+      "exit_code": 1,
+      "original_token_count": 55,
+      "output": "Get-CimInstance: \r\nLine |\r\n  15 |  … allPython=@(Get-CimInstance Win32_Process -Filter \"Name='python.exe'  …\r\n     |                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n     | 拒绝访问 \r\n"
+    }
+  ],
+  "prelaunch_failure_scope": "Get-CimInstance access denied before Python or host_start; fallback Get-Process path check was clear. Not a scientific invocation or additional technical repair.",
+  "final_audit_tool": {
+    "chunk_id": "7938c8",
+    "wall_time_seconds": 0.5934328,
+    "exit_code": 0,
+    "original_token_count": 1627,
+    "output": "{\"status\":\"COMPLETED\",\"current\":{\"stage\":\"model_analysis\",\"mode\":null,\"event_id\":null},\"counts\":{\"fits_attempted\":2,\"fits_completed\":2,\"initializations_attempted\":594,\"initializations_completed\":47,\"future_pairs_attempted\":47,\"future_pairs_persisted\":47,\"future_pairs_completed\":47,\"future_pairs_failed\":0,\"rk4_attempted\":211500,\"rk4_completed\":211500,\"scoring_attempted\":47,\"scoring_completed\":47,\"fit\":{\"static\":{\"algebra_terms_planned\":32764,\"algebra_terms_actual\":943,\"algebra_terms_skipped\":31821,\"nnls_attempts\":943,\"nnls_completed\":943,\"nnls_qualified\":943,\"reconstruction_attempts\":594,\"reconstructions\":594,\"optimization_tasks\":192,\"actual_residual_calls\":37951,\"integrations_attempted\":37975,\"integrations_completed\":37975,\"rk4_steps_attempted\":1519960,\"rk4_steps_completed\":1519960,\"information_svd\":186,\"conditional_projections\":135,\"memory_svd\":594,\"information_history_steps\":1920},\"modulated\":{\"algebra_terms_planned\":24573,\"algebra_terms_actual\":2817,\"algebra_terms_skipped\":21756,\"nnls_attempts\":2817,\"nnls_completed\":2817,\"nnls_qualified\":2817,\"reconstruction_attempts\":0,\"reconstructions\":0,\"optimization_tasks\":192,\"actual_residual_calls\":38400,\"integrations_attempted\":38424,\"integrations_completed\":38424,\"rk4_steps_attempted\":1537920,\"rk4_steps_completed\":1537920,\"information_svd\":230,\"conditional_projections\":180,\"memory_svd\":0,\"information_history_steps\":1920}},\"initialization\":{\"algebra_terms_planned\":0,\"algebra_terms_actual\":0,\"algebra_terms_skipped\":0,\"nnls_attempts\":0,\"nnls_completed\":0,\"nnls_qualified\":0,\"reconstruction_attempts\":0,\"reconstructions\":0,\"optimization_tasks\":646,\"actual_residual_calls\":138880,\"integrations_attempted\":142466,\"integrations_completed\":142452,\"rk4_steps_attempted\":5875985,\"rk4_steps_completed\":5875971},\"coverage\":{\"static\":{\"algebra_terms_planned\":0,\"algebra_terms_actual\":0,\"algebra_terms_skipped\":0,\"nnls_attempts\":0,\"nnls_completed\":0,\"nnls_qualified\":0,\"reconstruction_attempts\":0,\"reconstructions\":0,\"optimization_tasks\":0,\"actual_residual_calls\":0,\"integrations_attempted\":0,\"integrations_completed\":0,\"rk4_steps_attempted\":0,\"rk4_steps_completed\":0,\"information_svd\":0,\"conditional_projections\":0,\"memory_svd\":0,\"information_history_steps\":0},\"modulated\":{\"algebra_terms_planned\":0,\"algebra_terms_actual\":0,\"algebra_terms_skipped\":0,\"nnls_attempts\":0,\"nnls_completed\":0,\"nnls_qualified\":0,\"reconstruction_attempts\":0,\"reconstructions\":0,\"optimization_tasks\":0,\"actual_residual_calls\":0,\"integrations_attempted\":0,\"integrations_completed\":0,\"rk4_steps_attempted\":0,\"rk4_steps_completed\":0,\"information_svd\":0,\"conditional_projections\":0,\"memory_svd\":0,\"information_history_steps\":0}}},\"execution_budget\":{\"actual\":{\"algebra_terms_planned\":57337,\"algebra_terms_actual\":3760,\"algebra_terms_skipped\":53577,\"nnls_attempts\":3760,\"nnls_completed\":3760,\"nnls_qualified\":3760,\"reconstruction_attempts\":594,\"reconstructions\":594,\"optimization_tasks\":1030,\"actual_residual_calls\":215231,\"integrations_attempted\":218865,\"integrations_completed\":218851,\"rk4_steps_attempted\":9145365,\"rk4_steps_completed\":9145351,\"information_svd\":416,\"conditional_projections\":315,\"memory_svd\":594,\"information_history_steps\":3840},\"limits\":{\"rk4_steps_attempted\":49229640,\"actual_residual_calls\":1146000,\"optimization_tasks\":1572,\"algebra_terms_actual\":57337,\"nnls_attempts\":57337,\"reconstructions\":594},\"exceeded\":{},\"within_limits\":true,\"note\":\"information_history_steps is a tagged subset of rk4_steps_attempted, never added twice\"},\"analysis\":{\"static\":{\"certificate_status\":\"certified\",\"l2_radius_candidates_actual\":13,\"l2_point_calls_actual\":46,\"point_count\":297,\"mode_status\":\"qualified\",\"rom_counts\":{\"newton_iterations\":0,\"gradient_calls\":1,\"rhs_calls\":198,\"eig_count\":2}},\"modulated\":{\"certificate_status\":\"certified\",\"l2_radius_candidates_actual\":13,\"l2_point_calls_actual\":1,\"point_count\":297,\"mode_status\":\"qualified\",\"rom_counts\":{\"newton_iterations\":0,\"gradient_calls\":1,\"rhs_calls\":198,\"eig_count\":2}},\"kron_counts\":{\"svd_count\":1,\"solve_count\":1},\"fom_qz_actual\":2},\"analysis_budget\":{\"information_svd\":{\"planned\":1878,\"actual\":416,\"skipped\":1462},\"conditional_projections\":{\"planned\":585,\"actual\":315,\"skipped\":270},\"memory_svd\":{\"planned\":4000,\"actual\":594,\"skipped\":3406}},\"analysis_budget_checks\":[{\"name\":\"static_L2_radii\",\"actual\":13,\"limit\":13,\"within_limit\":true},{\"name\":\"static_L2_point_calls\",\"actual\":46,\"limit\":297,\"within_limit\":true},{\"name\":\"static_ROM_newton_iterations\",\"actual\":0,\"limit\":20,\"within_limit\":true},{\"name\":\"static_ROM_gradient_calls\",\"actual\":1,\"limit\":1000,\"within_limit\":true},{\"name\":\"static_ROM_eig_count\",\"actual\":2,\"limit\":2,\"within_limit\":true},{\"name\":\"static_ROM_rhs_calls\",\"actual\":198,\"limit\":217,\"within_limit\":true},{\"name\":\"modulated_L2_radii\",\"actual\":13,\"limit\":13,\"within_limit\":true},{\"name\":\"modulated_L2_point_calls\",\"actual\":1,\"limit\":297,\"within_limit\":true},{\"name\":\"modulated_ROM_newton_iterations\",\"actual\":0,\"limit\":20,\"within_limit\":true},{\"name\":\"modulated_ROM_gradient_calls\",\"actual\":1,\"limit\":1000,\"within_limit\":true},{\"name\":\"modulated_ROM_eig_count\",\"actual\":2,\"limit\":2,\"within_limit\":true},{\"name\":\"modulated_ROM_rhs_calls\",\"actual\":198,\"limit\":217,\"within_limit\":true},{\"name\":\"Kron_svd_count\",\"actual\":1,\"limit\":1,\"within_limit\":true},{\"name\":\"Kron_solve_count\",\"actual\":1,\"limit\":1,\"within_limit\":true},{\"name\":\"FOM_QZ\",\"actual\":2,\"limit\":2,\"within_limit\":true}],\"source_unchanged\":true,\"parent_artifacts_unchanged\":true,\"release_unchanged\":true,\"evidence_binding_valid\":true,\"resume_wall_seconds\":1956.9118788000196,\"denominators\":{\"all\":297,\"stable\":267,\"unstable\":30,\"initializations\":594},\"errors\":null,\"primary_error\":null,\"files\":[{\"Name\":\"execution_host_command.txt\",\"Length\":4096},{\"Name\":\"execution_host_end.json\",\"Length\":205},{\"Name\":\"execution_host_preflight_failed_command.txt\",\"Length\":4074},{\"Name\":\"execution_host_preflight.json\",\"Length\":14481},{\"Name\":\"execution_host_progress.jsonl\",\"Length\":27795},{\"Name\":\"execution_host_reason_counts.jsonl\",\"Length\":1319},{\"Name\":\"execution_host_receipt.running.json\",\"Length\":3712},{\"Name\":\"execution_host_start.json\",\"Length\":6444},{\"Name\":\"execution_release.draft.json\",\"Length\":20589},{\"Name\":\"execution_release.json\",\"Length\":21333},{\"Name\":\"execution.json\",\"Length\":272684},{\"Name\":\"execution.partial.json\",\"Length\":272684},{\"Name\":\"execution.stderr.txt\",\"Length\":0},{\"Name\":\"execution.stdout.txt\",\"Length\":0},{\"Name\":\"l1_summary.json\",\"Length\":102495},{\"Name\":\"started.json\",\"Length\":215}],\"processes\":[]}\r\n"
+  },
+  "immutable_diagnostic_final_reason_count_tool": {
+    "chunk_id": "11d5a6",
+    "wall_time_seconds": 2.5688064,
+    "exit_code": 0,
+    "original_token_count": 138,
+    "output": "{\"utc\":\"2026-11-07T18:06:41.1495794+00:00\",\"persisted\":594,\"reason_counts\":[{\"count\":291,\"reason\":\"modulated, blocked_by_stage1:numerical_gate\"},{\"count\":1,\"reason\":\"modulated, completed\"},{\"count\":5,\"reason\":\"modulated, numerically_unresolved\"},{\"count\":251,\"reason\":\"static, blocked_by_stage1:numerical_gate\"},{\"count\":46,\"reason\":\"static, completed\"}],\"stage1_termination\":[{\"count\":297,\"status\":\"modulated, converged\"},{\"count\":297,\"status\":\"static, converged\"}],\"scope\":\"Persisted immutable diagnostics only; no new integration/optimization\"}\r\n"
+  },
+  "original_job_replayed": false,
+  "original_two_fits_replayed": false,
+  "original_41_initializations_replayed": false,
+  "thresholds_or_optimizer_changed": false,
+  "new_scientific_run": false,
+  "monitoring_contract": "Mutable execution.partial.json read using FileShare.ReadWrite|Delete, StreamReader disposed in finally; immutable completed diagnostic JSON read for reason counts only.",
+  "monitor_stop_note": "Three monitoring-loop cells ended/replaced between stages; sole scientific process/session continued uninterrupted.",
+  "cost_semantics": "Host stopwatch includes command startup and shutdown; runner resume_wall_seconds is body-only. Combined host duration is parent host2031.1645234 plus new host1964.8406499; no runner-wall sum claimed.",
+  "omitted_monitor_tool_history": "Some unchanged snapshot exec tool outputs not embedded individually; persistent progress JSONL and captured original session exec/poll outputs are retained.",
+  "no_automatic_retry": true,
+  "technical_repair_index": 1
+}

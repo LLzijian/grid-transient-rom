@@ -1,0 +1,49 @@
+....EE..E..                                                              [100%]
+=================================== ERRORS ====================================
+_____________ ERROR at setup of test_workbook_rejects_other_bytes _____________
+
+self = WindowsPath('E:/03-nn_Transfer_Func/kiki/.tmp/fit297_analysis/basetemp_final_01')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'E:\\03-nn_Transfer_Func\\kiki\\.tmp\\fit297_analysis\\basetemp_final_01'
+
+C:\Users\LLLzijian\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py:1311: FileNotFoundError
+_____________ ERROR at setup of test_zip_xml_reader_small_fixture _____________
+
+self = WindowsPath('E:/03-nn_Transfer_Func/kiki/.tmp/fit297_analysis/basetemp_final_01')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'E:\\03-nn_Transfer_Func\\kiki\\.tmp\\fit297_analysis\\basetemp_final_01'
+
+C:\Users\LLLzijian\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py:1311: FileNotFoundError
+____ ERROR at setup of test_FOM_identity_failure_does_not_compute_spectrum ____
+
+self = WindowsPath('E:/03-nn_Transfer_Func/kiki/.tmp/fit297_analysis/basetemp_final_01')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'E:\\03-nn_Transfer_Func\\kiki\\.tmp\\fit297_analysis\\basetemp_final_01'
+
+C:\Users\LLLzijian\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py:1311: FileNotFoundError
+=========================== short test summary info ===========================
+ERROR tests/test_gftd_fit297_analysis.py::test_workbook_rejects_other_bytes
+ERROR tests/test_gftd_fit297_analysis.py::test_zip_xml_reader_small_fixture
+ERROR tests/test_gftd_fit297_analysis.py::test_FOM_identity_failure_does_not_compute_spectrum
+8 passed, 3 errors in 2.07s

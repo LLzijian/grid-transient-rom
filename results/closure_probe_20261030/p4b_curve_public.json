@@ -1,0 +1,428 @@
+{
+  "schema": "closure_probe_20261030_p4b_curve_public_v1",
+  "status": "COMPLETED",
+  "role": "P4b full-cohort risk-versus-step curve of nine frozen A_30311 checkpoints; descriptive only, no training, no model selection and no H3 conclusion",
+  "generated_at_utc": "2026-10-30T07:54:57Z",
+  "cohort": {
+    "fit297_events": 297,
+    "stable": 267,
+    "unstable_scored": 0
+  },
+  "method": {
+    "fine_dt": 0.005,
+    "fine_steps": 1600,
+    "history_dt_reference": 0.00125,
+    "path": "fine[::2][1:steps+1, :30] versus x[11:11+steps, :30]",
+    "horizon_steps": {
+      "5": 500,
+      "8": 800
+    },
+    "block_size": 16,
+    "rollout": "true RK4, graph cache, CPU float64, torch.set_num_threads(1)",
+    "predictions_stored": false,
+    "avoided_fine_array_bytes_per_checkpoint": 136789440
+  },
+  "checkpoints": {
+    "step000000": {
+      "path": "private_data/memory_transport_20261029/study01_prelaunch_retry1/study/A_30311/checkpoints/step000000/model.json",
+      "sha256": "0e6a4446275b392cdfd90c8c227fba15e4452380e1a5d4b53e4b3ec77c5bb774",
+      "history_dt": 0.0025,
+      "mass_p_scale_sha256": "4abb952506b8238d7c80604f6fd089d3cfd6528cb27534c629d51895b8b13874"
+    },
+    "step000016": {
+      "path": "private_data/memory_transport_20261029/study01_prelaunch_retry1/study/A_30311/checkpoints/step000016/model.json",
+      "sha256": "3b637077976f035fd7cb6d042893a9095e61b0b51a424ed1b77f911eb91d5e5c",
+      "history_dt": 0.0025,
+      "mass_p_scale_sha256": "4abb952506b8238d7c80604f6fd089d3cfd6528cb27534c629d51895b8b13874"
+    },
+    "step000032": {
+      "path": "private_data/memory_transport_20261029/study01_prelaunch_retry1/study/A_30311/checkpoints/step000032/model.json",
+      "sha256": "26bdbc1be1d4bcd1e395ba6b1914a5417aa447d968b63168c374ad46cf3796f1",
+      "history_dt": 0.0025,
+      "mass_p_scale_sha256": "4abb952506b8238d7c80604f6fd089d3cfd6528cb27534c629d51895b8b13874"
+    },
+    "step000048": {
+      "path": "private_data/memory_transport_20261029/study01_prelaunch_retry1/study/A_30311/checkpoints/step000048/model.json",
+      "sha256": "e1018b2064c59f26b7234db1285c3fddc6baea12f5916f84639e991969f1c441",
+      "history_dt": 0.0025,
+      "mass_p_scale_sha256": "4abb952506b8238d7c80604f6fd089d3cfd6528cb27534c629d51895b8b13874"
+    },
+    "step000064": {
+      "path": "private_data/memory_transport_20261029/study01_prelaunch_retry1/study/A_30311/checkpoints/step000064/model.json",
+      "sha256": "5ffb73b1c21333f65d22bdd8b4fede675be77f5f21474a00fdc049f94a4b8d56",
+      "history_dt": 0.0025,
+      "mass_p_scale_sha256": "4abb952506b8238d7c80604f6fd089d3cfd6528cb27534c629d51895b8b13874"
+    },
+    "step000080": {
+      "path": "private_data/memory_transport_20261029/study01_prelaunch_retry1/study/A_30311/checkpoints/step000080/model.json",
+      "sha256": "3b4366645a0a05479c3b42f06210a1731f4a73b4b2bcfba20d6ccae81a3f857b",
+      "history_dt": 0.0025,
+      "mass_p_scale_sha256": "4abb952506b8238d7c80604f6fd089d3cfd6528cb27534c629d51895b8b13874"
+    },
+    "step000096": {
+      "path": "private_data/memory_transport_20261029/study01_prelaunch_retry1/study/A_30311/checkpoints/step000096/model.json",
+      "sha256": "b2bab8b9e1359ea9992fb4a6deb4349375f168511b00d2eade6460e2324a47eb",
+      "history_dt": 0.0025,
+      "mass_p_scale_sha256": "4abb952506b8238d7c80604f6fd089d3cfd6528cb27534c629d51895b8b13874"
+    },
+    "step000112": {
+      "path": "private_data/memory_transport_20261029/study01_prelaunch_retry1/study/A_30311/checkpoints/step000112/model.json",
+      "sha256": "b347f34f0a7040dcf4599cc4f3b5b2704738ff18d11965aece1fd3289f897253",
+      "history_dt": 0.0025,
+      "mass_p_scale_sha256": "4abb952506b8238d7c80604f6fd089d3cfd6528cb27534c629d51895b8b13874"
+    },
+    "step000128": {
+      "path": "private_data/memory_transport_20261029/study01_prelaunch_retry1/study/A_30311/checkpoints/step000128/model.json",
+      "sha256": "a74ea3093dbc4d357baa24af5d84072caa0840a2bc76cf2ca5040c964ab2ef03",
+      "history_dt": 0.0025,
+      "mass_p_scale_sha256": "4abb952506b8238d7c80604f6fd089d3cfd6528cb27534c629d51895b8b13874"
+    }
+  },
+  "curve": [
+    {
+      "step": 0,
+      "checkpoint": {
+        "path": "private_data/memory_transport_20261029/study01_prelaunch_retry1/study/A_30311/checkpoints/step000000/model.json",
+        "sha256": "0e6a4446275b392cdfd90c8c227fba15e4452380e1a5d4b53e4b3ec77c5bb774",
+        "history_dt": 0.0025,
+        "mass_p_scale_sha256": "4abb952506b8238d7c80604f6fd089d3cfd6528cb27534c629d51895b8b13874"
+      },
+      "risk_5s": 1.0521060422026562,
+      "risk_8s": 0.7187045393795043,
+      "common_omega_rmse_8s": 0.34025392483143657,
+      "normalized_p_rmse_8s": 0.49428451664578116,
+      "eligible": 267,
+      "wall_seconds": 44.61148459999822,
+      "rollout_seconds": 44.05570329996408
+    },
+    {
+      "step": 16,
+      "checkpoint": {
+        "path": "private_data/memory_transport_20261029/study01_prelaunch_retry1/study/A_30311/checkpoints/step000016/model.json",
+        "sha256": "3b637077976f035fd7cb6d042893a9095e61b0b51a424ed1b77f911eb91d5e5c",
+        "history_dt": 0.0025,
+        "mass_p_scale_sha256": "4abb952506b8238d7c80604f6fd089d3cfd6528cb27534c629d51895b8b13874"
+      },
+      "risk_5s": 0.752082991372741,
+      "risk_8s": 0.5761733664581856,
+      "common_omega_rmse_8s": 0.31982940638728413,
+      "normalized_p_rmse_8s": 0.41625138927656585,
+      "eligible": 267,
+      "wall_seconds": 44.79818979999982,
+      "rollout_seconds": 44.26507059996948
+    },
+    {
+      "step": 32,
+      "checkpoint": {
+        "path": "private_data/memory_transport_20261029/study01_prelaunch_retry1/study/A_30311/checkpoints/step000032/model.json",
+        "sha256": "26bdbc1be1d4bcd1e395ba6b1914a5417aa447d968b63168c374ad46cf3796f1",
+        "history_dt": 0.0025,
+        "mass_p_scale_sha256": "4abb952506b8238d7c80604f6fd089d3cfd6528cb27534c629d51895b8b13874"
+      },
+      "risk_5s": 0.817783518648922,
+      "risk_8s": 0.5937411543896342,
+      "common_omega_rmse_8s": 0.31326522832641107,
+      "normalized_p_rmse_8s": 0.4411009523395897,
+      "eligible": 267,
+      "wall_seconds": 44.9205510999891,
+      "rollout_seconds": 44.38677030001418
+    },
+    {
+      "step": 48,
+      "checkpoint": {
+        "path": "private_data/memory_transport_20261029/study01_prelaunch_retry1/study/A_30311/checkpoints/step000048/model.json",
+        "sha256": "e1018b2064c59f26b7234db1285c3fddc6baea12f5916f84639e991969f1c441",
+        "history_dt": 0.0025,
+        "mass_p_scale_sha256": "4abb952506b8238d7c80604f6fd089d3cfd6528cb27534c629d51895b8b13874"
+      },
+      "risk_5s": 0.8034200787717808,
+      "risk_8s": 0.5905120096945315,
+      "common_omega_rmse_8s": 0.3140730639388143,
+      "normalized_p_rmse_8s": 0.4363197305435538,
+      "eligible": 267,
+      "wall_seconds": 45.26485209999373,
+      "rollout_seconds": 44.71750910000992
+    },
+    {
+      "step": 64,
+      "checkpoint": {
+        "path": "private_data/memory_transport_20261029/study01_prelaunch_retry1/study/A_30311/checkpoints/step000064/model.json",
+        "sha256": "5ffb73b1c21333f65d22bdd8b4fede675be77f5f21474a00fdc049f94a4b8d56",
+        "history_dt": 0.0025,
+        "mass_p_scale_sha256": "4abb952506b8238d7c80604f6fd089d3cfd6528cb27534c629d51895b8b13874"
+      },
+      "risk_5s": 0.8172485484178245,
+      "risk_8s": 0.5989693104826443,
+      "common_omega_rmse_8s": 0.3160953510604371,
+      "normalized_p_rmse_8s": 0.4416262549657568,
+      "eligible": 267,
+      "wall_seconds": 45.05859190001502,
+      "rollout_seconds": 44.53398129998823
+    },
+    {
+      "step": 80,
+      "checkpoint": {
+        "path": "private_data/memory_transport_20261029/study01_prelaunch_retry1/study/A_30311/checkpoints/step000080/model.json",
+        "sha256": "3b4366645a0a05479c3b42f06210a1731f4a73b4b2bcfba20d6ccae81a3f857b",
+        "history_dt": 0.0025,
+        "mass_p_scale_sha256": "4abb952506b8238d7c80604f6fd089d3cfd6528cb27534c629d51895b8b13874"
+      },
+      "risk_5s": 0.7633464265172718,
+      "risk_8s": 0.5821756407008157,
+      "common_omega_rmse_8s": 0.31984826875026146,
+      "normalized_p_rmse_8s": 0.4212238095203722,
+      "eligible": 267,
+      "wall_seconds": 45.73421259998577,
+      "rollout_seconds": 45.147774799959734
+    },
+    {
+      "step": 96,
+      "checkpoint": {
+        "path": "private_data/memory_transport_20261029/study01_prelaunch_retry1/study/A_30311/checkpoints/step000096/model.json",
+        "sha256": "b2bab8b9e1359ea9992fb4a6deb4349375f168511b00d2eade6460e2324a47eb",
+        "history_dt": 0.0025,
+        "mass_p_scale_sha256": "4abb952506b8238d7c80604f6fd089d3cfd6528cb27534c629d51895b8b13874"
+      },
+      "risk_5s": 0.8665650636560813,
+      "risk_8s": 0.6162984323403253,
+      "common_omega_rmse_8s": 0.31718902944504357,
+      "normalized_p_rmse_8s": 0.45659889806082815,
+      "eligible": 267,
+      "wall_seconds": 45.04344489998766,
+      "rollout_seconds": 44.53060910003842
+    },
+    {
+      "step": 112,
+      "checkpoint": {
+        "path": "private_data/memory_transport_20261029/study01_prelaunch_retry1/study/A_30311/checkpoints/step000112/model.json",
+        "sha256": "b347f34f0a7040dcf4599cc4f3b5b2704738ff18d11965aece1fd3289f897253",
+        "history_dt": 0.0025,
+        "mass_p_scale_sha256": "4abb952506b8238d7c80604f6fd089d3cfd6528cb27534c629d51895b8b13874"
+      },
+      "risk_5s": 0.9133146361636026,
+      "risk_8s": 0.6421163565225796,
+      "common_omega_rmse_8s": 0.32311223368012343,
+      "normalized_p_rmse_8s": 0.46798255290500335,
+      "eligible": 267,
+      "wall_seconds": 44.73221449999255,
+      "rollout_seconds": 44.20111639992683
+    },
+    {
+      "step": 128,
+      "checkpoint": {
+        "path": "private_data/memory_transport_20261029/study01_prelaunch_retry1/study/A_30311/checkpoints/step000128/model.json",
+        "sha256": "a74ea3093dbc4d357baa24af5d84072caa0840a2bc76cf2ca5040c964ab2ef03",
+        "history_dt": 0.0025,
+        "mass_p_scale_sha256": "4abb952506b8238d7c80604f6fd089d3cfd6528cb27534c629d51895b8b13874"
+      },
+      "risk_5s": 0.8675373355146679,
+      "risk_8s": 0.6255711284192053,
+      "common_omega_rmse_8s": 0.32140212114056016,
+      "normalized_p_rmse_8s": 0.4568781908441448,
+      "eligible": 267,
+      "wall_seconds": 45.94367159999092,
+      "rollout_seconds": 45.369846100045834
+    }
+  ],
+  "comparability_gate": {
+    "passed": true,
+    "atol": 1e-16,
+    "rows": [
+      {
+        "step": 64,
+        "metric": "risk_5s",
+        "reference": 0.8172485484178245,
+        "actual": 0.8172485484178245,
+        "abs_error": 0.0,
+        "bitwise_equal": true,
+        "passed": true,
+        "reference_source": "private_data/closure_probe_20261030/p4_step64/p4_step64.json"
+      },
+      {
+        "step": 64,
+        "metric": "risk_8s",
+        "reference": 0.5989693104826443,
+        "actual": 0.5989693104826443,
+        "abs_error": 0.0,
+        "bitwise_equal": true,
+        "passed": true,
+        "reference_source": "private_data/closure_probe_20261030/p4_step64/p4_step64.json"
+      },
+      {
+        "step": 64,
+        "metric": "common_omega_rmse_8s",
+        "reference": 0.3160953510604371,
+        "actual": 0.3160953510604371,
+        "abs_error": 0.0,
+        "bitwise_equal": true,
+        "passed": true,
+        "reference_source": "private_data/closure_probe_20261030/p4_step64/p4_step64.json"
+      },
+      {
+        "step": 64,
+        "metric": "normalized_p_rmse_8s",
+        "reference": 0.4416262549657568,
+        "actual": 0.4416262549657568,
+        "abs_error": 0.0,
+        "bitwise_equal": true,
+        "passed": true,
+        "reference_source": "private_data/closure_probe_20261030/p4_step64/p4_step64.json"
+      },
+      {
+        "step": 128,
+        "metric": "risk_5s",
+        "reference": 0.8675373355146679,
+        "actual": 0.8675373355146679,
+        "abs_error": 0.0,
+        "bitwise_equal": true,
+        "passed": true,
+        "reference_source": "private_data/closure_probe_20261030/p4_step64/p4_step128.json"
+      },
+      {
+        "step": 128,
+        "metric": "risk_8s",
+        "reference": 0.6255711284192053,
+        "actual": 0.6255711284192053,
+        "abs_error": 0.0,
+        "bitwise_equal": true,
+        "passed": true,
+        "reference_source": "private_data/closure_probe_20261030/p4_step64/p4_step128.json"
+      },
+      {
+        "step": 128,
+        "metric": "common_omega_rmse_8s",
+        "reference": 0.32140212114056016,
+        "actual": 0.32140212114056016,
+        "abs_error": 0.0,
+        "bitwise_equal": true,
+        "passed": true,
+        "reference_source": "private_data/closure_probe_20261030/p4_step64/p4_step128.json"
+      },
+      {
+        "step": 128,
+        "metric": "normalized_p_rmse_8s",
+        "reference": 0.4568781908441448,
+        "actual": 0.4568781908441448,
+        "abs_error": 0.0,
+        "bitwise_equal": true,
+        "passed": true,
+        "reference_source": "private_data/closure_probe_20261030/p4_step64/p4_step128.json"
+      }
+    ],
+    "references": {
+      "step000064": {
+        "source": "private_data/closure_probe_20261030/p4_step64/p4_step64.json",
+        "sha256": "7b8a69e96f273722e8d1fc5a0c99a3c1041ac2ec2f6239b0332aa4a3cd4ee4af",
+        "metrics": {
+          "risk_5s": 0.8172485484178245,
+          "risk_8s": 0.5989693104826443,
+          "common_omega_rmse_8s": 0.3160953510604371,
+          "normalized_p_rmse_8s": 0.4416262549657568
+        },
+        "provenance": "preceding P4 forward evaluation"
+      },
+      "step000128": {
+        "source": "private_data/closure_probe_20261030/p4_step64/p4_step128.json",
+        "sha256": "63a772b1cee00b767fe6a9da9aa39dbb69dd6e5d808bd7b63cee9b440704f3cc",
+        "metrics": {
+          "risk_5s": 0.8675373355146679,
+          "risk_8s": 0.6255711284192053,
+          "common_omega_rmse_8s": 0.32140212114056016,
+          "normalized_p_rmse_8s": 0.4568781908441448
+        },
+        "provenance": "preceding P4 forward evaluation"
+      }
+    },
+    "note": "64 and 128 must re-run the same path and match the preceding P4 values"
+  },
+  "best_step": {
+    "risk_5s": {
+      "step": 16,
+      "value": 0.752082991372741
+    },
+    "risk_8s": {
+      "step": 16,
+      "value": 0.5761733664581856
+    },
+    "note": "descriptive argmin over the 267 stable fit297 events; no composite score and no model selection"
+  },
+  "denominators": {
+    "per_checkpoint": {
+      "step000000": {
+        "stable": 267,
+        "eligible": 267
+      },
+      "step000016": {
+        "stable": 267,
+        "eligible": 267
+      },
+      "step000032": {
+        "stable": 267,
+        "eligible": 267
+      },
+      "step000048": {
+        "stable": 267,
+        "eligible": 267
+      },
+      "step000064": {
+        "stable": 267,
+        "eligible": 267
+      },
+      "step000080": {
+        "stable": 267,
+        "eligible": 267
+      },
+      "step000096": {
+        "stable": 267,
+        "eligible": 267
+      },
+      "step000112": {
+        "stable": 267,
+        "eligible": 267
+      },
+      "step000128": {
+        "stable": 267,
+        "eligible": 267
+      }
+    }
+  },
+  "evidence": {
+    "observed": [
+      "risk-vs-step curve for nine frozen A_30311 checkpoints on the stable fit297 cohort",
+      "64/128 comparability gate re-run on the same evaluation path",
+      "267/267 stable denominator for every checkpoint"
+    ],
+    "diagnostic": [
+      "descriptive argmin step for 5 s and 8 s risks"
+    ],
+    "unverified": [
+      "any H3 interpretation or mechanism attribution",
+      "statistical uncertainty, noise model or cross-cohort generalization",
+      "model selection, adoption or optimization-sufficiency conclusion"
+    ]
+  },
+  "runtime": {
+    "wall_seconds": 408.7021030999895,
+    "peak_working_set_bytes": 630317056,
+    "peak_working_set_mb": 601.1171875,
+    "device": "cpu",
+    "precision": "float64",
+    "torch_threads": 1,
+    "training": false,
+    "optimizer_calls": 0,
+    "model_rollout": false,
+    "python": "3.12.9",
+    "torch": "2.4.1+cu124",
+    "numpy": "2.2.6",
+    "checkpoints_evaluated": 9,
+    "total_checkpoint_wall_seconds": 406.1072130999528,
+    "predictions_stored": false
+  },
+  "boundaries": [
+    "Forward-only descriptive curve over frozen checkpoints; no training or optimizer.",
+    "Only the 267 stable fit297 events are scored; the 30 unstable events are not scored.",
+    "The 64/128 comparability gate re-runs the same evaluation path and must match the preceding P4 values at atol 1e-16.",
+    "Argmin is a descriptive location on this cohort only; it is not model selection.",
+    "No H3, mechanism or optimization-sufficiency conclusion is asserted."
+  ]
+}

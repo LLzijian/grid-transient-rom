@@ -1,0 +1,65 @@
+# 二次边记忆：独立有限实现审查
+
+2026-10-20，独立代理`/root/fixed_edge_final_review`。本代理未参与方案或实现，已完成本轮方案挑战。本次只读新增runtime、测试定义、私有launcher/QA driver、协议及必要直接依赖，没有导入或运行程序，没有读取私有权重、轨迹或共享HDF5。仅新增本文；原子恢复及正式调用链需runner封版后在本文补充。本节不授予正式QA或科学执行资格。
+
+## 已完成部分
+
+`quadratic_memory_runtime_20261020.py`对精确A/B/C项列表、十机40状态、无额外storage及编译类别执行限制。C按规范term_key识别，使用实际归一化边权计算Q²c的角度与q梯度；七个既有项继续复用对应参数乘积。它调用旧linear runtime的乘积辅助函数，没有调用其只接受A/B的强制启用接口。b=0构造的C保留B的场，A保留共同full8来源。源码未修改来源对象，旧项按身份映射，新增系数显式置零。
+
+测试定义包括正负非零b的通用SymbolicClosureROM及NumPy场对照、状态/参数梯度、原点梯度/Hessian与B/C Jacobian对照、非零状态贡献、短自主积分且仅初始化一次、导出再加载，以及load_state_dict、to、嵌套cache、活动cache期间改项/导出的拒绝。CPU及可用CUDA都列入。零系数构造检查没有替代非零b测试。静态未发现确定的公式错误；这些定义尚未获得实际QA结果，不能记为通过。
+
+私有launcher规范化并赋回命令、输出、worker、binding与prior路径，要求固定GPU解释器、精确命令行、入口类别和源提交；用既有native_job及nativePS监督真实worker。成功条件包含两层exit0、完整回执、PID/创建FILETIME相同、清理GONE、无超时、解释器匹配及源前后不变。显式prior按类别及模型累计费用，包含3000支持hold；QA最多两次、prepare/cost单次、同端点评价禁止再次执行。它依赖root提供完整prior及启动前核对真实PID，不是自动跨作业锁或完整全局调度器。
+
+QA driver在pytest前写真实PID/创建时间/解释器/argv，执行指定两个测试文件，并记录实际exit。它未实现内部max_seconds自停，资源截止实际由登记native外层执行；最终费用须按真实外层回执闭账，不能称内部自停已经测试。外层失败或异常缺费用/来源核对时应保持未决并核账，不得以缺记录作为零成本。
+
+## 待封版runner核对
+
+正式QA准入仍待检查：真实source1280及共同385身份；九组Adam统一重启、RNG在构造后恢复；连续768日程及512前缀；原子checkpoint/optimizer/RNG恢复；唯一外部恢复和32步重放；512/768全九组与成本门禁；CPU评价实际使用新runtime而不强制旧linear cache；数值失败保留、原366/新19分栏及完整评价费用。不得因runtime静态可读就绕过这部分调用链核对。
+
+## 同轮监督修订的静态复核
+
+root随后增加独占`native_active.lock`，以真实PID和创建FILETIME记录所有者，仅相同所有者可在finally释放；崩溃不自动删除。prior还须与全部`native_*/execution.json`集合相等，且每个launch都有结项回执。QA driver已增加登记max_seconds的watchdog，超时写记录后只退出自身；原生父链负责子树清理。上述改动静态可见，取代前节关于“没有内部自停”的当时描述，尚无实际QA结果。
+
+仍有一个需执行前处理的具体保护缺口：当前launcher的finally在main_inner正常返回失败状态时也释放lock，而prior只拒绝RUNNING及费用缺失，不拒绝已记费用但owned cleanup未核实的UNRESOLVED_EXECUTION。这样一次潜在残留进程可能在下次启动前失去自动阻挡。应保留清理未决的锁，或在prior明确拒绝此类未核实回执，待真实PID/创建时间及子树已消失的明确核对后再解除；真实exit1但已核实GONE的失败不必视为残留。此修订不增加科学重试或QA次数。该项及runner调用链完成前，不授予实际QA准入。
+
+root采纳后，本代理再次只读核对launcher第93–96行：每份prior现在必须有inner清理核实、fixture GONE，以及inner/outer完整原生回执，否则拒绝新launch并要求PID/创建身份核对。该项静态阻断关闭；普通exit1但已完整清理仍可保留失败费用，不会因此自动获得重试权限。runner与测试封版调用链审查尚待完成。
+
+## 封版候选runner与三文件QA的调用链审查
+
+随后读取`quadratic_memory_edge_20261020.py`、其测试及新增`test_quadratic_native_envelope_20261020.py`，并核对直接checkpoint、optimizer和one_update依赖。没有执行任何QA、成本测量或科学任务。该部分取代前节“待runner核对”的状态。
+
+来源限三个登记full8 global1280路径，模型及training哈希固定，准备阶段比较源身份中的完整385事件身份。数据入口固定fresh的明确train组合，临时调整旧loader作用域后finally恢复，并核385/342/43；不开放val或任意新数据目录。准备从源NumPy状态及coverage生成连续768行；训练验证逐行RNG、采样和真实长/局部时间范围。构造使用新runtime的精确A/B/C，make_optimizer后要求state为空，再恢复来源CPU/CUDA随机状态；正常继续与外部恢复不调用new_stage，避免重启Adam。
+
+阶段保存调用原`save_safe → save_identity_checkpoint → save_checkpoint`，保留模型/Adam/RNG/coverage/trace，先发布独立检查点目录再更新latest。恢复经typed identity、metadata/model/training哈希及环境一致性检查，随后原地启用新runtime，不重新建模或替换Parameter，因此恢复的优化器仍指向实际模型参数。每32步保存，恢复边界要求32整倍数；外部恢复还要求显式既有progress且与安全步的差为0–32。其“确为外部中断”仍由root核对真实监督回执与创建身份，不能仅凭该progress JSON或命令flag取得恢复权限。全阶段一次、1200秒及每模型3000由launcher累计限制。
+
+成本路径确实用实际A/C各1/2/5秒更新最大值、保存/恢复开销以及新C的实际CPU16事件评价形成估价，再写独立平面`admission.json`；`cost.json`保留测量详情。train实际调用`load_admission`消费这个平面文件，拒绝把嵌套cost报告当准入。评价估价按25个CPU16包再加25%余量，包含压缩、指标、导出和39维分析；虽然过计重复导出有余量，是否装入完整九组512/可选768仍待本次实际测量，不能从测试中的合成数字宣布准入。
+
+新生产评价直接以QuadraticMemoryRuntime恢复，再经本轮`evaluate_queue`启用新runtime；没有调用旧A/B专用`enable_linear_cache`。新增测试对实际队列入口安装旧guard抛错并检查细/粗推理接口，配合runtime数值测试覆盖这项接线。385同次预测按原366/新19分栏，事件异常保留NaN及exception，资格未过保持primary未决；真实15秒区间和8秒资格分别保存。主张仍须由root按完整风险、失稳误差和分类分母解释，不能把程序exit0当全部数值通过。
+
+512与768是精确允许目标，正常768须从512恢复且有全九组扩展锁；锁核九份512 metadata身份/hash、完整有限loss trace和预锁趋势。root进一步明确：只有全九组训练和512评价资格完整、趋势成立且真实余额足够才创建allowed锁，admission、锁和九份model/training/checkpoint身份进入相应命令显式binding。runner中的inside路径和布尔字段只是消费该决定，不自行赋予科学权限。执行前必须核对该实际binding；任意inside JSON不能代替root的已登记决定。源提交身份在同轮正常继续和外部恢复时需保持一致，避免以新归档提交误换checkpoint的科学身份。
+
+本次审查指出评价双重安全余量的问题：旧拟外层180、self120再减60，实际批循环检查窗只有60秒，不能由旧约88–99秒的366评价支持。root已在任何QA/计时/科学执行前将本轮单评价外层上限改300、self240，对应180秒检查窗；总评价类别3500不变，单进程上限不等于已批准的总费用。已只读核实launcher及协议修订。实际C成本、完整类别余额、剩余新进程上限仍须按回执准入，不能突破3500。
+
+三文件QA driver现包含runtime测试、runner测试和六项纯合成native费用/清理/重复/独占检查；新增测试不启动worker，不读取科学数据。真实QA本身仍须通过统一原生父链证明实际worker、两层退出、GONE、来源前后不变及完整测试结果。私有launcher属于这些合成监督测试的依赖，因此不应称公开clone独立自足CI。
+
+**最终静态意见：支持冻结当前候选源码、精确QA命令及完整直接依赖后，执行已登记的一次三文件原生QA；未发现剩余确定阻断。** 它不授予正式训练：实际QA通过后还须登记成本阶段、消费真实flat admission、核对训练及评价完整包络并归档；768仍须之后的全九组条件。唯一明确实现修复、全部失败费用、来源不变和旧val不重试规则保持。root负责实际费用与外部恢复事实，科学采用不由本审查决定。
+
+## runtime两文件的实际工程验收
+
+本次验收范围限定为拟集成的`experiments/quadratic_memory_runtime_20261020.py`及`tests/test_quadratic_memory_runtime_20261020.py`，不包含新runner、私有监督器、科学端点或默认模型。只读QA01/QA02紧凑回执、工程说明和两份执行回执中的这两个源哈希，没有接触正在运行的cost01、任何模型权重或数据，也没有重跑测试。
+
+QA01真实27项中26通过、1失败，失败为field的结构验证缓存入口：非法宽度调用先设置已验证标志，之后编译类别被修改却跳过校验，以KeyError结束。唯一修复先检查输入宽度；无活动图缓存时每次校验结构，活动cache只复用begin_graph_cache的验证。当前runtime SHA为`5ee142103f38f4cdd4c041b3e1926c9a9d8972efdb78f198e6e76740fe49de1d`。在内存中将当前这一段guard恢复成原段后，重建源码SHA精确等于QA01的`49d048c8e182100aa9d83718a68cafb972d856746b991477877f23e6e6684092`；因此该修复没有改变其余公式或代码。未写回文件或执行源码。
+
+runtime测试SHA在QA01前后、QA02前后及当前均为`ffd17475da60d22c77dc1903f68cbc9d7ed02eb7abfce686f8e68c1b6aae8d62`，没有降低断言或删测试。QA02实际27/27通过，inner/outer均exit0、原生回执完整、真实worker及FILETIME对应、清理GONE、270绑定源前后一致；原生9.5058777秒。QA01的exit1、14.1351105秒和原失败保留，两次合计23.6409882秒，唯一修复名额已使用。
+
+runtime在实际CPU/CUDA参数化中包含13项检查：同源A场保持与B/C初始等价、正负非零b的通用表达式/NumPy值和状态/参数梯度、非零b原点零梯度/Hessian及Jacobian、短自主积分且初始化一次、导出恢复、图缓存生命周期及非法结构/来源拒绝。它们足以支持这项精确单式计算与入口保护的工程集成；不证明385事件预测、科学成本资格、优化收益或稳定域。该测试文件使用合成模型和临时导出，没有私有BASE、历史环境QA或真实条件metadata依赖；不要把另外两个含私有监督依赖的测试文件也纳入“公开自足runtime测试”的主张。
+
+**同意root提出的两文件加精简验证说明的范围受限工程PR，未见本范围的剩余阻断。** 合并前由root核对实际PR head、两文件与上述QA02身份相同，以及目标main已具备其直接运行/测试依赖（TrainingClosureROM、LinearCacheRuntime、SymbolicClosureROM及测试用的LocalMemoryROM/StructuredROM、Torch/NumPy/pytest）。不以本机陈旧Git引用替代远端核实。不得整体合并fresh或quadratic归档分支，不纳入新默认模型。当前cost阶段及随后九组科学执行仍受实际成本、注册协议与原科学门槛约束，与本工程准入分开。
+
+## 评价前的固定分组身份核查
+
+root在本轮端点评价前发现runner内置cohorts按`newtrain_`前缀分组会把原20条与本轮19条合并。本代理的先前调用链审查没有识别这项分组错误；前文“原366/新19分栏”不应视为已核正确集合。该内置346/39分栏须保留并隔离，不用于正式结论；这不影响此前仅runtime两文件的工程验收。
+
+本次仅读取root统计范围说明、固定cohort_identity及三个full8 global1280 checkpoint的身份元数据。三seed均确认：identity.events为385个唯一事件；identity.source_identity.common.events为其中366个唯一事件，含20个同样以newtrain_开头的旧事件；差集精确19个。固定清单的id/group/label与三份metadata全部一致，原366为325稳定/41失稳，新19为17稳定/2失稳，无遗漏或重复。
+
+以这份评价前固定的身份集合，从同次预测的完整385原始rows/extras重新汇总原366与新19，符合原协议分母，不改变事件资格、风险公式或真实区间。原始预测、内置错误分栏、完整385资格及不利结果必须保留，未决不得在提取时丢弃；不能用这次修正触发重预测、改模型或重开旧val。未读取任何新科学成绩、权重或轨迹，未执行程序或修改冻结源。纯stdlib提取器由root另行核对，本节不宣称该工具已通过检查。

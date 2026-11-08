@@ -1,0 +1,42 @@
+{
+  "recorded_utc": "2026-11-07T08:15:44.098612+00:00",
+  "scientific_fits_executed": 0,
+  "optimizer_mocked": true,
+  "final_tests_passed": 16,
+  "final_pytest_seconds": 1.94,
+  "final_tool_wall_seconds": 3.1304525,
+  "final_tool_chunk": "786b46",
+  "command": ".venv-gpu/Scripts/python.exe -B -m pytest -p no:cacheprovider --basetemp .tmp/gftd_noise_unit_20261107_04 tests/test_gftd_noise_confirmation_20261107.py -q --maxfail=1",
+  "qualification_runs": [
+    {
+      "chunk": "d54e62",
+      "passed": 10,
+      "pytest_seconds": 23.22,
+      "tool_wall_seconds": null
+    },
+    {
+      "chunk": "283f2c",
+      "passed": 11,
+      "pytest_seconds": 1.86,
+      "tool_wall_seconds": 3.0390176
+    },
+    {
+      "chunk": "fcfd4d",
+      "passed": 15,
+      "pytest_seconds": 1.89,
+      "tool_wall_seconds": 2.9740727
+    },
+    {
+      "chunk": "786b46",
+      "passed": 16,
+      "pytest_seconds": 1.94,
+      "tool_wall_seconds": 3.1304525
+    }
+  ],
+  "pre_release_correction": "Fine-history refit requires original roundtrip and future numerical guards to pass; score cannot rescue those failures using a fine result.",
+  "corrected_root_diagnosis": "Initial concern about list/array serialization was disproven: frozen parent prediction_metrics already converts arrays. No serialization defect or parent source edit.",
+  "source_sha256": {
+    "experiments/gftd_noise_confirmation_20261107.py": "0ada2d02200778b4e339f2202ef6f9e186916b16b8662275af2fec986d17ef36",
+    "tests/test_gftd_noise_confirmation_20261107.py": "fa7eb0eb9c8ca286d309a7e6e5e26024f5493231a29420f65cb82c2cd07ec103"
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "runs": [
+    {
+      "recorded_at": "2026-10-28T15:29:25.825705+00:00",
+      "executor_model": "gpt-6.1-sol",
+      "status": "PASS_PURE_LOGIC_ONLY",
+      "pytest_exit_code": 0,
+      "tests_passed": 8,
+      "tests_failed": 0,
+      "seconds": 3.976586100001441,
+      "tests": [
+        {
+          "nodeid": "tests/test_state_gated_memory_study_20261028.py::test_confirmation_is_five_point_endpoint_with_history_offset_and_NA",
+          "when": "call",
+          "outcome": "passed",
+          "seconds": 0.0004961000013281591,
+          "failure": null
+        },
+        {
+          "nodeid": "tests/test_state_gated_memory_study_20261028.py::test_original_detector_restores_physics_and_confirms_fifth_sample",
+          "when": "call",
+          "outcome": "passed",
+          "seconds": 0.0068489000004774425,
+          "failure": null
+        },
+        {
+          "nodeid": "tests/test_state_gated_memory_study_20261028.py::test_actual15_risk_not_old_up_to8_and_new_metric_guards",
+          "when": "call",
+          "outcome": "passed",
+          "seconds": 0.0006892999990668613,
+          "failure": null
+        },
+        {
+          "nodeid": "tests/test_state_gated_memory_study_20261028.py::test_optimization_limits_and_perturbation_not_update_count",
+          "when": "call",
+          "outcome": "passed",
+          "seconds": 0.0004955000003974419,
+          "failure": null
+        },
+        {
+          "nodeid": "tests/test_state_gated_memory_study_20261028.py::test_common_T_requires_same_events_and_all_R_N_A_B_C",
+          "when": "call",
+          "outcome": "passed",
+          "seconds": 0.00047669999912614003,
+          "failure": null
+        },
+        {
+          "nodeid": "tests/test_state_gated_memory_study_20261028.py::test_retention_protects_R_N_timing_and_original_denominators",
+          "when": "call",
+          "outcome": "passed",
+          "seconds": 0.0007729999997536652,
+          "failure": null
+        },
+        {
+          "nodeid": "tests/test_state_gated_memory_study_20261028.py::test_paired_history_steps_explicit_and_restore_on_exception",
+          "when": "call",
+          "outcome": "passed",
+          "seconds": 0.001277999999729218,
+          "failure": null
+        },
+        {
+          "nodeid": "tests/test_state_gated_memory_study_20261028.py::test_B_degenerate_completed_update_saved_before_stop",
+          "when": "call",
+          "outcome": "passed",
+          "seconds": 0.014991699998063268,
+          "failure": null
+        }
+      ],
+      "source_files": {
+        "experiments/state_gated_memory_study_20261028.py": "799f49a0901a6e1e2e485d8dfff3787d5882cd497da9def57cb994f90caf804e",
+        "tests/test_state_gated_memory_study_20261028.py": "3de8357bb306da61c92f0c23e8d06e500fa99da9a0d6bf45e525c255570f08f6"
+      },
+      "optimizer_calls": 0,
+      "real_event_arrays_read": false,
+      "native_jobs_started": 0,
+      "CUDA_initialized": false,
+      "training_pt_loaded": false,
+      "val_read": false,
+      "test_read": false,
+      "training_admission": false,
+      "scope": "synthetic fixtures and pure decision/native metadata logic only; no actual scientific phase executed"
+    },
+    {
+      "recorded_at": "2026-10-28T15:40:24.064053+00:00",
+      "executor_model": "gpt-6.1-sol",
+      "status": "PASS_PURE_INTERFACE_FIX_ONLY",
+      "pytest_exit_code": 0,
+      "tests_passed": 9,
+      "tests_failed": 0,
+      "pytest_seconds": 3.77,
+      "observed_pytest_output": "9 passed in 3.77s",
+      "source_files": {
+        "experiments/state_gated_memory_study_20261028.py": "dcb5d2cac1462d4f71241e888ee77db34a143f2f7a80091a34b249e18e6967b9",
+        "tests/test_state_gated_memory_study_20261028.py": "04bf328f03fcbe7bf183ec1f92eb18a5b6754083483f778e137dac63125f7fca"
+      },
+      "optimizer_calls": 0,
+      "real_event_arrays_read": false,
+      "native_jobs_started": 0,
+      "CUDA_initialized": false,
+      "training_pt_loaded": false,
+      "val_read": false,
+      "test_read": false,
+      "training_admission": false,
+      "model_mathematical_11_checks_rerun": false,
+      "implementation_fix": {
+        "root_archived_blocked_commit": "8a23dade95a22c55e463c66c53ff8f4b8ce419a7",
+        "blocked_study_sha256": "799f49a0901a6e1e2e485d8dfff3787d5882cd497da9def57cb994f90caf804e",
+        "problem": "timed_encode(history) omitted history_dt keyword passed by initialize; genuine evaluator would convert TypeError into NaN paths",
+        "patch": "timed_encode(*args, **kwargs) forwards both to original_encode; physics, numerical steps and gates unchanged",
+        "prior_coverage_gap": "Previous study8/controller6 pure checks passed but did not exercise paired_evaluate_model -> timed_encode -> initialize encode history_dt chain. Those PASS records remain limited to their tested scope.",
+        "new_coverage": "synthetic InterfaceFixture passes through actual paired_evaluate_model and timed_encode; peripheral physical/scoring functions explicitly MOCK_ONLY; reference/main keyword steps differ, two encode calls, finite paths, no exception, persistent model config untouched"
+      }
+    }
+  ],
+  "prior_setup_observations": [
+    {
+      "status": "MOCK_FIXTURE_ERROR",
+      "tests_passed": 6,
+      "tests_failed": 1,
+      "reason": "initial B durable-step fixture lacked prepare.json; fixture corrected; no scientific calls"
+    }
+  ],
+  "latest_status": "PASS_PURE_INTERFACE_FIX_ONLY"
+}

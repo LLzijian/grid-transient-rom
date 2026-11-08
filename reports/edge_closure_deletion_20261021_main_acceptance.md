@@ -1,0 +1,9 @@
+# 删除对照证据：main集成验收
+
+接受并合并的范围是docs/closure_structure_evidence_20261021.md及results/edge_closure_deletion_20261021/paired_profile.json两份文件。它们保存已独立接受的机制删除对照及全部逐事件/弱强取舍，不含运行代码、权重、默认选择或门槛改变。
+
+独立main审查接受，无必须修改项；root实际核PR24仅2新增文件、1提交、基线27aa39ad2a2821adefbee1913377a9af153c868c、预期head b3ee3609868fce63742a95a900358c4e3d172140，mergeable clean。正常merge后核PR merged=true、main ref与merge_commit_sha一致：8879d5f9ec810b3c1074690323171a292f2848df。
+
+main递归tree未截断，两个Git blob核对通过：说明0b95c1f2d3200ed07bee2d67d76874e6d23b7350，紧凑证据451ac721d81c549dbec8c684dbfbb0bf9e2aab8d。[PR24](https://github.com/LLzijian/grid-transient-rom/pull/24)已附本会话。源与大资产仍按归档7151caf7fc09a535cdddc243c415980ad94da66f及登记本地路径保留。无候选模型晋升，无需科学默认回退；若将来说明发现错误，用正常修正/revert保留证据。
+
+审查3.5869431秒、root只读/归档/API集成操作在本轮support700内，关闭费用保守帽不因本记录重扣。全部数值作业已结束。下一科学阶段仍需新的实际Astra6规划，不由本次报告合并自动授权。

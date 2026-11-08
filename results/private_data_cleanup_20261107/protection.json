@@ -1,0 +1,2825 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-11-07T16:02:12.959352+00:00",
+  "workspace": "E:\\03-nn_Transfer_Func\\kiki",
+  "reviewed_head": "66f1308c25ee38c3d7217bd86ee43b61a042a5b6",
+  "scope": "静态源码/协议/公开结论及目录元数据审查。未加载模型、未打开train/val/test数组或权重内容，未执行科学计算。本代理只写本JSON；root执行迁移和核验删除。",
+  "inventory": {
+    "path": "results/private_data_cleanup_20261107/inventory.json",
+    "sha256": "2ec9ed1da19ec41df6d8b214f75565dd5ea329cd6a36a2414daf26b492b75bbd",
+    "snapshot_atomic": false,
+    "directory_count": 279,
+    "accessible_bytes_lower_bound": 85664120741,
+    "permission_errors": 27,
+    "skipped_reparse_points": 165
+  },
+  "source_snapshots": {
+    "docs/current_state.md": "e78a3700729a62726625dcac8f6b6b561cf0e05f4b09b6b749defb1a66d1e39b",
+    "docs/current_design.md": "bec6c0135d549e4433bc0ac6b6b78fcdd23e8c65c902a22793f05f12f94de976",
+    "harness/runs/gftd_fit297_20261107.json": "03538344810e6b809b50635881eb7eb191b6a97044cc515a8a781198f84b50f4",
+    "reports/gftd_fit297_20261107_protocol.md": "ca22743c53fe4fe398960e111838a373f8c4686eab0974c5daf6d9c28435062f",
+    "experiments/gftd_fit297_20261107.py": "881509f59bb8e01d1014fc9b524bf00ef39348e565b6edabba8340b734ec9395",
+    "experiments/closure_probe_20261030.py": "f4a3f2f766ebe02fdf2dd8ecaa3a13884628612e7f452b48976eedc7564eb78c",
+    "experiments/state_gated_memory_study_20261028.py": "dcb5d2cac1462d4f71241e888ee77db34a143f2f7a80091a34b249e18e6967b9",
+    "experiments/force_graph_study_20261028.py": "ab25309d202550fcfa204f1829e185efcb65547872e9e259fdda88e6d0637bc3",
+    "experiments/r_memory_study_20261025.py": "a6d96ce1ad8a6b006ab5e6201d23c21e8d611836128fa3a77f7d17da8f81bd8b",
+    "experiments/force_graph_model_20261028.py": "44e5fe2e1403bc7e072d2fb87100eaa694b15da5b4694169de141cc6059089af",
+    "experiments/r_memory_model_20261025.py": "ecd5f4a7980b748eeb7da78986733c42324c44bea73d0cda964bfb62b1269d1f",
+    "experiments/symbolic_closure_rom.py": "01bd836ef2e06b0fbca40065f26cb98a23f8042a3328d86b265bfb114940dbc9",
+    "experiments/closure_mechanism_study.py": "6467605e00b20e9cbf31e2db3bc860f48dafaf4a8515b8cfa232f0dadf97a5cb"
+  },
+  "protected_roots": [
+    "closure_discovery_20261017",
+    "closure_mechanism_20261019",
+    "force_graph_20261028",
+    "gftd_fit297_20261107",
+    "ieee39_boundary_0075",
+    "ieee39_boundary_fine_0075",
+    "ieee39_expansion",
+    "ieee39_holdout_supplement",
+    "ieee39_postfault",
+    "r_memory_20261025",
+    "state_gated_memory_20261028",
+    "task2_control_modes_0078",
+    "task2_fullorder_descriptor_0035",
+    "task2_joint_0058",
+    "task2_long_0060_2s",
+    "task2_long_0060_2s_eval",
+    "task2_long_0060_5s",
+    "task2_long_0060_5s_eval",
+    "task2_m3_0020",
+    "task2_structure_0078_extend_C-free",
+    "task2_structure_0078_extend_C-free_eval",
+    "task2_structure_0078_extend_G-fixed",
+    "task2_structure_0078_extend_G-fixed_eval",
+    "task2_verified_modes_0035b"
+  ],
+  "hold_in_place": [
+    {
+      "directory": "closure_discovery_20261017",
+      "action": "hold_in_place",
+      "reason": "含新增仿真原始数据D/new_data/train；数据身份未完整另行登记前整根原地保留",
+      "accessible_bytes_from_inventory": 656757333,
+      "scan_complete": true,
+      "role": "含新增仿真原始数据D/new_data/train；数据身份未完整另行登记前整根原地保留",
+      "kind": "unique_generated_data",
+      "evidence": [
+        {
+          "path": "experiments/closure_mechanism_study.py",
+          "line": 21
+        }
+      ]
+    },
+    {
+      "directory": "closure_mechanism_20261019",
+      "action": "hold_in_place",
+      "reason": "当前fit297冻结来源链；可能含唯一历史仿真与研究源码",
+      "accessible_bytes_from_inventory": 30429999004,
+      "scan_complete": false,
+      "kind": "current_dependency",
+      "role": "当前N6101 step1024 model/checkpoint/training来源资产；历史源码和证据",
+      "evidence": [
+        {
+          "path": "experiments/r_memory_study_20261025.py",
+          "line": 38
+        },
+        {
+          "path": "experiments/force_graph_study_20261028.py",
+          "line": 35
+        },
+        {
+          "path": "experiments/gftd_fit297_20261107.py",
+          "line": 125
+        }
+      ]
+    },
+    {
+      "directory": "force_graph_20261028",
+      "action": "hold_in_place",
+      "reason": "当前fit297读取链；受保护R_N step192",
+      "accessible_bytes_from_inventory": 3374011428,
+      "scan_complete": false,
+      "kind": "current_dependency",
+      "role": "R_N/N_M192当前模型、M-A512历史模型，以及 SGM 的父 prepare/schedule",
+      "evidence": [
+        {
+          "path": "experiments/gftd_fit297_20261107.py",
+          "line": 32
+        },
+        {
+          "path": "experiments/state_gated_memory_study_20261028.py",
+          "line": 21
+        },
+        {
+          "path": "experiments/force_exchange_study_20261028.py",
+          "line": 36
+        }
+      ]
+    },
+    {
+      "directory": "gftd_fit297_20261107",
+      "action": "hold_in_place",
+      "reason": "当前Run 3准备资产及原IEEE39工作簿",
+      "accessible_bytes_from_inventory": 38449,
+      "scan_complete": true,
+      "kind": "current_dependency",
+      "role": "Run 3当前资产与输出根；原IEEE39工作簿",
+      "evidence": [
+        {
+          "path": "experiments/gftd_fit297_20261107.py",
+          "line": 26
+        },
+        {
+          "path": "experiments/gftd_fit297_20261107.py",
+          "line": 118
+        }
+      ]
+    },
+    {
+      "directory": "ieee39_boundary_0075",
+      "action": "hold_in_place",
+      "reason": "数据集及原始划分",
+      "accessible_bytes_from_inventory": 82118430,
+      "scan_complete": true,
+      "kind": "dataset",
+      "evidence": [
+        {
+          "path": "results/private_data_cleanup_20261107/inventory.json",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "directory": "ieee39_boundary_fine_0075",
+      "action": "hold_in_place",
+      "reason": "数据集及原始划分",
+      "accessible_bytes_from_inventory": 82064227,
+      "scan_complete": true,
+      "kind": "dataset",
+      "evidence": [
+        {
+          "path": "results/private_data_cleanup_20261107/inventory.json",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "directory": "ieee39_expansion",
+      "action": "hold_in_place",
+      "reason": "数据集及原始划分",
+      "accessible_bytes_from_inventory": 1324306776,
+      "scan_complete": true,
+      "kind": "dataset",
+      "evidence": [
+        {
+          "path": "results/private_data_cleanup_20261107/inventory.json",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "directory": "ieee39_holdout_supplement",
+      "action": "hold_in_place",
+      "reason": "数据集及原始划分",
+      "accessible_bytes_from_inventory": 169970519,
+      "scan_complete": true,
+      "kind": "dataset",
+      "evidence": [
+        {
+          "path": "results/private_data_cleanup_20261107/inventory.json",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "directory": "ieee39_postfault",
+      "action": "hold_in_place",
+      "reason": "数据集及原始划分",
+      "accessible_bytes_from_inventory": 2111207046,
+      "scan_complete": true,
+      "kind": "dataset",
+      "evidence": [
+        {
+          "path": "results/private_data_cleanup_20261107/inventory.json",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "directory": "r_memory_20261025",
+      "action": "hold_in_place",
+      "reason": "当前fit297事件缓存及来源身份链",
+      "accessible_bytes_from_inventory": 1442585632,
+      "scan_complete": false,
+      "kind": "current_dependency",
+      "role": "当前fit_events.npz、prepare/schedule；A512源三资产以及A0/A1152历史候选",
+      "evidence": [
+        {
+          "path": "experiments/force_graph_study_20261028.py",
+          "line": 33
+        },
+        {
+          "path": "experiments/force_graph_study_20261028.py",
+          "line": 34
+        },
+        {
+          "path": "experiments/r_memory_study_20261025.py",
+          "line": 245
+        },
+        {
+          "path": "reports/r_memory_20261028_conclusion.md",
+          "line": 29
+        }
+      ]
+    },
+    {
+      "directory": "state_gated_memory_20261028",
+      "action": "hold_in_place",
+      "reason": "当前fit297读取链；A96历史候选",
+      "accessible_bytes_from_inventory": 4952562943,
+      "scan_complete": true,
+      "kind": "current_dependency",
+      "role": "fit297 loader 的 SGM prepare/schedule 与父身份链；A96历史候选",
+      "evidence": [
+        {
+          "path": "experiments/closure_probe_20261030.py",
+          "line": 42
+        },
+        {
+          "path": "experiments/closure_probe_20261030.py",
+          "line": 227
+        },
+        {
+          "path": "experiments/state_gated_memory_study_20261028.py",
+          "line": 57
+        }
+      ]
+    },
+    {
+      "directory": "task2_control_modes_0078",
+      "action": "hold_in_place",
+      "reason": "已选择性归档的历史模式参考",
+      "accessible_bytes_from_inventory": 781217,
+      "scan_complete": true,
+      "kind": "existing_protection_floor",
+      "evidence": [
+        {
+          "path": "reports/private_data_cleanup_plan_20261107.md",
+          "line": 55
+        }
+      ]
+    },
+    {
+      "directory": "task2_fullorder_descriptor_0035",
+      "action": "hold_in_place",
+      "reason": "当前L3参考descriptor",
+      "accessible_bytes_from_inventory": 58158,
+      "scan_complete": true,
+      "kind": "current_dependency",
+      "role": "当前L3 descriptor.npz及evidence.json",
+      "evidence": [
+        {
+          "path": "experiments/gftd_fit297_20261107.py",
+          "line": 119
+        }
+      ]
+    },
+    {
+      "directory": "task2_joint_0058",
+      "action": "hold_in_place",
+      "reason": "历史已接受短期参照，须核对引用后迁移",
+      "accessible_bytes_from_inventory": 30025986,
+      "scan_complete": true,
+      "kind": "existing_protection_floor",
+      "evidence": [
+        {
+          "path": "reports/private_data_cleanup_plan_20261107.md",
+          "line": 55
+        }
+      ]
+    },
+    {
+      "directory": "task2_long_0060_2s",
+      "action": "hold_in_place",
+      "reason": "0060接受记录保留的2s非支配历史参照",
+      "accessible_bytes_from_inventory": 61535,
+      "scan_complete": true,
+      "role": "0060接受记录保留的2s非支配历史参照",
+      "kind": "historical_model",
+      "evidence": [
+        {
+          "path": "reports/accepted/0060_long_horizon_campaign.md",
+          "line": 29
+        }
+      ]
+    },
+    {
+      "directory": "task2_long_0060_2s_eval",
+      "action": "hold_in_place",
+      "reason": "上述2s历史参照的原评价证据",
+      "accessible_bytes_from_inventory": 121857024,
+      "scan_complete": true,
+      "role": "上述2s历史参照的原评价证据",
+      "kind": "historical_model_evidence",
+      "evidence": [
+        {
+          "path": "reports/accepted/0060_long_horizon_campaign.md",
+          "line": 30
+        }
+      ]
+    },
+    {
+      "directory": "task2_long_0060_5s",
+      "action": "hold_in_place",
+      "reason": "历史已接受长期参照，须核对引用后迁移",
+      "accessible_bytes_from_inventory": 61530,
+      "scan_complete": true,
+      "kind": "existing_protection_floor",
+      "evidence": [
+        {
+          "path": "reports/private_data_cleanup_plan_20261107.md",
+          "line": 55
+        }
+      ]
+    },
+    {
+      "directory": "task2_long_0060_5s_eval",
+      "action": "hold_in_place",
+      "reason": "长期参考S的原评价证据，与现有task2_long_0060_5s一起保全",
+      "accessible_bytes_from_inventory": 121787580,
+      "scan_complete": true,
+      "role": "长期参考S的原评价证据，与现有task2_long_0060_5s一起保全",
+      "kind": "historical_model_evidence",
+      "evidence": [
+        {
+          "path": "reports/accepted/0060_long_horizon_campaign.md",
+          "line": 27
+        },
+        {
+          "path": "docs/TASK2_after_loop_66.md",
+          "line": 23
+        }
+      ]
+    },
+    {
+      "directory": "task2_m3_0020",
+      "action": "hold_in_place",
+      "reason": "历史受保护模型与基础来源",
+      "accessible_bytes_from_inventory": 13654293,
+      "scan_complete": true,
+      "kind": "existing_protection_floor",
+      "evidence": [
+        {
+          "path": "reports/private_data_cleanup_plan_20261107.md",
+          "line": 55
+        }
+      ]
+    },
+    {
+      "directory": "task2_structure_0078_extend_C-free",
+      "action": "hold_in_place",
+      "reason": "C3000历史能力参照，保留端点及原评价",
+      "accessible_bytes_from_inventory": 3613720,
+      "scan_complete": true,
+      "kind": "existing_protection_floor",
+      "evidence": [
+        {
+          "path": "reports/private_data_cleanup_plan_20261107.md",
+          "line": 55
+        }
+      ]
+    },
+    {
+      "directory": "task2_structure_0078_extend_C-free_eval",
+      "action": "hold_in_place",
+      "reason": "C3000历史评价证据，迁删前逐项核对",
+      "accessible_bytes_from_inventory": 82638420,
+      "scan_complete": true,
+      "kind": "existing_protection_floor",
+      "evidence": [
+        {
+          "path": "reports/private_data_cleanup_plan_20261107.md",
+          "line": 55
+        }
+      ]
+    },
+    {
+      "directory": "task2_structure_0078_extend_G-fixed",
+      "action": "hold_in_place",
+      "reason": "G3000历史对照来源，保留端点及原评价",
+      "accessible_bytes_from_inventory": 3739076,
+      "scan_complete": true,
+      "kind": "existing_protection_floor",
+      "evidence": [
+        {
+          "path": "reports/private_data_cleanup_plan_20261107.md",
+          "line": 55
+        }
+      ]
+    },
+    {
+      "directory": "task2_structure_0078_extend_G-fixed_eval",
+      "action": "hold_in_place",
+      "reason": "G3000历史评价证据，迁删前逐项核对",
+      "accessible_bytes_from_inventory": 82709616,
+      "scan_complete": true,
+      "kind": "existing_protection_floor",
+      "evidence": [
+        {
+          "path": "reports/private_data_cleanup_plan_20261107.md",
+          "line": 55
+        }
+      ]
+    },
+    {
+      "directory": "task2_verified_modes_0035b",
+      "action": "hold_in_place",
+      "reason": "当前L3已接受模式参考",
+      "accessible_bytes_from_inventory": 119794,
+      "scan_complete": true,
+      "kind": "current_dependency",
+      "role": "当前L3已接受参考模式evidence.json",
+      "evidence": [
+        {
+          "path": "experiments/gftd_fit297_20261107.py",
+          "line": 121
+        }
+      ]
+    }
+  ],
+  "current_dependency_roots": [
+    "closure_mechanism_20261019",
+    "force_graph_20261028",
+    "gftd_fit297_20261107",
+    "r_memory_20261025",
+    "state_gated_memory_20261028",
+    "task2_fullorder_descriptor_0035",
+    "task2_verified_modes_0035b"
+  ],
+  "current_dependency_chain": [
+    "gftd_fit297.required_asset_paths + closure_probe.load_frozen_events",
+    "state_gated_memory.checked_preparation",
+    "force_graph.checked_preparation + source_identities",
+    "r_memory.checked_preparation + require_source",
+    "r_memory fit_events.npz + closure_mechanism N6101 step001024三资产"
+  ],
+  "current_read_boundary": {
+    "older_source_roots_not_read_by_current_chain": [
+      "task2_prediction_optimization_0102",
+      "closure_improvement_20261019"
+    ],
+    "explanation": "Run3使用保存的RN完整config/state_dict与已冻结fit缓存。N6101在当前链中仅参与三资产hash；旧S-O650/更老源仅是谱系记录，当前checked_preparation不调用旧source_model/train_cohort。ForceGraph/RMemory/SymbolicClosure的from_export均不递归打开source_identity或provenance内路径。闭合旧源可整根迁移保全，不能据此删除其唯一模型或原始数据。",
+    "evidence": [
+      {
+        "path": "experiments/gftd_fit297_20261107.py",
+        "line": 112
+      },
+      {
+        "path": "experiments/r_memory_study_20261025.py",
+        "line": 245
+      },
+      {
+        "path": "experiments/force_graph_model_20261028.py",
+        "line": 408
+      },
+      {
+        "path": "experiments/r_memory_model_20261025.py",
+        "line": 367
+      },
+      {
+        "path": "experiments/symbolic_closure_rom.py",
+        "line": 764
+      },
+      {
+        "path": "experiments/closure_mechanism_study.py",
+        "line": 15
+      }
+    ]
+  },
+  "path_identity_constraint": {
+    "reason": "force_graph.source_identities保存str(path.resolve())并与prepare逐字段比较。旧路径联接到新物理目录仍会改变身份；同字节或联接本身不能替代来源兼容核验。",
+    "evidence": [
+      {
+        "path": "experiments/force_graph_study_20261028.py",
+        "line": 45
+      },
+      {
+        "path": "experiments/force_graph_study_20261028.py",
+        "line": 154
+      },
+      {
+        "path": "experiments/state_gated_memory_study_20261028.py",
+        "line": 57
+      }
+    ],
+    "instruction": "当前依赖原地保留；不得修改旧源码、prepare、source hash或协议使旧绑定勉强通过。闭合历史树迁移保留原字节和旧→新映射；不声称旧runner在新地址直接可重放。"
+  },
+  "must_retain_models": [
+    {
+      "directory": "memory_transport_20261029",
+      "migration_allowed_after_checks": true,
+      "paths_to_retain": [
+        "study01_prelaunch_retry1/study/*/checkpoints/**",
+        "study01_prelaunch_retry1/prepare.json",
+        "study01_prelaunch_retry1/schedule.json"
+      ],
+      "reason": "A16/A128及S/P历史候选实体、端点和身份保全。闭合根可整根迁移；不可因未晋升删除模型。",
+      "evidence": [
+        {
+          "path": "experiments/closure_probe_20261030.py",
+          "line": 47
+        },
+        {
+          "path": "experiments/checkpoint_selection_20261030.py",
+          "line": 25
+        },
+        {
+          "path": "reports/analytic_p_backward_qualification_20261031_conclusion.md",
+          "line": 18
+        },
+        {
+          "path": "campaigns/force_memory_closure_20261030.md",
+          "line": 63
+        }
+      ]
+    },
+    {
+      "directory": "force_exchange_20261028",
+      "migration_allowed_after_checks": true,
+      "paths_to_retain": [
+        "study01/study/*/checkpoints/**",
+        "study01/prepare.json",
+        "study01/schedule.json"
+      ],
+      "reason": "保留互易交换历史候选及其原身份、原失败范围；可整根迁移，不改为已接受模型。",
+      "evidence": [
+        {
+          "path": "reports/state_gated_memory_20261028_conclusion.md",
+          "line": 39
+        },
+        {
+          "path": "reports/force_exchange_20261028_conclusion.md",
+          "line": 43
+        }
+      ]
+    },
+    {
+      "directory": "analytic_p_backward_qualification_20261031",
+      "migration_allowed_after_checks": true,
+      "paths_to_retain": [
+        "**/model.json",
+        "**/manifest.json",
+        "**/complete.json"
+      ],
+      "reason": "保留数值资格候选、固定父模型身份与资格证据；数值资格不等于科学晋升。",
+      "evidence": [
+        {
+          "path": "reports/analytic_p_backward_qualification_20261031_conclusion.md",
+          "line": 18
+        },
+        {
+          "path": "reports/analytic_p_backward_qualification_20261031_conclusion.md",
+          "line": 78
+        }
+      ]
+    }
+  ],
+  "other_exclusions": [
+    {
+      "directory": "p_constant_direction_EQ_engineering_20261031a",
+      "reason": "扫描不完整、访问错误或未遍历重解析点；本清单不授予整根移动/删除资格",
+      "scan_complete": false,
+      "permission_errors": 0,
+      "skipped_reparse_points": 3
+    },
+    {
+      "directory": "p_constant_direction_EQ_engineering_20261031b",
+      "reason": "扫描不完整、访问错误或未遍历重解析点；本清单不授予整根移动/删除资格",
+      "scan_complete": false,
+      "permission_errors": 0,
+      "skipped_reparse_points": 3
+    },
+    {
+      "directory": "p_constant_direction_EQ_engineering_20261031c",
+      "reason": "扫描不完整、访问错误或未遍历重解析点；本清单不授予整根移动/删除资格",
+      "scan_complete": false,
+      "permission_errors": 0,
+      "skipped_reparse_points": 3
+    },
+    {
+      "directory": "p_constant_direction_source_engineering_20261031a",
+      "reason": "扫描不完整、访问错误或未遍历重解析点；本清单不授予整根移动/删除资格",
+      "scan_complete": false,
+      "permission_errors": 0,
+      "skipped_reparse_points": 4
+    },
+    {
+      "directory": "p_constant_direction_source_engineering_20261031b",
+      "reason": "扫描不完整、访问错误或未遍历重解析点；本清单不授予整根移动/删除资格",
+      "scan_complete": false,
+      "permission_errors": 0,
+      "skipped_reparse_points": 4
+    },
+    {
+      "directory": "p_dissipative_EQ_engineering_tests_20261031_B1",
+      "reason": "扫描不完整、访问错误或未遍历重解析点；本清单不授予整根移动/删除资格",
+      "scan_complete": false,
+      "permission_errors": 0,
+      "skipped_reparse_points": 4
+    },
+    {
+      "directory": "p_dissipative_EQ_engineering_tests_20261031a",
+      "reason": "扫描不完整、访问错误或未遍历重解析点；本清单不授予整根移动/删除资格",
+      "scan_complete": false,
+      "permission_errors": 0,
+      "skipped_reparse_points": 2
+    },
+    {
+      "directory": "p_dissipative_EQ_engineering_tests_20261031b",
+      "reason": "扫描不完整、访问错误或未遍历重解析点；本清单不授予整根移动/删除资格",
+      "scan_complete": false,
+      "permission_errors": 0,
+      "skipped_reparse_points": 2
+    },
+    {
+      "directory": "p_dissipative_EQ_engineering_tests_20261031c",
+      "reason": "扫描不完整、访问错误或未遍历重解析点；本清单不授予整根移动/删除资格",
+      "scan_complete": false,
+      "permission_errors": 0,
+      "skipped_reparse_points": 3
+    },
+    {
+      "directory": "p_dissipative_prepare_engineering_tests_20261031a",
+      "reason": "扫描不完整、访问错误或未遍历重解析点；本清单不授予整根移动/删除资格",
+      "scan_complete": false,
+      "permission_errors": 0,
+      "skipped_reparse_points": 6
+    },
+    {
+      "directory": "p_dissipative_prepare_engineering_tests_20261031b",
+      "reason": "扫描不完整、访问错误或未遍历重解析点；本清单不授予整根移动/删除资格",
+      "scan_complete": false,
+      "permission_errors": 0,
+      "skipped_reparse_points": 6
+    },
+    {
+      "directory": "p_dissipative_prepare_engineering_tests_20261031c",
+      "reason": "扫描不完整、访问错误或未遍历重解析点；本清单不授予整根移动/删除资格",
+      "scan_complete": false,
+      "permission_errors": 0,
+      "skipped_reparse_points": 6
+    },
+    {
+      "directory": "p_driver_order_engineering_tests_20261031a",
+      "reason": "扫描不完整、访问错误或未遍历重解析点；本清单不授予整根移动/删除资格",
+      "scan_complete": false,
+      "permission_errors": 0,
+      "skipped_reparse_points": 4
+    },
+    {
+      "directory": "p_driver_order_engineering_tests_20261031b",
+      "reason": "扫描不完整、访问错误或未遍历重解析点；本清单不授予整根移动/删除资格",
+      "scan_complete": false,
+      "permission_errors": 0,
+      "skipped_reparse_points": 4
+    },
+    {
+      "directory": "p_history_transfer_EQ_artificial_20261031a",
+      "reason": "扫描不完整、访问错误或未遍历重解析点；本清单不授予整根移动/删除资格",
+      "scan_complete": false,
+      "permission_errors": 0,
+      "skipped_reparse_points": 2
+    },
+    {
+      "directory": "p_history_transfer_EQ_artificial_20261031b",
+      "reason": "扫描不完整、访问错误或未遍历重解析点；本清单不授予整根移动/删除资格",
+      "scan_complete": false,
+      "permission_errors": 0,
+      "skipped_reparse_points": 2
+    },
+    {
+      "directory": "p_history_transfer_EQ_artificial_20261031c",
+      "reason": "扫描不完整、访问错误或未遍历重解析点；本清单不授予整根移动/删除资格",
+      "scan_complete": false,
+      "permission_errors": 0,
+      "skipped_reparse_points": 2
+    },
+    {
+      "directory": "p_history_transfer_EQ_artificial_20261031d",
+      "reason": "扫描不完整、访问错误或未遍历重解析点；本清单不授予整根移动/删除资格",
+      "scan_complete": false,
+      "permission_errors": 0,
+      "skipped_reparse_points": 2
+    },
+    {
+      "directory": "p_history_transfer_EQ_artificial_20261031e",
+      "reason": "扫描不完整、访问错误或未遍历重解析点；本清单不授予整根移动/删除资格",
+      "scan_complete": false,
+      "permission_errors": 0,
+      "skipped_reparse_points": 2
+    },
+    {
+      "directory": "p_history_transfer_source_artificial_tests_20261031",
+      "reason": "扫描不完整、访问错误或未遍历重解析点；本清单不授予整根移动/删除资格",
+      "scan_complete": false,
+      "permission_errors": 0,
+      "skipped_reparse_points": 3
+    },
+    {
+      "directory": "p_history_transfer_source_artificial_tests_20261031b",
+      "reason": "扫描不完整、访问错误或未遍历重解析点；本清单不授予整根移动/删除资格",
+      "scan_complete": false,
+      "permission_errors": 0,
+      "skipped_reparse_points": 3
+    },
+    {
+      "directory": "p_history_transfer_source_artificial_tests_20261031c",
+      "reason": "扫描不完整、访问错误或未遍历重解析点；本清单不授予整根移动/删除资格",
+      "scan_complete": false,
+      "permission_errors": 0,
+      "skipped_reparse_points": 3
+    },
+    {
+      "directory": "p_history_transfer_source_artificial_tests_20261031d",
+      "reason": "扫描不完整、访问错误或未遍历重解析点；本清单不授予整根移动/删除资格",
+      "scan_complete": false,
+      "permission_errors": 0,
+      "skipped_reparse_points": 3
+    },
+    {
+      "directory": "p_history_transfer_source_artificial_tests_20261031e",
+      "reason": "扫描不完整、访问错误或未遍历重解析点；本清单不授予整根移动/删除资格",
+      "scan_complete": false,
+      "permission_errors": 0,
+      "skipped_reparse_points": 3
+    },
+    {
+      "directory": "p_residual_stage_engineering_tests_20261031_B1",
+      "reason": "扫描不完整、访问错误或未遍历重解析点；本清单不授予整根移动/删除资格",
+      "scan_complete": false,
+      "permission_errors": 0,
+      "skipped_reparse_points": 1
+    },
+    {
+      "directory": "p_residual_stage_engineering_tests_20261031a",
+      "reason": "扫描不完整、访问错误或未遍历重解析点；本清单不授予整根移动/删除资格",
+      "scan_complete": false,
+      "permission_errors": 0,
+      "skipped_reparse_points": 1
+    },
+    {
+      "directory": "p_residual_stage_engineering_tests_20261031b",
+      "reason": "扫描不完整、访问错误或未遍历重解析点；本清单不授予整根移动/删除资格",
+      "scan_complete": false,
+      "permission_errors": 0,
+      "skipped_reparse_points": 1
+    },
+    {
+      "directory": "q5",
+      "reason": "扫描不完整、访问错误或未遍历重解析点；本清单不授予整根移动/删除资格",
+      "scan_complete": false,
+      "permission_errors": 1,
+      "skipped_reparse_points": 0
+    },
+    {
+      "directory": "q6",
+      "reason": "扫描不完整、访问错误或未遍历重解析点；本清单不授予整根移动/删除资格",
+      "scan_complete": false,
+      "permission_errors": 1,
+      "skipped_reparse_points": 0
+    },
+    {
+      "directory": "qbg1",
+      "reason": "扫描不完整、访问错误或未遍历重解析点；本清单不授予整根移动/删除资格",
+      "scan_complete": false,
+      "permission_errors": 1,
+      "skipped_reparse_points": 0
+    },
+    {
+      "directory": "qce25",
+      "reason": "扫描不完整、访问错误或未遍历重解析点；本清单不授予整根移动/删除资格",
+      "scan_complete": false,
+      "permission_errors": 0,
+      "skipped_reparse_points": 1
+    },
+    {
+      "directory": "qce25_final",
+      "reason": "扫描不完整、访问错误或未遍历重解析点；本清单不授予整根移动/删除资格",
+      "scan_complete": false,
+      "permission_errors": 0,
+      "skipped_reparse_points": 1
+    },
+    {
+      "directory": "qcp1",
+      "reason": "扫描不完整、访问错误或未遍历重解析点；本清单不授予整根移动/删除资格",
+      "scan_complete": false,
+      "permission_errors": 1,
+      "skipped_reparse_points": 0
+    },
+    {
+      "directory": "qfg1",
+      "reason": "扫描不完整、访问错误或未遍历重解析点；本清单不授予整根移动/删除资格",
+      "scan_complete": false,
+      "permission_errors": 1,
+      "skipped_reparse_points": 0
+    },
+    {
+      "directory": "qhp1",
+      "reason": "扫描不完整、访问错误或未遍历重解析点；本清单不授予整根移动/删除资格",
+      "scan_complete": false,
+      "permission_errors": 1,
+      "skipped_reparse_points": 0
+    },
+    {
+      "directory": "qte1",
+      "reason": "扫描不完整、访问错误或未遍历重解析点；本清单不授予整根移动/删除资格",
+      "scan_complete": false,
+      "permission_errors": 1,
+      "skipped_reparse_points": 0
+    },
+    {
+      "directory": "r_memory_execution_unit_20261025_01",
+      "reason": "扫描不完整、访问错误或未遍历重解析点；本清单不授予整根移动/删除资格",
+      "scan_complete": false,
+      "permission_errors": 0,
+      "skipped_reparse_points": 7
+    },
+    {
+      "directory": "r_memory_execution_unit_20261025_02",
+      "reason": "扫描不完整、访问错误或未遍历重解析点；本清单不授予整根移动/删除资格",
+      "scan_complete": false,
+      "permission_errors": 0,
+      "skipped_reparse_points": 8
+    },
+    {
+      "directory": "r_memory_execution_unit_20261025_03",
+      "reason": "扫描不完整、访问错误或未遍历重解析点；本清单不授予整根移动/删除资格",
+      "scan_complete": false,
+      "permission_errors": 0,
+      "skipped_reparse_points": 10
+    },
+    {
+      "directory": "r_memory_execution_unit_20261025_04",
+      "reason": "扫描不完整、访问错误或未遍历重解析点；本清单不授予整根移动/删除资格",
+      "scan_complete": false,
+      "permission_errors": 0,
+      "skipped_reparse_points": 12
+    },
+    {
+      "directory": "r_memory_execution_unit_20261025_repair01_01",
+      "reason": "扫描不完整、访问错误或未遍历重解析点；本清单不授予整根移动/删除资格",
+      "scan_complete": false,
+      "permission_errors": 0,
+      "skipped_reparse_points": 12
+    }
+  ],
+  "uninventoried_roots_hold_pending_refresh": [],
+  "conditional_migration_candidates": [
+    {
+      "directory": "analytic_p_backward_qualification_20261031",
+      "destination": "artifacts/analytic_p_backward_qualification_20261031",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 855635469,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "analytic_p_backward_qualification_20261031_execution",
+      "destination": "artifacts/analytic_p_backward_qualification_20261031_execution",
+      "category": "execution_record",
+      "accessible_bytes_from_inventory": 5800,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "checkpoint_selection_20261030",
+      "destination": "artifacts/checkpoint_selection_20261030",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 3369728359,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "closure_improvement_20261019",
+      "destination": "artifacts/closure_improvement_20261019",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 1405003,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "closure_probe_20261030",
+      "destination": "artifacts/closure_probe_20261030",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 2578775,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "coi_budget_20261030",
+      "destination": "artifacts/coi_budget_20261030",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 7222410,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "force_exchange_20261028",
+      "destination": "artifacts/force_exchange_20261028",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 3022242054,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "git_cleanup_20261030_01",
+      "destination": "local_backups/git_cleanup_20261030_01",
+      "category": "git_backup",
+      "accessible_bytes_from_inventory": 7501608,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "gpu_training_20261017",
+      "destination": "artifacts/gpu_training_20261017",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 193518,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "heartbeat_kiki_20261031T0218",
+      "destination": "artifacts/heartbeat_kiki_20261031T0218",
+      "category": "monitoring_record",
+      "accessible_bytes_from_inventory": 27529,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "heartbeat_kiki_20261031T0323",
+      "destination": "artifacts/heartbeat_kiki_20261031T0323",
+      "category": "monitoring_record",
+      "accessible_bytes_from_inventory": 6106,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "memory_transport_20261029",
+      "destination": "artifacts/memory_transport_20261029",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 4539780537,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "p_constant_direction_20261031",
+      "destination": "artifacts/p_constant_direction_20261031",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 33671063,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "p_constant_direction_20261031_execution",
+      "destination": "artifacts/p_constant_direction_20261031_execution",
+      "category": "execution_record",
+      "accessible_bytes_from_inventory": 58898,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "p_constant_norm_20261031",
+      "destination": "artifacts/p_constant_norm_20261031",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 381606,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "p_constant_norm_20261031_execution",
+      "destination": "artifacts/p_constant_norm_20261031_execution",
+      "category": "execution_record",
+      "accessible_bytes_from_inventory": 19181,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "p_dissipative_identifiability_20261031",
+      "destination": "artifacts/p_dissipative_identifiability_20261031",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 295431852,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "p_dissipative_identifiability_20261031_execution",
+      "destination": "artifacts/p_dissipative_identifiability_20261031_execution",
+      "category": "execution_record",
+      "accessible_bytes_from_inventory": 43419,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "p_driver_order_20261031",
+      "destination": "artifacts/p_driver_order_20261031",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 808921,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "p_driver_order_20261031_execution",
+      "destination": "artifacts/p_driver_order_20261031_execution",
+      "category": "execution_record",
+      "accessible_bytes_from_inventory": 62293,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "p_driver_order_20261031_preflight",
+      "destination": "artifacts/p_driver_order_20261031_preflight",
+      "category": "execution_record",
+      "accessible_bytes_from_inventory": 7041,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "p_form_discrimination_20261031",
+      "destination": "artifacts/p_form_discrimination_20261031",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 683127,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "p_form_discrimination_20261031_execution",
+      "destination": "artifacts/p_form_discrimination_20261031_execution",
+      "category": "execution_record",
+      "accessible_bytes_from_inventory": 1730,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "p_history_transfer_20261031",
+      "destination": "artifacts/p_history_transfer_20261031",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 3066005036,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "p_history_transfer_20261031_execution",
+      "destination": "artifacts/p_history_transfer_20261031_execution",
+      "category": "execution_record",
+      "accessible_bytes_from_inventory": 5827,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "p_port_diagnostic_20261031",
+      "destination": "artifacts/p_port_diagnostic_20261031",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 128065448,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "p_port_diagnostic_20261031_execution",
+      "destination": "artifacts/p_port_diagnostic_20261031_execution",
+      "category": "execution_record",
+      "accessible_bytes_from_inventory": 2395,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "p_port_diagnostic_20261031_prelaunch_attempt01",
+      "destination": "artifacts/p_port_diagnostic_20261031_prelaunch_attempt01",
+      "category": "execution_record",
+      "accessible_bytes_from_inventory": 1314,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "p_residual_stage_20261031",
+      "destination": "artifacts/p_residual_stage_20261031",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 5970772,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "p_residual_stage_20261031_execution",
+      "destination": "artifacts/p_residual_stage_20261031_execution",
+      "category": "execution_record",
+      "accessible_bytes_from_inventory": 13290,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "p_residual_stage_20261031_prelaunch",
+      "destination": "artifacts/p_residual_stage_20261031_prelaunch",
+      "category": "execution_record",
+      "accessible_bytes_from_inventory": 36388,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "p_reverse_precision_20261031",
+      "destination": "artifacts/p_reverse_precision_20261031",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 1430835,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "p_reverse_precision_20261031_execution",
+      "destination": "artifacts/p_reverse_precision_20261031_execution",
+      "category": "execution_record",
+      "accessible_bytes_from_inventory": 1818,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "r_memory_20261028",
+      "destination": "artifacts/r_memory_20261028",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 543942344,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "smoke_0017_final",
+      "destination": "artifacts/smoke_0017_final",
+      "category": "pilot_or_smoke",
+      "accessible_bytes_from_inventory": 20884543,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "smoke_0017a",
+      "destination": "artifacts/smoke_0017a",
+      "category": "pilot_or_smoke",
+      "accessible_bytes_from_inventory": 6901259,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "smoke_0017b",
+      "destination": "artifacts/smoke_0017b",
+      "category": "pilot_or_smoke",
+      "accessible_bytes_from_inventory": 20821056,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "state_gated_memory_20261029_perf_check",
+      "destination": "artifacts/state_gated_memory_20261029_perf_check",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 104312,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_affine_signature_0091",
+      "destination": "artifacts/task2_affine_signature_0091",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 103770,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_affine_signature_0091_independent",
+      "destination": "artifacts/task2_affine_signature_0091_independent",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 56391,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_backbone_compatibility_0095",
+      "destination": "artifacts/task2_backbone_compatibility_0095",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 32531369,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_backbone_compatibility_0095_independent",
+      "destination": "artifacts/task2_backbone_compatibility_0095_independent",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 266627,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_backbone_deployment_0093",
+      "destination": "artifacts/task2_backbone_deployment_0093",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 353438726,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_backbone_deployment_0093_independent",
+      "destination": "artifacts/task2_backbone_deployment_0093_independent",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 823243,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_backbone_span_0092",
+      "destination": "artifacts/task2_backbone_span_0092",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 107555,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_backbone_span_0092_independent",
+      "destination": "artifacts/task2_backbone_span_0092_independent",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 44106,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_boundary_integrity_0075",
+      "destination": "artifacts/task2_boundary_integrity_0075",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 40622,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_boundary_probe_0077",
+      "destination": "artifacts/task2_boundary_probe_0077",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 33200690,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_coefficient_block_0082",
+      "destination": "artifacts/task2_coefficient_block_0082",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 550875443,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_coefficient_block_0082_attempt2",
+      "destination": "artifacts/task2_coefficient_block_0082_attempt2",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 550875464,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_coefficient_block_0082_attempt2_independent",
+      "destination": "artifacts/task2_coefficient_block_0082_attempt2_independent",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 25001,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_coefficient_block_0082_attempt2_prepare",
+      "destination": "artifacts/task2_coefficient_block_0082_attempt2_prepare",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 102435,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_coefficient_block_0082_independent",
+      "destination": "artifacts/task2_coefficient_block_0082_independent",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 336921,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_coefficient_block_0082_prepare",
+      "destination": "artifacts/task2_coefficient_block_0082_prepare",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 102313,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_coefficient_nullspace_0084",
+      "destination": "artifacts/task2_coefficient_nullspace_0084",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 37995,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_coefficient_nullspace_0084_independent",
+      "destination": "artifacts/task2_coefficient_nullspace_0084_independent",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 17290,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_coefficient_poles_0083",
+      "destination": "artifacts/task2_coefficient_poles_0083",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 100408,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_coefficient_poles_0083_independent",
+      "destination": "artifacts/task2_coefficient_poles_0083_independent",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 20051,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_complex_balance_0097",
+      "destination": "artifacts/task2_complex_balance_0097",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 660532,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_complex_balance_0097_independent",
+      "destination": "artifacts/task2_complex_balance_0097_independent",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 231380,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_conditional_balance_0094",
+      "destination": "artifacts/task2_conditional_balance_0094",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 155553338,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_conditional_balance_0094_independent",
+      "destination": "artifacts/task2_conditional_balance_0094_independent",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 231464,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_conditional_latent_0081",
+      "destination": "artifacts/task2_conditional_latent_0081",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 19860128,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_conditional_latent_0081_independent",
+      "destination": "artifacts/task2_conditional_latent_0081_independent",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 35334,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_conductance_0049",
+      "destination": "artifacts/task2_conductance_0049",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 0,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_conductance_0049_equilibrium_debug",
+      "destination": "artifacts/task2_conductance_0049_equilibrium_debug",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 0,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_confirmatory_0038",
+      "destination": "artifacts/task2_confirmatory_0038",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 26446158,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_coupled_equilibrium_0065",
+      "destination": "artifacts/task2_coupled_equilibrium_0065",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 307541,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_cross_dissipation_0103",
+      "destination": "artifacts/task2_cross_dissipation_0103",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 2806377943,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_driven_0032",
+      "destination": "artifacts/task2_driven_0032",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 7983,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_driven_load_port_0052",
+      "destination": "artifacts/task2_driven_load_port_0052",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 1200142,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_electrical_ports_0048",
+      "destination": "artifacts/task2_electrical_ports_0048",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 10408925,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_energy_0028",
+      "destination": "artifacts/task2_energy_0028",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 3740960,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_energy_boundary_0036",
+      "destination": "artifacts/task2_energy_boundary_0036",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 252009063,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_equilibrium_initialization_0063",
+      "destination": "artifacts/task2_equilibrium_initialization_0063",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 197036007,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_force_capacity_0045",
+      "destination": "artifacts/task2_force_capacity_0045",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 444499307,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_force_initialization_0080",
+      "destination": "artifacts/task2_force_initialization_0080",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 274142132,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_force_initialization_0080_independent",
+      "destination": "artifacts/task2_force_initialization_0080_independent",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 43956,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_fullorder_modes_0035",
+      "destination": "artifacts/task2_fullorder_modes_0035",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 35388,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_group31_all_0066",
+      "destination": "artifacts/task2_group31_all_0066",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 537169,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_group31_all_eval_0066",
+      "destination": "artifacts/task2_group31_all_eval_0066",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 121757110,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_group31_identity_smoke_0066",
+      "destination": "artifacts/task2_group31_identity_smoke_0066",
+      "category": "pilot_or_smoke",
+      "accessible_bytes_from_inventory": 38545163,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_group31_omit_0066",
+      "destination": "artifacts/task2_group31_omit_0066",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 534944,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_group31_omit_eval_0066",
+      "destination": "artifacts/task2_group31_omit_eval_0066",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 121751257,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_group31_smoke_all_0066",
+      "destination": "artifacts/task2_group31_smoke_all_0066",
+      "category": "pilot_or_smoke",
+      "accessible_bytes_from_inventory": 72260,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_group31_smoke_omit_0066",
+      "destination": "artifacts/task2_group31_smoke_omit_0066",
+      "category": "pilot_or_smoke",
+      "accessible_bytes_from_inventory": 72228,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_group_identifiability_0062",
+      "destination": "artifacts/task2_group_identifiability_0062",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 28488278,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_group_sensitivity_0066",
+      "destination": "artifacts/task2_group_sensitivity_0066",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 38547578,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_gru_observer_0034",
+      "destination": "artifacts/task2_gru_observer_0034",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 13433611,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_guarded_regression_0086",
+      "destination": "artifacts/task2_guarded_regression_0086",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 780230619,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_guarded_regression_0086_independent",
+      "destination": "artifacts/task2_guarded_regression_0086_independent",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 218525,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_guarded_rollout_0087_preflight",
+      "destination": "artifacts/task2_guarded_rollout_0087_preflight",
+      "category": "execution_record",
+      "accessible_bytes_from_inventory": 12598,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_guarded_rollout_0088",
+      "destination": "artifacts/task2_guarded_rollout_0088",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 280732068,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_guarded_rollout_0088_independent",
+      "destination": "artifacts/task2_guarded_rollout_0088_independent",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 111149,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_harmonic_reaction_0090",
+      "destination": "artifacts/task2_harmonic_reaction_0090",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 3255346,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_harmonic_reaction_0090_independent",
+      "destination": "artifacts/task2_harmonic_reaction_0090_independent",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 96997,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_instantaneous_0041",
+      "destination": "artifacts/task2_instantaneous_0041",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 40387575,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_joint_0053",
+      "destination": "artifacts/task2_joint_0053",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 10918632,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_joint_0053_smoke",
+      "destination": "artifacts/task2_joint_0053_smoke",
+      "category": "pilot_or_smoke",
+      "accessible_bytes_from_inventory": 24350,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_joint_0054",
+      "destination": "artifacts/task2_joint_0054",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 19973290,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_joint_0054_smoke",
+      "destination": "artifacts/task2_joint_0054_smoke",
+      "category": "pilot_or_smoke",
+      "accessible_bytes_from_inventory": 0,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_joint_0054_smoke2",
+      "destination": "artifacts/task2_joint_0054_smoke2",
+      "category": "pilot_or_smoke",
+      "accessible_bytes_from_inventory": 32520,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_joint_0055",
+      "destination": "artifacts/task2_joint_0055",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 20884057,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_joint_0055_diagnosis",
+      "destination": "artifacts/task2_joint_0055_diagnosis",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 5432299,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_joint_0055_smoke",
+      "destination": "artifacts/task2_joint_0055_smoke",
+      "category": "pilot_or_smoke",
+      "accessible_bytes_from_inventory": 34888,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_joint_0056",
+      "destination": "artifacts/task2_joint_0056",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 21794383,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_joint_0056_smoke",
+      "destination": "artifacts/task2_joint_0056_smoke",
+      "category": "pilot_or_smoke",
+      "accessible_bytes_from_inventory": 37576,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_joint_0057",
+      "destination": "artifacts/task2_joint_0057",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 30019890,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_joint_0057_smoke",
+      "destination": "artifacts/task2_joint_0057_smoke",
+      "category": "pilot_or_smoke",
+      "accessible_bytes_from_inventory": 38667,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_joint_0058_smoke",
+      "destination": "artifacts/task2_joint_0058_smoke",
+      "category": "pilot_or_smoke",
+      "accessible_bytes_from_inventory": 38670,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_joint_C_0067",
+      "destination": "artifacts/task2_joint_C_0067",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 2129796,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_joint_C_eval_0067",
+      "destination": "artifacts/task2_joint_C_eval_0067",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 121804410,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_joint_C_l1_0067_original",
+      "destination": "artifacts/task2_joint_C_l1_0067_original",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 266309,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_joint_JS_0070",
+      "destination": "artifacts/task2_joint_JS_0070",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 1814466,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_joint_JS_eval_0070",
+      "destination": "artifacts/task2_joint_JS_eval_0070",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 121833759,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_joint_JS_l1_0070_original",
+      "destination": "artifacts/task2_joint_JS_l1_0070_original",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 266457,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_joint_J_0067",
+      "destination": "artifacts/task2_joint_J_0067",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 2359688,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_joint_J_eval_0067",
+      "destination": "artifacts/task2_joint_J_eval_0067",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 121828770,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_joint_J_l1_0067_original",
+      "destination": "artifacts/task2_joint_J_l1_0067_original",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 266433,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_joint_adequacy_0099",
+      "destination": "artifacts/task2_joint_adequacy_0099",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 2482288295,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_joint_energy_0073",
+      "destination": "artifacts/task2_joint_energy_0073",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 2130887,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_joint_energy_integrity_0073",
+      "destination": "artifacts/task2_joint_energy_integrity_0073",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 12539,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_joint_integrity_0067",
+      "destination": "artifacts/task2_joint_integrity_0067",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 48382,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_joint_integrity_0070",
+      "destination": "artifacts/task2_joint_integrity_0070",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 34450,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_joint_numerical_pair_0100",
+      "destination": "artifacts/task2_joint_numerical_pair_0100",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 1179299509,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_joint_teacher_0072",
+      "destination": "artifacts/task2_joint_teacher_0072",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 1849715,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_joint_teacher_0072_eval",
+      "destination": "artifacts/task2_joint_teacher_0072_eval",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 121832242,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_joint_teacher_0072_l1_original",
+      "destination": "artifacts/task2_joint_teacher_0072_l1_original",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 266464,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_joint_teacher_integrity_0072",
+      "destination": "artifacts/task2_joint_teacher_integrity_0072",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 37576,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_l1_0058_0067_original",
+      "destination": "artifacts/task2_l1_0058_0067_original",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 266352,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_l1_S_0067_original",
+      "destination": "artifacts/task2_l1_S_0067_original",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 266341,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_latent_order_0059",
+      "destination": "artifacts/task2_latent_order_0059",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 11463838,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_latent_order_0059_secondary57",
+      "destination": "artifacts/task2_latent_order_0059_secondary57",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 11457488,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_latent_order_rollout_0059",
+      "destination": "artifacts/task2_latent_order_rollout_0059",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 239740652,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_load_port_memory_0051",
+      "destination": "artifacts/task2_load_port_memory_0051",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 903517,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_local_memory_0098",
+      "destination": "artifacts/task2_local_memory_0098",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 1253502792,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_long_0060_5s_step0025",
+      "destination": "artifacts/task2_long_0060_5s_step0025",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 21799100,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_long_0060_champion",
+      "destination": "artifacts/task2_long_0060_champion",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 121895239,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_long_0060_smoke",
+      "destination": "artifacts/task2_long_0060_smoke",
+      "category": "pilot_or_smoke",
+      "accessible_bytes_from_inventory": 54215,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_long_0060_smoke_repair2",
+      "destination": "artifacts/task2_long_0060_smoke_repair2",
+      "category": "pilot_or_smoke",
+      "accessible_bytes_from_inventory": 54258,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_long_0060_teacher2s",
+      "destination": "artifacts/task2_long_0060_teacher2s",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 69509,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_long_0060_teacher2s_eval",
+      "destination": "artifacts/task2_long_0060_teacher2s_eval",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 121761413,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_long_0060_teacher2s_step0025",
+      "destination": "artifacts/task2_long_0060_teacher2s_step0025",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 21790566,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_long_0060_teacher5s",
+      "destination": "artifacts/task2_long_0060_teacher5s",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 69605,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_long_0060_teacher5s_eval",
+      "destination": "artifacts/task2_long_0060_teacher5s_eval",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 121771298,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_long_0060_teacher5s_step0025",
+      "destination": "artifacts/task2_long_0060_teacher5s_step0025",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 21795513,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_long_sparse_audit_0061",
+      "destination": "artifacts/task2_long_sparse_audit_0061",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 79784687,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_long_sparse_rollout_0061",
+      "destination": "artifacts/task2_long_sparse_rollout_0061",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 1036124842,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_lr_adaptation_0104",
+      "destination": "artifacts/task2_lr_adaptation_0104",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 1873309197,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_lyapunov_guard_0085",
+      "destination": "artifacts/task2_lyapunov_guard_0085",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 296711000,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_lyapunov_guard_0085_independent",
+      "destination": "artifacts/task2_lyapunov_guard_0085_independent",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 138978,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_m2_0019",
+      "destination": "artifacts/task2_m2_0019",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 8686250,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_m3_modes_0035",
+      "destination": "artifacts/task2_m3_modes_0035",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 118070,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_m4_0021",
+      "destination": "artifacts/task2_m4_0021",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 13727319,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_m4_0022",
+      "destination": "artifacts/task2_m4_0022",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 13490482,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_m4_0023",
+      "destination": "artifacts/task2_m4_0023",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 26609922,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_m4_0024",
+      "destination": "artifacts/task2_m4_0024",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 13415030,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_m4_0025",
+      "destination": "artifacts/task2_m4_0025",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 13418274,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_m4_0026",
+      "destination": "artifacts/task2_m4_0026",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 13425228,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_mass_coi_geometry_0046",
+      "destination": "artifacts/task2_mass_coi_geometry_0046",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 154080406,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_observer_0029",
+      "destination": "artifacts/task2_observer_0029",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 13392943,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_oracle_0027",
+      "destination": "artifacts/task2_oracle_0027",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 58672372,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_oracle_distill_0106",
+      "destination": "artifacts/task2_oracle_distill_0106",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 642505900,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_physical_force_projection_0064",
+      "destination": "artifacts/task2_physical_force_projection_0064",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 176782188,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_physical_modes_0071",
+      "destination": "artifacts/task2_physical_modes_0071",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 203506,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_port_cosine_0050",
+      "destination": "artifacts/task2_port_cosine_0050",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 40380329,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_prediction_optimization_0102",
+      "destination": "artifacts/task2_prediction_optimization_0102",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 2858211933,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_q0_scope_0105",
+      "destination": "artifacts/task2_q0_scope_0105",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 358383,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_rank4_0074",
+      "destination": "artifacts/task2_rank4_0074",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 1856669,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_rank4_0074_eval",
+      "destination": "artifacts/task2_rank4_0074_eval",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 123803150,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_rank4_0074_l1_original",
+      "destination": "artifacts/task2_rank4_0074_l1_original",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 273288,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_rank4_ablation_0074",
+      "destination": "artifacts/task2_rank4_ablation_0074",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 84205572,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_rank4_integrity_0074",
+      "destination": "artifacts/task2_rank4_integrity_0074",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 39568,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_reachable_boundary_0037",
+      "destination": "artifacts/task2_reachable_boundary_0037",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 245052,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_residual_atlas_0040",
+      "destination": "artifacts/task2_residual_atlas_0040",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 20200782,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_shared_closure_FS_0101",
+      "destination": "artifacts/task2_shared_closure_FS_0101",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 2405477983,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_sparse_storage_local_0068",
+      "destination": "artifacts/task2_sparse_storage_local_0068",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 42477,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_stable_driven_0033",
+      "destination": "artifacts/task2_stable_driven_0033",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 13275789,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_storage_curvature_0069",
+      "destination": "artifacts/task2_storage_curvature_0069",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 88641,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_structure_0078_C-free",
+      "destination": "artifacts/task2_structure_0078_C-free",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 314739,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_structure_0078_G-auto",
+      "destination": "artifacts/task2_structure_0078_G-auto",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 342654,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_structure_0078_G-fixed",
+      "destination": "artifacts/task2_structure_0078_G-fixed",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 227118,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_structure_0078_attempt2_C-free",
+      "destination": "artifacts/task2_structure_0078_attempt2_C-free",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 2607928,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_structure_0078_attempt2_C-free_eval",
+      "destination": "artifacts/task2_structure_0078_attempt2_C-free_eval",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 82665827,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_structure_0078_attempt2_G-auto",
+      "destination": "artifacts/task2_structure_0078_attempt2_G-auto",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 2817132,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_structure_0078_attempt2_G-auto_eval",
+      "destination": "artifacts/task2_structure_0078_attempt2_G-auto_eval",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 82856382,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_structure_0078_attempt2_G-fixed",
+      "destination": "artifacts/task2_structure_0078_attempt2_G-fixed",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 2895770,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_structure_0078_attempt2_G-fixed_eval",
+      "destination": "artifacts/task2_structure_0078_attempt2_G-fixed_eval",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 82834805,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_structure_0078_attempt2_sampling",
+      "destination": "artifacts/task2_structure_0078_attempt2_sampling",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 1884,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_structure_0078_attempt2_smoke_C-free",
+      "destination": "artifacts/task2_structure_0078_attempt2_smoke_C-free",
+      "category": "pilot_or_smoke",
+      "accessible_bytes_from_inventory": 6360,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_structure_0078_attempt2_smoke_G-auto",
+      "destination": "artifacts/task2_structure_0078_attempt2_smoke_G-auto",
+      "category": "pilot_or_smoke",
+      "accessible_bytes_from_inventory": 6599,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_structure_0078_attempt2_smoke_G-fixed",
+      "destination": "artifacts/task2_structure_0078_attempt2_smoke_G-fixed",
+      "category": "pilot_or_smoke",
+      "accessible_bytes_from_inventory": 8384,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_structure_0078_smoke_C-free",
+      "destination": "artifacts/task2_structure_0078_smoke_C-free",
+      "category": "pilot_or_smoke",
+      "accessible_bytes_from_inventory": 6360,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_structure_0078_smoke_G-auto",
+      "destination": "artifacts/task2_structure_0078_smoke_G-auto",
+      "category": "pilot_or_smoke",
+      "accessible_bytes_from_inventory": 6599,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_structure_0078_smoke_G-fixed",
+      "destination": "artifacts/task2_structure_0078_smoke_G-fixed",
+      "category": "pilot_or_smoke",
+      "accessible_bytes_from_inventory": 8384,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_structure_force_0079",
+      "destination": "artifacts/task2_structure_force_0079",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 439651275,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_structure_force_0079_independent",
+      "destination": "artifacts/task2_structure_force_0079_independent",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 33101,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_structure_local0078",
+      "destination": "artifacts/task2_structure_local0078",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 31057,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_structure_prototype_0076",
+      "destination": "artifacts/task2_structure_prototype_0076",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 196866,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_structure_risk_components0078",
+      "destination": "artifacts/task2_structure_risk_components0078",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 602283,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_structured_modes_0089",
+      "destination": "artifacts/task2_structured_modes_0089",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 364734,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_structured_modes_0089_independent",
+      "destination": "artifacts/task2_structured_modes_0089_independent",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 224050,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_timing_0067",
+      "destination": "artifacts/task2_timing_0067",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 12918345,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_topology_driven_0043",
+      "destination": "artifacts/task2_topology_driven_0043",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 26857125,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_topology_passive_0042",
+      "destination": "artifacts/task2_topology_passive_0042",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 3786842,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_topology_stable_0044",
+      "destination": "artifacts/task2_topology_stable_0044",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 42903234,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_uncentered_observer_0031",
+      "destination": "artifacts/task2_uncentered_observer_0031",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 13362362,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_uncentered_oracle_0030",
+      "destination": "artifacts/task2_uncentered_oracle_0030",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 58568548,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_verified_modes_0035",
+      "destination": "artifacts/task2_verified_modes_0035",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 0,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_witness_deployment_0096",
+      "destination": "artifacts/task2_witness_deployment_0096",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 353781281,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "task2_witness_deployment_0096_independent",
+      "destination": "artifacts/task2_witness_deployment_0096_independent",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 717504,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "timing0067_smoke",
+      "destination": "artifacts/timing0067_smoke",
+      "category": "pilot_or_smoke",
+      "accessible_bytes_from_inventory": 0,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "timing0067_smoke_serial",
+      "destination": "artifacts/timing0067_smoke_serial",
+      "category": "pilot_or_smoke",
+      "accessible_bytes_from_inventory": 1861291,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    },
+    {
+      "directory": "weak_force_identification_20261029",
+      "destination": "artifacts/weak_force_identification_20261029",
+      "category": "experiment_artifact",
+      "accessible_bytes_from_inventory": 43248521,
+      "status": "conditional_on_root_live_and_closure_checks",
+      "preserve_complete_tree": true,
+      "delete_permission_from_this_record": false
+    }
+  ],
+  "migration_conditions": [
+    "root即时确认目录所属Run闭合且无读写者；当前其他会话状态可变化，本文静态快照不是进程证明。",
+    "刷新元数据，排除新文件、重解析点、未知访问错误及目标已存在冲突。",
+    "整根保留目录名和文件名，源→目标映射与逐文件原字节hash核验成功后才完成迁移；不重写历史源码/协议/身份记录。",
+    "模型、检查点、唯一原数据、正负结论最小证据和历史源码保留；是否删除生成物须独立证明可重建且不影响保留证据。",
+    "闭合树内部重复预测可在原文件名/字节保持且hash确认相同后另行审查硬链接合并；本记录不把不同内容或模型资产列为去重删除对象。",
+    "迁移到同一盘仅改变归属，不等于释放空间；删除/合并实际释放量单独核验。"
+  ],
+  "partition": {
+    "hold_in_place": 24,
+    "other_exclusions": 41,
+    "conditional_migration_candidates": 214,
+    "total_inventory_roots": 279
+  },
+  "not_done": [
+    "未执行当前科学loader或读取数据验证",
+    "未审核所有历史Run的逐文件可删除性",
+    "未验证迁移后旧路径重放",
+    "未移动、删除或硬链接任何文件"
+  ]
+}

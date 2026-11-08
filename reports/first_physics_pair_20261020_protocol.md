@@ -1,0 +1,19 @@
+# 相同预锁条件的首次物理执行：root登记
+
+2026-10-20。root采纳本轮实际gpt-6-astra代理/root/astra6_after_fom_environment_failure的完整原案[astra6_first_physics_20261020.md](astra6_first_physics_20261020.md)。本协议与原案共同约束新轮，原科学定义、选择/数值/覆盖门槛及256更新方案继承[原协议](active_fom_pair_20261020_protocol.md)及其设计修订，不重开原档。
+
+root明确采用一次前瞻窄政策：原48条件96次调用统一在ANDES导入前失败，0求解、0轨迹、0D、0训练、0val；失败及3312.2232031秒费用保持。环境工程真实PASS且PR14已合并核实main6b17be3535cc57985c1e1be4138decabc7c0f033。依据持续任务授权和[独立权限挑战](fom_environment_repair_20261020_independent_review.md)的条件，允许原设计在修复后本轮重新启动一次，称“同一物理条件重新执行、首次物理求解”。不将启动失败抹去，不推广到已产生物理信息的失败，不允许再用此例外开第三档。原48、随机12、val24、DP概率、种子与顺序按字节复制；不重抽。design SHA256 c475a3bf11aaa17e2a3ca4642291a43d863541be14ec0fefdec5cd072de8c126，val条件SHA256 9b8a44b7bb979d706ba8ff6cefababb8db3cf97027e99cca7ec3a5275013a224。
+
+固定BASE为private_data/closure_mechanism_20261019/P3/active_fom_pair_first_physics01，campaign为BASE/campaign01。旧档和旧acquire/fit/launcher源码冻结不改。新增experiments/first_physics_pair_20261020.py及专用私有launcher，以新外层binding绑定本轮source/命令/环境；旧scientific manifest保持原兼容格式。fit.CAMPAIGN仅在当前进程显式绑定固定新BASE，退出恢复，不放宽路径检查。真实生产调用与工程验收相同preflight，FOM类别用已验证ANDES解释器，推断/训练用CUDA解释器。任何条件前写早期worker身份与preflight；共同环境/身份错误在批中也必须停止，保留当前失败及后续not_attempted，合成QA验证旧catch Exception无法吞掉停止。真实数值/物理失败仍保留、无重试/补位。
+
+登记完整40000秒P3，从已核实88361.7061617分配，P3未分配48361.7061617；父累计57943.4684632、余额201256.5315368，登记后未分配161256.5315368。其余类别及旧900hold不动。类别硬限：QA/绑定准备1000、短历史1500、D与15秒预测冻结750、完整train3000、六模型追加256含schedule18000（各累计3000）、train评价/谱/导出3125、完整val3000、val评价/冻结/统计1875、支持3250、退出归档2000、不可执行重复预占2500。实际训练恢复≤2500嵌套在18000与各3000内，最多一次外部中断、≤31步重放；NaN或确定实现失败不得恢复碰运气。各类别不可互借，所有失败/监督/退出累计，子进程不双计。QA最多一次明确代码修复重验，累计≤1000；不重跑环境probe或旧P0。
+
+顺序为绑定复制/接线QA→48双步长100ms→六源D及固定随机12+主动12→24×六源15秒事前预测冻结→24完整train双步长→共同池六模型各256→各train评价/方程/局部谱→六个global1280与统计冻结→24val双步长→一次六模型评价。阶段门槛不足立即关闭相应后续，无缩seed/缩更新/加候选/补位/降门槛。原test关闭、TASK4暂停、原结构生成搜索关闭、默认模型不变；原P2/18组512/首次D不重跑。
+
+val仍为原固定设计的条件性比较；逐事件、三seed方向及频率/功率/失稳损害分别报告，无新增95%显著性或bootstrap。任何确认未覆盖/数值未决，全24确认未决。只有原门槛满足才描述相应能力；工程合并、D或局部Hurwitz不能代替模型采用或L2证书。
+
+实际CLI、命令JSON/hash、源提交与独立实现审查在启动前补记并推送；本登记没有已启动PID。每阶段实际执行后选择性归档，独立审查通过的可复用工程才PR集成。旧结果与默认模型保持。科学确定性实现/环境失败不以新编号再试本例外；关闭后由root按父授权选其他合法方向。
+
+实现已封版并通过[有限实现审查](first_physics_pair_20261020_implementation_review.md)。root采纳其条件：未来val冻结文件放在campaign01内；完整prior与唯一恢复逐阶段核对。代码来源e7862454f00fab958b31be0451dd18634304a6b2。首QA为GPU解释器`-m experiments.first_physics_pair_20261020 qa`，固定--output/--wrapper-output均为BASE/stages/qa01，--max-seconds 240，--source-commit为上述代码来源，外层300秒。prepare-binding对应BASE/stages/prepare01，自限120/外层180，同属累计1000的QA/绑定准备类别。精确命令及hash存BASE/commands/{qa01,prepare01}.json与公开preparation；prepare实际prior在QA完成后按真实回执另行冻结。源提交指代码版本，命令归档提交在执行前单独核实；不声称尚未存在的命令属于旧提交。
+
+首QA调用在native/worker启动前因root绑定遗漏configs/private_dataset.json被正确拒绝；没有native_qa01或stages/qa01。真实工具包络2.1761836秒单独记QA费用，保留prelaunch_failure01.json，不伪造原生回执。采用已登记唯一一次明确修正：补直接配置绑定，并使私有launcher明确读取cost_kind=prelaunch_tool_envelope的真实prelaunch_seconds参与累计/尝试计数。wrapper及15项测试不变；修正代码来源f78ea7dd974bae0067fff7aa884ac020fdfbb9c0。第二且最后QA用qa02新目录、240/300秒，prior明确包含首拒绝；不再允许QA修复重验。准备命令另冻结prepare02（原prepare01未执行保留），实际准备仍须QA合格。科学物理调用仍为0。

@@ -1,0 +1,56 @@
+{
+  "measured_native_seconds": 17.835231999999998,
+  "conservative_seconds": 0,
+  "qa_seconds": 17.835231999999998,
+  "includes_children_once": true,
+  "native_command_count": 9,
+  "receipts": [
+    {
+      "chunk": "563965",
+      "seconds": 1.8814691,
+      "kind": "rules_protocol_reads"
+    },
+    {
+      "chunk": "e6afde",
+      "seconds": 1.8881857,
+      "kind": "read_actual_plan_and_interfaces"
+    },
+    {
+      "chunk": "f3459b",
+      "seconds": 1.926714,
+      "kind": "read_restore_cpu_contracts"
+    },
+    {
+      "chunk": "c411ad",
+      "seconds": 2.0308415,
+      "kind": "write_runner"
+    },
+    {
+      "chunk": "f0f031",
+      "seconds": 2.0402096,
+      "kind": "write_endpoint_and_native_contracts"
+    },
+    {
+      "chunk": "c13df1",
+      "seconds": 1.9966814,
+      "kind": "static_interface_audit"
+    },
+    {
+      "chunk": "b952b4",
+      "seconds": 2.0865852,
+      "kind": "write_synthetic_tests_and_save_guard"
+    },
+    {
+      "chunk": "8822c3",
+      "seconds": 1.9251201,
+      "kind": "final_static_contract_read"
+    },
+    {
+      "chunk": "22b78b",
+      "seconds": 2.0594254,
+      "kind": "final_static_compile_hash"
+    }
+  ],
+  "scope": "Static rule/source/metadata reads, new owned-file edits, one stdlib compile; no project imports, source weights, train data, QA, prepare, cost, training or evaluation execution. Compile subprocess included once; internal compile timer not added.",
+  "receipt_write": "Written by apply_patch after all measured exec_command results, without another native command."
+}

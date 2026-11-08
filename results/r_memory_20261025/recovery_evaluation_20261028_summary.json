@@ -1,0 +1,2979 @@
+{
+  "kind": "read_only_existing_JSON_fact_extraction",
+  "created_utc": "2026-10-28T09:12:30.420030+00:00",
+  "source_commit": "cd337a63c439573b8d2cc4205f746add01e4d5e8",
+  "evaluation": {
+    "mode": "A",
+    "seed": 25101,
+    "step": 1152,
+    "status": "COMPLETED",
+    "optimizer_updates": 0,
+    "role": "prospective recovery evaluation; not the old 2048 endpoint",
+    "training_pt_loaded": false,
+    "model_adopted": false,
+    "val_read": false,
+    "test_read": false
+  },
+  "metric_definitions_units": {
+    "stable_horizon_risk": "Source evidence horizon_risks[5 or 8].value: original ceil-top10 risk over stable, available complete-horizon objective_point_error.mean_point_error; eligible and unresolved IDs retained. Risk is not RMSE.",
+    "score_perturbation": "Source numerical_score_perturbation = absolute difference between fine and coarse ceil-top10 score; source evidence units/scale retained.",
+    "common_frequency": "Mass-weighted common-frequency error RMSE summary across events; underlying scalar is angular frequency, rad/s. official mean/pooled/cvar10/worst retained.",
+    "normalized_p": "Checkpoint p_scale-normalized error RMSE summary; dimensionless. official mean/pooled/cvar10/worst retained.",
+    "unstable_physical_components": "Source records.unstable_prefix.official delta_rmse_rad in rad and omega_rmse_rad_s in rad/s; accompanying aggregate fields retained as defined in source.",
+    "classification_denominators": "Miss denominator is eligible unstable count (unstable_count minus unresolved unstable samples); false-positive denominator is eligible stable count (event_count minus unstable_count minus unresolved stable samples). Unresolved samples are subtracted only from their corresponding truth-class denominator."
+  },
+  "runs": {
+    "A0": {
+      "evidence_path": "private_data/r_memory_20261025/run01_repair01/evaluations/A_25101_step000000/science/evidence.json",
+      "event_count": 385,
+      "truth_unchanged": true,
+      "val_read": false,
+      "test_read": false,
+      "scopes": {
+        "common385": {
+          "event_count": 385,
+          "stable_horizon_risks": {
+            "5": {
+              "value": 1.4985997382063814,
+              "coarse_value": 1.4985998762755897,
+              "numerical_score_perturbation": 1.38069208288627e-07,
+              "eligible": 342,
+              "definition": "original ceil-top10 risk on stable complete horizon",
+              "unresolved_count": 0
+            },
+            "8": {
+              "value": 1.6207739754863382,
+              "coarse_value": 1.6207741019298907,
+              "numerical_score_perturbation": 1.2644355251723027e-07,
+              "eligible": 342,
+              "definition": "original ceil-top10 risk on stable complete horizon",
+              "unresolved_count": 0
+            }
+          },
+          "qualification": {
+            "all_8s_rows_qualified": true,
+            "all_actual15s_rows_qualified": true,
+            "all_required_rows_qualified": true
+          },
+          "classification_8s": {
+            "event_count": 385,
+            "unstable_count": 43,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 5,
+            "miss_denominator": 43,
+            "miss_rate": 0.11627906976744186,
+            "false_los_resolved_stable": 4,
+            "false_positive_denominator_stable_resolved": 342,
+            "false_positive_rate": 0.011695906432748537
+          },
+          "classification_actual15s": {
+            "event_count": 385,
+            "unstable_count": 43,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 19,
+            "miss_denominator": 43,
+            "miss_rate": 0.4418604651162791,
+            "false_los_resolved_stable": 4,
+            "false_positive_denominator_stable_resolved": 342,
+            "false_positive_rate": 0.011695906432748537
+          },
+          "stable_metric_summaries": {
+            "common_frequency_rmse": {
+              "5": {
+                "n_events": 342,
+                "mean": 0.2611196495567039,
+                "pooled": 0.33056696517396494,
+                "cvar10": 0.6708072575995868,
+                "worst": 1.754447889859541
+              },
+              "8": {
+                "n_events": 342,
+                "mean": 0.24630914857671538,
+                "pooled": 0.3053449462149538,
+                "cvar10": 0.5930269696290567,
+                "worst": 1.646380776189665
+              }
+            },
+            "normalized_p_rmse": {
+              "5": {
+                "n_events": 342,
+                "mean": 0.38026993623245425,
+                "pooled": 0.47533126683942545,
+                "cvar10": 0.9949420489719224,
+                "worst": 2.266355950514983
+              },
+              "8": {
+                "n_events": 342,
+                "mean": 0.33870941582932235,
+                "pooled": 0.43206742102250406,
+                "cvar10": 0.9168425334892114,
+                "worst": 2.5483740476974774
+              }
+            },
+            "objective_point_error": {
+              "5": {
+                "n_events": 342,
+                "mean": 0.7159460517946122,
+                "cvar10": 4.629214483853459,
+                "worst": 83.7035074485805
+              },
+              "8": {
+                "n_events": 342,
+                "mean": 0.7272963210642217,
+                "cvar10": 5.194684593174803,
+                "worst": 83.64832171506987
+              }
+            }
+          },
+          "unstable_prefix_summaries": {
+            "records": {
+              "all_rows": 43,
+              "eligible_events": 43,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 43,
+                "mean": 0.6470885253816515,
+                "pooled": 0.9999111742638644,
+                "cvar10": 1.482231012179218,
+                "worst": 1.6667700683130926,
+                "worst_group_mean": 1.615764182437578,
+                "delta_rmse_rad": 0.35075593339208894,
+                "omega_rmse_rad_s": 1.2116929862424721
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 43,
+                "mean": 0.6470885253816515,
+                "pooled": 0.9999111742638644,
+                "cvar10": 1.482231012179218,
+                "worst": 1.6667700683130926,
+                "worst_group_mean": 1.615764182437578,
+                "delta_rmse_rad": 0.35075593339208894,
+                "omega_rmse_rad_s": 1.2116929862424721
+              },
+              "physical_components": {
+                "delta_rmse_rad": 0.35075593339208894,
+                "omega_rmse_rad_s": 1.2116929862424721,
+                "mean": 0.6470885253816515,
+                "pooled": 0.9999111742638644,
+                "cvar10": 1.482231012179218,
+                "worst": 1.6667700683130926,
+                "worst_group_mean": 1.615764182437578
+              }
+            },
+            "common_frequency": {
+              "all_rows": 43,
+              "eligible_events": 43,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 43,
+                "mean": 0.5735471752346192,
+                "pooled": 1.1304145807373533,
+                "cvar10": 1.6712115782730674,
+                "worst": 1.9856060448583828
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 43,
+                "mean": 0.5735471752346192,
+                "pooled": 1.1304145807373533,
+                "cvar10": 1.6712115782730674,
+                "worst": 1.9856060448583828
+              }
+            },
+            "normalized_p": {
+              "all_rows": 43,
+              "eligible_events": 43,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 43,
+                "mean": 0.3785351246578084,
+                "pooled": 0.7770669475317292,
+                "cvar10": 1.1667033879485103,
+                "worst": 1.4684811623942964
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 43,
+                "mean": 0.3785351246578084,
+                "pooled": 0.7770669475317292,
+                "cvar10": 1.1667033879485103,
+                "worst": 1.4684811623942964
+              }
+            },
+            "objective_point_error": {
+              "all_rows": 43,
+              "eligible_events": 43,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 43,
+                "mean": 1.3829508955618424,
+                "cvar10": 6.07608209486155,
+                "worst": 8.850776707405636
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 43,
+                "mean": 1.3829508955618424,
+                "cvar10": 6.07608209486155,
+                "worst": 8.850776707405636
+              }
+            }
+          }
+        },
+        "fit": {
+          "event_count": 297,
+          "stable_horizon_risks": {
+            "5": {
+              "value": 1.7695054433790411,
+              "coarse_value": 1.7695056030717289,
+              "numerical_score_perturbation": 1.5969268774007617e-07,
+              "eligible": 267,
+              "definition": "original ceil-top10 risk on stable complete horizon",
+              "unresolved_count": 0
+            },
+            "8": {
+              "value": 1.8834482550428278,
+              "coarse_value": 1.883448403564808,
+              "numerical_score_perturbation": 1.4852198026993335e-07,
+              "eligible": 267,
+              "definition": "original ceil-top10 risk on stable complete horizon",
+              "unresolved_count": 0
+            }
+          },
+          "qualification": {
+            "all_8s_rows_qualified": true,
+            "all_actual15s_rows_qualified": true,
+            "all_required_rows_qualified": true
+          },
+          "classification_8s": {
+            "event_count": 297,
+            "unstable_count": 30,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 3,
+            "miss_denominator": 30,
+            "miss_rate": 0.1,
+            "false_los_resolved_stable": 4,
+            "false_positive_denominator_stable_resolved": 267,
+            "false_positive_rate": 0.0149812734082397
+          },
+          "classification_actual15s": {
+            "event_count": 297,
+            "unstable_count": 30,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 13,
+            "miss_denominator": 30,
+            "miss_rate": 0.43333333333333335,
+            "false_los_resolved_stable": 4,
+            "false_positive_denominator_stable_resolved": 267,
+            "false_positive_rate": 0.0149812734082397
+          },
+          "stable_metric_summaries": {
+            "common_frequency_rmse": {
+              "5": {
+                "n_events": 267,
+                "mean": 0.2687664443969572,
+                "pooled": 0.3420272215156987,
+                "cvar10": 0.6957502060359375,
+                "worst": 1.754447889859541
+              },
+              "8": {
+                "n_events": 267,
+                "mean": 0.25229192323183497,
+                "pooled": 0.31455002702459695,
+                "cvar10": 0.6123272389431137,
+                "worst": 1.646380776189665
+              }
+            },
+            "normalized_p_rmse": {
+              "5": {
+                "n_events": 267,
+                "mean": 0.38981338111907715,
+                "pooled": 0.49140194759147265,
+                "cvar10": 1.0427633276038708,
+                "worst": 2.266355950514983
+              },
+              "8": {
+                "n_events": 267,
+                "mean": 0.34752720788648606,
+                "pooled": 0.44773343301293556,
+                "cvar10": 0.9614907311690906,
+                "worst": 2.5483740476974774
+              }
+            },
+            "objective_point_error": {
+              "5": {
+                "n_events": 267,
+                "mean": 0.8194100472310132,
+                "cvar10": 5.569887027971152,
+                "worst": 83.7035074485805
+              },
+              "8": {
+                "n_events": 267,
+                "mean": 0.8249060759963304,
+                "cvar10": 6.117616971228816,
+                "worst": 83.64832171506987
+              }
+            }
+          },
+          "unstable_prefix_summaries": {
+            "records": {
+              "all_rows": 30,
+              "eligible_events": 30,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 30,
+                "mean": 0.6410832423788352,
+                "pooled": 0.9721906105324982,
+                "cvar10": 1.3932088986736446,
+                "worst": 1.4967880087089311,
+                "worst_group_mean": 1.3527965956579868,
+                "delta_rmse_rad": 0.3084901523989448,
+                "omega_rmse_rad_s": 1.2171861480291664
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 30,
+                "mean": 0.6410832423788352,
+                "pooled": 0.9721906105324982,
+                "cvar10": 1.3932088986736446,
+                "worst": 1.4967880087089311,
+                "worst_group_mean": 1.3527965956579868,
+                "delta_rmse_rad": 0.3084901523989448,
+                "omega_rmse_rad_s": 1.2171861480291664
+              },
+              "physical_components": {
+                "delta_rmse_rad": 0.3084901523989448,
+                "omega_rmse_rad_s": 1.2171861480291664,
+                "mean": 0.6410832423788352,
+                "pooled": 0.9721906105324982,
+                "cvar10": 1.3932088986736446,
+                "worst": 1.4967880087089311,
+                "worst_group_mean": 1.3527965956579868
+              }
+            },
+            "common_frequency": {
+              "all_rows": 30,
+              "eligible_events": 30,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 30,
+                "mean": 0.5039085780743924,
+                "pooled": 1.0934825039511582,
+                "cvar10": 1.6296415230221946,
+                "worst": 1.9079846877205962
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 30,
+                "mean": 0.5039085780743924,
+                "pooled": 1.0934825039511582,
+                "cvar10": 1.6296415230221946,
+                "worst": 1.9079846877205962
+              }
+            },
+            "normalized_p": {
+              "all_rows": 30,
+              "eligible_events": 30,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 30,
+                "mean": 0.3336571091782419,
+                "pooled": 0.7306551862784801,
+                "cvar10": 1.1020408285654137,
+                "worst": 1.245677934210467
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 30,
+                "mean": 0.3336571091782419,
+                "pooled": 0.7306551862784801,
+                "cvar10": 1.1020408285654137,
+                "worst": 1.245677934210467
+              }
+            },
+            "objective_point_error": {
+              "all_rows": 30,
+              "eligible_events": 30,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 30,
+                "mean": 1.2095543262595743,
+                "cvar10": 5.41106719260121,
+                "worst": 7.099282634841492
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 30,
+                "mean": 1.2095543262595743,
+                "cvar10": 5.41106719260121,
+                "worst": 7.099282634841492
+              }
+            }
+          }
+        },
+        "no_update": {
+          "event_count": 88,
+          "stable_horizon_risks": {
+            "5": {
+              "value": 0.5524545990334223,
+              "coarse_value": 0.5524546594876988,
+              "numerical_score_perturbation": 6.045427647372037e-08,
+              "eligible": 75,
+              "definition": "original ceil-top10 risk on stable complete horizon",
+              "unresolved_count": 0
+            },
+            "8": {
+              "value": 0.7142069113806465,
+              "coarse_value": 0.7142069596327083,
+              "numerical_score_perturbation": 4.8252061790599043e-08,
+              "eligible": 75,
+              "definition": "original ceil-top10 risk on stable complete horizon",
+              "unresolved_count": 0
+            }
+          },
+          "qualification": {
+            "all_8s_rows_qualified": true,
+            "all_actual15s_rows_qualified": true,
+            "all_required_rows_qualified": true
+          },
+          "classification_8s": {
+            "event_count": 88,
+            "unstable_count": 13,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 2,
+            "miss_denominator": 13,
+            "miss_rate": 0.15384615384615385,
+            "false_los_resolved_stable": 0,
+            "false_positive_denominator_stable_resolved": 75,
+            "false_positive_rate": 0.0
+          },
+          "classification_actual15s": {
+            "event_count": 88,
+            "unstable_count": 13,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 6,
+            "miss_denominator": 13,
+            "miss_rate": 0.46153846153846156,
+            "false_los_resolved_stable": 0,
+            "false_positive_denominator_stable_resolved": 75,
+            "false_positive_rate": 0.0
+          },
+          "stable_metric_summaries": {
+            "common_frequency_rmse": {
+              "5": {
+                "n_events": 75,
+                "mean": 0.2338970599254019,
+                "pooled": 0.28606585968922915,
+                "cvar10": 0.5715275194793333,
+                "worst": 0.6319088212881324
+              },
+              "8": {
+                "n_events": 75,
+                "mean": 0.2250104708044896,
+                "pooled": 0.27003985548825493,
+                "cvar10": 0.5168885602281501,
+                "worst": 0.5700267833635405
+              }
+            },
+            "normalized_p_rmse": {
+              "5": {
+                "n_events": 75,
+                "mean": 0.3462952724360765,
+                "pooled": 0.41307558214951934,
+                "cvar10": 0.8124339509905808,
+                "worst": 1.0406771051701684
+              },
+              "8": {
+                "n_events": 75,
+                "mean": 0.3073180761058194,
+                "pooled": 0.3709647968682992,
+                "cvar10": 0.7532917841099482,
+                "worst": 0.9639476380016658
+              }
+            },
+            "objective_point_error": {
+              "5": {
+                "n_events": 75,
+                "mean": 0.34761422804102476,
+                "cvar10": 1.371816083003012,
+                "worst": 2.197929539122534
+              },
+              "8": {
+                "n_events": 75,
+                "mean": 0.3798055935059149,
+                "cvar10": 2.051812182879573,
+                "worst": 3.323995475739365
+              }
+            }
+          },
+          "unstable_prefix_summaries": {
+            "records": {
+              "all_rows": 13,
+              "eligible_events": 13,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 13,
+                "mean": 0.6609468707727666,
+                "pooled": 1.0390937481921922,
+                "cvar10": 1.615764182437578,
+                "worst": 1.6667700683130926,
+                "worst_group_mean": 1.615764182437578,
+                "delta_rmse_rad": 0.4046610008487469,
+                "omega_rmse_rad_s": 1.2036199903524607
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 13,
+                "mean": 0.6609468707727666,
+                "pooled": 1.0390937481921922,
+                "cvar10": 1.615764182437578,
+                "worst": 1.6667700683130926,
+                "worst_group_mean": 1.615764182437578,
+                "delta_rmse_rad": 0.4046610008487469,
+                "omega_rmse_rad_s": 1.2036199903524607
+              },
+              "physical_components": {
+                "delta_rmse_rad": 0.4046610008487469,
+                "omega_rmse_rad_s": 1.2036199903524607,
+                "mean": 0.6609468707727666,
+                "pooled": 1.0390937481921922,
+                "cvar10": 1.615764182437578,
+                "worst": 1.6667700683130926,
+                "worst_group_mean": 1.615764182437578
+              }
+            },
+            "common_frequency": {
+              "all_rows": 13,
+              "eligible_events": 13,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 13,
+                "mean": 0.7342516302197577,
+                "pooled": 1.1823152975574442,
+                "cvar10": 1.6520283814234753,
+                "worst": 1.9856060448583828
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 13,
+                "mean": 0.7342516302197577,
+                "pooled": 1.1823152975574442,
+                "cvar10": 1.6520283814234753,
+                "worst": 1.9856060448583828
+              }
+            },
+            "normalized_p": {
+              "all_rows": 13,
+              "eligible_events": 13,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 13,
+                "mean": 0.48209977576450025,
+                "pooled": 0.8402967073764191,
+                "cvar10": 1.263697227023155,
+                "worst": 1.4684811623942964
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 13,
+                "mean": 0.48209977576450025,
+                "pooled": 0.8402967073764191,
+                "cvar10": 1.263697227023155,
+                "worst": 1.4684811623942964
+              }
+            },
+            "objective_point_error": {
+              "all_rows": 13,
+              "eligible_events": 13,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 13,
+                "mean": 1.7830968247209233,
+                "cvar10": 7.073604448252061,
+                "worst": 8.850776707405636
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 13,
+                "mean": 1.7830968247209233,
+                "cvar10": 7.073604448252061,
+                "worst": 8.850776707405636
+              }
+            }
+          }
+        },
+        "original366": {
+          "event_count": 366,
+          "stable_horizon_risks": {
+            "5": {
+              "value": 1.5287109541879942,
+              "coarse_value": 1.5287110925956517,
+              "numerical_score_perturbation": 1.3840765755723794e-07,
+              "eligible": 325,
+              "definition": "original ceil-top10 risk on stable complete horizon",
+              "unresolved_count": 0
+            },
+            "8": {
+              "value": 1.649166231778029,
+              "coarse_value": 1.649166360432417,
+              "numerical_score_perturbation": 1.2865438803189022e-07,
+              "eligible": 325,
+              "definition": "original ceil-top10 risk on stable complete horizon",
+              "unresolved_count": 0
+            }
+          },
+          "qualification": {
+            "all_8s_rows_qualified": true,
+            "all_actual15s_rows_qualified": true,
+            "all_required_rows_qualified": true
+          },
+          "classification_8s": {
+            "event_count": 366,
+            "unstable_count": 41,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 5,
+            "miss_denominator": 41,
+            "miss_rate": 0.12195121951219512,
+            "false_los_resolved_stable": 4,
+            "false_positive_denominator_stable_resolved": 325,
+            "false_positive_rate": 0.012307692307692308
+          },
+          "classification_actual15s": {
+            "event_count": 366,
+            "unstable_count": 41,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 17,
+            "miss_denominator": 41,
+            "miss_rate": 0.4146341463414634,
+            "false_los_resolved_stable": 4,
+            "false_positive_denominator_stable_resolved": 325,
+            "false_positive_rate": 0.012307692307692308
+          },
+          "stable_metric_summaries": {
+            "common_frequency_rmse": {
+              "5": {
+                "n_events": 325,
+                "mean": 0.26066156625572356,
+                "pooled": 0.33020009572831166,
+                "cvar10": 0.671920634443902,
+                "worst": 1.754447889859541
+              },
+              "8": {
+                "n_events": 325,
+                "mean": 0.2459267725297171,
+                "pooled": 0.30503103087709615,
+                "cvar10": 0.5935866437615521,
+                "worst": 1.646380776189665
+              }
+            },
+            "normalized_p_rmse": {
+              "5": {
+                "n_events": 325,
+                "mean": 0.3788414655073628,
+                "pooled": 0.47312980665058535,
+                "cvar10": 0.9898659677071356,
+                "worst": 2.266355950514983
+              },
+              "8": {
+                "n_events": 325,
+                "mean": 0.33751829843725073,
+                "pooled": 0.43055981513278885,
+                "cvar10": 0.913388329794125,
+                "worst": 2.5483740476974774
+              }
+            },
+            "objective_point_error": {
+              "5": {
+                "n_events": 325,
+                "mean": 0.7233046940581567,
+                "cvar10": 4.750335994707345,
+                "worst": 83.7035074485805
+              },
+              "8": {
+                "n_events": 325,
+                "mean": 0.7335903043958529,
+                "cvar10": 5.311469941306733,
+                "worst": 83.64832171506987
+              }
+            }
+          },
+          "unstable_prefix_summaries": {
+            "records": {
+              "all_rows": 41,
+              "eligible_events": 41,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 41,
+                "mean": 0.6486020495464417,
+                "pooled": 1.0109090669606673,
+                "cvar10": 1.482231012179218,
+                "worst": 1.6667700683130926,
+                "worst_group_mean": 1.615764182437578,
+                "delta_rmse_rad": 0.35645412714631497,
+                "omega_rmse_rad_s": 1.22265228812835
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 41,
+                "mean": 0.6486020495464417,
+                "pooled": 1.0109090669606673,
+                "cvar10": 1.482231012179218,
+                "worst": 1.6667700683130926,
+                "worst_group_mean": 1.615764182437578,
+                "delta_rmse_rad": 0.35645412714631497,
+                "omega_rmse_rad_s": 1.22265228812835
+              },
+              "physical_components": {
+                "delta_rmse_rad": 0.35645412714631497,
+                "omega_rmse_rad_s": 1.22265228812835,
+                "mean": 0.6486020495464417,
+                "pooled": 1.0109090669606673,
+                "cvar10": 1.482231012179218,
+                "worst": 1.6667700683130926,
+                "worst_group_mean": 1.615764182437578
+              }
+            },
+            "common_frequency": {
+              "all_rows": 41,
+              "eligible_events": 41,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 41,
+                "mean": 0.5779765292388982,
+                "pooled": 1.1468673778504848,
+                "cvar10": 1.6712115782730674,
+                "worst": 1.9856060448583828
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 41,
+                "mean": 0.5779765292388982,
+                "pooled": 1.1468673778504848,
+                "cvar10": 1.6712115782730674,
+                "worst": 1.9856060448583828
+              }
+            },
+            "normalized_p": {
+              "all_rows": 41,
+              "eligible_events": 41,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 41,
+                "mean": 0.38214093683154393,
+                "pooled": 0.7886840847300577,
+                "cvar10": 1.1667033879485103,
+                "worst": 1.4684811623942964
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 41,
+                "mean": 0.38214093683154393,
+                "pooled": 0.7886840847300577,
+                "cvar10": 1.1667033879485103,
+                "worst": 1.4684811623942964
+              }
+            },
+            "objective_point_error": {
+              "all_rows": 41,
+              "eligible_events": 41,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 41,
+                "mean": 1.415100278556872,
+                "cvar10": 6.07608209486155,
+                "worst": 8.850776707405636
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 41,
+                "mean": 1.415100278556872,
+                "cvar10": 6.07608209486155,
+                "worst": 8.850776707405636
+              }
+            }
+          }
+        },
+        "fresh19": {
+          "event_count": 19,
+          "stable_horizon_risks": {
+            "5": {
+              "value": 0.9719324386972064,
+              "coarse_value": 0.9719325734515029,
+              "numerical_score_perturbation": 1.3475429649911774e-07,
+              "eligible": 17,
+              "definition": "original ceil-top10 risk on stable complete horizon",
+              "unresolved_count": 0
+            },
+            "8": {
+              "value": 1.1391214051083747,
+              "coarse_value": 1.1391214931195335,
+              "numerical_score_perturbation": 8.801115880530119e-08,
+              "eligible": 17,
+              "definition": "original ceil-top10 risk on stable complete horizon",
+              "unresolved_count": 0
+            }
+          },
+          "qualification": {
+            "all_8s_rows_qualified": true,
+            "all_actual15s_rows_qualified": true,
+            "all_required_rows_qualified": true
+          },
+          "classification_8s": {
+            "event_count": 19,
+            "unstable_count": 2,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 0,
+            "miss_denominator": 2,
+            "miss_rate": 0.0,
+            "false_los_resolved_stable": 0,
+            "false_positive_denominator_stable_resolved": 17,
+            "false_positive_rate": 0.0
+          },
+          "classification_actual15s": {
+            "event_count": 19,
+            "unstable_count": 2,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 2,
+            "miss_denominator": 2,
+            "miss_rate": 1.0,
+            "false_los_resolved_stable": 0,
+            "false_positive_denominator_stable_resolved": 17,
+            "false_positive_rate": 0.0
+          },
+          "stable_metric_summaries": {
+            "common_frequency_rmse": {
+              "5": {
+                "n_events": 17,
+                "mean": 0.26987712442838657,
+                "pooled": 0.33750396674172206,
+                "cvar10": 0.6278093058355521,
+                "worst": 0.6710692357200436
+              },
+              "8": {
+                "n_events": 17,
+                "mean": 0.25361927888697633,
+                "pooled": 0.31128539854369885,
+                "cvar10": 0.5569948778674512,
+                "worst": 0.5724403498124522
+              }
+            },
+            "normalized_p_rmse": {
+              "5": {
+                "n_events": 17,
+                "mean": 0.4075789353886132,
+                "pooled": 0.5156136604047993,
+                "cvar10": 1.0495377120772613,
+                "worst": 1.0964024156452654
+              },
+              "8": {
+                "n_events": 17,
+                "mean": 0.3614807777365729,
+                "pooled": 0.4599399881159055,
+                "cvar10": 0.9539192856628937,
+                "worst": 0.9914427265900363
+              }
+            },
+            "objective_point_error": {
+              "5": {
+                "n_events": 17,
+                "mean": 0.5752661261680257,
+                "cvar10": 2.5585976888139284,
+                "worst": 3.0612374063338104
+              },
+              "8": {
+                "n_events": 17,
+                "mean": 0.606970169135978,
+                "cvar10": 3.2677263489979618,
+                "worst": 3.49129178493281
+              }
+            }
+          },
+          "unstable_prefix_summaries": {
+            "records": {
+              "all_rows": 2,
+              "eligible_events": 2,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 2,
+                "mean": 0.6160612800034528,
+                "pooled": 0.618333313949478,
+                "cvar10": 0.7521771711291725,
+                "worst": 0.7521771711291725,
+                "worst_group_mean": 0.7521771711291725,
+                "delta_rmse_rad": 0.1025163201472812,
+                "omega_rmse_rad_s": 0.8504586263332671
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 2,
+                "mean": 0.6160612800034528,
+                "pooled": 0.618333313949478,
+                "cvar10": 0.7521771711291725,
+                "worst": 0.7521771711291725,
+                "worst_group_mean": 0.7521771711291725,
+                "delta_rmse_rad": 0.1025163201472812,
+                "omega_rmse_rad_s": 0.8504586263332671
+              },
+              "physical_components": {
+                "delta_rmse_rad": 0.1025163201472812,
+                "omega_rmse_rad_s": 0.8504586263332671,
+                "mean": 0.6160612800034528,
+                "pooled": 0.618333313949478,
+                "cvar10": 0.7521771711291725,
+                "worst": 0.7521771711291725,
+                "worst_group_mean": 0.7521771711291725
+              }
+            },
+            "common_frequency": {
+              "all_rows": 2,
+              "eligible_events": 2,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 2,
+                "mean": 0.482745418146898,
+                "pooled": 0.4813209533922089,
+                "cvar10": 0.5020229599870387,
+                "worst": 0.5020229599870387
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 2,
+                "mean": 0.482745418146898,
+                "pooled": 0.4813209533922089,
+                "cvar10": 0.5020229599870387,
+                "worst": 0.5020229599870387
+              }
+            },
+            "normalized_p": {
+              "all_rows": 2,
+              "eligible_events": 2,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 2,
+                "mean": 0.30461597509623056,
+                "pooled": 0.30975288768496817,
+                "cvar10": 0.33907809808349587,
+                "worst": 0.33907809808349587
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 2,
+                "mean": 0.30461597509623056,
+                "pooled": 0.30975288768496817,
+                "cvar10": 0.33907809808349587,
+                "worst": 0.33907809808349587
+              }
+            },
+            "objective_point_error": {
+              "all_rows": 2,
+              "eligible_events": 2,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 2,
+                "mean": 0.7238885441637382,
+                "cvar10": 0.889092173142879,
+                "worst": 0.889092173142879
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 2,
+                "mean": 0.7238885441637382,
+                "cvar10": 0.889092173142879,
+                "worst": 0.889092173142879
+              }
+            }
+          }
+        }
+      },
+      "completion": {
+        "status": "COMPLETED",
+        "evidence_sha256": "7ac198e6a8377a3fd61941c4c40c39ba6888e0a3815f101f0ac843bfa9128d2d"
+      },
+      "frozen_target": {
+        "mode": "A",
+        "seed": 25101,
+        "step": 0
+      }
+    },
+    "A512": {
+      "evidence_path": "private_data/r_memory_20261025/run01_repair01/evaluations/A_25101_step000512/science/evidence.json",
+      "event_count": 385,
+      "truth_unchanged": true,
+      "val_read": false,
+      "test_read": false,
+      "scopes": {
+        "common385": {
+          "event_count": 385,
+          "stable_horizon_risks": {
+            "5": {
+              "value": 1.376575583272389,
+              "coarse_value": 1.376575682671926,
+              "numerical_score_perturbation": 9.939953704574123e-08,
+              "eligible": 342,
+              "definition": "original ceil-top10 risk on stable complete horizon",
+              "unresolved_count": 0
+            },
+            "8": {
+              "value": 1.6367144141255499,
+              "coarse_value": 1.6367145199698592,
+              "numerical_score_perturbation": 1.0584430931714905e-07,
+              "eligible": 342,
+              "definition": "original ceil-top10 risk on stable complete horizon",
+              "unresolved_count": 0
+            }
+          },
+          "qualification": {
+            "all_8s_rows_qualified": true,
+            "all_actual15s_rows_qualified": true,
+            "all_required_rows_qualified": true
+          },
+          "classification_8s": {
+            "event_count": 385,
+            "unstable_count": 43,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 6,
+            "miss_denominator": 43,
+            "miss_rate": 0.13953488372093023,
+            "false_los_resolved_stable": 7,
+            "false_positive_denominator_stable_resolved": 342,
+            "false_positive_rate": 0.02046783625730994
+          },
+          "classification_actual15s": {
+            "event_count": 385,
+            "unstable_count": 43,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 23,
+            "miss_denominator": 43,
+            "miss_rate": 0.5348837209302325,
+            "false_los_resolved_stable": 7,
+            "false_positive_denominator_stable_resolved": 342,
+            "false_positive_rate": 0.02046783625730994
+          },
+          "stable_metric_summaries": {
+            "common_frequency_rmse": {
+              "5": {
+                "n_events": 342,
+                "mean": 0.22731318697983544,
+                "pooled": 0.2928855344552228,
+                "cvar10": 0.6006753898090564,
+                "worst": 1.774693213115673
+              },
+              "8": {
+                "n_events": 342,
+                "mean": 0.22003167756739692,
+                "pooled": 0.27460787258631725,
+                "cvar10": 0.5316548488540248,
+                "worst": 1.6635688518952945
+              }
+            },
+            "normalized_p_rmse": {
+              "5": {
+                "n_events": 342,
+                "mean": 0.34116055917510857,
+                "pooled": 0.4335738957961974,
+                "cvar10": 0.9250743437413482,
+                "worst": 2.3806382137974236
+              },
+              "8": {
+                "n_events": 342,
+                "mean": 0.315789572888438,
+                "pooled": 0.41100751346196135,
+                "cvar10": 0.8860878470968541,
+                "worst": 2.767189252019555
+              }
+            },
+            "objective_point_error": {
+              "5": {
+                "n_events": 342,
+                "mean": 0.6391854235000768,
+                "cvar10": 4.326136222361637,
+                "worst": 84.82012866694026
+              },
+              "8": {
+                "n_events": 342,
+                "mean": 0.7247885805717986,
+                "cvar10": 5.284417748340555,
+                "worst": 85.4431230508381
+              }
+            }
+          },
+          "unstable_prefix_summaries": {
+            "records": {
+              "all_rows": 43,
+              "eligible_events": 43,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 43,
+                "mean": 0.6677208720371594,
+                "pooled": 1.0758788577914942,
+                "cvar10": 1.5464592779519652,
+                "worst": 1.7726397972919161,
+                "worst_group_mean": 1.7686742112751261,
+                "delta_rmse_rad": 0.3766521732972291,
+                "omega_rmse_rad_s": 1.3047138568691516
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 43,
+                "mean": 0.6677208720371594,
+                "pooled": 1.0758788577914942,
+                "cvar10": 1.5464592779519652,
+                "worst": 1.7726397972919161,
+                "worst_group_mean": 1.7686742112751261,
+                "delta_rmse_rad": 0.3766521732972291,
+                "omega_rmse_rad_s": 1.3047138568691516
+              },
+              "physical_components": {
+                "delta_rmse_rad": 0.3766521732972291,
+                "omega_rmse_rad_s": 1.3047138568691516,
+                "mean": 0.6677208720371594,
+                "pooled": 1.0758788577914942,
+                "cvar10": 1.5464592779519652,
+                "worst": 1.7726397972919161,
+                "worst_group_mean": 1.7686742112751261
+              }
+            },
+            "common_frequency": {
+              "all_rows": 43,
+              "eligible_events": 43,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 43,
+                "mean": 0.5812502393828957,
+                "pooled": 1.1523286526837004,
+                "cvar10": 1.7020184573819641,
+                "worst": 2.0345996670850113
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 43,
+                "mean": 0.5812502393828957,
+                "pooled": 1.1523286526837004,
+                "cvar10": 1.7020184573819641,
+                "worst": 2.0345996670850113
+              }
+            },
+            "normalized_p": {
+              "all_rows": 43,
+              "eligible_events": 43,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 43,
+                "mean": 0.39134964663267435,
+                "pooled": 0.8186775586971359,
+                "cvar10": 1.2180446189952472,
+                "worst": 1.5718155637691076
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 43,
+                "mean": 0.39134964663267435,
+                "pooled": 0.8186775586971359,
+                "cvar10": 1.2180446189952472,
+                "worst": 1.5718155637691076
+              }
+            },
+            "objective_point_error": {
+              "all_rows": 43,
+              "eligible_events": 43,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 43,
+                "mean": 1.4791093388467598,
+                "cvar10": 6.687017162739181,
+                "worst": 9.696662878513981
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 43,
+                "mean": 1.4791093388467598,
+                "cvar10": 6.687017162739181,
+                "worst": 9.696662878513981
+              }
+            }
+          }
+        },
+        "fit": {
+          "event_count": 297,
+          "stable_horizon_risks": {
+            "5": {
+              "value": 1.6414812244611017,
+              "coarse_value": 1.641481335842013,
+              "numerical_score_perturbation": 1.1138091138285233e-07,
+              "eligible": 267,
+              "definition": "original ceil-top10 risk on stable complete horizon",
+              "unresolved_count": 0
+            },
+            "8": {
+              "value": 1.892932345159336,
+              "coarse_value": 1.8929324696557535,
+              "numerical_score_perturbation": 1.244964173974239e-07,
+              "eligible": 267,
+              "definition": "original ceil-top10 risk on stable complete horizon",
+              "unresolved_count": 0
+            }
+          },
+          "qualification": {
+            "all_8s_rows_qualified": true,
+            "all_actual15s_rows_qualified": true,
+            "all_required_rows_qualified": true
+          },
+          "classification_8s": {
+            "event_count": 297,
+            "unstable_count": 30,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 3,
+            "miss_denominator": 30,
+            "miss_rate": 0.1,
+            "false_los_resolved_stable": 6,
+            "false_positive_denominator_stable_resolved": 267,
+            "false_positive_rate": 0.02247191011235955
+          },
+          "classification_actual15s": {
+            "event_count": 297,
+            "unstable_count": 30,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 16,
+            "miss_denominator": 30,
+            "miss_rate": 0.5333333333333333,
+            "false_los_resolved_stable": 6,
+            "false_positive_denominator_stable_resolved": 267,
+            "false_positive_rate": 0.02247191011235955
+          },
+          "stable_metric_summaries": {
+            "common_frequency_rmse": {
+              "5": {
+                "n_events": 267,
+                "mean": 0.23501909903608656,
+                "pooled": 0.30540715853602257,
+                "cvar10": 0.6295934707039768,
+                "worst": 1.774693213115673
+              },
+              "8": {
+                "n_events": 267,
+                "mean": 0.22587939816744182,
+                "pooled": 0.28449074554842146,
+                "cvar10": 0.5541097484332441,
+                "worst": 1.6635688518952945
+              }
+            },
+            "normalized_p_rmse": {
+              "5": {
+                "n_events": 267,
+                "mean": 0.3500553182975101,
+                "pooled": 0.4505061391464463,
+                "cvar10": 0.9770983320322476,
+                "worst": 2.3806382137974236
+              },
+              "8": {
+                "n_events": 267,
+                "mean": 0.32459510029547933,
+                "pooled": 0.4281414977819175,
+                "cvar10": 0.9317671351932539,
+                "worst": 2.767189252019555
+              }
+            },
+            "objective_point_error": {
+              "5": {
+                "n_events": 267,
+                "mean": 0.7390567627866852,
+                "cvar10": 5.251179071158767,
+                "worst": 84.82012866694026
+              },
+              "8": {
+                "n_events": 267,
+                "mean": 0.8251897512453333,
+                "cvar10": 6.163902720815347,
+                "worst": 85.4431230508381
+              }
+            }
+          },
+          "unstable_prefix_summaries": {
+            "records": {
+              "all_rows": 30,
+              "eligible_events": 30,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 30,
+                "mean": 0.6157446128826098,
+                "pooled": 0.9569250104003423,
+                "cvar10": 1.3406325272527695,
+                "worst": 1.516450653791373,
+                "worst_group_mean": 1.3567212500585335,
+                "delta_rmse_rad": 0.3135151898097141,
+                "omega_rmse_rad_s": 1.1867613567382804
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 30,
+                "mean": 0.6157446128826098,
+                "pooled": 0.9569250104003423,
+                "cvar10": 1.3406325272527695,
+                "worst": 1.516450653791373,
+                "worst_group_mean": 1.3567212500585335,
+                "delta_rmse_rad": 0.3135151898097141,
+                "omega_rmse_rad_s": 1.1867613567382804
+              },
+              "physical_components": {
+                "delta_rmse_rad": 0.3135151898097141,
+                "omega_rmse_rad_s": 1.1867613567382804,
+                "mean": 0.6157446128826098,
+                "pooled": 0.9569250104003423,
+                "cvar10": 1.3406325272527695,
+                "worst": 1.516450653791373,
+                "worst_group_mean": 1.3567212500585335
+              }
+            },
+            "common_frequency": {
+              "all_rows": 30,
+              "eligible_events": 30,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 30,
+                "mean": 0.5087661169619717,
+                "pooled": 1.1137735213833768,
+                "cvar10": 1.6697681322039133,
+                "worst": 1.9352490575098749
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 30,
+                "mean": 0.5087661169619717,
+                "pooled": 1.1137735213833768,
+                "cvar10": 1.6697681322039133,
+                "worst": 1.9352490575098749
+              }
+            },
+            "normalized_p": {
+              "all_rows": 30,
+              "eligible_events": 30,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 30,
+                "mean": 0.3329084795309212,
+                "pooled": 0.7388977282187741,
+                "cvar10": 1.1218231629950468,
+                "worst": 1.294401591399252
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 30,
+                "mean": 0.3329084795309212,
+                "pooled": 0.7388977282187741,
+                "cvar10": 1.1218231629950468,
+                "worst": 1.294401591399252
+              }
+            },
+            "objective_point_error": {
+              "all_rows": 30,
+              "eligible_events": 30,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 30,
+                "mean": 1.1891518469802045,
+                "cvar10": 5.623493921254169,
+                "worst": 7.326500963841893
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 30,
+                "mean": 1.1891518469802045,
+                "cvar10": 5.623493921254169,
+                "worst": 7.326500963841893
+              }
+            }
+          }
+        },
+        "no_update": {
+          "event_count": 88,
+          "stable_horizon_risks": {
+            "5": {
+              "value": 0.4558324475188392,
+              "coarse_value": 0.45583250389969177,
+              "numerical_score_perturbation": 5.638085254222602e-08,
+              "eligible": 75,
+              "definition": "original ceil-top10 risk on stable complete horizon",
+              "unresolved_count": 0
+            },
+            "8": {
+              "value": 0.7270450156517441,
+              "coarse_value": 0.7270450558231601,
+              "numerical_score_perturbation": 4.017141608247954e-08,
+              "eligible": 75,
+              "definition": "original ceil-top10 risk on stable complete horizon",
+              "unresolved_count": 0
+            }
+          },
+          "qualification": {
+            "all_8s_rows_qualified": true,
+            "all_actual15s_rows_qualified": true,
+            "all_required_rows_qualified": true
+          },
+          "classification_8s": {
+            "event_count": 88,
+            "unstable_count": 13,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 3,
+            "miss_denominator": 13,
+            "miss_rate": 0.23076923076923078,
+            "false_los_resolved_stable": 1,
+            "false_positive_denominator_stable_resolved": 75,
+            "false_positive_rate": 0.013333333333333334
+          },
+          "classification_actual15s": {
+            "event_count": 88,
+            "unstable_count": 13,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 7,
+            "miss_denominator": 13,
+            "miss_rate": 0.5384615384615384,
+            "false_los_resolved_stable": 1,
+            "false_positive_denominator_stable_resolved": 75,
+            "false_positive_rate": 0.013333333333333334
+          },
+          "stable_metric_summaries": {
+            "common_frequency_rmse": {
+              "5": {
+                "n_events": 75,
+                "mean": 0.19988014005958127,
+                "pooled": 0.2431292945119241,
+                "cvar10": 0.48467299219821214,
+                "worst": 0.5425033415897933
+              },
+              "8": {
+                "n_events": 75,
+                "mean": 0.199213792231237,
+                "pooled": 0.23609045192956535,
+                "cvar10": 0.4449685011558468,
+                "worst": 0.49268458166385637
+              }
+            },
+            "normalized_p_rmse": {
+              "5": {
+                "n_events": 75,
+                "mean": 0.3094952166993595,
+                "pooled": 0.3670082445854833,
+                "cvar10": 0.7318078113791225,
+                "worst": 0.9554330549593716
+              },
+              "8": {
+                "n_events": 75,
+                "mean": 0.284441895319371,
+                "pooled": 0.34313498387585206,
+                "cvar10": 0.7086132820472656,
+                "worst": 0.9119526800432214
+              }
+            },
+            "objective_point_error": {
+              "5": {
+                "n_events": 75,
+                "mean": 0.2836434556397508,
+                "cvar10": 1.1445884150351926,
+                "worst": 1.9243615199174942
+              },
+              "8": {
+                "n_events": 75,
+                "mean": 0.3673604129740148,
+                "cvar10": 2.165783426362662,
+                "worst": 3.331862078397023
+              }
+            }
+          },
+          "unstable_prefix_summaries": {
+            "records": {
+              "all_rows": 13,
+              "eligible_events": 13,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 13,
+                "mean": 0.7876660854707355,
+                "pooled": 1.2291887425284702,
+                "cvar10": 1.7686742112751261,
+                "worst": 1.7726397972919161,
+                "worst_group_mean": 1.7686742112751261,
+                "delta_rmse_rad": 0.45337519295285744,
+                "omega_rmse_rad_s": 1.460054406639353
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 13,
+                "mean": 0.7876660854707355,
+                "pooled": 1.2291887425284702,
+                "cvar10": 1.7686742112751261,
+                "worst": 1.7726397972919161,
+                "worst_group_mean": 1.7686742112751261,
+                "delta_rmse_rad": 0.45337519295285744,
+                "omega_rmse_rad_s": 1.460054406639353
+              },
+              "physical_components": {
+                "delta_rmse_rad": 0.45337519295285744,
+                "omega_rmse_rad_s": 1.460054406639353,
+                "mean": 0.7876660854707355,
+                "pooled": 1.2291887425284702,
+                "cvar10": 1.7686742112751261,
+                "worst": 1.7726397972919161,
+                "worst_group_mean": 1.7686742112751261
+              }
+            },
+            "common_frequency": {
+              "all_rows": 13,
+              "eligible_events": 13,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 13,
+                "mean": 0.7485212911234895,
+                "pooled": 1.2064604458552817,
+                "cvar10": 1.6823602130747215,
+                "worst": 2.0345996670850113
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 13,
+                "mean": 0.7485212911234895,
+                "pooled": 1.2064604458552817,
+                "cvar10": 1.6823602130747215,
+                "worst": 2.0345996670850113
+              }
+            },
+            "normalized_p": {
+              "all_rows": 13,
+              "eligible_events": 13,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 13,
+                "mean": 0.5262138784059511,
+                "pooled": 0.922949360958301,
+                "cvar10": 1.3623768029955472,
+                "worst": 1.5718155637691076
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 13,
+                "mean": 0.5262138784059511,
+                "pooled": 0.922949360958301,
+                "cvar10": 1.3623768029955472,
+                "worst": 1.5718155637691076
+              }
+            },
+            "objective_point_error": {
+              "all_rows": 13,
+              "eligible_events": 13,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 13,
+                "mean": 2.148242012384964,
+                "cvar10": 7.9627745111750325,
+                "worst": 9.696662878513981
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 13,
+                "mean": 2.148242012384964,
+                "cvar10": 7.9627745111750325,
+                "worst": 9.696662878513981
+              }
+            }
+          }
+        },
+        "original366": {
+          "event_count": 366,
+          "stable_horizon_risks": {
+            "5": {
+              "value": 1.4098473242373073,
+              "coarse_value": 1.4098474225042794,
+              "numerical_score_perturbation": 9.826697211501312e-08,
+              "eligible": 325,
+              "definition": "original ceil-top10 risk on stable complete horizon",
+              "unresolved_count": 0
+            },
+            "8": {
+              "value": 1.6658223720605476,
+              "coarse_value": 1.6658224790942286,
+              "numerical_score_perturbation": 1.0703368102937816e-07,
+              "eligible": 325,
+              "definition": "original ceil-top10 risk on stable complete horizon",
+              "unresolved_count": 0
+            }
+          },
+          "qualification": {
+            "all_8s_rows_qualified": true,
+            "all_actual15s_rows_qualified": true,
+            "all_required_rows_qualified": true
+          },
+          "classification_8s": {
+            "event_count": 366,
+            "unstable_count": 41,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 6,
+            "miss_denominator": 41,
+            "miss_rate": 0.14634146341463414,
+            "false_los_resolved_stable": 7,
+            "false_positive_denominator_stable_resolved": 325,
+            "false_positive_rate": 0.021538461538461538
+          },
+          "classification_actual15s": {
+            "event_count": 366,
+            "unstable_count": 41,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 22,
+            "miss_denominator": 41,
+            "miss_rate": 0.5365853658536586,
+            "false_los_resolved_stable": 7,
+            "false_positive_denominator_stable_resolved": 325,
+            "false_positive_rate": 0.021538461538461538
+          },
+          "stable_metric_summaries": {
+            "common_frequency_rmse": {
+              "5": {
+                "n_events": 325,
+                "mean": 0.22685937571820528,
+                "pooled": 0.29284228281759545,
+                "cvar10": 0.6024707553014925,
+                "worst": 1.774693213115673
+              },
+              "8": {
+                "n_events": 325,
+                "mean": 0.2196966350745448,
+                "pooled": 0.27462277078370484,
+                "cvar10": 0.5332272978226168,
+                "worst": 1.6635688518952945
+              }
+            },
+            "normalized_p_rmse": {
+              "5": {
+                "n_events": 325,
+                "mean": 0.33985480554999975,
+                "pooled": 0.4318909826789734,
+                "cvar10": 0.9209498270657037,
+                "worst": 2.3806382137974236
+              },
+              "8": {
+                "n_events": 325,
+                "mean": 0.31459220622643613,
+                "pooled": 0.40978631386679715,
+                "cvar10": 0.8834688259384833,
+                "worst": 2.767189252019555
+              }
+            },
+            "objective_point_error": {
+              "5": {
+                "n_events": 325,
+                "mean": 0.6481144260945224,
+                "cvar10": 4.456778916808446,
+                "worst": 84.82012866694026
+              },
+              "8": {
+                "n_events": 325,
+                "mean": 0.729939210736168,
+                "cvar10": 5.409355017358066,
+                "worst": 85.4431230508381
+              }
+            }
+          },
+          "unstable_prefix_summaries": {
+            "records": {
+              "all_rows": 41,
+              "eligible_events": 41,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 41,
+                "mean": 0.6726477261025017,
+                "pooled": 1.0896056933007765,
+                "cvar10": 1.5464592779519652,
+                "worst": 1.7726397972919161,
+                "worst_group_mean": 1.7686742112751261,
+                "delta_rmse_rad": 0.3829193594623676,
+                "omega_rmse_rad_s": 1.319486541539932
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 41,
+                "mean": 0.6726477261025017,
+                "pooled": 1.0896056933007765,
+                "cvar10": 1.5464592779519652,
+                "worst": 1.7726397972919161,
+                "worst_group_mean": 1.7686742112751261,
+                "delta_rmse_rad": 0.3829193594623676,
+                "omega_rmse_rad_s": 1.319486541539932
+              },
+              "physical_components": {
+                "delta_rmse_rad": 0.3829193594623676,
+                "omega_rmse_rad_s": 1.319486541539932,
+                "mean": 0.6726477261025017,
+                "pooled": 1.0896056933007765,
+                "cvar10": 1.5464592779519652,
+                "worst": 1.7726397972919161,
+                "worst_group_mean": 1.7686742112751261
+              }
+            },
+            "common_frequency": {
+              "all_rows": 41,
+              "eligible_events": 41,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 41,
+                "mean": 0.5857676249515759,
+                "pooled": 1.1691414158185962,
+                "cvar10": 1.7020184573819641,
+                "worst": 2.0345996670850113
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 41,
+                "mean": 0.5857676249515759,
+                "pooled": 1.1691414158185962,
+                "cvar10": 1.7020184573819641,
+                "worst": 2.0345996670850113
+              }
+            },
+            "normalized_p": {
+              "all_rows": 41,
+              "eligible_events": 41,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 41,
+                "mean": 0.39693375800824077,
+                "pooled": 0.831499728127809,
+                "cvar10": 1.2180446189952472,
+                "worst": 1.5718155637691076
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 41,
+                "mean": 0.39693375800824077,
+                "pooled": 0.831499728127809,
+                "cvar10": 1.2180446189952472,
+                "worst": 1.5718155637691076
+              }
+            },
+            "objective_point_error": {
+              "all_rows": 41,
+              "eligible_events": 41,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 41,
+                "mean": 1.5191468906016576,
+                "cvar10": 6.687017162739181,
+                "worst": 9.696662878513981
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 41,
+                "mean": 1.5191468906016576,
+                "cvar10": 6.687017162739181,
+                "worst": 9.696662878513981
+              }
+            }
+          }
+        },
+        "fresh19": {
+          "event_count": 19,
+          "stable_horizon_risks": {
+            "5": {
+              "value": 0.7933505867327648,
+              "coarse_value": 0.7933507072978432,
+              "numerical_score_perturbation": 1.2056507836533115e-07,
+              "eligible": 17,
+              "definition": "original ceil-top10 risk on stable complete horizon",
+              "unresolved_count": 0
+            },
+            "8": {
+              "value": 1.1456470826774159,
+              "coarse_value": 1.145647167652823,
+              "numerical_score_perturbation": 8.49754071552411e-08,
+              "eligible": 17,
+              "definition": "original ceil-top10 risk on stable complete horizon",
+              "unresolved_count": 0
+            }
+          },
+          "qualification": {
+            "all_8s_rows_qualified": true,
+            "all_actual15s_rows_qualified": true,
+            "all_required_rows_qualified": true
+          },
+          "classification_8s": {
+            "event_count": 19,
+            "unstable_count": 2,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 0,
+            "miss_denominator": 2,
+            "miss_rate": 0.0,
+            "false_los_resolved_stable": 0,
+            "false_positive_denominator_stable_resolved": 17,
+            "false_positive_rate": 0.0
+          },
+          "classification_actual15s": {
+            "event_count": 19,
+            "unstable_count": 2,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 1,
+            "miss_denominator": 2,
+            "miss_rate": 0.5,
+            "false_los_resolved_stable": 0,
+            "false_positive_denominator_stable_resolved": 17,
+            "false_positive_rate": 0.0
+          },
+          "stable_metric_summaries": {
+            "common_frequency_rmse": {
+              "5": {
+                "n_events": 17,
+                "mean": 0.23598899051099909,
+                "pooled": 0.2937111791975915,
+                "cvar10": 0.5590521297229851,
+                "worst": 0.5824954517965492
+              },
+              "8": {
+                "n_events": 17,
+                "mean": 0.22643690169545172,
+                "pooled": 0.274322898514981,
+                "cvar10": 0.48959029777818286,
+                "worst": 0.5054061695078388
+              }
+            },
+            "normalized_p_rmse": {
+              "5": {
+                "n_events": 17,
+                "mean": 0.3661234961257191,
+                "pooled": 0.46457638559083625,
+                "cvar10": 0.9600946760190412,
+                "worst": 1.0161253076179548
+              },
+              "8": {
+                "n_events": 17,
+                "mean": 0.3386804061325924,
+                "pooled": 0.43369321959004603,
+                "cvar10": 0.9076331840184079,
+                "worst": 0.9530930539528328
+              }
+            },
+            "objective_point_error": {
+              "5": {
+                "n_events": 17,
+                "mean": 0.4684839033121474,
+                "cvar10": 2.092817320415234,
+                "worst": 2.4397822905336537
+              },
+              "8": {
+                "n_events": 17,
+                "mean": 0.6263206509588585,
+                "cvar10": 3.222952809551646,
+                "worst": 3.384278389226009
+              }
+            }
+          },
+          "unstable_prefix_summaries": {
+            "records": {
+              "all_rows": 2,
+              "eligible_events": 2,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 2,
+                "mean": 0.5667203636976419,
+                "pooled": 0.5723028877757167,
+                "cvar10": 0.715670151759481,
+                "worst": 0.715670151759481,
+                "worst_group_mean": 0.715670151759481,
+                "delta_rmse_rad": 0.09459508653750885,
+                "omega_rmse_rad_s": 0.7873025466649824
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 2,
+                "mean": 0.5667203636976419,
+                "pooled": 0.5723028877757167,
+                "cvar10": 0.715670151759481,
+                "worst": 0.715670151759481,
+                "worst_group_mean": 0.715670151759481,
+                "delta_rmse_rad": 0.09459508653750885,
+                "omega_rmse_rad_s": 0.7873025466649824
+              },
+              "physical_components": {
+                "delta_rmse_rad": 0.09459508653750885,
+                "omega_rmse_rad_s": 0.7873025466649824,
+                "mean": 0.5667203636976419,
+                "pooled": 0.5723028877757167,
+                "cvar10": 0.715670151759481,
+                "worst": 0.715670151759481,
+                "worst_group_mean": 0.715670151759481
+              }
+            },
+            "common_frequency": {
+              "all_rows": 2,
+              "eligible_events": 2,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 2,
+                "mean": 0.48864383522495103,
+                "pooled": 0.4879153914597812,
+                "cvar10": 0.4972087848276467,
+                "worst": 0.4972087848276467
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 2,
+                "mean": 0.48864383522495103,
+                "pooled": 0.4879153914597812,
+                "cvar10": 0.4972087848276467,
+                "worst": 0.4972087848276467
+              }
+            },
+            "normalized_p": {
+              "all_rows": 2,
+              "eligible_events": 2,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 2,
+                "mean": 0.2768753634335616,
+                "pooled": 0.2818476594571194,
+                "cvar10": 0.3096712172316098,
+                "worst": 0.3096712172316098
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 2,
+                "mean": 0.2768753634335616,
+                "pooled": 0.2818476594571194,
+                "cvar10": 0.3096712172316098,
+                "worst": 0.3096712172316098
+              }
+            },
+            "objective_point_error": {
+              "all_rows": 2,
+              "eligible_events": 2,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 2,
+                "mean": 0.65833952787135,
+                "cvar10": 0.817318897321562,
+                "worst": 0.817318897321562
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 2,
+                "mean": 0.65833952787135,
+                "cvar10": 0.817318897321562,
+                "worst": 0.817318897321562
+              }
+            }
+          }
+        }
+      },
+      "completion": {
+        "status": "COMPLETED",
+        "evidence_sha256": "c91bab215b3a836ace527779725f33de253e3b301bb6463ecd8bff5205a08263"
+      },
+      "frozen_target": {
+        "mode": "A",
+        "seed": 25101,
+        "step": 512
+      }
+    },
+    "A1152": {
+      "evidence_path": "private_data/r_memory_20261028/recovery_eval01/science/evidence.json",
+      "event_count": 385,
+      "truth_unchanged": true,
+      "val_read": false,
+      "test_read": false,
+      "scopes": {
+        "common385": {
+          "event_count": 385,
+          "stable_horizon_risks": {
+            "5": {
+              "value": 1.3588095532241202,
+              "coarse_value": 1.358809700380444,
+              "numerical_score_perturbation": 1.4715632379314059e-07,
+              "eligible": 342,
+              "definition": "original ceil-top10 risk on stable complete horizon",
+              "unresolved_count": 0
+            },
+            "8": {
+              "value": 1.186943729313614,
+              "coarse_value": 1.1869438171634261,
+              "numerical_score_perturbation": 8.784981209153386e-08,
+              "eligible": 342,
+              "definition": "original ceil-top10 risk on stable complete horizon",
+              "unresolved_count": 0
+            }
+          },
+          "qualification": {
+            "all_8s_rows_qualified": true,
+            "all_actual15s_rows_qualified": true,
+            "all_required_rows_qualified": true
+          },
+          "classification_8s": {
+            "event_count": 385,
+            "unstable_count": 43,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 7,
+            "miss_denominator": 43,
+            "miss_rate": 0.16279069767441862,
+            "false_los_resolved_stable": 1,
+            "false_positive_denominator_stable_resolved": 342,
+            "false_positive_rate": 0.0029239766081871343
+          },
+          "classification_actual15s": {
+            "event_count": 385,
+            "unstable_count": 43,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 19,
+            "miss_denominator": 43,
+            "miss_rate": 0.4418604651162791,
+            "false_los_resolved_stable": 1,
+            "false_positive_denominator_stable_resolved": 342,
+            "false_positive_rate": 0.0029239766081871343
+          },
+          "stable_metric_summaries": {
+            "common_frequency_rmse": {
+              "5": {
+                "n_events": 342,
+                "mean": 0.22274326845152267,
+                "pooled": 0.29592940461763234,
+                "cvar10": 0.6224911627365772,
+                "worst": 1.5812851043409695
+              },
+              "8": {
+                "n_events": 342,
+                "mean": 0.1935339768563354,
+                "pooled": 0.2552092771338151,
+                "cvar10": 0.5371431139666552,
+                "worst": 1.377771641726633
+              }
+            },
+            "normalized_p_rmse": {
+              "5": {
+                "n_events": 342,
+                "mean": 0.3209386860910223,
+                "pooled": 0.40670805410983474,
+                "cvar10": 0.8566975322576372,
+                "worst": 2.0239126272002403
+              },
+              "8": {
+                "n_events": 342,
+                "mean": 0.2673730713945125,
+                "pooled": 0.3427002423596457,
+                "cvar10": 0.7227705846588189,
+                "worst": 1.926208044742723
+              }
+            },
+            "objective_point_error": {
+              "5": {
+                "n_events": 342,
+                "mean": 0.6218861078878065,
+                "cvar10": 4.306503334569374,
+                "worst": 82.46345878452921
+              },
+              "8": {
+                "n_events": 342,
+                "mean": 0.5200739365924965,
+                "cvar10": 3.8544229001980845,
+                "worst": 81.71591675083283
+              }
+            }
+          },
+          "unstable_prefix_summaries": {
+            "records": {
+              "all_rows": 43,
+              "eligible_events": 43,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 43,
+                "mean": 0.6582005710095361,
+                "pooled": 1.0466105858653452,
+                "cvar10": 1.4970898507468071,
+                "worst": 1.660971282772179,
+                "worst_group_mean": 1.6538940000274052,
+                "delta_rmse_rad": 0.3573621400127786,
+                "omega_rmse_rad_s": 1.2805904175560703
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 43,
+                "mean": 0.6582005710095361,
+                "pooled": 1.0466105858653452,
+                "cvar10": 1.4970898507468071,
+                "worst": 1.660971282772179,
+                "worst_group_mean": 1.6538940000274052,
+                "delta_rmse_rad": 0.3573621400127786,
+                "omega_rmse_rad_s": 1.2805904175560703
+              },
+              "physical_components": {
+                "delta_rmse_rad": 0.3573621400127786,
+                "omega_rmse_rad_s": 1.2805904175560703,
+                "mean": 0.6582005710095361,
+                "pooled": 1.0466105858653452,
+                "cvar10": 1.4970898507468071,
+                "worst": 1.660971282772179,
+                "worst_group_mean": 1.6538940000274052
+              }
+            },
+            "common_frequency": {
+              "all_rows": 43,
+              "eligible_events": 43,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 43,
+                "mean": 0.553341345776115,
+                "pooled": 1.1340107386938456,
+                "cvar10": 1.6918203330871662,
+                "worst": 2.0233359529552897
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 43,
+                "mean": 0.553341345776115,
+                "pooled": 1.1340107386938456,
+                "cvar10": 1.6918203330871662,
+                "worst": 2.0233359529552897
+              }
+            },
+            "normalized_p": {
+              "all_rows": 43,
+              "eligible_events": 43,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 43,
+                "mean": 0.3928990360675415,
+                "pooled": 0.8220805047329495,
+                "cvar10": 1.2120150806506005,
+                "worst": 1.5933101816711084
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 43,
+                "mean": 0.3928990360675415,
+                "pooled": 0.8220805047329495,
+                "cvar10": 1.2120150806506005,
+                "worst": 1.5933101816711084
+              }
+            },
+            "objective_point_error": {
+              "all_rows": 43,
+              "eligible_events": 43,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 43,
+                "mean": 1.4267929030016944,
+                "cvar10": 6.45905476774316,
+                "worst": 9.283706515795929
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 43,
+                "mean": 1.4267929030016944,
+                "cvar10": 6.45905476774316,
+                "worst": 9.283706515795929
+              }
+            }
+          }
+        },
+        "fit": {
+          "event_count": 297,
+          "stable_horizon_risks": {
+            "5": {
+              "value": 1.6319642831878278,
+              "coarse_value": 1.6319644570485212,
+              "numerical_score_perturbation": 1.7386069339764276e-07,
+              "eligible": 267,
+              "definition": "original ceil-top10 risk on stable complete horizon",
+              "unresolved_count": 0
+            },
+            "8": {
+              "value": 1.4459869573168043,
+              "coarse_value": 1.445987060464339,
+              "numerical_score_perturbation": 1.031475347357258e-07,
+              "eligible": 267,
+              "definition": "original ceil-top10 risk on stable complete horizon",
+              "unresolved_count": 0
+            }
+          },
+          "qualification": {
+            "all_8s_rows_qualified": true,
+            "all_actual15s_rows_qualified": true,
+            "all_required_rows_qualified": true
+          },
+          "classification_8s": {
+            "event_count": 297,
+            "unstable_count": 30,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 3,
+            "miss_denominator": 30,
+            "miss_rate": 0.1,
+            "false_los_resolved_stable": 1,
+            "false_positive_denominator_stable_resolved": 267,
+            "false_positive_rate": 0.003745318352059925
+          },
+          "classification_actual15s": {
+            "event_count": 297,
+            "unstable_count": 30,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 12,
+            "miss_denominator": 30,
+            "miss_rate": 0.4,
+            "false_los_resolved_stable": 1,
+            "false_positive_denominator_stable_resolved": 267,
+            "false_positive_rate": 0.003745318352059925
+          },
+          "stable_metric_summaries": {
+            "common_frequency_rmse": {
+              "5": {
+                "n_events": 267,
+                "mean": 0.23108622033894557,
+                "pooled": 0.3104093803644668,
+                "cvar10": 0.6608315617767423,
+                "worst": 1.5812851043409695
+              },
+              "8": {
+                "n_events": 267,
+                "mean": 0.2001316887385865,
+                "pooled": 0.2668218089242444,
+                "cvar10": 0.5674422204896226,
+                "worst": 1.377771641726633
+              }
+            },
+            "normalized_p_rmse": {
+              "5": {
+                "n_events": 267,
+                "mean": 0.3302143287507799,
+                "pooled": 0.42359247748885887,
+                "cvar10": 0.908473815251005,
+                "worst": 2.0239126272002403
+              },
+              "8": {
+                "n_events": 267,
+                "mean": 0.2753395098995822,
+                "pooled": 0.357663889491286,
+                "cvar10": 0.7682929904981359,
+                "worst": 1.926208044742723
+              }
+            },
+            "objective_point_error": {
+              "5": {
+                "n_events": 267,
+                "mean": 0.7245034260086131,
+                "cvar10": 5.261807711904687,
+                "worst": 82.46345878452921
+              },
+              "8": {
+                "n_events": 267,
+                "mean": 0.615388058182787,
+                "cvar10": 4.768382553852875,
+                "worst": 81.71591675083283
+              }
+            }
+          },
+          "unstable_prefix_summaries": {
+            "records": {
+              "all_rows": 30,
+              "eligible_events": 30,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 30,
+                "mean": 0.5936825393729168,
+                "pooled": 0.9196113079926099,
+                "cvar10": 1.3192152748874235,
+                "worst": 1.4681225532012963,
+                "worst_group_mean": 1.3506204737480287,
+                "delta_rmse_rad": 0.291226585207996,
+                "omega_rmse_rad_s": 1.1520062571906686
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 30,
+                "mean": 0.5936825393729168,
+                "pooled": 0.9196113079926099,
+                "cvar10": 1.3192152748874235,
+                "worst": 1.4681225532012963,
+                "worst_group_mean": 1.3506204737480287,
+                "delta_rmse_rad": 0.291226585207996,
+                "omega_rmse_rad_s": 1.1520062571906686
+              },
+              "physical_components": {
+                "delta_rmse_rad": 0.291226585207996,
+                "omega_rmse_rad_s": 1.1520062571906686,
+                "mean": 0.5936825393729168,
+                "pooled": 0.9196113079926099,
+                "cvar10": 1.3192152748874235,
+                "worst": 1.4681225532012963,
+                "worst_group_mean": 1.3506204737480287
+              }
+            },
+            "common_frequency": {
+              "all_rows": 30,
+              "eligible_events": 30,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 30,
+                "mean": 0.48268196612176084,
+                "pooled": 1.102430408538505,
+                "cvar10": 1.6607316325393253,
+                "worst": 2.0233359529552897
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 30,
+                "mean": 0.48268196612176084,
+                "pooled": 1.102430408538505,
+                "cvar10": 1.6607316325393253,
+                "worst": 2.0233359529552897
+              }
+            },
+            "normalized_p": {
+              "all_rows": 30,
+              "eligible_events": 30,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 30,
+                "mean": 0.3291429593653662,
+                "pooled": 0.7349061925686258,
+                "cvar10": 1.1179859816530535,
+                "worst": 1.295913602848242
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 30,
+                "mean": 0.3291429593653662,
+                "pooled": 0.7349061925686258,
+                "cvar10": 1.1179859816530535,
+                "worst": 1.295913602848242
+              }
+            },
+            "objective_point_error": {
+              "all_rows": 30,
+              "eligible_events": 30,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 30,
+                "mean": 1.1283108831013613,
+                "cvar10": 5.508172197130793,
+                "worst": 7.4640956952519755
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 30,
+                "mean": 1.1283108831013613,
+                "cvar10": 5.508172197130793,
+                "worst": 7.4640956952519755
+              }
+            }
+          }
+        },
+        "no_update": {
+          "event_count": 88,
+          "stable_horizon_risks": {
+            "5": {
+              "value": 0.4104409696369242,
+              "coarse_value": 0.41044102504398505,
+              "numerical_score_perturbation": 5.5407060828294163e-08,
+              "eligible": 75,
+              "definition": "original ceil-top10 risk on stable complete horizon",
+              "unresolved_count": 0
+            },
+            "8": {
+              "value": 0.29073711973657346,
+              "coarse_value": 0.29073715503833153,
+              "numerical_score_perturbation": 3.5301758072314726e-08,
+              "eligible": 75,
+              "definition": "original ceil-top10 risk on stable complete horizon",
+              "unresolved_count": 0
+            }
+          },
+          "qualification": {
+            "all_8s_rows_qualified": true,
+            "all_actual15s_rows_qualified": true,
+            "all_required_rows_qualified": true
+          },
+          "classification_8s": {
+            "event_count": 88,
+            "unstable_count": 13,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 4,
+            "miss_denominator": 13,
+            "miss_rate": 0.3076923076923077,
+            "false_los_resolved_stable": 0,
+            "false_positive_denominator_stable_resolved": 75,
+            "false_positive_rate": 0.0
+          },
+          "classification_actual15s": {
+            "event_count": 88,
+            "unstable_count": 13,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 7,
+            "miss_denominator": 13,
+            "miss_rate": 0.5384615384615384,
+            "false_los_resolved_stable": 0,
+            "false_positive_denominator_stable_resolved": 75,
+            "false_positive_rate": 0.0
+          },
+          "stable_metric_summaries": {
+            "common_frequency_rmse": {
+              "5": {
+                "n_events": 75,
+                "mean": 0.1930423597322974,
+                "pooled": 0.23731461840797208,
+                "cvar10": 0.4733612936279834,
+                "worst": 0.5323524045100199
+              },
+              "8": {
+                "n_events": 75,
+                "mean": 0.17004612255552143,
+                "pooled": 0.20868802059934477,
+                "cvar10": 0.4170612801451004,
+                "worst": 0.48257418443710015
+              }
+            },
+            "normalized_p_rmse": {
+              "5": {
+                "n_events": 75,
+                "mean": 0.2879173982222851,
+                "pooled": 0.33985773870793917,
+                "cvar10": 0.665154789583543,
+                "worst": 0.8131686686824211
+              },
+              "8": {
+                "n_events": 75,
+                "mean": 0.23901255031646418,
+                "pooled": 0.28308064212347134,
+                "cvar10": 0.5554339512946942,
+                "worst": 0.7002666369087468
+              }
+            },
+            "objective_point_error": {
+              "5": {
+                "n_events": 75,
+                "mean": 0.2565684553777353,
+                "cvar10": 1.02593102667368,
+                "worst": 1.550493891674335
+              },
+              "8": {
+                "n_events": 75,
+                "mean": 0.18075566373106255,
+                "cvar10": 0.730662943758617,
+                "worst": 1.2042800466819192
+              }
+            }
+          },
+          "unstable_prefix_summaries": {
+            "records": {
+              "all_rows": 13,
+              "eligible_events": 13,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 13,
+                "mean": 0.8070883363248111,
+                "pooled": 1.2084399584957901,
+                "cvar10": 1.6538940000274052,
+                "worst": 1.660971282772179,
+                "worst_group_mean": 1.6538940000274052,
+                "delta_rmse_rad": 0.4363435287471481,
+                "omega_rmse_rad_s": 1.4481158128614449
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 13,
+                "mean": 0.8070883363248111,
+                "pooled": 1.2084399584957901,
+                "cvar10": 1.6538940000274052,
+                "worst": 1.660971282772179,
+                "worst_group_mean": 1.6538940000274052,
+                "delta_rmse_rad": 0.4363435287471481,
+                "omega_rmse_rad_s": 1.4481158128614449
+              },
+              "physical_components": {
+                "delta_rmse_rad": 0.4363435287471481,
+                "omega_rmse_rad_s": 1.4481158128614449,
+                "mean": 0.8070883363248111,
+                "pooled": 1.2084399584957901,
+                "cvar10": 1.6538940000274052,
+                "worst": 1.660971282772179,
+                "worst_group_mean": 1.6538940000274052
+              }
+            },
+            "common_frequency": {
+              "all_rows": 13,
+              "eligible_events": 13,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 13,
+                "mean": 0.716401452670779,
+                "pooled": 1.178642444241664,
+                "cvar10": 1.6391357465281595,
+                "worst": 2.0032797941161253
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 13,
+                "mean": 0.716401452670779,
+                "pooled": 1.178642444241664,
+                "cvar10": 1.6391357465281595,
+                "worst": 2.0032797941161253
+              }
+            },
+            "normalized_p": {
+              "all_rows": 13,
+              "eligible_events": 13,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 13,
+                "mean": 0.5400284438417923,
+                "pooled": 0.9349737875276075,
+                "cvar10": 1.353058729146921,
+                "worst": 1.5933101816711084
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 13,
+                "mean": 0.5400284438417923,
+                "pooled": 0.9349737875276075,
+                "cvar10": 1.353058729146921,
+                "worst": 1.5933101816711084
+              }
+            },
+            "objective_point_error": {
+              "all_rows": 13,
+              "eligible_events": 13,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 13,
+                "mean": 2.1155975643101548,
+                "cvar10": 7.424382396077608,
+                "worst": 9.283706515795929
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 13,
+                "mean": 2.1155975643101548,
+                "cvar10": 7.424382396077608,
+                "worst": 9.283706515795929
+              }
+            }
+          }
+        },
+        "original366": {
+          "event_count": 366,
+          "stable_horizon_risks": {
+            "5": {
+              "value": 1.3896461413977508,
+              "coarse_value": 1.389646289898835,
+              "numerical_score_perturbation": 1.4850108431829767e-07,
+              "eligible": 325,
+              "definition": "original ceil-top10 risk on stable complete horizon",
+              "unresolved_count": 0
+            },
+            "8": {
+              "value": 1.2232880683732834,
+              "coarse_value": 1.2232881567525573,
+              "numerical_score_perturbation": 8.837927389926392e-08,
+              "eligible": 325,
+              "definition": "original ceil-top10 risk on stable complete horizon",
+              "unresolved_count": 0
+            }
+          },
+          "qualification": {
+            "all_8s_rows_qualified": true,
+            "all_actual15s_rows_qualified": true,
+            "all_required_rows_qualified": true
+          },
+          "classification_8s": {
+            "event_count": 366,
+            "unstable_count": 41,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 7,
+            "miss_denominator": 41,
+            "miss_rate": 0.17073170731707318,
+            "false_los_resolved_stable": 1,
+            "false_positive_denominator_stable_resolved": 325,
+            "false_positive_rate": 0.003076923076923077
+          },
+          "classification_actual15s": {
+            "event_count": 366,
+            "unstable_count": 41,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 18,
+            "miss_denominator": 41,
+            "miss_rate": 0.43902439024390244,
+            "false_los_resolved_stable": 1,
+            "false_positive_denominator_stable_resolved": 325,
+            "false_positive_rate": 0.003076923076923077
+          },
+          "stable_metric_summaries": {
+            "common_frequency_rmse": {
+              "5": {
+                "n_events": 325,
+                "mean": 0.2223853418736601,
+                "pooled": 0.2959143951779121,
+                "cvar10": 0.6239030849447861,
+                "worst": 1.5812851043409695
+              },
+              "8": {
+                "n_events": 325,
+                "mean": 0.19318069946683467,
+                "pooled": 0.25509595970354826,
+                "cvar10": 0.5382191454457881,
+                "worst": 1.377771641726633
+              }
+            },
+            "normalized_p_rmse": {
+              "5": {
+                "n_events": 325,
+                "mean": 0.3197462775682934,
+                "pooled": 0.4048384332024936,
+                "cvar10": 0.8510628604312239,
+                "worst": 2.0239126272002403
+              },
+              "8": {
+                "n_events": 325,
+                "mean": 0.2664892767153622,
+                "pooled": 0.34154150623707524,
+                "cvar10": 0.7192716397043679,
+                "worst": 1.926208044742723
+              }
+            },
+            "objective_point_error": {
+              "5": {
+                "n_events": 325,
+                "mean": 0.6299887147151498,
+                "cvar10": 4.428275848128155,
+                "worst": 82.46345878452921
+              },
+              "8": {
+                "n_events": 325,
+                "mean": 0.530583106612719,
+                "cvar10": 3.9941079154155408,
+                "worst": 81.71591675083283
+              }
+            }
+          },
+          "unstable_prefix_summaries": {
+            "records": {
+              "all_rows": 41,
+              "eligible_events": 41,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 41,
+                "mean": 0.6630318539610316,
+                "pooled": 1.0598604338118007,
+                "cvar10": 1.4970898507468071,
+                "worst": 1.660971282772179,
+                "worst_group_mean": 1.6538940000274052,
+                "delta_rmse_rad": 0.36326416886722185,
+                "omega_rmse_rad_s": 1.2950948893222776
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 41,
+                "mean": 0.6630318539610316,
+                "pooled": 1.0598604338118007,
+                "cvar10": 1.4970898507468071,
+                "worst": 1.660971282772179,
+                "worst_group_mean": 1.6538940000274052,
+                "delta_rmse_rad": 0.36326416886722185,
+                "omega_rmse_rad_s": 1.2950948893222776
+              },
+              "physical_components": {
+                "delta_rmse_rad": 0.36326416886722185,
+                "omega_rmse_rad_s": 1.2950948893222776,
+                "mean": 0.6630318539610316,
+                "pooled": 1.0598604338118007,
+                "cvar10": 1.4970898507468071,
+                "worst": 1.660971282772179,
+                "worst_group_mean": 1.6538940000274052
+              }
+            },
+            "common_frequency": {
+              "all_rows": 41,
+              "eligible_events": 41,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 41,
+                "mean": 0.5584931429110275,
+                "pooled": 1.1510398019407375,
+                "cvar10": 1.6918203330871662,
+                "worst": 2.0233359529552897
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 41,
+                "mean": 0.5584931429110275,
+                "pooled": 1.1510398019407375,
+                "cvar10": 1.6918203330871662,
+                "worst": 2.0233359529552897
+              }
+            },
+            "normalized_p": {
+              "all_rows": 41,
+              "eligible_events": 41,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 41,
+                "mean": 0.3982417843694538,
+                "pooled": 0.8348819581144737,
+                "cvar10": 1.2120150806506005,
+                "worst": 1.5933101816711084
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 41,
+                "mean": 0.3982417843694538,
+                "pooled": 0.8348819581144737,
+                "cvar10": 1.2120150806506005,
+                "worst": 1.5933101816711084
+              }
+            },
+            "objective_point_error": {
+              "all_rows": 41,
+              "eligible_events": 41,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 41,
+                "mean": 1.4665998249410634,
+                "cvar10": 6.45905476774316,
+                "worst": 9.283706515795929
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 41,
+                "mean": 1.4665998249410634,
+                "cvar10": 6.45905476774316,
+                "worst": 9.283706515795929
+              }
+            }
+          }
+        },
+        "fresh19": {
+          "event_count": 19,
+          "stable_horizon_risks": {
+            "5": {
+              "value": 0.8218362499784226,
+              "coarse_value": 0.8218363766428931,
+              "numerical_score_perturbation": 1.2666447046782991e-07,
+              "eligible": 17,
+              "definition": "original ceil-top10 risk on stable complete horizon",
+              "unresolved_count": 0
+            },
+            "8": {
+              "value": 0.5585914873649713,
+              "coarse_value": 0.558591567849447,
+              "numerical_score_perturbation": 8.048447563968608e-08,
+              "eligible": 17,
+              "definition": "original ceil-top10 risk on stable complete horizon",
+              "unresolved_count": 0
+            }
+          },
+          "qualification": {
+            "all_8s_rows_qualified": true,
+            "all_actual15s_rows_qualified": true,
+            "all_required_rows_qualified": true
+          },
+          "classification_8s": {
+            "event_count": 19,
+            "unstable_count": 2,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 0,
+            "miss_denominator": 2,
+            "miss_rate": 0.0,
+            "false_los_resolved_stable": 0,
+            "false_positive_denominator_stable_resolved": 17,
+            "false_positive_rate": 0.0
+          },
+          "classification_actual15s": {
+            "event_count": 19,
+            "unstable_count": 2,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 1,
+            "miss_denominator": 2,
+            "miss_rate": 0.5,
+            "false_los_resolved_stable": 0,
+            "false_positive_denominator_stable_resolved": 17,
+            "false_positive_rate": 0.0
+          },
+          "stable_metric_summaries": {
+            "common_frequency_rmse": {
+              "5": {
+                "n_events": 17,
+                "mean": 0.22958598244007303,
+                "pooled": 0.2962162035368013,
+                "cvar10": 0.5991944463011315,
+                "worst": 0.6440640464493483
+              },
+              "8": {
+                "n_events": 17,
+                "mean": 0.2002878093026723,
+                "pooled": 0.25736604541770164,
+                "cvar10": 0.5184005195167188,
+                "worst": 0.5466833252711282
+              }
+            },
+            "normalized_p_rmse": {
+              "5": {
+                "n_events": 17,
+                "mean": 0.34373473137848654,
+                "pooled": 0.4409289587109859,
+                "cvar10": 0.9210116820882837,
+                "worst": 1.0327009180656244
+              },
+              "8": {
+                "n_events": 17,
+                "mean": 0.28426914614297316,
+                "pooled": 0.3641441887894215,
+                "cvar10": 0.7602975903951095,
+                "worst": 0.8474570594724143
+              }
+            },
+            "objective_point_error": {
+              "5": {
+                "n_events": 17,
+                "mean": 0.46698333030624345,
+                "cvar10": 2.241247928667139,
+                "worst": 2.961446265150367
+              },
+              "8": {
+                "n_events": 17,
+                "mean": 0.3191633332647137,
+                "cvar10": 1.5163041037660019,
+                "worst": 1.9646917429246713
+              }
+            }
+          },
+          "unstable_prefix_summaries": {
+            "records": {
+              "all_rows": 2,
+              "eligible_events": 2,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 2,
+                "mean": 0.5591592705038759,
+                "pooled": 0.5622120952649997,
+                "cvar10": 0.690138268740578,
+                "worst": 0.690138268740578,
+                "worst_group_mean": 0.690138268740578,
+                "delta_rmse_rad": 0.09461275555779389,
+                "omega_rmse_rad_s": 0.7725152109428607
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 2,
+                "mean": 0.5591592705038759,
+                "pooled": 0.5622120952649997,
+                "cvar10": 0.690138268740578,
+                "worst": 0.690138268740578,
+                "worst_group_mean": 0.690138268740578,
+                "delta_rmse_rad": 0.09461275555779389,
+                "omega_rmse_rad_s": 0.7725152109428607
+              },
+              "physical_components": {
+                "delta_rmse_rad": 0.09461275555779389,
+                "omega_rmse_rad_s": 0.7725152109428607,
+                "mean": 0.5591592705038759,
+                "pooled": 0.5622120952649997,
+                "cvar10": 0.690138268740578,
+                "worst": 0.690138268740578,
+                "worst_group_mean": 0.690138268740578
+              }
+            },
+            "common_frequency": {
+              "all_rows": 2,
+              "eligible_events": 2,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 2,
+                "mean": 0.4477295045104124,
+                "pooled": 0.446628270012069,
+                "cvar10": 0.46182991272702256,
+                "worst": 0.46182991272702256
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 2,
+                "mean": 0.4477295045104124,
+                "pooled": 0.446628270012069,
+                "cvar10": 0.46182991272702256,
+                "worst": 0.46182991272702256
+              }
+            },
+            "normalized_p": {
+              "all_rows": 2,
+              "eligible_events": 2,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 2,
+                "mean": 0.28337269587833863,
+                "pooled": 0.2890514324807895,
+                "cvar10": 0.3197064922345936,
+                "worst": 0.3197064922345936
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 2,
+                "mean": 0.28337269587833863,
+                "pooled": 0.2890514324807895,
+                "cvar10": 0.3197064922345936,
+                "worst": 0.3197064922345936
+              }
+            },
+            "objective_point_error": {
+              "all_rows": 2,
+              "eligible_events": 2,
+              "unavailable_events": 0,
+              "official": {
+                "n_events": 2,
+                "mean": 0.6107510032446318,
+                "cvar10": 0.7491769799953246,
+                "worst": 0.7491769799953246
+              },
+              "finite_subcohort_diagnostic": {
+                "n_events": 2,
+                "mean": 0.6107510032446318,
+                "cvar10": 0.7491769799953246,
+                "worst": 0.7491769799953246
+              }
+            }
+          }
+        }
+      },
+      "completion": {
+        "status": "COMPLETED",
+        "source_commit": "cd337a63c439573b8d2cc4205f746add01e4d5e8",
+        "phase": "recovery_evaluate_A_25101_step001152",
+        "evidence_sha256": "02d3dcc0c8916a9eda7fd9ae10305a1a7f5a00b1814f4a6e84f30149b7804a86",
+        "native_receipt_sha256": "7ff77732b09559be694f6e5b8a07a351a5b09c72e5cf098ce7067fa07ab5aefb",
+        "optimizer_updates": 0,
+        "old_lock_preserved": true,
+        "model_adopted": false
+      },
+      "science_completion": {
+        "status": "COMPLETED",
+        "event_count": 385,
+        "evidence_sha256": "02d3dcc0c8916a9eda7fd9ae10305a1a7f5a00b1814f4a6e84f30149b7804a86"
+      },
+      "frozen_target": {
+        "mode": "A",
+        "seed": 25101,
+        "step": 1152,
+        "selection": "latest complete durable checkpoint, fixed before R0 scores",
+        "role": "prospective recovery evaluation; not the old 2048 endpoint",
+        "directory": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\r_memory_20261025\\run01_repair01\\models\\A_25101\\checkpoints\\step001152",
+        "training_pt_loaded": false,
+        "optimizer_updates": 0
+      }
+    }
+  },
+  "native_receipt": {
+    "path": "private_data/r_memory_20261028/recovery_eval01/native/recovery_evaluate_A_25101_step001152/receipt.json",
+    "source_commit": "cd337a63c439573b8d2cc4205f746add01e4d5e8",
+    "phase": "recovery_evaluate_A_25101_step001152",
+    "status": "COMPLETED",
+    "source_before_file_count": 105,
+    "source_after_file_count": 105,
+    "source_before_equals_after": true,
+    "cleanup_verified": true,
+    "orphans_cleaned": false,
+    "job_active_processes": 0,
+    "job_total_processes": 3,
+    "actual_worker_state": "GONE",
+    "exit_code": 0,
+    "launcher_exit_code": 0,
+    "worker_exit_code": 0,
+    "wall_seconds": 154.52625429999898,
+    "job_cpu_user_seconds": 118.09375,
+    "job_cpu_kernel_seconds": 9.0625
+  },
+  "provenance": {
+    "A0:evidence": {
+      "path": "private_data/r_memory_20261025/run01_repair01/evaluations/A_25101_step000000/science/evidence.json",
+      "sha256": "7ac198e6a8377a3fd61941c4c40c39ba6888e0a3815f101f0ac843bfa9128d2d",
+      "size_bytes": 8411941
+    },
+    "A0:complete": {
+      "path": "private_data/r_memory_20261025/run01_repair01/evaluations/A_25101_step000000/complete.json",
+      "sha256": "bad4e0374f5931962b358612b4f02aa99e2b21ce4ace5d3937b8db4b1e21281f",
+      "size_bytes": 121
+    },
+    "A0:frozen": {
+      "path": "private_data/r_memory_20261025/run01_repair01/evaluations/A_25101_step000000/frozen.json",
+      "sha256": "2bec8daab0f6d276c806a92b2bc5be2c9a553006892980b004c6b72f31ac0c61",
+      "size_bytes": 817
+    },
+    "A512:evidence": {
+      "path": "private_data/r_memory_20261025/run01_repair01/evaluations/A_25101_step000512/science/evidence.json",
+      "sha256": "c91bab215b3a836ace527779725f33de253e3b301bb6463ecd8bff5205a08263",
+      "size_bytes": 8412354
+    },
+    "A512:complete": {
+      "path": "private_data/r_memory_20261025/run01_repair01/evaluations/A_25101_step000512/complete.json",
+      "sha256": "80944701109ede1867c01e9624d5e0862c7638adcd613d06a936103e5399e508",
+      "size_bytes": 121
+    },
+    "A512:frozen": {
+      "path": "private_data/r_memory_20261025/run01_repair01/evaluations/A_25101_step000512/frozen.json",
+      "sha256": "2cd410c5357d0531481c763c8ea2bd3bf919b487af1548b197263274007b631a",
+      "size_bytes": 819
+    },
+    "A1152:evidence": {
+      "path": "private_data/r_memory_20261028/recovery_eval01/science/evidence.json",
+      "sha256": "02d3dcc0c8916a9eda7fd9ae10305a1a7f5a00b1814f4a6e84f30149b7804a86",
+      "size_bytes": 8412147
+    },
+    "A1152:complete": {
+      "path": "private_data/r_memory_20261028/recovery_eval01/complete.json",
+      "sha256": "1309406749a560056875bf09a9f75c2164f439d58868fc494697ed81e89bbc74",
+      "size_bytes": 418
+    },
+    "A1152:science_complete": {
+      "path": "private_data/r_memory_20261028/recovery_eval01/science/complete.json",
+      "sha256": "c14d83e9a8e8b48f552949ae147d9d2f886de069e08c13d62db0b51ecee7e4eb",
+      "size_bytes": 144
+    },
+    "A1152:frozen": {
+      "path": "private_data/r_memory_20261028/recovery_eval01/frozen_target.json",
+      "sha256": "4de68c83bc0e59b93a9bd197e82d2ca773771dd2bb6094b66c58db9f0b5e7443",
+      "size_bytes": 692
+    },
+    "A1152:receipt": {
+      "path": "private_data/r_memory_20261028/recovery_eval01/native/recovery_evaluate_A_25101_step001152/receipt.json",
+      "sha256": "7ff77732b09559be694f6e5b8a07a351a5b09c72e5cf098ce7067fa07ab5aefb",
+      "size_bytes": 37454
+    }
+  }
+}

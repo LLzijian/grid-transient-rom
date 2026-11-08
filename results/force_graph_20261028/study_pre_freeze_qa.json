@@ -1,0 +1,285 @@
+{
+  "runs": [
+    {
+      "status": "PASS_DATAFREE",
+      "date": "2026-10-28",
+      "implementation": "experiments/force_graph_study_20261028.py",
+      "implementation_sha256": "ff21b8e0f34859659c43b2e75282f784e4dac248d0fe8afeff1a1bcd3004cba2",
+      "tests": "tests/test_force_graph_study_20261028.py",
+      "tests_sha256": "b44864702f7f1fc20e9aa7edadaa5eae107223603dcc4763f11a41ea2deab706",
+      "model_sha256_unchanged": "44e5fe2e1403bc7e072d2fb87100eaa694b15da5b4694169de141cc6059089af",
+      "command": ".venv-gpu/Scripts/python.exe -m pytest tests/test_force_graph_study_20261028.py -q --basetemp private_data/force_graph_20261028/datfree_tmp_03",
+      "result": "23 passed in 8.28s",
+      "exit_code": 0,
+      "actual_optimizer_step_calls": 0,
+      "real_event_cache_payload_reads": 0,
+      "historical_checkpoint_tensor_loads": 0,
+      "original_val_read": false,
+      "original_test_read": false,
+      "checks": [
+        "registered 192-step alternating horizons and rejected out-of-range indices",
+        "8 random plus 4 distinct coverage samples, endpoint10, first75 covers297, deterministic seeds28101/28102",
+        "group and ID round-robin strict36 stable plus12 unstable panel quota",
+        "single causal initialization and genuine ragged intervals with original point-error and ceil risk",
+        "stop/extension improvement, perturbation, classification, unstable risk, clipping and relative-update gates",
+        "independent per-mode calibration multipliers and smaller-multiplier tie break",
+        "backup structure selection, dominance, missing-mode and numerical-unresolved exclusion",
+        "nonnegative projection retains independent moment tensors",
+        "synthetic fake-Adam checkpoint serialization, layout, counters, RNG, hashes, immutable publication",
+        "nonfinite quarantine retains adverse synthetic state without resume pointer",
+        "optimizer attempt/completion category accounting and registered bound",
+        "common fast method cannot bypass true fine-RK4 qualification",
+        "import performs no event preparation, tensor loading or optimizer construction"
+      ],
+      "source_hashes_verified_by_bytes_only": {
+        "A512": {
+          "directory": "private_data/r_memory_20261025/run01_repair01/models/A_25101/checkpoints/step000512",
+          "model.json": "6710d648b2edc8e4c579480ba76e3282ed03b9647b507f4ef51b21fca0e65636",
+          "checkpoint.json": "87607ea701fda7a4834255dad4782d06ce123a058f24f90d4a4d42dcbcb4b5aa",
+          "training.pt": "61871814c64f7ca4f947a3896e6aef5f1619fa6ff30639f1fb7cb2d118fdb96c"
+        },
+        "N6101": {
+          "directory": "private_data/closure_mechanism_20261019/P2/quartic_memory01/models/6101_N/checkpoints/step001024",
+          "model.json": "c926caa685f2105d908c5d642f5944cc78f467744b3f9bd24831085eeca700a5",
+          "checkpoint.json": "08af27cd4c53b9698e6c8f88a84de54886c220c359446435878f8e71d13f12c7",
+          "training.pt": "7fc8d7b9fd79d2356dcd21b808f1632db7b5ec701bea5d92b6c879290855ccaf"
+        }
+      },
+      "registered_native_checks_not_run": [
+        "prepare fit297 and no-update88/original366/fresh19 identity checks against existing locked train caches",
+        "three modes each one true-RK4 and fast eight-second complete-objective backward, zero optimizer, synchronized runtime and memory",
+        "fast coarse/fine AND fast versus fine-RK4 original physical numerical thresholds, common fallback across all modes",
+        "real CUDA QA three modes continuous18 versus real16 save/rebuild plus2, actual108 optimizer calls",
+        "48 calibration updates, finite formal primary and conditional backup runs, final385/noise88 reporting"
+      ],
+      "API": {
+        "prepare(base)": "prepare.json",
+        "qualify(base, device='cuda')": "qualification/summary.json",
+        "qa(base, device='cuda')": "qa/summary.json",
+        "calibrate(base, device='cuda')": "calibration/summary.json",
+        "study(base, device='cuda')": "study/summary.json",
+        "summary(base)": "summary.json"
+      },
+      "execution_boundary": "Normal pipeline has no automatic resume or QA repair. Complete checkpoint restore exists for QA. Protocol-authorized extra repair/replay requires a separate explicit root action and is not claimed as a supported automatic interface.",
+      "prior_test_invocation_notes": "Initial pytest default temporary directory denied access; next explicit base lacked its parent; after creating only the workspace test parent, all23 passed. No optimizer calls or real events in any invocation."
+    },
+    {
+      "status": "SETUP_ERROR",
+      "tests_passed": 18,
+      "setup_errors": 7,
+      "invocations": 2,
+      "optimizer_calls": 0,
+      "reason": "Default pytest temp directory denied; second basetemp missing parent. No scientific job."
+    },
+    {
+      "status": "FAIL",
+      "tests_passed": 23,
+      "tests_failed": 2,
+      "optimizer_calls": 0,
+      "reason": "New mock assertion indexed trace instead of step; corrected fixture assertion from index6 to5 without scientific code change."
+    },
+    {
+      "status": "SETUP_ERROR",
+      "optimizer_calls": 0,
+      "reason": "Temporary pytest recorder used incorrect hook argument name; corrected before rerun."
+    },
+    {
+      "recorded_at": "2026-10-28T11:20:00.836935+00:00",
+      "executor_model": "gpt-6.1-sol",
+      "status": "PASS",
+      "pytest_exit_code": 0,
+      "tests_passed": 25,
+      "tests_failed": 0,
+      "seconds": 6.985926299999846,
+      "optimizer_calls": 0,
+      "real_event_arrays_read": false,
+      "native_jobs_started": 0,
+      "source_training_pt_loaded": false,
+      "val_read": false,
+      "test_read": false,
+      "tests": [
+        {
+          "nodeid": "tests/test_force_graph_study_20261028.py::test_frozen_horizon[1-5.0]",
+          "when": "call",
+          "outcome": "passed",
+          "seconds": 0.00019780000002356246,
+          "failure": null
+        },
+        {
+          "nodeid": "tests/test_force_graph_study_20261028.py::test_frozen_horizon[2-8.0]",
+          "when": "call",
+          "outcome": "passed",
+          "seconds": 0.00026819999948202167,
+          "failure": null
+        },
+        {
+          "nodeid": "tests/test_force_graph_study_20261028.py::test_frozen_horizon[191-5.0]",
+          "when": "call",
+          "outcome": "passed",
+          "seconds": 0.00034419999974488746,
+          "failure": null
+        },
+        {
+          "nodeid": "tests/test_force_graph_study_20261028.py::test_frozen_horizon[192-8.0]",
+          "when": "call",
+          "outcome": "passed",
+          "seconds": 0.00018260000069858506,
+          "failure": null
+        },
+        {
+          "nodeid": "tests/test_force_graph_study_20261028.py::test_reject_unregistered_horizon[0]",
+          "when": "call",
+          "outcome": "passed",
+          "seconds": 0.0005198000008022063,
+          "failure": null
+        },
+        {
+          "nodeid": "tests/test_force_graph_study_20261028.py::test_reject_unregistered_horizon[193]",
+          "when": "call",
+          "outcome": "passed",
+          "seconds": 0.00018980000004376052,
+          "failure": null
+        },
+        {
+          "nodeid": "tests/test_force_graph_study_20261028.py::test_reject_unregistered_horizon[True]",
+          "when": "call",
+          "outcome": "passed",
+          "seconds": 0.0005529999998543644,
+          "failure": null
+        },
+        {
+          "nodeid": "tests/test_force_graph_study_20261028.py::test_reject_unregistered_horizon[2.0]",
+          "when": "call",
+          "outcome": "passed",
+          "seconds": 0.0004853999998886138,
+          "failure": null
+        },
+        {
+          "nodeid": "tests/test_force_graph_study_20261028.py::test_fixed_schedule_coverage_starts_and_ragged_counts",
+          "when": "call",
+          "outcome": "passed",
+          "seconds": 0.20796519999930752,
+          "failure": null
+        },
+        {
+          "nodeid": "tests/test_force_graph_study_20261028.py::test_panel_roundrobin_group_id_and_strict_counts",
+          "when": "call",
+          "outcome": "passed",
+          "seconds": 0.009493600000496372,
+          "failure": null
+        },
+        {
+          "nodeid": "tests/test_force_graph_study_20261028.py::test_objective_uses_once_only_initialization_real_intervals_and_ceil_risk",
+          "when": "call",
+          "outcome": "passed",
+          "seconds": 1.2450546000000031,
+          "failure": null
+        },
+        {
+          "nodeid": "tests/test_force_graph_study_20261028.py::test_event_store_ignores_torque_and_rejects_duplicate_identity",
+          "when": "call",
+          "outcome": "passed",
+          "seconds": 0.0006470999996963656,
+          "failure": null
+        },
+        {
+          "nodeid": "tests/test_force_graph_study_20261028.py::test_extension_all_registered_safety_and_perturbation_gates",
+          "when": "call",
+          "outcome": "passed",
+          "seconds": 0.0004982000000381959,
+          "failure": null
+        },
+        {
+          "nodeid": "tests/test_force_graph_study_20261028.py::test_each_model_calibration_independent_and_ties_prefer_one",
+          "when": "call",
+          "outcome": "passed",
+          "seconds": 0.0001837999998315354,
+          "failure": null
+        },
+        {
+          "nodeid": "tests/test_force_graph_study_20261028.py::test_calibration_early_trial_failure_keeps_healthy_trials_and_actual_pending[False]",
+          "when": "call",
+          "outcome": "passed",
+          "seconds": 0.5239682000001267,
+          "failure": null
+        },
+        {
+          "nodeid": "tests/test_force_graph_study_20261028.py::test_calibration_early_trial_failure_keeps_healthy_trials_and_actual_pending[True]",
+          "when": "call",
+          "outcome": "passed",
+          "seconds": 0.47132150000015827,
+          "failure": null
+        },
+        {
+          "nodeid": "tests/test_force_graph_study_20261028.py::test_backup_selection_only_qualified_gain_and_competitive_control",
+          "when": "call",
+          "outcome": "passed",
+          "seconds": 0.00031229999967763433,
+          "failure": null
+        },
+        {
+          "nodeid": "tests/test_force_graph_study_20261028.py::test_backup_dominance_and_numerical_unresolved_cannot_win",
+          "when": "call",
+          "outcome": "passed",
+          "seconds": 0.00021550000019487925,
+          "failure": null
+        },
+        {
+          "nodeid": "tests/test_force_graph_study_20261028.py::test_nonnegative_projection_does_not_mutate_saved_moments",
+          "when": "call",
+          "outcome": "passed",
+          "seconds": 0.003040999999939231,
+          "failure": null
+        },
+        {
+          "nodeid": "tests/test_force_graph_study_20261028.py::test_checkpoint_layout_counter_rng_and_hash_checks",
+          "when": "call",
+          "outcome": "passed",
+          "seconds": 0.0617259999999078,
+          "failure": null
+        },
+        {
+          "nodeid": "tests/test_force_graph_study_20261028.py::test_checkpoint_adam_counter_mismatch_rejected",
+          "when": "call",
+          "outcome": "passed",
+          "seconds": 0.045333600000049046,
+          "failure": null
+        },
+        {
+          "nodeid": "tests/test_force_graph_study_20261028.py::test_quarantine_preserves_nonfinite_state_without_resume_pointer",
+          "when": "call",
+          "outcome": "passed",
+          "seconds": 0.02576709999993909,
+          "failure": null
+        },
+        {
+          "nodeid": "tests/test_force_graph_study_20261028.py::test_optimizer_call_ledger_counts_actual_categories_and_bounds",
+          "when": "call",
+          "outcome": "passed",
+          "seconds": 0.02103110000007291,
+          "failure": null
+        },
+        {
+          "nodeid": "tests/test_force_graph_study_20261028.py::test_common_method_requires_fine_rk4_reference",
+          "when": "call",
+          "outcome": "passed",
+          "seconds": 0.012722000000394473,
+          "failure": null
+        },
+        {
+          "nodeid": "tests/test_force_graph_study_20261028.py::test_import_is_data_and_optimizer_inert",
+          "when": "call",
+          "outcome": "passed",
+          "seconds": 0.018337200000132725,
+          "failure": null
+        }
+      ],
+      "source_files": {
+        "experiments/force_graph_study_20261028.py": "ab25309d202550fcfa204f1829e185efcb65547872e9e259fdda88e6d0637bc3",
+        "tests/test_force_graph_study_20261028.py": "fd6594e0da611d9095c9a1984d14286497273d90edf2f940dbc4899e1d6e7cfd"
+      },
+      "scope": "pure tests; mock journal/failures; no optimizer.step calls"
+    }
+  ],
+  "latest_status": "PASS"
+}

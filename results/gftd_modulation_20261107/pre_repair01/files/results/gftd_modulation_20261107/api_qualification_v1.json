@@ -1,0 +1,41 @@
+{
+  "reported_by": "/root/api_modeler",
+  "source_sha256": {
+    "src/kiki/models/base.py": "f374726bca448ec73c8a138e41ede55939b0137830dfd038c13530df3ea8039d",
+    "src/kiki/models/gftd_kuramoto.py": "c39ee8d694e1005b5eb1b32aedb160d8dd5d0321c39b0574943bc59a755b6539",
+    "tests/test_gftd_kuramoto_architecture.py": "6eb6ed2fdaa1fc9b57eca6b7528871bf43b54ee76d508512011c3b3a030473f0",
+    "tests/test_gftd_model_fit.py": "0119d3ffac4ae4d176ba26504b25f3c766b8d2501517b0643b69ca25608b3481"
+  },
+  "engineering_scope": "Mock engine API plus old parent numerical fixtures; no actual GFTD shared fitting or full initialization.",
+  "attempts": [
+    {
+      "exec_chunk": "cb1ff5",
+      "session": 99938,
+      "final_chunk": "0509cd",
+      "exit_code": 1,
+      "pytest_seconds": 59.59,
+      "passed": 27,
+      "errors": 6,
+      "reason": "pytest temporary directory permission; fixed by workspace basetemp"
+    },
+    {
+      "exec_chunk": "651516",
+      "session": 73006,
+      "final_chunk": "c302b6",
+      "exit_code": 0,
+      "pytest_seconds": 15.22,
+      "passed": 37,
+      "reason": "final explicit workspace basetemp"
+    }
+  ],
+  "format_check": {
+    "plain_chunk": "8ccd94",
+    "result": "existing CRLF flagged; not passed",
+    "final_chunk": "f37994",
+    "exit_code": 0,
+    "setting": "core.whitespace=cr-at-eol"
+  },
+  "total_qualification_seconds": null,
+  "formal_sampling": false,
+  "real_data_reads": false
+}

@@ -1,0 +1,131 @@
+{
+  "scope": "unique root-authorized frozen-source implementation repair; controller BASE relocation only",
+  "repair_id": "repair01",
+  "old_base": "private_data/r_memory_20261025/run01",
+  "new_base": "private_data/r_memory_20261025/run01_repair01",
+  "before_preserved_with_exclusive_raw_byte_writes": true,
+  "controller_before": {
+    "path": "results/r_memory_20261025/repair01_before/experiments/r_memory_execution_20261025.py",
+    "sha256": "395cd397d7c6da24c66fc393041681294e4ecbd91d79e5ff69c7eb302b57263f"
+  },
+  "tests_before": {
+    "path": "results/r_memory_20261025/repair01_before/tests/test_r_memory_execution_20261025.py",
+    "sha256": "5e9466061d8f076597867c7cf92b6a33dd648caf9d7054e13c36cff5563f4f23"
+  },
+  "controller_after": {
+    "path": "experiments/r_memory_execution_20261025.py",
+    "sha256": "951fcc8dccceaad02f84b2de016b499b353f0e451ee50389507486329853621f"
+  },
+  "tests_after": {
+    "path": "tests/test_r_memory_execution_20261025.py",
+    "sha256": "5e9466061d8f076597867c7cf92b6a33dd648caf9d7054e13c36cff5563f4f23"
+  },
+  "only_controller_BASE_line_changed": true,
+  "tests_unchanged": true,
+  "old_run_artifacts_modified": false,
+  "native_probes_started_by_this_task": 0,
+  "optimizer_calls_started_by_this_task": 0,
+  "private_event_arrays_read_by_this_task": false,
+  "unit_check": {
+    "command": "C:/Users/LLLzijian/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe -B -m pytest -q tests/test_r_memory_execution_20261025.py -p no:cacheprovider --basetemp private_data/r_memory_execution_unit_20261025_repair01_01 --tb=short",
+    "logical_venv_override": "E:/03-nn_Transfer_Func/kiki/.venv-gpu/Scripts/python.exe",
+    "existing_temp_directory_check": "absent before invocation; retained afterward",
+    "exit_code": 0,
+    "passed": 15,
+    "pytest_reported_seconds": 1.06,
+    "tool_wall_seconds": 2.6321744,
+    "cpu_optimizer_updates": 0,
+    "gpu_optimizer_updates": 0,
+    "native_job_cpu_user_seconds": null,
+    "native_job_cpu_kernel_seconds": null
+  },
+  "old_failed_native_qa": {
+    "receipt": {
+      "path": "private_data/r_memory_20261025/run01/native/qa/receipt.json",
+      "sha256": "f82916402d924ce4e3ff2fdfa6bc2eeb1b9521a360560424dffe6e4cf650e04b"
+    },
+    "status": "FAILED",
+    "source_commit": "59f573b01b08c1ae221f4022c2100d411088161b",
+    "phase": "qa",
+    "exit_code": 1,
+    "worker_exit_code": 1,
+    "launcher_exit_code": 1,
+    "actual_worker_state": "GONE",
+    "worker": {
+      "pid": 70348,
+      "executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+      "physical_image": "C:\\Users\\LLLzijian\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "logical_executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+      "runtime_scheme": "direct_base_venv",
+      "runtime_selection": null,
+      "creation_filetime_utc": 134373994789489850,
+      "exit_filetime_utc": 0,
+      "kernel_100ns": 5156250,
+      "user_100ns": 3750000
+    },
+    "cleanup_verified": true,
+    "job_active_processes": 0,
+    "job_total_processes": 3,
+    "orphans_cleaned": false,
+    "source_before_equals_after": true,
+    "wall_seconds": 24.93830059998436,
+    "job_cpu_user_seconds": 9.609375,
+    "job_cpu_kernel_seconds": 6.15625
+  },
+  "old_cpu_cuda_comparisons": {
+    "evidence": {
+      "path": "private_data/r_memory_20261025/run01/qa/device_comparisons.json",
+      "sha256": "54ce0ebf103781e6aaaf11c6bdecb3fe8572da01fd10f24409a4c54e79ce5870"
+    },
+    "all_three_PASS": true,
+    "actual_optimizer_updates": 0,
+    "models": [
+      {
+        "mode": "A",
+        "status": "PASS",
+        "actual_optimizer_updates": 0,
+        "rtol": 1e-08,
+        "atol": 1e-10,
+        "maximum_unclipped_gradient_difference": 1.0869814993436826e-19
+      },
+      {
+        "mode": "B",
+        "status": "PASS",
+        "actual_optimizer_updates": 0,
+        "rtol": 1e-08,
+        "atol": 1e-10,
+        "maximum_unclipped_gradient_difference": 4.478355836362092e-21
+      },
+      {
+        "mode": "C",
+        "status": "PASS",
+        "actual_optimizer_updates": 0,
+        "rtol": 1e-08,
+        "atol": 1e-10,
+        "maximum_unclipped_gradient_difference": 6.868328780211555e-20
+      }
+    ]
+  },
+  "old_first_call": {
+    "journal": {
+      "path": "private_data/r_memory_20261025/run01/qa/A/continuous_calls.jsonl",
+      "sha256": "ba2a2dbf1e921f277066523274f121394043ea9149c4bce0708874baddc9c9e4"
+    },
+    "literal_lines": [
+      "{\"event\": \"optimizer_step_attempt\", \"pid\": 70348}"
+    ],
+    "recorded_optimizer_attempts": 1,
+    "recorded_completed_train_updates": 0,
+    "actual_adam_invocations": 1,
+    "basis": "one durable optimizer_step_attempt and bound old one_update traceback fails in Adam state finite check after optimizer.step; no completed training-update marker",
+    "failure": {
+      "path": "private_data/r_memory_20261025/run01/ownership/qa/failure.json",
+      "sha256": "f43a06139edbe35668b1db039d0aead5627987dc80d3a48c46931a0dac8fbcc5"
+    },
+    "error": "RuntimeError('Expected all tensors to be on the same device, but got tensors is on cuda:0, different from other tensors on cpu (when checking argument in method wrapper_CUDA_cat)')"
+  },
+  "scientific_definition_or_threshold_changes": false,
+  "old_qa_outputs_overwritten": false,
+  "current_repair_native_or_optimizer_executed": false,
+  "fee_note": "Old native QA wall and JobCPU are reported separately; new pure-unit tool wall is not native JobCPU accounting."
+}

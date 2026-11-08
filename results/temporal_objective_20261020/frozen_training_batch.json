@@ -1,0 +1,95 @@
+{
+  "stage": "temporal_objective",
+  "source_commit": "9c346288f9a37eb67f794f2698c14dc301f42da8",
+  "target_stage_step": 512,
+  "extension768_enabled": false,
+  "schedule_path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\temporal_objective01\\prepare01\\schedule.json",
+  "schedule_sha256": "a5ea62c3685ff443c0032e80e0eab951c20c3fa3d56bebdcf0faaa9526b7f4bb",
+  "admission_path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\temporal_objective01\\cost01\\admission.json",
+  "admission_sha256": "8fa312a482a0a65b0db220fd8ab2ab9e9c91fec1db38bb0b3abd6c4518700886",
+  "root_decision": "accept complete nine-group512 actual cost admission; no six-group fallback, extension or automatic recovery",
+  "native_cap_per_group_seconds": {
+    "O": 1900,
+    "F": 3850,
+    "T": 3850
+  },
+  "worker_max_per_group_seconds": {
+    "O": 1840,
+    "F": 3790,
+    "T": 3790
+  },
+  "initial_nine_native_caps_sum_seconds": 28800,
+  "model_all_attempt_caps_seconds": {
+    "O": 2000,
+    "F": 4000,
+    "T": 4000
+  },
+  "training_total_cap_seconds": 30000,
+  "single_external_recovery_nested_cap_seconds": 1200,
+  "automatically_authorized_recovery": false,
+  "evaluation_total_cap_seconds": 4000,
+  "evaluation_native_cap_seconds": 400,
+  "evaluation_worker_max_seconds": 340,
+  "evaluation_count": 9,
+  "evaluation_only_after_all_nine_training_closed_valid": true,
+  "jobs": [
+    {
+      "seed": 6101,
+      "variant": "O",
+      "name": "train_6101_o",
+      "output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\temporal_objective01\\models\\6101_O"
+    },
+    {
+      "seed": 6101,
+      "variant": "F",
+      "name": "train_6101_f",
+      "output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\temporal_objective01\\models\\6101_F"
+    },
+    {
+      "seed": 6101,
+      "variant": "T",
+      "name": "train_6101_t",
+      "output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\temporal_objective01\\models\\6101_T"
+    },
+    {
+      "seed": 6102,
+      "variant": "O",
+      "name": "train_6102_o",
+      "output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\temporal_objective01\\models\\6102_O"
+    },
+    {
+      "seed": 6102,
+      "variant": "F",
+      "name": "train_6102_f",
+      "output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\temporal_objective01\\models\\6102_F"
+    },
+    {
+      "seed": 6102,
+      "variant": "T",
+      "name": "train_6102_t",
+      "output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\temporal_objective01\\models\\6102_T"
+    },
+    {
+      "seed": 6103,
+      "variant": "O",
+      "name": "train_6103_o",
+      "output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\temporal_objective01\\models\\6103_O"
+    },
+    {
+      "seed": 6103,
+      "variant": "F",
+      "name": "train_6103_f",
+      "output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\temporal_objective01\\models\\6103_F"
+    },
+    {
+      "seed": 6103,
+      "variant": "T",
+      "name": "train_6103_t",
+      "output": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\temporal_objective01\\models\\6103_T"
+    }
+  ],
+  "cohort_identity_path": "results/quadratic_memory_edge_20261020/cohort_identity.json",
+  "cohort_identity_sha256": "0d2b3ed030cd742ae0809114008c31e3a99c35c56d0238d2d03c5473abcecbf5",
+  "no_new_fom_val_test": true,
+  "default_model_changed": false
+}

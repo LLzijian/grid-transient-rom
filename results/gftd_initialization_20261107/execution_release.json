@@ -1,0 +1,41 @@
+{
+  "released": true,
+  "recorded_utc": "2026-11-07T05:07:06.406835+00:00",
+  "action_id": "gftd-initialization-20261107-01",
+  "parent_commit": "2454355298453769a15efffab5778cf5a2cfc222",
+  "root_adoption": "Known shared ODE, exact endpoint p, endpoint a/r inference with paired fixed noise; 13 qualification tests and independent design/implementation reviews accepted. Only registered bounded artificial experiment.",
+  "scientist_task": "/root/repair_design",
+  "configured_scientist": "gpt-6-astra",
+  "modeler_task": "/root/code_review",
+  "configured_modeler": "gpt-6.1-sol",
+  "reviewer_task": "/root/loop_review",
+  "configured_reviewer": "gpt-6.1-sol",
+  "server_resolved_models": null,
+  "command": ".venv-gpu/Scripts/python.exe -B experiments/gftd_initialization_20261107.py",
+  "normal_job_limit": 1,
+  "base_inputs": 12,
+  "main_optimization_tasks": 36,
+  "max_numerical_refits": 4,
+  "max_residual_calls_per_task": 600,
+  "max_total_optimizer_residual_calls": 24000,
+  "history_steps": [
+    0.0025,
+    0.00125
+  ],
+  "future_steps": [
+    0.01,
+    0.005
+  ],
+  "qualification_note": "Mock optimizers qualify interfaces/accounting; actual convergence remains an experimental outcome. Main and fine equilibrium calibration will both be inspected from saved metrics.",
+  "source_sha256": {
+    "reports/gftd_initialization_20261107_protocol.md": "8399a3e0bcea8114e1d62db3ce852b16d39716d9cc7c9ea68da201d8909c5ce4",
+    "reports/gftd_initialization_20261107_design_review.md": "9c7bcf382726d839d82fd45b0837dc78781bb85b417578b56e34c9912846c2aa",
+    "reports/gftd_initialization_20261107_implementation_review.md": "2d4fae5ce250de0f4dbf79c31a6bae3ac807946c5f84b21ed889894530576398",
+    "experiments/gftd_initialization_20261107.py": "890c7ffbcb75f308be3522b5e413f6ee168f383d8fed471f2db55ec121738749",
+    "tests/test_gftd_initialization_20261107.py": "41adfc40ead60af79471d7d1dada5b09a5e5dfe79736909ebde2725c2e367368",
+    "experiments/gftd_observability_20261107.py": "b8e7e1aa96afbe0e4757d799002310c1939d2e10191f07c03fbdf603cacaabcc",
+    "src/kiki/physics/kuramoto_functional.py": "2155837548ddb196df5f65d727000f091e59411ea816941076a21a27fdc27452",
+    "src/kiki/physics/graph.py": "724dd978e7627ccceec0ad94067eef304c8e5562a378641516d544e1d8ca8dfe",
+    "results/gftd_initialization_20261107/qualification_receipt.json": "be83491e66cb6b9d47d31f9f313fbfcd2c9eb56ecafbb42988535de0f13fda3a"
+  }
+}

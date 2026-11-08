@@ -1,0 +1,170 @@
+{
+  "status": "PASS_CPU_FIELD_EQUIVALENCE_ONLY",
+  "prototype_count": 1,
+  "verification_attempts": 1,
+  "optimizer_calls": 0,
+  "cuda_calls": 0,
+  "real_event_arrays_read": false,
+  "training_admission": false,
+  "adopted": false,
+  "added_to_native_job_ledger": false,
+  "isolated_clones": true,
+  "command": "PowerShell __PYVENV_LAUNCHER__=.venv-gpu/Scripts/python.exe; bundled Python private_data/state_gated_memory_20261029_perf_check/probe.py",
+  "tolerances": {
+    "atol": 1e-12,
+    "rtol": 1e-12
+  },
+  "checks": [
+    {
+      "mode": "A",
+      "a_scale": 1.0,
+      "maximum_absolute_errors": {
+        "field0": 8.881784197001252e-16,
+        "field1": 8.881784197001252e-16,
+        "field2": 1.3322676295501878e-15,
+        "field3": 1.3322676295501878e-15,
+        "state0": 1.4210854715202004e-14,
+        "state1": 1.0658141036401503e-14,
+        "state2": 2.1316282072803006e-14,
+        "state3": 1.0658141036401503e-14,
+        "kappa_raw": 0.0,
+        "lambda_raw": 0.0,
+        "a_bar": 2.842170943040401e-14
+      }
+    },
+    {
+      "mode": "B",
+      "a_scale": 1.0,
+      "maximum_absolute_errors": {
+        "field0": 1.7763568394002505e-15,
+        "field1": 1.3322676295501878e-15,
+        "field2": 8.881784197001252e-16,
+        "field3": 8.881784197001252e-16,
+        "state0": 1.0658141036401503e-14,
+        "state1": 1.7763568394002505e-14,
+        "state2": 1.0658141036401503e-14,
+        "state3": 1.4210854715202004e-14,
+        "kappa_raw": 0.0,
+        "lambda_raw": 0.0,
+        "a_bar": 5.684341886080802e-14
+      }
+    },
+    {
+      "mode": "B",
+      "a_scale": 1e-12,
+      "maximum_absolute_errors": {
+        "field0": 0.0,
+        "field1": 0.0,
+        "field2": 0.0,
+        "field3": 0.0,
+        "state0": 0.0,
+        "state1": 0.0,
+        "state2": 0.0,
+        "state3": 0.0,
+        "kappa_raw": 0.0,
+        "lambda_raw": 0.0,
+        "a_bar": 3.552713678800501e-15
+      }
+    },
+    {
+      "mode": "C",
+      "a_scale": 1.0,
+      "maximum_absolute_errors": {
+        "field0": 0.0,
+        "field1": 0.0,
+        "field2": 0.0,
+        "field3": 0.0,
+        "state0": 0.0,
+        "state1": 0.0,
+        "state2": 0.0,
+        "state3": 0.0,
+        "kappa_raw": 0.0,
+        "lambda_raw": 0.0,
+        "a_bar": 0.0
+      }
+    }
+  ],
+  "timings": [
+    {
+      "mode": "A",
+      "scope": "CPU one thread float64; 128 forward field calls on fixed12-state sequence in one no_grad context; not initializer/rollout/CUDA/training",
+      "baseline": {
+        "wall_seconds": 0.0750901999999769,
+        "process_cpu_seconds": 0.125,
+        "checksum": 10745.223466273683
+      },
+      "prototype": {
+        "wall_seconds": 0.05783099999825936,
+        "process_cpu_seconds": 0.078125,
+        "checksum": 10745.223466273683
+      }
+    },
+    {
+      "mode": "B",
+      "scope": "CPU one thread float64; 128 forward field calls on fixed12-state sequence in one no_grad context; not initializer/rollout/CUDA/training",
+      "baseline": {
+        "wall_seconds": 0.10453780000170809,
+        "process_cpu_seconds": 0.15625,
+        "checksum": 10745.223466273683
+      },
+      "prototype": {
+        "wall_seconds": 0.08510299999761628,
+        "process_cpu_seconds": 0.09375,
+        "checksum": 10745.223466273683
+      }
+    }
+  ],
+  "exception_checks": [
+    {
+      "condition": "zero_no_grad",
+      "baseline": "legal_forward",
+      "prototype": "legal_forward"
+    },
+    {
+      "condition": "zero_grad",
+      "baseline": "ControlDegenerate:B total a=0 has no unique ordinary training derivative",
+      "prototype": "ControlDegenerate:B total a=0 has no unique ordinary training derivative"
+    },
+    {
+      "condition": "negative",
+      "baseline": "ControlDegenerate:invalid physical B weights",
+      "prototype": "ControlDegenerate:invalid physical B weights"
+    },
+    {
+      "condition": "nan_weight",
+      "baseline": "ControlDegenerate:invalid physical B weights",
+      "prototype": "ControlDegenerate:invalid physical B weights"
+    },
+    {
+      "condition": "infinite_weight",
+      "baseline": "ControlDegenerate:invalid physical B weights",
+      "prototype": "ControlDegenerate:invalid physical B weights"
+    },
+    {
+      "condition": "nan_state",
+      "baseline": "ControlDegenerate:B weighted ratio nonfinite",
+      "prototype": "ControlDegenerate:B weighted ratio nonfinite"
+    },
+    {
+      "condition": "infinite_state",
+      "baseline": "ControlDegenerate:B weighted ratio nonfinite",
+      "prototype": "ControlDegenerate:B weighted ratio nonfinite"
+    }
+  ],
+  "wall_seconds": 2.383951799998613,
+  "process_cpu_seconds": 3.828125,
+  "protected_unchanged": true,
+  "source_model_json_sha256": "937f00b740875913923487b8d772f40d2a8145a88eba2cdaf61f2d889715bfc9",
+  "protected_source_hashes": {
+    "experiments/state_gated_memory_model_20261028.py": "ad788b1c7533ee8a803b15805f4b06af2341d7ecad4df55b541a9de0618c697b",
+    "experiments/force_graph_model_20261028.py": "44e5fe2e1403bc7e072d2fb87100eaa694b15da5b4694169de141cc6059089af"
+  },
+  "prototype_sha256": "be62dbad58d5d07deb1bf42ddd883a436913374283ab92ff32de763f8ba53cdd",
+  "not_verified": [
+    "GPU speedup",
+    "full training objective equivalence",
+    "history initialization cost",
+    "integration into runtime",
+    "scientific or training admission"
+  ]
+}

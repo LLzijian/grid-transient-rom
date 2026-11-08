@@ -1,0 +1,11 @@
+# 完整方程合并：冻结执行设置与root实施采纳
+
+root采纳独立实施审查：仅一个明确阻断为旧N生产入口未初始化模块全局torch/NumPy；在QA前以最小修改关闭。新audit显式调用旧load_runtime后才加载夹具/计时，新增QA用冻结N资产、h=.01实际调用同一旧更新入口并核有限性/非空Adam/cache清理。不改旧源、不改72次benchmark。最终audit SHA4abd8aeee3bf396db2bf7d12bcf07d3783e3dd24c53e84e2dd7d0201293e16c0；audit tests dca9be9c9d3fb5dea79c882b98d0c1721b7f27fa23e7006b8ffdeb2f9868d0cc。
+
+runtime SHA8f332f72fb979413dd9dd2a7cd045b89bcc387253fd7915e6e2f985df6069940保持；runtime tests c592e896817478b69f628c137847d3413074637d051e8d5ffd5b2202576bab19。测试的非单位质量与完整骨架/图重编号只派生于冻结夹具，不改变benchmark夹具；加入真实临时文件保存/加载非空Adam与CPU/CUDA/NumPy RNG。QA driver显式CPU线程1，源码读取显式UTF8；数学目标、容差、条件不变。全为静态AST/文本核验，尚未运行prepare/QA/benchmark。
+
+全部实现/绑定静态费用在100秒内：runtime叶20.9340595、runner叶20.0852218、root首次费用记录写入1.9639864=42.9832677秒，写入固定implementation_cost快照的实际6fe30d命令另1.9722887秒，共44.9555564。该快照以后保持原字节；后续绑定准备费用用每次唯一、不覆盖的补充记录，加入实际来源绑定，root在启动前执行完整数值费用门禁并事前归档。不能只依据launcher的快照费用忽略之后费用；原生及外层只累计一次。root日常只读审查/选择性归档计独立支持600，显式实现/生成/绑定计静态100，独立事实提取计元数据200，不互挪。
+
+新BASE=private_data/closure_mechanism_20261019/P0/fused_runtime01。唯一prepare100/70/40、QA01及最多一次新增实现修复QA02各400/370/340、唯一benchmark1800/1770/1740。确切command/prior/binding/launcher四文件须root核实际argv/真实队列/源哈希/全额余款并事前GitHub归档后才运行。prepare后将实际manifest/model_N/model_D/npz/RNG身份冻结、绑定，后续QA和benchmark消费同一文件。禁止真实数据/科学权重/旧D cost、allow1024或训练。
+
+独立实施审查只静态条件接受，不是QA或速度通过。后续工程PR必须按真实依赖范围审查：新runtime测试依赖新audit及冻结合成资产，原生QA另需私有helper；不预称三文件公开clone自足。所有结果原样保留，旧D成本拒绝和各科学门槛不变。

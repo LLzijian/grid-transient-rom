@@ -1,15 +1,13 @@
-# Campaigns（科学假设档案）
+# Campaign 索引
 
-一个 Campaign 是一个可被证据支持/削弱/否证的科学假设，可跨多 Run、多会话。
-本目录只保存 Campaign 卡与 Run 树，不保存训练日志、进程状态或大体积证据
-（那些在 reports/、results/ 与本地存储，按 research_policy 归档）。
+一个 Campaign 管理一个有范围的科学假说及竞争解释；Run 检验关键部分，Job 是真实执行。
+算法实例/适配/seed 以父引用保持谱系，不能换编号清除历史。
+用 [模板](../templates/campaign.md) 写当前认识与下一判别问题，不抄实验流水账。
+具体算法方案引用 [designs/](../designs/README.md)，旧版本归 `designs/history/`。
+新 Run 协议保存在本目录，由 Campaign 卡引用；结果、分析和审查报告放 `reports/`。
+旧冻结协议保持原路径与身份，目录整理不改写历史预登记。
 
-    campaigns/<campaign_id>/campaign.md
+- [gftd_kuramoto_discovery_20261106.md](gftd_kuramoto_discovery_20261106.md)：面向部分观测广义藏本网络的生成泛函自上而下结构发现（GFTD-Kuramoto v2.0）主线 Campaign 规划（Stage I 受控复振子/广义藏本恢复 $\to$ Stage II IEEE 39 真实电力暂态验证）。
+- [retrospective_force_memory_20261030.md](retrospective_force_memory_20261030.md)：对既有 40 维力记忆材料的追溯索引，不是当时预登记或新的活动训练授权。
 
-- Campaign 卡模板见 templates/campaign.md；Run 协议/闭合见
-  templates/run_protocol.md、templates/run_closure.md；机制卡见
-  templates/mechanism_card.md。
-- 每个 Run 结束在 Campaign 卡的 Run 树追加一行，并分别记录代码/模型/科学三个决定。
-- 一次 Run 没超过可用模型，不等于 Campaign 失败；只要减少重要不确定性就沿同一
-  假设推进。换编号不重置同一路线的延长次数，也不能清除负面证据。
-- 历史实验保持 reports/ 原路径与身份，不迁移、不重写；Campaign 卡只链接其证据。
+新科学 Run 只在有明确科学问题、冻结范围、所需授权及真实 Scientist 规划时登记并释放。

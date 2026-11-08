@@ -1,0 +1,7 @@
+# 边记忆辨别P1执行入口
+
+原数值模块/test保持实际P0 QA/cost源身份；新增P1小监督文件只负责固定3train→freeze→3eval及实际回执。独立只读审查/root/fom_history_interface用1.8942000秒（P1support800子项）接受架构并提出三处启动前修正：明确inner正常完成且未超时；admission与P0实际commit/科学文件/完整cost PASS哈希一致；metadata严格40+50+10。root已全部修正，最终AST通过；尚未把静态结论称作实际运行资格。
+
+P1新的归档commit同时记录监督文件及协议；科学文件字节不变，P0数值源219faa74a63aa9090f8f5a9148ebe0a57f6d4aa4的实际QA/cost证明独立保留在admission和完整103来源表中。三模型/冻结/eval使用同一新执行commit并逐次绑定所有原科学文件，不能仅以commit字符串替代文件核验。
+
+meta100内prep40包括助手6.1031538及root生成/回执读取，freeze native50只计meta一次，closing10；支持800覆盖独立审查/文字/归档及启动监督外层准备，科学train/eval分别700/100封套。实际命令与prior/source binding先归档再启动，不存在启动即恢复旧模型或打开项目val/test的权限。

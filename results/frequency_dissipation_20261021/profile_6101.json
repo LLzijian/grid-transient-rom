@@ -1,0 +1,2054 @@
+{
+  "status": "COMPLETED",
+  "split": "train",
+  "stage_step": 1024,
+  "baseline_metrics_sha256": "4f53916743184e269541f42797a829bbcf938b7a8047b18978147f7d9f107820",
+  "manifest_sha256": "97e8a957dc9dff098368b69234d3976ffad4bc6a408ebe550541c3d46dc1d81c",
+  "cohort_sha256": "0d2b3ed030cd742ae0809114008c31e3a99c35c56d0238d2d03c5473abcecbf5",
+  "scope": "JSON facts only; nulls retained; no scientific gate, inference or promotion decision; public aggregate profile omits duplicated per-event classification rows",
+  "full_local_artifact": {
+    "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\frequency_dissipation01\\postprocess\\fixed_train_metrics_step001024.json",
+    "sha256": "7a7283e3fd20dcbee061b5d7ecaa887296ea932d230d8c73c5ae9ae8cba38cb4",
+    "bytes": 6295179,
+    "classification_rows_retained_locally": true
+  },
+  "seed": 6101,
+  "models": {
+    "6101_W": {
+      "common385": {
+        "event_count": 385,
+        "stable_count": 342,
+        "unstable_count": 43,
+        "stable": {
+          "1": {
+            "events": 342,
+            "unresolved_ids": [],
+            "mean_event_point_error": 0.663327568155765,
+            "frequency": {
+              "events": 342,
+              "unresolved_ids": [],
+              "sse": 1966.4232772243076,
+              "n_scalar_points": 34200,
+              "rmse": 0.23978689839936126,
+              "rmse_MW": null,
+              "unit": "rad/s",
+              "sse_origin": "stored_physical_sse"
+            },
+            "mechanical_power": {
+              "events": 342,
+              "unresolved_ids": [],
+              "sse": 24419.26552523729,
+              "n_scalar_points": 342000,
+              "rmse": 0.26721033135884614,
+              "rmse_MW": 26.721033135884614,
+              "unit": "system pu (100 MVA)",
+              "sse_origin": "stored_physical_sse"
+            },
+            "ceil_risk": 1.2554690564961355
+          },
+          "2": {
+            "events": 342,
+            "unresolved_ids": [],
+            "mean_event_point_error": 0.8782674728923169,
+            "frequency": {
+              "events": 342,
+              "unresolved_ids": [],
+              "sse": 9967.365379989622,
+              "n_scalar_points": 68400,
+              "rmse": 0.3817351386520759,
+              "rmse_MW": null,
+              "unit": "rad/s",
+              "sse_origin": "stored_physical_sse"
+            },
+            "mechanical_power": {
+              "events": 342,
+              "unresolved_ids": [],
+              "sse": 55580.63911767396,
+              "n_scalar_points": 684000,
+              "rmse": 0.28505831740906057,
+              "rmse_MW": 28.505831740906057,
+              "unit": "system pu (100 MVA)",
+              "sse_origin": "stored_physical_sse"
+            },
+            "ceil_risk": 1.724237143794301
+          },
+          "5": {
+            "events": 342,
+            "unresolved_ids": [],
+            "mean_event_point_error": 0.6614350942389815,
+            "frequency": {
+              "events": 342,
+              "unresolved_ids": [],
+              "sse": 19550.14858162346,
+              "n_scalar_points": 171000,
+              "rmse": 0.338124761409897,
+              "rmse_MW": null,
+              "unit": "rad/s",
+              "sse_origin": "stored_physical_sse"
+            },
+            "mechanical_power": {
+              "events": 342,
+              "unresolved_ids": [],
+              "sse": 92998.96363462407,
+              "n_scalar_points": 1710000,
+              "rmse": 0.2332066869767189,
+              "rmse_MW": 23.32066869767189,
+              "unit": "system pu (100 MVA)",
+              "sse_origin": "stored_physical_sse"
+            },
+            "ceil_risk": 1.3335439695390439
+          },
+          "8": {
+            "events": 342,
+            "unresolved_ids": [],
+            "mean_event_point_error": 0.6915058087955449,
+            "frequency": {
+              "events": 342,
+              "unresolved_ids": [],
+              "sse": 26876.46000011941,
+              "n_scalar_points": 273600,
+              "rmse": 0.31342092374159214,
+              "rmse_MW": null,
+              "unit": "rad/s",
+              "sse_origin": "stored_physical_sse"
+            },
+            "mechanical_power": {
+              "events": 342,
+              "unresolved_ids": [],
+              "sse": 114759.12248307382,
+              "n_scalar_points": 2736000,
+              "rmse": 0.20480264577044352,
+              "rmse_MW": 20.480264577044352,
+              "unit": "system pu (100 MVA)",
+              "sse_origin": "stored_physical_sse"
+            },
+            "ceil_risk": 1.4742630695645524
+          }
+        },
+        "unstable_actual_interval15": {
+          "events": 43,
+          "unresolved_ids": [],
+          "mean_event_point_error": 1.3595717596648929,
+          "time_pooled_point_error": 2.827546440637634,
+          "frequency": {
+            "events": 43,
+            "unresolved_ids": [],
+            "sse": 2340.995792916991,
+            "n_scalar_points": 1851,
+            "rmse": 1.124597483166658,
+            "rmse_MW": null,
+            "unit": "rad/s",
+            "sse_origin": "event_rmse_squared_times_actual_scalar_points"
+          },
+          "mechanical_power": {
+            "events": 43,
+            "unresolved_ids": [],
+            "sse": 2630.7112056869178,
+            "n_scalar_points": 18510,
+            "rmse": 0.3769930795741947,
+            "rmse_MW": 37.69930795741947,
+            "unit": "system pu (100 MVA)",
+            "sse_origin": "event_rmse_squared_times_actual_scalar_points"
+          }
+        },
+        "classification_8s": {
+          "stable_denominator": 342,
+          "unstable_denominator": 43,
+          "missed": 5,
+          "false_los": 3,
+          "undetermined": 45,
+          "numerical_unresolved": 0,
+          "categories": {
+            "window_settled": 299,
+            "predicted_los": 41,
+            "window_no_los_unsettled": 45
+          },
+          "note": "unsettled no-LOS counts as undetermined and, for unstable truth, missed; counts can overlap"
+        },
+        "classification_15s": {
+          "stable_denominator": 342,
+          "unstable_denominator": 43,
+          "missed": 19,
+          "false_los": 3,
+          "undetermined": 56,
+          "numerical_unresolved": 0,
+          "categories": {
+            "window_settled": 302,
+            "predicted_los": 27,
+            "window_no_los_unsettled": 56
+          },
+          "note": "unsettled no-LOS counts as undetermined and, for unstable truth, missed; counts can overlap"
+        },
+        "spatial_actual15": {
+          "all": {
+            "events": 385,
+            "unresolved_ids": [],
+            "qualification": "same-event full actual15 plus pair15; finite alone never qualifies",
+            "combined": 1.1887965885689529,
+            "angle_normalized_squared_error": 1.9493327502654079,
+            "speed_normalized_squared_error": 0.42826042687249855
+          },
+          "stable": {
+            "events": 342,
+            "unresolved_ids": [],
+            "qualification": "same-event full actual15 plus pair15; finite alone never qualifies",
+            "combined": 1.2495944417004006,
+            "angle_normalized_squared_error": 2.174404800410002,
+            "speed_normalized_squared_error": 0.32478408299080047
+          },
+          "unstable": {
+            "events": 43,
+            "unresolved_ids": [],
+            "qualification": "same-event full actual15 plus pair15; finite alone never qualifies",
+            "combined": 0.7052415706397603,
+            "angle_normalized_squared_error": 0.15922481655723672,
+            "speed_normalized_squared_error": 1.251258324722284
+          }
+        },
+        "coi": {
+          "all_1": {
+            "all_events": 385,
+            "eligible_events": 346,
+            "unavailable_events": 39,
+            "unresolved_ids": [],
+            "mean_event_normalized_rmse": 0.39239627507796665,
+            "pooled_normalized_rmse": 0.5842458019391447,
+            "worst10_mean_event_normalized_rmse": 1.211060754040173,
+            "definition": "stored COI relative delta/omega rmse; pooled=sqrt(sum(normalized_sse)/sum(n)); ceil event tail; not point_error"
+          },
+          "all_2": {
+            "all_events": 385,
+            "eligible_events": 342,
+            "unavailable_events": 43,
+            "unresolved_ids": [],
+            "mean_event_normalized_rmse": 0.40215418128149855,
+            "pooled_normalized_rmse": 0.6398251484118048,
+            "worst10_mean_event_normalized_rmse": 1.336790096797291,
+            "definition": "stored COI relative delta/omega rmse; pooled=sqrt(sum(normalized_sse)/sum(n)); ceil event tail; not point_error"
+          },
+          "all_5": {
+            "all_events": 385,
+            "eligible_events": 342,
+            "unavailable_events": 43,
+            "unresolved_ids": [],
+            "mean_event_normalized_rmse": 0.32665224601509835,
+            "pooled_normalized_rmse": 0.5653719431569243,
+            "worst10_mean_event_normalized_rmse": 1.1091586007269107,
+            "definition": "stored COI relative delta/omega rmse; pooled=sqrt(sum(normalized_sse)/sum(n)); ceil event tail; not point_error"
+          },
+          "all_8": {
+            "all_events": 385,
+            "eligible_events": 342,
+            "unavailable_events": 43,
+            "unresolved_ids": [],
+            "mean_event_normalized_rmse": 0.3499712385759819,
+            "pooled_normalized_rmse": 0.6364736729586933,
+            "worst10_mean_event_normalized_rmse": 1.5545282579606017,
+            "definition": "stored COI relative delta/omega rmse; pooled=sqrt(sum(normalized_sse)/sum(n)); ceil event tail; not point_error"
+          },
+          "stable_1": {
+            "all_events": 342,
+            "eligible_events": 342,
+            "unavailable_events": 0,
+            "unresolved_ids": [],
+            "mean_event_normalized_rmse": 0.3855863824017726,
+            "pooled_normalized_rmse": 0.577771996412771,
+            "worst10_mean_event_normalized_rmse": 1.1858476487067147,
+            "definition": "stored COI relative delta/omega rmse; pooled=sqrt(sum(normalized_sse)/sum(n)); ceil event tail; not point_error"
+          },
+          "stable_2": {
+            "all_events": 342,
+            "eligible_events": 342,
+            "unavailable_events": 0,
+            "unresolved_ids": [],
+            "mean_event_normalized_rmse": 0.40215418128149855,
+            "pooled_normalized_rmse": 0.6398251484118048,
+            "worst10_mean_event_normalized_rmse": 1.336790096797291,
+            "definition": "stored COI relative delta/omega rmse; pooled=sqrt(sum(normalized_sse)/sum(n)); ceil event tail; not point_error"
+          },
+          "stable_5": {
+            "all_events": 342,
+            "eligible_events": 342,
+            "unavailable_events": 0,
+            "unresolved_ids": [],
+            "mean_event_normalized_rmse": 0.32665224601509835,
+            "pooled_normalized_rmse": 0.5653719431569243,
+            "worst10_mean_event_normalized_rmse": 1.1091586007269107,
+            "definition": "stored COI relative delta/omega rmse; pooled=sqrt(sum(normalized_sse)/sum(n)); ceil event tail; not point_error"
+          },
+          "stable_8": {
+            "all_events": 342,
+            "eligible_events": 342,
+            "unavailable_events": 0,
+            "unresolved_ids": [],
+            "mean_event_normalized_rmse": 0.3499712385759819,
+            "pooled_normalized_rmse": 0.6364736729586933,
+            "worst10_mean_event_normalized_rmse": 1.5545282579606017,
+            "definition": "stored COI relative delta/omega rmse; pooled=sqrt(sum(normalized_sse)/sum(n)); ceil event tail; not point_error"
+          }
+        },
+        "frequency_dissipation": {
+          "stable": {
+            "1": {
+              "events": 342,
+              "unresolved_ids": [],
+              "complete": true,
+              "summary": {
+                "port_power": {
+                  "future_points": 100.0,
+                  "sample_max": -0.035896157468036774,
+                  "time_mean": -0.16700547126750387,
+                  "negative_time_fraction": 1.0000000000000007,
+                  "zero_time_fraction": 0.0,
+                  "integral": -0.16700547126750387,
+                  "positive_time_fraction": 0.0,
+                  "duration_seconds": 1.0,
+                  "sample_min": -0.7567760911952061
+                },
+                "omega_field_norm": {
+                  "future_points": 100.0,
+                  "sample_max": 0.22435561537265292,
+                  "time_mean": 0.06069625566744501,
+                  "negative_time_fraction": 0.0,
+                  "zero_time_fraction": 0.0,
+                  "integral": 0.06069625566744501,
+                  "positive_time_fraction": 1.0000000000000007,
+                  "time_mean_square": 0.42022760592327013,
+                  "duration_seconds": 1.0,
+                  "sample_min": 0.012533928092383358
+                }
+              },
+              "power_unit": "H-unit/s",
+              "omega_field_norm_unit": "rad/s^2",
+              "summary_definition": "event arithmetic means of each stored time statistic; denominators retained; no finite subset"
+            },
+            "2": {
+              "events": 342,
+              "unresolved_ids": [],
+              "complete": true,
+              "summary": {
+                "port_power": {
+                  "future_points": 200.0,
+                  "sample_max": -0.003939543915131495,
+                  "time_mean": -0.13430792966230173,
+                  "negative_time_fraction": 1.0000000000000007,
+                  "zero_time_fraction": 0.0,
+                  "integral": -0.26861585932460347,
+                  "positive_time_fraction": 0.0,
+                  "duration_seconds": 2.0,
+                  "sample_min": -0.7568651878982097
+                },
+                "omega_field_norm": {
+                  "future_points": 200.0,
+                  "sample_max": 0.22534759949455674,
+                  "time_mean": 0.054162109551868114,
+                  "negative_time_fraction": 0.0,
+                  "zero_time_fraction": 0.0,
+                  "integral": 0.10832421910373623,
+                  "positive_time_fraction": 1.0000000000000007,
+                  "time_mean_square": 0.32452040579474306,
+                  "duration_seconds": 2.0,
+                  "sample_min": 0.0033122723330721755
+                }
+              },
+              "power_unit": "H-unit/s",
+              "omega_field_norm_unit": "rad/s^2",
+              "summary_definition": "event arithmetic means of each stored time statistic; denominators retained; no finite subset"
+            },
+            "5": {
+              "events": 342,
+              "unresolved_ids": [],
+              "complete": true,
+              "summary": {
+                "port_power": {
+                  "future_points": 500.0,
+                  "sample_max": -0.0002640999421777081,
+                  "time_mean": -0.06114938326753187,
+                  "negative_time_fraction": 0.9999999999999876,
+                  "zero_time_fraction": 0.0,
+                  "integral": -0.3057469163376594,
+                  "positive_time_fraction": 0.0,
+                  "duration_seconds": 5.0,
+                  "sample_min": -0.7695137518627164
+                },
+                "omega_field_norm": {
+                  "future_points": 500.0,
+                  "sample_max": 0.24173313191921134,
+                  "time_mean": 0.028140420178540803,
+                  "negative_time_fraction": 0.0,
+                  "zero_time_fraction": 0.0,
+                  "integral": 0.140702100892704,
+                  "positive_time_fraction": 0.9999999999999876,
+                  "time_mean_square": 0.1369141589560552,
+                  "duration_seconds": 5.0,
+                  "sample_min": 0.00036523774723155124
+                }
+              },
+              "power_unit": "H-unit/s",
+              "omega_field_norm_unit": "rad/s^2",
+              "summary_definition": "event arithmetic means of each stored time statistic; denominators retained; no finite subset"
+            },
+            "8": {
+              "events": 342,
+              "unresolved_ids": [],
+              "complete": true,
+              "summary": {
+                "port_power": {
+                  "future_points": 800.0,
+                  "sample_max": -1.2515587379123718e-05,
+                  "time_mean": -0.046626607221008545,
+                  "negative_time_fraction": 0.9999999999999842,
+                  "zero_time_fraction": 0.0,
+                  "integral": -0.37301285776806836,
+                  "positive_time_fraction": 0.0,
+                  "duration_seconds": 8.0,
+                  "sample_min": -0.8803518501527672
+                },
+                "omega_field_norm": {
+                  "future_points": 800.0,
+                  "sample_max": 0.416584563459785,
+                  "time_mean": 0.030004850674381908,
+                  "negative_time_fraction": 0.0,
+                  "zero_time_fraction": 0.0,
+                  "integral": 0.24003880539505526,
+                  "positive_time_fraction": 0.9999999999999842,
+                  "time_mean_square": 0.1013731330314082,
+                  "duration_seconds": 8.0,
+                  "sample_min": 3.404892878679931e-05
+                }
+              },
+              "power_unit": "H-unit/s",
+              "omega_field_norm_unit": "rad/s^2",
+              "summary_definition": "event arithmetic means of each stored time statistic; denominators retained; no finite subset"
+            }
+          },
+          "actual15": {
+            "all": {
+              "events": 385,
+              "unresolved_ids": [],
+              "complete": true,
+              "summary": {
+                "port_power": {
+                  "future_points": 1328.3922077922077,
+                  "sample_max": -0.2756321940837064,
+                  "time_mean": -0.4126248298742509,
+                  "negative_time_fraction": 0.9999999999999838,
+                  "zero_time_fraction": 0.0,
+                  "integral": -0.44315202847750035,
+                  "positive_time_fraction": 0.0,
+                  "duration_seconds": 13.283922077922078,
+                  "sample_min": -1.526313193838883
+                },
+                "omega_field_norm": {
+                  "future_points": 1328.3922077922077,
+                  "sample_max": 0.6529995964378602,
+                  "time_mean": 0.16313368995565977,
+                  "negative_time_fraction": 0.0,
+                  "zero_time_fraction": 0.0,
+                  "integral": 0.26085222816378556,
+                  "positive_time_fraction": 0.9999999999999838,
+                  "time_mean_square": 0.5092789531622806,
+                  "duration_seconds": 13.283922077922078,
+                  "sample_min": 0.10454185040088254
+                }
+              },
+              "power_unit": "H-unit/s",
+              "omega_field_norm_unit": "rad/s^2",
+              "summary_definition": "event arithmetic means of each stored time statistic; denominators retained; no finite subset"
+            },
+            "stable": {
+              "events": 342,
+              "unresolved_ids": [],
+              "complete": true,
+              "summary": {
+                "port_power": {
+                  "future_points": 1490.0,
+                  "sample_max": -2.3035800773328363e-09,
+                  "time_mean": -0.025074106155427812,
+                  "negative_time_fraction": 0.9999999999999817,
+                  "zero_time_fraction": 0.0,
+                  "integral": -0.3736041817158744,
+                  "positive_time_fraction": 0.0,
+                  "duration_seconds": 14.9,
+                  "sample_min": -0.8803518501527672
+                },
+                "omega_field_norm": {
+                  "future_points": 1490.0,
+                  "sample_max": 0.416584563459785,
+                  "time_mean": 0.016221607308355736,
+                  "negative_time_fraction": 0.0,
+                  "zero_time_fraction": 0.0,
+                  "integral": 0.24170194889450047,
+                  "positive_time_fraction": 0.9999999999999817,
+                  "time_mean_square": 0.05443005212803219,
+                  "duration_seconds": 14.9,
+                  "sample_min": 9.747283273255164e-08
+                }
+              },
+              "power_unit": "H-unit/s",
+              "omega_field_norm_unit": "rad/s^2",
+              "summary_definition": "event arithmetic means of each stored time statistic; denominators retained; no finite subset"
+            },
+            "unstable": {
+              "events": 43,
+              "unresolved_ids": [],
+              "complete": true,
+              "summary": {
+                "port_power": {
+                  "future_points": 43.04651162790697,
+                  "sample_max": -2.467869626381456,
+                  "time_mean": -3.4950050045681467,
+                  "negative_time_fraction": 1.0000000000000002,
+                  "zero_time_fraction": 0.0,
+                  "integral": -0.9963000190001997,
+                  "positive_time_fraction": 0.0,
+                  "duration_seconds": 0.4304651162790698,
+                  "sample_min": -6.6639592296679915
+                },
+                "omega_field_norm": {
+                  "future_points": 43.04651162790697,
+                  "sample_max": 2.5333238122169703,
+                  "time_mean": 1.3315972310109616,
+                  "negative_time_fraction": 0.0,
+                  "zero_time_fraction": 0.0,
+                  "integral": 0.41316375165437896,
+                  "positive_time_fraction": 1.0000000000000002,
+                  "time_mean_square": 4.1269143985974654,
+                  "duration_seconds": 0.4304651162790698,
+                  "sample_min": 0.9360134667123485
+                }
+              },
+              "power_unit": "H-unit/s",
+              "omega_field_norm_unit": "rad/s^2",
+              "summary_definition": "event arithmetic means of each stored time statistic; denominators retained; no finite subset"
+            }
+          }
+        }
+      },
+      "original366": {
+        "event_count": 366,
+        "stable_count": 325,
+        "unstable_count": 41,
+        "stable": {
+          "1": {
+            "events": 325,
+            "unresolved_ids": [],
+            "mean_event_point_error": 0.6659719678625102,
+            "frequency": {
+              "events": 325,
+              "unresolved_ids": [],
+              "sse": 1875.8931582659789,
+              "n_scalar_points": 32500,
+              "rmse": 0.24024943181016484,
+              "rmse_MW": null,
+              "unit": "rad/s",
+              "sse_origin": "stored_physical_sse"
+            },
+            "mechanical_power": {
+              "events": 325,
+              "unresolved_ids": [],
+              "sse": 23110.758828678834,
+              "n_scalar_points": 325000,
+              "rmse": 0.26666463426027387,
+              "rmse_MW": 26.666463426027388,
+              "unit": "system pu (100 MVA)",
+              "sse_origin": "stored_physical_sse"
+            },
+            "ceil_risk": 1.2690178710818265
+          },
+          "2": {
+            "events": 325,
+            "unresolved_ids": [],
+            "mean_event_point_error": 0.8773459896275517,
+            "frequency": {
+              "events": 325,
+              "unresolved_ids": [],
+              "sse": 9433.882509245428,
+              "n_scalar_points": 65000,
+              "rmse": 0.3809680485137713,
+              "rmse_MW": null,
+              "unit": "rad/s",
+              "sse_origin": "stored_physical_sse"
+            },
+            "mechanical_power": {
+              "events": 325,
+              "unresolved_ids": [],
+              "sse": 52244.8087731839,
+              "n_scalar_points": 650000,
+              "rmse": 0.28350772279044073,
+              "rmse_MW": 28.350772279044072,
+              "unit": "system pu (100 MVA)",
+              "sse_origin": "stored_physical_sse"
+            },
+            "ceil_risk": 1.7327467961681187
+          },
+          "5": {
+            "events": 325,
+            "unresolved_ids": [],
+            "mean_event_point_error": 0.6643103512121125,
+            "frequency": {
+              "events": 325,
+              "unresolved_ids": [],
+              "sse": 18511.036879066352,
+              "n_scalar_points": 162500,
+              "rmse": 0.33751158958167166,
+              "rmse_MW": null,
+              "unit": "rad/s",
+              "sse_origin": "stored_physical_sse"
+            },
+            "mechanical_power": {
+              "events": 325,
+              "unresolved_ids": [],
+              "sse": 87342.05735563608,
+              "n_scalar_points": 1625000,
+              "rmse": 0.23183821594529908,
+              "rmse_MW": 23.183821594529906,
+              "unit": "system pu (100 MVA)",
+              "sse_origin": "stored_physical_sse"
+            },
+            "ceil_risk": 1.3504705979170761
+          },
+          "8": {
+            "events": 325,
+            "unresolved_ids": [],
+            "mean_event_point_error": 0.691673047348345,
+            "frequency": {
+              "events": 325,
+              "unresolved_ids": [],
+              "sse": 25480.13538480665,
+              "n_scalar_points": 260000,
+              "rmse": 0.3130503485236757,
+              "rmse_MW": null,
+              "unit": "rad/s",
+              "sse_origin": "stored_physical_sse"
+            },
+            "mechanical_power": {
+              "events": 325,
+              "unresolved_ids": [],
+              "sse": 107958.83133165311,
+              "n_scalar_points": 2600000,
+              "rmse": 0.20377101716203705,
+              "rmse_MW": 20.377101716203704,
+              "unit": "system pu (100 MVA)",
+              "sse_origin": "stored_physical_sse"
+            },
+            "ceil_risk": 1.4882458195154684
+          }
+        },
+        "unstable_actual_interval15": {
+          "events": 41,
+          "unresolved_ids": [],
+          "mean_event_point_error": 1.390257768241083,
+          "time_pooled_point_error": 2.903226962708198,
+          "frequency": {
+            "events": 41,
+            "unresolved_ids": [],
+            "sse": 2326.5262343311733,
+            "n_scalar_points": 1787,
+            "rmse": 1.1410159117039993,
+            "rmse_MW": null,
+            "unit": "rad/s",
+            "sse_origin": "event_rmse_squared_times_actual_scalar_points"
+          },
+          "mechanical_power": {
+            "events": 41,
+            "unresolved_ids": [],
+            "sse": 2613.5984791993433,
+            "n_scalar_points": 17870,
+            "rmse": 0.38243458311677486,
+            "rmse_MW": 38.243458311677486,
+            "unit": "system pu (100 MVA)",
+            "sse_origin": "event_rmse_squared_times_actual_scalar_points"
+          }
+        },
+        "classification_8s": {
+          "stable_denominator": 325,
+          "unstable_denominator": 41,
+          "missed": 5,
+          "false_los": 3,
+          "undetermined": 42,
+          "numerical_unresolved": 0,
+          "categories": {
+            "window_settled": 285,
+            "predicted_los": 39,
+            "window_no_los_unsettled": 42
+          },
+          "note": "unsettled no-LOS counts as undetermined and, for unstable truth, missed; counts can overlap"
+        },
+        "classification_15s": {
+          "stable_denominator": 325,
+          "unstable_denominator": 41,
+          "missed": 17,
+          "false_los": 3,
+          "undetermined": 51,
+          "numerical_unresolved": 0,
+          "categories": {
+            "window_settled": 288,
+            "predicted_los": 27,
+            "window_no_los_unsettled": 51
+          },
+          "note": "unsettled no-LOS counts as undetermined and, for unstable truth, missed; counts can overlap"
+        },
+        "spatial_actual15": {
+          "all": {
+            "events": 366,
+            "unresolved_ids": [],
+            "qualification": "same-event full actual15 plus pair15; finite alone never qualifies",
+            "combined": 1.174935387501936,
+            "angle_normalized_squared_error": 1.9291189797897947,
+            "speed_normalized_squared_error": 0.42075179521407646
+          },
+          "stable": {
+            "events": 325,
+            "unresolved_ids": [],
+            "qualification": "same-event full actual15 plus pair15; finite alone never qualifies",
+            "combined": 1.2363594958559496,
+            "angle_normalized_squared_error": 2.151622412808018,
+            "speed_normalized_squared_error": 0.32109657890388066
+          },
+          "unstable": {
+            "events": 41,
+            "unresolved_ids": [],
+            "qualification": "same-event full actual15 plus pair15; finite alone never qualifies",
+            "combined": 0.6880369676225551,
+            "angle_normalized_squared_error": 0.16537225464533675,
+            "speed_normalized_squared_error": 1.2107016805997732
+          }
+        },
+        "coi": {
+          "all_1": {
+            "all_events": 366,
+            "eligible_events": 329,
+            "unavailable_events": 37,
+            "unresolved_ids": [],
+            "mean_event_normalized_rmse": 0.3922698430460978,
+            "pooled_normalized_rmse": 0.58747779597813,
+            "worst10_mean_event_normalized_rmse": 1.2153404061690873,
+            "definition": "stored COI relative delta/omega rmse; pooled=sqrt(sum(normalized_sse)/sum(n)); ceil event tail; not point_error"
+          },
+          "all_2": {
+            "all_events": 366,
+            "eligible_events": 325,
+            "unavailable_events": 41,
+            "unresolved_ids": [],
+            "mean_event_normalized_rmse": 0.4009947800414596,
+            "pooled_normalized_rmse": 0.6423149291524964,
+            "worst10_mean_event_normalized_rmse": 1.3343393524692058,
+            "definition": "stored COI relative delta/omega rmse; pooled=sqrt(sum(normalized_sse)/sum(n)); ceil event tail; not point_error"
+          },
+          "all_5": {
+            "all_events": 366,
+            "eligible_events": 325,
+            "unavailable_events": 41,
+            "unresolved_ids": [],
+            "mean_event_normalized_rmse": 0.326354307604718,
+            "pooled_normalized_rmse": 0.5703821412657127,
+            "worst10_mean_event_normalized_rmse": 1.1122106679529895,
+            "definition": "stored COI relative delta/omega rmse; pooled=sqrt(sum(normalized_sse)/sum(n)); ceil event tail; not point_error"
+          },
+          "all_8": {
+            "all_events": 366,
+            "eligible_events": 325,
+            "unavailable_events": 41,
+            "unresolved_ids": [],
+            "mean_event_normalized_rmse": 0.3481927829775193,
+            "pooled_normalized_rmse": 0.6381774151255986,
+            "worst10_mean_event_normalized_rmse": 1.5589041833628672,
+            "definition": "stored COI relative delta/omega rmse; pooled=sqrt(sum(normalized_sse)/sum(n)); ceil event tail; not point_error"
+          },
+          "stable_1": {
+            "all_events": 325,
+            "eligible_events": 325,
+            "unavailable_events": 0,
+            "unresolved_ids": [],
+            "mean_event_normalized_rmse": 0.385102184512603,
+            "pooled_normalized_rmse": 0.5807414217292133,
+            "worst10_mean_event_normalized_rmse": 1.188510371776098,
+            "definition": "stored COI relative delta/omega rmse; pooled=sqrt(sum(normalized_sse)/sum(n)); ceil event tail; not point_error"
+          },
+          "stable_2": {
+            "all_events": 325,
+            "eligible_events": 325,
+            "unavailable_events": 0,
+            "unresolved_ids": [],
+            "mean_event_normalized_rmse": 0.4009947800414596,
+            "pooled_normalized_rmse": 0.6423149291524964,
+            "worst10_mean_event_normalized_rmse": 1.3343393524692058,
+            "definition": "stored COI relative delta/omega rmse; pooled=sqrt(sum(normalized_sse)/sum(n)); ceil event tail; not point_error"
+          },
+          "stable_5": {
+            "all_events": 325,
+            "eligible_events": 325,
+            "unavailable_events": 0,
+            "unresolved_ids": [],
+            "mean_event_normalized_rmse": 0.326354307604718,
+            "pooled_normalized_rmse": 0.5703821412657127,
+            "worst10_mean_event_normalized_rmse": 1.1122106679529895,
+            "definition": "stored COI relative delta/omega rmse; pooled=sqrt(sum(normalized_sse)/sum(n)); ceil event tail; not point_error"
+          },
+          "stable_8": {
+            "all_events": 325,
+            "eligible_events": 325,
+            "unavailable_events": 0,
+            "unresolved_ids": [],
+            "mean_event_normalized_rmse": 0.3481927829775193,
+            "pooled_normalized_rmse": 0.6381774151255986,
+            "worst10_mean_event_normalized_rmse": 1.5589041833628672,
+            "definition": "stored COI relative delta/omega rmse; pooled=sqrt(sum(normalized_sse)/sum(n)); ceil event tail; not point_error"
+          }
+        },
+        "frequency_dissipation": {
+          "stable": {
+            "1": {
+              "events": 325,
+              "unresolved_ids": [],
+              "complete": true,
+              "summary": {
+                "port_power": {
+                  "future_points": 100.0,
+                  "sample_max": -0.03540910619003173,
+                  "time_mean": -0.17093715619509,
+                  "negative_time_fraction": 1.0000000000000007,
+                  "zero_time_fraction": 0.0,
+                  "integral": -0.17093715619509,
+                  "positive_time_fraction": 0.0,
+                  "duration_seconds": 1.0,
+                  "sample_min": -0.7852662303484832
+                },
+                "omega_field_norm": {
+                  "future_points": 100.0,
+                  "sample_max": 0.22950647182331724,
+                  "time_mean": 0.061777048965874645,
+                  "negative_time_fraction": 0.0,
+                  "zero_time_fraction": 0.0,
+                  "integral": 0.061777048965874645,
+                  "positive_time_fraction": 1.0000000000000007,
+                  "time_mean_square": 0.4416492105446631,
+                  "duration_seconds": 1.0,
+                  "sample_min": 0.01277461354114057
+                }
+              },
+              "power_unit": "H-unit/s",
+              "omega_field_norm_unit": "rad/s^2",
+              "summary_definition": "event arithmetic means of each stored time statistic; denominators retained; no finite subset"
+            },
+            "2": {
+              "events": 325,
+              "unresolved_ids": [],
+              "complete": true,
+              "summary": {
+                "port_power": {
+                  "future_points": 200.0,
+                  "sample_max": -0.0036255420374793675,
+                  "time_mean": -0.13727344434777553,
+                  "negative_time_fraction": 1.0000000000000007,
+                  "zero_time_fraction": 0.0,
+                  "integral": -0.27454688869555105,
+                  "positive_time_fraction": 0.0,
+                  "duration_seconds": 2.0,
+                  "sample_min": -0.7853599874944132
+                },
+                "omega_field_norm": {
+                  "future_points": 200.0,
+                  "sample_max": 0.23050720182996434,
+                  "time_mean": 0.054959428322389245,
+                  "negative_time_fraction": 0.0,
+                  "zero_time_fraction": 0.0,
+                  "integral": 0.10991885664477849,
+                  "positive_time_fraction": 1.0000000000000007,
+                  "time_mean_square": 0.34096990656493825,
+                  "duration_seconds": 2.0,
+                  "sample_min": 0.003280721501848368
+                }
+              },
+              "power_unit": "H-unit/s",
+              "omega_field_norm_unit": "rad/s^2",
+              "summary_definition": "event arithmetic means of each stored time statistic; denominators retained; no finite subset"
+            },
+            "5": {
+              "events": 325,
+              "unresolved_ids": [],
+              "complete": true,
+              "summary": {
+                "port_power": {
+                  "future_points": 500.0,
+                  "sample_max": -0.0002649459612254713,
+                  "time_mean": -0.06243571804535387,
+                  "negative_time_fraction": 0.9999999999999876,
+                  "zero_time_fraction": 0.0,
+                  "integral": -0.3121785902267693,
+                  "positive_time_fraction": 0.0,
+                  "duration_seconds": 5.0,
+                  "sample_min": -0.7986701686509096
+                },
+                "omega_field_norm": {
+                  "future_points": 500.0,
+                  "sample_max": 0.24774982364298545,
+                  "time_mean": 0.02851513183233172,
+                  "negative_time_fraction": 0.0,
+                  "zero_time_fraction": 0.0,
+                  "integral": 0.14257565916165862,
+                  "positive_time_fraction": 0.9999999999999876,
+                  "time_mean_square": 0.14384481431612597,
+                  "duration_seconds": 5.0,
+                  "sample_min": 0.0003443131222760014
+                }
+              },
+              "power_unit": "H-unit/s",
+              "omega_field_norm_unit": "rad/s^2",
+              "summary_definition": "event arithmetic means of each stored time statistic; denominators retained; no finite subset"
+            },
+            "8": {
+              "events": 325,
+              "unresolved_ids": [],
+              "complete": true,
+              "summary": {
+                "port_power": {
+                  "future_points": 800.0,
+                  "sample_max": -1.1840730770110836e-05,
+                  "time_mean": -0.04710453853677266,
+                  "negative_time_fraction": 0.9999999999999842,
+                  "zero_time_fraction": 0.0,
+                  "integral": -0.3768363082941813,
+                  "positive_time_fraction": 0.0,
+                  "duration_seconds": 8.0,
+                  "sample_min": -0.9064058853083483
+                },
+                "omega_field_norm": {
+                  "future_points": 800.0,
+                  "sample_max": 0.41628516058682546,
+                  "time_mean": 0.02978019890700086,
+                  "negative_time_fraction": 0.0,
+                  "zero_time_fraction": 0.0,
+                  "integral": 0.23824159125600688,
+                  "positive_time_fraction": 0.9999999999999842,
+                  "time_mean_square": 0.10499363159591958,
+                  "duration_seconds": 8.0,
+                  "sample_min": 3.205799024919754e-05
+                }
+              },
+              "power_unit": "H-unit/s",
+              "omega_field_norm_unit": "rad/s^2",
+              "summary_definition": "event arithmetic means of each stored time statistic; denominators retained; no finite subset"
+            }
+          },
+          "actual15": {
+            "all": {
+              "events": 366,
+              "unresolved_ids": [],
+              "complete": true,
+              "summary": {
+                "port_power": {
+                  "future_points": 1327.9699453551912,
+                  "sample_max": -0.28575404801402576,
+                  "time_mean": -0.42697543373305363,
+                  "negative_time_fraction": 0.9999999999999837,
+                  "zero_time_fraction": 0.0,
+                  "integral": -0.45029736063939246,
+                  "positive_time_fraction": 0.0,
+                  "duration_seconds": 13.279699453551912,
+                  "sample_min": -1.5724168574004749
+                },
+                "omega_field_norm": {
+                  "future_points": 1327.9699453551912,
+                  "sample_max": 0.6576479966250998,
+                  "time_mean": 0.16606263009186303,
+                  "negative_time_fraction": 0.0,
+                  "zero_time_fraction": 0.0,
+                  "integral": 0.2600901315265133,
+                  "positive_time_fraction": 0.9999999999999837,
+                  "time_mean_square": 0.5295770361776333,
+                  "duration_seconds": 13.279699453551912,
+                  "sample_min": 0.10648104016109063
+                }
+              },
+              "power_unit": "H-unit/s",
+              "omega_field_norm_unit": "rad/s^2",
+              "summary_definition": "event arithmetic means of each stored time statistic; denominators retained; no finite subset"
+            },
+            "stable": {
+              "events": 325,
+              "unresolved_ids": [],
+              "complete": true,
+              "summary": {
+                "port_power": {
+                  "future_points": 1490.0,
+                  "sample_max": -2.2189065194559815e-09,
+                  "time_mean": -0.025330320257812067,
+                  "negative_time_fraction": 0.9999999999999817,
+                  "zero_time_fraction": 0.0,
+                  "integral": -0.3774217718413998,
+                  "positive_time_fraction": 0.0,
+                  "duration_seconds": 14.9,
+                  "sample_min": -0.9064058853083483
+                },
+                "omega_field_norm": {
+                  "future_points": 1490.0,
+                  "sample_max": 0.41628516058682546,
+                  "time_mean": 0.01609707173353223,
+                  "negative_time_fraction": 0.0,
+                  "zero_time_fraction": 0.0,
+                  "integral": 0.2398463688296302,
+                  "positive_time_fraction": 0.9999999999999817,
+                  "time_mean_square": 0.05637384632654224,
+                  "duration_seconds": 14.9,
+                  "sample_min": 9.223831909780694e-08
+                }
+              },
+              "power_unit": "H-unit/s",
+              "omega_field_norm_unit": "rad/s^2",
+              "summary_definition": "event arithmetic means of each stored time statistic; denominators retained; no finite subset"
+            },
+            "unstable": {
+              "events": 41,
+              "unresolved_ids": [],
+              "complete": true,
+              "summary": {
+                "port_power": {
+                  "future_points": 43.58536585365854,
+                  "sample_max": -2.5508775817558247,
+                  "time_mean": -3.610747674695334,
+                  "negative_time_fraction": 1.0000000000000004,
+                  "zero_time_fraction": 0.0,
+                  "integral": -1.027969710867383,
+                  "positive_time_fraction": 0.0,
+                  "duration_seconds": 0.43585365853658536,
+                  "sample_min": -6.851772123984405
+                },
+                "omega_field_norm": {
+                  "future_points": 43.58536585365854,
+                  "sample_max": 2.57088998961142,
+                  "time_mean": 1.354814007322534,
+                  "negative_time_fraction": 0.0,
+                  "zero_time_fraction": 0.0,
+                  "integral": 0.4205589821725375,
+                  "positive_time_fraction": 1.0000000000000004,
+                  "time_mean_square": 4.280577931338722,
+                  "duration_seconds": 0.43585365853658536,
+                  "sample_min": 0.9505373346708649
+                }
+              },
+              "power_unit": "H-unit/s",
+              "omega_field_norm_unit": "rad/s^2",
+              "summary_definition": "event arithmetic means of each stored time statistic; denominators retained; no finite subset"
+            }
+          }
+        }
+      },
+      "new19": {
+        "event_count": 19,
+        "stable_count": 17,
+        "unstable_count": 2,
+        "stable": {
+          "1": {
+            "events": 17,
+            "unresolved_ids": [],
+            "mean_event_point_error": 0.6127728678797526,
+            "frequency": {
+              "events": 17,
+              "unresolved_ids": [],
+              "sse": 90.53011895832904,
+              "n_scalar_points": 1700,
+              "rmse": 0.23076613952648742,
+              "rmse_MW": null,
+              "unit": "rad/s",
+              "sse_origin": "stored_physical_sse"
+            },
+            "mechanical_power": {
+              "events": 17,
+              "unresolved_ids": [],
+              "sse": 1308.5066965584438,
+              "n_scalar_points": 17000,
+              "rmse": 0.2774364470477819,
+              "rmse_MW": 27.74364470477819,
+              "unit": "system pu (100 MVA)",
+              "sse_origin": "stored_physical_sse"
+            },
+            "ceil_risk": 1.0137151193667302
+          },
+          "2": {
+            "events": 17,
+            "unresolved_ids": [],
+            "mean_event_point_error": 0.8958840647187123,
+            "frequency": {
+              "events": 17,
+              "unresolved_ids": [],
+              "sse": 533.4828707441923,
+              "n_scalar_points": 3400,
+              "rmse": 0.39611453733670055,
+              "rmse_MW": null,
+              "unit": "rad/s",
+              "sse_origin": "stored_physical_sse"
+            },
+            "mechanical_power": {
+              "events": 17,
+              "unresolved_ids": [],
+              "sse": 3335.8303444900657,
+              "n_scalar_points": 34000,
+              "rmse": 0.3132294002658184,
+              "rmse_MW": 31.32294002658184,
+              "unit": "system pu (100 MVA)",
+              "sse_origin": "stored_physical_sse"
+            },
+            "ceil_risk": 1.5610054466448995
+          },
+          "5": {
+            "events": 17,
+            "unresolved_ids": [],
+            "mean_event_point_error": 0.6064669462232412,
+            "frequency": {
+              "events": 17,
+              "unresolved_ids": [],
+              "sse": 1039.1117025571057,
+              "n_scalar_points": 8500,
+              "rmse": 0.34964043758546237,
+              "rmse_MW": null,
+              "unit": "rad/s",
+              "sse_origin": "stored_physical_sse"
+            },
+            "mechanical_power": {
+              "events": 17,
+              "unresolved_ids": [],
+              "sse": 5656.9062789880145,
+              "n_scalar_points": 85000,
+              "rmse": 0.2579764302728635,
+              "rmse_MW": 25.797643027286348,
+              "unit": "system pu (100 MVA)",
+              "sse_origin": "stored_physical_sse"
+            },
+            "ceil_risk": 1.0332772598047657
+          },
+          "8": {
+            "events": 17,
+            "unresolved_ids": [],
+            "mean_event_point_error": 0.6883086011684828,
+            "frequency": {
+              "events": 17,
+              "unresolved_ids": [],
+              "sse": 1396.324615312758,
+              "n_scalar_points": 13600,
+              "rmse": 0.3204230447338742,
+              "rmse_MW": null,
+              "unit": "rad/s",
+              "sse_origin": "stored_physical_sse"
+            },
+            "mechanical_power": {
+              "events": 17,
+              "unresolved_ids": [],
+              "sse": 6800.291151420693,
+              "n_scalar_points": 136000,
+              "rmse": 0.2236115847161542,
+              "rmse_MW": 22.36115847161542,
+              "unit": "system pu (100 MVA)",
+              "sse_origin": "stored_physical_sse"
+            },
+            "ceil_risk": 1.2401360319634989
+          }
+        },
+        "unstable_actual_interval15": {
+          "events": 2,
+          "unresolved_ids": [],
+          "mean_event_point_error": 0.7305085838529948,
+          "time_pooled_point_error": 0.7144043634485905,
+          "frequency": {
+            "events": 2,
+            "unresolved_ids": [],
+            "sse": 14.469558585817586,
+            "n_scalar_points": 64,
+            "rmse": 0.4754859124131858,
+            "rmse_MW": null,
+            "unit": "rad/s",
+            "sse_origin": "event_rmse_squared_times_actual_scalar_points"
+          },
+          "mechanical_power": {
+            "events": 2,
+            "unresolved_ids": [],
+            "sse": 17.112726487574484,
+            "n_scalar_points": 640,
+            "rmse": 0.1635195252464828,
+            "rmse_MW": 16.35195252464828,
+            "unit": "system pu (100 MVA)",
+            "sse_origin": "event_rmse_squared_times_actual_scalar_points"
+          }
+        },
+        "classification_8s": {
+          "stable_denominator": 17,
+          "unstable_denominator": 2,
+          "missed": 0,
+          "false_los": 0,
+          "undetermined": 3,
+          "numerical_unresolved": 0,
+          "categories": {
+            "window_no_los_unsettled": 3,
+            "window_settled": 14,
+            "predicted_los": 2
+          },
+          "note": "unsettled no-LOS counts as undetermined and, for unstable truth, missed; counts can overlap"
+        },
+        "classification_15s": {
+          "stable_denominator": 17,
+          "unstable_denominator": 2,
+          "missed": 2,
+          "false_los": 0,
+          "undetermined": 5,
+          "numerical_unresolved": 0,
+          "categories": {
+            "window_no_los_unsettled": 5,
+            "window_settled": 14
+          },
+          "note": "unsettled no-LOS counts as undetermined and, for unstable truth, missed; counts can overlap"
+        },
+        "spatial_actual15": {
+          "all": {
+            "events": 19,
+            "unresolved_ids": [],
+            "qualification": "same-event full actual15 plus pair15; finite alone never qualifies",
+            "combined": 1.4558070933335951,
+            "angle_normalized_squared_error": 2.338713802585081,
+            "speed_normalized_squared_error": 0.5729003840821083
+          },
+          "stable": {
+            "events": 17,
+            "unresolved_ids": [],
+            "qualification": "same-event full actual15 plus pair15; finite alone never qualifies",
+            "combined": 1.502615465197257,
+            "angle_normalized_squared_error": 2.60995044574201,
+            "speed_normalized_squared_error": 0.3952804846525034
+          },
+          "unstable": {
+            "events": 2,
+            "unresolved_ids": [],
+            "qualification": "same-event full actual15 plus pair15; finite alone never qualifies",
+            "combined": 1.0579359324924684,
+            "angle_normalized_squared_error": 0.03320233575118584,
+            "speed_normalized_squared_error": 2.0826695292337516
+          }
+        },
+        "coi": {
+          "all_1": {
+            "all_events": 19,
+            "eligible_events": 17,
+            "unavailable_events": 2,
+            "unresolved_ids": [],
+            "mean_event_normalized_rmse": 0.3948431067535462,
+            "pooled_normalized_rmse": 0.5177388314157219,
+            "worst10_mean_event_normalized_rmse": 1.1404464939130856,
+            "definition": "stored COI relative delta/omega rmse; pooled=sqrt(sum(normalized_sse)/sum(n)); ceil event tail; not point_error"
+          },
+          "all_2": {
+            "all_events": 19,
+            "eligible_events": 17,
+            "unavailable_events": 2,
+            "unresolved_ids": [],
+            "mean_event_normalized_rmse": 0.4243192049881254,
+            "pooled_normalized_rmse": 0.5902100949854744,
+            "worst10_mean_event_normalized_rmse": 1.3610015073748452,
+            "definition": "stored COI relative delta/omega rmse; pooled=sqrt(sum(normalized_sse)/sum(n)); ceil event tail; not point_error"
+          },
+          "all_5": {
+            "all_events": 19,
+            "eligible_events": 17,
+            "unavailable_events": 2,
+            "unresolved_ids": [],
+            "mean_event_normalized_rmse": 0.3323481273900166,
+            "pooled_normalized_rmse": 0.4591941577027103,
+            "worst10_mean_event_normalized_rmse": 1.0495286155189625,
+            "definition": "stored COI relative delta/omega rmse; pooled=sqrt(sum(normalized_sse)/sum(n)); ceil event tail; not point_error"
+          },
+          "all_8": {
+            "all_events": 19,
+            "eligible_events": 17,
+            "unavailable_events": 2,
+            "unresolved_ids": [],
+            "mean_event_normalized_rmse": 0.3839711250171773,
+            "pooled_normalized_rmse": 0.6029771020943747,
+            "worst10_mean_event_normalized_rmse": 1.482325488823216,
+            "definition": "stored COI relative delta/omega rmse; pooled=sqrt(sum(normalized_sse)/sum(n)); ceil event tail; not point_error"
+          },
+          "stable_1": {
+            "all_events": 17,
+            "eligible_events": 17,
+            "unavailable_events": 0,
+            "unresolved_ids": [],
+            "mean_event_normalized_rmse": 0.3948431067535462,
+            "pooled_normalized_rmse": 0.5177388314157219,
+            "worst10_mean_event_normalized_rmse": 1.1404464939130856,
+            "definition": "stored COI relative delta/omega rmse; pooled=sqrt(sum(normalized_sse)/sum(n)); ceil event tail; not point_error"
+          },
+          "stable_2": {
+            "all_events": 17,
+            "eligible_events": 17,
+            "unavailable_events": 0,
+            "unresolved_ids": [],
+            "mean_event_normalized_rmse": 0.4243192049881254,
+            "pooled_normalized_rmse": 0.5902100949854744,
+            "worst10_mean_event_normalized_rmse": 1.3610015073748452,
+            "definition": "stored COI relative delta/omega rmse; pooled=sqrt(sum(normalized_sse)/sum(n)); ceil event tail; not point_error"
+          },
+          "stable_5": {
+            "all_events": 17,
+            "eligible_events": 17,
+            "unavailable_events": 0,
+            "unresolved_ids": [],
+            "mean_event_normalized_rmse": 0.3323481273900166,
+            "pooled_normalized_rmse": 0.4591941577027103,
+            "worst10_mean_event_normalized_rmse": 1.0495286155189625,
+            "definition": "stored COI relative delta/omega rmse; pooled=sqrt(sum(normalized_sse)/sum(n)); ceil event tail; not point_error"
+          },
+          "stable_8": {
+            "all_events": 17,
+            "eligible_events": 17,
+            "unavailable_events": 0,
+            "unresolved_ids": [],
+            "mean_event_normalized_rmse": 0.3839711250171773,
+            "pooled_normalized_rmse": 0.6029771020943747,
+            "worst10_mean_event_normalized_rmse": 1.482325488823216,
+            "definition": "stored COI relative delta/omega rmse; pooled=sqrt(sum(normalized_sse)/sum(n)); ceil event tail; not point_error"
+          }
+        },
+        "frequency_dissipation": {
+          "stable": {
+            "1": {
+              "events": 17,
+              "unresolved_ids": [],
+              "complete": true,
+              "summary": {
+                "port_power": {
+                  "future_points": 100.0,
+                  "sample_max": -0.04520743190048617,
+                  "time_mean": -0.0918409064754159,
+                  "negative_time_fraction": 1.0000000000000007,
+                  "zero_time_fraction": 0.0,
+                  "integral": -0.0918409064754159,
+                  "positive_time_fraction": 0.0,
+                  "duration_seconds": 1.0,
+                  "sample_min": -0.21211166620608485
+                },
+                "omega_field_norm": {
+                  "future_points": 100.0,
+                  "sample_max": 0.12588335969818812,
+                  "time_mean": 0.040034030844525385,
+                  "negative_time_fraction": 0.0,
+                  "zero_time_fraction": 0.0,
+                  "integral": 0.040034030844525385,
+                  "positive_time_fraction": 1.0000000000000007,
+                  "time_mean_square": 0.010696929337816357,
+                  "duration_seconds": 1.0,
+                  "sample_min": 0.007932588630848388
+                }
+              },
+              "power_unit": "H-unit/s",
+              "omega_field_norm_unit": "rad/s^2",
+              "summary_definition": "event arithmetic means of each stored time statistic; denominators retained; no finite subset"
+            },
+            "2": {
+              "events": 17,
+              "unresolved_ids": [],
+              "complete": true,
+              "summary": {
+                "port_power": {
+                  "future_points": 200.0,
+                  "sample_max": -0.009942520987892759,
+                  "time_mean": -0.07761426655765542,
+                  "negative_time_fraction": 1.0000000000000007,
+                  "zero_time_fraction": 0.0,
+                  "integral": -0.15522853311531085,
+                  "positive_time_fraction": 0.0,
+                  "duration_seconds": 2.0,
+                  "sample_min": -0.21211166620608485
+                },
+                "omega_field_norm": {
+                  "future_points": 200.0,
+                  "sample_max": 0.1267081430823529,
+                  "time_mean": 0.038919250703670034,
+                  "negative_time_fraction": 0.0,
+                  "zero_time_fraction": 0.0,
+                  "integral": 0.07783850140734007,
+                  "positive_time_fraction": 1.0000000000000007,
+                  "time_mean_square": 0.01004465577630475,
+                  "duration_seconds": 2.0,
+                  "sample_min": 0.003915449988821445
+                }
+              },
+              "power_unit": "H-unit/s",
+              "omega_field_norm_unit": "rad/s^2",
+              "summary_definition": "event arithmetic means of each stored time statistic; denominators retained; no finite subset"
+            },
+            "5": {
+              "events": 17,
+              "unresolved_ids": [],
+              "complete": true,
+              "summary": {
+                "port_power": {
+                  "future_points": 500.0,
+                  "sample_max": -0.0002479260486175295,
+                  "time_mean": -0.0365576889856408,
+                  "negative_time_fraction": 0.9999999999999875,
+                  "zero_time_fraction": 0.0,
+                  "integral": -0.18278844492820404,
+                  "positive_time_fraction": 0.0,
+                  "duration_seconds": 5.0,
+                  "sample_min": -0.21211166620608485
+                },
+                "omega_field_norm": {
+                  "future_points": 500.0,
+                  "sample_max": 0.1267081430823529,
+                  "time_mean": 0.020976815032537864,
+                  "negative_time_fraction": 0.0,
+                  "zero_time_fraction": 0.0,
+                  "integral": 0.10488407516268931,
+                  "positive_time_fraction": 0.9999999999999875,
+                  "time_mean_square": 0.0044163358958777335,
+                  "duration_seconds": 5.0,
+                  "sample_min": 0.0007652673419700036
+                }
+              },
+              "power_unit": "H-unit/s",
+              "omega_field_norm_unit": "rad/s^2",
+              "summary_definition": "event arithmetic means of each stored time statistic; denominators retained; no finite subset"
+            },
+            "8": {
+              "events": 17,
+              "unresolved_ids": [],
+              "complete": true,
+              "summary": {
+                "port_power": {
+                  "future_points": 800.0,
+                  "sample_max": -2.5417257845546452e-05,
+                  "time_mean": -0.03748968500787109,
+                  "negative_time_fraction": 0.9999999999999843,
+                  "zero_time_fraction": 0.0,
+                  "integral": -0.2999174800629687,
+                  "positive_time_fraction": 0.0,
+                  "duration_seconds": 8.0,
+                  "sample_min": -0.3822600015901854
+                },
+                "omega_field_norm": {
+                  "future_points": 800.0,
+                  "sample_max": 0.4223084419134226,
+                  "time_mean": 0.034299663874313664,
+                  "negative_time_fraction": 0.0,
+                  "zero_time_fraction": 0.0,
+                  "integral": 0.2743973109945093,
+                  "positive_time_fraction": 0.9999999999999843,
+                  "time_mean_square": 0.03215771929810217,
+                  "duration_seconds": 8.0,
+                  "sample_min": 7.211098906448018e-05
+                }
+              },
+              "power_unit": "H-unit/s",
+              "omega_field_norm_unit": "rad/s^2",
+              "summary_definition": "event arithmetic means of each stored time statistic; denominators retained; no finite subset"
+            }
+          },
+          "actual15": {
+            "all": {
+              "events": 19,
+              "unresolved_ids": [],
+              "complete": true,
+              "summary": {
+                "port_power": {
+                  "future_points": 1336.5263157894738,
+                  "sample_max": -0.08065332363650302,
+                  "time_mean": -0.13618688185731476,
+                  "negative_time_fraction": 0.9999999999999837,
+                  "zero_time_fraction": 0.0,
+                  "integral": -0.30551036683263083,
+                  "positive_time_fraction": 0.0,
+                  "duration_seconds": 13.365263157894736,
+                  "sample_min": -0.6382110431261131
+                },
+                "omega_field_norm": {
+                  "future_points": 1336.5263157894738,
+                  "sample_max": 0.5634567296731418,
+                  "time_mean": 0.10671305364774411,
+                  "negative_time_fraction": 0.0,
+                  "zero_time_fraction": 0.0,
+                  "integral": 0.27553261601861007,
+                  "positive_time_fraction": 0.9999999999999837,
+                  "time_mean_square": 0.11827377507706405,
+                  "duration_seconds": 13.365263157894736,
+                  "sample_min": 0.06718693186213738
+                }
+              },
+              "power_unit": "H-unit/s",
+              "omega_field_norm_unit": "rad/s^2",
+              "summary_definition": "event arithmetic means of each stored time statistic; denominators retained; no finite subset"
+            },
+            "stable": {
+              "events": 17,
+              "unresolved_ids": [],
+              "complete": true,
+              "summary": {
+                "port_power": {
+                  "future_points": 1490.0,
+                  "sample_max": -3.922339272037413e-09,
+                  "time_mean": -0.020175895374552326,
+                  "negative_time_fraction": 0.9999999999999816,
+                  "zero_time_fraction": 0.0,
+                  "integral": -0.3006208410808297,
+                  "positive_time_fraction": 0.0,
+                  "duration_seconds": 14.9,
+                  "sample_min": -0.3822600015901854
+                },
+                "omega_field_norm": {
+                  "future_points": 1490.0,
+                  "sample_max": 0.4223084419134226,
+                  "time_mean": 0.018602434474099233,
+                  "negative_time_fraction": 0.0,
+                  "zero_time_fraction": 0.0,
+                  "integral": 0.27717627366407854,
+                  "positive_time_fraction": 0.9999999999999816,
+                  "time_mean_square": 0.01726928068592809,
+                  "duration_seconds": 14.9,
+                  "sample_min": 1.9754441692620066e-07
+                }
+              },
+              "power_unit": "H-unit/s",
+              "omega_field_norm_unit": "rad/s^2",
+              "summary_definition": "event arithmetic means of each stored time statistic; denominators retained; no finite subset"
+            },
+            "unstable": {
+              "events": 2,
+              "unresolved_ids": [],
+              "complete": true,
+              "summary": {
+                "port_power": {
+                  "future_points": 32.0,
+                  "sample_max": -0.7662065412068948,
+                  "time_mean": -1.1222802669607954,
+                  "negative_time_fraction": 1.0000000000000004,
+                  "zero_time_fraction": 0.0,
+                  "integral": -0.3470713357229407,
+                  "positive_time_fraction": 0.0,
+                  "duration_seconds": 0.32,
+                  "sample_min": -2.813794896181499
+                },
+                "omega_field_norm": {
+                  "future_points": 32.0,
+                  "sample_max": 1.763217175630755,
+                  "time_mean": 0.8556533166237255,
+                  "negative_time_fraction": 0.0,
+                  "zero_time_fraction": 0.0,
+                  "integral": 0.26156152603212796,
+                  "positive_time_fraction": 1.0000000000000004,
+                  "time_mean_square": 0.9768119774017197,
+                  "duration_seconds": 0.32,
+                  "sample_min": 0.6382741735627613
+                }
+              },
+              "power_unit": "H-unit/s",
+              "omega_field_norm_unit": "rad/s^2",
+              "summary_definition": "event arithmetic means of each stored time statistic; denominators retained; no finite subset"
+            }
+          }
+        }
+      }
+    }
+  },
+  "paired_differences": {
+    "6101": {
+      "common385": {
+        "W_minus_N": {
+          "stable_1.pointmean": -0.028376651517012852,
+          "stable_1.frequency.rmse": -0.004776382867901052,
+          "stable_1.mechanical_power.rmse": -0.000649797386964579,
+          "stable_2.pointmean": -0.05035863055420875,
+          "stable_2.frequency.rmse": 0.0026579932598296274,
+          "stable_2.mechanical_power.rmse": -0.0004113970223446617,
+          "stable_5.pointmean": -0.054510957555630624,
+          "stable_5.ceilrisk": -0.16505576866733773,
+          "stable_5.frequency.rmse": 0.007557796235932168,
+          "stable_5.mechanical_power.rmse": 0.001878625945078427,
+          "stable_8.pointmean": -0.03579051226867691,
+          "stable_8.frequency.rmse": 0.008075977526638412,
+          "stable_8.mechanical_power.rmse": 0.001653020206339062,
+          "unstable15.mean_event_point_error": -0.02337913589694951,
+          "unstable15.time_pooled_point_error": -0.04538508677492725,
+          "unstable15.frequency.rmse": -0.005817097570695262,
+          "unstable15.mechanical_power.rmse": -0.0037322352727043873,
+          "unstable15.power_rmse_MW": -0.37322352727044006,
+          "classification_8.missed": 0,
+          "classification_8.false_los": -1,
+          "classification_8.undetermined": 5,
+          "classification_8.numerical_unresolved": 0,
+          "classification_15.missed": 0,
+          "classification_15.false_los": -1,
+          "classification_15.undetermined": 7,
+          "classification_15.numerical_unresolved": 0,
+          "spatial15.all.combined": -0.09451612024627698,
+          "spatial15.all.angle_normalized_squared_error": -0.16415443974613297,
+          "spatial15.all.speed_normalized_squared_error": -0.024877800746424705,
+          "spatial15.stable.combined": -0.10441930119145226,
+          "spatial15.stable.angle_normalized_squared_error": -0.1842446999945393,
+          "spatial15.stable.speed_normalized_squared_error": -0.024593902388366562,
+          "spatial15.unstable.combined": -0.01575128575209994,
+          "spatial15.unstable.angle_normalized_squared_error": -0.004366788468108007,
+          "spatial15.unstable.speed_normalized_squared_error": -0.02713578303609232,
+          "stable_1.ceilrisk": -0.07731392431475648,
+          "stable_2.ceilrisk": -0.14427187330852398,
+          "stable_8.ceilrisk": -0.14651090592178573,
+          "coi.all_1.mean_event_normalized_rmse": 0.0013637755126827411,
+          "coi.all_1.pooled_normalized_rmse": -0.02039022898755427,
+          "coi.all_1.worst10_mean_event_normalized_rmse": -0.0009040475553945271,
+          "coi.all_2.mean_event_normalized_rmse": 0.0018110206064315126,
+          "coi.all_2.pooled_normalized_rmse": -0.036440135946260055,
+          "coi.all_2.worst10_mean_event_normalized_rmse": -0.0005600089842090483,
+          "coi.all_5.mean_event_normalized_rmse": 0.0027382244433444836,
+          "coi.all_5.pooled_normalized_rmse": -0.052255626966483115,
+          "coi.all_5.worst10_mean_event_normalized_rmse": -0.0026167519090189995,
+          "coi.all_8.mean_event_normalized_rmse": 0.015494852372173407,
+          "coi.all_8.pooled_normalized_rmse": -0.03285671566365489,
+          "coi.all_8.worst10_mean_event_normalized_rmse": 0.03708020452341998,
+          "coi.stable_1.mean_event_normalized_rmse": 0.001538622235122078,
+          "coi.stable_1.pooled_normalized_rmse": -0.020531470637380256,
+          "coi.stable_1.worst10_mean_event_normalized_rmse": 0.0012964091214973106,
+          "coi.stable_2.mean_event_normalized_rmse": 0.0018110206064315126,
+          "coi.stable_2.pooled_normalized_rmse": -0.036440135946260055,
+          "coi.stable_2.worst10_mean_event_normalized_rmse": -0.0005600089842090483,
+          "coi.stable_5.mean_event_normalized_rmse": 0.0027382244433444836,
+          "coi.stable_5.pooled_normalized_rmse": -0.052255626966483115,
+          "coi.stable_5.worst10_mean_event_normalized_rmse": -0.0026167519090189995,
+          "coi.stable_8.mean_event_normalized_rmse": 0.015494852372173407,
+          "coi.stable_8.pooled_normalized_rmse": -0.03285671566365489,
+          "coi.stable_8.worst10_mean_event_normalized_rmse": 0.03708020452341998
+        },
+        "W_minus_Q": {
+          "stable_1.pointmean": -0.027760292395431208,
+          "stable_1.frequency.rmse": -0.0045124348266149805,
+          "stable_1.mechanical_power.rmse": -0.0007095092705550754,
+          "stable_2.pointmean": -0.05012479410408344,
+          "stable_2.frequency.rmse": 0.002747104358757857,
+          "stable_2.mechanical_power.rmse": -0.0004967250227264075,
+          "stable_5.pointmean": -0.05487292851638037,
+          "stable_5.ceilrisk": -0.16310178488957883,
+          "stable_5.frequency.rmse": 0.007178841602669073,
+          "stable_5.mechanical_power.rmse": 0.0013060659788237117,
+          "stable_8.pointmean": -0.03533628523242616,
+          "stable_8.frequency.rmse": 0.008272153452645203,
+          "stable_8.mechanical_power.rmse": 0.0013588069220978882,
+          "unstable15.mean_event_point_error": -0.02153773511962509,
+          "unstable15.time_pooled_point_error": -0.0403373263837552,
+          "unstable15.frequency.rmse": -0.005037011337236663,
+          "unstable15.mechanical_power.rmse": -0.0029234731889064003,
+          "unstable15.power_rmse_MW": -0.29234731889064136,
+          "classification_8.missed": 0,
+          "classification_8.false_los": -1,
+          "classification_8.undetermined": 5,
+          "classification_8.numerical_unresolved": 0,
+          "classification_15.missed": 0,
+          "classification_15.false_los": -1,
+          "classification_15.undetermined": 8,
+          "classification_15.numerical_unresolved": 0,
+          "spatial15.all.combined": -0.09144218879297239,
+          "spatial15.all.angle_normalized_squared_error": -0.16115771735544704,
+          "spatial15.all.speed_normalized_squared_error": -0.021726660230493133,
+          "spatial15.stable.combined": -0.1009763649314459,
+          "spatial15.stable.angle_normalized_squared_error": -0.18090580342738205,
+          "spatial15.stable.speed_normalized_squared_error": -0.021046926435505153,
+          "spatial15.unstable.combined": -0.015612229738136363,
+          "spatial15.unstable.angle_normalized_squared_error": -0.004091544411227721,
+          "spatial15.unstable.speed_normalized_squared_error": -0.027132915065045005,
+          "stable_1.ceilrisk": -0.07546849567268743,
+          "stable_2.ceilrisk": -0.14121454130191657,
+          "stable_8.ceilrisk": -0.14369334981402382,
+          "coi.all_1.mean_event_normalized_rmse": 0.0012747854018883564,
+          "coi.all_1.pooled_normalized_rmse": -0.01996101955340579,
+          "coi.all_1.worst10_mean_event_normalized_rmse": -0.0009346994663583796,
+          "coi.all_2.mean_event_normalized_rmse": 0.0016514417572324191,
+          "coi.all_2.pooled_normalized_rmse": -0.03630364893759086,
+          "coi.all_2.worst10_mean_event_normalized_rmse": -0.0012552662217266697,
+          "coi.all_5.mean_event_normalized_rmse": 0.0027083448918051034,
+          "coi.all_5.pooled_normalized_rmse": -0.051325358407791066,
+          "coi.all_5.worst10_mean_event_normalized_rmse": -0.0022464076804060706,
+          "coi.all_8.mean_event_normalized_rmse": 0.01563327018416777,
+          "coi.all_8.pooled_normalized_rmse": -0.03228641988854497,
+          "coi.all_8.worst10_mean_event_normalized_rmse": 0.038243931583984425,
+          "coi.stable_1.mean_event_normalized_rmse": 0.001438386710836126,
+          "coi.stable_1.pooled_normalized_rmse": -0.02011219412491616,
+          "coi.stable_1.worst10_mean_event_normalized_rmse": 0.0011474118649670295,
+          "coi.stable_2.mean_event_normalized_rmse": 0.0016514417572324191,
+          "coi.stable_2.pooled_normalized_rmse": -0.03630364893759086,
+          "coi.stable_2.worst10_mean_event_normalized_rmse": -0.0012552662217266697,
+          "coi.stable_5.mean_event_normalized_rmse": 0.0027083448918051034,
+          "coi.stable_5.pooled_normalized_rmse": -0.051325358407791066,
+          "coi.stable_5.worst10_mean_event_normalized_rmse": -0.0022464076804060706,
+          "coi.stable_8.mean_event_normalized_rmse": 0.01563327018416777,
+          "coi.stable_8.pooled_normalized_rmse": -0.03228641988854497,
+          "coi.stable_8.worst10_mean_event_normalized_rmse": 0.038243931583984425
+        }
+      },
+      "original366": {
+        "W_minus_N": {
+          "stable_1.pointmean": -0.030745926909045318,
+          "stable_1.frequency.rmse": -0.004831568158377597,
+          "stable_1.mechanical_power.rmse": -0.0007784572020356206,
+          "stable_2.pointmean": -0.05499827624469811,
+          "stable_2.frequency.rmse": 0.002456723468110489,
+          "stable_2.mechanical_power.rmse": -0.0006378653275906365,
+          "stable_5.pointmean": -0.05899434284604421,
+          "stable_5.ceilrisk": -0.17824035627091805,
+          "stable_5.frequency.rmse": 0.007311493853360107,
+          "stable_5.mechanical_power.rmse": 0.0017290869677794862,
+          "stable_8.pointmean": -0.04191725704750804,
+          "stable_8.frequency.rmse": 0.008019317646579538,
+          "stable_8.mechanical_power.rmse": 0.0014834342112049759,
+          "unstable15.mean_event_point_error": -0.02484251031578877,
+          "unstable15.time_pooled_point_error": -0.04722553431924803,
+          "unstable15.frequency.rmse": -0.005851466146485462,
+          "unstable15.mechanical_power.rmse": -0.0038093540807495607,
+          "unstable15.power_rmse_MW": -0.3809354080749543,
+          "classification_8.missed": 0,
+          "classification_8.false_los": -1,
+          "classification_8.undetermined": 5,
+          "classification_8.numerical_unresolved": 0,
+          "classification_15.missed": 0,
+          "classification_15.false_los": -1,
+          "classification_15.undetermined": 6,
+          "classification_15.numerical_unresolved": 0,
+          "spatial15.all.combined": -0.12104188941741323,
+          "spatial15.all.angle_normalized_squared_error": -0.21173190559785415,
+          "spatial15.all.speed_normalized_squared_error": -0.03035187323697519,
+          "spatial15.stable.combined": -0.13370601849957287,
+          "spatial15.stable.angle_normalized_squared_error": -0.2378470404477051,
+          "spatial15.stable.speed_normalized_squared_error": -0.029564996551442402,
+          "spatial15.unstable.combined": -0.020655500351518752,
+          "spatial15.unstable.angle_normalized_squared_error": -0.004721690324645811,
+          "spatial15.unstable.speed_normalized_squared_error": -0.03658931037839208,
+          "stable_1.ceilrisk": -0.08413879827209403,
+          "stable_2.ceilrisk": -0.1578176348162601,
+          "stable_8.ceilrisk": -0.1609204122625607,
+          "coi.all_1.mean_event_normalized_rmse": 0.001060706898651731,
+          "coi.all_1.pooled_normalized_rmse": -0.021926823162212505,
+          "coi.all_1.worst10_mean_event_normalized_rmse": -0.0037254355165974307,
+          "coi.all_2.mean_event_normalized_rmse": 0.0013965539308953834,
+          "coi.all_2.pooled_normalized_rmse": -0.03912970948388439,
+          "coi.all_2.worst10_mean_event_normalized_rmse": -0.004472574715144839,
+          "coi.all_5.mean_event_normalized_rmse": 0.0024340643047780497,
+          "coi.all_5.pooled_normalized_rmse": -0.055038715513808234,
+          "coi.all_5.worst10_mean_event_normalized_rmse": -0.005083516238845842,
+          "coi.all_8.mean_event_normalized_rmse": 0.014291555475605566,
+          "coi.all_8.pooled_normalized_rmse": -0.03694329783045136,
+          "coi.all_8.worst10_mean_event_normalized_rmse": 0.0367566577302787,
+          "coi.stable_1.mean_event_normalized_rmse": 0.0012409693743998806,
+          "coi.stable_1.pooled_normalized_rmse": -0.022109378387245915,
+          "coi.stable_1.worst10_mean_event_normalized_rmse": -0.0013256805612424927,
+          "coi.stable_2.mean_event_normalized_rmse": 0.0013965539308953834,
+          "coi.stable_2.pooled_normalized_rmse": -0.03912970948388439,
+          "coi.stable_2.worst10_mean_event_normalized_rmse": -0.004472574715144839,
+          "coi.stable_5.mean_event_normalized_rmse": 0.0024340643047780497,
+          "coi.stable_5.pooled_normalized_rmse": -0.055038715513808234,
+          "coi.stable_5.worst10_mean_event_normalized_rmse": -0.005083516238845842,
+          "coi.stable_8.mean_event_normalized_rmse": 0.014291555475605566,
+          "coi.stable_8.pooled_normalized_rmse": -0.03694329783045136,
+          "coi.stable_8.worst10_mean_event_normalized_rmse": 0.0367566577302787
+        },
+        "W_minus_Q": {
+          "stable_1.pointmean": -0.030066722301788418,
+          "stable_1.frequency.rmse": -0.004561164788043859,
+          "stable_1.mechanical_power.rmse": -0.0008342448822769022,
+          "stable_2.pointmean": -0.05461733323826523,
+          "stable_2.frequency.rmse": 0.0026011370282778556,
+          "stable_2.mechanical_power.rmse": -0.0007033267547168487,
+          "stable_5.pointmean": -0.05923656299416458,
+          "stable_5.ceilrisk": -0.17594091203501017,
+          "stable_5.frequency.rmse": 0.00699230222214825,
+          "stable_5.mechanical_power.rmse": 0.001164603115956453,
+          "stable_8.pointmean": -0.04137248735029353,
+          "stable_8.frequency.rmse": 0.008270701078202658,
+          "stable_8.mechanical_power.rmse": 0.0011987506998952513,
+          "unstable15.mean_event_point_error": -0.022914170297371195,
+          "unstable15.time_pooled_point_error": -0.041997328067207906,
+          "unstable15.frequency.rmse": -0.0050554039832955144,
+          "unstable15.mechanical_power.rmse": -0.002983162536824513,
+          "unstable15.power_rmse_MW": -0.29831625368245085,
+          "classification_8.missed": 0,
+          "classification_8.false_los": -1,
+          "classification_8.undetermined": 5,
+          "classification_8.numerical_unresolved": 0,
+          "classification_15.missed": 0,
+          "classification_15.false_los": -1,
+          "classification_15.undetermined": 7,
+          "classification_15.numerical_unresolved": 0,
+          "spatial15.all.combined": -0.11778120262296277,
+          "spatial15.all.angle_normalized_squared_error": -0.20851060106995623,
+          "spatial15.all.speed_normalized_squared_error": -0.02705180417596531,
+          "spatial15.stable.combined": -0.13003326910657265,
+          "spatial15.stable.angle_normalized_squared_error": -0.23425532239780011,
+          "spatial15.stable.speed_normalized_squared_error": -0.025811215815341182,
+          "spatial15.unstable.combined": -0.020661163423618567,
+          "spatial15.unstable.angle_normalized_squared_error": -0.004436590544372038,
+          "spatial15.unstable.speed_normalized_squared_error": -0.036885736302864736,
+          "stable_1.ceilrisk": -0.082107149479552,
+          "stable_2.ceilrisk": -0.1543305589044821,
+          "stable_8.ceilrisk": -0.15782840423329114,
+          "coi.all_1.mean_event_normalized_rmse": 0.0009778911328585105,
+          "coi.all_1.pooled_normalized_rmse": -0.021464449590197998,
+          "coi.all_1.worst10_mean_event_normalized_rmse": -0.0036923229062189034,
+          "coi.all_2.mean_event_normalized_rmse": 0.0012416324028468595,
+          "coi.all_2.pooled_normalized_rmse": -0.03896407400898072,
+          "coi.all_2.worst10_mean_event_normalized_rmse": -0.005121246195136209,
+          "coi.all_5.mean_event_normalized_rmse": 0.002410152569933044,
+          "coi.all_5.pooled_normalized_rmse": -0.05406288564710349,
+          "coi.all_5.worst10_mean_event_normalized_rmse": -0.004642040859333063,
+          "coi.all_8.mean_event_normalized_rmse": 0.014434392528638929,
+          "coi.all_8.pooled_normalized_rmse": -0.03634929170304435,
+          "coi.all_8.worst10_mean_event_normalized_rmse": 0.03800550571731387,
+          "coi.stable_1.mean_event_normalized_rmse": 0.001146395965424707,
+          "coi.stable_1.pooled_normalized_rmse": -0.021656642092120704,
+          "coi.stable_1.worst10_mean_event_normalized_rmse": -0.0014120071176184634,
+          "coi.stable_2.mean_event_normalized_rmse": 0.0012416324028468595,
+          "coi.stable_2.pooled_normalized_rmse": -0.03896407400898072,
+          "coi.stable_2.worst10_mean_event_normalized_rmse": -0.005121246195136209,
+          "coi.stable_5.mean_event_normalized_rmse": 0.002410152569933044,
+          "coi.stable_5.pooled_normalized_rmse": -0.05406288564710349,
+          "coi.stable_5.worst10_mean_event_normalized_rmse": -0.004642040859333063,
+          "coi.stable_8.mean_event_normalized_rmse": 0.014434392528638929,
+          "coi.stable_8.pooled_normalized_rmse": -0.03634929170304435,
+          "coi.stable_8.worst10_mean_event_normalized_rmse": 0.03800550571731387
+        }
+      },
+      "new19": {
+        "W_minus_N": {
+          "stable_1.pointmean": 0.016918319213020894,
+          "stable_1.frequency.rmse": -0.0036798312725207227,
+          "stable_1.mechanical_power.rmse": 0.0017248243670712204,
+          "stable_2.pointmean": 0.038340478234561326,
+          "stable_2.frequency.rmse": 0.0063781737866280275,
+          "stable_2.mechanical_power.rmse": 0.0035322871313230864,
+          "stable_5.pointmean": 0.031200820055215295,
+          "stable_5.ceilrisk": 0.061344821107559344,
+          "stable_5.frequency.rmse": 0.01213647084374031,
+          "stable_5.mechanical_power.rmse": 0.004469833299005799,
+          "stable_8.pointmean": 0.08133843203250479,
+          "stable_8.frequency.rmse": 0.00913764619017532,
+          "stable_8.mechanical_power.rmse": 0.004633349801373171,
+          "unstable15.mean_event_point_error": 0.006620039689256618,
+          "unstable15.time_pooled_point_error": 0.00600365950164683,
+          "unstable15.frequency.rmse": -0.005835040979023043,
+          "unstable15.mechanical_power.rmse": -9.360357604420999e-05,
+          "unstable15.power_rmse_MW": -0.009360357604421665,
+          "classification_8.missed": 0,
+          "classification_8.false_los": 0,
+          "classification_8.undetermined": 0,
+          "classification_8.numerical_unresolved": 0,
+          "classification_15.missed": 0,
+          "classification_15.false_los": 0,
+          "classification_15.undetermined": 1,
+          "classification_15.numerical_unresolved": 0,
+          "spatial15.all.combined": 0.41645395957665365,
+          "spatial15.all.angle_normalized_squared_error": 0.7523377971870149,
+          "spatial15.all.speed_normalized_squared_error": 0.08057012196629137,
+          "spatial15.stable.combined": 0.45547382381673196,
+          "spatial15.stable.angle_normalized_squared_error": 0.840505926315968,
+          "spatial15.stable.speed_normalized_squared_error": 0.07044172131749593,
+          "spatial15.unstable.combined": 0.08478511353598561,
+          "spatial15.unstable.angle_normalized_squared_error": 0.0029086995909171597,
+          "spatial15.unstable.speed_normalized_squared_error": 0.16666152748105434,
+          "stable_1.ceilrisk": 0.0399095777597136,
+          "stable_2.ceilrisk": 0.08754864480116753,
+          "stable_8.ceilrisk": 0.10101462685512419,
+          "coi.all_1.mean_event_normalized_rmse": 0.007229044572460319,
+          "coi.all_1.pooled_normalized_rmse": 0.014205790869793122,
+          "coi.all_1.worst10_mean_event_normalized_rmse": 0.04564885380445083,
+          "coi.all_2.mean_event_normalized_rmse": 0.009734648226973619,
+          "coi.all_2.pooled_normalized_rmse": 0.02196870235363768,
+          "coi.all_2.worst10_mean_event_normalized_rmse": 0.0644210602769455,
+          "coi.all_5.mean_event_normalized_rmse": 0.008553050621820268,
+          "coi.all_5.pooled_normalized_rmse": 0.016178474275741983,
+          "coi.all_5.worst10_mean_event_normalized_rmse": 0.044783818327720715,
+          "coi.all_8.mean_event_normalized_rmse": 0.0384990577477346,
+          "coi.all_8.pooled_normalized_rmse": 0.05600730518863162,
+          "coi.all_8.worst10_mean_event_normalized_rmse": 0.042418726610245816,
+          "coi.stable_1.mean_event_normalized_rmse": 0.007229044572460319,
+          "coi.stable_1.pooled_normalized_rmse": 0.014205790869793122,
+          "coi.stable_1.worst10_mean_event_normalized_rmse": 0.04564885380445083,
+          "coi.stable_2.mean_event_normalized_rmse": 0.009734648226973619,
+          "coi.stable_2.pooled_normalized_rmse": 0.02196870235363768,
+          "coi.stable_2.worst10_mean_event_normalized_rmse": 0.0644210602769455,
+          "coi.stable_5.mean_event_normalized_rmse": 0.008553050621820268,
+          "coi.stable_5.pooled_normalized_rmse": 0.016178474275741983,
+          "coi.stable_5.worst10_mean_event_normalized_rmse": 0.044783818327720715,
+          "coi.stable_8.mean_event_normalized_rmse": 0.0384990577477346,
+          "coi.stable_8.pooled_normalized_rmse": 0.05600730518863162,
+          "coi.stable_8.worst10_mean_event_normalized_rmse": 0.042418726610245816
+        },
+        "W_minus_Q": {
+          "stable_1.pointmean": 0.01633322052021946,
+          "stable_1.frequency.rmse": -0.003544613686622372,
+          "stable_1.mechanical_power.rmse": 0.001592324221042385,
+          "stable_2.pointmean": 0.03576198346115933,
+          "stable_2.frequency.rmse": 0.00544194971441736,
+          "stable_2.mechanical_power.rmse": 0.0030983928290068685,
+          "stable_5.pointmean": 0.02854949532360973,
+          "stable_5.ceilrisk": 0.057402537352695626,
+          "stable_5.frequency.rmse": 0.010641543750591731,
+          "stable_5.mechanical_power.rmse": 0.003754603277613844,
+          "stable_8.pointmean": 0.08006169643268468,
+          "stable_8.frequency.rmse": 0.00830144884834455,
+          "stable_8.mechanical_power.rmse": 0.00417001229982894,
+          "unstable15.mean_event_point_error": 0.006679186024169503,
+          "unstable15.time_pooled_point_error": 0.006013033121410771,
+          "unstable15.frequency.rmse": -0.005810296334529841,
+          "unstable15.mechanical_power.rmse": -0.00012175357162491629,
+          "unstable15.power_rmse_MW": -0.012175357162494294,
+          "classification_8.missed": 0,
+          "classification_8.false_los": 0,
+          "classification_8.undetermined": 0,
+          "classification_8.numerical_unresolved": 0,
+          "classification_15.missed": 0,
+          "classification_15.false_los": 0,
+          "classification_15.undetermined": 1,
+          "classification_15.numerical_unresolved": 0,
+          "spatial15.all.combined": 0.4159303934057954,
+          "spatial15.all.angle_normalized_squared_error": 0.7510083584082403,
+          "spatial15.all.speed_normalized_squared_error": 0.08085242840334922,
+          "spatial15.stable.combined": 0.4545232737106837,
+          "spatial15.stable.angle_normalized_squared_error": 0.8390114710070653,
+          "spatial15.stable.speed_normalized_squared_error": 0.0700350764143014,
+          "spatial15.unstable.combined": 0.08789091081424416,
+          "spatial15.unstable.angle_normalized_squared_error": 0.0029819013182305655,
+          "spatial15.unstable.speed_normalized_squared_error": 0.17279992031025837,
+          "stable_1.ceilrisk": 0.03862314790100274,
+          "stable_2.ceilrisk": 0.08344921010768869,
+          "stable_8.ceilrisk": 0.09911411927388003,
+          "coi.all_1.mean_event_normalized_rmse": 0.007020562726054058,
+          "coi.all_1.pooled_normalized_rmse": 0.013866243660016653,
+          "coi.all_1.worst10_mean_event_normalized_rmse": 0.04456608729134226,
+          "coi.all_2.mean_event_normalized_rmse": 0.00948603235578055,
+          "coi.all_2.pooled_normalized_rmse": 0.02143946724671808,
+          "coi.all_2.worst10_mean_event_normalized_rmse": 0.06288477044467822,
+          "coi.all_5.mean_event_normalized_rmse": 0.008409080457005558,
+          "coi.all_5.pooled_normalized_rmse": 0.015933854467237107,
+          "coi.all_5.worst10_mean_event_normalized_rmse": 0.044145651858306545,
+          "coi.all_8.mean_event_normalized_rmse": 0.03855299006927737,
+          "coi.all_8.pooled_normalized_rmse": 0.05603045950209573,
+          "coi.all_8.worst10_mean_event_normalized_rmse": 0.042177958384045144,
+          "coi.stable_1.mean_event_normalized_rmse": 0.007020562726054058,
+          "coi.stable_1.pooled_normalized_rmse": 0.013866243660016653,
+          "coi.stable_1.worst10_mean_event_normalized_rmse": 0.04456608729134226,
+          "coi.stable_2.mean_event_normalized_rmse": 0.00948603235578055,
+          "coi.stable_2.pooled_normalized_rmse": 0.02143946724671808,
+          "coi.stable_2.worst10_mean_event_normalized_rmse": 0.06288477044467822,
+          "coi.stable_5.mean_event_normalized_rmse": 0.008409080457005558,
+          "coi.stable_5.pooled_normalized_rmse": 0.015933854467237107,
+          "coi.stable_5.worst10_mean_event_normalized_rmse": 0.044145651858306545,
+          "coi.stable_8.mean_event_normalized_rmse": 0.03855299006927737,
+          "coi.stable_8.pooled_normalized_rmse": 0.05603045950209573,
+          "coi.stable_8.worst10_mean_event_normalized_rmse": 0.042177958384045144
+        }
+      }
+    }
+  },
+  "training": {
+    "6101_W": {
+      "final_b_W": -0.0018894400000452726,
+      "projection_count": 49,
+      "clip_count": 507,
+      "phase_counts": {
+        "1.0": 342,
+        "2.0": 341,
+        "5.0": 341
+      },
+      "loss_by_horizon": {
+        "1.0": {
+          "first64": {
+            "updates": 64,
+            "loss_mean": 15.30988248210166,
+            "components": {
+              "complexity": 3.5138964312863923,
+              "local": 0.10358378758122311,
+              "torque": 2.451912022325374,
+              "latent_consistency": 0.014870227097937111,
+              "mean": 0.9677442721877841,
+              "risk": 1.4959620469578105
+            }
+          },
+          "last64": {
+            "updates": 64,
+            "loss_mean": 17.329646523139324,
+            "components": {
+              "complexity": 3.5570749299764737,
+              "local": 0.10388958325220655,
+              "torque": 2.303975904697043,
+              "latent_consistency": 0.01495462460123237,
+              "mean": 1.1080999636095443,
+              "risk": 1.699386388695729
+            }
+          }
+        },
+        "2.0": {
+          "first64": {
+            "updates": 64,
+            "loss_mean": 18.650114495475403,
+            "components": {
+              "complexity": 3.5139708478482974,
+              "local": 0.11012468440714111,
+              "torque": 2.2816427282816383,
+              "latent_consistency": 0.015098591063928562,
+              "mean": 1.1807147813326129,
+              "risk": 1.8310315679133706
+            }
+          },
+          "last64": {
+            "updates": 64,
+            "loss_mean": 15.094023945589026,
+            "components": {
+              "complexity": 3.5570089989270794,
+              "local": 0.1044782110279031,
+              "torque": 2.394268512286481,
+              "latent_consistency": 0.014615072142604433,
+              "mean": 0.9828624418582473,
+              "risk": 1.4748657376118215
+            }
+          }
+        },
+        "5.0": {
+          "first64": {
+            "updates": 64,
+            "loss_mean": 13.843855611919446,
+            "components": {
+              "complexity": 3.514041914437811,
+              "local": 0.10180615157023706,
+              "torque": 2.1858920065754948,
+              "latent_consistency": 0.014710444781980246,
+              "mean": 0.8619917716091055,
+              "risk": 1.3521989215213461
+            }
+          },
+          "last64": {
+            "updates": 64,
+            "loss_mean": 14.439700312396162,
+            "components": {
+              "complexity": 3.5570410662825624,
+              "local": 0.0964306480151847,
+              "torque": 2.303898428181898,
+              "latent_consistency": 0.014818343206812586,
+              "mean": 0.9184579094267622,
+              "risk": 1.4111397987242107
+            }
+          }
+        }
+      },
+      "scope": "JSON trace only; no optimizer replay or convergence claim"
+    }
+  },
+  "sources": {
+    "6101": {
+      "frozen": {
+        "seed": 6101,
+        "variant": "W",
+        "model_path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\frequency_dissipation01\\models\\6101_W\\checkpoints\\step001024\\model.json",
+        "model_sha256": "0ed3e6fe642e4e5c053e798530b25dc24cdec41e6e0e2af4cd63da410668b88a",
+        "training_path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\frequency_dissipation01\\models\\6101_W\\checkpoints\\step001024\\training.pt",
+        "training_sha256": "34e7fa647fcf3926f2a674ca00304c0031b3f57b89e505e058c09fa9ae0ee709",
+        "checkpoint_path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\frequency_dissipation01\\models\\6101_W\\checkpoints\\step001024\\checkpoint.json",
+        "checkpoint_sha256": "bd2b8bba4635bdab3355346bd59fab04f16cef6ff1a0c8038ac21119d5d65797",
+        "stage_step": 1024
+      },
+      "evidence_path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\closure_mechanism_20261019\\P2\\frequency_dissipation01\\evaluation\\6101_W\\step001024\\queue\\evidence.json",
+      "evidence_sha256": "96dd1c760876d41e05f1be217454509afc22708e10e157bb8fa1c22f51d8a089",
+      "complete_sha256": "48cf41b1532748c10afe925e902fa903a968a12d85fe8ae29a75869d1b80f3c8"
+    }
+  }
+}

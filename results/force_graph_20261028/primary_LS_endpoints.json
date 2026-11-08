@@ -1,0 +1,4226 @@
+{
+  "recorded_at_utc": "2026-10-28T12:14:34.403101+00:00",
+  "source_commit": "fc5e4ea9c434ad442cfd1d99ebf6bc7e22600875",
+  "scope": "Completed primary L/S endpoints only. Ongoing M, conditional backup and noise evaluations excluded. Not the final stage conclusion.",
+  "completed_formal_updates_included": 288,
+  "whole_study_native_cost": "not yet closed",
+  "source_exposed_to_all_train385": true,
+  "fit_selection_event_count": 297,
+  "no_update_report_event_count": 88,
+  "metric_definitions": {
+    "stable_horizon_risk": "0.8 mean + 0.2 mean of the largest ceil(0.1n) event time-mean original normalized point errors; not RMSE",
+    "records": "original normalized trajectory RMSE, with physical delta_rmse_rad and omega_rmse_rad_s when provided",
+    "common_frequency": "original common-frequency RMSE, rad/s",
+    "normalized_p": "original frozen-scale normalized p RMSE, dimensionless",
+    "objective_point_error": "original normalized squared point error, not RMSE",
+    "classification_actual15s": "original available-interval classification, at most 15s; intervals differ from fixed 8s predictions",
+    "classification_denominators": "misses use numerically admissible unstable rows; false alarms use numerically admissible stable rows, separately by label",
+    "timing": "panel qualified inference seconds retain the original evaluation scope, not a claim of pure 8s deployment time"
+  },
+  "models": [
+    {
+      "run_id": "A512_L_28101",
+      "mode": "L",
+      "source": "A512",
+      "seed": 28101,
+      "updates": 96,
+      "upper_bound_still_improving": false,
+      "extension_decision": {
+        "extend": false,
+        "optimization_unresolved": false,
+        "clip_count_last48": 0,
+        "large_change_counts_last48": {
+          "lambda_raw": 0,
+          "kappa_raw": 0
+        },
+        "reason": "tradeoff_or_insufficient_registered_gain",
+        "gains": {
+          "5": true,
+          "8": true
+        },
+        "harms": [
+          "missed_resolved_unstable"
+        ]
+      },
+      "fit_panel_learning_curve": {
+        "panel000000": {
+          "horizon_risks": {
+            "5": {
+              "value": 1.409124223392973,
+              "coarse_value": 1.4091241489646538,
+              "numerical_score_perturbation": 7.44283192855022e-08,
+              "eligible": 36,
+              "unresolved_ids": []
+            },
+            "8": {
+              "value": 0.9312980813323157,
+              "coarse_value": 0.9312980201970676,
+              "numerical_score_perturbation": 6.113524808615267e-08,
+              "eligible": 36,
+              "unresolved_ids": []
+            }
+          },
+          "unstable_interval_risk": 2.4818329477902523,
+          "common_frequency_rmse_8s": 0.4354180095406205,
+          "normalized_p_rmse_8s": 0.49558718578400307,
+          "parameter_count": 2,
+          "qualified_inference_seconds_per_event": 0.09568235416666464,
+          "all_8s_rows_qualified": true,
+          "timing_scope": "CPU float64 one thread; true RK4 .005/.01 including causal initialization, output, metrics",
+          "classification_8s": {
+            "event_count": 48,
+            "unstable_count": 12,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 2,
+            "false_los_resolved_stable": 0
+          }
+        },
+        "panel000048": {
+          "horizon_risks": {
+            "5": {
+              "value": 0.7281183920638236,
+              "coarse_value": 0.7281183620111782,
+              "numerical_score_perturbation": 3.005264537225827e-08,
+              "eligible": 36,
+              "unresolved_ids": []
+            },
+            "8": {
+              "value": 0.48134599413687085,
+              "coarse_value": 0.48134596331914786,
+              "numerical_score_perturbation": 3.081772298463292e-08,
+              "eligible": 36,
+              "unresolved_ids": []
+            }
+          },
+          "unstable_interval_risk": 3.38364278677797,
+          "common_frequency_rmse_8s": 0.2835032106029417,
+          "normalized_p_rmse_8s": 0.339078894171928,
+          "parameter_count": 2,
+          "qualified_inference_seconds_per_event": 0.09966011041666434,
+          "all_8s_rows_qualified": true,
+          "timing_scope": "CPU float64 one thread; true RK4 .005/.01 including causal initialization, output, metrics",
+          "classification_8s": {
+            "event_count": 48,
+            "unstable_count": 12,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 3,
+            "false_los_resolved_stable": 0
+          }
+        },
+        "panel000096": {
+          "horizon_risks": {
+            "5": {
+              "value": 0.5744507032932917,
+              "coarse_value": 0.5744506772008813,
+              "numerical_score_perturbation": 2.6092410454481296e-08,
+              "eligible": 36,
+              "unresolved_ids": []
+            },
+            "8": {
+              "value": 0.38883769895101505,
+              "coarse_value": 0.38883765911850937,
+              "numerical_score_perturbation": 3.983250568273533e-08,
+              "eligible": 36,
+              "unresolved_ids": []
+            }
+          },
+          "unstable_interval_risk": 3.445870541240949,
+          "common_frequency_rmse_8s": 0.2341871881627836,
+          "normalized_p_rmse_8s": 0.3020328869800863,
+          "parameter_count": 2,
+          "qualified_inference_seconds_per_event": 0.08652582916666536,
+          "all_8s_rows_qualified": true,
+          "timing_scope": "CPU float64 one thread; true RK4 .005/.01 including causal initialization, output, metrics",
+          "classification_8s": {
+            "event_count": 48,
+            "unstable_count": 12,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 5,
+            "false_los_resolved_stable": 0
+          }
+        }
+      },
+      "profiles": {
+        "common385": {
+          "event_count": 385,
+          "horizon_risks": {
+            "1": {
+              "value": 0.693491735164315,
+              "coarse_value": 0.6934916199816575,
+              "numerical_score_perturbation": 1.1518265741194966e-07,
+              "eligible": 342,
+              "unresolved_ids": [],
+              "definition": "original ceil-top10 risk on stable complete horizon"
+            },
+            "2": {
+              "value": 0.9322218246830445,
+              "coarse_value": 0.9322217657194638,
+              "numerical_score_perturbation": 5.896358068468999e-08,
+              "eligible": 342,
+              "unresolved_ids": [],
+              "definition": "original ceil-top10 risk on stable complete horizon"
+            },
+            "5": {
+              "value": 0.8586302837324868,
+              "coarse_value": 0.858630216685238,
+              "numerical_score_perturbation": 6.704724886397173e-08,
+              "eligible": 342,
+              "unresolved_ids": [],
+              "definition": "original ceil-top10 risk on stable complete horizon"
+            },
+            "8": {
+              "value": 0.5791228226559698,
+              "coarse_value": 0.5791227429021161,
+              "numerical_score_perturbation": 7.975385374336952e-08,
+              "eligible": 342,
+              "unresolved_ids": [],
+              "definition": "original ceil-top10 risk on stable complete horizon"
+            }
+          },
+          "classification_8s": {
+            "event_count": 385,
+            "unstable_count": 43,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 15,
+            "false_los_resolved_stable": 0
+          },
+          "classification_actual15s": {
+            "event_count": 385,
+            "unstable_count": 43,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 37,
+            "false_los_resolved_stable": 0
+          },
+          "all_8s_rows_qualified": true,
+          "all_actual15s_rows_qualified": true,
+          "all_required_rows_qualified": true,
+          "official_metrics": {
+            "records": {
+              "1": {
+                "all_rows": 385,
+                "eligible_events": 346,
+                "numerically_admissible_events": 346,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 346,
+                  "mean": 0.3649157256929624,
+                  "pooled": 0.489265782010521,
+                  "cvar10": 1.0784589619647122,
+                  "worst": 4.001602744713366,
+                  "worst_group_mean": 0.5702498295595289,
+                  "delta_rmse_rad": 0.1665037548117767,
+                  "omega_rmse_rad_s": 0.599329843424474
+                }
+              },
+              "2": {
+                "all_rows": 385,
+                "eligible_events": 342,
+                "numerically_admissible_events": 342,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 342,
+                  "mean": 0.3966621653992201,
+                  "pooled": 0.4659625181627949,
+                  "cvar10": 0.9268780156163973,
+                  "worst": 2.0159864144578257,
+                  "worst_group_mean": 0.5219908394038288,
+                  "delta_rmse_rad": 0.13657919648095404,
+                  "omega_rmse_rad_s": 0.595439275020476
+                }
+              },
+              "5": {
+                "all_rows": 385,
+                "eligible_events": 342,
+                "numerically_admissible_events": 342,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 342,
+                  "mean": 0.3525960252030614,
+                  "pooled": 0.4055149986104751,
+                  "cvar10": 0.7685694879160297,
+                  "worst": 1.493481106105208,
+                  "worst_group_mean": 0.45693476254549514,
+                  "delta_rmse_rad": 0.11667927434594469,
+                  "omega_rmse_rad_s": 0.5203871203793711
+                }
+              },
+              "8": {
+                "all_rows": 385,
+                "eligible_events": 342,
+                "numerically_admissible_events": 342,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 342,
+                  "mean": 0.2934204503470036,
+                  "pooled": 0.33713379920469627,
+                  "cvar10": 0.6367270391970272,
+                  "worst": 1.2178445363163954,
+                  "worst_group_mean": 0.3804416376220518,
+                  "delta_rmse_rad": 0.0974437328980538,
+                  "omega_rmse_rad_s": 0.4321972207176693
+                }
+              },
+              "prefix": {
+                "all_rows": 385,
+                "eligible_events": 385,
+                "numerically_admissible_events": 385,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 385,
+                  "mean": 0.3826243790892459,
+                  "pooled": 0.375976027428176,
+                  "cvar10": 1.342056117543147,
+                  "worst": 5.061551699656926,
+                  "worst_group_mean": 0.67838074252578,
+                  "delta_rmse_rad": 0.11748602057376877,
+                  "omega_rmse_rad_s": 0.4727427754999649
+                }
+              },
+              "unstable_prefix": {
+                "all_rows": 43,
+                "eligible_events": 43,
+                "numerically_admissible_events": 43,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 43,
+                  "mean": 1.0921067890856848,
+                  "pooled": 2.058049822016414,
+                  "cvar10": 3.0157646893904184,
+                  "worst": 5.061551699656926,
+                  "worst_group_mean": 2.8559835100673707,
+                  "delta_rmse_rad": 0.8065545964135284,
+                  "omega_rmse_rad_s": 2.3763204899439887
+                }
+              }
+            },
+            "common_frequency": {
+              "1": {
+                "all_rows": 385,
+                "eligible_events": 346,
+                "numerically_admissible_events": 346,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 346,
+                  "mean": 0.2127245524579975,
+                  "pooled": 0.2913604569807988,
+                  "cvar10": 0.6923559227364418,
+                  "worst": 1.5192428965206666
+                }
+              },
+              "2": {
+                "all_rows": 385,
+                "eligible_events": 342,
+                "numerically_admissible_events": 342,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 342,
+                  "mean": 0.37175554576867,
+                  "pooled": 0.3969533528855854,
+                  "cvar10": 0.6426776513563422,
+                  "worst": 1.327472121421141
+                }
+              },
+              "5": {
+                "all_rows": 385,
+                "eligible_events": 342,
+                "numerically_admissible_events": 342,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 342,
+                  "mean": 0.30218766091496546,
+                  "pooled": 0.3526465268834217,
+                  "cvar10": 0.7111488199178697,
+                  "worst": 1.49419015416824
+                }
+              },
+              "8": {
+                "all_rows": 385,
+                "eligible_events": 342,
+                "numerically_admissible_events": 342,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 342,
+                  "mean": 0.2448568379011372,
+                  "pooled": 0.2901124084198964,
+                  "cvar10": 0.5972177245587236,
+                  "worst": 1.2975193181413267
+                }
+              },
+              "prefix": {
+                "all_rows": 385,
+                "eligible_events": 385,
+                "numerically_admissible_events": 385,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 385,
+                  "mean": 0.2763155871289522,
+                  "pooled": 0.3018246127244651,
+                  "cvar10": 0.8139075301050084,
+                  "worst": 1.8399183504340932
+                }
+              },
+              "unstable_prefix": {
+                "all_rows": 43,
+                "eligible_events": 43,
+                "numerically_admissible_events": 43,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 43,
+                  "mean": 0.5265223833129696,
+                  "pooled": 1.0563436909883634,
+                  "cvar10": 1.5569278011549834,
+                  "worst": 1.8399183504340932
+                }
+              }
+            },
+            "normalized_p": {
+              "1": {
+                "all_rows": 385,
+                "eligible_events": 346,
+                "numerically_admissible_events": 346,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 346,
+                  "mean": 0.400561066604213,
+                  "pooled": 0.45489346890109505,
+                  "cvar10": 0.8248511319934924,
+                  "worst": 2.3764270354490975
+                }
+              },
+              "2": {
+                "all_rows": 385,
+                "eligible_events": 342,
+                "numerically_admissible_events": 342,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 342,
+                  "mean": 0.4768556489659166,
+                  "pooled": 0.5211124612336054,
+                  "cvar10": 0.8891322407915637,
+                  "worst": 1.4481592202378546
+                }
+              },
+              "5": {
+                "all_rows": 385,
+                "eligible_events": 342,
+                "numerically_admissible_events": 342,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 342,
+                  "mean": 0.45222512350920346,
+                  "pooled": 0.5131057039732551,
+                  "cvar10": 0.9679222866380921,
+                  "worst": 1.4112190513888385
+                }
+              },
+              "8": {
+                "all_rows": 385,
+                "eligible_events": 342,
+                "numerically_admissible_events": 342,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 342,
+                  "mean": 0.36242745362161705,
+                  "pooled": 0.4127544129410372,
+                  "cvar10": 0.7858905502003765,
+                  "worst": 1.1900976550922122
+                }
+              },
+              "prefix": {
+                "all_rows": 385,
+                "eligible_events": 385,
+                "numerically_admissible_events": 385,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 385,
+                  "mean": 0.3813009054868457,
+                  "pooled": 0.4231941578096107,
+                  "cvar10": 0.9699368121325449,
+                  "worst": 2.9876830611339935
+                }
+              },
+              "unstable_prefix": {
+                "all_rows": 43,
+                "eligible_events": 43,
+                "numerically_admissible_events": 43,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 43,
+                  "mean": 0.5314106854381996,
+                  "pooled": 1.212048611410825,
+                  "cvar10": 1.8628598407858845,
+                  "worst": 2.9876830611339935
+                }
+              }
+            },
+            "objective_point_error": {
+              "1": {
+                "all_rows": 385,
+                "eligible_events": 346,
+                "numerically_admissible_events": 346,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 346,
+                  "mean": 0.5306312544266293,
+                  "cvar10": 2.810606845301566,
+                  "worst": 23.549461045340777
+                }
+              },
+              "2": {
+                "all_rows": 385,
+                "eligible_events": 342,
+                "numerically_admissible_events": 342,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 342,
+                  "mean": 0.6451955612275141,
+                  "cvar10": 2.080326878505167,
+                  "worst": 6.527952945248977
+                }
+              },
+              "5": {
+                "all_rows": 385,
+                "eligible_events": 342,
+                "numerically_admissible_events": 342,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 342,
+                  "mean": 0.5512462913975961,
+                  "cvar10": 2.08816625307205,
+                  "worst": 6.43967169266964
+                }
+              },
+              "8": {
+                "all_rows": 385,
+                "eligible_events": 342,
+                "numerically_admissible_events": 342,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 342,
+                  "mean": 0.36762674046755633,
+                  "cvar10": 1.4251071514096236,
+                  "worst": 4.571754974263765
+                }
+              },
+              "prefix": {
+                "all_rows": 385,
+                "eligible_events": 385,
+                "numerically_admissible_events": 385,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 385,
+                  "mean": 0.6874488755052691,
+                  "cvar10": 4.265846990721483,
+                  "worst": 36.46729738512341
+                }
+              },
+              "unstable_prefix": {
+                "all_rows": 43,
+                "eligible_events": 43,
+                "numerically_admissible_events": 43,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 43,
+                  "mean": 3.231150507665683,
+                  "cvar10": 15.804796075986598,
+                  "worst": 36.46729738512341
+                }
+              }
+            }
+          }
+        },
+        "fit": {
+          "event_count": 297,
+          "horizon_risks": {
+            "1": {
+              "value": 0.7713796315270964,
+              "coarse_value": 0.7713795022151251,
+              "numerical_score_perturbation": 1.2931197135301886e-07,
+              "eligible": 267,
+              "unresolved_ids": [],
+              "definition": "original ceil-top10 risk on stable complete horizon"
+            },
+            "2": {
+              "value": 1.0034841203585376,
+              "coarse_value": 1.0034840427152805,
+              "numerical_score_perturbation": 7.764325715697851e-08,
+              "eligible": 267,
+              "unresolved_ids": [],
+              "definition": "original ceil-top10 risk on stable complete horizon"
+            },
+            "5": {
+              "value": 0.9247836457672851,
+              "coarse_value": 0.9247835617139484,
+              "numerical_score_perturbation": 8.405333673522364e-08,
+              "eligible": 267,
+              "unresolved_ids": [],
+              "definition": "original ceil-top10 risk on stable complete horizon"
+            },
+            "8": {
+              "value": 0.625301947107334,
+              "coarse_value": 0.6253018504901233,
+              "numerical_score_perturbation": 9.66172106764418e-08,
+              "eligible": 267,
+              "unresolved_ids": [],
+              "definition": "original ceil-top10 risk on stable complete horizon"
+            }
+          },
+          "classification_8s": {
+            "event_count": 297,
+            "unstable_count": 30,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 8,
+            "false_los_resolved_stable": 0
+          },
+          "classification_actual15s": {
+            "event_count": 297,
+            "unstable_count": 30,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 24,
+            "false_los_resolved_stable": 0
+          },
+          "all_8s_rows_qualified": true,
+          "all_actual15s_rows_qualified": true,
+          "all_required_rows_qualified": true,
+          "official_metrics": {
+            "records": {
+              "1": {
+                "all_rows": 297,
+                "eligible_events": 270,
+                "numerically_admissible_events": 270,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 270,
+                  "mean": 0.37883882521340273,
+                  "pooled": 0.5140065088166016,
+                  "cvar10": 1.1530583428555967,
+                  "worst": 4.001602744713366,
+                  "worst_group_mean": 0.5702498295595289,
+                  "delta_rmse_rad": 0.1749224082942792,
+                  "omega_rmse_rad_s": 0.6296373540891637
+                }
+              },
+              "2": {
+                "all_rows": 297,
+                "eligible_events": 267,
+                "numerically_admissible_events": 267,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 267,
+                  "mean": 0.4077138855480249,
+                  "pooled": 0.48460033090434546,
+                  "cvar10": 0.9956018010877371,
+                  "worst": 2.0159864144578257,
+                  "worst_group_mean": 0.5219908394038288,
+                  "delta_rmse_rad": 0.14308509844933012,
+                  "omega_rmse_rad_s": 0.6181915744784076
+                }
+              },
+              "5": {
+                "all_rows": 297,
+                "eligible_events": 267,
+                "numerically_admissible_events": 267,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 267,
+                  "mean": 0.3598913267415176,
+                  "pooled": 0.41725452795755624,
+                  "cvar10": 0.8102325661291617,
+                  "worst": 1.493481106105208,
+                  "worst_group_mean": 0.45693476254549514,
+                  "delta_rmse_rad": 0.12100921548027184,
+                  "omega_rmse_rad_s": 0.5345020105042994
+                }
+              },
+              "8": {
+                "all_rows": 297,
+                "eligible_events": 267,
+                "numerically_admissible_events": 267,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 267,
+                  "mean": 0.2994188033827649,
+                  "pooled": 0.34666134036240875,
+                  "cvar10": 0.6705225286665901,
+                  "worst": 1.2178445363163954,
+                  "worst_group_mean": 0.3804416376220518,
+                  "delta_rmse_rad": 0.10101601450239978,
+                  "omega_rmse_rad_s": 0.4435898369187637
+                }
+              },
+              "prefix": {
+                "all_rows": 297,
+                "eligible_events": 297,
+                "numerically_admissible_events": 297,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 297,
+                  "mean": 0.36896356160103333,
+                  "pooled": 0.379155448223415,
+                  "cvar10": 1.2193667382275075,
+                  "worst": 5.061551699656926,
+                  "worst_group_mean": 0.67838074252578,
+                  "delta_rmse_rad": 0.1188066865599524,
+                  "omega_rmse_rad_s": 0.4763797489268463
+                }
+              },
+              "unstable_prefix": {
+                "all_rows": 30,
+                "eligible_events": 30,
+                "numerically_admissible_events": 30,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 30,
+                  "mean": 0.9879119097436224,
+                  "pooled": 2.1743181379584127,
+                  "cvar10": 3.219554458474674,
+                  "worst": 5.061551699656926,
+                  "worst_group_mean": 2.062682595100874,
+                  "delta_rmse_rad": 0.8798926264537628,
+                  "omega_rmse_rad_s": 2.467772747465012
+                }
+              }
+            },
+            "common_frequency": {
+              "1": {
+                "all_rows": 297,
+                "eligible_events": 270,
+                "numerically_admissible_events": 270,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 270,
+                  "mean": 0.22070106300194287,
+                  "pooled": 0.30368468710062696,
+                  "cvar10": 0.7354539579269718,
+                  "worst": 1.5192428965206666
+                }
+              },
+              "2": {
+                "all_rows": 297,
+                "eligible_events": 267,
+                "numerically_admissible_events": 267,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 267,
+                  "mean": 0.37856827764353673,
+                  "pooled": 0.40554806509547636,
+                  "cvar10": 0.6658031518055028,
+                  "worst": 1.327472121421141
+                }
+              },
+              "5": {
+                "all_rows": 297,
+                "eligible_events": 267,
+                "numerically_admissible_events": 267,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 267,
+                  "mean": 0.3109034264516257,
+                  "pooled": 0.3667089437992138,
+                  "cvar10": 0.7576452605458139,
+                  "worst": 1.49419015416824
+                }
+              },
+              "8": {
+                "all_rows": 297,
+                "eligible_events": 267,
+                "numerically_admissible_events": 267,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 267,
+                  "mean": 0.2522404245222065,
+                  "pooled": 0.3023893778026566,
+                  "cvar10": 0.6373115383508661,
+                  "worst": 1.2975193181413267
+                }
+              },
+              "prefix": {
+                "all_rows": 297,
+                "eligible_events": 297,
+                "numerically_admissible_events": 297,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 297,
+                  "mean": 0.27221346287617165,
+                  "pooled": 0.3097953062167765,
+                  "cvar10": 0.7778587323608063,
+                  "worst": 1.7500671640476202
+                }
+              },
+              "unstable_prefix": {
+                "all_rows": 30,
+                "eligible_events": 30,
+                "numerically_admissible_events": 30,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 30,
+                  "mean": 0.4499735042264613,
+                  "pooled": 0.9885114800565804,
+                  "cvar10": 1.4317860132015123,
+                  "worst": 1.7500671640476202
+                }
+              }
+            },
+            "normalized_p": {
+              "1": {
+                "all_rows": 297,
+                "eligible_events": 270,
+                "numerically_admissible_events": 270,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 270,
+                  "mean": 0.40761295355620447,
+                  "pooled": 0.4663743799032237,
+                  "cvar10": 0.8580191755320045,
+                  "worst": 2.3764270354490975
+                }
+              },
+              "2": {
+                "all_rows": 297,
+                "eligible_events": 267,
+                "numerically_admissible_events": 267,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 267,
+                  "mean": 0.48503016342480354,
+                  "pooled": 0.5311255743003522,
+                  "cvar10": 0.9121085608730625,
+                  "worst": 1.4481592202378546
+                }
+              },
+              "5": {
+                "all_rows": 297,
+                "eligible_events": 267,
+                "numerically_admissible_events": 267,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 267,
+                  "mean": 0.4606274068048021,
+                  "pooled": 0.5246078094698595,
+                  "cvar10": 0.9996693718743029,
+                  "worst": 1.4112190513888385
+                }
+              },
+              "8": {
+                "all_rows": 297,
+                "eligible_events": 267,
+                "numerically_admissible_events": 267,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 267,
+                  "mean": 0.3693663016699021,
+                  "pooled": 0.4224280596479933,
+                  "cvar10": 0.8130413609624718,
+                  "worst": 1.1900976550922122
+                }
+              },
+              "prefix": {
+                "all_rows": 297,
+                "eligible_events": 297,
+                "numerically_admissible_events": 297,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 297,
+                  "mean": 0.37905341862155895,
+                  "pooled": 0.43108191923685774,
+                  "cvar10": 0.9508926762379285,
+                  "worst": 2.9876830611339935
+                }
+              },
+              "unstable_prefix": {
+                "all_rows": 30,
+                "eligible_events": 30,
+                "numerically_admissible_events": 30,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 30,
+                  "mean": 0.4652687594913057,
+                  "pooled": 1.2733396188271489,
+                  "cvar10": 1.9041341277058017,
+                  "worst": 2.9876830611339935
+                }
+              }
+            },
+            "objective_point_error": {
+              "1": {
+                "all_rows": 297,
+                "eligible_events": 270,
+                "numerically_admissible_events": 270,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 270,
+                  "mean": 0.5733142762360056,
+                  "cvar10": 3.144513184006026,
+                  "worst": 23.549461045340777
+                }
+              },
+              "2": {
+                "all_rows": 297,
+                "eligible_events": 267,
+                "numerically_admissible_events": 267,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 267,
+                  "mean": 0.6802992118422202,
+                  "cvar10": 2.296223754423807,
+                  "worst": 6.527952945248977
+                }
+              },
+              "5": {
+                "all_rows": 297,
+                "eligible_events": 267,
+                "numerically_admissible_events": 267,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 267,
+                  "mean": 0.5828892129465815,
+                  "cvar10": 2.2923613770500997,
+                  "worst": 6.43967169266964
+                }
+              },
+              "8": {
+                "all_rows": 297,
+                "eligible_events": 267,
+                "numerically_admissible_events": 267,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 267,
+                  "mean": 0.3894462795498989,
+                  "cvar10": 1.568724617337074,
+                  "worst": 4.571754974263765
+                }
+              },
+              "prefix": {
+                "all_rows": 297,
+                "eligible_events": 297,
+                "numerically_admissible_events": 297,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 297,
+                  "mean": 0.6447831631518913,
+                  "cvar10": 3.851262331879363,
+                  "worst": 36.46729738512341
+                }
+              },
+              "unstable_prefix": {
+                "all_rows": 30,
+                "eligible_events": 30,
+                "numerically_admissible_events": 30,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 30,
+                  "mean": 2.9172814272096224,
+                  "cvar10": 17.87946777298884,
+                  "worst": 36.46729738512341
+                }
+              }
+            }
+          }
+        },
+        "no_update": {
+          "event_count": 88,
+          "horizon_risks": {
+            "1": {
+              "value": 0.4051776487482392,
+              "coarse_value": 0.4051775908930052,
+              "numerical_score_perturbation": 5.78552339924876e-08,
+              "eligible": 75,
+              "unresolved_ids": [],
+              "definition": "original ceil-top10 risk on stable complete horizon"
+            },
+            "2": {
+              "value": 0.6692404773151017,
+              "coarse_value": 0.6692404886748728,
+              "numerical_score_perturbation": 1.1359771123764517e-08,
+              "eligible": 75,
+              "unresolved_ids": [],
+              "definition": "original ceil-top10 risk on stable complete horizon"
+            },
+            "5": {
+              "value": 0.6126062743246543,
+              "coarse_value": 0.6126062761286086,
+              "numerical_score_perturbation": 1.8039543192571728e-09,
+              "eligible": 75,
+              "unresolved_ids": [],
+              "definition": "original ceil-top10 risk on stable complete horizon"
+            },
+            "8": {
+              "value": 0.40728007774557917,
+              "coarse_value": 0.4072800638982319,
+              "numerical_score_perturbation": 1.3847347268836074e-08,
+              "eligible": 75,
+              "unresolved_ids": [],
+              "definition": "original ceil-top10 risk on stable complete horizon"
+            }
+          },
+          "classification_8s": {
+            "event_count": 88,
+            "unstable_count": 13,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 7,
+            "false_los_resolved_stable": 0
+          },
+          "classification_actual15s": {
+            "event_count": 88,
+            "unstable_count": 13,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 13,
+            "false_los_resolved_stable": 0
+          },
+          "all_8s_rows_qualified": true,
+          "all_actual15s_rows_qualified": true,
+          "all_required_rows_qualified": true,
+          "official_metrics": {
+            "records": {
+              "1": {
+                "all_rows": 88,
+                "eligible_events": 76,
+                "numerically_admissible_events": 76,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 76,
+                  "mean": 0.31545208265981906,
+                  "pooled": 0.3888427717340879,
+                  "cvar10": 0.7725932506281382,
+                  "worst": 1.8389292434739613,
+                  "worst_group_mean": 0.358992746462036,
+                  "delta_rmse_rad": 0.1323329094131224,
+                  "omega_rmse_rad_s": 0.47631042250295913
+                }
+              },
+              "2": {
+                "all_rows": 88,
+                "eligible_events": 75,
+                "numerically_admissible_events": 75,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 75,
+                  "mean": 0.357318041669475,
+                  "pooled": 0.3924928537691549,
+                  "cvar10": 0.6763364336661144,
+                  "worst": 0.8466607871375322,
+                  "worst_group_mean": 0.42862514872094226,
+                  "delta_rmse_rad": 0.11034749248678338,
+                  "omega_rmse_rad_s": 0.5062074998146714
+                }
+              },
+              "5": {
+                "all_rows": 88,
+                "eligible_events": 75,
+                "numerically_admissible_events": 75,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 75,
+                  "mean": 0.3266247517261575,
+                  "pooled": 0.36063365617655374,
+                  "cvar10": 0.6134394635345218,
+                  "worst": 0.6729090232121762,
+                  "worst_group_mean": 0.39201766830854,
+                  "delta_rmse_rad": 0.0997506006966862,
+                  "omega_rmse_rad_s": 0.4666857848582231
+                }
+              },
+              "8": {
+                "all_rows": 88,
+                "eligible_events": 75,
+                "numerically_admissible_events": 75,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 75,
+                  "mean": 0.2720663135396933,
+                  "pooled": 0.3007760017208977,
+                  "cvar10": 0.5119721903542451,
+                  "worst": 0.5557184782396527,
+                  "worst_group_mean": 0.3250555328738707,
+                  "delta_rmse_rad": 0.08349493677984607,
+                  "omega_rmse_rad_s": 0.38894024845907094
+                }
+              },
+              "prefix": {
+                "all_rows": 88,
+                "eligible_events": 88,
+                "numerically_admissible_events": 88,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 88,
+                  "mean": 0.42872963811196346,
+                  "pooled": 0.36451776932774127,
+                  "cvar10": 1.7507871357131846,
+                  "worst": 2.8559835100673707,
+                  "worst_group_mean": 0.5594875786395054,
+                  "delta_rmse_rad": 0.11269482869014737,
+                  "omega_rmse_rad_s": 0.4596591321672716
+                }
+              },
+              "unstable_prefix": {
+                "all_rows": 13,
+                "eligible_events": 13,
+                "numerically_admissible_events": 13,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 13,
+                  "mean": 1.3325565106442907,
+                  "pooled": 1.8752094585817094,
+                  "cvar10": 2.597872181147194,
+                  "worst": 2.8559835100673707,
+                  "worst_group_mean": 2.8559835100673707,
+                  "delta_rmse_rad": 0.685404146091792,
+                  "omega_rmse_rad_s": 2.235951269598999
+                }
+              }
+            },
+            "common_frequency": {
+              "1": {
+                "all_rows": 88,
+                "eligible_events": 76,
+                "numerically_admissible_events": 76,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 76,
+                  "mean": 0.18438694920977058,
+                  "pooled": 0.242565016249393,
+                  "cvar10": 0.5246207490996475,
+                  "worst": 1.235661634672185
+                }
+              },
+              "2": {
+                "all_rows": 88,
+                "eligible_events": 75,
+                "numerically_admissible_events": 75,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 75,
+                  "mean": 0.3475022202941439,
+                  "pooled": 0.3647158999391928,
+                  "cvar10": 0.5515640124252277,
+                  "worst": 0.714500260076208
+                }
+              },
+              "5": {
+                "all_rows": 88,
+                "eligible_events": 75,
+                "numerically_admissible_events": 75,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 75,
+                  "mean": 0.27115953560445466,
+                  "pooled": 0.297232320656239,
+                  "cvar10": 0.524252223920626,
+                  "worst": 0.6837918661288553
+                }
+              },
+              "8": {
+                "all_rows": 88,
+                "eligible_events": 75,
+                "numerically_admissible_events": 75,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 75,
+                  "mean": 0.21857126953013026,
+                  "pooled": 0.2413903890619385,
+                  "cvar10": 0.43477991099137087,
+                  "worst": 0.5862052744415356
+                }
+              },
+              "prefix": {
+                "all_rows": 88,
+                "eligible_events": 88,
+                "numerically_admissible_events": 88,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 88,
+                  "mean": 0.29016025648208665,
+                  "pooled": 0.2717896402954628,
+                  "cvar10": 0.9340701892523491,
+                  "worst": 1.8399183504340932
+                }
+              },
+              "unstable_prefix": {
+                "all_rows": 13,
+                "eligible_events": 13,
+                "numerically_admissible_events": 13,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 13,
+                  "mean": 0.7031736427433732,
+                  "pooled": 1.1482915524638964,
+                  "cvar10": 1.6276821934915082,
+                  "worst": 1.8399183504340932
+                }
+              }
+            },
+            "normalized_p": {
+              "1": {
+                "all_rows": 88,
+                "eligible_events": 76,
+                "numerically_admissible_events": 76,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 76,
+                  "mean": 0.3755083103274008,
+                  "pooled": 0.411523880850478,
+                  "cvar10": 0.6893255642555484,
+                  "worst": 1.3161047313336256
+                }
+              },
+              "2": {
+                "all_rows": 88,
+                "eligible_events": 75,
+                "numerically_admissible_events": 75,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 75,
+                  "mean": 0.4477543774922794,
+                  "pooled": 0.48378652530563954,
+                  "cvar10": 0.7948505451033641,
+                  "worst": 0.9892559534200464
+                }
+              },
+              "5": {
+                "all_rows": 88,
+                "eligible_events": 75,
+                "numerically_admissible_events": 75,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 75,
+                  "mean": 0.4223129949768723,
+                  "pooled": 0.46987838209202115,
+                  "cvar10": 0.8392108747215912,
+                  "worst": 1.1271781996747041
+                }
+              },
+              "8": {
+                "all_rows": 88,
+                "eligible_events": 75,
+                "numerically_admissible_events": 75,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 75,
+                  "mean": 0.3377251545697224,
+                  "pooled": 0.3763031214020436,
+                  "cvar10": 0.6746528350471604,
+                  "worst": 0.9098023384843029
+                }
+              },
+              "prefix": {
+                "all_rows": 88,
+                "eligible_events": 88,
+                "numerically_admissible_events": 88,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 88,
+                  "mean": 0.3888861736571885,
+                  "pooled": 0.39405569743711855,
+                  "cvar10": 1.0323012724615408,
+                  "worst": 1.8120142601916982
+                }
+              },
+              "unstable_prefix": {
+                "all_rows": 13,
+                "eligible_events": 13,
+                "numerically_admissible_events": 13,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 13,
+                  "mean": 0.6840458991618008,
+                  "pooled": 1.1164400642561292,
+                  "cvar10": 1.6461783004194563,
+                  "worst": 1.8120142601916982
+                }
+              }
+            },
+            "objective_point_error": {
+              "1": {
+                "all_rows": 88,
+                "eligible_events": 76,
+                "numerically_admissible_events": 76,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 76,
+                  "mean": 0.37899420326174016,
+                  "cvar10": 1.598956417317711,
+                  "worst": 6.630422756608798
+                }
+              },
+              "2": {
+                "all_rows": 88,
+                "eligible_events": 75,
+                "numerically_admissible_events": 75,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 75,
+                  "mean": 0.5202265650391596,
+                  "cvar10": 1.2652961264188698,
+                  "worst": 1.7408783574759965
+                }
+              },
+              "5": {
+                "all_rows": 88,
+                "eligible_events": 75,
+                "numerically_admissible_events": 75,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 75,
+                  "mean": 0.438597490683208,
+                  "cvar10": 1.3086414088904395,
+                  "worst": 2.1552823887520534
+                }
+              },
+              "8": {
+                "all_rows": 88,
+                "eligible_events": 75,
+                "numerically_admissible_events": 75,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 75,
+                  "mean": 0.28994918133441694,
+                  "cvar10": 0.8766036633902283,
+                  "worst": 1.4641071917270352
+                }
+              },
+              "prefix": {
+                "all_rows": 88,
+                "eligible_events": 88,
+                "numerically_admissible_events": 88,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 88,
+                  "mean": 0.8314456546979193,
+                  "cvar10": 5.64779585352855,
+                  "worst": 13.430102411738877
+                }
+              },
+              "unstable_prefix": {
+                "all_rows": 13,
+                "eligible_events": 13,
+                "numerically_admissible_events": 13,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 13,
+                  "mean": 3.9554637702565865,
+                  "cvar10": 12.111748842100074,
+                  "worst": 13.430102411738877
+                }
+              }
+            }
+          }
+        },
+        "original366": {
+          "event_count": 366,
+          "horizon_risks": {
+            "1": {
+              "value": 0.6936211986778422,
+              "coarse_value": 0.6936210812929852,
+              "numerical_score_perturbation": 1.1738485705681256e-07,
+              "eligible": 325,
+              "unresolved_ids": [],
+              "definition": "original ceil-top10 risk on stable complete horizon"
+            },
+            "2": {
+              "value": 0.932893634877956,
+              "coarse_value": 0.932893571160655,
+              "numerical_score_perturbation": 6.371730099097306e-08,
+              "eligible": 325,
+              "unresolved_ids": [],
+              "definition": "original ceil-top10 risk on stable complete horizon"
+            },
+            "5": {
+              "value": 0.8541392533072967,
+              "coarse_value": 0.854139185282767,
+              "numerical_score_perturbation": 6.802452967580308e-08,
+              "eligible": 325,
+              "unresolved_ids": [],
+              "definition": "original ceil-top10 risk on stable complete horizon"
+            },
+            "8": {
+              "value": 0.5757836951910076,
+              "coarse_value": 0.575783614402781,
+              "numerical_score_perturbation": 8.078822655299689e-08,
+              "eligible": 325,
+              "unresolved_ids": [],
+              "definition": "original ceil-top10 risk on stable complete horizon"
+            }
+          },
+          "classification_8s": {
+            "event_count": 366,
+            "unstable_count": 41,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 15,
+            "false_los_resolved_stable": 0
+          },
+          "classification_actual15s": {
+            "event_count": 366,
+            "unstable_count": 41,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 35,
+            "false_los_resolved_stable": 0
+          },
+          "all_8s_rows_qualified": true,
+          "all_actual15s_rows_qualified": true,
+          "all_required_rows_qualified": true,
+          "official_metrics": {
+            "records": {
+              "1": {
+                "all_rows": 366,
+                "eligible_events": 329,
+                "numerically_admissible_events": 329,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 329,
+                  "mean": 0.36599093252454024,
+                  "pooled": 0.49308875587293005,
+                  "cvar10": 1.091964335178284,
+                  "worst": 4.001602744713366,
+                  "worst_group_mean": 0.5423568127438689,
+                  "delta_rmse_rad": 0.16804581352709574,
+                  "omega_rmse_rad_s": 0.6037159214761212
+                }
+              },
+              "2": {
+                "all_rows": 366,
+                "eligible_events": 325,
+                "numerically_admissible_events": 325,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 325,
+                  "mean": 0.3962239551841828,
+                  "pooled": 0.46581953503845375,
+                  "cvar10": 0.9275791901839234,
+                  "worst": 2.0159864144578257,
+                  "worst_group_mean": 0.5174605280682637,
+                  "delta_rmse_rad": 0.1364974650271433,
+                  "omega_rmse_rad_s": 0.5952970111672498
+                }
+              },
+              "5": {
+                "all_rows": 366,
+                "eligible_events": 325,
+                "numerically_admissible_events": 325,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 325,
+                  "mean": 0.35210711715116016,
+                  "pooled": 0.4050649161364146,
+                  "cvar10": 0.7679801863863641,
+                  "worst": 1.493481106105208,
+                  "worst_group_mean": 0.4422138296684229,
+                  "delta_rmse_rad": 0.11647936570394728,
+                  "omega_rmse_rad_s": 0.5198794362860182
+                }
+              },
+              "8": {
+                "all_rows": 366,
+                "eligible_events": 325,
+                "numerically_admissible_events": 325,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 325,
+                  "mean": 0.29302734866070873,
+                  "pooled": 0.3367426886160856,
+                  "cvar10": 0.6357980327239682,
+                  "worst": 1.2178445363163954,
+                  "worst_group_mean": 0.3680476053050639,
+                  "delta_rmse_rad": 0.09724969534598797,
+                  "omega_rmse_rad_s": 0.43177666692065375
+                }
+              },
+              "prefix": {
+                "all_rows": 366,
+                "eligible_events": 366,
+                "numerically_admissible_events": 366,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 366,
+                  "mean": 0.38354417776368765,
+                  "pooled": 0.37729435111064874,
+                  "cvar10": 1.3614401752453253,
+                  "worst": 5.061551699656926,
+                  "worst_group_mean": 0.6749320506170949,
+                  "delta_rmse_rad": 0.11827016377904344,
+                  "omega_rmse_rad_s": 0.4739898856551068
+                }
+              },
+              "unstable_prefix": {
+                "all_rows": 41,
+                "eligible_events": 41,
+                "numerically_admissible_events": 41,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 41,
+                  "mean": 1.1010556279702277,
+                  "pooled": 2.0869169616299366,
+                  "cvar10": 3.0157646893904184,
+                  "worst": 5.061551699656926,
+                  "worst_group_mean": 2.8559835100673707,
+                  "delta_rmse_rad": 0.8204444309811716,
+                  "omega_rmse_rad_s": 2.405768865918976
+                }
+              }
+            },
+            "common_frequency": {
+              "1": {
+                "all_rows": 366,
+                "eligible_events": 329,
+                "numerically_admissible_events": 329,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 329,
+                  "mean": 0.21180508881642102,
+                  "pooled": 0.2911684427593777,
+                  "cvar10": 0.6952498097537014,
+                  "worst": 1.5192428965206666
+                }
+              },
+              "2": {
+                "all_rows": 366,
+                "eligible_events": 325,
+                "numerically_admissible_events": 325,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 325,
+                  "mean": 0.37136087915543803,
+                  "pooled": 0.39684086543968733,
+                  "cvar10": 0.6438988481145913,
+                  "worst": 1.327472121421141
+                }
+              },
+              "5": {
+                "all_rows": 366,
+                "eligible_events": 325,
+                "numerically_admissible_events": 325,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 325,
+                  "mean": 0.30126040697076156,
+                  "pooled": 0.3512635856652566,
+                  "cvar10": 0.7069213469666977,
+                  "worst": 1.49419015416824
+                }
+              },
+              "8": {
+                "all_rows": 366,
+                "eligible_events": 325,
+                "numerically_admissible_events": 325,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 325,
+                  "mean": 0.24402051760964855,
+                  "pooled": 0.28882382033310666,
+                  "cvar10": 0.5932381880517565,
+                  "worst": 1.2975193181413267
+                }
+              },
+              "prefix": {
+                "all_rows": 366,
+                "eligible_events": 366,
+                "numerically_admissible_events": 366,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 366,
+                  "mean": 0.2762351869623486,
+                  "pooled": 0.3011553962525479,
+                  "cvar10": 0.822071176222918,
+                  "worst": 1.8399183504340932
+                }
+              },
+              "unstable_prefix": {
+                "all_rows": 41,
+                "eligible_events": 41,
+                "numerically_admissible_events": 41,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 41,
+                  "mean": 0.5315953708557029,
+                  "pooled": 1.07201996768352,
+                  "cvar10": 1.5569278011549834,
+                  "worst": 1.8399183504340932
+                }
+              }
+            },
+            "normalized_p": {
+              "1": {
+                "all_rows": 366,
+                "eligible_events": 329,
+                "numerically_admissible_events": 329,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 329,
+                  "mean": 0.4013550553876804,
+                  "pooled": 0.45633703087665783,
+                  "cvar10": 0.8299961974218693,
+                  "worst": 2.3764270354490975
+                }
+              },
+              "2": {
+                "all_rows": 366,
+                "eligible_events": 325,
+                "numerically_admissible_events": 325,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 325,
+                  "mean": 0.47644415907489407,
+                  "pooled": 0.5207162928472078,
+                  "cvar10": 0.8890814116296396,
+                  "worst": 1.4481592202378546
+                }
+              },
+              "5": {
+                "all_rows": 366,
+                "eligible_events": 325,
+                "numerically_admissible_events": 325,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 325,
+                  "mean": 0.45151085550364367,
+                  "pooled": 0.511894838590537,
+                  "cvar10": 0.9637102172157302,
+                  "worst": 1.4112190513888385
+                }
+              },
+              "8": {
+                "all_rows": 366,
+                "eligible_events": 325,
+                "numerically_admissible_events": 325,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 325,
+                  "mean": 0.3618061320124012,
+                  "pooled": 0.4117015301811022,
+                  "cvar10": 0.7822213140312488,
+                  "worst": 1.1900976550922122
+                }
+              },
+              "prefix": {
+                "all_rows": 366,
+                "eligible_events": 366,
+                "numerically_admissible_events": 366,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 366,
+                  "mean": 0.38205812374299597,
+                  "pooled": 0.4227357675383463,
+                  "cvar10": 0.9766126967347915,
+                  "worst": 2.9876830611339935
+                }
+              },
+              "unstable_prefix": {
+                "all_rows": 41,
+                "eligible_events": 41,
+                "numerically_admissible_events": 41,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 41,
+                  "mean": 0.5425922045342966,
+                  "pooled": 1.232207534292675,
+                  "cvar10": 1.8628598407858845,
+                  "worst": 2.9876830611339935
+                }
+              }
+            },
+            "objective_point_error": {
+              "1": {
+                "all_rows": 366,
+                "eligible_events": 329,
+                "numerically_admissible_events": 329,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 329,
+                  "mean": 0.5355910833915413,
+                  "cvar10": 2.87637211357829,
+                  "worst": 23.549461045340777
+                }
+              },
+              "2": {
+                "all_rows": 366,
+                "eligible_events": 325,
+                "numerically_admissible_events": 325,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 325,
+                  "mean": 0.6445608988374238,
+                  "cvar10": 2.086224579040084,
+                  "worst": 6.527952945248977
+                }
+              },
+              "5": {
+                "all_rows": 366,
+                "eligible_events": 325,
+                "numerically_admissible_events": 325,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 325,
+                  "mean": 0.5486733814337227,
+                  "cvar10": 2.0760027408015915,
+                  "worst": 6.43967169266964
+                }
+              },
+              "8": {
+                "all_rows": 366,
+                "eligible_events": 325,
+                "numerically_admissible_events": 325,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 325,
+                  "mean": 0.3657541124303935,
+                  "cvar10": 1.415902026233464,
+                  "worst": 4.571754974263765
+                }
+              },
+              "prefix": {
+                "all_rows": 366,
+                "eligible_events": 366,
+                "numerically_admissible_events": 366,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 366,
+                  "mean": 0.6982042166602674,
+                  "cvar10": 4.398931579213846,
+                  "worst": 36.46729738512341
+                }
+              },
+              "unstable_prefix": {
+                "all_rows": 41,
+                "eligible_events": 41,
+                "numerically_admissible_events": 41,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 41,
+                  "mean": 3.3334794331165862,
+                  "cvar10": 15.804796075986598,
+                  "worst": 36.46729738512341
+                }
+              }
+            }
+          }
+        },
+        "fresh19": {
+          "event_count": 19,
+          "horizon_risks": {
+            "1": {
+              "value": 0.6928111647257906,
+              "coarse_value": 0.6928110895943842,
+              "numerical_score_perturbation": 7.513140642956273e-08,
+              "eligible": 17,
+              "unresolved_ids": [],
+              "definition": "original ceil-top10 risk on stable complete horizon"
+            },
+            "2": {
+              "value": 0.9224660141780205,
+              "coarse_value": 0.9224660380525868,
+              "numerical_score_perturbation": 2.3874566212889192e-08,
+              "eligible": 17,
+              "unresolved_ids": [],
+              "definition": "original ceil-top10 risk on stable complete horizon"
+            },
+            "5": {
+              "value": 0.93812026190777,
+              "coarse_value": 0.9381202133921434,
+              "numerical_score_perturbation": 4.851562662722131e-08,
+              "eligible": 17,
+              "unresolved_ids": [],
+              "definition": "original ceil-top10 risk on stable complete horizon"
+            },
+            "8": {
+              "value": 0.6381399292468458,
+              "coarse_value": 0.6381398685133561,
+              "numerical_score_perturbation": 6.073348968183012e-08,
+              "eligible": 17,
+              "unresolved_ids": [],
+              "definition": "original ceil-top10 risk on stable complete horizon"
+            }
+          },
+          "classification_8s": {
+            "event_count": 19,
+            "unstable_count": 2,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 0,
+            "false_los_resolved_stable": 0
+          },
+          "classification_actual15s": {
+            "event_count": 19,
+            "unstable_count": 2,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 2,
+            "false_los_resolved_stable": 0
+          },
+          "all_8s_rows_qualified": true,
+          "all_actual15s_rows_qualified": true,
+          "all_required_rows_qualified": true,
+          "official_metrics": {
+            "records": {
+              "1": {
+                "all_rows": 19,
+                "eligible_events": 17,
+                "numerically_admissible_events": 17,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 17,
+                  "mean": 0.3441073111288973,
+                  "pooled": 0.4082900079504881,
+                  "cvar10": 0.8556203039407768,
+                  "worst": 1.0444311154257488,
+                  "worst_group_mean": 1.0444311154257488,
+                  "delta_rmse_rad": 0.1331893887556709,
+                  "omega_rmse_rad_s": 0.5070281189120344
+                }
+              },
+              "2": {
+                "all_rows": 19,
+                "eligible_events": 17,
+                "numerically_admissible_events": 17,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 17,
+                  "mean": 0.4050397136278744,
+                  "pooled": 0.46868763096514304,
+                  "cvar10": 0.9153086352522116,
+                  "worst": 1.1094803081471651,
+                  "worst_group_mean": 1.1094803081471651,
+                  "delta_rmse_rad": 0.13813241027686493,
+                  "omega_rmse_rad_s": 0.5981525185203731
+                }
+              },
+              "5": {
+                "all_rows": 19,
+                "eligible_events": 17,
+                "numerically_admissible_events": 17,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 17,
+                  "mean": 0.36194279678352687,
+                  "pooled": 0.41402543819539944,
+                  "cvar10": 0.7737343809538749,
+                  "worst": 0.8991618719603144,
+                  "worst_group_mean": 0.8991618719603144,
+                  "delta_rmse_rad": 0.12043726481658307,
+                  "omega_rmse_rad_s": 0.5299993363289914
+                }
+              },
+              "8": {
+                "all_rows": 19,
+                "eligible_events": 17,
+                "numerically_admissible_events": 17,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 17,
+                  "mean": 0.3009356296438163,
+                  "pooled": 0.3445255433466403,
+                  "cvar10": 0.644459319221186,
+                  "worst": 0.747354580699478,
+                  "worst_group_mean": 0.747354580699478,
+                  "delta_rmse_rad": 0.10108167203110095,
+                  "omega_rmse_rad_s": 0.440159955971765
+                }
+              },
+              "prefix": {
+                "all_rows": 19,
+                "eligible_events": 19,
+                "numerically_admissible_events": 19,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 19,
+                  "mean": 0.36490615199210497,
+                  "pooled": 0.34976015027055846,
+                  "cvar10": 0.9234565581131595,
+                  "worst": 1.0995585355268411,
+                  "worst_group_mean": 1.0995585355268411,
+                  "delta_rmse_rad": 0.10129722094176112,
+                  "omega_rmse_rad_s": 0.4481798985421054
+                }
+              },
+              "unstable_prefix": {
+                "all_rows": 2,
+                "eligible_events": 2,
+                "numerically_admissible_events": 2,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 2,
+                  "mean": 0.9086555919525585,
+                  "pooled": 0.9458454478675616,
+                  "cvar10": 1.0995585355268411,
+                  "worst": 1.0995585355268411,
+                  "worst_group_mean": 1.0995585355268411,
+                  "delta_rmse_rad": 0.13975306375431507,
+                  "omega_rmse_rad_s": 1.3095066160154343
+                }
+              }
+            },
+            "common_frequency": {
+              "1": {
+                "all_rows": 19,
+                "eligible_events": 17,
+                "numerically_admissible_events": 17,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 17,
+                  "mean": 0.23051887822733005,
+                  "pooled": 0.2950518878861132,
+                  "cvar10": 0.6446067869516574,
+                  "worst": 0.8712109024350133
+                }
+              },
+              "2": {
+                "all_rows": 19,
+                "eligible_events": 17,
+                "numerically_admissible_events": 17,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 17,
+                  "mean": 0.3793006427863392,
+                  "pooled": 0.39909775130189984,
+                  "cvar10": 0.6225279048452321,
+                  "worst": 0.6453320855166962
+                }
+              },
+              "5": {
+                "all_rows": 19,
+                "eligible_events": 17,
+                "numerically_admissible_events": 17,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 17,
+                  "mean": 0.31991457455415717,
+                  "pooled": 0.3781136842710275,
+                  "cvar10": 0.7809021236122076,
+                  "worst": 0.9586836834897076
+                }
+              },
+              "8": {
+                "all_rows": 19,
+                "eligible_events": 17,
+                "numerically_admissible_events": 17,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 17,
+                  "mean": 0.2608453140619495,
+                  "pooled": 0.31373104988241296,
+                  "cvar10": 0.6628800769236813,
+                  "worst": 0.8200731231591848
+                }
+              },
+              "prefix": {
+                "all_rows": 19,
+                "eligible_events": 19,
+                "numerically_admissible_events": 19,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 19,
+                  "mean": 0.27786434823300066,
+                  "pooled": 0.31437106987624,
+                  "cvar10": 0.6628800769236813,
+                  "worst": 0.8200731231591848
+                }
+              },
+              "unstable_prefix": {
+                "all_rows": 2,
+                "eligible_events": 2,
+                "numerically_admissible_events": 2,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 2,
+                  "mean": 0.42252613868693584,
+                  "pooled": 0.4292478613486586,
+                  "cvar10": 0.4683220723073688,
+                  "worst": 0.4683220723073688
+                }
+              }
+            },
+            "normalized_p": {
+              "1": {
+                "all_rows": 19,
+                "eligible_events": 17,
+                "numerically_admissible_events": 17,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 17,
+                  "mean": 0.3851950483829896,
+                  "pooled": 0.4259939749216315,
+                  "cvar10": 0.7295328405131496,
+                  "worst": 0.8160586369655004
+                }
+              },
+              "2": {
+                "all_rows": 19,
+                "eligible_events": 17,
+                "numerically_admissible_events": 17,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 17,
+                  "mean": 0.4847223674707589,
+                  "pooled": 0.5286291777480754,
+                  "cvar10": 0.8899709219633087,
+                  "worst": 0.9847592461772109
+                }
+              },
+              "5": {
+                "all_rows": 19,
+                "eligible_events": 17,
+                "numerically_admissible_events": 17,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 17,
+                  "mean": 0.4658802471449046,
+                  "pooled": 0.5357285650940772,
+                  "cvar10": 1.0374214321070594,
+                  "worst": 1.0468180964743212
+                }
+              },
+              "8": {
+                "all_rows": 19,
+                "eligible_events": 17,
+                "numerically_admissible_events": 17,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 17,
+                  "mean": 0.37430566085662703,
+                  "pooled": 0.43239031337519324,
+                  "cvar10": 0.8464329469909836,
+                  "worst": 0.8678258519667422
+                }
+              },
+              "prefix": {
+                "all_rows": 19,
+                "eligible_events": 19,
+                "numerically_admissible_events": 19,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 19,
+                  "mean": 0.3667144906578463,
+                  "pooled": 0.43188246108415396,
+                  "cvar10": 0.8464329469909836,
+                  "worst": 0.8678258519667422
+                }
+              },
+              "unstable_prefix": {
+                "all_rows": 2,
+                "eligible_events": 2,
+                "numerically_admissible_events": 2,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 2,
+                  "mean": 0.3021895439682099,
+                  "pooled": 0.3053708272188012,
+                  "cvar10": 0.3261605726421584,
+                  "worst": 0.3261605726421584
+                }
+              }
+            },
+            "objective_point_error": {
+              "1": {
+                "all_rows": 19,
+                "eligible_events": 17,
+                "numerically_admissible_events": 17,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 17,
+                  "mean": 0.43464397622333206,
+                  "cvar10": 1.7254799187356242,
+                  "worst": 2.5107114393977987
+                }
+              },
+              "2": {
+                "all_rows": 19,
+                "eligible_events": 17,
+                "numerically_admissible_events": 17,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 17,
+                  "mean": 0.6573288128027659,
+                  "cvar10": 1.983014819679039,
+                  "worst": 2.2769253477310754
+                }
+              },
+              "5": {
+                "all_rows": 19,
+                "eligible_events": 17,
+                "numerically_admissible_events": 17,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 17,
+                  "mean": 0.6004342760010587,
+                  "cvar10": 2.288864205534614,
+                  "worst": 2.8172371755748173
+                }
+              },
+              "8": {
+                "all_rows": 19,
+                "eligible_events": 17,
+                "numerically_admissible_events": 17,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 17,
+                  "mean": 0.4034269823544938,
+                  "cvar10": 1.576991716816254,
+                  "worst": 1.9796748931956798
+                }
+              },
+              "prefix": {
+                "all_rows": 19,
+                "eligible_events": 19,
+                "numerically_admissible_events": 19,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 19,
+                  "mean": 0.48026704062477354,
+                  "cvar10": 1.756470377912235,
+                  "worst": 1.9796748931956798
+                }
+              },
+              "unstable_prefix": {
+                "all_rows": 2,
+                "eligible_events": 2,
+                "numerically_admissible_events": 2,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 2,
+                  "mean": 1.1334075359221516,
+                  "cvar10": 1.5332658626287903,
+                  "worst": 1.5332658626287903
+                }
+              }
+            }
+          }
+        }
+      },
+      "source_evidence": [
+        {
+          "path": "private_data/force_graph_20261028/study01/study/A512_L_28101/result.json",
+          "sha256": "80bc196c431e4668009bdc811166d47f583dff59d03f341f876b161ddacb3c10"
+        },
+        {
+          "path": "private_data/force_graph_20261028/study01/study/A512_L_28101/evaluation385/evidence.json",
+          "sha256": "2869b76f27cf17edf48b417a7711180e29e94447bdfda16ac5ec3fb96ab94275"
+        },
+        {
+          "path": "private_data/force_graph_20261028/study01/study/A512_L_28101/checkpoints/step000096/checkpoint.json",
+          "sha256": "e8b9fd85f76df22deaa2a51732cdc7058dadf6505c82a6df26aa57da9c1ce172"
+        },
+        {
+          "path": "private_data/force_graph_20261028/study01/study/A512_L_28101/checkpoints/step000096/model.json",
+          "sha256": "3bd3591f53f6fff5191598ec1a8399ec3a7dc805c50a1cfafaa4a6d14660acd8"
+        }
+      ],
+      "checkpoint_training_sha256": "f8874987fca9934fce760545e5e5076a59bb2ee698213caa491485e26d163bd9",
+      "training_pt_loaded_for_this_extraction": false
+    },
+    {
+      "run_id": "A512_S_28101",
+      "mode": "S",
+      "source": "A512",
+      "seed": 28101,
+      "updates": 192,
+      "upper_bound_still_improving": true,
+      "extension_decision": {
+        "extend": true,
+        "optimization_unresolved": false,
+        "clip_count_last48": 0,
+        "large_change_counts_last48": {
+          "k_bar": 0,
+          "lambda_raw": 0,
+          "kappa_raw": 0
+        },
+        "reason": "registered_extension",
+        "gains": {
+          "5": true,
+          "8": true
+        },
+        "harms": []
+      },
+      "fit_panel_learning_curve": {
+        "panel000000": {
+          "horizon_risks": {
+            "5": {
+              "value": 1.409124223392973,
+              "coarse_value": 1.4091241489646538,
+              "numerical_score_perturbation": 7.44283192855022e-08,
+              "eligible": 36,
+              "unresolved_ids": []
+            },
+            "8": {
+              "value": 0.9312980813323157,
+              "coarse_value": 0.9312980201970676,
+              "numerical_score_perturbation": 6.113524808615267e-08,
+              "eligible": 36,
+              "unresolved_ids": []
+            }
+          },
+          "unstable_interval_risk": 2.4818329477902523,
+          "common_frequency_rmse_8s": 0.4354180095406205,
+          "normalized_p_rmse_8s": 0.49558718578400307,
+          "parameter_count": 47,
+          "qualified_inference_seconds_per_event": 0.0877473604166615,
+          "all_8s_rows_qualified": true,
+          "timing_scope": "CPU float64 one thread; true RK4 .005/.01 including causal initialization, output, metrics",
+          "classification_8s": {
+            "event_count": 48,
+            "unstable_count": 12,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 2,
+            "false_los_resolved_stable": 0
+          }
+        },
+        "panel000048": {
+          "horizon_risks": {
+            "5": {
+              "value": 0.6698651781143589,
+              "coarse_value": 0.6698652130934559,
+              "numerical_score_perturbation": 3.4979097063292386e-08,
+              "eligible": 36,
+              "unresolved_ids": []
+            },
+            "8": {
+              "value": 0.4409913174407364,
+              "coarse_value": 0.4409913242835369,
+              "numerical_score_perturbation": 6.842800492901091e-09,
+              "eligible": 36,
+              "unresolved_ids": []
+            }
+          },
+          "unstable_interval_risk": 3.0892233880313436,
+          "common_frequency_rmse_8s": 0.28081678500421053,
+          "normalized_p_rmse_8s": 0.3306770239420969,
+          "parameter_count": 47,
+          "qualified_inference_seconds_per_event": 0.08369475624999723,
+          "all_8s_rows_qualified": true,
+          "timing_scope": "CPU float64 one thread; true RK4 .005/.01 including causal initialization, output, metrics",
+          "classification_8s": {
+            "event_count": 48,
+            "unstable_count": 12,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 3,
+            "false_los_resolved_stable": 0
+          }
+        },
+        "panel000096": {
+          "horizon_risks": {
+            "5": {
+              "value": 0.5292575721591665,
+              "coarse_value": 0.5292576036085521,
+              "numerical_score_perturbation": 3.1449385651249884e-08,
+              "eligible": 36,
+              "unresolved_ids": []
+            },
+            "8": {
+              "value": 0.3549736447138244,
+              "coarse_value": 0.35497364273052884,
+              "numerical_score_perturbation": 1.983295583318778e-09,
+              "eligible": 36,
+              "unresolved_ids": []
+            }
+          },
+          "unstable_interval_risk": 2.898659476466599,
+          "common_frequency_rmse_8s": 0.23642934231772894,
+          "normalized_p_rmse_8s": 0.2989885708344838,
+          "parameter_count": 47,
+          "qualified_inference_seconds_per_event": 0.08376089375000599,
+          "all_8s_rows_qualified": true,
+          "timing_scope": "CPU float64 one thread; true RK4 .005/.01 including causal initialization, output, metrics",
+          "classification_8s": {
+            "event_count": 48,
+            "unstable_count": 12,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 3,
+            "false_los_resolved_stable": 0
+          }
+        },
+        "panel000192": {
+          "horizon_risks": {
+            "5": {
+              "value": 0.5003896717692493,
+              "coarse_value": 0.5003896800291798,
+              "numerical_score_perturbation": 8.259930517340308e-09,
+              "eligible": 36,
+              "unresolved_ids": []
+            },
+            "8": {
+              "value": 0.3515976693357491,
+              "coarse_value": 0.3515976599099889,
+              "numerical_score_perturbation": 9.42576017237684e-09,
+              "eligible": 36,
+              "unresolved_ids": []
+            }
+          },
+          "unstable_interval_risk": 2.792525502885325,
+          "common_frequency_rmse_8s": 0.23328770551044245,
+          "normalized_p_rmse_8s": 0.283274263244753,
+          "parameter_count": 47,
+          "qualified_inference_seconds_per_event": 0.08445446041666098,
+          "all_8s_rows_qualified": true,
+          "timing_scope": "CPU float64 one thread; true RK4 .005/.01 including causal initialization, output, metrics",
+          "classification_8s": {
+            "event_count": 48,
+            "unstable_count": 12,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 3,
+            "false_los_resolved_stable": 0
+          }
+        }
+      },
+      "profiles": {
+        "common385": {
+          "event_count": 385,
+          "horizon_risks": {
+            "1": {
+              "value": 0.6489941810425187,
+              "coarse_value": 0.6489940600558158,
+              "numerical_score_perturbation": 1.2098670287841173e-07,
+              "eligible": 342,
+              "unresolved_ids": [],
+              "definition": "original ceil-top10 risk on stable complete horizon"
+            },
+            "2": {
+              "value": 0.8446398729462936,
+              "coarse_value": 0.8446398232023882,
+              "numerical_score_perturbation": 4.9743905439214586e-08,
+              "eligible": 342,
+              "unresolved_ids": [],
+              "definition": "original ceil-top10 risk on stable complete horizon"
+            },
+            "5": {
+              "value": 0.73216160882978,
+              "coarse_value": 0.7321615460811558,
+              "numerical_score_perturbation": 6.274862418553795e-08,
+              "eligible": 342,
+              "unresolved_ids": [],
+              "definition": "original ceil-top10 risk on stable complete horizon"
+            },
+            "8": {
+              "value": 0.516601186454934,
+              "coarse_value": 0.5166011083794905,
+              "numerical_score_perturbation": 7.807544355475926e-08,
+              "eligible": 342,
+              "unresolved_ids": [],
+              "definition": "original ceil-top10 risk on stable complete horizon"
+            }
+          },
+          "classification_8s": {
+            "event_count": 385,
+            "unstable_count": 43,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 10,
+            "false_los_resolved_stable": 0
+          },
+          "classification_actual15s": {
+            "event_count": 385,
+            "unstable_count": 43,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 35,
+            "false_los_resolved_stable": 0
+          },
+          "all_8s_rows_qualified": true,
+          "all_actual15s_rows_qualified": true,
+          "all_required_rows_qualified": true,
+          "official_metrics": {
+            "records": {
+              "1": {
+                "all_rows": 385,
+                "eligible_events": 346,
+                "numerically_admissible_events": 346,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 346,
+                  "mean": 0.32902309202010444,
+                  "pooled": 0.4553456671658613,
+                  "cvar10": 1.0315328002871678,
+                  "worst": 3.736851886798933,
+                  "worst_group_mean": 0.5252176036732822,
+                  "delta_rmse_rad": 0.14505048312791138,
+                  "omega_rmse_rad_s": 0.5694611461555771
+                }
+              },
+              "2": {
+                "all_rows": 385,
+                "eligible_events": 342,
+                "numerically_admissible_events": 342,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 342,
+                  "mean": 0.34312920941555325,
+                  "pooled": 0.4266635451095521,
+                  "cvar10": 0.9139026508750927,
+                  "worst": 2.129420160594104,
+                  "worst_group_mean": 0.5105195185325552,
+                  "delta_rmse_rad": 0.11323139482533004,
+                  "omega_rmse_rad_s": 0.556551882855696
+                }
+              },
+              "5": {
+                "all_rows": 385,
+                "eligible_events": 342,
+                "numerically_admissible_events": 342,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 342,
+                  "mean": 0.30712047843270374,
+                  "pooled": 0.3670431547652313,
+                  "cvar10": 0.7408312919273615,
+                  "worst": 1.594927638901846,
+                  "worst_group_mean": 0.43517315002488427,
+                  "delta_rmse_rad": 0.10081619254302619,
+                  "omega_rmse_rad_s": 0.4756469179455843
+                }
+              },
+              "8": {
+                "all_rows": 385,
+                "eligible_events": 342,
+                "numerically_admissible_events": 342,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 342,
+                  "mean": 0.256196277842326,
+                  "pooled": 0.30613055619690027,
+                  "cvar10": 0.6171455758784258,
+                  "worst": 1.3076853042582508,
+                  "worst_group_mean": 0.3585794448965052,
+                  "delta_rmse_rad": 0.08742258573629932,
+                  "omega_rmse_rad_s": 0.3935027256543999
+                }
+              },
+              "prefix": {
+                "all_rows": 385,
+                "eligible_events": 385,
+                "numerically_admissible_events": 385,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 385,
+                  "mean": 0.33133238350376176,
+                  "pooled": 0.3431598411691999,
+                  "cvar10": 1.193974171172831,
+                  "worst": 4.932997925661068,
+                  "worst_group_mean": 0.60881383130552,
+                  "delta_rmse_rad": 0.10628608747125956,
+                  "omega_rmse_rad_s": 0.4325154075719803
+                }
+              },
+              "unstable_prefix": {
+                "all_rows": 43,
+                "eligible_events": 43,
+                "numerically_admissible_events": 43,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 43,
+                  "mean": 0.9289265262063436,
+                  "pooled": 1.9161333034971515,
+                  "cvar10": 2.785581114666061,
+                  "worst": 4.932997925661068,
+                  "worst_group_mean": 2.7363784225196492,
+                  "delta_rmse_rad": 0.7425666895248922,
+                  "omega_rmse_rad_s": 2.224935520999187
+                }
+              }
+            },
+            "common_frequency": {
+              "1": {
+                "all_rows": 385,
+                "eligible_events": 346,
+                "numerically_admissible_events": 346,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 346,
+                  "mean": 0.22214699258003828,
+                  "pooled": 0.29258563095377704,
+                  "cvar10": 0.6750115487983338,
+                  "worst": 1.4914209537231384
+                }
+              },
+              "2": {
+                "all_rows": 385,
+                "eligible_events": 342,
+                "numerically_admissible_events": 342,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 342,
+                  "mean": 0.36206832969292346,
+                  "pooled": 0.384752284207588,
+                  "cvar10": 0.6176391840576501,
+                  "worst": 1.2821390077848398
+                }
+              },
+              "5": {
+                "all_rows": 385,
+                "eligible_events": 342,
+                "numerically_admissible_events": 342,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 342,
+                  "mean": 0.2840521949772017,
+                  "pooled": 0.32793983765763,
+                  "cvar10": 0.6521932281810158,
+                  "worst": 1.4415307481898885
+                }
+              },
+              "8": {
+                "all_rows": 385,
+                "eligible_events": 342,
+                "numerically_admissible_events": 342,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 342,
+                  "mean": 0.2409397639256054,
+                  "pooled": 0.28405763663524813,
+                  "cvar10": 0.5835488367623891,
+                  "worst": 1.3022392919733072
+                }
+              },
+              "prefix": {
+                "all_rows": 385,
+                "eligible_events": 385,
+                "numerically_admissible_events": 385,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 385,
+                  "mean": 0.2719879582719713,
+                  "pooled": 0.29578215436614386,
+                  "cvar10": 0.803219006661441,
+                  "worst": 1.7725821485882596
+                }
+              },
+              "unstable_prefix": {
+                "all_rows": 43,
+                "eligible_events": 43,
+                "numerically_admissible_events": 43,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 43,
+                  "mean": 0.5189294109802772,
+                  "pooled": 1.0451619746568435,
+                  "cvar10": 1.5601285447757798,
+                  "worst": 1.7725821485882596
+                }
+              }
+            },
+            "normalized_p": {
+              "1": {
+                "all_rows": 385,
+                "eligible_events": 346,
+                "numerically_admissible_events": 346,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 346,
+                  "mean": 0.3939093277009095,
+                  "pooled": 0.44565898839113455,
+                  "cvar10": 0.8099869689536906,
+                  "worst": 2.1996944240037775
+                }
+              },
+              "2": {
+                "all_rows": 385,
+                "eligible_events": 342,
+                "numerically_admissible_events": 342,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 342,
+                  "mean": 0.45534621096375594,
+                  "pooled": 0.494671934976606,
+                  "cvar10": 0.8326825985327435,
+                  "worst": 1.3590946206680983
+                }
+              },
+              "5": {
+                "all_rows": 385,
+                "eligible_events": 342,
+                "numerically_admissible_events": 342,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 342,
+                  "mean": 0.41635247934422753,
+                  "pooled": 0.47019249908643534,
+                  "cvar10": 0.8833833354054015,
+                  "worst": 1.3631403522342576
+                }
+              },
+              "8": {
+                "all_rows": 385,
+                "eligible_events": 342,
+                "numerically_admissible_events": 342,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 342,
+                  "mean": 0.33650177469765563,
+                  "pooled": 0.3822950706041233,
+                  "cvar10": 0.7284854437016506,
+                  "worst": 1.168942414342646
+                }
+              },
+              "prefix": {
+                "all_rows": 385,
+                "eligible_events": 385,
+                "numerically_admissible_events": 385,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 385,
+                  "mean": 0.35427008844919194,
+                  "pooled": 0.3926950032627949,
+                  "cvar10": 0.9020615127874319,
+                  "worst": 2.9137272449996816
+                }
+              },
+              "unstable_prefix": {
+                "all_rows": 43,
+                "eligible_events": 43,
+                "numerically_admissible_events": 43,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 43,
+                  "mean": 0.49559016526373667,
+                  "pooled": 1.1599789051096308,
+                  "cvar10": 1.786630599682939,
+                  "worst": 2.9137272449996816
+                }
+              }
+            },
+            "objective_point_error": {
+              "1": {
+                "all_rows": 385,
+                "eligible_events": 346,
+                "numerically_admissible_events": 346,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 346,
+                  "mean": 0.490984433890332,
+                  "cvar10": 2.608229456397687,
+                  "worst": 20.882014584514053
+                }
+              },
+              "2": {
+                "all_rows": 385,
+                "eligible_events": 342,
+                "numerically_admissible_events": 342,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 342,
+                  "mean": 0.5737846538329415,
+                  "cvar10": 1.928060749399702,
+                  "worst": 7.036819324737376
+                }
+              },
+              "5": {
+                "all_rows": 385,
+                "eligible_events": 342,
+                "numerically_admissible_events": 342,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 342,
+                  "mean": 0.4626256956771658,
+                  "cvar10": 1.8103052614402366,
+                  "worst": 6.466034854758791
+                }
+              },
+              "8": {
+                "all_rows": 385,
+                "eligible_events": 342,
+                "numerically_admissible_events": 342,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 342,
+                  "mean": 0.3200135972962768,
+                  "cvar10": 1.3029515430895628,
+                  "worst": 4.760933037233057
+                }
+              },
+              "prefix": {
+                "all_rows": 385,
+                "eligible_events": 385,
+                "numerically_admissible_events": 385,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 385,
+                  "mean": 0.5887350292376117,
+                  "cvar10": 3.709496457011513,
+                  "worst": 34.989745158846226
+                }
+              },
+              "unstable_prefix": {
+                "all_rows": 43,
+                "eligible_events": 43,
+                "numerically_admissible_events": 43,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 43,
+                  "mean": 2.726007813515205,
+                  "cvar10": 14.77327169893245,
+                  "worst": 34.989745158846226
+                }
+              }
+            }
+          }
+        },
+        "fit": {
+          "event_count": 297,
+          "horizon_risks": {
+            "1": {
+              "value": 0.7181791730660689,
+              "coarse_value": 0.718179047322069,
+              "numerical_score_perturbation": 1.2574399987919094e-07,
+              "eligible": 267,
+              "unresolved_ids": [],
+              "definition": "original ceil-top10 risk on stable complete horizon"
+            },
+            "2": {
+              "value": 0.9136433258138366,
+              "coarse_value": 0.9136432663880174,
+              "numerical_score_perturbation": 5.942581915441281e-08,
+              "eligible": 267,
+              "unresolved_ids": [],
+              "definition": "original ceil-top10 risk on stable complete horizon"
+            },
+            "5": {
+              "value": 0.7941682037959287,
+              "coarse_value": 0.7941681179455117,
+              "numerical_score_perturbation": 8.585041699760154e-08,
+              "eligible": 267,
+              "unresolved_ids": [],
+              "definition": "original ceil-top10 risk on stable complete horizon"
+            },
+            "8": {
+              "value": 0.5616420648345144,
+              "coarse_value": 0.5616419635167109,
+              "numerical_score_perturbation": 1.0131780348032748e-07,
+              "eligible": 267,
+              "unresolved_ids": [],
+              "definition": "original ceil-top10 risk on stable complete horizon"
+            }
+          },
+          "classification_8s": {
+            "event_count": 297,
+            "unstable_count": 30,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 6,
+            "false_los_resolved_stable": 0
+          },
+          "classification_actual15s": {
+            "event_count": 297,
+            "unstable_count": 30,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 23,
+            "false_los_resolved_stable": 0
+          },
+          "all_8s_rows_qualified": true,
+          "all_actual15s_rows_qualified": true,
+          "all_required_rows_qualified": true,
+          "official_metrics": {
+            "records": {
+              "1": {
+                "all_rows": 297,
+                "eligible_events": 270,
+                "numerically_admissible_events": 270,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 270,
+                  "mean": 0.3378717420379798,
+                  "pooled": 0.47555311985786825,
+                  "cvar10": 1.0998661933644482,
+                  "worst": 3.736851886798933,
+                  "worst_group_mean": 0.5252176036732822,
+                  "delta_rmse_rad": 0.15148658453080102,
+                  "omega_rmse_rad_s": 0.5947339609954362
+                }
+              },
+              "2": {
+                "all_rows": 297,
+                "eligible_events": 267,
+                "numerically_admissible_events": 267,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 267,
+                  "mean": 0.350286413783393,
+                  "pooled": 0.44365876444838487,
+                  "cvar10": 0.9851063789287695,
+                  "worst": 2.129420160594104,
+                  "worst_group_mean": 0.5105195185325552,
+                  "delta_rmse_rad": 0.1193060992346307,
+                  "omega_rmse_rad_s": 0.5773000874946482
+                }
+              },
+              "5": {
+                "all_rows": 297,
+                "eligible_events": 267,
+                "numerically_admissible_events": 267,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 267,
+                  "mean": 0.31205171432009104,
+                  "pooled": 0.3782857545115535,
+                  "cvar10": 0.7891463339346947,
+                  "worst": 1.594927638901846,
+                  "worst_group_mean": 0.43517315002488427,
+                  "delta_rmse_rad": 0.10472567603725275,
+                  "omega_rmse_rad_s": 0.4894412104198415
+                }
+              },
+              "8": {
+                "all_rows": 297,
+                "eligible_events": 267,
+                "numerically_admissible_events": 267,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 267,
+                  "mean": 0.2605262627810633,
+                  "pooled": 0.315620198695342,
+                  "cvar10": 0.6570473420388885,
+                  "worst": 1.3076853042582508,
+                  "worst_group_mean": 0.3585794448965052,
+                  "delta_rmse_rad": 0.09078729376665927,
+                  "omega_rmse_rad_s": 0.405053666551352
+                }
+              },
+              "prefix": {
+                "all_rows": 297,
+                "eligible_events": 297,
+                "numerically_admissible_events": 297,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 297,
+                  "mean": 0.31782260415639146,
+                  "pooled": 0.34634090558975145,
+                  "cvar10": 1.086915624886938,
+                  "worst": 4.932997925661068,
+                  "worst_group_mean": 0.60881383130552,
+                  "delta_rmse_rad": 0.10748765914168927,
+                  "omega_rmse_rad_s": 0.4362890501571817
+                }
+              },
+              "unstable_prefix": {
+                "all_rows": 30,
+                "eligible_events": 30,
+                "numerically_admissible_events": 30,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 30,
+                  "mean": 0.8277600423968117,
+                  "pooled": 2.018021243368834,
+                  "cvar10": 2.8301848283394,
+                  "worst": 4.932997925661068,
+                  "worst_group_mean": 1.8626230947444438,
+                  "delta_rmse_rad": 0.8093985158044018,
+                  "omega_rmse_rad_s": 2.3017437134960432
+                }
+              }
+            },
+            "common_frequency": {
+              "1": {
+                "all_rows": 297,
+                "eligible_events": 270,
+                "numerically_admissible_events": 270,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 270,
+                  "mean": 0.23004131604424263,
+                  "pooled": 0.3047105222494345,
+                  "cvar10": 0.7166101636789288,
+                  "worst": 1.4914209537231384
+                }
+              },
+              "2": {
+                "all_rows": 297,
+                "eligible_events": 267,
+                "numerically_admissible_events": 267,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 267,
+                  "mean": 0.36831620284549194,
+                  "pooled": 0.3927224555153248,
+                  "cvar10": 0.6396793584439455,
+                  "worst": 1.2821390077848398
+                }
+              },
+              "5": {
+                "all_rows": 297,
+                "eligible_events": 267,
+                "numerically_admissible_events": 267,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 267,
+                  "mean": 0.2922030840470963,
+                  "pooled": 0.34121132093193796,
+                  "cvar10": 0.6968119511922817,
+                  "worst": 1.4415307481898885
+                }
+              },
+              "8": {
+                "all_rows": 297,
+                "eligible_events": 267,
+                "numerically_admissible_events": 267,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 267,
+                  "mean": 0.2479528502093669,
+                  "pooled": 0.29593179916087287,
+                  "cvar10": 0.6231370373750562,
+                  "worst": 1.3022392919733072
+                }
+              },
+              "prefix": {
+                "all_rows": 297,
+                "eligible_events": 297,
+                "numerically_admissible_events": 297,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 297,
+                  "mean": 0.2678696131767213,
+                  "pooled": 0.3035001826390128,
+                  "cvar10": 0.7680915402050236,
+                  "worst": 1.7113124825124117
+                }
+              },
+              "unstable_prefix": {
+                "all_rows": 30,
+                "eligible_events": 30,
+                "numerically_admissible_events": 30,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 30,
+                  "mean": 0.4451288035861758,
+                  "pooled": 0.9868458080536175,
+                  "cvar10": 1.4293707541649103,
+                  "worst": 1.7113124825124117
+                }
+              }
+            },
+            "normalized_p": {
+              "1": {
+                "all_rows": 297,
+                "eligible_events": 270,
+                "numerically_admissible_events": 270,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 270,
+                  "mean": 0.4005746063860418,
+                  "pooled": 0.4563600042134309,
+                  "cvar10": 0.8413486464261006,
+                  "worst": 2.1996944240037775
+                }
+              },
+              "2": {
+                "all_rows": 297,
+                "eligible_events": 267,
+                "numerically_admissible_events": 267,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 267,
+                  "mean": 0.4626999859994492,
+                  "pooled": 0.5038668594402844,
+                  "cvar10": 0.8554431128820171,
+                  "worst": 1.3590946206680983
+                }
+              },
+              "5": {
+                "all_rows": 297,
+                "eligible_events": 267,
+                "numerically_admissible_events": 267,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 267,
+                  "mean": 0.4239124899839625,
+                  "pooled": 0.48081867113446064,
+                  "cvar10": 0.913716073647937,
+                  "worst": 1.3631403522342576
+                }
+              },
+              "8": {
+                "all_rows": 297,
+                "eligible_events": 267,
+                "numerically_admissible_events": 267,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 267,
+                  "mean": 0.342820544656195,
+                  "pooled": 0.3913948524947999,
+                  "cvar10": 0.7552010307979965,
+                  "worst": 1.168942414342646
+                }
+              },
+              "prefix": {
+                "all_rows": 297,
+                "eligible_events": 297,
+                "numerically_admissible_events": 297,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 297,
+                  "mean": 0.3520127341675366,
+                  "pooled": 0.40005698148352264,
+                  "cvar10": 0.8821221357902831,
+                  "worst": 2.9137272449996816
+                }
+              },
+              "unstable_prefix": {
+                "all_rows": 30,
+                "eligible_events": 30,
+                "numerically_admissible_events": 30,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 30,
+                  "mean": 0.43382322081847696,
+                  "pooled": 1.221679590733991,
+                  "cvar10": 1.803355276418233,
+                  "worst": 2.9137272449996816
+                }
+              }
+            },
+            "objective_point_error": {
+              "1": {
+                "all_rows": 297,
+                "eligible_events": 270,
+                "numerically_admissible_events": 270,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 270,
+                  "mean": 0.5266416780352948,
+                  "cvar10": 2.909535277239724,
+                  "worst": 20.882014584514053
+                }
+              },
+              "2": {
+                "all_rows": 297,
+                "eligible_events": 267,
+                "numerically_admissible_events": 267,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 267,
+                  "mean": 0.6039125532597822,
+                  "cvar10": 2.152566416030054,
+                  "worst": 7.036819324737376
+                }
+              },
+              "5": {
+                "all_rows": 297,
+                "eligible_events": 267,
+                "numerically_admissible_events": 267,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 267,
+                  "mean": 0.48993187037195995,
+                  "cvar10": 2.011113537491803,
+                  "worst": 6.466034854758791
+                }
+              },
+              "8": {
+                "all_rows": 297,
+                "eligible_events": 267,
+                "numerically_admissible_events": 267,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 267,
+                  "mean": 0.3397949486757822,
+                  "cvar10": 1.4490305294694428,
+                  "worst": 4.760933037233057
+                }
+              },
+              "prefix": {
+                "all_rows": 297,
+                "eligible_events": 297,
+                "numerically_admissible_events": 297,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 297,
+                  "mean": 0.5515078820633205,
+                  "cvar10": 3.349612320104011,
+                  "worst": 34.989745158846226
+                }
+              },
+              "unstable_prefix": {
+                "all_rows": 30,
+                "eligible_events": 30,
+                "numerically_admissible_events": 30,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 30,
+                  "mean": 2.435752989212412,
+                  "cvar10": 16.12609100913015,
+                  "worst": 34.989745158846226
+                }
+              }
+            }
+          }
+        },
+        "no_update": {
+          "event_count": 88,
+          "horizon_risks": {
+            "1": {
+              "value": 0.3983148419961414,
+              "coarse_value": 0.39831474305630915,
+              "numerical_score_perturbation": 9.893983227149405e-08,
+              "eligible": 75,
+              "unresolved_ids": [],
+              "definition": "original ceil-top10 risk on stable complete horizon"
+            },
+            "2": {
+              "value": 0.6006055800471722,
+              "coarse_value": 0.600605564051353,
+              "numerical_score_perturbation": 1.5995819224734475e-08,
+              "eligible": 75,
+              "unresolved_ids": [],
+              "definition": "original ceil-top10 risk on stable complete horizon"
+            },
+            "5": {
+              "value": 0.5076217625120678,
+              "coarse_value": 0.5076217790746366,
+              "numerical_score_perturbation": 1.656256876092499e-08,
+              "eligible": 75,
+              "unresolved_ids": [],
+              "definition": "original ceil-top10 risk on stable complete horizon"
+            },
+            "8": {
+              "value": 0.35180284299071074,
+              "coarse_value": 0.3518028361338761,
+              "numerical_score_perturbation": 6.856834655621924e-09,
+              "eligible": 75,
+              "unresolved_ids": [],
+              "definition": "original ceil-top10 risk on stable complete horizon"
+            }
+          },
+          "classification_8s": {
+            "event_count": 88,
+            "unstable_count": 13,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 4,
+            "false_los_resolved_stable": 0
+          },
+          "classification_actual15s": {
+            "event_count": 88,
+            "unstable_count": 13,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 12,
+            "false_los_resolved_stable": 0
+          },
+          "all_8s_rows_qualified": true,
+          "all_actual15s_rows_qualified": true,
+          "all_required_rows_qualified": true,
+          "official_metrics": {
+            "records": {
+              "1": {
+                "all_rows": 88,
+                "eligible_events": 76,
+                "numerically_admissible_events": 76,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 76,
+                  "mean": 0.2975870985355473,
+                  "pooled": 0.3748476928973818,
+                  "cvar10": 0.7698143429231485,
+                  "worst": 1.7329448871745605,
+                  "worst_group_mean": 0.3683549669271382,
+                  "delta_rmse_rad": 0.11941228501738614,
+                  "omega_rmse_rad_s": 0.46878432053737484
+                }
+              },
+              "2": {
+                "all_rows": 88,
+                "eligible_events": 75,
+                "numerically_admissible_events": 75,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 75,
+                  "mean": 0.31764956186604393,
+                  "pooled": 0.35970082944053383,
+                  "cvar10": 0.6557882049632788,
+                  "worst": 0.9709216372768071,
+                  "worst_group_mean": 0.40873691998463313,
+                  "delta_rmse_rad": 0.08827516689268815,
+                  "omega_rmse_rad_s": 0.47539415252890416
+                }
+              },
+              "5": {
+                "all_rows": 88,
+                "eligible_events": 75,
+                "numerically_admissible_events": 75,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 75,
+                  "mean": 0.28956527867360526,
+                  "pooled": 0.3238670873388734,
+                  "cvar10": 0.5696473176494046,
+                  "worst": 0.7357522653080263,
+                  "worst_group_mean": 0.3608854470011289,
+                  "delta_rmse_rad": 0.08545889086141074,
+                  "omega_rmse_rad_s": 0.4229027670817436
+                }
+              },
+              "8": {
+                "all_rows": 88,
+                "eligible_events": 75,
+                "numerically_admissible_events": 75,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 75,
+                  "mean": 0.2407815314604213,
+                  "pooled": 0.2696502040412299,
+                  "cvar10": 0.4767649345879189,
+                  "worst": 0.5983181547030297,
+                  "worst_group_mean": 0.2981518548558719,
+                  "delta_rmse_rad": 0.07421621318671298,
+                  "omega_rmse_rad_s": 0.3492945440794989
+                }
+              },
+              "prefix": {
+                "all_rows": 88,
+                "eligible_events": 88,
+                "numerically_admissible_events": 88,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 88,
+                  "mean": 0.3769278888011366,
+                  "pooled": 0.3316735429459131,
+                  "cvar10": 1.5508359921258073,
+                  "worst": 2.7363784225196492,
+                  "worst_group_mean": 0.47050358923035995,
+                  "delta_rmse_rad": 0.10192628351287601,
+                  "omega_rmse_rad_s": 0.4189070043611635
+                }
+              },
+              "unstable_prefix": {
+                "all_rows": 13,
+                "eligible_events": 13,
+                "numerically_admissible_events": 13,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 13,
+                  "mean": 1.1623876426898792,
+                  "pooled": 1.7566332916509266,
+                  "cvar10": 2.4978504426560937,
+                  "worst": 2.7363784225196492,
+                  "worst_group_mean": 2.7363784225196492,
+                  "delta_rmse_rad": 0.6323164960088107,
+                  "omega_rmse_rad_s": 2.1076567802263573
+                }
+              }
+            },
+            "common_frequency": {
+              "1": {
+                "all_rows": 88,
+                "eligible_events": 76,
+                "numerically_admissible_events": 76,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 76,
+                  "mean": 0.19410136974668057,
+                  "pooled": 0.24469911595895666,
+                  "cvar10": 0.5080762363724143,
+                  "worst": 1.2101343846244927
+                }
+              },
+              "2": {
+                "all_rows": 88,
+                "eligible_events": 75,
+                "numerically_admissible_events": 75,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 75,
+                  "mean": 0.33982590126977985,
+                  "pooled": 0.354928724916103,
+                  "cvar10": 0.5332600998423201,
+                  "worst": 0.7060580290406129
+                }
+              },
+              "5": {
+                "all_rows": 88,
+                "eligible_events": 75,
+                "numerically_admissible_events": 75,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 75,
+                  "mean": 0.255035029888377,
+                  "pooled": 0.27555308016086877,
+                  "cvar10": 0.47435952766694583,
+                  "worst": 0.6284389520291106
+                }
+              },
+              "8": {
+                "all_rows": 88,
+                "eligible_events": 75,
+                "numerically_admissible_events": 75,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 75,
+                  "mean": 0.21597317675541441,
+                  "pooled": 0.23700509850658386,
+                  "cvar10": 0.4263389708643968,
+                  "worst": 0.5945165703039716
+                }
+              },
+              "prefix": {
+                "all_rows": 88,
+                "eligible_events": 88,
+                "numerically_admissible_events": 88,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 88,
+                  "mean": 0.28588737296844,
+                  "pooled": 0.2667231547760961,
+                  "cvar10": 0.9203105615161657,
+                  "worst": 1.7725821485882596
+                }
+              },
+              "unstable_prefix": {
+                "all_rows": 13,
+                "eligible_events": 13,
+                "numerically_admissible_events": 13,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 13,
+                  "mean": 0.6892385049666648,
+                  "pooled": 1.1249631719673758,
+                  "cvar10": 1.6091168338305455,
+                  "worst": 1.7725821485882596
+                }
+              }
+            },
+            "normalized_p": {
+              "1": {
+                "all_rows": 88,
+                "eligible_events": 76,
+                "numerically_admissible_events": 76,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 76,
+                  "mean": 0.3702300481616233,
+                  "pooled": 0.40536414283890815,
+                  "cvar10": 0.6798572379221299,
+                  "worst": 1.2657256805143469
+                }
+              },
+              "2": {
+                "all_rows": 88,
+                "eligible_events": 75,
+                "numerically_admissible_events": 75,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 75,
+                  "mean": 0.42916677183668783,
+                  "pooled": 0.46045002244073285,
+                  "cvar10": 0.7403503518469958,
+                  "worst": 0.9087205769948998
+                }
+              },
+              "5": {
+                "all_rows": 88,
+                "eligible_events": 75,
+                "numerically_admissible_events": 75,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 75,
+                  "mean": 0.3894388414667707,
+                  "pooled": 0.4302383299963194,
+                  "cvar10": 0.7583431976166553,
+                  "worst": 1.008374153541195
+                }
+              },
+              "8": {
+                "all_rows": 88,
+                "eligible_events": 75,
+                "numerically_admissible_events": 75,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 75,
+                  "mean": 0.3140069536452554,
+                  "pooled": 0.34797365274671,
+                  "cvar10": 0.6185044465502382,
+                  "worst": 0.8302275568848196
+                }
+              },
+              "prefix": {
+                "all_rows": 88,
+                "eligible_events": 88,
+                "numerically_admissible_events": 88,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 88,
+                  "mean": 0.36188865914977864,
+                  "pooled": 0.365491472516517,
+                  "cvar10": 0.9672023349338059,
+                  "worst": 1.7055756336497296
+                }
+              },
+              "unstable_prefix": {
+                "all_rows": 13,
+                "eligible_events": 13,
+                "numerically_admissible_events": 13,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 13,
+                  "mean": 0.6381292678297203,
+                  "pooled": 1.0633875448070156,
+                  "cvar10": 1.5858988511884298,
+                  "worst": 1.7055756336497296
+                }
+              }
+            },
+            "objective_point_error": {
+              "1": {
+                "all_rows": 88,
+                "eligible_events": 76,
+                "numerically_admissible_events": 76,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 76,
+                  "mean": 0.3643073823227008,
+                  "cvar10": 1.5260981369297837,
+                  "worst": 6.059773649670765
+                }
+              },
+              "2": {
+                "all_rows": 88,
+                "eligible_events": 75,
+                "numerically_admissible_events": 75,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 75,
+                  "mean": 0.46652933187338885,
+                  "cvar10": 1.136910572742306,
+                  "worst": 1.3701465458182538
+                }
+              },
+              "5": {
+                "all_rows": 88,
+                "eligible_events": 75,
+                "numerically_admissible_events": 75,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 75,
+                  "mean": 0.36541571376369875,
+                  "cvar10": 1.0764459575055438,
+                  "worst": 1.6653019412418575
+                }
+              },
+              "8": {
+                "all_rows": 88,
+                "eligible_events": 75,
+                "numerically_admissible_events": 75,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 75,
+                  "mean": 0.24959198638523777,
+                  "cvar10": 0.760646269412602,
+                  "worst": 1.2389652051027682
+                }
+              },
+              "prefix": {
+                "all_rows": 88,
+                "eligible_events": 88,
+                "numerically_admissible_events": 88,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 88,
+                  "mean": 0.7143766509508445,
+                  "cvar10": 4.9037506141742035,
+                  "worst": 12.472661883586287
+                }
+              },
+              "unstable_prefix": {
+                "all_rows": 13,
+                "eligible_events": 13,
+                "numerically_admissible_events": 13,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 13,
+                  "mean": 3.3958266388293437,
+                  "cvar10": 11.424002024825091,
+                  "worst": 12.472661883586287
+                }
+              }
+            }
+          }
+        },
+        "original366": {
+          "event_count": 366,
+          "horizon_risks": {
+            "1": {
+              "value": 0.6494955569880072,
+              "coarse_value": 0.6494954347648316,
+              "numerical_score_perturbation": 1.2222317558041595e-07,
+              "eligible": 325,
+              "unresolved_ids": [],
+              "definition": "original ceil-top10 risk on stable complete horizon"
+            },
+            "2": {
+              "value": 0.8468479808278705,
+              "coarse_value": 0.8468479281182856,
+              "numerical_score_perturbation": 5.270958491898625e-08,
+              "eligible": 325,
+              "unresolved_ids": [],
+              "definition": "original ceil-top10 risk on stable complete horizon"
+            },
+            "5": {
+              "value": 0.7296301121779225,
+              "coarse_value": 0.7296300474952782,
+              "numerical_score_perturbation": 6.468264435177673e-08,
+              "eligible": 325,
+              "unresolved_ids": [],
+              "definition": "original ceil-top10 risk on stable complete horizon"
+            },
+            "8": {
+              "value": 0.5142801869580522,
+              "coarse_value": 0.5142801062979766,
+              "numerical_score_perturbation": 8.066007561868815e-08,
+              "eligible": 325,
+              "unresolved_ids": [],
+              "definition": "original ceil-top10 risk on stable complete horizon"
+            }
+          },
+          "classification_8s": {
+            "event_count": 366,
+            "unstable_count": 41,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 10,
+            "false_los_resolved_stable": 0
+          },
+          "classification_actual15s": {
+            "event_count": 366,
+            "unstable_count": 41,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 33,
+            "false_los_resolved_stable": 0
+          },
+          "all_8s_rows_qualified": true,
+          "all_actual15s_rows_qualified": true,
+          "all_required_rows_qualified": true,
+          "official_metrics": {
+            "records": {
+              "1": {
+                "all_rows": 366,
+                "eligible_events": 329,
+                "numerically_admissible_events": 329,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 329,
+                  "mean": 0.3304638176107666,
+                  "pooled": 0.4595067162710077,
+                  "cvar10": 1.0440927049923343,
+                  "worst": 3.736851886798933,
+                  "worst_group_mean": 0.5103088133502917,
+                  "delta_rmse_rad": 0.14655975315352227,
+                  "omega_rmse_rad_s": 0.5744575138505746
+                }
+              },
+              "2": {
+                "all_rows": 366,
+                "eligible_events": 325,
+                "numerically_admissible_events": 325,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 325,
+                  "mean": 0.34320282651359624,
+                  "pooled": 0.4271328662564142,
+                  "cvar10": 0.9126988468998267,
+                  "worst": 2.129420160594104,
+                  "worst_group_mean": 0.5026640844522997,
+                  "delta_rmse_rad": 0.11327583705373305,
+                  "omega_rmse_rad_s": 0.5572362388350522
+                }
+              },
+              "5": {
+                "all_rows": 366,
+                "eligible_events": 325,
+                "numerically_admissible_events": 325,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 325,
+                  "mean": 0.3071280281585126,
+                  "pooled": 0.3672281294997082,
+                  "cvar10": 0.7396604184082317,
+                  "worst": 1.594927638901846,
+                  "worst_group_mean": 0.42674025575117364,
+                  "delta_rmse_rad": 0.10079861690443324,
+                  "omega_rmse_rad_s": 0.47595079699482046
+                }
+              },
+              "8": {
+                "all_rows": 366,
+                "eligible_events": 325,
+                "numerically_admissible_events": 325,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 325,
+                  "mean": 0.25617635813316014,
+                  "pooled": 0.3062059482410369,
+                  "cvar10": 0.6160721141025571,
+                  "worst": 1.3076853042582508,
+                  "worst_group_mean": 0.3510662519834625,
+                  "delta_rmse_rad": 0.08733179996009574,
+                  "omega_rmse_rad_s": 0.39371007070556924
+                }
+              },
+              "prefix": {
+                "all_rows": 366,
+                "eligible_events": 366,
+                "numerically_admissible_events": 366,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 366,
+                  "mean": 0.3328617451053388,
+                  "pooled": 0.3449107997899856,
+                  "cvar10": 1.2168614502023067,
+                  "worst": 4.932997925661068,
+                  "worst_group_mean": 0.6020916244251334,
+                  "delta_rmse_rad": 0.10710198729977528,
+                  "omega_rmse_rad_s": 0.4344240388888729
+                }
+              },
+              "unstable_prefix": {
+                "all_rows": 41,
+                "eligible_events": 41,
+                "numerically_admissible_events": 41,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 41,
+                  "mean": 0.9407337150067546,
+                  "pooled": 1.9456731359018307,
+                  "cvar10": 2.785581114666061,
+                  "worst": 4.932997925661068,
+                  "worst_group_mean": 2.7363784225196492,
+                  "delta_rmse_rad": 0.7554822602425819,
+                  "omega_rmse_rad_s": 2.2570628972790776
+                }
+              }
+            },
+            "common_frequency": {
+              "1": {
+                "all_rows": 366,
+                "eligible_events": 329,
+                "numerically_admissible_events": 329,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 329,
+                  "mean": 0.22116412187576268,
+                  "pooled": 0.2923744913178703,
+                  "cvar10": 0.677718012676343,
+                  "worst": 1.4914209537231384
+                }
+              },
+              "2": {
+                "all_rows": 366,
+                "eligible_events": 325,
+                "numerically_admissible_events": 325,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 325,
+                  "mean": 0.3617016983219081,
+                  "pooled": 0.3846841311638346,
+                  "cvar10": 0.6192691453687147,
+                  "worst": 1.2821390077848398
+                }
+              },
+              "5": {
+                "all_rows": 366,
+                "eligible_events": 325,
+                "numerically_admissible_events": 325,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 325,
+                  "mean": 0.28310115570368155,
+                  "pooled": 0.32664172845146633,
+                  "cvar10": 0.648197063205459,
+                  "worst": 1.4415307481898885
+                }
+              },
+              "8": {
+                "all_rows": 366,
+                "eligible_events": 325,
+                "numerically_admissible_events": 325,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 325,
+                  "mean": 0.24003232623350707,
+                  "pooled": 0.2827349043558756,
+                  "cvar10": 0.5794298668363487,
+                  "worst": 1.3022392919733072
+                }
+              },
+              "prefix": {
+                "all_rows": 366,
+                "eligible_events": 366,
+                "numerically_admissible_events": 366,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 366,
+                  "mean": 0.2718702157875868,
+                  "pooled": 0.29508393457967247,
+                  "cvar10": 0.8114193940192456,
+                  "worst": 1.7725821485882596
+                }
+              },
+              "unstable_prefix": {
+                "all_rows": 41,
+                "eligible_events": 41,
+                "numerically_admissible_events": 41,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 41,
+                  "mean": 0.5242437305455362,
+                  "pooled": 1.0607809262052474,
+                  "cvar10": 1.5601285447757798,
+                  "worst": 1.7725821485882596
+                }
+              }
+            },
+            "normalized_p": {
+              "1": {
+                "all_rows": 366,
+                "eligible_events": 329,
+                "numerically_admissible_events": 329,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 329,
+                  "mean": 0.39459074253548215,
+                  "pooled": 0.44689047850319913,
+                  "cvar10": 0.8151586884654177,
+                  "worst": 2.1996944240037775
+                }
+              },
+              "2": {
+                "all_rows": 366,
+                "eligible_events": 325,
+                "numerically_admissible_events": 325,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 325,
+                  "mean": 0.4550156362256434,
+                  "pooled": 0.49443843655551434,
+                  "cvar10": 0.8329049547722409,
+                  "worst": 1.3590946206680983
+                }
+              },
+              "5": {
+                "all_rows": 366,
+                "eligible_events": 325,
+                "numerically_admissible_events": 325,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 325,
+                  "mean": 0.4157826363270958,
+                  "pooled": 0.46925949346705664,
+                  "cvar10": 0.8799242538347641,
+                  "worst": 1.3631403522342576
+                }
+              },
+              "8": {
+                "all_rows": 366,
+                "eligible_events": 325,
+                "numerically_admissible_events": 325,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 325,
+                  "mean": 0.3359848469382027,
+                  "pooled": 0.381440938688051,
+                  "cvar10": 0.7253477550553095,
+                  "worst": 1.168942414342646
+                }
+              },
+              "prefix": {
+                "all_rows": 366,
+                "eligible_events": 366,
+                "numerically_admissible_events": 366,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 366,
+                  "mean": 0.3549996563696201,
+                  "pooled": 0.39242492217098013,
+                  "cvar10": 0.9086455239453318,
+                  "worst": 2.9137272449996816
+                }
+              },
+              "unstable_prefix": {
+                "all_rows": 41,
+                "eligible_events": 41,
+                "numerically_admissible_events": 41,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 41,
+                  "mean": 0.5057268043015868,
+                  "pooled": 1.179290370872997,
+                  "cvar10": 1.786630599682939,
+                  "worst": 2.9137272449996816
+                }
+              }
+            },
+            "objective_point_error": {
+              "1": {
+                "all_rows": 366,
+                "eligible_events": 329,
+                "numerically_admissible_events": 329,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 329,
+                  "mean": 0.4957676646132135,
+                  "cvar10": 2.6685292186344087,
+                  "worst": 20.882014584514053
+                }
+              },
+              "2": {
+                "all_rows": 366,
+                "eligible_events": 325,
+                "numerically_admissible_events": 325,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 325,
+                  "mean": 0.5739023147232845,
+                  "cvar10": 1.9386306452462143,
+                  "worst": 7.036819324737376
+                }
+              },
+              "5": {
+                "all_rows": 366,
+                "eligible_events": 325,
+                "numerically_admissible_events": 325,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 325,
+                  "mean": 0.46104097773857555,
+                  "cvar10": 1.8039866499353105,
+                  "worst": 6.466034854758791
+                }
+              },
+              "8": {
+                "all_rows": 366,
+                "eligible_events": 325,
+                "numerically_admissible_events": 325,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 325,
+                  "mean": 0.3186627392936462,
+                  "cvar10": 1.2967499776156761,
+                  "worst": 4.760933037233057
+                }
+              },
+              "prefix": {
+                "all_rows": 366,
+                "eligible_events": 366,
+                "numerically_admissible_events": 366,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 366,
+                  "mean": 0.5992486160267924,
+                  "cvar10": 3.834048839908963,
+                  "worst": 34.989745158846226
+                }
+              },
+              "unstable_prefix": {
+                "all_rows": 41,
+                "eligible_events": 41,
+                "numerically_admissible_events": 41,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 41,
+                  "mean": 2.823404955984658,
+                  "cvar10": 14.77327169893245,
+                  "worst": 34.989745158846226
+                }
+              }
+            }
+          }
+        },
+        "fresh19": {
+          "event_count": 19,
+          "horizon_risks": {
+            "1": {
+              "value": 0.6413885567598918,
+              "coarse_value": 0.6413884597593782,
+              "numerical_score_perturbation": 9.70005136213814e-08,
+              "eligible": 17,
+              "unresolved_ids": [],
+              "definition": "original ceil-top10 risk on stable complete horizon"
+            },
+            "2": {
+              "value": 0.804471831398647,
+              "coarse_value": 0.8044718372217401,
+              "numerical_score_perturbation": 5.823093118806355e-09,
+              "eligible": 17,
+              "unresolved_ids": [],
+              "definition": "original ceil-top10 risk on stable complete horizon"
+            },
+            "5": {
+              "value": 0.7772498893862403,
+              "coarse_value": 0.7772498616690946,
+              "numerical_score_perturbation": 2.7717145689720724e-08,
+              "eligible": 17,
+              "unresolved_ids": [],
+              "definition": "original ceil-top10 risk on stable complete horizon"
+            },
+            "8": {
+              "value": 0.5577265337354649,
+              "coarse_value": 0.557726501259817,
+              "numerical_score_perturbation": 3.247564783759316e-08,
+              "eligible": 17,
+              "unresolved_ids": [],
+              "definition": "original ceil-top10 risk on stable complete horizon"
+            }
+          },
+          "classification_8s": {
+            "event_count": 19,
+            "unstable_count": 2,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 0,
+            "false_los_resolved_stable": 0
+          },
+          "classification_actual15s": {
+            "event_count": 19,
+            "unstable_count": 2,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 2,
+            "false_los_resolved_stable": 0
+          },
+          "all_8s_rows_qualified": true,
+          "all_actual15s_rows_qualified": true,
+          "all_required_rows_qualified": true,
+          "official_metrics": {
+            "records": {
+              "1": {
+                "all_rows": 19,
+                "eligible_events": 17,
+                "numerically_admissible_events": 17,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 17,
+                  "mean": 0.3011408144125839,
+                  "pooled": 0.36560627889367786,
+                  "cvar10": 0.8242943726519223,
+                  "worst": 0.9146480771086961,
+                  "worst_group_mean": 0.9146480771086961,
+                  "delta_rmse_rad": 0.11190198164596088,
+                  "omega_rmse_rad_s": 0.4622504266652758
+                }
+              },
+              "2": {
+                "all_rows": 19,
+                "eligible_events": 17,
+                "numerically_admissible_events": 17,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 17,
+                  "mean": 0.34172182371767323,
+                  "pooled": 0.41758981008441404,
+                  "cvar10": 0.9337654164669824,
+                  "worst": 1.1016842298163265,
+                  "worst_group_mean": 1.1016842298163265,
+                  "delta_rmse_rad": 0.11237838424294713,
+                  "omega_rmse_rad_s": 0.5433028628896145
+                }
+              },
+              "5": {
+                "all_rows": 19,
+                "eligible_events": 17,
+                "numerically_admissible_events": 17,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 17,
+                  "mean": 0.3069761454393001,
+                  "pooled": 0.3634887719903547,
+                  "cvar10": 0.7601507049930027,
+                  "worst": 0.8837032969231902,
+                  "worst_group_mean": 0.8837032969231902,
+                  "delta_rmse_rad": 0.1011516101393259,
+                  "omega_rmse_rad_s": 0.46979966891319225
+                }
+              },
+              "8": {
+                "all_rows": 19,
+                "eligible_events": 17,
+                "numerically_admissible_events": 17,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 17,
+                  "mean": 0.25657709581167376,
+                  "pooled": 0.3046856503200577,
+                  "cvar10": 0.6348576951802575,
+                  "worst": 0.7432579689132511,
+                  "worst_group_mean": 0.7432579689132511,
+                  "delta_rmse_rad": 0.08914041749326125,
+                  "omega_rmse_rad_s": 0.38951755200619165
+                }
+              },
+              "prefix": {
+                "all_rows": 19,
+                "eligible_events": 19,
+                "numerically_admissible_events": 19,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 19,
+                  "mean": 0.3018720494944363,
+                  "pooled": 0.3076952613040308,
+                  "cvar10": 0.7511785366733562,
+                  "worst": 0.7590991044334613,
+                  "worst_group_mean": 0.7590991044334613,
+                  "delta_rmse_rad": 0.08922503835032798,
+                  "omega_rmse_rad_s": 0.3941674627481445
+                }
+              },
+              "unstable_prefix": {
+                "all_rows": 2,
+                "eligible_events": 2,
+                "numerically_admissible_events": 2,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 2,
+                  "mean": 0.6868791557979188,
+                  "pooled": 0.6973663968129022,
+                  "cvar10": 0.7590991044334613,
+                  "worst": 0.7590991044334613,
+                  "worst_group_mean": 0.7590991044334613,
+                  "delta_rmse_rad": 0.10568094903690695,
+                  "omega_rmse_rad_s": 0.9642260520631121
+                }
+              }
+            },
+            "common_frequency": {
+              "1": {
+                "all_rows": 19,
+                "eligible_events": 17,
+                "numerically_admissible_events": 17,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 17,
+                  "mean": 0.2411684315039596,
+                  "pooled": 0.29664220817552855,
+                  "cvar10": 0.6198125436271672,
+                  "worst": 0.8508167092887559
+                }
+              },
+              "2": {
+                "all_rows": 19,
+                "eligible_events": 17,
+                "numerically_admissible_events": 17,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 17,
+                  "mean": 0.3690774588446872,
+                  "pooled": 0.3860528963601464,
+                  "cvar10": 0.5907448224250851,
+                  "worst": 0.6210210401757247
+                }
+              },
+              "5": {
+                "all_rows": 19,
+                "eligible_events": 17,
+                "numerically_admissible_events": 17,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 17,
+                  "mean": 0.3022338281474398,
+                  "pooled": 0.3518368269160204,
+                  "cvar10": 0.7181299502777014,
+                  "worst": 0.8903765653975937
+                }
+              },
+              "8": {
+                "all_rows": 19,
+                "eligible_events": 17,
+                "numerically_admissible_events": 17,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 17,
+                  "mean": 0.25828783745101463,
+                  "pooled": 0.3082556141818324,
+                  "cvar10": 0.6515118405420557,
+                  "worst": 0.8025616799978295
+                }
+              },
+              "prefix": {
+                "all_rows": 19,
+                "eligible_events": 19,
+                "numerically_admissible_events": 19,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 19,
+                  "mean": 0.27425605033958855,
+                  "pooled": 0.3088546015539146,
+                  "cvar10": 0.6515118405420557,
+                  "worst": 0.8025616799978295
+                }
+              },
+              "unstable_prefix": {
+                "all_rows": 2,
+                "eligible_events": 2,
+                "numerically_admissible_events": 2,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 2,
+                  "mean": 0.40998585989246683,
+                  "pooled": 0.4170610572960027,
+                  "cvar10": 0.45715844501455744,
+                  "worst": 0.45715844501455744
+                }
+              }
+            },
+            "normalized_p": {
+              "1": {
+                "all_rows": 19,
+                "eligible_events": 17,
+                "numerically_admissible_events": 17,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 17,
+                  "mean": 0.3807219464906488,
+                  "pooled": 0.42111737322375126,
+                  "cvar10": 0.716065653707292,
+                  "worst": 0.8044563467708354
+                }
+              },
+              "2": {
+                "all_rows": 19,
+                "eligible_events": 17,
+                "numerically_admissible_events": 17,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 17,
+                  "mean": 0.4616660221335544,
+                  "pooled": 0.49911486954831236,
+                  "cvar10": 0.8290137205810335,
+                  "worst": 0.895659390659576
+                }
+              },
+              "5": {
+                "all_rows": 19,
+                "eligible_events": 17,
+                "numerically_admissible_events": 17,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 17,
+                  "mean": 0.4272465370246858,
+                  "pooled": 0.4876862426452746,
+                  "cvar10": 0.9404581813209137,
+                  "worst": 0.9628994860925739
+                }
+              },
+              "8": {
+                "all_rows": 19,
+                "eligible_events": 17,
+                "numerically_admissible_events": 17,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 17,
+                  "mean": 0.3463842171577842,
+                  "pooled": 0.39827196811470955,
+                  "cvar10": 0.7802573063662785,
+                  "worst": 0.8115444483639142
+                }
+              },
+              "prefix": {
+                "all_rows": 19,
+                "eligible_events": 19,
+                "numerically_admissible_events": 19,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 19,
+                  "mean": 0.3402163064030496,
+                  "pooled": 0.39783404999867955,
+                  "cvar10": 0.7802573063662785,
+                  "worst": 0.8115444483639142
+                }
+              },
+              "unstable_prefix": {
+                "all_rows": 2,
+                "eligible_events": 2,
+                "numerically_admissible_events": 2,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 2,
+                  "mean": 0.2877890649878062,
+                  "pooled": 0.29015205706787817,
+                  "cvar10": 0.30656474497422787,
+                  "worst": 0.30656474497422787
+                }
+              }
+            },
+            "objective_point_error": {
+              "1": {
+                "all_rows": 19,
+                "eligible_events": 17,
+                "numerically_admissible_events": 17,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 17,
+                  "mean": 0.3984148510769198,
+                  "cvar10": 1.61328337949178,
+                  "worst": 2.2027704262625383
+                }
+              },
+              "2": {
+                "all_rows": 19,
+                "eligible_events": 17,
+                "numerically_admissible_events": 17,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 17,
+                  "mean": 0.5715352544587371,
+                  "cvar10": 1.736218139158286,
+                  "worst": 2.1779965044710123
+                }
+              },
+              "5": {
+                "all_rows": 19,
+                "eligible_events": 17,
+                "numerically_admissible_events": 17,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 17,
+                  "mean": 0.4929217739149215,
+                  "cvar10": 1.914562351271515,
+                  "worst": 2.4955661228079427
+                }
+              },
+              "8": {
+                "all_rows": 19,
+                "eligible_events": 17,
+                "numerically_admissible_events": 17,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 17,
+                  "mean": 0.3458388238171579,
+                  "cvar10": 1.405277373408693,
+                  "worst": 1.8508268043550344
+                }
+              },
+              "prefix": {
+                "all_rows": 19,
+                "eligible_events": 19,
+                "numerically_admissible_events": 19,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 19,
+                  "mean": 0.38621014687760613,
+                  "cvar10": 1.405277373408693,
+                  "worst": 1.8508268043550344
+                }
+              },
+              "unstable_prefix": {
+                "all_rows": 2,
+                "eligible_events": 2,
+                "numerically_admissible_events": 2,
+                "unresolved_event_ids": [],
+                "official": {
+                  "n_events": 2,
+                  "mean": 0.7293663928914156,
+                  "cvar10": 0.8778070624449255,
+                  "worst": 0.8778070624449255
+                }
+              }
+            }
+          }
+        }
+      },
+      "source_evidence": [
+        {
+          "path": "private_data/force_graph_20261028/study01/study/A512_S_28101/result.json",
+          "sha256": "1e0a6ded089a38459be9a7bfd2ccf680b016ae10c39d67e0d3c82cdaa9248955"
+        },
+        {
+          "path": "private_data/force_graph_20261028/study01/study/A512_S_28101/evaluation385/evidence.json",
+          "sha256": "8203c4976dd6bafde5c273c8ff74e1ef352620ea13c91e53545610b8f6b8dc4e"
+        },
+        {
+          "path": "private_data/force_graph_20261028/study01/study/A512_S_28101/checkpoints/step000192/checkpoint.json",
+          "sha256": "d47027d2d342d4cbe1c06939787f3c53c37f24af1780e665f2056f00a8d6e34d"
+        },
+        {
+          "path": "private_data/force_graph_20261028/study01/study/A512_S_28101/checkpoints/step000192/model.json",
+          "sha256": "4bc2b7ba483d04479a7bddb73f0cd4def8279f73cc1007a11e9d0a9adece80ad"
+        }
+      ],
+      "checkpoint_training_sha256": "5ff421d5bf80056044a631e49744e2c3721798ecc0782fd494a869f28cd21230",
+      "training_pt_loaded_for_this_extraction": false
+    }
+  ],
+  "model_adopted": false,
+  "val_read": false,
+  "test_read": false
+}

@@ -1,0 +1,32 @@
+{
+  "action_id": "gftd-fit297-20261107-resume01",
+  "session_id": 27467,
+  "launcher_pid": 32728,
+  "host_start_utc": "2026-11-07T17:35:45.5691716+00:00",
+  "release_sha256": "60398c70d1b0971f58c990a9b74a1a385f52d3eaca24b326d88531c1960e92e3",
+  "formal_continuation_invocations": 1,
+  "status": "process_started",
+  "initial_launch_tool": {
+    "chunk_id": "d5cf21",
+    "wall_time_seconds": 10.0129244,
+    "session_id": 27467,
+    "original_token_count": 49,
+    "output": "HOST_ENV_JSON={\"OMP_NUM_THREADS\":\"1\",\"MKL_NUM_THREADS\":\"1\",\"OPENBLAS_NUM_THREADS\":\"1\",\"PYTHONDONTWRITEBYTECODE\":\"1\"}\r\nHOST_START_UTC=2026-11-07T17:35:45.5691716+00:00\r\nHOST_LAUNCHER_PID=32728\r\n"
+  },
+  "preflight_failed_before_python": [
+    {
+      "chunk_id": "612d17",
+      "wall_time_seconds": 1.0218088,
+      "exit_code": 1,
+      "original_token_count": 55,
+      "output": "Get-CimInstance: \r\nLine |\r\n  15 |  … allPython=@(Get-CimInstance Win32_Process -Filter \"Name='python.exe'  …\r\n     |                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n     | 拒绝访问 \r\n"
+    }
+  ],
+  "first_monitor": {
+    "chunk_id": "1af5ee",
+    "wall_time_seconds": 0.7468044,
+    "exit_code": 0,
+    "original_token_count": 556,
+    "output": "{\"utc\":\"2026-11-07T17:36:24.1328341+00:00\",\"claim\":{\"action_id\":\"gftd-fit297-20261107-resume01\",\"parent_action_id\":\"gftd-fit297-20261107-01\",\"release_sha256\":\"60398c70d1b0971f58c990a9b74a1a385f52d3eaca24b326d88531c1960e92e3\",\"status\":\"RUNNING\"},\"progress\":{\"analysis\":{},\"current\":{\"stage\":\"initialize\",\"mode\":\"static\",\"event_id\":\"expansion_0056\"},\"status\":\"RUNNING\",\"counts\":{\"fits_attempted\":2,\"fits_completed\":2,\"initializations_attempted\":52,\"initializations_completed\":8,\"future_pairs_attempted\":0,\"future_pairs_persisted\":0,\"future_pairs_completed\":0,\"future_pairs_failed\":0,\"rk4_attempted\":0,\"rk4_completed\":0,\"scoring_attempted\":0,\"scoring_completed\":0,\"fit\":{\"static\":{\"algebra_terms_planned\":32764,\"algebra_terms_actual\":943,\"algebra_terms_skipped\":31821,\"nnls_attempts\":943,\"nnls_completed\":943,\"nnls_qualified\":943,\"reconstruction_attempts\":594,\"reconstructions\":594,\"optimization_tasks\":192,\"actual_residual_calls\":37951,\"integrations_attempted\":37975,\"integrations_completed\":37975,\"rk4_steps_attempted\":1519960,\"rk4_steps_completed\":1519960,\"information_svd\":186,\"conditional_projections\":135,\"memory_svd\":594,\"information_history_steps\":1920},\"modulated\":{\"algebra_terms_planned\":24573,\"algebra_terms_actual\":2817,\"algebra_terms_skipped\":21756,\"nnls_attempts\":2817,\"nnls_completed\":2817,\"nnls_qualified\":2817,\"reconstruction_attempts\":0,\"reconstructions\":0,\"optimization_tasks\":192,\"actual_residual_calls\":38400,\"integrations_attempted\":38424,\"integrations_completed\":38424,\"rk4_steps_attempted\":1537920,\"rk4_steps_completed\":1537920,\"information_svd\":230,\"conditional_projections\":180,\"memory_svd\":0,\"information_history_steps\":1920}},\"initialization\":{\"algebra_terms_planned\":0,\"algebra_terms_actual\":0,\"algebra_terms_skipped\":0,\"nnls_attempts\":0,\"nnls_completed\":0,\"nnls_qualified\":0,\"reconstruction_attempts\":0,\"reconstructions\":0,\"optimization_tasks\":59,\"actual_residual_calls\":11569,\"integrations_attempted\":11875,\"integrations_completed\":11875,\"rk4_steps_attempted\":490300,\"rk4_steps_completed\":490300},\"coverage\":{}},\"new_initializations\":null},\"processes\":[{\"Id\":3252,\"Path\":\"E:\\\\03-nn_Transfer_Func\\\\kiki\\\\.venv-gpu\\\\Scripts\\\\python.exe\",\"CPU\":0.015625,\"WorkingSet64\":5537792}],\"stderr_bytes\":0}\r\n"
+  }
+}

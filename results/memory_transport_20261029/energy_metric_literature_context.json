@@ -1,0 +1,73 @@
+{
+  "schema": "memory_transport_energy_metric_literature_context_v1",
+  "scope": "bounded factual literature context during an already running frozen study; not a new design, experiment or adoption",
+  "date": "2026-10-29",
+  "workflow": "nature-academic-search / multi-source-search",
+  "discovery": "Consensus search and fetch by gpt-6-luna; primary-source verification by root",
+  "papers": [
+    {
+      "reference_number": 1,
+      "title": "Learnability of Linear Port-Hamiltonian Systems",
+      "authors": [
+        "Juan-Pablo Ortega",
+        "Daiying Yin"
+      ],
+      "journal": "Journal of Machine Learning Research",
+      "year": 2024,
+      "volume": 25,
+      "article": 68,
+      "pages": "1-56",
+      "primary_url": "https://www.jmlr.org/papers/v25/23-0450.html",
+      "primary_pdf": "https://www.jmlr.org/papers/volume25/23-0450/23-0450.pdf",
+      "consensus_fetched_id": "bf19c9e5afca58c79b56e1ba9d89d7cc",
+      "verified_assumptions": [
+        "Formal normal-form model in Sec2.2 Eq5-7 is linear, SISO, R=0, canonical symplectic J and unknown SPD Q; theta includes Q and B.",
+        "Input-output learning is considered; state-space isomorphisms with appropriate initializations can preserve the same input-output map.",
+        "Canonical class requires controllability and observability; unique-representation statement is within its defined equivalence class and up to initializations."
+      ],
+      "implication": "Unknown-Hamiltonian learning and coordinate-equivalence-aware parameter reduction already exist. The paper is not a general dissipative nonlinear MIMO physical-topology identification theorem."
+    },
+    {
+      "reference_number": 2,
+      "title": "Port-Hamiltonian Dynamic Mode Decomposition",
+      "authors": [
+        "Riccardo Morandin",
+        "Jonas Nicodemus",
+        "Benjamin Unger"
+      ],
+      "journal": "SIAM Journal on Scientific Computing",
+      "year": 2023,
+      "volume": 45,
+      "issue": 4,
+      "pages": "A1690-A1710",
+      "doi": "10.1137/22M149329X",
+      "primary_url": "https://epubs.siam.org/doi/full/10.1137/22M149329X",
+      "primary_preprint": "https://arxiv.org/abs/2204.13474",
+      "preprint_year": 2022,
+      "consensus_fetched_id": "ff9c9073c4f756b7b4050a7f7f0173d0",
+      "verified_assumptions": [
+        "A quadratic energy functional is supplied.",
+        "Input, state and output measurements are used to identify a passive continuous-time linear realization.",
+        "The fitting method enforces the supplied energy dissipation inequality."
+      ],
+      "implication": "This is relevant structure-preserving operator identification; its stated input-state-output/known-energy setting differs from unknown-storage partial-observation identification."
+    }
+  ],
+  "research_interpretation": {
+    "existing_problem_classes": [
+      "structured state-space realization and its coordinate equivalence",
+      "port-Hamiltonian operator inference with specified energy and measured states"
+    ],
+    "current_claim_boundary": "A learned skew interconnection or successful prediction alone does not identify a unique internal physical coupling. Any future metric-versus-transport comparison requires its own actual Astra design, observational/identifiability assumptions and finite preregistration.",
+    "current_frozen_protocol_changed": false,
+    "current_training_interrupted": false,
+    "new_event_evaluations": 0,
+    "new_optimizer_calls": 0,
+    "architecture_or_promotion_decision": false
+  },
+  "source_access_notes": [
+    "Consensus records were fetched before use; primary publication dates were used.",
+    "Root direct SIAM DOI open timed out; publisher full-page search result and arXiv abstract provided matching assumptions and publication metadata.",
+    "A third candidate with unverified publication metadata was omitted from confirmed references."
+  ]
+}

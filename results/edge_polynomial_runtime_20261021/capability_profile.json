@@ -1,0 +1,74 @@
+{
+  "status": "CLOSED_MANDATORY_QA_FAILED_NO_ACCELERATION_ADOPTION",
+  "engineering_adoption": false,
+  "scientific_model_adoption": false,
+  "main_changed": false,
+  "main": "7419d196fe1d080221db01565835f424c7a47f2c",
+  "final_source_commit": "b44014a9ef373e341605ff3190d2117a8a1b2037",
+  "runtime_sha256": "c9fe075d22c5e2bf7fce096e41bdb66dbf2d137de0e768ee427ea4003b07af3f",
+  "qa01": {
+    "status": "UNRESOLVED_EXECUTION",
+    "phase_gate_pass": false,
+    "charged_seconds": 106.04498710000189,
+    "source_commit": "800692853170ac82916f355d1e690f173615c192",
+    "complete_launch_wall_seconds": 106.90391250001267,
+    "receipt_sha256": "c64018de229c0716985ea0e44bfaf3632e619c8bac477ba49f513d724ce7eac3",
+    "source_equal": true,
+    "bound_file_count": 115,
+    "cleanup": true,
+    "fixture_identity_after": "GONE",
+    "worker_pid": 99488,
+    "worker_creation_filetime": "134370192532516607",
+    "test_summary": "15 failed, 15 passed in 88.28s (0:01:28)",
+    "exit_codes": [
+      1,
+      2
+    ]
+  },
+  "qa02": {
+    "status": "UNRESOLVED_EXECUTION",
+    "phase_gate_pass": false,
+    "charged_seconds": 260.5003654000466,
+    "source_commit": "b44014a9ef373e341605ff3190d2117a8a1b2037",
+    "complete_launch_wall_seconds": 261.30749039998045,
+    "error": null,
+    "receipt_sha256": "66daef9b03c164a88938e682a0adbe5d5b04916c0ce091e9ceddf4d0aa6177ff",
+    "source_equal": true,
+    "bound_file_count": 117,
+    "cleanup": true,
+    "fixture_identity_after": "GONE",
+    "worker_pid": 92704,
+    "worker_creation_filetime": "134370196135883980",
+    "exit_codes": [
+      1,
+      2
+    ],
+    "test_summary": [
+      "4 failed, 26 passed in 255.27s (0:04:15)"
+    ],
+    "complete_result_status": "FAIL"
+  },
+  "mandatory_failures": [
+    "nonunit_mass_and_power_scale",
+    "zero_phi_after_orientation_constant_c",
+    "zero_phi_after_orientation_degree4",
+    "zero_phi_after_orientation_mixed_pqs"
+  ],
+  "accepted_within_scope_checks": [
+    "six_pool_value_feature_state_and_raw_parameter_gradients_and_dual_5s",
+    "half_second_actual_clip100_Adam",
+    "CPU_CUDA_export_numpy_legacy_checkpoint",
+    "new_backend_exact32_to34_recovery",
+    "fallback_and_cache_contract",
+    "seven_original_selection_contract_checks"
+  ],
+  "T": null,
+  "speedup": null,
+  "formal_seeds_executed": [],
+  "checkpoint_inventory": "results/edge_polynomial_runtime_20261021/retained_checkpoint_inventory.json",
+  "fee": "results/edge_polynomial_runtime_20261021/closed_cost.json",
+  "scope": "Engineering QA only; no unknown-form recovery or physical mechanism evidence",
+  "failure_review": "reports/edge_polynomial_runtime_20261021_failure_review.md",
+  "failure_review_scope": "Static evidence suggests unsynchronized outer/structured mass and phi in QA fixtures; no numerical validation of repaired fixtures; mandatory failures retained, no adoption",
+  "failure_review_tool_seconds_subset_of_existing_P2_review_hold": 12.7157611
+}

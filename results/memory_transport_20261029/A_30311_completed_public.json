@@ -1,0 +1,691 @@
+{
+  "schema": "memory_transport_A_30311_completed_public_v1",
+  "status": "A_CANDIDATE_ENDPOINT_COMPLETED",
+  "source_commit": "181d7f8bba2eb530a0ad5afe0130035755e974a2",
+  "run_id": "A_30311",
+  "variant": "A",
+  "seed": 30311,
+  "fixed_panel": {
+    "identity_unchanged_across_steps": true,
+    "data_split": "train",
+    "counts": {
+      "total_events": 48,
+      "stable_events": 36,
+      "unstable_events": 12
+    },
+    "evidence": "same event_ids in archived0/64/128 panels; no event payload read",
+    "milestones": {
+      "0": {
+        "cohort": {
+          "name": "fixed_panel48",
+          "total_events": 48,
+          "stable_events": 36,
+          "unstable_events": 12
+        },
+        "risks": {
+          "unit": "dimensionless normalized squared-error event risk; not RMSE",
+          "definition": "original0.8 event mean +0.2 mean of worst ceil(10% of eligible events)",
+          "stable_complete_horizons_s": {
+            "5": {
+              "value": 0.6137680381233273,
+              "coarse_value": 0.6137680825993941,
+              "numerical_score_perturbation": 4.447606682944638e-08,
+              "eligible": 36,
+              "unresolved_ids": []
+            },
+            "8": {
+              "value": 0.41898850412897054,
+              "coarse_value": 0.41898852611763027,
+              "numerical_score_perturbation": 2.198865972635744e-08,
+              "eligible": 36,
+              "unresolved_ids": []
+            }
+          },
+          "unstable_actual_intervals_up_to8s": {
+            "value": 2.057640414761682,
+            "coarse_value": 2.057640113617421,
+            "numerical_score_perturbation": 3.011442610834081e-07,
+            "eligible": 12,
+            "definition": "same actual per-event interval up to8s; original 0.8mean+0.2ceil-top10 risk",
+            "unresolved_ids": []
+          },
+          "unstable_actual_intervals_up_to15s": {
+            "value": 2.057640414761682,
+            "coarse_value": 2.057640113617421,
+            "numerical_score_perturbation": 3.011442610834081e-07,
+            "eligible": 12,
+            "unresolved_ids": []
+          }
+        },
+        "physical_RMSE": {
+          "common_frequency_RMSE_8s": {
+            "value": 0.2690138353247153,
+            "unit": "rad/s",
+            "scope": {
+              "data_split": "train",
+              "cohort": "fixed_panel48",
+              "event_label": "stable",
+              "eligible_event_count": 36,
+              "horizon_s": 8,
+              "availability": "complete8s and numerically qualified",
+              "aggregation": "pooled_RMSE=sqrt(pooled_SSE/pooled_n); not average of event RMSE"
+            },
+            "definition": "惯量加权平均角速度误差RMSE：每时点e_common=sum_i mass_i*(omega_pred_i-omega_true_i)/sum_i mass_i；对全部合格稳定样本完整8s时点pooled SSE/n后开方"
+          }
+        },
+        "normalized_RMSE": {
+          "p_RMSE_8s": {
+            "value": 0.35999748228395306,
+            "unit": "dimensionless",
+            "scope": {
+              "data_split": "train",
+              "cohort": "fixed_panel48",
+              "event_label": "stable",
+              "eligible_event_count": 36,
+              "horizon_s": 8,
+              "availability": "complete8s and numerically qualified",
+              "aggregation": "pooled_RMSE=sqrt(pooled_SSE/pooled_n); not average of event RMSE"
+            }
+          }
+        },
+        "original_J": {
+          "fine": 10.296145799447247,
+          "coarse": 10.296143818296317,
+          "scope": "original autonomous J on actual per-event intervals up to8s; distinct from risk and RMSE"
+        },
+        "classification": {
+          "eight_seconds": {
+            "event_count": 48,
+            "unstable_count": 12,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 2,
+            "false_los_resolved_stable": 0
+          },
+          "actual_available_intervals_up_to15s": {
+            "event_count": 48,
+            "unstable_count": 12,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 9,
+            "false_los_resolved_stable": 0
+          }
+        },
+        "numerical_qualification": {
+          "all_8s_rows_qualified": true,
+          "all_actual15_rows_qualified": true,
+          "all_required_rows_qualified": true
+        },
+        "parameter_count": 47,
+        "qualified_inference_timing": {
+          "seconds_per_event": 0.581704237500162,
+          "scope": "CPU float64 one thread; 15s RK4 .005/.01 including causal initialization, outputs and metrics"
+        }
+      },
+      "64": {
+        "cohort": {
+          "name": "fixed_panel48",
+          "total_events": 48,
+          "stable_events": 36,
+          "unstable_events": 12
+        },
+        "risks": {
+          "unit": "dimensionless normalized squared-error event risk; not RMSE",
+          "definition": "original0.8 event mean +0.2 mean of worst ceil(10% of eligible events)",
+          "stable_complete_horizons_s": {
+            "5": {
+              "value": 0.47995563880415043,
+              "coarse_value": 0.47995567528011607,
+              "numerical_score_perturbation": 3.6475965636828533e-08,
+              "eligible": 36,
+              "unresolved_ids": []
+            },
+            "8": {
+              "value": 0.3502145608474308,
+              "coarse_value": 0.3502145800483907,
+              "numerical_score_perturbation": 1.920095987761883e-08,
+              "eligible": 36,
+              "unresolved_ids": []
+            }
+          },
+          "unstable_actual_intervals_up_to8s": {
+            "value": 2.3258427646643156,
+            "coarse_value": 2.3258425028524723,
+            "numerical_score_perturbation": 2.6181184331619534e-07,
+            "eligible": 12,
+            "definition": "same actual per-event interval up to8s; original 0.8mean+0.2ceil-top10 risk",
+            "unresolved_ids": []
+          },
+          "unstable_actual_intervals_up_to15s": {
+            "value": 2.3258427646643156,
+            "coarse_value": 2.3258425028524723,
+            "numerical_score_perturbation": 2.6181184331619534e-07,
+            "eligible": 12,
+            "unresolved_ids": []
+          }
+        },
+        "physical_RMSE": {
+          "common_frequency_RMSE_8s": {
+            "value": 0.2502538806937683,
+            "unit": "rad/s",
+            "scope": {
+              "data_split": "train",
+              "cohort": "fixed_panel48",
+              "event_label": "stable",
+              "eligible_event_count": 36,
+              "horizon_s": 8,
+              "availability": "complete8s and numerically qualified",
+              "aggregation": "pooled_RMSE=sqrt(pooled_SSE/pooled_n); not average of event RMSE"
+            },
+            "definition": "惯量加权平均角速度误差RMSE：每时点e_common=sum_i mass_i*(omega_pred_i-omega_true_i)/sum_i mass_i；对全部合格稳定样本完整8s时点pooled SSE/n后开方"
+          }
+        },
+        "normalized_RMSE": {
+          "p_RMSE_8s": {
+            "value": 0.32032066206632576,
+            "unit": "dimensionless",
+            "scope": {
+              "data_split": "train",
+              "cohort": "fixed_panel48",
+              "event_label": "stable",
+              "eligible_event_count": 36,
+              "horizon_s": 8,
+              "availability": "complete8s and numerically qualified",
+              "aggregation": "pooled_RMSE=sqrt(pooled_SSE/pooled_n); not average of event RMSE"
+            }
+          }
+        },
+        "original_J": {
+          "fine": 10.875074002037241,
+          "coarse": 10.875073339875744,
+          "scope": "original autonomous J on actual per-event intervals up to8s; distinct from risk and RMSE"
+        },
+        "classification": {
+          "eight_seconds": {
+            "event_count": 48,
+            "unstable_count": 12,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 2,
+            "false_los_resolved_stable": 0
+          },
+          "actual_available_intervals_up_to15s": {
+            "event_count": 48,
+            "unstable_count": 12,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 10,
+            "false_los_resolved_stable": 0
+          }
+        },
+        "numerical_qualification": {
+          "all_8s_rows_qualified": true,
+          "all_actual15_rows_qualified": true,
+          "all_required_rows_qualified": true
+        },
+        "parameter_count": 47,
+        "qualified_inference_timing": {
+          "seconds_per_event": 0.637540439583366,
+          "scope": "CPU float64 one thread; 15s RK4 .005/.01 including causal initialization, outputs and metrics"
+        }
+      },
+      "128": {
+        "cohort": {
+          "name": "fixed_panel48",
+          "total_events": 48,
+          "stable_events": 36,
+          "unstable_events": 12
+        },
+        "risks": {
+          "unit": "dimensionless normalized squared-error event risk; not RMSE",
+          "definition": "original0.8 event mean +0.2 mean of worst ceil(10% of eligible events)",
+          "stable_complete_horizons_s": {
+            "5": {
+              "value": 0.5102582083889101,
+              "coarse_value": 0.5102582489012824,
+              "numerical_score_perturbation": 4.051237223468007e-08,
+              "eligible": 36,
+              "unresolved_ids": []
+            },
+            "8": {
+              "value": 0.36616382603487685,
+              "coarse_value": 0.3661638470589631,
+              "numerical_score_perturbation": 2.1024086249710194e-08,
+              "eligible": 36,
+              "unresolved_ids": []
+            }
+          },
+          "unstable_actual_intervals_up_to8s": {
+            "value": 2.2066647394785104,
+            "coarse_value": 2.206664473280178,
+            "numerical_score_perturbation": 2.661983322660433e-07,
+            "eligible": 12,
+            "definition": "same actual per-event interval up to8s; original 0.8mean+0.2ceil-top10 risk",
+            "unresolved_ids": []
+          },
+          "unstable_actual_intervals_up_to15s": {
+            "value": 2.2066647394785104,
+            "coarse_value": 2.206664473280178,
+            "numerical_score_perturbation": 2.661983322660433e-07,
+            "eligible": 12,
+            "unresolved_ids": []
+          }
+        },
+        "physical_RMSE": {
+          "common_frequency_RMSE_8s": {
+            "value": 0.25518785801608856,
+            "unit": "rad/s",
+            "scope": {
+              "data_split": "train",
+              "cohort": "fixed_panel48",
+              "event_label": "stable",
+              "eligible_event_count": 36,
+              "horizon_s": 8,
+              "availability": "complete8s and numerically qualified",
+              "aggregation": "pooled_RMSE=sqrt(pooled_SSE/pooled_n); not average of event RMSE"
+            },
+            "definition": "惯量加权平均角速度误差RMSE：每时点e_common=sum_i mass_i*(omega_pred_i-omega_true_i)/sum_i mass_i；对全部合格稳定样本完整8s时点pooled SSE/n后开方"
+          }
+        },
+        "normalized_RMSE": {
+          "p_RMSE_8s": {
+            "value": 0.3320871030330923,
+            "unit": "dimensionless",
+            "scope": {
+              "data_split": "train",
+              "cohort": "fixed_panel48",
+              "event_label": "stable",
+              "eligible_event_count": 36,
+              "horizon_s": 8,
+              "availability": "complete8s and numerically qualified",
+              "aggregation": "pooled_RMSE=sqrt(pooled_SSE/pooled_n); not average of event RMSE"
+            }
+          }
+        },
+        "original_J": {
+          "fine": 10.488783682438791,
+          "coarse": 10.488782011683886,
+          "scope": "original autonomous J on actual per-event intervals up to8s; distinct from risk and RMSE"
+        },
+        "classification": {
+          "eight_seconds": {
+            "event_count": 48,
+            "unstable_count": 12,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 2,
+            "false_los_resolved_stable": 0
+          },
+          "actual_available_intervals_up_to15s": {
+            "event_count": 48,
+            "unstable_count": 12,
+            "numerical_unresolved": 0,
+            "missed_resolved_unstable": 9,
+            "false_los_resolved_stable": 0
+          }
+        },
+        "numerical_qualification": {
+          "all_8s_rows_qualified": true,
+          "all_actual15_rows_qualified": true,
+          "all_required_rows_qualified": true
+        },
+        "parameter_count": 47,
+        "qualified_inference_timing": {
+          "seconds_per_event": 0.6375983104165547,
+          "scope": "CPU float64 one thread; 15s RK4 .005/.01 including causal initialization, outputs and metrics"
+        }
+      }
+    }
+  },
+  "fullfit297_step128": {
+    "cohort": {
+      "name": "fit297",
+      "total_events": 297,
+      "stable_events": 267,
+      "unstable_events": 30
+    },
+    "risks": {
+      "unit": "dimensionless normalized squared-error event risk; not RMSE",
+      "definition": "original0.8 event mean +0.2 mean of worst ceil(10% of eligible events)",
+      "stable_complete_horizons_s": {
+        "5": {
+          "value": 0.8675373355146678,
+          "coarse_value": 0.8675373339413789,
+          "numerical_score_perturbation": 1.5732889435682296e-09,
+          "eligible": 267,
+          "unresolved_ids": []
+        },
+        "8": {
+          "value": 0.6255711284192054,
+          "coarse_value": 0.6255711084802726,
+          "numerical_score_perturbation": 1.993893272711489e-08,
+          "eligible": 267,
+          "unresolved_ids": []
+        }
+      },
+      "unstable_actual_intervals_up_to8s": {
+        "value": 3.045603054019912,
+        "coarse_value": 3.0456028401752944,
+        "numerical_score_perturbation": 2.1384461756923656e-07,
+        "eligible": 30,
+        "definition": "same actual per-event interval up to8s; original 0.8mean+0.2ceil-top10 risk",
+        "unresolved_ids": []
+      },
+      "unstable_actual_intervals_up_to15s": {
+        "value": 3.045603054019912,
+        "coarse_value": 3.0456028401752944,
+        "numerical_score_perturbation": 2.1384461756923656e-07,
+        "eligible": 30,
+        "unresolved_ids": []
+      }
+    },
+    "physical_RMSE": {
+      "common_frequency_RMSE_8s": {
+        "value": 0.32140212114056005,
+        "unit": "rad/s",
+        "scope": {
+          "data_split": "train",
+          "cohort": "fit297",
+          "event_label": "stable",
+          "eligible_event_count": 267,
+          "horizon_s": 8,
+          "availability": "complete8s and numerically qualified",
+          "aggregation": "pooled_RMSE=sqrt(pooled_SSE/pooled_n); not average of event RMSE"
+        },
+        "definition": "惯量加权平均角速度误差RMSE：每时点e_common=sum_i mass_i*(omega_pred_i-omega_true_i)/sum_i mass_i；对全部合格稳定样本完整8s时点pooled SSE/n后开方"
+      }
+    },
+    "normalized_RMSE": {
+      "p_RMSE_8s": {
+        "value": 0.45687819084414505,
+        "unit": "dimensionless",
+        "scope": {
+          "data_split": "train",
+          "cohort": "fit297",
+          "event_label": "stable",
+          "eligible_event_count": 267,
+          "horizon_s": 8,
+          "availability": "complete8s and numerically qualified",
+          "aggregation": "pooled_RMSE=sqrt(pooled_SSE/pooled_n); not average of event RMSE"
+        }
+      }
+    },
+    "original_J": {
+      "fine": 9.103396416172473,
+      "coarse": 9.103395777393029,
+      "scope": "original autonomous J on actual per-event intervals up to8s; distinct from risk and RMSE"
+    },
+    "classification": {
+      "eight_seconds": {
+        "event_count": 297,
+        "unstable_count": 30,
+        "numerical_unresolved": 0,
+        "missed_resolved_unstable": 4,
+        "false_los_resolved_stable": 0
+      },
+      "actual_available_intervals_up_to15s": {
+        "event_count": 297,
+        "unstable_count": 30,
+        "numerical_unresolved": 0,
+        "missed_resolved_unstable": 21,
+        "false_los_resolved_stable": 0
+      }
+    },
+    "numerical_qualification": {
+      "all_8s_rows_qualified": true,
+      "all_actual15_rows_qualified": true,
+      "all_required_rows_qualified": true
+    },
+    "parameter_count": 47,
+    "qualified_inference_timing": {
+      "seconds_per_event": 0.7929788326599297,
+      "scope": "CPU float64 one thread; 15s RK4 .005/.01 including causal initialization, outputs and metrics"
+    }
+  },
+  "registered_extension_decision": {
+    "raw_decision": {
+      "optimization_unresolved": false,
+      "clip_count_last64": 0,
+      "large_change_counts_last64": {
+        "a_bar": 0,
+        "lambda_raw": 0,
+        "kappa_raw": 0
+      },
+      "extend": false,
+      "registered_actual15_gain": true,
+      "nonworsening_guards": false
+    },
+    "guard_audit_from_archived_panel_aggregates": [
+      {
+        "guard": "classification_8s.missed_resolved_unstable",
+        "reference_panel_step": 64,
+        "candidate_panel_step": 128,
+        "reference_value": 2,
+        "candidate_value": 2,
+        "required": "candidate<=reference",
+        "passed": true
+      },
+      {
+        "guard": "classification_8s.false_los_resolved_stable",
+        "reference_panel_step": 64,
+        "candidate_panel_step": 128,
+        "reference_value": 0,
+        "candidate_value": 0,
+        "required": "candidate<=reference",
+        "passed": true
+      },
+      {
+        "guard": "classification_actual15s.missed_resolved_unstable",
+        "reference_panel_step": 64,
+        "candidate_panel_step": 128,
+        "reference_value": 10,
+        "candidate_value": 9,
+        "required": "candidate<=reference",
+        "passed": true
+      },
+      {
+        "guard": "classification_actual15s.false_los_resolved_stable",
+        "reference_panel_step": 64,
+        "candidate_panel_step": 128,
+        "reference_value": 0,
+        "candidate_value": 0,
+        "required": "candidate<=reference",
+        "passed": true
+      },
+      {
+        "guard": "unstable_actual15_risk",
+        "reference_panel_step": 64,
+        "candidate_panel_step": 128,
+        "reference_value": 2.3258427646643156,
+        "candidate_value": 2.2066647394785104,
+        "required": "candidate<=1.05*reference",
+        "passed": true
+      },
+      {
+        "guard": "stable_complete_5s_risk",
+        "reference_panel_step": 64,
+        "candidate_panel_step": 128,
+        "reference_value": 0.47995563880415043,
+        "candidate_value": 0.5102582083889101,
+        "required": "candidate<=1.05*reference",
+        "passed": false
+      },
+      {
+        "guard": "stable_complete_8s_risk",
+        "reference_panel_step": 64,
+        "candidate_panel_step": 128,
+        "reference_value": 0.3502145608474308,
+        "candidate_value": 0.36616382603487685,
+        "required": "candidate<=1.05*reference",
+        "passed": true
+      },
+      {
+        "guard": "common_frequency_rmse_8s",
+        "reference_panel_step": 64,
+        "candidate_panel_step": 128,
+        "reference_value": 0.2502538806937683,
+        "candidate_value": 0.25518785801608856,
+        "required": "candidate<=1.05*reference",
+        "passed": true
+      },
+      {
+        "guard": "normalized_p_rmse_8s",
+        "reference_panel_step": 64,
+        "candidate_panel_step": 128,
+        "reference_value": 0.32032066206632576,
+        "candidate_value": 0.3320871030330923,
+        "required": "candidate<=1.05*reference",
+        "passed": true
+      }
+    ],
+    "failed_guard_names": [
+      "stable_complete_5s_risk"
+    ],
+    "audit_scope": "apply the already frozen64-to128 guard to stored aggregate numbers; no new evaluation",
+    "optimization_interpretation": "optimization_unresolved=false is this finite diagnostic result, not proof of adequate/global convergence"
+  },
+  "run_work_and_cost": {
+    "actual_formal_optimizer_calls": 128,
+    "completed_checkpoint_trace_steps": [
+      1,
+      128
+    ],
+    "checkpoint_trace_count": 128,
+    "optimizer_count_evidence": "completed run updates and saved trace steps1..128; growing global ledger not read",
+    "run_wall_seconds": 2377.509391700005,
+    "model_specific_CPU_seconds": null,
+    "model_specific_CPU_note": "no standalone per-model Job CPU accounting is available while the encompassing study phase remains active",
+    "cost_scope": "A formal_run wall including its registered panels/fullfit/checkpoint work; qualification, recoveryQA and whole-stage cost excluded"
+  },
+  "endpoint": {
+    "logical_id": "A_30311/checkpoints/step000128",
+    "checkpoint_metadata_sha256": "c6372547439be6aeeb869642453664c188695e289519eb60274a53f3d5b0829d",
+    "model_sha256": "a74ea3093dbc4d357baa24af5d84072caa0840a2bc76cf2ca5040c964ab2ef03",
+    "training_state_sha256_from_metadata_only": "b84e153d8aacd9ccaae68253b6745a16d8471278423efb36ee23cf61c016c175",
+    "binary_training_state_read": false,
+    "format": "memory_transport_model_20261029",
+    "mode": "M",
+    "gate_mode": "A",
+    "variant": "A",
+    "history_dt": 0.0025,
+    "counts": {
+      "machines": 10,
+      "states": 40,
+      "candidate_pairs": 45,
+      "raw_trainable_scalar_count": 47,
+      "encoder_trainable_scalar_count": 0,
+      "initial_state_solve_dimension": 10,
+      "spatial_scalar_coordinates": 45,
+      "scope": "representation counts; no parameter identifiability claim",
+      "fixed_plane_stored_scalars": 20,
+      "fixed_plane_used": false,
+      "variant": "A",
+      "plane_scope": "fixed source plane; P may be redundant inside original graph cone"
+    },
+    "registered_extra_parameter": 0.0,
+    "stored_parameter_coordinates": {
+      "kappa_raw": 1.276632859188022,
+      "lambda_raw": -1.6706370452458648,
+      "a_bar45": [
+        0.07455695489371741,
+        0.21492375778045014,
+        0.2379315239509087,
+        0.15976361329393218,
+        0.725204171492472,
+        0.1784336999211283,
+        0.043978643487711036,
+        0.0,
+        1.0832894410702183,
+        0.8677621893642944,
+        0.2812650119784897,
+        2.0086854674030885,
+        0.07929691253080895,
+        0.728011083470724,
+        1.0220231837573897,
+        0.7403163530174214,
+        0.8096078015784084,
+        0.0,
+        0.5478343314265537,
+        0.0,
+        0.0,
+        0.26912191720055506,
+        0.8151684254289603,
+        1.0262200701419228,
+        0.34076703636217626,
+        2.0084416124652926,
+        0.0,
+        0.28659709470498024,
+        0.0,
+        0.35986819571693107,
+        0.0,
+        0.015806112106487857,
+        0.12981004336325438,
+        0.34899891352329543,
+        0.09020846893893711,
+        0.40338404682721013,
+        0.5754792307502969,
+        0.27735471725080535,
+        0.0777542053855165,
+        0.06919184832313308,
+        0.03131685589230374,
+        0.21047912713013964,
+        0.13317340602730385,
+        0.8706127295490168,
+        0.1286857256285836
+      ]
+    },
+    "stored_parameter_references": {
+      "kappa_reference": 0.23280613353218893,
+      "lambda_reference": 1.0,
+      "T_ref_seconds": 1.0
+    },
+    "physical_coordinate_mapping": "kappa=kappa_reference*exp(kappa_raw); lambda=lambda_reference*exp(lambda_raw); alpha_e=lambda_reference*a_bar_e; raw values and references copied exactly, no model loaded",
+    "source_model_sha256": "ec8c78cbff0b6dd65bd3ba6dfc5a0ed65e7fa418227c90adc3a703311aebadf4",
+    "fixed_plane_raw_sha256": "3dee4225e77e5bf6ab6ad58a73ab4ad9c8a263e647d053fcb6842cc4a7281941",
+    "accepted_scope": "research candidate endpoint; not a default model or promotion"
+  },
+  "raw_evidence": {
+    "completed_run": {
+      "sha256": "9e8fb4bc9fe672cd363ff6637eac7471632455cd82a3247d1221dbcbad43b38d",
+      "local_logical_id": "A_30311/result.json"
+    },
+    "panel_0": {
+      "sha256": "1fb5bb6e3d52bdec4d49889a7384733a452e203a7c4ece811f127095731aa7b8",
+      "local_logical_id": "A_30311/panel000000.json"
+    },
+    "panel_64": {
+      "sha256": "a0c88a4ba69031dc7e2ede9062e7236e6f286f131277c6a3ead48d008e6daa81",
+      "local_logical_id": "A_30311/panel000064.json"
+    },
+    "panel_128": {
+      "sha256": "9f8e2486739cf5e9f9816c24cf55302b59e078e46955218fa66a3cb1ad2887a6",
+      "local_logical_id": "A_30311/panel000128.json"
+    },
+    "fit297_step128_profile": {
+      "sha256": "1e75ad7be480d67f623ee39b04ba1e10303c18c3b6eb1a20d52e69fdbed78f8c",
+      "local_logical_id": "A_30311/fit000128/state_gated_profile.json"
+    },
+    "extension_decision": {
+      "sha256": "6c94371a752b8daf5d0e928f78c7cd078ebacdc232ea146fa1ccddb11a6067d5",
+      "local_logical_id": "A_30311/extension_decision.json"
+    },
+    "checkpoint_step128_metadata": {
+      "sha256": "c6372547439be6aeeb869642453664c188695e289519eb60274a53f3d5b0829d",
+      "local_logical_id": "A_30311/checkpoints/step000128/checkpoint.json"
+    },
+    "checkpoint_step128_model": {
+      "sha256": "a74ea3093dbc4d357baa24af5d84072caa0840a2bc76cf2ca5040c964ab2ef03",
+      "local_logical_id": "A_30311/checkpoints/step000128/model.json"
+    }
+  },
+  "study_status": {
+    "S_P_common128_comparison": "NOT_COMPLETED at root handoff; not inspected here",
+    "second_seed_decision": "NOT_COMPLETED; no decision made by this extraction",
+    "default_model": "none",
+    "scientific_model_adoption": false,
+    "frontier_decision_made": false,
+    "whole_mission_completed": false
+  },
+  "boundaries": {
+    "original_val_read": false,
+    "original_test_read": false,
+    "TASK4": "PAUSED",
+    "new_FOM_conditions": 0
+  },
+  "extraction_scope": "existing immutable A JSON files only; no model/Adam binary load, prediction NPZ, event data, re-evaluation, performance/math/optimizer or S/P output access"
+}

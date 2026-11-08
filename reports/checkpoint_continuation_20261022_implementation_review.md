@@ -1,0 +1,9 @@
+# 检查点续接实现复查
+
+非实现者/root/reconstruction_independent_review_20261022只读复查新recovery/qualification/私有launch/相关CPU测试，无执行/GPU/torch.load/Git。原始结论：
+迁移、四路径132更新、三份活状态续接及12端点后一次val的主要连接成立。发现一项冻结前应修正的阻塞：新源码绑定可以被遗漏。launch只验证binding.files已有项，未要求新recovery、qualification、launch、测试及本阶段协议/规划必须包含其中。遗漏模块仍可能通过单位资格，而native来源快照无法覆盖它。加明确必需文件集合，逐项核验当前SHA与binding一致即可；保留现有单位验收与正式binding同源检查。
+另需明确恢复口径：新入口只有unit/run，已有run目录即拒绝；train_group也没有resume路径。因此当前实现不能兑现协议中的外部中断恢复。首次执行可行，但须在启动前明确“中断后关闭并另登记续接”，或补齐原要求固定恢复入口。
+其余静态核对未发现阻塞：原目录完整清单及允许项先核验，复制后再核原件；旧异常文件未被遗漏制造干净副本。每份旧32状态用原identity真实shared restore一次，新源32发布前后比较完整计算状态。四路径使用实际serializer，比较32/33状态与旧6301；未修改确定性算法配置。资格通过后，同进程三模型各480更新，其余九模型各512；12端点严格验证后才调用原一次val。QA06明确按旧源核验，未伪称新源通过。新增CPU测试使用真实共享serializer，包含名称冲突、异常目录、字节篡改、迁移及端点屏障。
+本次仅静态读取，未运行测试/GPU、加载training.pt、编辑或操作Git。实际状态一致性仍由本轮固定资格验证决定。
+
+root采纳与冻结前处理：launch添加显式REQUIRED新源/测试/规划/协议/manifest/失败摘要集合，强制每项当前SHA与binding相同，并强制三份原全部文件及旧complete/native在快照内。单位资格再核native真实source_before逐项等于正式binding；不是只信PASS。协议启动前明确当前无外部--resume，中断关闭后另登记且最多一次界限不重置，内部32真实恢复不变。没有新增科学改动或额外验证分支。实际执行仍为唯一相关12项CPU集合、唯一四路径132CUDA资格、三迁移全过再6048正式更新。

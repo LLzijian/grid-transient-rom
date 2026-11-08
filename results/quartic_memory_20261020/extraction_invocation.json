@@ -1,0 +1,15 @@
+{
+  "status": "REGISTERED_AFTER_ALL_SIX_COMPLETE_NO_FORMAL_EXTRACTION_YET",
+  "native_scientific_execution_branch": "codex/quartic-memory-runs-20261020",
+  "execution_archive": "6aec44e003ce9ca49b84838d13823edb5413107c",
+  "argv": [
+    "C:/Users/LLLzijian/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+    "-"
+  ],
+  "stdin_source": "import hashlib,json,os,runpy,sys,threading,time\nfrom pathlib import Path\nstarted=time.perf_counter()\nroot=Path('E:/03-nn_Transfer_Func/kiki')\nscript=root/'private_data/closure_mechanism_20261019/P2/quartic_memory01/postprocess/extract_quartic_memory.py'\nreceipt=root/'results/quartic_memory_20261020/extraction_receipt.json'\noutput=root/'results/quartic_memory_20261020/fixed_train_metrics_step001024.json'\nexpected='b4fbbd8beba780f7afd9513368bc9cdbd62fea488523494d5a9ac5b5475f954c'\nassert hashlib.sha256(script.read_bytes()).hexdigest()==expected\nassert not receipt.exists() and not output.exists()\ndef expired():\n receipt.write_text(json.dumps({'status':'TIMEOUT','exit_code':124,'elapsed_seconds':time.perf_counter()-started,'source_sha256':expected,'cap_seconds':90},indent=2)+'\\n',encoding='utf-8')\n os._exit(124)\ntimer=threading.Timer(90,expired);timer.daemon=True;timer.start()\nsys.argv=[str(script),'--after-complete','--manifest-sha256','a1b411dae2c00867611afe390d934b8cc718d55d3103dd81aba0b6229aa34842','--output',str(output)]\nstatus='COMPLETED';exit_code=0\ntry:\n runpy.run_path(str(script),run_name='__main__')\nexcept BaseException as error:\n status='UNRESOLVED';exit_code=int(error.code) if isinstance(error,SystemExit) and isinstance(error.code,int) else 1\n raise\nfinally:\n timer.cancel()\n r={'status':status,'exit_code':exit_code,'elapsed_seconds':time.perf_counter()-started,'source_sha256':expected,'cap_seconds':90,'output_path':str(output),'output_sha256':hashlib.sha256(output.read_bytes()).hexdigest() if output.exists() else None,'scope':'stdlib JSON arithmetic only; no new model or prediction; root owns adoption'}\n receipt.write_text(json.dumps(r,indent=2)+'\\n',encoding='utf-8')\n print(json.dumps(r))\n",
+  "source_sha256": "b4fbbd8beba780f7afd9513368bc9cdbd62fea488523494d5a9ac5b5475f954c",
+  "manifest_sha256": "a1b411dae2c00867611afe390d934b8cc718d55d3103dd81aba0b6229aa34842",
+  "cap_seconds": 90,
+  "charge": "within evaluation4000/extraction1600",
+  "scope": "one JSON-only invocation; all6 sources and outcomes fixed; no model inference/data access; no scientific retry"
+}

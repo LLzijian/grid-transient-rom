@@ -1,0 +1,460 @@
+{
+  "status": "PASS",
+  "actual_optimizer_updates": 204,
+  "models": [
+    {
+      "mode": "A",
+      "status": "PASS",
+      "actual_optimizer_updates": 68,
+      "continuous": 34,
+      "before_save": 32,
+      "after_restore": 2,
+      "saved_step": 32,
+      "checkpoint": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\r_memory_20261025\\run01_repair01\\qa\\A\\checkpoints\\step000032",
+      "parameter_maxabs": 0.0,
+      "Adam_maxabs": 0.0,
+      "runtime": {
+        "executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+        "executable_sha256": "82264b3fe4248d1ff3564a0296cbb4a266ef968799bd85902ab5eaaf3e17eb62",
+        "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+        "torch": "2.13.0+cu130",
+        "cuda": "13.0",
+        "device": "cuda:0",
+        "gpu": "NVIDIA GeForce RTX 4060 Ti",
+        "dtype": "float64",
+        "threads": 1
+      },
+      "serialization_model_Adam_RNG_exact": true,
+      "nonzero_Adam_exp_avg": true,
+      "continuation_claim": "same-environment numerical recovery at rtol/atol2e-9; RNG bitwise equal"
+    },
+    {
+      "mode": "B",
+      "status": "PASS",
+      "actual_optimizer_updates": 68,
+      "continuous": 34,
+      "before_save": 32,
+      "after_restore": 2,
+      "saved_step": 32,
+      "checkpoint": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\r_memory_20261025\\run01_repair01\\qa\\B\\checkpoints\\step000032",
+      "parameter_maxabs": 0.0,
+      "Adam_maxabs": 0.0,
+      "runtime": {
+        "executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+        "executable_sha256": "82264b3fe4248d1ff3564a0296cbb4a266ef968799bd85902ab5eaaf3e17eb62",
+        "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+        "torch": "2.13.0+cu130",
+        "cuda": "13.0",
+        "device": "cuda:0",
+        "gpu": "NVIDIA GeForce RTX 4060 Ti",
+        "dtype": "float64",
+        "threads": 1
+      },
+      "serialization_model_Adam_RNG_exact": true,
+      "nonzero_Adam_exp_avg": true,
+      "continuation_claim": "same-environment numerical recovery at rtol/atol2e-9; RNG bitwise equal"
+    },
+    {
+      "mode": "C",
+      "status": "PASS",
+      "actual_optimizer_updates": 68,
+      "continuous": 34,
+      "before_save": 32,
+      "after_restore": 2,
+      "saved_step": 32,
+      "checkpoint": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\r_memory_20261025\\run01_repair01\\qa\\C\\checkpoints\\step000032",
+      "parameter_maxabs": 0.0,
+      "Adam_maxabs": 0.0,
+      "runtime": {
+        "executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+        "executable_sha256": "82264b3fe4248d1ff3564a0296cbb4a266ef968799bd85902ab5eaaf3e17eb62",
+        "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+        "torch": "2.13.0+cu130",
+        "cuda": "13.0",
+        "device": "cuda:0",
+        "gpu": "NVIDIA GeForce RTX 4060 Ti",
+        "dtype": "float64",
+        "threads": 1
+      },
+      "serialization_model_Adam_RNG_exact": true,
+      "nonzero_Adam_exp_avg": true,
+      "continuation_claim": "same-environment numerical recovery at rtol/atol2e-9; RNG bitwise equal"
+    }
+  ],
+  "zero_update_CPU_CUDA_comparisons": [
+    {
+      "mode": "A",
+      "status": "PASS",
+      "actual_optimizer_updates": 0,
+      "rtol": 1e-08,
+      "atol": 1e-10,
+      "maximum_absolute_differences": {
+        "field": 2.2967738821932926e-15,
+        "short_trajectory": 1.126486057212439e-16,
+        "complete_short_objective": 7.55976905424463e-20,
+        "objective_risk": 1.196103165751678e-21,
+        "objective_mean": 1.1539169545114736e-21,
+        "objective_local": 6.041727194087314e-21,
+        "objective_latent_consistency": 1.3288591917179034e-21,
+        "objective_torque": 5.747118547120428e-19,
+        "objective_deploy_loss": 1.1957722935066568e-20,
+        "objective_auxiliary_loss": 6.363335016247931e-20,
+        "objective_total_loss": 7.55976905424463e-20,
+        "gradient__q_quadratic_raw": 1.121243320315629e-21,
+        "gradient_coefficients": 1.0869814993436826e-19,
+        "gradient_structured.coupling": 5.198002969283226e-21,
+        "gradient_structured.damping": 5.794400190933959e-22,
+        "gradient_structured.jpi_p": 6.615376948892839e-22,
+        "gradient_structured.rpp": 5.380551390716022e-23,
+        "gradient_structured.storage_base": 9.245811296811467e-22,
+        "gradient_local_gru.weight_ih_l0": 3.8963515573697816e-20,
+        "gradient_local_gru.weight_hh_l0": 1.1779051922755114e-20,
+        "gradient_local_gru.bias_ih_l0": 1.1434944787933055e-20,
+        "gradient_local_gru.bias_hh_l0": 5.403143761196377e-21,
+        "gradient_local_head.weight": 1.9481757786848908e-20,
+        "gradient__template_scalars.3": 3.434453903320171e-20,
+        "gradient__template_scalars.4": 3.106890380749172e-21,
+        "gradient__template_scalars.5": 3.187876532596942e-23,
+        "gradient__template_scalars.6": 0.0
+      },
+      "maximum_unclipped_gradient_difference": 1.0869814993436826e-19,
+      "unclipped_gradient_differences_by_parameter": {
+        "_q_quadratic_raw": 1.121243320315629e-21,
+        "coefficients": 1.0869814993436826e-19,
+        "structured.coupling": 5.198002969283226e-21,
+        "structured.damping": 5.794400190933959e-22,
+        "structured.jpi_p": 6.615376948892839e-22,
+        "structured.rpp": 5.380551390716022e-23,
+        "structured.storage_base": 9.245811296811467e-22,
+        "local_gru.weight_ih_l0": 3.8963515573697816e-20,
+        "local_gru.weight_hh_l0": 1.1779051922755114e-20,
+        "local_gru.bias_ih_l0": 1.1434944787933055e-20,
+        "local_gru.bias_hh_l0": 5.403143761196377e-21,
+        "local_head.weight": 1.9481757786848908e-20,
+        "_template_scalars.3": 3.434453903320171e-20,
+        "_template_scalars.4": 3.106890380749172e-21,
+        "_template_scalars.5": 3.187876532596942e-23,
+        "_template_scalars.6": 0.0
+      },
+      "gradient_dtypes_by_parameter": {
+        "_q_quadratic_raw": {
+          "CPU": "torch.float64",
+          "CUDA": "torch.float64"
+        },
+        "coefficients": {
+          "CPU": "torch.float64",
+          "CUDA": "torch.float64"
+        },
+        "structured.coupling": {
+          "CPU": "torch.float64",
+          "CUDA": "torch.float64"
+        },
+        "structured.damping": {
+          "CPU": "torch.float64",
+          "CUDA": "torch.float64"
+        },
+        "structured.jpi_p": {
+          "CPU": "torch.float64",
+          "CUDA": "torch.float64"
+        },
+        "structured.rpp": {
+          "CPU": "torch.float64",
+          "CUDA": "torch.float64"
+        },
+        "structured.storage_base": {
+          "CPU": "torch.float64",
+          "CUDA": "torch.float64"
+        },
+        "local_gru.weight_ih_l0": {
+          "CPU": "torch.float64",
+          "CUDA": "torch.float64"
+        },
+        "local_gru.weight_hh_l0": {
+          "CPU": "torch.float64",
+          "CUDA": "torch.float64"
+        },
+        "local_gru.bias_ih_l0": {
+          "CPU": "torch.float64",
+          "CUDA": "torch.float64"
+        },
+        "local_gru.bias_hh_l0": {
+          "CPU": "torch.float64",
+          "CUDA": "torch.float64"
+        },
+        "local_head.weight": {
+          "CPU": "torch.float64",
+          "CUDA": "torch.float64"
+        },
+        "_template_scalars.3": {
+          "CPU": "torch.float64",
+          "CUDA": "torch.float64"
+        },
+        "_template_scalars.4": {
+          "CPU": "torch.float64",
+          "CUDA": "torch.float64"
+        },
+        "_template_scalars.5": {
+          "CPU": "torch.float64",
+          "CUDA": "torch.float64"
+        },
+        "_template_scalars.6": {
+          "CPU": "torch.float64",
+          "CUDA": "torch.float64"
+        }
+      },
+      "parameter_names": [
+        "_q_quadratic_raw",
+        "coefficients",
+        "structured.coupling",
+        "structured.damping",
+        "structured.jpi_p",
+        "structured.rpp",
+        "structured.storage_base",
+        "local_gru.weight_ih_l0",
+        "local_gru.weight_hh_l0",
+        "local_gru.bias_ih_l0",
+        "local_gru.bias_hh_l0",
+        "local_head.weight",
+        "_template_scalars.3",
+        "_template_scalars.4",
+        "_template_scalars.5",
+        "_template_scalars.6"
+      ],
+      "field_dtype": "torch.float64",
+      "trajectory_dtype": "torch.float64",
+      "objective_dtype": "torch.float64"
+    },
+    {
+      "mode": "B",
+      "status": "PASS",
+      "actual_optimizer_updates": 0,
+      "rtol": 1e-08,
+      "atol": 1e-10,
+      "maximum_absolute_differences": {
+        "field": 2.1465034610868017e-15,
+        "short_trajectory": 7.237049501340742e-17,
+        "complete_short_objective": 2.244637310223896e-20,
+        "objective_risk": 7.043442915889031e-22,
+        "objective_mean": 6.245213624775359e-22,
+        "objective_local": 2.177139372239569e-21,
+        "objective_latent_consistency": 2.6366382025127757e-24,
+        "objective_torque": 1.3213713977167085e-19,
+        "objective_deploy_loss": 7.040961374051372e-21,
+        "objective_auxiliary_loss": 1.5405411728187587e-20,
+        "objective_total_loss": 2.244637310223896e-20,
+        "gradient_kappa_raw": 2.5267782774080767e-24,
+        "gradient_lambda_raw": 6.785465962349055e-26,
+        "gradient_structured.coupling": 4.478355836362092e-21,
+        "gradient_structured.damping": 2.365736551901659e-22,
+        "gradient_structured.jpi_p": 1.5457937697084705e-22,
+        "gradient_structured.rpp": 2.908056841006738e-24,
+        "gradient_structured.storage_base": 2.1703151321860064e-22,
+        "gradient_local_gru.weight_ih_l0": 0.0,
+        "gradient_local_gru.weight_hh_l0": 0.0,
+        "gradient_local_gru.bias_ih_l0": 0.0,
+        "gradient_local_gru.bias_hh_l0": 0.0,
+        "gradient_local_head.weight": 3.1234339930002325e-21
+      },
+      "maximum_unclipped_gradient_difference": 4.478355836362092e-21,
+      "unclipped_gradient_differences_by_parameter": {
+        "kappa_raw": 2.5267782774080767e-24,
+        "lambda_raw": 6.785465962349055e-26,
+        "structured.coupling": 4.478355836362092e-21,
+        "structured.damping": 2.365736551901659e-22,
+        "structured.jpi_p": 1.5457937697084705e-22,
+        "structured.rpp": 2.908056841006738e-24,
+        "structured.storage_base": 2.1703151321860064e-22,
+        "local_gru.weight_ih_l0": 0.0,
+        "local_gru.weight_hh_l0": 0.0,
+        "local_gru.bias_ih_l0": 0.0,
+        "local_gru.bias_hh_l0": 0.0,
+        "local_head.weight": 3.1234339930002325e-21
+      },
+      "gradient_dtypes_by_parameter": {
+        "kappa_raw": {
+          "CPU": "torch.float64",
+          "CUDA": "torch.float64"
+        },
+        "lambda_raw": {
+          "CPU": "torch.float64",
+          "CUDA": "torch.float64"
+        },
+        "structured.coupling": {
+          "CPU": "torch.float64",
+          "CUDA": "torch.float64"
+        },
+        "structured.damping": {
+          "CPU": "torch.float64",
+          "CUDA": "torch.float64"
+        },
+        "structured.jpi_p": {
+          "CPU": "torch.float64",
+          "CUDA": "torch.float64"
+        },
+        "structured.rpp": {
+          "CPU": "torch.float64",
+          "CUDA": "torch.float64"
+        },
+        "structured.storage_base": {
+          "CPU": "torch.float64",
+          "CUDA": "torch.float64"
+        },
+        "local_gru.weight_ih_l0": {
+          "CPU": "torch.float64",
+          "CUDA": "torch.float64"
+        },
+        "local_gru.weight_hh_l0": {
+          "CPU": "torch.float64",
+          "CUDA": "torch.float64"
+        },
+        "local_gru.bias_ih_l0": {
+          "CPU": "torch.float64",
+          "CUDA": "torch.float64"
+        },
+        "local_gru.bias_hh_l0": {
+          "CPU": "torch.float64",
+          "CUDA": "torch.float64"
+        },
+        "local_head.weight": {
+          "CPU": "torch.float64",
+          "CUDA": "torch.float64"
+        }
+      },
+      "parameter_names": [
+        "kappa_raw",
+        "lambda_raw",
+        "structured.coupling",
+        "structured.damping",
+        "structured.jpi_p",
+        "structured.rpp",
+        "structured.storage_base",
+        "local_gru.weight_ih_l0",
+        "local_gru.weight_hh_l0",
+        "local_gru.bias_ih_l0",
+        "local_gru.bias_hh_l0",
+        "local_head.weight"
+      ],
+      "field_dtype": "torch.float64",
+      "trajectory_dtype": "torch.float64",
+      "objective_dtype": "torch.float64"
+    },
+    {
+      "mode": "C",
+      "status": "PASS",
+      "actual_optimizer_updates": 0,
+      "rtol": 1e-08,
+      "atol": 1e-10,
+      "maximum_absolute_differences": {
+        "field": 2.1465034610868017e-15,
+        "short_trajectory": 3.95516952522712e-16,
+        "complete_short_objective": 2.4193378555950953e-20,
+        "objective_risk": 2.8434333556510326e-24,
+        "objective_mean": 6.462348535570529e-25,
+        "objective_local": 3.639594695233322e-22,
+        "objective_latent_consistency": 2.378044999416448e-19,
+        "objective_torque": 6.352747104407253e-22,
+        "objective_deploy_loss": 2.8537731133079455e-23,
+        "objective_auxiliary_loss": 2.4193378555950953e-20,
+        "objective_total_loss": 2.4193378555950953e-20,
+        "gradient_kappa_raw": 5.848166930749906e-22,
+        "gradient_lambda_raw": 4.2298707803511623e-20,
+        "gradient_structured.coupling": 6.868328780211555e-20,
+        "gradient_structured.damping": 6.741328121851108e-22,
+        "gradient_structured.jpi_p": 4.311678942932657e-22,
+        "gradient_structured.rpp": 1.58973773975035e-24,
+        "gradient_structured.storage_base": 7.194403377679958e-22,
+        "gradient_local_gru.weight_ih_l0": 0.0,
+        "gradient_local_gru.weight_hh_l0": 0.0,
+        "gradient_local_gru.bias_ih_l0": 0.0,
+        "gradient_local_gru.bias_hh_l0": 0.0,
+        "gradient_local_head.weight": 5.424981329367777e-20
+      },
+      "maximum_unclipped_gradient_difference": 6.868328780211555e-20,
+      "unclipped_gradient_differences_by_parameter": {
+        "kappa_raw": 5.848166930749906e-22,
+        "lambda_raw": 4.2298707803511623e-20,
+        "structured.coupling": 6.868328780211555e-20,
+        "structured.damping": 6.741328121851108e-22,
+        "structured.jpi_p": 4.311678942932657e-22,
+        "structured.rpp": 1.58973773975035e-24,
+        "structured.storage_base": 7.194403377679958e-22,
+        "local_gru.weight_ih_l0": 0.0,
+        "local_gru.weight_hh_l0": 0.0,
+        "local_gru.bias_ih_l0": 0.0,
+        "local_gru.bias_hh_l0": 0.0,
+        "local_head.weight": 5.424981329367777e-20
+      },
+      "gradient_dtypes_by_parameter": {
+        "kappa_raw": {
+          "CPU": "torch.float64",
+          "CUDA": "torch.float64"
+        },
+        "lambda_raw": {
+          "CPU": "torch.float64",
+          "CUDA": "torch.float64"
+        },
+        "structured.coupling": {
+          "CPU": "torch.float64",
+          "CUDA": "torch.float64"
+        },
+        "structured.damping": {
+          "CPU": "torch.float64",
+          "CUDA": "torch.float64"
+        },
+        "structured.jpi_p": {
+          "CPU": "torch.float64",
+          "CUDA": "torch.float64"
+        },
+        "structured.rpp": {
+          "CPU": "torch.float64",
+          "CUDA": "torch.float64"
+        },
+        "structured.storage_base": {
+          "CPU": "torch.float64",
+          "CUDA": "torch.float64"
+        },
+        "local_gru.weight_ih_l0": {
+          "CPU": "torch.float64",
+          "CUDA": "torch.float64"
+        },
+        "local_gru.weight_hh_l0": {
+          "CPU": "torch.float64",
+          "CUDA": "torch.float64"
+        },
+        "local_gru.bias_ih_l0": {
+          "CPU": "torch.float64",
+          "CUDA": "torch.float64"
+        },
+        "local_gru.bias_hh_l0": {
+          "CPU": "torch.float64",
+          "CUDA": "torch.float64"
+        },
+        "local_head.weight": {
+          "CPU": "torch.float64",
+          "CUDA": "torch.float64"
+        }
+      },
+      "parameter_names": [
+        "kappa_raw",
+        "lambda_raw",
+        "structured.coupling",
+        "structured.damping",
+        "structured.jpi_p",
+        "structured.rpp",
+        "structured.storage_base",
+        "local_gru.weight_ih_l0",
+        "local_gru.weight_hh_l0",
+        "local_gru.bias_ih_l0",
+        "local_gru.bias_hh_l0",
+        "local_head.weight"
+      ],
+      "field_dtype": "torch.float64",
+      "trajectory_dtype": "torch.float64",
+      "objective_dtype": "torch.float64"
+    }
+  ],
+  "fixture_only": true,
+  "real_train_payloads_read": false,
+  "val_read": false,
+  "test_read": false
+}

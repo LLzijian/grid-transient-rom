@@ -1,0 +1,9 @@
+# 空间极值研究：首次执行设置
+
+root采纳独立方案挑战与实现审查的有限条件。物理eq明确来自既有train事件元数据；解释性极值误差同时join实际区间及细粗分类资格，未通过保留null。两叶实现准备实耗22.1694825秒已写入必需BASE/implementation_cost.json，并同时计QA4200与本轮24000门禁；支持3800含已计1200规划，旧900不动。
+
+BASE=private_data/closure_mechanism_20261019/P2/spatial_extrema01。静态固定QA1000/Timeout970/worker940、prepare180/150/120、cost1500/1470/1440、train2200/2170/2100、evaluate400/370/340；生产helper与公共PS均核0<worker<Timeout<Max≤3600。类别上限不是单进程cap。每次首次执行前仍须逐条读取实际make生成的worker与launcher argv，对照Python parser、command_gate/native_limits及公共PS参数，冻结并归档精确文件/hash；源码execution_contract不代替尚未生成argv的实际核对。
+
+新helper只管新BASE独占native锁、真实PID与创建FILETIME、完整旧尝试清理及single-attempt规则，不接收旧F失败回执。旧6101_O为只读精确角色合同，其他五个为新端点；freeze和evaluate共用同一角色、来源与hash检查。禁止搬移旧O、重跑其训练或重复计费。六端点未齐，不单独评价旧O。当前无正式训练或端点评价；QA/prepare/cost完成且整档含25%费用准入后才启动五次新训练。
+
+私有执行helper的公开复现副本放在results/spatial_extrema_20261020/reproduction，须恢复到BASE同名文件才能使用；native测试不称公共clone即可独立运行。真实B源、旧O与train资产留本地，必要路径/hash记录归档。工程PR只可能接受可复用runtime、合成测试及短说明，独立于新模型科学采用。

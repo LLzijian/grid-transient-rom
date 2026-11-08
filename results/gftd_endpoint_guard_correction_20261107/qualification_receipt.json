@@ -1,0 +1,35 @@
+{
+  "recorded_utc": "2026-11-07T09:00:37.645876+00:00",
+  "actual_evidence_audit_executed": false,
+  "scientific_fits_executed": 0,
+  "scientific_integrations_executed": 0,
+  "scope": "Pure synthetic JSON,hash and binary64 identity cases;real fits not used for test audits.",
+  "final_tests_passed": 18,
+  "qualification_runs": [
+    {
+      "chunk": "1c5d0d",
+      "passed": 16,
+      "pytest_seconds": 1.88,
+      "tool_wall_seconds": 2.9940383
+    },
+    {
+      "chunk": "baa93a",
+      "passed": 17,
+      "pytest_seconds": 1.35,
+      "tool_wall_seconds": 2.6569082
+    },
+    {
+      "chunk": "05681e",
+      "passed": 18,
+      "pytest_seconds": 1.42,
+      "tool_wall_seconds": 2.4939503
+    }
+  ],
+  "pytest_seconds_total": 4.65,
+  "tool_wall_seconds_total": 8.1448968,
+  "command": ".venv-gpu/Scripts/python.exe -B -m pytest -p no:cacheprovider --basetemp .tmp/gftd_guard_unit_20261107_03 tests/test_gftd_endpoint_guard_correction_20261107.py -q --maxfail=1",
+  "source_sha256": {
+    "tools/gftd_endpoint_guard_correction_20261107.py": "5e081bceb5675224404fe951b1fc8006bbc6aab0274499ee63b56f5763179f95",
+    "tests/test_gftd_endpoint_guard_correction_20261107.py": "ceddc6bc76ff3d2c36d5fbdb06a2fe5793de6ec1c7f151eb45d26e1620c43b31"
+  }
+}

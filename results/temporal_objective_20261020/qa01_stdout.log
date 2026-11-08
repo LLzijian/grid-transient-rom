@@ -1,0 +1,104 @@
+....FF............................                                       [100%]
+================================== FAILURES ===================================
+________ test_one_update_matches_old_update_adam_and_clears_cache[cpu] ________
+
+device = 'cpu'
+
+    @pytest.mark.parametrize('device', DEVICES)
+    def test_one_update_matches_old_update_adam_and_clears_cache(device):
+        from linear_cache_cost_gate_20261019 import one_update as old_update
+        a = model_fixture(device); b = copy.deepcopy(a)
+        _,store,samples = event_fixture(device)
+        oa = torch.optim.Adam([p for p in a.parameters() if p.requires_grad],lr=9e-5)
+        ob = torch.optim.Adam([p for p in b.parameters() if p.requires_grad],lr=9e-5)
+>       expected = old_update(a,oa,store,samples,.12,.01)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_temporal_objective_runtime_20261020.py:128: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+experiments\linear_cache_cost_gate_20261019.py:278: in one_update
+    if not finite([value, components]):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\linear_cache_cost_gate_20261019.py:224: in finite
+    return all(bool(torch.isfinite(t).all().item()) for t in _tensors(value))
+                                                             ^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = [tensor(0.5304, dtype=torch.float64, grad_fn=<AddBackward0>), {'risk': tensor(0.0037, dtype=torch.float64, grad_fn=<Ad...grad_fn=<MeanBackward0>), 'latent_consistency': tensor(1.5700e-05, dtype=torch.float64, grad_fn=<MeanBackward0>), ...}]
+
+    def _tensors(value):
+>       if torch.is_tensor(value):
+           ^^^^^
+E       NameError: name 'torch' is not defined
+
+experiments\linear_cache_cost_gate_20261019.py:213: NameError
+_______ test_one_update_matches_old_update_adam_and_clears_cache[cuda] ________
+
+device = 'cuda'
+
+    @pytest.mark.parametrize('device', DEVICES)
+    def test_one_update_matches_old_update_adam_and_clears_cache(device):
+        from linear_cache_cost_gate_20261019 import one_update as old_update
+        a = model_fixture(device); b = copy.deepcopy(a)
+        _,store,samples = event_fixture(device)
+        oa = torch.optim.Adam([p for p in a.parameters() if p.requires_grad],lr=9e-5)
+        ob = torch.optim.Adam([p for p in b.parameters() if p.requires_grad],lr=9e-5)
+>       expected = old_update(a,oa,store,samples,.12,.01)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_temporal_objective_runtime_20261020.py:128: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+experiments\linear_cache_cost_gate_20261019.py:278: in one_update
+    if not finite([value, components]):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\linear_cache_cost_gate_20261019.py:224: in finite
+    return all(bool(torch.isfinite(t).all().item()) for t in _tensors(value))
+                                                             ^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = [tensor(0.5304, device='cuda:0', dtype=torch.float64, grad_fn=<AddBackward0>), {'risk': tensor(0.0037, device='cuda:0'..., 'latent_consistency': tensor(1.5700e-05, device='cuda:0', dtype=torch.float64,
+       grad_fn=<MeanBackward0>), ...}]
+
+    def _tensors(value):
+>       if torch.is_tensor(value):
+           ^^^^^
+E       NameError: name 'torch' is not defined
+
+experiments\linear_cache_cost_gate_20261019.py:213: NameError
+=================================== PASSES ====================================
+=========================== short test summary info ===========================
+PASSED tests/test_temporal_objective_runtime_20261020.py::test_independent_hand_weights_ragged_state_and_parameter_gradients[cpu]
+PASSED tests/test_temporal_objective_runtime_20261020.py::test_independent_hand_weights_ragged_state_and_parameter_gradients[cuda]
+PASSED tests/test_temporal_objective_runtime_20261020.py::test_original_values_components_gradients_and_real_adam_match[cpu]
+PASSED tests/test_temporal_objective_runtime_20261020.py::test_original_values_components_gradients_and_real_adam_match[cuda]
+PASSED tests/test_temporal_objective_runtime_20261020.py::test_tail_objective_against_single_event_reference_and_unchanged_auxiliaries[cpu]
+PASSED tests/test_temporal_objective_runtime_20261020.py::test_tail_objective_against_single_event_reference_and_unchanged_auxiliaries[cuda]
+PASSED tests/test_temporal_objective_runtime_20261020.py::test_auxiliary_gradients_and_encoding_calls_stay_separate
+PASSED tests/test_temporal_objective_runtime_20261020.py::test_one_update_errors_clear_cache_and_do_not_step
+PASSED tests/test_temporal_objective_runtime_20261020.py::test_nonfinite_update_stops_before_adam_and_closes_cache[value]
+PASSED tests/test_temporal_objective_runtime_20261020.py::test_nonfinite_update_stops_before_adam_and_closes_cache[gradient]
+PASSED tests/test_temporal_objective_runtime_20261020.py::test_bad_genuine_counts_and_no_implicit_padding
+PASSED tests/test_temporal_objective_runtime_20261020.py::test_noncanonical_segments_rejected_even_when_total_coverage_matches
+PASSED tests/test_temporal_objective_20261020.py::test_requests_and_phase_lock
+PASSED tests/test_temporal_objective_20261020.py::test_shared_sampling512_real_endpoints_and_no_horizon_rng
+PASSED tests/test_temporal_objective_20261020.py::test_actual_cost_document_roundtrip_and_full_nine_gate
+PASSED tests/test_temporal_objective_20261020.py::test_fixed_sources_metadata_and_bytes_refuse_mutation
+PASSED tests/test_temporal_objective_20261020.py::test_cost_panels_are_id_fixed_longest_and_short_unstable
+PASSED tests/test_temporal_objective_20261020.py::test_tail_metrics_consume_same_prediction_real_endpoint
+PASSED tests/test_temporal_objective_20261020.py::test_production_nonempty_adam_checkpoint_restore_next_update
+PASSED tests/test_temporal_objective_20261020.py::test_production_queue_uses_one_prediction_pair_and_retains_tail_rows
+PASSED tests/test_temporal_objective_20261020.py::test_nontrain_spec_and_outside_output_rejected
+PASSED tests/test_temporal_objective_20261020.py::test_cohort_membership_from_frozen_source_not_prefix
+PASSED tests/test_temporal_objective_20261020.py::test_restore_witness_longest_long_panel_within_twelve_updates
+PASSED tests/test_temporal_objective_20261020.py::test_nine_zero_update_source_comparisons_restore_rng_on_success_and_failure
+PASSED tests/test_temporal_native_envelope_20261020.py::test_exact_prior_and_complete_owned_cleanup
+PASSED tests/test_temporal_native_envelope_20261020.py::test_unresolved_cleanup_blocks_independent_launch
+PASSED tests/test_temporal_native_envelope_20261020.py::test_same_train_endpoint_cannot_run_twice
+PASSED tests/test_temporal_native_envelope_20261020.py::test_same_evaluation_cannot_run_twice
+PASSED tests/test_temporal_native_envelope_20261020.py::test_category_and_nested_recovery_caps
+PASSED tests/test_temporal_native_envelope_20261020.py::test_exclusive_native_claim_preserves_other_owner
+PASSED tests/test_temporal_native_envelope_20261020.py::test_explicit_preparation_cost_counts_against_engineering_and_stage_caps
+PASSED tests/test_temporal_native_envelope_20261020.py::test_production_entry_requires_preparation_cost_binding
+FAILED tests/test_temporal_objective_runtime_20261020.py::test_one_update_matches_old_update_adam_and_clears_cache[cpu]
+FAILED tests/test_temporal_objective_runtime_20261020.py::test_one_update_matches_old_update_adam_and_clears_cache[cuda]
+2 failed, 32 passed, 2 warnings in 16.47s

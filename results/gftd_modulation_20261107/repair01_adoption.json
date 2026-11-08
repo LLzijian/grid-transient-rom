@@ -1,0 +1,33 @@
+{
+  "recorded_utc": "2026-11-07T15:02:22.021878+00:00",
+  "status": "accepted_for_technical_implementation",
+  "execution_released": false,
+  "repair_number": 1,
+  "repair_limit": 2,
+  "original_action_id": "gftd-modulation-20261107-01",
+  "failure": "OSError(22, Invalid argument) opening initializations.partial.json for writing; root cause unknown",
+  "original_shared_fits_frozen": 16,
+  "completed_initializations_in_original_receipt": 39,
+  "durable_original_rows": 38,
+  "identity_audit_sha256": "faf652029db757a21ee04e61a8f397e749460c819ea568db79b444e067f9078e",
+  "target_row_index": 38,
+  "source_row_index": 36,
+  "independent_duplicate_row_index": 37,
+  "recovery": "Reuse already-certified state, future and same-point numerical evidence from exactly identical frozen model/config/four-key input. Mark equivalent_output_reuse; do not claim recovered original optimizer diagnostics.",
+  "lost_original_optimizer_diagnostics": null,
+  "lost_original_optimizer_diagnostics_status": "unknown/not_persisted",
+  "lost_cost_source": "Exact original execution_receipt counts minus last verified initializations.partial counts",
+  "resume_remaining_rows": 9,
+  "rerun_shared_fit": false,
+  "replay_lost_initialization": false,
+  "scientific_gates_changed": false,
+  "scientific_budget_increased": false,
+  "stage_cost_transfer": false,
+  "root_reason": "Content-identical output reuse restores the missing scientific output without another optimization or parameter choice. The original failed action and actual cost remain separately archived; diagnostics coverage remains 47/48 if all remaining records persist.",
+  "implementation_paths": [
+    "experiments/gftd_modulation_20261107_resume01.py",
+    "tests/test_gftd_modulation_resume01.py"
+  ],
+  "independent_review_required_before_execution": true,
+  "source_snapshot": "results/gftd_modulation_20261107/pre_repair01/manifest.json"
+}

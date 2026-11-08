@@ -1,0 +1,79 @@
+{
+  "recorded_utc": "2026-11-07T09:51:32.328325+00:00",
+  "root_decisions": {
+    "code": "retain_branch",
+    "model": "retain_evidence",
+    "science": "continue",
+    "working_initializer": "Frozen simple600 from zero r, followed by smooth1200 from the same input stage1 estimate; experiment-local known-parameter initializer only.",
+    "working_initializer_scope": "Four fixed exposed artificial three-node states with known shared parameters; 64 new paired Gaussian directions at sigma 1e-6 and 1e-4, 100 ms history and 1 s prediction; four noiseless references reused separately.",
+    "finite_confirmation": "supported_within_registered_scope",
+    "campaign_hypothesis": "unresolved",
+    "model_promoted": false,
+    "default": "none",
+    "incumbent_changed": false,
+    "protected_anchors_changed": false
+  },
+  "five_axes": {
+    "evidence_validity": "valid",
+    "optimizer_health": "healthy",
+    "optimization_adequacy": "unknown",
+    "mechanism_testability": "Complete initializer prediction coverage is testable; no unique mechanism or parameter identification claim.",
+    "effect_scope": "Four fixed exposed artificial three-node states with known shared parameters; 64 new paired Gaussian directions at sigma 1e-6 and 1e-4, 100 ms history and 1 s prediction; four noiseless references reused separately. Higher actual computation; 104 improved and 24 worsened but passing inputs."
+  },
+  "source_sha256": {
+    "reports/gftd_endpoint_confirmation_20261107_result_review.md": "81a3389cd7f0c64ba75a501746ba84f691092b83717cf18f0ea2d0b1586760e4",
+    "reports/gftd_endpoint_confirmation_20261107_scientific_assessment.md": "c7dcd20e974fc793305849035a9380ceec0375c70ecc8daaec00e270d9fedae4",
+    "results/gftd_endpoint_confirmation_20261107/fits.json": "8953a227ea9c3baeb181f4d71af86e43229245df3346ab51f7aa5a55cae368e3",
+    "results/gftd_endpoint_confirmation_20261107/summary.json": "60baf4b1bae4251e02496ed732e08ee931c316b24eb78e906e6a41ad4f0403df",
+    "results/gftd_endpoint_confirmation_20261107/execution_receipt.json": "601e9447d6af22a4744fd2999a4d9c985b148f865d8edce2e538187b812416d6",
+    "reports/gftd_endpoint_confirmation_20261107_conclusion.md": "fef4c3f81999f719328b8af696201a256ea10a40463b5a322f51cd3e094d71fa",
+    "results/gftd_endpoint_confirmation_20261107/evidence_digest.json": "efa942d40fbb472076caca6701bc139f9510ae2f369670624a2720dc5a7b1744",
+    "reports/gftd_structure_next_question_20261107.md": "4981f65290a3ca11f87384b761ebbbbcad09b05ccd207f7332cfaf2289ad6e54"
+  },
+  "classifications_new128": {
+    "stage1_classification": {
+      "pass": 125,
+      "prediction_fail": 3
+    },
+    "complete_classification": {
+      "pass": 128
+    }
+  },
+  "classifications_all132": {
+    "stage1_classification": {
+      "pass": 129,
+      "prediction_fail": 3
+    },
+    "complete_classification": {
+      "pass": 132
+    }
+  },
+  "closure": {
+    "finite_scientific_window_closed": true,
+    "unused_work_transferred": false,
+    "post_launch_technical_repairs": 0,
+    "scientific_replays": 0,
+    "next_Run_released": false
+  },
+  "next_question_reference": "reports/gftd_structure_next_question_20261107.md",
+  "next_question_status": "architecture_preparation_only",
+  "reviewer_receipt": {
+    "task": "/root/loop_review",
+    "configured_model": "gpt-6.1-sol",
+    "server_resolved_model": null,
+    "result_review_sha256": "81a3389cd7f0c64ba75a501746ba84f691092b83717cf18f0ea2d0b1586760e4",
+    "archive_preflight": "20 release hashes, current fits/summary/receipt and original diagnostic summary/correction appendix verified unchanged; artificial payloads and metadata only."
+  },
+  "harness_interpretation": {
+    "assessment_reference": "results/gftd_endpoint_confirmation_20261107/harness_assessment.json",
+    "schema_valid": true,
+    "all_proposed_decisions_eligible": true,
+    "promotion_eligible": false,
+    "warning_disposition": {
+      "EXPOSURE_UNRESOLVED": "Retained: four states and parameters were exposed; only new noise directions received bounded confirmation. This does not warrant general new-condition promotion.",
+      "HEALTH_IS_NOT_ADEQUACY": "Retained: optimization adequacy remains unknown.",
+      "RECORD_CHECK_NOT_CERTIFICATION": "Retained: scientific conclusion rests on separate result review and root adoption."
+    },
+    "recommended_next_confirm": "Advisory for broader claims; current bounded observation is complete. Next discrimination addresses a distinct unknown-parameter question after prospective design."
+  }
+}

@@ -1,0 +1,388 @@
+{
+  "recorded_at_utc": "2026-10-28T14:21:20.949326+00:00",
+  "derived_by": "root extraction from completed immutable records",
+  "source_commit": "642ccb15347ec38e95bdd8737dc7d67453af3243",
+  "scope": "completed numerical qualification and actual CUDA optimizer/RNG recovery QA only; formal study RUNNING at recording, not a scientific promotion",
+  "source_files": [
+    {
+      "path": "private_data/force_exchange_20261028/study01/qualification/summary.json",
+      "sha256": "1b73716f56a13b8575b6ca69f32cde8c7382978d985618aaf51ee4b98184f22e"
+    },
+    {
+      "path": "private_data/force_exchange_20261028/study01/qa/summary.json",
+      "sha256": "8dc1d98ef263f1012b16f343b69f87526f70ba68b7282a43f66ba7f9ede53e7c"
+    },
+    {
+      "path": "private_data/force_exchange_20261028/study01/qualification/F_C0_cross_model.json",
+      "sha256": "e212b30be5be584785bd0f6e79f0cfb0c348c195d7393b40349c8a95a2e1b115"
+    },
+    {
+      "path": "private_data/force_exchange_20261028/study01/native/prepare/receipt.json",
+      "sha256": "60eee16fda282a552523708995134609f7f5c6d66da6c225a4f77c675cc7ade4"
+    },
+    {
+      "path": "private_data/force_exchange_20261028/study01/native/qualify/receipt.json",
+      "sha256": "6f10bdbf117ed390485af7c762334b7493647d896d7ffbbc815c6a6a60e00663"
+    },
+    {
+      "path": "private_data/force_exchange_20261028/study01/native/qa/receipt.json",
+      "sha256": "b4ed9a6bb28490232aa1ac0d0ecafa629935d2d9775f13bc9d45268df4bcea10"
+    }
+  ],
+  "qualification": {
+    "status": "COMPLETED",
+    "training_method": "rk4",
+    "device_comparisons": [
+      {
+        "variant": "C0",
+        "status": "PASS",
+        "differences": {
+          "field": 2.187703143641251e-15,
+          "initialize": 3.5214886562329184e-16,
+          "short_RK4": 3.5214886562329184e-16,
+          "J": 4.0449131953843053e-22,
+          "gradient_kappa_raw": 7.173206874483287e-24,
+          "gradient_lambda_raw": 4.338820806782053e-23,
+          "gradient_a_bar": 3.008869478161638e-22
+        },
+        "atol": 1e-10,
+        "rtol": 1e-08,
+        "optimizer_calls": 0
+      },
+      {
+        "variant": "C1",
+        "status": "PASS",
+        "differences": {
+          "field": 2.187703143641251e-15,
+          "initialize": 3.5214886562329184e-16,
+          "short_RK4": 3.5214886562329184e-16,
+          "J": 4.0449131953843053e-22,
+          "gradient_kappa_raw": 7.173206874483287e-24,
+          "gradient_lambda_raw": 4.338820806782053e-23,
+          "gradient_a_bar": 3.008869478161638e-22,
+          "gradient_raw_gamma": 1.406207041340147e-22
+        },
+        "atol": 1e-10,
+        "rtol": 1e-08,
+        "optimizer_calls": 0
+      }
+    ],
+    "same_device_matched": [
+      {
+        "device": "cpu",
+        "status": "PASS",
+        "atol": 1e-12,
+        "rtol": 1e-12
+      },
+      {
+        "device": "cuda:0",
+        "status": "PASS",
+        "atol": 1e-12,
+        "rtol": 1e-12
+      }
+    ],
+    "cost12": [
+      {
+        "variant": "C0",
+        "finite_complete_8s_backward": true,
+        "seconds": 9.184814999998707,
+        "peak_cuda_bytes": 62628864,
+        "optimizer_calls": 0,
+        "event_ids": [
+          "expansion_0000",
+          "expansion_0001",
+          "expansion_0016",
+          "expansion_0017",
+          "expansion_0032",
+          "expansion_0033",
+          "expansion_0048",
+          "expansion_0049",
+          "expansion_0064",
+          "expansion_0065",
+          "expansion_0080",
+          "expansion_0081"
+        ],
+        "objective_J": 0.5284643208203266
+      },
+      {
+        "variant": "C1",
+        "finite_complete_8s_backward": true,
+        "seconds": 8.950864399999773,
+        "peak_cuda_bytes": 62628864,
+        "optimizer_calls": 0,
+        "event_ids": [
+          "expansion_0000",
+          "expansion_0001",
+          "expansion_0016",
+          "expansion_0017",
+          "expansion_0032",
+          "expansion_0033",
+          "expansion_0048",
+          "expansion_0049",
+          "expansion_0064",
+          "expansion_0065",
+          "expansion_0080",
+          "expansion_0081"
+        ],
+        "objective_J": 0.5284643208203266
+      }
+    ],
+    "F_profile": {
+      "horizon_risks": {
+        "5": {
+          "value": 0.7413311523629074,
+          "coarse_value": 0.7413311104525482,
+          "numerical_score_perturbation": 4.191035918310604e-08,
+          "eligible": 267,
+          "unresolved_ids": []
+        },
+        "8": {
+          "value": 0.5449650669719517,
+          "coarse_value": 0.544965026635934,
+          "numerical_score_perturbation": 4.033601763708816e-08,
+          "eligible": 267,
+          "unresolved_ids": []
+        }
+      },
+      "classification_8s": {
+        "event_count": 297,
+        "unstable_count": 30,
+        "numerical_unresolved": 0,
+        "missed_resolved_unstable": 3,
+        "false_los_resolved_stable": 0,
+        "local_row_count": 297
+      },
+      "unstable_interval_risk": 4.235953082646234,
+      "unstable_interval_eligible": 30,
+      "common_frequency_rmse_8s": 0.3110650377575384,
+      "normalized_p_rmse_8s": 0.39353017146824604,
+      "all_8s_rows_qualified": true,
+      "parameter_count": 47,
+      "qualified_inference_seconds_per_event": 0.29248532188552057,
+      "timing_scope": "CPU float64 one thread; true RK4 .005/.01 including causal initialization, output, metrics",
+      "unstable_interval_coarse_risk": 4.235952890730856,
+      "unstable_interval_numerical_score_perturbation": 1.9191537781182433e-07,
+      "unstable_interval_unresolved_ids": [],
+      "unstable_interval_definition": "same actual per-event interval up to8s; original 0.8mean+0.2ceil-top10 risk",
+      "J_actual_intervals_up_to8_fine": 9.886108137043689,
+      "J_actual_intervals_up_to8_coarse": 9.886107291264466,
+      "all_required_rows_qualified": true,
+      "unstable_interval_steps_summary": {
+        "event_count": 30,
+        "minimum": 3,
+        "maximum": 144,
+        "dt_seconds": 0.01,
+        "full_mapping": "in hash-bound local qualification/summary.json"
+      }
+    },
+    "C0_zero_profile": {
+      "horizon_risks": {
+        "5": {
+          "value": 0.7413311523205435,
+          "coarse_value": 0.7413311104101842,
+          "numerical_score_perturbation": 4.191035929412834e-08,
+          "eligible": 267,
+          "unresolved_ids": []
+        },
+        "8": {
+          "value": 0.5449650669432764,
+          "coarse_value": 0.5449650266072583,
+          "numerical_score_perturbation": 4.033601808117737e-08,
+          "eligible": 267,
+          "unresolved_ids": []
+        }
+      },
+      "classification_8s": {
+        "event_count": 297,
+        "unstable_count": 30,
+        "numerical_unresolved": 0,
+        "missed_resolved_unstable": 3,
+        "false_los_resolved_stable": 0,
+        "local_row_count": 297
+      },
+      "unstable_interval_risk": 4.235953083437528,
+      "unstable_interval_eligible": 30,
+      "common_frequency_rmse_8s": 0.31106503774833016,
+      "normalized_p_rmse_8s": 0.3935301714440473,
+      "all_8s_rows_qualified": true,
+      "parameter_count": 47,
+      "qualified_inference_seconds_per_event": 0.41154206868686927,
+      "timing_scope": "CPU float64 one thread; true RK4 .005/.01 including causal initialization, output, metrics",
+      "unstable_interval_coarse_risk": 4.235952891522153,
+      "unstable_interval_numerical_score_perturbation": 1.9191537514728907e-07,
+      "unstable_interval_unresolved_ids": [],
+      "unstable_interval_definition": "same actual per-event interval up to8s; original 0.8mean+0.2ceil-top10 risk",
+      "J_actual_intervals_up_to8_fine": 9.88610813798692,
+      "J_actual_intervals_up_to8_coarse": 9.886107292207697,
+      "all_required_rows_qualified": true,
+      "unstable_interval_steps_summary": {
+        "event_count": 30,
+        "minimum": 3,
+        "maximum": 144,
+        "dt_seconds": 0.01,
+        "full_mapping": "in hash-bound local qualification/summary.json"
+      }
+    },
+    "old_legacy_drop_in_qualification": "FAILED_NOT_ADOPTED",
+    "strict_legacy_equivalence_claim": false,
+    "C0_zero_minus_F": "separate finite-precision initialization comparison; not a gamma effect",
+    "optimizer_calls": 0,
+    "no_update_payload_read": false,
+    "val_read": false,
+    "test_read": false,
+    "training_admission": true,
+    "cpu_cuda_pair_pass": true,
+    "matched_zero_pass": true,
+    "F_C0_zero_qualified": true,
+    "cross_model_F_C0_qualified": true,
+    "cross_model_F_C0": {
+      "path": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\force_exchange_20261028\\study01\\qualification\\F_C0_cross_model.json",
+      "sha256": "e212b30be5be584785bd0f6e79f0cfb0c348c195d7393b40349c8a95a2e1b115"
+    },
+    "independent_physics_reference_reused": "cc566fa31b0fe9b77777f563c14aebcfe90ed24662a8d53adf6b7aadf8493da7",
+    "fullfit297_qualified": true,
+    "finite_12x8_backward": true
+  },
+  "cross_model": {
+    "status": "PASS",
+    "qualified": true,
+    "record_count": 297,
+    "scope": "F_C0_same_source_fit297_bidirectional_RK4_fine005_base01_8s_actual15",
+    "bidirectional": true,
+    "predictions_recomputed": false,
+    "alignment": {
+      "fine_dt": 0.005,
+      "output_dt": 0.01,
+      "stride": 2,
+      "coarse_stride": 2,
+      "history_rows": 11,
+      "history_dt": 0.01,
+      "initial_observation_index": 10,
+      "eight_second_shapes": [
+        1601,
+        801
+      ],
+      "actual_interval": "n=min(1500,len(x)-11); 2n+1 fine and n+1 decimated; original classification/history offset"
+    },
+    "aggregates": {
+      "8s": {
+        "event_count": 297,
+        "qualified_count": 297
+      },
+      "actual15": {
+        "event_count": 297,
+        "qualified_count": 297
+      }
+    }
+  },
+  "qa": {
+    "status": "PASS",
+    "models": [
+      {
+        "variant": "C0",
+        "status": "PASS",
+        "actual_optimizer_calls": 36,
+        "checkpoint": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\force_exchange_20261028\\study01\\qa\\C0\\checkpoints\\step000016",
+        "parameter_maxabs": 0.0,
+        "Adam_maxabs": 0.0,
+        "snapshot_model_Adam_RNG_layout_exact": true,
+        "nonzero_Adam_moment": true,
+        "continuation_atol": 2e-09,
+        "continuation_rtol": 2e-09
+      },
+      {
+        "variant": "C1",
+        "status": "PASS",
+        "actual_optimizer_calls": 36,
+        "checkpoint": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\force_exchange_20261028\\study01\\qa\\C1\\checkpoints\\step000016",
+        "parameter_maxabs": 0.0,
+        "Adam_maxabs": 0.0,
+        "snapshot_model_Adam_RNG_layout_exact": true,
+        "nonzero_Adam_moment": true,
+        "continuation_atol": 2e-09,
+        "continuation_rtol": 2e-09
+      }
+    ],
+    "calls": {
+      "attempts": 72,
+      "completed": 72,
+      "by_category": {
+        "qa": {
+          "attempts": 72,
+          "completed": 72
+        }
+      },
+      "pending": []
+    },
+    "optimizer_calls": 72,
+    "actual_optimizer_updates": 72,
+    "fixture_only": true,
+    "training_admission": true,
+    "admission_scope": "formal matched C0/C1 only after qualification; no legacy adoption",
+    "val_read": false,
+    "test_read": false
+  },
+  "native_completed_phases": [
+    {
+      "source_commit": "642ccb15347ec38e95bdd8737dc7d67453af3243",
+      "phase": "prepare",
+      "status": "COMPLETED",
+      "launcher_exit_code": 0,
+      "worker_exit_code": 0,
+      "exit_code": 0,
+      "actual_worker_state": "GONE",
+      "orphans_cleaned": false,
+      "job_active_processes": 0,
+      "job_cpu_user_seconds": 3.0625,
+      "job_cpu_kernel_seconds": 1.25,
+      "job_total_processes": 3,
+      "cleanup_verified": true,
+      "wall_seconds": 7.473159700000906,
+      "runtime_limits": null,
+      "cpu_limits": null,
+      "active_process_limit": null
+    },
+    {
+      "source_commit": "642ccb15347ec38e95bdd8737dc7d67453af3243",
+      "phase": "qualify",
+      "status": "COMPLETED",
+      "launcher_exit_code": 0,
+      "worker_exit_code": 0,
+      "exit_code": 0,
+      "actual_worker_state": "GONE",
+      "orphans_cleaned": false,
+      "job_active_processes": 0,
+      "job_cpu_user_seconds": 566.09375,
+      "job_cpu_kernel_seconds": 184.765625,
+      "job_total_processes": 3,
+      "cleanup_verified": true,
+      "wall_seconds": 251.39779520000047,
+      "runtime_limits": null,
+      "cpu_limits": null,
+      "active_process_limit": null
+    },
+    {
+      "source_commit": "642ccb15347ec38e95bdd8737dc7d67453af3243",
+      "phase": "qa",
+      "status": "COMPLETED",
+      "launcher_exit_code": 0,
+      "worker_exit_code": 0,
+      "exit_code": 0,
+      "actual_worker_state": "GONE",
+      "orphans_cleaned": false,
+      "job_active_processes": 0,
+      "job_cpu_user_seconds": 9.5,
+      "job_cpu_kernel_seconds": 7.328125,
+      "job_total_processes": 3,
+      "cleanup_verified": true,
+      "wall_seconds": 14.472785799998746,
+      "runtime_limits": null,
+      "cpu_limits": null,
+      "active_process_limit": null
+    }
+  ],
+  "cost_scope": "three completed native Job stages only, excludes running study, outer controller and pre-freeze preparation",
+  "protected_scope": "legacy strict drop-in remains FAILED_NOT_ADOPTED; source is research candidate, default none; original val/test closed, TASK4 paused",
+  "completed_native_wall_seconds": 273.3437407000001,
+  "completed_native_job_cpu_seconds": 772.0
+}

@@ -1,0 +1,61 @@
+............F..............                                              [100%]
+================================== FAILURES ===================================
+_____________ test_strict_structure_guard_and_source_requirements _____________
+
+    def test_strict_structure_guard_and_source_requirements():
+        src = source()
+        with pytest.raises(ValueError): build_variant(src,'D')
+        with pytest.raises(ValueError): build_variant(src.with_terms(TERMS['B']),'C')
+        model = build_variant(src,'C')
+        with pytest.raises(ValueError): model.with_terms(TERMS['C']+TERMS['B'][:1])
+        with pytest.raises(ValueError): model.field(torch.zeros(39,dtype=torch.float64))
+        model._term_kinds[-1] = 'port_w'
+>       with pytest.raises(ValueError): model.field(torch.zeros(40,dtype=torch.float64))
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_quadratic_memory_runtime_20261020.py:153: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+experiments\quadratic_memory_runtime_20261020.py:87: in field
+    products = self._products(runtime) if products is None else products
+               ^^^^^^^^^^^^^^^^^^^^^^^
+experiments\quadratic_memory_runtime_20261020.py:47: in _products
+    products = LinearCacheRuntime._linear_products(self, constants)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = QuadraticMemoryRuntime(
+  (structured): StructuredROM(
+    (storage_gamma): ParameterList()
+    (exchange_kappa): Para...    (5): Parameter containing: [torch.float64 of size ]
+      (6): Parameter containing: [torch.float64 of size ]
+  )
+)
+runtime_constants = (tensor([[ 0.0000,  0.0000,  0.0000,  ...,  0.0000,  0.0000,  0.0000],
+        [ 0.0000,  0.0000,  0.0000,  ...,  0.00...or([0.9990, 0.9990, 0.9990, 0.9990, 0.9990, 0.9990, 0.9990, 0.9990, 0.9990,
+        0.9211], dtype=torch.float64), ...)
+
+    def _linear_products(self, runtime_constants=None):
+        coefficients = dict(zip(self._term_kinds, self.coefficients.unbind()))
+        constants = runtime_constants if runtime_constants is not None else self._constants()
+        _, _, storage, quadratic, _, _, _, weights = constants
+        products = {
+            "node": coefficients["node_pq"] / self.p_scale,
+            "storage_q": storage[10:] + quadratic,
+            "edge_sine": (coefficients["edge_sine"] * weights
+                          if "edge_sine" in coefficients else None),
+            "edge_cosine": (coefficients["edge_cosine"] * weights
+                            if "edge_cosine" in coefficients else None),
+            "port_w": coefficients["port_w"] / self.input_scale_omega,
+            "port_p": coefficients["port_p"] / self.p_scale,
+            "port_ec": coefficients["port_ec"] * self.port_c_weight,
+        }
+        identity = torch.eye(self.n, dtype=self.mass.dtype, device=self.mass.device)
+        products["port_Q"] = (coefficients["port_q"] * identity +
+>           coefficients["port_nq"] * (self.neighbor_A.T - identity))
+            ^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'port_nq'
+
+experiments\linear_cache_runtime_20261019.py:65: KeyError
+=========================== short test summary info ===========================
+FAILED tests/test_quadratic_memory_runtime_20261020.py::test_strict_structure_guard_and_source_requirements
+1 failed, 26 passed, 1 warning in 10.95s

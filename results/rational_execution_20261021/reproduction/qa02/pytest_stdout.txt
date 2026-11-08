@@ -1,0 +1,34 @@
+................F...F.                                                   [100%]
+================================== FAILURES ===================================
+__________________ test_normal_owned_subtree_and_exact_role ___________________
+
+tmp_path = WindowsPath('E:/03-nn_Transfer_Func/kiki/private_data/closure_mechanism_20261019/P1/rational_execution01/qa02/pytest_tmp/test_normal_owned_subtree_and_0')
+
+    def test_normal_owned_subtree_and_exact_role(tmp_path):
+     r=j.supervise(command("import subprocess,sys;subprocess.run([sys.executable,'-c','pass'],check=True)"),tmp_path/'normal',tmp_path/'lock',{},ROOT,provenance={'source_commit':'a'*40,'group':'0_rational','phase':'qa'})
+>    assert r['status']=='COMPLETED' and r['job_active_processes']==0 and r['job_total_processes']>=2
+E    AssertionError: assert ('FAILED' == 'COMPLETED'
+E      
+E      - COMPLETED
+E      + FAILED)
+
+tests\test_uncapped_windows_job_20261021.py:19: AssertionError
+________ test_actual_worker_receipt_is_retained_inside_redirector_job _________
+
+tmp_path = WindowsPath('E:/03-nn_Transfer_Func/kiki/private_data/closure_mechanism_20261019/P1/rational_execution01/qa02/pytest_tmp/test_actual_worker_receipt_is_0')
+
+    def test_actual_worker_receipt_is_retained_inside_redirector_job(tmp_path):
+     receipt=tmp_path/'worker.json';release=tmp_path/'release'
+     code="import sys,time,pathlib;sys.path.insert(0,"+repr(str(ROOT/'experiments'))+");from uncapped_windows_job_20261021 import identity,atomic;atomic("+repr(str(receipt))+",{**identity(),'phase':'qa','group':None,'source_commit':'"+'b'*40+"','qa_attempt':2});p=pathlib.Path("+repr(str(release))+");exec('while not p.exists():time.sleep(.01)')"
+     r=j.supervise(command(code),tmp_path/'actual',tmp_path/'lock',{},ROOT,worker_receipt=receipt,on_worker_owned=lambda w:release.write_text('owned'),provenance={'phase':'qa','group':None,'source_commit':'b'*40,'qa_attempt':2})
+>    assert r['status']=='COMPLETED' and r['launcher_exit_code']==r['worker_exit_code']==0
+E    AssertionError: assert ('FAILED' == 'COMPLETED'
+E      
+E      - COMPLETED
+E      + FAILED)
+
+tests\test_uncapped_windows_job_20261021.py:52: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_uncapped_windows_job_20261021.py::test_normal_owned_subtree_and_exact_role
+FAILED tests/test_uncapped_windows_job_20261021.py::test_actual_worker_receipt_is_retained_inside_redirector_job
+2 failed, 20 passed in 31.42s

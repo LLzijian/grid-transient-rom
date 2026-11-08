@@ -1,0 +1,905 @@
+{
+  "created_utc": "2026-11-07T15:18:40.611812+00:00",
+  "source_summary_sha256": "8e547f94cf831a19c3f05428d22d3b774c671090fb4a8ce7fcf9bf592cd9d142",
+  "source_initializations_sha256": "de88a80556c8a0d988fdbfba7aa137808237adbc5eeffc651d52fe7f88f52f6e",
+  "shared_fits": 16,
+  "initialization_pairs": 48,
+  "numerically_qualified_pairs": 48,
+  "prediction_passed": 30,
+  "prediction_denominator": 48,
+  "mechanism_gate_passed": false,
+  "original_optimizer_diagnostic_coverage": 47,
+  "missing_original_optimizer_diagnostic_ordinals": [
+    39
+  ],
+  "recovered_output_ordinals": [
+    39
+  ],
+  "recovery": "Content-identical frozen-model/input output reuse; no optimization replay; original diagnostic remains unknown.",
+  "counts": {
+    "fits_attempted": 16,
+    "fits_completed": 16,
+    "initializations_attempted": 48,
+    "initializations_completed": 48,
+    "fit": {
+      "algebra_terms_planned": 9832,
+      "algebra_terms_actual": 1461,
+      "algebra_terms_skipped": 8371,
+      "nnls_attempts": 1449,
+      "nnls_completed": 1449,
+      "nnls_qualified": 1449,
+      "reconstruction_attempts": 48,
+      "reconstructions": 48,
+      "optimization_tasks": 312,
+      "actual_residual_calls": 43886,
+      "integrations_attempted": 43934,
+      "integrations_completed": 43934,
+      "rk4_steps_attempted": 1759280,
+      "rk4_steps_completed": 1759280
+    },
+    "initialization": {
+      "algebra_terms_planned": 0,
+      "algebra_terms_actual": 0,
+      "algebra_terms_skipped": 0,
+      "nnls_attempts": 0,
+      "nnls_completed": 0,
+      "nnls_qualified": 0,
+      "reconstruction_attempts": 0,
+      "reconstructions": 0,
+      "optimization_tasks": 96,
+      "actual_residual_calls": 8440,
+      "integrations_attempted": 8872,
+      "integrations_completed": 8872,
+      "rk4_steps_attempted": 376480,
+      "rk4_steps_completed": 376480
+    },
+    "evaluation": {
+      "integrations_attempted": 96,
+      "rk4_steps_attempted": 14400,
+      "rk4_steps_completed": 14400,
+      "integrations_completed": 96
+    },
+    "generation": {
+      "integrations_attempted": 48,
+      "rk4_steps_attempted": 5040,
+      "rk4_steps_completed": 5040,
+      "integrations_completed": 48,
+      "generated_history_grids": 24,
+      "generated_future_grids": 24,
+      "observation_packages": 24
+    },
+    "qualification": {
+      "integrations_attempted": 24,
+      "rk4_steps_attempted": 1440,
+      "rk4_steps_completed": 1440,
+      "integrations_completed": 24
+    }
+  },
+  "rows": [
+    {
+      "family": "Static",
+      "sigma": 0.0,
+      "mode": "static",
+      "fit_status": "completed",
+      "support": [
+        0,
+        3,
+        5
+      ],
+      "modulation_support": null,
+      "null_reasons": {
+        "k": [],
+        "beta": [
+          "fixed_by_model"
+        ]
+      },
+      "k": [
+        0.7000126778778475,
+        0.0,
+        0.0,
+        0.9000252464626742,
+        0.0,
+        1.1000843750145608
+      ],
+      "beta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "edge_score": {
+        "exact_support": true,
+        "false_positive": 0,
+        "false_negative": 0
+      },
+      "modulation_score": {
+        "exact_support": null,
+        "false_positive": null,
+        "false_negative": null
+      },
+      "max_k_error": 8.437501456071139e-05,
+      "max_beta_error": 0.0,
+      "accepted_proposals": [],
+      "prediction_passed": 3,
+      "prediction_denominator": 3,
+      "max_prediction_rms": 6.4555150528641644e-06,
+      "max_prediction_peak": 3.174477633227646e-05
+    },
+    {
+      "family": "Static",
+      "sigma": 0.0,
+      "mode": "modulated",
+      "fit_status": "not_identified",
+      "support": [
+        0,
+        3,
+        5
+      ],
+      "modulation_support": null,
+      "null_reasons": {
+        "k": [],
+        "beta": [
+          "conditional_information_not_qualified"
+        ]
+      },
+      "k": [
+        0.7000126778778475,
+        0.0,
+        0.0,
+        0.9000252464626742,
+        0.0,
+        1.1000843750145608
+      ],
+      "beta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "edge_score": {
+        "exact_support": true,
+        "false_positive": 0,
+        "false_negative": 0
+      },
+      "modulation_score": {
+        "exact_support": null,
+        "false_positive": null,
+        "false_negative": null
+      },
+      "max_k_error": 8.437501456071139e-05,
+      "max_beta_error": 0.0,
+      "accepted_proposals": [
+        0
+      ],
+      "prediction_passed": 3,
+      "prediction_denominator": 3,
+      "max_prediction_rms": 6.4555150528641644e-06,
+      "max_prediction_peak": 3.174477633227646e-05
+    },
+    {
+      "family": "Static",
+      "sigma": 0.0001,
+      "mode": "static",
+      "fit_status": "completed",
+      "support": [
+        0,
+        3,
+        5
+      ],
+      "modulation_support": null,
+      "null_reasons": {
+        "k": [],
+        "beta": [
+          "fixed_by_model"
+        ]
+      },
+      "k": [
+        0.7036938900258284,
+        0.0,
+        0.0,
+        0.87331220760023,
+        0.0,
+        1.0157892684113874
+      ],
+      "beta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "edge_score": {
+        "exact_support": true,
+        "false_positive": 0,
+        "false_negative": 0
+      },
+      "modulation_score": {
+        "exact_support": null,
+        "false_positive": null,
+        "false_negative": null
+      },
+      "max_k_error": 0.0842107315886127,
+      "max_beta_error": 0.0,
+      "accepted_proposals": [],
+      "prediction_passed": 0,
+      "prediction_denominator": 3,
+      "max_prediction_rms": 0.006407380657806408,
+      "max_prediction_peak": 0.03228382093147375
+    },
+    {
+      "family": "Static",
+      "sigma": 0.0001,
+      "mode": "modulated",
+      "fit_status": "not_identified",
+      "support": [
+        0,
+        3,
+        5
+      ],
+      "modulation_support": null,
+      "null_reasons": {
+        "k": [],
+        "beta": [
+          "conditional_information_not_qualified"
+        ]
+      },
+      "k": [
+        0.7036938900258284,
+        0.0,
+        0.0,
+        0.87331220760023,
+        0.0,
+        1.0157892684113874
+      ],
+      "beta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "edge_score": {
+        "exact_support": true,
+        "false_positive": 0,
+        "false_negative": 0
+      },
+      "modulation_score": {
+        "exact_support": null,
+        "false_positive": null,
+        "false_negative": null
+      },
+      "max_k_error": 0.0842107315886127,
+      "max_beta_error": 0.0,
+      "accepted_proposals": [
+        0
+      ],
+      "prediction_passed": 0,
+      "prediction_denominator": 3,
+      "max_prediction_rms": 0.006407380606927389,
+      "max_prediction_peak": 0.032283820844180466
+    },
+    {
+      "family": "Modulated",
+      "sigma": 0.0,
+      "mode": "static",
+      "fit_status": "completed",
+      "support": [
+        0,
+        3,
+        5
+      ],
+      "modulation_support": null,
+      "null_reasons": {
+        "k": [],
+        "beta": [
+          "fixed_by_model"
+        ]
+      },
+      "k": [
+        0.6990034846277497,
+        0.0,
+        0.0,
+        0.9048114225028536,
+        0.0,
+        1.1019951743130343
+      ],
+      "beta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "edge_score": {
+        "exact_support": true,
+        "false_positive": 0,
+        "false_negative": 0
+      },
+      "modulation_score": {
+        "exact_support": null,
+        "false_positive": null,
+        "false_negative": null
+      },
+      "max_k_error": 0.004811422502853602,
+      "max_beta_error": 0.55,
+      "accepted_proposals": [],
+      "prediction_passed": 3,
+      "prediction_denominator": 3,
+      "max_prediction_rms": 0.0003391962906609387,
+      "max_prediction_peak": 0.0015140991300646167
+    },
+    {
+      "family": "Modulated",
+      "sigma": 0.0,
+      "mode": "modulated",
+      "fit_status": "not_identified",
+      "support": [
+        0,
+        3,
+        5
+      ],
+      "modulation_support": null,
+      "null_reasons": {
+        "k": [],
+        "beta": [
+          "conditional_information_not_qualified"
+        ]
+      },
+      "k": [
+        0.6990034846277497,
+        0.0,
+        0.0,
+        0.9048114225028536,
+        0.0,
+        1.1019951743130343
+      ],
+      "beta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "edge_score": {
+        "exact_support": true,
+        "false_positive": 0,
+        "false_negative": 0
+      },
+      "modulation_score": {
+        "exact_support": null,
+        "false_positive": null,
+        "false_negative": null
+      },
+      "max_k_error": 0.004811422502853602,
+      "max_beta_error": 0.55,
+      "accepted_proposals": [
+        0
+      ],
+      "prediction_passed": 3,
+      "prediction_denominator": 3,
+      "max_prediction_rms": 0.0003391962906609387,
+      "max_prediction_peak": 0.0015140991300646167
+    },
+    {
+      "family": "Modulated",
+      "sigma": 0.0001,
+      "mode": "static",
+      "fit_status": "completed",
+      "support": [
+        0,
+        3,
+        5
+      ],
+      "modulation_support": null,
+      "null_reasons": {
+        "k": [],
+        "beta": [
+          "fixed_by_model"
+        ]
+      },
+      "k": [
+        0.6372317143798066,
+        0.0,
+        0.0,
+        1.036187370903596,
+        0.0,
+        0.7849458846481177
+      ],
+      "beta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "edge_score": {
+        "exact_support": true,
+        "false_positive": 0,
+        "false_negative": 0
+      },
+      "modulation_score": {
+        "exact_support": null,
+        "false_positive": null,
+        "false_negative": null
+      },
+      "max_k_error": 0.31505411535188244,
+      "max_beta_error": 0.55,
+      "accepted_proposals": [],
+      "prediction_passed": 0,
+      "prediction_denominator": 3,
+      "max_prediction_rms": 0.018526636230081727,
+      "max_prediction_peak": 0.08711997893640344
+    },
+    {
+      "family": "Modulated",
+      "sigma": 0.0001,
+      "mode": "modulated",
+      "fit_status": "completed",
+      "support": [
+        0,
+        3,
+        5
+      ],
+      "modulation_support": [],
+      "null_reasons": {
+        "k": [],
+        "beta": []
+      },
+      "k": [
+        0.6372317143798066,
+        0.0,
+        0.0,
+        1.036187370903596,
+        0.0,
+        0.7849458846481177
+      ],
+      "beta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "edge_score": {
+        "exact_support": true,
+        "false_positive": 0,
+        "false_negative": 0
+      },
+      "modulation_score": {
+        "exact_support": false,
+        "false_positive": 0,
+        "false_negative": 3
+      },
+      "max_k_error": 0.31505411535188244,
+      "max_beta_error": 0.55,
+      "accepted_proposals": [
+        0
+      ],
+      "prediction_passed": 0,
+      "prediction_denominator": 3,
+      "max_prediction_rms": 0.018526636231996216,
+      "max_prediction_peak": 0.08711997894837553
+    },
+    {
+      "family": "Memory",
+      "sigma": 0.0,
+      "mode": "static",
+      "fit_status": "completed",
+      "support": [
+        0,
+        3,
+        5
+      ],
+      "modulation_support": null,
+      "null_reasons": {
+        "k": [],
+        "beta": [
+          "fixed_by_model"
+        ]
+      },
+      "k": [
+        0.7000150418641492,
+        0.0,
+        0.0,
+        0.9000067044795755,
+        0.0,
+        1.100098669633946
+      ],
+      "beta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "edge_score": {
+        "exact_support": true,
+        "false_positive": 0,
+        "false_negative": 0
+      },
+      "modulation_score": {
+        "exact_support": null,
+        "false_positive": null,
+        "false_negative": null
+      },
+      "max_k_error": 9.866963394600248e-05,
+      "max_beta_error": 0.0,
+      "accepted_proposals": [],
+      "prediction_passed": 3,
+      "prediction_denominator": 3,
+      "max_prediction_rms": 7.012517895081848e-06,
+      "max_prediction_peak": 3.305189752000892e-05
+    },
+    {
+      "family": "Memory",
+      "sigma": 0.0,
+      "mode": "modulated",
+      "fit_status": "not_identified",
+      "support": [
+        0,
+        3,
+        5
+      ],
+      "modulation_support": null,
+      "null_reasons": {
+        "k": [],
+        "beta": [
+          "conditional_information_not_qualified"
+        ]
+      },
+      "k": [
+        0.7000150418641492,
+        0.0,
+        0.0,
+        0.9000067044795755,
+        0.0,
+        1.100098669633946
+      ],
+      "beta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "edge_score": {
+        "exact_support": true,
+        "false_positive": 0,
+        "false_negative": 0
+      },
+      "modulation_score": {
+        "exact_support": null,
+        "false_positive": null,
+        "false_negative": null
+      },
+      "max_k_error": 9.866963394600248e-05,
+      "max_beta_error": 0.0,
+      "accepted_proposals": [
+        0
+      ],
+      "prediction_passed": 3,
+      "prediction_denominator": 3,
+      "max_prediction_rms": 7.012517895081848e-06,
+      "max_prediction_peak": 3.305189752000892e-05
+    },
+    {
+      "family": "Memory",
+      "sigma": 0.0001,
+      "mode": "static",
+      "fit_status": "completed",
+      "support": [
+        2,
+        4,
+        5
+      ],
+      "modulation_support": null,
+      "null_reasons": {
+        "k": [],
+        "beta": [
+          "fixed_by_model"
+        ]
+      },
+      "k": [
+        0.0,
+        0.0,
+        0.9402465007786698,
+        0.0,
+        4.5872463538292,
+        2.5544216795670076
+      ],
+      "beta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "edge_score": {
+        "exact_support": false,
+        "false_positive": 2,
+        "false_negative": 2
+      },
+      "modulation_score": {
+        "exact_support": null,
+        "false_positive": null,
+        "false_negative": null
+      },
+      "max_k_error": 4.5872463538292,
+      "max_beta_error": 0.0,
+      "accepted_proposals": [],
+      "prediction_passed": 0,
+      "prediction_denominator": 3,
+      "max_prediction_rms": 0.2513694726796663,
+      "max_prediction_peak": 0.7137477935685296
+    },
+    {
+      "family": "Memory",
+      "sigma": 0.0001,
+      "mode": "modulated",
+      "fit_status": "not_identified",
+      "support": null,
+      "modulation_support": null,
+      "null_reasons": {
+        "k": [
+          "prior_only"
+        ],
+        "beta": [
+          "prior_only"
+        ]
+      },
+      "k": [
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2
+      ],
+      "beta": [
+        0.05,
+        0.05,
+        0.05,
+        0.05,
+        0.05,
+        0.05
+      ],
+      "edge_score": {
+        "exact_support": null,
+        "false_positive": null,
+        "false_negative": null
+      },
+      "modulation_score": {
+        "exact_support": null,
+        "false_positive": null,
+        "false_negative": null
+      },
+      "max_k_error": 0.9000000000000001,
+      "max_beta_error": 0.05,
+      "accepted_proposals": [],
+      "prediction_passed": 0,
+      "prediction_denominator": 3,
+      "max_prediction_rms": 0.0704648259019514,
+      "max_prediction_peak": 0.284072573393548
+    },
+    {
+      "family": "Equilibrium",
+      "sigma": 0.0,
+      "mode": "static",
+      "fit_status": "not_identified",
+      "support": null,
+      "modulation_support": null,
+      "null_reasons": {
+        "k": [
+          "prior_only",
+          "conditional_information_not_qualified"
+        ],
+        "beta": [
+          "fixed_by_model"
+        ]
+      },
+      "k": [
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2
+      ],
+      "beta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "edge_score": {
+        "exact_support": null,
+        "false_positive": null,
+        "false_negative": null
+      },
+      "modulation_score": {
+        "exact_support": null,
+        "false_positive": null,
+        "false_negative": null
+      },
+      "max_k_error": 0.9000000000000001,
+      "max_beta_error": 0.55,
+      "accepted_proposals": [],
+      "prediction_passed": 3,
+      "prediction_denominator": 3,
+      "max_prediction_rms": 0.0,
+      "max_prediction_peak": 0.0
+    },
+    {
+      "family": "Equilibrium",
+      "sigma": 0.0,
+      "mode": "modulated",
+      "fit_status": "not_identified",
+      "support": null,
+      "modulation_support": null,
+      "null_reasons": {
+        "k": [
+          "prior_only",
+          "conditional_information_not_qualified"
+        ],
+        "beta": [
+          "prior_only",
+          "conditional_information_not_qualified"
+        ]
+      },
+      "k": [
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2
+      ],
+      "beta": [
+        0.05,
+        0.05,
+        0.05,
+        0.05,
+        0.05,
+        0.05
+      ],
+      "edge_score": {
+        "exact_support": null,
+        "false_positive": null,
+        "false_negative": null
+      },
+      "modulation_score": {
+        "exact_support": null,
+        "false_positive": null,
+        "false_negative": null
+      },
+      "max_k_error": 0.9000000000000001,
+      "max_beta_error": 0.5,
+      "accepted_proposals": [],
+      "prediction_passed": 3,
+      "prediction_denominator": 3,
+      "max_prediction_rms": 0.0,
+      "max_prediction_peak": 0.0
+    },
+    {
+      "family": "Equilibrium",
+      "sigma": 0.0001,
+      "mode": "static",
+      "fit_status": "not_identified",
+      "support": null,
+      "modulation_support": null,
+      "null_reasons": {
+        "k": [
+          "prior_only",
+          "conditional_information_not_qualified"
+        ],
+        "beta": [
+          "fixed_by_model"
+        ]
+      },
+      "k": [
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2
+      ],
+      "beta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "edge_score": {
+        "exact_support": null,
+        "false_positive": null,
+        "false_negative": null
+      },
+      "modulation_score": {
+        "exact_support": null,
+        "false_positive": null,
+        "false_negative": null
+      },
+      "max_k_error": 0.9000000000000001,
+      "max_beta_error": 0.55,
+      "accepted_proposals": [],
+      "prediction_passed": 3,
+      "prediction_denominator": 3,
+      "max_prediction_rms": 0.00037084597947472086,
+      "max_prediction_peak": 0.0012260238299220119
+    },
+    {
+      "family": "Equilibrium",
+      "sigma": 0.0001,
+      "mode": "modulated",
+      "fit_status": "not_identified",
+      "support": null,
+      "modulation_support": null,
+      "null_reasons": {
+        "k": [
+          "prior_only",
+          "conditional_information_not_qualified"
+        ],
+        "beta": [
+          "prior_only",
+          "conditional_information_not_qualified"
+        ]
+      },
+      "k": [
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2
+      ],
+      "beta": [
+        0.05,
+        0.05,
+        0.05,
+        0.05,
+        0.05,
+        0.05
+      ],
+      "edge_score": {
+        "exact_support": null,
+        "false_positive": null,
+        "false_negative": null
+      },
+      "modulation_score": {
+        "exact_support": null,
+        "false_positive": null,
+        "false_negative": null
+      },
+      "max_k_error": 0.9000000000000001,
+      "max_beta_error": 0.5,
+      "accepted_proposals": [],
+      "prediction_passed": 3,
+      "prediction_denominator": 3,
+      "max_prediction_rms": 0.00037119154145354535,
+      "max_prediction_peak": 0.0012287790872276957
+    }
+  ],
+  "real_data_reads": false,
+  "new_FOM": 0,
+  "claim_scope": "Registered artificial K4 conditions only; sample/direction/family dependence prevents treating 48 pairs as independent repetitions.",
+  "scientific_runner_seconds": 694.882875500014,
+  "execution_host_seconds": 704.0215431
+}

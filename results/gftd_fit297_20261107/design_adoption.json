@@ -1,0 +1,54 @@
+{
+  "recorded_utc": "2026-11-07T15:38:07.926437+00:00",
+  "status": "design_accepted_implementation_authorized",
+  "parent_commit": "66f1308c25ee38c3d7217bd86ee43b61a042a5b6",
+  "protocol_sha256": "ca22743c53fe4fe398960e111838a373f8c4686eab0974c5daf6d9c28435062f",
+  "review_sha256": "e9cf79e5f6a82101e811ac722cfb4192066378c6fa90864c9fe9cbb4dd864b6a",
+  "scientist_configured_model": "gpt-6-astra",
+  "reviewer_configured_model": "gpt-6.1-sol",
+  "server_resolved_models": null,
+  "root_decision": "Adopt frozen all-static / fixed <=24 shared adaptation / all297 deployment protocol after parent review and verified archive.",
+  "reason": "Direct authorized real train comparison; parent API/numerics valid, modulation mechanism remains unresolved. No additional artificial prerequisite.",
+  "allowed_now": [
+    "implementation",
+    "deterministic engineering mock/algebra checks",
+    "static source and frozen constants inspection"
+  ],
+  "scientific_execution_released": false,
+  "fit297_event_payload_read_released": false,
+  "source_writer_contract": {
+    "engine": [
+      "src/kiki/models/gftd_fitting.py",
+      "src/kiki/models/gftd_discovery.py",
+      "src/kiki/physics/kuramoto_functional.py",
+      "src/kiki/models/gftd_fit297.py",
+      "tests/test_gftd_fit297_engine.py"
+    ],
+    "api_runner": [
+      "src/kiki/models/base.py",
+      "src/kiki/models/gftd_kuramoto.py",
+      "experiments/gftd_fit297_20261107.py",
+      "experiments/gftd_fit297_l1_20261107.py",
+      "tests/test_gftd_fit297_runner.py",
+      "tests/test_gftd_fit297_l1.py"
+    ],
+    "l2_l3": [
+      "experiments/gftd_fit297_analysis_20261107.py",
+      "tests/test_gftd_fit297_analysis.py"
+    ]
+  },
+  "interface": {
+    "RunContext.gftd_fit297_v1": "optional dict; no labels or event IDs",
+    "fit": "new gftd_fit297.fit_shared(functional, validated_p_end_packets, *, mode, config); config is RunContext.gftd_fit297_v1",
+    "validate/initialize": "gftd_fitting dispatches new initialization format to gftd_fit297; old formats remain strict and unchanged",
+    "return": "same functional/config/fit_state/status contract as current fit_shared",
+    "shared_cache": "engine-owned deterministic cache across sequential model.fit calls keyed by ordered packets, fixed constants, scales and grids"
+  },
+  "unchanged_boundaries": [
+    "val/test closed",
+    "new FOM=0",
+    "TASK4 paused",
+    "default none",
+    "protected models unchanged"
+  ]
+}

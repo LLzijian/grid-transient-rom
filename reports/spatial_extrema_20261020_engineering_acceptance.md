@@ -1,0 +1,11 @@
+# 空间极值计算工具工程采纳
+
+root采纳独立工程审查`spatial_extrema_20261020_engineering_review.md`，仅接受runtime、对应纯合成测试和短说明。QA02实际30项全部通过，其中runtime有11个参数化用例；CPU/CUDA原目标组件、全梯度及Adam等价、S的物理定义、共轨迹与辅助位置均有实际日志。QA01类型错误和唯一一行修复完整保留，逆替换精确恢复原源码SHA，全部测试字节未改。
+
+PR17：https://github.com/LLzijian/grid-transient-rom/pull/17
+
+预期head57f164f4c337f208a2d11bbabcc6376fcbf32382，远端合并3e97af12092545ad727e216e4afb33adb0d405f7已核实，PR merged及head一致。精确差异为三个新文件，远端blob与本地逐字节相同；八项已有公开计算依赖仍为此前已核同一身份。没有额外重跑测试或改变运行中科学源码。
+
+prepare与cost通过，六来源等价和O/S各12次丢弃更新的真实5s非空Adam恢复验证有效。它们支持工程计算与整档成本准入，不是预测收益或加速证据。五次新训练及六角色评价仍依协议执行；工程合并不采用任何科学模型，实验runner、私有helper、端点与默认模型不集成。
+
+独立工程审查≤300秒嵌入既有3800支持hold，无新增预算。local HEAD/index和用户工作保持。

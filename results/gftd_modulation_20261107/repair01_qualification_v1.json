@@ -1,0 +1,48 @@
+{
+  "recorded_utc": "2026-11-07T15:08:38.399005+00:00",
+  "qualification": "mock_engineering_only",
+  "scientific_execution": false,
+  "source_sha256": {
+    "experiments/gftd_modulation_20261107_resume01.py": "31fbdd1e6b2d1ea1a5ff5c53ab6fc1cbcc96768dd1051ff10d448e450cc8e277",
+    "tests/test_gftd_modulation_resume01.py": "910832be92f58198b0899694f94eb070a2c6bb3511e6c0820191d32834a15342"
+  },
+  "reporter": "/root/api_modeler",
+  "configured_model": "gpt-6.1-sol",
+  "server_resolved_model": null,
+  "attempts": [
+    {
+      "chunk_id": "0e430f",
+      "exit_code": 1,
+      "passed": 9,
+      "failed": 2,
+      "pytest_seconds": 5.49,
+      "reason": "Mock fixture omitted required original receipt file; corrected fixture only."
+    },
+    {
+      "chunk_id": "efee51",
+      "exit_code": 0,
+      "passed": 11,
+      "failed": 0,
+      "pytest_seconds": 5.2
+    },
+    {
+      "chunk_id": "a58e84",
+      "exit_code": 0,
+      "passed": 12,
+      "failed": 0,
+      "pytest_seconds": 6.17,
+      "host_tool_seconds": 7.4243038,
+      "command": ".venv-gpu/Scripts/python.exe -m pytest tests/test_gftd_modulation_resume01.py -q --basetemp .tmp/pytest_modulation_resume01_final_20261107"
+    }
+  ],
+  "original_snapshot_verification": {
+    "chunk_id": "2e0b18",
+    "exit_code": 0,
+    "files": 49,
+    "changed": 0
+  },
+  "raw_tool_transcripts": null,
+  "raw_tool_transcripts_status": "Not independently copied by root; exact identifiers and results were reported by the executing Modeler.",
+  "cumulative_wall_seconds": null,
+  "followup_required": "Reviewer requires numpy/scipy version equality to original failed receipt before any continuation; source snapshot saved before that prelaunch repair."
+}

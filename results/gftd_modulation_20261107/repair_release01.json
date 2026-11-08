@@ -1,0 +1,42 @@
+{
+  "released": true,
+  "recorded_utc": "2026-11-07T15:13:07.276251+00:00",
+  "action_id": "gftd-modulation-20261107-repair01",
+  "parent_action_id": "gftd-modulation-20261107-01",
+  "repair_number": 1,
+  "max_postlaunch_technical_repairs": 2,
+  "source_row_index": 36,
+  "target_row_index": 38,
+  "frozen_manifest_sha256": "c01eee331f7a694d283b689ba1276ac0baa76ddd0b0526e03e3015905f52425a",
+  "identity_audit_sha256": "faf652029db757a21ee04e61a8f397e749460c819ea568db79b444e067f9078e",
+  "source_sha256": {
+    "experiments/gftd_modulation_20261107_resume01.py": "9a1e2350e09104b1b85254029f288978760473cf6f12dbaf624479a39b0c0f11",
+    "tests/test_gftd_modulation_resume01.py": "7b994b92b650f230c96bb8eb4b488aa42bc7210fffef126683694bb66c7c225a",
+    "reports/gftd_modulation_20261107_repair01_review.md": "a7d502522eb8565c344f60328a7e568fa32806a4299096fd69b20e82e43542de",
+    "results/gftd_modulation_20261107/repair01_qualification_final.json": "c432810c36a524015d3cc85d3f1bd60c63fd05fc14921274d4e8c2eea425a588",
+    "results/gftd_modulation_20261107/repair01_adoption.json": "042f8aaac0aaf5ebf84112be4409a5118aacd77cf161896c04ebcb91dc4f3adf",
+    "results/gftd_modulation_20261107/io_failure_identity_audit.json": "faf652029db757a21ee04e61a8f397e749460c819ea568db79b444e067f9078e"
+  },
+  "fixed_sha256": {
+    "results/gftd_modulation_20261107/fits.json": "e61ab567fe273c1b3bc3c2e663b89a30ff2a8600047083a11a1e1147f26cbdd4",
+    "results/gftd_modulation_20261107/observations.json": "5e961a57ae4b262e876384460d64c253c13f97125de700307d5d534330554dc4",
+    "results/gftd_modulation_20261107/observation_plan.json": "b31cf21b2b5e30caa1f94fed951c009a5d0685db9856887615ef4adc59a26ec3",
+    "results/gftd_modulation_20261107/isolated_truth.json": "03591f82bc543014df3cd69696cfd8d77a5ee4964228af58b79ec9f779ecf802"
+  },
+  "command": ".venv-gpu/Scripts/python.exe -B experiments/gftd_modulation_20261107_resume01.py",
+  "root_adoption": "Accept independent same-model/input identity audit, 17 mock tests and independent final implementation review. Reuse the already-certified equivalent output for lost pair 39 without reconstructing its optimizer trace or timing. Preserve all original costs and failed evidence. Execute exactly the remaining nine initialization pairs, then freeze all 48 before unchanged scoring. No new fit, scientific input, threshold or budget.",
+  "configured_experimenter": "gpt-6.1-sol",
+  "experimenter_task": "/root/code_review",
+  "reviewer_task": "/root/loop_review",
+  "configured_reviewer": "gpt-6.1-sol",
+  "server_resolved_models": null,
+  "shared_fits_replayed": 0,
+  "lost_pair_optimizer_replayed": false,
+  "new_optimization_pairs": 9,
+  "original_diagnostic_coverage_after_completion": "47/48; lost pair original optimizer trace remains unknown",
+  "scientific_workload_limits_unchanged": true,
+  "scientific_replays": 0,
+  "real_data_reads": false,
+  "new_FOM": 0,
+  "original_val_test": "closed"
+}

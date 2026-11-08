@@ -1,0 +1,173 @@
+{
+  "action_id": "gftd-fit297-20261107-01",
+  "status": "RUNNING",
+  "release_sha256": "f10a023faf1783db600230c0ab370cb9f919e73dbeaf08b470a0b9c0bd160443",
+  "command": "$env:OMP_NUM_THREADS='1'\n$env:MKL_NUM_THREADS='1'\n$env:OPENBLAS_NUM_THREADS='1'\n$env:PYTHONDONTWRITEBYTECODE='1'\n$taskEnvironment=[ordered]@{OMP_NUM_THREADS=$env:OMP_NUM_THREADS;MKL_NUM_THREADS=$env:MKL_NUM_THREADS;OPENBLAS_NUM_THREADS=$env:OPENBLAS_NUM_THREADS;PYTHONDONTWRITEBYTECODE=$env:PYTHONDONTWRITEBYTECODE}\nWrite-Output ('HOST_ENV_JSON='+($taskEnvironment|ConvertTo-Json -Compress))\n$taskReleasePath='results/gftd_fit297_20261107/execution_release.json'\n$taskRelease=Get-Content -LiteralPath $taskReleasePath -Raw | ConvertFrom-Json\n$taskStartUtc=[DateTime]::UtcNow.ToString('o')\n$taskTimer=[System.Diagnostics.Stopwatch]::StartNew()\n[ordered]@{action_id='gftd-fit297-20261107-01';command='.venv-gpu/Scripts/python.exe -B experiments/gftd_fit297_20261107.py';host_start_utc=$taskStartUtc;release_sha256='f10a023faf1783db600230c0ab370cb9f919e73dbeaf08b470a0b9c0bd160443';source_sha256=$taskRelease.source_sha256;thread_environment_readback=$taskEnvironment;formal_invocations=1;fit_cache_bytes_read_by_host=$false} | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath 'results/gftd_fit297_20261107/execution_host_start.json' -Encoding utf8\nWrite-Output ('HOST_START_UTC='+$taskStartUtc)\n& ./.venv-gpu/Scripts/python.exe -B experiments/gftd_fit297_20261107.py 1> results/gftd_fit297_20261107/execution.stdout.txt 2> results/gftd_fit297_20261107/execution.stderr.txt\n$taskExit=$LASTEXITCODE\n$taskTimer.Stop()\nWrite-Output ('HOST_END_UTC='+[DateTime]::UtcNow.ToString('o'))\nWrite-Output ('HOST_WALL_SECONDS='+$taskTimer.Elapsed.TotalSeconds.ToString('R',[System.Globalization.CultureInfo]::InvariantCulture))\nWrite-Output ('PROGRAM_EXIT_CODE='+$taskExit)\nexit $taskExit",
+  "configured_experimenter": "gpt-6.1-sol",
+  "server_resolved_model": null,
+  "formal_invocations": 1,
+  "retries": 0,
+  "host_start_utc": "2026-11-07T16:33:08.2587143Z",
+  "initial_chunk_id": "2be1a6",
+  "session_id": 35491,
+  "preflight": {
+    "chunk_id": "80bea1",
+    "wall_time_seconds": 0.7478916,
+    "exit_code": 0,
+    "original_token_count": 522,
+    "output": "{\"utc\":\"2026-11-07T16:32:15.5969650Z\",\"source_count\":51,\"all_sources_matched\":true,\"bindings_matched\":4,\"started_existed\":false,\"project_python_processes\":0,\"OMP_NUM_THREADS\":\"1\",\"MKL_NUM_THREADS\":\"1\",\"OPENBLAS_NUM_THREADS\":\"1\",\"PYTHONDONTWRITEBYTECODE\":\"1\",\"fit_cache_bytes_read\":false}\r\n454:            receipt['artifacts'].append(write_json(PRIVATE/'fom_modes.json',fom))\r\n456:                content=read_json(PRIVATE/(mode+'_l2_l3.json'))\r\n458:                receipt['artifacts'].append(write_json(PRIVATE/(mode+'_modal_match.json'),matched))\r\n461:                receipt['artifacts'].append(write_json(PRIVATE/(mode+'_graph_correspondence.json'),correspondence))\r\n463:            receipt['analysis_budget']=fit_engine.analysis_budget_snapshot(key)\r\n464:        checks=model_analysis_budget_checks(receipt['analysis'],models)\r\n465:        receipt['analysis_budget_checks']=checks\r\n467:        receipt['execution_budget']=execution_budget(counts)\r\n468:        if not receipt['execution_budget']['within_limits']: raise RuntimeError('registered execution budget exceeded')\r\n469:        receipt['status']='COMPLETED'\r\n471:        receipt.update(status='INTERRUPTED_RUNTIME',error=dict(type=type(error).__name__,message=str(error)),\r\n474:            receipt['artifacts'].append(write_json(PRIVATE/'interruption_diagnostics.json',error.diagnostics))\r\n477:        receipt['execution_budget']=execution_budget(counts)\r\n478:        receipt['wall_seconds']=time.perf_counter()-begin\r\n479:        receipt['source_unchanged']=all(digest(ROOT/p)==sha for p,sha in release['source_sha256'].items())\r\n480:        receipt['release_unchanged']=digest(release_path)==claim['release_sha256']\r\n481:        receipt['evidence_binding_valid']=bool(receipt['source_unchanged'] and receipt['release_unchanged'])\r\n482:        if not receipt['evidence_binding_valid']: receipt['status']='INTERRUPTED_SOURCE_CHANGED'\r\n483:        for cost in receipt['costs'].values():\r\n486:        receipt['FOM_speedup']='未比较'\r\n487:        persist();write_json(OUTPUT/'execution.json',receipt)\r\n488:    return receipt\r\n"
+  },
+  "thread_environment_readback": {
+    "OMP_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "tool_receipts": [
+    {
+      "chunk_id": "2be1a6",
+      "wall_time_seconds": 10.0148061,
+      "session_id": 35491,
+      "original_token_count": 41,
+      "output": "HOST_ENV_JSON={\"OMP_NUM_THREADS\":\"1\",\"MKL_NUM_THREADS\":\"1\",\"OPENBLAS_NUM_THREADS\":\"1\",\"PYTHONDONTWRITEBYTECODE\":\"1\"}\r\nHOST_START_UTC=2026-11-07T16:33:08.2587143Z\r\n"
+    },
+    {
+      "chunk_id": "7fdde0",
+      "wall_time_seconds": 5.0023338,
+      "session_id": 35491,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "3162d9",
+      "wall_time_seconds": 5.0032079,
+      "session_id": 35491,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "17f4a7",
+      "wall_time_seconds": 5.0128192,
+      "session_id": 35491,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "671e1f",
+      "wall_time_seconds": 5.00342,
+      "session_id": 35491,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "9b65c5",
+      "wall_time_seconds": 5.0015337,
+      "session_id": 35491,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "bf6f04",
+      "wall_time_seconds": 5.0127861,
+      "session_id": 35491,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "a504d3",
+      "wall_time_seconds": 5.0143173,
+      "session_id": 35491,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "ab8604",
+      "wall_time_seconds": 5.0121572,
+      "session_id": 35491,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "9ed3ff",
+      "wall_time_seconds": 5.010398,
+      "session_id": 35491,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "0a47ed",
+      "wall_time_seconds": 5.0137574,
+      "session_id": 35491,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "9b24b9",
+      "wall_time_seconds": 5.0152114,
+      "session_id": 35491,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "2fb72f",
+      "wall_time_seconds": 5.0042112,
+      "session_id": 35491,
+      "original_token_count": 0,
+      "output": ""
+    }
+  ],
+  "stdout_path": "results/gftd_fit297_20261107/execution.stdout.txt",
+  "stderr_path": "results/gftd_fit297_20261107/execution.stderr.txt",
+  "host_start_receipt_path": "results/gftd_fit297_20261107/execution_host_start.json",
+  "exit_code": null,
+  "host_wall_seconds": null,
+  "phase": "RUNNING",
+  "launcher_pid": 55472,
+  "python_pid": 25564,
+  "last_process_observation": {
+    "utc": "2026-11-07T16:41:21.0829844Z",
+    "cpu_seconds": 23.6875,
+    "rss_bytes": 806039552,
+    "private_bytes": 1257082880,
+    "threads": 2,
+    "claim_exists": true
+  },
+  "startup_cause": "unknown; process advanced through imports and successfully acquired its claim",
+  "extra_python_probes": 0,
+  "exclusive_claim": {
+    "path": "results/gftd_fit297_20261107/started.json",
+    "action_id": "gftd-fit297-20261107-01",
+    "started_unix": 1794069654.9596949,
+    "environment_verified": true,
+    "sources_verified": 51
+  },
+  "last_runner_progress": {
+    "utc": "2026-11-07T16:48:57.9709821+00:00",
+    "status": "RUNNING",
+    "current": {
+      "stage": "fit",
+      "mode": "static",
+      "event_id": null
+    },
+    "legal_count": 297,
+    "counts": {
+      "fits_attempted": 1,
+      "fits_completed": 0,
+      "initializations_attempted": 0,
+      "initializations_completed": 0,
+      "future_pairs_attempted": 0,
+      "future_pairs_persisted": 0,
+      "future_pairs_completed": 0,
+      "future_pairs_failed": 0,
+      "rk4_attempted": 0,
+      "rk4_completed": 0,
+      "scoring_attempted": 0,
+      "scoring_completed": 0,
+      "fit": {},
+      "initialization": {},
+      "coverage": {}
+    },
+    "CPU": 473.671875,
+    "RSS": 812175360
+  }
+}

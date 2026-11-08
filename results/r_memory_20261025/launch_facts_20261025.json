@@ -1,0 +1,413 @@
+{
+  "scope": "bounded read-only launch and preparation verification; no native/optimizer or event-array parsing by this audit",
+  "observed_at_shanghai": "2026-10-25T18:57:20.515045+08:00",
+  "source_commit": "59f573b01b08c1ae221f4022c2100d411088161b",
+  "binding": {
+    "path": "private_data/r_memory_20261025/run01/binding.json",
+    "sha256": "48cf0d32d518d1628c871af48d5c0d384d237fd07ec6a04e3f9d18b5390963e1",
+    "bound_files": 87,
+    "current_file_rehash_note": "All 87 bound files were rehashed in the preceding audit command; zero mismatches. No tensor arrays were decoded.",
+    "all87_current_match_observed": true
+  },
+  "checks": {
+    "binding_count_87": true,
+    "registered_source": true,
+    "no_process_quotas": true,
+    "runtime_normal_qualified_native_receipt": true,
+    "runtime_exception_qualified_native_receipt": true,
+    "prepare_qualified_native_receipt": true,
+    "cohort_385_unique": true,
+    "stable342_unstable43": true,
+    "fit297_no_update88": true,
+    "event_id_intersection_empty": true,
+    "event_partition_covers_cohort": true,
+    "group_intersection_empty": true,
+    "fit_group_metadata_exact": true,
+    "no_update_group_metadata_exact": true,
+    "original366_fresh19_partition": true,
+    "source_exposed_to_all_groups_declared": true,
+    "val_test_not_read_reported": true,
+    "preregistered_group_hash_rule": true,
+    "fit_events.npz_identity": true,
+    "no_update_events.npz_identity": true,
+    "schedule.json_identity": true,
+    "cohort_metadata_digest": true,
+    "legacy_lock_bytes_unchanged": true,
+    "calibration_panel_is_12_fit_only": true
+  },
+  "status": "VERIFIED",
+  "phases": {
+    "runtime_normal": {
+      "receipt": {
+        "path": "private_data/r_memory_20261025/run01/native/runtime_normal/receipt.json",
+        "sha256": "2d2c17f0d3264e0875e47d67f8313aa9241da73b647c5cc9227a73aa372b63cc"
+      },
+      "status": "COMPLETED",
+      "expected_status": "COMPLETED",
+      "phase": "runtime_normal",
+      "source_commit": "59f573b01b08c1ae221f4022c2100d411088161b",
+      "worker": {
+        "pid": 67196,
+        "executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+        "physical_image": "C:\\Users\\LLLzijian\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "logical_executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+        "runtime_scheme": "direct_base_venv",
+        "runtime_selection": null,
+        "creation_filetime_utc": 134373991977608680,
+        "exit_filetime_utc": 0,
+        "kernel_100ns": 4218750,
+        "user_100ns": 3437500
+      },
+      "supervisor": {
+        "pid": 61868,
+        "executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+        "creation_filetime_utc": 134373991961874734,
+        "exit_filetime_utc": 0,
+        "kernel_100ns": 4062500,
+        "user_100ns": 4218750
+      },
+      "exit_code": 0,
+      "worker_exit_code": 0,
+      "launcher_exit_code": 0,
+      "actual_worker_state": "GONE",
+      "job_active_processes": 0,
+      "job_total_processes": 1,
+      "cleanup_verified": true,
+      "orphans_cleaned": false,
+      "wall_seconds": 2.287977699947078,
+      "job_cpu_user_seconds": 0.34375,
+      "job_cpu_kernel_seconds": 0.4375,
+      "source_before_count": 88,
+      "source_after_equal": true,
+      "source_closure_equals_registered_inputs": true,
+      "runtime_limits": null,
+      "cpu_limits": null,
+      "active_process_limit": null
+    },
+    "runtime_exception": {
+      "receipt": {
+        "path": "private_data/r_memory_20261025/run01/native/runtime_exception/receipt.json",
+        "sha256": "930050860e99bf191c5f73b0b39ec8e1d3adb6a303e277960816d2437c5c94c2"
+      },
+      "status": "FAILED",
+      "expected_status": "FAILED",
+      "phase": "runtime_exception",
+      "source_commit": "59f573b01b08c1ae221f4022c2100d411088161b",
+      "worker": {
+        "pid": 46780,
+        "executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+        "physical_image": "C:\\Users\\LLLzijian\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "logical_executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+        "runtime_scheme": "direct_base_venv",
+        "runtime_selection": null,
+        "creation_filetime_utc": 134373992145585240,
+        "exit_filetime_utc": 0,
+        "kernel_100ns": 3281250,
+        "user_100ns": 3593750
+      },
+      "supervisor": {
+        "pid": 52688,
+        "executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+        "creation_filetime_utc": 134373992131445400,
+        "exit_filetime_utc": 0,
+        "kernel_100ns": 2812500,
+        "user_100ns": 4375000
+      },
+      "exit_code": 1,
+      "worker_exit_code": 1,
+      "launcher_exit_code": 1,
+      "actual_worker_state": "GONE",
+      "job_active_processes": 0,
+      "job_total_processes": 1,
+      "cleanup_verified": true,
+      "orphans_cleaned": false,
+      "wall_seconds": 2.0907255000201985,
+      "job_cpu_user_seconds": 0.359375,
+      "job_cpu_kernel_seconds": 0.34375,
+      "source_before_count": 88,
+      "source_after_equal": true,
+      "source_closure_equals_registered_inputs": true,
+      "runtime_limits": null,
+      "cpu_limits": null,
+      "active_process_limit": null
+    },
+    "prepare": {
+      "receipt": {
+        "path": "private_data/r_memory_20261025/run01/native/prepare/receipt.json",
+        "sha256": "67882fff13ed7d782532e366b52ba9ed35418d961832d45d738cc0a424211df6"
+      },
+      "status": "COMPLETED",
+      "expected_status": "COMPLETED",
+      "phase": "prepare",
+      "source_commit": "59f573b01b08c1ae221f4022c2100d411088161b",
+      "worker": {
+        "pid": 56872,
+        "executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+        "physical_image": "C:\\Users\\LLLzijian\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "logical_executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+        "runtime_scheme": "direct_base_venv",
+        "runtime_selection": null,
+        "creation_filetime_utc": 134373992324556999,
+        "exit_filetime_utc": 0,
+        "kernel_100ns": 3125000,
+        "user_100ns": 4375000
+      },
+      "supervisor": {
+        "pid": 59344,
+        "executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+        "creation_filetime_utc": 134373992309850505,
+        "exit_filetime_utc": 0,
+        "kernel_100ns": 4218750,
+        "user_100ns": 3125000
+      },
+      "exit_code": 0,
+      "worker_exit_code": 0,
+      "launcher_exit_code": 0,
+      "actual_worker_state": "GONE",
+      "job_active_processes": 0,
+      "job_total_processes": 3,
+      "cleanup_verified": true,
+      "orphans_cleaned": false,
+      "wall_seconds": 64.04284010000993,
+      "job_cpu_user_seconds": 32.671875,
+      "job_cpu_kernel_seconds": 3.703125,
+      "source_before_count": 90,
+      "source_after_equal": true,
+      "source_closure_equals_registered_inputs": true,
+      "runtime_limits": null,
+      "cpu_limits": null,
+      "active_process_limit": null
+    }
+  },
+  "prepare": {
+    "metadata": {
+      "path": "private_data/r_memory_20261025/run01/prepare.json",
+      "sha256": "1c19ad191da692b942a1d5e46ed4b4b4418fa7702eeb2b2822e8c566c739ee14"
+    },
+    "cohort_count": 385,
+    "labels": {
+      "stable": 342,
+      "unstable": 43
+    },
+    "fit_count": 297,
+    "no_update_count": 88,
+    "fit_labels": {
+      "stable": 267,
+      "unstable": 30
+    },
+    "no_update_labels": {
+      "unstable": 13,
+      "stable": 75
+    },
+    "fit_groups": [
+      "1",
+      "11",
+      "14",
+      "15",
+      "17",
+      "18",
+      "2",
+      "23",
+      "24",
+      "27",
+      "28",
+      "29",
+      "30",
+      "31",
+      "33",
+      "6",
+      "8",
+      "9"
+    ],
+    "no_update_groups": [
+      "12",
+      "20",
+      "21",
+      "3",
+      "32",
+      "5"
+    ],
+    "id_intersection": [],
+    "group_intersection": [],
+    "original366_count": 366,
+    "fresh19_count": 19,
+    "source_already_exposed_to_all_groups": true,
+    "exclusions": [
+      {
+        "id": "newtrain_862d569a66982629",
+        "root": "closure_discovery",
+        "new_split": "train",
+        "reason": "short_full_history_unresolved",
+        "steps": {
+          "0.0025": "simulation_failed",
+          "0.005": "simulation_failed"
+        }
+      },
+      {
+        "id": "newtrain_1d7de550f8138e18",
+        "root": "closure_discovery",
+        "new_split": "train",
+        "reason": "numerical_or_classification_gate_failed",
+        "steps": {
+          "0.0025": "completed",
+          "0.005": "completed"
+        }
+      },
+      {
+        "id": "newtrain_5abfa5284c530efd",
+        "root": "closure_discovery",
+        "new_split": "train",
+        "reason": "numerical_or_classification_gate_failed",
+        "steps": {
+          "0.0025": "completed",
+          "0.005": "completed"
+        }
+      },
+      {
+        "id": "newtrain_c2338c03239d936d",
+        "root": "closure_discovery",
+        "new_split": "train",
+        "reason": "numerical_or_classification_gate_failed",
+        "steps": {
+          "0.0025": "completed",
+          "0.005": "completed"
+        }
+      },
+      {
+        "id": "newtrain_0dfc852c414464e8",
+        "root": "closure_discovery",
+        "new_split": "train",
+        "reason": "short_full_history_unresolved",
+        "steps": {
+          "0.0025": "completed",
+          "0.005": "completed"
+        }
+      }
+    ],
+    "exclusions_scope": "exact385-wrapper returned exclusions; earlier366 exclusions retain their original archived records",
+    "calibration_panel_ids": [
+      "expansion_0008",
+      "pilot_0202",
+      "newtrain_7686602ca2df933f",
+      "newtrain_5dabbb7b966f2b7a",
+      "expansion_0000",
+      "newtrain_ab91dc4c00f6ba89",
+      "newtrain_3437c2ab89bafaa6",
+      "newtrain_0586bd3a72003148",
+      "expansion_0016",
+      "newtrain_0f6db7878ac41fe9",
+      "newtrain_e6041b33464f3be1",
+      "expansion_0032"
+    ],
+    "calibration_panel_labels": {
+      "unstable": 3,
+      "stable": 9
+    },
+    "caches": {
+      "fit_events.npz": {
+        "path": "private_data/r_memory_20261025/run01/fit_events.npz",
+        "sha256": "3058c06fe23479a2c494203bd379ca495c54953b6d8b993a6591c26905cc4252",
+        "matches_prepare_record": true,
+        "bytes": 116229767,
+        "event_arrays_parsed_by_audit": false
+      },
+      "no_update_events.npz": {
+        "path": "private_data/r_memory_20261025/run01/no_update_events.npz",
+        "sha256": "79ef51251265cfd4224a4c6a482cd955c0b5c540a793912c6a890f0214db7025",
+        "matches_prepare_record": true,
+        "bytes": 32777554,
+        "event_arrays_parsed_by_audit": false
+      },
+      "schedule.json": {
+        "path": "private_data/r_memory_20261025/run01/schedule.json",
+        "sha256": "7f47408eb4642c2d7e7d1c32e3bfb763fe540f690d7fceb41bb28c2cd243e11e",
+        "matches_prepare_record": true,
+        "bytes": 6161123,
+        "event_arrays_parsed_by_audit": false
+      }
+    },
+    "original_val_test_opened": false
+  },
+  "native_receipt_totals_only": {
+    "wall_seconds": 68.4215432999772,
+    "job_cpu_user_seconds": 33.375,
+    "job_cpu_kernel_seconds": 4.484375,
+    "scope": "Three native phases only; excludes root preparation, freeze, unit checks and this audit; wall and CPU not combined."
+  },
+  "legacy_lock": {
+    "path": "private_data/closure_mechanism_20261019/P1/training_efficiency01/active.lock",
+    "sha256": "f9d72f0d5fccd8b5349907d69299aad543aa9b936f3e016971a7e24acd57c3e4"
+  },
+  "preflight_admission_history": [
+    {
+      "attempt": 1,
+      "provenance": "root-reported tool chunk6257fd",
+      "exit_code": 1,
+      "tool_wall_seconds": 1.2703986,
+      "stage": "legacy_lock_allowed before ownership/native creation",
+      "error": "legacy owner state was not GONE at that instantaneous admission; exact observed state not emitted",
+      "exact_instantaneous_state": null,
+      "worker_created": false,
+      "optimizer_updates": 0,
+      "preflight_output_created": false,
+      "code_lock_binding_changed": false
+    },
+    {
+      "followup": "root-reported read-only native identity probe chunk5f7529",
+      "exit_code": 0,
+      "supervisor_state": "GONE",
+      "worker_state": "GONE",
+      "code_lock_binding_changed": false
+    },
+    {
+      "attempt": 2,
+      "root_native_session": 27340,
+      "root_report": "preflight admitted and actually started without source, binding, or legacy-lock changes"
+    }
+  ],
+  "scientific_updates_started_by_audit": 0,
+  "native_jobs_started_by_audit": 0,
+  "private_event_tensor_arrays_parsed_by_audit": false,
+  "job_cpu_cost_of_this_audit": null,
+  "preflight_second_start": {
+    "started_record": {
+      "path": "private_data/r_memory_20261025/run01/native/preflight/started.json",
+      "sha256": "611e3d3b73e6fad1afc76bd4bc2b8efafc14d1e3e7fe9f9d7f97a2beb3fb3b16"
+    },
+    "supervisor": {
+      "pid": 35736,
+      "executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+      "creation_filetime_utc": 134373993517723347,
+      "exit_filetime_utc": 0,
+      "kernel_100ns": 5468750,
+      "user_100ns": 4218750
+    },
+    "launcher": {
+      "pid": 41196,
+      "executable": "C:\\Users\\LLLzijian\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "physical_image": "C:\\Users\\LLLzijian\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "creation_filetime_utc": 134373993537151439,
+      "exit_filetime_utc": 0,
+      "kernel_100ns": 0,
+      "user_100ns": 0
+    },
+    "actual_worker_record": {
+      "path": "private_data/r_memory_20261025/run01/native/preflight/actual_worker.json",
+      "sha256": "3595371f6f570bf4a949eaa82a2b997da1e592300a88100edb64756b6eddc352"
+    },
+    "actual_worker": {
+      "pid": 41196,
+      "executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+      "physical_image": "C:\\Users\\LLLzijian\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "logical_executable": "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+      "runtime_scheme": "direct_base_venv",
+      "runtime_selection": null,
+      "creation_filetime_utc": 134373993537151439,
+      "exit_filetime_utc": 0,
+      "kernel_100ns": 4218750,
+      "user_100ns": 3906250
+    },
+    "completion_receipt_present_at_audit": false,
+    "interpretation": "startup evidence only; no liveness or completion claim"
+  }
+}

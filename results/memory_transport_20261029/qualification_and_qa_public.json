@@ -1,0 +1,938 @@
+{
+  "schema": "memory_transport_qualification_and_QA_public_v1",
+  "status": "PRETRAINING_QUALIFICATION_AND_RECOVERY_QA_PASSED",
+  "source_commit": "181d7f8bba2eb530a0ad5afe0130035755e974a2",
+  "closed_phases": [
+    "prepare",
+    "qualify",
+    "qa"
+  ],
+  "source": {
+    "logical_name": "SGM_A_28311_step96",
+    "ancestry": "N_M192 -> SGM A96",
+    "assets_sha256": {
+      "model.json": "ec8c78cbff0b6dd65bd3ba6dfc5a0ed65e7fa418227c90adc3a703311aebadf4",
+      "checkpoint.json": "249cc7fab5226cfbd52046efa2dc0cd8e21c0c4dda1f23c71092d8e6e86b0b12",
+      "training.pt": "15cc4be8ba8bf39e755f8fafcadf0b78ec8badd65db6a8dfeb6b248283ed2ecc"
+    },
+    "plane_raw_sha256": "3dee4225e77e5bf6ab6ad58a73ab4ad9c8a263e647d053fcb6842cc4a7281941",
+    "plane_public_sha256": "c40bb7a6ecc31e8d7228f77f6e71937ac8e3fed66f305700520d35bc6b4bfdda",
+    "old_Adam_loaded": false
+  },
+  "numerical_qualification": {
+    "eligible_variants": [
+      "A",
+      "S",
+      "P"
+    ],
+    "full_matched_comparison_qualified": true,
+    "variants": {
+      "A": {
+        "training_admission": true,
+        "device_comparison": {
+          "status": "PASS",
+          "atol": 1e-10,
+          "rtol": 1e-08,
+          "all_raw_gradients": true
+        },
+        "cpu_qualified": true,
+        "cpu_cuda_pair_pass": true,
+        "performance_equivalent": true,
+        "finite_12x8_backward": true,
+        "fullfit297_qualified": true,
+        "qualification_wall_seconds": 287.57851310000115,
+        "zero_update_aggregate": {
+          "train_scope": {
+            "total_events": 297,
+            "stable_events": 267,
+            "unstable_events": 30,
+            "initial_observation_index": 10
+          },
+          "raw_parameter_count": 47,
+          "risks": {
+            "units": "dimensionless normalized squared-error risk, not RMSE",
+            "definition": "original 0.8 event-mean + 0.2 mean of worst ceil(10% of eligible events)",
+            "stable_complete_horizons_s": {
+              "5": {
+                "value": 1.0521060422026562,
+                "coarse_value": 1.0521060493213035,
+                "numerical_score_perturbation": 7.1186472272444234e-09,
+                "eligible": 267,
+                "unresolved_ids": []
+              },
+              "8": {
+                "value": 0.7187045393795044,
+                "coarse_value": 0.7187045230908672,
+                "numerical_score_perturbation": 1.6288637216810287e-08,
+                "eligible": 267,
+                "unresolved_ids": []
+              }
+            },
+            "unstable_actual_intervals_up_to8s": {
+              "value": 2.3697211016504296,
+              "eligible": 30,
+              "definition": "same actual per-event interval up to8s; original 0.8mean+0.2ceil-top10 risk",
+              "coarse_value": 2.3697209031882003,
+              "numerical_score_perturbation": 1.984622293171867e-07
+            },
+            "unstable_actual_intervals_up_to15s": {
+              "value": 2.3697211016504296,
+              "eligible": 30,
+              "coarse_value": 2.3697209031882003,
+              "numerical_score_perturbation": 1.984622293171867e-07
+            }
+          },
+          "physical_RMSE": {
+            "common_frequency_RMSE_8s": {
+              "value": 0.3402539248314365,
+              "unit": "rad/s",
+              "metric_key": "common_frequency_rmse_8s",
+              "scope": {
+                "data_split": "train",
+                "event_label": "stable",
+                "eligible_event_count": 267,
+                "horizon_s": 8,
+                "availability": "complete 8s and numerically qualified",
+                "aggregation": "pooled_RMSE = sqrt(pooled_SSE / pooled_n), over all eligible stable samples; not an average of per-event RMSE",
+                "excluded_cohort": "not all297 train events"
+              },
+              "definition": "惯量加权平均角速度误差的RMSE。每个时点 e_common(t)=sum_i mass_i*(omega_pred_i(t)-omega_true_i(t))/sum_i mass_i；随后对全部合格稳定样本的完整8s时点汇总SSE和n，取sqrt(pooled_SSE/pooled_n)。"
+            }
+          },
+          "normalized_RMSE": {
+            "p_RMSE_8s": {
+              "value": 0.49428451664578116,
+              "unit": "dimensionless",
+              "metric_key": "normalized_p_rmse_8s",
+              "scope": {
+                "data_split": "train",
+                "event_label": "stable",
+                "eligible_event_count": 267,
+                "horizon_s": 8,
+                "availability": "complete 8s and numerically qualified",
+                "aggregation": "pooled_RMSE = sqrt(pooled_SSE / pooled_n), over all eligible stable samples; not an average of per-event RMSE",
+                "excluded_cohort": "not all297 train events"
+              }
+            }
+          },
+          "autonomous_objective_J_actual_intervals_up_to8s": {
+            "fine": 9.158337197896323,
+            "coarse": 9.158336557701714,
+            "unit": "dimensionless original J; separate from risk and RMSE"
+          },
+          "classification": {
+            "eight_seconds": {
+              "event_count": 297,
+              "unstable_count": 30,
+              "numerical_unresolved": 0,
+              "missed_resolved_unstable": 3,
+              "false_los_resolved_stable": 0
+            },
+            "actual_available_intervals_up_to15s": {
+              "event_count": 297,
+              "unstable_count": 30,
+              "numerical_unresolved": 0,
+              "missed_resolved_unstable": 21,
+              "false_los_resolved_stable": 0
+            }
+          },
+          "numerical_validity": {
+            "all_8s_rows_qualified": true,
+            "all_actual15_rows_qualified": true,
+            "all_required_rows_qualified": true
+          }
+        }
+      },
+      "S": {
+        "training_admission": true,
+        "device_comparison": {
+          "status": "PASS",
+          "atol": 1e-10,
+          "rtol": 1e-08,
+          "all_raw_gradients": true
+        },
+        "cpu_qualified": true,
+        "cpu_cuda_pair_pass": true,
+        "performance_equivalent": true,
+        "finite_12x8_backward": true,
+        "fullfit297_qualified": true,
+        "qualification_wall_seconds": 261.06213740000385,
+        "zero_update_aggregate": {
+          "train_scope": {
+            "total_events": 297,
+            "stable_events": 267,
+            "unstable_events": 30,
+            "initial_observation_index": 10
+          },
+          "raw_parameter_count": 48,
+          "risks": {
+            "units": "dimensionless normalized squared-error risk, not RMSE",
+            "definition": "original 0.8 event-mean + 0.2 mean of worst ceil(10% of eligible events)",
+            "stable_complete_horizons_s": {
+              "5": {
+                "value": 1.0521060422026562,
+                "coarse_value": 1.0521060493213035,
+                "numerical_score_perturbation": 7.1186472272444234e-09,
+                "eligible": 267,
+                "unresolved_ids": []
+              },
+              "8": {
+                "value": 0.7187045393795044,
+                "coarse_value": 0.7187045230908672,
+                "numerical_score_perturbation": 1.6288637216810287e-08,
+                "eligible": 267,
+                "unresolved_ids": []
+              }
+            },
+            "unstable_actual_intervals_up_to8s": {
+              "value": 2.3697211016504296,
+              "eligible": 30,
+              "definition": "same actual per-event interval up to8s; original 0.8mean+0.2ceil-top10 risk",
+              "coarse_value": 2.3697209031882003,
+              "numerical_score_perturbation": 1.984622293171867e-07
+            },
+            "unstable_actual_intervals_up_to15s": {
+              "value": 2.3697211016504296,
+              "eligible": 30,
+              "coarse_value": 2.3697209031882003,
+              "numerical_score_perturbation": 1.984622293171867e-07
+            }
+          },
+          "physical_RMSE": {
+            "common_frequency_RMSE_8s": {
+              "value": 0.3402539248314365,
+              "unit": "rad/s",
+              "metric_key": "common_frequency_rmse_8s",
+              "scope": {
+                "data_split": "train",
+                "event_label": "stable",
+                "eligible_event_count": 267,
+                "horizon_s": 8,
+                "availability": "complete 8s and numerically qualified",
+                "aggregation": "pooled_RMSE = sqrt(pooled_SSE / pooled_n), over all eligible stable samples; not an average of per-event RMSE",
+                "excluded_cohort": "not all297 train events"
+              },
+              "definition": "惯量加权平均角速度误差的RMSE。每个时点 e_common(t)=sum_i mass_i*(omega_pred_i(t)-omega_true_i(t))/sum_i mass_i；随后对全部合格稳定样本的完整8s时点汇总SSE和n，取sqrt(pooled_SSE/pooled_n)。"
+            }
+          },
+          "normalized_RMSE": {
+            "p_RMSE_8s": {
+              "value": 0.49428451664578116,
+              "unit": "dimensionless",
+              "metric_key": "normalized_p_rmse_8s",
+              "scope": {
+                "data_split": "train",
+                "event_label": "stable",
+                "eligible_event_count": 267,
+                "horizon_s": 8,
+                "availability": "complete 8s and numerically qualified",
+                "aggregation": "pooled_RMSE = sqrt(pooled_SSE / pooled_n), over all eligible stable samples; not an average of per-event RMSE",
+                "excluded_cohort": "not all297 train events"
+              }
+            }
+          },
+          "autonomous_objective_J_actual_intervals_up_to8s": {
+            "fine": 9.158337197896323,
+            "coarse": 9.158336557701714,
+            "unit": "dimensionless original J; separate from risk and RMSE"
+          },
+          "classification": {
+            "eight_seconds": {
+              "event_count": 297,
+              "unstable_count": 30,
+              "numerical_unresolved": 0,
+              "missed_resolved_unstable": 3,
+              "false_los_resolved_stable": 0
+            },
+            "actual_available_intervals_up_to15s": {
+              "event_count": 297,
+              "unstable_count": 30,
+              "numerical_unresolved": 0,
+              "missed_resolved_unstable": 21,
+              "false_los_resolved_stable": 0
+            }
+          },
+          "numerical_validity": {
+            "all_8s_rows_qualified": true,
+            "all_actual15_rows_qualified": true,
+            "all_required_rows_qualified": true
+          }
+        }
+      },
+      "P": {
+        "training_admission": true,
+        "device_comparison": {
+          "status": "PASS",
+          "atol": 1e-10,
+          "rtol": 1e-08,
+          "all_raw_gradients": true
+        },
+        "cpu_qualified": true,
+        "cpu_cuda_pair_pass": true,
+        "performance_equivalent": true,
+        "finite_12x8_backward": true,
+        "fullfit297_qualified": true,
+        "qualification_wall_seconds": 264.28916300000856,
+        "zero_update_aggregate": {
+          "train_scope": {
+            "total_events": 297,
+            "stable_events": 267,
+            "unstable_events": 30,
+            "initial_observation_index": 10
+          },
+          "raw_parameter_count": 48,
+          "risks": {
+            "units": "dimensionless normalized squared-error risk, not RMSE",
+            "definition": "original 0.8 event-mean + 0.2 mean of worst ceil(10% of eligible events)",
+            "stable_complete_horizons_s": {
+              "5": {
+                "value": 1.0521060422026562,
+                "coarse_value": 1.0521060493213035,
+                "numerical_score_perturbation": 7.1186472272444234e-09,
+                "eligible": 267,
+                "unresolved_ids": []
+              },
+              "8": {
+                "value": 0.7187045393795044,
+                "coarse_value": 0.7187045230908672,
+                "numerical_score_perturbation": 1.6288637216810287e-08,
+                "eligible": 267,
+                "unresolved_ids": []
+              }
+            },
+            "unstable_actual_intervals_up_to8s": {
+              "value": 2.3697211016504296,
+              "eligible": 30,
+              "definition": "same actual per-event interval up to8s; original 0.8mean+0.2ceil-top10 risk",
+              "coarse_value": 2.3697209031882003,
+              "numerical_score_perturbation": 1.984622293171867e-07
+            },
+            "unstable_actual_intervals_up_to15s": {
+              "value": 2.3697211016504296,
+              "eligible": 30,
+              "coarse_value": 2.3697209031882003,
+              "numerical_score_perturbation": 1.984622293171867e-07
+            }
+          },
+          "physical_RMSE": {
+            "common_frequency_RMSE_8s": {
+              "value": 0.3402539248314365,
+              "unit": "rad/s",
+              "metric_key": "common_frequency_rmse_8s",
+              "scope": {
+                "data_split": "train",
+                "event_label": "stable",
+                "eligible_event_count": 267,
+                "horizon_s": 8,
+                "availability": "complete 8s and numerically qualified",
+                "aggregation": "pooled_RMSE = sqrt(pooled_SSE / pooled_n), over all eligible stable samples; not an average of per-event RMSE",
+                "excluded_cohort": "not all297 train events"
+              },
+              "definition": "惯量加权平均角速度误差的RMSE。每个时点 e_common(t)=sum_i mass_i*(omega_pred_i(t)-omega_true_i(t))/sum_i mass_i；随后对全部合格稳定样本的完整8s时点汇总SSE和n，取sqrt(pooled_SSE/pooled_n)。"
+            }
+          },
+          "normalized_RMSE": {
+            "p_RMSE_8s": {
+              "value": 0.49428451664578116,
+              "unit": "dimensionless",
+              "metric_key": "normalized_p_rmse_8s",
+              "scope": {
+                "data_split": "train",
+                "event_label": "stable",
+                "eligible_event_count": 267,
+                "horizon_s": 8,
+                "availability": "complete 8s and numerically qualified",
+                "aggregation": "pooled_RMSE = sqrt(pooled_SSE / pooled_n), over all eligible stable samples; not an average of per-event RMSE",
+                "excluded_cohort": "not all297 train events"
+              }
+            }
+          },
+          "autonomous_objective_J_actual_intervals_up_to8s": {
+            "fine": 9.158337197896323,
+            "coarse": 9.158336557701714,
+            "unit": "dimensionless original J; separate from risk and RMSE"
+          },
+          "classification": {
+            "eight_seconds": {
+              "event_count": 297,
+              "unstable_count": 30,
+              "numerical_unresolved": 0,
+              "missed_resolved_unstable": 3,
+              "false_los_resolved_stable": 0
+            },
+            "actual_available_intervals_up_to15s": {
+              "event_count": 297,
+              "unstable_count": 30,
+              "numerical_unresolved": 0,
+              "missed_resolved_unstable": 21,
+              "false_los_resolved_stable": 0
+            }
+          },
+          "numerical_validity": {
+            "all_8s_rows_qualified": true,
+            "all_actual15_rows_qualified": true,
+            "all_required_rows_qualified": true
+          }
+        }
+      }
+    },
+    "A0_A96_cached_compatibility": {
+      "qualified": true,
+      "record_count": 297,
+      "bidirectional": true,
+      "scope": "A96_A0_fit297_bidirectional_RK4_fine005_base01_8s_actual15",
+      "source_A96_prediction_recomputed": false,
+      "source_evidence_sha256": "22e2b30d9c4e6dc4d6162d11e3eeb2707a9a6b5d461fef956a3aff8e4e15c5fb",
+      "original_schema_aliases": {
+        "R_N": "frozen_A96",
+        "A": "current_A0"
+      },
+      "alignment": {
+        "history_rows": 11,
+        "initial_observation_index": 10,
+        "fine_dt": 0.005,
+        "output_dt": 0.01,
+        "coarse_stride": 2
+      },
+      "all_registered_rows_qualified": true,
+      "both_ranges_all_fine_substeps_finite": true
+    }
+  },
+  "performance": {
+    "actual_attempts": 6,
+    "registered_upper_bound": 6,
+    "variants": {
+      "A": {
+        "status": "PASS",
+        "equivalent": true,
+        "atol": 1e-10,
+        "rtol": 1e-08,
+        "sample_scope": "same frozen 12 complete8s stable train events; registered sample IDs match prepare",
+        "sample_count": 12,
+        "horizon_s": 8.0,
+        "method": "rk4",
+        "dtype": "float64",
+        "optimizer_calls": 0,
+        "ordered_runs": [
+          {
+            "implementation": "uncached",
+            "seconds": 21.764138699989417,
+            "peak_cuda_bytes": 72518656,
+            "J": 0.917880102039183,
+            "all_raw_gradients": true
+          },
+          {
+            "implementation": "cached",
+            "seconds": 17.769812500002445,
+            "peak_cuda_bytes": 64326144,
+            "J": 0.917880102039183,
+            "all_raw_gradients": true
+          }
+        ],
+        "objective": "original autonomous full J including causal initialization and all trainable gradients",
+        "peak_memory_unit": "bytes",
+        "time_unit": "seconds"
+      },
+      "S": {
+        "status": "PASS",
+        "equivalent": true,
+        "atol": 1e-10,
+        "rtol": 1e-08,
+        "sample_scope": "same frozen 12 complete8s stable train events; registered sample IDs match prepare",
+        "sample_count": 12,
+        "horizon_s": 8.0,
+        "method": "rk4",
+        "dtype": "float64",
+        "optimizer_calls": 0,
+        "ordered_runs": [
+          {
+            "implementation": "uncached",
+            "seconds": 21.855523799997172,
+            "peak_cuda_bytes": 75796480,
+            "J": 0.917880102039183,
+            "all_raw_gradients": true
+          },
+          {
+            "implementation": "cached",
+            "seconds": 15.97379030000593,
+            "peak_cuda_bytes": 64327680,
+            "J": 0.917880102039183,
+            "all_raw_gradients": true
+          }
+        ],
+        "objective": "original autonomous full J including causal initialization and all trainable gradients",
+        "peak_memory_unit": "bytes",
+        "time_unit": "seconds"
+      },
+      "P": {
+        "status": "PASS",
+        "equivalent": true,
+        "atol": 1e-10,
+        "rtol": 1e-08,
+        "sample_scope": "same frozen 12 complete8s stable train events; registered sample IDs match prepare",
+        "sample_count": 12,
+        "horizon_s": 8.0,
+        "method": "rk4",
+        "dtype": "float64",
+        "optimizer_calls": 0,
+        "ordered_runs": [
+          {
+            "implementation": "uncached",
+            "seconds": 22.84002610000607,
+            "peak_cuda_bytes": 75796480,
+            "J": 0.917880102039183,
+            "all_raw_gradients": true
+          },
+          {
+            "implementation": "cached",
+            "seconds": 17.052498200006085,
+            "peak_cuda_bytes": 64327680,
+            "J": 0.917880102039183,
+            "all_raw_gradients": true
+          }
+        ],
+        "objective": "original autonomous full J including causal initialization and all trainable gradients",
+        "peak_memory_unit": "bytes",
+        "time_unit": "seconds"
+      }
+    },
+    "measurement_limit": "one fixed uncached-then-cached pair per variant; no general speedup or same-precision cost claim"
+  },
+  "actual_recovery_QA": {
+    "scope": {
+      "implementation_fixture_only": true,
+      "scientific_event_payloads_used": false,
+      "fixture": {
+        "number_of_records": 2,
+        "time_sample_counts": [
+          17,
+          23
+        ],
+        "sample_interval_s": 0.01
+      },
+      "horizon_s_per_optimizer_call": 0.02,
+      "method": "true classical RK4",
+      "history": {
+        "time_samples": 11,
+        "duration_s": 0.1
+      },
+      "minibatch": {
+        "entries": 12,
+        "random_draws_with_replacement": 8,
+        "coverage_entries": 4,
+        "coverage_note": "with the two-record implementation fixture the registered two unique coverage entries are repeated to fill four; not twelve scientific events"
+      },
+      "restoration_comparison": "18 continuous calls versus16 calls + saved checkpoint + restore +2 calls",
+      "optimizer": {
+        "name": "Adam",
+        "lr": 0.03,
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "eps": 1e-08,
+        "clip_global_gradient_norm": 100.0
+      },
+      "distinction": "108 real Adam calls are recovery checks at .02s, not108 complete12-stable-event8s performance tasks"
+    },
+    "models": [
+      {
+        "variant": "A",
+        "status": "PASS",
+        "actual_optimizer_calls": 36,
+        "trajectories": [
+          {
+            "path": "continuous",
+            "actual_attempted_calls": 18,
+            "actual_completed_calls": 18,
+            "completed_steps": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18
+            ],
+            "saved_and_restored_after_step": null,
+            "post_restore_calls": 0
+          },
+          {
+            "path": "restored",
+            "actual_attempted_calls": 18,
+            "actual_completed_calls": 18,
+            "completed_steps": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18
+            ],
+            "saved_and_restored_after_step": 16,
+            "post_restore_calls": 2
+          }
+        ],
+        "checkpoint_step": 16,
+        "parameter_layout_blocks": [
+          "kappa_raw",
+          "lambda_raw",
+          "a_bar"
+        ],
+        "endpoint_comparison": {
+          "parameter_maxabs": 0.0,
+          "Adam_maxabs": 0.0,
+          "atol": 2e-09,
+          "rtol": 2e-09
+        },
+        "RNG_and_restore_checks": {
+          "checkpoint_model_Adam_all_RNG_layout_exact": true,
+          "restored_Adam_step_matches_checkpoint": true,
+          "final_all_RNG_exact": true,
+          "nonzero_Adam_moments_checked": true,
+          "evidence_basis": "producer PASS is emitted only after these frozen exact guards; no additional binary checkpoint inspection or QA run"
+        },
+        "wall_seconds": 27.212875500001246
+      },
+      {
+        "variant": "S",
+        "status": "PASS",
+        "actual_optimizer_calls": 36,
+        "trajectories": [
+          {
+            "path": "continuous",
+            "actual_attempted_calls": 18,
+            "actual_completed_calls": 18,
+            "completed_steps": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18
+            ],
+            "saved_and_restored_after_step": null,
+            "post_restore_calls": 0
+          },
+          {
+            "path": "restored",
+            "actual_attempted_calls": 18,
+            "actual_completed_calls": 18,
+            "completed_steps": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18
+            ],
+            "saved_and_restored_after_step": 16,
+            "post_restore_calls": 2
+          }
+        ],
+        "checkpoint_step": 16,
+        "parameter_layout_blocks": [
+          "kappa_raw",
+          "lambda_raw",
+          "a_bar",
+          "s_raw"
+        ],
+        "endpoint_comparison": {
+          "parameter_maxabs": 0.0,
+          "Adam_maxabs": 0.0,
+          "atol": 2e-09,
+          "rtol": 2e-09
+        },
+        "RNG_and_restore_checks": {
+          "checkpoint_model_Adam_all_RNG_layout_exact": true,
+          "restored_Adam_step_matches_checkpoint": true,
+          "final_all_RNG_exact": true,
+          "nonzero_Adam_moments_checked": true,
+          "evidence_basis": "producer PASS is emitted only after these frozen exact guards; no additional binary checkpoint inspection or QA run"
+        },
+        "wall_seconds": 12.97592509999231
+      },
+      {
+        "variant": "P",
+        "status": "PASS",
+        "actual_optimizer_calls": 36,
+        "trajectories": [
+          {
+            "path": "continuous",
+            "actual_attempted_calls": 18,
+            "actual_completed_calls": 18,
+            "completed_steps": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18
+            ],
+            "saved_and_restored_after_step": null,
+            "post_restore_calls": 0
+          },
+          {
+            "path": "restored",
+            "actual_attempted_calls": 18,
+            "actual_completed_calls": 18,
+            "completed_steps": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18
+            ],
+            "saved_and_restored_after_step": 16,
+            "post_restore_calls": 2
+          }
+        ],
+        "checkpoint_step": 16,
+        "parameter_layout_blocks": [
+          "kappa_raw",
+          "lambda_raw",
+          "a_bar",
+          "d_raw"
+        ],
+        "endpoint_comparison": {
+          "parameter_maxabs": 0.0,
+          "Adam_maxabs": 0.0,
+          "atol": 2e-09,
+          "rtol": 2e-09
+        },
+        "RNG_and_restore_checks": {
+          "checkpoint_model_Adam_all_RNG_layout_exact": true,
+          "restored_Adam_step_matches_checkpoint": true,
+          "final_all_RNG_exact": true,
+          "nonzero_Adam_moments_checked": true,
+          "evidence_basis": "producer PASS is emitted only after these frozen exact guards; no additional binary checkpoint inspection or QA run"
+        },
+        "wall_seconds": 13.708290299997316
+      }
+    ],
+    "eligible_variants": [
+      "A",
+      "S",
+      "P"
+    ],
+    "calls_snapshot_at_QA_close": {
+      "categories": {
+        "formal": {
+          "attempted": 0,
+          "completed": 0
+        },
+        "qa": {
+          "attempted": 108,
+          "completed": 108
+        },
+        "repair": {
+          "attempted": 0,
+          "completed": 0
+        },
+        "replay": {
+          "attempted": 0,
+          "completed": 0
+        }
+      },
+      "attempted_total": 108,
+      "completed_total": 108,
+      "pending": []
+    },
+    "immutable_projection_sha256": "bb67995ad241c8092d1cea888bc8a6d409d4bcb94f46701a92389afc25174f47"
+  },
+  "closed_native_phase_cost": {
+    "unit": "seconds",
+    "phases": {
+      "prepare": {
+        "status": "COMPLETED",
+        "exit_code": 0,
+        "worker_exit_code": 0,
+        "launcher_exit_code": 0,
+        "cleanup_verified": true,
+        "orphans_cleaned": false,
+        "job_active_processes": 0,
+        "wall_seconds": 60.866803099997924,
+        "job_cpu_user_seconds": 5.671875,
+        "job_cpu_kernel_seconds": 4.78125,
+        "job_total_processes": 3,
+        "native_receipt_sha256": "b989ecae4051255d68f841915b4a7ed6ab69e46ad2fd04e6af0d419a0ab9decd",
+        "recorded_worker_state_at_receipt_close": "GONE",
+        "current_process_identity_requeried": false
+      },
+      "qualify": {
+        "status": "COMPLETED",
+        "exit_code": 0,
+        "worker_exit_code": 0,
+        "launcher_exit_code": 0,
+        "cleanup_verified": true,
+        "orphans_cleaned": false,
+        "job_active_processes": 0,
+        "wall_seconds": 878.1287776999961,
+        "job_cpu_user_seconds": 1056.890625,
+        "job_cpu_kernel_seconds": 487.296875,
+        "job_total_processes": 3,
+        "native_receipt_sha256": "6d6ab3166ff208ca660c762462796f11ff58c672c7cf5b52b0ce6004f6528d74",
+        "recorded_worker_state_at_receipt_close": "GONE",
+        "current_process_identity_requeried": false
+      },
+      "qa": {
+        "status": "COMPLETED",
+        "exit_code": 0,
+        "worker_exit_code": 0,
+        "launcher_exit_code": 0,
+        "cleanup_verified": true,
+        "orphans_cleaned": false,
+        "job_active_processes": 0,
+        "wall_seconds": 157.19234669998696,
+        "job_cpu_user_seconds": 54.40625,
+        "job_cpu_kernel_seconds": 37.5625,
+        "job_total_processes": 3,
+        "native_receipt_sha256": "bc09d4e1585114f9c043fcded5e9c8cbe7a33a344697cae40161f2fb735ac586",
+        "recorded_worker_state_at_receipt_close": "GONE",
+        "current_process_identity_requeried": false
+      }
+    },
+    "three_closed_phase_totals": {
+      "wall_seconds": 1096.187927499981,
+      "job_cpu_user_seconds": 1116.96875,
+      "job_cpu_kernel_seconds": 529.640625,
+      "job_cpu_user_plus_kernel_seconds": 1646.609375
+    },
+    "cost_scope": "only completed prepare/qualify/qa native Jobs and their actual subtrees; not whole-stage final cost",
+    "excluded": [
+      "outer controller/wrapper",
+      "prior mathematical CPU/CUDA qualifications",
+      "source-plane preparation",
+      "metadata freezes",
+      "prelaunch engineering recovery",
+      "currently running formal training"
+    ]
+  },
+  "original_bound_evidence_sha256": {
+    "controller_implementation": "7b511ac28b191906eb7bea631c5194a047d94c09f0fd446511b6396829511607",
+    "model_implementation": "c9040bd65026edd0939b6c1046e21205388ffe1d2d5d69752d67144416101494",
+    "study_implementation": "1cb35ae27317a3ecf4b852895e6eb8564e5517d9b9cb75e14231dcfde16e252f",
+    "protocol": "3fcb1ed8ece5a6465c2b912e83645c2b90a1306a9a299ba5e351728e659d0509",
+    "CPU_mathematical_qualification": "4d3068e30635c2cf06a7cbe4b35d47681833475001a09e8bfb755db498082c41",
+    "CUDA_mathematical_qualification": "5f0f37f28f48749ea9bf196c0e4c8d1c827958bc25abe8ebf483aad40025ea9f",
+    "source_plane_public": "c40bb7a6ecc31e8d7228f77f6e71937ac8e3fed66f305700520d35bc6b4bfdda",
+    "frozen_R_N_qualification_summary": "a169a7e798b87ce244b0c45eb27b6ce75e38f55ed014e28382e71d918c113288",
+    "frozen_R_N_fit297_evidence": "140af6d7d30d663f66a95f31b92348903283d973e0091f9121d6e1548cfbeb19",
+    "frozen_A96_fit297_evidence": "22e2b30d9c4e6dc4d6162d11e3eeb2707a9a6b5d461fef956a3aff8e4e15c5fb"
+  },
+  "extracted_closed_JSON_sha256": {
+    "prepare_summary": "602dfcc514383a90bab9c5feabfcc3a30237078660aa2087cac9ea8698f30292",
+    "qualification_summary": "c38b6fb852ba0944246751e799da8a2cf08d127bdb66263367bda31cd236e674",
+    "recovery_QA_summary": "198dcabe447d983b8528224199b43d6a10a8ebd5297420498b53e59e0c968025",
+    "immutable_QA_optimizer_projection": "bb67995ad241c8092d1cea888bc8a6d409d4bcb94f46701a92389afc25174f47",
+    "A0_A96_compatibility": "7071883bb127ad6f850c041b5fa764a95d77c4e7caffd38d35329d3d78c33d4c",
+    "prepare_native_receipt": "b989ecae4051255d68f841915b4a7ed6ab69e46ad2fd04e6af0d419a0ab9decd",
+    "qualify_native_receipt": "6d6ab3166ff208ca660c762462796f11ff58c672c7cf5b52b0ce6004f6528d74",
+    "qa_native_receipt": "bc09d4e1585114f9c043fcded5e9c8cbe7a33a344697cae40161f2fb735ac586",
+    "A_performance_summary": "812ff6d0ad8768a82d40869cd76b4bc51714427766ef52a2506553543b666bb9",
+    "A_QA_checkpoint16_metadata": "494e11cd6ce2d4720bba7c415505144c513f1202f6b565739e02cece627a215a",
+    "S_performance_summary": "3f988728db46e154ecd3312623c2dbaa2c8953c7438b2880ecf5c1c577e40c7f",
+    "S_QA_checkpoint16_metadata": "05189e8d570736b61c5b2424fbe3dabc5e666bca3554517c16b0f54ccc370961",
+    "P_performance_summary": "0a5b07ae861a20209b5b483f68e063a97cbe727d74da2b5f1d1c71fcec07e295",
+    "P_QA_checkpoint16_metadata": "59c55938558177462be27e55c38c3848951fad69d37ec382a0b666f3fc0e2681"
+  },
+  "scientific_status": {
+    "formal_training": "RUNNING at root handoff; not inspected by this artifact",
+    "model_promotion": false,
+    "default_model": "none",
+    "interpretation": "all three zero-update models numerically admitted and real recovery QA closed; no learned transport benefit inferred",
+    "P_independent_capacity_matched": false
+  },
+  "accounting_scope": {
+    "same_registered_optimizer_upper_bound": 1848,
+    "QA_calls_spent_at_this_snapshot": 108,
+    "formal_spend_not_read": true,
+    "repair_calls_at_QA_close": 0,
+    "replay_calls_at_QA_close": 0,
+    "pending_at_QA_close": []
+  },
+  "boundaries": {
+    "original_val_read": false,
+    "original_test_read": false,
+    "TASK4": "PAUSED",
+    "new_FOM_conditions": 0
+  },
+  "provenance_notes": [
+    "Only existing immutable JSON summaries, performance records, QA projection/checkpoint metadata and closed native receipts were read.",
+    "No prediction NPZ, true event payload, binary Adam checkpoint, growing formal output, current process query, reevaluation, performance rerun or optimizer was used.",
+    "Recorded GONE is the state at each original receipt closure, not a new live identity query.",
+    "The QA method and fixture scope are copied from the frozen producer functions; exact RNG/restore flags reflect the passed producer contract."
+  ]
+}

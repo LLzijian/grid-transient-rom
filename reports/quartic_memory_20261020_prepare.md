@@ -1,0 +1,9 @@
+# N/Q来源与1024日程核验
+
+2026-10-20。唯一prepare成功，两层0/COMPLETED、278源前后一致、worker97920/FILETIME134369667153523804吻合、cleanup GONE。原生23.482499599980656秒；独立元数据/RNG/coverage/日程复核5.382143秒另计，子层不重复。固定准备费implementation_cost30.1591569不变；额外复核费单列、root真实累计预算门控纳入，不能只把native prior内的金额称所有已耗。
+
+三seed各1024行、1/2/5s次数342/341/341、每行12样本、385全覆盖；逐行采样/RNG哈希与coverage连续、真实long/local计数及合法端点、初始RNG/coverage承接对应O512来源均通过。共同385=342稳定43失稳，三来源原三文件身份保持，平衡角和固定12长/12短失稳/CPU16面板已锁。
+
+新schedule SHA07fd838bd2a9d136db9ce0b789562c26c93098cf5b6bba40af8f67d674bf2b0c、59033555字节，仅本地BASE/prepare01/schedule.json；prepare.json SHAc145d1e3bcb29e3a6f417fd1ccb3ccb7efb8df35249b92a0ec398050dad7fca4。完整复制命令/新源O512 RNG与next_samples可重建，不把大日程当一次性随机选择。启动前四命令归档ac5df2d1ead407d9adbe3c66ecf4cd7641836a57，完成紧凑证据归档a7a511a4256e8159d89857edacc94e9167661866。
+
+root已复核compact、prepare及receipt原字节SHA和全部准入旗标，下一可授权一次cost Max1800/PS1770/self1740，仍不授权训练/评价。新prepare_budget_supplement.json纳入额外复核费用并证明完整最坏费用可容纳，cost启动时须绑定该补充但不改旧源/固定实施费或科学规则。唯一工程修复已用，cost失败或成本不准入均保留关闭，不重做/缩1024/删seed救档。

@@ -1,0 +1,9 @@
+# 三实例完整长时评价：P1执行来源
+
+root逐行审查本轮两个P1小助手，独立方案/实现挑战均已采纳；助手只允许evaluate一个阶段、seed5101→5102→5103三个唯一角色。没有train、freeze重跑、额外时域或模型选择入口。来源严格绑定实际QA/cost的96科学依赖和102文件表、九端点manifest、双层0/GONE/源前后、实际完成标记及费用。新助手提交可不同于数值提交4533cbab3131b681a892afc4849b0742770883c5，但实际科学文件SHA不变，消费端重新逐项核验。
+
+make SHA8ba0dd43126be004e158e603139bd9bcb93aa09114a58a222fc778bacb553f68，launch SHA6dcb015510285b30982e74516676f55a18a8673053bf27e8f0d5710cc7c83221。生成/启动均核admission.status PASS/P1_complete_cap_seconds1400、96当前SHA、同源QA/cost和原manifest42c624470156e2e2b438671131f3ca7aecfed834b00b9344b7a09a2ac44ad627。metadata40/summary60/support460及三评价280完整计费。继续下一实例只要求执行与清理通过，不要求科学规则成立；已完成但数值未决的实例仍可如实保存并评价其余实例。原生执行失败则须root评估，不自动重试。
+
+BASE private_data/closure_mechanism_20261019/P1/long_horizon_discrimination01；工作目录E:/03-nn_Transfer_Func/kiki。标准Python运行BASE/make_invocation.py evaluate --seed种子 --source-commit完整SHA，生成实际GPU argv/binding/prior/generation但不启动。归档后，标准Python运行BASE/launch_stage.py --phase evaluate --seed同种子 --source-commit同SHA；输出BASE/evaluation/种子，self240/PS260/native280固定。所有子进程一次记账，整数FILETIME/GONE、锁与来源前后必须均实过。
+
+P1助手工具4.0251177秒计metadata40，root九端点冻结和来源准备另在同40内；科学汇总/关闭另计60，协调/挑战/归档计support460，不重复P0support520。原始30维粗细观测留本地npz，公开只保留compact指标和路径哈希。原val/test/TASK4/默认模型与科学门槛不变。任何主规则失败只报告本次冻结候选在登记条件未满足，不称结构不可分辨或时域路线无效。

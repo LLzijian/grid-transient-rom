@@ -1,0 +1,77 @@
+{
+  "schema_version": 2,
+  "synthetic": true,
+  "run_id": "synthetic_performance_equivalence",
+  "purpose": "confirmation",
+  "scope": "synthetic: registered normalized trajectory error comparison on fixture cohort",
+  "evidence": {
+    "validity": "valid",
+    "optimizer_health": "healthy",
+    "optimization_adequacy": "supported",
+    "mechanism_probe": "not_applicable",
+    "comparison": "matched",
+    "confirmation": "seed_replication",
+    "effect": "equivalence",
+    "critical_events": "pass",
+    "references": [
+      "harness/examples/synthetic_evidence.md"
+    ]
+  },
+  "inference": {
+    "claim_target": "algorithm_performance",
+    "comparison_reference": "harness/examples/synthetic_evidence.md",
+    "effect_reference": "harness/examples/synthetic_evidence.md",
+    "evaluation_contract_reference": "harness/examples/synthetic_evidence.md",
+    "budget_reference": "harness/examples/synthetic_evidence.md",
+    "optimization_scope": "synthetic: registered normalized trajectory error comparison on fixture cohort",
+    "optimization_adequacy_reference": "harness/examples/synthetic_evidence.md",
+    "probe_not_applicable_reference": "harness/examples/synthetic_evidence.md",
+    "practical_margin": 0.05,
+    "margin_preregistered": true,
+    "margin_registration_reference": "harness/examples/synthetic_evidence.md",
+    "effect_interval": [
+      -0.03,
+      0.04
+    ],
+    "effect_direction": "candidate_gain_positive",
+    "effect_metric": "normalized trajectory error reduction",
+    "uncertainty_justified": true,
+    "uncertainty_reference": "harness/examples/synthetic_evidence.md",
+    "selection_accounted_for": true,
+    "selection_accounting_reference": "harness/examples/synthetic_evidence.md",
+    "confirmation_record": {
+      "kind": "seed_replication",
+      "scope": "synthetic: registered normalized trajectory error comparison on fixture cohort",
+      "data_exposure": "development_seen",
+      "protocol_reference": "harness/examples/synthetic_evidence.md",
+      "data_exposure_reference": "harness/examples/synthetic_evidence.md",
+      "independence_reference": "harness/examples/synthetic_evidence.md",
+      "assessment_reference": "harness/examples/synthetic_evidence.md",
+      "units": [
+        {
+          "unit_id": "seed_fixture_A",
+          "reference": "harness/examples/synthetic_evidence.md"
+        },
+        {
+          "unit_id": "seed_fixture_B",
+          "reference": "harness/examples/synthetic_evidence.md"
+        },
+        {
+          "unit_id": "seed_fixture_C",
+          "reference": "harness/examples/synthetic_evidence.md"
+        }
+      ]
+    }
+  },
+  "proposal": {
+    "scientific_claim": "no_practical_gain_within_scope",
+    "model_decision": "retain_evidence",
+    "science_decision": "unresolved",
+    "next_action": "synthesize"
+  },
+  "fixture_expected": {
+    "no_practical_gain_eligible": true,
+    "mechanism_null_eligible": false,
+    "promotion_eligible": false
+  }
+}

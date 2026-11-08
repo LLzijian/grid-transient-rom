@@ -1,0 +1,242 @@
+{
+  "source_commit": "fc5e4ea9c434ad442cfd1d99ebf6bc7e22600875",
+  "scope": {
+    "data": "fixed fit stable qualification panel, not unseen confirmation",
+    "dtype": "float64",
+    "coarse_dt_s": 0.01,
+    "fine_dt_s": 0.005,
+    "training_method": "rk4",
+    "same_precision_speedup_established": false
+  },
+  "qualification": {
+    "status": "COMPLETED",
+    "all_reference_qualified": true,
+    "all_fast_qualified": false,
+    "coi_normalized_rmse_threshold": 0.001,
+    "modes": [
+      {
+        "mode": "L",
+        "reference_qualified": true,
+        "fast_qualified": false,
+        "event_count": 12,
+        "horizon_s": 8,
+        "actual_optimizer_updates": 0,
+        "cost": {
+          "rk4": {
+            "qualified_finite_backward": true,
+            "seconds": 7.150397399999747,
+            "peak_cuda_bytes": 62457856,
+            "objective_J": 1.320724060528827,
+            "actual_optimizer_updates": 0
+          },
+          "fast": {
+            "qualified_finite_backward": true,
+            "seconds": 2.9483591000007436,
+            "peak_cuda_bytes": 39953408,
+            "objective_J": 1.320695298817796,
+            "actual_optimizer_updates": 0
+          }
+        },
+        "failed_fast_vs_fine_rk4_examples": [
+          {
+            "event_id": "expansion_0080",
+            "coi_normalized_rmse": 0.0014296393224323771
+          },
+          {
+            "event_id": "expansion_0081",
+            "coi_normalized_rmse": 0.0015156338562412122
+          }
+        ],
+        "worst_fast_vs_fine_rk4": {
+          "event_id": "expansion_0081",
+          "comparison": "fast_against_fine_rk4",
+          "coi_normalized_rmse": 0.0015156338562412122
+        }
+      },
+      {
+        "mode": "S",
+        "reference_qualified": true,
+        "fast_qualified": false,
+        "event_count": 12,
+        "horizon_s": 8,
+        "actual_optimizer_updates": 0,
+        "cost": {
+          "rk4": {
+            "qualified_finite_backward": true,
+            "seconds": 8.129351500000666,
+            "peak_cuda_bytes": 77256704,
+            "objective_J": 1.320724060528827,
+            "actual_optimizer_updates": 0
+          },
+          "fast": {
+            "qualified_finite_backward": true,
+            "seconds": 3.3861601000007795,
+            "peak_cuda_bytes": 43685888,
+            "objective_J": 1.320695298817796,
+            "actual_optimizer_updates": 0
+          }
+        },
+        "failed_fast_vs_fine_rk4_examples": [
+          {
+            "event_id": "expansion_0080",
+            "coi_normalized_rmse": 0.0014296393224323771
+          },
+          {
+            "event_id": "expansion_0081",
+            "coi_normalized_rmse": 0.0015156338562412122
+          }
+        ],
+        "worst_fast_vs_fine_rk4": {
+          "event_id": "expansion_0081",
+          "comparison": "fast_against_fine_rk4",
+          "coi_normalized_rmse": 0.0015156338562412122
+        }
+      },
+      {
+        "mode": "M",
+        "reference_qualified": true,
+        "fast_qualified": false,
+        "event_count": 12,
+        "horizon_s": 8,
+        "actual_optimizer_updates": 0,
+        "cost": {
+          "rk4": {
+            "qualified_finite_backward": true,
+            "seconds": 15.547434500000236,
+            "peak_cuda_bytes": 62464000,
+            "objective_J": 1.320724060528827,
+            "actual_optimizer_updates": 0
+          },
+          "fast": {
+            "qualified_finite_backward": true,
+            "seconds": 6.665007999999943,
+            "peak_cuda_bytes": 39953920,
+            "objective_J": 1.320695298817796,
+            "actual_optimizer_updates": 0
+          }
+        },
+        "failed_fast_vs_fine_rk4_examples": [
+          {
+            "event_id": "expansion_0080",
+            "coi_normalized_rmse": 0.0014296393224323771
+          },
+          {
+            "event_id": "expansion_0081",
+            "coi_normalized_rmse": 0.0015156338562412122
+          }
+        ],
+        "worst_fast_vs_fine_rk4": {
+          "event_id": "expansion_0081",
+          "comparison": "fast_against_fine_rk4",
+          "coi_normalized_rmse": 0.0015156338562412122
+        }
+      }
+    ],
+    "conclusion": "RK4 qualified. Fast is not fully qualified; use the preregistered common RK4 fallback. Its measured speed is not a same-precision gain."
+  },
+  "qa": {
+    "status": "PASS",
+    "actual_optimizer_updates": 108,
+    "models": [
+      {
+        "mode": "L",
+        "status": "PASS",
+        "actual_optimizer_updates": 36,
+        "saved_step": 16,
+        "continuous": 18,
+        "before_save": 16,
+        "after_restore": 2,
+        "checkpoint": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\force_graph_20261028\\study01\\qa\\L\\checkpoints\\step000016",
+        "parameter_maxabs": 0.0,
+        "Adam_maxabs": 0.0,
+        "serialization_model_Adam_RNG_layout_exact": true,
+        "nonzero_Adam_exp_avg": true,
+        "continuation_rtol": 2e-09,
+        "continuation_atol": 2e-09
+      },
+      {
+        "mode": "S",
+        "status": "PASS",
+        "actual_optimizer_updates": 36,
+        "saved_step": 16,
+        "continuous": 18,
+        "before_save": 16,
+        "after_restore": 2,
+        "checkpoint": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\force_graph_20261028\\study01\\qa\\S\\checkpoints\\step000016",
+        "parameter_maxabs": 0.0,
+        "Adam_maxabs": 0.0,
+        "serialization_model_Adam_RNG_layout_exact": true,
+        "nonzero_Adam_exp_avg": true,
+        "continuation_rtol": 2e-09,
+        "continuation_atol": 2e-09
+      },
+      {
+        "mode": "M",
+        "status": "PASS",
+        "actual_optimizer_updates": 36,
+        "saved_step": 16,
+        "continuous": 18,
+        "before_save": 16,
+        "after_restore": 2,
+        "checkpoint": "E:\\03-nn_Transfer_Func\\kiki\\private_data\\force_graph_20261028\\study01\\qa\\M\\checkpoints\\step000016",
+        "parameter_maxabs": 0.0,
+        "Adam_maxabs": 0.0,
+        "serialization_model_Adam_RNG_layout_exact": true,
+        "nonzero_Adam_exp_avg": true,
+        "continuation_rtol": 2e-09,
+        "continuation_atol": 2e-09
+      }
+    ],
+    "fixture_only": true,
+    "real_train_payloads_read": false,
+    "val_read": false,
+    "test_read": false
+  },
+  "sources": [
+    {
+      "path": "private_data/force_graph_20261028/study01/qualification/summary.json",
+      "sha256": "e4c5c7a1ee6194f9ce2d5d47ccb6d6abdedcf2fc7bfe1942a1b9b00183e1b78c"
+    },
+    {
+      "path": "private_data/force_graph_20261028/study01/qa/summary.json",
+      "sha256": "a42e8209fc22279ef3486be3197c58f887293e11b4670a7f47c009b2020110ae"
+    },
+    {
+      "path": "private_data/force_graph_20261028/study01/native/qualify/receipt.json",
+      "sha256": "f645ddd75b06c70e975ce3749d5e3dacc2582a13bfc9b9497ed4dfeef226a646",
+      "native": {
+        "status": "COMPLETED",
+        "wall_seconds": 62.74057900000025,
+        "job_cpu_user_seconds": 70.21875,
+        "job_cpu_kernel_seconds": 38.6875,
+        "cleanup_verified": true,
+        "job_active_processes": 0,
+        "exit_code": 0
+      },
+      "worker": {
+        "pid_decimal": "28892",
+        "creation_filetime_utc_decimal": "134376602821416498"
+      }
+    },
+    {
+      "path": "private_data/force_graph_20261028/study01/native/qa/receipt.json",
+      "sha256": "92e1abb3df21c2080b7781def4d0d7e3cfcc10b203df3844c9c16445f2380b59",
+      "native": {
+        "status": "COMPLETED",
+        "wall_seconds": 23.959195100000215,
+        "job_cpu_user_seconds": 17.078125,
+        "job_cpu_kernel_seconds": 11.09375,
+        "cleanup_verified": true,
+        "job_active_processes": 0,
+        "exit_code": 0
+      },
+      "worker": {
+        "pid_decimal": "27536",
+        "creation_filetime_utc_decimal": "134376603472235108"
+      }
+    }
+  ],
+  "model_adopted": false,
+  "val_read": false,
+  "test_read": false
+}

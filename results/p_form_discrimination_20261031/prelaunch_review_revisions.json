@@ -1,0 +1,22 @@
+{
+  "schema": "p_form_prelaunch_review_revisions_v1",
+  "date": "2026-10-31",
+  "status": "REVISED_PENDING_REVIEW",
+  "old_source_sha256": "326107deff5f1376712093f0c19d00fa2b411d40a366ae143d6df0c87d5002af",
+  "old_tests_sha256": "31311aca7902be11c10a805aaadd98d5396fd3405ba0f64e4dd7e2ba86faa2e5",
+  "reason": "Finite residual elements can overflow in squared/RMS/difference/epsilon or 10*epsilon calculations. The old inf<=10*inf comparison could mark compatibility true while serialization writes null. Reject any nonfinite derived diagnostic as unknown, retaining original denominator, available-event count and reason.",
+  "scientific_execution_released": false,
+  "actual_scientific_parameter_estimates": 0,
+  "actual_scientific_launches": 0,
+  "technical_scientific_repair_budget_consumed": false,
+  "scientific_thresholds_changed": false,
+  "new_source_sha256": "ea15ae79a5927a10d18e76faecad6cae920fe584ccafe9b92ccfb02cd77a82a9",
+  "new_tests_sha256": "1d0bf7d69d2ecaa061ddc6aec206a763e9a8ad5bac5a9e4b12dcb6606d6a27ae",
+  "artificial_tests": {
+    "passed": 26,
+    "failed": 0,
+    "new_cases": "Both weak/response reject finite +/-1e200 residuals whose derived RMS overflows; response rejects nonfinite analytic check errors and a finite 1e308 check error whose comparison threshold overflows. All retain original denominator and available-event count, reason, and null compatibility/discernibility.",
+    "private_payloads_read": false,
+    "scientific_computation_started": false
+  }
+}

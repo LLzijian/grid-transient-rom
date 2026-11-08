@@ -1,0 +1,95 @@
+{
+  "recorded_utc": "2026-11-07T15:49:57.745486+00:00",
+  "status": "engineering_passed_pending_independent_review",
+  "scope": "Small two-node rational/algebraic/mock fixtures only; no fit297 payload, actual-model certificate/spectrum, real Kron, or 699D QZ computed",
+  "command": [
+    "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+    "-m",
+    "pytest",
+    "tests/test_gftd_fit297_analysis.py",
+    "-q",
+    "--basetemp",
+    ".tmp/fit297_analysis/basetemp_final_04"
+  ],
+  "cwd": "E:\\03-nn_Transfer_Func\\kiki",
+  "exit_code": 0,
+  "stdout": "............                                                             [100%]\r\n12 passed in 1.71s\r\n",
+  "stderr": "",
+  "wall_seconds": 2.4463174999691546,
+  "source_sha256": {
+    "experiments/gftd_fit297_analysis_20261107.py": "2faa8cdd83a98f71c044e20983b2b08d0f394f76b64c15b24f2c63617dab929e",
+    "tests/test_gftd_fit297_analysis.py": "55f1e706c4f25bc04dfbf1526b3a6200b97d5fae1d4dca9eb0f6062a3ed0256f"
+  },
+  "protocol_sha256": "ca22743c53fe4fe398960e111838a373f8c4686eab0974c5daf6d9c28435062f",
+  "previous_commands": [
+    {
+      "command": ".venv-gpu/Scripts/python.exe -m pytest tests/test_gftd_fit297_analysis.py -q",
+      "exit_code": 1,
+      "receipt": "6 passed, 3 errors in 7.65s; all 3 tmp_path setup failures: Windows default Temp PermissionError; no scientific execution"
+    },
+    {
+      "command": ".venv-gpu/Scripts/python.exe -m pytest tests/test_gftd_fit297_analysis.py -q --basetemp .tmp/fit297_analysis_pytest_01",
+      "exit_code": 0,
+      "receipt": "9 passed in 2.68s"
+    },
+    {
+      "command": ".venv-gpu/Scripts/python.exe -m pytest tests/test_gftd_fit297_analysis.py -q --basetemp .tmp/fit297_analysis_pytest_02",
+      "exit_code": 0,
+      "receipt": "9 passed in 1.67s"
+    },
+    {
+      "command": [
+        "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "tests/test_gftd_fit297_analysis.py",
+        "-q",
+        "--basetemp",
+        ".tmp/fit297_analysis/basetemp_final_01"
+      ],
+      "exit_code": 1,
+      "stdout": "....EE..E..                                                              [100%]\r\n=================================== ERRORS ====================================\r\n_____________ ERROR at setup of test_workbook_rejects_other_bytes _____________\r\n\r\nself = WindowsPath('E:/03-nn_Transfer_Func/kiki/.tmp/fit297_analysis/basetemp_final_01')\r\nmode = 448, parents = False, exist_ok = False\r\n\r\n    def mkdir(self, mode=0o777, parents=False, exist_ok=False):\r\n        \"\"\"\r\n        Create a new directory at this given path.\r\n        \"\"\"\r\n        try:\r\n>           os.mkdir(self, mode)\r\nE           FileNotFoundError: [WinError 3] ϵͳ�Ҳ���ָ����·����: 'E:\\\\03-nn_Transfer_Func\\\\kiki\\\\.tmp\\\\fit297_analysis\\\\basetemp_final_01'\r\n\r\nC:\\Users\\LLLzijian\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\pathlib.py:1311: FileNotFoundError\r\n_____________ ERROR at setup of test_zip_xml_reader_small_fixture _____________\r\n\r\nself = WindowsPath('E:/03-nn_Transfer_Func/kiki/.tmp/fit297_analysis/basetemp_final_01')\r\nmode = 448, parents = False, exist_ok = False\r\n\r\n    def mkdir(self, mode=0o777, parents=False, exist_ok=False):\r\n        \"\"\"\r\n        Create a new directory at this given path.\r\n        \"\"\"\r\n        try:\r\n>           os.mkdir(self, mode)\r\nE           FileNotFoundError: [WinError 3] ϵͳ�Ҳ���ָ����·����: 'E:\\\\03-nn_Transfer_Func\\\\kiki\\\\.tmp\\\\fit297_analysis\\\\basetemp_final_01'\r\n\r\nC:\\Users\\LLLzijian\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\pathlib.py:1311: FileNotFoundError\r\n____ ERROR at setup of test_FOM_identity_failure_does_not_compute_spectrum ____\r\n\r\nself = WindowsPath('E:/03-nn_Transfer_Func/kiki/.tmp/fit297_analysis/basetemp_final_01')\r\nmode = 448, parents = False, exist_ok = False\r\n\r\n    def mkdir(self, mode=0o777, parents=False, exist_ok=False):\r\n        \"\"\"\r\n        Create a new directory at this given path.\r\n        \"\"\"\r\n        try:\r\n>           os.mkdir(self, mode)\r\nE           FileNotFoundError: [WinError 3] ϵͳ�Ҳ���ָ����·����: 'E:\\\\03-nn_Transfer_Func\\\\kiki\\\\.tmp\\\\fit297_analysis\\\\basetemp_final_01'\r\n\r\nC:\\Users\\LLLzijian\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\pathlib.py:1311: FileNotFoundError\r\n=========================== short test summary info ===========================\r\nERROR tests/test_gftd_fit297_analysis.py::test_workbook_rejects_other_bytes\r\nERROR tests/test_gftd_fit297_analysis.py::test_zip_xml_reader_small_fixture\r\nERROR tests/test_gftd_fit297_analysis.py::test_FOM_identity_failure_does_not_compute_spectrum\r\n8 passed, 3 errors in 2.07s\r\n",
+      "stderr": "",
+      "wall_seconds": 2.9204806000343524
+    },
+    {
+      "command": [
+        "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "tests/test_gftd_fit297_analysis.py",
+        "-q",
+        "--basetemp",
+        ".tmp/fit297_analysis/basetemp_final_02"
+      ],
+      "exit_code": 0,
+      "stdout": "...........                                                              [100%]\r\n11 passed in 1.72s\r\n",
+      "stderr": "",
+      "wall_seconds": 2.5000028000213206
+    },
+    {
+      "command": [
+        "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "tests/test_gftd_fit297_analysis.py",
+        "-q",
+        "--basetemp",
+        ".tmp/fit297_analysis/basetemp_final_03"
+      ],
+      "exit_code": 0,
+      "stdout": "...........                                                              [100%]\r\n11 passed in 1.59s\r\n",
+      "stderr": "",
+      "wall_seconds": 2.3512522999662906
+    }
+  ],
+  "static_inspection": "Only existing descriptor npz keys and first20 state_names plus accepted evidence metadata inspected; no matrices/eigenvalues recomputed",
+  "scientific_execution_released": false,
+  "limitations": [
+    "No actual model certificate, point coverage, 699D descriptor spectrum, ROM spectrum, or real Kron calculation performed",
+    "True initialization-set coverage remains unknown: no independent deterministic epsilon",
+    "FOM matching requires runner static-identity verification reference; absent/mismatched provenance yields unknown",
+    "Independent implementation review and root precise execution release still required"
+  ],
+  "receipt_correction": "Historical list argv entries corrected to original tool facts: final_01 missing-parent setup failed, final_02 passed; new commands copied before editing."
+}

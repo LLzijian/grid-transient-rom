@@ -1,0 +1,14 @@
+# PR28工程集成接受与远端核验
+
+PR28：https://github.com/LLzijian/grid-transient-rom/pull/28 。独立精确范围审查通过，root接受四新增文件的工程进展：专用runner、对应测试、使用说明及紧凑能力记录。科学比较费用未准入，模型不采用，默认模型不变。
+
+base59fc3046e959bb1c8717accaeb744c1315597bd4；expected head4536a53210a7f37334b4d1300e853ddc8d2cb7ff；远端merge454483290b38ad37e52d00b39359205721d9ede0。合并前PR clean/mergeable，main仍为预期base，四文件仅新增且blob一致。合并后PR merged=true、main ref等于merge、双parent按base/head顺序一致，四个merge tree blob再次核验：
+
+- experiments/rational_control_20261021.py：4a9bb498e0602f19c5e54666171295265ea5e51e
+- tests/test_rational_control_20261021.py：8889a63852f4f5f08d31678b85c65ed971619eb2
+- docs/rational_control_causal.md：5d320cb047e0f0d1c9a5d41612edafbcdb9cf5cd
+- results/rational_control_20261021/capability_profile.json：c864a4facefe9dc17fc8f05136c91f46c25066f5
+
+当前实际AST依赖闭包54文件：46原样相同、6仅CRLF/LF差异、2新增。此前合格闭包的65文件超集另核为57相同/6换行/2新增；无语义依赖差异。测试证据源1aa93d60de8199455ef563acfa3e83f9ffc04eb8核心和测试字节均与PR一致。不声称合并后重复CUDA测试或公开独立CI。
+
+本地Git HEADa95101337855ed3fc1f4abfd710982443d5564cb、indexSHA82b060840d50257c41df55e15805fa106f29117cac8bf1868a6b83e490e2df93再次核符，没有reset、stage或强推。PR已附加当前会话。源检查点、负例和不通过费用保留归档；原val/test关闭、TASK4暂停。工程合并不是科研模型晋升，不恢复本轮正式训练。

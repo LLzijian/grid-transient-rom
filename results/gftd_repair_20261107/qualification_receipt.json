@@ -1,0 +1,25 @@
+{
+  "status": "COMPLETED",
+  "command": ".venv-gpu/Scripts/python.exe -B -m pytest -q -p no:cacheprovider --basetemp .tmp/gftd_root_qualification_20261107 tests/test_gftd_kuramoto_architecture.py tests/test_gftd_modulation_gradient.py tests/test_gftd_observability_20261107.py tests/test_r_memory_model_20261025.py",
+  "passed": 43,
+  "failed": 0,
+  "pytest_seconds": 14.31,
+  "exit_code": 0,
+  "tool_chunks": [
+    "3e1cdf",
+    "4d9ec9"
+  ],
+  "engineering_preparation": "Earlier modeler run: 26 passed, 1 temporary-directory setup error; workspace temporary directory rerun: 2 passed. Final frozen-source verification: 43 passed. No science training.",
+  "full_project_CPU_seconds": null,
+  "scope": "Two parent fixtures x8 states, both integration steps; independent gradient tests 8 states x2 gates on ring fixture; local derivative and interface checks; parent tests. Not a global certificate.",
+  "max_residuals_not_emitted_by_pytest": null,
+  "source_sha256": {
+    "src/kiki/models/gftd_kuramoto.py": "d951805cef802a952899a4d10922bcee73a20bc6d0a9c8ec78b75daa0db8dd1f",
+    "src/kiki/physics/kuramoto_functional.py": "2155837548ddb196df5f65d727000f091e59411ea816941076a21a27fdc27452",
+    "src/kiki/physics/kuramoto_benchmarks.py": "9a87b64a70d2b4a7e5d4dce60f98b263a044a163201b5e0c10db4cf3373493ec",
+    "tests/test_gftd_kuramoto_architecture.py": "e4b69b496201e1a423df03aa95fdfbcad6dd56739da1dbffcc43557b3e83b4aa",
+    "tests/test_gftd_modulation_gradient.py": "c2a14931bf639aa591b0d1fadf6e08c9210303cd192241e9b4e9d699976eadff",
+    "tests/test_gftd_observability_20261107.py": "0a350cc573ec37839525fd3e1f7fd4024b2d5bf3905e773747d42255d67b9dbb",
+    "tests/test_r_memory_model_20261025.py": "c1f8e8f21236f18b6d2a34765734f62e8bf6073f651eba98e16e6e35dace9f92"
+  }
+}

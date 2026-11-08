@@ -1,0 +1,512 @@
+{
+  "schema": "weak_force_completed_stage_public_v1",
+  "source_commit": "3b01f19055203734c370d32eba4cea8a0555f8d3",
+  "reproduction": {
+    "script": "experiments/weak_force_execution_20261029.py",
+    "registered_logical_run": "weak_force_identification_20261029/study01",
+    "data_condition": "Private authorized train fit297 and frozen SGM A96 source/reference assets; original val/test access prohibited.",
+    "command": "python -B experiments/weak_force_execution_20261029.py run --source-commit 3b01f19055203734c370d32eba4cea8a0555f8d3"
+  },
+  "execution_status": "COMPLETED",
+  "scientific_candidate_status": "CANDIDATE_NOT_ADMITTED",
+  "terminal_process_exit_code": 0,
+  "source_model": {
+    "logical_name": "SGM_A_28311_step96",
+    "model_sha256": "ec8c78cbff0b6dd65bd3ba6dfc5a0ed65e7fa418227c90adc3a703311aebadf4",
+    "checkpoint_sha256": "249cc7fab5226cfbd52046efa2dc0cd8e21c0c4dda1f23c71092d8e6e86b0b12",
+    "training_asset_sha256": "15cc4be8ba8bf39e755f8fafcadf0b78ec8badd65db6a8dfeb6b248283ed2ecc",
+    "original_parameters": 47,
+    "gamma": 0,
+    "assets_preserved": true,
+    "old_Adam_loaded": false
+  },
+  "fixed_artificial_suite": {
+    "executions": 1,
+    "passed": true,
+    "artificial_nnls_attempts": 4,
+    "completed_nnls": 4,
+    "failed_nnls": 0,
+    "stages": {
+      "A_reference_0": "completed",
+      "A_reference_1": "completed",
+      "A_reference_2": "completed",
+      "A_reference_3": "completed",
+      "A_reference_4": "completed",
+      "A_reference_5": "completed",
+      "A_reference_6": "completed",
+      "A_reference_7": "completed",
+      "A_reference_8": "completed",
+      "A_reference_9": "completed",
+      "A_matrices": "completed",
+      "A_nonstationary_nnls": "completed",
+      "A_stationary_nnls": "completed",
+      "A_true_prediction_0": "completed",
+      "A_true_prediction_1": "completed",
+      "A_true_prediction_2": "completed",
+      "A_true_prediction_3": "completed",
+      "A_true_prediction_4": "completed",
+      "A_true_prediction_5": "completed",
+      "A_true_prediction_6": "completed",
+      "A_true_prediction_7": "completed",
+      "A_true_prediction_8": "completed",
+      "A_true_prediction_9": "completed",
+      "A_weak_prediction_0": "completed",
+      "A_weak_prediction_1": "completed",
+      "A_weak_prediction_2": "completed",
+      "A_weak_prediction_3": "completed",
+      "A_weak_prediction_4": "completed",
+      "A_weak_prediction_5": "completed",
+      "A_weak_prediction_6": "completed",
+      "A_weak_prediction_7": "completed",
+      "A_weak_prediction_8": "completed",
+      "A_weak_prediction_9": "completed",
+      "C_reference_0": "completed",
+      "C_reference_1": "completed",
+      "C_reference_2": "completed",
+      "C_reference_3": "completed",
+      "C_reference_4": "completed",
+      "C_reference_5": "completed",
+      "C_reference_6": "completed",
+      "C_reference_7": "completed",
+      "C_reference_8": "completed",
+      "C_reference_9": "completed",
+      "C_matrices": "completed",
+      "C_nonstationary_nnls": "completed",
+      "C_stationary_nnls": "completed",
+      "C_true_prediction_0": "completed",
+      "C_true_prediction_1": "completed",
+      "C_true_prediction_2": "completed",
+      "C_true_prediction_3": "completed",
+      "C_true_prediction_4": "completed",
+      "C_true_prediction_5": "completed",
+      "C_true_prediction_6": "completed",
+      "C_true_prediction_7": "completed",
+      "C_true_prediction_8": "completed",
+      "C_true_prediction_9": "completed",
+      "C_weak_prediction_0": "completed",
+      "C_weak_prediction_1": "completed",
+      "C_weak_prediction_2": "completed",
+      "C_weak_prediction_3": "completed",
+      "C_weak_prediction_4": "completed",
+      "C_weak_prediction_5": "completed",
+      "C_weak_prediction_6": "completed",
+      "C_weak_prediction_7": "completed",
+      "C_weak_prediction_8": "completed",
+      "C_weak_prediction_9": "completed"
+    },
+    "aggregates": {
+      "A": {
+        "passed": true,
+        "coefficient_error": 4.6934901187789535e-07,
+        "coefficient_pass": true,
+        "conditional_recovery_resolved": true,
+        "reconstruction_count": 20,
+        "r0_pass_count": 20,
+        "trajectory_pass_count": 20,
+        "largest_r0_error": 6.861768332523588e-07,
+        "largest_component_error": 4.3853655019854276e-07,
+        "nonstationary_solution_rank": 47,
+        "equilibrium_X_zero": true,
+        "equilibrium_y_zero": true,
+        "equilibrium_all_parameters_unidentifiable": true,
+        "equilibrium_rank": 0,
+        "equilibrium_conversion_eligible": false
+      },
+      "C": {
+        "passed": true,
+        "coefficient_error": 4.6926365782073987e-07,
+        "coefficient_pass": true,
+        "conditional_recovery_resolved": true,
+        "reconstruction_count": 20,
+        "r0_pass_count": 20,
+        "trajectory_pass_count": 20,
+        "largest_r0_error": 6.862404688368567e-07,
+        "largest_component_error": 4.3859909026888744e-07,
+        "nonstationary_solution_rank": 47,
+        "equilibrium_X_zero": true,
+        "equilibrium_y_zero": true,
+        "equilibrium_all_parameters_unidentifiable": true,
+        "equilibrium_rank": 0,
+        "equilibrium_conversion_eligible": false
+      }
+    }
+  },
+  "real_weak_solve": {
+    "attempts": 1,
+    "completed": 1,
+    "failed": 0,
+    "scipy_version": "1.18.0",
+    "solver": "scipy.optimize.nnls",
+    "maxiter": 4700,
+    "iterations": {
+      "available": false,
+      "value": null,
+      "reason": "public API does not return actual iterations"
+    },
+    "solver_success": true,
+    "rank": 47,
+    "rank_threshold": 1.190151281006265e-12,
+    "condition": 45.32103948272102,
+    "parameter_identity": "full_numerical_column_rank",
+    "sensitivity": {
+      "all": {
+        "rows": 43200,
+        "E_X": 0.00028839167168411787,
+        "E_y": 0.000756372018637784,
+        "passed": true
+      },
+      "stable": {
+        "rows": 42720,
+        "E_X": 2.0657738670845546e-06,
+        "E_y": 2.4415921336373967e-06,
+        "passed": true
+      },
+      "unstable": {
+        "rows": 480,
+        "E_X": 0.0002883842729329914,
+        "E_y": 0.0007563680778602764,
+        "passed": true
+      },
+      "passed": true
+    },
+    "kkt": {
+      "finite": true,
+      "nonnegative": true,
+      "residual": 9.292433531810569e-19,
+      "residual_l2": 0.14715477909821587,
+      "scale": 1.1667580604951122,
+      "passed": true
+    },
+    "dimensionless_coefficients": [
+      4.8550593196006755,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.14337748571460515,
+      0.0,
+      0.0,
+      0.0,
+      0.17245218332346965,
+      0.0,
+      0.0,
+      0.1312233248790053,
+      0.0,
+      0.012836424611773785,
+      0.02265419547814223,
+      0.22033307437980157,
+      0.0,
+      0.0,
+      0.13751285118780196,
+      0.0,
+      0.005304737642042848,
+      0.0,
+      0.07891172700846498,
+      0.0,
+      0.0,
+      0.0,
+      0.2934167567152647,
+      0.0,
+      0.1709489371608007,
+      0.0,
+      0.0,
+      0.0,
+      0.09136449957192565,
+      0.37680336652539864,
+      0.0,
+      0.0,
+      0.4550837076033259
+    ],
+    "inferred_zero_coordinates": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      15,
+      16,
+      17,
+      19,
+      20,
+      22,
+      26,
+      27,
+      29,
+      31,
+      33,
+      34,
+      35,
+      37,
+      39,
+      40,
+      41,
+      44,
+      45
+    ],
+    "active_set_source": "exact zeros inferred from public returned vector",
+    "conversion_eligible": false,
+    "reason": "kappa/lambda boundary: preserve weak solution, refuse conversion",
+    "no_coordinate_floor_or_clipping": true,
+    "repeat_solve": false,
+    "seconds": 53.30659100000048
+  },
+  "subsequent_phases": {
+    "qualification_status": "CANDIDATE_NOT_ADMITTED",
+    "qa_status": "CANDIDATE_NOT_ADMITTED",
+    "study_status": "CANDIDATE_NOT_ADMITTED",
+    "eligible_variants": [],
+    "actual_numerical_qualification_executed": false,
+    "actual_QA72_executed": false,
+    "trained_runs": [],
+    "full385_or_noise_evaluations": 0,
+    "paired_comparison_available": false
+  },
+  "optimizer_calls": {
+    "categories": {
+      "qa": {
+        "attempted": 0,
+        "completed": 0
+      },
+      "formal": {
+        "attempted": 0,
+        "completed": 0
+      },
+      "repair": {
+        "attempted": 0,
+        "completed": 0
+      },
+      "replay": {
+        "attempted": 0,
+        "completed": 0
+      }
+    },
+    "attempted_total": 0,
+    "completed_total": 0,
+    "pending": []
+  },
+  "optimizer_upper_bound": 976,
+  "unused_optimizer_calls": 976,
+  "unused_nontransferable": true,
+  "no_process_quotas": true,
+  "model_adopted": false,
+  "original_val_read": false,
+  "original_test_read": false,
+  "TASK4_paused": true,
+  "new_FOM_calls": 0,
+  "native_stages": [
+    {
+      "phase": "prepare",
+      "wall_seconds": 48.96236510000017,
+      "job_cpu_user_seconds": 6.703125,
+      "job_cpu_kernel_seconds": 4.90625,
+      "job_cpu_seconds": 11.609375,
+      "exit_code": 0,
+      "worker_exit_code": 0,
+      "launcher_exit_code": 0,
+      "cleanup_verified": true,
+      "job_active_processes": 0,
+      "recorded_worker_end_state": "GONE",
+      "current_recorded_worker_identity_state": "GONE",
+      "source_before_after_identical": true,
+      "runtime_limits": null,
+      "cpu_limits": null,
+      "active_process_limit": null,
+      "receipt_sha256": "8c8c32353c62bcc571e26311de3949897ab7460e99473914b7b43f9ba8971053"
+    },
+    {
+      "phase": "weak",
+      "wall_seconds": 118.1200503,
+      "job_cpu_user_seconds": 35.859375,
+      "job_cpu_kernel_seconds": 8.703125,
+      "job_cpu_seconds": 44.5625,
+      "exit_code": 0,
+      "worker_exit_code": 0,
+      "launcher_exit_code": 0,
+      "cleanup_verified": true,
+      "job_active_processes": 0,
+      "recorded_worker_end_state": "GONE",
+      "current_recorded_worker_identity_state": "GONE",
+      "source_before_after_identical": true,
+      "runtime_limits": null,
+      "cpu_limits": null,
+      "active_process_limit": null,
+      "receipt_sha256": "0c97f56f10542582504c5070e0d71a63f955b64bd66fab6cbcf3b54708c34e9d"
+    },
+    {
+      "phase": "qualify",
+      "wall_seconds": 23.01392610000039,
+      "job_cpu_user_seconds": 4.984375,
+      "job_cpu_kernel_seconds": 3.09375,
+      "job_cpu_seconds": 8.078125,
+      "exit_code": 0,
+      "worker_exit_code": 0,
+      "launcher_exit_code": 0,
+      "cleanup_verified": true,
+      "job_active_processes": 0,
+      "recorded_worker_end_state": "GONE",
+      "current_recorded_worker_identity_state": "GONE",
+      "source_before_after_identical": true,
+      "runtime_limits": null,
+      "cpu_limits": null,
+      "active_process_limit": null,
+      "receipt_sha256": "fcb0e02edff0c223af39e08686c17e16275eecd866a83c426458509d8756e4ca"
+    },
+    {
+      "phase": "qa",
+      "wall_seconds": 18.305433900000935,
+      "job_cpu_user_seconds": 4.859375,
+      "job_cpu_kernel_seconds": 3.828125,
+      "job_cpu_seconds": 8.6875,
+      "exit_code": 0,
+      "worker_exit_code": 0,
+      "launcher_exit_code": 0,
+      "cleanup_verified": true,
+      "job_active_processes": 0,
+      "recorded_worker_end_state": "GONE",
+      "current_recorded_worker_identity_state": "GONE",
+      "source_before_after_identical": true,
+      "runtime_limits": null,
+      "cpu_limits": null,
+      "active_process_limit": null,
+      "receipt_sha256": "e23ded4d2fb9654c51fc1d1e8c1d9ea5b9e71218cd456dc43ee14782a54d82c9"
+    },
+    {
+      "phase": "study",
+      "wall_seconds": 26.754140899996855,
+      "job_cpu_user_seconds": 5.0,
+      "job_cpu_kernel_seconds": 3.828125,
+      "job_cpu_seconds": 8.828125,
+      "exit_code": 0,
+      "worker_exit_code": 0,
+      "launcher_exit_code": 0,
+      "cleanup_verified": true,
+      "job_active_processes": 0,
+      "recorded_worker_end_state": "GONE",
+      "current_recorded_worker_identity_state": "GONE",
+      "source_before_after_identical": true,
+      "runtime_limits": null,
+      "cpu_limits": null,
+      "active_process_limit": null,
+      "receipt_sha256": "58164341ce732c36bcbddc78f28326996174d5a3222ea4d12ae2c6b947a0c430"
+    },
+    {
+      "phase": "summary",
+      "wall_seconds": 15.412675200001104,
+      "job_cpu_user_seconds": 4.734375,
+      "job_cpu_kernel_seconds": 3.453125,
+      "job_cpu_seconds": 8.1875,
+      "exit_code": 0,
+      "worker_exit_code": 0,
+      "launcher_exit_code": 0,
+      "cleanup_verified": true,
+      "job_active_processes": 0,
+      "recorded_worker_end_state": "GONE",
+      "current_recorded_worker_identity_state": "GONE",
+      "source_before_after_identical": true,
+      "runtime_limits": null,
+      "cpu_limits": null,
+      "active_process_limit": null,
+      "receipt_sha256": "31ca93db3f923c9a54312124f37eaa20764106652777b5ac51f048497e30ee57"
+    }
+  ],
+  "native_stage_total_wall_seconds": 250.56859149999946,
+  "native_stage_total_job_cpu_seconds": 89.953125,
+  "cost_scope": "Only the six current native stages and their Job subtrees. Excludes outer-controller unaccounted cost, prior core/guard units, metadata freeze attempts and prior/later studies.",
+  "active_lock_present": false,
+  "ownership_failure_files_present": false,
+  "raw_evidence_retained_locally": true,
+  "evidence": {
+    "binding.json": {
+      "sha256": "31e816b0485560c839cdd1af4446cfc1595104822f27610f09fc3a753d8b52ad",
+      "bytes": 34847
+    },
+    "prepare.json": {
+      "sha256": "ca32f42035f77a077fd01b599066bf04bf78c28d67f0ee2eb2c661ed8999afdc",
+      "bytes": 19710
+    },
+    "schedule.json": {
+      "sha256": "b94781eb6e580507ef7acdb533c618087669958de2922de5bc7cd7bcb54478cf",
+      "bytes": 2529802
+    },
+    "weak/summary.json": {
+      "sha256": "3742a58a922d21fd7ffc441cddf4eddc74f250bdaa3efc0e86ddfe28fefd9d8b",
+      "bytes": 4323
+    },
+    "weak/solution.json": {
+      "sha256": "468c65d2a9609e75c668e5ff1bd273b991eb36e7835b65d1eb96c94a2e64b027",
+      "bytes": 3652
+    },
+    "weak/coverage.json": {
+      "sha256": "378e162bc38b27b9571e3aa7eb810c446ad04a403db6be419ecc69978bdb71b5",
+      "bytes": 194458
+    },
+    "weak/matrices.npz": {
+      "sha256": "5d99dd9d025fe8a10caa6552a967036601fd80ab37a14dd0f9bbb7fd07edd3d9",
+      "bytes": 33222020
+    },
+    "weak/real_nnls_attempt.json": {
+      "sha256": "b569d4b57ded9cd05ad2c20ed22196978098e72ef7d8ca0e115fc3292543cc62",
+      "bytes": 78
+    },
+    "weak/real_nnls_completed.json": {
+      "sha256": "043ed57f2b8df067c5b6462f6d4f5fa4d90c36a84878a0b6202d8a2994e60cab",
+      "bytes": 69
+    },
+    "weak/fixtures/result.json": {
+      "sha256": "53e5480c8991136c40e8c006bc65fa35d830cac117f1df9fb46f05c802f5fa79",
+      "bytes": 73189
+    },
+    "weak/fixtures/journal.jsonl": {
+      "sha256": "b3c298e9a06c00740290aae734ca37bf3371ac6069ab487f135c6f30e14bbed4",
+      "bytes": 13300
+    },
+    "qualification/summary.json": {
+      "sha256": "aac215d54a0842b802ae14be03ad230d4ed96d47c5bb5e65c40c058d29eb90a4",
+      "bytes": 215
+    },
+    "qa/summary.json": {
+      "sha256": "cf3c1b67137666fde93ee8ea518afed8a5db3e2dfc968ddedc69121b7e02eb32",
+      "bytes": 849
+    },
+    "qa/optimizer_projection.json": {
+      "sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+      "bytes": 4
+    },
+    "study/summary.json": {
+      "sha256": "b200cffe46d2a533232d0b33e3dd94af089311cc6a21211d60a19fb39908ef99",
+      "bytes": 636
+    },
+    "summary.json": {
+      "sha256": "be95331073bd0fc039e5d23561c44724bd04334ef120e212b917d4bd7bada94e",
+      "bytes": 615
+    },
+    "complete.json": {
+      "sha256": "e834b61ee975192946f1fe8ecdaf1cdd9d4eaea0bc22b0f25a1ee3fe26e7c611",
+      "bytes": 647
+    }
+  },
+  "source_verification": {
+    "path": "results/weak_force_identification_20261029/source_verification.json",
+    "sha256": "a3b039a459e9744acc3130915ba43e7dfaa487361b2c8667f88a644aed531aac",
+    "remote_verified": true
+  },
+  "scientific_decision_owner": "root",
+  "scope_note": "The fixed artificial known-ROM result and the inadmissible real weak start are separate results. No autonomous D/W comparison was run, and this record makes no physical structure-recovery or model-family rejection claim."
+}

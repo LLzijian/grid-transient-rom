@@ -1,0 +1,114 @@
+{
+  "scope": "Static source review and 15 scalar Taylor-envelope algebra checks only; no actual certificate, Kron, model spectrum, fit297 event, RHS, optimization, or new trajectory",
+  "hashes": {
+    "experiments/gftd_fit297_analysis_20261107.py": "2faa8cdd83a98f71c044e20983b2b08d0f394f76b64c15b24f2c63617dab929e",
+    "tests/test_gftd_fit297_analysis.py": "55f1e706c4f25bc04dfbf1526b3a6200b97d5fae1d4dca9eb0f6062a3ed0256f",
+    "reports/gftd_fit297_20261107_protocol.md": "ca22743c53fe4fe398960e111838a373f8c4686eab0974c5daf6d9c28435062f",
+    "results/gftd_fit297_20261107/static_identity_audit.json": "eac00a21b0af24b0d7f20a0289d94232aa4f5222568b7162aa93d2be3dec2c0c",
+    "results/gftd_fit297_20261107/design_adoption.json": "114136484b94023e80dc2e343b2bd0b822fceb3d426d33fd57ca09c8c5b630cc"
+  },
+  "scalar_taylor_checks": [
+    {
+      "x": "-7/5",
+      "kind": "sin",
+      "encloses_independent_120_digit_series": true
+    },
+    {
+      "x": "-7/5",
+      "kind": "cos",
+      "encloses_independent_120_digit_series": true
+    },
+    {
+      "x": "-1/3",
+      "kind": "sin",
+      "encloses_independent_120_digit_series": true
+    },
+    {
+      "x": "-1/3",
+      "kind": "cos",
+      "encloses_independent_120_digit_series": true
+    },
+    {
+      "x": "0",
+      "kind": "sin",
+      "encloses_independent_120_digit_series": true
+    },
+    {
+      "x": "0",
+      "kind": "cos",
+      "encloses_independent_120_digit_series": true
+    },
+    {
+      "x": "1/10",
+      "kind": "sin",
+      "encloses_independent_120_digit_series": true
+    },
+    {
+      "x": "1/10",
+      "kind": "cos",
+      "encloses_independent_120_digit_series": true
+    },
+    {
+      "x": "7/5",
+      "kind": "sin",
+      "encloses_independent_120_digit_series": true
+    },
+    {
+      "x": "7/5",
+      "kind": "cos",
+      "encloses_independent_120_digit_series": true
+    },
+    {
+      "x": "-9/10",
+      "kind": "exp",
+      "encloses_independent_120_digit_decimal": true
+    },
+    {
+      "x": "-1/3",
+      "kind": "exp",
+      "encloses_independent_120_digit_decimal": true
+    },
+    {
+      "x": "0",
+      "kind": "exp",
+      "encloses_independent_120_digit_decimal": true
+    },
+    {
+      "x": "1/3",
+      "kind": "exp",
+      "encloses_independent_120_digit_decimal": true
+    },
+    {
+      "x": "9/10",
+      "kind": "exp",
+      "encloses_independent_120_digit_decimal": true
+    }
+  ],
+  "errors": [],
+  "all_scalar_checks_passed": true,
+  "static_identity_chain": {
+    "global_equilibrium_metadata_equal": true,
+    "expected_generator_order": [
+      "GENROU_1",
+      "GENROU_2",
+      "GENROU_3",
+      "GENROU_4",
+      "GENROU_5",
+      "GENROU_6",
+      "GENROU_7",
+      "GENROU_8",
+      "GENROU_9",
+      "GENROU_10"
+    ],
+    "basis": "retained audited descriptor export source/evidence with zero equilibrium errors plus current static cross-shard metadata; original descriptor does not contain equilibrium arrays",
+    "caller_must_bind": "expected_identity.equilibrium_verification_reference points to the hash-bound static_identity_audit; release must verify that asset"
+  },
+  "proof_review": [
+    "K and beta use exact rational products of stored factors",
+    "C mixes exact 2R and conservative 1.5*delta",
+    "det/trace and all-coordinate mu; shifted equilibrium and strict ball",
+    "exp/sin/cos finite Taylor remainders and signed interval products",
+    "L2 epsilon remains unknown; point hash prevents reuse on changed functional"
+  ],
+  "implementation_scope": "frozen analysis module and tests only; other API/engine/runner integration remains pending"
+}

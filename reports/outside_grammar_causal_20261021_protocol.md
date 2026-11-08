@@ -1,0 +1,43 @@
+# 语法外真值的因果自主预测能力表
+
+2026-10-21，root采纳实际gpt-6-astra原始方案末尾“最终修正”。该节取代原始报告开头的立即全局阻塞建议；12模型不是所有有意义问题的硬下限。本轮独立问题是：固定语法内tanh(2q)学习器，在语法外有理端口真值下，三个无噪声实例的100ms因果自主预测达到什么程度？不做结构搜索、正确支撑对照或错设因果归因，不替代原完整P1/1%噪声/未知恢复门槛。
+
+## 固定模型、数据和学习
+
+teacher仅在生成器内部将固定toy_source空闭合骨架加上动量端口0.4*q/(1+abs(q))，每个RK4子步重新计算端口。状态40维、单位和J/R/端口方向保持；C1非C2的零点不加平滑。teacher不使用已关闭多项式或饱和专用实现。学习器明确固定单项port=tanh(2q)，通过已合格TrainingClosureROM原通用路径；不修改历史运行类、指纹或入口。沿用CausalHistoryResidual的一次GRU及六个100ms历史系数，骨架/闭合/初始化器共同更新。teacher q、RHS和干净导数不进入学习器。
+
+正式seed6201/6202/6203；每seed独立16train、16合成val，前8弱/后8强，其他初态std0.08/0.3、q初态std0.2/1.2；固定SeedSequence([seed,20261021,9201,0]).spawn(2)分别train/val。噪声0。训练历史11点覆盖100ms，未来50点/0.5s；val未来100点/1s。train尺度为16train全部61点的各观测std、下限1e-6，绝不从val更新。teacher生成dt0.01/0.005并对齐，完整history+future核有限与归一化max差≤1e-3，任何失效保留全部事件/样本，不能替换或删分母。
+
+三个模型均512次完整联合更新；原Adam分组学习率、batch12、clip100、float64/CUDA保持；不增损失、隐状态、初始化次数或训练时域。固定保存0/32/128/512，共12 checkpoint；每seed32时从同一真实checkpoint重建并恢复一次Adam/NumPy/CPU/CUDA RNG再继续（总3恢复、仍总1536更新），初始及恢复构造共6，最终3加载。中途无val。所有三seed端点/来源/model+training哈希及训练观察先统一冻结，随后唯一evaluate进程才生成val。任一未完成不生成val，不换seed或重新选择。无科学重试。
+
+报告每seed的train0.5s与合成val1s归一化MSE、全部16事件、弱强分组、最差事件、delta/omega/p三个观测块、粗细资格、训练曲线、原始梯度/裁剪及实际费用。0.01保留原预测参照；无统计显著或高精度/唯一机制/模型晋升声明。512仍改善标为优化受限。单模型能力表不能分离近似误差和初始化/优化作用。
+
+## QA及唯一完整费用准入
+
+新增专用module/tests和本轮私有原生执行助手，旧源码字节不变；CPU参考仅用于必要QA，实际训练/推演CUDA float64。一次QA原生400/PS390/self370；失败即关，不修复、不第二次QA。覆盖teacher端口每RK子步及0/负q、外部动量方向和数值资格、原通用learner/导出独立实现一致、梯度/实际clip/Adam、仅一次历史初始化、完整事件/无未来/test隔离、32→34真实恢复参数/Adam/RNG/输出精确相同、冻结三seed前不触及val。数值容差继承原float64参考标准，不针对失败改动。
+
+QA通过且源码完全相同，唯一完整cost原生400/PS390/self370，不能追加探针或改代码。timing流SeedSequence([seed,20261021,9201,991])与正式流不同；不输出或使用正式成绩。三个timing seed均实际生成teacher train/val粗细数组及train尺度，构造相同固定学习器，各实际32完整train updates（含首次Adam分配），保留全部耗时并取所有样本max。实际测各seed完整train0.5s和val1s双步长预测/评分/数值核验，最终用3*全体最慢完整评价；固定I/O实际测12次非空Adam checkpoint（真实step32/trace32，加131072字节身份填充覆盖512元数据，不伪造512），3恢复、6构造、3最终加载、9数组写后SHA/字节核验、64次262KiB原子JSON。每类科学计数乘其所有实测max，actualsum另报；所有慢值保留，不用旧cos/专用tanh或多项式timing代替。
+
+费用原始面板必须完整，缺项即不准入。root在cost完整退出后核实际外部生成/启动时间区间：start/end由真实调用前后host wall clock记录，外部elapsed不小于完整native时间；减去worker数值主体body_wall，余下包括Python/导入/绑定/Job/清理/退出及等待余量，作为单次保守startup，正式两进程各加一次。不能把未测项置零；不能写不存在的冷探针回执。
+
+固定总工作T=1536*u_max+3*g_train_max+3*g_val_max+3*v_complete_max+12*save_max+3*restore_max+6*construct_max+3*load_max+9*raw_write_max+64*json_write_max+2*startup_upper。拆为run部分含训练/3train生成/12保存/3恢复/6构造/3raw/32JSON/一次startup；evaluate部分含3val生成/3完整评价/3加载/6raw/32JSON/一次startup。完整评价包含train/val四次预测、归一化评分和资格。必须分别1.25*T_run≤600、1.25*T_eval≤100、1.25*T+180≤900，等价总T≤576；剩20科学秒仅来源冻结/账本元数据，不拿来救超帽run或eval。所有3正式seed一并容纳才启动；否则关闭新问题本次可行性，不削减512/样本/种子/数值检查。
+
+## 预算、审查和退出
+
+根采纳比Astra分项建议更保守的统一P1≤900（native≤720：run600/self570/PS585，evaluate100/self80/PS90，来源冻结20；支持保守180），保留29.1834189不自动追加。P0≤2000：实现/准备支持保守1100（原500+600）、唯一QA400、唯一cost400、元数据/关闭保守100；不互借/修复。独立范围与结果挑战P2保守250。既有Astra规划300已计，不重收。登记前P0余2694.3437361/P1余929.1834189/P2余1380.8945846；最大分配后各未分配694.3437361/29.1834189/1130.8945846。父累计含支持144433.804027+1100+180+250=145963.804027；未执行最大1620另预留，最大分配后父未分配111616.195973。支持不是精确实耗，旧900/P8/W40未知hold保持。
+
+本轮开始前独立只读挑战；root保留采纳/准入/最终结论。若完整工程通过可经精确独立PR审查选择性合main，科学模型采用仍须原门槛；不将这个能力表提升默认模型。QA/成本/执行失败完整保留并关闭，不修复已关闭的饱和/多项式入口、不复活旧18×512或原六候选搜索。全部状态/实际PID/FILETIME/源前后/费用恢复可核，禁止重复队列和重置用户工作。原项目val/test关闭、TASK4暂停。
+
+若本独立科学分支因QA/费用不能准入，root核其他合法分支后提交具体类别资源/依赖阻塞；不借P0代付P1/P2、不动P3已用尽条件配额/P4缺L1/repair范围。Astra提出P3→P1转配12000且父总帽不变，属于待用户授权的前瞻选项，不在本轮实施。所有结局均归档GitHub，源checkpoint留本地、重要资产路径SHA公开。
+
+## 首次QA前独立挑战采纳
+
+root采纳outside_grammar_causal_20261021_plan_review.md，独立只读9.6137938秒计已分配P2review250。正式观测/训练目标/train尺度全部采用dt0.01的coarse teacher；dt0.005从完全相同初态生成，仅用于数值参照，不进入训练或尺度。无需访问任何原项目val/test。
+
+cost前检查固定序列化上界：未来512项loss/总raw梯度范数/clip因子序列，加首末/逐参数最大raw范数摘要，不记录无限展开的逐步Tensor；全部科学非checkpoint JSON每份不得超过262144字节，固定身份和512trace增量必须不超过cost的131072字节padding覆盖。QA用最大512长度及最长有限float表示/固定来源身份进行包络检验，实际写入同样强制检查，不能在cost结果后新增测量或扩大上界。
+
+startup计价另加cost主体未分类余量：body_wall减去所有不重叠实测操作总秒后的非负残量保留，按正式两个进程各一次加入c_all。这样外部wall−body只消去已映射的数值/I/O工作及另行保守计价的残量，不消去未知启动或验证。外部实际生成+启动时间凭证由root据工具调用区间在完成后生成，native回执原样保留。外部区间若有额外等待将保守增大准入费用，不倒推出更有利的时间。
+
+root落实独立实现挑战，首次QA前固定：g_train面板覆盖正式run另做的一次teacher资格检查，g_val以原train尺度资格检查；最终每model的load面板包含完整train.npz解包/拷贝、模型加载及两次实际checkpoint/观察SHA与training.pt的512/trace/source/nonemptyAdam核验（evaluate前后各一次）。每次正式更新的loss/总raw范数/clip因子/逐参数摘要记账和上界检查，与cost共享同一advance操作并计入u_max。正式run写完512并统一冻结，evaluate前严格读状态，不增加run末第三次反序列化。无效伪512路径/实际32计数负例纳入QA。
+
+外部启动事实由observe_launch.ps1在调用STD launcher前开启.NET Stopwatch，直到其实际退出保存ticks/frequency/elapsed；root以整数核算单调区间，核其覆盖完整native。加上真实make_invocation工具wall（含shell/STD启动）后，再减cost数值主体、加入主体未分类残量，作为本次完整启动保守估计；按两个科学进程计价。该观察脚本在QA前绑定，原生回执不改，不把墙钟UTC或未发生的探针当单调计时。

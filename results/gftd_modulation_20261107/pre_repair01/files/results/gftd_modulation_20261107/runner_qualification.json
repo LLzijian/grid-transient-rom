@@ -1,0 +1,61 @@
+{
+  "reported_by": "/root/api_modeler",
+  "status": "passed",
+  "engineering_scope": "Mock runner control flow only: source/release checks, exclusive start, A failure stopping B, sixteen fits frozen before forty-eight loaded-model initializations, last-stage scoring, typed failure denominators and independent accounting. Registered conditions, PCG64 160000 seed family, actual fitting and formal runner were not executed.",
+  "source_sha256": {
+    "experiments/gftd_modulation_20261107.py": "63bb6d224106b24214815268e75968ecdbd53aeb250408e24b94038ea189436b",
+    "tests/test_gftd_modulation_20261107.py": "28f06eb1829aa9b1b0c93ecf9d2e50b6547bdbdc4d867d1230e1ace62cf3b9a0"
+  },
+  "attempts": [
+    {
+      "command": ".venv-gpu/Scripts/python.exe -m pytest tests/test_gftd_modulation_20261107.py -q --basetemp .tmp/pytest_modulation_runner_20261107",
+      "exec_chunk": "c252e6",
+      "session": 84703,
+      "initial_tool_wall_seconds": 10.0075965,
+      "final_chunk": "8d30ee",
+      "final_tool_wall_seconds": 1.51e-05,
+      "exit_code": 0,
+      "pytest_seconds": 10.37,
+      "passed": 8,
+      "failed": 0,
+      "errors": 0
+    },
+    {
+      "command": ".venv-gpu/Scripts/python.exe -m pytest tests/test_gftd_modulation_20261107.py -q --basetemp .tmp/pytest_modulation_runner_second_20261107",
+      "exec_chunk": "52aea1",
+      "session": 27737,
+      "initial_tool_wall_seconds": 10.0070399,
+      "final_chunk": "eeb99b",
+      "final_tool_wall_seconds": 1.77e-05,
+      "exit_code": 0,
+      "pytest_seconds": 15.98,
+      "passed": 9,
+      "failed": 0,
+      "errors": 0
+    },
+    {
+      "command": ".venv-gpu/Scripts/python.exe -m pytest tests/test_gftd_modulation_20261107.py -q --basetemp .tmp/pytest_modulation_runner_final_20261107",
+      "exec_chunk": "326643",
+      "session": 54601,
+      "initial_tool_wall_seconds": 10.008631,
+      "final_chunk": "3bcfd3",
+      "final_tool_wall_seconds": 1.64e-05,
+      "exit_code": 0,
+      "pytest_seconds": 14.77,
+      "passed": 9,
+      "failed": 0,
+      "errors": 0
+    }
+  ],
+  "format_check": {
+    "command": "git diff --check -- experiments/gftd_modulation_20261107.py tests/test_gftd_modulation_20261107.py",
+    "chunk": "f662df",
+    "exit_code": 0,
+    "tool_wall_seconds": 0.8518202
+  },
+  "total_qualification_seconds": null,
+  "cumulative_host_cost": null,
+  "formal_sampling": false,
+  "real_data_reads": false,
+  "frozen_source_modified_by_receipt_task": false
+}

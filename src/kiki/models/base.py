@@ -31,6 +31,7 @@ class RunContext:
     graph_nonoverlap_windows: bool = True
     fit_max_steps: int = 0
     weak_max_windows_per_case_horizon: int = 0
+    gftd_fit297_v1: dict[str, Any] | None = None
 
 
 @dataclass
@@ -39,7 +40,7 @@ class FitResult:
     status: str
     train_case_ids: tuple[str, ...]
     val_case_ids: tuple[str, ...]
-    best_validation_loss: float
+    best_validation_loss: float | None
     details: dict[str, Any] = field(default_factory=dict)
 
 

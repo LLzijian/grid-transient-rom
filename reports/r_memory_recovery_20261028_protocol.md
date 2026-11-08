@@ -1,0 +1,19 @@
+# A1152冻结评价事前登记
+
+2026年10月28日，root采纳实际gpt-6-astra计划第一项；完整原文astra6_force_memory_20261028_raw.md，SHA f3f194edc0e726a550d9abd144fbd376c6ac4c686c4ee13b58a0c3428406b404。独立只读challenge61_20261028认可此有界评价。执行模型gpt-6.1-sol；root负责结论。
+
+旧r_memory六组排程停止自动续跑，保持INTERRUPTED_RUNTIME/退出原因UNKNOWN，比较未完成。原进程GONE和无闭合收据不能证明具体外部原因。旧Adam不恢复，旧锁、1165次完成journal、1152步完整checkpoint与13次未持久记录均保留；未运行的五组不作效果分类，不把新评价当成旧2048端点。
+
+本次唯一对象固定为A/25101最新完整step001152；不按误差搜索其他检查点。model.json SHA5e8bba7c406d12ec9745664c7aeb8cd8d1aebe29f3c0257b9ef13e0109f12aac；training.pt SHAa90aa8a672fae69083e5fc16888227835f8daedaf20cbf162c6060a3b55ed109；checkpoint.json SHAb5de24d436c6ae70af29b1b4942ca510e9047367165eb4c0fcec89dd8a4800b5。推理只加载model.json；training.pt仅用于原字节身份核对，不加载或恢复。
+
+科学工作量：0次optimizer、0个新FOM条件、一次共同train385冻结评价；A0/A512原评价复用不重算。旧prepared/cache身份与事件分组保持：fit297、不追加更新88、原366及新19。原val/test关闭，TASK4暂停。真实时间区间、失稳样本、尺度、物理单位及所有原数值门槛不变，不制造尾部或删行。
+
+实现入口experiments/r_memory_recovery_evaluate_20261028.py，输出private_data/r_memory_20261028/recovery_eval01。先保存冻结身份与绑定，再调用原study的checked_preparation(fit_only=False)、load_export及evaluate_model。CPU float64单线程，完全沿用原coarse/fine与8s/actual15s资格函数、风险、共同频率/p及失稳分类。不得修改旧MILESTONES，不得覆盖旧输出。
+
+原生所有权复用uncapped_windows_job_20261021与direct_base_venv；绑定新入口、本协议、原评价helper、冻结模型和来源、旧准备身份。原87项于恢复记录中已全量一次核实MATCH；当前runtime正常/异常probe为同一原生实现及相同runtime的真实已闭合证据，可复用。运行前重新核关键文件与解释器exe/dll，不重复对大型Torch DLL做无决策价值的全量核查。旧active.lock保持原SHA且原supervisor/worker严格GONE，旧Job最终成本、退出和Job0继续UNKNOWN；本次使用独立新锁，记录本次实际worker PID/FILETIME/逻辑及物理镜像、真实exit/cleanup/Job0/wall/JobCPU和源前后。
+
+root在GitHub归档分支codex/force-memory-20261028实际核远端新commit及逐文件blob，再将完整40位source-commit传入；本地只读.git中的a951不是新运行源。源码在运行期间冻结。冻结后只有一次评价，不进行分数触发重试；若出现纯入口错误或数值未决，保存原证据并由root处理，不改门槛。预计耗时以既有385评价约5分钟为参考，非时长上限。
+
+结果用于补全科学候选档案。按同一范围分别看5/8s风险、关键事件、共同频率/p、数值覆盖及成本；有互补价值可保留，未决范围不参加有利比较。可用模型档案及默认none不变。新结构实验主来源已经预定A512，A1152即使分数更好也不在本轮临时替换。
+
+复现：当前base Python，环境__PYVENV_LAUNCHER__指向.venv-gpu/Scripts/python.exe，入口命令以本次脚本--help的run参数为准，source-commit使用root核实的归档SHA。完成后记录实际收据、结论和候选范围，推送并核GitHub，随后立即继续标准结构实验，不等待定时触发。

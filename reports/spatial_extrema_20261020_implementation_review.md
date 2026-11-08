@@ -1,0 +1,53 @@
+# 空间极值监督：独立实施审查
+
+2026-10-20，独立代理`/root/fixed_edge_final_review`。本代理未负责本轮提案或实现。本次只读新runtime/runner、三个测试、私有launcher/make_invocation/QA driver及必要直接接口；未运行程序、模型、测试或测时，未读权重、NPZ、HDF5、val/test或新预测成绩，未递归委派。仅新增本文，不改源码或协议。以下是静态实施挑战，不等于实际QA通过。
+
+## 数学与物理信息接线
+
+新runtime显式要求equilibrium_delta张量，检查十机形状/批次、正质量与有限性；角度计算加回每机平衡角，转速采用mass加权COI，使用amax/amin与abs的标准子梯度。归一化与0.5系数符合登记，s逐事件真实点均值先独立risk，再以10倍加原目标，没有混成risk(long+s)。同一long推进同时累计原点误差和新s/角度/速度分项，状态跨ragged边界保留，只初始化一次；local/hidden/torque仍使用原独立历史及位置，没有用long末态代替。
+
+runner第78–89行从明确classification_meta取十机平衡角，逐事件检查有限、形状与共享逐项身份，未使用model.phi或默认0。prepare将其保存，train/cost在进入积分前核prepared身份并转为固定CUDA double张量；不会在每个积分步读CPU。既有train loader和来源身份仍负责固定物理系统，mass、eq及机器顺序须按实际QA核对。测试定义包含非零eq物理恢复、mass/eq同步重编号、共同角平移、并列梯度与abs零点、非并列有限差分；未见公式错误。
+
+O测试直接对照原目标全部组件/梯度和Adam，S测试有独立逐事件手算、同一long预测及辅助项逐组件梯度检查；短事件n=1与真实5秒上限、不合法物理输入及非有限更新/cache关闭也有定义。当前尚无实际CPU/CUDA结果，不能把这些定义写成通过。可选runtime的集成范围应与实验runner/私有监督器分开。
+
+## 旧O及完整六角色契约
+
+runner第95–126行将6101_O唯一绑定旧temporal原路径及三文件固定哈希，其他五角色限本轮路径；共用endpoint_role/check_endpoint。旧O检查源B哈希、385身份、rates/force、固定原日程SHA、512逐行采样/1/2/5时域、tail_weighted=false、有限loss/gradient及全385覆盖。新角色还核本轮eq和spatial_weighted。该逻辑保留旧身份，没有重命名为新训练。
+
+prepare实际调用旧O检查；freeze_endpoints对精确六角色逐个调用同一检查，evaluate消费freeze后再次对六个角色核身份及模型/training/metadata哈希。新旧路径共用同一合同，不需要把旧O搬入新BASE。对应synthetic测试把旧O角色实际传进评价消费者，并检查冻结hash变化拒绝；不是只测字符串包含关系。
+
+科学新训练的validate_request、launcher prior均拒绝6101_O、F/T、768、resume及external-recovery；五个新角色按原B来源构造，空Adam后恢复来源随机状态。旧source/日程不改，逐行检查采样、前后RNG、local及原O长计数。source_equivalence仍只做零更新比较，实际cost后才可声称六种来源/组初始场/编码器/参数权限已核。O新目标等价与旧endpoint的不可变trace/身份是共同复用证据；旧O缺s训练日志保持缺失，旧1199.4759519秒不得记入新native prior。
+
+freeze_endpoints目前是显式函数而非main独立mode。root应在六端点完成后登记它的唯一实际调用/费用及冻结文件身份，再生成评价命令；不能把“函数存在”记成冻结已执行。未齐六端点时函数读取会失败，评价也须拒绝，没有单独补评旧O许可。
+
+## 已核限时、费用和拒绝规则
+
+新helper.native_limits将生产参数锁为train2200/2170/2100、evaluate400/370/340、QA1000/970/940、prepare180/150/120、cost1500/1470/1440；还读取原PS硬3600条件并核0<Timeout<Max≤3600。make_invocation对train显式生成2100，其他为cap−60；真实launcher使用cap−30传PS，故创建与消费一致，没有旧3850冲突。synthetic定义覆盖实际PS边界和完整队列预算，不创建worker。
+
+单次attempt、完整native prior集合、source前后hash、PID/创建身份、清理GONE、独占lock及重复端点拒绝沿用既有逻辑；任何未核实owned清理阻止新launch。无旧F尝试迁入，旧temporal门禁/回执不改，不伪造inner。CLI残留的恢复参数在正式入口和train前置检查中被拒绝，不能调用死分支获得科学恢复。
+
+上述execution_contract和源码消费关系只证明预定数值限制/预算及实现接线，不能称尚未生成的全部实际生产argv已经核过。root已明确将在每类首次启动前逐条读取make生成的真实worker/launcher命令，对照runner.main parser、command_gate/native_limits及PS实际参数，再冻结精确文件和哈希；这是仍待执行前完成的动作，不需要新增通用预检系统，也不以本报告代替。
+
+implementation_cost.json在command_gate必须绑定，make_invocation实际纳入，prior_cost_gate读取qa_seconds同时扣QA4200和阶段24000；当前root尚待完成该固定费用文件及核账，须在QA命令冻结前落实，不能以文件未准备而绕过。两次QA+prepare+cost+准备200的最坏3880≤4200；五模型估价≤2000、总≤10000，硬cap五次11000≤12000，余1000无续训用途。完整六评价估价≤340/队列，六cap2400，4000内另有1600供登记提取/核验。cost的flat admission实际被train消费，五模型估价用2O+3S，没有误计旧O为第六次新训练。
+
+cost只用固定长/短面板，各组12次完整丢弃更新，第二组合为真实5秒long，非空Adam恢复匹配复用两次，不额外加试算；三seed来源加载耗时也纳入保守开销。真实反向、显存、保存恢复和整档准入仍待实际回执；静态估价函数不能替代测量。
+
+## 当前需冻结前修正的解释指标资格
+
+root与本代理均确认runner第467–479行的spatial_metrics当前只使用interval15.numerically_admissible，第522行传real15；这尚未join classification_15s的finite_to_endpoint、los_pair_pass及其原数值门槛。因此该字段不能被解释为完整真实区间资格，即使最终提取器可能再次join。
+
+建议在冻结前最小修正：用原real15可用/有限/COI与共同频率门槛，连同pair15有限、细粗分类一致和相同原数值阈值形成完整qualified15，供spatial_metrics决定解释值是否为null。未通过时combined及两个分项保持None，finite仍可独立保留浮点事实；补一项“interval通过但pair不通过”的synthetic拒绝传播检查。该项只纠正解释证据资格，不改训练s数学、原风险/分类、阈值或候选规则，也不授权重跑预测。root已指出并倾向该修订；本代理没有改源。
+
+## 当前意见与范围
+
+除上述完整15秒资格接线和待root最终写入/绑定的准备费用外，未发现另一个确定数学或生产接口阻断。当前不授予实际QA启动，直到这两项冻结前条件闭合；无需再泛化历史审计，复核最小diff即可。相关检查通过后，工程PR至多为runtime、对应synthetic测试和短说明；不整体合并runner/helper，不包括新默认端点。实际QA/prepare/cost通过后仍须root核完整档、源与冻结命令，才可启动五次新训练；本报告不作科学候选选择。
+
+支持费用采用600秒保守份额，嵌入本轮3800hold，不增加预算或重复计费。真实启动、费用核对、门槛解释与最终决定均由root负责。
+
+## 最小修订复核与静态准入
+
+本次仅复核上述两项冻结前条件。runner最终SHA256为e7495f61ac2821a818e3befa6e54e24c197dad21e117b096db153ca747d96643，runner测试为d768ccdf805c40cada30c0d284482127a51e3996c42b7a60d47b2fa332784c18。新增actual15_qualified逐项要求real15的available/finite/numerically_admissible以及pair15的finite_to_endpoint/los_pair_pass为True，并对两份结果的COI和共同频率归一化RMSE检查有限数值及原0.001上限。评价消费者现将该完整联合布尔传给spatial_metrics；未合格的三个解释值仍为None，有限浮点事实独立保留。新增合成测试定义覆盖pair旗标失败、real旗标失败、两份RMSE超阈值/NaN/None及null传播。本次修订未见改变训练目标、原评分或门槛，原资格接线阻断闭合。
+
+私有与公开implementation_cost.json的SHA256均为e5a26cce2366873a150b265aee907bd8b43ccdeb9b6a66db56464f1703b6e76b，qa_seconds为22.1694825，等于4.0568093与18.1126732之和。command_gate仍要求该文件源绑定，make纳入，prior将其加入qa后同时检查4200类上限与包含3800支持预留的24000总额；未见漏扣或重复把嵌套计时加一次。该准备费用条件闭合。
+
+在本次限定静态范围内，未剩确定阻断，支持root完成实际argv逐条核对、冻结源和精确命令后执行登记的唯一原生QA流程（仅在失败时按原协议允许一次明确修复）。这不是实际QA、真实来源等价、成本准入或科学模型采用的结论；prepare/cost及完整五训练六评价仍分别受原登记条件约束。本报告至此停止编辑，后续由root绑定；上述历史发现与修订前意见原样保留。

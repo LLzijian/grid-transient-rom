@@ -1,0 +1,19 @@
+$env:OMP_NUM_THREADS='1'
+$env:MKL_NUM_THREADS='1'
+$env:OPENBLAS_NUM_THREADS='1'
+$env:PYTHONDONTWRITEBYTECODE='1'
+$taskEnvironment=[ordered]@{OMP_NUM_THREADS=$env:OMP_NUM_THREADS;MKL_NUM_THREADS=$env:MKL_NUM_THREADS;OPENBLAS_NUM_THREADS=$env:OPENBLAS_NUM_THREADS;PYTHONDONTWRITEBYTECODE=$env:PYTHONDONTWRITEBYTECODE}
+Write-Output ('HOST_ENV_JSON='+($taskEnvironment|ConvertTo-Json -Compress))
+$taskReleasePath='results/gftd_fit297_20261107/execution_release.json'
+$taskRelease=Get-Content -LiteralPath $taskReleasePath -Raw | ConvertFrom-Json
+$taskStartUtc=[DateTime]::UtcNow.ToString('o')
+$taskTimer=[System.Diagnostics.Stopwatch]::StartNew()
+[ordered]@{action_id='gftd-fit297-20261107-01';command='.venv-gpu/Scripts/python.exe -B experiments/gftd_fit297_20261107.py';host_start_utc=$taskStartUtc;release_sha256='f10a023faf1783db600230c0ab370cb9f919e73dbeaf08b470a0b9c0bd160443';source_sha256=$taskRelease.source_sha256;thread_environment_readback=$taskEnvironment;formal_invocations=1;fit_cache_bytes_read_by_host=$false} | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath 'results/gftd_fit297_20261107/execution_host_start.json' -Encoding utf8
+Write-Output ('HOST_START_UTC='+$taskStartUtc)
+& ./.venv-gpu/Scripts/python.exe -B experiments/gftd_fit297_20261107.py 1> results/gftd_fit297_20261107/execution.stdout.txt 2> results/gftd_fit297_20261107/execution.stderr.txt
+$taskExit=$LASTEXITCODE
+$taskTimer.Stop()
+Write-Output ('HOST_END_UTC='+[DateTime]::UtcNow.ToString('o'))
+Write-Output ('HOST_WALL_SECONDS='+$taskTimer.Elapsed.TotalSeconds.ToString('R',[System.Globalization.CultureInfo]::InvariantCulture))
+Write-Output ('PROGRAM_EXIT_CODE='+$taskExit)
+exit $taskExit

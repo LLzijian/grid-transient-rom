@@ -1,0 +1,74 @@
+{
+  "schema": "weak_force_core_unit_pre_freeze_qa_v1",
+  "status": "PASS_UNIT_ONLY",
+  "recorded_at_utc": "2026-10-29T00:01:44.2565122Z",
+  "source_hashes_unchanged_after_execution": true,
+  "source_archive_commit": "f99a8c66b1d4e1530d4ec1da8436cee60af0aaad",
+  "source_archive_verification": "Parent reports 11 selected remote blobs and branch head verified; this executor independently checked the two authorized local file hashes before the single execution.",
+  "sources": {
+    "experiments/weak_force_identification_20261029.py": "40a6863b8ff44d4301146dc52926312d41a3e43f392f50ec9a5f73f14da953ed",
+    "experiments/test_weak_force_identification_20261029.py": "8c111be963a01ee39b777dbea1080e15c7fbe862610df0361fe510de655ad746"
+  },
+  "execution": {
+    "command": "python -B experiments/test_weak_force_identification_20261029.py",
+    "interpreter": "known GPU venv packages via registered direct-base interpreter",
+    "compute_device": "CPU",
+    "invocations": 1,
+    "exit_code": 0,
+    "tests_run": 11,
+    "unittest_reported_seconds": 16.811,
+    "tool_calls_wall_time_seconds": [
+      10.0006886,
+      1.0776796
+    ],
+    "tool_wall_note": "Each value is the corresponding tool-call wait wall, not a complete process duration; the running session was collected once without relaunch. The unittest runner supplies its own complete test duration.",
+    "output_capture": "Tool combined stdout/stderr stream; separate stdout and stderr were not retained.",
+    "combined_output": "...........\r\n----------------------------------------------------------------------\r\nRan 11 tests in 16.811s\r\n\r\nOK\r\n"
+  },
+  "scope": {
+    "data_free_unit_checks": true,
+    "synthetic_arrays_only": true,
+    "real_event_reads": 0,
+    "endpoint_reads": 0,
+    "cuda_calls": 0,
+    "optimizer_updates": 0,
+    "real_nnls_calls": 0,
+    "scientific_fixed_fixture_suite_executions": 0,
+    "fixture_cli_invocations": 0,
+    "new_native_controller_or_job_invocations": 0,
+    "automatic_repairs": 0,
+    "retries": 0,
+    "training_admission": false,
+    "release_gate": "UNKNOWN; unit PASS alone does not release any scientific stage"
+  },
+  "mocked_paths": [
+    "scipy.optimize.nnls success and failure are mocks for public-call and ledger identity assertions.",
+    "qualify_fixtures is exercised only inside a unit fixture with scipy.integrate.solve_ivp patched to raise at the first artificial reference; it checks durable failure and existing-output refusal, and records zero artificial NNLS attempts. No fixed scientific fixture suite is executed."
+  ],
+  "checks": [
+    "fixed windows and real interval coverage",
+    "analytic test functions and time scaling",
+    "same-endpoint Simpson integration",
+    "observable width and unique event identity",
+    "no-window and zero-information behavior",
+    "nonuniform mass order and C gate derivative",
+    "strict coordinate boundaries and legal zero graph",
+    "independent primal/dual KKT checks",
+    "single mocked NNLS public call and no fabricated iteration count",
+    "failed mocked solver preserves attempt identity",
+    "mocked reference failure durability and existing output refusal"
+  ],
+  "prohibited_operations_not_performed": [
+    "fixed fixture CLI",
+    "real scientific qualification matrix",
+    "real NNLS",
+    "actual event or endpoint reading",
+    "CUDA",
+    "optimizer",
+    "new controller",
+    "timer creation"
+  ],
+  "files_changed": [
+    "results/weak_force_identification_20261029/core_unit_pre_freeze_qa.json"
+  ]
+}

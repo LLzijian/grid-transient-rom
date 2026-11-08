@@ -1,0 +1,19 @@
+# 新无时限入口与监督：独立实现挑战
+
+审查者 `/root/fom_history_interface`，未参与提案/实现。协议审查及各次静态工具累计16.6859782秒，仅记录实耗、不设额度。没有数值、pytest、文件修改或递归。
+
+首遍发现并在首次QA前要求修正：恢复授权不能只信previous_job_closed布尔和旧worker退出；须核真实Job回执。QA需同时执行两份新测试且绑定测试字节。创建worker后再AssignJob有监督器硬退出窗口，须以JOB_LIST创建时原子归属替代。
+
+监督定稿核验：supervisor SHA12d0950e86495ffea39f81b13cbcbf0cd2e9b172384a16279844d377f7f4bf34，tests SHA6917e346bda712805028b12fcdd85a636af364a825ef3ef26e457f064e696337，launch SHA6d1810f1ba7a583bfd5e561659b16fb886e0dc80a26227f8b3357fcef5b85c22均一致。JOB_LIST(0x2000D)加入CreateProcess属性列表，创建成功即assigned，on_created硬退出发生在ResumeThread之前；消除了创建-Assign窗口。新增该位置硬退出负例，原worker异常/监督os._exit/锁/PID测试保留。LimitFlags仅KILL_ON_JOB_CLOSE，无CPU/count/time帽；500ms wait循环仅观察无总时限。launcher显式绑定两份tests且后续核实际新QA同源；未决组只阻正式val，可继续独立组符合协议。
+
+以下为最终原始实质返回：
+
+统一结论：先前阻断已收束，可冻结当前完整来源并执行本轮新增QA；同源QA通过后可直接开始固定四组12×512，无需旧成本准入或再开数学QA。core/test实际SHA分别cca1137148ca468b2436629bdbc7fc2f9c1cdd2c5e050f22a5e7ba3616d13b82 / fb5d33399845cb0269cbf475e7af1db3e42790898ee36458c74f041fd387a128，与你封版一致。
+
+已核小修：validate_native_resume绑定实际native回执SHA，核source/group/run身份、整数PID/FILETIME、同一worker executable、Job0/cleanup、完整非负wall/CPU统计及source前后；旧worker证明必须不可变且与当前旧receipt同字节，worker/progress可变路径不得绑定；缺证明/active child/可变证明均有负例。execute QA现明确收集两份新增tests，保持无timeout；launcher恢复也核实际旧Job及worker GONE，监督JOB_LIST创建原子归属已在前遍核实。原loop科学和None规则不变。
+
+接受依据为静态修正，不声称实际QA已过；QA若失败仅按登记的一次明确实现缺陷修复范围处置。缺侧文件/部分发布仍拒绝回退，硬崩溃缺真实Job闭合证明时允许未决，不编造恢复证明。没有额外科学/额度条件。
+
+本次两次只读native4.5947741秒（2.1568701+2.4379040），同轮自协议至今累计16.6859782秒，仅记实耗；未编辑、数值、pytest或递归。
+
+root采纳：阻断修正已核，新增STD binding生成器只按固定角色组装原authority、54项数学proof及新源/真实prior哈希，不作科学参数或额度决策；首次QA前静态核对后冻结。QA通过后即直接运行，不新增成本门槛。原科学/数据门槛仍保持。

@@ -1,0 +1,72 @@
+模型身份：本任务由父代理以 `gpt-6-astra`（Astra6）指派调用；调用配置以父代理工具记录为准。本次仅只读分析，未修改文件、启动训练或访问 val/test。
+
+已核实 `run/complete.json` 和 `science/selection.json`：24576 次更新、12 次恢复、36 个检查点、`all_twelve_frozen=true`。这只证明训练状态完整，数值资格仍按各评价记录判断。`current_state.md` 仍描述最后一模型运行中，根代理应先完成本轮闭合、独立审查与归档，再执行以下工程工作。
+
+建议登记一个有限工程轮，最多两个优化，不开展新科学比较。
+
+**实际调用路径与待测问题**
+
+- `horizon_pair_20261023.run_study` 使用 `closure_causal_history_residual_20261019.train_update`；其 `prediction` 仅用前11点初始化，然后调用 `closure_causal_recovery_20261019.trajectory`，按50或200步执行 Python RK4 循环。
+- `train_update` 在反传后逐参数执行 `float(p.grad.norm())`，更新后逐参数执行 `bool(torch.isfinite(p).all())`，还显式同步 GPU。这些操作存在同步成本，但尚无证据表明它们是主要耗时。
+- `TrainingClosureROM` 已缓存每条计算图使用的参数表达式，并已有部分符号项快速实现。不能把“新增参数缓存”当作尚未存在的优化。
+- `TrainingClosureROM.field` 对 `generic_` 项回退到 `SymbolicClosureROM.energy_and_gradient` 与 `port_values`。必须记录本轮候选2/3的实际 `_term_kinds`、存储表达式与回退路径；现有通用符号求值可能值得优化，但不能先假定其耗时比例。
+- `train_closure.py` 是另一训练入口，已有 `TrainingClosureROM`、设备同步、检查点及 benchmark 实现。可复用其计时原则，不能直接用其不同损失或合成 fixture 代表 horizon_pair 的真实成本。
+
+**固定工作量**
+
+只复用 seed6301 对应 train6201 的既有16事件、原尺度、候选2/3和两个窗口，构成4个工程工况。初始模型从既有 step0 检查点读取；另使用这4个既有 step2048 状态做只读数值回归。所有更新写入新工程目录，旧检查点与179份绑定源保持不变。工程拟合结果不参与科学排名或选模。
+
+每个实现最多执行以下固定更新：
+
+1. 每工况先2次预热，再3组各4次同步计时，共14次更新。
+2. 每工况另从相同 step0、Adam、NumPy/Torch/CUDA RNG出发连续执行34次；保存32，实际重建恢复后再执行2次，与连续路径末两步比较。共36次实际更新。
+3. 因而每实现4×50＝200次更新；参考实现、优化一、优化二至多600次。
+4. 参考实现额外每工况2次有 profiler 的更新，共8次，用于定位，不计入性能结论。总正常上限608次工程更新。
+5. 整轮最多一次明确实现缺陷修复。只重做失败实现受影响的预登记检查，最多追加200次更新；总上限808次。不得因加速不足或科学结果不理想而使用修复额度。无进程数量、进程时长或累计进程秒限额。
+
+这些有限更新属于工程资格与性能工作量，不是削减未来科学比较的更新数。无需重跑12×2048。
+
+**先测量，再决定两个实现**
+
+记录环境、GPU、软件、数据/源码SHA、模型类型、batch12、float64、窗口长度与实际梯度参数数目。参考实现每工况只采上述一次 profiler，分出初始化/前向、反传、梯度检查、clip、Adam、参数检查和保存恢复。同步计时与 profiler 分开；计时区间前后均调用 CUDA synchronize，同时报告 wall、CUDA事件计时、峰值已分配/保留显存。预热、冷启动、保存和恢复成本分别列出，不能仅报告最优一次。
+
+优化一：新增独立模块，如 `experiments/closure_training_efficiency_20261024.py`，提供与旧 `train_update` 一致的入口。把各参数的原有 norm 计算保留在设备端，按原参数顺序堆叠后一次转到主机；保留同名梯度字典、原梯度有限性判断及其发生在 clip/Adam 之前的语义。更新后把各参数有限性结果合并为一次检查。损失检查、clip100、Adam分组和参数顺序完全不变。先不改优化器为 fused/foreach，不改变RK4。
+
+优化二：仅当 profiler 明确显示通用符号表达式重复解释占有可改善成本时，新增与导出格式兼容的运行时适配层：在模型构造时把已验证、规范化的 AST 转成固定操作树/调用结构，复用表达式元数据，避免每次 RHS 反复解析和构造常量。张量算术的顺序、float64、自动微分路径及完整 RK4 步数保持一致；不能只按“闭合系数当前为零”跳过闭合计算，因为系数梯度仍需要它。保留通用表达式回退。若 profiler 不支持此方向，第二优化不执行，本轮关闭；不临时换成编译器、CUDA Graph或精度扫描。
+
+该选择避免在 Windows 环境尚未验证编译支持时，把 `torch.compile` 的可用性和巨大循环编译成本变成第二条探索链。
+
+**正确性与恢复门槛**
+
+以下门槛在运行前锁定，不据结果放宽：
+
+- 优化一预期严格相等：同输入字段输出、轨迹、损失、未clip梯度、clip后梯度、参数、Adam一阶/二阶矩与step全部 `torch.equal`；NumPy/Torch/CUDA RNG和批次顺序严格相同。若基础执行自身存在不确定性，先记录为未决，不改用宽阈值掩盖。
+- 优化二维持运算顺序，默认同样要求严格相等。若实现确实必须改变运算顺序，须在执行前由根代理重新明确数值误差方案；不能看到差异后改成近似通过。
+- 在4工况step0及对应step2048上，检查 field、单步RK4、完整50/200步轨迹和一次完整反传。后者覆盖非零闭合系数，防止只在零初始化上通过。
+- 连续34与32→恢复→2比较模型、Adam、RNG、trace和下一批索引；32满足旧restore的合法边界，不修改旧restore以容纳新边界。
+- 保存使用原模型导出结构；重新导入后行为一致。运行缓存不可进入持久状态，加载/设备转换/异常退出后不得残留过期计算图。
+- 注入4种独立负例：非有限损失、非有限梯度、Adam更新后非有限参数、损坏检查点SHA。确认失败发生在原来对应阶段；参数检查失败必须保留已发生更新的事实，不能假称未更新。
+- 在4个既有step2048状态，对全部16事件执行原 `.01/.005`、全511点资格与原误差界流程；参考及所有保留候选使用相同输入。归一最大差≤1e-3等原条件不变；既有失败仍失败、既有未决仍未决，不能只看平均误差。只调用 train 路径，禁止使用旧 `evaluate` 中会遍历 heldout 的便利入口。
+- 未来/隐藏输入不进入encode的现有相关检查复用；新增入口自身需确认调用相同前11点初始化与同一损失分母。
+
+**工程采用标准与退出**
+
+每实现按4工况分别报告三个计时组中位数、范围、显存和冷启动成本。采用须同时满足：全部正确性/恢复检查通过；4工况等权几何平均加速≥1.10；任一工况中位耗时不恶化超过5%；峰值已分配显存不增加超过10%。10%是工程采用门槛，不是科学成效门槛。未达到则保存实测收益与代价，维持参考入口。
+
+最多保留参考、优化一、优化一加优化二三个版本，不追加seed、训练时长或优化方向。通过的版本经独立精确范围审查后，以新模块和明确入口接入形成有限PR；不把旧科学冻结源或旧证据改写为新实现产物。未通过则归档全部结果，继续使用参考实现。下一科学轮需新的Astra6规划，不由本工程计划授权。
+
+证据路径：
+
+- `AGENTS.md`
+- `docs/engineering_loop.md`
+- `docs/current_state.md`
+- `reports/horizon_pair_20261023_protocol.md`
+- `private_data/closure_mechanism_20261019/P1/horizon_pair01/run/complete.json`
+- `private_data/closure_mechanism_20261019/P1/horizon_pair01/native_run/receipt.json`
+- `private_data/closure_mechanism_20261019/P1/horizon_pair01/science/selection.json`
+- `experiments/horizon_pair_20261023.py`
+- `experiments/closure_causal_history_residual_20261019.py`
+- `experiments/closure_causal_recovery_20261019.py`
+- `experiments/closure_training_runtime.py`
+- `experiments/symbolic_closure_rom.py`
+- `experiments/train_closure.py`

@@ -1,0 +1,87 @@
+{
+  "schema": "memory_transport_metadata_freeze_qa_v1",
+  "status": "PASS_METADATA_FREEZE_ONLY",
+  "source_commit": "c5707e4fb677eb0cb64ba378e59196c5b89b58db",
+  "execution": {
+    "command": "python -B experiments/memory_transport_execution_20261029.py freeze --source-commit c5707e4fb677eb0cb64ba378e59196c5b89b58db",
+    "invocations": 1,
+    "started_at_utc": "2026-10-29T03:21:49.1729337Z",
+    "python_exit_code": 0,
+    "shell_exit_code": 0,
+    "shell_propagates_python_exit_code": true,
+    "process_command_wall_seconds": 8.8708711,
+    "tool_wall_seconds": 9.545611,
+    "stdout": "",
+    "stderr": "",
+    "raw_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "raw_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "raw_stdout_bytes": 0,
+    "raw_stderr_bytes": 0,
+    "raw_output_retained_locally": true,
+    "cost_scope": "Only this metadata freeze command wall time. No native Job or Job CPU measured."
+  },
+  "source_hashes_before_after_unchanged": true,
+  "public_files_matched_before_source_rows_and_after_frozen_binding": 91,
+  "binding_sha256": "67c9a2a10baf84c3274bd6152f21cb1915de3361befa0b8e311fc03bfd103832",
+  "binding_file_count": 167,
+  "source_plane_raw_sha256": "3dee4225e77e5bf6ab6ad58a73ab4ad9c8a263e647d053fcb6842cc4a7281941",
+  "candidate_source_verification": {
+    "path": "results/memory_transport_20261029/source_verification.json",
+    "sha256": "123bc8c9ead12d48923c0114277050c0a370e53d45cbe382be90edbea6bff5fc",
+    "bytes": 26953,
+    "remote_verified": false
+  },
+  "parent": {
+    "source_commit": "3b01f19055203734c370d32eba4cea8a0555f8d3",
+    "complete_sha256": "e834b61ee975192946f1fe8ecdaf1cdd9d4eaea0bc22b0f25a1ee3fe26e7c611",
+    "summary_sha256": "be95331073bd0fc039e5d23561c44724bd04334ef120e212b917d4bd7bada94e",
+    "six_original_native_closures_validated": true,
+    "receipt_sha256": {
+      "prepare": "8c8c32353c62bcc571e26311de3949897ab7460e99473914b7b43f9ba8971053",
+      "weak": "0c97f56f10542582504c5070e0d71a63f955b64bd66fab6cbcf3b54708c34e9d",
+      "qualify": "fcb0e02edff0c223af39e08686c17e16275eecd866a83c426458509d8756e4ca",
+      "qa": "e23ded4d2fb9654c51fc1d1e8c1d9ea5b9e71218cd456dc43ee14782a54d82c9",
+      "study": "58164341ce732c36bcbddc78f28326996174d5a3222ea4d12ae2c6b947a0c430",
+      "summary": "31ca93db3f923c9a54312124f37eaa20764106652777b5ac51f048497e30ee57"
+    },
+    "worker_identity_states": {
+      "prepare": "GONE",
+      "weak": "GONE",
+      "qualify": "GONE",
+      "qa": "GONE",
+      "study": "GONE",
+      "summary": "GONE"
+    },
+    "active_lock_present": false
+  },
+  "runtime": {
+    "proof_reached": true,
+    "retained_file_count": 15,
+    "prior_closed_parent_digests_reused": true,
+    "new_large_binary_scan": false,
+    "new_native_probe": false
+  },
+  "new_active_lock_present": false,
+  "scope": {
+    "metadata_only": true,
+    "actual_source_plane_eigh_calls": 0,
+    "model_or_optimizer_state_loaded": false,
+    "actual_events_loaded": false,
+    "prediction_arrays_evaluated": false,
+    "NNLS_calls": 0,
+    "qualify_calls": 0,
+    "performance_calls": 0,
+    "CUDA_calls": 0,
+    "optimizer_calls": 0,
+    "native_jobs_started": 0,
+    "run_calls": 0,
+    "original_val_read": false,
+    "original_test_read": false,
+    "timers_created": 0,
+    "automatic_retries": 0
+  },
+  "no_process_quotas": true,
+  "optimizer_upper_bound": 1848,
+  "scientific_execution_started": false,
+  "next_action": "Stop; parent verifies the new binding/public candidate and must explicitly authorize run."
+}

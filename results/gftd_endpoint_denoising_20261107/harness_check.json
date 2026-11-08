@@ -1,0 +1,2215 @@
+{
+  "active_registry_required": false,
+  "base_hashes_checked": false,
+  "checked_files": [
+    "agents/coordinator.md",
+    "agents/experimenter.md",
+    "agents/modeler.md",
+    "agents/reviewer.md",
+    "agents/runtime.md",
+    "agents/scientist.md",
+    "AGENTS.md",
+    "campaigns/README.md",
+    "campaigns/retrospective_force_memory_20261030.md",
+    "docs/architecture_design.md",
+    "docs/current_design.md",
+    "docs/engineering_loop.md",
+    "docs/harness_evolution.md",
+    "docs/research_policy.md",
+    "harness/examples/registry.snapshot.json",
+    "harness/examples/run_functional_prediction_equivalence.json",
+    "harness/examples/run_performance_equivalence.json",
+    "harness/examples/run_reviewed_counterexample.json",
+    "harness/examples/run_single_matched_gain.json",
+    "harness/examples/run_single_negative.json",
+    "harness/examples/run_two_seeds_not_null.json",
+    "harness/examples/synthetic_evidence.md",
+    "harness/examples/tasks.json",
+    "harness/policy.json",
+    "harness/runs/analytic_p_backward_qualification_20261031.json",
+    "harness/runs/checkpoint_selection_20261030.json",
+    "harness/runs/closure_probe_20261030.json",
+    "harness/runs/gftd_endpoint_denoising_20261107.json",
+    "harness/runs/gftd_initialization_20261107.json",
+    "harness/runs/gftd_noise_confirmation_20261107.json",
+    "harness/runs/gftd_observability_20261107.json",
+    "harness/runs/p_constant_direction_20261031.json",
+    "harness/runs/p_constant_norm_20261031.json",
+    "harness/runs/p_dissipative_identifiability_20261031.json",
+    "harness/runs/p_driver_order_20261031.json",
+    "harness/runs/p_form_discrimination_20261031.json",
+    "harness/runs/p_history_transfer_20261031.json",
+    "harness/runs/p_port_diagnostic_20261031.json",
+    "harness/runs/p_residual_stage_20261031.json",
+    "harness/runs/p_reverse_precision_20261031.json",
+    "harness_runtime/__init__.py",
+    "harness_runtime/evidence.py",
+    "harness_runtime/scheduling.py",
+    "kiki.md",
+    "README.md",
+    "templates/agent_task.md",
+    "templates/architecture_brief.md",
+    "templates/campaign.md",
+    "templates/mechanism_card.md",
+    "templates/run_closure.md",
+    "templates/run_protocol.md",
+    "tests/test_harness_cli.py",
+    "tests/test_harness_evidence.py",
+    "tests/test_harness_scheduling.py",
+    "tools/research_harness.py"
+  ],
+  "checked_relative_references": [
+    {
+      "reference": "kiki.md",
+      "source": "AGENTS.md"
+    },
+    {
+      "reference": "templates/architecture_brief.md",
+      "source": "AGENTS.md"
+    },
+    {
+      "reference": "docs/research_policy.md",
+      "source": "AGENTS.md"
+    },
+    {
+      "reference": "docs/engineering_loop.md",
+      "source": "AGENTS.md"
+    },
+    {
+      "reference": "agents/runtime.md",
+      "source": "AGENTS.md"
+    },
+    {
+      "reference": "kiki.md",
+      "source": "AGENTS.md"
+    },
+    {
+      "reference": "docs/architecture_design.md",
+      "source": "AGENTS.md"
+    },
+    {
+      "reference": "docs/current_design.md",
+      "source": "AGENTS.md"
+    },
+    {
+      "reference": "docs/research_policy.md",
+      "source": "AGENTS.md"
+    },
+    {
+      "reference": "docs/engineering_loop.md",
+      "source": "AGENTS.md"
+    },
+    {
+      "reference": "agents/runtime.md",
+      "source": "AGENTS.md"
+    },
+    {
+      "reference": "docs/harness_evolution.md",
+      "source": "AGENTS.md"
+    },
+    {
+      "reference": "harness/policy.json",
+      "source": "AGENTS.md"
+    },
+    {
+      "reference": "../templates/campaign.md",
+      "source": "campaigns/README.md"
+    },
+    {
+      "reference": "gftd_kuramoto_discovery_20261106.md",
+      "source": "campaigns/README.md"
+    },
+    {
+      "reference": "retrospective_force_memory_20261030.md",
+      "source": "campaigns/README.md"
+    },
+    {
+      "reference": "gftd_kuramoto_architecture_brief.md",
+      "source": "docs/architecture_design.md"
+    },
+    {
+      "reference": "history/architecture_design_before_gftd_kuramoto_20261106.md",
+      "source": "docs/architecture_design.md"
+    },
+    {
+      "reference": "gftd_repair_design_20261107.md",
+      "source": "docs/architecture_design.md"
+    },
+    {
+      "reference": "architecture_design.md",
+      "source": "docs/current_design.md"
+    },
+    {
+      "reference": "gftd_kuramoto_architecture_brief.md",
+      "source": "docs/current_design.md"
+    },
+    {
+      "reference": "history/current_design_before_gftd_kuramoto_20261106.md",
+      "source": "docs/current_design.md"
+    },
+    {
+      "reference": "gftd_repair_design_20261107.md",
+      "source": "docs/current_design.md"
+    },
+    {
+      "reference": "../results/gftd_repair_20261107/qualification_receipt.json",
+      "source": "docs/current_design.md"
+    },
+    {
+      "reference": "../reports/gftd_initialization_20261107_conclusion.md",
+      "source": "docs/current_design.md"
+    },
+    {
+      "reference": "../kiki.md",
+      "source": "docs/current_design.md"
+    },
+    {
+      "reference": "../reports/gftd_noise_confirmation_20261107_conclusion.md",
+      "source": "docs/current_design.md"
+    },
+    {
+      "reference": "../reports/gftd_endpoint_denoising_20261107_conclusion.md",
+      "source": "docs/current_design.md"
+    },
+    {
+      "reference": "current_state.md",
+      "source": "docs/current_design.md"
+    },
+    {
+      "reference": "research_policy.md",
+      "source": "docs/engineering_loop.md"
+    },
+    {
+      "reference": "history/engineering_loop_before_gftd_kuramoto_20261106.md",
+      "source": "docs/engineering_loop.md"
+    },
+    {
+      "reference": "architecture_design.md",
+      "source": "docs/engineering_loop.md"
+    },
+    {
+      "reference": "gftd_kuramoto_architecture_brief.md",
+      "source": "docs/engineering_loop.md"
+    },
+    {
+      "reference": "../campaigns/gftd_kuramoto_discovery_20261106.md",
+      "source": "docs/engineering_loop.md"
+    },
+    {
+      "reference": "../templates/run_protocol.md",
+      "source": "docs/engineering_loop.md"
+    },
+    {
+      "reference": "../agents/runtime.md",
+      "source": "docs/engineering_loop.md"
+    },
+    {
+      "reference": "research_policy.md",
+      "source": "docs/engineering_loop.md"
+    },
+    {
+      "reference": "../templates/run_closure.md",
+      "source": "docs/engineering_loop.md"
+    },
+    {
+      "reference": "engineering_loop.md",
+      "source": "docs/research_policy.md"
+    },
+    {
+      "reference": "../kiki.md",
+      "source": "docs/research_policy.md"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_functional_prediction_equivalence.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_functional_prediction_equivalence.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_functional_prediction_equivalence.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_functional_prediction_equivalence.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_functional_prediction_equivalence.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_functional_prediction_equivalence.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_functional_prediction_equivalence.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_functional_prediction_equivalence.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_functional_prediction_equivalence.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_functional_prediction_equivalence.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_functional_prediction_equivalence.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_functional_prediction_equivalence.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_functional_prediction_equivalence.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_functional_prediction_equivalence.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_functional_prediction_equivalence.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_functional_prediction_equivalence.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_functional_prediction_equivalence.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_functional_prediction_equivalence.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_functional_prediction_equivalence.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_functional_prediction_equivalence.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_performance_equivalence.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_performance_equivalence.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_performance_equivalence.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_performance_equivalence.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_performance_equivalence.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_performance_equivalence.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_performance_equivalence.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_performance_equivalence.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_performance_equivalence.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_performance_equivalence.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_performance_equivalence.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_performance_equivalence.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_performance_equivalence.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_performance_equivalence.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_reviewed_counterexample.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_reviewed_counterexample.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_reviewed_counterexample.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_reviewed_counterexample.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_reviewed_counterexample.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_reviewed_counterexample.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_single_matched_gain.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_single_matched_gain.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_single_matched_gain.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_single_matched_gain.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_single_matched_gain.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_single_negative.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_single_negative.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_single_negative.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_single_negative.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_single_negative.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_two_seeds_not_null.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_two_seeds_not_null.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_two_seeds_not_null.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_two_seeds_not_null.json"
+    },
+    {
+      "reference": "harness/examples/synthetic_evidence.md",
+      "source": "harness/examples/run_two_seeds_not_null.json"
+    },
+    {
+      "reference": "reports/analytic_p_backward_qualification_20261031_protocol.md",
+      "source": "harness/runs/analytic_p_backward_qualification_20261031.json"
+    },
+    {
+      "reference": "reports/analytic_p_backward_qualification_20261031_scientist.md",
+      "source": "harness/runs/analytic_p_backward_qualification_20261031.json"
+    },
+    {
+      "reference": "results/analytic_p_backward_qualification_20261031/authorization.json",
+      "source": "harness/runs/analytic_p_backward_qualification_20261031.json"
+    },
+    {
+      "reference": "reports/p_reverse_precision_20261031_conclusion.md",
+      "source": "harness/runs/analytic_p_backward_qualification_20261031.json"
+    },
+    {
+      "reference": "reports/analytic_p_backward_qualification_20261031_review.md",
+      "source": "harness/runs/analytic_p_backward_qualification_20261031.json"
+    },
+    {
+      "reference": "reports/analytic_p_backward_qualification_20261031_conclusion.md",
+      "source": "harness/runs/analytic_p_backward_qualification_20261031.json"
+    },
+    {
+      "reference": "results/analytic_p_backward_qualification_20261031/execution_release.json",
+      "source": "harness/runs/analytic_p_backward_qualification_20261031.json"
+    },
+    {
+      "reference": "results/analytic_p_backward_qualification_20261031/implementation_review_at_release.md",
+      "source": "harness/runs/analytic_p_backward_qualification_20261031.json"
+    },
+    {
+      "reference": "results/analytic_p_backward_qualification_20261031/prelaunch_review_revisions.json",
+      "source": "harness/runs/analytic_p_backward_qualification_20261031.json"
+    },
+    {
+      "reference": "results/analytic_p_backward_qualification_20261031/prepare_execution_receipt.json",
+      "source": "harness/runs/analytic_p_backward_qualification_20261031.json"
+    },
+    {
+      "reference": "results/analytic_p_backward_qualification_20261031/paired_execution_release.json",
+      "source": "harness/runs/analytic_p_backward_qualification_20261031.json"
+    },
+    {
+      "reference": "results/analytic_p_backward_qualification_20261031/evaluation_execution_receipt.json",
+      "source": "harness/runs/analytic_p_backward_qualification_20261031.json"
+    },
+    {
+      "reference": "results/analytic_p_backward_qualification_20261031/public_qualification.json",
+      "source": "harness/runs/analytic_p_backward_qualification_20261031.json"
+    },
+    {
+      "reference": "results/analytic_p_backward_qualification_20261031/evidence_digest.json",
+      "source": "harness/runs/analytic_p_backward_qualification_20261031.json"
+    },
+    {
+      "reference": "results/analytic_p_backward_qualification_20261031/closure_receipt.json",
+      "source": "harness/runs/analytic_p_backward_qualification_20261031.json"
+    },
+    {
+      "reference": "reports/analytic_p_backward_qualification_20261031_protocol.md",
+      "source": "harness/runs/analytic_p_backward_qualification_20261031.json"
+    },
+    {
+      "reference": "reports/analytic_p_backward_qualification_20261031_protocol.md",
+      "source": "harness/runs/analytic_p_backward_qualification_20261031.json"
+    },
+    {
+      "reference": "reports/analytic_p_backward_qualification_20261031_protocol.md",
+      "source": "harness/runs/analytic_p_backward_qualification_20261031.json"
+    },
+    {
+      "reference": "reports/analytic_p_backward_qualification_20261031_protocol.md",
+      "source": "harness/runs/analytic_p_backward_qualification_20261031.json"
+    },
+    {
+      "reference": "reports/analytic_p_backward_qualification_20261031_protocol.md",
+      "source": "harness/runs/analytic_p_backward_qualification_20261031.json"
+    },
+    {
+      "reference": "results/analytic_p_backward_qualification_20261031/public_qualification.json",
+      "source": "harness/runs/analytic_p_backward_qualification_20261031.json"
+    },
+    {
+      "reference": "results/analytic_p_backward_qualification_20261031/evidence_digest.json",
+      "source": "harness/runs/analytic_p_backward_qualification_20261031.json"
+    },
+    {
+      "reference": "results/analytic_p_backward_qualification_20261031/evidence_digest.json",
+      "source": "harness/runs/analytic_p_backward_qualification_20261031.json"
+    },
+    {
+      "reference": "reports/analytic_p_backward_qualification_20261031_conclusion.md",
+      "source": "harness/runs/analytic_p_backward_qualification_20261031.json"
+    },
+    {
+      "reference": "results/analytic_p_backward_qualification_20261031/public_qualification.json",
+      "source": "harness/runs/analytic_p_backward_qualification_20261031.json"
+    },
+    {
+      "reference": "reports/analytic_p_backward_qualification_20261031_protocol.md",
+      "source": "harness/runs/analytic_p_backward_qualification_20261031.json"
+    },
+    {
+      "reference": "reports/analytic_p_backward_qualification_20261031_review.md",
+      "source": "harness/runs/analytic_p_backward_qualification_20261031.json"
+    },
+    {
+      "reference": "reports/checkpoint_selection_20261030_protocol.md",
+      "source": "harness/runs/checkpoint_selection_20261030.json"
+    },
+    {
+      "reference": "reports/checkpoint_selection_20261030_scientist.md",
+      "source": "harness/runs/checkpoint_selection_20261030.json"
+    },
+    {
+      "reference": "reports/checkpoint_selection_20261030_conclusion.md",
+      "source": "harness/runs/checkpoint_selection_20261030.json"
+    },
+    {
+      "reference": "reports/checkpoint_selection_20261030_review.md",
+      "source": "harness/runs/checkpoint_selection_20261030.json"
+    },
+    {
+      "reference": "results/checkpoint_selection_20261030/decision_public.json",
+      "source": "harness/runs/checkpoint_selection_20261030.json"
+    },
+    {
+      "reference": "results/checkpoint_selection_20261030/source_health_public.json",
+      "source": "harness/runs/checkpoint_selection_20261030.json"
+    },
+    {
+      "reference": "results/checkpoint_selection_20261030/execution_receipt.json",
+      "source": "harness/runs/checkpoint_selection_20261030.json"
+    },
+    {
+      "reference": "results/checkpoint_selection_20261030/anchors_public.json",
+      "source": "harness/runs/checkpoint_selection_20261030.json"
+    },
+    {
+      "reference": "reports/p_port_diagnostic_20261030_scientist_draft.md",
+      "source": "harness/runs/checkpoint_selection_20261030.json"
+    },
+    {
+      "reference": "reports/checkpoint_selection_20261030_protocol.md",
+      "source": "harness/runs/checkpoint_selection_20261030.json"
+    },
+    {
+      "reference": "reports/checkpoint_selection_20261030_protocol.md",
+      "source": "harness/runs/checkpoint_selection_20261030.json"
+    },
+    {
+      "reference": "reports/checkpoint_selection_20261030_protocol.md",
+      "source": "harness/runs/checkpoint_selection_20261030.json"
+    },
+    {
+      "reference": "reports/checkpoint_selection_20261030_conclusion.md",
+      "source": "harness/runs/checkpoint_selection_20261030.json"
+    },
+    {
+      "reference": "reports/checkpoint_selection_20261030_conclusion.md",
+      "source": "harness/runs/checkpoint_selection_20261030.json"
+    },
+    {
+      "reference": "results/checkpoint_selection_20261030/decision_public.json",
+      "source": "harness/runs/checkpoint_selection_20261030.json"
+    },
+    {
+      "reference": "results/checkpoint_selection_20261030/decision_public.json",
+      "source": "harness/runs/checkpoint_selection_20261030.json"
+    },
+    {
+      "reference": "results/checkpoint_selection_20261030/execution_receipt.json",
+      "source": "harness/runs/checkpoint_selection_20261030.json"
+    },
+    {
+      "reference": "reports/checkpoint_selection_20261030_conclusion.md",
+      "source": "harness/runs/checkpoint_selection_20261030.json"
+    },
+    {
+      "reference": "reports/closure_probe_20261030_protocol.md",
+      "source": "harness/runs/closure_probe_20261030.json"
+    },
+    {
+      "reference": "reports/closure_probe_20261030_conclusion.md",
+      "source": "harness/runs/closure_probe_20261030.json"
+    },
+    {
+      "reference": "reports/architecture_brief_20261030.md",
+      "source": "harness/runs/closure_probe_20261030.json"
+    },
+    {
+      "reference": "reports/architecture_brief_20261030_challenge.md",
+      "source": "harness/runs/closure_probe_20261030.json"
+    },
+    {
+      "reference": "campaigns/force_memory_closure_20261030.md",
+      "source": "harness/runs/closure_probe_20261030.json"
+    },
+    {
+      "reference": "results/closure_probe_20261030/public_probe.json",
+      "source": "harness/runs/closure_probe_20261030.json"
+    },
+    {
+      "reference": "results/coi_budget_20261030/public_budget.json",
+      "source": "harness/runs/closure_probe_20261030.json"
+    },
+    {
+      "reference": "results/closure_probe_20261030/p4_step64_public.json",
+      "source": "harness/runs/closure_probe_20261030.json"
+    },
+    {
+      "reference": "reports/closure_probe_20261030_protocol.md",
+      "source": "harness/runs/closure_probe_20261030.json"
+    },
+    {
+      "reference": "reports/closure_probe_20261030_protocol.md",
+      "source": "harness/runs/closure_probe_20261030.json"
+    },
+    {
+      "reference": "reports/closure_probe_20261030_protocol.md",
+      "source": "harness/runs/closure_probe_20261030.json"
+    },
+    {
+      "reference": "reports/closure_probe_20261030_protocol.md",
+      "source": "harness/runs/closure_probe_20261030.json"
+    },
+    {
+      "reference": "reports/closure_probe_20261030_protocol.md",
+      "source": "harness/runs/closure_probe_20261030.json"
+    },
+    {
+      "reference": "results/closure_probe_20261030/public_probe.json",
+      "source": "harness/runs/closure_probe_20261030.json"
+    },
+    {
+      "reference": "results/closure_probe_20261030/public_probe.json",
+      "source": "harness/runs/closure_probe_20261030.json"
+    },
+    {
+      "reference": "results/closure_probe_20261030/public_probe.json",
+      "source": "harness/runs/closure_probe_20261030.json"
+    },
+    {
+      "reference": "reports/gftd_endpoint_denoising_20261107_protocol.md",
+      "source": "harness/runs/gftd_endpoint_denoising_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_endpoint_denoising_20261107_design_review.md",
+      "source": "harness/runs/gftd_endpoint_denoising_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_endpoint_denoising_20261107_implementation_review.md",
+      "source": "harness/runs/gftd_endpoint_denoising_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_endpoint_denoising_20261107_guard_repair_design.md",
+      "source": "harness/runs/gftd_endpoint_denoising_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_endpoint_denoising_20261107_guard_repair_review.md",
+      "source": "harness/runs/gftd_endpoint_denoising_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_endpoint_denoising_20261107_guard_implementation_review.md",
+      "source": "harness/runs/gftd_endpoint_denoising_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_endpoint_denoising_20261107_scientific_assessment.md",
+      "source": "harness/runs/gftd_endpoint_denoising_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_endpoint_denoising_20261107_result_review.md",
+      "source": "harness/runs/gftd_endpoint_denoising_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_endpoint_denoising_20261107_conclusion.md",
+      "source": "harness/runs/gftd_endpoint_denoising_20261107.json"
+    },
+    {
+      "reference": "results/gftd_endpoint_denoising_20261107/execution_release.json",
+      "source": "harness/runs/gftd_endpoint_denoising_20261107.json"
+    },
+    {
+      "reference": "results/gftd_endpoint_denoising_20261107/execution_receipt.json",
+      "source": "harness/runs/gftd_endpoint_denoising_20261107.json"
+    },
+    {
+      "reference": "results/gftd_endpoint_denoising_20261107/fits_frozen.json",
+      "source": "harness/runs/gftd_endpoint_denoising_20261107.json"
+    },
+    {
+      "reference": "results/gftd_endpoint_denoising_20261107/fits.json",
+      "source": "harness/runs/gftd_endpoint_denoising_20261107.json"
+    },
+    {
+      "reference": "results/gftd_endpoint_denoising_20261107/summary.json",
+      "source": "harness/runs/gftd_endpoint_denoising_20261107.json"
+    },
+    {
+      "reference": "results/gftd_endpoint_denoising_20261107/evidence_digest.json",
+      "source": "harness/runs/gftd_endpoint_denoising_20261107.json"
+    },
+    {
+      "reference": "results/gftd_endpoint_denoising_20261107/root_adoption.json",
+      "source": "harness/runs/gftd_endpoint_denoising_20261107.json"
+    },
+    {
+      "reference": "results/gftd_endpoint_guard_correction_20261107/execution_release.json",
+      "source": "harness/runs/gftd_endpoint_denoising_20261107.json"
+    },
+    {
+      "reference": "results/gftd_endpoint_guard_correction_20261107/execution_receipt.json",
+      "source": "harness/runs/gftd_endpoint_denoising_20261107.json"
+    },
+    {
+      "reference": "results/gftd_endpoint_guard_correction_20261107/certificates.json",
+      "source": "harness/runs/gftd_endpoint_denoising_20261107.json"
+    },
+    {
+      "reference": "results/gftd_endpoint_guard_correction_20261107/effective_classification_appendix.json",
+      "source": "harness/runs/gftd_endpoint_denoising_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_endpoint_denoising_20261107_protocol.md",
+      "source": "harness/runs/gftd_endpoint_denoising_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_endpoint_denoising_20261107_protocol.md",
+      "source": "harness/runs/gftd_endpoint_denoising_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_endpoint_denoising_20261107_protocol.md",
+      "source": "harness/runs/gftd_endpoint_denoising_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_endpoint_denoising_20261107_scientific_assessment.md",
+      "source": "harness/runs/gftd_endpoint_denoising_20261107.json"
+    },
+    {
+      "reference": "results/gftd_endpoint_guard_correction_20261107/effective_classification_appendix.json",
+      "source": "harness/runs/gftd_endpoint_denoising_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_endpoint_denoising_20261107_conclusion.md",
+      "source": "harness/runs/gftd_endpoint_denoising_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_endpoint_denoising_20261107_scientific_assessment.md",
+      "source": "harness/runs/gftd_endpoint_denoising_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_endpoint_denoising_20261107_protocol.md",
+      "source": "harness/runs/gftd_endpoint_denoising_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_endpoint_denoising_20261107_result_review.md",
+      "source": "harness/runs/gftd_endpoint_denoising_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_initialization_20261107_protocol.md",
+      "source": "harness/runs/gftd_initialization_20261107.json"
+    },
+    {
+      "reference": "results/gftd_initialization_20261107/execution_release.json",
+      "source": "harness/runs/gftd_initialization_20261107.json"
+    },
+    {
+      "reference": "results/gftd_initialization_20261107/qualification_receipt.json",
+      "source": "harness/runs/gftd_initialization_20261107.json"
+    },
+    {
+      "reference": "results/gftd_initialization_20261107/execution_receipt.json",
+      "source": "harness/runs/gftd_initialization_20261107.json"
+    },
+    {
+      "reference": "results/gftd_initialization_20261107/fits_frozen.json",
+      "source": "harness/runs/gftd_initialization_20261107.json"
+    },
+    {
+      "reference": "results/gftd_initialization_20261107/fits.json",
+      "source": "harness/runs/gftd_initialization_20261107.json"
+    },
+    {
+      "reference": "results/gftd_initialization_20261107/summary.json",
+      "source": "harness/runs/gftd_initialization_20261107.json"
+    },
+    {
+      "reference": "results/gftd_initialization_20261107/evidence_digest.json",
+      "source": "harness/runs/gftd_initialization_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_initialization_20261107_scientific_assessment.md",
+      "source": "harness/runs/gftd_initialization_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_initialization_20261107_result_review.md",
+      "source": "harness/runs/gftd_initialization_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_initialization_20261107_conclusion.md",
+      "source": "harness/runs/gftd_initialization_20261107.json"
+    },
+    {
+      "reference": "results/gftd_initialization_20261107/root_adoption.json",
+      "source": "harness/runs/gftd_initialization_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_initialization_20261107_protocol.md",
+      "source": "harness/runs/gftd_initialization_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_initialization_20261107_protocol.md",
+      "source": "harness/runs/gftd_initialization_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_initialization_20261107_protocol.md",
+      "source": "harness/runs/gftd_initialization_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_initialization_20261107_result_review.md",
+      "source": "harness/runs/gftd_initialization_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_initialization_20261107_scientific_assessment.md",
+      "source": "harness/runs/gftd_initialization_20261107.json"
+    },
+    {
+      "reference": "results/gftd_initialization_20261107/evidence_digest.json",
+      "source": "harness/runs/gftd_initialization_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_initialization_20261107_conclusion.md",
+      "source": "harness/runs/gftd_initialization_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_initialization_20261107_scientific_assessment.md",
+      "source": "harness/runs/gftd_initialization_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_initialization_20261107_protocol.md",
+      "source": "harness/runs/gftd_initialization_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_initialization_20261107_result_review.md",
+      "source": "harness/runs/gftd_initialization_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_noise_confirmation_20261107_protocol.md",
+      "source": "harness/runs/gftd_noise_confirmation_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_noise_confirmation_20261107_design_review.md",
+      "source": "harness/runs/gftd_noise_confirmation_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_noise_confirmation_20261107_implementation_review.md",
+      "source": "harness/runs/gftd_noise_confirmation_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_noise_confirmation_20261107_scientific_assessment.md",
+      "source": "harness/runs/gftd_noise_confirmation_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_noise_confirmation_20261107_result_review.md",
+      "source": "harness/runs/gftd_noise_confirmation_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_noise_confirmation_20261107_conclusion.md",
+      "source": "harness/runs/gftd_noise_confirmation_20261107.json"
+    },
+    {
+      "reference": "results/gftd_noise_confirmation_20261107/execution_release.json",
+      "source": "harness/runs/gftd_noise_confirmation_20261107.json"
+    },
+    {
+      "reference": "results/gftd_noise_confirmation_20261107/execution_receipt.json",
+      "source": "harness/runs/gftd_noise_confirmation_20261107.json"
+    },
+    {
+      "reference": "results/gftd_noise_confirmation_20261107/qualification_receipt.json",
+      "source": "harness/runs/gftd_noise_confirmation_20261107.json"
+    },
+    {
+      "reference": "results/gftd_noise_confirmation_20261107/fits_frozen.json",
+      "source": "harness/runs/gftd_noise_confirmation_20261107.json"
+    },
+    {
+      "reference": "results/gftd_noise_confirmation_20261107/fits.json",
+      "source": "harness/runs/gftd_noise_confirmation_20261107.json"
+    },
+    {
+      "reference": "results/gftd_noise_confirmation_20261107/summary.json",
+      "source": "harness/runs/gftd_noise_confirmation_20261107.json"
+    },
+    {
+      "reference": "results/gftd_noise_confirmation_20261107/evidence_digest.json",
+      "source": "harness/runs/gftd_noise_confirmation_20261107.json"
+    },
+    {
+      "reference": "results/gftd_noise_confirmation_20261107/root_adoption.json",
+      "source": "harness/runs/gftd_noise_confirmation_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_noise_confirmation_20261107_protocol.md",
+      "source": "harness/runs/gftd_noise_confirmation_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_noise_confirmation_20261107_protocol.md",
+      "source": "harness/runs/gftd_noise_confirmation_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_noise_confirmation_20261107_protocol.md",
+      "source": "harness/runs/gftd_noise_confirmation_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_noise_confirmation_20261107_scientific_assessment.md",
+      "source": "harness/runs/gftd_noise_confirmation_20261107.json"
+    },
+    {
+      "reference": "results/gftd_noise_confirmation_20261107/evidence_digest.json",
+      "source": "harness/runs/gftd_noise_confirmation_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_noise_confirmation_20261107_conclusion.md",
+      "source": "harness/runs/gftd_noise_confirmation_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_noise_confirmation_20261107_scientific_assessment.md",
+      "source": "harness/runs/gftd_noise_confirmation_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_noise_confirmation_20261107_protocol.md",
+      "source": "harness/runs/gftd_noise_confirmation_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_noise_confirmation_20261107_result_review.md",
+      "source": "harness/runs/gftd_noise_confirmation_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_noise_confirmation_20261107_result_review.md",
+      "source": "harness/runs/gftd_noise_confirmation_20261107.json"
+    },
+    {
+      "reference": "docs/gftd_repair_design_20261107.md",
+      "source": "harness/runs/gftd_observability_20261107.json"
+    },
+    {
+      "reference": "results/gftd_observability_20261107/execution_release.json",
+      "source": "harness/runs/gftd_observability_20261107.json"
+    },
+    {
+      "reference": "results/gftd_repair_20261107/qualification_receipt.json",
+      "source": "harness/runs/gftd_observability_20261107.json"
+    },
+    {
+      "reference": "results/gftd_observability_20261107/execution_receipt.json",
+      "source": "harness/runs/gftd_observability_20261107.json"
+    },
+    {
+      "reference": "results/gftd_observability_20261107/summary.json",
+      "source": "harness/runs/gftd_observability_20261107.json"
+    },
+    {
+      "reference": "results/gftd_observability_20261107/evidence_digest.json",
+      "source": "harness/runs/gftd_observability_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_observability_20261107_scientific_assessment.md",
+      "source": "harness/runs/gftd_observability_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_observability_20261107_result_review.md",
+      "source": "harness/runs/gftd_observability_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_progress_20261107.md",
+      "source": "harness/runs/gftd_observability_20261107.json"
+    },
+    {
+      "reference": "results/gftd_observability_20261107/root_adoption.json",
+      "source": "harness/runs/gftd_observability_20261107.json"
+    },
+    {
+      "reference": "results/gftd_observability_20261107/summary.json",
+      "source": "harness/runs/gftd_observability_20261107.json"
+    },
+    {
+      "reference": "docs/gftd_repair_design_20261107.md",
+      "source": "harness/runs/gftd_observability_20261107.json"
+    },
+    {
+      "reference": "docs/gftd_repair_design_20261107.md",
+      "source": "harness/runs/gftd_observability_20261107.json"
+    },
+    {
+      "reference": "results/gftd_observability_20261107/execution_release.json",
+      "source": "harness/runs/gftd_observability_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_observability_20261107_scientific_assessment.md",
+      "source": "harness/runs/gftd_observability_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_observability_20261107_scientific_assessment.md",
+      "source": "harness/runs/gftd_observability_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_progress_20261107.md",
+      "source": "harness/runs/gftd_observability_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_observability_20261107_scientific_assessment.md",
+      "source": "harness/runs/gftd_observability_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_progress_20261107.md",
+      "source": "harness/runs/gftd_observability_20261107.json"
+    },
+    {
+      "reference": "reports/gftd_observability_20261107_result_review.md",
+      "source": "harness/runs/gftd_observability_20261107.json"
+    },
+    {
+      "reference": "reports/p_constant_direction_20261031_scientist.md",
+      "source": "harness/runs/p_constant_direction_20261031.json"
+    },
+    {
+      "reference": "reports/p_constant_direction_20261031_protocol.md",
+      "source": "harness/runs/p_constant_direction_20261031.json"
+    },
+    {
+      "reference": "reports/p_constant_direction_20261031_review.md",
+      "source": "harness/runs/p_constant_direction_20261031.json"
+    },
+    {
+      "reference": "results/p_constant_direction_20261031/source_bindings.json",
+      "source": "harness/runs/p_constant_direction_20261031.json"
+    },
+    {
+      "reference": "results/p_constant_direction_20261031/authorization.json",
+      "source": "harness/runs/p_constant_direction_20261031.json"
+    },
+    {
+      "reference": "results/p_constant_direction_20261031/design_review_at_adoption.md",
+      "source": "harness/runs/p_constant_direction_20261031.json"
+    },
+    {
+      "reference": "reports/p_residual_stage_20261031_conclusion.md",
+      "source": "harness/runs/p_constant_direction_20261031.json"
+    },
+    {
+      "reference": "results/p_constant_direction_20261031/source_execution_release.json",
+      "source": "harness/runs/p_constant_direction_20261031.json"
+    },
+    {
+      "reference": "results/p_constant_direction_20261031/source_review_at_release.md",
+      "source": "harness/runs/p_constant_direction_20261031.json"
+    },
+    {
+      "reference": "results/p_constant_direction_20261031/source_summary.json",
+      "source": "harness/runs/p_constant_direction_20261031.json"
+    },
+    {
+      "reference": "results/p_constant_direction_20261031/source_execution_receipt.json",
+      "source": "harness/runs/p_constant_direction_20261031.json"
+    },
+    {
+      "reference": "results/p_constant_direction_20261031/source_adoption.json",
+      "source": "harness/runs/p_constant_direction_20261031.json"
+    },
+    {
+      "reference": "results/p_constant_direction_20261031/source_evidence_review_at_adoption.md",
+      "source": "harness/runs/p_constant_direction_20261031.json"
+    },
+    {
+      "reference": "results/p_constant_direction_20261031/estimate_execution_release.json",
+      "source": "harness/runs/p_constant_direction_20261031.json"
+    },
+    {
+      "reference": "results/p_constant_direction_20261031/review_at_estimate_release.md",
+      "source": "harness/runs/p_constant_direction_20261031.json"
+    },
+    {
+      "reference": "results/p_constant_direction_20261031/estimate_summary.json",
+      "source": "harness/runs/p_constant_direction_20261031.json"
+    },
+    {
+      "reference": "results/p_constant_direction_20261031/estimate_execution_receipt.json",
+      "source": "harness/runs/p_constant_direction_20261031.json"
+    },
+    {
+      "reference": "results/p_constant_direction_20261031/analyze_execution_release.json",
+      "source": "harness/runs/p_constant_direction_20261031.json"
+    },
+    {
+      "reference": "results/p_constant_direction_20261031/review_at_analysis_release.md",
+      "source": "harness/runs/p_constant_direction_20261031.json"
+    },
+    {
+      "reference": "results/p_constant_direction_20261031/analysis_summary.json",
+      "source": "harness/runs/p_constant_direction_20261031.json"
+    },
+    {
+      "reference": "results/p_constant_direction_20261031/analysis_execution_receipt.json",
+      "source": "harness/runs/p_constant_direction_20261031.json"
+    },
+    {
+      "reference": "results/p_constant_direction_20261031/evidence_digest.json",
+      "source": "harness/runs/p_constant_direction_20261031.json"
+    },
+    {
+      "reference": "reports/p_constant_direction_20261031_conclusion.md",
+      "source": "harness/runs/p_constant_direction_20261031.json"
+    },
+    {
+      "reference": "reports/p_constant_direction_20261031_scientific_assessment.md",
+      "source": "harness/runs/p_constant_direction_20261031.json"
+    },
+    {
+      "reference": "reports/p_constant_direction_20261031_final_review.md",
+      "source": "harness/runs/p_constant_direction_20261031.json"
+    },
+    {
+      "reference": "results/p_constant_direction_20261031/root_adoption.json",
+      "source": "harness/runs/p_constant_direction_20261031.json"
+    },
+    {
+      "reference": "reports/p_constant_direction_20261031_protocol.md",
+      "source": "harness/runs/p_constant_direction_20261031.json"
+    },
+    {
+      "reference": "reports/p_constant_direction_20261031_protocol.md",
+      "source": "harness/runs/p_constant_direction_20261031.json"
+    },
+    {
+      "reference": "reports/p_constant_direction_20261031_protocol.md",
+      "source": "harness/runs/p_constant_direction_20261031.json"
+    },
+    {
+      "reference": "reports/p_constant_direction_20261031_protocol.md",
+      "source": "harness/runs/p_constant_direction_20261031.json"
+    },
+    {
+      "reference": "reports/p_constant_direction_20261031_conclusion.md",
+      "source": "harness/runs/p_constant_direction_20261031.json"
+    },
+    {
+      "reference": "reports/p_constant_direction_20261031_scientist.md",
+      "source": "harness/runs/p_constant_direction_20261031.json"
+    },
+    {
+      "reference": "results/p_constant_direction_20261031/evidence_digest.json",
+      "source": "harness/runs/p_constant_direction_20261031.json"
+    },
+    {
+      "reference": "reports/p_constant_direction_20261031_conclusion.md",
+      "source": "harness/runs/p_constant_direction_20261031.json"
+    },
+    {
+      "reference": "reports/p_constant_direction_20261031_scientific_assessment.md",
+      "source": "harness/runs/p_constant_direction_20261031.json"
+    },
+    {
+      "reference": "reports/p_constant_direction_20261031_conclusion.md",
+      "source": "harness/runs/p_constant_direction_20261031.json"
+    },
+    {
+      "reference": "reports/p_constant_direction_20261031_final_review.md",
+      "source": "harness/runs/p_constant_direction_20261031.json"
+    },
+    {
+      "reference": "reports/p_constant_norm_20261031_scientist.md",
+      "source": "harness/runs/p_constant_norm_20261031.json"
+    },
+    {
+      "reference": "reports/p_constant_norm_20261031_protocol.md",
+      "source": "harness/runs/p_constant_norm_20261031.json"
+    },
+    {
+      "reference": "reports/p_constant_norm_20261031_review.md",
+      "source": "harness/runs/p_constant_norm_20261031.json"
+    },
+    {
+      "reference": "results/p_constant_norm_20261031/source_bindings.json",
+      "source": "harness/runs/p_constant_norm_20261031.json"
+    },
+    {
+      "reference": "results/p_constant_norm_20261031/authorization.json",
+      "source": "harness/runs/p_constant_norm_20261031.json"
+    },
+    {
+      "reference": "results/p_constant_norm_20261031/design_review_at_adoption.md",
+      "source": "harness/runs/p_constant_norm_20261031.json"
+    },
+    {
+      "reference": "results/p_constant_norm_20261031/coverage_review_at_adoption.md",
+      "source": "harness/runs/p_constant_norm_20261031.json"
+    },
+    {
+      "reference": "results/p_constant_norm_20261031/implementation_review_at_release.md",
+      "source": "harness/runs/p_constant_norm_20261031.json"
+    },
+    {
+      "reference": "results/p_constant_norm_20261031/execution_release.json",
+      "source": "harness/runs/p_constant_norm_20261031.json"
+    },
+    {
+      "reference": "results/p_constant_norm_20261031/analysis_summary.json",
+      "source": "harness/runs/p_constant_norm_20261031.json"
+    },
+    {
+      "reference": "results/p_constant_norm_20261031/execution_receipt.json",
+      "source": "harness/runs/p_constant_norm_20261031.json"
+    },
+    {
+      "reference": "results/p_constant_norm_20261031/evidence_digest.json",
+      "source": "harness/runs/p_constant_norm_20261031.json"
+    },
+    {
+      "reference": "reports/p_constant_norm_20261031_conclusion.md",
+      "source": "harness/runs/p_constant_norm_20261031.json"
+    },
+    {
+      "reference": "reports/p_constant_norm_20261031_scientific_assessment.md",
+      "source": "harness/runs/p_constant_norm_20261031.json"
+    },
+    {
+      "reference": "reports/p_constant_norm_20261031_final_review.md",
+      "source": "harness/runs/p_constant_norm_20261031.json"
+    },
+    {
+      "reference": "results/p_constant_norm_20261031/root_adoption.json",
+      "source": "harness/runs/p_constant_norm_20261031.json"
+    },
+    {
+      "reference": "reports/p_constant_norm_20261031_protocol.md",
+      "source": "harness/runs/p_constant_norm_20261031.json"
+    },
+    {
+      "reference": "reports/p_constant_norm_20261031_protocol.md",
+      "source": "harness/runs/p_constant_norm_20261031.json"
+    },
+    {
+      "reference": "reports/p_constant_norm_20261031_protocol.md",
+      "source": "harness/runs/p_constant_norm_20261031.json"
+    },
+    {
+      "reference": "reports/p_constant_norm_20261031_protocol.md",
+      "source": "harness/runs/p_constant_norm_20261031.json"
+    },
+    {
+      "reference": "reports/p_constant_norm_20261031_protocol.md",
+      "source": "harness/runs/p_constant_norm_20261031.json"
+    },
+    {
+      "reference": "reports/p_constant_norm_20261031_scientist.md",
+      "source": "harness/runs/p_constant_norm_20261031.json"
+    },
+    {
+      "reference": "results/p_constant_norm_20261031/evidence_digest.json",
+      "source": "harness/runs/p_constant_norm_20261031.json"
+    },
+    {
+      "reference": "reports/p_constant_norm_20261031_conclusion.md",
+      "source": "harness/runs/p_constant_norm_20261031.json"
+    },
+    {
+      "reference": "reports/p_constant_norm_20261031_scientific_assessment.md",
+      "source": "harness/runs/p_constant_norm_20261031.json"
+    },
+    {
+      "reference": "reports/p_constant_norm_20261031_conclusion.md",
+      "source": "harness/runs/p_constant_norm_20261031.json"
+    },
+    {
+      "reference": "reports/p_constant_norm_20261031_final_review.md",
+      "source": "harness/runs/p_constant_norm_20261031.json"
+    },
+    {
+      "reference": "reports/p_dissipative_closure_20261031_architecture_brief.md",
+      "source": "harness/runs/p_dissipative_identifiability_20261031.json"
+    },
+    {
+      "reference": "reports/p_dissipative_identifiability_20261031_sensitivity_addendum.md",
+      "source": "harness/runs/p_dissipative_identifiability_20261031.json"
+    },
+    {
+      "reference": "reports/p_dissipative_identifiability_20261031_protocol.md",
+      "source": "harness/runs/p_dissipative_identifiability_20261031.json"
+    },
+    {
+      "reference": "results/p_dissipative_identifiability_20261031/source_bindings.json",
+      "source": "harness/runs/p_dissipative_identifiability_20261031.json"
+    },
+    {
+      "reference": "results/p_dissipative_identifiability_20261031/authorization.json",
+      "source": "harness/runs/p_dissipative_identifiability_20261031.json"
+    },
+    {
+      "reference": "reports/p_dissipative_identifiability_20261031_review.md",
+      "source": "harness/runs/p_dissipative_identifiability_20261031.json"
+    },
+    {
+      "reference": "reports/p_driver_order_20261031_conclusion.md",
+      "source": "harness/runs/p_dissipative_identifiability_20261031.json"
+    },
+    {
+      "reference": "results/p_dissipative_identifiability_20261031/prepare_summary.json",
+      "source": "harness/runs/p_dissipative_identifiability_20261031.json"
+    },
+    {
+      "reference": "results/p_dissipative_identifiability_20261031/prepare_execution_receipt.json",
+      "source": "harness/runs/p_dissipative_identifiability_20261031.json"
+    },
+    {
+      "reference": "results/p_dissipative_identifiability_20261031/prepare_adoption.json",
+      "source": "harness/runs/p_dissipative_identifiability_20261031.json"
+    },
+    {
+      "reference": "results/p_dissipative_identifiability_20261031/prepare_evidence_review_at_adoption.md",
+      "source": "harness/runs/p_dissipative_identifiability_20261031.json"
+    },
+    {
+      "reference": "results/p_dissipative_identifiability_20261031/estimate_execution_release.json",
+      "source": "harness/runs/p_dissipative_identifiability_20261031.json"
+    },
+    {
+      "reference": "results/p_dissipative_identifiability_20261031/execution_review_at_estimate_release.md",
+      "source": "harness/runs/p_dissipative_identifiability_20261031.json"
+    },
+    {
+      "reference": "results/p_dissipative_identifiability_20261031/analyze_execution_release.json",
+      "source": "harness/runs/p_dissipative_identifiability_20261031.json"
+    },
+    {
+      "reference": "results/p_dissipative_identifiability_20261031/execution_review_at_analysis_release.md",
+      "source": "harness/runs/p_dissipative_identifiability_20261031.json"
+    },
+    {
+      "reference": "results/p_dissipative_identifiability_20261031/analysis_summary.json",
+      "source": "harness/runs/p_dissipative_identifiability_20261031.json"
+    },
+    {
+      "reference": "results/p_dissipative_identifiability_20261031/analysis_execution_receipt.json",
+      "source": "harness/runs/p_dissipative_identifiability_20261031.json"
+    },
+    {
+      "reference": "results/p_dissipative_identifiability_20261031/evidence_digest.json",
+      "source": "harness/runs/p_dissipative_identifiability_20261031.json"
+    },
+    {
+      "reference": "reports/p_dissipative_identifiability_20261031_execution_review.md",
+      "source": "harness/runs/p_dissipative_identifiability_20261031.json"
+    },
+    {
+      "reference": "reports/p_dissipative_identifiability_20261031_conclusion.md",
+      "source": "harness/runs/p_dissipative_identifiability_20261031.json"
+    },
+    {
+      "reference": "reports/p_dissipative_identifiability_20261031_scientific_assessment.md",
+      "source": "harness/runs/p_dissipative_identifiability_20261031.json"
+    },
+    {
+      "reference": "reports/p_dissipative_identifiability_20261031_final_review.md",
+      "source": "harness/runs/p_dissipative_identifiability_20261031.json"
+    },
+    {
+      "reference": "results/p_dissipative_identifiability_20261031/root_adoption.json",
+      "source": "harness/runs/p_dissipative_identifiability_20261031.json"
+    },
+    {
+      "reference": "reports/p_dissipative_identifiability_20261031_protocol.md",
+      "source": "harness/runs/p_dissipative_identifiability_20261031.json"
+    },
+    {
+      "reference": "reports/p_dissipative_identifiability_20261031_protocol.md",
+      "source": "harness/runs/p_dissipative_identifiability_20261031.json"
+    },
+    {
+      "reference": "reports/p_dissipative_identifiability_20261031_protocol.md",
+      "source": "harness/runs/p_dissipative_identifiability_20261031.json"
+    },
+    {
+      "reference": "reports/p_dissipative_identifiability_20261031_protocol.md",
+      "source": "harness/runs/p_dissipative_identifiability_20261031.json"
+    },
+    {
+      "reference": "reports/p_dissipative_identifiability_20261031_conclusion.md",
+      "source": "harness/runs/p_dissipative_identifiability_20261031.json"
+    },
+    {
+      "reference": "reports/p_dissipative_closure_20261031_architecture_brief.md",
+      "source": "harness/runs/p_dissipative_identifiability_20261031.json"
+    },
+    {
+      "reference": "results/p_dissipative_identifiability_20261031/evidence_digest.json",
+      "source": "harness/runs/p_dissipative_identifiability_20261031.json"
+    },
+    {
+      "reference": "reports/p_dissipative_identifiability_20261031_conclusion.md",
+      "source": "harness/runs/p_dissipative_identifiability_20261031.json"
+    },
+    {
+      "reference": "reports/p_dissipative_identifiability_20261031_scientific_assessment.md",
+      "source": "harness/runs/p_dissipative_identifiability_20261031.json"
+    },
+    {
+      "reference": "reports/p_dissipative_identifiability_20261031_conclusion.md",
+      "source": "harness/runs/p_dissipative_identifiability_20261031.json"
+    },
+    {
+      "reference": "reports/p_dissipative_identifiability_20261031_final_review.md",
+      "source": "harness/runs/p_dissipative_identifiability_20261031.json"
+    },
+    {
+      "reference": "reports/p_minimal_closure_20261031_architecture_brief.md",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "reports/p_driver_order_20261031_mathematics.md",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "reports/p_driver_order_20261031_protocol.md",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "reports/p_driver_order_20261031_review.md",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "results/p_driver_order_20261031/source_bindings.json",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "results/p_driver_order_20261031/authorization.json",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "reports/p_history_transfer_20261031_conclusion.md",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "results/p_driver_order_20261031/bootstrap_execution_release.json",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "results/p_driver_order_20261031/review_at_bootstrap_release.md",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "results/p_driver_order_20261031/bootstrap_summary.json",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "results/p_driver_order_20261031/bootstrap_execution_receipt.json",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "results/p_driver_order_20261031/mathematics_execution_release.json",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "results/p_driver_order_20261031/review_at_mathematics_release.md",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "results/p_driver_order_20261031/mathematics_summary.json",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "results/p_driver_order_20261031/mathematics_execution_receipt.json",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "results/p_driver_order_20261031/S1a_execution_release.json",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "results/p_driver_order_20261031/review_at_S1a_release.md",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "reports/p_driver_order_20261031_source_identity_addendum.md",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "results/p_driver_order_20261031/S1a_summary.json",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "results/p_driver_order_20261031/S1a_execution_receipt.json",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "results/p_driver_order_20261031/S1b_initial_execution_release.json",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "results/p_driver_order_20261031/review_at_S1b_initial_release.md",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "reports/p_driver_order_20261031_source_comparison.md",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "reports/p_driver_order_20261031_conclusion.md",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "results/p_driver_order_20261031/S1b_initial_summary.json",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "results/p_driver_order_20261031/S1b_initial_execution_receipt.json",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "results/p_driver_order_20261031/S1b_source_group01_release.json",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "results/p_driver_order_20261031/S1b_source_group01_summary.json",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "results/p_driver_order_20261031/S1b_source_group01_execution_receipt.json",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "results/p_driver_order_20261031/S1b_source_group02_release.json",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "results/p_driver_order_20261031/S1b_source_group02_summary.json",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "results/p_driver_order_20261031/S1b_source_group02_execution_receipt.json",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "results/p_driver_order_20261031/closure_evidence_digest.json",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "results/p_driver_order_20261031/root_adoption.json",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "reports/p_driver_order_20261031_protocol.md",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "reports/p_driver_order_20261031_protocol.md",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "reports/p_driver_order_20261031_protocol.md",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "reports/p_driver_order_20261031_protocol.md",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "reports/p_driver_order_20261031_protocol.md",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "reports/p_driver_order_20261031_conclusion.md",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "reports/p_driver_order_20261031_source_comparison.md",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "reports/p_minimal_closure_20261031_architecture_brief.md",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "reports/p_driver_order_20261031_source_comparison.md",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "reports/p_driver_order_20261031_source_comparison.md",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "reports/p_driver_order_20261031_review.md",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "results/p_driver_order_20261031/closure_evidence_digest.json",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "results/p_driver_order_20261031/closure_evidence_digest.json",
+      "source": "harness/runs/p_driver_order_20261031.json"
+    },
+    {
+      "reference": "reports/p_form_discrimination_20261031_protocol.md",
+      "source": "harness/runs/p_form_discrimination_20261031.json"
+    },
+    {
+      "reference": "reports/p_form_discrimination_20261031_scientist.md",
+      "source": "harness/runs/p_form_discrimination_20261031.json"
+    },
+    {
+      "reference": "results/p_form_discrimination_20261031/source_bindings.json",
+      "source": "harness/runs/p_form_discrimination_20261031.json"
+    },
+    {
+      "reference": "results/p_form_discrimination_20261031/authorization.json",
+      "source": "harness/runs/p_form_discrimination_20261031.json"
+    },
+    {
+      "reference": "reports/analytic_p_backward_qualification_20261031_conclusion.md",
+      "source": "harness/runs/p_form_discrimination_20261031.json"
+    },
+    {
+      "reference": "reports/p_form_discrimination_20261031_review.md",
+      "source": "harness/runs/p_form_discrimination_20261031.json"
+    },
+    {
+      "reference": "results/p_form_discrimination_20261031/prepare_execution_release.json",
+      "source": "harness/runs/p_form_discrimination_20261031.json"
+    },
+    {
+      "reference": "results/p_form_discrimination_20261031/prelaunch_review_revisions.json",
+      "source": "harness/runs/p_form_discrimination_20261031.json"
+    },
+    {
+      "reference": "results/p_form_discrimination_20261031/prepare_execution_receipt.json",
+      "source": "harness/runs/p_form_discrimination_20261031.json"
+    },
+    {
+      "reference": "results/p_form_discrimination_20261031/coverage_stop_decision.json",
+      "source": "harness/runs/p_form_discrimination_20261031.json"
+    },
+    {
+      "reference": "reports/p_form_discrimination_20261031_conclusion.md",
+      "source": "harness/runs/p_form_discrimination_20261031.json"
+    },
+    {
+      "reference": "reports/p_form_discrimination_20261031_scientific_assessment.md",
+      "source": "harness/runs/p_form_discrimination_20261031.json"
+    },
+    {
+      "reference": "results/p_form_discrimination_20261031/closure_receipt.json",
+      "source": "harness/runs/p_form_discrimination_20261031.json"
+    },
+    {
+      "reference": "reports/p_form_discrimination_20261031_protocol.md",
+      "source": "harness/runs/p_form_discrimination_20261031.json"
+    },
+    {
+      "reference": "reports/p_form_discrimination_20261031_protocol.md",
+      "source": "harness/runs/p_form_discrimination_20261031.json"
+    },
+    {
+      "reference": "reports/p_form_discrimination_20261031_protocol.md",
+      "source": "harness/runs/p_form_discrimination_20261031.json"
+    },
+    {
+      "reference": "reports/p_form_discrimination_20261031_protocol.md",
+      "source": "harness/runs/p_form_discrimination_20261031.json"
+    },
+    {
+      "reference": "reports/p_form_discrimination_20261031_protocol.md",
+      "source": "harness/runs/p_form_discrimination_20261031.json"
+    },
+    {
+      "reference": "results/p_form_discrimination_20261031/prepare_execution_receipt.json",
+      "source": "harness/runs/p_form_discrimination_20261031.json"
+    },
+    {
+      "reference": "reports/p_form_discrimination_20261031_conclusion.md",
+      "source": "harness/runs/p_form_discrimination_20261031.json"
+    },
+    {
+      "reference": "reports/p_form_discrimination_20261031_review.md",
+      "source": "harness/runs/p_form_discrimination_20261031.json"
+    },
+    {
+      "reference": "reports/p_history_transfer_20261031_protocol.md",
+      "source": "harness/runs/p_history_transfer_20261031.json"
+    },
+    {
+      "reference": "reports/p_history_transfer_20261031_scientist.md",
+      "source": "harness/runs/p_history_transfer_20261031.json"
+    },
+    {
+      "reference": "results/p_history_transfer_20261031/source_bindings.json",
+      "source": "harness/runs/p_history_transfer_20261031.json"
+    },
+    {
+      "reference": "results/p_history_transfer_20261031/authorization.json",
+      "source": "harness/runs/p_history_transfer_20261031.json"
+    },
+    {
+      "reference": "reports/p_form_discrimination_20261031_conclusion.md",
+      "source": "harness/runs/p_history_transfer_20261031.json"
+    },
+    {
+      "reference": "reports/p_history_transfer_20261031_review.md",
+      "source": "harness/runs/p_history_transfer_20261031.json"
+    },
+    {
+      "reference": "results/p_history_transfer_20261031/source_execution_release.json",
+      "source": "harness/runs/p_history_transfer_20261031.json"
+    },
+    {
+      "reference": "results/p_history_transfer_20261031/prelaunch_source_review_revisions.json",
+      "source": "harness/runs/p_history_transfer_20261031.json"
+    },
+    {
+      "reference": "results/p_history_transfer_20261031/source_summary.json",
+      "source": "harness/runs/p_history_transfer_20261031.json"
+    },
+    {
+      "reference": "results/p_history_transfer_20261031/source_execution_receipt.json",
+      "source": "harness/runs/p_history_transfer_20261031.json"
+    },
+    {
+      "reference": "results/p_history_transfer_20261031/source_adoption.json",
+      "source": "harness/runs/p_history_transfer_20261031.json"
+    },
+    {
+      "reference": "reports/p_history_transfer_20261031_numerical_reference_addendum.md",
+      "source": "harness/runs/p_history_transfer_20261031.json"
+    },
+    {
+      "reference": "results/p_history_transfer_20261031/estimate_execution_release.json",
+      "source": "harness/runs/p_history_transfer_20261031.json"
+    },
+    {
+      "reference": "results/p_history_transfer_20261031/estimate_summary.json",
+      "source": "harness/runs/p_history_transfer_20261031.json"
+    },
+    {
+      "reference": "results/p_history_transfer_20261031/estimate_execution_receipt.json",
+      "source": "harness/runs/p_history_transfer_20261031.json"
+    },
+    {
+      "reference": "results/p_history_transfer_20261031/analyze_execution_release.json",
+      "source": "harness/runs/p_history_transfer_20261031.json"
+    },
+    {
+      "reference": "results/p_history_transfer_20261031/analysis_summary.json",
+      "source": "harness/runs/p_history_transfer_20261031.json"
+    },
+    {
+      "reference": "results/p_history_transfer_20261031/analysis_execution_receipt.json",
+      "source": "harness/runs/p_history_transfer_20261031.json"
+    },
+    {
+      "reference": "results/p_history_transfer_20261031/evidence_digest.json",
+      "source": "harness/runs/p_history_transfer_20261031.json"
+    },
+    {
+      "reference": "reports/p_history_transfer_20261031_conclusion.md",
+      "source": "harness/runs/p_history_transfer_20261031.json"
+    },
+    {
+      "reference": "reports/p_history_transfer_20261031_scientific_assessment.md",
+      "source": "harness/runs/p_history_transfer_20261031.json"
+    },
+    {
+      "reference": "results/p_history_transfer_20261031/root_adoption.json",
+      "source": "harness/runs/p_history_transfer_20261031.json"
+    },
+    {
+      "reference": "reports/p_history_transfer_20261031_protocol.md",
+      "source": "harness/runs/p_history_transfer_20261031.json"
+    },
+    {
+      "reference": "reports/p_history_transfer_20261031_protocol.md",
+      "source": "harness/runs/p_history_transfer_20261031.json"
+    },
+    {
+      "reference": "reports/p_history_transfer_20261031_protocol.md",
+      "source": "harness/runs/p_history_transfer_20261031.json"
+    },
+    {
+      "reference": "reports/p_history_transfer_20261031_protocol.md",
+      "source": "harness/runs/p_history_transfer_20261031.json"
+    },
+    {
+      "reference": "reports/p_history_transfer_20261031_conclusion.md",
+      "source": "harness/runs/p_history_transfer_20261031.json"
+    },
+    {
+      "reference": "reports/p_history_transfer_20261031_conclusion.md",
+      "source": "harness/runs/p_history_transfer_20261031.json"
+    },
+    {
+      "reference": "results/p_history_transfer_20261031/evidence_digest.json",
+      "source": "harness/runs/p_history_transfer_20261031.json"
+    },
+    {
+      "reference": "reports/p_history_transfer_20261031_protocol.md",
+      "source": "harness/runs/p_history_transfer_20261031.json"
+    },
+    {
+      "reference": "reports/p_history_transfer_20261031_conclusion.md",
+      "source": "harness/runs/p_history_transfer_20261031.json"
+    },
+    {
+      "reference": "reports/p_history_transfer_20261031_conclusion.md",
+      "source": "harness/runs/p_history_transfer_20261031.json"
+    },
+    {
+      "reference": "reports/p_history_transfer_20261031_protocol.md",
+      "source": "harness/runs/p_history_transfer_20261031.json"
+    },
+    {
+      "reference": "reports/p_history_transfer_20261031_protocol.md",
+      "source": "harness/runs/p_history_transfer_20261031.json"
+    },
+    {
+      "reference": "results/p_history_transfer_20261031/evidence_digest.json",
+      "source": "harness/runs/p_history_transfer_20261031.json"
+    },
+    {
+      "reference": "reports/p_history_transfer_20261031_review.md",
+      "source": "harness/runs/p_history_transfer_20261031.json"
+    },
+    {
+      "reference": "reports/p_port_diagnostic_20261031_protocol.md",
+      "source": "harness/runs/p_port_diagnostic_20261031.json"
+    },
+    {
+      "reference": "reports/p_port_diagnostic_20261031_scientist.md",
+      "source": "harness/runs/p_port_diagnostic_20261031.json"
+    },
+    {
+      "reference": "reports/p_port_diagnostic_20261031_review.md",
+      "source": "harness/runs/p_port_diagnostic_20261031.json"
+    },
+    {
+      "reference": "results/p_port_diagnostic_20261031/authorization.json",
+      "source": "harness/runs/p_port_diagnostic_20261031.json"
+    },
+    {
+      "reference": "campaigns/force_memory_closure_20261030.md",
+      "source": "harness/runs/p_port_diagnostic_20261031.json"
+    },
+    {
+      "reference": "reports/p_port_diagnostic_20261031_source_note.md",
+      "source": "harness/runs/p_port_diagnostic_20261031.json"
+    },
+    {
+      "reference": "results/p_port_diagnostic_20261031/execution_release.json",
+      "source": "harness/runs/p_port_diagnostic_20261031.json"
+    },
+    {
+      "reference": "results/p_port_diagnostic_20261031/technical_repair_release.json",
+      "source": "harness/runs/p_port_diagnostic_20261031.json"
+    },
+    {
+      "reference": "reports/p_port_diagnostic_20261031_conclusion.md",
+      "source": "harness/runs/p_port_diagnostic_20261031.json"
+    },
+    {
+      "reference": "results/p_port_diagnostic_20261031/public_diagnostic.json",
+      "source": "harness/runs/p_port_diagnostic_20261031.json"
+    },
+    {
+      "reference": "results/p_port_diagnostic_20261031/verification_counts_public.json",
+      "source": "harness/runs/p_port_diagnostic_20261031.json"
+    },
+    {
+      "reference": "results/p_port_diagnostic_20261031/execution_receipt.json",
+      "source": "harness/runs/p_port_diagnostic_20261031.json"
+    },
+    {
+      "reference": "reports/p_port_diagnostic_20261031_protocol.md",
+      "source": "harness/runs/p_port_diagnostic_20261031.json"
+    },
+    {
+      "reference": "reports/p_port_diagnostic_20261031_protocol.md",
+      "source": "harness/runs/p_port_diagnostic_20261031.json"
+    },
+    {
+      "reference": "reports/p_port_diagnostic_20261031_protocol.md",
+      "source": "harness/runs/p_port_diagnostic_20261031.json"
+    },
+    {
+      "reference": "reports/p_port_diagnostic_20261031_scientist.md",
+      "source": "harness/runs/p_port_diagnostic_20261031.json"
+    },
+    {
+      "reference": "results/p_port_diagnostic_20261031/verification_counts_public.json",
+      "source": "harness/runs/p_port_diagnostic_20261031.json"
+    },
+    {
+      "reference": "reports/p_port_diagnostic_20261031_conclusion.md",
+      "source": "harness/runs/p_port_diagnostic_20261031.json"
+    },
+    {
+      "reference": "results/p_port_diagnostic_20261031/public_diagnostic.json",
+      "source": "harness/runs/p_port_diagnostic_20261031.json"
+    },
+    {
+      "reference": "reports/p_port_diagnostic_20261031_conclusion.md",
+      "source": "harness/runs/p_port_diagnostic_20261031.json"
+    },
+    {
+      "reference": "reports/p_residual_stage_20261031_scientist.md",
+      "source": "harness/runs/p_residual_stage_20261031.json"
+    },
+    {
+      "reference": "reports/p_residual_stage_20261031_protocol.md",
+      "source": "harness/runs/p_residual_stage_20261031.json"
+    },
+    {
+      "reference": "reports/p_residual_stage_20261031_review.md",
+      "source": "harness/runs/p_residual_stage_20261031.json"
+    },
+    {
+      "reference": "results/p_residual_stage_20261031/source_bindings.json",
+      "source": "harness/runs/p_residual_stage_20261031.json"
+    },
+    {
+      "reference": "results/p_residual_stage_20261031/authorization.json",
+      "source": "harness/runs/p_residual_stage_20261031.json"
+    },
+    {
+      "reference": "reports/p_dissipative_identifiability_20261031_conclusion.md",
+      "source": "harness/runs/p_residual_stage_20261031.json"
+    },
+    {
+      "reference": "results/p_residual_stage_20261031/aggregate_execution_release.json",
+      "source": "harness/runs/p_residual_stage_20261031.json"
+    },
+    {
+      "reference": "results/p_residual_stage_20261031/review_at_release.md",
+      "source": "harness/runs/p_residual_stage_20261031.json"
+    },
+    {
+      "reference": "results/p_residual_stage_20261031/aggregate_summary.json",
+      "source": "harness/runs/p_residual_stage_20261031.json"
+    },
+    {
+      "reference": "results/p_residual_stage_20261031/aggregate_execution_receipt.json",
+      "source": "harness/runs/p_residual_stage_20261031.json"
+    },
+    {
+      "reference": "results/p_residual_stage_20261031/evidence_digest.json",
+      "source": "harness/runs/p_residual_stage_20261031.json"
+    },
+    {
+      "reference": "reports/p_residual_stage_20261031_conclusion.md",
+      "source": "harness/runs/p_residual_stage_20261031.json"
+    },
+    {
+      "reference": "reports/p_residual_stage_20261031_scientific_assessment.md",
+      "source": "harness/runs/p_residual_stage_20261031.json"
+    },
+    {
+      "reference": "reports/p_residual_stage_20261031_final_review.md",
+      "source": "harness/runs/p_residual_stage_20261031.json"
+    },
+    {
+      "reference": "results/p_residual_stage_20261031/root_adoption.json",
+      "source": "harness/runs/p_residual_stage_20261031.json"
+    },
+    {
+      "reference": "reports/p_residual_stage_20261031_protocol.md",
+      "source": "harness/runs/p_residual_stage_20261031.json"
+    },
+    {
+      "reference": "reports/p_residual_stage_20261031_protocol.md",
+      "source": "harness/runs/p_residual_stage_20261031.json"
+    },
+    {
+      "reference": "reports/p_residual_stage_20261031_protocol.md",
+      "source": "harness/runs/p_residual_stage_20261031.json"
+    },
+    {
+      "reference": "reports/p_residual_stage_20261031_protocol.md",
+      "source": "harness/runs/p_residual_stage_20261031.json"
+    },
+    {
+      "reference": "reports/p_residual_stage_20261031_protocol.md",
+      "source": "harness/runs/p_residual_stage_20261031.json"
+    },
+    {
+      "reference": "reports/p_residual_stage_20261031_scientist.md",
+      "source": "harness/runs/p_residual_stage_20261031.json"
+    },
+    {
+      "reference": "reports/p_residual_stage_20261031_conclusion.md",
+      "source": "harness/runs/p_residual_stage_20261031.json"
+    },
+    {
+      "reference": "results/p_residual_stage_20261031/evidence_digest.json",
+      "source": "harness/runs/p_residual_stage_20261031.json"
+    },
+    {
+      "reference": "reports/p_residual_stage_20261031_scientific_assessment.md",
+      "source": "harness/runs/p_residual_stage_20261031.json"
+    },
+    {
+      "reference": "reports/p_residual_stage_20261031_conclusion.md",
+      "source": "harness/runs/p_residual_stage_20261031.json"
+    },
+    {
+      "reference": "reports/p_residual_stage_20261031_final_review.md",
+      "source": "harness/runs/p_residual_stage_20261031.json"
+    },
+    {
+      "reference": "reports/p_reverse_precision_20261031_protocol.md",
+      "source": "harness/runs/p_reverse_precision_20261031.json"
+    },
+    {
+      "reference": "reports/p_reverse_precision_20261031_scientist.md",
+      "source": "harness/runs/p_reverse_precision_20261031.json"
+    },
+    {
+      "reference": "reports/p_reverse_precision_20261031_review.md",
+      "source": "harness/runs/p_reverse_precision_20261031.json"
+    },
+    {
+      "reference": "results/p_reverse_precision_20261031/authorization.json",
+      "source": "harness/runs/p_reverse_precision_20261031.json"
+    },
+    {
+      "reference": "results/p_reverse_precision_20261031/execution_release.json",
+      "source": "harness/runs/p_reverse_precision_20261031.json"
+    },
+    {
+      "reference": "results/p_reverse_precision_20261031/prelaunch_review_revisions.json",
+      "source": "harness/runs/p_reverse_precision_20261031.json"
+    },
+    {
+      "reference": "reports/p_port_diagnostic_20261031_conclusion.md",
+      "source": "harness/runs/p_reverse_precision_20261031.json"
+    },
+    {
+      "reference": "reports/p_reverse_precision_20261031_conclusion.md",
+      "source": "harness/runs/p_reverse_precision_20261031.json"
+    },
+    {
+      "reference": "results/p_reverse_precision_20261031/public_probe.json",
+      "source": "harness/runs/p_reverse_precision_20261031.json"
+    },
+    {
+      "reference": "results/p_reverse_precision_20261031/execution_receipt.json",
+      "source": "harness/runs/p_reverse_precision_20261031.json"
+    },
+    {
+      "reference": "reports/p_reverse_precision_20261031_protocol.md",
+      "source": "harness/runs/p_reverse_precision_20261031.json"
+    },
+    {
+      "reference": "reports/p_reverse_precision_20261031_protocol.md",
+      "source": "harness/runs/p_reverse_precision_20261031.json"
+    },
+    {
+      "reference": "reports/p_reverse_precision_20261031_protocol.md",
+      "source": "harness/runs/p_reverse_precision_20261031.json"
+    },
+    {
+      "reference": "reports/p_reverse_precision_20261031_protocol.md",
+      "source": "harness/runs/p_reverse_precision_20261031.json"
+    },
+    {
+      "reference": "reports/p_reverse_precision_20261031_protocol.md",
+      "source": "harness/runs/p_reverse_precision_20261031.json"
+    },
+    {
+      "reference": "results/p_reverse_precision_20261031/public_probe.json",
+      "source": "harness/runs/p_reverse_precision_20261031.json"
+    },
+    {
+      "reference": "reports/p_reverse_precision_20261031_conclusion.md",
+      "source": "harness/runs/p_reverse_precision_20261031.json"
+    },
+    {
+      "reference": "docs/current_design.md",
+      "source": "kiki.md"
+    },
+    {
+      "reference": "docs/architecture_design.md",
+      "source": "kiki.md"
+    },
+    {
+      "reference": "templates/architecture_brief.md",
+      "source": "kiki.md"
+    },
+    {
+      "reference": "docs/research_policy.md",
+      "source": "kiki.md"
+    },
+    {
+      "reference": "AGENTS.md",
+      "source": "README.md"
+    },
+    {
+      "reference": "kiki.md",
+      "source": "README.md"
+    },
+    {
+      "reference": "docs/architecture_design.md",
+      "source": "README.md"
+    },
+    {
+      "reference": "docs/current_design.md",
+      "source": "README.md"
+    },
+    {
+      "reference": "agents/runtime.md",
+      "source": "README.md"
+    },
+    {
+      "reference": "docs/engineering_loop.md",
+      "source": "README.md"
+    },
+    {
+      "reference": "docs/research_policy.md",
+      "source": "README.md"
+    },
+    {
+      "reference": "campaigns/",
+      "source": "README.md"
+    },
+    {
+      "reference": "docs/current_state.md",
+      "source": "README.md"
+    },
+    {
+      "reference": "docs/research_policy.md",
+      "source": "README.md"
+    },
+    {
+      "reference": "reports/closure_discovery_20261017_final.md",
+      "source": "README.md"
+    },
+    {
+      "reference": "results/closure_discovery_20261017/E/packages/main_2701/README.md",
+      "source": "README.md"
+    },
+    {
+      "reference": "experiments/train_closure.py",
+      "source": "README.md"
+    },
+    {
+      "reference": "docs/gpu_training.md",
+      "source": "README.md"
+    },
+    {
+      "reference": "agents/runtime.md",
+      "source": "README.md"
+    },
+    {
+      "reference": "reports/harness_v2_integration_20261030.md",
+      "source": "README.md"
+    }
+  ],
+  "issues": [],
+  "manifest_paths_relative_to": "overlay/repository root",
+  "notice": "Static public-metadata check only; no scientific evidence, model, live state, authority, or input hash was certified.",
+  "package_mode": false,
+  "private_payloads_read": false,
+  "read_only": true,
+  "root": "E:\\03-nn_Transfer_Func\\kiki",
+  "valid": true
+}

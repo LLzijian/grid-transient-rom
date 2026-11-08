@@ -1,0 +1,380 @@
+{
+  "run_id": "p_constant_direction_20261031",
+  "stage": "source",
+  "status": "verified",
+  "configured_model": "gpt-6.1-sol",
+  "server_resolved_model": null,
+  "native_launch_attempts": 1,
+  "normal_MS_jobs": 1,
+  "counts": {
+    "assets_verified": 28,
+    "source_bytes_hashed": 177927556,
+    "static_files_read": 8,
+    "controls_decoded": 6,
+    "rows_decoded": 1,
+    "residual_decode_attempts": 10,
+    "residual_containers_decoded": 10,
+    "residual_bytes_read": 175187825,
+    "selected_bytes_decoded": 57187205,
+    "machines_aligned": 10,
+    "overall_moments_attempted": 60,
+    "overall_moments_computed": 60,
+    "overall_attempts": 60,
+    "overall_closures_verified": 60,
+    "stage_attempts": 120,
+    "stage_moments_computed": 120,
+    "stage_closures_verified": 120,
+    "assets_reverified": 28
+  },
+  "denominators": {
+    "all": 297,
+    "stable": 267,
+    "unstable": 30
+  },
+  "coverage": {
+    "all": {
+      "denominator": 297,
+      "recorded_events": 297,
+      "windows": {
+        "8": {
+          "total": 27126,
+          "class_counts": {
+            "history": 297,
+            "cross_t0": 294,
+            "future": 26535
+          },
+          "events_with_class": {
+            "history": 297,
+            "cross_t0": 294,
+            "future": 289
+          },
+          "class_group_weight_sums": {
+            "history": 0.04260882509123355,
+            "cross_t0": 0.03250781499022345,
+            "future": 0.924883359918543
+          }
+        },
+        "4": {
+          "total": 54252,
+          "class_counts": {
+            "history": 594,
+            "cross_t0": 294,
+            "future": 53364
+          },
+          "events_with_class": {
+            "history": 297,
+            "cross_t0": 294,
+            "future": 294
+          },
+          "class_group_weight_sums": {
+            "history": 0.04260882509123355,
+            "cross_t0": 0.016253907495111724,
+            "future": 0.9411372674136548
+          }
+        }
+      },
+      "unscored_tail_step_counts": {
+        "0": 1,
+        "1": 0,
+        "2": 272,
+        "3": 7,
+        "4": 2,
+        "5": 7,
+        "6": 3,
+        "7": 5
+      },
+      "actual_future_seconds_range": [
+        0.03,
+        8.0
+      ]
+    },
+    "stable": {
+      "denominator": 267,
+      "recorded_events": 267,
+      "windows": {
+        "8": {
+          "total": 26967,
+          "class_counts": {
+            "history": 267,
+            "cross_t0": 267,
+            "future": 26433
+          },
+          "events_with_class": {
+            "history": 267,
+            "cross_t0": 267,
+            "future": 267
+          },
+          "class_group_weight_sums": {
+            "history": 0.009900990099009901,
+            "cross_t0": 0.009900990099009901,
+            "future": 0.9801980198019802
+          }
+        },
+        "4": {
+          "total": 53934,
+          "class_counts": {
+            "history": 534,
+            "cross_t0": 267,
+            "future": 53133
+          },
+          "events_with_class": {
+            "history": 267,
+            "cross_t0": 267,
+            "future": 267
+          },
+          "class_group_weight_sums": {
+            "history": 0.009900990099009901,
+            "cross_t0": 0.0049504950495049506,
+            "future": 0.9851485148514851
+          }
+        }
+      },
+      "unscored_tail_step_counts": {
+        "0": 0,
+        "1": 0,
+        "2": 267,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      },
+      "actual_future_seconds_range": [
+        8.0,
+        8.0
+      ]
+    },
+    "unstable": {
+      "denominator": 30,
+      "recorded_events": 30,
+      "windows": {
+        "8": {
+          "total": 159,
+          "class_counts": {
+            "history": 30,
+            "cross_t0": 27,
+            "future": 102
+          },
+          "events_with_class": {
+            "history": 30,
+            "cross_t0": 27,
+            "future": 22
+          },
+          "class_group_weight_sums": {
+            "history": 0.333708556522024,
+            "cross_t0": 0.23370855652202402,
+            "future": 0.432582886955952
+          }
+        },
+        "4": {
+          "total": 318,
+          "class_counts": {
+            "history": 60,
+            "cross_t0": 27,
+            "future": 231
+          },
+          "events_with_class": {
+            "history": 30,
+            "cross_t0": 27,
+            "future": 27
+          },
+          "class_group_weight_sums": {
+            "history": 0.333708556522024,
+            "cross_t0": 0.11685427826101201,
+            "future": 0.549437165216964
+          }
+        }
+      },
+      "unscored_tail_step_counts": {
+        "0": 1,
+        "1": 0,
+        "2": 5,
+        "3": 7,
+        "4": 2,
+        "5": 7,
+        "6": 3,
+        "7": 5
+      },
+      "actual_future_seconds_range": [
+        0.03,
+        1.44
+      ]
+    }
+  },
+  "snapshots": {
+    "Q8": {
+      "dtype": "float64",
+      "shape": [
+        27126,
+        10
+      ],
+      "sha256": "c2225075e10bede58927862ef4283bba40531af1856f43f645116b2be39fc756"
+    },
+    "L8": {
+      "dtype": "float64",
+      "shape": [
+        27126,
+        10
+      ],
+      "sha256": "2e53020365cff16eea22dfeadc966ffc1f1067359cff587cfa8bd95016f51b79"
+    },
+    "Q4": {
+      "dtype": "float64",
+      "shape": [
+        54252,
+        10
+      ],
+      "sha256": "b44f770c06b33eeb5733e848e0622faa2d408dd3fec6a0584e2ed56f04ad2f38"
+    },
+    "L4": {
+      "dtype": "float64",
+      "shape": [
+        54252,
+        10
+      ],
+      "sha256": "7dc3021d693947069a88bf32323716aee6fee032c5d152a60c15c0ed0111c151"
+    }
+  },
+  "snapshot_hash_meaning": "dtype/shape-prefixed contiguous original array byte SHA256 as declared by frozen producer; snapshot NPZ file SHA recorded separately; no array reread during executor postcheck.",
+  "residual_snapshot_sha256": "5d565747d5b95c6ae19711c6522fada23f11940bfcd0b1a53cf9a6123b05307f",
+  "parent_statistics_sha256": "0e5e751121a63fa4aa59bdae65cd32ff24753ec39545a5327a30d97fee85821b",
+  "static_content_qualification": {
+    "static_exporter": {
+      "status": "matched_static_declaration",
+      "source_sha256": "239b574f7b17b26c2c315f5be6b7aebaf05e82e1c91c61b32d48135caf452ab8",
+      "missing_needles": [],
+      "matching_lines_total": 16,
+      "matching_lines_selected": 16,
+      "excerpt_truncated": false
+    },
+    "static_adapter": {
+      "status": "unknown",
+      "source_sha256": "615ec905047a81f681620d3f214b6dfa60be3c78af7059de21b232c593d941ee",
+      "missing_needles": [
+        "omega_raw"
+      ],
+      "matching_lines_total": 1,
+      "matching_lines_selected": 1,
+      "excerpt_truncated": false
+    },
+    "static_coordinate": {
+      "status": "unknown",
+      "source_sha256": "e73de06b9a1d66b05de4bb1d29504a19cc7b486bc3694ddd341d451f403ae667",
+      "missing_needles": [
+        "omega_raw",
+        "w0"
+      ],
+      "matching_lines_total": 2,
+      "matching_lines_selected": 2,
+      "excerpt_truncated": false
+    },
+    "static_implemented_ODE": {
+      "status": "matched_static_declaration",
+      "source_sha256": "ecd5f4a7980b748eeb7da78986733c42324c44bea73d0cda964bfb62b1269d1f",
+      "missing_needles": [],
+      "matching_lines_total": 18,
+      "matching_lines_selected": 18,
+      "excerpt_truncated": false
+    },
+    "static_residual_producer": {
+      "status": "matched_static_declaration",
+      "source_sha256": "8f8cbd2c4b942f9c54586c44e657f42fdd7a7772c928b98a9c1ae6d6ddf24b17",
+      "missing_needles": [],
+      "matching_lines_total": 3,
+      "matching_lines_selected": 3,
+      "excerpt_truncated": false
+    },
+    "static_selected_reader": {
+      "status": "matched_static_declaration",
+      "source_sha256": "deaeab356146330ea51f501da4fd498419a379e6aa782c5ff76076c83cbe15d4",
+      "missing_needles": [],
+      "matching_lines_total": 4,
+      "matching_lines_selected": 4,
+      "excerpt_truncated": false
+    },
+    "static_conditional_source": {
+      "status": "matched_static_declaration",
+      "source_sha256": "f9731df313af1e50d578f95e6e50cfe506270a7f27762d8f77758205f9232d8d",
+      "missing_needles": [],
+      "matching_lines_total": 8,
+      "matching_lines_selected": 8,
+      "excerpt_truncated": false
+    },
+    "static_R_architecture": {
+      "status": "matched_static_declaration",
+      "source_sha256": "e2731f82f46b72958c8eb79de069688b0fd4194400a86b2991aaa6d4c702e707",
+      "missing_needles": [],
+      "matching_lines_total": 9,
+      "matching_lines_selected": 9,
+      "excerpt_truncated": false
+    }
+  },
+  "source_layers": {
+    "mathematics": "independently reviewed conditional proof reference; no FOM proof",
+    "static_content": "8 bounded files read; individual missing needles remain unknown",
+    "historical_execution": "unknown",
+    "effective_time_reference_limiter_state": "unknown",
+    "physical_unit_certification": "unknown"
+  },
+  "mathematical_scope": {
+    "status": "adopted_independently_reviewed_conditional_proof",
+    "scientist_sha256": "a25715fe056629ab63204905125ae2a1827c03386c29b001b403ddb54fca4be1",
+    "design_review_sha256": "6baa675ab1078fe3e62f1cd824ec1a77bcc2c60bd2734aedceab55a6d09901ef",
+    "eliminated_drive": "u_p' + c*u_p - d*u_q",
+    "constant_drive": "h_phys=c*u_p-d*u_q",
+    "common_equilibrium": "h_phys=c*g*omega_star+(a*c-d*d*S)*p_star",
+    "consistent_zero_reference_implies_h0": true,
+    "h0_implies_individual_drives_zero": false,
+    "h0_implies_fixed_theta_residual_mean_zero": false,
+    "normalized_sign": "h_norm=-eta",
+    "physical_sign_formal_only": "h_phys=-p_scale*eta; p_scale not read, no numeric physical h",
+    "added_power": "S*p*u_p+q*u_q",
+    "boundaries": "d=0 retains first-order initial condition; PSD with c=0 implies d=0; c0=0 retained without division",
+    "scope": "reference to reviewed conditional algebra; not a program proof of FOM or train equilibrium"
+  },
+  "summary_sha256": "e8236e3299ff30964315556324e8e54d9a43f793a6fd6447c0f9b0af781652b1",
+  "manifest_sha256": "4eceb511d4048e72b100bb3d45e8b75f49622f69d7d81d87d041f6511202b45f",
+  "complete_sha256": "f3b19786f375a0bf4d6230ef23b291309adb70040874e3566a5da2e97a4a240c",
+  "M_static_evidence_sha256": "2e0e184a198c3c672a45755d61c241add482c823e5bf8638e701b0e8ec9cfe1a",
+  "private_verification_sha256": "231b13a1495ad06b915911af42b169b56e9b7876b603a1e26be455b3b7a3ef45",
+  "all_output_hashes_verified": true,
+  "all28_assets_original_bytes_unchanged": true,
+  "source_sha256": "c0746ba71bc82ab42620daad04e006fe4e2f7cad795b353e774c5508be9d89db",
+  "tests_sha256": "11a6f882c53c91ac1c516a6cdbaa977bb8b7e7c9ea6bfda334f1cf4a822440d4",
+  "release_sha256": "1d300f84ac9f0a7688d07ce0a88b310b91d2a44afd17cd52336d39ad5b4d4779",
+  "review_sha256": "d3e53d272f30aebabc94f110d8efaab9b9933763aa89b79b488abdbd6904dc05",
+  "termination": {
+    "shell_exit_code": 0,
+    "launcher_exit_code": 0,
+    "launcher_creation_exited": true,
+    "worker_creation_exited": true,
+    "both_creation_FILETIME_captured": true
+  },
+  "cost": {
+    "native_launch_wall_seconds": 6.957359000021825,
+    "tool_measured_wall_seconds": 6.696173500007717,
+    "actual_interpreter_stage_CPU_seconds": 6.40625,
+    "relationship": "Native launch wall contains measured tool wall_seconds. Stage interpreter CPU is distinct, not added to wall. Extra tool_wall_seconds null placeholder does not mean timing absent.",
+    "project_total_CPU_seconds": null,
+    "LLM_seconds": null
+  },
+  "eta_estimates": 0,
+  "signed_means": 0,
+  "MP_checks": 0,
+  "new_residual_evaluations": 0,
+  "four_coefficient_fits": 0,
+  "QR": 0,
+  "integrals": 0,
+  "sensitivity_bounds": 0,
+  "filters": 0,
+  "initializers": 0,
+  "optimizer": 0,
+  "ROM": 0,
+  "FOM": 0,
+  "model_writes": 0,
+  "E_Q_implemented": false,
+  "E_Q_released": false,
+  "automatic_retry": false,
+  "execution_technical_repairs": 0,
+  "public_omissions": "No event/native identities, residual values, parameters or scales."
+}

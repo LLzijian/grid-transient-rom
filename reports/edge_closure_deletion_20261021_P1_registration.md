@@ -1,0 +1,11 @@
+# 空项重适配P1：实际准入与执行登记
+
+root采纳实际Astra6计划并完成唯一P0。QA8通过/0失败，三个旧stage0共同参数/RNG/空Adam组映射均精确通过；native19.8210781，102来源/98科学依赖，两层0/GONE/锁解除。唯一cost恰12次试算丢弃，通过：native14.6854306，104来源/相同98科学依赖、源前后及与QA完全一致，两层0/GONE；每seed恢复后下一更新相同。
+
+含25%余量的train估价235.3230963/176.7420146/159.8446693秒均≤450；完整双步长评价27.0604035/27.0336415/26.9565668均≤35。每份cost使用真实step3原checkpoint发布、完整身份及64KiB余量，训练文件119493字节；P1生成前必须实核其正式身份JSON+512*32+4096≤65536，否则不启动。20秒监督是保守储备，实际cost native减worker为1.9577845秒，小于储备。
+
+新P0关闭657.5624050/1200，未用542.4375950取消，P0余6534.6699614。实际codecommit0a6ef1c5f01abfb28d38b90d18131d3d565a254c，新runner SHA831785b3edcf67390ef3935af25cc22c5a00e0704255bf67b1c561330a749f41；P1调用新增助手不得改变已实测科学源。完整原生回执和rawcost/QA在本地P0/edge_closure_deletion01，公共紧凑证据见results/edge_closure_deletion_20261021。
+
+现在登记P1总2450=三train各native500/PS480/self450共1500+三eval各native50/PS45/self35共150+metadata100(prep40/freeze50/closing10)+support700。P1未分配169.380204499945，其他类别不借；旧hold保留。费用从上轮P1余2619.380204499945扣完整分配，科学输出BASE private_data/closure_mechanism_20261019/P1/edge_closure_deletion01。没有重试/恢复/延长/新种子/旧组重跑/数值减配。
+
+依5101→5102→5103各512；全部结束后统一冻结3对模型/训练字节，完整16train比较三方案，旧表固定results/edge_memory_discrimination_20261021/frozen_selection.json、SHA d1706d146857946a771596adbc3576df5fb2b0014fd6f21ceb8a7aa9064a1c61，旧端点身份也纳入新来源前后检查。新frozen_selection及train排序归档后才各一次正式合成val，保持原16train/16val及真实生成指纹，30观测100ms一次初始化/40状态/float64/512合同不变。项目val/test关闭、TASK4暂停、真实门槛不动，无默认采用。

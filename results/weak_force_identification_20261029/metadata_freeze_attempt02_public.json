@@ -1,0 +1,100 @@
+{
+  "schema": "weak_force_metadata_freeze_attempt02_public_v1",
+  "status": "METADATA_FREEZE_COMPLETED_NOT_RUN",
+  "source_commit": "3b01f19055203734c370d32eba4cea8a0555f8d3",
+  "execution_source_sha256": "42556f44599b98fc45dc4295388f1f2a1ba68136c34ad822005d3b447be4ae33",
+  "release_sha256": "e90e3c4e1ed3f95690ba569df0d2c7def90d624a2387d265ffd23b46653b7b81",
+  "execution": {
+    "command": "python -B experiments/weak_force_execution_20261029.py freeze --source-commit 3b01f19055203734c370d32eba4cea8a0555f8d3",
+    "started_at_utc": "2026-10-29T00:26:56.1164399Z",
+    "authorized_attempt_number": 2,
+    "invocations_this_authorization": 1,
+    "python_exit_code": 0,
+    "shell_exit_code": 0,
+    "shell_propagates_python_exit_code": true,
+    "process_command_wall_seconds": 8.0512964,
+    "tool_wall_seconds": 8.6335134,
+    "stdout": "",
+    "stderr": ""
+  },
+  "first_failure": {
+    "preserved": true,
+    "overwritten": false,
+    "source_commit": "42fd64b4424cfa42b522e955efdb2ff268fb84cb",
+    "python_exit_code": 1,
+    "exception": "ValueError: parent owner is live/unknown/reused",
+    "actual_parent_qa_identity_state_then": "REUSED_PID",
+    "raw_stderr_sha256": "11ad2a632f37c1be35ec792e4b4a9018cbdb64255f69062095f1449f5e11167d",
+    "local_state_sha256": "48becc53e669b395abea929bcf65801246cde2dacd17af4be2a87b093545f956"
+  },
+  "binding": {
+    "created": true,
+    "sha256": "31e816b0485560c839cdd1af4446cfc1595104822f27610f09fc3a753d8b52ad",
+    "file_count": 161,
+    "optimizer_call_upper_bound": 976,
+    "no_process_quotas": true,
+    "automatic_resume": false
+  },
+  "parent": {
+    "source_commit": "0215a9f6a5582d93bd7f7ebfd5e34d7be1d1e1c6",
+    "complete_sha256": "dc10355064f293f4b05eb26f92429317c4d6038ebe4f94159d146bb62bc9bf1e",
+    "summary_sha256": "7e77c7f4140d0522a8bb8bd373a3d0a793bbcffeda3b867c0fab67cb821eb525",
+    "five_original_closures_validated": true,
+    "five_receipt_sha256": {
+      "prepare": "be1dd0a7e21d22c44f918fafc5bf0f66054253c8ff6c4d5370e71ec5a0951a0d",
+      "qualify": "5212ca178c3bb0b5ce5c8741fc6d5dccd961d99c33b672dfcca7f455b6bdb1cd",
+      "qa": "aed62d7a6b6d2eaaf06d1f8988a6921d1643a24677152db1d47eec14318e2fca",
+      "study": "25760a88754541a0230056f96a0e378623e2fae99ee112d9900e386518f1072a",
+      "summary": "8c36239d602f8a795e0b4175bdbe2c7237764fbcd92d7b4d72852c97440dc7de"
+    },
+    "worker_identity_states_observed_this_freeze": {
+      "prepare": "GONE",
+      "qualify": "GONE",
+      "qa": "GONE",
+      "study": "GONE",
+      "summary": "GONE"
+    },
+    "active_lock_present": false
+  },
+  "new_active_lock_present": false,
+  "public_privacy_check": {
+    "no_absolute_paths_machine_identity_or_private_asset_paths": true,
+    "note": "The exact source closure includes legitimate repository source filenames generate_private_dataset.py and private_dataset.py. These are code paths, not private asset paths; they remain in the required complete source manifest."
+  },
+  "runtime_proof": {
+    "reached": true,
+    "retained_runtime_file_count": 15,
+    "method": "Successful closed parent binding and retained runtime digests reused; no new runtime executable scan or native probe."
+  },
+  "public_source_candidate": {
+    "path": "results/weak_force_identification_20261029/source_verification.json",
+    "sha256": "6298731b50e70ddf9f9859a3166e85e05f48834c4993829ff29c648056fc7226",
+    "bytes": 25588,
+    "source_closure_file_count": 73,
+    "unique_public_file_count": 88,
+    "category_file_counts": {
+      "source_closure": 73,
+      "documents": 13,
+      "release_record": 1,
+      "fixed_cpu_qa": 1
+    },
+    "remote_verified": false
+  },
+  "scope": {
+    "metadata_only": true,
+    "model_or_training_assets_loaded": false,
+    "prediction_array_contents_loaded": false,
+    "actual_event_reads": 0,
+    "real_nnls_calls": 0,
+    "optimizer_calls": 0,
+    "cuda_calls": 0,
+    "fixed_fixture_executions": 0,
+    "native_jobs_started": 0,
+    "run_invocations": 0,
+    "timers_created": 0,
+    "automatic_repairs": 0,
+    "automatic_retries": 0,
+    "project_val_test_accessed": false
+  },
+  "next_action": "Parent must verify every public source blob remotely and explicitly authorize run; no run is initiated by this record."
+}

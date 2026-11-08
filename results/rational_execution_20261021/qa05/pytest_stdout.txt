@@ -1,0 +1,41 @@
+..................................................F..................... [ 53%]
+................................F..............................          [100%]
+================================== FAILURES ===================================
+_____________ test_formal_admission_now_requires_inner_outer_qa04 _____________
+
+reconstruction_binding = ({'source_commit': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'phase': 'qa', 'group': None, 'qa_attempt': 4, ...}, {'...': 'E:\\03-nn_Transfer_Func\\kiki\\private_data\\q5\\test_formal_admission_now_requ0\\base.exe', 'arguments': [], ...})
+
+    def test_formal_admission_now_requires_inner_outer_qa04(reconstruction_binding):
+        binding,command=reconstruction_binding
+>       with pytest.raises(ValueError,match='QA04/receipt'):execution.validate_qa04_pass(binding,'a'*40)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'QA04/receipt'
+E         Actual message: 'source-bound reconstruction evidence required: private_data/closure_mechanism_20261019/P1/rational_execution01/native_qa04/receipt.json'
+
+tests\test_rational_execution_20261021.py:418: AssertionError
+__________________ test_normal_owned_subtree_and_exact_role ___________________
+
+tmp_path = WindowsPath('E:/03-nn_Transfer_Func/kiki/private_data/q5/test_normal_owned_subtree_and_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001BAF101DD30>
+
+    def test_normal_owned_subtree_and_exact_role(tmp_path,monkeypatch):
+     requested_flags=[];real_api=j.api
+     class RecordingAPI:
+      def __init__(self,api):self.api=api
+      def __getattr__(self,name):return getattr(self.api,name)
+      def CreateProcessW(self,*args):
+       requested_flags.append(args[5]);return self.api.CreateProcessW(*args)
+     monkeypatch.setattr(j,'api',lambda:RecordingAPI(real_api()))
+     r=j.supervise(command(spawn_child('pass')+'assert child.wait()==0'),tmp_path/'normal',tmp_path/'lock',{},ROOT,provenance={'source_commit':'a'*40,'group':'0_rational','phase':'qa'})
+>    assert r['status']=='COMPLETED' and r['job_active_processes']==0 and r['job_total_processes']>=2
+E    AssertionError: assert ('FAILED' == 'COMPLETED'
+E      
+E      - COMPLETED
+E      + FAILED)
+
+tests\test_uncapped_windows_job_20261021.py:34: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_rational_execution_20261021.py::test_formal_admission_now_requires_inner_outer_qa04
+FAILED tests/test_uncapped_windows_job_20261021.py::test_normal_owned_subtree_and_exact_role
+2 failed, 133 passed in 75.83s (0:01:15)
