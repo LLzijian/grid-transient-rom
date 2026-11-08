@@ -1,11 +1,16 @@
-# Result status
+# 数值结果与执行回执
 
-This directory preserves the historical e-series artifacts. It is not the current
-model registry: use [current research state](../docs/current_state.md) for active
-baselines, experiments and fresh/consumed TEST identities.
-See the [retention audit](../reports/records_retention_audit_20260922.md) for scope
-and dependencies. The 2026-09-22 cleanup preserves all numerical files and paths;
-some legacy artifacts remain inputs to regression tests and historical figures.
+`results/` 按研究或维护事项保存小体积结果、逐项摘要、公开执行回执和来源清单；原始数据、模型、预测与缓存分别在 `private_data/` 或 `artifacts/`，位置以实际清单为准。
+
+先从[研究报告首页](../reports/README.md)按科学问题阅读，再查[正式 Run 导航](../harness/README.md)中的结果与执行来源。目录、回执状态和模型采用是不同信息，不按结果目录名选择当前模型。
+
+历史结果保留原路径与异常值口径，不为整齐重命名或重新计算。大文件的哈希身份、保存位置和备份能力分别记录；旧本地迁移从[已有清单](private_data_cleanup_20261107/migration_map.csv)接续，不补造历史 Job。
+
+96个公开结果目录与本地产物的关系见[关联入口](repository_organization/20261109_history05/README.md)及[可筛选总表](repository_organization/20261109_history05/storage_associations.csv)。已核实的登记引用、历史组和元数据观察分别记录，缺少来源不自动表示可清理。
+
+## 早期 E 系列的原有解释与纠正
+
+以下为原结果说明的历史范围；整理前的[字节原件](../reports/history/early_e_series/originals/results_status_before_organization_20261109.md)另存，旧相对链接以主题材料表及迁移映射查找。
 
 ## Corrected historical development evidence (e10–e15)
 

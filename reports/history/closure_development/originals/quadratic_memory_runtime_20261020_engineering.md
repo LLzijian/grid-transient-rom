@@ -1,0 +1,13 @@
+# 二次边记忆计算实现与验证
+
+新增可选QuadraticMemoryRuntime，在固定十机40状态L10-S结构中直接计算bΣk(qi+qj)²[cos(phi+角差)−cos(phi)]的完整动力学贡献，保留其余七项。build_variant从相同full8对象构造保留、删除、二次替换三种结构，按规范表达式身份继承系数，新增b从0开始；不修改输入来源、默认模型或既有runner。
+
+快路径采用解析角度/q梯度及每张训练图内共享参数乘积；图结束、load_state_dict和设备迁移后清除缓存。未开启图缓存时每次检查合法结构，非法宽度在缓存验证之前拒绝。导出仍使用原符号格式与通用独立实现，GPU导出在私有CPU副本完成。
+
+原生统一QA复测27项全部通过，其中runtime的13项覆盖CPU/CUDA、正负非零b、通用torch/NumPy场、状态/参数梯度、原点梯度/Hessian、导出恢复、短自主积分只初始化一次及缓存/非法结构拒绝。其余14项检查新研究runner与私有监督封装，作为研究归档，不包含于本次最小工程集成。第一次QA的26通过/1失败及唯一入口guard修复完整保留；未放宽测试断言。QA费用23.6409882秒，QA02原生9.5058777秒，源代码版本ee922ca3e0640768a8d1dea5d4e3f8bb4382a1a6。
+
+独立静态审查和原生回执分别见归档分支codex/quadratic-memory-edge-20261020的reports/quadratic_memory_edge_20261020_implementation_review.md与results/quadratic_memory_edge_20261020/qa02.json。本机新文件SHA256：runtime 5ee142103f38f4cdd4c041b3e1926c9a9d8972efdb78f198e6e76740fe49de1d，测试ffd17475da60d22c77dc1903f68cbc9d7ed02eb7abfce686f8e68c1b6aae8d62。与main核对六个直接数学依赖，五个Git blob一致，symbolic_closure_rom仅CRLF/LF表示不同、规范文本完全一致。
+
+复查命令：在有PyTorch/NumPy/pytest的环境运行 python -m pytest tests/test_quadratic_memory_runtime_20261020.py -q；CUDA可用时同时覆盖CPU和CUDA。该测试使用随机合成模型，不需要私有训练数据。完整原生27项检查需要研究归档中的私有监督helper按记录路径恢复，不声称公开clone直接具备该监督环境。
+
+本次工程集成提供经过公式与恢复检查的可选计算工具。新的固定函数模型比较仍须本轮真实成本准入、训练与评价；不改变科学门槛，不授予默认采用、结构发现或稳定域结论，也不声称已测得相对通用实现的速度倍数。

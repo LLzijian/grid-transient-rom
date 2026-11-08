@@ -1,0 +1,7 @@
+# 原366与新19的固定统计身份
+
+root在任何本轮科学端点评价之前核对来源checkpoint身份：原20条新增train与本轮19条train都使用newtrain_前缀，因此完整385中有39个此前缀。冻结runner内部cohorts按前缀分栏会得到346/39，该内置分栏隔离不用。完整385的原始rows/extras、预测、资格和主风险计算不受该分栏命名错误影响。
+
+正式共同385、原366、新19统计均由同次评价原始JSON重新汇总。原366集合固定取三个full8 global1280来源metadata的identity.source_identity.common.events；完整385取identity.events，新19为精确差集。三seed集合、标签和母线一致；准确清单及元数据SHA见results/quadratic_memory_edge_20261020/cohort_identity.json。分母、风险公式、数值失败保留、真实区间和比较规则保持原协议，不依任何新成绩改变。
+
+不修改已冻结runner、模型、训练日程或原协议文件，不重跑预测、不追加科学分支，也不消耗第二次模型实现修复。错误的内置cohorts始终保留并标明不用；独立stdlib事实提取器只消费原始rows/extras，执行前用含旧20与新19同前缀的合成案例检查集合划分与数值未决传播。后处理源/检查结果单独归档，不能以更换文件名改变原样本资格。

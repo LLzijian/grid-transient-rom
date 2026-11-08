@@ -27,6 +27,9 @@
 - 结果摘要：[results/gftd_fit297_20261107/evidence_digest.json](../../results/gftd_fit297_20261107/evidence_digest.json)；路径处理：原位保留，源码或路径哈希身份引用。
 - root决定：[results/gftd_fit297_20261107/root_adoption.json](../../results/gftd_fit297_20261107/root_adoption.json)；路径处理：原位保留，现有正式登记或报告仍引用原路径。
 - 本地产物清单：[results/gftd_fit297_20261107/raw_artifacts_manifest.json](../../results/gftd_fit297_20261107/raw_artifacts_manifest.json)；路径处理：原位保留，源码或路径哈希身份引用。
+- 历史准备／专项审查原件（不替代最终协议）：[reports/gftd_fit297_20261107/originals/gftd_fit297_20261107_interface_inventory.md](originals/gftd_fit297_20261107_interface_inventory.md)；路径处理：archived_byte_identical，本批核清引用后归档，保留内容身份和原版本阅读入口。
+- 历史准备／专项审查原件（不替代最终协议）：[reports/gftd_fit297_20261107/originals/gftd_fit297_20261107_l2_review.md](originals/gftd_fit297_20261107_l2_review.md)；路径处理：archived_byte_identical，本批核清引用后归档，保留内容身份和原版本阅读入口。
+- 历史准备／专项审查原件（不替代最终协议）：[reports/gftd_fit297_20261107/originals/gftd_fit297_20261107_protocol_draft.md](originals/gftd_fit297_20261107_protocol_draft.md)；路径处理：archived_byte_identical，本批核清引用后归档，保留内容身份和原版本阅读入口。
 
 解除条件：另立迁移批次核查全部调用者和冻结身份，保留旧执行恢复方式；核验新导航与映射后再解除，不回写旧协议或哈希。
 
@@ -86,3 +89,7 @@ L3图相关性使用K(a=0)对绝对Kron导纳，不是K cos(phi*)；更正物理
 | navigation.materials[3].path_protection.consumers[10].reference | [experiments/gftd_fit297_20261107_resume01.py](../../experiments/gftd_fit297_20261107_resume01.py) | present |
 | navigation.materials[3].path_protection.consumers[11].reference | [tests/test_gftd_fit297_runner.py](../../tests/test_gftd_fit297_runner.py) | present |
 | navigation.materials[5].path_protection.consumers[0].reference; navigation.materials[5].path_protection.consumers[1].reference | [harness/runs/gftd_fit297_20261107.json](../../harness/runs/gftd_fit297_20261107.json) | present |
+| navigation.materials[7].reference | [reports/gftd_fit297_20261107/originals/gftd_fit297_20261107_interface_inventory.md](originals/gftd_fit297_20261107_interface_inventory.md) | present |
+| navigation.materials[7].archive_record_reference; navigation.materials[8].archive_record_reference; navigation.materials[9].archive_record_reference | [results/repository_organization/20261109_history05/migration.json](../../results/repository_organization/20261109_history05/migration.json) | present |
+| navigation.materials[8].reference | [reports/gftd_fit297_20261107/originals/gftd_fit297_20261107_l2_review.md](originals/gftd_fit297_20261107_l2_review.md) | present |
+| navigation.materials[9].reference | [reports/gftd_fit297_20261107/originals/gftd_fit297_20261107_protocol_draft.md](originals/gftd_fit297_20261107_protocol_draft.md) | present |
