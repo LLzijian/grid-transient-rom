@@ -23,3 +23,5 @@
 所有指标沿原模型、train 范围、时域和尺度解释。风险不是 RMSE，历史 21/30 漏检不作为后来 GFTD 的同期成绩；原 val/test 的暴露和关闭历史保持不变。
 
 另可阅读[2026-10-29项目概览](project_overview_20261029_reading.html)：这是修复链接的历史阅读版，字节不变原件与来源快照另存。恢复评价和p通道检查的[旧代码入口](../../../experiments/history/force_memory/README.md)按原报告回查。
+
+第八批在前序代码／概览归档后复核保护边界，再解除6份报告／证据的旧路径依赖；[最新累计位置](../../../results/repository_organization/20261109_history08/migration.json)与本主题保护表接续原记录。

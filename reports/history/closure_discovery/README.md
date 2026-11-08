@@ -36,3 +36,5 @@
 - [整理批次总表](../../../results/repository_organization/README.md)
 
 10-19已知支撑对照的[旧批入口](../../../experiments/history/closure_discovery/README.md)已原样归档；完整旧版本保留同目录子脚本关系。
+
+第八批在前序代码／概览归档后复核保护边界，再解除6份报告／证据的旧路径依赖；[最新累计位置](../../../results/repository_organization/20261109_history08/migration.json)与本主题保护表接续原记录。
