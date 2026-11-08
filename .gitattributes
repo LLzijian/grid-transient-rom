@@ -2,6 +2,15 @@
 
 # Keep migrated documentation hashes stable across checkout platforms.
 /reports/history/docs/** -text
+# Frozen originals retain their recorded CRLF/LF bytes; accept CR at EOL.
+/reports/history/early_e_series/originals/** -text whitespace=cr-at-eol
+/reports/history/paper/originals/** -text whitespace=cr-at-eol
+/reports/history/private_rom/originals/** -text whitespace=cr-at-eol
+/reports/history/closure_discovery/originals/** -text whitespace=cr-at-eol
+/reports/history/gftd_campaign/originals/** -text whitespace=cr-at-eol
+/reports/maintenance/early_gates/originals/** -text whitespace=cr-at-eol
+/results/early_e_series_evidence/** -text whitespace=cr-at-eol
+/results/private_rom_history/** -text whitespace=cr-at-eol
 /designs/** -text
 
 # Preserve exact executed/reviewed bytes for this hash-bound research Run.

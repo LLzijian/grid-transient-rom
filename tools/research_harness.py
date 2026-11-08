@@ -7,7 +7,7 @@ Examples (paths are supplied explicitly):
   python tools/research_harness.py render-state --registry harness/examples/registry.snapshot.json
   python tools/research_harness.py check --root .
 
-All commands are read-only unless render-state receives an explicit --output.
+All commands are read-only unless a rendering command receives an explicit --output.
 No live registry is required. Saved records are not live process verification or
 execution authorization. The host must verify input hashes and current consent.
 """
@@ -48,7 +48,7 @@ REQUIRED_FILES = (
     "harness_runtime/scheduling.py", "tools/research_harness.py",
     "tests/test_harness_cli.py", "tests/test_harness_evidence.py", "tests/test_harness_scheduling.py",
 )
-PRIVATE_PARTS = {"private_data", "private-data", "datasets", "checkpoints", "weights", ".git"}
+PRIVATE_PARTS = {"private_data", "private-data", "datasets", "checkpoints", "weights", "artifacts", "local_backups", ".git"}
 TASK_STATES = {"RUNNING", "COMPLETED", "BLOCKED", "PAUSED_BY_USER", "INTERRUPTED_RUNTIME"}
 LINK_PATTERN = re.compile(r"!?\[[^\]]*\]\(([^\s)]+)(?:\s+[\"'][^)]*)?\)")
 
@@ -210,6 +210,217 @@ def _json_references(value):
     elif isinstance(value, list):
         for item in value:
             yield from _json_references(item)
+
+
+def run_navigation(root_path, run_id=None):
+    """Read registered identities and explicit links; never open scientific payloads."""
+    root = Path(root_path).resolve()
+    if run_id is not None and not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_-]*", run_id):
+        raise ValueError("run_id must be a single identifier")
+    index_path = root / "harness/navigation.json"
+    index = {}
+    if index_path.exists() or _link_or_reparse(index_path):
+        if not _safe_public_path(index_path, root):
+            raise ValueError("unsafe navigation index")
+        index = load_json(index_path)
+        if not isinstance(index, dict) or index.get("kind") != "RETROSPECTIVE_NAVIGATION" or not isinstance(index.get("runs"), dict):
+            raise ValueError("navigation requires RETROSPECTIVE_NAVIGATION and runs")
+    run_dir = root / "harness/runs"
+    if not _safe_public_path(run_dir, root) or not run_dir.is_dir():
+        raise ValueError("public Run registry directory is absent or unsafe")
+    paths = [run_dir / (run_id + ".json")] if run_id else sorted(run_dir.glob("*.json"))
+    migrations = {}
+    migration_path = root / "harness/documentation_migration_20261108.json"
+    if migration_path.exists() or _link_or_reparse(migration_path):
+        if not _safe_public_path(migration_path, root):
+            raise ValueError("unsafe documentation migration")
+        migration = load_json(migration_path)
+        for entry in migration.get("entries", []):
+            if entry["old_path"] in migrations:
+                raise ValueError("duplicate documentation migration")
+            migrations[entry["old_path"]] = entry
+    result = dict(valid=True, runs=[], issues=[], read_only=True, private_payloads_read=False,
+                  live_state_verified=False, scientific_evidence_verified=False)
+
+    def reference(name, field, follow_migration=True):
+        row = dict(reference=name, field=field, status="unknown")
+        if (not isinstance(name, str) or not name or ":" in name or "\\" in name or re.search(r"[%?#\x00-\x1f]", name)
+                or any(part in {"", ".", ".."} for part in name.split("/"))):
+            row["status"] = "unsafe"
+        elif _private(Path(name)):
+            row["status"] = "local_not_checked"
+        elif not _safe_public_path(root / name, root):
+            row["status"] = "unsafe"
+        else:
+            row["status"] = "present" if (root / name).exists() else "missing"
+            if row["status"] == "missing" and follow_migration and name in migrations:
+                entry = migrations[name]
+                if not isinstance(entry.get("new_path"), str) or not entry["new_path"].endswith(".md") or entry["new_path"].split("/")[0] not in {"reports", "designs"}:
+                    raise ValueError("migration target must be public Markdown documentation")
+                target = reference(entry["new_path"], "documentation_migration", False)
+                if target["status"] == "present":
+                    payload = (root / entry["new_path"]).read_bytes()
+                    if len(payload) != entry["bytes"] or hashlib.sha256(payload).hexdigest() != entry["sha256"]:
+                        raise ValueError("migrated documentation bytes differ: " + name)
+                    row.update(status="migrated_sha256_verified", resolved_reference=entry["new_path"])
+        if row["status"] in {"missing", "unsafe"}:
+            result["issues"].append(dict(code=row["status"] + "_reference", **row))
+            result["valid"] = False
+        return row
+
+    def references(value, field=""):
+        if isinstance(value, dict):
+            for key, item in value.items():
+                label = field + "." + key if field else key
+                if key == "reference" or key.endswith("_reference"):
+                    if isinstance(item, str):
+                        yield reference(item, label)
+                elif key == "references" or key.endswith("_references"):
+                    if isinstance(item, list):
+                        for i, ref in enumerate(item):
+                            if isinstance(ref, str):
+                                yield reference(ref, f"{label}[{i}]")
+                else:
+                    yield from references(item, label)
+        elif isinstance(value, list):
+            for i, item in enumerate(value):
+                yield from references(item, f"{field}[{i}]")
+
+    for path in paths:
+        if not _safe_public_path(path, root) or not path.is_file():
+            raise ValueError("Run record is absent or unsafe: " + path.name)
+        record = load_json(path)
+        if not isinstance(record, dict) or record.get("run_id") != path.stem:
+            raise ValueError("Run identity does not match its registry filename")
+        nav = index.get("runs", {}).get(path.stem, {})
+        if not isinstance(nav, dict):
+            raise ValueError("Run navigation must be an object")
+        if not isinstance(nav.get("events", []), list) or any(not isinstance(e, dict) for e in nav.get("events", [])):
+            raise ValueError("navigation events must be a list of objects")
+        for section, required in (("materials", {"reference", "role"}), ("events", {"reference"}),
+                                  ("corrections", {"original_reference", "corrected_by_reference", "adopted_reference", "scope"})):
+            rows = nav.get(section, [])
+            if not isinstance(rows, list) or any(not isinstance(row, dict) or not required <= row.keys()
+                    or any(not isinstance(row[key], str) for key in required) for row in rows):
+                raise ValueError("invalid navigation " + section)
+        execution = record.get("execution", {})
+        decisions = record.get("root_decisions", {})
+        work = record.get("scientific_work", {})
+        proposal = record.get("proposal", {})
+        if not all(isinstance(v, dict) for v in (execution, decisions, work, proposal)):
+            raise ValueError("execution/decisions/work/proposal must be objects")
+        states = dict(execution_status=execution.get("status"), budget_status=work.get("budget_status"),
+            code_decision=decisions.get("code_decision", decisions.get("code")),
+            model_decision=decisions.get("model_decision", decisions.get("model")),
+            science_decision=decisions.get("science_decision", decisions.get("science")),
+            mechanism_claim=decisions.get("mechanism_claim_status"),
+            scientific_claim_proposed=proposal.get("scientific_claim"))
+        conflicts = []
+        for a, b in ((work.get("budget_status"), decisions.get("scientific_budget_status")),
+                     (decisions.get("code"), decisions.get("code_decision")),
+                     (decisions.get("model"), decisions.get("model_decision")),
+                     (decisions.get("science"), decisions.get("science_decision"))):
+            if a is not None and b is not None and a != b:
+                conflicts.append(dict(values=[a, b], resolution="not_selected"))
+        if conflicts:
+            result["valid"] = False
+            result["issues"].append(dict(code="record_state_conflict", run_id=path.stem, conflicts=conflicts))
+        materials = list(references(record)) + list(references(nav, "navigation"))
+        events = []
+        # Only explicitly labelled execution metadata is opened, never arbitrary
+        # result JSON, arrays, weights, or paths obtained from those receipts.
+        receipt_names = {"execution.json", "execution_receipt.json", "execution_host_receipt.json",
+                         "resume_execution_receipt.json", "resume_execution_host_receipt.json",
+                         "archive_verified.json", "root_adoption.json"}
+        for event in nav.get("events", []):
+            ref = event.get("reference")
+            checked = reference(ref, "navigation.events")
+            row = dict(event, status=checked["status"])
+            if checked["status"] == "present":
+                target = root / ref
+                if not ref.startswith("results/") or target.name not in receipt_names or target.stat().st_size > 1048576:
+                    raise ValueError("event must name a small public execution/decision/archive receipt")
+                body = load_json(target)
+                if not isinstance(body, dict):
+                    raise ValueError("event receipt must be an object")
+                if body.get("run_id") not in {None, path.stem}:
+                    result["valid"] = False
+                    result["issues"].append(dict(code="event_identity_conflict", reference=ref))
+                decision = body.get("root_decisions", {})
+                row["recorded_utc"] = body.get("recorded_utc", decision.get("recorded_utc") if isinstance(decision, dict) else None)
+                row["times"] = {k: body[k] for k in ("started_utc", "completed_utc", "finished_utc", "host_start_utc", "host_end_utc") if k in body}
+                row["saved_status"] = body.get("status")
+                row["exit_code"] = body.get("exit_code")
+            events.append(row)
+        result["runs"].append(dict(run_id=path.stem, title=nav.get("title", path.stem),
+            record_reference=path.relative_to(root).as_posix(), recorded_utc=record.get("recorded_utc"),
+            purpose=record.get("purpose"), scope=record.get("scope"), states=states,
+            proposal=proposal, navigation=nav, materials=materials, events=events, conflicts=conflicts,
+            unknown_fields=[k for k, v in states.items() if v is None]))
+    return result
+
+
+def render_run_navigation(value):
+    """Render a deterministic reading view; state remains in the cited records."""
+    def text(value):
+        return ("unknown" if value is None else str(value)).replace("\n", " ").replace("|", "\\|")
+
+    lines = ["# 已登记研究材料导航", "", "记录状态来自所列登记，不代表实时进程核验；未读取本地模型、数据或预测数组。", ""]
+    if len(value["runs"]) > 1:
+        lines += ["单个 Run 的完整材料与事件关系可用 `show-run --run <编号>` 查看；本表只显示原登记值。", "",
+                  "| 中文问题 | 追溯编号／登记 | 执行 | 预算 | 模型决定 | 科学决定 |", "|---|---|---|---|---|---|"]
+        for run in value["runs"]:
+            state = run["states"]
+            lines.append(f"| {text(run['title'])} | [{run['run_id']}]({run['record_reference']}) | {text(state['execution_status'])} | {text(state['budget_status'])} | {text(state['model_decision'])} | {text(state['science_decision'])} |")
+        lines += ["", "旧字段未记录的值显示 unknown，不用提议决定补成 root 采用决定。"]
+        if value["issues"]:
+            lines += ["", "## 待核查", ""] + ["- " + text(row) for row in value["issues"]]
+        return "\n".join(lines) + "\n"
+    for run in value["runs"]:
+        nav = run["navigation"]
+        lines += ["## " + text(run["title"]), "", f"追溯编号：`{run['run_id']}`；[登记]({run['record_reference']})；记录时间：{text(run['recorded_utc'])}。", "",
+                  "| 判断 | 登记值 |", "|---|---|"]
+        labels = {"execution_status": "执行", "budget_status": "工作量／预算", "code_decision": "代码决定",
+                  "model_decision": "模型决定", "science_decision": "科学决定", "mechanism_claim": "机制主张",
+                  "scientific_claim_proposed": "提议主张（不作为采用决定）"}
+        lines += [f"| {labels[k]} | {text(v)} |" for k, v in run["states"].items()]
+        if nav.get("campaign_reference"):
+            lines += ["", f"[主题综合]({nav['campaign_reference']})；父 Run：{text(nav.get('parent_run'))}。"]
+        if nav.get("materials"):
+            lines += ["", "### 主要阅读材料", ""]
+            for row in nav["materials"]:
+                protection = row.get("path_protection", {})
+                status = "原位保留" if protection.get("status") == "preserve_current_path" else text(protection.get("status"))
+                lines.append(f"- {text(row.get('role'))}：[{text(row['reference'])}]({row['reference']})；路径处理：{status}，{text(protection.get('reason'))}。")
+            if nav.get("protection_release_condition"):
+                lines += ["", "解除条件：" + text(nav["protection_release_condition"])]
+        for correction in nav.get("corrections", []):
+            lines += ["", "### 解释更正", "", text(correction.get("scope")), "",
+                      f"[原解释]({correction['original_reference']}) → [独立更正]({correction['corrected_by_reference']}) → [采用更正的结论]({correction['adopted_reference']})。"]
+        lines += ["", "### 执行与归档事件", ""]
+        for event in run["events"]:
+            time_labels = {"started_utc": "启动", "host_start_utc": "宿主启动", "completed_utc": "完成", "finished_utc": "结束", "host_end_utc": "宿主结束"}
+            times = "；".join(time_labels[k] + "：" + text(v) for k, v in event.get("times", {}).items()) or "未记录执行时刻"
+            saved = "；保存状态：" + text(event["saved_status"]) if event.get("saved_status") is not None else ""
+            lines.append(f"- {text(event.get('label'))}：[回执]({event['reference']})；记录时间：{text(event.get('recorded_utc'))}；{times}{saved}；关系：{text(event.get('relation'))}。")
+        if not run["events"]:
+            lines.append("未补录明确的执行事件关系；不按文件名推断。")
+        lines += ["", "### 材料与字段来源", "", "仅有平铺引用的材料保留为其他已登记材料，不推断其科学用途。路径检查不核验科学内容。", "",
+                  "本页只建立导航，原件保持原位；协议、审查与源码的身份绑定沿执行释放清单核查，迁移前须解除依赖。", "",
+                  "| 字段来源 | 材料 | 路径检查 |", "|---|---|---|"]
+        grouped = {}
+        for row in run["materials"]:
+            grouped.setdefault(row["reference"], []).append(row)
+        for name, rows in grouped.items():
+            fields = "; ".join(dict.fromkeys(row["field"] for row in rows))
+            row = rows[0]
+            lines.append(f"| {text(fields)} | [{text(name)}]({row.get('resolved_reference', name)}) | {row['status']} |")
+        if run["conflicts"]:
+            lines += ["", "存在记录冲突，未自动选择其中一个值。"]
+        lines.append("")
+    if value["issues"]:
+        lines += ["## 待核查", ""] + ["- " + text(row) for row in value["issues"]]
+    return "\n".join(lines).rstrip() + "\n"
 
 
 def check_root(root_path):
@@ -447,9 +658,17 @@ def main(argv=None):
     schedule.add_argument("--slots", required=True, type=int, help="available host agent slots, including running tasks")
     render = commands.add_parser("render-state", help="render a saved snapshot, stdout by default")
     render.add_argument("--registry", required=True)
-    render.add_argument("--output", help="explicit destination; this is the only writing operation")
+    render.add_argument("--output", help="explicit destination for the rendered snapshot")
     check = commands.add_parser("check", help="check public package metadata without an installed active registry")
     check.add_argument("--root", required=True)
+    check.add_argument("--run", help="check one registered Run and its explicit public links")
+    show = commands.add_parser("show-run", help="show registered material links without executing science")
+    show.add_argument("--root", required=True)
+    selected = show.add_mutually_exclusive_group(required=True)
+    selected.add_argument("--run")
+    selected.add_argument("--all", action="store_true")
+    show.add_argument("--format", choices=("json", "markdown"), default="markdown")
+    show.add_argument("--output", help="explicit new destination; existing files are never overwritten")
     args = parser.parse_args(argv)
     try:
         if args.command == "assess":
@@ -467,6 +686,28 @@ def main(argv=None):
             else:
                 print(rendered, end="")
             return 0
+        elif args.command == "show-run":
+            result = run_navigation(args.root, args.run)
+            rendered = render_run_navigation(result) if args.format == "markdown" else json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
+            if args.output:
+                target = Path(args.output)
+                # Markdown links are rooted here, regardless of the output directory.
+                if args.format == "markdown":
+                    base = target.resolve().parent
+                    import os
+                    def relocate_link(match):
+                        link = Path(os.path.relpath(Path(args.root).resolve() / match.group(1), base)).as_posix()
+                        start, end = match.start(1) - match.start(), match.end(1) - match.start()
+                        return match.group(0)[:start] + link + match.group(0)[end:]
+                    rendered = LINK_PATTERN.sub(relocate_link, rendered)
+                target.parent.mkdir(parents=True, exist_ok=True)
+                with target.open("x", encoding="utf-8", newline="\n") as stream:
+                    stream.write(rendered)
+            else:
+                print(rendered, end="")
+            return 0 if result["valid"] else 1
+        elif args.command == "check" and args.run:
+            result = run_navigation(args.root, args.run)
         else:
             result = check_root(args.root)
         emit(result)

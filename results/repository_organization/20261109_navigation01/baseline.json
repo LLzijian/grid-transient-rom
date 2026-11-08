@@ -1,0 +1,243 @@
+{
+  "kind": "NAVIGATION_STANDARDIZATION",
+  "source_commit": "145847532bacd3454dca8869e819778efc8258f6",
+  "campaign_before": {
+    "path": "campaigns/gftd_kuramoto_discovery_20261106.md",
+    "snapshot": "reports/history/gftd_campaign/originals/gftd_kuramoto_discovery_before_synthesis_20261109.md",
+    "bytes": 11034,
+    "sha256": "6330a415161498f19b63d07e5023cc2ac15e80bd5e5359b80c879a9f1ac2ac1d",
+    "content_utf8": "# Campaign：`gftd_kuramoto_discovery_20261106`\n\n- **登记性质**：`PROSPECTIVE_ARCHITECTURE_CAMPAIGN`（顶层设计规划，2026-11-06）\n- **当前科学状态**。`active`，三步主线均已实现并执行。Run 1四个无噪K4图支撑恢复通过；Run 2接口闭环完成但调制恢复未获支持；Run 3真实train fit297完成594组初始化，静态46/297、调制1/297数值合格，失稳覆盖均0/30，总体L1与调制识别未决。两模型L2局部证书成立而实际点未获覆盖，L3对应已完成。2026-11-08独立复核后保留代码与证据、不晋升；下一问题为冻结ROM积分精度与候选动力学的区分。\n- **授权引用**。用户 2026-11-06 确定 GFTD 核心方向，2026-11-07 明确恢复按评估方案研究推进。范围内正常推进无需逐轮用户确认，数据、部署与 TASK4 边界沿用 [kiki.md](../kiki.md)，真实状态以 [current_state](../docs/current_state.md) 为准。\n- **范围明确的假说**。在给定观测与激励条件下，仅用合法因果信息，联合储能与弱形式结构选择能否区分静态耦合、动态调制和加性记忆，在可区分时选择简洁共享自治闭合，并改善 L1 预测。功率一致性、L2 证明和 L3 对应分别判断。\n- **架构版本**。[v2.0 草案及更正](../designs/gftd_kuramoto_architecture_brief.md)；当前方程采用独立审查后的 [5N 修订](../designs/gftd_repair_design_20261107.md)，实施顺序采用[三步主线](../designs/gftd_mainline_20261107_architecture.md)。\n\n---\n\n## 1. 竞争解释与判别矩阵\n\n| 竞争解释 | 区分预测（Discriminating Prediction） | 已有证据 / 反例 | 尚未解决的缺口 |\n|---|---|---|---|\n| **M0（动态调制改善闭合）** | 真值隔离后区分静态/调制边；固定初始化和共同模态算子时，调制开/关改变可观察预测 | 5N 修订已通过有界资格；已知参数初始化比较显示自由幅值可降低历史损失却损害部分含噪预测；没有调制开/关的同期真实系统证据 | 独立资格、受控正负校准和同期匹配比较 |\n| **M1（纯静态拓扑发现 $S^{\\text{edge}}>0, S^{\\text{mod}}=0$ + 线性记忆已充分）** | 无需将隐变量纳入耦合强度，仅靠稀疏静态藏本边与节点记忆即可在幅值跌落工况下达到同等失稳分类与轨迹精度 | 在 `memory_transport_20261029` 与 `state_gated_memory_20261028` 中，固定静态耦合下的记忆变体真实区间漏检均停留在 21/30 | 需在相同弱形式筛选与因果 GRU 初始化下，严格对比 $S^{\\text{mod}}=0$ 与 $S^{\\text{mod}}>0$ |\n| **M2（初始化/优化、共同参考或静态补救解释）** | 固定旧动力学，改合法初始化或给合理适配即可改变失配；共同参考来源仍需核对 | 左零和条件只保留总隐力方程，允许间接影响共同转速；六机常数空交集仅覆盖固定父参数与已发布数值必要条件 | 新噪声确认：简单初始化 131/132，case2 高噪一个有效失败；需区分端点噪声、a=0 近似及优化。常数支线保持关闭，共同模态另对照 |\n| **M3（独立时变边权）** | 去掉联合反作用后，比较预测与功率变化 | 所选储能会出现额外边权变化项，其符号和实际效应须检查 | 按判别价值决定是否消融，耗散证明缺失不直接判长期发散 |\n| **M4（噪声造成伪结构信息）** | 平衡下参数本不可辨，含噪字典却可能秩稳定并输出确定参数；信息强度规则须拒绝这些伪值 | 单尺度探针中两平衡方向估计约 47.582/3.535，两强度下近不变，主细与相对秩均稳定；无噪完整端口恢复通过 | 在拓扑 Run 中检验绝对激励、逐边条件信息及平衡对照，保留假边/漏边和 null；不另开前置支线 |\n\n---\n\n## 2. 规划 Run 树（待按序登记与释放）\n\n| 规划 Run ID | 父节点 / 起点 | 算法实例 | 类型 | 核心判别问题与验收标准 | 当前状态 |\n|---|---|---|---|---|---|\n| `gftd_repair_20261107` | v2.0 原型及父 RMemoryROM | 5N 独立 p/a/r | 数学与工程资格 | 43 项冻结检查通过；父映射、真实梯度、合法输入与存取，非零调制初始化和 fit 尚未实现 | `COMPLETED`，不晋升模型 |\n| `gftd_observability_20261107` | 5N 修订及已完成资格检查 | 固定三节点局部观测探针 | `probe` | 8 基准、末点 p 硬约束、尺度化谱和所选方向未来响应，无拟合 | `COMPLETED`；非平衡调制组局部 7 秩、条件数约百万，保留证据 |\n| `gftd_initialization_20261107` | 合格 5N 核心与局部观测探针 | 固定共享参数的末点 a/r 推断 | `probe` | 12 输入、36 优化；简单末点 a=0 达标 12/12，联合达标 8/12，充分性单列 | `COMPLETED`；简单方案为该人工范围工作基线，不晋升 |\n| `gftd_endpoint_denoising_20261107` | `gftd_noise_confirmation_20261107` | 合法末点估计与同预算硬锚再拟合 | `discrimination` | 128 含噪输入×两方案；4 无噪复用；全分母保护与主细一致 | `COMPLETED`；候选 132/132、对照 131/132；同点纠正后全部采用条件获独立复核 |\n| `gftd_endpoint_confirmation_20261107` | 已完成末点诊断及独立纠正附录 | simple600→smooth1200 完整流程 | `confirmation` | 64 个新方向、两档配对；所有输入从合法历史初始化，原预测门 | `COMPLETED`；14 项工程资格通过，新含噪 128/128、无噪 4/4，独立结果复核后限定采用工作初始化 |\n| `gftd_stage0_unit_verification` | `bd4db25` | `GFTDKuramotoModel` v2.0 原型 | 工程与数学性质单测 | 2026-11-07 更正原“已完成”描述，六项单测通过仅支持对应条件，全部资格尚未通过 | `REPAIR_REQUIRED`，保留原测试结果 |\n| `gftd_noise_confirmation_20261107` | `gftd_initialization_20261107` | 固定简单初始化 | `confirm` | 64 个新方向配对两档强度；低噪 64/64、高噪 63/64、无噪 4/4 达标 | `COMPLETED`；有限全通过陈述被推翻，保留基线与失败方向 |\n| `gftd_stage1_kuramoto_recovery` | 5N 合格修订及初始化证据 | 部分观测结构推断，待设计 | `probe` / `discrimination` | 同族静态/调制正负校准，隔离图与隐轨迹真值，再检查独立生成机制 | `DRAFT_PENDING_RELEASE` |\n| `gftd_coupling_memory_20261107` | 完整初始化确认与单共享尺度设计 | 关闭调制、固定边形状；弱形式解析消去记忆初态 | `discrimination` | 端口资格后，以同 11 点比较多测试与单测试；9 轨迹、27 观测包、264 次代数求解 | `COMPLETED`；无噪 c 误差 3.63e-5/4.62e-5，单测试 66/66 不可辨；含噪平衡存在秩稳定伪参数，独立复核后保留证据 |\n| `gftd_sparse_topology_20261107` | `0cf535b` 单共享尺度证据 | K4 未知六边、完整端口和记忆消元 | `discrimination` | 四个隐藏图，三事件共享；无噪精确支撑/权重及零图、平衡对照；含噪逐项报告 | `COMPLETED`；四图无噪恢复通过，含噪支撑均正确但权重误差最大0.264；24平衡设置null，独立复核后保留证据 |\n| `gftd_modulation_20261107` | Run 1 已归档3fd58f4 | 候选自洽幅值、精确指数列、层级门及 fit/initialize | `adaptation` | 12条件、24观测包、16模型和48完整初始化；因果接口、结构与预测分开判断 | `COMPLETED`；100项联合工程检查及17项续跑检查，48数值过/30预测过，调制恢复未获支持；独立复核后保留证据 |\n| `gftd_fit297_20261107` | Run 2已归档66f1308；机制未识别 | 全体静态弱拟合、固定24包适配、全297评价 | `discrimination` | L1原分母、同ODE严格L2、既有descriptor与PQZ Kron L3 | `COMPLETED`；2fit、594初始化、47双步长预测。总体L1为null；L2点覆盖0，L3各10/13模态配对；一次无重放I/O续跑，工作量关闭且不转移 |\n| `gftd_stage2_coi_decoupling` | 受控证据与合格修订，具体父候选待冻结 | 静态耦合候选 | `discrimination` | 在 `train fit297` 固定同一初始化和静态图，仅改变共同模态算子 | 旧规划保留；不再作为三步主线前置 |\n| `gftd_stage2_latent_modulated_topology` | `gftd_stage2_coi_decoupling` 的冻结候选 | 动态调制候选 | `discrimination` / `adaptation` | 固定初始化与共同模态设置，调制开/关同期比较，L2 另证，L3 report-only | `DRAFT_PENDING_RELEASE` |\n\n上述是规划引用，真实 Run/Job 身份、有限工作量和父候选在前瞻协议中冻结。数学反例和便宜辨别可直接推进相关问题。\n\n---\n\n## 3. 已用适配与信息暴露谱系\n\n- 继承自 `force_memory_closure_20261030` 及前序 `retrospective_force_memory_20261030` 的 `train fit297` 暴露记录完整保留，不因架构升级为 v2.0 而清零历史暴露。\n- 原始 `val/test` 保持关闭；旧已消费 `test` 永久退出模型选择；`new FOM = 0`。\n- `train fit297` 的重复比较属于条件内辨别，种子重复衡量优化随机性。历史 `memory_transport_20261029` A/S/P 各组在真实可用区间漏检均为 21/30 个失稳样本、8 s 均为 4/30、误报均为 0/267 个稳定样本，该结果仅作动机，不能替代同期对照。\n\n## 4. 下一个最有判别力的问题与重开/停止条件\n\n- **下一最小工作**。三步主线本轮执行已闭合，见[fit297结论](../reports/gftd_fit297_20261107_conclusion.md)。先完成选择性归档；下一主线前瞻区分冻结ROM的积分精度不足与参数/初始化所产生的动力学问题。保留594原分母、原数值门、14次溢出和失稳0/30覆盖，不把后续细步结果补入本轮；下一科学动作尚未释放。\n\n- **2026-11-08证据更新**。M0/M1的同期流程已执行，但总体预测比较因数值资格覆盖不足保持未决；不再将“未执行真实比较”作为当前缺口。M2需要区分共享适配351/384任务到限与初始化后的数值资格损失：646初始化优化任务均收敛，却有547项未返回合格初态。条件支撑为静态35边、调制35边及25调制边，联合唯一性unknown。L2非空局部证明不覆盖本轮47实点；L3的K–绝对Kron导纳相关0.440/0.483及10/13模态配对用于描述，不替代L1。详见[Scientist判读](../reports/gftd_fit297_20261107_scientific_assessment.md)、[独立结果审查](../reports/gftd_fit297_20261107_result_review.md)及[root采用](../results/gftd_fit297_20261107/root_adoption.json)。\n- **判别顺序**。同族正负校准分开检查恢复和误检，推断端隔离真实图及隐轨迹，再比较独立生成机制与最强替代解释，随后准备 IEEE39 条件内辨别。\n- **停止/转向条件**。无效实现先有界修复；信息不足或机制不可区分时检查可观测性和等价类，按证据决定修订或暂存。正、负、混合结果按五轴判读，确认需求与晋升资格分开。每个 Run 预登记比较、适配上限、停止/重开条件和实际成本，旧余额不转移。\n"
+  },
+  "frozen_files": [
+    {
+      "path": "harness/runs/analytic_p_backward_qualification_20261031.json",
+      "sha256": "5a9db95b39a89a5896d0f0a5bf0bcb21dd92a192da5e485973a1f54e257708db"
+    },
+    {
+      "path": "harness/runs/checkpoint_selection_20261030.json",
+      "sha256": "02842437f6f19dff7603e6bcc66dea9401151069b23a7ed3f55224a8759bd057"
+    },
+    {
+      "path": "harness/runs/closure_probe_20261030.json",
+      "sha256": "b59a4ecd63940129a2738589a6737fe143c6ab59972cbd9b8deb817a6c3537a8"
+    },
+    {
+      "path": "harness/runs/gftd_coupling_memory_20261107.json",
+      "sha256": "7a8cf74613a3facd08ac651ae1b7866fdc5c660368ff3b0815cd168a7624d8ab"
+    },
+    {
+      "path": "harness/runs/gftd_endpoint_confirmation_20261107.json",
+      "sha256": "c0b5bc96710a9f77bca0eafdb8dcf748414eb00dab2a21984f97f7e3ccdaa2c2"
+    },
+    {
+      "path": "harness/runs/gftd_endpoint_denoising_20261107.json",
+      "sha256": "cd8d5654a1f36536a7985469d47e5d40e64e599527e2905a942a9e9335e50910"
+    },
+    {
+      "path": "harness/runs/gftd_fit297_20261107.json",
+      "sha256": "0e80e5f71d27ddba163183384c3409c99be74da86ac5b577ec6e0357d4886115"
+    },
+    {
+      "path": "harness/runs/gftd_initialization_20261107.json",
+      "sha256": "dff1119f3e62b4d7d1c553b7b6d865cae0d225f679320b67d742d8d7da077cac"
+    },
+    {
+      "path": "harness/runs/gftd_modulation_20261107.json",
+      "sha256": "f02c474490739f8104e553da864210bfff2f3c38238c17f9117d2fe43eba5bcd"
+    },
+    {
+      "path": "harness/runs/gftd_noise_confirmation_20261107.json",
+      "sha256": "970aab2656631d72c4b334b3acc9564dad895d345dc48cc5a76edfa35a27484c"
+    },
+    {
+      "path": "harness/runs/gftd_observability_20261107.json",
+      "sha256": "26b4ae434dd4a9fd55d897a5e60f42adf4fdbb532ad704262e3f997b5c173620"
+    },
+    {
+      "path": "harness/runs/gftd_sparse_topology_20261107.json",
+      "sha256": "4d33851e9db88572d6e655b3e06f4d9ad25c165d66dbbb8f76cd392d48df9ee6"
+    },
+    {
+      "path": "harness/runs/p_constant_direction_20261031.json",
+      "sha256": "8a2e7dadf86bee8cd55c53455c2bbfae49980854735e94c686c8dbb9c94dc45b"
+    },
+    {
+      "path": "harness/runs/p_constant_norm_20261031.json",
+      "sha256": "21f0f9d39ed5f031295c45df3553613fb76329fa92eb28aee190a13d539b7a45"
+    },
+    {
+      "path": "harness/runs/p_dissipative_identifiability_20261031.json",
+      "sha256": "8fe9e5dcec7aeb3bdd1ee80a2636ef88f21e231106cd22f311729436bdb2e015"
+    },
+    {
+      "path": "harness/runs/p_driver_order_20261031.json",
+      "sha256": "874f90a78f360bf933b934a7afa316e988ac9e9720bb76c37d181d0fa5fe0fd1"
+    },
+    {
+      "path": "harness/runs/p_form_discrimination_20261031.json",
+      "sha256": "2dacf8a09b7d3e6a84b6409ce976552bef1b65ca5bdd1664f2d3a6a0e792ff27"
+    },
+    {
+      "path": "harness/runs/p_history_transfer_20261031.json",
+      "sha256": "f0871dd9b23423920f4a11550f230f1e4c8391ba16c63b2bae1e05651ca40b52"
+    },
+    {
+      "path": "harness/runs/p_port_diagnostic_20261031.json",
+      "sha256": "336184855383319a8880624d1a714c3a0aa2a028b3b2a66ae7b270ae0c3c1f27"
+    },
+    {
+      "path": "harness/runs/p_residual_stage_20261031.json",
+      "sha256": "8167cce46f35d4a2d3a6e6d4bcca1923dbbd7fe9baec66b49bf68ab9e8b6839c"
+    },
+    {
+      "path": "harness/runs/p_reverse_precision_20261031.json",
+      "sha256": "ab4e448410ff92a145307ee5f1419e7035a9f7d71f9da876d412f8b19cef19b6"
+    },
+    {
+      "path": "reports/gftd_sparse_topology_20261107_conclusion.md",
+      "sha256": "4d74cc22d384e23536d508ddd5596fa7d16f6de094f65f60ff33d24d83b4c081"
+    },
+    {
+      "path": "reports/gftd_sparse_topology_20261107_design_review.md",
+      "sha256": "1197d610fcb921bfc7948fa7f4c5977b062aed864b8656cdbf5ac60575e86544"
+    },
+    {
+      "path": "reports/gftd_sparse_topology_20261107_implementation_review.md",
+      "sha256": "01e245ac103543deef01ec32e9d59afb036eb4e5f598fd9f1790f6e155b828ac"
+    },
+    {
+      "path": "reports/gftd_sparse_topology_20261107_protocol.md",
+      "sha256": "040b03bec2bf2021df7bb4ff1d18ba769095d5023aa73e6178ce38924e510368"
+    },
+    {
+      "path": "reports/gftd_sparse_topology_20261107_result_review.md",
+      "sha256": "a2b67d8920ab7c542019c4e0106483406ae00409b27e8e99efbf90b0ae311080"
+    },
+    {
+      "path": "reports/gftd_sparse_topology_20261107_scientific_assessment.md",
+      "sha256": "cf3d2f889697ce9bfd40ddf61363acf23437fa00a5d4482d79c34b528a178ebe"
+    },
+    {
+      "path": "reports/gftd_modulation_20261107_api_review.md",
+      "sha256": "91c637856915ea66a8514b6c83ad2653d2cd64842fcbbfc3735548b900f18c30"
+    },
+    {
+      "path": "reports/gftd_modulation_20261107_conclusion.md",
+      "sha256": "2e4d6c529fd215991a150815cd962e7093d7b5920e8299b0495297e6910a736c"
+    },
+    {
+      "path": "reports/gftd_modulation_20261107_design_review.md",
+      "sha256": "1d57115c4e962d8cba4823c81b7c246f9b125c72dacadfc83430c6b14290471a"
+    },
+    {
+      "path": "reports/gftd_modulation_20261107_implementation_review.md",
+      "sha256": "1dad157ffa3b86dc98260f06539583af897e647a7277906934b014f59125f563"
+    },
+    {
+      "path": "reports/gftd_modulation_20261107_preparation.md",
+      "sha256": "8cb9fe4ab984aadc749904a3862109a55d4ef2855bee30ec782b3bc5d28a2bb5"
+    },
+    {
+      "path": "reports/gftd_modulation_20261107_protocol.md",
+      "sha256": "54622ad9da5fea1afb326140c6d4288a51bddca2aae896ef10926f951b09dcb0"
+    },
+    {
+      "path": "reports/gftd_modulation_20261107_protocol_draft.md",
+      "sha256": "bd3ac2fc22b701befb06d9451e65612b7c2a39ff1b3d019d1d88af98927a14a9"
+    },
+    {
+      "path": "reports/gftd_modulation_20261107_repair01_review.md",
+      "sha256": "a7d502522eb8565c344f60328a7e568fa32806a4299096fd69b20e82e43542de"
+    },
+    {
+      "path": "reports/gftd_modulation_20261107_result_review.md",
+      "sha256": "39905fc68ab943d25491d0d7f3163a790b208490d80581612365cfb9eeecc573"
+    },
+    {
+      "path": "reports/gftd_modulation_20261107_scientific_assessment.md",
+      "sha256": "81512094e227250fe11b3f5b591be4582180d9a0ab82d330373fd9a0d4b080fd"
+    },
+    {
+      "path": "reports/gftd_fit297_20261107_analysis_review.md",
+      "sha256": "99c312d974b982ef43cc09bd34b200f03c1d5db5db8cf67c22373ba9558ce90d"
+    },
+    {
+      "path": "reports/gftd_fit297_20261107_conclusion.md",
+      "sha256": "1508bd817ea510b207159fbf6f070c06cb24f65c2f46a085d0c87d3a4821b78c"
+    },
+    {
+      "path": "reports/gftd_fit297_20261107_design_review.md",
+      "sha256": "e9cf79e5f6a82101e811ac722cfb4192066378c6fa90864c9fe9cbb4dd864b6a"
+    },
+    {
+      "path": "reports/gftd_fit297_20261107_design_review_preparation.md",
+      "sha256": "0396a0549b27eccd4843c39b66f5d5fe4890811b18edafa77887edae92e59dbd"
+    },
+    {
+      "path": "reports/gftd_fit297_20261107_engine_review.md",
+      "sha256": "6a35b948e743a0a93093266d6703803b471be8de45414b5d8575f4a2b261010e"
+    },
+    {
+      "path": "reports/gftd_fit297_20261107_implementation_review.md",
+      "sha256": "9f06deb4d2d78027e44aae9c54fd78eb81464490fc354d6b99aab88accd5a8ad"
+    },
+    {
+      "path": "reports/gftd_fit297_20261107_interface_inventory.md",
+      "sha256": "f359d8769d1a57c0028cef04561008d76e7bbb51e124e35e3c9c691342c4ac42"
+    },
+    {
+      "path": "reports/gftd_fit297_20261107_kron_conventions_review.md",
+      "sha256": "00b0200a222efeab1ee433d3e4868c8244008c9abc27fb235f15df94a8a35545"
+    },
+    {
+      "path": "reports/gftd_fit297_20261107_l1_adapter_contract.md",
+      "sha256": "2d09f180266875a6100c15c61cc915fc5a2e7752d1de641dce6be603d6c74252"
+    },
+    {
+      "path": "reports/gftd_fit297_20261107_l2_design.md",
+      "sha256": "78dded5c0aef2a61339aa9e6c2383cf42385e53c1bc4691b8c0121c3c7b1fc4d"
+    },
+    {
+      "path": "reports/gftd_fit297_20261107_l2_review.md",
+      "sha256": "4831a4d0f24a9e059d87109afabaae19ee908ed5079a3b879c0930a0d5fbcc83"
+    },
+    {
+      "path": "reports/gftd_fit297_20261107_l2_roundoff_review.md",
+      "sha256": "699c67681488b9a74e56503f1ed199ee98cf0074634f423a1f474dc0ead63285"
+    },
+    {
+      "path": "reports/gftd_fit297_20261107_performance_preparation.md",
+      "sha256": "8476c49bd06531828ac5221254219256dd8eb2dca4f8524100999a8ecc742fd0"
+    },
+    {
+      "path": "reports/gftd_fit297_20261107_physical_reference.md",
+      "sha256": "6e332f85d2906a45cb7175cc8fbad1f12cfb9b38cc50ae3525894a8b7da9d9f3"
+    },
+    {
+      "path": "reports/gftd_fit297_20261107_protocol.md",
+      "sha256": "ca22743c53fe4fe398960e111838a373f8c4686eab0974c5daf6d9c28435062f"
+    },
+    {
+      "path": "reports/gftd_fit297_20261107_protocol_draft.md",
+      "sha256": "69cc7783ad9827cada77dd1728e675c2d3b0fa15785a81e6997e74d77f5a2d3d"
+    },
+    {
+      "path": "reports/gftd_fit297_20261107_result_review.md",
+      "sha256": "b4cc370ce200f75d2538cd58b74dc1ac8f098d7615a885aa5251567ea2596c3e"
+    },
+    {
+      "path": "reports/gftd_fit297_20261107_resume01_design_review.md",
+      "sha256": "3f16b5a11a5f7d44110fc2c472a51538a2f03278023efbb94c2ec64e8e21d5a3"
+    },
+    {
+      "path": "reports/gftd_fit297_20261107_resume01_implementation_review.md",
+      "sha256": "a7718704749461a40a1d9eac676ab332ca64432043a9023110b7807840fd6aaf"
+    },
+    {
+      "path": "reports/gftd_fit297_20261107_scientific_assessment.md",
+      "sha256": "201f8263f42e28d08c7993f61f9205ae7ffeea20e1be67ba6872bb35c154c201"
+    }
+  ],
+  "cli_edits_started_before_this_capture": true,
+  "scientific_runs_started": false
+}

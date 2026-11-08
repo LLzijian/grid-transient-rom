@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "kind": "RETROSPECTIVE_FILE_INVENTORY",
+  "started_at_utc": "2026-11-08T12:17:18.259261+00:00",
+  "completed_at_utc": "2026-11-08T12:17:54.651508+00:00",
+  "source_commit": "145847532bacd3454dca8869e819778efc8258f6",
+  "branch": "codex/repository-inventory-20261108",
+  "coverage": [
+    "reports",
+    "results",
+    "experiments"
+  ],
+  "context": [
+    "campaigns",
+    "harness",
+    "designs",
+    "docs",
+    "src",
+    "tests",
+    "tools",
+    "configs",
+    "templates"
+  ],
+  "excluded_output": "results/repository_organization/20261108_inventory01",
+  "entries": 4408,
+  "primary_entries": 3659,
+  "counts_by_root": {
+    "reports": 773,
+    "results": 2391,
+    "experiments": 495,
+    "campaigns": 4,
+    "harness": 32,
+    "designs": 35,
+    "docs": 6,
+    "src": 111,
+    "tests": 536,
+    "tools": 4,
+    "configs": 9,
+    "templates": 6,
+    "AGENTS.md": 1,
+    "kiki.md": 1,
+    "README.md": 1,
+    "pyproject.toml": 1,
+    ".gitignore": 1,
+    ".gitattributes": 1
+  },
+  "counts_by_storage": {
+    "versioned": 3396,
+    "local_ignored": 1010,
+    "local_untracked": 2
+  },
+  "counts_by_handling": {
+    "protected_in_place": 2000,
+    "ready_for_content_review": 826,
+    "needs_attribution_review": 1582
+  },
+  "dependency_clues": 13533,
+  "dynamic_scan_clues": 136,
+  "text_files_hashed": 1599,
+  "unreadable_or_skipped": [],
+  "metadata_parse_issues": [],
+  "migrations_by_verification": {
+    "documentation:bytes_and_sha256_match": 74,
+    "local_storage:metadata_counts_and_bytes_match": 216
+  },
+  "original_file_changes_observed": [],
+  "git_status_before": "?? tests/test_repository_inventory.py\n?? tools/repository_inventory.py\n",
+  "git_status_after": "?? tests/test_repository_inventory.py\n?? tools/repository_inventory.py\n",
+  "git_warnings": "",
+  "snapshot_atomic": false,
+  "scientific_payloads_read": false,
+  "local_payload_hashes_recomputed": false,
+  "original_files_written": false,
+  "scientific_classification_performed": false,
+  "migration_or_deletion_authorized": false,
+  "live_process_state_verified": false,
+  "limitations": [
+    "静态依赖为线索，不证明现行调用或穷尽动态消费者",
+    "未匹配引用不表示文件可移动",
+    "本地产物仅按旧迁移清单核对当前数量与大小；旧SHA256结果不冒充本次重验",
+    "私有保护根仅检查根路径；旧不可访问子树未重新遍历",
+    "快照非原子；变化见逐项检查",
+    "mtime/大小相同的未读二进制内容没有做前后哈希保证"
+  ]
+}
