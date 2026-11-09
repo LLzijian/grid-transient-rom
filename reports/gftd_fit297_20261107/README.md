@@ -20,9 +20,9 @@
 
 ### 主要阅读材料
 
-- 冻结协议：[reports/gftd_fit297_20261107_protocol.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_fit297_20261107_protocol.md)；路径处理：原位保留，源码或路径哈希身份引用。
-- 正式结论：[reports/gftd_fit297_20261107_conclusion.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_fit297_20261107_conclusion.md)；路径处理：原位保留，源码或路径哈希身份引用。
-- 独立结果审查：[reports/gftd_fit297_20261107_result_review.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_fit297_20261107_result_review.md)；路径处理：原位保留，源码或路径哈希身份引用。
+- 冻结协议：[reports/gftd_fit297_20261107_protocol.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_fit297_20261107_protocol.md)；路径处理：已核验迁移，源码或路径哈希身份引用。
+- 正式结论：[reports/gftd_fit297_20261107_conclusion.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_fit297_20261107_conclusion.md)；路径处理：已核验迁移，源码或路径哈希身份引用。
+- 独立结果审查：[reports/gftd_fit297_20261107_result_review.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_fit297_20261107_result_review.md)；路径处理：已核验迁移，源码或路径哈希身份引用。
 - 执行入口：[experiments/gftd_fit297_20261107.py](../../experiments/gftd_fit297_20261107.py)；路径处理：原位保留，源码或路径哈希身份引用。
 - 结果摘要：[results/gftd_fit297_20261107/evidence_digest.json](../../results/gftd_fit297_20261107/evidence_digest.json)；路径处理：原位保留，源码或路径哈希身份引用。
 - root决定：[results/gftd_fit297_20261107/root_adoption.json](../../results/gftd_fit297_20261107/root_adoption.json)；路径处理：原位保留，现有正式登记或报告仍引用原路径。
@@ -31,7 +31,7 @@
 - 历史准备／专项审查原件（不替代最终协议）：[reports/gftd_fit297_20261107/originals/gftd_fit297_20261107_l2_review.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_fit297_20261107_l2_review.md)；路径处理：archived_byte_identical，本批核清引用后归档，保留内容身份和原版本阅读入口。
 - 历史准备／专项审查原件（不替代最终协议）：[reports/gftd_fit297_20261107/originals/gftd_fit297_20261107_protocol_draft.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_fit297_20261107_protocol_draft.md)；路径处理：archived_byte_identical，本批核清引用后归档，保留内容身份和原版本阅读入口。
 
-解除条件：另立迁移批次核查全部调用者和冻结身份，保留旧执行恢复方式；核验新导航与映射后再解除，不回写旧协议或哈希。
+原登记的解除条件为 另立迁移批次核查全部调用者和冻结身份，保留旧执行恢复方式；核验新导航与映射后再解除，不回写旧协议或哈希。
 
 ### 解释更正
 
@@ -56,22 +56,22 @@ L3图相关性使用K(a=0)对绝对Kron导纳，不是K cos(phi*)；更正物理
 |---|---|---|
 | execution.final_receipt_reference; evidence.references[19]; inference.review_record.reviewed_references[19]; navigation.events[1].reference | [results/gftd_fit297_20261107/resume01/execution.json](../../results/gftd_fit297_20261107/resume01/execution.json) | present |
 | execution.archival.receipt_reference; navigation.events[3].reference | [results/gftd_fit297_20261107/archive_verified.json](../../results/gftd_fit297_20261107/archive_verified.json) | present |
-| evidence.references[0]; inference.evaluation_contract_reference; inference.comparison_reference; inference.budget_reference; inference.selection_accounting_reference; inference.review_record.reviewed_references[0]; navigation.materials[0].reference | [reports/gftd_fit297_20261107_protocol.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_fit297_20261107_protocol.md) | present |
-| evidence.references[1]; inference.review_record.reviewed_references[1] | [reports/gftd_fit297_20261107_design_review.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_fit297_20261107_design_review.md) | present |
+| evidence.references[0]; inference.evaluation_contract_reference; inference.comparison_reference; inference.budget_reference; inference.selection_accounting_reference; inference.review_record.reviewed_references[0]; navigation.materials[0].reference | [reports/gftd_fit297_20261107_protocol.md](originals/gftd_fit297_20261107_protocol.md) | migrated_sha256_verified |
+| evidence.references[1]; inference.review_record.reviewed_references[1] | [reports/gftd_fit297_20261107_design_review.md](originals/gftd_fit297_20261107_design_review.md) | migrated_sha256_verified |
 | evidence.references[2]; inference.review_record.reviewed_references[2] | [results/gftd_fit297_20261107/design_adoption.json](../../results/gftd_fit297_20261107/design_adoption.json) | present |
 | evidence.references[3]; inference.review_record.reviewed_references[3] | [results/gftd_fit297_20261107/parent_archive_verified.json](../../results/gftd_fit297_20261107/parent_archive_verified.json) | present |
-| evidence.references[4]; inference.review_record.reviewed_references[4] | [reports/gftd_fit297_20261107_analysis_review.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_fit297_20261107_analysis_review.md) | present |
-| evidence.references[5]; inference.review_record.reviewed_references[5] | [reports/gftd_fit297_20261107_engine_review.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_fit297_20261107_engine_review.md) | present |
+| evidence.references[4]; inference.review_record.reviewed_references[4] | [reports/gftd_fit297_20261107_analysis_review.md](originals/gftd_fit297_20261107_analysis_review.md) | migrated_sha256_verified |
+| evidence.references[5]; inference.review_record.reviewed_references[5] | [reports/gftd_fit297_20261107_engine_review.md](originals/gftd_fit297_20261107_engine_review.md) | migrated_sha256_verified |
 | evidence.references[6]; inference.review_record.reviewed_references[6] | [results/gftd_fit297_20261107/static_identity_audit.json](../../results/gftd_fit297_20261107/static_identity_audit.json) | present |
 | evidence.references[7]; inference.review_record.reviewed_references[7] | [results/gftd_fit297_20261107/metadata_preflight.json](../../results/gftd_fit297_20261107/metadata_preflight.json) | present |
-| evidence.references[8]; inference.review_record.reviewed_references[8] | [reports/gftd_fit297_20261107_implementation_review.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_fit297_20261107_implementation_review.md) | present |
+| evidence.references[8]; inference.review_record.reviewed_references[8] | [reports/gftd_fit297_20261107_implementation_review.md](originals/gftd_fit297_20261107_implementation_review.md) | migrated_sha256_verified |
 | evidence.references[9]; inference.review_record.reviewed_references[9] | [results/gftd_fit297_20261107/integrated_qualification.json](../../results/gftd_fit297_20261107/integrated_qualification.json) | present |
 | evidence.references[10]; inference.review_record.reviewed_references[10]; navigation.materials[3].path_protection.consumers[2].reference | [results/gftd_fit297_20261107/execution_release.json](../../results/gftd_fit297_20261107/execution_release.json) | present |
-| evidence.references[11]; inference.review_record.reviewed_references[11] | [reports/gftd_fit297_20261107_resume01_implementation_review.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_fit297_20261107_resume01_implementation_review.md) | present |
+| evidence.references[11]; inference.review_record.reviewed_references[11] | [reports/gftd_fit297_20261107_resume01_implementation_review.md](originals/gftd_fit297_20261107_resume01_implementation_review.md) | migrated_sha256_verified |
 | evidence.references[12]; inference.review_record.reviewed_references[12]; navigation.materials[0].path_protection.consumers[1].reference; navigation.materials[3].path_protection.consumers[6].reference | [results/gftd_fit297_20261107/resume01/execution_release.json](../../results/gftd_fit297_20261107/resume01/execution_release.json) | present |
-| evidence.references[13]; inference.effect_reference; inference.review_record.reviewed_references[13]; navigation.materials[1].reference; navigation.corrections[0].adopted_reference | [reports/gftd_fit297_20261107_conclusion.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_fit297_20261107_conclusion.md) | present |
-| evidence.references[14]; inference.optimization_adequacy_reference; inference.alternative_explanations_reference; inference.review_record.reviewed_references[14]; navigation.corrections[0].original_reference | [reports/gftd_fit297_20261107_scientific_assessment.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_fit297_20261107_scientific_assessment.md) | present |
-| evidence.references[15]; inference.independent_review_reference; inference.review_record.reference; inference.review_record.reviewed_references[15]; navigation.materials[2].reference; navigation.corrections[0].corrected_by_reference | [reports/gftd_fit297_20261107_result_review.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_fit297_20261107_result_review.md) | present |
+| evidence.references[13]; inference.effect_reference; inference.review_record.reviewed_references[13]; navigation.materials[1].reference; navigation.corrections[0].adopted_reference | [reports/gftd_fit297_20261107_conclusion.md](originals/gftd_fit297_20261107_conclusion.md) | migrated_sha256_verified |
+| evidence.references[14]; inference.optimization_adequacy_reference; inference.alternative_explanations_reference; inference.review_record.reviewed_references[14]; navigation.corrections[0].original_reference | [reports/gftd_fit297_20261107_scientific_assessment.md](originals/gftd_fit297_20261107_scientific_assessment.md) | migrated_sha256_verified |
+| evidence.references[15]; inference.independent_review_reference; inference.review_record.reference; inference.review_record.reviewed_references[15]; navigation.materials[2].reference; navigation.corrections[0].corrected_by_reference | [reports/gftd_fit297_20261107_result_review.md](originals/gftd_fit297_20261107_result_review.md) | migrated_sha256_verified |
 | evidence.references[16]; inference.probe_reference; inference.review_record.reviewed_references[16]; navigation.materials[4].reference | [results/gftd_fit297_20261107/evidence_digest.json](../../results/gftd_fit297_20261107/evidence_digest.json) | present |
 | evidence.references[17]; inference.review_record.reviewed_references[17] | [results/gftd_fit297_20261107/independent_result_audit.json](../../results/gftd_fit297_20261107/independent_result_audit.json) | present |
 | evidence.references[18]; inference.review_record.reviewed_references[18]; navigation.materials[6].reference | [results/gftd_fit297_20261107/raw_artifacts_manifest.json](../../results/gftd_fit297_20261107/raw_artifacts_manifest.json) | present |
@@ -94,8 +94,4 @@ L3图相关性使用K(a=0)对绝对Kron导纳，不是K cos(phi*)；更正物理
 | navigation.materials[8].reference | [reports/gftd_fit297_20261107/originals/gftd_fit297_20261107_l2_review.md](originals/gftd_fit297_20261107_l2_review.md) | present |
 | navigation.materials[9].reference | [reports/gftd_fit297_20261107/originals/gftd_fit297_20261107_protocol_draft.md](originals/gftd_fit297_20261107_protocol_draft.md) | present |
 
-表中的路径保护沿用登记时的记录。[归档恢复核验](../../results/repository_organization/20261109_fit297_runtime_recovery29/README.md)列出当前原件位置、旧路径、SHA256 和原校验入口。
-
-[早期设计、接口与数值复核材料](../../results/repository_organization/20261109_fit297_archive16/README.md)提供固定阅读版和归档原件。
-
-[结论与独立复核](../../results/repository_organization/20261109_fit297_citations21/README.md)提供固定阅读版和归档原件。
+[冻结协议与续跑审查归档](../../results/repository_organization/20261109_fit297_runtime_recovery29/README.md) · [早期设计、接口与数值复核](../../results/repository_organization/20261109_fit297_archive16/README.md) · [结论与独立复核](../../results/repository_organization/20261109_fit297_citations21/README.md)

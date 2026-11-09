@@ -16,7 +16,7 @@
 ## 查材料与采用决定
 
 - [材料表](catalog.md)按原始标题提供协议、结果、咨询和审查入口；每份原件保持一份，不补造历史 Job。
-- [路径保护表](protected.md)解释为什么大部分正式协议、源码绑定与关键结论仍保留原处；保护不是科学接受标签。
+- 正式协议、结论和审查原件可从材料表回查。旧执行绑定与恢复方式见下方按日期排列的回执。
 - [Campaign 固定阅读版](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/campaigns/force_memory_closure_20261030.md)和[当前 Campaign 卡](../../../campaigns/force_memory_closure_20261030.md)保留完整问题谱系；[原追溯索引](../../../campaigns/retrospective_force_memory_20261030.md)保留编制时点与固定提交来源。
 - [正式 Run 中文总表](../../run_index.md)连接已登记的 p 通道工作；字段未记录的采用决定显示 unknown，不用提议值代替 root 决定。
 
@@ -24,10 +24,4 @@
 
 另可阅读[2026-10-29项目概览](project_overview_20261029_reading.html)：这是修复链接的历史阅读版，字节不变原件与来源快照另存。恢复评价和p通道检查的[旧代码入口](../../../experiments/history/force_memory/README.md)按原报告回查。
 
-第八批在前序代码／概览归档后复核保护边界，再解除6份报告／证据的旧路径依赖；[最新累计位置](../../../results/repository_organization/20261109_history08/migration.json)与本主题保护表接续原记录。
-
-[历史报告恢复核验](../../../results/repository_organization/20261109_force_20261025to28_runtime_recovery34/README.md)列出旧路径、冻结 SHA256 和原校验入口。
-
-[历史报告恢复核验](../../../results/repository_organization/20261109_force_20261029_runtime_recovery35/README.md)列出旧路径、冻结 SHA256 和原校验入口。
-
-[历史报告恢复核验](../../../results/repository_organization/20261109_force_20261030to31_runtime_recovery36/README.md)列出旧路径、冻结 SHA256 和原校验入口。
+[10 月 25—28 日](../../../results/repository_organization/20261109_force_20261025to28_runtime_recovery34/README.md)、[10 月 29 日](../../../results/repository_organization/20261109_force_20261029_runtime_recovery35/README.md)和[10 月 30—31 日](../../../results/repository_organization/20261109_force_20261030to31_runtime_recovery36/README.md)的归档回执分别列出原路径、SHA256 和恢复方式。

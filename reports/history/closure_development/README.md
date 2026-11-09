@@ -26,7 +26,7 @@
 
 工程与执行记录见[边幅值 QA](../../../results/edge_memory_amplitude_20261021/qa01_summary.json)、[多项式 QA](../../../results/edge_polynomial_runtime_20261021/qa02_summary.json)、[有限语法执行回执](../../../results/finite_grammar_execution_20261022/completion_summary.json)及[饱和端口核验结论](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/tanh_port_runtime_20261019_conclusion.md)。回执完成状态与上文的科学结论分别解释。
 
-[材料表](catalog.md)列出本主题原件、原标题、原位置及固定提交阅读入口；[保护表](protected.md)列出仍受路径约束的相关材料。跟随冻结原文内部链接时使用固定提交版本，本地原件不改写链接。
+[材料表](catalog.md)列出本主题原件、原标题、原位置及固定提交阅读入口。跟随冻结原文的相对链接时使用固定提交版本。
 
 这一阶段继承 [A—E 闭合发现](../closure_discovery/README.md)，后续进入 [R-memory、空间作用与 p 通道](../force_memory/README.md)。这些联系描述研究问题的推进，不补造历史 Run 或独立确认。
 
@@ -34,8 +34,4 @@
 
 另存有[2026-10-25外部项目综合咨询](../../consensus_project_review_20261025/README.md)，与正式Run结论及独立审查分别阅读。
 
-[历史报告恢复核验](../../../results/repository_organization/20261109_closure_20261020_runtime_recovery31/README.md)列出旧路径、冻结 SHA256 和原校验入口。
-
-[历史报告恢复核验](../../../results/repository_organization/20261109_closure_20261021_runtime_recovery32/README.md)列出旧路径、冻结 SHA256 和原校验入口。
-
-[历史报告恢复核验](../../../results/repository_organization/20261109_closure_20261023_runtime_recovery33/README.md)列出旧路径、冻结 SHA256 和原校验入口。
+[10 月 20 日](../../../results/repository_organization/20261109_closure_20261020_runtime_recovery31/README.md)、[10 月 21 日](../../../results/repository_organization/20261109_closure_20261021_runtime_recovery32/README.md)和[10 月 23 日](../../../results/repository_organization/20261109_closure_20261023_runtime_recovery33/README.md)的归档回执分别列出原路径、SHA256 和恢复方式。

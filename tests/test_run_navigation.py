@@ -61,6 +61,8 @@ class RunNavigationTests(unittest.TestCase):
     def test_frozen_report_archive_supersedes_an_identical_design_copy(self):
         old = 'reports/design.md'
         self.registry(evidence=dict(references=[old]))
+        self.index(materials=[dict(reference=old, role='冻结设计',
+            path_protection=dict(status='preserve_current_path', reason='执行时绑定旧路径'))])
         payload = b'# Frozen design\n'
         copy = 'designs/design.md'
         archive = 'reports/history/example/originals/design.md'
@@ -83,6 +85,9 @@ class RunNavigationTests(unittest.TestCase):
         result = cli.run_navigation(self.root, 'example')
         self.assertTrue(result['valid'])
         self.assertEqual(result['runs'][0]['materials'][0]['resolved_reference'], archive)
+        rendered = cli.render_run_navigation(result)
+        self.assertIn('已核验迁移', rendered)
+        self.assertNotIn('原位保留', rendered)
         self.assertEqual((self.root / copy).read_bytes(), payload)
         pin(dict(identity, sha256='0' * 64))
         with self.assertRaisesRegex(ValueError, 'duplicate migration old_path'):

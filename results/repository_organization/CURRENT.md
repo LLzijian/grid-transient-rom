@@ -21,3 +21,5 @@
 已关联4815项；按旧路径或当前位置查询：`show-organization --root . --path <路径>`。
 
 [本批归档回执](20261109_modulation_runtime_recovery37/README.md)记录原件和恢复路径。
+
+[独立报告归档全量对账](20261109_modulation_runtime_recovery37/completion_audit.json)记录基准原件覆盖、当前字节与阅读链接核验。
