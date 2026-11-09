@@ -1,7 +1,5 @@
 # 已登记研究材料导航
 
-[当前路径保护明细](protected.md)接续列出仍需保留原址的来源及解除条件；原登记和科学判断保持不变。
-
 记录状态来自所列登记，不代表实时进程核验；未读取本地模型、数据或预测数组。
 
 ## 隐幅值调制：预测达标与机制恢复的区别
@@ -29,8 +27,8 @@
 - 结果摘要：[results/gftd_modulation_20261107/summary.json](../../results/gftd_modulation_20261107/summary.json)；路径处理：原位保留，现有正式登记或报告仍引用原路径。
 - root决定：[results/gftd_modulation_20261107/root_adoption.json](../../results/gftd_modulation_20261107/root_adoption.json)；路径处理：原位保留，现有正式登记或报告仍引用原路径。
 - 本地产物清单：[results/gftd_modulation_20261107/raw_artifacts_manifest.json](../../results/gftd_modulation_20261107/raw_artifacts_manifest.json)；路径处理：原位保留，现有正式登记或报告仍引用原路径。
-- 历史准备／专项审查原件（不替代最终协议）：[reports/gftd_modulation_20261107/originals/gftd_modulation_20261107_preparation.md](originals/gftd_modulation_20261107_preparation.md)；路径处理：archived_byte_identical，本批核清引用后归档，保留内容身份和原版本阅读入口。
-- 历史准备／专项审查原件（不替代最终协议）：[reports/gftd_modulation_20261107/originals/gftd_modulation_20261107_protocol_draft.md](originals/gftd_modulation_20261107_protocol_draft.md)；路径处理：archived_byte_identical，本批核清引用后归档，保留内容身份和原版本阅读入口。
+- 历史准备／专项审查原件（不替代最终协议）：[reports/gftd_modulation_20261107/originals/gftd_modulation_20261107_preparation.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_modulation_20261107_preparation.md)；路径处理：archived_byte_identical，本批核清引用后归档，保留内容身份和原版本阅读入口。
+- 历史准备／专项审查原件（不替代最终协议）：[reports/gftd_modulation_20261107/originals/gftd_modulation_20261107_protocol_draft.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_modulation_20261107_protocol_draft.md)；路径处理：archived_byte_identical，本批核清引用后归档，保留内容身份和原版本阅读入口。
 
 解除条件：另立迁移批次核查全部调用者和冻结身份，保留旧执行恢复方式；核验新导航与映射后再解除，不回写旧协议或哈希。
 
@@ -44,7 +42,7 @@
 
 仅有平铺引用的材料保留为其他已登记材料，不推断其科学用途。路径检查不核验科学内容。
 
-本页只建立导航，原件保持原位；协议、审查与源码的身份绑定沿执行释放清单核查，迁移前须解除依赖。
+本表定位当前原件；主要阅读材料使用已核验的连续阅读版本。协议、审查与源码的身份绑定沿执行释放清单核查。
 
 | 字段来源 | 材料 | 路径检查 |
 |---|---|---|
@@ -87,3 +85,5 @@
 | navigation.materials[7].reference | [reports/gftd_modulation_20261107/originals/gftd_modulation_20261107_preparation.md](originals/gftd_modulation_20261107_preparation.md) | present |
 | navigation.materials[7].archive_record_reference; navigation.materials[8].archive_record_reference | [results/repository_organization/20261109_history05/migration.json](../../results/repository_organization/20261109_history05/migration.json) | present |
 | navigation.materials[8].reference | [reports/gftd_modulation_20261107/originals/gftd_modulation_20261107_protocol_draft.md](originals/gftd_modulation_20261107_protocol_draft.md) | present |
+
+[当前路径保护明细](protected.md)由本批保护索引接续，科学登记不回写。

@@ -13,6 +13,12 @@ from pathlib import Path, PurePosixPath
 import re
 import stat
 import subprocess
+import sys
+import io
+
+sys.dont_write_bytecode = True
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from harness_runtime.organization import Organization, read_public
 
 
 PRIMARY = ("reports", "results", "experiments")
@@ -199,26 +205,17 @@ def observe(root, name):
         return dict(status="not_inspected", reason=type(exc).__name__)
 
 
-def reconcile(root):
+def reconcile(root, access=None):
     rows = []
-    name = "harness/documentation_migration_20261108.json"
-    path = safe_path(root, name)
-    if path.is_file():
-        for entry in json.loads(path.read_text(encoding="utf-8-sig"))["entries"]:
-            row = dict(kind="documentation", source_record=name, **entry)
-            row["old_observation"] = observe(root, entry["old_path"])
-            row["new_observation"] = observe(root, entry["new_path"])
-            row["current_verification"] = "not_verified"
-            if row["new_observation"]["status"] == "present":
-                data = safe_path(root, entry["new_path"]).read_bytes()
-                row["current_verification"] = "bytes_and_sha256_match" if (
-                    len(data) == entry["bytes"] and hashlib.sha256(data).hexdigest() == entry["sha256"]
-                ) else "mismatch"
-            rows.append(row)
+    organization = Organization(root, access)
+    for entry in organization.migrations.values():
+        rows.append(dict(entry, kind="documentation" if entry["source_record"] == organization.inputs.get("documentation_migration", "harness/documentation_migration_20261108.json") else "archive",
+                         old_observation=observe(root, entry["old_path"]), new_observation=observe(root, entry["new_path"]),
+                         current_verification="bytes_and_sha256_match"))
     name = "results/private_data_cleanup_20261107/migration_map.csv"
     path = safe_path(root, name)
     if path.is_file():
-        with path.open(encoding="utf-8-sig", newline="") as handle:
+        with io.StringIO(read_public(root, name, access=access).decode("utf-8-sig")) as handle:
             reader = csv.reader(handle)
             headers = next(reader)
             if len(headers) != 6:
@@ -246,7 +243,7 @@ def reconcile(root):
 
 
 def inventory(root, output):
-    root = root.resolve()
+    root = root.absolute()
     out_name = relative(output)
     if not out_name or not out_name.startswith("results/repository_organization/"):
         raise ValueError("output must be a new directory under results/repository_organization/")
@@ -287,12 +284,12 @@ def inventory(root, output):
             modules[module].append(name)
             if name.startswith("experiments/"):
                 modules[PurePosixPath(name).stem].append(name)
-    relations, source_checks, parse_issues = [], {}, []
+    relations, source_checks, parse_issues, access = [], {}, [], []
     for name, row in records.items():
         if not text_allowed(name, row):
             continue
         try:
-            data = safe_path(root, name).read_bytes()
+            data = read_public(root, name, access=access)
             row["sha256"] = hashlib.sha256(data).hexdigest()
             source_checks[name] = row["sha256"]
             text = data.decode("utf-8-sig")
@@ -305,7 +302,7 @@ def inventory(root, output):
     for edge in relations:
         if edge["target"]:
             inbound[edge["target"]].append(edge)
-    migrations = reconcile(root)
+    migrations = reconcile(root, access)
     previous = defaultdict(list)
     for row in migrations:
         previous[row["new_path"]].append(row["old_path"])
@@ -335,8 +332,8 @@ def inventory(root, output):
             pending.append(view)
     local_observations = []
     cleanup = root / "results/private_data_cleanup_20261107/summary.json"
-    if cleanup.is_file():
-        prior = json.loads(cleanup.read_text(encoding="utf-8-sig"))
+    if cleanup.exists() or cleanup.is_symlink():
+        prior = json.loads(read_public(root, cleanup.relative_to(root).as_posix(), access=access).decode("utf-8-sig"))
         for key in ("protected_roots_preserved", "unreadable_test_roots_preserved"):
             for directory in prior.get(key, []):
                 name = "private_data/" + directory
@@ -351,7 +348,7 @@ def inventory(root, output):
             info = safe_path(root, name).stat()
             if (info.st_size, info.st_mtime_ns) != (row["bytes"], row["mtime_ns"]):
                 changed.append(dict(path=name, check="metadata_changed"))
-            elif name in source_checks and hashlib.sha256(safe_path(root, name).read_bytes()).hexdigest() != source_checks[name]:
+            elif name in source_checks and hashlib.sha256(read_public(root, name, access=access)).hexdigest() != source_checks[name]:
                 changed.append(dict(path=name, check="text_hash_changed"))
         except (OSError, ValueError) as exc:
             changed.append(dict(path=name, check=type(exc).__name__))
@@ -368,7 +365,8 @@ def inventory(root, output):
             for n, r in records.items() if r["kind"] not in {"file"}], metadata_parse_issues=parse_issues,
         migrations_by_verification=dict(Counter(r["kind"] + ":" + r["current_verification"] for r in migrations)),
         original_file_changes_observed=changed, git_status_before=status_before, git_status_after=status_after,
-        git_warnings=warnings, snapshot_atomic=False, scientific_payloads_read=False,
+        git_warnings=warnings, snapshot_atomic=False, read_scope_enforced=True,
+        scientific_payloads_read=any(r["outcome"] == "read" and PurePosixPath(r["path"]).parts[0] in LOCAL for r in access),
         local_payload_hashes_recomputed=False, original_files_written=False,
         scientific_classification_performed=False, migration_or_deletion_authorized=False,
         live_process_state_verified=False,
@@ -386,6 +384,7 @@ def inventory(root, output):
     write_json("summary.json", summary)
     write_rows("inventory.jsonl", (records[name] for name in sorted(records)))
     write_rows("dependencies.jsonl", relations)
+    write_rows("access.jsonl", access)
     write_rows("protected.jsonl", protected)
     write_rows("pending.jsonl", pending)
     write_rows("migration_reconciliation.jsonl", migrations)

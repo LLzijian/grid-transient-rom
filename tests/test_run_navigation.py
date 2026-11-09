@@ -51,7 +51,7 @@ class RunNavigationTests(unittest.TestCase):
         target=self.root/'designs/old.md'
         target.parent.mkdir()
         target.write_bytes(payload)
-        self.write_json('harness/documentation_migration_20261108.json',dict(entries=[dict(old_path='docs/old.md',new_path='designs/old.md',bytes=len(payload),sha256=hashlib.sha256(payload).hexdigest())]))
+        self.write_json('harness/documentation_migration_20261108.json',dict(schema_version=1,source_commit='synthetic',entries=[dict(old_path='docs/old.md',new_path='designs/old.md',bytes=len(payload),sha256=hashlib.sha256(payload).hexdigest())]))
         result=cli.run_navigation(self.root,'example')
         self.assertTrue(result['valid'])
         self.assertEqual(result['runs'][0]['materials'][0]['resolved_reference'],'designs/old.md')

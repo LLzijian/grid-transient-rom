@@ -17,6 +17,7 @@ GitHub repository: [LLzijian/grid-transient-rom](https://github.com/LLzijian/gri
 - [docs/current_design.md](docs/current_design.md): versioned current architecture, separate from the deployment contract.
 - [designs/](designs/README.md): algorithm specifications and revisions; superseded designs live in designs/history/.
 - [实验代码入口与历史恢复](experiments/README.md)：公共数值实现、按 Run 保存的新入口和原位保护的旧依赖。
+- [当前整理状态](results/repository_organization/CURRENT.md)：按旧路径或当前位置查原件、阅读入口、保护原因及结果来源。
 - [agents/runtime.md](agents/runtime.md): task ownership, model identity, dependencies and resource scheduling.
 - [docs/engineering_loop.md](docs/engineering_loop.md): Campaign → Run → Job tree,
   optimization adequacy vs mechanism evidence, three independent decisions,

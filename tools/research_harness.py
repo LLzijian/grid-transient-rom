@@ -16,6 +16,7 @@ import argparse
 import ast
 import hashlib
 import json
+from os.path import normpath
 from pathlib import Path
 import re
 import stat
@@ -27,6 +28,7 @@ sys.dont_write_bytecode = True
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from harness_runtime.scheduling import normalize_write_path, ready_tasks
+from harness_runtime.organization import Organization, public_path, render_view
 
 
 REQUIRED_FILES = (
@@ -46,6 +48,7 @@ REQUIRED_FILES = (
     "harness/examples/tasks.json",
     "harness_runtime/__init__.py", "harness_runtime/evidence.py",
     "harness_runtime/scheduling.py", "tools/research_harness.py",
+    "harness_runtime/organization.py",
     "tests/test_harness_cli.py", "tests/test_harness_evidence.py", "tests/test_harness_scheduling.py",
 )
 PRIVATE_PARTS = {"private_data", "private-data", "datasets", "checkpoints", "weights", "artifacts", "local_backups", ".git"}
@@ -214,7 +217,8 @@ def _json_references(value):
 
 def run_navigation(root_path, run_id=None):
     """Read registered identities and explicit links; never open scientific payloads."""
-    root = Path(root_path).resolve()
+    root = Path(root_path).absolute()
+    organization = Organization(root)
     if run_id is not None and not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_-]*", run_id):
         raise ValueError("run_id must be a single identifier")
     index_path = root / "harness/navigation.json"
@@ -222,27 +226,17 @@ def run_navigation(root_path, run_id=None):
     if index_path.exists() or _link_or_reparse(index_path):
         if not _safe_public_path(index_path, root):
             raise ValueError("unsafe navigation index")
-        index = load_json(index_path)
+        index = organization.json(index_path.relative_to(root).as_posix())
         if not isinstance(index, dict) or index.get("kind") != "RETROSPECTIVE_NAVIGATION" or not isinstance(index.get("runs"), dict):
             raise ValueError("navigation requires RETROSPECTIVE_NAVIGATION and runs")
     run_dir = root / "harness/runs"
     if not _safe_public_path(run_dir, root) or not run_dir.is_dir():
         raise ValueError("public Run registry directory is absent or unsafe")
     paths = [run_dir / (run_id + ".json")] if run_id else sorted(run_dir.glob("*.json"))
-    migrations = {}
-    migration_path = root / "harness/documentation_migration_20261108.json"
-    if migration_path.exists() or _link_or_reparse(migration_path):
-        if not _safe_public_path(migration_path, root):
-            raise ValueError("unsafe documentation migration")
-        migration = load_json(migration_path)
-        for entry in migration.get("entries", []):
-            if entry["old_path"] in migrations:
-                raise ValueError("duplicate documentation migration")
-            migrations[entry["old_path"]] = entry
     result = dict(valid=True, runs=[], issues=[], read_only=True, private_payloads_read=False,
                   live_state_verified=False, scientific_evidence_verified=False)
 
-    def reference(name, field, follow_migration=True):
+    def reference(name, field):
         row = dict(reference=name, field=field, status="unknown")
         if (not isinstance(name, str) or not name or ":" in name or "\\" in name or re.search(r"[%?#\x00-\x1f]", name)
                 or any(part in {"", ".", ".."} for part in name.split("/"))):
@@ -252,17 +246,12 @@ def run_navigation(root_path, run_id=None):
         elif not _safe_public_path(root / name, root):
             row["status"] = "unsafe"
         else:
-            row["status"] = "present" if (root / name).exists() else "missing"
-            if row["status"] == "missing" and follow_migration and name in migrations:
-                entry = migrations[name]
-                if not isinstance(entry.get("new_path"), str) or not entry["new_path"].endswith(".md") or entry["new_path"].split("/")[0] not in {"reports", "designs"}:
-                    raise ValueError("migration target must be public Markdown documentation")
-                target = reference(entry["new_path"], "documentation_migration", False)
-                if target["status"] == "present":
-                    payload = (root / entry["new_path"]).read_bytes()
-                    if len(payload) != entry["bytes"] or hashlib.sha256(payload).hexdigest() != entry["sha256"]:
-                        raise ValueError("migrated documentation bytes differ: " + name)
-                    row.update(status="migrated_sha256_verified", resolved_reference=entry["new_path"])
+            resolved = organization.resolve(name)
+            row["status"] = "present" if (root / resolved).exists() else "missing"
+            if resolved != name and row["status"] == "present":
+                row.update(status="migrated_sha256_verified", resolved_reference=resolved)
+            if row["status"] in {"present", "migrated_sha256_verified"} and resolved in organization.reading_at_target:
+                row["reading_reference"] = organization.reading_at_target[resolved]
         if row["status"] in {"missing", "unsafe"}:
             result["issues"].append(dict(code=row["status"] + "_reference", **row))
             result["valid"] = False
@@ -289,7 +278,7 @@ def run_navigation(root_path, run_id=None):
     for path in paths:
         if not _safe_public_path(path, root) or not path.is_file():
             raise ValueError("Run record is absent or unsafe: " + path.name)
-        record = load_json(path)
+        record = organization.json(path.relative_to(root).as_posix())
         if not isinstance(record, dict) or record.get("run_id") != path.stem:
             raise ValueError("Run identity does not match its registry filename")
         nav = index.get("runs", {}).get(path.stem, {})
@@ -316,12 +305,24 @@ def run_navigation(root_path, run_id=None):
             mechanism_claim=decisions.get("mechanism_claim_status"),
             scientific_claim_proposed=proposal.get("scientific_claim"))
         conflicts = []
-        for a, b in ((work.get("budget_status"), decisions.get("scientific_budget_status")),
-                     (decisions.get("code"), decisions.get("code_decision")),
-                     (decisions.get("model"), decisions.get("model_decision")),
-                     (decisions.get("science"), decisions.get("science_decision"))):
+        for state_key, first, second in (
+                ("budget_status", "scientific_work.budget_status", "root_decisions.scientific_budget_status"),
+                ("code_decision", "root_decisions.code", "root_decisions.code_decision"),
+                ("model_decision", "root_decisions.model", "root_decisions.model_decision"),
+                ("science_decision", "root_decisions.science", "root_decisions.science_decision")):
+            def saved(field):
+                section, key = field.split(".")
+                return record.get(section, {}).get(key)
+            a, b = saved(first), saved(second)
             if a is not None and b is not None and a != b:
-                conflicts.append(dict(values=[a, b], resolution="not_selected"))
+                states[state_key] = "conflict"
+                sources = [dict(field=f, value=saved(f), source_reference=path.relative_to(root).as_posix(),
+                    recorded_utc=record.get(f.split('.')[0], {}).get('recorded_utc', record.get('recorded_utc'))) for f in (first, second)]
+                conflicts.append(dict(state=state_key, fields=[first, second], values=[a, b], value_sources=sources,
+                    source_reference=path.relative_to(root).as_posix(), recorded_utc=record.get("recorded_utc"),
+                    resolution="not_selected"))
+            elif a is not None or b is not None:
+                states[state_key] = a if a is not None else b
         if conflicts:
             result["valid"] = False
             result["issues"].append(dict(code="record_state_conflict", run_id=path.stem, conflicts=conflicts))
@@ -335,12 +336,12 @@ def run_navigation(root_path, run_id=None):
         for event in nav.get("events", []):
             ref = event.get("reference")
             checked = reference(ref, "navigation.events")
-            row = dict(event, status=checked["status"])
-            if checked["status"] == "present":
-                target = root / ref
+            row = dict(event, status=checked["status"], resolved_reference=checked.get("resolved_reference", ref))
+            if checked["status"] in {"present", "migrated_sha256_verified"}:
+                target = root / row["resolved_reference"]
                 if not ref.startswith("results/") or target.name not in receipt_names or target.stat().st_size > 1048576:
                     raise ValueError("event must name a small public execution/decision/archive receipt")
-                body = load_json(target)
+                body = organization.json(row["resolved_reference"])
                 if not isinstance(body, dict):
                     raise ValueError("event receipt must be an object")
                 if body.get("run_id") not in {None, path.stem}:
@@ -353,6 +354,7 @@ def run_navigation(root_path, run_id=None):
                 row["exit_code"] = body.get("exit_code")
             events.append(row)
         result["runs"].append(dict(run_id=path.stem, title=nav.get("title", path.stem),
+            reading_reference=reference(f"reports/{path.stem}/README.md", "reading_page")["reference"] if (root / f"reports/{path.stem}/README.md").is_file() else None,
             record_reference=path.relative_to(root).as_posix(), recorded_utc=record.get("recorded_utc"),
             purpose=record.get("purpose"), scope=record.get("scope"), states=states,
             proposal=proposal, navigation=nav, materials=materials, events=events, conflicts=conflicts,
@@ -368,16 +370,21 @@ def render_run_navigation(value):
     lines = ["# 已登记研究材料导航", "", "记录状态来自所列登记，不代表实时进程核验；未读取本地模型、数据或预测数组。", ""]
     if len(value["runs"]) > 1:
         lines += ["单个 Run 的完整材料与事件关系可用 `show-run --run <编号>` 查看；本表只显示原登记值。", "",
-                  "| 中文问题 | 追溯编号／登记 | 执行 | 预算 | 模型决定 | 科学决定 |", "|---|---|---|---|---|---|"]
+                  "| 中文问题 | 追溯编号／登记 | 执行 | 预算 | 代码决定 | 模型决定 | 科学决定 |", "|---|---|---|---|---|---|---|"]
         for run in value["runs"]:
             state = run["states"]
-            lines.append(f"| {text(run['title'])} | [{run['run_id']}]({run['record_reference']}) | {text(state['execution_status'])} | {text(state['budget_status'])} | {text(state['model_decision'])} | {text(state['science_decision'])} |")
+            title = f"[{text(run['title'])}]({run['reading_reference']})" if run.get("reading_reference") else text(run['title'])
+            lines.append(f"| {title} | [{run['run_id']}]({run['record_reference']}) | {text(state['execution_status'])} | {text(state['budget_status'])} | {text(state['code_decision'])} | {text(state['model_decision'])} | {text(state['science_decision'])} |")
         lines += ["", "旧字段未记录的值显示 unknown，不用提议决定补成 root 采用决定。"]
         if value["issues"]:
             lines += ["", "## 待核查", ""] + ["- " + text(row) for row in value["issues"]]
         return "\n".join(lines) + "\n"
     for run in value["runs"]:
         nav = run["navigation"]
+        resolved = {r["reference"]: r.get("resolved_reference", r["reference"]) for r in run["materials"]}
+        reading = {r["reference"]: r.get("reading_reference", r.get("resolved_reference", r["reference"])) for r in run["materials"]}
+        def target(name, for_reading=True):
+            return (reading if for_reading else resolved).get(name, name)
         lines += ["## " + text(run["title"]), "", f"追溯编号：`{run['run_id']}`；[登记]({run['record_reference']})；记录时间：{text(run['recorded_utc'])}。", "",
                   "| 判断 | 登记值 |", "|---|---|"]
         labels = {"execution_status": "执行", "budget_status": "工作量／预算", "code_decision": "代码决定",
@@ -385,28 +392,28 @@ def render_run_navigation(value):
                   "scientific_claim_proposed": "提议主张（不作为采用决定）"}
         lines += [f"| {labels[k]} | {text(v)} |" for k, v in run["states"].items()]
         if nav.get("campaign_reference"):
-            lines += ["", f"[主题综合]({nav['campaign_reference']})；父 Run：{text(nav.get('parent_run'))}。"]
+            lines += ["", f"[主题综合]({target(nav['campaign_reference'])})；父 Run：{text(nav.get('parent_run'))}。"]
         if nav.get("materials"):
             lines += ["", "### 主要阅读材料", ""]
             for row in nav["materials"]:
                 protection = row.get("path_protection", {})
                 status = "原位保留" if protection.get("status") == "preserve_current_path" else text(protection.get("status"))
-                lines.append(f"- {text(row.get('role'))}：[{text(row['reference'])}]({row['reference']})；路径处理：{status}，{text(protection.get('reason'))}。")
+                lines.append(f"- {text(row.get('role'))}：[{text(row['reference'])}]({target(row['reference'])})；路径处理：{status}，{text(protection.get('reason'))}。")
             if nav.get("protection_release_condition"):
                 lines += ["", "解除条件：" + text(nav["protection_release_condition"])]
         for correction in nav.get("corrections", []):
             lines += ["", "### 解释更正", "", text(correction.get("scope")), "",
-                      f"[原解释]({correction['original_reference']}) → [独立更正]({correction['corrected_by_reference']}) → [采用更正的结论]({correction['adopted_reference']})。"]
+                      f"[原解释]({target(correction['original_reference'])}) → [独立更正]({target(correction['corrected_by_reference'])}) → [采用更正的结论]({target(correction['adopted_reference'])})。"]
         lines += ["", "### 执行与归档事件", ""]
         for event in run["events"]:
             time_labels = {"started_utc": "启动", "host_start_utc": "宿主启动", "completed_utc": "完成", "finished_utc": "结束", "host_end_utc": "宿主结束"}
             times = "；".join(time_labels[k] + "：" + text(v) for k, v in event.get("times", {}).items()) or "未记录执行时刻"
             saved = "；保存状态：" + text(event["saved_status"]) if event.get("saved_status") is not None else ""
-            lines.append(f"- {text(event.get('label'))}：[回执]({event['reference']})；记录时间：{text(event.get('recorded_utc'))}；{times}{saved}；关系：{text(event.get('relation'))}。")
+            lines.append(f"- {text(event.get('label'))}：[回执]({event.get('resolved_reference', event['reference'])})；记录时间：{text(event.get('recorded_utc'))}；{times}{saved}；关系：{text(event.get('relation'))}。")
         if not run["events"]:
             lines.append("未补录明确的执行事件关系；不按文件名推断。")
         lines += ["", "### 材料与字段来源", "", "仅有平铺引用的材料保留为其他已登记材料，不推断其科学用途。路径检查不核验科学内容。", "",
-                  "本页只建立导航，原件保持原位；协议、审查与源码的身份绑定沿执行释放清单核查，迁移前须解除依赖。", "",
+                  "本表定位当前原件；主要阅读材料使用已核验的连续阅读版本。协议、审查与源码的身份绑定沿执行释放清单核查。", "",
                   "| 字段来源 | 材料 | 路径检查 |", "|---|---|---|"]
         grouped = {}
         for row in run["materials"]:
@@ -416,7 +423,11 @@ def render_run_navigation(value):
             row = rows[0]
             lines.append(f"| {text(fields)} | [{text(name)}]({row.get('resolved_reference', name)}) | {row['status']} |")
         if run["conflicts"]:
-            lines += ["", "存在记录冲突，未自动选择其中一个值。"]
+            lines += ["", "### 冲突字段", "", "同一记录的冲突在主表显示 conflict，未自动选择其中一个值。", "",
+                      "| 字段 | 双方值 | 来源 | 记录时点 |", "|---|---|---|---|"]
+            for row in run["conflicts"]:
+                for source in row['value_sources']:
+                    lines.append(f"| {text(source['field'])} | {text(source['value'])} | [{text(source['source_reference'])}]({source['source_reference']}) | {text(source['recorded_utc'])} |")
         lines.append("")
     if value["issues"]:
         lines += ["## 待核查", ""] + ["- " + text(row) for row in value["issues"]]
@@ -432,13 +443,14 @@ def check_root(root_path):
     and template directories, missing references are errors. No active registry
     is required and no private/data/checkpoint payload is opened.
     """
-    requested = Path(root_path).resolve()
-    if _private(requested) or _link_or_reparse(requested / "overlay"):
+    requested = Path(root_path).absolute()
+    if _private(requested) or _link_or_reparse(requested) or _link_or_reparse(requested / "overlay"):
         return {
             "valid": False, "issues": [{"severity": "error", "code": "unsafe_check_root", "message": "check root must be public metadata, without a symlinked overlay"}],
             "checked_files": [], "checked_relative_references": [], "root": str(requested),
             "read_only": True, "active_registry_required": False, "private_payloads_read": False,
         }
+    requested = requested.resolve()
     package_mode = (requested / "overlay").is_dir()
     root = requested / "overlay" if package_mode else requested
     issues, checked, refs = [], [], []
@@ -449,60 +461,24 @@ def check_root(root_path):
             row["path"] = str(path)
         issues.append(row)
 
-    # This fixed map preserves documentation provenance, never scientific authority.
-    migrations = {}
+    organization = None
     migration = root / "harness/documentation_migration_20261108.json"
-    if migration.exists() or _link_or_reparse(migration):
-        try:
-            if not _safe_public_path(migration, root):
-                raise ValueError("migration map must be a safe public local file")
-            body = load_json(migration)
-            if (not isinstance(body, dict) or type(body.get("schema_version")) is not int
-                    or body["schema_version"] != 1
-                    or not isinstance(body.get("source_commit"), str) or not body["source_commit"]
-                    or not isinstance(body.get("entries"), list)):
-                raise ValueError("migration requires schema_version=1, source_commit and entries")
-            seen = set()
-            for entry in body["entries"]:
-                if not isinstance(entry, dict):
-                    raise ValueError("migration entry must be an object")
-                old, new = entry.get("old_path"), entry.get("new_path")
-                for name, prefixes in ((old, {"docs", "reports"}), (new, {"reports", "designs"})):
-                    if (not isinstance(name, str) or "\\" in name or ":" in name
-                            or not name.endswith(".md")
-                            or name.split("/")[0] not in prefixes
-                            or len(name.split("/")) < 2
-                            or any(part in {"", ".", ".."} for part in name.split("/"))
-                            or not _safe_public_path(root / name, root)):
-                        raise ValueError("migration paths must be canonical public docs/reports sources and reports/designs targets")
-                if old in seen:
-                    raise ValueError("duplicate migration old_path: " + old)
-                seen.add(old)
-                digest, size = entry.get("sha256"), entry.get("bytes")
-                if (not isinstance(digest, str) or not re.fullmatch(r"[0-9a-fA-F]{64}", digest)
-                        or type(size) is not int or size < 0):
-                    raise ValueError("migration requires sha256 and nonnegative integer bytes")
-                target = root / new
-                if not target.is_file():
-                    raise ValueError("migration target is absent: " + new)
-                payload = target.read_bytes()
-                if len(payload) != size or hashlib.sha256(payload).hexdigest() != digest.lower():
-                    raise ValueError("migration target bytes differ: " + new)
-                migrations[old] = target
-        except (OSError, ValueError, RuntimeError) as exc:
-            migrations.clear()
-            issue("invalid_documentation_migration", str(exc), migration)
+    try:
+        organization = Organization(root)
+        for entry in organization.migrations.values():
+            if not _safe_public_path(root / entry["new_path"], root):
+                raise ValueError("unsafe migration target")
+    except (OSError, ValueError, KeyError, TypeError) as exc:
+        organization = None
+        issue("invalid_documentation_migration", str(exc), migration)
+    if migration.exists():
         approved_docs = {"architecture_design.md", "engineering_loop.md", "research_policy.md",
                          "harness_evolution.md", "current_design.md", "current_state.md"}
         docs = root / "docs"
-        if not _safe_public_path(docs, root) or not docs.is_dir():
+        if (not _safe_public_path(docs, root) or not docs.is_dir()
+                or {path.name for path in docs.iterdir()} != approved_docs
+                or any(not _safe_public_path(docs / name, root) or not (docs / name).is_file() for name in approved_docs)):
             issue("invalid_documentation_scope", "docs must contain exactly six approved public files", docs)
-        else:
-            actual_docs = {path.name for path in docs.iterdir()}
-            if actual_docs != approved_docs or any(
-                    not _safe_public_path(docs / name, root) or not (docs / name).is_file()
-                    for name in approved_docs):
-                issue("invalid_documentation_scope", "docs must contain exactly six approved public files", docs)
 
     def reference(ref, source, json_ref=False):
         if not ref or ref.startswith("#") or "<" in ref or ">" in ref:
@@ -516,24 +492,27 @@ def check_root(root_path):
         path = unquote(parsed.path)
         # JSON evidence references use repository-relative paths. Markdown links
         # use the containing document's directory, as GitHub does.
-        target = (root if json_ref else source.parent) / path
+        target = Path(normpath((root if json_ref else source.parent) / path))
         try:
-            inside = _inside(target, root)
-        except (OSError, RuntimeError) as exc:
-            issue("reference_resolution_error", "cannot resolve reference " + ref + ": " + str(exc), source)
-            return
-        if not inside:
+            relative = target.relative_to(root)
+        except ValueError:
             issue("reference_outside_root", "reference escapes the repository: " + ref, source)
             return
-        if _private(target.relative_to(root)):
+        if _private(relative):
             issue("private_reference_not_read", "opaque private reference was not opened or checked: " + ref, source, "warning")
             return
-        refs.append({"source": source.relative_to(root).as_posix(), "reference": ref})
+        name = relative.as_posix()
+        try:
+            resolved = organization.resolve(name) if organization and name != "." else name
+            target = public_path(root, resolved) if resolved != "." else root
+        except (OSError, ValueError, RuntimeError) as exc:
+            issue("reference_resolution_error", "cannot resolve reference " + ref + ": " + str(exc), source)
+            return
+        row = {"source": source.relative_to(root).as_posix(), "reference": ref}
+        if resolved != name:
+            row["resolved_reference"] = resolved
+        refs.append(row)
         if not target.exists():
-            # Active paths always win; frozen records and manifests remain untouched.
-            old = target.resolve().relative_to(root.resolve()).as_posix()
-            if old in migrations:
-                return
             bundled = target.relative_to(root).parts[:1] in [("harness",), ("harness_runtime",), ("tools",), ("templates",)]
             severity = "warning" if package_mode and not bundled else "error"
             issue("missing_reference", "relative reference is absent: " + ref, source, severity)
@@ -669,6 +648,11 @@ def main(argv=None):
     selected.add_argument("--all", action="store_true")
     show.add_argument("--format", choices=("json", "markdown"), default="markdown")
     show.add_argument("--output", help="explicit new destination; existing files are never overwritten")
+    organization = commands.add_parser("show-organization", help="current file locations, protection and storage from pinned inputs")
+    organization.add_argument("--root", required=True)
+    organization.add_argument("--path", help="original or current repository-relative path")
+    organization.add_argument("--format", choices=("json", "markdown"), default="markdown")
+    organization.add_argument("--output", help="explicit new destination; existing files are never overwritten")
     args = parser.parse_args(argv)
     try:
         if args.command == "assess":
@@ -686,9 +670,10 @@ def main(argv=None):
             else:
                 print(rendered, end="")
             return 0
-        elif args.command == "show-run":
-            result = run_navigation(args.root, args.run)
-            rendered = render_run_navigation(result) if args.format == "markdown" else json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
+        elif args.command in {"show-run", "show-organization"}:
+            result = run_navigation(args.root, args.run) if args.command == "show-run" else Organization(args.root).view(args.path)
+            renderer = render_run_navigation if args.command == "show-run" else render_view
+            rendered = renderer(result) if args.format == "markdown" else json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
             if args.output:
                 target = Path(args.output)
                 # Markdown links are rooted here, regardless of the output directory.
@@ -696,6 +681,8 @@ def main(argv=None):
                     base = target.resolve().parent
                     import os
                     def relocate_link(match):
+                        if urlsplit(match.group(1)).scheme or match.group(1).startswith("#"):
+                            return match.group(0)
                         link = Path(os.path.relpath(Path(args.root).resolve() / match.group(1), base)).as_posix()
                         start, end = match.start(1) - match.start(), match.end(1) - match.start()
                         return match.group(0)[:start] + link + match.group(0)[end:]
@@ -705,14 +692,14 @@ def main(argv=None):
                     stream.write(rendered)
             else:
                 print(rendered, end="")
-            return 0 if result["valid"] else 1
+            return 0 if result.get("valid", True) else 1
         elif args.command == "check" and args.run:
             result = run_navigation(args.root, args.run)
         else:
             result = check_root(args.root)
         emit(result)
         return 0 if result.get("valid") is True else 1
-    except (OSError, UnicodeError, ValueError, TypeError, RuntimeError) as exc:
+    except (OSError, UnicodeError, ValueError, TypeError, RuntimeError, KeyError) as exc:
         emit({"valid": False, "issues": [{"severity": "error", "code": "input_error", "message": str(exc)}], "dispatch_performed": False})
         return 2
 

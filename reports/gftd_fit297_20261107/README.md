@@ -1,7 +1,5 @@
 # 已登记研究材料导航
 
-[当前路径保护明细](protected.md)接续列出仍需保留原址的来源及解除条件；原登记和科学判断保持不变。
-
 记录状态来自所列登记，不代表实时进程核验；未读取本地模型、数据或预测数组。
 
 ## 真实暂态迁移：数值覆盖如何限制预测结论
@@ -29,9 +27,9 @@
 - 结果摘要：[results/gftd_fit297_20261107/evidence_digest.json](../../results/gftd_fit297_20261107/evidence_digest.json)；路径处理：原位保留，源码或路径哈希身份引用。
 - root决定：[results/gftd_fit297_20261107/root_adoption.json](../../results/gftd_fit297_20261107/root_adoption.json)；路径处理：原位保留，现有正式登记或报告仍引用原路径。
 - 本地产物清单：[results/gftd_fit297_20261107/raw_artifacts_manifest.json](../../results/gftd_fit297_20261107/raw_artifacts_manifest.json)；路径处理：原位保留，源码或路径哈希身份引用。
-- 历史准备／专项审查原件（不替代最终协议）：[reports/gftd_fit297_20261107/originals/gftd_fit297_20261107_interface_inventory.md](originals/gftd_fit297_20261107_interface_inventory.md)；路径处理：archived_byte_identical，本批核清引用后归档，保留内容身份和原版本阅读入口。
-- 历史准备／专项审查原件（不替代最终协议）：[reports/gftd_fit297_20261107/originals/gftd_fit297_20261107_l2_review.md](originals/gftd_fit297_20261107_l2_review.md)；路径处理：archived_byte_identical，本批核清引用后归档，保留内容身份和原版本阅读入口。
-- 历史准备／专项审查原件（不替代最终协议）：[reports/gftd_fit297_20261107/originals/gftd_fit297_20261107_protocol_draft.md](originals/gftd_fit297_20261107_protocol_draft.md)；路径处理：archived_byte_identical，本批核清引用后归档，保留内容身份和原版本阅读入口。
+- 历史准备／专项审查原件（不替代最终协议）：[reports/gftd_fit297_20261107/originals/gftd_fit297_20261107_interface_inventory.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_fit297_20261107_interface_inventory.md)；路径处理：archived_byte_identical，本批核清引用后归档，保留内容身份和原版本阅读入口。
+- 历史准备／专项审查原件（不替代最终协议）：[reports/gftd_fit297_20261107/originals/gftd_fit297_20261107_l2_review.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_fit297_20261107_l2_review.md)；路径处理：archived_byte_identical，本批核清引用后归档，保留内容身份和原版本阅读入口。
+- 历史准备／专项审查原件（不替代最终协议）：[reports/gftd_fit297_20261107/originals/gftd_fit297_20261107_protocol_draft.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_fit297_20261107_protocol_draft.md)；路径处理：archived_byte_identical，本批核清引用后归档，保留内容身份和原版本阅读入口。
 
 解除条件：另立迁移批次核查全部调用者和冻结身份，保留旧执行恢复方式；核验新导航与映射后再解除，不回写旧协议或哈希。
 
@@ -52,7 +50,7 @@ L3图相关性使用K(a=0)对绝对Kron导纳，不是K cos(phi*)；更正物理
 
 仅有平铺引用的材料保留为其他已登记材料，不推断其科学用途。路径检查不核验科学内容。
 
-本页只建立导航，原件保持原位；协议、审查与源码的身份绑定沿执行释放清单核查，迁移前须解除依赖。
+本表定位当前原件；主要阅读材料使用已核验的连续阅读版本。协议、审查与源码的身份绑定沿执行释放清单核查。
 
 | 字段来源 | 材料 | 路径检查 |
 |---|---|---|
@@ -95,3 +93,5 @@ L3图相关性使用K(a=0)对绝对Kron导纳，不是K cos(phi*)；更正物理
 | navigation.materials[7].archive_record_reference; navigation.materials[8].archive_record_reference; navigation.materials[9].archive_record_reference | [results/repository_organization/20261109_history05/migration.json](../../results/repository_organization/20261109_history05/migration.json) | present |
 | navigation.materials[8].reference | [reports/gftd_fit297_20261107/originals/gftd_fit297_20261107_l2_review.md](originals/gftd_fit297_20261107_l2_review.md) | present |
 | navigation.materials[9].reference | [reports/gftd_fit297_20261107/originals/gftd_fit297_20261107_protocol_draft.md](originals/gftd_fit297_20261107_protocol_draft.md) | present |
+
+[当前路径保护明细](protected.md)由本批保护索引接续，科学登记不回写。

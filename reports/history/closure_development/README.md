@@ -8,18 +8,18 @@
 
 | 问题 | 原记录支持的认识 | 来源 |
 |---|---|---|
-| 边记忆能改善某个误差，是否就应采用？ | 二次边记忆降低部分失稳误差，但稳定风险和漏检保护未通过；转速幅值耗散的稳定风险收益伴随共同频率与关键事件代价，均按原门槛未采用。 | [二次边记忆](originals/quadratic_memory_edge_20261020_conclusion.md)、[转速耗散](../../frequency_dissipation_20261021_conclusion.md) |
-| 短窗预测通过是否唯一指定机制？ | 两种预给定边记忆均可通过原短窗标准；删除新增储能后也可通过。较长自主预测给三个候选提供了额外的选择信息，不等于已恢复未知公式。 | [两机制比较](originals/edge_memory_discrimination_20261021_conclusion.md)、[整项删除](originals/edge_closure_deletion_20261021_conclusion.md)、[长时域辨别](originals/long_horizon_discrimination_20261021_conclusion.md) |
-| 函数形式是否影响因果预测？ | 固定的 12 模型比较在 0% 与 1% 噪声下，有理端口相对 tanh 的合成 val 结果在六个配对实例同向；这是给定形式间的比较，不是算法发现未知形式。 | [完整比较](originals/checkpoint_continuation_20261022_conclusion.md) |
-| 给出有限语法池，是否就能选中生成机制？ | 一轮因真值轨迹数值资格而未完成三实例确认；后续增长受控的六机制比较完成，但三个 train 实例均未选中生成机制。数值可区分的排序与正确机制恢复分别判断。 | [原资格受限结果](originals/finite_grammar_execution_20261022_conclusion.md)、[完整六机制比较](originals/bounded_edge_grammar_20261022_conclusion.md) |
+| 边记忆能改善某个误差，是否就应采用？ | 二次边记忆降低部分失稳误差，但稳定风险和漏检保护未通过；转速幅值耗散的稳定风险收益伴随共同频率与关键事件代价，均按原门槛未采用。 | [二次边记忆](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/quadratic_memory_edge_20261020_conclusion.md)、[转速耗散](../../frequency_dissipation_20261021_conclusion.md) |
+| 短窗预测通过是否唯一指定机制？ | 两种预给定边记忆均可通过原短窗标准；删除新增储能后也可通过。较长自主预测给三个候选提供了额外的选择信息，不等于已恢复未知公式。 | [两机制比较](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/edge_memory_discrimination_20261021_conclusion.md)、[整项删除](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/edge_closure_deletion_20261021_conclusion.md)、[长时域辨别](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/long_horizon_discrimination_20261021_conclusion.md) |
+| 函数形式是否影响因果预测？ | 固定的 12 模型比较在 0% 与 1% 噪声下，有理端口相对 tanh 的合成 val 结果在六个配对实例同向；这是给定形式间的比较，不是算法发现未知形式。 | [完整比较](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/checkpoint_continuation_20261022_conclusion.md) |
+| 给出有限语法池，是否就能选中生成机制？ | 一轮因真值轨迹数值资格而未完成三实例确认；后续增长受控的六机制比较完成，但三个 train 实例均未选中生成机制。数值可区分的排序与正确机制恢复分别判断。 | [原资格受限结果](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/finite_grammar_execution_20261022_conclusion.md)、[完整六机制比较](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/bounded_edge_grammar_20261022_conclusion.md) |
 | 训练时域如何影响机制选择？ | 固定两机制、三实例的 2048 更新比较中，0.5 s 训练窗口选择竞争机制，2 s 窗口选择植入机制。窗口与更新次数的作用分开记录；结果是既有 train 条件内的辨别，未作为真实系统独立确认。 | [训练窗口研究](../../horizon_pair_20261023_conclusion.md) |
 
 ## 工程结果如何使用
 
-- [公共乘积合并](originals/fused_closure_runtime_20261021_conclusion.md)支持固定 N/D 结构与登记合成完整负载上的等价计算及耗时降低；不据此重开旧成本拒绝或采用科学模型。
-- [三次记忆端口](originals/cubic_memory_port_20261021_conclusion.md)、[语法外因果试验](originals/outside_grammar_causal_20261021_conclusion.md)、[有理与 tanh 原成本检查](originals/rational_control_20261021_conclusion.md)分别保留实现通过与正式研究未准入的原因。没有正式训练的阶段不计作预测能力的阴性比较。
-- [多项式计算路径](originals/edge_polynomial_runtime_20261021_conclusion.md)保留未通过的配置一致性检查；通过子集不替代完整工程合同。
-- [训练效率作业中断](originals/training_efficiency_20261024_interruption.md)保留缺少完成回执的事实，没有将未执行的 opt1 写成训练加速成果。[热路径审查](originals/code_efficiency_inspection_20261025.md)与该作业的冻结来源分别保存。
+- [公共乘积合并](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/fused_closure_runtime_20261021_conclusion.md)支持固定 N/D 结构与登记合成完整负载上的等价计算及耗时降低；不据此重开旧成本拒绝或采用科学模型。
+- [三次记忆端口](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/cubic_memory_port_20261021_conclusion.md)、[语法外因果试验](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/outside_grammar_causal_20261021_conclusion.md)、[有理与 tanh 原成本检查](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/rational_control_20261021_conclusion.md)分别保留实现通过与正式研究未准入的原因。没有正式训练的阶段不计作预测能力的阴性比较。
+- [多项式计算路径](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/edge_polynomial_runtime_20261021_conclusion.md)保留未通过的配置一致性检查；通过子集不替代完整工程合同。
+- [训练效率作业中断](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/training_efficiency_20261024_interruption.md)保留缺少完成回执的事实，没有将未执行的 opt1 写成训练加速成果。[热路径审查](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/code_efficiency_inspection_20261025.md)与该作业的冻结来源分别保存。
 - [进程监督与恢复主题](../../maintenance/execution_runtime/README.md)解释执行器、身份检查和检查点故障，避免将它们归因于物理机制。
 
 ## 原件与继承关系

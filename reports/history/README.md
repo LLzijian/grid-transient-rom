@@ -1,5 +1,7 @@
 # 历史研究阅读入口
 
+查旧路径、当前位置、阅读版本和保护理由，先看[当前整理入口](../../results/repository_organization/CURRENT.md)。材料表的“阅读入口”保留旧语境，“原件入口”定位当前冻结文件，“有效解释”连接主题与更正。
+
 历史主题按问题组织，原件保持其时点与身份。当前研究先读 [GFTD 综合](../../campaigns/gftd_kuramoto_discovery_20261106.md)及[当前状态](../../docs/current_state.md)。
 
 | 主题 | 阅读内容 |

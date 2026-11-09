@@ -10,13 +10,13 @@
 
 | 想了解什么 | 原始材料 | 读到什么程度即可 |
 |---|---|---|
-| 原论文怎样从实验装配主张与表格 | [历史合成主表](originals/synthesis_paper_main.md) | 看当时的证据装配，不沿用已经撤回的证书、模态和确认性表述 |
-| 英文正文、中文简稿怎样形成 | [成稿记录](originals/paper_draft_v1.md) | 保存写作结构与来源关系；不是今天的模型或投稿状态 |
-| 图表与参考文献怎样接入 | [图表与文献记录](originals/paper_figs_bib_v1.md) | 查生成来源与当时的文献装配；本轮没有重新核验文献或运行绘图 |
-| 哪些数字与表头曾被核对 | [数字核对记录](originals/paper_number_audit_v1.md) | 数字与旧产物一致，不自动说明旧解释仍有效；其中重放 test 的旧建议不构成当前授权 |
-| 当时如何交接“可投稿”版本 | [旧交接索引](originals/paper_release_candidate_v1.md) | “就绪”是被后续证据修订覆盖的历史判断 |
-| 能量证书改称筛查会影响哪些章节 | [影响分析](originals/energy_certificates_to_screen_impact_v1.md) | 用于回溯问题覆盖面；执行结果以接受记录为准 |
-| 当时排版修复了什么 | [排版质量记录](originals/paper_tex_quality_v1.md) | 仅说明旧版本的编译与布局，不替代当前内容验收 |
+| 原论文怎样从实验装配主张与表格 | [历史合成主表](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/synthesis_paper_main.md) | 看当时的证据装配，不沿用已经撤回的证书、模态和确认性表述 |
+| 英文正文、中文简稿怎样形成 | [成稿记录](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/paper_draft_v1.md) | 保存写作结构与来源关系；不是今天的模型或投稿状态 |
+| 图表与参考文献怎样接入 | [图表与文献记录](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/paper_figs_bib_v1.md) | 查生成来源与当时的文献装配；本轮没有重新核验文献或运行绘图 |
+| 哪些数字与表头曾被核对 | [数字核对记录](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/paper_number_audit_v1.md) | 数字与旧产物一致，不自动说明旧解释仍有效；其中重放 test 的旧建议不构成当前授权 |
+| 当时如何交接“可投稿”版本 | [旧交接索引](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/paper_release_candidate_v1.md) | “就绪”是被后续证据修订覆盖的历史判断 |
+| 能量证书改称筛查会影响哪些章节 | [影响分析](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/energy_certificates_to_screen_impact_v1.md) | 用于回溯问题覆盖面；执行结果以接受记录为准 |
+| 当时排版修复了什么 | [排版质量记录](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/history/paper_tex_quality_v1.md) | 仅说明旧版本的编译与布局，不替代当前内容验收 |
 
 以上七份原件已在前两批归档，保留文件名、编码、换行和字节；本批补齐改写方案、中途核查及对应接受记录，见[完整材料表](catalog.md)。
 
@@ -24,23 +24,23 @@
 
 | 修订问题 | 接受记录及其范围 |
 |---|---|
-| 局部能量候选被当成稳定性证书 | [0002：修正计算含义](../early_e_series/originals/accepted/0002_candidate_energy_not_certificate.md)，区分候选筛查和正式证明 |
-| 已消费 test 和选择期模态被当成确认性结果 | [0003：修正访问与模态口径](../early_e_series/originals/accepted/0003_holdout_lifecycle_and_modal_reporting.md)，保留旧观察并撤回对应强主张 |
-| 正文、中文稿和图文尚未统一口径 | [0004：完整改写接受](originals/accepted/0004_manuscript_honesty_rescope.md)、[0005：一致性修正](originals/accepted/0005_manuscript_scientific_consistency.md)；接受的是当时的文字和证据层次修订 |
-| 后续模型与数值结果又发生更新 | [0009：重拟合记录](../early_e_series/originals/accepted/0009_five_fold_refit_acceptance.md)、[0010：综合审计](../../accepted/0010_project_conclusion_audit.md)；旧稿的组装记录不能代替这些结果 |
+| 局部能量候选被当成稳定性证书 | [0002：修正计算含义](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0002_candidate_energy_not_certificate.md)，区分候选筛查和正式证明 |
+| 已消费 test 和选择期模态被当成确认性结果 | [0003：修正访问与模态口径](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0003_holdout_lifecycle_and_modal_reporting.md)，保留旧观察并撤回对应强主张 |
+| 正文、中文稿和图文尚未统一口径 | [0004：完整改写接受](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0004_manuscript_honesty_rescope.md)、[0005：一致性修正](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0005_manuscript_scientific_consistency.md)；接受的是当时的文字和证据层次修订 |
+| 后续模型与数值结果又发生更新 | [0009：重拟合记录](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0009_five_fold_refit_acceptance.md)、[0010：综合审计](../../accepted/0010_project_conclusion_audit.md)；旧稿的组装记录不能代替这些结果 |
 
 [论文状态文件](../../../paper/STATUS.md)记载正文和图尚未纳入后续重拟合及修正模态结果。
 本页通过来源关系解释为什么旧交接报告与后续状态不同，不把编译通过当作科学结论通过。
 
 ## 已与接受记录一起收拢的修订来源
 
-以下材料被[0004 原始验收](originals/accepted/0004_manuscript_honesty_rescope.md)点名，本批与该验收作为同一引用组归档；原文件和接受决定没有被改写：
+以下材料被[0004 原始验收](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0004_manuscript_honesty_rescope.md)点名，本批与该验收作为同一引用组归档；原文件和接受决定没有被改写：
 
 | 材料 | 用途与状态 |
 |---|---|
-| [逐条改写方案](originals/notes/manuscript_screen_rewrite_plan_v1.md) | 已执行方案的历史来源，正文中“待应用”属于旧时点 |
-| [证据等级影响分析](originals/notes/evidence_governance_0003_manuscript_v2.md) | 当时依据访问与评价问题提出的分层建议；后续完成情况看接受记录 |
-| [改写中途检查](originals/notes/manuscript_rewrite_inflight_verify_v1.md) | 已结束的中间态，不能把其中的缺口重新列为今天待办 |
+| [逐条改写方案](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/manuscript_screen_rewrite_plan_v1.md) | 已执行方案的历史来源，正文中“待应用”属于旧时点 |
+| [证据等级影响分析](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/evidence_governance_0003_manuscript_v2.md) | 当时依据访问与评价问题提出的分层建议；后续完成情况看接受记录 |
+| [改写中途检查](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/history/manuscript_rewrite_inflight_verify_v1.md) | 已结束的中间态，不能把其中的缺口重新列为今天待办 |
 
 它们与接受记录的原阅读语境通过固定提交保留；本页导航和最新迁移映射指向当前本地位置。早期两批关于“原位保护”的回执保留当时事实。
 

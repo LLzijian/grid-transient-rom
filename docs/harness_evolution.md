@@ -47,3 +47,5 @@ Campaign 组织假说、新协议和版本引用；实验结果、分析、审�
 [迁移清单](../harness/documentation_migration_20261108.json)仅让静态检查器定位已迁出的文档原文，
 目标缺失、越界或哈希不符仍失败。它不解析科学输入、不改变证据身份或授权；
 历史运行按原提交复现。已存在的当前路径优先，清单中的旧快照不替代当前规范。
+
+后续报告与代码归档由[当前整理输入](../results/repository_organization/current.json)接续；盘点、check和show-run共用受控读取与位置解析，历史批次不回写。生成的[当前入口](../results/repository_organization/CURRENT.md)与职责未复核记录分别保留。

@@ -334,7 +334,7 @@ class CLITests(unittest.TestCase):
         self.public_fixture()
         result = cli.check_root(self.root)
         self.assertTrue(result["valid"], result["issues"])
-        self.assertEqual(len(cli.REQUIRED_FILES), 39)
+        self.assertEqual(len(cli.REQUIRED_FILES), 40)
         self.assertEqual(set(result["checked_files"]), set(cli.REQUIRED_FILES))
         (self.root / "agents/reviewer.md").write_text("[absent](missing-review.md)\n", encoding="utf-8")
         result = cli.check_root(self.root)
