@@ -75,7 +75,7 @@ python3 -B -m unittest discover -s tests -p "test_harness_*.py"
 
 Examples are synthetic or explicitly dated repository snapshots, never live authorization.
 
-Integration and local verification: [2026-10-30 harness v2 record](reports/harness_v2_integration_20261030.md).
+Integration and local verification: [2026-10-30 harness v2 record](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/harness_v2_integration_20261030.md).
 
 Algorithm-specific designs belong in [designs/](designs/README.md), linked from
 campaigns/ and docs/current_design.md. Earlier algorithms are indexed in the
