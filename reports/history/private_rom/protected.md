@@ -1,6 +1,6 @@
 # 早期私有模型：当前保护入口
 
-2026-11-09接续复核：本主题保留36项。下列是仍存在的未归档引用者；已经归档的原件和可维护导航不再单独构成路径约束。完整明细见[最新保护表](../../../results/repository_organization/20261109_task2_archive11/protected.csv)。
+2026-11-09接续复核：本主题保留36项。下列是仍存在的未归档引用者；已经归档的原件和可维护导航不再单独构成路径约束。完整明细见[最新保护表](../../../results/repository_organization/20261109_discovery_archive13/protected.csv)。
 
 | 原件 | 具体引用者 | 解除条件 |
 |---|---|---|
@@ -8,8 +8,8 @@
 | [0078_fixed1200_evidence.md](../../0078_fixed1200_evidence.md) | [reports/failed/0078_structure_campaign.md](../../failed/0078_structure_campaign.md)（第93行） | 核准这些引用者与冻结身份的替代及旧版本恢复，再单独解除；不回填旧哈希。 |
 | [0098_local_memory_capability.md](../../0098_local_memory_capability.md) | [reports/task2_local_memory_0098.md](../../task2_local_memory_0098.md)（第180行）；[designs/history/TASK2_after_loop_101.md](../../../designs/history/TASK2_after_loop_101.md)（第226行） | 核准这些引用者与冻结身份的替代及旧版本恢复，再单独解除；不回填旧哈希。 |
 | [0101_shared_closure_FS_capability.md](../../0101_shared_closure_FS_capability.md) | [reports/project_progress_research_20261025.md](../../project_progress_research_20261025.md)（第38行）；[designs/history/TASK2_after_loop_101.md](../../../designs/history/TASK2_after_loop_101.md)（第224行） | 核准这些引用者与冻结身份的替代及旧版本恢复，再单独解除；不回填旧哈希。 |
-| [0105_q0_scope_conclusion.md](../../0105_q0_scope_conclusion.md) | [reports/closure_improvement_plan_20261019.md](../../closure_improvement_plan_20261019.md)（第97行）；[reports/project_progress_research_20261025.md](../../project_progress_research_20261025.md)（第38行）；[reports/task2_oracle_distillation_pilot_0106.md](../../task2_oracle_distillation_pilot_0106.md)（第3行） | 核准这些引用者与冻结身份的替代及旧版本恢复，再单独解除；不回填旧哈希。 |
-| [0106_oracle_distillation_pilot_capability.md](../../0106_oracle_distillation_pilot_capability.md) | [reports/closure_improvement_plan_20261019.md](../../closure_improvement_plan_20261019.md)（第97行）；[reports/project_progress_research_20261025.md](../../project_progress_research_20261025.md)（第38行） | 核准这些引用者与冻结身份的替代及旧版本恢复，再单独解除；不回填旧哈希。 |
+| [0105_q0_scope_conclusion.md](../../0105_q0_scope_conclusion.md) | [reports/closure_improvement_plan_20261019.md](../closure_discovery/originals/mechanism_20261019/closure_improvement_plan_20261019.md)（第97行）；[reports/project_progress_research_20261025.md](../../project_progress_research_20261025.md)（第38行）；[reports/task2_oracle_distillation_pilot_0106.md](../../task2_oracle_distillation_pilot_0106.md)（第3行） | 核准这些引用者与冻结身份的替代及旧版本恢复，再单独解除；不回填旧哈希。 |
+| [0106_oracle_distillation_pilot_capability.md](../../0106_oracle_distillation_pilot_capability.md) | [reports/closure_improvement_plan_20261019.md](../closure_discovery/originals/mechanism_20261019/closure_improvement_plan_20261019.md)（第97行）；[reports/project_progress_research_20261025.md](../../project_progress_research_20261025.md)（第38行） | 核准这些引用者与冻结身份的替代及旧版本恢复，再单独解除；不回填旧哈希。 |
 | [0010_project_conclusion_audit.md](../../accepted/0010_project_conclusion_audit.md) | [reports/history/early_e_series/originals/results_status_before_organization_20261109.md](../early_e_series/originals/results_status_before_organization_20261109.md)（第17行）；[paper/STATUS.md](../../../paper/STATUS.md)（第9行） | 核准这些引用者与冻结身份的替代及旧版本恢复，再单独解除；不回填旧哈希。 |
 | [0048_electrical_port_balance.md](../../accepted/0048_electrical_port_balance.md) | [designs/history/TASK2_after_loop_75.md](../../../designs/history/TASK2_after_loop_75.md)（第244行） | 核准这些引用者与冻结身份的替代及旧版本恢复，再单独解除；不回填旧哈希。 |
 | [0059_latent_order_audit.md](../../accepted/0059_latent_order_audit.md) | [reports/project_progress_research_20261025.md](../../project_progress_research_20261025.md)（第40行） | 核准这些引用者与冻结身份的替代及旧版本恢复，再单独解除；不回填旧哈希。 |
