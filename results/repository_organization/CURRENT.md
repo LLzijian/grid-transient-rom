@@ -7,17 +7,17 @@
 | 用途 | 来源 |
 |---|---|
 | 旧文档迁移 | [harness/documentation_migration_20261108.json](../../harness/documentation_migration_20261108.json) |
-| 累计归档位置 | [results/repository_organization/20261109_fit297_citations21/migration.json](20261109_fit297_citations21/migration.json) |
-| 报告保护 | [results/repository_organization/20261109_fit297_citations21/protected.csv](20261109_fit297_citations21/protected.csv) |
+| 累计归档位置 | [results/repository_organization/20261109_modulation_citations22/migration.json](20261109_modulation_citations22/migration.json) |
+| 报告保护 | [results/repository_organization/20261109_modulation_citations22/protected.csv](20261109_modulation_citations22/protected.csv) |
 | 代码位置 | [results/repository_organization/20261109_history07/code_index.csv](20261109_history07/code_index.csv) |
 | 既有代码保护依据 | [results/repository_organization/20261109_code06/migration.json](20261109_code06/migration.json) |
 | 补充保护依据 | [results/repository_organization/20261109_history07/protected.json](20261109_history07/protected.json) |
 | 结果与本地存储 | [results/repository_organization/20261109_history05/storage_associations.json](20261109_history05/storage_associations.json) |
 | 文件归属范围 | [results/repository_organization/20261109_completion09/scope.csv](20261109_completion09/scope.csv) |
 | 未逐项复核的职责 | [results/repository_organization/20261109_completion09/unreviewed_individual_roles.csv](20261109_completion09/unreviewed_individual_roles.csv) |
-| 已复核的依赖样板 | [results/repository_organization/20261109_fit297_citations21/dependency_review.json](20261109_fit297_citations21/dependency_review.json) |
-| 核验过的固定阅读版本 | [results/repository_organization/20261109_fit297_citations21/reading_manifest.json](20261109_fit297_citations21/reading_manifest.json) |
+| 已复核的依赖样板 | [results/repository_organization/20261109_modulation_citations22/dependency_review.json](20261109_modulation_citations22/dependency_review.json) |
+| 核验过的固定阅读版本 | [results/repository_organization/20261109_modulation_citations22/reading_manifest.json](20261109_modulation_citations22/reading_manifest.json) |
 
 已关联4815项；按旧路径或当前位置查询：`show-organization --root . --path <路径>`。
 
-[本批归档回执](20261109_fit297_citations21/README.md)记录原件和恢复路径。
+[本批归档回执](20261109_modulation_citations22/README.md)记录原件和恢复路径。

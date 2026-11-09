@@ -21,8 +21,8 @@
 ### 主要阅读材料
 
 - 冻结协议：[reports/gftd_modulation_20261107_protocol.md](../gftd_modulation_20261107_protocol.md)；路径处理：原位保留，源码或路径哈希身份引用。
-- 正式结论：[reports/gftd_modulation_20261107_conclusion.md](../gftd_modulation_20261107_conclusion.md)；路径处理：原位保留，现有正式登记或报告仍引用原路径。
-- 独立结果审查：[reports/gftd_modulation_20261107_result_review.md](../gftd_modulation_20261107_result_review.md)；路径处理：原位保留，现有正式登记或报告仍引用原路径。
+- 正式结论：[reports/gftd_modulation_20261107_conclusion.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_modulation_20261107_conclusion.md)；路径处理：原位保留，现有正式登记或报告仍引用原路径。
+- 独立结果审查：[reports/gftd_modulation_20261107_result_review.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_modulation_20261107_result_review.md)；路径处理：原位保留，现有正式登记或报告仍引用原路径。
 - 执行入口：[experiments/gftd_modulation_20261107.py](../../experiments/gftd_modulation_20261107.py)；路径处理：原位保留，源码或路径哈希身份引用。
 - 结果摘要：[results/gftd_modulation_20261107/summary.json](../../results/gftd_modulation_20261107/summary.json)；路径处理：原位保留，现有正式登记或报告仍引用原路径。
 - root决定：[results/gftd_modulation_20261107/root_adoption.json](../../results/gftd_modulation_20261107/root_adoption.json)；路径处理：原位保留，现有正式登记或报告仍引用原路径。
@@ -50,9 +50,9 @@
 | evidence.references[1]; inference.review_record.reviewed_references[1] | [reports/gftd_modulation_20261107_design_review.md](../gftd_modulation_20261107_design_review.md) | present |
 | evidence.references[2]; inference.review_record.reviewed_references[2] | [reports/gftd_modulation_20261107_implementation_review.md](../gftd_modulation_20261107_implementation_review.md) | present |
 | evidence.references[3]; inference.review_record.reviewed_references[3] | [reports/gftd_modulation_20261107_repair01_review.md](../gftd_modulation_20261107_repair01_review.md) | present |
-| evidence.references[4]; root_decisions.scientist_reference; inference.optimization_adequacy_reference; inference.alternative_explanations_reference; inference.review_record.reviewed_references[4] | [reports/gftd_modulation_20261107_scientific_assessment.md](../gftd_modulation_20261107_scientific_assessment.md) | present |
-| evidence.references[5]; root_decisions.review_reference; inference.independent_review_reference; inference.review_record.reference; inference.review_record.reviewed_references[5]; navigation.materials[2].reference | [reports/gftd_modulation_20261107_result_review.md](../gftd_modulation_20261107_result_review.md) | present |
-| evidence.references[6]; inference.effect_reference; inference.review_record.reviewed_references[6]; navigation.materials[1].reference | [reports/gftd_modulation_20261107_conclusion.md](../gftd_modulation_20261107_conclusion.md) | present |
+| evidence.references[4]; root_decisions.scientist_reference; inference.optimization_adequacy_reference; inference.alternative_explanations_reference; inference.review_record.reviewed_references[4] | [reports/gftd_modulation_20261107_scientific_assessment.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_modulation_20261107_scientific_assessment.md) | present |
+| evidence.references[5]; root_decisions.review_reference; inference.independent_review_reference; inference.review_record.reference; inference.review_record.reviewed_references[5]; navigation.materials[2].reference | [reports/gftd_modulation_20261107_result_review.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_modulation_20261107_result_review.md) | present |
+| evidence.references[6]; inference.effect_reference; inference.review_record.reviewed_references[6]; navigation.materials[1].reference | [reports/gftd_modulation_20261107_conclusion.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_modulation_20261107_conclusion.md) | present |
 | evidence.references[7]; inference.review_record.reviewed_references[7] | [results/gftd_modulation_20261107/authorization.json](../../results/gftd_modulation_20261107/authorization.json) | present |
 | evidence.references[8]; inference.review_record.reviewed_references[8]; navigation.materials[0].path_protection.consumers[0].reference | [results/gftd_modulation_20261107/design_adoption.json](../../results/gftd_modulation_20261107/design_adoption.json) | present |
 | evidence.references[9]; inference.review_record.reviewed_references[9]; navigation.materials[0].path_protection.consumers[1].reference; navigation.materials[3].path_protection.consumers[0].reference | [results/gftd_modulation_20261107/execution_release.json](../../results/gftd_modulation_20261107/execution_release.json) | present |
