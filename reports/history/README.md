@@ -15,8 +15,8 @@
 | [执行与恢复维护](../maintenance/execution_runtime/README.md) | 进程监督、来源身份、检查点及技术续行 |
 | [仓库与运行规范维护](../maintenance/repository_runtime/README.md) | harness、Git、费用规则与本地存储历史 |
 
-[本批材料总表](catalog.md)覆盖剩余顶层 Markdown 与此前保护项，按原始标题查找当前位置和处理决定。未移动的项目有引用者与解除条件，不把“原位保护”当作接受标签。
+[材料总表](catalog.md)按原始标题列出归档位置和固定阅读版。旧的保护记录保存在各批回执，恢复旧路径和字节时按相应回执核对。
 
-冻结原文中的旧相对路径可以查[链接解析表](../../results/repository_organization/20261109_history05/outgoing_links.csv)：区分报告迁移、旧设计迁移、本地产物未打开及原文本中的数学表达式。[非Markdown复核](../../results/repository_organization/20261109_history07/README.md)已完成9项逐项处理：8项归档，QA05原始返回因执行器路径／哈希绑定继续保留。HTML另有修复链接的历史阅读版。
+冻结原文中的旧相对路径可查[链接解析表](../../results/repository_organization/20261109_history05/outgoing_links.csv)。历史概览另有[链接已更新的阅读版](force_memory/project_overview_20261029_reading.html)，QA05 原始文本已通过[旧路径恢复核验](../../results/repository_organization/20261109_rational_runtime_recovery23/README.md)并归档。
 
 早期规范与算法来源继续从[旧文档档案](docs/README.md)和[旧设计](../../designs/history/README.md)进入；本次没有把旧协议重写成当前方案。

@@ -39,7 +39,7 @@ the scientific evidence. This README does not duplicate agent rules or current s
 
 ## Closure equation discovery study
 
-The finite A–E implementation and study are documented in the [final report](reports/closure_discovery_20261017_final.md), with [explicit equations and an independent NumPy package](results/closure_discovery_20261017/E/packages/main_2701/README.md). Prediction, structure recovery and stability findings retain their reported scope.
+The finite A–E implementation and study are documented in the [final report](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/closure_discovery_20261017_final.md), with [explicit equations and an independent NumPy package](results/closure_discovery_20261017/E/packages/main_2701/README.md). Prediction, structure recovery and stability findings retain their reported scope.
 
 ## Historical closure training
 
@@ -75,7 +75,7 @@ python3 -B -m unittest discover -s tests -p "test_harness_*.py"
 
 Examples are synthetic or explicitly dated repository snapshots, never live authorization.
 
-Integration and local verification: [2026-10-30 harness v2 record](reports/harness_v2_integration_20261030.md).
+Integration and local verification: [2026-10-30 harness v2 record](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/harness_v2_integration_20261030.md).
 
 Algorithm-specific designs belong in [designs/](designs/README.md), linked from
 campaigns/ and docs/current_design.md. Earlier algorithms are indexed in the

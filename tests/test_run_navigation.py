@@ -58,6 +58,41 @@ class RunNavigationTests(unittest.TestCase):
         target.write_bytes(b'changed')
         with self.assertRaisesRegex(ValueError,'bytes differ'):cli.run_navigation(self.root,'example')
 
+    def test_frozen_report_archive_supersedes_an_identical_design_copy(self):
+        old = 'reports/design.md'
+        self.registry(evidence=dict(references=[old]))
+        self.index(materials=[dict(reference=old, role='冻结设计',
+            path_protection=dict(status='preserve_current_path', reason='执行时绑定旧路径'))])
+        payload = b'# Frozen design\n'
+        copy = 'designs/design.md'
+        archive = 'reports/history/example/originals/design.md'
+        for name in (copy, archive):
+            target = self.root / name
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_bytes(payload)
+        identity = dict(old_path=old, bytes=len(payload), sha256=hashlib.sha256(payload).hexdigest())
+        self.write_json('harness/documentation_migration_20261108.json', dict(schema_version=1,
+            source_commit='synthetic', entries=[dict(identity, new_path=copy, operation='copy_keep_frozen_source')]))
+        mapping = 'results/repository_organization/example/migration.json'
+
+        def pin(entry):
+            manifest = self.write_json(mapping, dict(cumulative_locations=[dict(entry, current_path=archive)]))
+            digest = hashlib.sha256(manifest.read_bytes().replace(b'\r\n', b'\n')).hexdigest()
+            self.write_json('results/repository_organization/current.json', dict(schema_version=1,
+                inputs=dict(archive_locations=dict(path=mapping, sha256_lf=digest))))
+
+        pin(identity)
+        result = cli.run_navigation(self.root, 'example')
+        self.assertTrue(result['valid'])
+        self.assertEqual(result['runs'][0]['materials'][0]['resolved_reference'], archive)
+        rendered = cli.render_run_navigation(result)
+        self.assertIn('已核验迁移', rendered)
+        self.assertNotIn('原位保留', rendered)
+        self.assertEqual((self.root / copy).read_bytes(), payload)
+        pin(dict(identity, sha256='0' * 64))
+        with self.assertRaisesRegex(ValueError, 'duplicate migration old_path'):
+            cli.run_navigation(self.root, 'example')
+
     def test_same_record_conflict_is_not_resolved_by_picking_a_value(self):
         self.registry(scientific_work=dict(budget_status='closed'),root_decisions=dict(scientific_budget_status='open'))
         result=cli.run_navigation(self.root,'example')

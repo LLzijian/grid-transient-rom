@@ -20,14 +20,14 @@
 
 ### 主要阅读材料
 
-- 冻结协议：[reports/gftd_sparse_topology_20261107_protocol.md](../gftd_sparse_topology_20261107_protocol.md)；路径处理：原位保留，源码或路径哈希身份引用。
-- 正式结论：[reports/gftd_sparse_topology_20261107_conclusion.md](../gftd_sparse_topology_20261107_conclusion.md)；路径处理：原位保留，现有正式登记或报告仍引用原路径。
-- 独立结果审查：[reports/gftd_sparse_topology_20261107_result_review.md](../gftd_sparse_topology_20261107_result_review.md)；路径处理：原位保留，现有正式登记或报告仍引用原路径。
+- 冻结协议：[reports/gftd_sparse_topology_20261107_protocol.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_sparse_topology_20261107_protocol.md)；路径处理：已核验迁移，源码或路径哈希身份引用。
+- 正式结论：[reports/gftd_sparse_topology_20261107_conclusion.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_sparse_topology_20261107_conclusion.md)；路径处理：已核验迁移，现有正式登记或报告仍引用原路径。
+- 独立结果审查：[reports/gftd_sparse_topology_20261107_result_review.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_sparse_topology_20261107_result_review.md)；路径处理：已核验迁移，现有正式登记或报告仍引用原路径。
 - 执行入口：[experiments/gftd_sparse_topology_20261107.py](../../experiments/gftd_sparse_topology_20261107.py)；路径处理：原位保留，源码或路径哈希身份引用。
 - 结果摘要：[results/gftd_sparse_topology_20261107/summary.json](../../results/gftd_sparse_topology_20261107/summary.json)；路径处理：原位保留，现有正式登记或报告仍引用原路径。
 - root决定：[results/gftd_sparse_topology_20261107/root_adoption.json](../../results/gftd_sparse_topology_20261107/root_adoption.json)；路径处理：原位保留，现有正式登记或报告仍引用原路径。
 
-解除条件：另立迁移批次核查全部调用者和冻结身份，保留旧执行恢复方式；核验新导航与映射后再解除，不回写旧协议或哈希。
+原登记的解除条件为 另立迁移批次核查全部调用者和冻结身份，保留旧执行恢复方式；核验新导航与映射后再解除，不回写旧协议或哈希。
 
 ### 执行与归档事件
 
@@ -42,12 +42,12 @@
 
 | 字段来源 | 材料 | 路径检查 |
 |---|---|---|
-| evidence.references[0]; inference.evaluation_contract_reference; inference.comparison_reference; inference.budget_reference; inference.selection_accounting_reference; inference.review_record.reviewed_references[0]; navigation.materials[0].reference | [reports/gftd_sparse_topology_20261107_protocol.md](../gftd_sparse_topology_20261107_protocol.md) | present |
-| evidence.references[1]; inference.review_record.reviewed_references[1] | [reports/gftd_sparse_topology_20261107_design_review.md](../gftd_sparse_topology_20261107_design_review.md) | present |
-| evidence.references[2]; inference.review_record.reviewed_references[2] | [reports/gftd_sparse_topology_20261107_implementation_review.md](../gftd_sparse_topology_20261107_implementation_review.md) | present |
-| evidence.references[3]; inference.alternative_explanations_reference; inference.review_record.reviewed_references[3]; root_decisions.scientist_reference | [reports/gftd_sparse_topology_20261107_scientific_assessment.md](../gftd_sparse_topology_20261107_scientific_assessment.md) | present |
-| evidence.references[4]; inference.optimization_adequacy_reference; inference.independent_review_reference; inference.review_record.reference; inference.review_record.reviewed_references[4]; root_decisions.review_reference; navigation.materials[2].reference | [reports/gftd_sparse_topology_20261107_result_review.md](../gftd_sparse_topology_20261107_result_review.md) | present |
-| evidence.references[5]; inference.effect_reference; inference.review_record.reviewed_references[5]; navigation.materials[1].reference | [reports/gftd_sparse_topology_20261107_conclusion.md](../gftd_sparse_topology_20261107_conclusion.md) | present |
+| evidence.references[0]; inference.evaluation_contract_reference; inference.comparison_reference; inference.budget_reference; inference.selection_accounting_reference; inference.review_record.reviewed_references[0]; navigation.materials[0].reference | [reports/gftd_sparse_topology_20261107_protocol.md](../history/gftd_campaign/originals/gftd_sparse_topology_20261107/gftd_sparse_topology_20261107_protocol.md) | migrated_sha256_verified |
+| evidence.references[1]; inference.review_record.reviewed_references[1] | [reports/gftd_sparse_topology_20261107_design_review.md](../history/gftd_campaign/originals/gftd_sparse_topology_20261107/gftd_sparse_topology_20261107_design_review.md) | migrated_sha256_verified |
+| evidence.references[2]; inference.review_record.reviewed_references[2] | [reports/gftd_sparse_topology_20261107_implementation_review.md](../history/gftd_campaign/originals/gftd_sparse_topology_20261107/gftd_sparse_topology_20261107_implementation_review.md) | migrated_sha256_verified |
+| evidence.references[3]; inference.alternative_explanations_reference; inference.review_record.reviewed_references[3]; root_decisions.scientist_reference | [reports/gftd_sparse_topology_20261107_scientific_assessment.md](../history/gftd_campaign/originals/gftd_sparse_topology_20261107/gftd_sparse_topology_20261107_scientific_assessment.md) | migrated_sha256_verified |
+| evidence.references[4]; inference.optimization_adequacy_reference; inference.independent_review_reference; inference.review_record.reference; inference.review_record.reviewed_references[4]; root_decisions.review_reference; navigation.materials[2].reference | [reports/gftd_sparse_topology_20261107_result_review.md](../history/gftd_campaign/originals/gftd_sparse_topology_20261107/gftd_sparse_topology_20261107_result_review.md) | migrated_sha256_verified |
+| evidence.references[5]; inference.effect_reference; inference.review_record.reviewed_references[5]; navigation.materials[1].reference | [reports/gftd_sparse_topology_20261107_conclusion.md](../history/gftd_campaign/originals/gftd_sparse_topology_20261107/gftd_sparse_topology_20261107_conclusion.md) | migrated_sha256_verified |
 | evidence.references[6]; inference.review_record.reviewed_references[6] | [results/gftd_sparse_topology_20261107/authorization.json](../../results/gftd_sparse_topology_20261107/authorization.json) | present |
 | evidence.references[7]; inference.review_record.reviewed_references[7]; navigation.materials[0].path_protection.consumers[0].reference | [results/gftd_sparse_topology_20261107/design_adoption.json](../../results/gftd_sparse_topology_20261107/design_adoption.json) | present |
 | evidence.references[8]; inference.review_record.reviewed_references[8] | [results/gftd_sparse_topology_20261107/estimates.json](../../results/gftd_sparse_topology_20261107/estimates.json) | present |
@@ -74,3 +74,5 @@
 | navigation.materials[0].path_protection.consumers[4].reference; navigation.materials[3].reference | [experiments/gftd_sparse_topology_20261107.py](../../experiments/gftd_sparse_topology_20261107.py) | present |
 | navigation.materials[1].path_protection.consumers[0].reference; navigation.materials[1].path_protection.consumers[1].reference; navigation.materials[1].path_protection.consumers[2].reference; navigation.materials[2].path_protection.consumers[0].reference; navigation.materials[2].path_protection.consumers[1].reference; navigation.materials[2].path_protection.consumers[2].reference; navigation.materials[2].path_protection.consumers[3].reference; navigation.materials[2].path_protection.consumers[4].reference; navigation.materials[2].path_protection.consumers[5].reference; navigation.materials[4].path_protection.consumers[0].reference; navigation.materials[4].path_protection.consumers[1].reference; navigation.materials[5].path_protection.consumers[0].reference; navigation.materials[5].path_protection.consumers[1].reference | [harness/runs/gftd_sparse_topology_20261107.json](../../harness/runs/gftd_sparse_topology_20261107.json) | present |
 | navigation.materials[3].path_protection.consumers[3].reference | [tests/test_gftd_sparse_topology_20261107.py](../../tests/test_gftd_sparse_topology_20261107.py) | present |
+
+[冻结协议与审查归档](../../results/repository_organization/20261109_gftd_runtime_recovery28/README.md)

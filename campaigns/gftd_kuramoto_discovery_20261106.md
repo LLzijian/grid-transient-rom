@@ -10,16 +10,16 @@
 
 | 问题 | 当前判断与范围 | 原始来源与材料导航 |
 |---|---|---|
-| 什么信息条件支持静态边与权重恢复？ | 登记的四个 K4 无噪图均恢复正确支撑；含噪支撑仍正确，高噪最大边权误差约 0.264；平衡设置返回 null。此结论不扩张为任意图或 K10 保证。 | [原结论](../reports/gftd_sparse_topology_20261107_conclusion.md)、[独立审查](../reports/gftd_sparse_topology_20261107_result_review.md)、[数值摘要](../results/gftd_sparse_topology_20261107/summary.json)、[Run 导航](../reports/gftd_sparse_topology_20261107/README.md) |
-| 预测通过能否证明隐幅值调制已恢复？ | 人工条件中 48/48 配对数值合格、30/48 达到预测门；无噪调制条件中 beta=0 仍可通过预测门。机制采用门未通过，联合优化充分性 unknown；保留静态替代、信息不足与欠优化解释。 | [原结论](../reports/gftd_modulation_20261107_conclusion.md)、[独立审查](../reports/gftd_modulation_20261107_result_review.md)、[数值摘要](../results/gftd_modulation_20261107/summary.json)、[Run 导航](../reports/gftd_modulation_20261107/README.md) |
-| 原Run 3真实暂态同期比较说明了什么？ | train fit297 全部 297 包均进入流程，静态 46/297、调制 1/297 有数值合格输出；两模型对 30 个失稳样本均无合格输出。原总体L1指标为null，不能比较不同覆盖样本的均值，也不能把未覆盖写作零漏检。 | [原结论](../reports/gftd_fit297_20261107_conclusion.md)、[独立审查](../reports/gftd_fit297_20261107_result_review.md)、[证据摘要](../results/gftd_fit297_20261107/evidence_digest.json)、[Run 导航](../reports/gftd_fit297_20261107/README.md) |
+| 什么信息条件支持静态边与权重恢复？ | 登记的四个 K4 无噪图均恢复正确支撑；含噪支撑仍正确，高噪最大边权误差约 0.264；平衡设置返回 null。此结论不扩张为任意图或 K10 保证。 | [原结论](../reports/history/gftd_campaign/originals/gftd_sparse_topology_20261107/gftd_sparse_topology_20261107_conclusion.md)、[独立审查](../reports/history/gftd_campaign/originals/gftd_sparse_topology_20261107/gftd_sparse_topology_20261107_result_review.md)、[数值摘要](../results/gftd_sparse_topology_20261107/summary.json)、[Run 导航](../reports/gftd_sparse_topology_20261107/README.md) |
+| 预测通过能否证明隐幅值调制已恢复？ | 人工条件中 48/48 配对数值合格、30/48 达到预测门；无噪调制条件中 beta=0 仍可通过预测门。机制采用门未通过，联合优化充分性 unknown；保留静态替代、信息不足与欠优化解释。 | [原结论](../reports/gftd_modulation_20261107/originals/gftd_modulation_20261107_conclusion.md)、[独立审查](../reports/gftd_modulation_20261107/originals/gftd_modulation_20261107_result_review.md)、[数值摘要](../results/gftd_modulation_20261107/summary.json)、[Run 导航](../reports/gftd_modulation_20261107/README.md) |
+| 原Run 3真实暂态同期比较说明了什么？ | train fit297 全部 297 包均进入流程，静态 46/297、调制 1/297 有数值合格输出；两模型对 30 个失稳样本均无合格输出。原总体L1指标为null，不能比较不同覆盖样本的均值，也不能把未覆盖写作零漏检。 | [原结论](../reports/gftd_fit297_20261107/originals/gftd_fit297_20261107_conclusion.md)、[独立审查](../reports/gftd_fit297_20261107/originals/gftd_fit297_20261107_result_review.md)、[证据摘要](../results/gftd_fit297_20261107/evidence_digest.json)、[Run 导航](../reports/gftd_fit297_20261107/README.md) |
 | 初始化检查的大量失败能否修复？ | 原23个冻结失败点有RK4收敛及三参考证据；固定DP8在全体完整初始化中新增532个合格输出。原14项增长、1项新初始化下溢、长时异常及参考到限分别保留，数值覆盖不等于预测收益。 | [本轮结论](../reports/gftd_initialization_precision_20261109/conclusion.md)、[独立结果复核](../reports/gftd_initialization_precision_20261109/result_review.md)、[root决定](../results/gftd_initialization_precision_20261109/root_adoption.json) |
-| 局部证书与物理对应分别支持什么？ | 两个冻结 ROM 均有非空局部吸引集证明，47 个可检查实际初态均未获覆盖；每模型为 10/13 模态配对，图相关使用 K(a=0) 与绝对 Kron 导纳。ROM 证书不等于全阶安全，球外不等于失稳，物理对应不等于真线路恢复。 | [结论中的 L2／L3](../reports/gftd_fit297_20261107_conclusion.md)、[解释更正依据](../reports/gftd_fit297_20261107_result_review.md)、[root 决定](../results/gftd_fit297_20261107/root_adoption.json) |
+| 局部证书与物理对应分别支持什么？ | 两个冻结 ROM 均有非空局部吸引集证明，47 个可检查实际初态均未获覆盖；每模型为 10/13 模态配对，图相关使用 K(a=0) 与绝对 Kron 导纳。ROM 证书不等于全阶安全，球外不等于失稳，物理对应不等于真线路恢复。 | [结论中的 L2／L3](../reports/gftd_fit297_20261107/originals/gftd_fit297_20261107_conclusion.md)、[解释更正依据](../reports/gftd_fit297_20261107/originals/gftd_fit297_20261107_result_review.md)、[root 决定](../results/gftd_fit297_20261107/root_adoption.json) |
 
 ### 认识修订与事件关系
 
 - **真实比较的缺口已变化**：原“没有同期真实系统证据”更新为“同期流程已完成，总体效应因数值覆盖不足未决”，依据 fit297 的结论、独立审查和原分母结果。
-- **L3 的局部解释更正**：[科学判读](../reports/gftd_fit297_20261107_scientific_assessment.md)中“参考角度有效刚度”的措辞由[独立审查](../reports/gftd_fit297_20261107_result_review.md)澄清为 K(a=0) 对绝对 Kron 导纳；[最终结论](../reports/gftd_fit297_20261107_conclusion.md)采用更正，相关数值不变。其余分析按原范围保留。
+- **L3 的局部解释更正**：[科学判读](../reports/gftd_fit297_20261107/originals/gftd_fit297_20261107_scientific_assessment.md)中“参考角度有效刚度”的措辞由[独立审查](../reports/gftd_fit297_20261107/originals/gftd_fit297_20261107_result_review.md)澄清为 K(a=0) 对绝对 Kron 导纳；[最终结论](../reports/gftd_fit297_20261107/originals/gftd_fit297_20261107_conclusion.md)采用更正，相关数值不变。其余分析按原范围保留。
 - **技术续跑不增加科学重复**：fit297 原执行保存 41 项后发生 I/O 故障，[续跑回执](../results/gftd_fit297_20261107/resume01/execution.json)继承这 41 项、完成余下 553 项，没有重拟合或重放；仍是同一 Run 的一次比较。
 - **采用决定与归档完成属于两个时点**：[root 决定](../results/gftd_fit297_20261107/root_adoption.json)保留当时待归档动作，随后[归档回执](../results/gftd_fit297_20261107/archive_verified.json)记录推送核验完成。不回写旧决定来消除时间差。
 
@@ -82,6 +82,6 @@
 
 - **当前工作**。[初始化精度Run](gftd_initialization_precision_20261109/protocol.md)已完成并[独立复核](../reports/gftd_initialization_precision_20261109/result_review.md)，原参数下的完整初始化覆盖提高，原Run 3通过数不回填。下一问题是冻结新初态的长时异常与static_027差异放大，先做有界跨方法辨别，再判断数值求值、初始化选点或储能结构的修改。当前Run工作量关闭，不追加计算或转移余额。
 
-- **2026-11-08证据更新**。M0/M1的同期流程已执行，但总体预测比较因数值资格覆盖不足保持未决；不再将“未执行真实比较”作为当前缺口。M2需要区分共享适配351/384任务到限与初始化后的数值资格损失：646初始化优化任务均收敛，却有547项未返回合格初态。条件支撑为静态35边、调制35边及25调制边，联合唯一性unknown。L2非空局部证明不覆盖本轮47实点；L3的K–绝对Kron导纳相关0.440/0.483及10/13模态配对用于描述，不替代L1。详见[Scientist判读](../reports/gftd_fit297_20261107_scientific_assessment.md)、[独立结果审查](../reports/gftd_fit297_20261107_result_review.md)及[root采用](../results/gftd_fit297_20261107/root_adoption.json)。
+- **2026-11-08证据更新**。M0/M1的同期流程已执行，但总体预测比较因数值资格覆盖不足保持未决；不再将“未执行真实比较”作为当前缺口。M2需要区分共享适配351/384任务到限与初始化后的数值资格损失：646初始化优化任务均收敛，却有547项未返回合格初态。条件支撑为静态35边、调制35边及25调制边，联合唯一性unknown。L2非空局部证明不覆盖本轮47实点；L3的K–绝对Kron导纳相关0.440/0.483及10/13模态配对用于描述，不替代L1。详见[Scientist判读](../reports/gftd_fit297_20261107/originals/gftd_fit297_20261107_scientific_assessment.md)、[独立结果审查](../reports/gftd_fit297_20261107/originals/gftd_fit297_20261107_result_review.md)及[root采用](../results/gftd_fit297_20261107/root_adoption.json)。
 - **判别顺序**。同族正负校准分开检查恢复和误检，推断端隔离真实图及隐轨迹，再比较独立生成机制与最强替代解释，随后准备 IEEE39 条件内辨别。
 - **停止/转向条件**。无效实现先有界修复；信息不足或机制不可区分时检查可观测性和等价类，按证据决定修订或暂存。正、负、混合结果按五轴判读，确认需求与晋升资格分开。每个 Run 预登记比较、适配上限、停止/重开条件和实际成本，旧余额不转移。

@@ -398,9 +398,11 @@ def render_run_navigation(value):
             for row in nav["materials"]:
                 protection = row.get("path_protection", {})
                 status = "原位保留" if protection.get("status") == "preserve_current_path" else text(protection.get("status"))
+                if target(row["reference"], for_reading=False) != row["reference"]:
+                    status = "已核验迁移"
                 lines.append(f"- {text(row.get('role'))}：[{text(row['reference'])}]({target(row['reference'])})；路径处理：{status}，{text(protection.get('reason'))}。")
             if nav.get("protection_release_condition"):
-                lines += ["", "解除条件：" + text(nav["protection_release_condition"])]
+                lines += ["", "原登记的解除条件为 " + text(nav["protection_release_condition"])]
         for correction in nav.get("corrections", []):
             lines += ["", "### 解释更正", "", text(correction.get("scope")), "",
                       f"[原解释]({target(correction['original_reference'])}) → [独立更正]({target(correction['corrected_by_reference'])}) → [采用更正的结论]({target(correction['adopted_reference'])})。"]

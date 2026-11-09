@@ -13,7 +13,7 @@
 | 能从残差找到低维量，是否就能得到自主闭合？ | 初态的非因果对照显示初始化有改进空间，时变力反演又暴露单一衰减状态的表达缺口；这两种解释需要分别检验。 | [初态与结构对照](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0027_memory_oracles.md)、[非中心化对照](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0030_uncentered_oracle.md)、[方案全表](catalog.md) |
 | 局部模态、能量界与真实系统安全是什么关系？ | 冻结 M3 的局部谱与保守能量界各有明确数学对象；全阶谱还经历了约化伪模态的纠正。这些证据保留各自 ROM 范围和覆盖条件。 | [模态审计](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0035_m3_modes.md)、[能量界](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0036_m3_energy_boundary.md)、[方向相关边界](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0037_m3_reachable_boundary.md) |
 | 轨迹改善是否足以通过完整评价？ | Pilot 的正式 test 检查中，轨迹相对贡献通过，而新增失稳漏检使联合主张未通过；该 test 随后已消费，不能用于新模型选择。 | [原确认记录](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/failed/0038_private_confirmatory.md) |
-| 闭合误差应归于表示、参数还是初始化？ | 后续空间力投影、隐状态阶数和联合训练记录逐项检查这些解释。例如 0064 支持其冻结 train 条件下以已有作用空间内的失配为主，不能外推为所有模型都应维持同一状态维数。 | [物理力投影](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0064_physical_force_projection.md)、[隐状态阶数](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0059_latent_order_audit.md)、[长时程记录](../../accepted/0060_long_horizon_campaign.md) |
+| 闭合误差应归于表示、参数还是初始化？ | 后续空间力投影、隐状态阶数和联合训练记录逐项检查这些解释。例如 0064 支持其冻结 train 条件下以已有作用空间内的失配为主，不能外推为所有模型都应维持同一状态维数。 | [物理力投影](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0064_physical_force_projection.md)、[隐状态阶数](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0059_latent_order_audit.md)、[长时程记录](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0060_long_horizon_campaign.md) |
 | 同一梯度结构通过实现检查，是否已经完成结构发现？ | 0076 接受的是实现与模板表达能力检查。后续系数、局部稳定性和模态平衡诊断仍需按各自冻结对象解释，不能由一次诊断直接宣布模型晋升。 | [结构原型](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0076_structure_prototype.md)、[复方向模态平衡](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0097_complex_balance.md) |
 
 上表直接引用原报告。本次没有重算指标、加载模型或重新读取原始数据；也没有把后来已暴露的数据重新标为独立确认。
@@ -40,9 +40,9 @@
 [完整材料表](catalog.md)同时列出原协议、接受／拒绝记录、原始标题和机读证据；原分类作为历史属性保留。
 机读证据从旧 `reports/` 收入 `results/private_rom_history/`，不混入当前 Run 的结果目录。原始私有数据、模型、预测数组和代码位置保持不变。
 
-## 有路径依赖的材料为什么仍在原处
+## 冻结协议如何恢复
 
-[原位保护入口](protected.md)连接最新全表、具体引用者和解除条件。前批数量属于当时范围；跨项目综述在最新总表按主主题展示，不把重新分类当作解除依赖。
+[早期 TASK2 归档回执](../../../results/repository_organization/20261109_oldest_task2_runtime_recovery30/README.md)记录了 0078 和 0098–0106 的原路径及 SHA256。0106 恢复时使用归档原件的工作树字节，其余九份可从回执所列固定提交读取。
 其中包括当前论文状态仍引用的早期总审计、旧项目总览绑定的来源、脚本直接读取的证据，以及受保护记录继续引用的协议。
 “被引用”和“被接受”是不同属性，保护不改变任何科学判断。
 
@@ -59,3 +59,5 @@
 已闭合的15个历史代码入口另见[代码档案](../../../experiments/history/private_rom/README.md)；报告与科学库原始字节不变，旧执行按完整旧版本恢复。
 
 第八批在前序代码／概览归档后复核保护边界，再解除6份报告／证据的旧路径依赖；[最新累计位置](../../../results/repository_organization/20261109_history08/migration.json)与本主题保护表接续原记录。
+
+[历史报告恢复核验](../../../results/repository_organization/20261109_oldest_task2_runtime_recovery30/README.md)列出旧路径、冻结 SHA256 和原校验入口。

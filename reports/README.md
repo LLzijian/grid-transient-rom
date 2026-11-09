@@ -1,5 +1,7 @@
 # 研究记录导航
 
+顶层保留本页与正式 Run 总表。旧报告、协议和审查原件均已归入对应主题，原路径与恢复方式见[当前归档入口](../results/repository_organization/CURRENT.md)。
+
 ## 先按问题阅读
 
 - **[当前主线：静态拓扑、隐幅值调制与力记忆](../campaigns/gftd_kuramoto_discovery_20261106.md)**：先读当前研究候选、证据范围与未决问题；[静态恢复](gftd_sparse_topology_20261107/README.md)、[调制辨别](gftd_modulation_20261107/README.md)、[真实暂态迁移](gftd_fit297_20261107/README.md)提供正式登记与原执行／续跑导航。
@@ -7,7 +9,7 @@
 - **[后续闭合模型与训练时域](history/closure_development/README.md)**：函数形式的预测收益、机制选择与训练窗口的辨别作用，工程条件单独说明。
 - **[执行与恢复维护](maintenance/execution_runtime/README.md)**及[仓库运行规范](maintenance/repository_runtime/README.md)：集中查进程监督、检查点、harness、Git 和本地存储历史。
 - **[初代暂态模型：模块选择、能量筛查与误差诊断](history/early_e_series/README.md)**：13 份 E 报告和旧保留审计已收拢。先读历史认识，再查采用／拒绝决定和解释更正。
-- **[早期私有模型：机械功率、记忆闭合与结构诊断](history/private_rom/README.md)**：按问题串起 Loop0017–0106，接受与未采用记录同时保留；[有路径依赖的材料](history/private_rom/protected.md)列明引用者和解除条件。
+- **[早期私有模型：机械功率、记忆闭合与结构诊断](history/private_rom/README.md)**：按问题串起 Loop0017–0106，保留接受、未采用与未决记录，主题页附冻结协议的恢复入口。
 - **[闭合方程发现：结构搜索、因果初始化与工程核验](history/closure_discovery/README.md)**：串起 10-17 的 A—E 研究与 10-19 的后续工作，分别查看科学结论、工程接受和未得到有效比较的记录。
 - **[早期论文：成稿、图表、数字核对与证据修订](history/paper/README.md)**：区分当时的成稿／排版完成与后续科学验收，连接旧稿、修订方案和最终接受记录。
 - **[早期工程门控：基线审查与后续实现](maintenance/early_gates/README.md)**：维护记录单独归类，历史待办不进入当前研究任务。
@@ -31,7 +33,7 @@
 | 已有 `task*.md` 与冻结协议 | 历史或当前 Run 的预登记原件，采用范围以当前状态和该 Run 为准；新协议归 Campaign 材料 |
 | `accepted/` | 当时接受的实现、诊断或模型记录；不自动表示模型晋级，局部解释可能被后续纠正 |
 | `failed/` | 被拒绝、实现失败或其他未通过记录；属于必要证据，不能因失败而删除 |
-| 顶层证据与审查报告 | 某个阶段的证据汇总或独立维护审查，按报告标注的范围使用 |
+| 主题档案中的证据与审查报告 | 某个阶段的证据汇总或独立维护审查，按报告标注的范围使用 |
 | `history/` | 历史研究综述与过程快照；按各页范围和更正链阅读，不作为当前候选或任务状态 |
 | `maintenance/` | harness、环境与恢复等维护事项；不作为科学 Run 或模型晋升 |
 
