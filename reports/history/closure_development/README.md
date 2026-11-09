@@ -12,7 +12,7 @@
 | 短窗预测通过是否唯一指定机制？ | 两种预给定边记忆均可通过原短窗标准；删除新增储能后也可通过。较长自主预测给三个候选提供了额外的选择信息，不等于已恢复未知公式。 | [两机制比较](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/edge_memory_discrimination_20261021_conclusion.md)、[整项删除](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/edge_closure_deletion_20261021_conclusion.md)、[长时域辨别](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/long_horizon_discrimination_20261021_conclusion.md) |
 | 函数形式是否影响因果预测？ | 固定的 12 模型比较在 0% 与 1% 噪声下，有理端口相对 tanh 的合成 val 结果在六个配对实例同向；这是给定形式间的比较，不是算法发现未知形式。 | [完整比较](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/checkpoint_continuation_20261022_conclusion.md) |
 | 给出有限语法池，是否就能选中生成机制？ | 一轮因真值轨迹数值资格而未完成三实例确认；后续增长受控的六机制比较完成，但三个 train 实例均未选中生成机制。数值可区分的排序与正确机制恢复分别判断。 | [原资格受限结果](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/finite_grammar_execution_20261022_conclusion.md)、[完整六机制比较](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/bounded_edge_grammar_20261022_conclusion.md) |
-| 训练时域如何影响机制选择？ | 固定两机制、三实例的 2048 更新比较中，0.5 s 训练窗口选择竞争机制，2 s 窗口选择植入机制。窗口与更新次数的作用分开记录；结果是既有 train 条件内的辨别，未作为真实系统独立确认。 | [训练窗口研究](../../horizon_pair_20261023_conclusion.md) |
+| 训练时域如何影响机制选择？ | 固定两机制、三实例的 2048 更新比较中，0.5 s 训练窗口选择竞争机制，2 s 窗口选择植入机制。窗口与更新次数的作用分开记录；结果是既有 train 条件内的辨别，未作为真实系统独立确认。 | [训练窗口研究](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/horizon_pair_20261023_conclusion.md) |
 
 ## 工程结果如何使用
 
@@ -24,7 +24,7 @@
 
 ## 原件与继承关系
 
-工程与执行的原始紧凑记录另可查：[边幅值 QA](../../../results/edge_memory_amplitude_20261021/qa01_summary.json)、[多项式 QA](../../../results/edge_polynomial_runtime_20261021/qa02_summary.json)、[有限语法执行回执](../../../results/finite_grammar_execution_20261022/completion_summary.json)、[饱和端口正确性检查](../../../results/tanh_port_runtime_20261019/correctness_summary.json)。回执完成状态与上文的科学结论分别解释。
+工程与执行记录见[边幅值 QA](../../../results/edge_memory_amplitude_20261021/qa01_summary.json)、[多项式 QA](../../../results/edge_polynomial_runtime_20261021/qa02_summary.json)、[有限语法执行回执](../../../results/finite_grammar_execution_20261022/completion_summary.json)及[饱和端口核验结论](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/tanh_port_runtime_20261019_conclusion.md)。回执完成状态与上文的科学结论分别解释。
 
 [材料表](catalog.md)列出本主题原件、原标题、原位置及固定提交阅读入口；[保护表](protected.md)列出仍受路径约束的相关材料。跟随冻结原文内部链接时使用固定提交版本，本地原件不改写链接。
 
