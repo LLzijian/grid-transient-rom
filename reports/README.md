@@ -46,7 +46,7 @@ E0–E3/E7 主要是旧开发与实现记录；E2 剪枝、E4–E6/E8 的部分�
 - [0002：候选能量不是稳定性证书](history/early_e_series/originals/accepted/0002_candidate_energy_not_certificate.md)
 - [0003：测试集访问与模态统计修正](history/early_e_series/originals/accepted/0003_holdout_lifecycle_and_modal_reporting.md)
 - [0009：重拟合与 0008 局部解释纠正](history/early_e_series/originals/accepted/0009_five_fold_refit_acceptance.md)
-- [0010：旧 e 系列综合结论边界](accepted/0010_project_conclusion_audit.md)
+- [0010：旧 e 系列综合结论边界](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0010_project_conclusion_audit.md)
 - [论文状态](../paper/STATUS.md) · [数值结果用途](../results/README.md)
 - [保留价值审查与整理记录](history/early_e_series/originals/records_retention_audit_20260922.md)（原文阅读入口见主题档案）
 

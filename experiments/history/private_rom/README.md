@@ -8,7 +8,7 @@
 
 | 原入口 | 用途及原报告 |
 |---|---|
-| [audit_electrical_port_balance.py](audit_electrical_port_balance.py) | Raw electrical load/loss balance explains the generator-only net residual.；[原报告](../../../reports/accepted/0048_electrical_port_balance.md) |
+| [audit_electrical_port_balance.py](audit_electrical_port_balance.py) | Raw electrical load/loss balance explains the generator-only net residual.；[原报告](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0048_electrical_port_balance.md) |
 | [audit_holdout_supplement.py](audit_holdout_supplement.py) | Mechanical TEST coverage QA only; never compute a predictor score.；[原报告](../../../reports/history/private_rom/originals/accepted/0047_holdout_duration_supplement.md) |
 | [audit_private_energy.py](audit_private_energy.py) | Exact frozen-M3 storage identity and separate full-order trajectory audit.；[原报告](../../../reports/history/private_rom/originals/accepted/0028_m3_energy.md) |
 | [audit_private_energy_boundary.py](audit_private_energy_boundary.py) | Exact-rational conservative M3 barrier; finite-horizon probes are separate.；[原报告](../../../reports/history/private_rom/originals/accepted/0036_m3_energy_boundary.md) |
@@ -22,6 +22,6 @@
 | [diagnose_topology_force_capacity.py](diagnose_topology_force_capacity.py) | Noncausal forcing controls isolate geometry, coordinate and ODE failures.；[原报告](../../../reports/history/private_rom/originals/accepted/0045_topology_force_capacity.md) |
 | [evaluate_joint_adequacy_0099.py](evaluate_joint_adequacy_0099.py) | Bounded reuse of the frozen trajectory/mode and full-TRAIN evaluators.；[原报告](../../../reports/history/private_rom/originals/capabilities/0099_joint_adequacy_capability.md) |
 | [run_private_m3.py](run_private_m3.py) | One fit, true-speed diagnostic and autonomous M3-Pm contribution screen.；[原报告](../../../reports/history/private_rom/originals/accepted/0020_private_m3_pm.md) |
-| [summarize_shared_closure_0101.py](summarize_shared_closure_0101.py) | Pure-JSON, read-only 0101 evidence extraction; no model or data loading.；[原报告](../../../reports/0101_shared_closure_FS_capability.md) |
+| [summarize_shared_closure_0101.py](summarize_shared_closure_0101.py) | Pure-JSON, read-only 0101 evidence extraction; no model or data loading.；[原报告](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/0101_shared_closure_FS_capability.md) |
 
 [迁移与回退回执](../../../results/repository_organization/20261109_history07/migration.json)含本地字节哈希及完整旧版本标识。

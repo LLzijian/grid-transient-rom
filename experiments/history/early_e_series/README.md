@@ -18,4 +18,4 @@
 
 原val/test的关闭与已消费历史继续有效。恢复源码不恢复数据或重跑授权；旧科学主张沿后续审计解释。
 
-第七批补收[旧证据汇总入口](summarize_refit_v2.py)，对应[0010总审计](../../../reports/accepted/0010_project_conclusion_audit.md)。本组现有10个旧入口；新增迁移与哈希见[第七批回执](../../../results/repository_organization/20261109_history07/migration.json)。
+第七批补收[旧证据汇总入口](summarize_refit_v2.py)，对应[0010总审计](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0010_project_conclusion_audit.md)。本组现有10个旧入口；新增迁移与哈希见[第七批回执](../../../results/repository_organization/20261109_history07/migration.json)。

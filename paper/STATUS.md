@@ -6,7 +6,7 @@ current screening terminology, but remain **not submission-ready** because the
 body and PDF have not yet incorporated the completed five-fold refit and
 corrected modal results, and no fresh confirmatory holdout exists.
 
-Current evidence is in `reports/accepted/0010_project_conclusion_audit.md`.
+Current evidence is in [project conclusion audit](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0010_project_conclusion_audit.md).
 Modules pass the total gate in F1/F3/F5 only. Strict H100 evaluation includes
 177 stable events and excludes all 35 unstable validation events; final pooled
 R2 is -0.0843, with F5 pooled R2 -1.6983. Modal evaluation succeeds for 167/177

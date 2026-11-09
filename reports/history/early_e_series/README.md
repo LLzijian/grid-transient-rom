@@ -15,7 +15,7 @@
 |---|---|---|
 | 加入记忆模块，是否在所有交叉验证组都值得采用？ | 修正总采用门后，F1/F3/F5 采用模块，F2/F4 回退主干；五组交叉验证的结果不能写成所有组都采用。 | [五组重拟合验收](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0009_five_fold_refit_acceptance.md) |
 | 有能量函数、找到鞍点，就能判断稳定吗？ | 旧算法取得的是局部可行能量候选，未建立逃逸边界的有效下界；保留启发式筛查，撤回正式证书解释。 | [候选能量与稳定性证书的区别](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0002_candidate_energy_not_certificate.md) |
-| 旧频率精度和 test 表能否直接用作成果？ | 模态须使用最终模型与全部指派对；旧 test 已被消费，继续保留为探索性记录。 | [评价协议修正](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0003_holdout_lifecycle_and_modal_reporting.md)、[综合审计](../../accepted/0010_project_conclusion_audit.md) |
+| 旧频率精度和 test 表能否直接用作成果？ | 模态须使用最终模型与全部指派对；旧 test 已被消费，继续保留为探索性记录。 | [评价协议修正](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0003_holdout_lifecycle_and_modal_reporting.md)、[综合审计](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0010_project_conclusion_audit.md) |
 | 大误差主要是积分步长、Pm 输入，还是隐状态初值？ | 在当时冻结模型和对照范围内，缩小步长、给定真实未来 Pm、改用零隐初值均不足以消除主要误差；电气信息有解释价值，尚未唯一定位缺失机制。 | [积分与输入对照](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0011_failure_mechanism_diagnosis.md)、[隐初值对照](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0012_force_balance_diagnosis.md)、[电气功率对照](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0013_electrical_substitution_audit.md) |
 
 ## 模块选择：把比较口径与模型精度分开
@@ -43,7 +43,7 @@
 合格的 177 个样本全部稳定，排除的 35 个样本全部失稳；这张表不能表示失稳样本的固定时长预测能力。
 
 这组结果说明了“采用门通过”和“绝对预测精度足够”是两个判断；F5 的结果也完整进入了接受的数值记录。
-[综合审计](../../accepted/0010_project_conclusion_audit.md)进一步限定：这些是用于选择后的 val 诊断，不能替代独立 test 确认。
+[综合审计](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0010_project_conclusion_audit.md)进一步限定：这些是用于选择后的 val 诊断，不能替代独立 test 确认。
 
 ## 能量与模态：保留数值观察，采用修正后的解释
 
@@ -56,7 +56,7 @@
 修正诊断使用最终模型，保留完整指派中的全部匹配对，再按事件汇总。
 177 个稳定合格事件中 167 个计算成功、10 个失败；成功事件的频率相对误差汇总值为 19.49%、阻尼比绝对误差为 0.07537、MAC 为 0.37647。
 这些指标各有定义，不能与旧“7.2%／0.04”标题作同口径升降比较，也不能将失败事件算作已覆盖。
-[模态协议](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0003_holdout_lifecycle_and_modal_reporting.md)、[结果与分母](../../accepted/0010_project_conclusion_audit.md)
+[模态协议](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0003_holdout_lifecycle_and_modal_reporting.md)、[结果与分母](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0010_project_conclusion_audit.md)
 
 **test 使用。** 旧 315 事件 build 经 E6b/E6c/E8 多次使用，已退出确认性用途。
 整理可以保留全部旧记录，不能恢复这个 build 的独立性。[访问与用途修正](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0003_holdout_lifecycle_and_modal_reporting.md)
@@ -104,9 +104,9 @@
 | 机械功率动态与时间范围 | [Pm 方程 E3](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/E3_pm_ode.md) | [历史开发诊断的采用边界](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0005_manuscript_scientific_consistency.md) |
 | 能量候选与筛查裕度 | [能量筛查 E4](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/E4_certificates_margin.md) | [证书语义更正](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0002_candidate_energy_not_certificate.md) |
 | 单组模态对应 | [频率与振型 E5](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/E5_oscillation_frequency.md) | [全匹配口径](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0003_holdout_lifecycle_and_modal_reporting.md) |
-| 多组频率对应 | [频率汇总 E5b](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/E5b_frequency_crossfold.md) | [修正模态结果](../../accepted/0010_project_conclusion_audit.md) |
-| 多组阻尼对应 | [阻尼汇总 E5c](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/E5c_damping_crossfold.md) | [修正模态结果](../../accepted/0010_project_conclusion_audit.md) |
-| 原多组比较和旧 test | [原汇总 E6](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/E6_fold_confirmation.md) | [test 用途](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0003_holdout_lifecycle_and_modal_reporting.md)、[综合审计](../../accepted/0010_project_conclusion_audit.md) |
+| 多组频率对应 | [频率汇总 E5b](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/E5b_frequency_crossfold.md) | [修正模态结果](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0010_project_conclusion_audit.md) |
+| 多组阻尼对应 | [阻尼汇总 E5c](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/E5c_damping_crossfold.md) | [修正模态结果](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0010_project_conclusion_audit.md) |
+| 原多组比较和旧 test | [原汇总 E6](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/E6_fold_confirmation.md) | [test 用途](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0003_holdout_lifecycle_and_modal_reporting.md)、[综合审计](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0010_project_conclusion_audit.md) |
 | 有限预算基线对照 | [基线比较 E7](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/E7_baselines.md) | 单组开发对照；证书和模态解释采用后续更正 |
 | 旧能量筛查的阈值敏感性 | [筛查变化 E8](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/E8_margin_frontier.md) | [候选能量解释](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0002_candidate_energy_not_certificate.md) |
 

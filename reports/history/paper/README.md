@@ -27,7 +27,7 @@
 | 局部能量候选被当成稳定性证书 | [0002：修正计算含义](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0002_candidate_energy_not_certificate.md)，区分候选筛查和正式证明 |
 | 已消费 test 和选择期模态被当成确认性结果 | [0003：修正访问与模态口径](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0003_holdout_lifecycle_and_modal_reporting.md)，保留旧观察并撤回对应强主张 |
 | 正文、中文稿和图文尚未统一口径 | [0004：完整改写接受](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0004_manuscript_honesty_rescope.md)、[0005：一致性修正](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0005_manuscript_scientific_consistency.md)；接受的是当时的文字和证据层次修订 |
-| 后续模型与数值结果又发生更新 | [0009：重拟合记录](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0009_five_fold_refit_acceptance.md)、[0010：综合审计](../../accepted/0010_project_conclusion_audit.md)；旧稿的组装记录不能代替这些结果 |
+| 后续模型与数值结果又发生更新 | [0009：重拟合记录](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0009_five_fold_refit_acceptance.md)、[0010：综合审计](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0010_project_conclusion_audit.md)；旧稿的组装记录不能代替这些结果 |
 
 [论文状态文件](../../../paper/STATUS.md)记载正文和图尚未纳入后续重拟合及修正模态结果。
 本页通过来源关系解释为什么旧交接报告与后续状态不同，不把编译通过当作科学结论通过。

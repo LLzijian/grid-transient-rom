@@ -19,7 +19,7 @@ directories contain the corrected five-fold refit, final-model modal diagnostic,
 and event-derived audit summary. They are post-selection validation evidence.
 Strict H100 covers only 177 stable events; 35 unstable events are excluded.
 Modal evaluation succeeds for 167/177 eligible stable events. See the audit in
-`reports/accepted/0010_project_conclusion_audit.md` for negative findings and limits.
+[project conclusion audit](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/accepted/0010_project_conclusion_audit.md) for negative findings and limits.
 
 `e13_failure_diagnosis` and `e14_force_balance` are accepted frozen-model
 diagnostics (loops 0011/0012), not improved checkpoints. F1 has static cut-capacity
