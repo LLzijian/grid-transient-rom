@@ -35,3 +35,5 @@
 另存有[2026-10-25外部项目综合咨询](../../consensus_project_review_20261025/README.md)，与正式Run结论及独立审查分别阅读。
 
 [历史报告恢复核验](../../../results/repository_organization/20261109_closure_20261020_runtime_recovery31/README.md)列出旧路径、冻结 SHA256 和原校验入口。
+
+[历史报告恢复核验](../../../results/repository_organization/20261109_closure_20261021_runtime_recovery32/README.md)列出旧路径、冻结 SHA256 和原校验入口。
