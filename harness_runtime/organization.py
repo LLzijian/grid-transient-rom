@@ -162,10 +162,17 @@ class Organization:
                      and PurePosixPath(old).suffix == PurePosixPath(new).suffix)
         if not valid:
             raise ValueError("migration paths violate material scope")
-        if old in self.migrations:
-            raise ValueError("duplicate migration old_path: " + old)
         if not re.fullmatch(r"[0-9a-fA-F]{64}", str(entry.get("sha256", ""))) or type(entry.get("bytes")) is not int or entry["bytes"] < 0:
             raise ValueError("migration requires sha256 and nonnegative integer bytes")
+        previous = self.migrations.get(old)
+        if previous is not None and not (
+            not documentation and old_parts[0] == new_parts[0] == "reports"
+            and previous.get("operation") == "copy_keep_frozen_source"
+            and previous["source_record"] == self.inputs.get("documentation_migration", DOCUMENTS)
+            and previous["new_path"].startswith("designs/")
+            and previous["bytes"] == entry["bytes"] and previous["sha256"].lower() == entry["sha256"].lower()
+        ):
+            raise ValueError("duplicate migration old_path: " + old)
         data = read_public(self.root, new, kind="documentation" if documentation else "archive", access=self.access)
         if len(data) != entry["bytes"] or hashlib.sha256(data).hexdigest() != entry["sha256"].lower():
             raise ValueError("migrated material bytes differ: " + old)
