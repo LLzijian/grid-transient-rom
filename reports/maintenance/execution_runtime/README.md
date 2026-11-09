@@ -14,3 +14,5 @@
 [完整材料表](catalog.md)与[路径保护表](protected.md)保留咨询、协议、审查、失败原因与恢复条件。当前通用执行边界见[代理运行规则](../../../agents/runtime.md)，不从旧执行回执推断现有进程活性。
 
 [QA05后续准备补丁](originals/qa05_followup_prepared.diff)作为历史来源原样保存，补丁中的源码和私有目录仍按原版本解释，本次没有重新应用。
+
+[QA05 和 QA06 的历史报告恢复核验](../../../results/repository_organization/20261109_rational_runtime_recovery23/README.md)列出旧路径、冻结 SHA256 和原校验入口。
