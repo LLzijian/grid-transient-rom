@@ -11,10 +11,10 @@
 | 当前方程、父模型映射与资格要求 | [5N 修订设计](../designs/gftd_repair_design_20261107.md) |
 | 数学与同初态数值资格通过的有界调制研究候选（原生产方程不变） | [储能可行性与有限时域存在](../designs/gftd_storage_feasibility_20261109.md) |
 | 原297个样本已通过六项数值检查的同核初始化 | [同核初始化设计](../designs/gftd_bounded_initialization_20261109.md) |
-| 当前准备的匹配共享适配、真实预测与同一ODE分析 | [匹配预测设计](../designs/gftd_matched_prediction_20261109.md) |
+| 当前匹配预测Run（共享拟合进行中） | [匹配预测设计](../designs/gftd_matched_prediction_20261109.md) |
 | 研究假说、竞争解释与 Run 树 | [GFTD Campaign](../campaigns/gftd_kuramoto_discovery_20261106.md) |
 | 未知拓扑 → 动态调制与接口 → train fit297 同期比较 | [三步主线](../designs/gftd_mainline_20261107_architecture.md) |
-| 当前比较的输入、工作量及判据 | [fit297 协议](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_fit297_20261107_protocol.md) |
+| 原Run 3的输入、工作量及判据 | [fit297 协议](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_fit297_20261107_protocol.md) |
 | v2.0 草案及其更正 | [原架构简报](../designs/gftd_kuramoto_architecture_brief.md) |
 
 节点局域核、候选边族和耗散形式属于建模先验；边支撑、调制作用和参数恢复由证据判断。
