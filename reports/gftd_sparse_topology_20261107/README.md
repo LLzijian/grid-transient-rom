@@ -20,7 +20,7 @@
 
 ### 主要阅读材料
 
-- 冻结协议：[reports/gftd_sparse_topology_20261107_protocol.md](../gftd_sparse_topology_20261107_protocol.md)；路径处理：原位保留，源码或路径哈希身份引用。
+- 冻结协议：[reports/gftd_sparse_topology_20261107_protocol.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_sparse_topology_20261107_protocol.md)；路径处理：原位保留，源码或路径哈希身份引用。
 - 正式结论：[reports/gftd_sparse_topology_20261107_conclusion.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_sparse_topology_20261107_conclusion.md)；路径处理：原位保留，现有正式登记或报告仍引用原路径。
 - 独立结果审查：[reports/gftd_sparse_topology_20261107_result_review.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_sparse_topology_20261107_result_review.md)；路径处理：原位保留，现有正式登记或报告仍引用原路径。
 - 执行入口：[experiments/gftd_sparse_topology_20261107.py](../../experiments/gftd_sparse_topology_20261107.py)；路径处理：原位保留，源码或路径哈希身份引用。
@@ -42,9 +42,9 @@
 
 | 字段来源 | 材料 | 路径检查 |
 |---|---|---|
-| evidence.references[0]; inference.evaluation_contract_reference; inference.comparison_reference; inference.budget_reference; inference.selection_accounting_reference; inference.review_record.reviewed_references[0]; navigation.materials[0].reference | [reports/gftd_sparse_topology_20261107_protocol.md](../gftd_sparse_topology_20261107_protocol.md) | present |
-| evidence.references[1]; inference.review_record.reviewed_references[1] | [reports/gftd_sparse_topology_20261107_design_review.md](../gftd_sparse_topology_20261107_design_review.md) | present |
-| evidence.references[2]; inference.review_record.reviewed_references[2] | [reports/gftd_sparse_topology_20261107_implementation_review.md](../gftd_sparse_topology_20261107_implementation_review.md) | present |
+| evidence.references[0]; inference.evaluation_contract_reference; inference.comparison_reference; inference.budget_reference; inference.selection_accounting_reference; inference.review_record.reviewed_references[0]; navigation.materials[0].reference | [reports/gftd_sparse_topology_20261107_protocol.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_sparse_topology_20261107_protocol.md) | present |
+| evidence.references[1]; inference.review_record.reviewed_references[1] | [reports/gftd_sparse_topology_20261107_design_review.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_sparse_topology_20261107_design_review.md) | present |
+| evidence.references[2]; inference.review_record.reviewed_references[2] | [reports/gftd_sparse_topology_20261107_implementation_review.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_sparse_topology_20261107_implementation_review.md) | present |
 | evidence.references[3]; inference.alternative_explanations_reference; inference.review_record.reviewed_references[3]; root_decisions.scientist_reference | [reports/gftd_sparse_topology_20261107_scientific_assessment.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_sparse_topology_20261107_scientific_assessment.md) | present |
 | evidence.references[4]; inference.optimization_adequacy_reference; inference.independent_review_reference; inference.review_record.reference; inference.review_record.reviewed_references[4]; root_decisions.review_reference; navigation.materials[2].reference | [reports/gftd_sparse_topology_20261107_result_review.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_sparse_topology_20261107_result_review.md) | present |
 | evidence.references[5]; inference.effect_reference; inference.review_record.reviewed_references[5]; navigation.materials[1].reference | [reports/gftd_sparse_topology_20261107_conclusion.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_sparse_topology_20261107_conclusion.md) | present |
