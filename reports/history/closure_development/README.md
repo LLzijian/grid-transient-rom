@@ -37,3 +37,5 @@
 [历史报告恢复核验](../../../results/repository_organization/20261109_closure_20261020_runtime_recovery31/README.md)列出旧路径、冻结 SHA256 和原校验入口。
 
 [历史报告恢复核验](../../../results/repository_organization/20261109_closure_20261021_runtime_recovery32/README.md)列出旧路径、冻结 SHA256 和原校验入口。
+
+[历史报告恢复核验](../../../results/repository_organization/20261109_closure_20261023_runtime_recovery33/README.md)列出旧路径、冻结 SHA256 和原校验入口。
