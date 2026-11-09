@@ -1,0 +1,80 @@
+{
+  "schema_version": 2,
+  "synthetic": false,
+  "run_id": "gftd_storage_feasibility_20261109",
+  "parent_run": "gftd_long_horizon_diagnostic_20261109",
+  "purpose": "probe",
+  "scope": "Exact storage feasibility and a fixed-kernel intervention on two frozen states of one exposed train event; no predictive gain claim.",
+  "execution": {
+    "status": "COMPLETED",
+    "phase": "closed_after_independent_result_review",
+    "scientific_execution_released": true,
+    "scientific_integrations_executed": 6,
+    "release_sha256": "60a0257bee179d894b606e26adedac38a53d3de8ad43fe9b0bfe8723e73ab5f3",
+    "completed_integrations": 6,
+    "execution_sha256": "e3d6cf2ea2e1c19af620321a4f1ca6802f1027545357f54a5d04cdebc7fc6c2a"
+  },
+  "scientific_work": {
+    "budget_status": "closed",
+    "candidate_states": 2,
+    "exposed_train_events": 1,
+    "candidate_integrations": 6,
+    "rhs_per_integration": 24000,
+    "max_integration_rhs": 144000,
+    "max_artificial_model_rhs": 64,
+    "max_artificial_H": 2000,
+    "max_total_model_rhs": 144064,
+    "new_real_sampling_rhs": 0,
+    "max_artificial_technical_corrections": 2,
+    "unused_old_work_transferred": false,
+    "actual_artificial_model_rhs": 10,
+    "actual_artificial_H": 370,
+    "actual_integration_rhs": 61899,
+    "actual_total_model_rhs": 61909,
+    "unused_work_transferred": false
+  },
+  "evidence": {
+    "validity": "valid",
+    "optimizer_health": "unknown",
+    "optimization_adequacy": "unknown",
+    "mechanism_probe": "passed",
+    "comparison": "matched",
+    "confirmation": "none",
+    "effect": "unknown",
+    "critical_events": "unknown",
+    "references": [
+      "designs/gftd_storage_feasibility_20261109.md",
+      "campaigns/gftd_storage_feasibility_20261109/protocol.md",
+      "reports/gftd_storage_feasibility_20261109/conclusion.md",
+      "reports/gftd_storage_feasibility_20261109/scientific_assessment.md",
+      "reports/gftd_storage_feasibility_20261109/result_review.md",
+      "results/gftd_storage_feasibility_20261109/root_adoption.json",
+      "results/gftd_storage_feasibility_20261109/independent_audit.json",
+      "results/gftd_storage_feasibility_20261109/execution.json",
+      "results/gftd_storage_feasibility_20261109/qualification.json"
+    ],
+    "mechanism_scope": "Exact reviewed mathematical claims plus one-event, two-state matched kernel intervention; no identification or prediction claim."
+  },
+  "proposal": {
+    "scientific_claim": "observation_only",
+    "model_decision": "retain_evidence",
+    "next_action": "discriminate"
+  },
+  "root_decisions": {
+    "code": "retain_branch",
+    "model": "retain_evidence",
+    "science": "supported_within_scope"
+  },
+  "authorization_scope": {
+    "new_initializations": 0,
+    "parameter_refits": 0,
+    "future_truth_reads": 0,
+    "original_val_test": "closed",
+    "new_FOM": 0,
+    "TASK4": "paused",
+    "default": "none",
+    "incumbent_changed": false,
+    "protected_anchors_changed": false
+  },
+  "next_action": "Prepare one finite same-kernel legal-initialization design, unify amplitude dictionary/gradient/history rollout/version identity, then fixed-parameter 100 ms causal initialization qualification before deciding matched adaptation and real L1. No more scientific jobs in this closed Run."
+}

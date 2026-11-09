@@ -9,6 +9,7 @@
 | 内容 | 来源 |
 |---|---|
 | 当前方程、父模型映射与资格要求 | [5N 修订设计](../designs/gftd_repair_design_20261107.md) |
+| 数学与同初态数值资格通过的有界调制研究候选（原生产方程不变） | [储能可行性与有限时域存在](../designs/gftd_storage_feasibility_20261109.md) |
 | 研究假说、竞争解释与 Run 树 | [GFTD Campaign](../campaigns/gftd_kuramoto_discovery_20261106.md) |
 | 未知拓扑 → 动态调制与接口 → train fit297 同期比较 | [三步主线](../designs/gftd_mainline_20261107_architecture.md) |
 | 当前比较的输入、工作量及判据 | [fit297 协议](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_fit297_20261107_protocol.md) |
@@ -19,9 +20,10 @@
 
 ## 待辨别问题
 
-1. 在哪些观测与激励条件下，静态边、动态调制和加性记忆能够被区分？
-2. 固定合法初始化、共同模态设置与适配机会，调制开关如何改变 train fit297 的 L1 指标？
-3. 同一部署 ODE 能否满足 L2 的完整证明条件？L3 的图及模态对应按原口径报告。
+1. 有界核与100 ms合法历史初始化能否使用同一方程并得到数值合格初态？
+2. 在哪些观测与激励条件下，静态边、动态调制和加性记忆能够被区分？
+3. 固定合法初始化、共同模态设置与适配机会，调制开关如何改变 train fit297 的 L1 指标？
+4. 同一部署 ODE 能否满足 L2 的完整证明条件？L3 的图及模态对应按原口径报告。
 
 Run 1 支持有限 K4 静态恢复；Run 2 已接通拟合、存取、完整初始化与自主预测，
 动态调制恢复仍未获支持。结果范围及下一动作由 [current_state](current_state.md) 连接对应证据。

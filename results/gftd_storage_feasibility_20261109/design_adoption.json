@@ -1,0 +1,82 @@
+{
+  "run_id": "gftd_storage_feasibility_20261109",
+  "recorded_utc": "2026-11-09T12:56:45.615422+00:00",
+  "authorization": "User: 继续自主推进下一轮; existing core scientific/data scope and explicit private-repository push authorization persist.",
+  "source_commit": "9ce989794ece62ada4ec430ed838181106b1348a",
+  "parent_run": "gftd_long_horizon_diagnostic_20261109",
+  "source_sha256": {
+    "designs/gftd_storage_feasibility_20261109.md": "8fd416a7f7b57f4847e0ababd283255952eed602b146da7dcece427966a6bbb9",
+    "campaigns/gftd_storage_feasibility_20261109/protocol.md": "c2dca7371ca684e50e5c49c77e1b31fa4c61abc2b5ade2f1d7815c34d0a93448",
+    "reports/gftd_storage_feasibility_20261109/design_review_v2.md": "84d783f046ce83547291ebb02cd7168513c6b5631e6e0341454d0e4a619544b4",
+    "reports/gftd_storage_feasibility_20261109/design_review.md": "b7e7c516726afa0998f3edaa9de849a716d1d30ec50259d4b47a4f72eb741072"
+  },
+  "actual_model_calls": [
+    {
+      "tool": "collaboration.spawn_agent",
+      "returned_task_name": "/root/feasibility_scientist",
+      "configured_model": "gpt-6-astra",
+      "server_resolved_model": null,
+      "role": "Scientist"
+    },
+    {
+      "tool": "collaboration.spawn_agent",
+      "returned_task_name": "/root/feasibility_modeler",
+      "configured_model": "gpt-6.1-sol",
+      "server_resolved_model": null,
+      "role": "Modeler"
+    },
+    {
+      "tool": "collaboration.spawn_agent",
+      "returned_task_name": "/root/feasibility_reviewer",
+      "configured_model": null,
+      "model_selection": "inherited root; no override",
+      "server_resolved_model": null,
+      "role": "Independent Reviewer"
+    }
+  ],
+  "decision": "Adopt exp(tanh h) as the single experimental structural candidate and the frozen six-reference protocol. Authorize implementation, mocked qualification checks, fixed artificial single-point qualification, and specified cache preparation. Real six-trajectory execution requires a separate reviewed source/input/release.",
+  "reason": "Exact structural counterexample and finite-state linear-growth proof resolve a mechanism not addressed by smaller time steps or history loss alone. The original kernel, parameters, states and production interfaces are preserved; one exposed event and two saved states isolate kernel intervention.",
+  "mathematical_review_provenance": {
+    "two_node_counterexample": "Proposed by feasibility_reviewer; independently checked on paper by root and feasibility_scientist before incorporation.",
+    "new_kernel_growth_bound": "Scientist and root derivation; independently challenged by feasibility_reviewer.",
+    "frozen_model_negative_edge_ray": "Separate Scientist/Reviewer symbolic derivations; actual cache witness check awaits prepare."
+  },
+  "accepted_clarifications": [
+    "Pairwise cross-kernel statistics use T_pair=min(old qualified endpoint,new qualified endpoint,1s); each full qualified interval and extension completion reported separately.",
+    "Before execution, five cached witness checks use hashes and algebra only, no exp/H/gradients/RHS. After execution, original reference grid Phi may be computed with exp(h), counted as kernel algebra, no new original RHS.",
+    "Cross-kernel h, exponent_argument (original h; candidate tanh(h)) and Phi use the same frozen beta>0 edge set. State block statistics use all nodes. tanh(h) is not log(Phi) for nonunit gates.",
+    "Mock solver calls are counted separately from model RHS; no artificial ODE. Fixed artificial qualification consumes at most64 model RHS and2000 H including any bounded technical correction.",
+    "Old diagnostic states are counterfactual structural inputs, not qualified causal initialization under the new kernel. Do not change existing output counts, fit/initialize, or model serialization."
+  ],
+  "finite_work": {
+    "candidate_states": 2,
+    "exposed_train_events": 1,
+    "candidate_integrations": 6,
+    "rhs_per_integration": 24000,
+    "max_integration_rhs": 144000,
+    "max_artificial_model_rhs": 64,
+    "max_artificial_H": 2000,
+    "max_total_model_rhs": 144064,
+    "new_real_sampling_rhs": 0,
+    "max_artificial_technical_corrections": 2,
+    "unused_old_work_transferred": false
+  },
+  "scope": {
+    "new_initializations": 0,
+    "parameter_refits": 0,
+    "future_truth_reads": 0,
+    "original_val_test": "closed",
+    "new_FOM": 0,
+    "TASK4": "paused",
+    "default": "none",
+    "incumbent_changed": false,
+    "protected_anchors_changed": false
+  },
+  "scientific_execution_released": false,
+  "literature_context": {
+    "source": "https://proceedings.neurips.cc/paper_files/paper/2025/file/48cf746df45ef6f74f53805136b4b348-Paper-Conference.pdf",
+    "accessed_date": "2026-11-09",
+    "checked_section": "3.1 Theorem3.1",
+    "use": "Distinguish global stability assumptions from finite-time existence; no novelty claim."
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "action_id": "gftd-storage-feasibility-20261109-six-references-01",
+  "actual_integration_rhs_calls": 61899,
+  "artificial_counts": {
+    "bounded_kernel": 395,
+    "effective_couplings": 10,
+    "gradients": 10,
+    "hamiltonian": 370,
+    "rhs": 10,
+    "saturation_formula": 2
+  },
+  "claim": {
+    "bytes": 213,
+    "path": "results/gftd_storage_feasibility_20261109/execution_claim.json",
+    "sha256": "cce5c0b948c7e9be7ec688c96f8bebc1e09fa2c57de5c7a4db118e49e379f815"
+  },
+  "claimed_job_count": 6,
+  "error": null,
+  "host_cpu_seconds": 13.171875,
+  "host_wall_seconds": 15.064878400000453,
+  "jobs": {
+    "stage1": {
+      "dop853_adaptive": {
+        "bytes": 1613,
+        "path": "results/gftd_storage_feasibility_20261109/jobs/stage1/dop853_adaptive.json",
+        "sha256": "56b33845df3f2deb8981a19f3deae28effdd73306f2cbf21554d850de34e0dec"
+      },
+      "radau": {
+        "bytes": 1576,
+        "path": "results/gftd_storage_feasibility_20261109/jobs/stage1/radau.json",
+        "sha256": "e22135b6c8692ad1a4e624019a01de5466a46a80f14618e56c8ae4f8726349e5"
+      },
+      "radau_strict": {
+        "bytes": 1612,
+        "path": "results/gftd_storage_feasibility_20261109/jobs/stage1/radau_strict.json",
+        "sha256": "8e5cfac1c40d3cd9ebe60b3effe42dfffc5823a88272b998dfc4e2fafae92c9f"
+      }
+    },
+    "stage2": {
+      "dop853_adaptive": {
+        "bytes": 1613,
+        "path": "results/gftd_storage_feasibility_20261109/jobs/stage2/dop853_adaptive.json",
+        "sha256": "39188cc9acd45613e88ce47edd8d0b000f6cd6489edea994fb63a3ff575d875e"
+      },
+      "radau": {
+        "bytes": 1579,
+        "path": "results/gftd_storage_feasibility_20261109/jobs/stage2/radau.json",
+        "sha256": "7d52a3571ed937fddcb89e3fa9f8485c577817a7ecdece471fdfb0be934e15ee"
+      },
+      "radau_strict": {
+        "bytes": 1611,
+        "path": "results/gftd_storage_feasibility_20261109/jobs/stage2/radau_strict.json",
+        "sha256": "4d346708e8844b410d55512269c78870d56e2d98313d536d781e94058c1d85f3"
+      }
+    }
+  },
+  "jobs_without_arrays": [],
+  "known_integration_rhs_calls": 61899,
+  "known_worker_cpu_seconds": 12.609375,
+  "known_worker_wall_seconds": 13.693117299997539,
+  "pid": 43712,
+  "prepare_sha256": "f882fce4fd24214971b7caff0c138c1eb95b3127de58971c08c08c30b759ba81",
+  "qualification_sha256": "3b5c7b17d5d0474c5acdc99506cbeb0643ef3936206a0b4fdbc9b73ac78bf307",
+  "release_sha256": "60a0257bee179d894b606e26adedac38a53d3de8ad43fe9b0bfe8723e73ab5f3",
+  "returned_integration_jobs": 6,
+  "runtime": {
+    "h5py": "3.16.0",
+    "numpy": "2.5.2",
+    "python": "3.12.14",
+    "scipy": "1.18.0",
+    "threads": {
+      "MKL_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1"
+    }
+  },
+  "source_sha256": {
+    "experiments/gftd_storage_feasibility_20261109/run.py": "bdcb6e088be1de1895cedf62b0661d1b9b8e365ca0075e8ac2057a63fb854ee5",
+    "src/kiki/__init__.py": "3e5ee9a8509b412c44e2f556e44103296523a44ad798edea8456ee8570d8c125",
+    "src/kiki/data/__init__.py": "050a5a8225e7c5968a298457e8564522ff81a7ed509ac14956038294ac91b4c7",
+    "src/kiki/data/adapter.py": "307840683d775347c322c107f1e47500105be4b35c8a09d07d282c4baead3158",
+    "src/kiki/data/contracts.py": "3a027f8b7cafc69877e03779894370548d48f1b507f5c46a39e3f7edf79e691b",
+    "src/kiki/data/schema.py": "0fcd4c51f734ea20f5cd62504598cc407eae9685592b7096aaad6b3dc131bfdb",
+    "src/kiki/data/splits.py": "78fabed80b331063d185181b02e7ec9f7d01fe90c0a121877ed6b2d659f03ce8",
+    "src/kiki/data/store.py": "e408c61994932b0bd09f6c7a27780d56c56bda60ee8c13f07e2bf08002114524",
+    "src/kiki/models/__init__.py": "3b096d85616829ef7717f0dc9fe40eae1cada21ed44c43381b041ccde4190984",
+    "src/kiki/models/base.py": "95f5d5a002ceae3a48ce1d7f82000355de87361c09aa56c48eab7e44d5093638",
+    "src/kiki/models/gftd_discovery.py": "9245b0726cb3fca15d3248106b43bd1673ed6607ed3a852b67c533f768a1b27f",
+    "src/kiki/models/gftd_fitting.py": "f45656e1d7224a1a745ada6c9d2191f9f9af01153d891f17c35b629a9eb5c973",
+    "src/kiki/models/gftd_kuramoto.py": "124c9df04dc7eaba7e3ddc435e7646a818c1a01edd5284cd8743c63d124220d1",
+    "src/kiki/numerics.py": "09363eeee4679b12891340f198dabc91971f76dd8f0380e2ef30a3356dab1f87",
+    "src/kiki/physics/__init__.py": "883b5e039b6955995ca38ab64b81f8e281325e0b04ca98d582ab57087447b7de",
+    "src/kiki/physics/aggregation.py": "4c9aa927f4278404f11b43baa62163e7112c8c02ae97984fca454daa613336ab",
+    "src/kiki/physics/constants.py": "5fa4a9a9c45f68b6aff57ab3b3f9ee1156295fde7bd4fe047c5fadc025ad99da",
+    "src/kiki/physics/coordinates.py": "9a738d46647ab631407f8e4b5814fe0a7868c717e31fda13963861c10e373089",
+    "src/kiki/physics/graph.py": "724dd978e7627ccceec0ad94067eef304c8e5562a378641516d544e1d8ca8dfe",
+    "src/kiki/physics/kuramoto_benchmarks.py": "9a87b64a70d2b4a7e5d4dce60f98b263a044a163201b5e0c10db4cf3373493ec",
+    "src/kiki/physics/kuramoto_functional.py": "5a709bc2b5b984fbdd4c376f69852e0a53a12929dee3f525a453b5934caec021",
+    "src/kiki/physics/units.py": "11f6e09ef577a1c09a7996743deaef1530a36ecf26be82edaa5cd3e01187dd46",
+    "tests/test_gftd_storage_feasibility.py": "9afaab27a753b2be629e729ac5b669ce3c5a501249287cbf7ae39c4dc23a5b91"
+  },
+  "status": "COMPLETED",
+  "summary": {
+    "bytes": 51621,
+    "path": "results/gftd_storage_feasibility_20261109/summary.json",
+    "sha256": "defb59e086515dc37496e53b40d3fc3050850b17424fe2a41060b859e888b7f4"
+  },
+  "unknown_jobs": {},
+  "version": "bounded_exp_tanh_v1",
+  "worker_cpu_seconds": 12.609375,
+  "worker_wall_seconds": 13.693117299997539
+}

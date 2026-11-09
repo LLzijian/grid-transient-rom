@@ -1,0 +1,341 @@
+{
+  "design_sha256": "8fd416a7f7b57f4847e0ababd283255952eed602b146da7dcece427966a6bbb9",
+  "inputs": {
+    "diagnostic": {
+      "bytes": 50866,
+      "path": "artifacts/gftd_initialization_precision_20261109/candidate/full/diagnostics/modulated_268.json.gz",
+      "sha256": "1261b6e16aa854a679e503e24bd5b51911548803c32cef698ec33141f24e395d"
+    },
+    "model": {
+      "path": "artifacts/gftd_initialization_precision_20261109/candidate/pilot/modulated_model.json",
+      "sha256": "59f73171eae057ec87b6d5618dbbe224687721d1fc117cd73a50aafdb8c78dac"
+    },
+    "original_execution_sha256": "143fe9087f1599ae668481d1f1cf54a714f6f4ca39f7170430448de69abcccbb",
+    "original_initialize_sha256": "ef35115b6f90a8d19a6a0cfd6470b31925009246438283b629fbe138e82ec6d9",
+    "original_reference_jobs": {
+      "stage1": {
+        "dop853_adaptive": {
+          "arrays": {
+            "bytes": 118714,
+            "local_only": true,
+            "non_upload": true,
+            "path": "artifacts/gftd_long_horizon_diagnostic_20261109/phase1/jobs/modulated_268_stage1/dop853_adaptive.npz",
+            "sha256": "1f68f7ab69df7d0020cd8fba5004726a2a077c48cec5a32fe6a3fed815921f6e"
+          },
+          "job": {
+            "bytes": 1411,
+            "path": "results/gftd_long_horizon_diagnostic_20261109/phase1/jobs/modulated_268_stage1/dop853_adaptive.json",
+            "sha256": "715fc315f78f6f3d91adf78ac7db7c53d6e34cd23d0a186908fdff2bd8bdbd63"
+          }
+        },
+        "radau": {
+          "arrays": {
+            "bytes": 377281,
+            "local_only": true,
+            "non_upload": true,
+            "path": "artifacts/gftd_long_horizon_diagnostic_20261109/phase1/jobs/modulated_268_stage1/radau.npz",
+            "sha256": "dd41d47c9881012f8bf8e3a6f54872e4d1a4453917010e1a38c2017ed2b29c8c"
+          },
+          "job": {
+            "bytes": 1357,
+            "path": "results/gftd_long_horizon_diagnostic_20261109/phase1/jobs/modulated_268_stage1/radau.json",
+            "sha256": "bfeb3a077d3746c1d0cfd2a459cabb4dc8e1066e7e4f3b2c60e9bf4407595eda"
+          }
+        },
+        "radau_strict": {
+          "arrays": {
+            "bytes": 1098508,
+            "local_only": true,
+            "non_upload": true,
+            "path": "artifacts/gftd_long_horizon_diagnostic_20261109/phase1/jobs/modulated_268_stage1/radau_strict.npz",
+            "sha256": "87bb9556428bed04036ffc9612539166f94124ead5490448ea1566e4da232c50"
+          },
+          "job": {
+            "bytes": 1383,
+            "path": "results/gftd_long_horizon_diagnostic_20261109/phase1/jobs/modulated_268_stage1/radau_strict.json",
+            "sha256": "5dd95dd9c940f2bdde333ca857dd91a343c40aa1b1ed7af0efb89a98c2a2a31a"
+          }
+        }
+      },
+      "stage2": {
+        "dop853_adaptive": {
+          "arrays": {
+            "bytes": 156591,
+            "local_only": true,
+            "non_upload": true,
+            "path": "artifacts/gftd_long_horizon_diagnostic_20261109/phase1/jobs/modulated_268_stage2/dop853_adaptive.npz",
+            "sha256": "cbf9d7eccbd901251422d3b170cbe47cc63ce4bc7933bbe90f49683d1b9075bc"
+          },
+          "job": {
+            "bytes": 1708,
+            "path": "results/gftd_long_horizon_diagnostic_20261109/phase1/jobs/modulated_268_stage2/dop853_adaptive.json",
+            "sha256": "82f04dc45773c1e8d8d71848a8580d455eb7bdb4ca5330885fd979b0612c9b6b"
+          }
+        },
+        "radau": {
+          "arrays": {
+            "bytes": 636109,
+            "local_only": true,
+            "non_upload": true,
+            "path": "artifacts/gftd_long_horizon_diagnostic_20261109/phase1/jobs/modulated_268_stage2/radau.npz",
+            "sha256": "7bdd11362f787d1626f319ccce6030951615774970aead6dc16dee110c725019"
+          },
+          "job": {
+            "bytes": 1666,
+            "path": "results/gftd_long_horizon_diagnostic_20261109/phase1/jobs/modulated_268_stage2/radau.json",
+            "sha256": "c5b0a0096993643d96aadf47b78f240844f05894eacb8beabc3c3f7c4ff68956"
+          }
+        },
+        "radau_strict": {
+          "arrays": {
+            "bytes": 1329974,
+            "local_only": true,
+            "non_upload": true,
+            "path": "artifacts/gftd_long_horizon_diagnostic_20261109/phase1/jobs/modulated_268_stage2/radau_strict.npz",
+            "sha256": "2e87465434b5017192bd3468a81a3bcba164e85c6b61af1638e27f8e941918d5"
+          },
+          "job": {
+            "bytes": 1632,
+            "path": "results/gftd_long_horizon_diagnostic_20261109/phase1/jobs/modulated_268_stage2/radau_strict.json",
+            "sha256": "9f8a86fc041149d86b7662ddfae1c37eac68d4cf980cd7eeefdd826b17fcba8c"
+          }
+        }
+      }
+    },
+    "original_state": null,
+    "p0_sha256": "3cafb5e809889c5664c11dcb686bd5462308a3824c7f0029ebb164d396ea225f",
+    "qualification_first_counterfactual_stage": "stage1",
+    "stage1_original_gates": {
+      "error": null,
+      "passed": true,
+      "values": {
+        "future_main_fine_peak": 3.23325366480276e-10,
+        "future_main_fine_rms": 3.2419239862600444e-11,
+        "history_main_fine_rms": 3.2664784712014083e-14,
+        "p_endpoint_error": 0.0,
+        "roundtrip_fine_scaled_max": 3.552713678800501e-14,
+        "roundtrip_main_scaled_max": 1.021405182655144e-13
+      }
+    },
+    "stage2_original_gates": {
+      "error": "FloatingPointError('underflow encountered in exp')",
+      "passed": false,
+      "values": {
+        "future_main_fine_peak": null,
+        "future_main_fine_rms": null,
+        "history_main_fine_rms": null,
+        "p_endpoint_error": null,
+        "roundtrip_fine_scaled_max": null,
+        "roundtrip_main_scaled_max": null
+      }
+    },
+    "stage_history_mse": {
+      "stage1": 0.2102624210172072,
+      "stage2": 0.14449886193548359
+    },
+    "stage_state_sha256": {
+      "stage1": "055b46d107410d868c10eb69a1b2c7490c933938a1ffe65f3066cbcba81f5a46",
+      "stage2": "37382722d19bd318c616b8c59f43390d004c874f3c2c509ee7d01188dc36c469"
+    },
+    "witnesses": {
+      "modulated_008": {
+        "amplitude_coupling_gradient": [
+          -495.1337289160271,
+          -637.8013056890288
+        ],
+        "amplitude_rhs": [
+          98.24362496109137,
+          126.42626689430638
+        ],
+        "arrays": {
+          "bytes": 125949,
+          "local_only": true,
+          "non_upload": true,
+          "path": "artifacts/gftd_long_horizon_diagnostic_20261109/phase1/summaries/modulated_008.npz",
+          "sha256": "9695f3f377d37c2fbc4d839ab8c96852981bc5bf3be00de51da94d81f6ecb91e"
+        },
+        "beta_psi": -8.23815573151524,
+        "edge": [
+          0,
+          2
+        ],
+        "gamma": [
+          0.5,
+          0.5
+        ],
+        "summary": {
+          "bytes": 91110,
+          "path": "results/gftd_long_horizon_diagnostic_20261109/phase1/summaries/modulated_008.json",
+          "sha256": "3b6d84048bb8a73326077ec57187e95f2a5976d7b5a202f795e5b79f3e145a92"
+        },
+        "time": 2.19
+      },
+      "modulated_124": {
+        "amplitude_coupling_gradient": [
+          -26864.878924315082,
+          -27011.795055517297
+        ],
+        "amplitude_rhs": [
+          5371.351140071051,
+          5400.70792170861
+        ],
+        "arrays": {
+          "bytes": 126124,
+          "local_only": true,
+          "non_upload": true,
+          "path": "artifacts/gftd_long_horizon_diagnostic_20261109/phase1/summaries/modulated_124.npz",
+          "sha256": "888e27575e3c6449cfc54902f8c1dd8b87ad7fe2c35a73416bb674d058db4508"
+        },
+        "beta_psi": -14.926523604574594,
+        "edge": [
+          0,
+          6
+        ],
+        "gamma": [
+          0.5,
+          0.5
+        ],
+        "summary": {
+          "bytes": 71731,
+          "path": "results/gftd_long_horizon_diagnostic_20261109/phase1/summaries/modulated_124.json",
+          "sha256": "2e5d98e9077e81428ad52291d1a39a250b3c97d70e59368a9aa2ed87bed02685"
+        },
+        "time": 1.08
+      },
+      "modulated_138": {
+        "amplitude_coupling_gradient": [
+          -923.7366515370782,
+          -399.0250015620034
+        ],
+        "amplitude_rhs": [
+          183.50585399065105,
+          79.19926538861351
+        ],
+        "arrays": {
+          "bytes": 126369,
+          "local_only": true,
+          "non_upload": true,
+          "path": "artifacts/gftd_long_horizon_diagnostic_20261109/phase1/summaries/modulated_138.npz",
+          "sha256": "30055f3752ff2de6506f87e0ce1f589c06dd5ea9f0a16d89a210b6fea9f43046"
+        },
+        "beta_psi": -7.806387212969206,
+        "edge": [
+          0,
+          2
+        ],
+        "gamma": [
+          0.5,
+          0.5
+        ],
+        "summary": {
+          "bytes": 72942,
+          "path": "results/gftd_long_horizon_diagnostic_20261109/phase1/summaries/modulated_138.json",
+          "sha256": "7ce68bd4cff0460b693f8f780bc886069bbe320cf1f5d8963cc9fd8003d2ab5a"
+        },
+        "time": 1.67
+      },
+      "modulated_204": {
+        "amplitude_coupling_gradient": [
+          -2161.9769732555933,
+          -2482.1648221295904
+        ],
+        "amplitude_rhs": [
+          431.32890406500104,
+          494.99587400516725
+        ],
+        "arrays": {
+          "bytes": 122138,
+          "local_only": true,
+          "non_upload": true,
+          "path": "artifacts/gftd_long_horizon_diagnostic_20261109/phase1/summaries/modulated_204.npz",
+          "sha256": "16c9660afaa7de6d39c180d3374f1ef2007541c7ce9efa7570ece11478528dd2"
+        },
+        "beta_psi": -8.279615052983225,
+        "edge": [
+          0,
+          2
+        ],
+        "gamma": [
+          0.5,
+          0.5
+        ],
+        "summary": {
+          "bytes": 90800,
+          "path": "results/gftd_long_horizon_diagnostic_20261109/phase1/summaries/modulated_204.json",
+          "sha256": "7598471d7527b312124e8f8856503797d8e7d610d68da2ff8d61fcf3d6da78aa"
+        },
+        "time": 4.33
+      },
+      "modulated_268_stage2": {
+        "amplitude_coupling_gradient": [
+          -1010.6653968777581,
+          -1023.8341708962133
+        ],
+        "amplitude_rhs": [
+          201.54377677648625,
+          203.93421320931236
+        ],
+        "arrays": {
+          "bytes": 98043,
+          "local_only": true,
+          "non_upload": true,
+          "path": "artifacts/gftd_long_horizon_diagnostic_20261109/phase1/summaries/modulated_268_stage2.npz",
+          "sha256": "a7efbcaabf404fbd351e4ea10a090a6b4b9963f799c5740cbeb008b2a61f92b7"
+        },
+        "beta_psi": -58.53636049449142,
+        "edge": [
+          7,
+          9
+        ],
+        "gamma": [
+          0.5,
+          0.5
+        ],
+        "summary": {
+          "bytes": 48502,
+          "path": "results/gftd_long_horizon_diagnostic_20261109/phase1/summaries/modulated_268_stage2.json",
+          "sha256": "97745f7b3aa716a5e27ee69ba966ca624a248307059d4d48b3297c129a2ab519"
+        },
+        "time": 0.92
+      }
+    }
+  },
+  "protocol_sha256": "c2dca7371ca684e50e5c49c77e1b31fa4c61abc2b5ade2f1d7815c34d0a93448",
+  "runtime": {
+    "h5py": "3.16.0",
+    "numpy": "2.5.2",
+    "python": "3.12.14",
+    "scipy": "1.18.0",
+    "threads": {
+      "MKL_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1"
+    }
+  },
+  "source_sha256": {
+    "experiments/gftd_storage_feasibility_20261109/run.py": "bdcb6e088be1de1895cedf62b0661d1b9b8e365ca0075e8ac2057a63fb854ee5",
+    "src/kiki/__init__.py": "3e5ee9a8509b412c44e2f556e44103296523a44ad798edea8456ee8570d8c125",
+    "src/kiki/data/__init__.py": "050a5a8225e7c5968a298457e8564522ff81a7ed509ac14956038294ac91b4c7",
+    "src/kiki/data/adapter.py": "307840683d775347c322c107f1e47500105be4b35c8a09d07d282c4baead3158",
+    "src/kiki/data/contracts.py": "3a027f8b7cafc69877e03779894370548d48f1b507f5c46a39e3f7edf79e691b",
+    "src/kiki/data/schema.py": "0fcd4c51f734ea20f5cd62504598cc407eae9685592b7096aaad6b3dc131bfdb",
+    "src/kiki/data/splits.py": "78fabed80b331063d185181b02e7ec9f7d01fe90c0a121877ed6b2d659f03ce8",
+    "src/kiki/data/store.py": "e408c61994932b0bd09f6c7a27780d56c56bda60ee8c13f07e2bf08002114524",
+    "src/kiki/models/__init__.py": "3b096d85616829ef7717f0dc9fe40eae1cada21ed44c43381b041ccde4190984",
+    "src/kiki/models/base.py": "95f5d5a002ceae3a48ce1d7f82000355de87361c09aa56c48eab7e44d5093638",
+    "src/kiki/models/gftd_discovery.py": "9245b0726cb3fca15d3248106b43bd1673ed6607ed3a852b67c533f768a1b27f",
+    "src/kiki/models/gftd_fitting.py": "f45656e1d7224a1a745ada6c9d2191f9f9af01153d891f17c35b629a9eb5c973",
+    "src/kiki/models/gftd_kuramoto.py": "124c9df04dc7eaba7e3ddc435e7646a818c1a01edd5284cd8743c63d124220d1",
+    "src/kiki/numerics.py": "09363eeee4679b12891340f198dabc91971f76dd8f0380e2ef30a3356dab1f87",
+    "src/kiki/physics/__init__.py": "883b5e039b6955995ca38ab64b81f8e281325e0b04ca98d582ab57087447b7de",
+    "src/kiki/physics/aggregation.py": "4c9aa927f4278404f11b43baa62163e7112c8c02ae97984fca454daa613336ab",
+    "src/kiki/physics/constants.py": "5fa4a9a9c45f68b6aff57ab3b3f9ee1156295fde7bd4fe047c5fadc025ad99da",
+    "src/kiki/physics/coordinates.py": "9a738d46647ab631407f8e4b5814fe0a7868c717e31fda13963861c10e373089",
+    "src/kiki/physics/graph.py": "724dd978e7627ccceec0ad94067eef304c8e5562a378641516d544e1d8ca8dfe",
+    "src/kiki/physics/kuramoto_benchmarks.py": "9a87b64a70d2b4a7e5d4dce60f98b263a044a163201b5e0c10db4cf3373493ec",
+    "src/kiki/physics/kuramoto_functional.py": "5a709bc2b5b984fbdd4c376f69852e0a53a12929dee3f525a453b5934caec021",
+    "src/kiki/physics/units.py": "11f6e09ef577a1c09a7996743deaef1530a36ecf26be82edaa5cd3e01187dd46",
+    "tests/test_gftd_storage_feasibility.py": "9afaab27a753b2be629e729ac5b669ce3c5a501249287cbf7ae39c4dc23a5b91"
+  },
+  "version": "bounded_exp_tanh_v1"
+}

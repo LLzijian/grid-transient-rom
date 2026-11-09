@@ -219,3 +219,28 @@
 /harness/runs/gftd_long_horizon_diagnostic_20261109.json -text whitespace=cr-at-eol
 /tests/test_gftd_long_horizon_diagnostic.py -text whitespace=cr-at-eol
 /tests/test_gftd_long_horizon_zero_skip.py -text whitespace=cr-at-eol
+
+# Preserve the bounded-kernel Run and its exact reviewed evidence bytes.
+/designs/gftd_storage_feasibility_20261109.md -text whitespace=cr-at-eol
+/campaigns/gftd_storage_feasibility_20261109/** -text whitespace=cr-at-eol
+/experiments/gftd_storage_feasibility_20261109/** -text whitespace=cr-at-eol
+/reports/gftd_storage_feasibility_20261109/** -text whitespace=cr-at-eol
+/results/gftd_storage_feasibility_20261109/** -text whitespace=cr-at-eol
+/harness/runs/gftd_storage_feasibility_20261109.json -text whitespace=cr-at-eol
+/tests/test_gftd_storage_feasibility.py -text whitespace=cr-at-eol
+
+# Keep the remaining imported public dependencies byte-identical on checkout.
+/src/kiki/__init__.py -text
+/src/kiki/data/__init__.py -text
+/src/kiki/data/adapter.py -text
+/src/kiki/data/contracts.py -text
+/src/kiki/data/schema.py -text
+/src/kiki/data/splits.py -text
+/src/kiki/data/store.py -text
+/src/kiki/models/__init__.py -text
+/src/kiki/physics/__init__.py -text
+/src/kiki/physics/aggregation.py -text
+/src/kiki/physics/constants.py -text
+/src/kiki/physics/coordinates.py -text
+/src/kiki/physics/graph.py -text
+/src/kiki/physics/units.py -text

@@ -1,0 +1,135 @@
+{
+  "recorded_utc": "2026-11-09T13:23:42.141816+00:00",
+  "run_id": "gftd_storage_feasibility_20261109",
+  "source_commit": "9ce989794ece62ada4ec430ed838181106b1348a",
+  "parent_run": "gftd_long_horizon_diagnostic_20261109",
+  "execution_status": "COMPLETED",
+  "scientific_work_status": "closed",
+  "root_decisions": {
+    "code": "retain_branch",
+    "model": "retain_evidence",
+    "science": "supported_within_scope"
+  },
+  "accepted_claim": "The original allowed exponential-modulation family admits an exact two-node finite-escape counterexample despite decreasing H. The bounded kernel preserves the static parent and zero-point second-order expansion, and gives at-most-linear growth of the full 5N vector field. Six fixed-state candidate references qualify through 1 s; matched-window amplitude and modulation ranges differ from cached original references.",
+  "claim_limits": "One exposed train event, two old diagnostic states. No candidate causal initialization, predictive gain, modulation identifiability, long-term boundedness, attraction-domain or full-order safety claim. Five cached negative-edge witnesses do not prove finite escape of their trajectories.",
+  "actual_model_calls": [
+    {
+      "tool": "collaboration.spawn_agent",
+      "returned_task_name": "/root/feasibility_scientist",
+      "configured_model": "gpt-6-astra",
+      "server_resolved_model": null,
+      "role": "Scientist"
+    },
+    {
+      "tool": "collaboration.spawn_agent",
+      "returned_task_name": "/root/feasibility_modeler",
+      "configured_model": "gpt-6.1-sol",
+      "server_resolved_model": null,
+      "role": "Modeler"
+    },
+    {
+      "tool": "collaboration.spawn_agent",
+      "returned_task_name": "/root/feasibility_reviewer",
+      "configured_model": null,
+      "model_selection": "inherited root; no override",
+      "server_resolved_model": null,
+      "role": "Independent Reviewer"
+    }
+  ],
+  "mathematical_review_provenance": {
+    "two_node_counterexample": "Proposed by feasibility_reviewer; independently checked on paper by root and feasibility_scientist before incorporation.",
+    "new_kernel_growth_bound": "Scientist and root derivation; independently challenged by feasibility_reviewer.",
+    "frozen_model_negative_edge_ray": "Separate Scientist/Reviewer symbolic derivations; all five designated cached witnesses were verified during preparation and independently checked after execution."
+  },
+  "scientist": {
+    "reference": "reports/gftd_storage_feasibility_20261109/scientific_assessment.md",
+    "actual_receipt": "Configured gpt-6-astra agent completed final assessment; adopted within the registered scope."
+  },
+  "independent_review": {
+    "reference": "reports/gftd_storage_feasibility_20261109/result_review.md",
+    "verdict": "accepted_without_blocker",
+    "actual_receipt": "Reviewer independently recomputed cache statistics once, verified identities, then read and explicitly accepted frozen root conclusion SHA609926b7...; no repeated model evaluations."
+  },
+  "source_sha256": {
+    "designs/gftd_storage_feasibility_20261109.md": "8fd416a7f7b57f4847e0ababd283255952eed602b146da7dcece427966a6bbb9",
+    "campaigns/gftd_storage_feasibility_20261109/protocol.md": "c2dca7371ca684e50e5c49c77e1b31fa4c61abc2b5ade2f1d7815c34d0a93448",
+    "reports/gftd_storage_feasibility_20261109/conclusion.md": "609926b7ba00d5974b49c424e5516a2a890ed0d527084fa1ebcb0cb65bf8d134",
+    "reports/gftd_storage_feasibility_20261109/scientific_assessment.md": "ce1a999cdbedbfc88b243979f27a4e44b52e01d7e5ec37d4d673bddb12ddbe35",
+    "reports/gftd_storage_feasibility_20261109/design_review_v2.md": "84d783f046ce83547291ebb02cd7168513c6b5631e6e0341454d0e4a619544b4",
+    "reports/gftd_storage_feasibility_20261109/implementation_review.md": "13d60f2595f2d00338938e6a0bdd19708741cc7dc79c74cb76690c7323ce424f",
+    "reports/gftd_storage_feasibility_20261109/result_review.md": "6fc6e012228bf8a33f8ecd80994f20c2ccdefc8d1c9991504078e0ec929f539e",
+    "reports/gftd_storage_feasibility_20261109/recompute.py": "972bb4d8bf0ac5a71f0509f988f262ff67c38a9cc586e71d495270d7f145e44d",
+    "results/gftd_storage_feasibility_20261109/design_adoption.json": "7fb464a98966a8062ba580d0580afc6874fd6249ceb4d19f9ab5165732432bf7",
+    "results/gftd_storage_feasibility_20261109/prepare.json": "f882fce4fd24214971b7caff0c138c1eb95b3127de58971c08c08c30b759ba81",
+    "results/gftd_storage_feasibility_20261109/qualification.json": "3b5c7b17d5d0474c5acdc99506cbeb0643ef3936206a0b4fdbc9b73ac78bf307",
+    "results/gftd_storage_feasibility_20261109/release.json": "60a0257bee179d894b606e26adedac38a53d3de8ad43fe9b0bfe8723e73ab5f3",
+    "results/gftd_storage_feasibility_20261109/execution.json": "e3d6cf2ea2e1c19af620321a4f1ca6802f1027545357f54a5d04cdebc7fc6c2a",
+    "results/gftd_storage_feasibility_20261109/summary.json": "defb59e086515dc37496e53b40d3fc3050850b17424fe2a41060b859e888b7f4",
+    "results/gftd_storage_feasibility_20261109/digest.json": "834ca07ae171ea999d7e9b325ef899f2d8ba9bcdab615e757d2878c24397fdd6",
+    "results/gftd_storage_feasibility_20261109/independent_audit.json": "f84ede61aa88678b6bf7f216fd2ddf954f6907147df342680b1f16d4ee426a34",
+    "results/gftd_storage_feasibility_20261109/raw_artifacts_manifest.json": "13c52dc181982da2ef682810321e99115c7cfcacb056c9b7632a5e617ba253dd",
+    "results/gftd_storage_feasibility_20261109/host_receipt.json": "bfd40cfbee5286d4667e2876e3d79528caa7ef825a54190c311f9c6d0d16dfd4",
+    "results/gftd_storage_feasibility_20261109/engineering_checks.json": "b277a34f3a4ae0c7df8ac3ff15c38f82f0ae6eee847acd64596013e2db92d77d"
+  },
+  "cost": {
+    "candidate_integrations": 6,
+    "completed_integrations": 6,
+    "integration_rhs": 61899,
+    "artificial_model_rhs": 10,
+    "total_model_rhs": 61909,
+    "artificial_H": 370,
+    "real_extra_H_grad_rhs": 0,
+    "program_host_wall_seconds": 15.064878400000453,
+    "program_host_cpu_seconds": 13.171875,
+    "worker_wall_seconds": 13.693117299997539,
+    "worker_cpu_seconds": 12.609375,
+    "outer_process_wall_seconds": null,
+    "independent_audit_wall_seconds": 0.6707667999944533,
+    "independent_audit_cpu_seconds": 0.578125,
+    "independent_audit_new_ode": 0,
+    "independent_audit_new_rhs": 0,
+    "independent_audit_new_H": 0,
+    "producer_algebra_counts": {
+      "candidate": {
+        "exp_elements": 14550,
+        "formula_calls": 6
+      },
+      "original": {
+        "exp_elements": 14550,
+        "formula_calls": 6
+      }
+    },
+    "independent_audit_algebra_counts": {
+      "candidate": {
+        "exp_elements": 15150,
+        "formula_calls": 6,
+        "tanh_elements": 15150
+      },
+      "original": {
+        "exp_elements": 14550,
+        "formula_calls": 6,
+        "tanh_elements": 0
+      }
+    }
+  },
+  "scope": {
+    "new_initializations": 0,
+    "parameter_refits": 0,
+    "future_truth_reads": 0,
+    "original_val_test": "closed",
+    "new_FOM": 0,
+    "TASK4": "paused",
+    "default": "none",
+    "incumbent_changed": false,
+    "protected_anchors_changed": false
+  },
+  "unused_work_transferred": false,
+  "raw_artifacts": {
+    "files": 6,
+    "bytes": 3410113,
+    "local_only": true,
+    "uploaded": false,
+    "deleted": false
+  },
+  "next_action": "Prepare one finite same-kernel legal-initialization design, unify amplitude dictionary/gradient/history rollout/version identity, then fixed-parameter 100 ms causal initialization qualification before deciding matched adaptation and real L1. No more scientific jobs in this closed Run."
+}
