@@ -7,7 +7,7 @@
 | 问题 | 已有认识与边界 | 直接来源 |
 |---|---|---|
 | 长期轨迹风险降低，是否同时改善关键事件？ | R-memory 冻结评价中，风险收益伴随部分范围的漏检增加；fit297、no_update88 和共同385分别报告。来源模型已参与 train385，不能把后者改称未见确认。 | [R-memory 恢复结论](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/r_memory_20261028_conclusion.md) |
-| 空间作用进入静态耦合还是记忆传播？ | 在登记来源和有限适配下，传播方案比静态耦合方案有风险与8 s漏判收益，保留为后续研究起点；不等于真实线路恢复或最终采用。 | [结构比较](../../force_graph_20261028_conclusion.md) |
+| 空间作用进入静态耦合还是记忆传播？ | 在登记来源和有限适配下，传播方案比静态耦合方案有风险与8 s漏判收益，保留为后续研究起点；不等于真实线路恢复或最终采用。 | [结构比较](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/force_graph_20261028_conclusion.md) |
 | 增加保守转运是否已解决失稳风险？ | 固定平面的共同128步比较未获登记收益，原 NOT_RETAINED 保留其不晋升含义；不升级为一般记忆族否证。 | [记忆转运](../../memory_transport_20261029_conclusion.md)、[独立方向挑战](../../force_structure_next_20261029_challenge.md) |
 | 当时的主要缺口是初态、共同模态还是优化？ | 冻结探针不支持初始隐力可辨识性作为主要解释，共同模态解释在稳定队列被降级；检查点非单调加强了优化／选择解释。后续九点审计仍保留稳定精度与失稳识别的权衡。 | [残差探针](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/closure_probe_20261030_conclusion.md)、[检查点审计](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/checkpoint_selection_20261030_conclusion.md) |
 | p 通道是否只有角速度误差传导？ | 来源诊断显示固定 p 方程残差与角速度误差传导均可分辨；反推数值门未通过时不作形式不足的采用判断，后续数值资格也不追认父判断。 | [来源诊断](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/p_port_diagnostic_20261031_conclusion.md)、[反推精度](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/p_reverse_precision_20261031_conclusion.md)、[解析反推资格](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/analytic_p_backward_qualification_20261031_conclusion.md) |
@@ -25,3 +25,5 @@
 另可阅读[2026-10-29项目概览](project_overview_20261029_reading.html)：这是修复链接的历史阅读版，字节不变原件与来源快照另存。恢复评价和p通道检查的[旧代码入口](../../../experiments/history/force_memory/README.md)按原报告回查。
 
 第八批在前序代码／概览归档后复核保护边界，再解除6份报告／证据的旧路径依赖；[最新累计位置](../../../results/repository_organization/20261109_history08/migration.json)与本主题保护表接续原记录。
+
+[历史报告恢复核验](../../../results/repository_organization/20261109_force_20261025to28_runtime_recovery34/README.md)列出旧路径、冻结 SHA256 和原校验入口。
