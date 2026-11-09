@@ -59,3 +59,5 @@
 已闭合的15个历史代码入口另见[代码档案](../../../experiments/history/private_rom/README.md)；报告与科学库原始字节不变，旧执行按完整旧版本恢复。
 
 第八批在前序代码／概览归档后复核保护边界，再解除6份报告／证据的旧路径依赖；[最新累计位置](../../../results/repository_organization/20261109_history08/migration.json)与本主题保护表接续原记录。
+
+[历史报告恢复核验](../../../results/repository_organization/20261109_oldest_task2_runtime_recovery30/README.md)列出旧路径、冻结 SHA256 和原校验入口。
