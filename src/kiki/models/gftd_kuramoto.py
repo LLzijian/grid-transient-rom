@@ -385,7 +385,13 @@ class GFTDKuramotoModel(DynamicsModel):
             packets.append(validate_observation(packet, self.n_nodes))
         if any(packet["sigma"] != packets[0]["sigma"] for packet in packets):
             raise ValueError("all observations must have the same sigma")
-        if run_context.gftd_fit297_v1 is None:
+        if run_context.gftd_fit297_v1 is not None and run_context.gftd_matched_prediction_v1 is not None:
+            raise ValueError("GFTD fit requests are mutually exclusive")
+        if run_context.gftd_matched_prediction_v1 is not None:
+            from . import gftd_matched_prediction
+            result = gftd_matched_prediction.fit_shared(copy.deepcopy(self.functional), packets,
+                mode=self.fit_mode, config=copy.deepcopy(run_context.gftd_matched_prediction_v1))
+        elif run_context.gftd_fit297_v1 is None:
             result = engine.fit_shared(copy.deepcopy(self.functional), packets, mode=self.fit_mode)
         else:
             from . import gftd_fit297

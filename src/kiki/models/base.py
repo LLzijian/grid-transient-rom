@@ -32,6 +32,7 @@ class RunContext:
     fit_max_steps: int = 0
     weak_max_windows_per_case_horizon: int = 0
     gftd_fit297_v1: dict[str, Any] | None = None
+    gftd_matched_prediction_v1: dict[str, Any] | None = None
 
 
 @dataclass

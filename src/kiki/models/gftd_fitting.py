@@ -186,8 +186,8 @@ def _endpoint(packet, f, u, mode, role):
     return f.pack_state(theta, omega, packet["p_end"], a, .1*u[slices[3]])
 
 
-def _jacobian(residual, u, low, high):
-    h, center, columns = 2.5e-5, None, []
+def _jacobian(residual, u, low, high, *, h=2.5e-5):
+    center, columns = None, []
     for index in range(len(u)):
         shift = np.eye(len(u))[index]*h
         if u[index]-h >= low[index] and u[index]+h <= high[index]:
@@ -287,7 +287,7 @@ def infer_endpoint(f, packet, *, mode, role, call_limit, initial=None, feasible=
                 optimization_sufficiency="unknown", wall_seconds=time.perf_counter()-begin)
 
 
-def numerical_check(f, state, packet, *, stepper=None):
+def numerical_check(f, state, packet, *, stepper=None, capture=None):
     counts, begin = _counts(stepper), time.perf_counter()
     integration = dict(stepper=stepper) if stepper is not None else {}
     record = dict(passed=False, counts=counts)
@@ -297,11 +297,18 @@ def numerical_check(f, state, packet, *, stepper=None):
             histories, roundtrips, futures = [], [], []
             for step in (.0025, .00125):
                 history = _integrate(f, state, step, .1, counts, backward=True, **integration)
+                if capture is not None:
+                    capture[f"history_backward_{step}"] = history.copy()
                 histories.append(core.observations(history, f.mass))
                 returned = _integrate(f, history[0], step, .1, counts, **integration)
+                if capture is not None:
+                    capture[f"history_forward_{step}"] = returned.copy()
                 roundtrips.append(float(np.max(np.abs((returned[-1]-state)/.1))))
             for step in (.01, .005):
-                futures.append(core.observations(_integrate(f, state, step, 1., counts, **integration), f.mass))
+                future = _integrate(f, state, step, 1., counts, **integration)
+                if capture is not None:
+                    capture[f"future_{step}"] = future.copy()
+                futures.append(core.observations(future, f.mass))
             history_delta, future_delta = histories[0]-histories[1], futures[0]-futures[1]
             p_error = float(np.max(np.abs(state[2*f.n_nodes:3*f.n_nodes]-packet["p_end"])))
             record.update(roundtrip_scaled_max=roundtrips, history_main_fine_rms=float(np.sqrt(np.mean(history_delta**2))),

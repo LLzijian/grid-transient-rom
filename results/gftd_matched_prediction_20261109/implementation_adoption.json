@@ -1,0 +1,52 @@
+{
+  "run": "gftd_matched_prediction_20261109",
+  "recorded_utc": "2026-11-09T17:14:08.299081+00:00",
+  "decision": "accepted_for_metadata_preparation_and_registered_artificial_qualification",
+  "reviews": [
+    {
+      "path": "reports/gftd_matched_prediction_20261109/analysis_implementation_review.md",
+      "sha256": "9c360b0b7fdda819765fb70512b0441e426d39184bcff682ec5da59bd8039cc3",
+      "bytes": 5754
+    },
+    {
+      "path": "reports/gftd_matched_prediction_20261109/fit_implementation_review_v2.md",
+      "sha256": "c3b1c5276e8f03515ac951a6ab634933dc32729a3d17194c7dedf586b36899c0",
+      "bytes": 6755
+    },
+    {
+      "path": "reports/gftd_matched_prediction_20261109/runner_implementation_review_v2.md",
+      "sha256": "1ff4d90dcfd0424c08f8f062614b1d2ecc0418631a1dba8bf810c984145a149c",
+      "bytes": 5536
+    }
+  ],
+  "reviewed_source_sha256": {
+    "src/kiki/models/base.py": "026a5e42e3b074f5a535bdf1fd4d7458ac6e05aad1f6c567e77429cee60631d1",
+    "src/kiki/models/gftd_kuramoto.py": "c503b54e609681b3b94aed0c31c47839c17851efdf2a8070cd93ccd34ab8d520",
+    "src/kiki/models/gftd_discovery.py": "fe6035eb92aeeb383c2b97ce50b39123261ac9dd2ee8f50379cb9f79064de5b3",
+    "src/kiki/models/gftd_fitting.py": "423428b3427eaa00fc10bf2467b04f6751a6e922f66cf0d43c16b5ba4de8da26",
+    "src/kiki/models/gftd_matched_prediction.py": "5cfc622a1d7d8bea5ed195b115417ec60ce0d4bbcd285ea7c2a0b81022d6b5cc",
+    "src/kiki/evaluation/gftd_analysis.py": "67d76cde3c16f83c5d017e4ad2e1c95ca613e7817d97b1605cb2f22778d227f5",
+    "experiments/gftd_matched_prediction_20261109/run.py": "5cad913345658b842b270c50e1313b64607c5a543920348f783b03c2fd08f352",
+    "experiments/gftd_matched_prediction_20261109/qualify.py": "2b3129ee9813f20621e52d55809966e0ac33ab872a9911ad6db9437f9b60c73b",
+    "tests/test_gftd_matched_fit.py": "6308ba857b4c2ddba4d45bfc2b73631d8d91e3ce563326bcf9dea05eeeb8410d",
+    "tests/test_gftd_matched_analysis.py": "320ea26ab597923cc02e1eb331e9e12b0dedc58a1599a7eb84f3e08f01749573",
+    "tests/test_gftd_matched_runner.py": "9aafbf2ec10e60cb66b6f8c3ec87297da766f3a8d56c3b6ad7c9501b4a786288",
+    "tests/test_gftd_bounded_kernel.py": "bf62fc758af178a6490165a50e7d0ffbb1af0dc9a91e880103c94c924aef659c"
+  },
+  "qualification_clarification": {
+    "path": "reports/gftd_matched_prediction_20261109/qualification_clarification.md",
+    "sha256": "c73f38d66c56fbaef2cf8bc4fce9ea7a978fe72ab56cf778778ee291842582d8",
+    "bytes": 1052
+  },
+  "source_predecessor_commit": "95afe8cd187e7947c65dd30e1fb6747341d8735e",
+  "preceding_archive_commit": "35070d31",
+  "actual_model_calls": 0,
+  "actual_test_runs": 0,
+  "scientific_execution_released": false,
+  "artificial_limits": {
+    "rhs": 128,
+    "hamiltonian": 2000
+  },
+  "technical_qualification_corrections_used": 0,
+  "scope": "Original finite protocol. v1 implementation defects corrected before any qualification or model evaluation; original protocol and v1 source/reviews retained."
+}

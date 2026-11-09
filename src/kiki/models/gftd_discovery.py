@@ -104,7 +104,7 @@ def _time_rk4(rhs, t, state, step):
     return result
 
 
-def reconstruct_ports(t, omega, p_end, functional):
+def reconstruct_ports(t, omega, p_end, functional, *, on_port_rhs=None):
     """Reconstruct p backward from p_end and forced r forward from r(t0)=0."""
     t = _array(t, "port times")
     omega, p_end = _array(omega, "omega"), _array(p_end, "p_end")
@@ -114,19 +114,24 @@ def reconstruct_ports(t, omega, p_end, functional):
     constants, j, decay = _port_constants(functional)
     def forcing(time):
         return np.array([np.interp(time, t, omega[:, node]) for node in range(n)])
+    def p_rhs(time, value):
+        if on_port_rhs is not None:
+            on_port_rhs()
+        return -constants["rate_p"]*constants["storage_p"]*value-constants["gain_p"]*forcing(time)
+    def r_rhs(time, value):
+        if on_port_rhs is not None:
+            on_port_rhs()
+        return j*forcing(time)-decay*value
     p, rf = np.zeros_like(omega), np.zeros_like(omega)
     p[-1] = p_end
     for index in range(len(t)-1, 0, -1):
-        p[index-1] = _time_rk4(
-            lambda time, value: -constants["rate_p"]*constants["storage_p"]*value-constants["gain_p"]*forcing(time),
-            t[index], p[index], t[index-1]-t[index])
+        p[index-1] = _time_rk4(p_rhs, t[index], p[index], t[index-1]-t[index])
     for index in range(len(t)-1):
-        rf[index+1] = _time_rk4(lambda time, value: j*forcing(time)-decay*value,
-                              t[index], rf[index], t[index+1]-t[index])
+        rf[index+1] = _time_rk4(r_rhs, t[index], rf[index], t[index+1]-t[index])
     return p, rf
 
 
-def prepare_weak_history(packet, functional, step=.0025):
+def prepare_weak_history(packet, functional, step=.0025, *, on_port_rhs=None):
     """Cache terms independent of unknown edge coefficients and candidate a."""
     f = functional
     packet = validate_observation(packet, f.n_nodes)
@@ -138,7 +143,8 @@ def prepare_weak_history(packet, functional, step=.0025):
                                     for node in range(f.n_nodes)])
              for name in ("theta_history", "omega_history")}
     theta, omega = dense["theta_history"], dense["omega_history"]
-    p, rf = reconstruct_ports(t, omega, packet["p_end"], f)
+    port_options = {} if on_port_rhs is None else dict(on_port_rhs=on_port_rhs)
+    p, rf = reconstruct_ports(t, omega, packet["p_end"], f, **port_options)
     v, dv = weak_test_functions(t)
     weights = boole_weights(t)
     weighted = v*weights
