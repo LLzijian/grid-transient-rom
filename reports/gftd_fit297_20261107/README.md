@@ -95,3 +95,5 @@ L3图相关性使用K(a=0)对绝对Kron导纳，不是K cos(phi*)；更正物理
 | navigation.materials[9].reference | [reports/gftd_fit297_20261107/originals/gftd_fit297_20261107_protocol_draft.md](originals/gftd_fit297_20261107_protocol_draft.md) | present |
 
 [当前路径保护明细](protected.md)由本批保护索引接续，科学登记不回写。
+
+[早期设计、接口与数值复核材料](../../results/repository_organization/20261109_fit297_archive16/README.md)提供固定阅读版和归档原件。
