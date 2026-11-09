@@ -10,6 +10,6 @@
 |---|---|
 | [p_channel_diagnostic_20261030.py](p_channel_diagnostic_20261030.py) | EXPLORATORY / POST-HOC: p-channel error decomposition (not pre-registered).；[原报告](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/closure_probe_20261030_conclusion.md) |
 | [probe64_20261030.py](probe64_20261030.py) | P4 (H3 cheap check): frozen A step64 versus step128 forward evaluation.；[原报告](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/closure_probe_20261030_conclusion.md) |
-| [r_memory_recovery_evaluate_20261028.py](r_memory_recovery_evaluate_20261028.py) | R0: one new CPU evaluation of the fixed, latest durable A/25101 model.；[原报告](../../../reports/r_memory_20261028_conclusion.md) |
+| [r_memory_recovery_evaluate_20261028.py](r_memory_recovery_evaluate_20261028.py) | R0: one new CPU evaluation of the fixed, latest durable A/25101 model.；[原报告](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/r_memory_20261028_conclusion.md) |
 
 [迁移与回退回执](../../../results/repository_organization/20261109_history07/migration.json)含本地字节哈希及完整旧版本标识。
