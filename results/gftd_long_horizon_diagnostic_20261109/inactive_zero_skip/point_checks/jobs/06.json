@@ -1,0 +1,71 @@
+{
+  "status": "failed",
+  "passed": false,
+  "differences": {},
+  "power_residual_relative": {
+    "original": null,
+    "candidate": null
+  },
+  "labels": [
+    "active_exp_overflow",
+    "active_exp_underflow",
+    "inactive_zero_exp_out_of_range"
+  ],
+  "original_errors": {
+    "couplings": "FloatingPointError('overflow encountered in exp')",
+    "hamiltonian": "FloatingPointError('overflow encountered in square')",
+    "gradients": "FloatingPointError('overflow encountered in exp')",
+    "rhs": "FloatingPointError('overflow encountered in exp')"
+  },
+  "candidate_errors": {
+    "couplings": "FloatingPointError('overflow encountered in exp')",
+    "hamiltonian": "FloatingPointError('overflow encountered in square')",
+    "gradients": "FloatingPointError('overflow encountered in exp')",
+    "rhs": "FloatingPointError('overflow encountered in exp')"
+  },
+  "original_counts": {
+    "couplings": 1,
+    "hamiltonian": 1,
+    "gradients": 1,
+    "rhs": 1
+  },
+  "candidate_counts": {
+    "couplings": 1,
+    "hamiltonian": 1,
+    "gradients": 1,
+    "rhs": 1
+  },
+  "edge_counts": {
+    "psi": 1,
+    "beta_psi": 1,
+    "endpoint_sum": 1,
+    "incidence_sum": 1,
+    "exp_range_check": 88
+  },
+  "index": 6,
+  "case_id": "modulated_124",
+  "role": "cached_fine_failure",
+  "time": 1.081408248290464,
+  "source": {
+    "path": "artifacts/gftd_initialization_precision_20261109/candidate/full/trajectories/modulated_124.npz",
+    "sha256": "703865e1b93661350712d14dd5182cf46d64ad6b63c8e4d9ab4b49e53d62efa1",
+    "bytes": 136459
+  },
+  "array_key": "fine_failure_state",
+  "receipt": {
+    "path": "results/gftd_initialization_precision_20261109/candidate/full/future/modulated_124.json",
+    "sha256": "6a5d9f1d9168353874db45868e839ca545732ba203534f726409792bcf005e35",
+    "bytes": 7598
+  },
+  "state_sha256": "aff9717877cdfcffb0436161cca15328e1cba11d904fc88e5e9ccd9db267d650",
+  "action_id": "gftd-long-horizon-20261109-zero-points-01:06",
+  "phase_action_id": "gftd-long-horizon-20261109-zero-points-01",
+  "actual_rhs_calls": 2,
+  "arrays": {
+    "path": "artifacts/gftd_long_horizon_diagnostic_20261109/inactive_zero_skip/point_checks/06.npz",
+    "sha256": "b771811f5580e0a53d73e81586a9ecb00b8e7cf425e56ebb2046df10732dc094",
+    "bytes": 3023,
+    "local_only": true,
+    "non_upload": true
+  }
+}

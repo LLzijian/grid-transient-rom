@@ -210,3 +210,12 @@
 /tests/test_gftd_precision_fixed_state.py -text
 /tests/test_gftd_precision_api.py -text
 /tests/test_gftd_precision_candidate.py -text
+
+# Preserve frozen long-horizon diagnostic source and evidence bytes.
+/campaigns/gftd_long_horizon_diagnostic_20261109/** -text whitespace=cr-at-eol
+/experiments/gftd_long_horizon_diagnostic_20261109/** -text whitespace=cr-at-eol
+/reports/gftd_long_horizon_diagnostic_20261109/** -text whitespace=cr-at-eol
+/results/gftd_long_horizon_diagnostic_20261109/** -text whitespace=cr-at-eol
+/harness/runs/gftd_long_horizon_diagnostic_20261109.json -text whitespace=cr-at-eol
+/tests/test_gftd_long_horizon_diagnostic.py -text whitespace=cr-at-eol
+/tests/test_gftd_long_horizon_zero_skip.py -text whitespace=cr-at-eol

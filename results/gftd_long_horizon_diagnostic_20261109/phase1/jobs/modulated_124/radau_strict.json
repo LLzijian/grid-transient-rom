@@ -1,0 +1,52 @@
+{
+  "method": "radau_strict",
+  "rhs_version": "original_strict",
+  "status": "rhs_limit",
+  "completed": false,
+  "target_time": 1.29,
+  "step": null,
+  "last_accepted_time": 1.0801752305972474,
+  "last_output_time": 1.08,
+  "output_rows": 109,
+  "external_step_attempts": 4333,
+  "accepted_steps": 4332,
+  "internal_rejected_steps": null,
+  "dense_output_attempts": 108,
+  "actual_rhs_calls": 30960,
+  "rhs_calls_by_operation": {
+    "solver_setup": 52,
+    "solver_step": 30908
+  },
+  "rhs_limit": 30960,
+  "error": "RhsLimit('registered RHS call limit reached')",
+  "failure": {
+    "time": 1.0801753292871896,
+    "step": 4333,
+    "substage": null,
+    "operation": "solver_step",
+    "error": "RhsLimit('registered RHS call limit reached')",
+    "evaluated": false
+  },
+  "wall_seconds": 4.29444599999988,
+  "cpu_seconds": 4.234375,
+  "solver": "Radau",
+  "rtol": 1e-11,
+  "atol": 1e-13,
+  "max_step": 0.005,
+  "solver_nfev": 30861,
+  "solver_njev": 2,
+  "solver_nlu": 280,
+  "action_id": "gftd-long-horizon-20261109-original-strict-01:modulated_124:radau_strict",
+  "phase_action_id": "gftd-long-horizon-20261109-original-strict-01",
+  "case_id": "modulated_124",
+  "state_sha256": "357236b10997075c930738484d03786c6227b58920dcca222fd8948a0d767def",
+  "arrays": {
+    "path": "artifacts/gftd_long_horizon_diagnostic_20261109/phase1/jobs/modulated_124/radau_strict.npz",
+    "sha256": "7def330d12f3d9b5d251dfbb7f4e48e84db01c35ef5101af3068048e7ce62453",
+    "bytes": 1693702,
+    "local_only": true,
+    "non_upload": true
+  },
+  "worker_wall_seconds": 4.696401900000637,
+  "worker_cpu_seconds": 4.3125
+}

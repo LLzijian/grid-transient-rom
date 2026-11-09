@@ -1,0 +1,79 @@
+{
+  "active_range_guard_algebra_calls": 4,
+  "actual_rhs_calls": 8,
+  "fixtures": {
+    "all_closed": {
+      "actual_rhs_calls": 2,
+      "candidate_counts": {"couplings": 1, "gradients": 1, "hamiltonian": 1, "power": 1, "rhs": 1},
+      "candidate_errors": {},
+      "differences": {"couplings": 0.0, "gradients": 0.0, "hamiltonian": 0.0, "power": 0.0, "rhs": 0.0},
+      "edge_counts": {"beta_psi": 1, "endpoint_sum": 1, "incidence_sum": 1, "psi": 1},
+      "labels": [],
+      "original_counts": {"couplings": 1, "gradients": 1, "hamiltonian": 1, "power": 1, "rhs": 1},
+      "original_errors": {},
+      "passed": true,
+      "power_residual_relative": {"candidate": 0.0, "original": 0.0},
+      "status": "equivalent"
+    },
+    "inactive_overflow": {
+      "actual_rhs_calls": 2,
+      "candidate_counts": {"couplings": 1, "gradients": 1, "hamiltonian": 1, "power": 1, "rhs": 1},
+      "candidate_errors": {},
+      "differences": {},
+      "edge_counts": {"beta_psi": 1, "endpoint_sum": 1, "exp_range_check": 4, "incidence_sum": 1, "psi": 1},
+      "labels": ["inactive_zero_exp_out_of_range"],
+      "original_counts": {"couplings": 1, "gradients": 1, "hamiltonian": 1, "rhs": 1},
+      "original_errors": {
+        "couplings": "FloatingPointError('overflow encountered in exp')",
+        "gradients": "FloatingPointError('overflow encountered in exp')",
+        "hamiltonian": "FloatingPointError('overflow encountered in exp')",
+        "rhs": "FloatingPointError('overflow encountered in exp')"
+      },
+      "passed": true,
+      "power_residual_relative": {"candidate": 1.1368583096358183e-16, "original": null},
+      "status": "zero_term_unblocked"
+    },
+    "normal_active": {
+      "actual_rhs_calls": 2,
+      "candidate_counts": {"couplings": 1, "gradients": 1, "hamiltonian": 1, "power": 1, "rhs": 1},
+      "candidate_errors": {},
+      "differences": {"couplings": 0.0, "gradients": 0.0, "hamiltonian": 0.0, "power": 0.0, "rhs": 0.0},
+      "edge_counts": {"beta_psi": 1, "endpoint_sum": 1, "incidence_sum": 1, "psi": 1},
+      "labels": [],
+      "original_counts": {"couplings": 1, "gradients": 1, "hamiltonian": 1, "power": 1, "rhs": 1},
+      "original_errors": {},
+      "passed": true,
+      "power_residual_relative": {"candidate": 2.448173240939761e-17, "original": 2.448173240939761e-17},
+      "status": "equivalent"
+    },
+    "partially_closed": {
+      "actual_rhs_calls": 2,
+      "candidate_counts": {"couplings": 1, "gradients": 1, "hamiltonian": 1, "power": 1, "rhs": 1},
+      "candidate_errors": {},
+      "differences": {"couplings": 0.0, "gradients": 0.0, "hamiltonian": 0.0, "power": 0.0, "rhs": 0.0},
+      "edge_counts": {"beta_psi": 1, "endpoint_sum": 1, "incidence_sum": 1, "psi": 1},
+      "labels": [],
+      "original_counts": {"couplings": 1, "gradients": 1, "hamiltonian": 1, "power": 1, "rhs": 1},
+      "original_errors": {},
+      "passed": true,
+      "power_residual_relative": {"candidate": 0.0, "original": 0.0},
+      "status": "equivalent"
+    }
+  },
+  "rhs_version": "inactive_zero_skip",
+  "execution": {
+    "working_directory": "E:/03-nn_Transfer_Func/kiki",
+    "command": "& .\\.venv-gpu\\Scripts\\python.exe -B -m pytest -q -s -p no:cacheprovider --basetemp .tmp/pytest-gftd-zero-skip-qualification tests/test_gftd_long_horizon_zero_skip.py",
+    "environment": {"PYTHONPATH": "src", "OPENBLAS_NUM_THREADS": "1", "OMP_NUM_THREADS": "1", "MKL_NUM_THREADS": "1"},
+    "source_sha256": {
+      "experiments/gftd_long_horizon_diagnostic_20261109/zero_skip.py": "273d061f9383e646eb6b5caf5e7d6a1e3e5d185376a3c6a491758ae7b2e4a952",
+      "tests/test_gftd_long_horizon_zero_skip.py": "9b547c15f589791c1ccdbfab98bf24a6368ed2288058d2eb2d62dc1b1d2167f3"
+    },
+    "host_session_id": 63289,
+    "initial_tool_chunk": "3da434",
+    "completion_tool_chunk": "fc4e6f",
+    "exit_code": 0,
+    "pytest_summary": "3 passed in 98.85s (0:01:38)",
+    "fixture_receipt_source": "JSON printed by pytest in completion tool chunk fc4e6f"
+  }
+}

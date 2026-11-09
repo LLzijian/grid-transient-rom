@@ -1,0 +1,76 @@
+{
+  "recorded_utc": "2026-11-09T10:23:50.991714+00:00",
+  "registry_sha256": "c56956e47a755422d878fa1167ea39d805b6803d7fd39400b8083bebecd7926d",
+  "assessment": {
+    "actual_use_eligible": null,
+    "actual_use_status": "not_assessed_or_authorized",
+    "allowed_claims": [
+      "observation_only",
+      "unresolved"
+    ],
+    "allowed_model_decisions": [
+      "ineligible",
+      "retain_evidence"
+    ],
+    "allowed_science_decisions": [
+      "abandon",
+      "continue",
+      "unresolved"
+    ],
+    "assessment_mode": "record_only",
+    "confirmation_need": "not_required_for_this_claim",
+    "effect_convention": "candidate_gain_positive",
+    "issues": [
+      {
+        "code": "OPTIMIZER_HEALTH_UNSUPPORTED",
+        "message": "Strong empirical claims and promotion require explicit healthy status or indexed optimizer_health_not_applicable_reference; adequacy does not supply health evidence.",
+        "path": "evidence.optimizer_health",
+        "severity": "warning"
+      },
+      {
+        "code": "RECORD_CHECK_NOT_CERTIFICATION",
+        "message": "Record requirements only: this evaluator does not read evidence, verify its truth, certify statistics or mathematics, or authorize a scientific conclusion or promotion.",
+        "path": "record",
+        "severity": "warning"
+      }
+    ],
+    "normalized_evidence": {
+      "comparison": "matched",
+      "confirmation": "none",
+      "critical_events": "unknown",
+      "effect": "unknown",
+      "mechanism_probe": "passed",
+      "optimization_adequacy": "unknown",
+      "optimizer_health": "unknown",
+      "validity": "valid"
+    },
+    "promotion_eligible": false,
+    "proposed_claim_eligible": true,
+    "proposed_model_decision_eligible": true,
+    "proposed_science_decision_eligible": null,
+    "recommended_next": "continue_registered",
+    "record_only_notice": "Record requirements only: this evaluator does not read evidence, verify its truth, certify statistics or mathematics, or authorize a scientific conclusion or promotion.",
+    "schema_valid": true,
+    "science_decision_basis": {},
+    "valid": true
+  },
+  "check_summary": {
+    "issues": [],
+    "live_state_verified": false,
+    "private_payloads_read": false,
+    "read_only": true,
+    "scientific_evidence_verified": false,
+    "valid": true
+  },
+  "run_check_count": 1,
+  "commands": [
+    ".venv-gpu/Scripts/python.exe -B tools/research_harness.py assess --record harness/runs/gftd_long_horizon_diagnostic_20261109.json",
+    ".venv-gpu/Scripts/python.exe -B tools/research_harness.py check --root . --run gftd_long_horizon_diagnostic_20261109"
+  ],
+  "native_tool_receipts": {
+    "assess_corrected": "b5db18",
+    "check": "bed189"
+  },
+  "metadata_repair": "First assess (454ca8) rejected scope object. Restored required scope string and moved information boundary object to authorization_scope; no scientific code/input/result changed. Corrected assess passed.",
+  "notice": "Record checks are not scientific certification or model promotion."
+}

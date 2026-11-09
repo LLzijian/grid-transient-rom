@@ -1,0 +1,67 @@
+{
+  "run_id": "gftd_long_horizon_diagnostic_20261109",
+  "recorded_utc": "2026-11-09 09:35:57 UTC",
+  "authorization": "User: 按照规划继续推进. Existing numerical-research scope and explicit private-repository push authorization remain in force.",
+  "parent_run": "gftd_initialization_precision_20261109",
+  "source_commit": "c7199c14d64a3037bb7d24c05d84fa17efe62b82",
+  "protocol_reference": "campaigns/gftd_long_horizon_diagnostic_20261109/protocol.md",
+  "protocol_sha256": "9d8287dd7cb717dbb703585034977bfddc8bde72a970a5f301d8adadce58e74e",
+  "review_reference": "reports/gftd_long_horizon_diagnostic_20261109/design_review.md",
+  "review_sha256": "caa7f4662598621270b3499e93fdf88754f6b84ad50bb262ba973a2b1d30f199",
+  "actual_model_calls": [
+    {
+      "tool": "collaboration.spawn_agent",
+      "returned_task_name": "/root/long_horizon_scientist",
+      "configured_model": "gpt-6-astra",
+      "server_resolved_model": null,
+      "role": "Scientist"
+    },
+    {
+      "tool": "collaboration.spawn_agent",
+      "returned_task_name": "/root/long_horizon_modeler",
+      "configured_model": "gpt-6.1-sol",
+      "server_resolved_model": null,
+      "role": "Modeler"
+    },
+    {
+      "tool": "collaboration.spawn_agent",
+      "returned_task_name": "/root/long_horizon_reviewer",
+      "configured_model": null,
+      "model_selection": "inherited from root; no override requested",
+      "server_resolved_model": null,
+      "role": "Independent Reviewer"
+    }
+  ],
+  "root_decision": "Adopt the finite protocol. Scientific execution requires a separate source/input/review-bound release after implementation qualification.",
+  "adoption_reason": "Ten saved states isolate distinct numerical failure mechanisms and matched controls without shared-parameter fitting or new initialization. Reusing cached main/fine trajectories avoids redundant scientific work; cross-method accepted trajectories distinguish finite-interval growth from attempted-stage failures.",
+  "execution_clarifications": [
+    "Use public SciPy solver interfaces. Internal rejection counts not exposed by those interfaces are null. Count outer step attempts separately; terminal-attempt callbacks are attempted states, not automatically all rejected states. Preserve accepted meshes independently and count every actual RHS callback including finite-difference Jacobians and dense interpolation.",
+    "Four-grid error ratios share min(t_star, last valid 0.01 s sample of all four paths). No upward rounding, interpolation across failed output, or replacement of an unqualified reference.",
+    "Observation-level convergence and full-state convergence are reported separately. Growth labels require the three-reference full-state and observation agreement specified by the protocol.",
+    "Do not modify original source, initializers, model parameters, stage selection, deployment steps or old evidence. The optional zero-term version is separately frozen and requires the stated trigger and algebraic equivalence checks."
+  ],
+  "exact_budget_check": {
+    "tool_chunk": "8477dc",
+    "initial_integrations": 46,
+    "conditional_integrations": 28,
+    "initial_reference_rhs_limit": 4191840,
+    "initial_fixed_rhs_limit": 383328,
+    "conditional_reference_rhs_limit": 1614240,
+    "conditional_fixed_rhs_limit": 403560,
+    "single_point_rhs_limit": 500,
+    "total_rhs_limit": 6593468
+  },
+  "scope": {
+    "saved_states": 10,
+    "distinct_model_event_packets": 9,
+    "shared_parameter_refits": 0,
+    "initialization_runs": 0,
+    "future_truth_reads": 0,
+    "original_val_test": "closed",
+    "new_FOM": 0,
+    "TASK4": "paused",
+    "default": "none",
+    "incumbent_changed": false
+  },
+  "scientific_execution_released": false
+}

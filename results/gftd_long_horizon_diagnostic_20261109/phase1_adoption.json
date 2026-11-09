@@ -1,0 +1,114 @@
+{
+  "run_id": "gftd_long_horizon_diagnostic_20261109",
+  "recorded_utc": "2026-11-09 09:58:51 UTC",
+  "phase": "phase1",
+  "execution_reference": "results/gftd_long_horizon_diagnostic_20261109/phase1/execution.json",
+  "execution_sha256": "143fe9087f1599ae668481d1f1cf54a714f6f4ca39f7170430448de69abcccbb",
+  "scientist_reference": "reports/gftd_long_horizon_diagnostic_20261109/phase1_scientific_assessment.md",
+  "scientist_sha256": "652ab3071e0f24853bb879d436b1da29e60000e92df8ab742ceae4296a59f35c",
+  "review_reference": "reports/gftd_long_horizon_diagnostic_20261109/phase1_review.md",
+  "review_sha256": "600e8adb0850dafd21526a575f98467fbb85b9f18794c1effc83cc930950240e",
+  "independent_audit_sha256": "ab134328d7ea841e9a4458f6cae8f8b411e0b5eb871ab2d6a50fc3086bc85cae",
+  "root_decision": "Accept the finite-interval Phase 1 findings. Authorize implementation and four artificial equivalence checks for the already registered zero-term branch; real single-point checks and the 28 integrations require separate frozen releases.",
+  "scientific_findings": {
+    "growth_and_reducible_grid_error_states": [
+      "modulated_008",
+      "modulated_124",
+      "modulated_138",
+      "modulated_204",
+      "modulated_268_stage2"
+    ],
+    "agreement_ends_seconds": [
+      2.19,
+      1.08,
+      1.67,
+      4.33,
+      0.92
+    ],
+    "static_027_agreement_end_seconds": 3.84,
+    "static_027_15s_accuracy": "unresolved",
+    "modulated_124_finest_common_interval_observed_rms": 0.002280046462573305,
+    "modulated_124_finest_observed_precision_pass": false,
+    "reference_target_confirmed": [
+      "static_000",
+      "modulated_296",
+      "modulated_048",
+      "modulated_268_stage1"
+    ],
+    "full_cohort_prediction_claim": false,
+    "finite_time_blowup_proven": false
+  },
+  "actual_work": {
+    "integrations": 46,
+    "integration_rhs": 2046228,
+    "sample_rhs": 171,
+    "worker_cpu_seconds": 303.078125,
+    "worker_wall_seconds": 365.3154264999903,
+    "program_host_wall_seconds": 129.83142159999989,
+    "outer_host_wall_seconds": 131.652346
+  },
+  "conditional_preparation": {
+    "real_zero_term_trigger_verified": true,
+    "implementation_authorized": true,
+    "four_artificial_equivalence_cases_authorized": true,
+    "real_single_point_checks_released": false,
+    "integrations_released": false,
+    "integrations_if_released": 28,
+    "states": [
+      "modulated_138",
+      "modulated_204",
+      "modulated_268_stage2",
+      "modulated_296"
+    ],
+    "active_exp_underflow_behavior": "remain strict",
+    "production_sources_changed": false,
+    "approved_output_prefixes": [
+      "results/gftd_long_horizon_diagnostic_20261109/inactive_zero_skip",
+      "artifacts/gftd_long_horizon_diagnostic_20261109/inactive_zero_skip"
+    ],
+    "reuse": "The branch may explicitly scope OUTPUT, PRIVATE and RHS_VERSION in the frozen same-Run helper module and restore them on exit. Its nested phase1 directory is a helper subdirectory within the separate branch, never the original phase1.",
+    "real_point_selection_order": [
+      "modulated_008:initial",
+      "modulated_008:cached_fine_last_accepted",
+      "modulated_008:cached_fine_failure",
+      "modulated_124:initial",
+      "modulated_124:cached_fine_last_accepted",
+      "modulated_124:cached_fine_failure",
+      "modulated_138:initial",
+      "modulated_138:cached_fine_last_accepted",
+      "modulated_138:cached_fine_failure",
+      "modulated_204:initial",
+      "modulated_204:cached_fine_last_accepted",
+      "modulated_204:cached_fine_failure",
+      "modulated_008:cached_main_failure",
+      "modulated_124:cached_main_failure",
+      "modulated_138:cached_main_failure",
+      "modulated_204:cached_main_failure",
+      "modulated_268_stage2:initial",
+      "modulated_268_stage2:phase1_main_failure",
+      "modulated_296:initial",
+      "modulated_296:cached_fine_15s"
+    ],
+    "max_real_point_pairs": 20,
+    "max_artificial_rhs": 8,
+    "max_real_pair_rhs": 40,
+    "max_branch_sampling_rhs": 84,
+    "max_combined_single_point_rhs": 303,
+    "protocol_single_point_rhs_limit": 500
+  },
+  "decisions": {
+    "code": "retain_branch",
+    "model": "retain_evidence",
+    "science": "continue"
+  },
+  "scope": {
+    "unselected_long_failures": 8,
+    "original_initialization_pass_counts_unchanged": true,
+    "stage1_fallback_applied": false,
+    "shared_parameter_refits": 0,
+    "future_truth_reads": 0,
+    "original_val_test": "closed",
+    "new_FOM": 0,
+    "default": "none"
+  }
+}

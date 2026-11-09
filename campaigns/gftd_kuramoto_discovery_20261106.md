@@ -6,6 +6,8 @@
 
 2026-11-09的[初始化精度Run](../reports/gftd_initialization_precision_20261109/conclusion.md)在固定共享参数、实际步长和门槛下完成全体594项验证：固定八阶初始化通过静态297/297、调制282/297，原47个输出全部保留。长时主细完成数分别为297/297、270/297；完成与长时精度分别判断。该Run未读取真实未来，原总体L1不回填，模型不晋升。
 
+[长时数值辨别](../reports/gftd_long_horizon_diagnostic_20261109/conclusion.md)进一步区分了误差来源：五个保存的调制状态同时具有离散误差与三参考一致区间内的幅值增长；static_027的15 s参考精度仍未决。零项求值候选的20对真实检查没有恢复有限计算的案例，冻结总门未通过，条件轨迹未运行。下一问题转向合法初始化与幅值反馈结构的相容性。
+
 ## 当前认识：先按问题阅读
 
 | 问题 | 当前判断与范围 | 原始来源与材料导航 |
@@ -65,6 +67,7 @@
 | `gftd_modulation_20261107` | Run 1 已归档3fd58f4 | 候选自洽幅值、精确指数列、层级门及 fit/initialize | `adaptation` | 12条件、24观测包、16模型和48完整初始化；因果接口、结构与预测分开判断 | `COMPLETED`；100项联合工程检查及17项续跑检查，48数值过/30预测过，调制恢复未获支持；独立复核后保留证据 |
 | `gftd_fit297_20261107` | Run 2已归档66f1308；机制未识别 | 全体静态弱拟合、固定24包适配、全297评价 | `discrimination` | L1原分母、同ODE严格L2、既有descriptor与PQZ Kron L3 | `COMPLETED`；2fit、594初始化、47双步长预测。总体L1为null；L2点覆盖0，L3各10/13模态配对；一次无重放I/O续跑，工作量关闭且不转移 |
 | `gftd_initialization_precision_20261109` | 已冻结的Run 3两模型与594份初态 | 参数固定，积分精度与初始化流程分开辨别 | `discrimination + adaptation` | [协议](gftd_initialization_precision_20261109/protocol.md)：同初态RK4与参考比较，依据结果选择一个修正并保留297分母 | `COMPLETED`；49状态诊断、固定DP8小试、594完整初始化和579长时配对闭合；静态297/297、调制282/297初始化通过，新增参考520/532确认；独立复核后保留数值覆盖结论、模型不晋升 |
+| `gftd_long_horizon_diagnostic_20261109` | 初始化精度Run已保存的新初态及缓存 | 同参数、同初态的长时跨方法辨别 | `discrimination` | [协议](gftd_long_horizon_diagnostic_20261109/protocol.md)：10状态区分积分误差、接受轨迹增长与零项求值异常；只允许一个条件分支 | `COMPLETED`；46条积分均有回执，五状态在参考一致区间内增长且网格误差下降；零项20对真实检查19项通过、1项相同平方溢出未过冻结分类门，28条条件轨迹未释放，工作量关闭 |
 | `gftd_stage2_coi_decoupling` | 受控证据与合格修订，具体父候选待冻结 | 静态耦合候选 | `discrimination` | 在 `train fit297` 固定同一初始化和静态图，仅改变共同模态算子 | 旧规划保留；不再作为三步主线前置 |
 | `gftd_stage2_latent_modulated_topology` | `gftd_stage2_coi_decoupling` 的冻结候选 | 动态调制候选 | `discrimination` / `adaptation` | 固定初始化与共同模态设置，调制开/关同期比较，L2 另证，L3 report-only | `DRAFT_PENDING_RELEASE` |
 
@@ -80,7 +83,7 @@
 
 ## 4. 下一个最有判别力的问题与重开/停止条件
 
-- **当前工作**。[初始化精度Run](gftd_initialization_precision_20261109/protocol.md)已完成并[独立复核](../reports/gftd_initialization_precision_20261109/result_review.md)，原参数下的完整初始化覆盖提高，原Run 3通过数不回填。下一问题是冻结新初态的长时异常与static_027差异放大，先做有界跨方法辨别，再判断数值求值、初始化选点或储能结构的修改。当前Run工作量关闭，不追加计算或转移余额。
+- **当前工作**。[长时数值辨别Run](../reports/gftd_long_horizon_diagnostic_20261109/conclusion.md)已闭合。五个指定调制状态在三参考合格区间内同时出现幅值增长与可减少的离散误差；static_027的15 s精度未决。268历史拟合更好的stage2比stage1更早出现增长，下一步先设计共享储能／调制结构与合法初始化的相容性辨别。零项修正未通过20点冻结总门，28条条件轨迹未释放；本Run不再追加网格、容差或修正，余额不转移。初始化精度父Run的594项结果保留原口径。
 
 - **2026-11-08证据更新**。M0/M1的同期流程已执行，但总体预测比较因数值资格覆盖不足保持未决；不再将“未执行真实比较”作为当前缺口。M2需要区分共享适配351/384任务到限与初始化后的数值资格损失：646初始化优化任务均收敛，却有547项未返回合格初态。条件支撑为静态35边、调制35边及25调制边，联合唯一性unknown。L2非空局部证明不覆盖本轮47实点；L3的K–绝对Kron导纳相关0.440/0.483及10/13模态配对用于描述，不替代L1。详见[Scientist判读](../reports/gftd_fit297_20261107/originals/gftd_fit297_20261107_scientific_assessment.md)、[独立结果审查](../reports/gftd_fit297_20261107/originals/gftd_fit297_20261107_result_review.md)及[root采用](../results/gftd_fit297_20261107/root_adoption.json)。
 - **判别顺序**。同族正负校准分开检查恢复和误检，推断端隔离真实图及隐轨迹，再比较独立生成机制与最强替代解释，随后准备 IEEE39 条件内辨别。
