@@ -1,0 +1,284 @@
+{
+  "differences": {
+    "1": {
+      "observed": {
+        "rms": 3.837139612272201e-12,
+        "peak": 4.794031838173396e-11
+      },
+      "state": {
+        "rms": 2.4301328122326654e-12,
+        "peak": 4.793943020331426e-11
+      },
+      "components": {
+        "theta": {
+          "rms": 2.5107941357697584e-14,
+          "peak": 2.0583534876550402e-13
+        },
+        "omega": {
+          "rms": 5.42074252055882e-13,
+          "peak": 4.793943020331426e-12
+        },
+        "p": {
+          "rms": 1.8271611842167472e-14,
+          "peak": 1.3367085216486885e-13
+        },
+        "a": {
+          "rms": 1.9677333193746277e-15,
+          "peak": 8.86096751528953e-15
+        },
+        "r": {
+          "rms": 2.1555672561988594e-14,
+          "peak": 1.765254609153999e-13
+        }
+      }
+    },
+    "2": null,
+    "5": null,
+    "8": null,
+    "15": null
+  },
+  "integrals": {
+    "main": {
+      "completed": false,
+      "step": 0.01,
+      "target_time": 15.0,
+      "last_accepted_time": 1.82,
+      "attempted_steps": 183,
+      "accepted_steps": 182,
+      "actual_rhs_calls": 2194,
+      "interrupted_step_rhs_calls": 10,
+      "error": "FloatingPointError('overflow encountered in exp')",
+      "failure": {
+        "time": 1.826,
+        "step": 183,
+        "substage": 10,
+        "operation": "fixed_dp8",
+        "error": "FloatingPointError('overflow encountered in exp')",
+        "edges": {
+          "active": {
+            "min": -62551781897848.08,
+            "max": 10719.364997239789,
+            "min_edge": 0,
+            "max_edge": 20,
+            "psi_at_max": 0.015775030912340497,
+            "psi_min": -3.4067074060834646
+          },
+          "inactive": {
+            "min": -31275890949375.277,
+            "max": 9635.22005950368,
+            "min_edge": 15,
+            "max_edge": 35,
+            "psi_at_max": 0.022626457946439443,
+            "psi_min": -4.444347990852034
+          }
+        }
+      },
+      "wall_seconds": 0.2545352999586612,
+      "cpu_seconds": 0.25,
+      "start_state_sha256": "c68e0254d45ecc7750d3c913e2c924d054aee2422037d38ea5c75e7dce1d0342",
+      "component_ranges": {
+        "theta": {
+          "min": -0.2001798439309225,
+          "max": 9.120645338711078,
+          "last_accepted_max_abs": 8.301786796903615
+        },
+        "omega": {
+          "min": -14.091505287891033,
+          "max": 17.31098484547943,
+          "last_accepted_max_abs": 11.396480259277162
+        },
+        "p": {
+          "min": -4.273261522134931,
+          "max": 1.7779073684431619,
+          "last_accepted_max_abs": 0.9061560217900217
+        },
+        "a": {
+          "min": -0.555101673907514,
+          "max": 5.706208162870091,
+          "last_accepted_max_abs": 5.706208162870091
+        },
+        "r": {
+          "min": -1.3512078048401506,
+          "max": 3.9034909102098045,
+          "last_accepted_max_abs": 2.415548274015056
+        }
+      },
+      "first_failure_interval": [
+        1.82,
+        1.83
+      ]
+    },
+    "fine": {
+      "completed": false,
+      "step": 0.005,
+      "target_time": 15.0,
+      "last_accepted_time": 1.825,
+      "attempted_steps": 366,
+      "accepted_steps": 365,
+      "actual_rhs_calls": 4381,
+      "interrupted_step_rhs_calls": 1,
+      "error": "FloatingPointError('overflow encountered in exp')",
+      "failure": {
+        "time": 1.825,
+        "step": 366,
+        "substage": 1,
+        "operation": "fixed_dp8",
+        "error": "FloatingPointError('overflow encountered in exp')",
+        "edges": {
+          "active": {
+            "min": -13312.051199357815,
+            "max": 83637417850863.36,
+            "min_edge": 20,
+            "max_edge": 0,
+            "psi_at_max": -3.4071588135061113,
+            "psi_min": -3.4071588135061113
+          },
+          "inactive": {
+            "min": -12171.1808486143,
+            "max": 41818708926354.71,
+            "min_edge": 35,
+            "max_edge": 16,
+            "psi_at_max": -4.442033358476189,
+            "psi_min": -4.442033358476189
+          }
+        }
+      },
+      "wall_seconds": 0.5046625999966636,
+      "cpu_seconds": 0.484375,
+      "start_state_sha256": "c68e0254d45ecc7750d3c913e2c924d054aee2422037d38ea5c75e7dce1d0342",
+      "component_ranges": {
+        "theta": {
+          "min": -0.2001798439309225,
+          "max": 9.120645338711071,
+          "last_accepted_max_abs": 8.248801338525814
+        },
+        "omega": {
+          "min": -14.091505287890964,
+          "max": 17.310984845479478,
+          "last_accepted_max_abs": 58885919862196.0
+        },
+        "p": {
+          "min": -4.273261522134946,
+          "max": 1.7779073684431344,
+          "last_accepted_max_abs": 0.9106810284635869
+        },
+        "a": {
+          "min": -0.5551019590438296,
+          "max": 5.70623517421387,
+          "last_accepted_max_abs": 83637417852709.56
+        },
+        "r": {
+          "min": -1.3512078048401388,
+          "max": 3.9034909102098054,
+          "last_accepted_max_abs": 2.3669899554154483
+        }
+      },
+      "first_failure_interval": [
+        1.825,
+        1.8299999999999998
+      ]
+    },
+    "radau": {
+      "completed": true,
+      "target_time": 1.0,
+      "last_accepted_time": 1.0,
+      "step": null,
+      "attempted_steps": 2399,
+      "accepted_steps": 2399,
+      "actual_rhs_calls": 17132,
+      "wall_seconds": 2.1603607999859378,
+      "cpu_seconds": 2.15625,
+      "error": null,
+      "failure": null,
+      "solver": "Radau",
+      "rtol": 1e-11,
+      "atol": 1e-13,
+      "max_step": 0.005,
+      "rhs_limit": 20000,
+      "solver_nfev": 17032,
+      "solver_njev": 2,
+      "solver_nlu": 150,
+      "start_state_sha256": "c68e0254d45ecc7750d3c913e2c924d054aee2422037d38ea5c75e7dce1d0342",
+      "component_ranges": {
+        "theta": {
+          "min": -0.2001798439309225,
+          "max": 9.120645338711073,
+          "last_accepted_max_abs": 6.156647265054606
+        },
+        "omega": {
+          "min": -14.09150528788401,
+          "max": 17.31098484548573,
+          "last_accepted_max_abs": 7.7364917243868385
+        },
+        "p": {
+          "min": -4.273261522135693,
+          "max": 1.7779073684431248,
+          "last_accepted_max_abs": 0.7774357840995424
+        },
+        "a": {
+          "min": -0.39327867023805413,
+          "max": 0.5134708159549868,
+          "last_accepted_max_abs": 0.5134708159549868
+        },
+        "r": {
+          "min": -1.351207804840121,
+          "max": 3.903490910209803,
+          "last_accepted_max_abs": 1.0935765357674068
+        }
+      }
+    }
+  },
+  "single_radau_reference": {
+    "attempted": true,
+    "status": "confirmed",
+    "difference": {
+      "observed": {
+        "rms": 1.2102160746091616e-11,
+        "peak": 1.454445452964137e-10
+      },
+      "state": {
+        "rms": 7.680057058826292e-12,
+        "peak": 1.4544587756404326e-10
+      },
+      "components": {
+        "theta": {
+          "rms": 1.1299826479215127e-13,
+          "peak": 1.6779910794184616e-12
+        },
+        "omega": {
+          "rms": 1.7077811153698977e-12,
+          "peak": 1.4544587756404326e-11
+        },
+        "p": {
+          "rms": 1.0191483332856318e-13,
+          "peak": 1.004946126315076e-12
+        },
+        "a": {
+          "rms": 1.265875382898175e-14,
+          "peak": 1.3250511798901243e-13
+        },
+        "r": {
+          "rms": 9.660226798785967e-14,
+          "peak": 1.4264145420384011e-12
+        }
+      }
+    }
+  },
+  "counts": {
+    "actual_rhs_calls": 23707,
+    "integrations_attempted": 3,
+    "integrations_completed": 1
+  },
+  "arrays": {
+    "path": "artifacts/gftd_initialization_precision_20261109/candidate/full/trajectories/modulated_101.npz",
+    "sha256": "9e91b7a0787f3f263890daa54f6cb782c3205a39b7172ff7e17ac8d424891b8c",
+    "bytes": 193091
+  },
+  "phase": "full",
+  "action_id": "gftd-initialization-precision-20261109-candidate-full-01",
+  "event_id": "expansion_0106",
+  "index": 101,
+  "mode": "modulated",
+  "worker_wall_seconds": 3.050708599970676,
+  "worker_cpu_seconds": 2.90625
+}

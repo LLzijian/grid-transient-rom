@@ -1,0 +1,77 @@
+{
+  "scope": "artificial engineering qualification only",
+  "api": "kiki.numerics.dop853_step(rhs, state, step)",
+  "method": {
+    "order": 8,
+    "fixed_step_rhs_evaluations": 12,
+    "adaptive_control": false,
+    "extra_endpoint_rhs": false
+  },
+  "environment": {
+    "python_executable": ".venv-gpu/Scripts/python.exe",
+    "python_version": "3.12.14",
+    "numpy_version": "2.5.2",
+    "scipy_version": "1.18.0",
+    "pytest_version": "9.1.1"
+  },
+  "coefficient_provenance": {
+    "export": "scipy.integrate.DOP853.A and scipy.integrate.DOP853.B",
+    "encoding": "A followed by B in C order, little-endian float64",
+    "shapes": {
+      "A": [
+        12,
+        12
+      ],
+      "B": [
+        12
+      ]
+    },
+    "coefficients_sha256": "123669c4e6be7b9e45302adb0f7714a9972c8f1e196728914b43b2bd9c2f6361",
+    "source_sha256": {
+      ".venv-gpu/Lib/site-packages/scipy/integrate/_ivp/rk.py": "54fb9365032395cd9c087df03b386972c6084108e1371b803d658ae97e171540",
+      ".venv-gpu/Lib/site-packages/scipy/integrate/_ivp/dop853_coefficients.py": "e283219a0f1e5f2cc37924ab961d9d24932f69a6d69fe68ee384b7c31f08839a"
+    }
+  },
+  "workspace_source_sha256": {
+    "src/kiki/numerics.py": "09363eeee4679b12891340f198dabc91971f76dd8f0380e2ef30a3356dab1f87",
+    "tests/test_dop853_fixed.py": "05631c9c62325c334d2e5cd918418663834741d8ee4324ba900c533841b8a4af",
+    "tests/test_shared_numerics.py": "ea1ad0bf15003591befe3d3ab5dc251fc25d84ff8bbe609815e122c58bf3644e"
+  },
+  "test": {
+    "command": "$env:PYTHONPATH='src'; & '.\\.venv-gpu\\Scripts\\python.exe' -m pytest -q tests/test_dop853_fixed.py tests/test_shared_numerics.py",
+    "exit_code": 0,
+    "passed": 19,
+    "subtests_passed": 9,
+    "stdout": "...................                                             [100%]\n19 passed, 9 subtests passed in 2.17s\n"
+  },
+  "checks": {
+    "rk4_definition_source_bytes_match_head": true,
+    "rk4_bitwise_legacy_test": true,
+    "oscillator": {
+      "angular_frequency": 2.75,
+      "duration_s": 2.0,
+      "steps": [
+        4,
+        8,
+        16
+      ],
+      "global_l2_errors": [
+        4.884684216873535e-06,
+        1.7992929148425555e-08,
+        6.908266225221774e-11
+      ],
+      "observed_orders": [
+        8.084691419798702,
+        8.024890671707732
+      ]
+    },
+    "scipy_one_accepted_step": {
+      "step_s": 0.125,
+      "stages_bitwise_equal": 12,
+      "result_bitwise_equal": true,
+      "scipy_rhs_evaluations": 13
+    },
+    "rhs_evaluations_on_stage_five_invalid_derivative": 5,
+    "rhs_evaluations_on_stage_two_arithmetic_overflow": 1
+  }
+}

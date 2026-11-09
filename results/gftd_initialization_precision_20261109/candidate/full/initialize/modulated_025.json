@@ -1,0 +1,91 @@
+{
+  "mode": "modulated",
+  "index": 25,
+  "event_id": "expansion_0028",
+  "label": "stable",
+  "old_status": "blocked_by_stage1",
+  "old_gates": {
+    "passed": false,
+    "values": {
+      "roundtrip_main_scaled_max": 2.111403496485309e-08,
+      "roundtrip_fine_scaled_max": 6.59898802268799e-10,
+      "history_main_fine_rms": 4.145815444716172e-08,
+      "future_main_fine_rms": 0.00032072118824259067,
+      "future_main_fine_peak": 0.0041652020796831835,
+      "p_endpoint_error": 0.0
+    },
+    "error": null
+  },
+  "status": "completed",
+  "passed": true,
+  "p0_exact": true,
+  "stage": "stage2",
+  "stage1_gates": {
+    "passed": true,
+    "values": {
+      "roundtrip_main_scaled_max": 5.3290705182007514e-14,
+      "roundtrip_fine_scaled_max": 5.3290705182007514e-14,
+      "history_main_fine_rms": 2.3137237680352872e-14,
+      "future_main_fine_rms": 4.958209084943877e-12,
+      "future_main_fine_peak": 6.888711823194171e-11,
+      "p_endpoint_error": 0.0
+    },
+    "error": null
+  },
+  "final_gates": {
+    "passed": true,
+    "values": {
+      "roundtrip_main_scaled_max": 7.993605777301127e-14,
+      "roundtrip_fine_scaled_max": 3.552713678800501e-14,
+      "history_main_fine_rms": 2.0728529063066867e-14,
+      "future_main_fine_rms": 3.5844417405146733e-12,
+      "future_main_fine_peak": 4.757438887281751e-11,
+      "p_endpoint_error": 0.0
+    },
+    "error": null
+  },
+  "history_mse": {
+    "old": 0.12301400276895634,
+    "candidate": 0.09047074773493598,
+    "change": -0.03254325503402036
+  },
+  "active_bounds": {
+    "a": 10,
+    "r": 7,
+    "a_fixed": false
+  },
+  "counts": {
+    "algebra_terms_planned": 0,
+    "algebra_terms_actual": 0,
+    "algebra_terms_skipped": 0,
+    "nnls_attempts": 0,
+    "nnls_completed": 0,
+    "nnls_qualified": 0,
+    "reconstruction_attempts": 0,
+    "reconstructions": 0,
+    "optimization_tasks": 2,
+    "actual_residual_calls": 703,
+    "integrations_attempted": 715,
+    "integrations_completed": 715,
+    "rk4_steps_attempted": 0,
+    "rk4_steps_completed": 0,
+    "fixed_dp8_steps_attempted": 29200,
+    "fixed_dp8_steps_completed": 29200,
+    "actual_rhs_calls": 350400
+  },
+  "diagnostics": {
+    "path": "artifacts/gftd_initialization_precision_20261109/candidate/full/diagnostics/modulated_025.json.gz",
+    "sha256": "c732d8a14fe838f99b91879aa66b7b219af139355bac38cddf5f32c401b8e527",
+    "bytes": 51670
+  },
+  "state": {
+    "path": "artifacts/gftd_initialization_precision_20261109/candidate/full/states/modulated_025.npz",
+    "sha256": "f8d888c5724dbf81900545edd62c707816204fdceb43e43e19bdb7b61e2ddcb2",
+    "bytes": 551
+  },
+  "state_sha256": "f486d1108a9702b1c9b4535274a9cf7072e0bc4f05d8214092c979b02d083b66",
+  "phase": "full",
+  "action_id": "gftd-initialization-precision-20261109-candidate-full-01",
+  "worker_wall_seconds": 33.568852100055665,
+  "worker_cpu_seconds": 32.984375
+}

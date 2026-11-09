@@ -2,20 +2,27 @@
 from __future__ import annotations
 
 from collections import OrderedDict
+from contextlib import nullcontext
 import copy
 from dataclasses import fields
+from functools import partial
 import hashlib
 import itertools
 import json
 import time
 
 import numpy as np
+from scipy.integrate import DOP853
 from scipy.optimize import least_squares
 
 from . import gftd_discovery as core
+from ..numerics import dop853_step
 from ..physics.kuramoto_functional import StructuralGates
 
 PROTOCOL_SHA256 = "54622ad9da5fea1afb326140c6d4288a51bddca2aae896ef10926f951b09dcb0"
+FIXED_DP8_FORMAT = "gftd_causal_two_stage_fit297_fixed_dp8_v1"
+FIXED_DP8_PROTOCOL_SHA256 = "a1aab626927d428e2c6f3c7821a4bd7525c0378248fe64183faf38bff190c649"
+FIXED_DP8_COEFFICIENTS_SHA256 = "123669c4e6be7b9e45302adb0f7714a9972c8f1e196728914b43b2bd9c2f6361"
 Q_VERSION = "mgs2_p0_ordered_positive_v1"
 _BATCH_CACHE = OrderedDict()
 
@@ -67,11 +74,27 @@ def _config(f, mode, sigma):
                 ftol=1e-10, xtol=1e-10, gtol=1e-10)
 
 
+def make_fixed_dp8_config(functional, fit297_config):
+    """Bind the registered DP8 initializer to an existing fitted functional."""
+    from .gftd_fit297 import validate_config as validate_fit297_config
+    parent = validate_fit297_config(functional, fit297_config)
+    coefficients = b"".join(np.asarray(value, dtype="<f8").tobytes() for value in (DOP853.A, DOP853.B))
+    if hashlib.sha256(coefficients).hexdigest() != FIXED_DP8_COEFFICIENTS_SHA256:
+        raise InitializationFailure("frozen DOP853 coefficients changed", dict(status="invalid_configuration"))
+    return dict(format=FIXED_DP8_FORMAT, method="fixed_dp8", protocol_sha256=FIXED_DP8_PROTOCOL_SHA256,
+                coefficients_sha256=FIXED_DP8_COEFFICIENTS_SHA256, fit297_config=parent)
+
+
 def validate_config(functional, config):
     if isinstance(config, dict) and config.get("format") == "gftd_causal_two_stage_fit297_v1":
         from .gftd_fit297 import validate_config as validate_fit297_config
         return validate_fit297_config(functional, config)
     try:
+        if isinstance(config, dict) and config.get("format") == FIXED_DP8_FORMAT:
+            expected = make_fixed_dp8_config(functional, config["fit297_config"])
+            if _hash(config) != _hash(expected):
+                raise ValueError("fixed DP8 initialization configuration changed")
+            return expected
         if not isinstance(config, dict) or config.get("mode") not in ("static", "modulated"):
             raise ValueError("a complete frozen causal initialization config is required")
         sigma = float(config["sigma"])
@@ -83,11 +106,14 @@ def validate_config(functional, config):
     return copy.deepcopy(config)
 
 
-def _counts():
-    return dict(algebra_terms_planned=0, algebra_terms_actual=0, algebra_terms_skipped=0,
-                nnls_attempts=0, nnls_completed=0, nnls_qualified=0, reconstruction_attempts=0, reconstructions=0,
-                optimization_tasks=0, actual_residual_calls=0, integrations_attempted=0,
-                integrations_completed=0, rk4_steps_attempted=0, rk4_steps_completed=0)
+def _counts(stepper=None):
+    counts = dict(algebra_terms_planned=0, algebra_terms_actual=0, algebra_terms_skipped=0,
+                  nnls_attempts=0, nnls_completed=0, nnls_qualified=0, reconstruction_attempts=0, reconstructions=0,
+                  optimization_tasks=0, actual_residual_calls=0, integrations_attempted=0,
+                  integrations_completed=0, rk4_steps_attempted=0, rk4_steps_completed=0)
+    if stepper is not None:
+        counts.update(fixed_dp8_steps_attempted=0, fixed_dp8_steps_completed=0, actual_rhs_calls=0)
+    return counts
 
 
 def _add(target, source):
@@ -108,15 +134,28 @@ def _parameters(f, k, beta):
     return result
 
 
-def _integrate(f, endpoint, step, duration, counts, *, backward=False, dense=False):
+def _integrate(f, endpoint, step, duration, counts, *, backward=False, dense=False, stepper=None):
     counts["integrations_attempted"] += 1
     state = np.asarray(endpoint, dtype=np.float64).copy()
     states = [state.copy()]
-    for _ in range(int(round(duration/step))):
-        counts["rk4_steps_attempted"] += 1
-        state = core.rk4(f, state, -step if backward else step)
-        counts["rk4_steps_completed"] += 1
-        states.append(state.copy())
+    attempted, completed = "rk4_steps_attempted", "rk4_steps_completed"
+    advance = partial(core.rk4, f)
+    error_mode = nullcontext()
+    if stepper is not None:
+        def counted_rhs(value):
+            counts["actual_rhs_calls"] += 1
+            return f.rhs(value)
+
+        attempted, completed = "fixed_dp8_steps_attempted", "fixed_dp8_steps_completed"
+        advance = partial(stepper, counted_rhs)
+        error_mode = np.errstate(over="raise", invalid="raise", divide="raise")
+    signed_step = -step if backward else step
+    with error_mode:
+        for _ in range(int(round(duration/step))):
+            counts[attempted] += 1
+            state = advance(state, signed_step)
+            counts[completed] += 1
+            states.append(state.copy())
     counts["integrations_completed"] += 1
     states = np.asarray(states[::-1] if backward else states)
     return states if dense else states[::int(round(.01/step))]
@@ -164,7 +203,7 @@ class _BudgetReached(RuntimeError):
     pass
 
 
-def infer_endpoint(f, packet, *, mode, role, call_limit, initial=None, feasible=None, config=None):
+def infer_endpoint(f, packet, *, mode, role, call_limit, initial=None, feasible=None, config=None, stepper=None):
     """A finite local task; every residual evaluation, including Jac, is counted."""
     packet = core.validate_observation(packet, f.n_nodes)
     _, low, high = _layout(f.n_nodes, float(packet["sigma"]), mode, role)
@@ -176,7 +215,8 @@ def infer_endpoint(f, packet, *, mode, role, call_limit, initial=None, feasible=
         endpoint_builder = lambda u: endpoint(packet, f, u, mode, role, config)
         residual_builder = lambda predicted: history_residual(f, predicted, packet, config)
     endpoint_builder(initial)
-    counts, trace, jacobian = _counts(), [], None
+    counts, trace, jacobian = _counts(stepper), [], None
+    integration = dict(stepper=stepper) if stepper is not None else {}
     counts["optimization_tasks"] = 1
     best, baseline, result = None, None, None
     divisor = max(float(packet["sigma"]), 1e-8)
@@ -187,7 +227,7 @@ def infer_endpoint(f, packet, *, mode, role, call_limit, initial=None, feasible=
             raise _BudgetReached("actual historical residual call budget reached")
         counts["actual_residual_calls"] += 1
         state = endpoint_builder(u)
-        history = _integrate(f, state, .0025, .1, counts, backward=True, dense=True)
+        history = _integrate(f, state, .0025, .1, counts, backward=True, dense=True, **integration)
         raw = residual_builder(history[::4])
         sse = float(raw@raw)
         if not np.isfinite(sse):
@@ -245,25 +285,28 @@ def infer_endpoint(f, packet, *, mode, role, call_limit, initial=None, feasible=
                 optimization_sufficiency="unknown", wall_seconds=time.perf_counter()-begin)
 
 
-def numerical_check(f, state, packet):
-    counts, begin = _counts(), time.perf_counter()
+def numerical_check(f, state, packet, *, stepper=None):
+    counts, begin = _counts(stepper), time.perf_counter()
+    integration = dict(stepper=stepper) if stepper is not None else {}
     record = dict(passed=False, counts=counts)
+    error_mode = nullcontext() if stepper is None else np.errstate(over="raise", invalid="raise", divide="raise")
     try:
-        histories, roundtrips, futures = [], [], []
-        for step in (.0025, .00125):
-            history = _integrate(f, state, step, .1, counts, backward=True)
-            histories.append(core.observations(history, f.mass))
-            returned = _integrate(f, history[0], step, .1, counts)
-            roundtrips.append(float(np.max(np.abs((returned[-1]-state)/.1))))
-        for step in (.01, .005):
-            futures.append(core.observations(_integrate(f, state, step, 1., counts), f.mass))
-        history_delta, future_delta = histories[0]-histories[1], futures[0]-futures[1]
-        p_error = float(np.max(np.abs(state[2*f.n_nodes:3*f.n_nodes]-packet["p_end"])))
-        record.update(roundtrip_scaled_max=roundtrips, history_main_fine_rms=float(np.sqrt(np.mean(history_delta**2))),
-                      future_main_fine_rms=float(np.sqrt(np.mean(future_delta**2))),
-                      future_main_fine_peak=float(np.max(np.abs(future_delta))), p_endpoint_error=p_error)
-        values = np.r_[roundtrips, record["history_main_fine_rms"], record["future_main_fine_rms"], record["future_main_fine_peak"], p_error]
-        record["passed"] = bool(np.isfinite(values).all() and np.all(values <= [1e-7, 1e-7, 1e-7, 1e-5, 1e-4, 0.]))
+        with error_mode:
+            histories, roundtrips, futures = [], [], []
+            for step in (.0025, .00125):
+                history = _integrate(f, state, step, .1, counts, backward=True, **integration)
+                histories.append(core.observations(history, f.mass))
+                returned = _integrate(f, history[0], step, .1, counts, **integration)
+                roundtrips.append(float(np.max(np.abs((returned[-1]-state)/.1))))
+            for step in (.01, .005):
+                futures.append(core.observations(_integrate(f, state, step, 1., counts, **integration), f.mass))
+            history_delta, future_delta = histories[0]-histories[1], futures[0]-futures[1]
+            p_error = float(np.max(np.abs(state[2*f.n_nodes:3*f.n_nodes]-packet["p_end"])))
+            record.update(roundtrip_scaled_max=roundtrips, history_main_fine_rms=float(np.sqrt(np.mean(history_delta**2))),
+                          future_main_fine_rms=float(np.sqrt(np.mean(future_delta**2))),
+                          future_main_fine_peak=float(np.max(np.abs(future_delta))), p_endpoint_error=p_error)
+            values = np.r_[roundtrips, record["history_main_fine_rms"], record["future_main_fine_rms"], record["future_main_fine_peak"], p_error]
+            record["passed"] = bool(np.isfinite(values).all() and np.all(values <= [1e-7, 1e-7, 1e-7, 1e-5, 1e-4, 0.]))
     except (ValueError, FloatingPointError, OverflowError) as exc:
         record["error"] = repr(exc)
     record["wall_seconds"] = time.perf_counter()-begin
@@ -275,26 +318,31 @@ def initialize_complete(functional, p_end_packet, config):
         from .gftd_fit297 import initialize_complete as initialize_fit297
         return initialize_fit297(functional, p_end_packet, config)
     config = validate_config(functional, config)
+    if config["format"] == FIXED_DP8_FORMAT:
+        return _initialize_validated(functional, p_end_packet, config["fit297_config"], stepper=dop853_step)
     return _initialize_validated(functional, p_end_packet, config)
 
 
-def _initialize_validated(functional, p_end_packet, config):
+def _initialize_validated(functional, p_end_packet, config, *, stepper=None):
     try:
         packet = core.validate_observation(p_end_packet, functional.n_nodes)
     except (ValueError, TypeError) as exc:
         raise InitializationFailure(str(exc), dict(status="invalid_observation", error=repr(exc))) from exc
     if float(packet["sigma"]) != config["sigma"]:
         raise InitializationFailure("noise configuration changed", dict(status="invalid_configuration"))
-    mode, counts = config["mode"], _counts()
+    mode, counts = config["mode"], _counts(stepper)
     diagnostics = dict(status="blocked_by_stage1", counts=counts, stage1=None, stage2=None,
                        stage1_numerical=None, final_numerical=None, returned_point=None)
+    integration = dict(stepper=stepper) if stepper is not None else {}
+    if stepper is not None:
+        diagnostics["method"] = "fixed_dp8"
     extra = dict(config=config) if config["format"] == "gftd_causal_two_stage_fit297_v1" else {}
-    first = infer_endpoint(functional, packet, mode=mode, role="simple", call_limit=600, **extra)
+    first = infer_endpoint(functional, packet, mode=mode, role="simple", call_limit=600, **extra, **integration)
     diagnostics["stage1"] = first
     _add(counts, first["counts"])
     if first["best"] is None or first["status"] not in ("converged", "budget_limited"):
         raise InitializationFailure("blocked_by_stage1", _plain(diagnostics))
-    check = numerical_check(functional, first["best"]["state"], packet)
+    check = numerical_check(functional, first["best"]["state"], packet, **integration)
     diagnostics["stage1_numerical"] = check
     _add(counts, check["counts"])
     if not check["passed"]:
@@ -303,7 +351,7 @@ def _initialize_validated(functional, p_end_packet, config):
     feasible = np.zeros_like(low)
     feasible[-functional.n_nodes:] = first["best"]["u"]
     second = infer_endpoint(functional, packet, mode=mode, role="smooth", call_limit=1200,
-                            initial=feasible, feasible=feasible, **extra)
+                            initial=feasible, feasible=feasible, **extra, **integration)
     diagnostics["stage2"] = second
     _add(counts, second["counts"])
     if second["best"] is None:
@@ -318,7 +366,7 @@ def _initialize_validated(functional, p_end_packet, config):
         final_check = copy.deepcopy(check)
         diagnostics["final_check_reused_stage1"] = True
     else:
-        final_check = numerical_check(functional, state, packet)
+        final_check = numerical_check(functional, state, packet, **integration)
         _add(counts, final_check["counts"])
         diagnostics["final_check_reused_stage1"] = False
     diagnostics["final_numerical"] = final_check

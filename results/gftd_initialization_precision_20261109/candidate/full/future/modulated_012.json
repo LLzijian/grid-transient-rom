@@ -1,0 +1,284 @@
+{
+  "differences": {
+    "1": {
+      "observed": {
+        "rms": 3.799538157512806e-12,
+        "peak": 5.154721094413617e-11
+      },
+      "state": {
+        "rms": 2.4077613072175363e-12,
+        "peak": 5.154765503334602e-11
+      },
+      "components": {
+        "theta": {
+          "rms": 3.103372886145564e-14,
+          "peak": 3.19300141882195e-13
+        },
+        "omega": {
+          "rms": 5.364464358578218e-13,
+          "peak": 5.154765503334602e-12
+        },
+        "p": {
+          "rms": 2.014109742599658e-14,
+          "peak": 2.0000667788622195e-13
+        },
+        "a": {
+          "rms": 4.018277576341563e-15,
+          "peak": 3.9190872769268026e-14
+        },
+        "r": {
+          "rms": 2.657149590980004e-14,
+          "peak": 2.743361093848762e-13
+        }
+      }
+    },
+    "2": null,
+    "5": null,
+    "8": null,
+    "15": null
+  },
+  "integrals": {
+    "main": {
+      "completed": false,
+      "step": 0.01,
+      "target_time": 15.0,
+      "last_accepted_time": 1.22,
+      "attempted_steps": 123,
+      "accepted_steps": 122,
+      "actual_rhs_calls": 1465,
+      "interrupted_step_rhs_calls": 1,
+      "error": "FloatingPointError('overflow encountered in exp')",
+      "failure": {
+        "time": 1.22,
+        "step": 123,
+        "substage": 1,
+        "operation": "fixed_dp8",
+        "error": "FloatingPointError('overflow encountered in exp')",
+        "edges": {
+          "active": {
+            "min": 17087998889948.277,
+            "max": 6.234317207623337e+31,
+            "min_edge": 24,
+            "max_edge": 1,
+            "psi_at_max": -8.791299563622852,
+            "psi_min": -8.791299563622852
+          },
+          "inactive": {
+            "min": -25783052089115.426,
+            "max": 3.117158603811669e+31,
+            "min_edge": 31,
+            "max_edge": 23,
+            "psi_at_max": -10.530738718604326,
+            "psi_min": -10.530738718604326
+          }
+        }
+      },
+      "wall_seconds": 0.14160360000096262,
+      "cpu_seconds": 0.140625,
+      "start_state_sha256": "4e586e2d0d00fccfd6d6eae8884b06642a60eb233532120a88eb2ccce9b8a597",
+      "component_ranges": {
+        "theta": {
+          "min": -0.09241070957668215,
+          "max": 16.10536289967825,
+          "last_accepted_max_abs": 14.987411811957257
+        },
+        "omega": {
+          "min": -1.0253665959542755e+32,
+          "max": 1.482827797990191e+32,
+          "last_accepted_max_abs": 1.482827797990191e+32
+        },
+        "p": {
+          "min": -5.838360489170612,
+          "max": 1.1658592689498106,
+          "last_accepted_max_abs": 4.103001973265802
+        },
+        "a": {
+          "min": -32974700843981.39,
+          "max": 6.234317207623338e+31,
+          "last_accepted_max_abs": 6.234317207623338e+31
+        },
+        "r": {
+          "min": -2.002853826434569,
+          "max": 8.80043600060531,
+          "last_accepted_max_abs": 7.516896470834242
+        }
+      },
+      "first_failure_interval": [
+        1.22,
+        1.23
+      ]
+    },
+    "fine": {
+      "completed": false,
+      "step": 0.005,
+      "target_time": 15.0,
+      "last_accepted_time": 1.215,
+      "attempted_steps": 244,
+      "accepted_steps": 243,
+      "actual_rhs_calls": 2928,
+      "interrupted_step_rhs_calls": 12,
+      "error": "FloatingPointError('overflow encountered in exp')",
+      "failure": {
+        "time": 1.22,
+        "step": 244,
+        "substage": 12,
+        "operation": "fixed_dp8",
+        "error": "FloatingPointError('overflow encountered in exp')",
+        "edges": {
+          "active": {
+            "min": 1.0159386237261542e+25,
+            "max": 7.957160052923692e+53,
+            "min_edge": 24,
+            "max_edge": 1,
+            "psi_at_max": -8.544719826483751,
+            "psi_min": -8.544719826483751
+          },
+          "inactive": {
+            "min": -1.3540413941012105e+25,
+            "max": 3.978580026461846e+53,
+            "min_edge": 31,
+            "max_edge": 7,
+            "psi_at_max": 0.17819113309207402,
+            "psi_min": -10.444373405804733
+          }
+        }
+      },
+      "wall_seconds": 0.3267546999268234,
+      "cpu_seconds": 0.328125,
+      "start_state_sha256": "4e586e2d0d00fccfd6d6eae8884b06642a60eb233532120a88eb2ccce9b8a597",
+      "component_ranges": {
+        "theta": {
+          "min": -0.09241070957668215,
+          "max": 16.10536289967827,
+          "last_accepted_max_abs": 14.849378251985474
+        },
+        "omega": {
+          "min": -14.923001802139245,
+          "max": 18.33796000327429,
+          "last_accepted_max_abs": 11.89699288926214
+        },
+        "p": {
+          "min": -5.838360489170643,
+          "max": 1.1658592689498126,
+          "last_accepted_max_abs": 4.032051803211019
+        },
+        "a": {
+          "min": -0.40001278313768796,
+          "max": 5.208745586395673,
+          "last_accepted_max_abs": 6.388923869348664
+        },
+        "r": {
+          "min": -2.002853826434566,
+          "max": 8.800436000605329,
+          "last_accepted_max_abs": 7.408590702034911
+        }
+      },
+      "first_failure_interval": [
+        1.215,
+        1.22
+      ]
+    },
+    "radau": {
+      "completed": true,
+      "target_time": 1.0,
+      "last_accepted_time": 1.0,
+      "step": null,
+      "attempted_steps": 2485,
+      "accepted_steps": 2485,
+      "actual_rhs_calls": 17677,
+      "wall_seconds": 2.3809763999888673,
+      "cpu_seconds": 2.328125,
+      "error": null,
+      "failure": null,
+      "solver": "Radau",
+      "rtol": 1e-11,
+      "atol": 1e-13,
+      "max_step": 0.005,
+      "rhs_limit": 20000,
+      "solver_nfev": 17577,
+      "solver_njev": 2,
+      "solver_nlu": 126,
+      "start_state_sha256": "4e586e2d0d00fccfd6d6eae8884b06642a60eb233532120a88eb2ccce9b8a597",
+      "component_ranges": {
+        "theta": {
+          "min": -0.09241070957668215,
+          "max": 15.633811243778645,
+          "last_accepted_max_abs": 15.633811243778645
+        },
+        "omega": {
+          "min": -6.8645717757197025,
+          "max": 18.33796000327377,
+          "last_accepted_max_abs": 11.311686387545693
+        },
+        "p": {
+          "min": -5.831565832350743,
+          "max": 1.1658592689497553,
+          "last_accepted_max_abs": 5.831565832350743
+        },
+        "a": {
+          "min": -0.40001278313766786,
+          "max": 0.9523655488407305,
+          "last_accepted_max_abs": 0.9523655488407305
+        },
+        "r": {
+          "min": -2.002853826434576,
+          "max": 8.562709411294819,
+          "last_accepted_max_abs": 8.562709411294819
+        }
+      }
+    }
+  },
+  "single_radau_reference": {
+    "attempted": true,
+    "status": "confirmed",
+    "difference": {
+      "observed": {
+        "rms": 1.1396619861289753e-11,
+        "peak": 1.3780265817331383e-10
+      },
+      "state": {
+        "rms": 7.2303354264079796e-12,
+        "peak": 1.3780532270857293e-10
+      },
+      "components": {
+        "theta": {
+          "rms": 9.634415569931759e-14,
+          "peak": 7.605027718682322e-13
+        },
+        "omega": {
+          "rms": 1.6089342385817038e-12,
+          "peak": 1.3780532270857293e-11
+        },
+        "p": {
+          "rms": 9.476774168178383e-14,
+          "peak": 1.0951239914902544e-12
+        },
+        "a": {
+          "rms": 1.5089421422249552e-14,
+          "peak": 1.4932499681208355e-13
+        },
+        "r": {
+          "rms": 8.202025968191143e-14,
+          "peak": 6.530331830845171e-13
+        }
+      }
+    }
+  },
+  "counts": {
+    "actual_rhs_calls": 22070,
+    "integrations_attempted": 3,
+    "integrations_completed": 1
+  },
+  "arrays": {
+    "path": "artifacts/gftd_initialization_precision_20261109/candidate/full/trajectories/modulated_012.npz",
+    "sha256": "398c1af564640fdef9795310e9df8f31d3df5d42b7b8d0a1fc95221b2a7ea080",
+    "bytes": 146427
+  },
+  "phase": "full",
+  "action_id": "gftd-initialization-precision-20261109-candidate-full-01",
+  "event_id": "expansion_0013",
+  "index": 12,
+  "mode": "modulated",
+  "worker_wall_seconds": 2.9333869999973103,
+  "worker_cpu_seconds": 2.8125
+}

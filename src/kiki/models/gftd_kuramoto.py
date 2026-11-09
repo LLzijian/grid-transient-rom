@@ -8,6 +8,7 @@ from typing import Any
 
 import numpy as np
 
+from ..numerics import dop853_step
 from ..physics.graph import complete_incidence
 from ..physics.kuramoto_functional import (
     GeneratingFunctionalKuramoto,
@@ -16,6 +17,7 @@ from ..physics.kuramoto_functional import (
     coi_sync_projectors,
 )
 from .base import DynamicsModel, FitResult, RunContext
+from .gftd_fitting import FIXED_DP8_FORMAT
 
 
 def _sigmoid(x: np.ndarray) -> np.ndarray:
@@ -440,6 +442,26 @@ class GFTDKuramotoModel(DynamicsModel):
         model.functional.__post_init__()
         return model
 
+    @property
+    def _uses_fixed_dp8(self):
+        config = self.inference_config
+        return isinstance(config, dict) and config.get("format") == FIXED_DP8_FORMAT
+
+    def _validate_inference_config(self):
+        if self.initialization_mode != "causal_two_stage" and not self._uses_fixed_dp8:
+            return None
+        from . import gftd_fitting as engine
+        config = self.inference_config
+        engine.validate_config(self.functional, config)
+        if self._uses_fixed_dp8:
+            parent = config["fit297_config"]
+            if (self.initialization_mode != "causal_two_stage" or self.fit_mode != parent["mode"]
+                    or self.parent_initializer is not None):
+                raise engine.InitializationFailure("fixed DP8 model dispatch changed",
+                                                   {"status": "invalid_configuration"})
+            return parent
+        return config
+
     def initialize(self, initial_state: dict[str, np.ndarray]) -> np.ndarray:
         allowed = {"theta_history", "omega_history", "history_times", "p0"}
         if set(initial_state) != allowed:
@@ -454,12 +476,12 @@ class GFTDKuramotoModel(DynamicsModel):
             raise ValueError("history_times must cover -0.1 to 0 seconds at 0.01 seconds")
         if p0.shape != (self.n_nodes,) or not all(np.isfinite(v).all() for v in (theta, omega, times, p0)):
             raise ValueError("history and p0 must be finite and node-aligned")
-        if self.initialization_mode == "causal_two_stage":
+        if self.initialization_mode == "causal_two_stage" or self._uses_fixed_dp8:
             from . import gftd_fitting as engine
             try:
-                engine.validate_config(self.functional, self.inference_config)
+                config = self._validate_inference_config()
                 packet = dict(theta_history=theta, omega_history=omega, history_times=times,
-                              p_end=p0, sigma=self.inference_config["sigma"])
+                              p_end=p0, sigma=config["sigma"])
                 state, diagnostics = engine.initialize_complete(self.functional, packet, self.inference_config)
                 state = np.asarray(state, dtype=np.float64)
                 if state.shape != (5*self.n_nodes,) or not np.isfinite(state).all():
@@ -495,9 +517,23 @@ class GFTDKuramotoModel(DynamicsModel):
         steps = np.diff(t)
         if np.any(steps <= 0) or np.any(steps > .01 + 1e-12):
             raise ValueError("future steps must be positive and at most 0.01 seconds")
+        fixed_step = None
+        if self._uses_fixed_dp8:
+            for step in (.01, .005):
+                if np.allclose(t, np.arange(t.size) * step, atol=1e-12, rtol=0):
+                    fixed_step = step
+                    break
+            else:
+                raise ValueError("fixed DP8 requires a uniform 0.01 or 0.005 second future grid")
         state = self.initialize(initial_state)
         trajectory = np.empty((t.size, state.size))
         trajectory[0] = state
+        if fixed_step is not None:
+            with np.errstate(over="raise", invalid="raise", divide="raise"):
+                for index in range(1, t.size):
+                    state = dop853_step(self.functional.rhs, state, fixed_step)
+                    trajectory[index] = state
+            return trajectory
         for index, dt in enumerate(steps):
             k1 = self.functional.rhs(state)
             k2 = self.functional.rhs(state + .5 * dt * k1)
@@ -521,9 +557,7 @@ class GFTDKuramotoModel(DynamicsModel):
                     initialization_mode=self.initialization_mode)
 
     def save(self, path: str | Path) -> None:
-        if self.initialization_mode == "causal_two_stage":
-            from .gftd_fitting import validate_config
-            validate_config(self.functional, self.inference_config)
+        self._validate_inference_config()
         from dataclasses import fields
         def serial(value):
             return value.tolist() if isinstance(value, np.ndarray) else value
@@ -595,7 +629,9 @@ class GFTDKuramotoModel(DynamicsModel):
             model.inference_config = payload["inference_config"]
             model.fit_state = payload["fit_state"]
             model.last_initialization = payload["last_initialization"]
-            if mode == "causal_two_stage":
-                from .gftd_fitting import validate_config
-                validate_config(functional, model.inference_config)
+            model._validate_inference_config()
+        else:
+            config = payload.get("inference_config")
+            if isinstance(config, dict) and config.get("format") == FIXED_DP8_FORMAT:
+                raise ValueError("fixed DP8 requires the causal checkpoint format")
         return model

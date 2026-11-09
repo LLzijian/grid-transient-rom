@@ -1,0 +1,39 @@
+{
+  "run_id": "gftd_initialization_precision_20261109",
+  "working_directory": "E:/03-nn_Transfer_Func/kiki",
+  "python": ".venv-gpu/Scripts/python.exe",
+  "environment": {
+    "PYTHONPATH": "src",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1"
+  },
+  "execution_commands": [
+    "python -B -m experiments.gftd_initialization_precision_20261109.run --release results/gftd_initialization_precision_20261109/prepare_release.json --prepare-only",
+    "python -B -m experiments.gftd_initialization_precision_20261109.run --release results/gftd_initialization_precision_20261109/prepare02_release.json --prepare-only",
+    "python -B -m experiments.gftd_initialization_precision_20261109.run --release results/gftd_initialization_precision_20261109/diagnostic_release.json",
+    "python -B -m experiments.gftd_initialization_precision_20261109.fixed_state --release results/gftd_initialization_precision_20261109/fixed_state_release.json",
+    "python -B -m experiments.gftd_initialization_precision_20261109.candidate --release results/gftd_initialization_precision_20261109/pilot_release.json",
+    "python -B -m experiments.gftd_initialization_precision_20261109.candidate --release results/gftd_initialization_precision_20261109/full_release.json"
+  ],
+  "command_note": "The recorded environment's Python executable was used. PowerShell host wrappers redirected stdout/stderr and measured host wall time; phase-specific host receipts preserve those paths and times.",
+  "source_identity": "Each phase release binds its actual source hashes. Diagnostic and fixed-state phases preceded the versioned API change; reproduce from the bound source version, not the later candidate source by assumption.",
+  "pilot_audit_command": "python -B .tmp/audit_precision_candidate.py pilot",
+  "durable_read_only_audit": "experiments/gftd_initialization_precision_20261109/audit.py",
+  "audit_migration": {
+    "original_sha256": "72fa2fcd9b26718c9ecbec7b6f2d50c1ed31a8dd2369aeca2e6c62e0f8434e35",
+    "durable_sha256": "277c19088d459e2bf5fb30feedfe0c723bf8fd92b5e6a92a730a86494d3f2dfb",
+    "only_change": "ROOT parents[1] -> parents[2] for the durable experiment directory"
+  },
+  "replay_policy": "Completed or unknown scientific tasks are not replayed. The read-only audit requires a completed execution receipt and performs no model evaluation or optimization.",
+  "full_audit_command": "python -B -m experiments.gftd_initialization_precision_20261109.audit full",
+  "raw_inventory_command": "python -B reports/gftd_initialization_precision_20261109/manifest_raw_artifacts.py",
+  "raw_inventory_source_sha256": "d662c0c4a4e6110e501aeda361d81a57e2ad5da651166e9657c06a678f893276",
+  "raw_inventory_host": {
+    "session_id": 6383,
+    "initial_chunk_id": "3f99c2",
+    "completion_chunk_id": "d19775",
+    "exit_code": 0
+  }
+}

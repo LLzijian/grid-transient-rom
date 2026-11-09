@@ -1,0 +1,56 @@
+{
+  "recorded_utc": "2026-11-09T03:15:38.439919+00:00",
+  "run_id": "gftd_initialization_precision_20261109",
+  "execution_status": "COMPLETED",
+  "scientific_work_status": "closed",
+  "root_decisions": {
+    "code": "retain_branch",
+    "model": "retain_evidence",
+    "science": "supported_within_scope"
+  },
+  "accepted_claim": "Fixed DP8 improves original-six-gate complete-initialization coverage on the two frozen models under the registered finite protocol: static 46 to 297, modulated 1 to 282, each out of 297; all original 47 outputs retained.",
+  "cause_scope": "23 selected old failures have same-state RK4 convergence and qualified-reference evidence; 14 old overflow states have growth on the common reference interval. Other long-time errors and reference limits retain their own evidence status.",
+  "independent_result_review": {
+    "reviewer": "/root/init_precision_reviewer",
+    "configured_model": "gpt-6.1-sol",
+    "reference": "reports/gftd_initialization_precision_20261109/result_review.md",
+    "sha256": "bb9627db9e66322c660005c8f064c2c9166cb71c0e6e9db27a17ed2dee0a106c"
+  },
+  "independent_conclusion_review": {
+    "tool": "collaboration.followup_task",
+    "reviewer": "/root/init_precision_reviewer",
+    "verdict": "accepted_without_blocker",
+    "reference": "reports/gftd_initialization_precision_20261109/conclusion.md",
+    "reviewed_sha256": "ba142fa5f1bc928265c3a9ec863717e9a9ceb5f1f58ea34c86216d163482a766",
+    "actual_receipt": "Reviewer explicitly accepted root conclusion and independently checked outer/program host time scopes; frozen review was not modified."
+  },
+  "source_sha256": {
+    "campaigns/gftd_initialization_precision_20261109/protocol.md": "a1aab626927d428e2c6f3c7821a4bd7525c0378248fe64183faf38bff190c649",
+    "reports/gftd_initialization_precision_20261109/conclusion.md": "ba142fa5f1bc928265c3a9ec863717e9a9ceb5f1f58ea34c86216d163482a766",
+    "reports/gftd_initialization_precision_20261109/diagnostic_result_review.md": "f634d8180db6c3cd4a24c8b6fba172c2cda4bb40a6072ef04ef429f168149399",
+    "reports/gftd_initialization_precision_20261109/candidate_scientific_assessment.md": "189fbf345eb4899c6c16b035fee1c3cdf7541876917aa14ed821b977a3b57693",
+    "reports/gftd_initialization_precision_20261109/result_review.md": "bb9627db9e66322c660005c8f064c2c9166cb71c0e6e9db27a17ed2dee0a106c",
+    "results/gftd_initialization_precision_20261109/full_integrity.json": "51660fc3f0566659be3308bc7ae99e5773ea07bedaf70f9527fa063537d80065",
+    "results/gftd_initialization_precision_20261109/candidate_digest.json": "afd90c77a3fffd4587fe63b9eb618c7b538fd4b7f39577eccf8494a8cb4ff0ae",
+    "results/gftd_initialization_precision_20261109/independent_trajectory_digest.json": "0aa164838f355f5097014e3a11ccb667ed4aa8b040a5a9b8a4a706a23a51e534",
+    "results/gftd_initialization_precision_20261109/closure_metrics.json": "e1b3b06b644dcb250322d33665c031e47963a38aa8b29dd19332b77475ea7e7f",
+    "results/gftd_initialization_precision_20261109/raw_artifacts_manifest.json": "28f8d6dff0ed2d04b48540fcd4fa37f3ec3e996b3f67314006ba391dd55f86eb"
+  },
+  "branch": "A: fixed_dp8",
+  "branch_B_executed": false,
+  "shared_parameter_refits": 0,
+  "future_truth_reads": 0,
+  "original_val_test": "closed",
+  "new_FOM": 0,
+  "TASK4": "paused",
+  "default": "none",
+  "incumbent_changed": false,
+  "protected_anchors_changed": false,
+  "unused_work_transferred": false,
+  "remaining_questions": [
+    "Long-time same-state numerical accuracy versus continuous growth",
+    "The selected-stage2 underflow at modulated_268 and the stage1 fallback alternative",
+    "Predictive effect, shared-parameter/initialization adequacy and modulation identifiability"
+  ],
+  "next_action": "Prepare a separate bounded same-state cross-method discrimination on the observed long-time failures, static_027 and successful controls; no further scientific execution belongs to this closed Run."
+}

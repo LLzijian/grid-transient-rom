@@ -1,0 +1,18 @@
+{
+  "recorded_utc": "2026-11-09T01:14:17.277389+00:00",
+  "run_id": "gftd_initialization_precision_20261109",
+  "selected_branch": "A: fixed_dp8",
+  "selected_rhs": "unchanged Run3 5N RHS",
+  "source_precision_kernel_sha256": "09363eeee4679b12891340f198dabc91971f76dd8f0380e2ef30a3356dab1f87",
+  "fixed_state_integrity_sha256": "1ffc185b4a8a4310676082c8378bb31498dcb078744a738671738083b710d70e",
+  "scientific_diagnostic_assessment_sha256": "3a480d99bca3467205644e69130a468d42c5408778b90d0128a051e67ca3e48c",
+  "reason": "25 old failed selected states now pass the same six gates; all five old successful returned-state controls and five stage1 controls retained. Fourteen overflow states remain unresolved. No refit or numerical threshold change.",
+  "next": "Implement and independently qualify versioned fixed_dp8 API, then release one complete-initialization pilot on the 44 unique selected model/event packets from the original zero start. No global-parameter fitting.",
+  "phase_released": "engineering implementation only; pilot execution requires frozen release",
+  "max_full_cohort_candidates": 1,
+  "branch_B_released": false,
+  "default": "none",
+  "old_results_changed": false,
+  "incumbent_changed": false,
+  "runtime_plan": "Up to four independent CPU worker processes with BLAS/OMP/MKL threads=1, finite packet identities/call limits unchanged; sum worker CPU/call counts and report host wall separately. Existing pilot tasks reused once in the full cohort."
+}

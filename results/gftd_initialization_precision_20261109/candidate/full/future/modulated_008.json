@@ -1,0 +1,315 @@
+{
+  "differences": {
+    "1": {
+      "observed": {
+        "rms": 1.6823056775600364e-12,
+        "peak": 2.4627411221445072e-11
+      },
+      "state": {
+        "rms": 1.0654587400103323e-12,
+        "peak": 2.4629187578284473e-11
+      },
+      "components": {
+        "theta": {
+          "rms": 1.1500187737289353e-14,
+          "peak": 1.0347278589506459e-13
+        },
+        "omega": {
+          "rms": 2.3763300218029657e-13,
+          "peak": 2.4629187578284473e-12
+        },
+        "p": {
+          "rms": 7.686032098473073e-15,
+          "peak": 6.411537967210279e-14
+        },
+        "a": {
+          "rms": 4.950321890404737e-16,
+          "peak": 3.3861802251067274e-15
+        },
+        "r": {
+          "rms": 9.954805056834363e-15,
+          "peak": 8.848477506262498e-14
+        }
+      }
+    },
+    "2": {
+      "observed": {
+        "rms": 4.592207882122765e-12,
+        "peak": 7.173395211168554e-11
+      },
+      "state": {
+        "rms": 2.909895590921431e-12,
+        "peak": 7.173386884495869e-11
+      },
+      "components": {
+        "theta": {
+          "rms": 3.480168559343696e-14,
+          "peak": 2.4158453015843406e-13
+        },
+        "omega": {
+          "rms": 6.485051837071849e-13,
+          "peak": 7.173386884495869e-12
+        },
+        "p": {
+          "rms": 2.2637463848840986e-14,
+          "peak": 1.4760415112391456e-13
+        },
+        "a": {
+          "rms": 1.3658041992607005e-14,
+          "peak": 1.5920598173124745e-13
+        },
+        "r": {
+          "rms": 3.009136100919292e-14,
+          "peak": 2.078337502098293e-13
+        }
+      }
+    },
+    "5": null,
+    "8": null,
+    "15": null
+  },
+  "integrals": {
+    "main": {
+      "completed": false,
+      "step": 0.01,
+      "target_time": 15.0,
+      "last_accepted_time": 2.2,
+      "attempted_steps": 221,
+      "accepted_steps": 220,
+      "actual_rhs_calls": 2642,
+      "interrupted_step_rhs_calls": 2,
+      "error": "FloatingPointError('overflow encountered in exp')",
+      "failure": {
+        "time": 2.200526001519588,
+        "step": 221,
+        "substage": 2,
+        "operation": "fixed_dp8",
+        "error": "FloatingPointError('overflow encountered in exp')",
+        "edges": {
+          "active": {
+            "min": 336796.7637533429,
+            "max": 3.650675645236004e+17,
+            "min_edge": 24,
+            "max_edge": 1,
+            "psi_at_max": -4.393649284023119,
+            "psi_min": -4.393649284023119
+          },
+          "inactive": {
+            "min": -461599.2940629523,
+            "max": 1.8253378228261306e+17,
+            "min_edge": 31,
+            "max_edge": 23,
+            "psi_at_max": -5.268947633473253,
+            "psi_min": -5.268947633473253
+          }
+        }
+      },
+      "wall_seconds": 0.2856021000770852,
+      "cpu_seconds": 0.28125,
+      "start_state_sha256": "9a901693f0eb3898cf00d87f6b164132221c684903a2dbc39b25bcb4f90ecd6d",
+      "component_ranges": {
+        "theta": {
+          "min": -0.19708447682608926,
+          "max": 10.576581205844146,
+          "last_accepted_max_abs": 8.504436537225184
+        },
+        "omega": {
+          "min": -115.66027721289691,
+          "max": 81.15553309833271,
+          "last_accepted_max_abs": 115.66027721289691
+        },
+        "p": {
+          "min": -4.185978854129011,
+          "max": 1.0627995086094715,
+          "last_accepted_max_abs": 0.6151287602136101
+        },
+        "a": {
+          "min": -0.5292825675014428,
+          "max": 49.65840457758898,
+          "last_accepted_max_abs": 49.65840457758898
+        },
+        "r": {
+          "min": -1.753131980740492,
+          "max": 5.204415059514662,
+          "last_accepted_max_abs": 2.4668220896467137
+        }
+      },
+      "first_failure_interval": [
+        2.2,
+        2.21
+      ]
+    },
+    "fine": {
+      "completed": false,
+      "step": 0.005,
+      "target_time": 15.0,
+      "last_accepted_time": 2.2,
+      "attempted_steps": 441,
+      "accepted_steps": 440,
+      "actual_rhs_calls": 5281,
+      "interrupted_step_rhs_calls": 1,
+      "error": "FloatingPointError('overflow encountered in exp')",
+      "failure": {
+        "time": 2.2,
+        "step": 441,
+        "substage": 1,
+        "operation": "fixed_dp8",
+        "error": "FloatingPointError('overflow encountered in exp')",
+        "edges": {
+          "active": {
+            "min": 11.95042495545543,
+            "max": 1112397344.4807122,
+            "min_edge": 24,
+            "max_edge": 1,
+            "psi_at_max": -4.381054157155209,
+            "psi_min": -4.381054157155209
+          },
+          "inactive": {
+            "min": -16.866795572734045,
+            "max": 556199432.963769,
+            "min_edge": 31,
+            "max_edge": 23,
+            "psi_at_max": -5.268460804409626,
+            "psi_min": -5.268460804409626
+          }
+        }
+      },
+      "wall_seconds": 0.6190968999871984,
+      "cpu_seconds": 0.625,
+      "start_state_sha256": "9a901693f0eb3898cf00d87f6b164132221c684903a2dbc39b25bcb4f90ecd6d",
+      "component_ranges": {
+        "theta": {
+          "min": -0.19708447682608926,
+          "max": 10.576581205844159,
+          "last_accepted_max_abs": 8.49031899138351
+        },
+        "omega": {
+          "min": -2918234119.2469544,
+          "max": 2017922024.8859432,
+          "last_accepted_max_abs": 2918234119.2469544
+        },
+        "p": {
+          "min": -4.1859788541290115,
+          "max": 1.0627995086094761,
+          "last_accepted_max_abs": 0.609753988771783
+        },
+        "a": {
+          "min": -21.294796470817364,
+          "max": 1112398865.820665,
+          "last_accepted_max_abs": 1112398865.820665
+        },
+        "r": {
+          "min": -1.753131980740491,
+          "max": 5.204415059514669,
+          "last_accepted_max_abs": 2.4547343536452866
+        }
+      },
+      "first_failure_interval": [
+        2.2,
+        2.205
+      ]
+    },
+    "radau": {
+      "completed": true,
+      "target_time": 1.0,
+      "last_accepted_time": 1.0,
+      "step": null,
+      "attempted_steps": 2053,
+      "accepted_steps": 2053,
+      "actual_rhs_calls": 14665,
+      "wall_seconds": 1.9958349999506027,
+      "cpu_seconds": 1.984375,
+      "error": null,
+      "failure": null,
+      "solver": "Radau",
+      "rtol": 1e-11,
+      "atol": 1e-13,
+      "max_step": 0.005,
+      "rhs_limit": 20000,
+      "solver_nfev": 14565,
+      "solver_njev": 2,
+      "solver_nlu": 140,
+      "start_state_sha256": "9a901693f0eb3898cf00d87f6b164132221c684903a2dbc39b25bcb4f90ecd6d",
+      "component_ranges": {
+        "theta": {
+          "min": -0.19708447682608926,
+          "max": 10.54062288472805,
+          "last_accepted_max_abs": 10.54062288472805
+        },
+        "omega": {
+          "min": -4.780053243777194,
+          "max": 16.965299723179076,
+          "last_accepted_max_abs": 3.1007801698755593
+        },
+        "p": {
+          "min": -4.185978854129022,
+          "max": 0.8239178058940714,
+          "last_accepted_max_abs": 3.9204851522121977
+        },
+        "a": {
+          "min": -0.5292825675014239,
+          "max": 0.19999999999999998,
+          "last_accepted_max_abs": 0.2887119001936807
+        },
+        "r": {
+          "min": -1.7531319807405035,
+          "max": 5.204415059514652,
+          "last_accepted_max_abs": 5.204415059514652
+        }
+      }
+    }
+  },
+  "single_radau_reference": {
+    "attempted": true,
+    "status": "confirmed",
+    "difference": {
+      "observed": {
+        "rms": 1.0664022738991521e-11,
+        "peak": 1.2846612662542611e-10
+      },
+      "state": {
+        "rms": 6.770505243998727e-12,
+        "peak": 1.284483630570321e-10
+      },
+      "components": {
+        "theta": {
+          "rms": 1.1042213498659854e-13,
+          "peak": 1.1255441023649837e-12
+        },
+        "omega": {
+          "rms": 1.5041050784967408e-12,
+          "peak": 1.2844836305703211e-11
+        },
+        "p": {
+          "rms": 9.182162434474401e-14,
+          "peak": 6.9155792203901e-13
+        },
+        "a": {
+          "rms": 1.2980535687839357e-14,
+          "peak": 1.538769112130467e-13
+        },
+        "r": {
+          "rms": 9.413938013380655e-14,
+          "peak": 9.598988270909103e-13
+        }
+      }
+    }
+  },
+  "counts": {
+    "actual_rhs_calls": 22588,
+    "integrations_attempted": 3,
+    "integrations_completed": 1
+  },
+  "arrays": {
+    "path": "artifacts/gftd_initialization_precision_20261109/candidate/full/trajectories/modulated_008.npz",
+    "sha256": "5285e301345047c486482575ca296e26678f756697a270f1b689533b0768a8b7",
+    "bytes": 222691
+  },
+  "phase": "full",
+  "action_id": "gftd-initialization-precision-20261109-candidate-full-01",
+  "event_id": "expansion_0008",
+  "index": 8,
+  "mode": "modulated",
+  "worker_wall_seconds": 2.980088600073941,
+  "worker_cpu_seconds": 2.90625
+}

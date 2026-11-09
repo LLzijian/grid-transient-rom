@@ -1,0 +1,37 @@
+{
+  "status": "qualified",
+  "scope": "artificial fixed-state DP8 tests and coefficient identity",
+  "source_sha256": {
+    "experiments/gftd_initialization_precision_20261109/fixed_state.py": "bcc69e55aec2f76fd4c9ed1cbe988f1436df5e45c4564e3660d7594af2e13a28",
+    "tests/test_gftd_precision_fixed_state.py": "7a24611209bde3d01862f9042e9aebb20c7f78785232003ef5c1ee3e39a07c16",
+    "experiments/gftd_initialization_precision_20261109/run.py": "25fa1adc10aabaf7411bfe2a7069fcd7f292d0e78c9e274f473deef3d6286873",
+    "src/kiki/numerics.py": "09363eeee4679b12891340f198dabc91971f76dd8f0380e2ef30a3356dab1f87"
+  },
+  "dop853_ab_f64le_sha256": "123669c4e6be7b9e45302adb0f7714a9972c8f1e196728914b43b2bd9c2f6361",
+  "final_test": {
+    "shell": "PowerShell",
+    "command": "$env:PYTHONPATH='src'; $env:OPENBLAS_NUM_THREADS='1'; $env:OMP_NUM_THREADS='1'; $env:MKL_NUM_THREADS='1'; $testTemp = Join-Path '.tmp' ('fixed-state-qa-' + [guid]::NewGuid().ToString('N')); .\\.venv-gpu\\Scripts\\python.exe -m pytest tests/test_gftd_precision_fixed_state.py -q --basetemp $testTemp",
+    "tool_chunk_id": "44fb0b",
+    "exit_code": 0,
+    "passed": 5,
+    "failed": 0,
+    "pytest_wall_seconds": 1.91
+  },
+  "preceding_test": {
+    "tool_chunk_id": "54b36d",
+    "exit_code": 0,
+    "passed": 3,
+    "failed": 0,
+    "pytest_wall_seconds": 1.73,
+    "coefficient_identity_assertion": true
+  },
+  "checks": [
+    "Original six gates with six completed fixed-step legs and 6480 actual RHS calls",
+    "Exact stage cost and last accepted state after a forced step interruption",
+    "Stage1-only control excluded from previously failed outputs recovered",
+    "Completed and verified diagnostic evidence required before release",
+    "Exclusive claim preserves the earlier execution receipt"
+  ],
+  "real_private_payload_reads": 0,
+  "real_scientific_integrations": 0
+}

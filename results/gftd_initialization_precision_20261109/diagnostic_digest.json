@@ -1,0 +1,3088 @@
+{
+  "schema": "gftd_initialization_precision_diagnostic_assessment_v1",
+  "scope": "Read-only summary and algebra on previously computed diagnostics; no new ODE, optimization, Jacobian, spectrum, or future truth access",
+  "scientist": {
+    "configured_model": "gpt-6-astra",
+    "server_resolved_model": null,
+    "authority": "existing root spawn receipt; no claim of server resolution"
+  },
+  "input_sha256": {
+    "results/gftd_initialization_precision_20261109/execution.json": "bcdbad0bff6295040441722a706b6d876800cfc15d00be3cc275a4d968b1e89e",
+    "results/gftd_initialization_precision_20261109/diagnostic_release.json": "d5c36fc3aab58fe2bf0f68783bcf62e85a2cc72df2331980c736d94a46de1ac0",
+    "results/gftd_initialization_precision_20261109/selection.json": "24b6c3f9650374bc4e6d9b6b62c512d82c489cad8b30282e78819048bd8e3679",
+    "results/gftd_initialization_precision_20261109/design_adoption.json": "c88e2a07f4c4ff10e2f2df2a479c36a82c3957ec93215feebb54f51f13c9f674",
+    "campaigns/gftd_initialization_precision_20261109/protocol.md": "a1aab626927d428e2c6f3c7821a4bd7525c0378248fe64183faf38bff190c649",
+    "results/gftd_initialization_precision_20261109/states/modulated_000_selected.json": "d9392460b8bdfd3a5c08cd6b052a7d72ced61afef641c5e94e3932fa2a55a73d",
+    "results/gftd_initialization_precision_20261109/states/modulated_001_selected.json": "edcbfd1c30864a9d7d807dfed7c9150ca10c1832087442686137a4a19b228413",
+    "results/gftd_initialization_precision_20261109/states/modulated_010_selected.json": "fd8264bc9e1e2163bb7d96e24db82f014ece9487cfc3ae339fc096d5112d3c31",
+    "results/gftd_initialization_precision_20261109/states/modulated_027_selected.json": "e58db0139d10642f1b97bba41691e7abdf129246dfb1b758291cf9dc0442a946",
+    "results/gftd_initialization_precision_20261109/states/modulated_057_selected.json": "fbc223d39cde77c49d8c3c4196a439071ce9d0de119e23178ff10d6db710b577",
+    "results/gftd_initialization_precision_20261109/states/modulated_067_selected.json": "ef34b96f3df80174b974b985282beba22da3a5369b24160f1344ad90abca4eb8",
+    "results/gftd_initialization_precision_20261109/states/modulated_068_selected.json": "816a177064e1831221a38a20d5849a5b4332e4abfb1ebab8398322f5fb181881",
+    "results/gftd_initialization_precision_20261109/states/modulated_074_selected.json": "1c907d4e66747d1caa423869c57ecc8080f523bfd71842682d07622f38ea1d5b",
+    "results/gftd_initialization_precision_20261109/states/modulated_089_selected.json": "ac82d2fc3c3e11769017ad5a342757260440d3c07eecc0b7d74d6cea5569d0fc",
+    "results/gftd_initialization_precision_20261109/states/modulated_117_selected.json": "f6b77fc3e5dc93d0d07de553ce7816b3d324f9492df08a9d3483874869af5608",
+    "results/gftd_initialization_precision_20261109/states/modulated_127_selected.json": "e02b616a67b0b2adedf94770480dac76e7aff4c244ba617dee9949241da91a0a",
+    "results/gftd_initialization_precision_20261109/states/modulated_129_selected.json": "a24c219af5570650300bc25f8abf9952331d42c05f1fb815132455679b03a3e3",
+    "results/gftd_initialization_precision_20261109/states/modulated_132_selected.json": "0b483c75f789c32fba6256fa588e69d104d1feca36445c93d065bb2546ddf693",
+    "results/gftd_initialization_precision_20261109/states/modulated_133_selected.json": "3b6cb8371f1a62df8ec176e82a4b502518ddf2301889bfded65134091fbe26b3",
+    "results/gftd_initialization_precision_20261109/states/modulated_144_selected.json": "ccaf7a266868560a4f278cdcb3451b3004a481cbe440caf598de7b748b375312",
+    "results/gftd_initialization_precision_20261109/states/modulated_178_selected.json": "4626f5e93280573f38062ab745e9f3179011bbcdaf928341aa0fcf91077e6ffe",
+    "results/gftd_initialization_precision_20261109/states/modulated_181_selected.json": "fa702974161623228d05d961ea568d56fee4459364a39ab43b8f18319b25e19a",
+    "results/gftd_initialization_precision_20261109/states/modulated_184_selected.json": "0cd9cf0eca3e413e0e4e41ffd118f94da15506f3f5dda7843ff09634eb8c52bc",
+    "results/gftd_initialization_precision_20261109/states/modulated_184_stage1.json": "b03f5ea15c8a39ccfdc2d666aa37df524d53163db019e946528da66711bca947",
+    "results/gftd_initialization_precision_20261109/states/modulated_186_selected.json": "a0a21b5cd79d51eda7f9fd0995e07c9930442a1d67e7414ca087ad809be0f714",
+    "results/gftd_initialization_precision_20261109/states/modulated_194_selected.json": "a61f1bf68ba4d8f621d659dbae5461c637550c1b6850e711e318030dbd63a8a4",
+    "results/gftd_initialization_precision_20261109/states/modulated_194_stage1.json": "d83ecacff8e0227aedc4c013090eb6160f6a70ef2962080b06405332898807f8",
+    "results/gftd_initialization_precision_20261109/states/modulated_195_selected.json": "6540b4eaec42e611dcff7e31d7637fec5c69decd6bc641dae2d49b892339f884",
+    "results/gftd_initialization_precision_20261109/states/modulated_195_stage1.json": "d9585e194d2e5d502cd07d8fe840e710fd876eb9770127517abdd1fde7da4428",
+    "results/gftd_initialization_precision_20261109/states/modulated_199_selected.json": "27a32f8c8488d8e62bd83b571bbaf224fc5529c5e315f1a319552c66feeb0056",
+    "results/gftd_initialization_precision_20261109/states/modulated_207_selected.json": "0dcfad39b8e2a8888d0b3c3e5266fc822a2f1ec185c45a9cdf648936f15ed044",
+    "results/gftd_initialization_precision_20261109/states/modulated_207_stage1.json": "db54baea6f758c6c7d360d7f7b81a02579984518fae490a2c6a52ad995c68b18",
+    "results/gftd_initialization_precision_20261109/states/modulated_208_selected.json": "dca24282fcac0f3d5d3dc8cdcb4726bf6dc4669bb0175e51c3dfde34083141f5",
+    "results/gftd_initialization_precision_20261109/states/modulated_210_selected.json": "657c6012c4464a4df093176a5185681eb8d1f4591f0c9f0b3290f02aaa8fe38c",
+    "results/gftd_initialization_precision_20261109/states/modulated_210_stage1.json": "c1c2107c64a6f5e499adc460c824209d82b01626276d2cb07fa6f4920e17125b",
+    "results/gftd_initialization_precision_20261109/states/modulated_221_selected.json": "e61fa0ad38783a1f5353b5b22e90616e0fa2d2d11bc2f8c91a10a43eb1aa4406",
+    "results/gftd_initialization_precision_20261109/states/modulated_236_selected.json": "28dec87a8e6c6dff54f6782bb784f87b964d93d3f8e93f60eaa4326937ee0a11",
+    "results/gftd_initialization_precision_20261109/states/modulated_251_selected.json": "ff9415dcb06d608eed962a8c8cc1c712d7a424fba4175244bc79f39701b0a500",
+    "results/gftd_initialization_precision_20261109/states/modulated_265_selected.json": "fa757df1ac3514a23a43faa41b3aa5d3bf2c0ac4077a79cda1e30f98d9169653",
+    "results/gftd_initialization_precision_20261109/states/modulated_267_selected.json": "90865dfd12025708b7bfeea0d676500f4da3a7679cdc26415fbfe0496f1d0f46",
+    "results/gftd_initialization_precision_20261109/states/modulated_282_selected.json": "eb03dddac43f6e0d4e62da9c72ec702a3daeaf04a5a41b3a712bf257bcdfcd56",
+    "results/gftd_initialization_precision_20261109/states/modulated_292_selected.json": "1fca042b9441426f19b831027845cc0bac1e5fe3fecc26c51b8cbbac297807b5",
+    "results/gftd_initialization_precision_20261109/states/static_000_selected.json": "01d0103fa79485ea46a532945ee591a16d332ab7b6147b5b21f54957d22c958e",
+    "results/gftd_initialization_precision_20261109/states/static_004_selected.json": "67001d58f86543a5451aaa351d44aa5e5bdbb69cd6cb8849b67870d0f22e2591",
+    "results/gftd_initialization_precision_20261109/states/static_006_selected.json": "5f4bf6b6f078956c6fcda044f09d139e2c177009290fcfd527603864bb5c7d49",
+    "results/gftd_initialization_precision_20261109/states/static_070_selected.json": "2b5df4b9d852c37eba04de49b9d3646b4a59a7b139c7252ba740544b3847a276",
+    "results/gftd_initialization_precision_20261109/states/static_092_selected.json": "ae058bab75b1c19896acb76759410670788a9dc7ad2687e9a19e843dac50fa8e",
+    "results/gftd_initialization_precision_20261109/states/static_096_selected.json": "5e2a62d1020d392034b9c3f8290326bf41a28a04476c4c7622bbbcedb2da99de",
+    "results/gftd_initialization_precision_20261109/states/static_137_selected.json": "f179a78cdf9f5c048347cc0f26add85e8e503fa4d5163f71104286fff0e547a1",
+    "results/gftd_initialization_precision_20261109/states/static_150_selected.json": "b3214e92a1dea2db93b9b9bde7be9a84b662aa71c05c474516bf68e04d967045",
+    "results/gftd_initialization_precision_20261109/states/static_199_selected.json": "2a12f44a747c350b315f7f2c6f80a699414482d0d9d98421f9ee123d42d988ca",
+    "results/gftd_initialization_precision_20261109/states/static_201_selected.json": "21844a861635e6ca5a1e0af5f184307118b8bd8d7f03d3eb3fcbbc68c9614e8e",
+    "results/gftd_initialization_precision_20261109/states/static_224_selected.json": "750689b185d48d0191714bbb52cbf2926630e7f725339d180c743639ba305d56",
+    "results/gftd_initialization_precision_20261109/states/static_229_selected.json": "c568b64918064401b44d08545ada9ab320b578db8d2fcf040e1cf5210cf3c38d",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/modulated_000_selected.npz": "356cbc40185d7b73f2ed4b796d8d7455285afc54a622533bfba48117e328ac5d",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/modulated_001_selected.npz": "1fa4c3195f8b24ce62e2ffa0e88b5bafb64e9bf961751c9993240aaf335d488e",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/modulated_010_selected.npz": "9b5a1864848d3783da5d164a93df1b680baab65e6adfc6edce7d3af4108a32b6",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/modulated_027_selected.npz": "8f3d70a27b2e11017a4b06f56c0313fdd9f53ccd45cc44d15f9df6192532bb9c",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/modulated_057_selected.npz": "7143c528437333eb50e6a76ec358d7a443fa66e22c8de31980044a865b802c73",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/modulated_067_selected.npz": "c588c98827082ae29013a62aad54f883479e99a287c3a916323656633e763c83",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/modulated_068_selected.npz": "ed7fa9a96d2582bd4efd216572288f721a1291f78a6b4e35e611475cecac6c68",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/modulated_074_selected.npz": "9c54e41ad8a78dcdbe469f10e7a8d8c0ddc627cc9863bce02ae909bf19cd1c03",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/modulated_089_selected.npz": "cb2b0480b0e41bafc107163caa51d9f045fff9bfc33b198d961e1cb6da12b0d4",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/modulated_117_selected.npz": "b4df47e5d6f1d0f26a9546c8aa31c21411f168318d2bba657deae33ce6439ea4",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/modulated_127_selected.npz": "c252a099876c243202c2d266c8f5234c0b1e566a929e6218c97e2dd2a84441ff",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/modulated_129_selected.npz": "274797b3309e3a257d2087a616b7585663c5e69d24b3e35e5ea78cdf14d0aeca",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/modulated_132_selected.npz": "43c7874a6ed98bcb79e4b1348fe1f784b051281871cf2370122e379679552eb6",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/modulated_133_selected.npz": "0993034a8eff96de3ee89d7a52c113e2af373bd99d42f8916e56a8099a1c91f7",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/modulated_144_selected.npz": "1fc90bfe5f0d91e87680499421f14e6cbee600830395b78cac3141a96c35c0bb",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/modulated_178_selected.npz": "d0bb15f771becfb9d12f65d9d7c7b3003133218533904fa9d0b768fd26b20920",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/modulated_181_selected.npz": "5fc2c34421a59ff1b00fc42e8677bcbe19d91b0621d52a08ab076cefe6c8a4ac",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/modulated_184_selected.npz": "92f242760b728cf6424b5021a0333c71734a678828f195b8f42765090a30dcc4",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/modulated_184_stage1.npz": "da544d3ff97ae82465e9764ffbc2ea192098eb5d24cc4e45a90ed6d4b1e83a79",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/modulated_186_selected.npz": "8fd8d12ce5d30c7818085f032d30cdb9ec7c022a28a4a5a60ff3a8a498655246",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/modulated_194_selected.npz": "63434baee4236cd4a54e1ec836de137f4d03b34c8d0b22aa226ec9591f620b8a",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/modulated_194_stage1.npz": "5eb9f70599ef4c0bfa7a6f782d4fca0e4cc750738abadf13e61fee1244928641",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/modulated_195_selected.npz": "561e5ff2d3a17da587b7e15d695a6c6b1ec470e859bf42693fafa0a63828e7eb",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/modulated_195_stage1.npz": "174cd94abe4683dd04cb558d03bf1a91de38faec33904579c5589766dc3748af",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/modulated_199_selected.npz": "2278a47cc4f66c287c5a3aa4c6b828e7a42347c86753b9d8235aa8f3f9fcc3d8",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/modulated_207_selected.npz": "a0c77a13481f845d217f3d385bc054d9ab0a1925c4c6452206b235aec9363f54",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/modulated_207_stage1.npz": "aaa1783511f56a16542ea04bed3c232bd7f9001decab582643c8f75d61c13e1f",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/modulated_208_selected.npz": "4f6d0eb79784ee7370d493e01669cab2d1d6980cbb4ae91351b82a82c768e8a8",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/modulated_210_selected.npz": "dd9cb0fbb54080d6b5fca8fa8c1d0e742cd553e3e10b1c810f03e4f2df7bd89b",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/modulated_210_stage1.npz": "1b277c3b223276784326bce33eeaeeae77dfa22345e1644d4f0127f58ab4bdf8",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/modulated_221_selected.npz": "c6bdcfe4f0283f2b50a21ed8d7db87f1af43498d7d57586d6045f04d078b5834",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/modulated_236_selected.npz": "8712088350d01e7abbd253270780131ccf5c8a1de61dc0a67ca4c5f6f86d90bd",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/modulated_251_selected.npz": "5cc5cefec88b1ac9d12c19b6d4ff00e1ae67d3316cd3691d2792ada74043dd69",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/modulated_265_selected.npz": "65f4029b6866c870c27d0c2477b78fdbf9e984b9536ced68432eece44c180a62",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/modulated_267_selected.npz": "9fa3a44c52e8e72aee74c2f5bcc66436fba5eb814e84c95f58516f6be3bc05e1",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/modulated_282_selected.npz": "40404e258bd3dde56e9a7d19ed27bab4cc4b98977af4b6a6e99952079524c8bc",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/modulated_292_selected.npz": "0fa6bcd4d1e78665309de8a6efbff5ac2666cce6463bd7144ac667bbc43758ff",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/static_000_selected.npz": "637e86ebf920e2a0b7cf7894af8e911d6d11222230e8dae9e39794e936d7568c",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/static_004_selected.npz": "2c045a45c36e7e84582101d20af43e128dcafd21ff78e8b5ea50abf69b161386",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/static_006_selected.npz": "8f4b35d363c34318790ffc0b285029eba03f06d91ed897b7007363e30747bf22",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/static_070_selected.npz": "b73a0800b1bcd07db81bb7bd5e1d11792ed4901ad81a598da1d9cfee1907eea3",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/static_092_selected.npz": "3211feea5cba6e177f66a9488b018168b1e7caf78f83cbaa1cf6986fb23cea4c",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/static_096_selected.npz": "7e63ec584ebfe448f3aa924e21bd846c85690ef051962c67c217f7c27e35f9fb",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/static_137_selected.npz": "86468527a4f23043b77a7ec7fe4370196db0fef87197ca32d29eb7f58e1f1cb2",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/static_150_selected.npz": "2047be3c556597d7f9547cef6b4b923adbd59cd5a7e4788c8dab549067d82c9e",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/static_199_selected.npz": "90e4557199ed6e84d856f294e55f2b4bd0feb14c62992c6be212ead3497f145b",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/static_201_selected.npz": "7d9cc6573e4bb813755eaad27e60124046f18d0339865f80ce1aa32ef882d7f3",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/static_224_selected.npz": "798ccf96cab48f4d8b609185a002f0773974e95933703714dfb6e4273fc5d35e",
+    "artifacts/gftd_initialization_precision_20261109/diagnostic/static_229_selected.npz": "73f3183a6e37c193b9e147129c489401b4baace135d9a38a82c3bf3cfd04ce5f",
+    "private_data/gftd_fit297_20261107/static_model.json": "97714cfed13b4e243924d87a6de7590f76bd7fded68c4322d22d4f907fa4c032",
+    "private_data/gftd_fit297_20261107/modulated_model.json": "86adef0b5db08f56594ebbd4b78924e6b9fb43e7aa2c47f1d8fc91baec1ea7a5"
+  },
+  "execution_status": "COMPLETED",
+  "selected_states": 49,
+  "distinct_events_by_model": {
+    "static": 12,
+    "modulated": 32
+  },
+  "extra_stage1_controls": 5,
+  "full_denominators": {
+    "static": 297,
+    "modulated": 297
+  },
+  "strata": [
+    {
+      "mode": "modulated",
+      "role": "selected",
+      "group": "exp",
+      "count": 14,
+      "history_reference_qualified": 14,
+      "future_reference_qualified": 0,
+      "future_discretization_evidence": 0
+    },
+    {
+      "mode": "modulated",
+      "role": "selected",
+      "group": "future_rms",
+      "count": 4,
+      "history_reference_qualified": 4,
+      "future_reference_qualified": 4,
+      "future_discretization_evidence": 4
+    },
+    {
+      "mode": "modulated",
+      "role": "selected",
+      "group": "future_rms_peak",
+      "count": 4,
+      "history_reference_qualified": 4,
+      "future_reference_qualified": 4,
+      "future_discretization_evidence": 4
+    },
+    {
+      "mode": "modulated",
+      "role": "selected",
+      "group": "history",
+      "count": 4,
+      "history_reference_qualified": 4,
+      "future_reference_qualified": 2,
+      "future_discretization_evidence": 2
+    },
+    {
+      "mode": "modulated",
+      "role": "selected",
+      "group": "stage2",
+      "count": 5,
+      "history_reference_qualified": 5,
+      "future_reference_qualified": 5,
+      "future_discretization_evidence": 5
+    },
+    {
+      "mode": "modulated",
+      "role": "selected",
+      "group": "success",
+      "count": 1,
+      "history_reference_qualified": 1,
+      "future_reference_qualified": 1,
+      "future_discretization_evidence": 1
+    },
+    {
+      "mode": "modulated",
+      "role": "stage1",
+      "group": "stage2",
+      "count": 5,
+      "history_reference_qualified": 5,
+      "future_reference_qualified": 5,
+      "future_discretization_evidence": 5
+    },
+    {
+      "mode": "static",
+      "role": "selected",
+      "group": "future_rms",
+      "count": 4,
+      "history_reference_qualified": 4,
+      "future_reference_qualified": 4,
+      "future_discretization_evidence": 4
+    },
+    {
+      "mode": "static",
+      "role": "selected",
+      "group": "future_rms_peak",
+      "count": 4,
+      "history_reference_qualified": 4,
+      "future_reference_qualified": 4,
+      "future_discretization_evidence": 4
+    },
+    {
+      "mode": "static",
+      "role": "selected",
+      "group": "success",
+      "count": 4,
+      "history_reference_qualified": 4,
+      "future_reference_qualified": 4,
+      "future_discretization_evidence": 4
+    }
+  ],
+  "model_summaries": {
+    "static": {
+      "states": 12,
+      "distinct_events": 12,
+      "old_failed_with_qualified_future_reference": 8,
+      "future_orders_range": [
+        3.9891284325508227,
+        4.0056164867906325
+      ],
+      "old_failed_future_main_fine_rms_range": [
+        1.0737049799252162e-05,
+        5.888750269333472e-05
+      ],
+      "finest_rk4_future_reference_rms_max": 1.5535896620731103e-08,
+      "stored_nonnegative_time_spectral_samples": 48,
+      "stored_samples_decaying_mode_outside_rk4_stability": 0,
+      "stored_spectral_difference_max": 5.764862289933132e-10
+    },
+    "modulated": {
+      "states": 37,
+      "distinct_events": 32,
+      "old_failed_with_qualified_future_reference": 15,
+      "future_orders_range": [
+        3.987681150977215,
+        4.008630331696214
+      ],
+      "old_failed_future_main_fine_rms_range": [
+        1.0102640655508315e-05,
+        0.0006479694053138518
+      ],
+      "finest_rk4_future_reference_rms_max": 1.673098188681039e-07,
+      "stored_nonnegative_time_spectral_samples": 129,
+      "stored_samples_decaying_mode_outside_rk4_stability": 0,
+      "stored_spectral_difference_max": 2.983433944336866e-08
+    }
+  },
+  "exp_cases": [
+    {
+      "index": 10,
+      "event_id": "expansion_0010",
+      "initial_amplitude_max_abs": 0.0,
+      "common_reference_points": 99,
+      "common_reference_end": 0.98,
+      "common_reference_pairs": [
+        {
+          "methods": [
+            "future_radau",
+            "future_radau_strict"
+          ],
+          "observed_rms": 2.2844986772113252e-09,
+          "observed_peak": 3.298566753073828e-08,
+          "state_scaled_peak": 3.298566753073828e-08
+        },
+        {
+          "methods": [
+            "future_radau",
+            "future_dop853"
+          ],
+          "observed_rms": 2.2680668098284064e-09,
+          "observed_peak": 3.283551563981746e-08,
+          "state_scaled_peak": 3.283551208710378e-08
+        },
+        {
+          "methods": [
+            "future_radau_strict",
+            "future_dop853"
+          ],
+          "observed_rms": 4.1437631213822295e-11,
+          "observed_peak": 1.2274483651708579e-09,
+          "state_scaled_peak": 1.227462576025573e-09
+        }
+      ],
+      "common_endpoint_amplitude_max_abs": {
+        "future_radau": 4.887524459030683,
+        "future_radau_strict": 4.887524460581606,
+        "future_dop853": 4.8875244606271595
+      },
+      "references": {
+        "future_radau": {
+          "completed": false,
+          "last_accepted_time": 0.9899032258228225,
+          "last_accepted_amplitude_max_abs": 32.41712190661872,
+          "error": "FloatingPointError('Required step size is less than spacing between numbers.')"
+        },
+        "future_radau_strict": {
+          "completed": false,
+          "last_accepted_time": 0.9802584827940453,
+          "last_accepted_amplitude_max_abs": 4.920291238282332,
+          "error": "RhsLimit('registered RHS call limit reached')"
+        },
+        "future_dop853": {
+          "completed": false,
+          "last_accepted_time": 0.9899032258224816,
+          "last_accepted_amplitude_max_abs": 33.834265555307134,
+          "error": "FloatingPointError('Required step size is less than spacing between numbers.')"
+        }
+      },
+      "rk4_failures": [
+        {
+          "step": 0.01,
+          "last_accepted_time": 0.99,
+          "last_accepted_amplitude_max_abs": 8.683793506401958,
+          "first_failure": {
+            "time": 0.995,
+            "step": 100,
+            "substage": 3,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": 14.881208199863186,
+                "max": 8394681.531143706,
+                "min_edge": 24,
+                "max_edge": 1,
+                "psi_at_max": -8.81110470749044,
+                "psi_min": -8.81110470749044
+              },
+              "inactive": {
+                "min": -12.99752902508641,
+                "max": 4198538.038880683,
+                "min_edge": 31,
+                "max_edge": 23,
+                "psi_at_max": -10.486065537237288,
+                "psi_min": -10.486065537237288
+              }
+            }
+          },
+          "max_active_edge_beta": 1.87821484739833,
+          "max_active_edge_beta_psi": -16.549147683589865,
+          "active_negative_beta_psi_count": 6,
+          "active_overflow_exponent_count": 17
+        },
+        {
+          "step": 0.005,
+          "last_accepted_time": 0.99,
+          "last_accepted_amplitude_max_abs": 9.587983359110899,
+          "first_failure": {
+            "time": 0.9924999999999999,
+            "step": 199,
+            "substage": 3,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": 30.165261518798328,
+                "max": 77644770.44033776,
+                "min_edge": 24,
+                "max_edge": 1,
+                "psi_at_max": -8.815355582971094,
+                "psi_min": -8.815355582971094
+              },
+              "inactive": {
+                "min": -26.12119352809074,
+                "max": 38824604.902640894,
+                "min_edge": 31,
+                "max_edge": 23,
+                "psi_at_max": -10.496477845488625,
+                "psi_min": -10.496477845488625
+              }
+            }
+          },
+          "max_active_edge_beta": 1.87821484739833,
+          "max_active_edge_beta_psi": -16.55713174103207,
+          "active_negative_beta_psi_count": 6,
+          "active_overflow_exponent_count": 17
+        },
+        {
+          "step": 0.0025,
+          "last_accepted_time": 0.99,
+          "last_accepted_amplitude_max_abs": 10.67490432286976,
+          "first_failure": {
+            "time": 0.99125,
+            "step": 397,
+            "substage": 3,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": 542.1170633280217,
+                "max": 52564502244.395325,
+                "min_edge": 24,
+                "max_edge": 1,
+                "psi_at_max": -8.816715041940833,
+                "psi_min": -8.816715041940833
+              },
+              "inactive": {
+                "min": -469.8400249678125,
+                "max": 26282289959.39807,
+                "min_edge": 31,
+                "max_edge": 23,
+                "psi_at_max": -10.501816485209984,
+                "psi_min": -10.501816485209984
+              }
+            }
+          },
+          "max_active_edge_beta": 1.87821484739833,
+          "max_active_edge_beta_psi": -16.559685097053464,
+          "active_negative_beta_psi_count": 6,
+          "active_overflow_exponent_count": 23
+        },
+        {
+          "step": 0.00125,
+          "last_accepted_time": 0.99,
+          "last_accepted_amplitude_max_abs": 12.331597314825046,
+          "first_failure": {
+            "time": 0.990625,
+            "step": 793,
+            "substage": 3,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": 5775320150.189714,
+                "max": 1.0090729211004252e+25,
+                "min_edge": 24,
+                "max_edge": 1,
+                "psi_at_max": -8.817200297111407,
+                "psi_min": -8.817200297111407
+              },
+              "inactive": {
+                "min": -4989379586.240265,
+                "max": 5.045364605502598e+24,
+                "min_edge": 31,
+                "max_edge": 23,
+                "psi_at_max": -10.504851493033902,
+                "psi_min": -10.504851493033902
+              }
+            }
+          },
+          "max_active_edge_beta": 1.87821484739833,
+          "max_active_edge_beta_psi": -16.560596510519613,
+          "active_negative_beta_psi_count": 6,
+          "active_overflow_exponent_count": 25
+        }
+      ]
+    },
+    {
+      "index": 27,
+      "event_id": "expansion_0030",
+      "initial_amplitude_max_abs": 0.0,
+      "common_reference_points": 57,
+      "common_reference_end": 0.56,
+      "common_reference_pairs": [
+        {
+          "methods": [
+            "future_radau",
+            "future_radau_strict"
+          ],
+          "observed_rms": 1.1247433370261018e-08,
+          "observed_peak": 2.1539602812481462e-07,
+          "state_scaled_peak": 2.1539605654652405e-07
+        },
+        {
+          "methods": [
+            "future_radau",
+            "future_dop853"
+          ],
+          "observed_rms": 1.1277056622408442e-08,
+          "observed_peak": 2.1699588614865206e-07,
+          "state_scaled_peak": 2.169959145703615e-07
+        },
+        {
+          "methods": [
+            "future_radau_strict",
+            "future_dop853"
+          ],
+          "observed_rms": 1.2392081286749732e-10,
+          "observed_peak": 2.346098426642129e-09,
+          "state_scaled_peak": 2.346141059206275e-09
+        }
+      ],
+      "common_endpoint_amplitude_max_abs": {
+        "future_radau": 4.086012204612077,
+        "future_radau_strict": 4.086012204377784,
+        "future_dop853": 4.086012204325525
+      },
+      "references": {
+        "future_radau": {
+          "completed": false,
+          "last_accepted_time": 0.5640274025732225,
+          "last_accepted_amplitude_max_abs": 29.253182853849815,
+          "error": "FloatingPointError('Required step size is less than spacing between numbers.')"
+        },
+        "future_radau_strict": {
+          "completed": false,
+          "last_accepted_time": 0.5640115749869063,
+          "last_accepted_amplitude_max_abs": 9.636694776666596,
+          "error": "RhsLimit('registered RHS call limit reached')"
+        },
+        "future_dop853": {
+          "completed": false,
+          "last_accepted_time": 0.5640274025728219,
+          "last_accepted_amplitude_max_abs": 31.339908841102297,
+          "error": "FloatingPointError('Required step size is less than spacing between numbers.')"
+        }
+      },
+      "rk4_failures": [
+        {
+          "step": 0.01,
+          "last_accepted_time": 0.5700000000000001,
+          "last_accepted_amplitude_max_abs": 1.4582407366504403e+73,
+          "first_failure": {
+            "time": 0.5700000000000001,
+            "step": 58,
+            "substage": 1,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": -2.636157325815183e+34,
+                "max": 1.4582407366504403e+73,
+                "min_edge": 9,
+                "max_edge": 43,
+                "psi_at_max": -12.678463340455401,
+                "psi_min": -12.678463340455401
+              },
+              "inactive": {
+                "min": -9.20875479077353e+33,
+                "max": 7.291203683252202e+72,
+                "min_edge": 15,
+                "max_edge": 8,
+                "psi_at_max": -1.2505342379928184,
+                "psi_min": -5.205165871916719
+              }
+            }
+          },
+          "max_active_edge_beta": 5.076346614362089,
+          "max_active_edge_beta_psi": -64.36027445363464,
+          "active_negative_beta_psi_count": 3,
+          "active_overflow_exponent_count": 10
+        },
+        {
+          "step": 0.005,
+          "last_accepted_time": 0.5650000000000001,
+          "last_accepted_amplitude_max_abs": 16.945378689495122,
+          "first_failure": {
+            "time": 0.5675,
+            "step": 114,
+            "substage": 2,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": -5.7292805907328415,
+                "max": 233312.3816710767,
+                "min_edge": 9,
+                "max_edge": 43,
+                "psi_at_max": -12.548703770747458,
+                "psi_min": -12.548703770747458
+              },
+              "inactive": {
+                "min": -1.4989481056069818,
+                "max": 116660.08289699836,
+                "min_edge": 15,
+                "max_edge": 8,
+                "psi_at_max": -1.2516963022786942,
+                "psi_min": -5.206827426821962
+              }
+            }
+          },
+          "max_active_edge_beta": 5.076346614362089,
+          "max_active_edge_beta_psi": -63.701569901266645,
+          "active_negative_beta_psi_count": 2,
+          "active_overflow_exponent_count": 5
+        },
+        {
+          "step": 0.0025,
+          "last_accepted_time": 0.5650000000000001,
+          "last_accepted_amplitude_max_abs": 8989.894460597525,
+          "first_failure": {
+            "time": 0.5650000000000001,
+            "step": 227,
+            "substage": 1,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": -0.9368885928601587,
+                "max": 8989.185998126766,
+                "min_edge": 9,
+                "max_edge": 43,
+                "psi_at_max": -12.573424651834014,
+                "psi_min": -12.573424651834014
+              },
+              "inactive": {
+                "min": -0.45363074548948956,
+                "max": 4495.021008242871,
+                "min_edge": 15,
+                "max_edge": 8,
+                "psi_at_max": -1.244382847503069,
+                "psi_min": -5.200737182137813
+              }
+            }
+          },
+          "max_active_edge_beta": 5.076346614362089,
+          "max_active_edge_beta_psi": -63.827061662274424,
+          "active_negative_beta_psi_count": 2,
+          "active_overflow_exponent_count": 5
+        },
+        {
+          "step": 0.00125,
+          "last_accepted_time": 0.56375,
+          "last_accepted_amplitude_max_abs": 6.737759868205855,
+          "first_failure": {
+            "time": 0.565,
+            "step": 452,
+            "substage": 4,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": -242.04538206062688,
+                "max": 1014364601.387867,
+                "min_edge": 9,
+                "max_edge": 43,
+                "psi_at_max": -12.587459324222092,
+                "psi_min": -12.587459324222092
+              },
+              "inactive": {
+                "min": -48.95072644986645,
+                "max": 507182474.2383162,
+                "min_edge": 15,
+                "max_edge": 8,
+                "psi_at_max": -1.2436548834540577,
+                "psi_min": -5.200172126059262
+              }
+            }
+          },
+          "max_active_edge_beta": 5.076346614362089,
+          "max_active_edge_beta_psi": -63.898306523935325,
+          "active_negative_beta_psi_count": 2,
+          "active_overflow_exponent_count": 5
+        }
+      ]
+    },
+    {
+      "index": 57,
+      "event_id": "expansion_0062",
+      "initial_amplitude_max_abs": 0.0,
+      "common_reference_points": 71,
+      "common_reference_end": 0.7000000000000001,
+      "common_reference_pairs": [
+        {
+          "methods": [
+            "future_radau",
+            "future_radau_strict"
+          ],
+          "observed_rms": 4.4192316934031444e-09,
+          "observed_peak": 9.246508625437855e-08,
+          "state_scaled_peak": 9.246505783266912e-08
+        },
+        {
+          "methods": [
+            "future_radau",
+            "future_dop853"
+          ],
+          "observed_rms": 4.412806783112893e-09,
+          "observed_peak": 9.224754649039824e-08,
+          "state_scaled_peak": 9.224756070125295e-08
+        },
+        {
+          "methods": [
+            "future_radau_strict",
+            "future_dop853"
+          ],
+          "observed_rms": 1.212500743757035e-10,
+          "observed_peak": 3.845457285933662e-09,
+          "state_scaled_peak": 3.845386231660086e-09
+        }
+      ],
+      "common_endpoint_amplitude_max_abs": {
+        "future_radau": 3.439383491537029,
+        "future_radau_strict": 3.439383490125123,
+        "future_dop853": 3.4393834900421707
+      },
+      "references": {
+        "future_radau": {
+          "completed": false,
+          "last_accepted_time": 0.7079440462852394,
+          "last_accepted_amplitude_max_abs": 30.04003234050844,
+          "error": "FloatingPointError('Required step size is less than spacing between numbers.')"
+        },
+        "future_radau_strict": {
+          "completed": false,
+          "last_accepted_time": 0.705664852963004,
+          "last_accepted_amplitude_max_abs": 4.6969935330896675,
+          "error": "RhsLimit('registered RHS call limit reached')"
+        },
+        "future_dop853": {
+          "completed": false,
+          "last_accepted_time": 0.7079440462846354,
+          "last_accepted_amplitude_max_abs": 31.629112628344334,
+          "error": "FloatingPointError('Required step size is less than spacing between numbers.')"
+        }
+      },
+      "rk4_failures": [
+        {
+          "step": 0.01,
+          "last_accepted_time": 0.71,
+          "last_accepted_amplitude_max_abs": 18.388588294531807,
+          "first_failure": {
+            "time": 0.715,
+            "step": 72,
+            "substage": 2,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": -29.48083048255146,
+                "max": 1862585.1055165012,
+                "min_edge": 22,
+                "max_edge": 43,
+                "psi_at_max": -12.68218122693064,
+                "psi_min": -12.68218122693064
+              },
+              "inactive": {
+                "min": -21.238568552970573,
+                "max": 931318.1583875624,
+                "min_edge": 15,
+                "max_edge": 8,
+                "psi_at_max": 0.5984967188128492,
+                "psi_min": -5.200399446532795
+              }
+            }
+          },
+          "max_active_edge_beta": 5.076346614362089,
+          "max_active_edge_beta_psi": -64.37914773405579,
+          "active_negative_beta_psi_count": 4,
+          "active_overflow_exponent_count": 5
+        },
+        {
+          "step": 0.005,
+          "last_accepted_time": 0.71,
+          "last_accepted_amplitude_max_abs": 59904.904605099946,
+          "first_failure": {
+            "time": 0.71,
+            "step": 143,
+            "substage": 1,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": -2.6631975152621035,
+                "max": 59902.74828912643,
+                "min_edge": 22,
+                "max_edge": 43,
+                "psi_at_max": -12.717286440215103,
+                "psi_min": -12.717286440215103
+              },
+              "inactive": {
+                "min": -1.9008482280994379,
+                "max": 29953.515604594242,
+                "min_edge": 15,
+                "max_edge": 8,
+                "psi_at_max": 0.6148920406696239,
+                "psi_min": -5.183330172274359
+              }
+            }
+          },
+          "max_active_edge_beta": 5.076346614362089,
+          "max_active_edge_beta_psi": -64.55735396465884,
+          "active_negative_beta_psi_count": 4,
+          "active_overflow_exponent_count": 5
+        },
+        {
+          "step": 0.0025,
+          "last_accepted_time": 0.7075,
+          "last_accepted_amplitude_max_abs": 6.283293602657951,
+          "first_failure": {
+            "time": 0.71,
+            "step": 284,
+            "substage": 4,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": -5710448.914514029,
+                "max": 1.5385579667513104e+17,
+                "min_edge": 22,
+                "max_edge": 43,
+                "psi_at_max": -12.718165663619017,
+                "psi_min": -12.718165663619017
+              },
+              "inactive": {
+                "min": -4100045.5484696114,
+                "max": 7.692789834257717e+16,
+                "min_edge": 15,
+                "max_edge": 8,
+                "psi_at_max": 0.6140958429440813,
+                "psi_min": -5.183656725947958
+              }
+            }
+          },
+          "max_active_edge_beta": 5.076346614362089,
+          "max_active_edge_beta_psi": -64.56181720740857,
+          "active_negative_beta_psi_count": 4,
+          "active_overflow_exponent_count": 10
+        },
+        {
+          "step": 0.00125,
+          "last_accepted_time": 0.7075,
+          "last_accepted_amplitude_max_abs": 6.332044614758933,
+          "first_failure": {
+            "time": 0.70875,
+            "step": 567,
+            "substage": 4,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": -0.8440940157588697,
+                "max": 786.6008247883451,
+                "min_edge": 22,
+                "max_edge": 43,
+                "psi_at_max": -12.720098204822552,
+                "psi_min": -12.720098204822552
+              },
+              "inactive": {
+                "min": -0.5842421797010989,
+                "max": 393.84111004299194,
+                "min_edge": 15,
+                "max_edge": 8,
+                "psi_at_max": 0.618700422169054,
+                "psi_min": -5.178727464581424
+              }
+            }
+          },
+          "max_active_edge_beta": 5.076346614362089,
+          "max_active_edge_beta_psi": -64.57162745640424,
+          "active_negative_beta_psi_count": 4,
+          "active_overflow_exponent_count": 1
+        }
+      ]
+    },
+    {
+      "index": 89,
+      "event_id": "expansion_0094",
+      "initial_amplitude_max_abs": 0.0,
+      "common_reference_points": 69,
+      "common_reference_end": 0.68,
+      "common_reference_pairs": [
+        {
+          "methods": [
+            "future_radau",
+            "future_radau_strict"
+          ],
+          "observed_rms": 1.9316774386741394e-09,
+          "observed_peak": 3.0083981528150616e-08,
+          "state_scaled_peak": 3.008402416071476e-08
+        },
+        {
+          "methods": [
+            "future_radau",
+            "future_dop853"
+          ],
+          "observed_rms": 1.9350547085458214e-09,
+          "observed_peak": 3.0194257760740584e-08,
+          "state_scaled_peak": 3.019426486616794e-08
+        },
+        {
+          "methods": [
+            "future_radau_strict",
+            "future_dop853"
+          ],
+          "observed_rms": 1.7791097499054937e-11,
+          "observed_peak": 2.0401103029143997e-10,
+          "state_scaled_peak": 2.0399681943672476e-10
+        }
+      ],
+      "common_endpoint_amplitude_max_abs": {
+        "future_radau": 4.251626475135762,
+        "future_radau_strict": 4.251626475393651,
+        "future_dop853": 4.251626475394792
+      },
+      "references": {
+        "future_radau": {
+          "completed": false,
+          "last_accepted_time": 0.6898649950652127,
+          "last_accepted_amplitude_max_abs": 32.10508578385356,
+          "error": "FloatingPointError('Required step size is less than spacing between numbers.')"
+        },
+        "future_radau_strict": {
+          "completed": false,
+          "last_accepted_time": 0.688944166557314,
+          "last_accepted_amplitude_max_abs": 7.270194439974759,
+          "error": "RhsLimit('registered RHS call limit reached')"
+        },
+        "future_dop853": {
+          "completed": false,
+          "last_accepted_time": 0.6898649950645518,
+          "last_accepted_amplitude_max_abs": 33.64400512060709,
+          "error": "FloatingPointError('Required step size is less than spacing between numbers.')"
+        }
+      },
+      "rk4_failures": [
+        {
+          "step": 0.01,
+          "last_accepted_time": 0.6900000000000001,
+          "last_accepted_amplitude_max_abs": 8.43234330123816,
+          "first_failure": {
+            "time": 0.6950000000000001,
+            "step": 70,
+            "substage": 3,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": 202.9951794951584,
+                "max": 43180771.1725848,
+                "min_edge": 42,
+                "max_edge": 2,
+                "psi_at_max": -7.718850831562816,
+                "psi_min": -8.128613858584881
+              },
+              "inactive": {
+                "min": -0.32153578432067553,
+                "max": 21595777.571786575,
+                "min_edge": 44,
+                "max_edge": 8,
+                "psi_at_max": 3.9872980222464274,
+                "psi_min": -3.6923010735421
+              }
+            }
+          },
+          "max_active_edge_beta": 9.085288873061366,
+          "max_active_edge_beta_psi": -70.12798957281812,
+          "active_negative_beta_psi_count": 7,
+          "active_overflow_exponent_count": 23
+        },
+        {
+          "step": 0.005,
+          "last_accepted_time": 0.6900000000000001,
+          "last_accepted_amplitude_max_abs": 9.460934950380114,
+          "first_failure": {
+            "time": 0.6925,
+            "step": 139,
+            "substage": 3,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": 857.0346736286726,
+                "max": 1854602011.1813424,
+                "min_edge": 42,
+                "max_edge": 2,
+                "psi_at_max": -7.279936963705558,
+                "psi_min": -7.279936963705558
+              },
+              "inactive": {
+                "min": -1.4102132389433375,
+                "max": 927323037.7859964,
+                "min_edge": 44,
+                "max_edge": 8,
+                "psi_at_max": 4.066304855757624,
+                "psi_min": -2.9415727594366956
+              }
+            }
+          },
+          "max_active_edge_beta": 9.085288873061366,
+          "max_active_edge_beta_psi": -66.14033029294225,
+          "active_negative_beta_psi_count": 7,
+          "active_overflow_exponent_count": 25
+        },
+        {
+          "step": 0.0025,
+          "last_accepted_time": 0.6900000000000001,
+          "last_accepted_amplitude_max_abs": 10.796245593431177,
+          "first_failure": {
+            "time": 0.69125,
+            "step": 277,
+            "substage": 3,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": 508755.50089437416,
+                "max": 1213634359441789.5,
+                "min_edge": 42,
+                "max_edge": 2,
+                "psi_at_max": -6.934837693904366,
+                "psi_min": -6.934837693904366
+              },
+              "inactive": {
+                "min": -727.9310822171201,
+                "max": 606817192962655.0,
+                "min_edge": 44,
+                "max_edge": 8,
+                "psi_at_max": 4.0218632783678645,
+                "psi_min": -2.72997945259708
+              }
+            }
+          },
+          "max_active_edge_beta": 9.085288873061366,
+          "max_active_edge_beta_psi": -63.005003736915874,
+          "active_negative_beta_psi_count": 7,
+          "active_overflow_exponent_count": 25
+        },
+        {
+          "step": 0.00125,
+          "last_accepted_time": 0.6900000000000001,
+          "last_accepted_amplitude_max_abs": 13.29632184889222,
+          "first_failure": {
+            "time": 0.690625,
+            "step": 553,
+            "substage": 3,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": 8.92619855823247e+35,
+                "max": 2.0409053781915653e+75,
+                "min_edge": 42,
+                "max_edge": 2,
+                "psi_at_max": -7.572569776242959,
+                "psi_min": -8.089136541156954
+              },
+              "inactive": {
+                "min": -3.520617904288502e+32,
+                "max": 1.0204526890957827e+75,
+                "min_edge": 44,
+                "max_edge": 7,
+                "psi_at_max": -3.8181661286632176,
+                "psi_min": -3.8181661286632176
+              }
+            }
+          },
+          "max_active_edge_beta": 9.085288873061366,
+          "max_active_edge_beta_psi": -68.79898392858095,
+          "active_negative_beta_psi_count": 7,
+          "active_overflow_exponent_count": 25
+        }
+      ]
+    },
+    {
+      "index": 117,
+      "event_id": "expansion_0143",
+      "initial_amplitude_max_abs": 0.0,
+      "common_reference_points": 50,
+      "common_reference_end": 0.49,
+      "common_reference_pairs": [
+        {
+          "methods": [
+            "future_radau",
+            "future_radau_strict"
+          ],
+          "observed_rms": 2.278886330334043e-09,
+          "observed_peak": 2.4953862975962693e-08,
+          "state_scaled_peak": 2.4953852317821656e-08
+        },
+        {
+          "methods": [
+            "future_radau",
+            "future_dop853"
+          ],
+          "observed_rms": 2.262573134583768e-09,
+          "observed_peak": 2.466633475251001e-08,
+          "state_scaled_peak": 2.4666331199796332e-08
+        },
+        {
+          "methods": [
+            "future_radau_strict",
+            "future_dop853"
+          ],
+          "observed_rms": 1.1620742436420219e-10,
+          "observed_peak": 2.559090717113577e-09,
+          "state_scaled_peak": 2.559090717113577e-09
+        }
+      ],
+      "common_endpoint_amplitude_max_abs": {
+        "future_radau": 3.8104151972817117,
+        "future_radau_strict": 3.810415197491904,
+        "future_dop853": 3.810415197490297
+      },
+      "references": {
+        "future_radau": {
+          "completed": false,
+          "last_accepted_time": 0.4979663768526141,
+          "last_accepted_amplitude_max_abs": 31.63384908103147,
+          "error": "FloatingPointError('Required step size is less than spacing between numbers.')"
+        },
+        "future_radau_strict": {
+          "completed": false,
+          "last_accepted_time": 0.4979663254375401,
+          "last_accepted_amplitude_max_abs": 16.37438916425533,
+          "error": "RhsLimit('registered RHS call limit reached')"
+        },
+        "future_dop853": {
+          "completed": false,
+          "last_accepted_time": 0.49796637685253137,
+          "last_accepted_amplitude_max_abs": 33.18731791000413,
+          "error": "FloatingPointError('Required step size is less than spacing between numbers.')"
+        }
+      },
+      "rk4_failures": [
+        {
+          "step": 0.01,
+          "last_accepted_time": 0.5,
+          "last_accepted_amplitude_max_abs": 20.331876410657248,
+          "first_failure": {
+            "time": 0.505,
+            "step": 51,
+            "substage": 2,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": 17.40739283801601,
+                "max": 3468447.238808426,
+                "min_edge": 43,
+                "max_edge": 2,
+                "psi_at_max": -7.646802726329736,
+                "psi_min": -9.056706349872957
+              },
+              "inactive": {
+                "min": 0.14566373544136016,
+                "max": 1734538.2771044297,
+                "min_edge": 44,
+                "max_edge": 7,
+                "psi_at_max": -2.480751115705938,
+                "psi_min": -5.319707170335936
+              }
+            }
+          },
+          "max_active_edge_beta": 9.085288873061366,
+          "max_active_edge_beta_psi": -69.47341172401886,
+          "active_negative_beta_psi_count": 12,
+          "active_overflow_exponent_count": 13
+        },
+        {
+          "step": 0.005,
+          "last_accepted_time": 0.5,
+          "last_accepted_amplitude_max_abs": 58083.720662804655,
+          "first_failure": {
+            "time": 0.5,
+            "step": 101,
+            "substage": 1,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": 0.9347656954585218,
+                "max": 58047.5539741276,
+                "min_edge": 42,
+                "max_edge": 2,
+                "psi_at_max": -7.709699575575551,
+                "psi_min": -8.8690728038086
+              },
+              "inactive": {
+                "min": -0.016229404201611265,
+                "max": 29041.854508145454,
+                "min_edge": 44,
+                "max_edge": 8,
+                "psi_at_max": 1.8535126426329276,
+                "psi_min": -5.33522996515707
+              }
+            }
+          },
+          "max_active_edge_beta": 9.085288873061366,
+          "max_active_edge_beta_psi": -70.04484776862249,
+          "active_negative_beta_psi_count": 12,
+          "active_overflow_exponent_count": 13
+        },
+        {
+          "step": 0.0025,
+          "last_accepted_time": 0.4975,
+          "last_accepted_amplitude_max_abs": 7.02420349919217,
+          "first_failure": {
+            "time": 0.5,
+            "step": 200,
+            "substage": 4,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": 383905.57214562007,
+                "max": 2843953747042705.5,
+                "min_edge": 43,
+                "max_edge": 2,
+                "psi_at_max": -7.714353921007785,
+                "psi_min": -8.943923402641612
+              },
+              "inactive": {
+                "min": 3257.682881163864,
+                "max": 1421976880879416.0,
+                "min_edge": 44,
+                "max_edge": 7,
+                "psi_at_max": -2.258923843159985,
+                "psi_min": -5.334227063520182
+              }
+            }
+          },
+          "max_active_edge_beta": 9.085288873061366,
+          "max_active_edge_beta_psi": -70.08713384138935,
+          "active_negative_beta_psi_count": 12,
+          "active_overflow_exponent_count": 25
+        },
+        {
+          "step": 0.00125,
+          "last_accepted_time": 0.49875,
+          "last_accepted_amplitude_max_abs": 1.7725412291046843e+190,
+          "first_failure": {
+            "time": 0.49875,
+            "step": 400,
+            "substage": 1,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": 7.880830074214972e+92,
+                "max": 1.7725412291046843e+190,
+                "min_edge": 43,
+                "max_edge": 2,
+                "psi_at_max": -7.7164738241531206,
+                "psi_min": -8.908171549316263
+              },
+              "inactive": {
+                "min": 8.665148897488784e+89,
+                "max": 8.862706145523421e+189,
+                "min_edge": 44,
+                "max_edge": 7,
+                "psi_at_max": -2.222163786197092,
+                "psi_min": -5.338409991915557
+              }
+            }
+          },
+          "max_active_edge_beta": 9.085288873061366,
+          "max_active_edge_beta_psi": -70.10639377384763,
+          "active_negative_beta_psi_count": 12,
+          "active_overflow_exponent_count": 25
+        }
+      ]
+    },
+    {
+      "index": 127,
+      "event_id": "newtrain_7686602ca2df933f",
+      "initial_amplitude_max_abs": 0.0,
+      "common_reference_points": 80,
+      "common_reference_end": 0.79,
+      "common_reference_pairs": [
+        {
+          "methods": [
+            "future_radau",
+            "future_radau_strict"
+          ],
+          "observed_rms": 3.6051940093017557e-09,
+          "observed_peak": 1.0619140766721102e-07,
+          "state_scaled_peak": 1.0619139345635631e-07
+        },
+        {
+          "methods": [
+            "future_radau",
+            "future_dop853"
+          ],
+          "observed_rms": 3.6034433889687714e-09,
+          "observed_peak": 1.0525212701395503e-07,
+          "state_scaled_peak": 1.0525212701395503e-07
+        },
+        {
+          "methods": [
+            "future_radau_strict",
+            "future_dop853"
+          ],
+          "observed_rms": 5.844046629761143e-11,
+          "observed_peak": 1.129251359088812e-09,
+          "state_scaled_peak": 1.1292655699435272e-09
+        }
+      ],
+      "common_endpoint_amplitude_max_abs": {
+        "future_radau": 3.0153292447978073,
+        "future_radau_strict": 3.015329244121144,
+        "future_dop853": 3.0153292441046244
+      },
+      "references": {
+        "future_radau": {
+          "completed": false,
+          "last_accepted_time": 0.8035029081825215,
+          "last_accepted_amplitude_max_abs": 30.03521634583235,
+          "error": "FloatingPointError('Required step size is less than spacing between numbers.')"
+        },
+        "future_radau_strict": {
+          "completed": false,
+          "last_accepted_time": 0.7993394022498367,
+          "last_accepted_amplitude_max_abs": 4.172912729728178,
+          "error": "RhsLimit('registered RHS call limit reached')"
+        },
+        "future_dop853": {
+          "completed": false,
+          "last_accepted_time": 0.8035029081821273,
+          "last_accepted_amplitude_max_abs": 31.49856513961728,
+          "error": "FloatingPointError('Required step size is less than spacing between numbers.')"
+        }
+      },
+      "rk4_failures": [
+        {
+          "step": 0.01,
+          "last_accepted_time": 0.8,
+          "last_accepted_amplitude_max_abs": 4.336773213979128,
+          "first_failure": {
+            "time": 0.81,
+            "step": 81,
+            "substage": 4,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": -1.2005615602004722,
+                "max": 970.8347561018752,
+                "min_edge": 9,
+                "max_edge": 43,
+                "psi_at_max": -12.719664270844191,
+                "psi_min": -12.719664270844191
+              },
+              "inactive": {
+                "min": -0.6183054981973466,
+                "max": 486.1216377528526,
+                "min_edge": 15,
+                "max_edge": 8,
+                "psi_at_max": 1.1074532498520315,
+                "psi_min": -5.260080138168977
+              }
+            }
+          },
+          "max_active_edge_beta": 5.076346614362089,
+          "max_active_edge_beta_psi": -64.56942465712234,
+          "active_negative_beta_psi_count": 4,
+          "active_overflow_exponent_count": 1
+        },
+        {
+          "step": 0.005,
+          "last_accepted_time": 0.805,
+          "last_accepted_amplitude_max_abs": 116.16247505664953,
+          "first_failure": {
+            "time": 0.8075,
+            "step": 162,
+            "substage": 2,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": -1.6325147555528759e+22,
+                "max": 2.5623224884152004e+48,
+                "min_edge": 9,
+                "max_edge": 43,
+                "psi_at_max": -12.652987315349941,
+                "psi_min": -12.652987315349941
+              },
+              "inactive": {
+                "min": -4.3108565421290176e+21,
+                "max": 1.2811612442076002e+48,
+                "min_edge": 11,
+                "max_edge": 8,
+                "psi_at_max": 1.1249739123501938,
+                "psi_min": -5.2602123084338706
+              }
+            }
+          },
+          "max_active_edge_beta": 5.076346614362089,
+          "max_active_edge_beta_psi": -64.23094931984313,
+          "active_negative_beta_psi_count": 4,
+          "active_overflow_exponent_count": 13
+        },
+        {
+          "step": 0.0025,
+          "last_accepted_time": 0.805,
+          "last_accepted_amplitude_max_abs": 6.622538118748089e+77,
+          "first_failure": {
+            "time": 0.805,
+            "step": 323,
+            "substage": 1,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": -3.2113291458697644e+36,
+                "max": 6.622538118748089e+77,
+                "min_edge": 9,
+                "max_edge": 43,
+                "psi_at_max": -12.704537750293579,
+                "psi_min": -12.704537750293579
+              },
+              "inactive": {
+                "min": -8.808137033234847e+35,
+                "max": 3.3112690593740446e+77,
+                "min_edge": 11,
+                "max_edge": 8,
+                "psi_at_max": 1.11759227272134,
+                "psi_min": -5.263469079010718
+              }
+            }
+          },
+          "max_active_edge_beta": 5.076346614362089,
+          "max_active_edge_beta_psi": -64.49263719573815,
+          "active_negative_beta_psi_count": 4,
+          "active_overflow_exponent_count": 13
+        },
+        {
+          "step": 0.00125,
+          "last_accepted_time": 0.80375,
+          "last_accepted_amplitude_max_abs": 19.050897956622762,
+          "first_failure": {
+            "time": 0.804375,
+            "step": 644,
+            "substage": 2,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": -4.065241686001286,
+                "max": 434677.32414155937,
+                "min_edge": 9,
+                "max_edge": 43,
+                "psi_at_max": -12.627711772480872,
+                "psi_min": -12.627711772480872
+              },
+              "inactive": {
+                "min": -1.2010100342367542,
+                "max": 217341.32981713166,
+                "min_edge": 11,
+                "max_edge": 8,
+                "psi_at_max": 1.1134428505693506,
+                "psi_min": -5.264406593624841
+              }
+            }
+          },
+          "max_active_edge_beta": 5.076346614362089,
+          "max_active_edge_beta_psi": -64.10264190337357,
+          "active_negative_beta_psi_count": 4,
+          "active_overflow_exponent_count": 5
+        }
+      ]
+    },
+    {
+      "index": 129,
+      "event_id": "newtrain_807efe654094c95c",
+      "initial_amplitude_max_abs": 0.0,
+      "common_reference_points": 69,
+      "common_reference_end": 0.68,
+      "common_reference_pairs": [
+        {
+          "methods": [
+            "future_radau",
+            "future_radau_strict"
+          ],
+          "observed_rms": 8.408210559919437e-09,
+          "observed_peak": 1.685193637968041e-07,
+          "state_scaled_peak": 1.6851934958594939e-07
+        },
+        {
+          "methods": [
+            "future_radau",
+            "future_dop853"
+          ],
+          "observed_rms": 8.403344299828239e-09,
+          "observed_peak": 1.6821644521769485e-07,
+          "state_scaled_peak": 1.6821644521769485e-07
+        },
+        {
+          "methods": [
+            "future_radau_strict",
+            "future_dop853"
+          ],
+          "observed_rms": 1.496957407866607e-10,
+          "observed_peak": 5.0288235797779635e-09,
+          "state_scaled_peak": 5.028795158068533e-09
+        }
+      ],
+      "common_endpoint_amplitude_max_abs": {
+        "future_radau": 3.4951172121551526,
+        "future_radau_strict": 3.4951172124075383,
+        "future_dop853": 3.495117212417766
+      },
+      "references": {
+        "future_radau": {
+          "completed": false,
+          "last_accepted_time": 0.6875962125600593,
+          "last_accepted_amplitude_max_abs": 29.995389931265834,
+          "error": "FloatingPointError('Required step size is less than spacing between numbers.')"
+        },
+        "future_radau_strict": {
+          "completed": false,
+          "last_accepted_time": 0.6875247926853217,
+          "last_accepted_amplitude_max_abs": 8.168373639400336,
+          "error": "RhsLimit('registered RHS call limit reached')"
+        },
+        "future_dop853": {
+          "completed": false,
+          "last_accepted_time": 0.6875962125595669,
+          "last_accepted_amplitude_max_abs": 31.5324960281688,
+          "error": "FloatingPointError('Required step size is less than spacing between numbers.')"
+        }
+      },
+      "rk4_failures": [
+        {
+          "step": 0.01,
+          "last_accepted_time": 0.6900000000000001,
+          "last_accepted_amplitude_max_abs": 29.852092698792443,
+          "first_failure": {
+            "time": 0.6950000000000001,
+            "step": 70,
+            "substage": 2,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": -6421.680973710374,
+                "max": 178912264390.29858,
+                "min_edge": 9,
+                "max_edge": 43,
+                "psi_at_max": -12.665636902763096,
+                "psi_min": -12.665636902763096
+              },
+              "inactive": {
+                "min": -1572.4887566837392,
+                "max": 89456136438.05922,
+                "min_edge": 11,
+                "max_edge": 8,
+                "psi_at_max": 0.3150875788725386,
+                "psi_min": -5.157073068495276
+              }
+            }
+          },
+          "max_active_edge_beta": 5.076346614362089,
+          "max_active_edge_beta_psi": -64.29516301008098,
+          "active_negative_beta_psi_count": 4,
+          "active_overflow_exponent_count": 10
+        },
+        {
+          "step": 0.005,
+          "last_accepted_time": 0.6900000000000001,
+          "last_accepted_amplitude_max_abs": 6021750182.361707,
+          "first_failure": {
+            "time": 0.6900000000000001,
+            "step": 139,
+            "substage": 1,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": -474.3839209352074,
+                "max": 6021749937.403835,
+                "min_edge": 9,
+                "max_edge": 43,
+                "psi_at_max": -12.705685971003025,
+                "psi_min": -12.705685971003025
+              },
+              "inactive": {
+                "min": -116.77396680325948,
+                "max": 3010875282.9715505,
+                "min_edge": 11,
+                "max_edge": 8,
+                "psi_at_max": 0.35394982015667853,
+                "psi_min": -5.16182760979499
+              }
+            }
+          },
+          "max_active_edge_beta": 5.076346614362089,
+          "max_active_edge_beta_psi": -64.4984659620491,
+          "active_negative_beta_psi_count": 4,
+          "active_overflow_exponent_count": 5
+        },
+        {
+          "step": 0.0025,
+          "last_accepted_time": 0.6875,
+          "last_accepted_amplitude_max_abs": 7.263035313320019,
+          "first_failure": {
+            "time": 0.68875,
+            "step": 276,
+            "substage": 3,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": -1.236369321157508,
+                "max": 8402.624226619491,
+                "min_edge": 9,
+                "max_edge": 43,
+                "psi_at_max": -12.714217342190672,
+                "psi_min": -12.714217342190672
+              },
+              "inactive": {
+                "min": -0.5307111309744785,
+                "max": 4201.981395890513,
+                "min_edge": 15,
+                "max_edge": 8,
+                "psi_at_max": 0.36456708631023116,
+                "psi_min": -5.163237960039925
+              }
+            }
+          },
+          "max_active_edge_beta": 5.076346614362089,
+          "max_active_edge_beta_psi": -64.54177415929338,
+          "active_negative_beta_psi_count": 4,
+          "active_overflow_exponent_count": 5
+        },
+        {
+          "step": 0.00125,
+          "last_accepted_time": 0.6875,
+          "last_accepted_amplitude_max_abs": 7.606889736479726,
+          "first_failure": {
+            "time": 0.688125,
+            "step": 551,
+            "substage": 3,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": -0.7291978075201465,
+                "max": 741.5574244936156,
+                "min_edge": 22,
+                "max_edge": 43,
+                "psi_at_max": -12.71714558328654,
+                "psi_min": -12.71714558328654
+              },
+              "inactive": {
+                "min": -0.4532876462762244,
+                "max": 371.08699279153785,
+                "min_edge": 15,
+                "max_edge": 8,
+                "psi_at_max": 0.3698868935844407,
+                "psi_min": -5.163949250577824
+              }
+            }
+          },
+          "max_active_edge_beta": 5.076346614362089,
+          "max_active_edge_beta_psi": -64.55663892606643,
+          "active_negative_beta_psi_count": 4,
+          "active_overflow_exponent_count": 1
+        }
+      ]
+    },
+    {
+      "index": 133,
+      "event_id": "newtrain_9839a09144dd43ec",
+      "initial_amplitude_max_abs": 0.0,
+      "common_reference_points": 70,
+      "common_reference_end": 0.6900000000000001,
+      "common_reference_pairs": [
+        {
+          "methods": [
+            "future_radau",
+            "future_radau_strict"
+          ],
+          "observed_rms": 3.834466333452246e-09,
+          "observed_peak": 5.979734396532876e-08,
+          "state_scaled_peak": 5.979735817618348e-08
+        },
+        {
+          "methods": [
+            "future_radau",
+            "future_dop853"
+          ],
+          "observed_rms": 3.836496406029938e-09,
+          "observed_peak": 6.021264198352583e-08,
+          "state_scaled_peak": 6.021267040523526e-08
+        },
+        {
+          "methods": [
+            "future_radau_strict",
+            "future_dop853"
+          ],
+          "observed_rms": 4.0809950851325436e-11,
+          "observed_peak": 5.424567461886909e-10,
+          "state_scaled_peak": 5.424993787528365e-10
+        }
+      ],
+      "common_endpoint_amplitude_max_abs": {
+        "future_radau": 3.8272837443069907,
+        "future_radau_strict": 3.8272837447822092,
+        "future_dop853": 3.8272837447639216
+      },
+      "references": {
+        "future_radau": {
+          "completed": false,
+          "last_accepted_time": 0.6953589050723052,
+          "last_accepted_amplitude_max_abs": 29.96457665809613,
+          "error": "FloatingPointError('Required step size is less than spacing between numbers.')"
+        },
+        "future_radau_strict": {
+          "completed": false,
+          "last_accepted_time": 0.6940992548549376,
+          "last_accepted_amplitude_max_abs": 5.278394128105643,
+          "error": "RhsLimit('registered RHS call limit reached')"
+        },
+        "future_dop853": {
+          "completed": false,
+          "last_accepted_time": 0.6953589050715346,
+          "last_accepted_amplitude_max_abs": 31.49969132938979,
+          "error": "FloatingPointError('Required step size is less than spacing between numbers.')"
+        }
+      },
+      "rk4_failures": [
+        {
+          "step": 0.01,
+          "last_accepted_time": 0.7000000000000001,
+          "last_accepted_amplitude_max_abs": 112774592.79774392,
+          "first_failure": {
+            "time": 0.7000000000000001,
+            "step": 71,
+            "substage": 1,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": -90.08945990613935,
+                "max": 112774559.54494047,
+                "min_edge": 9,
+                "max_edge": 43,
+                "psi_at_max": -12.655744508078415,
+                "psi_min": -12.655744508078415
+              },
+              "inactive": {
+                "min": -14.904189681010735,
+                "max": 56387347.86589581,
+                "min_edge": 11,
+                "max_edge": 8,
+                "psi_at_max": 1.3578793437013017,
+                "psi_min": -5.180352263652427
+              }
+            }
+          },
+          "max_active_edge_beta": 5.076346614362089,
+          "max_active_edge_beta_psi": -64.24494578581547,
+          "active_negative_beta_psi_count": 6,
+          "active_overflow_exponent_count": 5
+        },
+        {
+          "step": 0.005,
+          "last_accepted_time": 0.6950000000000001,
+          "last_accepted_amplitude_max_abs": 6.244516685757731,
+          "first_failure": {
+            "time": 0.6975,
+            "step": 140,
+            "substage": 3,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": -0.8734015637794209,
+                "max": 952.611881240612,
+                "min_edge": 22,
+                "max_edge": 43,
+                "psi_at_max": -12.686261777378936,
+                "psi_min": -12.686261777378936
+              },
+              "inactive": {
+                "min": -0.49722101482024494,
+                "max": 476.75391021614,
+                "min_edge": 15,
+                "max_edge": 8,
+                "psi_at_max": 1.358023229905323,
+                "psi_min": -5.174484140174631
+              }
+            }
+          },
+          "max_active_edge_beta": 5.076346614362089,
+          "max_active_edge_beta_psi": -64.39986202250874,
+          "active_negative_beta_psi_count": 6,
+          "active_overflow_exponent_count": 1
+        },
+        {
+          "step": 0.0025,
+          "last_accepted_time": 0.6950000000000001,
+          "last_accepted_amplitude_max_abs": 6.445705476699408,
+          "first_failure": {
+            "time": 0.6975,
+            "step": 279,
+            "substage": 4,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": -1187588336457591.0,
+                "max": 1.2877803835030935e+34,
+                "min_edge": 9,
+                "max_edge": 43,
+                "psi_at_max": -12.714899719676954,
+                "psi_min": -12.714899719676954
+              },
+              "inactive": {
+                "min": -167998203079613.03,
+                "max": 6.438901917515467e+33,
+                "min_edge": 11,
+                "max_edge": 8,
+                "psi_at_max": 1.3567044845732172,
+                "psi_min": -5.172547652701935
+              }
+            }
+          },
+          "max_active_edge_beta": 5.076346614362089,
+          "max_active_edge_beta_psi": -64.54523814393558,
+          "active_negative_beta_psi_count": 6,
+          "active_overflow_exponent_count": 13
+        },
+        {
+          "step": 0.00125,
+          "last_accepted_time": 0.6950000000000001,
+          "last_accepted_amplitude_max_abs": 6.519618879589095,
+          "first_failure": {
+            "time": 0.69625,
+            "step": 557,
+            "substage": 4,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": -2.205608570663816,
+                "max": 46039.66715540517,
+                "min_edge": 9,
+                "max_edge": 43,
+                "psi_at_max": -12.699878664278257,
+                "psi_min": -12.699878664278257
+              },
+              "inactive": {
+                "min": -0.5583105382065637,
+                "max": 23021.198097918696,
+                "min_edge": 11,
+                "max_edge": 8,
+                "psi_at_max": 1.358050485156213,
+                "psi_min": -5.17173144264064
+              }
+            }
+          },
+          "max_active_edge_beta": 5.076346614362089,
+          "max_active_edge_beta_psi": -64.46898606021827,
+          "active_negative_beta_psi_count": 6,
+          "active_overflow_exponent_count": 5
+        }
+      ]
+    },
+    {
+      "index": 181,
+      "event_id": "pilot_0030",
+      "initial_amplitude_max_abs": 0.0,
+      "common_reference_points": 63,
+      "common_reference_end": 0.62,
+      "common_reference_pairs": [
+        {
+          "methods": [
+            "future_radau",
+            "future_radau_strict"
+          ],
+          "observed_rms": 5.344892009699156e-09,
+          "observed_peak": 6.960996756788518e-08,
+          "state_scaled_peak": 6.960995335703046e-08
+        },
+        {
+          "methods": [
+            "future_radau",
+            "future_dop853"
+          ],
+          "observed_rms": 5.391656160877401e-09,
+          "observed_peak": 6.978990541028907e-08,
+          "state_scaled_peak": 6.978989830486171e-08
+        },
+        {
+          "methods": [
+            "future_radau_strict",
+            "future_dop853"
+          ],
+          "observed_rms": 1.5158132395964757e-10,
+          "observed_peak": 4.800085662282072e-09,
+          "state_scaled_peak": 4.800142505700933e-09
+        }
+      ],
+      "common_endpoint_amplitude_max_abs": {
+        "future_radau": 4.177847357682078,
+        "future_radau_strict": 4.177847356413388,
+        "future_dop853": 4.177847356360066
+      },
+      "references": {
+        "future_radau": {
+          "completed": false,
+          "last_accepted_time": 0.6242227388607764,
+          "last_accepted_amplitude_max_abs": 30.084993916630197,
+          "error": "FloatingPointError('Required step size is less than spacing between numbers.')"
+        },
+        "future_radau_strict": {
+          "completed": false,
+          "last_accepted_time": 0.6241919992965425,
+          "last_accepted_amplitude_max_abs": 9.103167754002989,
+          "error": "RhsLimit('registered RHS call limit reached')"
+        },
+        "future_dop853": {
+          "completed": false,
+          "last_accepted_time": 0.6242227388596077,
+          "last_accepted_amplitude_max_abs": 31.57232339211964,
+          "error": "FloatingPointError('Required step size is less than spacing between numbers.')"
+        }
+      },
+      "rk4_failures": [
+        {
+          "step": 0.01,
+          "last_accepted_time": 0.63,
+          "last_accepted_amplitude_max_abs": 4.414472442816031e+46,
+          "first_failure": {
+            "time": 0.63,
+            "step": 64,
+            "substage": 1,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": -1.641608334427525e+21,
+                "max": 4.414472442816031e+46,
+                "min_edge": 9,
+                "max_edge": 43,
+                "psi_at_max": -12.659544889871249,
+                "psi_min": -12.659544889871249
+              },
+              "inactive": {
+                "min": -1.9513862433277382e+20,
+                "max": 2.2072362214080156e+46,
+                "min_edge": 11,
+                "max_edge": 8,
+                "psi_at_max": -1.289741872175648,
+                "psi_min": -6.2383218639376485
+              }
+            }
+          },
+          "max_active_edge_beta": 5.076346614362089,
+          "max_active_edge_beta_psi": -64.26423784106281,
+          "active_negative_beta_psi_count": 3,
+          "active_overflow_exponent_count": 13
+        },
+        {
+          "step": 0.005,
+          "last_accepted_time": 0.625,
+          "last_accepted_amplitude_max_abs": 12.476806112123569,
+          "first_failure": {
+            "time": 0.6275,
+            "step": 126,
+            "substage": 2,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": -1.116373229334038,
+                "max": 2377.098058051354,
+                "min_edge": 22,
+                "max_edge": 43,
+                "psi_at_max": -12.692307990292798,
+                "psi_min": -12.692307990292798
+              },
+              "inactive": {
+                "min": -0.5073033424523519,
+                "max": 1189.1848741035597,
+                "min_edge": 15,
+                "max_edge": 8,
+                "psi_at_max": -1.2982735677896815,
+                "psi_min": -6.1524735266150135
+              }
+            }
+          },
+          "max_active_edge_beta": 5.076346614362089,
+          "max_active_edge_beta_psi": -64.43055469496375,
+          "active_negative_beta_psi_count": 3,
+          "active_overflow_exponent_count": 5
+        },
+        {
+          "step": 0.0025,
+          "last_accepted_time": 0.625,
+          "last_accepted_amplitude_max_abs": 167.16118158977193,
+          "first_failure": {
+            "time": 0.62625,
+            "step": 251,
+            "substage": 2,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": -1.0616675266594958e+33,
+                "max": 1.7263404182607038e+70,
+                "min_edge": 9,
+                "max_edge": 43,
+                "psi_at_max": -12.706634199602622,
+                "psi_min": -12.706634199602622
+              },
+              "inactive": {
+                "min": -1.408861492318236e+32,
+                "max": 8.631702091303519e+69,
+                "min_edge": 11,
+                "max_edge": 8,
+                "psi_at_max": -1.293239036354814,
+                "psi_min": -6.156555285713754
+              }
+            }
+          },
+          "max_active_edge_beta": 5.076346614362089,
+          "max_active_edge_beta_psi": -64.50327949909031,
+          "active_negative_beta_psi_count": 3,
+          "active_overflow_exponent_count": 13
+        },
+        {
+          "step": 0.00125,
+          "last_accepted_time": 0.625,
+          "last_accepted_amplitude_max_abs": 3.194757760747201e+150,
+          "first_failure": {
+            "time": 0.625,
+            "step": 501,
+            "substage": 1,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": -5.3544656070108194e+72,
+                "max": 3.194757760747201e+150,
+                "min_edge": 9,
+                "max_edge": 43,
+                "psi_at_max": -12.691158096356217,
+                "psi_min": -12.691158096356217
+              },
+              "inactive": {
+                "min": -7.447404087335136e+71,
+                "max": 1.5973788803736004e+150,
+                "min_edge": 11,
+                "max_edge": 8,
+                "psi_at_max": -1.2992256101000916,
+                "psi_min": -6.110742833617323
+              }
+            }
+          },
+          "max_active_edge_beta": 5.076346614362089,
+          "max_active_edge_beta_psi": -64.42471743477189,
+          "active_negative_beta_psi_count": 3,
+          "active_overflow_exponent_count": 13
+        }
+      ]
+    },
+    {
+      "index": 236,
+      "event_id": "pilot_0207",
+      "initial_amplitude_max_abs": 0.0,
+      "common_reference_points": 82,
+      "common_reference_end": 0.81,
+      "common_reference_pairs": [
+        {
+          "methods": [
+            "future_radau",
+            "future_radau_strict"
+          ],
+          "observed_rms": 2.081275569844951e-09,
+          "observed_peak": 2.994553938151512e-08,
+          "state_scaled_peak": 2.994554382240722e-08
+        },
+        {
+          "methods": [
+            "future_radau",
+            "future_dop853"
+          ],
+          "observed_rms": 2.0801388894522845e-09,
+          "observed_peak": 2.9956801483876916e-08,
+          "state_scaled_peak": 2.9956801483876916e-08
+        },
+        {
+          "methods": [
+            "future_radau_strict",
+            "future_dop853"
+          ],
+          "observed_rms": 3.344486494499198e-11,
+          "observed_peak": 6.779998784622876e-10,
+          "state_scaled_peak": 6.779998784622876e-10
+        }
+      ],
+      "common_endpoint_amplitude_max_abs": {
+        "future_radau": 4.4508619316336295,
+        "future_radau_strict": 4.450861931794681,
+        "future_dop853": 4.450861931798778
+      },
+      "references": {
+        "future_radau": {
+          "completed": false,
+          "last_accepted_time": 0.8171415822692507,
+          "last_accepted_amplitude_max_abs": 30.64162259869252,
+          "error": "RhsLimit('registered RHS call limit reached')"
+        },
+        "future_radau_strict": {
+          "completed": false,
+          "last_accepted_time": 0.8162812449007922,
+          "last_accepted_amplitude_max_abs": 6.628926325383829,
+          "error": "RhsLimit('registered RHS call limit reached')"
+        },
+        "future_dop853": {
+          "completed": false,
+          "last_accepted_time": 0.8171415822689343,
+          "last_accepted_amplitude_max_abs": 32.57799611445862,
+          "error": "FloatingPointError('Required step size is less than spacing between numbers.')"
+        }
+      },
+      "rk4_failures": [
+        {
+          "step": 0.01,
+          "last_accepted_time": 0.8200000000000001,
+          "last_accepted_amplitude_max_abs": 83.89276611909725,
+          "first_failure": {
+            "time": 0.8250000000000001,
+            "step": 83,
+            "substage": 2,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": -717593845667145.4,
+                "max": 1.8310546503213165e+34,
+                "min_edge": 24,
+                "max_edge": 1,
+                "psi_at_max": -10.351139293009018,
+                "psi_min": -10.351139293009018
+              },
+              "inactive": {
+                "min": -883181332805219.5,
+                "max": 9.155273251606583e+33,
+                "min_edge": 31,
+                "max_edge": 7,
+                "psi_at_max": 0.3440552979570617,
+                "psi_min": -10.667729836114376
+              }
+            }
+          },
+          "max_active_edge_beta": 1.87821484739833,
+          "max_active_edge_beta_psi": -19.44166350761779,
+          "active_negative_beta_psi_count": 5,
+          "active_overflow_exponent_count": 22
+        },
+        {
+          "step": 0.005,
+          "last_accepted_time": 0.8200000000000001,
+          "last_accepted_amplitude_max_abs": 3.5691791925566387e+42,
+          "first_failure": {
+            "time": 0.8200000000000001,
+            "step": 165,
+            "substage": 1,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": -4.198838492700846e+18,
+                "max": 3.5691791925566387e+42,
+                "min_edge": 24,
+                "max_edge": 1,
+                "psi_at_max": -8.76362417391305,
+                "psi_min": -8.76362417391305
+              },
+              "inactive": {
+                "min": -5.135497175155156e+18,
+                "max": 1.7845895962783193e+42,
+                "min_edge": 31,
+                "max_edge": 7,
+                "psi_at_max": 0.06662226728533663,
+                "psi_min": -10.421528871066608
+              }
+            }
+          },
+          "max_active_edge_beta": 1.87821484739833,
+          "max_active_edge_beta_psi": -16.459969040462415,
+          "active_negative_beta_psi_count": 6,
+          "active_overflow_exponent_count": 22
+        },
+        {
+          "step": 0.0025,
+          "last_accepted_time": 0.8175,
+          "last_accepted_amplitude_max_abs": 13.222971848586583,
+          "first_failure": {
+            "time": 0.81875,
+            "step": 328,
+            "substage": 2,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": -0.2969151489874883,
+                "max": 1031.3918927970033,
+                "min_edge": 24,
+                "max_edge": 1,
+                "psi_at_max": -8.592873227563931,
+                "psi_min": -8.592873227563931
+              },
+              "inactive": {
+                "min": -0.3251598054653492,
+                "max": 515.8593429295407,
+                "min_edge": 31,
+                "max_edge": 23,
+                "psi_at_max": -10.414623067163369,
+                "psi_min": -10.414623067163369
+              }
+            }
+          },
+          "max_active_edge_beta": 1.87821484739833,
+          "max_active_edge_beta_psi": -16.139262077822185,
+          "active_negative_beta_psi_count": 6,
+          "active_overflow_exponent_count": 1
+        },
+        {
+          "step": 0.00125,
+          "last_accepted_time": 0.8175,
+          "last_accepted_amplitude_max_abs": 85.20940260154273,
+          "first_failure": {
+            "time": 0.818125,
+            "step": 655,
+            "substage": 2,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": -176768341839240.06,
+                "max": 9.096500841049392e+33,
+                "min_edge": 24,
+                "max_edge": 1,
+                "psi_at_max": -8.682863795917264,
+                "psi_min": -8.682863795917264
+              },
+              "inactive": {
+                "min": -218879979825901.03,
+                "max": 4.548250420524696e+33,
+                "min_edge": 31,
+                "max_edge": 7,
+                "psi_at_max": 0.04164546233574076,
+                "psi_min": -10.417838930086928
+              }
+            }
+          },
+          "max_active_edge_beta": 1.87821484739833,
+          "max_active_edge_beta_psi": -16.30828369942923,
+          "active_negative_beta_psi_count": 6,
+          "active_overflow_exponent_count": 22
+        }
+      ]
+    },
+    {
+      "index": 251,
+      "event_id": "pilot_0222",
+      "initial_amplitude_max_abs": 0.0,
+      "common_reference_points": 43,
+      "common_reference_end": 0.42,
+      "common_reference_pairs": [
+        {
+          "methods": [
+            "future_radau",
+            "future_radau_strict"
+          ],
+          "observed_rms": 9.02192076498618e-09,
+          "observed_peak": 1.3406190646492178e-07,
+          "state_scaled_peak": 1.340619348866312e-07
+        },
+        {
+          "methods": [
+            "future_radau",
+            "future_dop853"
+          ],
+          "observed_rms": 8.863111319957187e-09,
+          "observed_peak": 1.2874136245955015e-07,
+          "state_scaled_peak": 1.287413553541228e-07
+        },
+        {
+          "methods": [
+            "future_radau_strict",
+            "future_dop853"
+          ],
+          "observed_rms": 2.8102338677388e-10,
+          "observed_peak": 5.6505768952774815e-09,
+          "state_scaled_peak": 5.650662160405773e-09
+        }
+      ],
+      "common_endpoint_amplitude_max_abs": {
+        "future_radau": 5.760822372757201,
+        "future_radau_strict": 5.76082237384658,
+        "future_dop853": 5.760822373800754
+      },
+      "references": {
+        "future_radau": {
+          "completed": false,
+          "last_accepted_time": 0.422974827932035,
+          "last_accepted_amplitude_max_abs": 32.92621715775706,
+          "error": "FloatingPointError('Required step size is less than spacing between numbers.')"
+        },
+        "future_radau_strict": {
+          "completed": false,
+          "last_accepted_time": 0.42297469224862316,
+          "last_accepted_amplitude_max_abs": 16.729846222577024,
+          "error": "RhsLimit('registered RHS call limit reached')"
+        },
+        "future_dop853": {
+          "completed": false,
+          "last_accepted_time": 0.42297482793185986,
+          "last_accepted_amplitude_max_abs": 34.422605677476284,
+          "error": "FloatingPointError('Required step size is less than spacing between numbers.')"
+        }
+      },
+      "rk4_failures": [
+        {
+          "step": 0.01,
+          "last_accepted_time": 0.42,
+          "last_accepted_amplitude_max_abs": 5.74601309261864,
+          "first_failure": {
+            "time": 0.43,
+            "step": 43,
+            "substage": 4,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": 18.546873054932615,
+                "max": 42671.31360115731,
+                "min_edge": 42,
+                "max_edge": 2,
+                "psi_at_max": -7.563844537278131,
+                "psi_min": -8.918318130126016
+              },
+              "inactive": {
+                "min": 0.09476804028058147,
+                "max": 21539.843032726934,
+                "min_edge": 44,
+                "max_edge": 8,
+                "psi_at_max": 1.699698582586314,
+                "psi_min": -5.43761524191321
+              }
+            }
+          },
+          "max_active_edge_beta": 9.085288873061366,
+          "max_active_edge_beta_psi": -68.719712612099,
+          "active_negative_beta_psi_count": 8,
+          "active_overflow_exponent_count": 13
+        },
+        {
+          "step": 0.005,
+          "last_accepted_time": 0.425,
+          "last_accepted_amplitude_max_abs": 77672.65182627886,
+          "first_failure": {
+            "time": 0.425,
+            "step": 86,
+            "substage": 1,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": 8.282109245921303,
+                "max": 77482.71705096612,
+                "min_edge": 42,
+                "max_edge": 2,
+                "psi_at_max": -6.118764326507465,
+                "psi_min": -8.597595662763919
+              },
+              "inactive": {
+                "min": 0.0942361769763824,
+                "max": 38836.581954414105,
+                "min_edge": 44,
+                "max_edge": 8,
+                "psi_at_max": 2.6382637945940024,
+                "psi_min": -5.423201860136938
+              }
+            }
+          },
+          "max_active_edge_beta": 9.085288873061366,
+          "max_active_edge_beta_psi": -55.590741452503096,
+          "active_negative_beta_psi_count": 8,
+          "active_overflow_exponent_count": 13
+        },
+        {
+          "step": 0.0025,
+          "last_accepted_time": 0.4225,
+          "last_accepted_amplitude_max_abs": 8.030825125661394,
+          "first_failure": {
+            "time": 0.425,
+            "step": 170,
+            "substage": 4,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": 3899683.220256359,
+                "max": 2888712896638889.5,
+                "min_edge": 42,
+                "max_edge": 2,
+                "psi_at_max": -7.68579073478771,
+                "psi_min": -8.791252200303655
+              },
+              "inactive": {
+                "min": -2130.890139163143,
+                "max": 1444356497006278.8,
+                "min_edge": 44,
+                "max_edge": 8,
+                "psi_at_max": 1.9816917922622153,
+                "psi_min": -5.428337029214458
+              }
+            }
+          },
+          "max_active_edge_beta": 9.085288873061366,
+          "max_active_edge_beta_psi": -69.82762904344492,
+          "active_negative_beta_psi_count": 8,
+          "active_overflow_exponent_count": 25
+        },
+        {
+          "step": 0.00125,
+          "last_accepted_time": 0.42375,
+          "last_accepted_amplitude_max_abs": 2.0882909824624244e+168,
+          "first_failure": {
+            "time": 0.42375,
+            "step": 340,
+            "substage": 1,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": 7.15770233737462e+83,
+                "max": 2.0882909824624244e+168,
+                "min_edge": 42,
+                "max_edge": 2,
+                "psi_at_max": -7.7090882557076945,
+                "psi_min": -8.811479069400315
+              },
+              "inactive": {
+                "min": -9.488922290165448e+77,
+                "max": 1.0441454912312122e+168,
+                "min_edge": 44,
+                "max_edge": 7,
+                "psi_at_max": -2.7710829778392743,
+                "psi_min": -5.4206319544341515
+              }
+            }
+          },
+          "max_active_edge_beta": 9.085288873061366,
+          "max_active_edge_beta_psi": -70.03929375102916,
+          "active_negative_beta_psi_count": 8,
+          "active_overflow_exponent_count": 25
+        }
+      ]
+    },
+    {
+      "index": 265,
+      "event_id": "pilot_0252",
+      "initial_amplitude_max_abs": 0.0,
+      "common_reference_points": 99,
+      "common_reference_end": 0.98,
+      "common_reference_pairs": [
+        {
+          "methods": [
+            "future_radau",
+            "future_radau_strict"
+          ],
+          "observed_rms": 6.878672882686046e-09,
+          "observed_peak": 1.9531682937667938e-07,
+          "state_scaled_peak": 1.9531682937667938e-07
+        },
+        {
+          "methods": [
+            "future_radau",
+            "future_dop853"
+          ],
+          "observed_rms": 6.880318437820088e-09,
+          "observed_peak": 1.9563077557904762e-07,
+          "state_scaled_peak": 1.956307471573382e-07
+        },
+        {
+          "methods": [
+            "future_radau_strict",
+            "future_dop853"
+          ],
+          "observed_rms": 6.873667662110535e-11,
+          "observed_peak": 1.536079707875615e-09,
+          "state_scaled_peak": 1.5360868133029726e-09
+        }
+      ],
+      "common_endpoint_amplitude_max_abs": {
+        "future_radau": 4.2726994418220405,
+        "future_radau_strict": 4.272699442291982,
+        "future_dop853": 4.27269944225056
+      },
+      "references": {
+        "future_radau": {
+          "completed": false,
+          "last_accepted_time": 0.9863157542377919,
+          "last_accepted_amplitude_max_abs": 30.548064257509388,
+          "error": "FloatingPointError('Required step size is less than spacing between numbers.')"
+        },
+        "future_radau_strict": {
+          "completed": false,
+          "last_accepted_time": 0.9852898644452247,
+          "last_accepted_amplitude_max_abs": 6.085294237741109,
+          "error": "RhsLimit('registered RHS call limit reached')"
+        },
+        "future_dop853": {
+          "completed": false,
+          "last_accepted_time": 0.9863157542368506,
+          "last_accepted_amplitude_max_abs": 32.02567605106761,
+          "error": "FloatingPointError('Required step size is less than spacing between numbers.')"
+        }
+      },
+      "rk4_failures": [
+        {
+          "step": 0.01,
+          "last_accepted_time": 0.99,
+          "last_accepted_amplitude_max_abs": 2442.0590622561176,
+          "first_failure": {
+            "time": 0.99,
+            "step": 100,
+            "substage": 1,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": -1.0046906557587554,
+                "max": 2441.350983162351,
+                "min_edge": 22,
+                "max_edge": 43,
+                "psi_at_max": -8.498706816406617,
+                "psi_min": -8.498706816406617
+              },
+              "inactive": {
+                "min": -0.9089910366431408,
+                "max": 1221.613032300709,
+                "min_edge": 15,
+                "max_edge": 8,
+                "psi_at_max": 0.7563829342063542,
+                "psi_min": -6.181927997386274
+              }
+            }
+          },
+          "max_active_edge_beta": 5.076346614362089,
+          "max_active_edge_beta_psi": -43.14238157392174,
+          "active_negative_beta_psi_count": 11,
+          "active_overflow_exponent_count": 5
+        },
+        {
+          "step": 0.005,
+          "last_accepted_time": 0.985,
+          "last_accepted_amplitude_max_abs": 5.816728979398667,
+          "first_failure": {
+            "time": 0.99,
+            "step": 198,
+            "substage": 4,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": -12.021749033545557,
+                "max": 610863.3108603001,
+                "min_edge": 9,
+                "max_edge": 43,
+                "psi_at_max": -8.823481659714096,
+                "psi_min": -8.823481659714096
+              },
+              "inactive": {
+                "min": -6.649029451397649,
+                "max": 305442.0533149563,
+                "min_edge": 11,
+                "max_edge": 8,
+                "psi_at_max": 0.7447346695960577,
+                "psi_min": -6.1977032901774525
+              }
+            }
+          },
+          "max_active_edge_beta": 5.076346614362089,
+          "max_active_edge_beta_psi": -44.79105125017564,
+          "active_negative_beta_psi_count": 11,
+          "active_overflow_exponent_count": 5
+        },
+        {
+          "step": 0.0025,
+          "last_accepted_time": 0.9875,
+          "last_accepted_amplitude_max_abs": 1089275468.9990306,
+          "first_failure": {
+            "time": 0.9875,
+            "step": 396,
+            "substage": 1,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": -139.571752889251,
+                "max": 1089275438.707271,
+                "min_edge": 9,
+                "max_edge": 43,
+                "psi_at_max": -8.4014434161077,
+                "psi_min": -8.4014434161077
+              },
+              "inactive": {
+                "min": -75.67878641574747,
+                "max": 544637839.301881,
+                "min_edge": 11,
+                "max_edge": 8,
+                "psi_at_max": 0.7038806764817991,
+                "psi_min": -6.142938604878413
+              }
+            }
+          },
+          "max_active_edge_beta": 5.076346614362089,
+          "max_active_edge_beta_psi": -42.64863884111299,
+          "active_negative_beta_psi_count": 11,
+          "active_overflow_exponent_count": 5
+        },
+        {
+          "step": 0.00125,
+          "last_accepted_time": 0.9862500000000001,
+          "last_accepted_amplitude_max_abs": 8.400221333646932,
+          "first_failure": {
+            "time": 0.9868750000000001,
+            "step": 790,
+            "substage": 3,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": -0.9616523451008737,
+                "max": 2964.869939200929,
+                "min_edge": 22,
+                "max_edge": 43,
+                "psi_at_max": -8.356864985509656,
+                "psi_min": -8.356864985509656
+              },
+              "inactive": {
+                "min": -0.8530764313072342,
+                "max": 1483.2377603239186,
+                "min_edge": 15,
+                "max_edge": 8,
+                "psi_at_max": 0.6923330622569437,
+                "psi_min": -6.131602145175746
+              }
+            }
+          },
+          "max_active_edge_beta": 5.076346614362089,
+          "max_active_edge_beta_psi": -42.42234327587303,
+          "active_negative_beta_psi_count": 11,
+          "active_overflow_exponent_count": 5
+        }
+      ]
+    },
+    {
+      "index": 267,
+      "event_id": "pilot_0254",
+      "initial_amplitude_max_abs": 0.0,
+      "common_reference_points": 33,
+      "common_reference_end": 0.32,
+      "common_reference_pairs": [
+        {
+          "methods": [
+            "future_radau",
+            "future_radau_strict"
+          ],
+          "observed_rms": 4.784202588346009e-09,
+          "observed_peak": 4.924186214338988e-08,
+          "state_scaled_peak": 4.924189056509931e-08
+        },
+        {
+          "methods": [
+            "future_radau",
+            "future_dop853"
+          ],
+          "observed_rms": 4.6950405223932165e-09,
+          "observed_peak": 4.57368400930136e-08,
+          "state_scaled_peak": 4.573685430386831e-08
+        },
+        {
+          "methods": [
+            "future_radau_strict",
+            "future_dop853"
+          ],
+          "observed_rms": 2.6585913748877793e-10,
+          "observed_peak": 3.505022050376283e-09,
+          "state_scaled_peak": 3.5050362612309982e-09
+        }
+      ],
+      "common_endpoint_amplitude_max_abs": {
+        "future_radau": 5.740113270835687,
+        "future_radau_strict": 5.740113270926689,
+        "future_dop853": 5.740113270900534
+      },
+      "references": {
+        "future_radau": {
+          "completed": false,
+          "last_accepted_time": 0.32286895051050923,
+          "last_accepted_amplitude_max_abs": 32.71386188167087,
+          "error": "FloatingPointError('Required step size is less than spacing between numbers.')"
+        },
+        "future_radau_strict": {
+          "completed": false,
+          "last_accepted_time": 0.32286892609434015,
+          "last_accepted_amplitude_max_abs": 18.254494707255425,
+          "error": "RhsLimit('registered RHS call limit reached')"
+        },
+        "future_dop853": {
+          "completed": false,
+          "last_accepted_time": 0.32286895051033015,
+          "last_accepted_amplitude_max_abs": 34.2994387169596,
+          "error": "FloatingPointError('Required step size is less than spacing between numbers.')"
+        }
+      },
+      "rk4_failures": [
+        {
+          "step": 0.01,
+          "last_accepted_time": 0.32,
+          "last_accepted_amplitude_max_abs": 5.724095495280972,
+          "first_failure": {
+            "time": 0.33,
+            "step": 33,
+            "substage": 4,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": 22.736660547530285,
+                "max": 111742.61867179912,
+                "min_edge": 42,
+                "max_edge": 2,
+                "psi_at_max": -7.455768378218426,
+                "psi_min": -8.957497178539139
+              },
+              "inactive": {
+                "min": -0.09079258775965998,
+                "max": 56155.830099434614,
+                "min_edge": 44,
+                "max_edge": 8,
+                "psi_at_max": 2.1724537946061613,
+                "psi_min": -5.371709318719785
+              }
+            }
+          },
+          "max_active_edge_beta": 9.085288873061366,
+          "max_active_edge_beta_psi": -67.73780948675065,
+          "active_negative_beta_psi_count": 9,
+          "active_overflow_exponent_count": 13
+        },
+        {
+          "step": 0.005,
+          "last_accepted_time": 0.325,
+          "last_accepted_amplitude_max_abs": 857405.6239438517,
+          "first_failure": {
+            "time": 0.325,
+            "step": 66,
+            "substage": 1,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": 21.405651718905805,
+                "max": 856842.1785312375,
+                "min_edge": 42,
+                "max_edge": 2,
+                "psi_at_max": -6.039201313941807,
+                "psi_min": -7.44195841427689
+              },
+              "inactive": {
+                "min": -0.07990456059375137,
+                "max": 428702.9164336989,
+                "min_edge": 44,
+                "max_edge": 8,
+                "psi_at_max": 2.6597771229942087,
+                "psi_min": -5.40045750528729
+              }
+            }
+          },
+          "max_active_edge_beta": 9.085288873061366,
+          "max_active_edge_beta_psi": -54.86788849973308,
+          "active_negative_beta_psi_count": 8,
+          "active_overflow_exponent_count": 13
+        },
+        {
+          "step": 0.0025,
+          "last_accepted_time": 0.3225,
+          "last_accepted_amplitude_max_abs": 8.162895775448998,
+          "first_failure": {
+            "time": 0.325,
+            "step": 130,
+            "substage": 4,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": 3.1373983766125144e+16,
+                "max": 1.1940316803490487e+35,
+                "min_edge": 42,
+                "max_edge": 2,
+                "psi_at_max": -8.797380971428968,
+                "psi_min": -9.265000716755944
+              },
+              "inactive": {
+                "min": -9825588559668.146,
+                "max": 5.9701584017452435e+34,
+                "min_edge": 44,
+                "max_edge": 7,
+                "psi_at_max": -2.5305991626830577,
+                "psi_min": -7.796318159517068
+              }
+            }
+          },
+          "max_active_edge_beta": 9.085288873061366,
+          "max_active_edge_beta_psi": -79.9267474518054,
+          "active_negative_beta_psi_count": 9,
+          "active_overflow_exponent_count": 25
+        },
+        {
+          "step": 0.00125,
+          "last_accepted_time": 0.3225,
+          "last_accepted_amplitude_max_abs": 8.236172375686698,
+          "first_failure": {
+            "time": 0.32375,
+            "step": 259,
+            "substage": 4,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": 3.141140581519832,
+                "max": 34697.323365438744,
+                "min_edge": 42,
+                "max_edge": 2,
+                "psi_at_max": -5.815986415915583,
+                "psi_min": -7.257083359215363
+              },
+              "inactive": {
+                "min": -0.06411844338228664,
+                "max": 17386.498290399726,
+                "min_edge": 44,
+                "max_edge": 8,
+                "psi_at_max": 2.621923798495391,
+                "psi_min": -5.40427008877679
+              }
+            }
+          },
+          "max_active_edge_beta": 9.085288873061366,
+          "max_active_edge_beta_psi": -52.839916670393904,
+          "active_negative_beta_psi_count": 8,
+          "active_overflow_exponent_count": 13
+        }
+      ]
+    },
+    {
+      "index": 282,
+      "event_id": "pilot_0335",
+      "initial_amplitude_max_abs": 0.0,
+      "common_reference_points": 86,
+      "common_reference_end": 0.85,
+      "common_reference_pairs": [
+        {
+          "methods": [
+            "future_radau",
+            "future_radau_strict"
+          ],
+          "observed_rms": 1.3055732898371348e-09,
+          "observed_peak": 1.5244776108147562e-08,
+          "state_scaled_peak": 1.5244776552236772e-08
+        },
+        {
+          "methods": [
+            "future_radau",
+            "future_dop853"
+          ],
+          "observed_rms": 1.309219897590999e-09,
+          "observed_peak": 1.5155848132053507e-08,
+          "state_scaled_peak": 1.5155847687964297e-08
+        },
+        {
+          "methods": [
+            "future_radau_strict",
+            "future_dop853"
+          ],
+          "observed_rms": 1.3982303757666938e-11,
+          "observed_peak": 1.6328272067767102e-10,
+          "state_scaled_peak": 1.6328272067767102e-10
+        }
+      ],
+      "common_endpoint_amplitude_max_abs": {
+        "future_radau": 3.368212532882786,
+        "future_radau_strict": 3.3682125324736445,
+        "future_dop853": 3.3682125324630583
+      },
+      "references": {
+        "future_radau": {
+          "completed": false,
+          "last_accepted_time": 0.8775807419179638,
+          "last_accepted_amplitude_max_abs": 28.925124850203176,
+          "error": "RhsLimit('registered RHS call limit reached')"
+        },
+        "future_radau_strict": {
+          "completed": false,
+          "last_accepted_time": 0.8533714791427358,
+          "last_accepted_amplitude_max_abs": 3.5046018595045254,
+          "error": "RhsLimit('registered RHS call limit reached')"
+        },
+        "future_dop853": {
+          "completed": false,
+          "last_accepted_time": 0.8775807419180371,
+          "last_accepted_amplitude_max_abs": 32.65931928643998,
+          "error": "FloatingPointError('Required step size is less than spacing between numbers.')"
+        }
+      },
+      "rk4_failures": [
+        {
+          "step": 0.01,
+          "last_accepted_time": 0.88,
+          "last_accepted_amplitude_max_abs": 32.11902180612143,
+          "first_failure": {
+            "time": 0.885,
+            "step": 89,
+            "substage": 2,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": -932.7103624846588,
+                "max": 478086020728.05914,
+                "min_edge": 19,
+                "max_edge": 5,
+                "psi_at_max": -4.6137662112265465,
+                "psi_min": -4.6137662112265465
+              },
+              "inactive": {
+                "min": -1064.1542103413885,
+                "max": 239043017259.67853,
+                "min_edge": 30,
+                "max_edge": 41,
+                "psi_at_max": -5.09298603067488,
+                "psi_min": -5.09298603067488
+              }
+            }
+          },
+          "max_active_edge_beta": 3.262699381769547,
+          "max_active_edge_beta_psi": -15.053332164998078,
+          "active_negative_beta_psi_count": 4,
+          "active_overflow_exponent_count": 17
+        },
+        {
+          "step": 0.005,
+          "last_accepted_time": 0.88,
+          "last_accepted_amplitude_max_abs": 15552361366.090378,
+          "first_failure": {
+            "time": 0.88,
+            "step": 177,
+            "substage": 1,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": -65.39594401412766,
+                "max": 15552360331.810165,
+                "min_edge": 19,
+                "max_edge": 5,
+                "psi_at_max": -4.617075317296613,
+                "psi_min": -4.617075317296613
+              },
+              "inactive": {
+                "min": -74.84987673366848,
+                "max": 7776180683.033554,
+                "min_edge": 30,
+                "max_edge": 41,
+                "psi_at_max": -5.262332408909379,
+                "psi_min": -5.262332408909379
+              }
+            }
+          },
+          "max_active_edge_beta": 3.262699381769547,
+          "max_active_edge_beta_psi": -15.064128783327094,
+          "active_negative_beta_psi_count": 4,
+          "active_overflow_exponent_count": 11
+        },
+        {
+          "step": 0.0025,
+          "last_accepted_time": 0.8775000000000001,
+          "last_accepted_amplitude_max_abs": 8.580366332272925,
+          "first_failure": {
+            "time": 0.87875,
+            "step": 352,
+            "substage": 3,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": -0.2355362512676878,
+                "max": 14649.657883708755,
+                "min_edge": 19,
+                "max_edge": 5,
+                "psi_at_max": -4.6111085533667096,
+                "psi_min": -4.6111085533667096
+              },
+              "inactive": {
+                "min": -0.23866635154124535,
+                "max": 7325.550559965266,
+                "min_edge": 36,
+                "max_edge": 41,
+                "psi_at_max": -5.272907100225652,
+                "psi_min": -5.272907100225652
+              }
+            }
+          },
+          "max_active_edge_beta": 3.262699381769547,
+          "max_active_edge_beta_psi": -15.044661026341833,
+          "active_negative_beta_psi_count": 4,
+          "active_overflow_exponent_count": 10
+        },
+        {
+          "step": 0.00125,
+          "last_accepted_time": 0.8775000000000001,
+          "last_accepted_amplitude_max_abs": 8.963349035901274,
+          "first_failure": {
+            "time": 0.878125,
+            "step": 703,
+            "substage": 3,
+            "operation": "rk4",
+            "error": "FloatingPointError('overflow encountered in exp')",
+            "edges": {
+              "active": {
+                "min": -0.1696200132568424,
+                "max": 1423.079611917734,
+                "min_edge": 19,
+                "max_edge": 5,
+                "psi_at_max": -4.60665984785573,
+                "psi_min": -4.60665984785573
+              },
+              "inactive": {
+                "min": -0.17986891862372958,
+                "max": 711.7986802066274,
+                "min_edge": 36,
+                "max_edge": 41,
+                "psi_at_max": -5.2802848263308935,
+                "psi_min": -5.2802848263308935
+              }
+            }
+          },
+          "max_active_edge_beta": 3.262699381769547,
+          "max_active_edge_beta_psi": -15.030146237621487,
+          "active_negative_beta_psi_count": 4,
+          "active_overflow_exponent_count": 10
+        }
+      ]
+    }
+  ],
+  "reference_budget_only_cases": [
+    {
+      "index": 74,
+      "mode": "modulated",
+      "future_reference_qualified": false,
+      "errors": {
+        "future_radau": null,
+        "future_radau_strict": "RhsLimit('registered RHS call limit reached')",
+        "future_dop853": null
+      }
+    },
+    {
+      "index": 178,
+      "mode": "modulated",
+      "future_reference_qualified": false,
+      "errors": {
+        "future_radau": null,
+        "future_radau_strict": "RhsLimit('registered RHS call limit reached')",
+        "future_dop853": null
+      }
+    }
+  ],
+  "phase_A_triggered": true,
+  "phase_A_trigger_scope": "Fixed-state DP8 pilot only; full-initializer and all594 progression remain governed by protocol pilot outcomes",
+  "decisions": {
+    "code": "no_change",
+    "model": "retain_evidence_no_promotion",
+    "science": "continue_precision_branch_A"
+  },
+  "costs": {
+    "integrations_attempted": 882,
+    "integrations_completed": 782,
+    "rhs_integrations": 1950911,
+    "rhs_sampling_and_jacobians": 45426,
+    "wall_seconds": 233.4089225003263,
+    "cpu_seconds": 229.34375
+  },
+  "conclusions": {
+    "reference_qualified_history": 49,
+    "reference_qualified_future": 33,
+    "old_failed_states_with_future_discretization_evidence": 23,
+    "exp_inactive_only_explanation_supported": false,
+    "finite_time_blowup_proved": false,
+    "population_primary_cause_estimate": null
+  }
+}

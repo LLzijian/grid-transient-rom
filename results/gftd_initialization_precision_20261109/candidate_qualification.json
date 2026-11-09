@@ -1,0 +1,46 @@
+{
+  "status": "qualified",
+  "scope": "artificial candidate-runner qualification including a Windows-spawn worker and the complete 50-state fixed-DP8 initializer",
+  "source_sha256": {
+    "experiments/gftd_initialization_precision_20261109/run.py": "25fa1adc10aabaf7411bfe2a7069fcd7f292d0e78c9e274f473deef3d6286873",
+    "src/kiki/models/base.py": "95f5d5a002ceae3a48ce1d7f82000355de87361c09aa56c48eab7e44d5093638",
+    "src/kiki/models/gftd_discovery.py": "9245b0726cb3fca15d3248106b43bd1673ed6607ed3a852b67c533f768a1b27f",
+    "src/kiki/models/gftd_fit297.py": "43f937b6973490c771aea2e1ac8694a2c356a48fb2f26337a73c9e991c6e334b",
+    "src/kiki/models/gftd_fitting.py": "f45656e1d7224a1a745ada6c9d2191f9f9af01153d891f17c35b629a9eb5c973",
+    "src/kiki/models/gftd_kuramoto.py": "124c9df04dc7eaba7e3ddc435e7646a818c1a01edd5284cd8743c63d124220d1",
+    "src/kiki/physics/graph.py": "724dd978e7627ccceec0ad94067eef304c8e5562a378641516d544e1d8ca8dfe",
+    "src/kiki/physics/kuramoto_functional.py": "5a709bc2b5b984fbdd4c376f69852e0a53a12929dee3f525a453b5934caec021",
+    "experiments/gftd_initialization_precision_20261109/fixed_state.py": "bcc69e55aec2f76fd4c9ed1cbe988f1436df5e45c4564e3660d7594af2e13a28",
+    "src/kiki/numerics.py": "09363eeee4679b12891340f198dabc91971f76dd8f0380e2ef30a3356dab1f87",
+    "tests/test_gftd_precision_fixed_state.py": "7a24611209bde3d01862f9042e9aebb20c7f78785232003ef5c1ee3e39a07c16",
+    "experiments/gftd_initialization_precision_20261109/candidate.py": "c804a58528fa258d25901fea70fe4fdfae8966e460c6ccc8f64794003fdab92e",
+    "tests/test_gftd_precision_candidate.py": "2ff17d1e3dcf42d4d52a7ba26e3f0a536733a68b31c4dc87d91bcc659cd7b8df"
+  },
+  "final_test": {
+    "shell": "PowerShell",
+    "command": "$env:PYTHONPATH='src'; $env:OPENBLAS_NUM_THREADS='1'; $env:OMP_NUM_THREADS='1'; $env:MKL_NUM_THREADS='1'; $testTemp = Join-Path '.tmp' ('candidate-qa-' + [guid]::NewGuid().ToString('N')); .\\.venv-gpu\\Scripts\\python.exe -m pytest tests/test_gftd_precision_candidate.py -q --basetemp $testTemp",
+    "tool_chunk_id": "3b1b6e",
+    "exit_code": 0,
+    "passed": 5,
+    "failed": 0,
+    "pytest_wall_seconds": 5.21,
+    "cli_help_returned": true
+  },
+  "preceding_test": {
+    "tool_chunk_id": "61b892",
+    "exit_code": 0,
+    "passed": 4,
+    "failed": 0,
+    "pytest_wall_seconds": 5.22
+  },
+  "checks": [
+    "An actual spawned worker loads one shared frozen checkpoint and completes both initialization stages from the zero simple start",
+    "Exact p0 anchor, fixed DP8 RHS accounting and original numerical gates",
+    "Duplicate task claim rejected and pilot diagnostics, state bytes and model checkpoint verified for reuse",
+    "Single strict Radau compares the existing fine 15-second path prefix if it reaches one second, including when a later step fails",
+    "Incomplete fine path before one second leaves the reference unresolved without a repeat integration",
+    "49 states map to 44 packets, and a lost original output blocks the pilot decision"
+  ],
+  "real_private_payload_reads": 0,
+  "real_scientific_integrations": 0
+}

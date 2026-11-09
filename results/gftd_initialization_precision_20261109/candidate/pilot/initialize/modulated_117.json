@@ -1,0 +1,75 @@
+{
+  "mode": "modulated",
+  "index": 117,
+  "event_id": "expansion_0143",
+  "label": "unstable",
+  "old_status": "blocked_by_stage1",
+  "old_gates": {
+    "passed": false,
+    "values": {
+      "roundtrip_main_scaled_max": null,
+      "roundtrip_fine_scaled_max": null,
+      "history_main_fine_rms": null,
+      "future_main_fine_rms": null,
+      "future_main_fine_peak": null,
+      "p_endpoint_error": null
+    },
+    "error": "FloatingPointError('overflow encountered in exp')"
+  },
+  "status": "blocked_by_stage1",
+  "passed": false,
+  "p0_exact": null,
+  "stage": "stage1",
+  "stage1_gates": {
+    "passed": false,
+    "values": {
+      "roundtrip_main_scaled_max": null,
+      "roundtrip_fine_scaled_max": null,
+      "history_main_fine_rms": null,
+      "future_main_fine_rms": null,
+      "future_main_fine_peak": null,
+      "p_endpoint_error": null
+    },
+    "error": "FloatingPointError('overflow encountered in exp')"
+  },
+  "final_gates": null,
+  "history_mse": {
+    "old": 0.4338278097500311,
+    "candidate": 0.4338278130844408,
+    "change": 3.334409692801188e-09
+  },
+  "active_bounds": {
+    "a": 0,
+    "r": 8,
+    "a_fixed": true
+  },
+  "counts": {
+    "algebra_terms_planned": 0,
+    "algebra_terms_actual": 0,
+    "algebra_terms_skipped": 0,
+    "nnls_attempts": 0,
+    "nnls_completed": 0,
+    "nnls_qualified": 0,
+    "reconstruction_attempts": 0,
+    "reconstructions": 0,
+    "optimization_tasks": 1,
+    "actual_residual_calls": 261,
+    "integrations_attempted": 266,
+    "integrations_completed": 265,
+    "rk4_steps_attempted": 0,
+    "rk4_steps_completed": 0,
+    "fixed_dp8_steps_attempted": 10731,
+    "fixed_dp8_steps_completed": 10730,
+    "actual_rhs_calls": 128761
+  },
+  "diagnostics": {
+    "path": "artifacts/gftd_initialization_precision_20261109/candidate/pilot/diagnostics/modulated_117.json.gz",
+    "sha256": "bd109130d22b46c33ba1d4b7d483869726ec322ffcec6b4035da3a0a0e018c34",
+    "bytes": 26272
+  },
+  "state": null,
+  "phase": "pilot",
+  "action_id": "gftd-initialization-precision-20261109-candidate-pilot-01",
+  "worker_wall_seconds": 14.547473699902184,
+  "worker_cpu_seconds": 14.25
+}

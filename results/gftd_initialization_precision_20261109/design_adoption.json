@@ -1,0 +1,69 @@
+{
+  "run_id": "gftd_initialization_precision_20261109",
+  "recorded_utc": "2026-11-09T00:51:15.833Z",
+  "authorization": "User 2026-11-09 explicitly requested autonomous next-cycle diagnosis of initialization numerical failures, separation of precision from parameter/initialization dynamics, then bounded improvement and testing.",
+  "parent_scientific_run": "gftd_fit297_20261107",
+  "parent_scientific_commit": "83645d1b9d3593eae4474bc4228dd00335b9eb76",
+  "protocol_reference": "campaigns/gftd_initialization_precision_20261109/protocol.md",
+  "protocol_sha256": "a1aab626927d428e2c6f3c7821a4bd7525c0378248fe64183faf38bff190c649",
+  "independent_design_review": "reports/gftd_initialization_precision_20261109/design_review.md",
+  "review_sha256": "6fa749bc282eef39466e5dc05cb9a66ae9d814637922741bc9eb6a8841330cb8",
+  "actual_model_calls": [
+    {
+      "tool": "collaboration.spawn_agent",
+      "returned_task_name": "/root/init_precision_scientist",
+      "configured_model": "gpt-6-astra",
+      "role": "Scientist",
+      "server_resolved_model": null
+    },
+    {
+      "tool": "collaboration.spawn_agent",
+      "returned_task_name": "/root/init_failure_audit",
+      "configured_model": "gpt-6.1-sol",
+      "role": "Modeler",
+      "server_resolved_model": null
+    },
+    {
+      "tool": "collaboration.spawn_agent",
+      "returned_task_name": "/root/precision_kernel",
+      "configured_model": "gpt-6.1-sol",
+      "role": "Modeler",
+      "server_resolved_model": null
+    },
+    {
+      "tool": "collaboration.spawn_agent",
+      "returned_task_name": "/root/init_precision_reviewer",
+      "configured_model": "gpt-6.1-sol",
+      "role": "Independent Reviewer",
+      "server_resolved_model": null
+    }
+  ],
+  "root_decision": "adopt bounded protocol with the execution clarifications below; scientific execution requires separate frozen release after implementation review",
+  "adoption_reason": "Saved failed initial states allow a direct same-state discrimination without refitting shared parameters. Conditional fixed-step higher-order implementation tests discretization independently from the ODE and initialization-flow branch; no future truth is needed for the stated numerical target.",
+  "clarifications": [
+    "Before numerical execution authenticate all 594 full diagnostics, legal observation packets, models and adopted successful state artifacts; save deterministic selection and per-state raw float64 hashes in a prepare-only phase, then bind its result in the diagnostic release.",
+    "Qualify references and convergence separately for history and future; observable-projection agreement cannot establish latent agreement. Report full-state discrepancies; use signed integration step for stability polynomials and distinguish inverse-time growth from forward stiffness.",
+    "Candidate A fixed-state pilot includes every selected originally successful control. Candidate B preserves all old successful returned points (including stage2); static does not re-optimize. For the five modulated stage2 failures reuse the authenticated previously qualified stage1 directly. For remaining modulated finite stage1 states, construct the original feasible smooth coordinates and allow at most one smooth task, returning the least-history-loss point among those passing all original six gates; otherwise no output.",
+    "Full-cohort single-Radau checks are single-reference agreement, distinct from the diagnostic triple-reference qualification. Fifteen-second rollouts assess numerical continuation only. Persist phase identity, outputs and cost before reuse; completed or unknown tasks are never replayed to select better outcomes.",
+    "If inactive exponential evaluation is repaired, record RHS version separately and compare the same RHS within every integrator pair; do not attribute a zero-term repair benefit to integration order."
+  ],
+  "scope": {
+    "data": "previously exposed train fit297 causal histories and saved initial states",
+    "original_denominator_each_model": 297,
+    "stable": 267,
+    "unstable": 30,
+    "shared_parameter_refits": 0,
+    "future_truth_reads": 0,
+    "original_val_test": "closed",
+    "new_FOM": 0,
+    "TASK4": "paused",
+    "default": "none",
+    "incumbent_changed": false
+  },
+  "reference_documentation": {
+    "url": "https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html",
+    "accessed_date": "2026-11-09",
+    "purpose": "solver roles and tolerance/step semantics; numerical qualification requires actual paired agreement"
+  },
+  "scientific_execution_released": false
+}

@@ -1,0 +1,315 @@
+{
+  "differences": {
+    "1": {
+      "observed": {
+        "rms": 3.3124550411049135e-13,
+        "peak": 5.7980287238024175e-12
+      },
+      "state": {
+        "rms": 2.10107985850232e-13,
+        "peak": 5.7975846345925675e-12
+      },
+      "components": {
+        "theta": {
+          "rms": 3.2023852017027303e-15,
+          "peak": 2.4868995751603507e-14
+        },
+        "omega": {
+          "rms": 4.673209896317558e-14,
+          "peak": 5.797584634592567e-13
+        },
+        "p": {
+          "rms": 2.327381268496277e-15,
+          "peak": 1.426636586643326e-14
+        },
+        "a": {
+          "rms": 3.149068489611362e-16,
+          "peak": 1.0547118733938987e-15
+        },
+        "r": {
+          "rms": 2.7582732869449274e-15,
+          "peak": 1.970645868709653e-14
+        }
+      }
+    },
+    "2": {
+      "observed": {
+        "rms": 1.9605329343466837e-12,
+        "peak": 2.389644038203187e-11
+      },
+      "state": {
+        "rms": 1.2422800629622343e-12,
+        "peak": 2.389644038203187e-11
+      },
+      "components": {
+        "theta": {
+          "rms": 1.5748750987479477e-14,
+          "peak": 1.2034817586936697e-13
+        },
+        "omega": {
+          "rms": 2.7681860180993563e-13,
+          "peak": 2.389644038203187e-12
+        },
+        "p": {
+          "rms": 1.0366588843750484e-14,
+          "peak": 7.482903185973555e-14
+        },
+        "a": {
+          "rms": 4.615592144880892e-16,
+          "peak": 1.6653345369377348e-15
+        },
+        "r": {
+          "rms": 1.3369632561721836e-14,
+          "peak": 1.0402789740737717e-13
+        }
+      }
+    },
+    "5": null,
+    "8": null,
+    "15": null
+  },
+  "integrals": {
+    "main": {
+      "completed": false,
+      "step": 0.01,
+      "target_time": 15.0,
+      "last_accepted_time": 4.33,
+      "attempted_steps": 434,
+      "accepted_steps": 433,
+      "actual_rhs_calls": 5203,
+      "interrupted_step_rhs_calls": 7,
+      "error": "FloatingPointError('underflow encountered in exp')",
+      "failure": {
+        "time": 4.3325000000000005,
+        "step": 434,
+        "substage": 7,
+        "operation": "fixed_dp8",
+        "error": "FloatingPointError('underflow encountered in exp')",
+        "edges": {
+          "active": {
+            "min": -253385096837.402,
+            "max": -171.29363314040194,
+            "min_edge": 1,
+            "max_edge": 24,
+            "psi_at_max": 0.002844537224975045,
+            "psi_min": -4.408689843046308
+          },
+          "inactive": {
+            "min": -126692557218.51668,
+            "max": 206.21943981912955,
+            "min_edge": 23,
+            "max_edge": 31,
+            "psi_at_max": 0.0012279647803196394,
+            "psi_min": -5.219748542527907
+          }
+        }
+      },
+      "wall_seconds": 0.5408022999763489,
+      "cpu_seconds": 0.53125,
+      "start_state_sha256": "9372e7a18cd42082f0d3f19ffd9ed84a1b69d4e2fd0f6eb1fbeeb05b6f195e5b",
+      "component_ranges": {
+        "theta": {
+          "min": -0.1744784404384146,
+          "max": 10.505381145976,
+          "last_accepted_max_abs": 7.987941621639929
+        },
+        "omega": {
+          "min": -13.919111401277053,
+          "max": 13.098487053257362,
+          "last_accepted_max_abs": 13.919111401277053
+        },
+        "p": {
+          "min": -2.9773101270375846,
+          "max": 1.1557987318066847,
+          "last_accepted_max_abs": 0.5709565469741809
+        },
+        "a": {
+          "min": -0.9926997315523995,
+          "max": 7.18490939732924,
+          "last_accepted_max_abs": 7.18490939732924
+        },
+        "r": {
+          "min": -1.9492168885187673,
+          "max": 5.10032679102679,
+          "last_accepted_max_abs": 1.9595664148108076
+        }
+      },
+      "first_failure_interval": [
+        4.33,
+        4.34
+      ]
+    },
+    "fine": {
+      "completed": false,
+      "step": 0.005,
+      "target_time": 15.0,
+      "last_accepted_time": 4.33,
+      "attempted_steps": 867,
+      "accepted_steps": 866,
+      "actual_rhs_calls": 10402,
+      "interrupted_step_rhs_calls": 10,
+      "error": "FloatingPointError('underflow encountered in exp')",
+      "failure": {
+        "time": 4.333,
+        "step": 867,
+        "substage": 10,
+        "operation": "fixed_dp8",
+        "error": "FloatingPointError('underflow encountered in exp')",
+        "edges": {
+          "active": {
+            "min": -14638843.399258692,
+            "max": -1.2390940508060475,
+            "min_edge": 1,
+            "max_edge": 24,
+            "psi_at_max": 0.002862106333724917,
+            "psi_min": -4.408621471571855
+          },
+          "inactive": {
+            "min": -7319473.372608982,
+            "max": 1.0127766824498823,
+            "min_edge": 23,
+            "max_edge": 31,
+            "psi_at_max": 0.0012414859676914806,
+            "psi_min": -5.220561676051445
+          }
+        }
+      },
+      "wall_seconds": 1.1256769000319764,
+      "cpu_seconds": 1.109375,
+      "start_state_sha256": "9372e7a18cd42082f0d3f19ffd9ed84a1b69d4e2fd0f6eb1fbeeb05b6f195e5b",
+      "component_ranges": {
+        "theta": {
+          "min": -0.1744784404384146,
+          "max": 10.505381145975939,
+          "last_accepted_max_abs": 7.987941786404273
+        },
+        "omega": {
+          "min": -13.920080530144135,
+          "max": 13.09848705325747,
+          "last_accepted_max_abs": 13.920080530144135
+        },
+        "p": {
+          "min": -2.9773101270375135,
+          "max": 1.1557987318066885,
+          "last_accepted_max_abs": 0.570956281724037
+        },
+        "a": {
+          "min": -0.9926997315524345,
+          "max": 7.1854322756574085,
+          "last_accepted_max_abs": 7.1854322756574085
+        },
+        "r": {
+          "min": -1.949216888518766,
+          "max": 5.100326791026719,
+          "last_accepted_max_abs": 1.959566555506106
+        }
+      },
+      "first_failure_interval": [
+        4.33,
+        4.335
+      ]
+    },
+    "radau": {
+      "completed": true,
+      "target_time": 1.0,
+      "last_accepted_time": 1.0,
+      "step": null,
+      "attempted_steps": 1878,
+      "accepted_steps": 1878,
+      "actual_rhs_calls": 13374,
+      "wall_seconds": 1.7548403999535367,
+      "cpu_seconds": 1.734375,
+      "error": null,
+      "failure": null,
+      "solver": "Radau",
+      "rtol": 1e-11,
+      "atol": 1e-13,
+      "max_step": 0.005,
+      "rhs_limit": 20000,
+      "solver_nfev": 13274,
+      "solver_njev": 2,
+      "solver_nlu": 90,
+      "start_state_sha256": "9372e7a18cd42082f0d3f19ffd9ed84a1b69d4e2fd0f6eb1fbeeb05b6f195e5b",
+      "component_ranges": {
+        "theta": {
+          "min": -0.1744784404384146,
+          "max": 3.8437798220055157,
+          "last_accepted_max_abs": 2.3796841521716443
+        },
+        "omega": {
+          "min": -7.7272704219203066,
+          "max": 6.253403929228095,
+          "last_accepted_max_abs": 6.077368412874327
+        },
+        "p": {
+          "min": -1.688964731373693,
+          "max": 1.1557987318070753,
+          "last_accepted_max_abs": 0.8040276319621859
+        },
+        "a": {
+          "min": -0.5631755960918919,
+          "max": 0.17986947696553948,
+          "last_accepted_max_abs": 0.5546584196031237
+        },
+        "r": {
+          "min": -1.8586399914390608,
+          "max": 1.116481078187428,
+          "last_accepted_max_abs": 1.8586399914390608
+        }
+      }
+    }
+  },
+  "single_radau_reference": {
+    "attempted": true,
+    "status": "confirmed",
+    "difference": {
+      "observed": {
+        "rms": 1.0415870948450255e-11,
+        "peak": 1.0335199362998537e-10
+      },
+      "state": {
+        "rms": 6.632885982899853e-12,
+        "peak": 1.0335288180840507e-10
+      },
+      "components": {
+        "theta": {
+          "rms": 1.072544694785194e-13,
+          "peak": 6.070699498650356e-13
+        },
+        "omega": {
+          "rms": 1.4691955498369698e-12,
+          "peak": 1.0335288180840507e-11
+        },
+        "p": {
+          "rms": 1.4535919590443572e-13,
+          "peak": 9.247047572102929e-13
+        },
+        "a": {
+          "rms": 9.110599654512352e-15,
+          "peak": 8.348877145181177e-14
+        },
+        "r": {
+          "rms": 9.22357813624691e-14,
+          "peak": 5.222489107836736e-13
+        }
+      }
+    }
+  },
+  "counts": {
+    "actual_rhs_calls": 28979,
+    "integrations_attempted": 3,
+    "integrations_completed": 1
+  },
+  "arrays": {
+    "path": "artifacts/gftd_initialization_precision_20261109/candidate/full/trajectories/modulated_204.npz",
+    "sha256": "d60d02344fa463bfb11fbddd38883316f4b17b8aaac50d323adb5adc9988cdc5",
+    "bytes": 386697
+  },
+  "phase": "full",
+  "action_id": "gftd-initialization-precision-20261109-candidate-full-01",
+  "event_id": "pilot_0122",
+  "index": 204,
+  "mode": "modulated",
+  "worker_wall_seconds": 3.526596400071867,
+  "worker_cpu_seconds": 3.40625
+}

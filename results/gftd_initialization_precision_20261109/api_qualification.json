@@ -1,0 +1,152 @@
+{
+  "status": "QUALIFIED",
+  "scope": "Artificial engineering checks; no private payloads, real-event integration, or fit",
+  "format": "gftd_causal_two_stage_fit297_fixed_dp8_v1",
+  "method": "fixed_dp8",
+  "factory": "kiki.models.gftd_fitting.make_fixed_dp8_config(functional, fit297_config)",
+  "coefficients_sha256": "123669c4e6be7b9e45302adb0f7714a9972c8f1e196728914b43b2bd9c2f6361",
+  "protocol_sha256": "a1aab626927d428e2c6f3c7821a4bd7525c0378248fe64183faf38bff190c649",
+  "source_sha256": {
+    "src/kiki/models/gftd_fitting.py": "f45656e1d7224a1a745ada6c9d2191f9f9af01153d891f17c35b629a9eb5c973",
+    "src/kiki/models/gftd_kuramoto.py": "124c9df04dc7eaba7e3ddc435e7646a818c1a01edd5284cd8743c63d124220d1",
+    "src/kiki/numerics.py": "09363eeee4679b12891340f198dabc91971f76dd8f0380e2ef30a3356dab1f87",
+    "src/kiki/models/gftd_discovery.py": "9245b0726cb3fca15d3248106b43bd1673ed6607ed3a852b67c533f768a1b27f",
+    "src/kiki/models/gftd_fit297.py": "43f937b6973490c771aea2e1ac8694a2c356a48fb2f26337a73c9e991c6e334b",
+    "src/kiki/physics/kuramoto_functional.py": "5a709bc2b5b984fbdd4c376f69852e0a53a12929dee3f525a453b5934caec021",
+    "campaigns/gftd_initialization_precision_20261109/protocol.md": "a1aab626927d428e2c6f3c7821a4bd7525c0378248fe64183faf38bff190c649",
+    "tests/test_gftd_precision_api.py": "49dafbc9703fb77489271d2eff37582fbb87efd8fcc5614c8b00473efc71d744",
+    "tests/test_gftd_fitting.py": "79cd24f299c5c8fed3f0f6f7430ce339394cd34085bcbf24c95a89d2cf7ecc02",
+    "tests/test_gftd_fit297_engine.py": "8d331d31c5aed79d44150bc01839cd48cc8c776e4264e9d7acc79b9c6cb1e9a6",
+    "tests/test_gftd_model_fit.py": "2a0b11956e54c2a2f4d90f58887a39ebda83978becf7fdac2b1c6f6696411658",
+    "tests/test_gftd_kuramoto_architecture.py": "6eb6ed2fdaa1fc9b57eca6b7528871bf43b54ee76d508512011c3b3a030473f0",
+    "tests/test_dop853_fixed.py": "05631c9c62325c334d2e5cd918418663834741d8ee4324ba900c533841b8a4af",
+    "tests/test_shared_numerics.py": "ea1ad0bf15003591befe3d3ab5dc251fc25d84ff8bbe609815e122c58bf3644e"
+  },
+  "versions": {
+    "python": "3.12.14",
+    "numpy": "2.5.2",
+    "scipy": "1.18.0",
+    "pytest": "9.1.1"
+  },
+  "final_test": {
+    "argv": [
+      ".venv-gpu/Scripts/python.exe",
+      "-m",
+      "pytest",
+      "-q",
+      "--basetemp",
+      ".tmp/gftd_precision_api_qualification_02",
+      "tests/test_gftd_precision_api.py",
+      "tests/test_gftd_fitting.py",
+      "tests/test_gftd_fit297_engine.py",
+      "tests/test_gftd_model_fit.py",
+      "tests/test_gftd_kuramoto_architecture.py",
+      "tests/test_dop853_fixed.py",
+      "tests/test_shared_numerics.py"
+    ],
+    "environment": {
+      "PYTHONPATH": "src",
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1"
+    },
+    "exit_code": 0,
+    "passed": 111,
+    "failed": 0,
+    "subtests_passed": 9,
+    "pytest_reported_seconds": 31.67
+  },
+  "final_test_stdout": "111 passed, 9 subtests passed in 31.67s",
+  "isolated_api_test": {
+    "argv": [
+      ".venv-gpu/Scripts/python.exe",
+      "-m",
+      "pytest",
+      "-q",
+      "--basetemp",
+      ".tmp/gftd_precision_api_smoke_02",
+      "tests/test_gftd_precision_api.py"
+    ],
+    "environment": {
+      "PYTHONPATH": "src",
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1"
+    },
+    "exit_code": 0,
+    "passed": 10,
+    "failed": 0,
+    "subtests_passed": 0,
+    "pytest_reported_seconds": 9.22
+  },
+  "prior_tests": [
+    {
+      "argv": [
+        ".venv-gpu/Scripts/python.exe",
+        "-m",
+        "pytest",
+        "-q",
+        "--basetemp",
+        ".tmp/gftd_precision_api_qualification_01",
+        "tests/test_gftd_precision_api.py",
+        "tests/test_gftd_fitting.py",
+        "tests/test_gftd_fit297_engine.py",
+        "tests/test_gftd_model_fit.py",
+        "tests/test_gftd_kuramoto_architecture.py",
+        "tests/test_dop853_fixed.py",
+        "tests/test_shared_numerics.py"
+      ],
+      "environment": {
+        "PYTHONPATH": "src",
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1"
+      },
+      "exit_code": 1,
+      "passed": 110,
+      "failed": 1,
+      "subtests_passed": 9,
+      "pytest_reported_seconds": 170.08
+    },
+    {
+      "argv": [
+        ".venv-gpu/Scripts/python.exe",
+        "-m",
+        "pytest",
+        "-q",
+        "--basetemp",
+        ".tmp/gftd_precision_api_smoke_01",
+        "tests/test_gftd_precision_api.py"
+      ],
+      "environment": {
+        "PYTHONPATH": "src",
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1"
+      },
+      "exit_code": 1,
+      "passed": 9,
+      "failed": 1,
+      "subtests_passed": 0,
+      "pytest_reported_seconds": 7.61
+    }
+  ],
+  "prior_test_resolution": "Moved the artificial fifth-stage failure from outside the counted RHS to inside the synthetic functional.rhs. Production files were unchanged between test attempts.",
+  "legacy_bitwise_crosscheck": {
+    "exit_code": 0,
+    "reference": "Functions extracted from git show HEAD sources",
+    "synthetic_fitting_integrations": 6,
+    "count_dicts_equal": 6,
+    "synthetic_public_rollouts": 2,
+    "grids": "Fitting: both directions and both registered history steps, plus both future steps. Public: one uniform and one irregular grid."
+  },
+  "diff_check": {
+    "command": "git diff --check -- src/kiki/models/gftd_fitting.py src/kiki/models/gftd_kuramoto.py",
+    "exit_code": 0
+  },
+  "compatibility": [
+    "The same v2 model file format carries the new versioned inference configuration. A reader predating this wrapper rejects the new candidate configuration.",
+    "Candidate rollout only accepts uniform 0.01 s or 0.005 s grids and uses the exact registered step. Legacy rollout still accepts its existing bounded irregular grids.",
+    "The candidate requires the frozen SciPy DOP853 A and B table. Validation fails closed if the table differs."
+  ]
+}
