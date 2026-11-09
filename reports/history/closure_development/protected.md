@@ -1,6 +1,6 @@
 # 后续闭合与训练时域：55项原位保护
 
-2026-11-09复核后，本主题有55项待解除保护。下表列出原引用线索及现址，新增的机器记录引用见[保护明细](../../../results/repository_organization/20261109_closure_archive12/protected.csv)。
+2026-11-09复核后，本主题有55项待解除保护。下表列出原引用线索及现址，新增的机器记录引用见[保护明细](../../../results/repository_organization/20261109_force_memory_archive15/protected.csv)。
 
 | 原件 | 具体引用者 | 解除条件 |
 |---|---|---|
@@ -46,7 +46,7 @@
 | [fused_closure_runtime_20261021_implementation_review.md](../../fused_closure_runtime_20261021_implementation_review.md) | [results/fused_closure_runtime_20261021/prepare01_manifest.json](../../../results/fused_closure_runtime_20261021/prepare01_manifest.json)（第350行） | 核准这些引用者与冻结身份的替代及旧版本恢复，再单独解除；不回填旧哈希。 |
 | [fused_closure_runtime_20261021_plan_review.md](../../fused_closure_runtime_20261021_plan_review.md) | [results/fused_closure_runtime_20261021/prepare01_manifest.json](../../../results/fused_closure_runtime_20261021/prepare01_manifest.json)（第351行） | 核准这些引用者与冻结身份的替代及旧版本恢复，再单独解除；不回填旧哈希。 |
 | [fused_closure_runtime_20261021_protocol.md](../../fused_closure_runtime_20261021_protocol.md) | [results/fused_closure_runtime_20261021/prepare01_manifest.json](../../../results/fused_closure_runtime_20261021/prepare01_manifest.json)（第352行） | 核准这些引用者与冻结身份的替代及旧版本恢复，再单独解除；不回填旧哈希。 |
-| [horizon_pair_20261023_conclusion.md](../../horizon_pair_20261023_conclusion.md) | [reports/astra6_project_research_20261025_raw.md](../../astra6_project_research_20261025_raw.md)（第10行）；[reports/horizon_pair_20261023_result_review.md](../../horizon_pair_20261023_result_review.md)（第46行）；[reports/project_progress_research_20261025.md](../../project_progress_research_20261025.md)（第38行） | 核准这些引用者与冻结身份的替代及旧版本恢复，再单独解除；不回填旧哈希。 |
+| [horizon_pair_20261023_conclusion.md](../../horizon_pair_20261023_conclusion.md) | [reports/astra6_project_research_20261025_raw.md](../force_memory/originals/astra6_project_research_20261025_raw.md)（第10行）；[reports/horizon_pair_20261023_result_review.md](../../horizon_pair_20261023_result_review.md)（第46行）；[reports/project_progress_research_20261025.md](../force_memory/originals/project_progress_research_20261025.md)（第38行） | 核准这些引用者与冻结身份的替代及旧版本恢复，再单独解除；不回填旧哈希。 |
 | [horizon_pair_20261023_protocol.md](../../horizon_pair_20261023_protocol.md) | [reports/horizon_pair_20261023_result_review.md](../../horizon_pair_20261023_result_review.md)（第45行） | 核准这些引用者与冻结身份的替代及旧版本恢复，再单独解除；不回填旧哈希。 |
 | [horizon_pair_20261023_result_review.md](../../horizon_pair_20261023_result_review.md) | [reports/horizon_pair_20261023_result_review.md](../../horizon_pair_20261023_result_review.md)（第47行）；[reports/horizon_pair_20261023_conclusion.md](../../horizon_pair_20261023_conclusion.md)（第49行） | 核准这些引用者与冻结身份的替代及旧版本恢复，再单独解除；不回填旧哈希。 |
 | [native_receipt_20261020_protocol.md](../../native_receipt_20261020_protocol.md) | [reports/native_receipt_20261020_conclusion.md](originals/native_receipt_20261020_conclusion.md)（第5行） | 核准这些引用者与冻结身份的替代及旧版本恢复，再单独解除；不回填旧哈希。 |

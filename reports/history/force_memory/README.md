@@ -17,7 +17,7 @@
 
 - [材料表](catalog.md)按原始标题提供协议、结果、咨询和审查入口；每份原件保持一份，不补造历史 Job。
 - [路径保护表](protected.md)解释为什么大部分正式协议、源码绑定与关键结论仍保留原处；保护不是科学接受标签。
-- [已有 Campaign 与逐轮记录](../../../campaigns/force_memory_closure_20261030.md)保留完整问题谱系；[原追溯索引](../../../campaigns/retrospective_force_memory_20261030.md)保留编制时点与固定提交来源。
+- [Campaign 固定阅读版](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/campaigns/force_memory_closure_20261030.md)和[当前 Campaign 卡](../../../campaigns/force_memory_closure_20261030.md)保留完整问题谱系；[原追溯索引](../../../campaigns/retrospective_force_memory_20261030.md)保留编制时点与固定提交来源。
 - [正式 Run 中文总表](../../run_index.md)连接已登记的 p 通道工作；字段未记录的采用决定显示 unknown，不用提议值代替 root 决定。
 
 所有指标沿原模型、train 范围、时域和尺度解释。风险不是 RMSE，历史 21/30 漏检不作为后来 GFTD 的同期成绩；原 val/test 的暴露和关闭历史保持不变。
