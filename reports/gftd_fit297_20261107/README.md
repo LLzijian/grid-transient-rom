@@ -21,8 +21,8 @@
 ### 主要阅读材料
 
 - 冻结协议：[reports/gftd_fit297_20261107_protocol.md](../gftd_fit297_20261107_protocol.md)；路径处理：原位保留，源码或路径哈希身份引用。
-- 正式结论：[reports/gftd_fit297_20261107_conclusion.md](../gftd_fit297_20261107_conclusion.md)；路径处理：原位保留，源码或路径哈希身份引用。
-- 独立结果审查：[reports/gftd_fit297_20261107_result_review.md](../gftd_fit297_20261107_result_review.md)；路径处理：原位保留，源码或路径哈希身份引用。
+- 正式结论：[reports/gftd_fit297_20261107_conclusion.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_fit297_20261107_conclusion.md)；路径处理：原位保留，源码或路径哈希身份引用。
+- 独立结果审查：[reports/gftd_fit297_20261107_result_review.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_fit297_20261107_result_review.md)；路径处理：原位保留，源码或路径哈希身份引用。
 - 执行入口：[experiments/gftd_fit297_20261107.py](../../experiments/gftd_fit297_20261107.py)；路径处理：原位保留，源码或路径哈希身份引用。
 - 结果摘要：[results/gftd_fit297_20261107/evidence_digest.json](../../results/gftd_fit297_20261107/evidence_digest.json)；路径处理：原位保留，源码或路径哈希身份引用。
 - root决定：[results/gftd_fit297_20261107/root_adoption.json](../../results/gftd_fit297_20261107/root_adoption.json)；路径处理：原位保留，现有正式登记或报告仍引用原路径。
@@ -37,7 +37,7 @@
 
 L3图相关性使用K(a=0)对绝对Kron导纳，不是K cos(phi*)；更正物理量措辞，数值不变
 
-[原解释](../gftd_fit297_20261107_scientific_assessment.md) → [独立更正](../gftd_fit297_20261107_result_review.md) → [采用更正的结论](../gftd_fit297_20261107_conclusion.md)。
+[原解释](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_fit297_20261107_scientific_assessment.md) → [独立更正](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_fit297_20261107_result_review.md) → [采用更正的结论](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_fit297_20261107_conclusion.md)。
 
 ### 执行与归档事件
 
@@ -60,8 +60,8 @@ L3图相关性使用K(a=0)对绝对Kron导纳，不是K cos(phi*)；更正物理
 | evidence.references[1]; inference.review_record.reviewed_references[1] | [reports/gftd_fit297_20261107_design_review.md](../gftd_fit297_20261107_design_review.md) | present |
 | evidence.references[2]; inference.review_record.reviewed_references[2] | [results/gftd_fit297_20261107/design_adoption.json](../../results/gftd_fit297_20261107/design_adoption.json) | present |
 | evidence.references[3]; inference.review_record.reviewed_references[3] | [results/gftd_fit297_20261107/parent_archive_verified.json](../../results/gftd_fit297_20261107/parent_archive_verified.json) | present |
-| evidence.references[4]; inference.review_record.reviewed_references[4] | [reports/gftd_fit297_20261107_analysis_review.md](../gftd_fit297_20261107_analysis_review.md) | present |
-| evidence.references[5]; inference.review_record.reviewed_references[5] | [reports/gftd_fit297_20261107_engine_review.md](../gftd_fit297_20261107_engine_review.md) | present |
+| evidence.references[4]; inference.review_record.reviewed_references[4] | [reports/gftd_fit297_20261107_analysis_review.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_fit297_20261107_analysis_review.md) | present |
+| evidence.references[5]; inference.review_record.reviewed_references[5] | [reports/gftd_fit297_20261107_engine_review.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_fit297_20261107_engine_review.md) | present |
 | evidence.references[6]; inference.review_record.reviewed_references[6] | [results/gftd_fit297_20261107/static_identity_audit.json](../../results/gftd_fit297_20261107/static_identity_audit.json) | present |
 | evidence.references[7]; inference.review_record.reviewed_references[7] | [results/gftd_fit297_20261107/metadata_preflight.json](../../results/gftd_fit297_20261107/metadata_preflight.json) | present |
 | evidence.references[8]; inference.review_record.reviewed_references[8] | [reports/gftd_fit297_20261107_implementation_review.md](../gftd_fit297_20261107_implementation_review.md) | present |
@@ -69,9 +69,9 @@ L3图相关性使用K(a=0)对绝对Kron导纳，不是K cos(phi*)；更正物理
 | evidence.references[10]; inference.review_record.reviewed_references[10]; navigation.materials[3].path_protection.consumers[2].reference | [results/gftd_fit297_20261107/execution_release.json](../../results/gftd_fit297_20261107/execution_release.json) | present |
 | evidence.references[11]; inference.review_record.reviewed_references[11] | [reports/gftd_fit297_20261107_resume01_implementation_review.md](../gftd_fit297_20261107_resume01_implementation_review.md) | present |
 | evidence.references[12]; inference.review_record.reviewed_references[12]; navigation.materials[0].path_protection.consumers[1].reference; navigation.materials[3].path_protection.consumers[6].reference | [results/gftd_fit297_20261107/resume01/execution_release.json](../../results/gftd_fit297_20261107/resume01/execution_release.json) | present |
-| evidence.references[13]; inference.effect_reference; inference.review_record.reviewed_references[13]; navigation.materials[1].reference; navigation.corrections[0].adopted_reference | [reports/gftd_fit297_20261107_conclusion.md](../gftd_fit297_20261107_conclusion.md) | present |
-| evidence.references[14]; inference.optimization_adequacy_reference; inference.alternative_explanations_reference; inference.review_record.reviewed_references[14]; navigation.corrections[0].original_reference | [reports/gftd_fit297_20261107_scientific_assessment.md](../gftd_fit297_20261107_scientific_assessment.md) | present |
-| evidence.references[15]; inference.independent_review_reference; inference.review_record.reference; inference.review_record.reviewed_references[15]; navigation.materials[2].reference; navigation.corrections[0].corrected_by_reference | [reports/gftd_fit297_20261107_result_review.md](../gftd_fit297_20261107_result_review.md) | present |
+| evidence.references[13]; inference.effect_reference; inference.review_record.reviewed_references[13]; navigation.materials[1].reference; navigation.corrections[0].adopted_reference | [reports/gftd_fit297_20261107_conclusion.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_fit297_20261107_conclusion.md) | present |
+| evidence.references[14]; inference.optimization_adequacy_reference; inference.alternative_explanations_reference; inference.review_record.reviewed_references[14]; navigation.corrections[0].original_reference | [reports/gftd_fit297_20261107_scientific_assessment.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_fit297_20261107_scientific_assessment.md) | present |
+| evidence.references[15]; inference.independent_review_reference; inference.review_record.reference; inference.review_record.reviewed_references[15]; navigation.materials[2].reference; navigation.corrections[0].corrected_by_reference | [reports/gftd_fit297_20261107_result_review.md](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_fit297_20261107_result_review.md) | present |
 | evidence.references[16]; inference.probe_reference; inference.review_record.reviewed_references[16]; navigation.materials[4].reference | [results/gftd_fit297_20261107/evidence_digest.json](../../results/gftd_fit297_20261107/evidence_digest.json) | present |
 | evidence.references[17]; inference.review_record.reviewed_references[17] | [results/gftd_fit297_20261107/independent_result_audit.json](../../results/gftd_fit297_20261107/independent_result_audit.json) | present |
 | evidence.references[18]; inference.review_record.reviewed_references[18]; navigation.materials[6].reference | [results/gftd_fit297_20261107/raw_artifacts_manifest.json](../../results/gftd_fit297_20261107/raw_artifacts_manifest.json) | present |
@@ -97,3 +97,5 @@ L3图相关性使用K(a=0)对绝对Kron导纳，不是K cos(phi*)；更正物理
 [当前路径保护明细](protected.md)由本批保护索引接续，科学登记不回写。
 
 [早期设计、接口与数值复核材料](../../results/repository_organization/20261109_fit297_archive16/README.md)提供固定阅读版和归档原件。
+
+[早期设计、接口与数值复核材料](../../results/repository_organization/20261109_fit297_citations21/README.md)提供固定阅读版和归档原件。
