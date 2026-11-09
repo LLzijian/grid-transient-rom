@@ -185,8 +185,12 @@ class Organization:
             for old, row in rows.items():
                 row["individual_role_not_reviewed"] = old in pending
         for old, entry in self.migrations.items():
-            rows.setdefault(old, {}).update(original_path=old, current_path=self.resolve(old), migration_record=entry["source_record"], frozen_original_path=entry["new_path"],
+            current = self.resolve(old)
+            row = rows.setdefault(old, {})
+            row.update(original_path=old, current_path=current, migration_record=entry["source_record"], frozen_original_path=entry["new_path"],
                 frozen_sha256=entry["sha256"], continuous_reading=self.reading.get(old))
+            if current != old:
+                row["handling"] = "archived_byte_identical"
         for entry in self.csv("report_protection"):
             old = entry["original_path"]
             consumers = json.loads(entry["consumers"])

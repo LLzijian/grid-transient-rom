@@ -25,7 +25,7 @@
 | 问题 | 这组记录的结论范围 | 来源 |
 |---|---|---|
 | 继续联合训练是否得到完整目标上的有效比较？ | 0099 两组各追加 600 次更新，L10 完整目标仍数值未决；0100 的共同 100 步细步长比较未恢复完整目标资格。两轮均不构成模型晋升或模型族否证。 | [0099](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/0099_joint_adequacy_capability.md)、[0100](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/0100_joint_numerical_pair_capability.md) |
-| 结构研究候选与普通预测基线是什么关系？ | 0102 分别保留 S-O 作为结构研究候选、F-O 作为普通稀疏 L1 基线；0103–0104 的端点没有晋升，不能混成一个“当前最好模型”。 | [0102](../../0102_prediction_optimization_capability.md)、[0103](../../0103_cross_dissipation_capability.md)、[0104](../../0104_lr_adaptation_capability.md) |
+| 结构研究候选与普通预测基线是什么关系？ | 0102 分别保留 S-O 作为结构研究候选、F-O 作为普通稀疏 L1 基线；0103–0104 的端点没有晋升，不能混成一个“当前最好模型”。 | [0102](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/0102_prediction_optimization_capability.md)、[0103](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/0103_cross_dissipation_capability.md)、[0104](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/0104_lr_adaptation_capability.md) |
 | 离线初态改善能否转成因果预测收益？ | 0105 固定模型、12 条 train 事件上的未来真值初态优化显示乐观余地；0106 的短程单组探索未得到可用因果端点。两个结果的对象、样本范围与指标不同，不能串成一项改进率。 | [0105](../../0105_q0_scope_conclusion.md)、[0106](../../0106_oracle_distillation_pilot_capability.md) |
 
 [阶段状态原快照](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/history/current_state_before_closure_discovery_20261017.md)保留当时的起点、关闭原因和恢复线索；其中 RUNNING、BLOCKED 及预算只描述历史时点。[后续闭合方程研究](../closure_discovery/README.md)另按主题阅读。
