@@ -1,11 +1,11 @@
 # 当前研究状态
 
-**2026-11-10：有界核在原train fit297上完成297/297因果初始化，全部通过原六项数值检查，289个获得完整1 s严格参考确认；8个参考到限保持未决。本轮已闭合、归档并推送。下一轮匹配拟合与预测的公开接口已接通，44项固定资格全部通过，累计人工28次RHS／748次H；独立复核接受，两个模型已实际启动匹配拟合，部署和真实评分等待各自冻结结果。**
+**2026-11-10：有界核在原train fit297上完成297/297因果初始化，全部通过原六项数值检查，289个获得完整1 s严格参考确认；8个参考到限保持未决。本轮已闭合、归档并推送。当前匹配预测Run的44项固定资格通过，累计人工28次RHS／748次H；静态fit完成并通过审查，最终保留父参数，有界调制fit继续运行。部署和真实评分等待各自冻结结果。**
 
 ## 当前范围与指针
 
 - Campaign：[GFTD 结构发现](../campaigns/gftd_kuramoto_discovery_20261106.md)；架构入口：[current_design](current_design.md)。
-- 当前活动Run：[匹配预测设计](../designs/gftd_matched_prediction_20261109.md)、[协议](../campaigns/gftd_matched_prediction_20261109/protocol.md)、[资格审查](../reports/gftd_matched_prediction_20261109/qualification_review.md)、[资格采用](../results/gftd_matched_prediction_20261109/qualification_adoption.json)、[拟合释放](../results/gftd_matched_prediction_20261109/fit_release.json)、[实际启动](../results/gftd_matched_prediction_20261109/fit_host_start.json)、[登记](../harness/runs/gftd_matched_prediction_20261109.json)；工作量open，两个独立worker执行静态／有界调制的匹配共享适配，源码提交为`a1936bc5`；完成状态以阶段终态回执为准。
+- 当前活动Run：[匹配预测设计](../designs/gftd_matched_prediction_20261109.md)、[协议](../campaigns/gftd_matched_prediction_20261109/protocol.md)、[资格采用](../results/gftd_matched_prediction_20261109/qualification_adoption.json)、[拟合释放](../results/gftd_matched_prediction_20261109/fit_release.json)、[实际启动](../results/gftd_matched_prediction_20261109/fit_host_start.json)、[静态阶段采用](../results/gftd_matched_prediction_20261109/static_fit_adoption.json)、[登记](../harness/runs/gftd_matched_prediction_20261109.json)；工作量open，静态fit完成，有界调制fit进行中，源码提交为`a1936bc5`；两模型阶段完成以终态回执为准。
 - 最新闭合Run：[有界核初始化结论](../reports/gftd_bounded_initialization_20261109/conclusion.md)、[协议](../campaigns/gftd_bounded_initialization_20261109/protocol.md)、[科学判读](../reports/gftd_bounded_initialization_20261109/scientific_assessment.md)、[独立审查](../reports/gftd_bounded_initialization_20261109/result_review.md)、[root决定](../results/gftd_bounded_initialization_20261109/root_adoption.json)、[源码归档](../results/gftd_bounded_initialization_20261109/source_archive.json)、[推送核验](../results/gftd_bounded_initialization_20261109/archive_verified.json)、[登记](../harness/runs/gftd_bounded_initialization_20261109.json)；科学提交`95afe8cd`已推送核验，COMPLETED、closed，代码retain_branch、模型retain_evidence、科学supported_within_scope。
 - 储能可行性Run：[结论](../reports/gftd_storage_feasibility_20261109/conclusion.md)、[独立审查](../reports/gftd_storage_feasibility_20261109/result_review.md)、[归档核验](../results/gftd_storage_feasibility_20261109/archive_verified.json)；科学提交`069f54ef`已推送核验，数学命题与指定1 s结构干预supported_within_scope。
 - 上轮闭合 Run：[长时数值辨别结论](../reports/gftd_long_horizon_diagnostic_20261109/conclusion.md)、[登记](../harness/runs/gftd_long_horizon_diagnostic_20261109.json)、[协议](../campaigns/gftd_long_horizon_diagnostic_20261109/protocol.md)、[最终独立复核](../reports/gftd_long_horizon_diagnostic_20261109/final_review.md)、[root决定](../results/gftd_long_horizon_diagnostic_20261109/root_adoption.json)、[归档核验](../results/gftd_long_horizon_diagnostic_20261109/archive_verified.json)；执行COMPLETED，工作量closed，有限区间诊断supported_within_scope。
@@ -32,6 +32,8 @@ Run 3的646个初始化优化任务均收敛，但数值资格有547项未通过
 Run 3两模型各35条条件耦合边，调制25条条件调制边；总体L1为null。L2两模型局部证书成立但47实点均未获覆盖；L3各10/13模态配对，K与绝对Kron导纳相关0.440/0.483。详见[科学判读](../reports/gftd_fit297_20261107/originals/gftd_fit297_20261107_scientific_assessment.md)、[独立复核](../reports/gftd_fit297_20261107/originals/gftd_fit297_20261107_result_review.md)和[最终摘要](../results/gftd_fit297_20261107/evidence_digest.json)。
 
 ## 下一授权动作
+
+当前静态fit在固定24包上完成192次代理优化、96套候选数值检查，均通过各自执行判据；三次共享提案为同一参数，历史选择目标由父候选的0.01675269变为0.03994366，均被拒绝。45个条件列全部合格，但首候选保留路径未取得本轮支撑认证，`support=null`；24点相对投影梯度小而步长一致门均未过，优化充分性仍unknown。静态科学RHS为23,249,760；详见[事实摘要](../results/gftd_matched_prediction_20261109/static_fit_digest.json)、[科学判读](../reports/gftd_matched_prediction_20261109/static_fit_assessment.md)、[独立审查](../reports/gftd_matched_prediction_20261109/static_fit_review.md)。当前等待调制fit闭合，不追加拟合或提前释放部署。
 
 按[已冻结匹配预测协议](../campaigns/gftd_matched_prediction_20261109/protocol.md)完成静态与有界调制的两路共享适配：各24个固定样本、两起点1200残差、至多3个完整库提案。两模型冻结后，各执行原297个样本的初始化与自主预测；全部选择冻结后，再读取真实train未来作L1，并报告同一最终ODE的L2/L3。43份执行源码冻结，未知Job先对账，不重放。
 

@@ -1,0 +1,217 @@
+{
+  "run": "gftd_matched_prediction_20261109",
+  "scope": "completed_static_fit_only_modulated_pending",
+  "references": {
+    "job": {
+      "path": "results/gftd_matched_prediction_20261109/fit/jobs/static.json",
+      "sha256": "100e970d80f0abb6135fe3c6b2f5ddfdf219913fb1fa907a4c53d41e70ce67f2",
+      "bytes": 2440
+    },
+    "model": {
+      "path": "artifacts/gftd_matched_prediction_20261109/fit/static/model.json",
+      "sha256": "54d6866c87eb0c1d34bdbc6ba75a02ccdcbc2db16f7a8f0d7e2e4684f5ef418b",
+      "bytes": 465709
+    },
+    "details": {
+      "path": "artifacts/gftd_matched_prediction_20261109/fit/static/fit_details.json.gz",
+      "sha256": "2a03be25b49137eed02af4f2f1c86a08379816aa0428fd2860f45490eada430e",
+      "bytes": 14284505
+    },
+    "parent": {
+      "path": "artifacts/gftd_initialization_precision_20261109/candidate/pilot/static_model.json",
+      "sha256": "ed79e2cdea1f6830c052b9dae8fb8c2b748170e8e15ec0a5a8e3034d72b787cc",
+      "bytes": 6137799
+    }
+  },
+  "fit_status": "not_identified",
+  "final_functional_equals_parent": true,
+  "selected_candidate_index": 0,
+  "accepted_proposal_indices": [],
+  "candidates": [
+    {
+      "candidate_index": 0,
+      "model_sha256": "4ab349c7811bfb6e76b8393c8bd2caee66b5fa29c0ec610ca8fcff32b67777cc",
+      "status": "completed",
+      "history_mean_mse": 0.016752688665798682,
+      "open_terms": 35,
+      "objective": 0.01675268870079868,
+      "qualification_passed": 24,
+      "qualification_denominator": 24,
+      "optimizer_statuses": {
+        "converged": 48
+      },
+      "residual_calls": 11666
+    },
+    {
+      "candidate_index": 1,
+      "model_sha256": "65b4a341e6db32ffa7e1546e9286cb63536db5fb2acb34bd85757b398a313155",
+      "status": "completed",
+      "history_mean_mse": 0.039943656129902895,
+      "open_terms": 34,
+      "objective": 0.03994365616390289,
+      "qualification_passed": 24,
+      "qualification_denominator": 24,
+      "optimizer_statuses": {
+        "converged": 48
+      },
+      "residual_calls": 11457
+    },
+    {
+      "candidate_index": 2,
+      "model_sha256": "65b4a341e6db32ffa7e1546e9286cb63536db5fb2acb34bd85757b398a313155",
+      "status": "completed",
+      "history_mean_mse": 0.039943656129902895,
+      "open_terms": 34,
+      "objective": 0.03994365616390289,
+      "qualification_passed": 24,
+      "qualification_denominator": 24,
+      "optimizer_statuses": {
+        "converged": 48
+      },
+      "residual_calls": 11457
+    },
+    {
+      "candidate_index": 3,
+      "model_sha256": "65b4a341e6db32ffa7e1546e9286cb63536db5fb2acb34bd85757b398a313155",
+      "status": "completed",
+      "history_mean_mse": 0.039943656129902895,
+      "open_terms": 34,
+      "objective": 0.03994365616390289,
+      "qualification_passed": 24,
+      "qualification_denominator": 24,
+      "optimizer_statuses": {
+        "converged": 48
+      },
+      "residual_calls": 11457
+    }
+  ],
+  "proposal_trace": [
+    {
+      "iteration": 0,
+      "accepted": false,
+      "candidate_index": 1,
+      "reason": "no_improvement"
+    },
+    {
+      "iteration": 1,
+      "accepted": false,
+      "candidate_index": 2,
+      "reason": "no_improvement"
+    },
+    {
+      "iteration": 2,
+      "accepted": false,
+      "candidate_index": 3,
+      "reason": "no_improvement"
+    }
+  ],
+  "distinct_proposal_functionals": 1,
+  "support": null,
+  "modulation_support": null,
+  "joint_identifiability": "unknown",
+  "information": {
+    "rank_signatures_agree": true,
+    "grids": {
+      "0.0025": {
+        "ranks": {
+          "1e-08": 45,
+          "1e-10": 45,
+          "1e-12": 45
+        },
+        "memory_ranks": {
+          "1e-08": 240,
+          "1e-10": 240,
+          "1e-12": 240
+        },
+        "rows": 960,
+        "columns": 45,
+        "qualified_columns": 45,
+        "column_norm_range": [
+          0.00012767366303393567,
+          0.0007500083434928937
+        ],
+        "conditional_ratio_range": [
+          0.20376571257220746,
+          0.8540496401114941
+        ]
+      },
+      "0.00125": {
+        "ranks": {
+          "1e-08": 45,
+          "1e-10": 45,
+          "1e-12": 45
+        },
+        "memory_ranks": {
+          "1e-08": 240,
+          "1e-10": 240,
+          "1e-12": 240
+        },
+        "rows": 960,
+        "columns": 45,
+        "qualified_columns": 45,
+        "column_norm_range": [
+          0.0001276736432931693,
+          0.0007500082375139946
+        ],
+        "conditional_ratio_range": [
+          0.20376571835038,
+          0.8540496394246484
+        ]
+      }
+    }
+  },
+  "adequacy": {
+    "points": 24,
+    "optimizer_statuses": {
+      "converged": 24
+    },
+    "small_relative_gradient_count": 24,
+    "locally_consistent_count": 0,
+    "fine_eta_range": [
+      2.5921276742463123e-11,
+      1.974357410315187e-09
+    ],
+    "d_g_range": [
+      0.20524354263782965,
+      1.7745162258189418
+    ],
+    "direction_trials": 48,
+    "improving_direction_trials": 0,
+    "optimization_sufficiency": "unknown"
+  },
+  "known_costs": {
+    "actual_residual_calls": 46037,
+    "actual_rhs_calls": 23249760,
+    "algebra_terms_actual": 1428,
+    "algebra_terms_planned": 24573,
+    "algebra_terms_skipped": 23145,
+    "conditional_projections": 90,
+    "diagnostic_residual_calls": 1056,
+    "diagnostic_rhs_calls": 506880,
+    "fixed_dp8_steps_attempted": 1937480,
+    "fixed_dp8_steps_completed": 1937480,
+    "information_rhs_calls": 23040,
+    "information_svd": 140,
+    "integrations_attempted": 47693,
+    "integrations_completed": 47693,
+    "memory_svd": 48,
+    "nnls_attempts": 1428,
+    "nnls_completed": 1428,
+    "nnls_qualified": 1428,
+    "optimization_tasks": 192,
+    "port_rhs_calls": 23040,
+    "proxy_rhs_calls": 22097760,
+    "qualification_rhs_calls": 622080,
+    "qualification_suites": 96,
+    "reconstruction_attempts": 48,
+    "reconstructions": 48,
+    "rk4_steps_attempted": 0,
+    "rk4_steps_completed": 0
+  },
+  "worker_wall_seconds": 5506.781766500004,
+  "worker_cpu_seconds": 5171.96875,
+  "analysis_model_calls": 0,
+  "analysis_original_data_reads": 0,
+  "real_future_opened": false,
+  "stage_completed": false
+}

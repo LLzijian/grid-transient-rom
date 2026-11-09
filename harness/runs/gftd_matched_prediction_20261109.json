@@ -9,7 +9,7 @@
     "status": "RUNNING",
     "phase": "fit_running",
     "scientific_execution_released": true,
-    "scientific_jobs_executed": 0,
+    "scientific_jobs_executed": 1,
     "qualification_attempt": 1,
     "qualification_passed": true,
     "fit_release_sha256": "df29e30eca079e2925275c4c9a1836309b1c6563fd6255f165fbf32227fbd499",
@@ -21,8 +21,12 @@
       "modulated": 53800
     },
     "scientific_jobs_started": 2,
-    "completed_fit_jobs": 0,
-    "progress_observed_utc": "2026-11-09T17:29:52.865646+00:00"
+    "completed_fit_jobs": 1,
+    "progress_observed_utc": "2026-11-09T19:04:52.674279+00:00",
+    "completed_fit_modes": [
+      "static"
+    ],
+    "static_fit_review_accepted": true
   },
   "scientific_work": {
     "budget_status": "open",
@@ -37,9 +41,11 @@
     "actual_artificial_H": 748,
     "actual_scientific_rhs": null,
     "technical_qualification_corrections_used": 1,
-    "actual_cost_state": "running_not_finalized",
+    "actual_cost_state": "one_fit_complete_other_running",
     "original_data_read_scope": "legal history cache read once by fit host; real future remains closed",
-    "real_future_reads": 0
+    "real_future_reads": 0,
+    "known_scientific_rhs_lower_bound": 23249760,
+    "known_total_rhs_lower_bound": 23249788
   },
   "evidence": {
     "validity": "unknown",
@@ -61,7 +67,13 @@
       "reports/gftd_matched_prediction_20261109/qualification_review.md",
       "results/gftd_matched_prediction_20261109/qualification_adoption.json",
       "results/gftd_matched_prediction_20261109/fit_release.json",
-      "results\\gftd_matched_prediction_20261109\\fit_host_start.json"
+      "results\\gftd_matched_prediction_20261109\\fit_host_start.json",
+      "results/gftd_matched_prediction_20261109/fit/jobs/static.json",
+      "results/gftd_matched_prediction_20261109/static_fit_digest.json",
+      "results/gftd_matched_prediction_20261109/static_fit_assessment_request.json",
+      "reports/gftd_matched_prediction_20261109/static_fit_assessment.md",
+      "reports/gftd_matched_prediction_20261109/static_fit_review.md",
+      "results/gftd_matched_prediction_20261109/static_fit_adoption.json"
     ]
   },
   "proposal": {

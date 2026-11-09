@@ -1,0 +1,56 @@
+{
+  "run": "gftd_matched_prediction_20261109",
+  "recorded_utc": "2026-11-09T19:14:11.701480+00:00",
+  "scope": "completed_static_fit_only",
+  "status": "accepted_static_terminal_and_interpretation",
+  "references": {
+    "job": {
+      "path": "results/gftd_matched_prediction_20261109/fit/jobs/static.json",
+      "sha256": "100e970d80f0abb6135fe3c6b2f5ddfdf219913fb1fa907a4c53d41e70ce67f2",
+      "bytes": 2440
+    },
+    "digest": {
+      "path": "results/gftd_matched_prediction_20261109/static_fit_digest.json",
+      "sha256": "20e6d9d524ee3de9fb8a89355ad797400e20b07ad2ea7d8d1acaf7d05a626627",
+      "bytes": 6125
+    },
+    "scientist_request": {
+      "path": "results/gftd_matched_prediction_20261109/static_fit_assessment_request.json",
+      "sha256": "0cb7a9e45f2ccbbc926a1fa710cda28ff86b95794b1aba36a4ff92d96890b084",
+      "bytes": 1625
+    },
+    "scientific_assessment": {
+      "path": "reports/gftd_matched_prediction_20261109/static_fit_assessment.md",
+      "sha256": "68bfa00f66c79749b3b054ddc8f13e5eeeb743feb2daad7ff2c271a00cb6d8e2",
+      "bytes": 14732
+    },
+    "independent_review": {
+      "path": "reports/gftd_matched_prediction_20261109/static_fit_review.md",
+      "sha256": "4033fa6c956cc7dcb39e61c61dcd23add52f2b4afde0cfb9ff6be526304153d0",
+      "bytes": 8755
+    }
+  },
+  "root_decisions": {
+    "code": "retain_branch",
+    "model": "retain_evidence",
+    "science": "continue"
+  },
+  "adopted_findings": [
+    "Static final functional and inference configuration equal the frozen parent; no shared parameter proposal was accepted.",
+    "All 192 proxy tasks converged and all 96 candidate numerical suites passed; this covers 24 adaptation packets, not the full 297 deployment.",
+    "The three deterministic proposals contain one unique functional; their repeated execution is not independent scientific evidence.",
+    "Weak-form coefficient selection does not guarantee improvement in bounded autonomous-history fitting; individual causes of the observed objective gap remain unresolved.",
+    "All 45 static conditional columns qualified on both grids; final support=null follows retaining the initially uncertified parent, not a measured conditional information failure.",
+    "All 24 final points have small relative projected gradients but fail the frozen gradient step-size consistency rule; optimization sufficiency and joint identifiability remain unknown."
+  ],
+  "static_scientific_rhs": 23249760,
+  "phase_total_scientific_rhs": null,
+  "existing_modulated_fit": "continues_under_original_fit_release",
+  "deployment_released": false,
+  "additional_fit_released": false,
+  "scientific_protocol_changed": false,
+  "default_or_protected_model_changed": false,
+  "future_data_opened": false,
+  "next_action": "Reconcile the modulated terminal and complete two-model freeze before releasing the registered deployment stage.",
+  "future_design_note": "After this Run closes, consider eliminating proven deterministic duplicate evaluations and separately designing a shared proposal aligned with the autonomous-history objective; no change to active execution."
+}

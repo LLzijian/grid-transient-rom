@@ -1,0 +1,38 @@
+{
+  "run": "gftd_matched_prediction_20261109",
+  "phase": "partial_static_fit_scientific_assessment",
+  "host_tool": "collaboration.spawn_agent",
+  "configured_model": "gpt-6-astra",
+  "reasoning_effort": "high",
+  "fork_turns": "none",
+  "host_response": {
+    "task_name": "/root/matched_fit_scientist"
+  },
+  "server_resolved_model": null,
+  "inputs": {
+    "job": {
+      "path": "results/gftd_matched_prediction_20261109/fit/jobs/static.json",
+      "sha256": "100e970d80f0abb6135fe3c6b2f5ddfdf219913fb1fa907a4c53d41e70ce67f2",
+      "bytes": 2440
+    },
+    "model": {
+      "path": "artifacts/gftd_matched_prediction_20261109/fit/static/model.json",
+      "sha256": "54d6866c87eb0c1d34bdbc6ba75a02ccdcbc2db16f7a8f0d7e2e4684f5ef418b",
+      "bytes": 465709
+    },
+    "details": {
+      "path": "artifacts/gftd_matched_prediction_20261109/fit/static/fit_details.json.gz",
+      "sha256": "2a03be25b49137eed02af4f2f1c86a08379816aa0428fd2860f45490eada430e",
+      "bytes": 14284505
+    },
+    "parent": {
+      "path": "artifacts/gftd_initialization_precision_20261109/candidate/pilot/static_model.json",
+      "sha256": "ed79e2cdea1f6830c052b9dae8fb8c2b748170e8e15ec0a5a8e3034d72b787cc",
+      "bytes": 6137799
+    }
+  },
+  "allowed_scope": "read completed static fit evidence and frozen sources; no new model calls, original data or future reads",
+  "write_path": "reports/gftd_matched_prediction_20261109/static_fit_assessment.md",
+  "purpose": "interpret static optimization and conditional information before overall matched evaluation; no final Run decision",
+  "recorded_utc": "2026-11-09T19:03:16.799100+00:00"
+}
