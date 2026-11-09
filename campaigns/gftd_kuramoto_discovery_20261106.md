@@ -69,6 +69,8 @@
 | `gftd_initialization_precision_20261109` | 已冻结的Run 3两模型与594份初态 | 参数固定，积分精度与初始化流程分开辨别 | `discrimination + adaptation` | [协议](gftd_initialization_precision_20261109/protocol.md)：同初态RK4与参考比较，依据结果选择一个修正并保留297分母 | `COMPLETED`；49状态诊断、固定DP8小试、594完整初始化和579长时配对闭合；静态297/297、调制282/297初始化通过，新增参考520/532确认；独立复核后保留数值覆盖结论、模型不晋升 |
 | `gftd_long_horizon_diagnostic_20261109` | 初始化精度Run已保存的新初态及缓存 | 同参数、同初态的长时跨方法辨别 | `discrimination` | [协议](gftd_long_horizon_diagnostic_20261109/protocol.md)：10状态区分积分误差、接受轨迹增长与零项求值异常；只允许一个条件分支 | `COMPLETED`；46条积分均有回执，五状态在参考一致区间内增长且网格误差下降；零项20对真实检查19项通过、1项相同平方溢出未过冻结分类门，28条条件轨迹未释放，工作量关闭 |
 | `gftd_storage_feasibility_20261109` | 长时诊断冻结模型、268两个旧状态及三参考缓存 | 同储能光滑有界调制，保留零点二阶展开 | `probe` | [协议](gftd_storage_feasibility_20261109/protocol.md)：先数学与人工资格，再两个保存初态各三参考1 s | `COMPLETED`；数学及人工资格通过，六条新参考全1 s合格；同窗幅值与调制范围改善，独立复核后保留证据，工作量关闭 |
+| `gftd_bounded_initialization_20261109` | 储能可行性已归档989fa944，固定原调制共享参数 | 显式有界核贯穿字典、存取与合法DP8初始化 | `adaptation + probe` | [协议](gftd_bounded_initialization_20261109/protocol.md)：25包小试后完成其余272包，每个返回点一次严格参考 | `COMPLETED`；297/297六门通过，289完整严格参考确认，8到限未决；独立审查接受、源码归档，工作量closed |
+| `gftd_matched_prediction_20261109` | 已完成的同核初始化及冻结静态／有界两父模型 | 两模型24包匹配适配、原297预测及同一ODE分析 | `adaptation + matched comparison` | [协议](gftd_matched_prediction_20261109/protocol.md)：固定两起点1200残差、完整库提案、原分母L1和L2/L3 | 正式预登记已审；接口与固定资格准备，科学执行未释放 |
 | `gftd_stage2_coi_decoupling` | 受控证据与合格修订，具体父候选待冻结 | 静态耦合候选 | `discrimination` | 在 `train fit297` 固定同一初始化和静态图，仅改变共同模态算子 | 旧规划保留；不再作为三步主线前置 |
 | `gftd_stage2_latent_modulated_topology` | `gftd_stage2_coi_decoupling` 的冻结候选 | 动态调制候选 | `discrimination` / `adaptation` | 固定初始化与共同模态设置，调制开/关同期比较，L2 另证，L3 report-only | `DRAFT_PENDING_RELEASE` |
 
@@ -84,7 +86,7 @@
 
 ## 4. 下一个最有判别力的问题与重开/停止条件
 
-- **当前工作**。[储能可行性设计](../designs/gftd_storage_feasibility_20261109.md)及其[结论](../reports/gftd_storage_feasibility_20261109/conclusion.md)已闭合：exp(tanh h)排除有限时间状态逃逸，六条新参考全部完成1 s；stage2在共同0–0.92 s内Amax由4.163105变为1.566103。结构干预不替代合法初始化，模型不晋升。下一有限设计先统一新核的字典、梯度、初始化推进和版本身份，在固定参数下检验合法100 ms历史初始化，再决定匹配适配与真实L1比较。当前Run不追加工作，余额不转移。
+- **当前工作**。[同核初始化结果](../reports/gftd_bounded_initialization_20261109/conclusion.md)已完整闭合：原297个样本全部通过六门，289个完整严格参考确认，15个旧指数失败新增通过。下一步按[匹配预测协议](gftd_matched_prediction_20261109/protocol.md)完成实现资格，再比较匹配适配后的真实L1及最终同一ODE的L2/L3。历史MSE18个降低、279个升高，充分性unknown；数值覆盖不替代真实预测和调制识别。
 
 - **2026-11-08证据更新**。M0/M1的同期流程已执行，但总体预测比较因数值资格覆盖不足保持未决；不再将“未执行真实比较”作为当前缺口。M2需要区分共享适配351/384任务到限与初始化后的数值资格损失：646初始化优化任务均收敛，却有547项未返回合格初态。条件支撑为静态35边、调制35边及25调制边，联合唯一性unknown。L2非空局部证明不覆盖本轮47实点；L3的K–绝对Kron导纳相关0.440/0.483及10/13模态配对用于描述，不替代L1。详见[Scientist判读](../reports/gftd_fit297_20261107/originals/gftd_fit297_20261107_scientific_assessment.md)、[独立结果审查](../reports/gftd_fit297_20261107/originals/gftd_fit297_20261107_result_review.md)及[root采用](../results/gftd_fit297_20261107/root_adoption.json)。
 - **判别顺序**。同族正负校准分开检查恢复和误检，推断端隔离真实图及隐轨迹，再比较独立生成机制与最强替代解释，随后准备 IEEE39 条件内辨别。

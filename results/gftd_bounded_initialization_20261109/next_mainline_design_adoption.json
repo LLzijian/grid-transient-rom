@@ -1,0 +1,39 @@
+{
+  "recorded_utc": "2026-11-09T15:04:25.434887+00:00",
+  "decision": "accept_conditional_next_mainline_design_pending_current_full_completion_and_new_formal_protocol",
+  "released": false,
+  "scientist_configured_model": "gpt-6-astra",
+  "scientist_server_resolved_model": null,
+  "scientist_task": "/root/feasibility_scientist",
+  "reviewer_task": "/root/feasibility_reviewer",
+  "draft": {
+    "path": "reports/gftd_bounded_initialization_20261109/next_mainline_design_draft.md",
+    "sha256": "530b9e34bf042c81acee58d5410c760e0457c571c23d8f1d2afd6106d90029cd",
+    "bytes": 22011
+  },
+  "review": {
+    "path": "reports/gftd_bounded_initialization_20261109/next_l2_design_review.md",
+    "sha256": "69038e17bd7787ca1f298659c0ca23310cbb6e7e91c677727e8d52bba5fd3571",
+    "bytes": 13475
+  },
+  "root_choices": {
+    "proxy_residual_limit_per_start": 1200,
+    "proxy_starts": 2,
+    "shared_proposals_per_model": 3,
+    "reopen_all_45_edges_each_proposal": true,
+    "initial_shared_parameters": "retain_each_parent_functional",
+    "integration": "DP8 for autonomous fit/history/initialization/rollout; inherited observed forced-port RK4 remains separately counted",
+    "l2_radius_candidates": "Keep original cap=min(1,(7/5-A0)/3,1/(2*G_K)) with zero G_K term omitted; R_j=cap/2**j for j=0..12; bounded additionally filters R_j*G_beta<=1/4. No post-result change to radius grid.",
+    "l2_static": "retain original static certificate implementation",
+    "required_index_mapping": "Explicit original index to24 local-cache slot, with mock checks",
+    "l3_interpretation": "Zero-amplitude second-order equality does not imply equality at nonzero or different actual equilibria; inspect the final functional and equilibrium."
+  },
+  "pending": [
+    "Current full272 receipt and combined297 independent audit",
+    "New finite protocol binding actual final evidence, model/source/input identities and precise qualification fixtures",
+    "Implementation and independent review before release"
+  ],
+  "new_model_evaluations": 0,
+  "new_original_input_reads": 0,
+  "current_full_execution_unchanged": true
+}

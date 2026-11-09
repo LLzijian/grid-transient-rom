@@ -9,6 +9,8 @@ from __future__ import annotations
 import numpy as np
 from scipy.optimize import nnls
 
+from ..physics.kuramoto_functional import EXP_MODULATION_KERNEL, amplitude_modulation_factor
+
 HISTORY_STEPS = (.0025, .00125)
 RANK_THRESHOLDS = (1e-8, 1e-10, 1e-12)
 STATE_SCALE = .1
@@ -172,9 +174,10 @@ def conditional_dictionary(cache, functional, a_history, *, a_times):
     if a.shape != (len(t), f.n_nodes) or not np.array_equal(a_times, t):
         raise ValueError("candidate a must match the full quadrature times and nodes")
     indices = np.asarray(f.edges, dtype=int)
-    with np.errstate(over="raise", under="raise", invalid="raise"):
+    underflow = "raise" if f.modulation_kernel == EXP_MODULATION_KERNEL else "ignore"
+    with np.errstate(over="raise", under=underflow, invalid="raise"):
         exponent = a[:, indices[:, 0]]*f.gamma_amp[indices[:, 0]]+a[:, indices[:, 1]]*f.gamma_amp[indices[:, 1]]
-        exponential = np.exp(exponent)
+        exponential, _ = amplitude_modulation_factor(exponent, f.modulation_kernel)
     v, _ = weak_test_functions(t)
     sine = np.sin(cache["theta"]@f.incidence)-np.sin(f.eta_edge)
     edge_integrals = (v*boole_weights(t))@(sine*exponential)

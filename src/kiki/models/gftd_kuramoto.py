@@ -11,6 +11,8 @@ import numpy as np
 from ..numerics import dop853_step
 from ..physics.graph import complete_incidence
 from ..physics.kuramoto_functional import (
+    BOUNDED_MODULATION_KERNEL,
+    EXP_MODULATION_KERNEL,
     GeneratingFunctionalKuramoto,
     StructuralGates,
     bregman_kuramoto_force,
@@ -319,6 +321,8 @@ class GFTDKuramotoModel(DynamicsModel):
         damping: np.ndarray | None = None,
         seed: int = 324,
         fit_mode: str = "modulated",
+        *,
+        modulation_kernel: str = EXP_MODULATION_KERNEL,
     ) -> None:
         if fit_mode not in {"static", "modulated"}:
             raise ValueError("fit_mode must be static or modulated")
@@ -360,6 +364,7 @@ class GFTDKuramotoModel(DynamicsModel):
             tau_mem_coi=0.4,
             j_omega_mem=np.full(self.n_nodes, 0.2, dtype=np.float64),
             gates=self.gates,
+            modulation_kernel=modulation_kernel,
         )
 
     def fit(
@@ -557,6 +562,11 @@ class GFTDKuramotoModel(DynamicsModel):
                     initialization_mode=self.initialization_mode)
 
     def save(self, path: str | Path) -> None:
+        if type(self.functional) is not GeneratingFunctionalKuramoto:
+            raise ValueError("functional subclass cannot be represented by the versioned checkpoint")
+        kernel = self.functional.modulation_kernel
+        if kernel not in (EXP_MODULATION_KERNEL, BOUNDED_MODULATION_KERNEL):
+            raise ValueError("unknown amplitude modulation kernel")
         self._validate_inference_config()
         from dataclasses import fields
         def serial(value):
@@ -565,8 +575,11 @@ class GFTDKuramotoModel(DynamicsModel):
             field.name: serial(getattr(self.functional, field.name))
             for field in fields(self.functional) if field.name != "gates"
         }
+        if kernel == EXP_MODULATION_KERNEL:
+            functional.pop("modulation_kernel")
+        checkpoint_format = "gftd_kuramoto_5n_v2" if kernel == EXP_MODULATION_KERNEL else "gftd_kuramoto_5n_v3"
         parent = self.parent_initializer
-        payload = dict(format="gftd_kuramoto_5n_v2", seed=self.seed, functional=functional,
+        payload = dict(format=checkpoint_format, seed=self.seed, functional=functional,
                        initialization_mode=self.initialization_mode, fit_mode=self.fit_mode,
                        inference_config=self.inference_config, fit_state=self.fit_state,
                        last_initialization=self.last_initialization,
@@ -587,9 +600,15 @@ class GFTDKuramotoModel(DynamicsModel):
     @classmethod
     def load(cls, path: str | Path):
         payload = json.loads(Path(path).read_text(encoding="utf-8"))
-        if payload.get("format") not in {"gftd_kuramoto_5n_v1", "gftd_kuramoto_5n_v2"}:
+        checkpoint_format = payload.get("format")
+        if checkpoint_format not in {"gftd_kuramoto_5n_v1", "gftd_kuramoto_5n_v2", "gftd_kuramoto_5n_v3"}:
             raise ValueError("only the explicit 5N format is supported; old 4N checkpoints are incompatible")
         kwargs = payload["functional"]
+        if checkpoint_format == "gftd_kuramoto_5n_v3":
+            if kwargs.get("modulation_kernel") != BOUNDED_MODULATION_KERNEL:
+                raise ValueError("v3 checkpoint requires the explicit bounded modulation kernel")
+        elif "modulation_kernel" in kwargs:
+            raise ValueError("legacy checkpoint cannot carry a modulation kernel field")
         gates = StructuralGates(**payload["gates"])
         functional = GeneratingFunctionalKuramoto(**kwargs, gates=gates)
         model = cls(n_nodes=functional.n_nodes, mass=functional.mass, damping=functional.damping,
@@ -619,7 +638,7 @@ class GFTDKuramotoModel(DynamicsModel):
                 key: torch.as_tensor(value, dtype=template[key].dtype)
                 for key, value in parent["state_dict"].items()}, strict=True)
             model.parent_initializer = initializer.eval()
-        if payload["format"] == "gftd_kuramoto_5n_v2":
+        if checkpoint_format != "gftd_kuramoto_5n_v1":
             mode = payload["initialization_mode"]
             if mode not in {"legacy_static", "causal_two_stage"}:
                 raise ValueError("unknown initialization dispatch")

@@ -1,0 +1,96 @@
+{
+  "run_id": "gftd_bounded_initialization_20261109",
+  "recorded_utc": "2026-11-09T16:55:22.251344+00:00",
+  "source_commit": "989fa944da3c47ec09abda768bd6eb039274eb0c",
+  "execution_status": "COMPLETED",
+  "scientific_work_status": "closed",
+  "root_decisions": {
+    "code": "retain_branch",
+    "model": "retain_evidence",
+    "science": "supported_within_scope"
+  },
+  "accepted_claim": "Fixed shared-parameter bounded kernel with same-kernel causal reinitialization passes the original six numerical checks on all 297 train packets; 289 returned points also pass the separate strict full 1 s reference check.",
+  "claim_limits": "Kernel plus reinitialization intervention; no refit, true predictive gain, modulation recovery, long-term stability or FOM safety claim. Eight capped references remain unconfirmed for the full 1 s interval. Optimization adequacy remains unknown.",
+  "source_archive": {
+    "path": "results/gftd_bounded_initialization_20261109/source_archive.json",
+    "bytes": 7598,
+    "sha256": "b180c72e5748fa472621e17029283db4de264fe85c9ad2b8a0dfcbfe4a91c026"
+  },
+  "evidence": [
+    {
+      "path": "reports/gftd_bounded_initialization_20261109/conclusion.md",
+      "bytes": 5404,
+      "sha256": "d233e052aeacb31255502634b823c2cb0d677ad205f922c488b21b0782322781"
+    },
+    {
+      "path": "reports/gftd_bounded_initialization_20261109/scientific_assessment.md",
+      "bytes": 9447,
+      "sha256": "a396d5050e17cbbbf31556534fef4e27306f0a35853dc98826b8b1b2246139d5"
+    },
+    {
+      "path": "results/gftd_bounded_initialization_20261109/full/execution.json",
+      "bytes": 97405,
+      "sha256": "ee786438f8986fcd3100083de630089009f50fe1a4dad95de7fa3e6f1e60931d"
+    },
+    {
+      "path": "results/gftd_bounded_initialization_20261109/full_independent_audit.json",
+      "bytes": 643359,
+      "sha256": "233b33430b11f62c5b32a216e49a589bffc1181697f5f756e9da8ffc0c524fdc"
+    },
+    {
+      "path": "results/gftd_bounded_initialization_20261109/evidence_digest.json",
+      "bytes": 10910,
+      "sha256": "f7e87fbdbc8bfe0ad958c83563481720c9b4e8877ff21afc320d708916cd40bc"
+    },
+    {
+      "path": "results/gftd_bounded_initialization_20261109/raw_artifacts_manifest.json",
+      "bytes": 413099,
+      "sha256": "9db323a4759ae817e1e955d401f864a97d3515d032ea82152ce5194011914fe7"
+    },
+    {
+      "path": "reports/gftd_bounded_initialization_20261109/result_review.md",
+      "bytes": 6086,
+      "sha256": "93b9929f43971a4a50f2580ec8757aea5f075ada3fed24050ee052a5849bff71"
+    }
+  ],
+  "scientist": {
+    "task": "/root/feasibility_scientist",
+    "configured_model": "gpt-6-astra",
+    "server_resolved_model": null,
+    "actual_call": "collaboration.followup_task",
+    "accepted": true
+  },
+  "reviewer": {
+    "task": "/root/feasibility_reviewer",
+    "configured_model": null,
+    "model_selection": "inherited root; no override",
+    "server_resolved_model": null,
+    "verdict": "accepted_without_blocker",
+    "report": {
+      "path": "reports/gftd_bounded_initialization_20261109/result_review.md",
+      "bytes": 6086,
+      "sha256": "93b9929f43971a4a50f2580ec8757aea5f075ada3fed24050ee052a5849bff71"
+    }
+  },
+  "costs": {
+    "initialization_rhs_calls": 100397760,
+    "reference_rhs_calls": 4611510,
+    "residual_calls": 201143,
+    "worker_cpu_seconds": 20997.625,
+    "worker_wall_seconds": 34244.39188029987,
+    "scientific_rhs_calls": 105009270,
+    "artificial_rhs_calls": 14,
+    "artificial_H_calls": 374,
+    "all_rhs_calls": 105009284,
+    "host_wall_seconds": 8721.277157200006,
+    "host_cpu_seconds": 1.421875,
+    "unknown_native_full_exit_code": null,
+    "unique_initializations": 297,
+    "optimization_tasks": 594
+  },
+  "unused_budget_transfers": 0,
+  "next_run": "gftd_matched_prediction_20261109",
+  "next_scientific_execution_released": false,
+  "default": "none",
+  "protected_pointers_changed": false
+}

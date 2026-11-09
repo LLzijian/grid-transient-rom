@@ -6,6 +6,20 @@ import numpy as np
 from .graph import complete_incidence
 
 
+EXP_MODULATION_KERNEL = "exp_v1"
+BOUNDED_MODULATION_KERNEL = "bounded_exp_tanh_v1"
+
+
+def amplitude_modulation_factor(exponent: np.ndarray, kernel: str) -> tuple[np.ndarray, np.ndarray | float]:
+    """Return K(h) and the multiplier K'(h)/K(h) for the specified kernel."""
+    if kernel == EXP_MODULATION_KERNEL:
+        return np.exp(exponent), 1.0
+    if kernel == BOUNDED_MODULATION_KERNEL:
+        bounded = np.tanh(exponent)
+        return np.exp(bounded), 1.0 - bounded**2
+    raise ValueError("unknown amplitude modulation kernel")
+
+
 def _sigmoid(x: np.ndarray) -> np.ndarray:
     x = np.asarray(x, dtype=np.float64)
     clipped = np.clip(x, -40.0, 40.0)
@@ -128,7 +142,7 @@ def latent_coupling_modulation(
     # Clipping the exponent changes H without preserving its declared derivatives.
     with np.errstate(over="raise", under="raise", invalid="raise"):
         exponent = gam[idx_i] * z_a[idx_i] + gam[idx_j] * z_a[idx_j]
-        exp_term = np.exp(exponent)
+        exp_term, _ = amplitude_modulation_factor(exponent, EXP_MODULATION_KERNEL)
     s_mod = gates.s_mod
     phi_mod = (1.0 - s_mod) + s_mod * exp_term
     dphi_dzi = s_mod * gam[idx_i] * exp_term
@@ -164,8 +178,15 @@ class GeneratingFunctionalKuramoto:
     storage_p: np.ndarray | None = None
     gain_p: np.ndarray | None = None
     rate_p: np.ndarray | None = None
+    modulation_kernel: str = EXP_MODULATION_KERNEL
 
     def __post_init__(self) -> None:
+        if not isinstance(self.modulation_kernel, str) or self.modulation_kernel not in (
+            EXP_MODULATION_KERNEL, BOUNDED_MODULATION_KERNEL,
+        ):
+            raise ValueError("unknown amplitude modulation kernel")
+        if self.modulation_kernel == BOUNDED_MODULATION_KERNEL and not np.isfinite(self.tau_mem_coi):
+            raise ValueError("tau_mem_coi must be finite")
         self.mass = np.asarray(self.mass, dtype=np.float64).reshape(-1).copy()
         self.n_nodes = self.mass.size
         self.incidence, self.edges = complete_incidence(self.n_nodes)
@@ -223,8 +244,20 @@ class GeneratingFunctionalKuramoto:
         self.split_state(state)
         return state
 
+    def _bounded_edge_modulation(self, z_amp: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+        a = np.asarray(z_amp, dtype=np.float64)
+        if a.shape != (self.n_nodes,) or not np.isfinite(a).all():
+            raise ValueError("finite node-aligned amplitude required")
+        exponent = np.abs(self.incidence).T @ (self.gamma_amp * a)
+        factor, slope_multiplier = amplitude_modulation_factor(exponent, self.modulation_kernel)
+        s_mod = self.gates.s_mod
+        return (1.0 - s_mod) + s_mod * factor, s_mod * factor * slope_multiplier
+
     def effective_edge_couplings(self, z_amp: np.ndarray) -> np.ndarray:
-        phi_mod, _, _ = latent_coupling_modulation(z_amp, self.edges, self.gamma_amp, self.gates)
+        if self.modulation_kernel == EXP_MODULATION_KERNEL:
+            phi_mod, _, _ = latent_coupling_modulation(z_amp, self.edges, self.gamma_amp, self.gates)
+        else:
+            phi_mod, _ = self._bounded_edge_modulation(z_amp)
         return self.gates.s_edge * self.k_edge * phi_mod
 
     def hamiltonian(self, state: np.ndarray) -> float:
@@ -242,13 +275,22 @@ class GeneratingFunctionalKuramoto:
         theta, omega, p, z_amp, z_mem = self.split_state(state)
         phi = self.incidence.T @ theta
         psi = bregman_kuramoto_potential(phi, self.eta_edge)
-        mod, di, dj = latent_coupling_modulation(z_amp, self.edges, self.gamma_amp, self.gates)
+        legacy = self.modulation_kernel == EXP_MODULATION_KERNEL
+        if legacy:
+            mod, _, _ = latent_coupling_modulation(z_amp, self.edges, self.gamma_amp, self.gates)
+        else:
+            mod, slope = self._bounded_edge_modulation(z_amp)
         active_k = self.gates.s_edge * self.k_edge
         absolute_incidence = np.abs(self.incidence)
-        with np.errstate(over="raise", under="raise", invalid="raise"):
-            exp_h = np.exp(absolute_incidence.T @ (self.gamma_amp * z_amp))
-        grad_amp = self.lambda_amp * z_amp + self.gamma_amp * (
-            absolute_incidence @ (active_k * self.gates.s_mod * exp_h * psi))
+        if legacy:
+            with np.errstate(over="raise", under="raise", invalid="raise"):
+                exp_h, _ = amplitude_modulation_factor(
+                    absolute_incidence.T @ (self.gamma_amp * z_amp), EXP_MODULATION_KERNEL,
+                )
+            grad_amp = self.lambda_amp * z_amp + self.gamma_amp * (
+                absolute_incidence @ (active_k * self.gates.s_mod * exp_h * psi))
+        else:
+            grad_amp = self.lambda_amp * z_amp + self.gamma_amp * (absolute_incidence @ (active_k * slope * psi))
         return (
             self.incidence @ (active_k * mod * bregman_kuramoto_force(phi, self.eta_edge)),
             self.mass * omega, self.storage_p * p, grad_amp, self.lambda_mem * z_mem,

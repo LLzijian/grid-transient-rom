@@ -1,0 +1,27 @@
+{
+  "recorded_utc": "2026-11-09T14:15:47.931943+00:00",
+  "failure": "pytest collection could not import experiments because direct driver entry lacked workspace root in sys.path",
+  "native_prepare": {
+    "chunk": "da512b",
+    "exit_code": 0,
+    "wall_seconds": 8.356558
+  },
+  "native_qualification": {
+    "chunk": "8bde47",
+    "exit_code": 1,
+    "wall_seconds": 2.9720696
+  },
+  "pytest_exit_code": 2,
+  "actual_model_rhs": 0,
+  "actual_H": 0,
+  "actual_gradients": 0,
+  "actual_ode": 0,
+  "actual_initialization_optimization": 0,
+  "private_observation_reads": 0,
+  "repair": "Insert workspace root into sys.path in the qualification entry point; no numerical code, fixtures, gates or protocol changed.",
+  "new_qualification_driver_sha256": "e6c7ad176fac9718b9597de113c1b932c0387dca9292dc3bcd8a13e3d4971a63",
+  "original_source_sha256": "29c07d6fdf924095011aa980ca8d738f86782b249f2fc6e8b0bdbc7982c28b3f",
+  "explicit_requalification_allowed": "First technical correction within the frozen at-most-two correction scope, all128 RHS and2000 H remain since no model evaluation occurred.",
+  "archive": "byte_archive.json",
+  "scientific_execution_released": false
+}

@@ -17,7 +17,7 @@ from scipy.optimize import least_squares
 
 from . import gftd_discovery as core
 from ..numerics import dop853_step
-from ..physics.kuramoto_functional import StructuralGates
+from ..physics.kuramoto_functional import EXP_MODULATION_KERNEL, StructuralGates
 
 PROTOCOL_SHA256 = "54622ad9da5fea1afb326140c6d4288a51bddca2aae896ef10926f951b09dcb0"
 FIXED_DP8_FORMAT = "gftd_causal_two_stage_fit297_fixed_dp8_v1"
@@ -57,6 +57,8 @@ def _hash(value):
 
 def _physics(f, *, include_edges=True):
     values = {field.name: getattr(f, field.name) for field in fields(f) if field.name != "gates"}
+    if f.modulation_kernel == EXP_MODULATION_KERNEL:
+        values.pop("modulation_kernel")
     values["gates"] = {field.name: getattr(f.gates, field.name) for field in fields(f.gates)}
     if not include_edges:
         values.pop("k_edge")
