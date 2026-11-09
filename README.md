@@ -39,7 +39,7 @@ the scientific evidence. This README does not duplicate agent rules or current s
 
 ## Closure equation discovery study
 
-The finite A–E implementation and study are documented in the [final report](reports/closure_discovery_20261017_final.md), with [explicit equations and an independent NumPy package](results/closure_discovery_20261017/E/packages/main_2701/README.md). Prediction, structure recovery and stability findings retain their reported scope.
+The finite A–E implementation and study are documented in the [final report](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/closure_discovery_20261017_final.md), with [explicit equations and an independent NumPy package](results/closure_discovery_20261017/E/packages/main_2701/README.md). Prediction, structure recovery and stability findings retain their reported scope.
 
 ## Historical closure training
 
