@@ -7,11 +7,13 @@
   "scope": "Fixed 24 causal histories; one local beta direction at the saved quarter model; one box-constrained linear compensation proposal and two finite checks.",
   "execution": {
     "status": "RUNNING",
-    "phase": "implementation_only",
-    "scientific_execution_released": false,
+    "phase": "science_released_not_started",
+    "scientific_execution_released": true,
     "native_session_id": null,
     "active_claims": [],
-    "recorded_utc": "2026-11-12T14:42:29.665856+00:00"
+    "recorded_utc": "2026-11-12T14:42:29.665856+00:00",
+    "scientific_jobs_started": 0,
+    "scientific_jobs_completed": 0
   },
   "scientific_work": {
     "budget_status": "open",
@@ -26,8 +28,13 @@
     "actual_scientific_rhs": 0,
     "actual_history_maps": 0,
     "actual_linear_solves": 0,
-    "qualification_rounds_used": 0,
-    "old_unused_work_transferred": false
+    "qualification_rounds_used": 1,
+    "old_unused_work_transferred": false,
+    "qualification_budget_status": "closed",
+    "mock_callbacks": 139,
+    "technical_linear_problems": 1,
+    "technical_lsmr_calls": 6,
+    "technical_lsmr_iterations": 6
   },
   "evidence": {
     "validity": "unknown",
@@ -46,7 +53,16 @@
       "results/gftd_objective_alignment_20261112/final_adoption.json",
       "results/gftd_objective_alignment_20261112/source_archive.json",
       "results/gftd_joint_distinguishability_20261112/design_adoption.json",
-      "reports/gftd_joint_distinguishability_20261112/design_revision_review.md"
+      "reports/gftd_joint_distinguishability_20261112/design_revision_review.md",
+      "reports/gftd_joint_distinguishability_20261112/implementation_revision_review.md",
+      "results/gftd_joint_distinguishability_20261112/implementation_adoption.json",
+      "results/gftd_joint_distinguishability_20261112/qualification_release_1.json",
+      "results/gftd_joint_distinguishability_20261112/qualification_1.json",
+      "results/gftd_joint_distinguishability_20261112/qualification_host_1.json",
+      "results/gftd_joint_distinguishability_20261112/prepare_release.json",
+      "results/gftd_joint_distinguishability_20261112/prepare.json",
+      "results/gftd_joint_distinguishability_20261112/prepare_host.json",
+      "results/gftd_joint_distinguishability_20261112/science_release.json"
     ]
   },
   "proposal": {
@@ -64,5 +80,42 @@
     "bytes": 1907,
     "sha256": "ccdf4ba8f485775ee227969c4c4c5afca30424fbdd7be567ba16bea9a853a86c",
     "accepted_by_root": true
+  },
+  "qualification_release": {
+    "path": "results/gftd_joint_distinguishability_20261112/qualification_release_1.json",
+    "bytes": 6734,
+    "sha256": "efef98e1b2b8bffcebae29e4d75bd09f481afd7066fefa6fbce9711c89647306"
+  },
+  "source_commit": "6da9869381f72f20aa7c6582ab0a5001a7a26377",
+  "active_source_freeze": true,
+  "qualification": {
+    "path": "results/gftd_joint_distinguishability_20261112/qualification_1.json",
+    "bytes": 8227,
+    "sha256": "3149c7e626cbb4a43a2f51d95f4a5225fd423d6109fb4b0b8aeeaa0d84131377"
+  },
+  "qualification_host": {
+    "path": "results/gftd_joint_distinguishability_20261112/qualification_host_1.json",
+    "bytes": 1311,
+    "sha256": "446e9e9c7f44d4bee307896376c3a565f64d61686f7fac08fb3fcce7232fa6fe"
+  },
+  "prepare_release": {
+    "path": "results/gftd_joint_distinguishability_20261112/prepare_release.json",
+    "bytes": 7175,
+    "sha256": "43fa8e79f9cc276c90f607fa311fb53115c34273ad11b6dbdfc77573ee49f4ff"
+  },
+  "prepare": {
+    "path": "results/gftd_joint_distinguishability_20261112/prepare.json",
+    "bytes": 13394,
+    "sha256": "477cb4c4e2af18c4a84dad41b2b74b80834686be9ed5cfd367bc8b948ae8d9b8"
+  },
+  "prepare_host": {
+    "path": "results/gftd_joint_distinguishability_20261112/prepare_host.json",
+    "bytes": 1268,
+    "sha256": "61ca769169c34d319a6929788eab9ad2d4649f8df2bd1a31b982a826f5ab7f2a"
+  },
+  "science_release": {
+    "path": "results/gftd_joint_distinguishability_20261112/science_release.json",
+    "bytes": 8084,
+    "sha256": "f414ec7361f3ed8a1c6b7daac0f0781cae8a786147974b8c35b480ab20ab55d0"
   }
 }
