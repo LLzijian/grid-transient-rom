@@ -1,0 +1,78 @@
+{
+  "run": "gftd_linear_compensation_bounds_20261112",
+  "parent_run": "gftd_joint_distinguishability_20261112",
+  "recorded_utc": "2026-11-12T15:53:45.407547+00:00",
+  "status": "design_accepted_for_minimal_implementation",
+  "references": {
+    "design": {
+      "path": "designs/gftd_linear_compensation_bounds_20261112.md",
+      "bytes": 4209,
+      "sha256": "08b7a96ac6034be1132a06e7a679ecc94337ed4735190198f0c9715a2ad2349f"
+    },
+    "protocol": {
+      "path": "campaigns/gftd_linear_compensation_bounds_20261112/protocol.md",
+      "bytes": 8563,
+      "sha256": "16aef2bc134436c44208098f79b31d81b78bcbabfaa32cd81fdfbb11a1c5eded"
+    },
+    "design_review": {
+      "path": "reports/gftd_linear_compensation_bounds_20261112/design_review.md",
+      "bytes": 2999,
+      "sha256": "63f9e7d4395acb768fb19e76d6f843653efb1aad090e122d7988d5ced38309af"
+    },
+    "design_request": {
+      "path": "results/gftd_linear_compensation_bounds_20261112/design_request.json",
+      "bytes": 2502,
+      "sha256": "0efdaa261e17ab176912a7db13786787ea53d7613f7ad59b3ce4d29fa46695fb"
+    },
+    "parent_adoption": {
+      "path": "results/gftd_joint_distinguishability_20261112/final_adoption.json",
+      "bytes": 8070,
+      "sha256": "23f3dca451c5ab6083522bcc328fe4add1247e2a992712577df5935b044699ac"
+    }
+  },
+  "role_invocations": {
+    "scientist": {
+      "host_tool": "collaboration.followup_task",
+      "target": "/root/objective_alignment_scientist",
+      "configured_model": "gpt-6-astra",
+      "server_resolved_model": null
+    },
+    "reviewer": {
+      "host_tool": "collaboration.followup_task",
+      "target": "/root/matched_fit_final_review",
+      "configured_model": "gpt-6.1-sol",
+      "server_resolved_model": null
+    }
+  },
+  "root_rationale": "Exact primal/dual bounds address the remaining solve-adequacy competitor using already saved inputs. A strict bound can stop redundant solving; a feasible bound can exhibit a better linear point. Scope remains the exact cached convex box.",
+  "accepted_decision_rule": {
+    "theta_numerator": 2048,
+    "theta_denominator": 1000000000000,
+    "reachable": "U_best <= theta",
+    "unreachable_in_fixed_linear_box": "L_best > theta",
+    "unresolved": "L_best <= theta < U_best"
+  },
+  "limits": {
+    "science_certificates": 2,
+    "science_exact_matrix_scalar_products": 11088000,
+    "independent_certificates": 2,
+    "independent_exact_matrix_scalar_products": 11088000,
+    "science_bvls": 1,
+    "science_outer_iterations": 100,
+    "science_dense_lstsq": 1051,
+    "qualification_rounds": 2,
+    "qualification_cases_total": 24,
+    "qualification_bvls_total": 2,
+    "qualification_dense_lstsq_total": 32,
+    "model_rhs": 0,
+    "future_reads": 0,
+    "lsmr": 0
+  },
+  "implementation_released": true,
+  "qualification_released": false,
+  "science_released": false,
+  "private_array_read_released": false,
+  "source_freeze_required_before_execution": true,
+  "old_unused_work_transferred": false,
+  "model_or_deployment_changed": false
+}

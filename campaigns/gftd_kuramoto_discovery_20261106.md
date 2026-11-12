@@ -81,6 +81,7 @@
 | `gftd_matched_prediction_20261109` | 已完成的同核初始化及冻结静态／有界两父模型 | 两模型24包匹配适配、原297预测及同一ODE分析 | `adaptation + matched comparison` | [协议](gftd_matched_prediction_20261109/protocol.md)：固定两起点1200残差、完整库提案、原分母L1和L2/L3 | `COMPLETED`；两路fit均保留父参数，594初始化六门通过；静态5秒主项合格、调制3个长时未决导致主项null；实际区间漏检21/30与17/30，L2各0/297、L3各10/13；独立审查接受，工作量closed |
 | `gftd_objective_alignment_20261112` | 匹配预测Run闭合，原唯一弱式提案与两端缓存 | 固定三个内点能否改善原自治历史目标 | `adaptation` | [协议](gftd_objective_alignment_20261112/protocol.md)：t=1/2、1/4、1/8；原24包/双起点/六门，W仅诊断 | `COMPLETED`；6/6 候选、144/144 六门，静态保留父、有界调制选中 1/4，方向搜索结束；[最终决定](../results/gftd_objective_alignment_20261112/final_adoption.json) |
 | `gftd_joint_distinguishability_20261112` | 三点比较选中的调制 quarter，固定原24包 | 共享 x 与合法 a/r 对一个 beta 方向的局部补偿 | `probe` | [有限协议](gftd_joint_distinguishability_20261112/protocol.md)：一个有界线性问题、两档完整历史核验；无见证记未决 | 执行 COMPLETED，独立结果复核完成，两档未决；最终主张审查通过，root 已闭合本轮 |
+| `gftd_linear_compensation_bounds_20261112` | 已闭合的固定方向补偿探针 | 保存 A、b 和盒的精确原始／对偶界 | `probe` | [协议](gftd_linear_compensation_bounds_20261112/protocol.md)：旧点证书；跨门才一次 BVLS，结论限固定线性问题 | 设计独立审查通过，正在实现，科学执行未释放 |
 | `gftd_stage2_coi_decoupling` | 受控证据与合格修订，具体父候选待冻结 | 静态耦合候选 | `discrimination` | 在 `train fit297` 固定同一初始化和静态图，仅改变共同模态算子 | 旧规划保留；不再作为三步主线前置 |
 | `gftd_stage2_latent_modulated_topology` | `gftd_stage2_coi_decoupling` 的冻结候选 | 动态调制候选 | `discrimination` / `adaptation` | 固定初始化与共同模态设置，调制开/关同期比较，L2 另证，L3 report-only | `DRAFT_PENDING_RELEASE` |
 
@@ -96,7 +97,7 @@
 
 ## 4. 下一待辨别问题与停止条件
 
-下一步只拟定已保存线性盒约束问题的可行上界和最优值下界。尚未释放新计算，不开放模型 RHS 或新评分。[独立结果审查及更正](../reports/gftd_joint_distinguishability_20261112/result_review_correction.md) · [复核记录 v2](../results/gftd_joint_distinguishability_20261112/result_audit_v2.json)
+下一轮针对已保存的固定线性问题计算精确可行上界和对偶下界。设计已通过独立审查并由 root 采用，正在最小实现；只有上下界仍跨越目标时才允许一次密集有界求解，最多 1,051 次内部线性分解。科学执行尚未释放，本轮模型 RHS 和未来评分均为 0。[有限协议](gftd_linear_compensation_bounds_20261112/protocol.md) · [设计采用](../results/gftd_linear_compensation_bounds_20261112/design_adoption.json)[独立结果审查及更正](../reports/gftd_joint_distinguishability_20261112/result_review_correction.md) · [复核记录 v2](../results/gftd_joint_distinguishability_20261112/result_audit_v2.json)
 
 - 三点比较的代码保留、模型证据保留、科学继续。root 已正式闭合本轮，45 份源码的活动冻结已解除，后续研究须另行冻结和审查。[最终决定](../results/gftd_objective_alignment_20261112/final_adoption.json) · [源码档案](../results/gftd_objective_alignment_20261112/source_archive.json)
 - 同族正负校准继续分别判断恢复和误检，推断端隔离真实图及隐轨迹。旧 Run 余额不转移，科学结论、确认需求与模型晋升分别判断。

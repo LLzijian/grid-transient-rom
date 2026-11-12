@@ -24,7 +24,7 @@
 
 ## 下一待辨别问题
 
-固定调制方向的两档补偿结果均超过观测残余门。求解到限后返回的可行解提供上界，优化充分性仍为 unknown。科学执行与独立结果复核均已完成，最终主张审查通过，root 已闭合本轮。下一步只拟定已保存线性盒约束问题的可行上界和最优值下界。尚未释放新计算，不开放模型 RHS 或新评分。[独立结果审查及更正](../reports/gftd_joint_distinguishability_20261112/result_review_correction.md) · [复核记录 v2](../results/gftd_joint_distinguishability_20261112/result_audit_v2.json)
+固定调制方向的两档补偿结果均超过观测残余门。求解到限后返回的可行解提供上界，优化充分性仍为 unknown。科学执行与独立结果复核均已完成，最终主张审查通过，root 已闭合本轮。下一轮针对已保存的固定线性问题计算精确可行上界和对偶下界。设计已通过独立审查并由 root 采用，正在最小实现；只有上下界仍跨越目标时才允许一次密集有界求解，最多 1,051 次内部线性分解。科学执行尚未释放，本轮模型 RHS 和未来评分均为 0。[有限协议](../campaigns/gftd_linear_compensation_bounds_20261112/protocol.md) · [设计采用](../results/gftd_linear_compensation_bounds_20261112/design_adoption.json)[独立结果审查及更正](../reports/gftd_joint_distinguishability_20261112/result_review_correction.md) · [复核记录 v2](../results/gftd_joint_distinguishability_20261112/result_audit_v2.json)
 
 已有证据界定了问题范围。Run 1 支持有限 K4 静态恢复，Run 2 建立拟合、存取、因果初始化和自主预测接口。匹配预测完成原 train 297 的同期评价，两模型均有局部吸引集证书、实际初态各 0/297 获证、参考模态各配对 10/13。有界调制在三点比较中的 1/4 更新改善了原 24 包的历史选择目标，联合恢复、预测改善和实际初态证书覆盖仍待对应证据。[当前状态](current_state.md)
 

@@ -33,6 +33,6 @@ risk 是逐事件时间平均归一化平方误差的加权风险。失稳样本
 
 ## 下一问与边界
 
-下一步只拟定已保存线性盒约束问题的可行上界和最优值下界。尚未释放新计算，不开放模型 RHS 或新评分。一般拓扑与隐调制联合恢复、预测能力目标和实际初态 L2 覆盖仍待解决。[研究假说](../campaigns/gftd_kuramoto_discovery_20261106.md) · [架构入口](current_design.md)
+下一轮针对已保存的固定线性问题计算精确可行上界和对偶下界。设计已通过独立审查并由 root 采用，正在最小实现；只有上下界仍跨越目标时才允许一次密集有界求解，最多 1,051 次内部线性分解。科学执行尚未释放，本轮模型 RHS 和未来评分均为 0。[有限协议](../campaigns/gftd_linear_compensation_bounds_20261112/protocol.md) · [设计采用](../results/gftd_linear_compensation_bounds_20261112/design_adoption.json)一般拓扑与隐调制联合恢复、预测能力目标和实际初态 L2 覆盖仍待解决。[研究假说](../campaigns/gftd_kuramoto_discovery_20261106.md) · [架构入口](current_design.md)
 
 部署沿用 100 ms 因果历史、末点真实 p₀ 与冻结常数。原 val/test 关闭，旧 test 退出选择，新 FOM 为 0，TASK4 暂停。default none、incumbent 与 protected anchors 不变。
