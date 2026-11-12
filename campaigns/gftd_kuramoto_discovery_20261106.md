@@ -75,7 +75,7 @@
 | `gftd_storage_feasibility_20261109` | 长时诊断冻结模型、268两个旧状态及三参考缓存 | 同储能光滑有界调制，保留零点二阶展开 | `probe` | [协议](gftd_storage_feasibility_20261109/protocol.md)：先数学与人工资格，再两个保存初态各三参考1 s | `COMPLETED`；数学及人工资格通过，六条新参考全1 s合格；同窗幅值与调制范围改善，独立复核后保留证据，工作量关闭 |
 | `gftd_bounded_initialization_20261109` | 储能可行性已归档989fa944，固定原调制共享参数 | 显式有界核贯穿字典、存取与合法DP8初始化 | `adaptation + probe` | [协议](gftd_bounded_initialization_20261109/protocol.md)：25包小试后完成其余272包，每个返回点一次严格参考 | `COMPLETED`；297/297六门通过，289完整严格参考确认，8到限未决；独立审查接受、源码归档，工作量closed |
 | `gftd_matched_prediction_20261109` | 已完成的同核初始化及冻结静态／有界两父模型 | 两模型24包匹配适配、原297预测及同一ODE分析 | `adaptation + matched comparison` | [协议](gftd_matched_prediction_20261109/protocol.md)：固定两起点1200残差、完整库提案、原分母L1和L2/L3 | `COMPLETED`；两路fit均保留父参数，594初始化六门通过；静态5秒主项合格、调制3个长时未决导致主项null；实际区间漏检21/30与17/30，L2各0/297、L3各10/13；独立审查接受，工作量closed |
-| `gftd_objective_alignment_20261112` | 匹配预测Run闭合，原唯一弱式提案与两端缓存 | 固定三个内点能否改善原自治历史目标 | `adaptation` | [协议](gftd_objective_alignment_20261112/protocol.md)：t=1/2、1/4、1/8；原24包/双起点/六门，W仅诊断 | 设计及旧端点身份已独立审查通过，已登记进入隔离实现；科学和原始输入读取尚未释放 |
+| `gftd_objective_alignment_20261112` | 匹配预测Run闭合，原唯一弱式提案与两端缓存 | 固定三个内点能否改善原自治历史目标 | `adaptation` | [协议](gftd_objective_alignment_20261112/protocol.md)：t=1/2、1/4、1/8；原24包/双起点/六门，W仅诊断 | 实现、纯mock资格、两旧聚合键及执行前审查通过；科学会话11646已启动，结果待闭合 |
 | `gftd_stage2_coi_decoupling` | 受控证据与合格修订，具体父候选待冻结 | 静态耦合候选 | `discrimination` | 在 `train fit297` 固定同一初始化和静态图，仅改变共同模态算子 | 旧规划保留；不再作为三步主线前置 |
 | `gftd_stage2_latent_modulated_topology` | `gftd_stage2_coi_decoupling` 的冻结候选 | 动态调制候选 | `discrimination` / `adaptation` | 固定初始化与共同模态设置，调制开/关同期比较，L2 另证，L3 report-only | `DRAFT_PENDING_RELEASE` |
 

@@ -10,13 +10,13 @@
     "phase": "science_running",
     "scientific_execution_released": true,
     "native_session_id": 11646,
-    "recorded_utc": "2026-11-12T13:25:36.317190+00:00",
+    "recorded_utc": "2026-11-12T13:33:24.212336+00:00",
     "native_start_chunk": "5342b5",
-    "scientific_jobs_started": 2,
-    "scientific_jobs_completed": 0,
+    "scientific_jobs_started": 3,
+    "scientific_jobs_completed": 1,
     "active_claims": [
       "modulated_half",
-      "static_half"
+      "static_quarter"
     ],
     "host_start": {
       "path": "results/gftd_objective_alignment_20261112/science_host_start.json",
@@ -28,7 +28,15 @@
       55544,
       46372,
       57144
-    ]
+    ],
+    "completed_candidate_outcomes": {
+      "static_half": {
+        "status": "completed",
+        "objective": 0.02594503534831102,
+        "improves_parent": false,
+        "qualification_passed": 24
+      }
+    }
   },
   "scientific_work": {
     "budget_status": "open",
@@ -46,7 +54,7 @@
     "old_unused_work_transferred": false,
     "qualification_status": "passed",
     "qualification_budget_status": "closed",
-    "known_completed_scientific_rhs": 0,
+    "known_completed_scientific_rhs": 5598720,
     "cost_status": "in_progress_not_yet_closed"
   },
   "evidence": {
@@ -74,7 +82,9 @@
       "results/gftd_objective_alignment_20261112/prepare_release.json",
       "results/gftd_objective_alignment_20261112/prepare.json",
       "reports/gftd_objective_alignment_20261112/preexecution_review.md",
-      "results/gftd_objective_alignment_20261112/science_release.json"
+      "results/gftd_objective_alignment_20261112/science_release.json",
+      "reports/gftd_objective_alignment_20261112/goal_evidence_update.md",
+      "results/gftd_objective_alignment_20261112/science/jobs/static_half.json"
     ]
   },
   "proposal": {
@@ -102,5 +112,16 @@
     "new_fom": 0,
     "val_test": "closed",
     "parent_selection_history_preserved": true
+  },
+  "goal_evidence_update": {
+    "path": "reports/gftd_objective_alignment_20261112/goal_evidence_update.md",
+    "sha256": "5d2b3cd5ceac09075a551d222eaa1974ef91ee79f9f4be098d964a06ba4f07b0",
+    "agent": "/root/goal_evidence_update",
+    "configured_model": "gpt-6.1-sol",
+    "resolved_model": null,
+    "role": "Coordinator",
+    "root_adoption": "accepted_as_evidence_mapping_only",
+    "scientific_calls": 0,
+    "goal_complete": false
   }
 }
