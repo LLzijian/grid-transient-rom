@@ -1,0 +1,462 @@
+{
+  "scope": "OSGKD 20261113 phase one only",
+  "source": {
+    "parent_thread_id": "01a1b19c-02c2-79d0-9cb6-dae0b67648a2",
+    "parent_turn_id": "01a1d09e-2259-7493-8184-c9ad5f482b24",
+    "locators": "read_thread plus allowlisted fields from corresponding local sessions JSONL, ordinal is zero-based",
+    "model_fields": "spawn arguments and child turn_context are host configuration evidence. Server-resolved model unavailable.",
+    "request_messages": "Omitted, local message fields are encrypted.",
+    "read_thread": {
+      "tool": "mcp__codex_app__read_thread",
+      "parent_thread_id": "01a1b19c-02c2-79d0-9cb6-dae0b67648a2",
+      "child_thread_ids": [
+        "01a1cf63-0ce6-7ff2-aa25-1cc2e70ccf28",
+        "01a1cf55-fa21-7b03-aad0-f1f5f82c78f9",
+        "01a1cf55-8cac-7842-b87f-ef7a641c9c5a"
+      ],
+      "reviewer_command_snapshot": {
+        "turn_limit": 1,
+        "include_outputs": true,
+        "max_output_chars_per_item": 3500
+      }
+    },
+    "local_session_relative_to_sessions": {
+      "parent": "2026/11/07/rollout-2026-11-07T00-05-54-01a1b19c-02c2-79d0-9cb6-dae0b67648a2.jsonl",
+      "Scientist": "2026/11/12/rollout-2026-11-12T18-52-17-01a1cf63-0ce6-7ff2-aa25-1cc2e70ccf28.jsonl",
+      "Coordinator": "2026/11/12/rollout-2026-11-12T18-38-00-01a1cf55-fa21-7b03-aad0-f1f5f82c78f9.jsonl",
+      "Reviewer": "2026/11/12/rollout-2026-11-12T18-37-32-01a1cf55-8cac-7842-b87f-ef7a641c9c5a.jsonl"
+    }
+  },
+  "roles": [
+    {
+      "role": "Scientist",
+      "agent_thread_id": "01a1cf63-0ce6-7ff2-aa25-1cc2e70ccf28",
+      "original_spawn": {
+        "call": "call_cec01a25fef24a758764ffab93438e62",
+        "status": "completed",
+        "utc": "2026-11-12T10:52:17.495Z",
+        "tool": "spawn_agent",
+        "ordinal": 19309,
+        "args": {
+          "task_name": "objective_alignment_scientist",
+          "fork_turns": "none",
+          "model": "gpt-6-astra"
+        }
+      },
+      "phase_one_host_activity": [
+        {
+          "type": "subAgentActivity",
+          "id": "call_0bc065e8cbd24b07815e55e7bd1e85b7",
+          "kind": "interacted",
+          "agentThreadId": "01a1cf63-0ce6-7ff2-aa25-1cc2e70ccf28",
+          "agentPath": "/root/objective_alignment_scientist",
+          "call_receipt": {
+            "call": "call_0bc065e8cbd24b07815e55e7bd1e85b7",
+            "status": "completed",
+            "utc": "2026-11-12T16:38:01.681Z",
+            "tool": "followup_task",
+            "ordinal": 24193,
+            "args": {
+              "target": "/root/objective_alignment_scientist"
+            }
+          }
+        },
+        {
+          "type": "subAgentActivity",
+          "id": "subagent-completed-01a1d09f-94e0-7340-8fb8-be0a356e7321",
+          "kind": "completed",
+          "agentThreadId": "01a1cf63-0ce6-7ff2-aa25-1cc2e70ccf28",
+          "agentPath": "/root/objective_alignment_scientist"
+        }
+      ],
+      "child_turn_id": "01a1d09f-94e0-7340-8fb8-be0a356e7321",
+      "child_turn_status": "completed",
+      "child_session_events": [
+        {
+          "utc": "2026-11-12T16:38:01.718Z",
+          "ordinal": 695,
+          "turn": "01a1d09f-94e0-7340-8fb8-be0a356e7321",
+          "type": "task_started"
+        },
+        {
+          "utc": "2026-11-12T16:38:01.788Z",
+          "ordinal": 698,
+          "effort": "medium",
+          "model": "gpt-6-astra",
+          "modeModel": "gpt-6-astra",
+          "turn": "01a1d09f-94e0-7340-8fb8-be0a356e7321"
+        },
+        {
+          "utc": "2026-11-12T16:41:41.687Z",
+          "ordinal": 739,
+          "turn": "01a1d09f-94e0-7340-8fb8-be0a356e7321",
+          "type": "task_complete"
+        }
+      ],
+      "server_resolved_model": null,
+      "final_message": {
+        "type": "agentMessage",
+        "id": "msg_093569ac9e80ce3a016af5ec411d2087d09f8160a42ed2a69b",
+        "text": "已完成阶段一两份文档：\n\n- [架构](E:/03-nn_Transfer_Func/kiki/designs/osgkd_architecture.md)  \n  SHA256 `be3c6bf43371a5dc45f8ee7f3e23871401d8413d5c341bc5af35c1b86d5a16fd`\n- [Campaign](E:/03-nn_Transfer_Func/kiki/campaigns/osgkd_ieee39/campaign.md)  \n  SHA256 `7ec67c4b028b786471bc95609004d241a8bd460cd6075c945b1c8d149791ef89`\n\n集中审查重点：固定参考势梯度与幅值供能项、有限字典及潜态尺度、缺标签时的有效分解、同信息 C0/C1 比较。\n\n字段覆盖和作用映射仍标为待核验；未读取私有数据，未执行模型、求解、测试或 Git。阶段二未释放。",
+        "phase": "final_answer"
+      }
+    },
+    {
+      "role": "Coordinator",
+      "agent_thread_id": "01a1cf55-fa21-7b03-aad0-f1f5f82c78f9",
+      "original_spawn": {
+        "call": "call_8da15deb8c0c49e7a2829cac039aa475",
+        "status": "completed",
+        "utc": "2026-11-12T10:38:00.717Z",
+        "tool": "spawn_agent",
+        "ordinal": 19008,
+        "args": {
+          "task_name": "matched_fit_digest",
+          "fork_turns": "none",
+          "model": "gpt-6.1-sol"
+        }
+      },
+      "phase_one_host_activity": [
+        {
+          "type": "subAgentActivity",
+          "id": "call_7106ffd705df4d7aba73290202f3652a",
+          "kind": "interacted",
+          "agentThreadId": "01a1cf55-fa21-7b03-aad0-f1f5f82c78f9",
+          "agentPath": "/root/matched_fit_digest",
+          "call_receipt": {
+            "call": "call_7106ffd705df4d7aba73290202f3652a",
+            "status": "completed",
+            "utc": "2026-11-12T16:38:13.84Z",
+            "tool": "followup_task",
+            "ordinal": 24198,
+            "args": {
+              "target": "/root/matched_fit_digest"
+            }
+          }
+        },
+        {
+          "type": "subAgentActivity",
+          "id": "subagent-completed-01a1d09f-c45b-7801-9b50-4da361247737",
+          "kind": "completed",
+          "agentThreadId": "01a1cf55-fa21-7b03-aad0-f1f5f82c78f9",
+          "agentPath": "/root/matched_fit_digest"
+        }
+      ],
+      "child_turn_id": "01a1d09f-c45b-7801-9b50-4da361247737",
+      "child_turn_status": "completed",
+      "child_session_events": [
+        {
+          "utc": "2026-11-12T16:38:13.876Z",
+          "ordinal": 1326,
+          "turn": "01a1d09f-c45b-7801-9b50-4da361247737",
+          "type": "task_started"
+        },
+        {
+          "utc": "2026-11-12T16:38:13.926Z",
+          "ordinal": 1327,
+          "effort": "low",
+          "model": "gpt-6.1-sol",
+          "modeModel": "gpt-6.1-sol",
+          "turn": "01a1d09f-c45b-7801-9b50-4da361247737"
+        },
+        {
+          "utc": "2026-11-12T16:42:57.943Z",
+          "ordinal": 1386,
+          "turn": "01a1d09f-c45b-7801-9b50-4da361247737",
+          "type": "task_complete"
+        }
+      ],
+      "server_resolved_model": null,
+      "final_message": {
+        "type": "agentMessage",
+        "id": "msg_03cbbee11e5cedaa016af5ec8d88b087d09c154ef9ecf1f44b",
+        "text": "已更新 11 份指定控制文件，将活动部署合同切换为 `motion_only_v1`，把真实 `p₀` 保留为单列的 `known_p0_reference` 历史参照。训练监督与部署输入已分开，研究主循环改为完整训练、评价和解释。L2 证书和精确辨识证明按后续主张取证。\n\n两份 harness JSON 静态解析通过，历史 `policy.permissions` 区块逐字节保留。新增字段仅用于导航，现有 CLI 读取逻辑兼容。文件哈希及可运行的现有测试已交 root。\n\n未改生产 API，未运行测试、科学计算或读取私有数据。阶段二未启动。",
+        "phase": "final_answer"
+      }
+    },
+    {
+      "role": "Reviewer",
+      "agent_thread_id": "01a1cf55-8cac-7842-b87f-ef7a641c9c5a",
+      "original_spawn": {
+        "call": "call_9e5c4fd3799f4a028b02877715ece7f2",
+        "status": "completed",
+        "utc": "2026-11-12T10:37:32.697Z",
+        "tool": "spawn_agent",
+        "ordinal": 18989,
+        "args": {
+          "task_name": "matched_fit_final_review",
+          "fork_turns": "none",
+          "model": "gpt-6.1-sol"
+        }
+      },
+      "phase_one_host_activity": [
+        {
+          "type": "subAgentActivity",
+          "id": "call_0c9b23c2530f4c3288f7932d045f825b",
+          "kind": "interacted",
+          "agentThreadId": "01a1cf55-8cac-7842-b87f-ef7a641c9c5a",
+          "agentPath": "/root/matched_fit_final_review",
+          "call_receipt": {
+            "call": "call_0c9b23c2530f4c3288f7932d045f825b",
+            "status": "completed",
+            "utc": "2026-11-12T16:42:30.342Z",
+            "tool": "followup_task",
+            "ordinal": 24272,
+            "args": {
+              "target": "/root/matched_fit_final_review"
+            }
+          }
+        },
+        {
+          "type": "subAgentActivity",
+          "id": "call_96fc046ebcf045e09669971b29b895a3",
+          "kind": "interacted",
+          "agentThreadId": "01a1cf55-8cac-7842-b87f-ef7a641c9c5a",
+          "agentPath": "/root/matched_fit_final_review",
+          "call_receipt": {
+            "call": "call_96fc046ebcf045e09669971b29b895a3",
+            "status": "completed",
+            "utc": "2026-11-12T16:43:46.522Z",
+            "tool": "send_message",
+            "ordinal": 24305,
+            "args": {
+              "target": "/root/matched_fit_final_review"
+            }
+          }
+        },
+        {
+          "type": "subAgentActivity",
+          "id": "call_eb4a9d6315614fa7a5bc71020c5b69a5",
+          "kind": "interacted",
+          "agentThreadId": "01a1cf55-8cac-7842-b87f-ef7a641c9c5a",
+          "agentPath": "/root/matched_fit_final_review",
+          "call_receipt": {
+            "call": "call_eb4a9d6315614fa7a5bc71020c5b69a5",
+            "status": "completed",
+            "utc": "2026-11-12T16:47:41.5Z",
+            "tool": "send_message",
+            "ordinal": 24359,
+            "args": {
+              "target": "/root/matched_fit_final_review"
+            }
+          }
+        },
+        {
+          "type": "subAgentActivity",
+          "id": "call_8fc048f9c523475093dd6e48e82d3fcd",
+          "kind": "interacted",
+          "agentThreadId": "01a1cf55-8cac-7842-b87f-ef7a641c9c5a",
+          "agentPath": "/root/matched_fit_final_review",
+          "call_receipt": {
+            "call": "call_8fc048f9c523475093dd6e48e82d3fcd",
+            "status": "completed",
+            "utc": "2026-11-12T16:49:08.73Z",
+            "tool": "send_message",
+            "ordinal": 24395,
+            "args": {
+              "target": "/root/matched_fit_final_review"
+            }
+          }
+        },
+        {
+          "type": "subAgentActivity",
+          "id": "call_087a9bbc65be4f7bb9150bb4a8f31ff9",
+          "kind": "interacted",
+          "agentThreadId": "01a1cf55-8cac-7842-b87f-ef7a641c9c5a",
+          "agentPath": "/root/matched_fit_final_review",
+          "call_receipt": {
+            "call": "call_087a9bbc65be4f7bb9150bb4a8f31ff9",
+            "status": "completed",
+            "utc": "2026-11-12T16:49:35.193Z",
+            "tool": "send_message",
+            "ordinal": 24409,
+            "args": {
+              "target": "/root/matched_fit_final_review"
+            }
+          }
+        },
+        {
+          "type": "subAgentActivity",
+          "id": "call_d9be66b2bcd8452e8c33a77422dab9b8",
+          "kind": "interacted",
+          "agentThreadId": "01a1cf55-8cac-7842-b87f-ef7a641c9c5a",
+          "agentPath": "/root/matched_fit_final_review",
+          "call_receipt": {
+            "call": "call_d9be66b2bcd8452e8c33a77422dab9b8",
+            "status": "completed",
+            "utc": "2026-11-12T16:51:15.109Z",
+            "tool": "followup_task",
+            "ordinal": 24459,
+            "args": {
+              "target": "/root/matched_fit_final_review"
+            }
+          }
+        },
+        {
+          "type": "subAgentActivity",
+          "id": "subagent-completed-01a1d0a3-ae55-7ec0-9491-acd1a40465b5",
+          "kind": "completed",
+          "agentThreadId": "01a1cf55-8cac-7842-b87f-ef7a641c9c5a",
+          "agentPath": "/root/matched_fit_final_review"
+        }
+      ],
+      "child_turn_id": "01a1d0a3-ae55-7ec0-9491-acd1a40465b5",
+      "child_turn_status": "completed",
+      "child_session_events": [
+        {
+          "utc": "2026-11-12T16:42:30.38Z",
+          "ordinal": 1499,
+          "turn": "01a1d0a3-ae55-7ec0-9491-acd1a40465b5",
+          "type": "task_started"
+        },
+        {
+          "utc": "2026-11-12T16:42:30.429Z",
+          "ordinal": 1500,
+          "effort": "low",
+          "model": "gpt-6.1-sol",
+          "modeModel": "gpt-6.1-sol",
+          "turn": "01a1d0a3-ae55-7ec0-9491-acd1a40465b5"
+        },
+        {
+          "utc": "2026-11-12T16:53:08.258Z",
+          "ordinal": 1612,
+          "turn": "01a1d0a3-ae55-7ec0-9491-acd1a40465b5",
+          "type": "task_complete"
+        }
+      ],
+      "server_resolved_model": null,
+      "final_message": {
+        "type": "agentMessage",
+        "id": "msg_0ee9dff19015c9cf016af5eef1133887d0b2d8e486e6ee8ceb",
+        "text": "[OSGKD 阶段一独立审查](E:/03-nn_Transfer_Func/kiki/reports/osgkd_transition_20261113/review.md)通过。最终清单的 19 项哈希均已核对。归档调整未改变科学范围，阶段二仍未释放，旧 GFTD 支线保持暂存。\n\n最终报告 SHA-256 为 `15c195fc89cd7621854e678aadd962e33d1982f6ea87852bba8245abba261c60`。",
+        "phase": "final_answer"
+      }
+    }
+  ],
+  "reviewer_participation_check": {
+    "review_turn_id": "01a1d0a3-ae55-7ec0-9491-acd1a40465b5",
+    "reviewer_local_ordinal_range_inclusive": [
+      1499,
+      1612
+    ],
+    "workspace_writes_observed": [
+      {
+        "read_thread_execution_id": "exec-18b553af-f0c4-4dba-a4d2-5e05487454fb",
+        "local_tool_event_id": "ctc_0ee9dff19015c9cf016af5eddfcf2887d0b9824c6873fce973",
+        "call_id": "call_9be3f0f4e49646d0b8c719d3e3fbfca1",
+        "ordinal": 1573,
+        "utc": "2026-11-12T16:49:03.095Z",
+        "exit_code": 0,
+        "path": "reports/osgkd_transition_20261113/review.md",
+        "operation": "Set-Content -LiteralPath",
+        "reported_sha256": "17e41f147b9c91386a6f2b6c4cd64cab79ebd03979cf7a5b2cc018cd56c3e372"
+      },
+      {
+        "read_thread_execution_id": "exec-e65e55af-1990-4853-b5a9-4c064b418dae",
+        "local_tool_event_id": "ctc_0ee9dff19015c9cf016af5ee99b6d487d095cabd6425c6f44b",
+        "call_id": "call_99b0b353cf444460a91ad76b182d48ab",
+        "ordinal": 1598,
+        "utc": "2026-11-12T16:51:47.581Z",
+        "exit_code": 0,
+        "path": "reports/osgkd_transition_20261113/review.md",
+        "operation": "Path.write_bytes",
+        "reported_sha256": "15c195fc89cd7621854e678aadd962e33d1982f6ea87852bba8245abba261c60"
+      }
+    ],
+    "other_shell_executions": [
+      {
+        "read_thread_execution_id": "exec-50de4291-226e-442e-9a16-13e259eb9360",
+        "call_id": "call_01e33d80c4854d2e88c4e7857200122f",
+        "ordinal": 1511,
+        "utc": "2026-11-12T16:43:17.352Z",
+        "classification": "read, hash or diff",
+        "command_truncation_reported": false
+      },
+      {
+        "read_thread_execution_id": "exec-1fdcd2e2-0b2a-48eb-ba6e-cecd63302c7d",
+        "call_id": "call_dae94107a5ec4b20b154e644e4f89690",
+        "ordinal": 1516,
+        "utc": "2026-11-12T16:43:35.462Z",
+        "classification": "read, hash or diff",
+        "command_truncation_reported": false
+      },
+      {
+        "read_thread_execution_id": "exec-6e389497-ca76-4085-bd83-5a9e425b7c53",
+        "call_id": "call_136997c756474624911e23ee33e6417d",
+        "ordinal": 1527,
+        "utc": "2026-11-12T16:44:29.377Z",
+        "classification": "read, hash or diff",
+        "command_truncation_reported": false
+      },
+      {
+        "read_thread_execution_id": "exec-ea72f5d7-9118-4cb2-929e-d31e5cc98064",
+        "call_id": "call_c18aa990655b4302926326df7a626740",
+        "ordinal": 1534,
+        "utc": "2026-11-12T16:46:22.439Z",
+        "classification": "read, hash or diff",
+        "command_truncation_reported": false
+      },
+      {
+        "read_thread_execution_id": "exec-ec6bccaa-09d8-4c9f-b562-a37805918a44",
+        "call_id": "call_732cdc2be2c647b3a00ed06558554f2d",
+        "ordinal": 1548,
+        "utc": "2026-11-12T16:47:03.765Z",
+        "classification": "read, hash or diff",
+        "command_truncation_reported": false
+      },
+      {
+        "read_thread_execution_id": "exec-bb276e8c-6a26-429f-8c96-451680f00925",
+        "call_id": "call_85b4590ed84541959f1e4aa8ce6cc684",
+        "ordinal": 1566,
+        "utc": "2026-11-12T16:48:11.934Z",
+        "classification": "read, hash or diff",
+        "command_truncation_reported": false
+      },
+      {
+        "read_thread_execution_id": "exec-c18d79fa-07e7-4200-bf5a-cfec2ef16006",
+        "call_id": "call_865a6c32b301410c9525f73061567b38",
+        "ordinal": 1587,
+        "utc": "2026-11-12T16:51:30.105Z",
+        "classification": "read, hash or diff",
+        "command_truncation_reported": false
+      }
+    ],
+    "message_events": [
+      {
+        "call_id": "call_7ff4d1ab22194695955178ac025de685",
+        "ordinal": 1541,
+        "utc": "2026-11-12T16:46:43.023Z",
+        "tool": "send_message",
+        "message_content": "unknown; encrypted in local record"
+      },
+      {
+        "call_id": "call_e9bcf39f7ed840d3919bb69501f959bf",
+        "ordinal": 1555,
+        "utc": "2026-11-12T16:47:25.169Z",
+        "tool": "send_message",
+        "message_content": "unknown; encrypted in local record"
+      },
+      {
+        "call_id": "call_2720dfd94cf946259d0185d1509ec73a",
+        "ordinal": 1578,
+        "utc": "2026-11-12T16:51:04.285Z",
+        "tool": "send_message",
+        "message_content": "unknown; encrypted in local record"
+      },
+      {
+        "call_id": "call_d607dc5ee28c41efbfca450ca3b8e749",
+        "ordinal": 1603,
+        "utc": "2026-11-12T16:52:50.179Z",
+        "tool": "send_message",
+        "message_content": "unknown; encrypted in local record"
+      }
+    ],
+    "design_control_or_implementation_write": "None found among the nine visible command bodies in this review turn. This statement is limited to observed logged commands.",
+    "prior_stage_one_participation": {
+      "observed": "The same agent thread existed earlier and its immediately preceding visible turn was a GFTD exact-certificate/BVLS/qualification review. A case-insensitive search for osgkd or motion_only_v1 in the visible prior reviewer session lines (ordinals 0–1498) had zero hits.",
+      "preceding_turn_id": "01a1d081-0c18-7360-83da-0047b9754a74",
+      "osgkd_proposal_or_implementation_participation": "unknown outside the visible evidence; no positive evidence found within the checked scope"
+    },
+    "limitations": "The original fork_turns=none applies to initial spawn, before reuse for OSGKD. No global claim about prior participation, message content or scientific independence follows from the visible command list or keyword search. Encrypted or omitted material remains unknown. Executions were matched to local shell calls in recorded order within the same turn."
+  }
+}

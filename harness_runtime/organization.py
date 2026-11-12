@@ -106,6 +106,15 @@ class Organization:
                 if hashlib.sha256(data.replace(b"\r\n", b"\n")).hexdigest() != entry.get("sha256_lf"):
                     raise ValueError("current input version differs: " + key)
                 self.inputs[key] = entry["path"]
+        if "design_archive" in self.inputs:
+            source = self.inputs["design_archive"]
+            body = self.json(source)
+            if (not isinstance(body, dict) or type(body.get("schema_version")) is not int or body["schema_version"] != 1
+                    or not isinstance(body.get("source_commit"), str) or not re.fullmatch(r"[0-9a-fA-F]{40}", body["source_commit"])
+                    or not isinstance(body.get("entries"), list)):
+                raise ValueError("design archive requires schema_version=1, full source_commit and entries")
+            for entry in body["entries"]:
+                self.add(entry, source, design_archive=True)
         document = self.inputs.get("documentation_migration", DOCUMENTS)
         if public_path(self.root, document).exists():
             body = self.json(document)
@@ -148,14 +157,18 @@ class Organization:
         data = read_public(self.root, self.inputs[key], access=self.access)
         return list(csv.DictReader(io.StringIO(data.decode("utf-8-sig"))))
 
-    def add(self, entry, source, documentation=False):
+    def add(self, entry, source, documentation=False, design_archive=False):
         if not isinstance(entry, dict):
             raise ValueError("migration entry must be an object")
         old, new = entry.get("old_path"), entry.get("new_path")
         public_path(self.root, old)
         public_path(self.root, new)
         old_parts, new_parts = PurePosixPath(old).parts, PurePosixPath(new).parts
-        if documentation:
+        if design_archive:
+            valid = (len(old_parts) == 2 and old_parts[0] == "designs" and old.endswith(".md")
+                     and len(new_parts) == 4 and new_parts[:2] == ("designs", "history") and new_parts[-1] == old_parts[-1]
+                     and entry.get("operation") == "move_byte_identical")
+        elif documentation:
             valid = old_parts[0] in {"docs", "reports"} and new_parts[0] in {"reports", "designs"} and old.endswith(".md") and new.endswith(".md")
         else:
             valid = (old_parts[0] in {"reports", "experiments"} and new_parts[0] in {"reports", "experiments", "results"}
@@ -173,10 +186,12 @@ class Organization:
             and previous["bytes"] == entry["bytes"] and previous["sha256"].lower() == entry["sha256"].lower()
         ):
             raise ValueError("duplicate migration old_path: " + old)
-        data = read_public(self.root, new, kind="documentation" if documentation else "archive", access=self.access)
+        if documentation and new.startswith("designs/") and new in self.migrations:
+            new = self.resolve(new)
+        data = read_public(self.root, new, kind="documentation" if documentation or design_archive else "archive", access=self.access)
         if len(data) != entry["bytes"] or hashlib.sha256(data).hexdigest() != entry["sha256"].lower():
             raise ValueError("migrated material bytes differ: " + old)
-        self.migrations[old] = dict(entry, source_record=source)
+        self.migrations[old] = dict(entry, new_path=new, source_record=source)
 
     def resolve(self, name):
         path = public_path(self.root, name)
@@ -252,7 +267,7 @@ class Organization:
 
 
 def render_view(value):
-    labels = dict(documentation_migration="旧文档迁移", archive_locations="累计归档位置", report_protection="报告保护",
+    labels = dict(documentation_migration="旧文档迁移", design_archive="历史设计归档", archive_locations="累计归档位置", report_protection="报告保护",
         code_index="代码位置", code_protection="既有代码保护依据", protection_additions="补充保护依据", storage_associations="结果与本地存储",
         scope="文件归属范围", unreviewed_roles="未逐项复核的职责", dependency_review="已复核的依赖样板", reading_manifest="核验过的固定阅读版本")
     lines = ["# 当前整理状态", "", "由current.json的版本化输入生成；历史批次保持原时点。Git跟踪、当前本地存在、远端可取得分别记录；不把public_results名称当作公开可取得的证明。", "",

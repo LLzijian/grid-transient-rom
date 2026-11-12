@@ -1,0 +1,27 @@
+{
+  "source_commit": "0ff2c9643d9eae11ca00620ed816e58beeba5dc9",
+  "scope": "Harness and documentation only; no training",
+  "frozen_comparison": "Pre-edit raw-byte baseline; Git may normalize legacy line endings",
+  "frozen_records_byte_identical": 45,
+  "stage1_review_inputs": 19,
+  "stage1_original_navigation_snapshot": "reports/osgkd_harness_followup_20261113/before/current_design.md",
+  "archived_designs_byte_identical": 11,
+  "legacy_documentation_aliases_verified": true,
+  "tests": {
+    "command": ".venv-gpu/Scripts/python.exe -X utf8 -B -m pytest -q -p no:cacheprovider tests/test_harness_cli.py tests/test_run_navigation.py tests/test_harness_scheduling.py tests/test_harness_evidence.py tests/test_organization.py",
+    "passed": 91,
+    "subtests_passed": 209
+  },
+  "harness_check": {
+    "valid": true,
+    "issues": [],
+    "read_only": true,
+    "private_payloads_read": false,
+    "notice": "Static public-metadata check only; no scientific evidence, model, live state, authority, or input hash was certified.",
+    "command": ".venv-gpu/Scripts/python.exe -X utf8 -B tools/research_harness.py check --root .",
+    "checked_files": 74,
+    "checked_relative_references": 1001
+  },
+  "training_started": false,
+  "stage2_released": false
+}

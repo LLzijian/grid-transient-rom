@@ -1,0 +1,69 @@
+{
+  "scope": "OSGKD navigation, byte-preserving GFTD archive, verifiable role receipts; maintenance only",
+  "recorded_utc": "2026-11-12T17:20:18.429156+00:00",
+  "source_commit": "0ff2c9643d9eae11ca00620ed816e58beeba5dc9",
+  "user_request": "更新 OSGKD 入口、归档旧 GFTD 设计、补齐可核实的角色调用和审查回执，保持冻结记录不变，先不启动训练",
+  "status": "maintenance_accepted",
+  "references": {
+    "review_inputs": {
+      "path": "results/osgkd_harness_followup_20261113/review_inputs.json",
+      "bytes": 7040,
+      "sha256": "7b4a993299fda7e8f8618bd9fb89da93f303ebba8e622f76df71eab2534821c5"
+    },
+    "review": {
+      "path": "reports/osgkd_harness_followup_20261113/review.md",
+      "bytes": 3397,
+      "sha256": "ea2e2e56efe0548935a1a784b6623a95dd24bb6ff4952f6ed51d8579ac842508"
+    },
+    "original_role_receipts": {
+      "path": "results/osgkd_harness_followup_20261113/role_receipts.json",
+      "bytes": 18997,
+      "sha256": "ca85bc825a4ca4e0cc9b4efc0c4cd219d2a7343c087f258ef3b6a1f028b0d1b6"
+    },
+    "validation": {
+      "path": "results/osgkd_harness_followup_20261113/validation.json",
+      "bytes": 1262,
+      "sha256": "c2cba5f115ddc229e144d4f1d1381aa577f75730366e719279a47424a8fbc7c6"
+    },
+    "archive": {
+      "path": "results/repository_organization/20261113_gftd_design_archive/migration.json",
+      "bytes": 5468,
+      "sha256": "fb6954c1e283ec45cbb1fe6c0c099f35c8240932639d8bf583bcadcff50cf6ca"
+    }
+  },
+  "reviewer_invocation": {
+    "host_tool": "collaboration.spawn_agent",
+    "call_id": "call_97b8e43f092341fb9368863888aafdfe",
+    "configured_model": "gpt-6.1-sol",
+    "server_resolved_model": null,
+    "fork_turns": "none",
+    "returned_agent_path": "/root/osgkd_followup_review",
+    "parent_thread_id": "01a1b6b7-345a-77a0-8f41-25fc5dcdb063",
+    "parent_turn_id": "01a1d0b8-4e51-7d22-b542-93c430eb2ef1",
+    "agent_thread_id": "01a1d0c0-cf76-7f63-b539-9af6995e7e6c",
+    "completed_turn_id": "01a1d0c0-d0a3-7040-bac8-af3eadd0c061",
+    "status": "completed",
+    "final_message_id": "msg_007ff6fefa77e692016af5f4b2180c87d0bd868a6a02b8c71d",
+    "evidence_source": "Codex read_thread parent subAgentActivity and completed child turn; requested model from actual spawn arguments",
+    "participation": "New review context; not author of proposal, implementation or original receipt extraction",
+    "publication_followup": {
+      "host_tool": "collaboration.followup_task",
+      "call_id": "call_0404a098184b48f9952e1e1a5c721701",
+      "completed_turn_id": "01a1d0c5-5dfc-7992-b6f5-95933ce910a6",
+      "status": "completed",
+      "final_message_id": "msg_007ff6fefa77e692016af5f53aa5e087d0a9715b28145271b8",
+      "scope": "Verify unchanged 24 inputs plus archive CRLF whitespace attribute; no test rerun"
+    }
+  },
+  "root_decisions": {
+    "code": "accept_maintenance",
+    "model": "unchanged",
+    "science": "not_evaluated"
+  },
+  "root_rationale": "活动入口收束到OSGKD；11份旧设计与来源提交字节一致，原协议通过限定范围的映射继续可查；原角色调用以宿主可见证据补齐，未知信息保持未知。独立复核24项输入、29个Run导航和控制面测试均通过。",
+  "training_started": false,
+  "stage2_released": false,
+  "scientific_run_created": false,
+  "protected_models_changed": false,
+  "frozen_records_rewritten": false
+}

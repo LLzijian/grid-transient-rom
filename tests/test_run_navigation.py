@@ -93,6 +93,56 @@ class RunNavigationTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'duplicate migration old_path'):
             cli.run_navigation(self.root, 'example')
 
+    def test_design_archive_resolves_frozen_paths_and_checks_both_byte_identities(self):
+        legacy = 'docs/design.md'
+        original = 'designs/design.md'
+        archive = 'designs/history/example/design.md'
+        self.registry(evidence=dict(references=[legacy, original]))
+        payload = b'# Frozen design\r\n'
+        target = self.root / archive
+        target.parent.mkdir(parents=True)
+        target.write_bytes(payload)
+        identity = dict(bytes=len(payload), sha256=hashlib.sha256(payload).hexdigest())
+        entry = dict(identity, old_path=original, new_path=archive, operation='move_byte_identical')
+        mapping = 'results/repository_organization/example/design_archive.json'
+
+        def pin(archive_entry):
+            manifest = self.write_json(mapping, dict(schema_version=1, source_commit='a' * 40, entries=[archive_entry]))
+            digest = hashlib.sha256(manifest.read_bytes().replace(b'\r\n', b'\n')).hexdigest()
+            self.write_json('results/repository_organization/current.json', dict(schema_version=1,
+                inputs=dict(design_archive=dict(path=mapping, sha256_lf=digest))))
+
+        def frozen(record_identity):
+            self.write_json('harness/documentation_migration_20261108.json', dict(schema_version=1,
+                source_commit='synthetic', entries=[dict(record_identity, old_path=legacy, new_path=original)]))
+
+        pin(entry)
+        frozen(identity)
+        result = cli.run_navigation(self.root, 'example')
+        self.assertTrue(result['valid'])
+        self.assertEqual([row['resolved_reference'] for row in result['runs'][0]['materials']], [archive, archive])
+
+        (self.root / original).write_bytes(payload)
+        result = cli.run_navigation(self.root, 'example')
+        historical, active = result['runs'][0]['materials']
+        self.assertEqual(historical['resolved_reference'], original)
+        self.assertEqual(active['status'], 'present')
+        (self.root / original).unlink()
+
+        frozen(dict(identity, sha256='0' * 64))
+        with self.assertRaisesRegex(ValueError, 'bytes differ: ' + legacy):
+            cli.run_navigation(self.root, 'example')
+        frozen(identity)
+        target.write_bytes(payload.replace(b'\r\n', b'\n'))
+        with self.assertRaisesRegex(ValueError, 'bytes differ: ' + original):
+            cli.run_navigation(self.root, 'example')
+
+        for bad_target in ('designs/history/example/other.md', 'reports/history/example/design.md'):
+            with self.subTest(target=bad_target):
+                pin(dict(entry, new_path=bad_target))
+                with self.assertRaisesRegex(ValueError, 'material scope'):
+                    cli.run_navigation(self.root, 'example')
+
     def test_same_record_conflict_is_not_resolved_by_picking_a_value(self):
         self.registry(scientific_work=dict(budget_status='closed'),root_decisions=dict(scientific_budget_status='open'))
         result=cli.run_navigation(self.root,'example')

@@ -14,8 +14,8 @@
 
 GFTD 作为前序证据与可复用组件保留，旧真 p₀ API 不承担新合同：
 
-- [5N 原修订](../designs/gftd_repair_design_20261107.md)、[有界核与储能分析](../designs/gftd_storage_feasibility_20261109.md)、[同核初始化](../designs/gftd_bounded_initialization_20261109.md)。
-- [匹配预测](../designs/gftd_matched_prediction_20261109.md)、[三点更新](../designs/gftd_objective_alignment_20261112.md)、[局部补偿](../designs/gftd_joint_distinguishability_20261112.md)。
-- [GFTD 收束](../reports/osgkd_transition_20261113/gftd_closure.md)、[原三步主线](../designs/gftd_mainline_20261107_architecture.md)、[设计档案](../designs/history/README.md)。
+- [5N 原修订](../designs/history/gftd_20261113/gftd_repair_design_20261107.md)、[有界核与储能分析](../designs/history/gftd_20261113/gftd_storage_feasibility_20261109.md)、[同核初始化](../designs/history/gftd_20261113/gftd_bounded_initialization_20261109.md)。
+- [匹配预测](../designs/history/gftd_20261113/gftd_matched_prediction_20261109.md)、[三点更新](../designs/history/gftd_20261113/gftd_objective_alignment_20261112.md)、[局部补偿](../designs/history/gftd_20261113/gftd_joint_distinguishability_20261112.md)。
+- [GFTD 收束](../reports/osgkd_transition_20261113/gftd_closure.md)、[原三步主线](../designs/history/gftd_20261113/gftd_mainline_20261107_architecture.md)、[设计档案](../designs/history/README.md)。
 
 已接受的 40 维基线及锚点保持原适用范围。default none、incumbent 和 protected anchors 不变。
