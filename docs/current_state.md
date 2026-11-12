@@ -1,6 +1,6 @@
 # 当前研究状态
 
-**2026-11-12：匹配预测与三点历史比较均已完成执行和独立结果审查。三点比较中，静态保留父候选，有界调制的四分之一步在原 24 包的历史选择目标上改善 0.135032%，选中该步并结束这条方向的搜索。下一问是调制系数变化能否由共享静态系数和合法隐初态补偿，当前在准备有界设计。**
+**2026-11-12：匹配预测与三点历史比较均已完成执行和独立结果审查。三点比较中，静态保留父候选，有界调制的四分之一步在原 24 包的历史选择目标上改善 0.135032%，选中该步并结束这条方向的搜索。下一问是调制系数变化能否由共享静态系数和合法隐初态补偿，有界设计已冻结，正在最小实现。**
 
 ## 三点历史比较
 
@@ -27,6 +27,6 @@ risk 是逐事件时间平均归一化平方误差的加权风险。失稳样本
 
 ## 下一问与边界
 
-以有界调制四分之一步为诊断工作候选，在该点附近检验沿父候选到四分之一步的固定 β 方向能否在合法 100 ms 完整自治历史中由共享静态系数 c 和盒内幅值、力记忆初态 a/r 补偿。后续 Run 为 `gftd_joint_distinguishability_20261112`，当前准备有界设计，尚未释放科学执行。一般拓扑与隐调制联合恢复、预测能力目标和实际初态 L2 覆盖仍待解决。[目标与证据更新](../reports/gftd_objective_alignment_20261112/goal_evidence_update.md) · [研究假说](../campaigns/gftd_kuramoto_discovery_20261106.md) · [架构入口](current_design.md)
+以有界调制四分之一步为诊断工作候选，在该点附近检验沿父候选到四分之一步的固定 β 方向能否在合法 100 ms 完整自治历史中由共享静态系数 c 和盒内幅值、力记忆初态 a/r 补偿。后续 Run 为 `gftd_joint_distinguishability_20261112`，有界设计已由 root 采用，正在最小实现，尚未释放科学执行。一般拓扑与隐调制联合恢复、预测能力目标和实际初态 L2 覆盖仍待解决。[下一设计](../designs/gftd_joint_distinguishability_20261112.md) · [有限协议](../campaigns/gftd_joint_distinguishability_20261112/protocol.md) · [采用记录](../results/gftd_joint_distinguishability_20261112/design_adoption.json) · [目标与证据更新](../reports/gftd_objective_alignment_20261112/goal_evidence_update.md) · [研究假说](../campaigns/gftd_kuramoto_discovery_20261106.md) · [架构入口](current_design.md)
 
 部署沿用 100 ms 因果历史、末点真实 p₀ 与冻结常数。原 val/test 关闭，旧 test 退出选择，新 FOM 为 0，TASK4 暂停。default none、incumbent 与 protected anchors 不变。

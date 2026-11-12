@@ -37,7 +37,7 @@
 
 
 - **登记性质**：`PROSPECTIVE_ARCHITECTURE_CAMPAIGN`（顶层设计规划，2026-11-06）
-- **当前科学状态**。Campaign 为 `active`。匹配预测与三点历史比较已完成执行和审查。代码 `retain_branch`、模型 `retain_evidence`、科学 `continue`，受保护模型不变。下一项只准备补偿辨别的有界设计，尚未释放科学执行。
+- **当前科学状态**。Campaign 为 `active`。匹配预测与三点历史比较已完成执行和审查。代码 `retain_branch`、模型 `retain_evidence`、科学 `continue`，受保护模型不变。下一项补偿见证设计已由 root 采用，正在最小实现，尚未释放科学执行。
 - **授权引用**。用户 2026-11-06 确定 GFTD 核心方向，2026-11-07 明确恢复按评估方案研究推进。范围内正常推进无需逐轮用户确认，数据、部署与 TASK4 边界沿用 [kiki.md](../kiki.md)，真实状态以 [current_state](../docs/current_state.md) 为准。
 - **范围明确的假说**。在给定观测与激励条件下，仅用合法因果信息，联合储能与弱形式结构选择能否区分静态耦合、动态调制和加性记忆，在可区分时选择简洁共享自治闭合，并改善 L1 预测。功率一致性、L2 证明和 L3 对应分别判断。
 - **架构版本**。[v2.0 草案及更正](../designs/gftd_kuramoto_architecture_brief.md)；当前方程采用独立审查后的 [5N 修订](../designs/gftd_repair_design_20261107.md)，实施顺序采用[三步主线](../designs/gftd_mainline_20261107_architecture.md)。
@@ -78,8 +78,10 @@
 | `gftd_bounded_initialization_20261109` | 储能可行性已归档989fa944，固定原调制共享参数 | 显式有界核贯穿字典、存取与合法DP8初始化 | `adaptation + probe` | [协议](gftd_bounded_initialization_20261109/protocol.md)：25包小试后完成其余272包，每个返回点一次严格参考 | `COMPLETED`；297/297六门通过，289完整严格参考确认，8到限未决；独立审查接受、源码归档，工作量closed |
 | `gftd_matched_prediction_20261109` | 已完成的同核初始化及冻结静态／有界两父模型 | 两模型24包匹配适配、原297预测及同一ODE分析 | `adaptation + matched comparison` | [协议](gftd_matched_prediction_20261109/protocol.md)：固定两起点1200残差、完整库提案、原分母L1和L2/L3 | `COMPLETED`；两路fit均保留父参数，594初始化六门通过；静态5秒主项合格、调制3个长时未决导致主项null；实际区间漏检21/30与17/30，L2各0/297、L3各10/13；独立审查接受，工作量closed |
 | `gftd_objective_alignment_20261112` | 匹配预测Run闭合，原唯一弱式提案与两端缓存 | 固定三个内点能否改善原自治历史目标 | `adaptation` | [协议](gftd_objective_alignment_20261112/protocol.md)：t=1/2、1/4、1/8；原24包/双起点/六门，W仅诊断 | `COMPLETED`；6/6 候选、144/144 六门，静态保留父、有界调制选中 1/4，方向搜索结束；[最终决定](../results/gftd_objective_alignment_20261112/final_adoption.json) |
+| `gftd_joint_distinguishability_20261112` | 三点比较选中的调制 quarter，固定原24包 | 共享 x 与合法 a/r 对一个 beta 方向的局部补偿 | `probe` | [有限协议](gftd_joint_distinguishability_20261112/protocol.md)：一个有界线性问题、两档完整历史核验；无见证记未决 | 设计已采用，最小实现中，科学执行未释放 |
 | `gftd_stage2_coi_decoupling` | 受控证据与合格修订，具体父候选待冻结 | 静态耦合候选 | `discrimination` | 在 `train fit297` 固定同一初始化和静态图，仅改变共同模态算子 | 旧规划保留；不再作为三步主线前置 |
-| `gftd_stage2_latent_modulated_topology` | `gftd_stage2_coi_decoupling` 的冻结候选 | 动态调制候选 | `discrimination` / `adaptation` | 固定初始化与共同模态设置，调制开/关同期比较，L2 另证，L3 report-only | `DRAFT_PENDING_RELEASE` |
+| `gftd_stage2_latent_modulated_topology` | `gftd_joint_distinguishability_20261112` | 三点比较选中的调制 quarter，固定原24包 | 共享 x 与合法 a/r 对一个 beta 方向的局部补偿 | `probe` | [有限协议](gftd_joint_distinguishability_20261112/protocol.md)：一个有界线性问题、两档完整历史核验；无见证记未决 | 设计已采用，最小实现中，科学执行未释放 |
+| `gftd_stage2_coi_decoupling` 的冻结候选 | 动态调制候选 | `discrimination` / `adaptation` | 固定初始化与共同模态设置，调制开/关同期比较，L2 另证，L3 report-only | `DRAFT_PENDING_RELEASE` |
 
 上述是规划引用，真实 Run/Job 身份、有限工作量和父候选在前瞻协议中冻结。数学反例和便宜辨别可直接推进相关问题。
 
@@ -93,7 +95,7 @@
 
 ## 4. 下一待辨别问题与停止条件
 
-**以有界调制四分之一步为诊断工作候选，在该点附近沿父候选到四分之一步的固定 β 方向，其作用能否在合法 100 ms 完整自治历史中，由共享静态系数 c 和盒内幅值、力记忆初态 a/r 补偿？** 后续 Run 为 `gftd_joint_distinguishability_20261112`，当前准备有界设计，尚未释放科学执行。若可行补偿经完整自治历史核验，证据限于该方向及所检扰动下的近似等价见证；未找到见证保留未决，不把求解目标值当作不可补偿的下界。三点历史收益不产生自动部署或评分授权。[科学判读](../reports/gftd_objective_alignment_20261112/final_assessment.md) · [执行终态](../results/gftd_objective_alignment_20261112/science/execution.json) · [目标与证据更新](../reports/gftd_objective_alignment_20261112/goal_evidence_update.md)
+**以有界调制四分之一步为诊断工作候选，在该点附近沿父候选到四分之一步的固定 β 方向，其作用能否在合法 100 ms 完整自治历史中，由共享静态系数 c 和盒内幅值、力记忆初态 a/r 补偿？** 后续 Run 为 `gftd_joint_distinguishability_20261112`，有界设计已由 root 采用，正在最小实现，尚未释放科学执行。若可行补偿经完整自治历史核验，证据限于该方向及所检扰动下的近似等价见证；未找到见证保留未决，不把求解目标值当作不可补偿的下界。三点历史收益不产生自动部署或评分授权。[科学判读](../reports/gftd_objective_alignment_20261112/final_assessment.md) · [执行终态](../results/gftd_objective_alignment_20261112/science/execution.json) · [目标与证据更新](../reports/gftd_objective_alignment_20261112/goal_evidence_update.md)
 
 - 三点比较的代码保留、模型证据保留、科学继续。root 已正式闭合本轮，45 份源码的活动冻结已解除，后续研究须另行冻结和审查。[最终决定](../results/gftd_objective_alignment_20261112/final_adoption.json) · [源码档案](../results/gftd_objective_alignment_20261112/source_archive.json)
 - 同族正负校准继续分别判断恢复和误检，推断端隔离真实图及隐轨迹。旧 Run 余额不转移，科学结论、确认需求与模型晋升分别判断。

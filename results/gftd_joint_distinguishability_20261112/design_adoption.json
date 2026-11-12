@@ -1,0 +1,101 @@
+{
+  "run": "gftd_joint_distinguishability_20261112",
+  "parent_run": "gftd_objective_alignment_20261112",
+  "recorded_utc": "2026-11-12T14:42:29.665856+00:00",
+  "status": "design_accepted_for_minimal_implementation",
+  "references": {
+    "design": {
+      "path": "designs/gftd_joint_distinguishability_20261112.md",
+      "bytes": 6020,
+      "sha256": "0ae20ccb686eaa538ffc93bdd93b527a7519b65c043e588e7e5cbde91ff2c744"
+    },
+    "protocol": {
+      "path": "campaigns/gftd_joint_distinguishability_20261112/protocol.md",
+      "bytes": 15099,
+      "sha256": "77da56d7717036fa20e27fe4012f5795d55d3ffecb40818dbcba71f582b56e10"
+    },
+    "review": {
+      "path": "reports/gftd_joint_distinguishability_20261112/design_review.md",
+      "bytes": 4982,
+      "sha256": "b5a19ddee82d0d5991d5d1ef2a5c9d6e2eff68b54f7b2db0d920014bfd158c50"
+    },
+    "request": {
+      "path": "results/gftd_joint_distinguishability_20261112/design_request.json",
+      "bytes": 2125,
+      "sha256": "4d21102934e2cfe46a91b9cd51c8fc9a605830fe996c0ab7f7b7ad9234b973e3"
+    },
+    "parent_closure": {
+      "path": "results/gftd_objective_alignment_20261112/final_adoption.json",
+      "bytes": 6945,
+      "sha256": "a20035ad5a099f6a5bea8e73bcc2f912195cc89b145fda194efe27b1c2b8b676"
+    },
+    "parent_source_archive": {
+      "path": "results/gftd_objective_alignment_20261112/source_archive.json",
+      "bytes": 15635,
+      "sha256": "10560d308499f0f15f5dac20f520db262ffd9cf77be813aa29a2083daadec3c9"
+    }
+  },
+  "role_invocations": {
+    "scientist": {
+      "host_tool": "collaboration.followup_task",
+      "target": "/root/objective_alignment_scientist",
+      "configured_model": "gpt-6-astra",
+      "server_resolved_model": null
+    },
+    "reviewer": {
+      "host_tool": "collaboration.followup_task",
+      "target": "/root/matched_fit_final_review",
+      "configured_model": "gpt-6.1-sol",
+      "server_resolved_model": null
+    }
+  },
+  "root_decisions": {
+    "code": "retain_branch",
+    "model": "retain_evidence",
+    "science": "continue"
+  },
+  "root_review": {
+    "independent_design_challenge": "accepted conditional on three execution definitions",
+    "corrections_verified_by_root": true,
+    "revision_independent_check": "requested; must be accepted before qualification/execution release",
+    "reason": "Revised text binds cache-only inputs and k_ref, permits all 45 x coordinates with target-to-actual support checks, and explicitly defines packet RMS, stack norms, FD rounding sums and eta without changing thresholds or workload."
+  },
+  "question": "At the saved quarter point, can the fixed beta direction be approximately compensated by shared x=c-beta and legal event-specific endpoint changes at two predetermined positive amplitudes?",
+  "scientific_claim_limit": "Numerically verified finite-point compensation witness only; no witness is unresolved, not non-identifiability proof or distinguishability lower bound.",
+  "parent_archive": {
+    "commit": "5bad48950ce627a5c9ff4f19cf7d0f6eefacc6a2",
+    "remote": "https://github.com/LLzijian/grid-transient-rom.git",
+    "branch": "codex/repository-inventory-20261108",
+    "remote_commit_verified": true
+  },
+  "implementation_scope": [
+    "experiments/gftd_joint_distinguishability_20261112/run.py",
+    "experiments/gftd_joint_distinguishability_20261112/qualify.py"
+  ],
+  "shared_core_changes_authorized": false,
+  "scientific_limits": {
+    "history_maps": 12912,
+    "rhs": 9296640,
+    "bounded_linear_problems": 1,
+    "outer_iterations": 100,
+    "lsmr_calls": 101,
+    "lsmr_iterations": 101000
+  },
+  "qualification_limits": {
+    "rounds": 3,
+    "mock_callbacks_per_round": 1000,
+    "mock_callbacks_total": 3000,
+    "small_linear_problems": 3,
+    "lsmr_calls": 33,
+    "lsmr_iterations": 660,
+    "real_model_calls": 0
+  },
+  "scientific_execution_released": false,
+  "qualification_execution_released": false,
+  "private_cache_read_released": false,
+  "original_data_read_released": false,
+  "future_read_released": false,
+  "old_unused_budget_transferred": false,
+  "automatic_L1": false,
+  "goal_complete": false
+}
