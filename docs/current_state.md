@@ -1,11 +1,11 @@
 # 当前研究状态
 
-**2026-11-12：匹配预测 Run 的两路 fit 已完成并通过科学判读、独立审查。两模型各自保留父参数，原192套候选数值检查全部通过。原协议的全量部署已释放，按4个worker执行两模型各297包；真实train未来尚未打开。**
+**2026-11-12：匹配预测 Run 的两路 fit 已完成并通过科学判读、独立审查。两模型各自保留父参数，原192套候选数值检查全部通过。原协议的全量部署已启动，4个worker正在执行两模型各297包；真实train未来尚未打开。**
 
 ## 当前范围与指针
 
 - Campaign：[GFTD结构发现](../campaigns/gftd_kuramoto_discovery_20261106.md)；[架构入口](current_design.md)。
-- 活动Run：[设计](../designs/gftd_matched_prediction_20261109.md)、[协议](../campaigns/gftd_matched_prediction_20261109/protocol.md)、[登记](../harness/runs/gftd_matched_prediction_20261109.json)。执行状态RUNNING，当前阶段deploy_released，工作量open；尚待实际启动回执。
+- 活动Run：[设计](../designs/gftd_matched_prediction_20261109.md)、[协议](../campaigns/gftd_matched_prediction_20261109/protocol.md)、[登记](../harness/runs/gftd_matched_prediction_20261109.json)。执行状态RUNNING，当前阶段deploy_running，工作量open；[实际启动回执](../results/gftd_matched_prediction_20261109/deploy_host_start.json)记录宿主及worker身份。
 - fit终态：[执行回执](../results/gftd_matched_prediction_20261109/fit/execution.json)、[两模型冻结](../results/gftd_matched_prediction_20261109/fit/model_freeze.json)、[事实摘要](../results/gftd_matched_prediction_20261109/fit_digest.json)、[科学判读](../reports/gftd_matched_prediction_20261109/fit_assessment.md)、[独立审查](../reports/gftd_matched_prediction_20261109/fit_review.md)、[root采用](../results/gftd_matched_prediction_20261109/fit_adoption.json)。原拟合宿主正常退出，未重跑。
 - 下一阶段：[部署释放](../results/gftd_matched_prediction_20261109/deploy_release.json)、[资源检查](../results/gftd_matched_prediction_20261109/deploy_preflight.json)。因宿主可用内存减少，将原效率规划8个worker调整为4个，科学工作量不变。
 - 43份执行源码仍与prepare一致，科学源码提交`a1936bc5`。当前阶段不追加拟合、不修改算法或数值门。

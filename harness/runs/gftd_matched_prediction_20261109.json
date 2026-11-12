@@ -7,7 +7,7 @@
   "scope": "Matched static/bounded shared continuation over complete K10, original train297 deployment and L1 denominators, and final-equation L2/L3.",
   "execution": {
     "status": "RUNNING",
-    "phase": "deploy_released",
+    "phase": "deploy_running",
     "scientific_execution_released": true,
     "scientific_jobs_executed": 2,
     "qualification_attempt": 1,
@@ -22,7 +22,7 @@
     },
     "scientific_jobs_started": 2,
     "completed_fit_jobs": 2,
-    "progress_observed_utc": "2026-11-12T10:43:40.576524+00:00",
+    "progress_observed_utc": "2026-11-12T10:47:02.705426+00:00",
     "completed_fit_modes": [
       "static",
       "modulated"
@@ -31,7 +31,16 @@
     "fit_review_accepted": true,
     "native_exit_code": 0,
     "deploy_workers": 4,
-    "deploy_release_sha256": "067c25f0ce9945641884ca0e211836472b19c040d6f21bc233206207273b1968"
+    "deploy_release_sha256": "067c25f0ce9945641884ca0e211836472b19c040d6f21bc233206207273b1968",
+    "deploy_native_session_id": 99445,
+    "deploy_process_id": 30536,
+    "deploy_worker_pids": [
+      6764,
+      20376,
+      47268,
+      57916
+    ],
+    "deploy_native_exit_code": null
   },
   "scientific_work": {
     "budget_status": "open",
@@ -39,15 +48,15 @@
     "artificial_rhs_limit": 128,
     "artificial_H_limit": 2000,
     "all_rhs_limit": 791195602,
-    "actual_rhs": 97812988,
+    "actual_rhs": null,
     "actual_model_h": 748,
-    "original_data_reads": 1,
+    "original_data_reads": 2,
     "actual_artificial_rhs": 28,
     "actual_artificial_H": 748,
-    "actual_scientific_rhs": 97812960,
+    "actual_scientific_rhs": null,
     "technical_qualification_corrections_used": 1,
-    "actual_cost_state": "fit_complete_deploy_not_started",
-    "original_data_read_scope": "legal history cache read once by fit host; real future remains closed",
+    "actual_cost_state": "fit_complete_deploy_running",
+    "original_data_read_scope": "legal history cache read once by fit host and once by deploy host; real future remains closed",
     "real_future_reads": 0,
     "known_scientific_rhs_lower_bound": 97812960,
     "known_total_rhs_lower_bound": 97812988
@@ -89,7 +98,8 @@
       "results/gftd_matched_prediction_20261109/fit_host_completion.json",
       "results/gftd_matched_prediction_20261109/deploy_preflight.json",
       "results/gftd_matched_prediction_20261109/fit_adoption.json",
-      "results/gftd_matched_prediction_20261109/deploy_release.json"
+      "results/gftd_matched_prediction_20261109/deploy_release.json",
+      "results/gftd_matched_prediction_20261109/deploy_host_start.json"
     ]
   },
   "proposal": {
