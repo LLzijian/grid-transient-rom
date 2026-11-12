@@ -7,9 +7,9 @@
   "scope": "Matched static/bounded shared continuation over complete K10, original train297 deployment and L1 denominators, and final-equation L2/L3.",
   "execution": {
     "status": "RUNNING",
-    "phase": "fit_running",
+    "phase": "deploy_released",
     "scientific_execution_released": true,
-    "scientific_jobs_executed": 1,
+    "scientific_jobs_executed": 2,
     "qualification_attempt": 1,
     "qualification_passed": true,
     "fit_release_sha256": "df29e30eca079e2925275c4c9a1836309b1c6563fd6255f165fbf32227fbd499",
@@ -21,12 +21,17 @@
       "modulated": 53800
     },
     "scientific_jobs_started": 2,
-    "completed_fit_jobs": 1,
-    "progress_observed_utc": "2026-11-09T19:04:52.674279+00:00",
+    "completed_fit_jobs": 2,
+    "progress_observed_utc": "2026-11-12T10:43:40.576524+00:00",
     "completed_fit_modes": [
-      "static"
+      "static",
+      "modulated"
     ],
-    "static_fit_review_accepted": true
+    "static_fit_review_accepted": true,
+    "fit_review_accepted": true,
+    "native_exit_code": 0,
+    "deploy_workers": 4,
+    "deploy_release_sha256": "067c25f0ce9945641884ca0e211836472b19c040d6f21bc233206207273b1968"
   },
   "scientific_work": {
     "budget_status": "open",
@@ -34,18 +39,18 @@
     "artificial_rhs_limit": 128,
     "artificial_H_limit": 2000,
     "all_rhs_limit": 791195602,
-    "actual_rhs": null,
+    "actual_rhs": 97812988,
     "actual_model_h": 748,
     "original_data_reads": 1,
     "actual_artificial_rhs": 28,
     "actual_artificial_H": 748,
-    "actual_scientific_rhs": null,
+    "actual_scientific_rhs": 97812960,
     "technical_qualification_corrections_used": 1,
-    "actual_cost_state": "one_fit_complete_other_running",
+    "actual_cost_state": "fit_complete_deploy_not_started",
     "original_data_read_scope": "legal history cache read once by fit host; real future remains closed",
     "real_future_reads": 0,
-    "known_scientific_rhs_lower_bound": 23249760,
-    "known_total_rhs_lower_bound": 23249788
+    "known_scientific_rhs_lower_bound": 97812960,
+    "known_total_rhs_lower_bound": 97812988
   },
   "evidence": {
     "validity": "unknown",
@@ -73,7 +78,18 @@
       "results/gftd_matched_prediction_20261109/static_fit_assessment_request.json",
       "reports/gftd_matched_prediction_20261109/static_fit_assessment.md",
       "reports/gftd_matched_prediction_20261109/static_fit_review.md",
-      "results/gftd_matched_prediction_20261109/static_fit_adoption.json"
+      "results/gftd_matched_prediction_20261109/static_fit_adoption.json",
+      "results/gftd_matched_prediction_20261109/fit/execution.json",
+      "results/gftd_matched_prediction_20261109/fit/model_freeze.json",
+      "results/gftd_matched_prediction_20261109/fit_digest.json",
+      "reports/gftd_matched_prediction_20261109/fit_assessment.md",
+      "reports/gftd_matched_prediction_20261109/fit_review.md",
+      "results/gftd_matched_prediction_20261109/fit_assessment_request.json",
+      "results/gftd_matched_prediction_20261109/fit_review_request.json",
+      "results/gftd_matched_prediction_20261109/fit_host_completion.json",
+      "results/gftd_matched_prediction_20261109/deploy_preflight.json",
+      "results/gftd_matched_prediction_20261109/fit_adoption.json",
+      "results/gftd_matched_prediction_20261109/deploy_release.json"
     ]
   },
   "proposal": {

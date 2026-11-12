@@ -1,0 +1,74 @@
+{
+  "run": "gftd_matched_prediction_20261109",
+  "recorded_utc": "2026-11-12T10:43:40.576524+00:00",
+  "scope": "completed_two_model_fit",
+  "status": "accepted_terminal_fit_and_original_deployment",
+  "references": {
+    "fit_execution": {
+      "path": "results/gftd_matched_prediction_20261109/fit/execution.json",
+      "sha256": "6f519361a722d1d17cd0204756b4855decbdbbdfd11969b26f20c34d3f303285",
+      "bytes": 3446
+    },
+    "model_freeze": {
+      "path": "results/gftd_matched_prediction_20261109/fit/model_freeze.json",
+      "sha256": "206fdd2203fe5f43180ed330fa24b6b096fec40f39a7fc7e00e77cb87dc9618d",
+      "bytes": 973
+    },
+    "digest": {
+      "path": "results/gftd_matched_prediction_20261109/fit_digest.json",
+      "sha256": "cc888ae7f1a29141cff20902709d5647aab373978b4d90ab28fdd757c07b1018",
+      "bytes": 20016
+    },
+    "scientist_assessment": {
+      "path": "reports/gftd_matched_prediction_20261109/fit_assessment.md",
+      "sha256": "67ead054120c7a863a181394a2d8daf5911b4a0a702628d71b865b8167be91a8",
+      "bytes": 15161
+    },
+    "independent_review": {
+      "path": "reports/gftd_matched_prediction_20261109/fit_review.md",
+      "sha256": "8f59580fd8badbd950f29dfcac9e20717aefb4c12d62c9adc9649807dd1d407d",
+      "bytes": 8319
+    },
+    "scientist_request": {
+      "path": "results/gftd_matched_prediction_20261109/fit_assessment_request.json",
+      "sha256": "706a687cda61a6c310fe6da530957bcbb516bea797dae526f897b1dce32a136d",
+      "bytes": 1584
+    },
+    "review_request": {
+      "path": "results/gftd_matched_prediction_20261109/fit_review_request.json",
+      "sha256": "5d823d58c4e2d02bc1d61dd12e3c308604b3f0b6d92ce588e58869e3b072f686",
+      "bytes": 1900
+    },
+    "native_completion": {
+      "path": "results/gftd_matched_prediction_20261109/fit_host_completion.json",
+      "sha256": "2bfc567be47cd56d33e17d49b43fdc441fbcc7c61a78fa7d972b558e414adbb4",
+      "bytes": 1419
+    }
+  },
+  "root_decisions": {
+    "code": "retain_branch",
+    "model": "retain_evidence",
+    "science": "continue"
+  },
+  "adopted_findings": [
+    "两模型最终物理参数、门与初始化配置分别等于冻结父模型；未接受共享参数更新。",
+    "八候选192套原六门通过，三次提案各只有一个唯一参数结果；重复计算不构成独立重复证据。",
+    "静态45列和调制90列条件信息均合格；support=null来自首候选的未认证路径，联合识别保持unknown。",
+    "调制192任务中177收敛、15到限；两模型全部候选的192个选点来自收敛任务。",
+    "最终48点相对投影梯度小，仅调制1点通过步长一致门，96次固定方向试算无改善；联合与初态优化充分性unknown。",
+    "弱式条件提案与盒约束自治历史目标不同，不保证下降；本次拒绝不否定模型族。"
+  ],
+  "fit_scientific_rhs": 97812960,
+  "artificial_rhs": 28,
+  "artificial_hamiltonian_calls": 748,
+  "additional_fit_released": false,
+  "scientific_protocol_changed": false,
+  "default_or_protected_model_changed": false,
+  "real_future_opened": false,
+  "next_action": "Execute the original 594 deployment packets and final-equation L2/L3, then freeze all selections before separately releasing true train scoring.",
+  "deployment_preflight": {
+    "path": "results/gftd_matched_prediction_20261109/deploy_preflight.json",
+    "sha256": "cb2a311f5bdeb9146fa09d049ed911e19cc65f9c5f24269b18efdd5cd2043dcd",
+    "bytes": 589
+  }
+}
