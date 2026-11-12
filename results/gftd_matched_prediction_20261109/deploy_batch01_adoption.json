@@ -1,0 +1,39 @@
+{
+  "run": "gftd_matched_prediction_20261109",
+  "recorded_utc": "2026-11-12T11:08:13.202272+00:00",
+  "scope": "static_000..051 and modulated_000..050",
+  "references": {
+    "report": {
+      "path": "reports/gftd_matched_prediction_20261109/deploy_batch01_review.md",
+      "sha256": "43b349b254f8df4744bf2f43cb72e3a9203f7c6d6546fefc4d404b5244742db8",
+      "bytes": 4462
+    },
+    "audit": {
+      "path": "results/gftd_matched_prediction_20261109/deploy_batch01_audit.json",
+      "sha256": "8ddcf0eabcc56c203cbce775c2067e71cc20551a5530b43527a7e2f6e94e2961",
+      "bytes": 171586
+    }
+  },
+  "review_invocation": {
+    "host_tool": "collaboration.followup_task",
+    "target": "/root/matched_fit_final_review",
+    "configured_model": "gpt-6.1-sol",
+    "server_resolved_model": null
+  },
+  "root_decisions": {
+    "code": "retain_branch",
+    "model": "retain_evidence",
+    "science": "continue"
+  },
+  "accepted": true,
+  "completed_audited_jobs": 103,
+  "six_gates_passed": 103,
+  "strict_reference_confirmed": 102,
+  "strict_reference_unresolved": [
+    "modulated_027"
+  ],
+  "known_audited_deployment_rhs": 31213131,
+  "real_future_opened": false,
+  "phase_complete": false,
+  "next_action": "Continue existing native session 99445, then audit remaining jobs and final-equation analysis before releasing scoring. Do not relaunch deployment."
+}
