@@ -1,0 +1,54 @@
+{
+  "run": "gftd_matched_prediction_20261109",
+  "recorded_utc": "2026-11-12T11:44:56.993476+00:00",
+  "scope": "static_120..169 and modulated_120..169",
+  "references": {
+    "report": {
+      "path": "reports/gftd_matched_prediction_20261109/deploy_batch03_review.md",
+      "bytes": 3932,
+      "sha256": "6cc72943cf079fc3754fb1f3a859da44ec4db33ecb6c0365564dc80c0e969955"
+    },
+    "audit": {
+      "path": "results/gftd_matched_prediction_20261109/deploy_batch03_audit.json",
+      "bytes": 169408,
+      "sha256": "2d3cb91633ffaf9fd924eb0a87bee9f6cf162de0d4eeb7f968c200c2350108a5"
+    },
+    "prior_batch": {
+      "path": "results/gftd_matched_prediction_20261109/deploy_batch02_adoption.json",
+      "bytes": 1691,
+      "sha256": "f1d5f25ead1a8a1c72a650e66205e205be010417abd30e3d4caeb2b67a96a008"
+    },
+    "source_archive": {
+      "path": "results/gftd_matched_prediction_20261109/source_archive.json",
+      "bytes": 12694,
+      "sha256": "7a6d89534637a93b4fe04d67e0cd510573daaa011750ffdd7fd94a79e8c77df5"
+    }
+  },
+  "review_invocation": {
+    "host_tool": "collaboration.followup_task",
+    "target": "/root/matched_fit_final_review",
+    "configured_model": "gpt-6.1-sol",
+    "server_resolved_model": null
+  },
+  "root_decisions": {
+    "code": "retain_branch",
+    "model": "retain_evidence",
+    "science": "continue"
+  },
+  "accepted": true,
+  "new_audited_jobs": 100,
+  "cumulative_audited_jobs": 340,
+  "paired_packet_identity_checks": 170,
+  "new_six_gates_passed": 100,
+  "new_strict_reference_confirmed": 97,
+  "new_strict_reference_unresolved": [
+    "modulated_127",
+    "modulated_129",
+    "modulated_133"
+  ],
+  "new_audited_rhs": 30542893,
+  "cumulative_audited_deploy_rhs": 104009970,
+  "real_future_opened": false,
+  "phase_complete": false,
+  "next_action": "Continue original native session 99445; review remaining 254 jobs and final analyses before releasing scoring."
+}
