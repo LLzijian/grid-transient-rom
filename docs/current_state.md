@@ -4,7 +4,7 @@
 
 ## 当前推进
 
-- 新Run：[三点设计](../designs/gftd_objective_alignment_20261112.md)、[有限协议](../campaigns/gftd_objective_alignment_20261112/protocol.md)、[独立设计审查](../reports/gftd_objective_alignment_20261112/design_review.md)、[root采用](../results/gftd_objective_alignment_20261112/design_adoption.json)、[登记](../harness/runs/gftd_objective_alignment_20261112.json)。实现、纯mock资格及真实准备身份已通过[执行前独立审查](../reports/gftd_objective_alignment_20261112/preexecution_review.md)，root已[释放科学执行](../results/gftd_objective_alignment_20261112/science_release.json)；启动与完成以登记及原生回执为准。
+- 新Run：[三点设计](../designs/gftd_objective_alignment_20261112.md)、[有限协议](../campaigns/gftd_objective_alignment_20261112/protocol.md)、[独立设计审查](../reports/gftd_objective_alignment_20261112/design_review.md)、[root采用](../results/gftd_objective_alignment_20261112/design_adoption.json)、[登记](../harness/runs/gftd_objective_alignment_20261112.json)。实现、纯mock资格及真实准备身份已通过[执行前独立审查](../reports/gftd_objective_alignment_20261112/preexecution_review.md)，root已[释放科学执行](../results/gftd_objective_alignment_20261112/science_release.json)；原生会话11646已启动，静态与调制的half任务均已claim，尚无完成候选；实际消耗随任务回执闭合。
 - 实现源码97accfc7，45份源冻结，旧43核心不变。六组纯mock通过，累计167回调、真实科学调用0；首次导入失败保留在第1次尝试，第2次通过。准备只转换原固定24包，两旧聚合键精确匹配，历史独立逐包hash仍为null。
 - 两模型各3个内点、共288优化任务、144套六门、144次固定父坐标残差诊断，科学RHS上限166,890,240；旧Run关闭余额不转移，不自动连接全量预测。
 
