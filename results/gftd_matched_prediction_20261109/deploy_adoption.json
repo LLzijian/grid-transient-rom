@@ -1,0 +1,100 @@
+{
+  "run": "gftd_matched_prediction_20261109",
+  "recorded_utc": "2026-11-12T12:13:56.656188+00:00",
+  "status": "deployment_accepted_for_original_scoring",
+  "references": {
+    "execution": {
+      "path": "results/gftd_matched_prediction_20261109/deploy/execution.json",
+      "bytes": 125770,
+      "sha256": "9d6a17b2c779deadaa3fbf52a6ea65b1343e2f2155a25581f4f4bf0bf0472467"
+    },
+    "initialization_freeze": {
+      "path": "results/gftd_matched_prediction_20261109/deploy/initialization_freeze.json",
+      "bytes": 824882,
+      "sha256": "5743dba4aa7fd1e00da79745ac01c9d22e1b50f1ed0259fb49711596eb458e04"
+    },
+    "digest": {
+      "path": "results/gftd_matched_prediction_20261109/deploy_digest.json",
+      "bytes": 31585,
+      "sha256": "9ce6105edf7dac510461fb07004ca1d6c81ed78822eb99d0d21e1bd98bd99c04"
+    },
+    "independent_review": {
+      "path": "reports/gftd_matched_prediction_20261109/deploy_final_review.md",
+      "bytes": 5954,
+      "sha256": "f17ec37bb2f6650a33be721d814b7ba132df252a738849ccb1f3d75eaff909c2"
+    },
+    "independent_audit": {
+      "path": "results/gftd_matched_prediction_20261109/deploy_final_audit.json",
+      "bytes": 9122,
+      "sha256": "f79704526f8cf313000c59f3092843eb15fabeb8f9b3adf6ff59ad61b708608c"
+    },
+    "batch05_review": {
+      "path": "reports/gftd_matched_prediction_20261109/deploy_batch05_review.md",
+      "bytes": 3405,
+      "sha256": "474d965d3fee76c71755e5736c543b466a6fc526656aa2c62069bbe44e0bafcb"
+    },
+    "batch05_audit": {
+      "path": "results/gftd_matched_prediction_20261109/deploy_batch05_audit.json",
+      "bytes": 256100,
+      "sha256": "b08c2f6189461e5718f5ca2a6133e86eeb8e4173ebdca8b111b00e9479b455fd"
+    },
+    "batch04_adoption": {
+      "path": "results/gftd_matched_prediction_20261109/deploy_batch04_adoption.json",
+      "bytes": 1895,
+      "sha256": "7b6ed3e25124bcd2182dd94445ad754e3156010a9e705a2a042d23e36534e3c9"
+    },
+    "native_completion": {
+      "path": "results/gftd_matched_prediction_20261109/deploy_host_completion.json",
+      "bytes": 1728,
+      "sha256": "0e12e271abae7a60e1f5c0acd5dc1433ad415c83f8b2300a969e80cc862f5d42"
+    }
+  },
+  "review_invocation": {
+    "host_tool": "collaboration.followup_task",
+    "target": "/root/matched_fit_final_review",
+    "configured_model": "gpt-6.1-sol",
+    "server_resolved_model": null
+  },
+  "root_decisions": {
+    "code": "retain_branch",
+    "model": "retain_evidence",
+    "science": "continue"
+  },
+  "accepted": true,
+  "audited_event_jobs": 594,
+  "audited_analysis_jobs": 2,
+  "six_gates_passed": {
+    "static": 297,
+    "modulated": 297
+  },
+  "strict_reference_confirmed": {
+    "static": 297,
+    "modulated": 289
+  },
+  "strict_reference_unresolved": [
+    "modulated_027",
+    "modulated_057",
+    "modulated_117",
+    "modulated_127",
+    "modulated_129",
+    "modulated_133",
+    "modulated_251",
+    "modulated_267"
+  ],
+  "all_original_denominators_preserved": true,
+  "l2_certified_points": {
+    "static": 0,
+    "modulated": 0
+  },
+  "l3_matched_modes": {
+    "static": 10,
+    "modulated": 10
+  },
+  "scientific_deploy_rhs": 182406597,
+  "scientific_fit_and_deploy_rhs": 280219557,
+  "real_future_opened": false,
+  "additional_fit_released": false,
+  "scientific_protocol_changed": false,
+  "default_or_protected_model_changed": false,
+  "next_action": "Run the original score phase once using the frozen model pair, all 594 initializations and predictions; preserve original eligibility and denominators."
+}
