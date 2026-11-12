@@ -6,17 +6,15 @@
   "purpose": "adaptation",
   "scope": "Fixed 24 train fit297 causal-history packets; two parent-specific weak directions; t=1/2,1/4,1/8; original dual starts, boxes, objective and six gates; no future scoring.",
   "execution": {
-    "status": "RUNNING",
-    "phase": "science_running",
+    "status": "COMPLETED",
+    "phase": "closed_reviewed",
     "scientific_execution_released": true,
     "native_session_id": 11646,
-    "recorded_utc": "2026-11-12T14:03:35.083103+00:00",
+    "recorded_utc": "2026-11-12T14:14:07.700578+00:00",
     "native_start_chunk": "5342b5",
     "scientific_jobs_started": 6,
-    "scientific_jobs_completed": 5,
-    "active_claims": [
-      "modulated_eighth"
-    ],
+    "scientific_jobs_completed": 6,
+    "active_claims": [],
     "host_start": {
       "path": "results/gftd_objective_alignment_20261112/science_host_start.json",
       "bytes": 1181,
@@ -41,10 +39,10 @@
         "improves_parent": true,
         "qualification_passed": 24
       },
-      "static_eighth": {
+      "modulated_eighth": {
         "status": "completed",
-        "objective": 0.018564613865897705,
-        "improves_parent": false,
+        "objective": 0.03683196659197976,
+        "improves_parent": true,
         "qualification_passed": 24
       },
       "static_half": {
@@ -58,13 +56,33 @@
         "objective": 0.020710169996859398,
         "improves_parent": false,
         "qualification_passed": 24
+      },
+      "static_eighth": {
+        "status": "completed",
+        "objective": 0.018564613865897705,
+        "improves_parent": false,
+        "qualification_passed": 24
       }
-    }
+    },
+    "native_exit_code": 0,
+    "native_terminal_chunk": "4e9cb5",
+    "native_live": false,
+    "run_selection": {
+      "modulated": {
+        "objective": 0.036816358081140046,
+        "point": "quarter"
+      },
+      "static": {
+        "objective": 0.01675268870079868,
+        "point": "parent"
+      }
+    },
+    "closure_recorded_utc": "2026-11-12T14:26:03.108319+00:00"
   },
   "scientific_work": {
-    "budget_status": "open",
+    "budget_status": "closed",
     "scientific_rhs_limit": 166890240,
-    "actual_scientific_rhs": null,
+    "actual_scientific_rhs": 56004480,
     "new_candidates_limit": 6,
     "optimization_tasks_limit": 288,
     "optimization_residuals_limit": 345600,
@@ -77,17 +95,27 @@
     "old_unused_work_transferred": false,
     "qualification_status": "passed",
     "qualification_budget_status": "closed",
-    "known_completed_scientific_rhs": 42333600,
-    "cost_status": "in_progress_not_yet_closed"
+    "known_completed_scientific_rhs": 56004480,
+    "cost_status": "known_closed",
+    "actual_scientific_counts": {
+      "actual_residual_calls": 114588,
+      "actual_rhs_calls": 56004480,
+      "optimization_tasks": 288,
+      "proxy_rhs_calls": 55002240,
+      "qualification_rhs_calls": 933120,
+      "qualification_suites": 144,
+      "witness_residual_calls": 144,
+      "witness_rhs_calls": 69120
+    }
   },
   "evidence": {
-    "validity": "unknown",
-    "optimizer_health": "unknown",
+    "validity": "valid",
+    "optimizer_health": "healthy",
     "optimization_adequacy": "unknown",
     "mechanism_probe": "unknown",
     "comparison": "matched",
     "confirmation": "none",
-    "effect": "unknown",
+    "effect": "tradeoff",
     "critical_events": "unknown",
     "references": [
       "designs/gftd_objective_alignment_20261112.md",
@@ -119,7 +147,15 @@
       "results/gftd_objective_alignment_20261112/science_analysis/modulated_quarter.json",
       "results/gftd_objective_alignment_20261112/optimizer_metadata_partial_4.json",
       "results/gftd_objective_alignment_20261112/interim_scientist_adoption.json",
-      "reports/gftd_objective_alignment_20261112/interim_static_and_constraints.md"
+      "reports/gftd_objective_alignment_20261112/interim_static_and_constraints.md",
+      "results/gftd_objective_alignment_20261112/science/execution.json",
+      "results/gftd_objective_alignment_20261112/science_host_completion.json",
+      "results/gftd_objective_alignment_20261112/source_archive.json",
+      "results/gftd_objective_alignment_20261112/result_audit.json",
+      "reports/gftd_objective_alignment_20261112/result_review.md",
+      "reports/gftd_objective_alignment_20261112/final_assessment.md",
+      "reports/gftd_objective_alignment_20261112/final_claim_review.md",
+      "results/gftd_objective_alignment_20261112/final_adoption.json"
     ]
   },
   "proposal": {
@@ -158,5 +194,29 @@
     "root_adoption": "accepted_as_evidence_mapping_only",
     "scientific_calls": 0,
     "goal_complete": false
+  },
+  "final_adoption": {
+    "path": "results/gftd_objective_alignment_20261112/final_adoption.json",
+    "bytes": 6945,
+    "sha256": "a20035ad5a099f6a5bea8e73bcc2f912195cc89b145fda194efe27b1c2b8b676"
+  },
+  "active_source_freeze_released_at_run_closure": true,
+  "working_candidate": {
+    "status": "diagnostic_only",
+    "mode": "modulated",
+    "point": "quarter",
+    "reason": "Qualified lowest historical F among frozen candidates; next question concerns its local beta direction, not deployment promotion.",
+    "reference": {
+      "path": "results/gftd_objective_alignment_20261112/science/jobs/modulated_quarter.json",
+      "bytes": 8973,
+      "sha256": "7b98ad2b68220d6599baaaa71dced108d574af643bece9ae8bc45ab2e9c5b35a"
+    }
+  },
+  "scientific_interpretation": {
+    "evidence_validity": "valid for the six fixed history comparisons",
+    "optimizer_health": "healthy within these fixed finite solves; 287/288 tasks converged, one unselected task budget-limited, all 144 selected points converged; joint optimization not assessed",
+    "optimization_adequacy": "unknown; fixed-parent witness does not test all feasible solutions",
+    "mechanism_identification": "unknown; finite update acceptance is not joint recovery",
+    "effect_and_confirmation": "modulated quarter improves mean 24-packet historical F by 0.135032%, with 10 improved and 14 worsened histories; no independent confirmation"
   }
 }

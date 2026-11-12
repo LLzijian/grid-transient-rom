@@ -1,0 +1,140 @@
+{
+  "run": "gftd_objective_alignment_20261112",
+  "phase": "science",
+  "status": "completed",
+  "observed_utc": "2026-11-12T14:10:11.609476+00:00",
+  "native_session_id": 11646,
+  "native_start_tool_chunk": "5342b5",
+  "native_terminal_tool_chunk": "4e9cb5",
+  "native_exit_code": 0,
+  "native_output_empty": true,
+  "observed_process_ids": [
+    32504,
+    55544,
+    46372,
+    57144
+  ],
+  "observed_pids_remaining": [],
+  "process_verification": "Windows Toolhelp32 process snapshot",
+  "release_sha256": "e1e8f4b2002d43aee11ae1cb68eb5fc588fc5262af9e7175ad82d3b0b7e1c1c2",
+  "references": {
+    "host_start": {
+      "path": "results/gftd_objective_alignment_20261112/science_host_start.json",
+      "bytes": 1181,
+      "sha256": "3799309ce73340aba2829eb06e6e3347b642ece4b6f29dd6728c44db4caf5e20"
+    },
+    "execution": {
+      "path": "results/gftd_objective_alignment_20261112/science/execution.json",
+      "bytes": 62511,
+      "sha256": "1b754b9c3df1dcc7837e924fa2aed497a7bc6c223b234febc5c99ace335d193b"
+    },
+    "claim": {
+      "bytes": 5792,
+      "path": "results/gftd_objective_alignment_20261112/science/claim.json",
+      "sha256": "f08641dfd7f316f7da90b4774da2191d4e603491462d5a7cd900575a6a880a41"
+    }
+  },
+  "modes": {
+    "modulated": {
+      "selection": {
+        "objective": 0.036816358081140046,
+        "point": "quarter"
+      },
+      "jobs": {
+        "modulated_half": {
+          "receipt": {
+            "bytes": 8955,
+            "path": "results/gftd_objective_alignment_20261112/science/jobs/modulated_half.json",
+            "sha256": "bff783fd21fd1320bb25c4ba6c421934f4b211952d7e7427914d7262a1b91e58"
+          },
+          "t": 0.5,
+          "objective": 0.03690834848491863,
+          "improves_parent": false,
+          "qualification_passed": 24,
+          "rhs": 12777120
+        },
+        "modulated_quarter": {
+          "receipt": {
+            "bytes": 8973,
+            "path": "results/gftd_objective_alignment_20261112/science/jobs/modulated_quarter.json",
+            "sha256": "7b98ad2b68220d6599baaaa71dced108d574af643bece9ae8bc45ab2e9c5b35a"
+          },
+          "t": 0.25,
+          "objective": 0.036816358081140046,
+          "improves_parent": true,
+          "qualification_passed": 24,
+          "rhs": 12413760
+        },
+        "modulated_eighth": {
+          "receipt": {
+            "bytes": 8966,
+            "path": "results/gftd_objective_alignment_20261112/science/jobs/modulated_eighth.json",
+            "sha256": "060601267ba2aedb8d4eb7e7a6226d208db4312a3ddffcd3a973a1d8cc0c86b6"
+          },
+          "t": 0.125,
+          "objective": 0.03683196659197976,
+          "improves_parent": true,
+          "qualification_passed": 24,
+          "rhs": 13670880
+        }
+      }
+    },
+    "static": {
+      "selection": {
+        "objective": 0.01675268870079868,
+        "point": "parent"
+      },
+      "jobs": {
+        "static_half": {
+          "receipt": {
+            "bytes": 8940,
+            "path": "results/gftd_objective_alignment_20261112/science/jobs/static_half.json",
+            "sha256": "0ba78f5a05519d9ff58983649ee0cadfdd109b32fac13906fe1cd15c3f10beaf"
+          },
+          "t": 0.5,
+          "objective": 0.02594503534831102,
+          "improves_parent": false,
+          "qualification_passed": 24,
+          "rhs": 5598720
+        },
+        "static_quarter": {
+          "receipt": {
+            "bytes": 8958,
+            "path": "results/gftd_objective_alignment_20261112/science/jobs/static_quarter.json",
+            "sha256": "0ecf2d1bf498b1564b976c864b918284121420e0d76a17d41cc8fb685f45752e"
+          },
+          "t": 0.25,
+          "objective": 0.020710169996859398,
+          "improves_parent": false,
+          "qualification_passed": 24,
+          "rhs": 5718240
+        },
+        "static_eighth": {
+          "receipt": {
+            "bytes": 8957,
+            "path": "results/gftd_objective_alignment_20261112/science/jobs/static_eighth.json",
+            "sha256": "906a95664b3be162e1097b86cd0f40c71eb85acefeb61132a907c7cbe8864ddb"
+          },
+          "t": 0.125,
+          "objective": 0.018564613865897705,
+          "improves_parent": false,
+          "qualification_passed": 24,
+          "rhs": 5825760
+        }
+      }
+    }
+  },
+  "actual_costs": {
+    "actual_residual_calls": 114588,
+    "actual_rhs_calls": 56004480,
+    "optimization_tasks": 288,
+    "proxy_rhs_calls": 55002240,
+    "qualification_rhs_calls": 933120,
+    "qualification_suites": 144,
+    "witness_residual_calls": 144,
+    "witness_rhs_calls": 69120
+  },
+  "host_wall_seconds": 2708.817325300013,
+  "host_cpu_seconds": 0.015625,
+  "truth_cache_opened": false
+}

@@ -1,0 +1,160 @@
+{
+  "run": "gftd_objective_alignment_20261112",
+  "parent_run": "gftd_matched_prediction_20261109",
+  "recorded_utc": "2026-11-12T14:26:03.108319+00:00",
+  "status": "completed_reviewed_with_scientific_questions_remaining",
+  "execution_status": "COMPLETED",
+  "budget_status": "closed",
+  "references": {
+    "execution": {
+      "path": "results/gftd_objective_alignment_20261112/science/execution.json",
+      "bytes": 62511,
+      "sha256": "1b754b9c3df1dcc7837e924fa2aed497a7bc6c223b234febc5c99ace335d193b"
+    },
+    "host_completion": {
+      "path": "results/gftd_objective_alignment_20261112/science_host_completion.json",
+      "bytes": 4669,
+      "sha256": "7fd08049037d733fa59d51a5e7e52ac1c522fdb8cdbfa5bcc951846057799ab5"
+    },
+    "source_archive": {
+      "path": "results/gftd_objective_alignment_20261112/source_archive.json",
+      "bytes": 15635,
+      "sha256": "10560d308499f0f15f5dac20f520db262ffd9cf77be813aa29a2083daadec3c9"
+    },
+    "result_audit": {
+      "path": "results/gftd_objective_alignment_20261112/result_audit.json",
+      "bytes": 23051,
+      "sha256": "93a455515512885196cc993c5fcb2758f255768df46b99f11d4178522b291ebb"
+    },
+    "result_review": {
+      "path": "reports/gftd_objective_alignment_20261112/result_review.md",
+      "bytes": 4891,
+      "sha256": "5a7e25d82466afa77fec5926e313248ff5e6260a0816ee738180f6d3cb374029"
+    },
+    "scientist_assessment": {
+      "path": "reports/gftd_objective_alignment_20261112/final_assessment.md",
+      "bytes": 9417,
+      "sha256": "8dee94a34d2dd6766001bb47c3f06afff9c2f3a7353bafb53ca53d75183c6e19"
+    },
+    "final_claim_review": {
+      "path": "reports/gftd_objective_alignment_20261112/final_claim_review.md",
+      "bytes": 4386,
+      "sha256": "b333b1ec7044e7f9df11e70ef1b03e1bcb09cc002707136c62f450412785517d"
+    },
+    "goal_evidence_update": {
+      "path": "reports/gftd_objective_alignment_20261112/goal_evidence_update.md",
+      "bytes": 9380,
+      "sha256": "5d2b3cd5ceac09075a551d222eaa1974ef91ee79f9f4be098d964a06ba4f07b0"
+    },
+    "design_adoption": {
+      "path": "results/gftd_objective_alignment_20261112/design_adoption.json",
+      "bytes": 3684,
+      "sha256": "71ac3598e9dabcdf006da13980b007bcc35dedec69dcf0d2348ab5a63effce59"
+    },
+    "science_release": {
+      "path": "results/gftd_objective_alignment_20261112/science_release.json",
+      "bytes": 8748,
+      "sha256": "e1e8f4b2002d43aee11ae1cb68eb5fc588fc5262af9e7175ad82d3b0b7e1c1c2"
+    },
+    "modulated_quarter": {
+      "path": "results/gftd_objective_alignment_20261112/science/jobs/modulated_quarter.json",
+      "bytes": 8973,
+      "sha256": "7b98ad2b68220d6599baaaa71dced108d574af643bece9ae8bc45ab2e9c5b35a"
+    }
+  },
+  "role_invocations": {
+    "scientist": {
+      "host_tool": "collaboration.followup_task",
+      "target": "/root/objective_alignment_scientist",
+      "configured_model": "gpt-6-astra",
+      "server_resolved_model": null
+    },
+    "reviewer": {
+      "host_tool": "collaboration.followup_task",
+      "target": "/root/matched_fit_final_review",
+      "configured_model": "gpt-6.1-sol",
+      "server_resolved_model": null
+    }
+  },
+  "root_decisions": {
+    "code": "retain_branch",
+    "model": "retain_evidence",
+    "science": "continue"
+  },
+  "assessment_accepted": true,
+  "independent_reviews_accepted": true,
+  "five_axes": {
+    "evidence_validity": "valid for the six fixed history comparisons",
+    "optimizer_health": "healthy within these fixed finite solves; 287/288 tasks converged, one unselected task budget-limited, all 144 selected points converged; joint optimization not assessed",
+    "optimization_adequacy": "unknown; fixed-parent witness does not test all feasible solutions",
+    "mechanism_identification": "unknown; finite update acceptance is not joint recovery",
+    "effect_and_confirmation": "modulated quarter improves mean 24-packet historical F by 0.135032%, with 10 improved and 14 worsened histories; no independent confirmation"
+  },
+  "local_scientific_conclusion": {
+    "status": "supported_within_scope",
+    "statement": "The registered modulated weak direction contains acceptable finite updates at t=1/4 and t=1/8; static has none at the three tested scales.",
+    "scope": "Original 24 train causal-history packets, exact fixed dual-start initializer, boxes, scales and six gates. Both registered step searches now closed."
+  },
+  "selection": {
+    "static": {
+      "point": "parent",
+      "objective": 0.01675268870079868
+    },
+    "modulated": {
+      "point": "quarter",
+      "objective": 0.036816358081140046,
+      "parent_objective": 0.03686613923434555,
+      "delta": -4.978115320550258e-05,
+      "improved_events": 10,
+      "worsened_events": 14,
+      "events": 24,
+      "coefficients": {
+        "bytes": 15233,
+        "path": "artifacts/gftd_objective_alignment_20261112/science/modulated_quarter/coefficients.json",
+        "sha256": "19e16fd0d7eeb457e10ffe46bde384dcce34bc1354d93d0d9e91016ef527d992"
+      },
+      "details": {
+        "bytes": 4094770,
+        "path": "artifacts/gftd_objective_alignment_20261112/science/modulated_quarter/details.json.gz",
+        "sha256": "07faaa42dd44e0b0dfa245f18ac079cf1de5649f6f176254d48bd56892c0b0aa"
+      }
+    }
+  },
+  "working_candidate": {
+    "status": "diagnostic_only",
+    "mode": "modulated",
+    "point": "quarter",
+    "reason": "Qualified lowest historical F among frozen candidates; next question concerns its local beta direction, not deployment promotion.",
+    "reference": {
+      "path": "results/gftd_objective_alignment_20261112/science/jobs/modulated_quarter.json",
+      "bytes": 8973,
+      "sha256": "7b98ad2b68220d6599baaaa71dced108d574af643bece9ae8bc45ab2e9c5b35a"
+    }
+  },
+  "cost": {
+    "actual_residual_calls": 114588,
+    "actual_rhs_calls": 56004480,
+    "optimization_tasks": 288,
+    "proxy_rhs_calls": 55002240,
+    "qualification_rhs_calls": 933120,
+    "qualification_suites": 144,
+    "witness_residual_calls": 144,
+    "witness_rhs_calls": 69120
+  },
+  "source_commit": "97accfc75b44482ef597730eb6b084e4a1c4479b",
+  "source_count_verified": 45,
+  "active_source_freeze_released_at_run_closure": true,
+  "source_archive_remains_immutable": true,
+  "next_decision": {
+    "status": "bounded_question_accepted_for_design_review_only",
+    "run": "gftd_joint_distinguishability_20261112",
+    "question": "Near the saved quarter model, does the fixed parent-to-quarter beta direction admit shared c and legal a/r endpoint compensation in the original 24 full autonomous histories?",
+    "claim_limit": "Feasible nonlinear witness at fixed perturbations; failure to find one is unresolved unless a genuine lower bound is separately justified.",
+    "new_execution_released": false,
+    "automatic_full_L1_followup": false
+  },
+  "full_goal_completed": false,
+  "default_or_protected_model_changed": false,
+  "new_future_reads": 0,
+  "closed_unused_work_not_transferred": true
+}

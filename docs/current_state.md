@@ -1,45 +1,32 @@
 # 当前研究状态
 
-**2026-11-12：匹配预测 Run 已完成 fit、594次部署、L2/L3和唯一一次真实train评分，并通过独立审查。两模型各297/297通过初始化六门；调制在稳定5/8秒有3个数值未决，原分母主项为null。保留实现与证据，不晋升模型；整项目标仍未完成。**
+**2026-11-12：匹配预测与三点历史比较均已完成执行和独立结果审查。三点比较中，静态保留父候选，有界调制的四分之一步在原 24 包的历史选择目标上改善 0.135032%，选中该步并结束这条方向的搜索。下一问是调制系数变化能否由共享静态系数和合法隐初态补偿，当前在准备有界设计。**
 
-## 当前推进
+## 三点历史比较
 
-- 新Run：[三点设计](../designs/gftd_objective_alignment_20261112.md)、[有限协议](../campaigns/gftd_objective_alignment_20261112/protocol.md)、[独立设计审查](../reports/gftd_objective_alignment_20261112/design_review.md)、[root采用](../results/gftd_objective_alignment_20261112/design_adoption.json)、[登记](../harness/runs/gftd_objective_alignment_20261112.json)。实现、纯mock资格及真实准备身份已通过[执行前独立审查](../reports/gftd_objective_alignment_20261112/preexecution_review.md)，root已[释放科学执行](../results/gftd_objective_alignment_20261112/science_release.json)；原生会话11646运行中，已完成5/6候选，各24/24六门通过。静态三点均未改善，按协议结束其缩步搜索。调制quarter的历史目标0.03681636低于父0.03686614，改善约0.135%；half未改善，eighth仍在计算，最终选点待全部结束。已完成任务科学RHS为42,333,600，运行中总量待闭合。
-- 实现源码97accfc7，45份源冻结，旧43核心不变。六组纯mock通过，累计167回调、真实科学调用0；首次导入失败保留在第1次尝试，第2次通过。准备只转换原固定24包，两旧聚合键精确匹配，历史独立逐包hash仍为null。
-- 两模型各3个内点、共288优化任务、144套六门、144次固定父坐标残差诊断，科学RHS上限166,890,240；旧Run关闭余额不转移，不自动连接全量预测。
-- [中期科学判读](../reports/gftd_objective_alignment_20261112/interim_static_and_constraints.md)确认弱式记忆消元与末点初态盒约束存在源码差异；触边不是优化失败，差异对本轮结果的因果贡献尚未分离。
+六个候选全部完成，144/144 套原六门通过。静态三个尺度均无合格改善；有界调制的 1/4、1/8 均通过原严格改进门，1/4 的目标由 0.036866139234346 降至 0.036816358081140。该目标是 24 包等权归一化历史 MSE 加开放项惩罚。1/4 的未惩罚 MSE 在 10 包下降、14 包上升。旧端点和有序 24 包身份均已核对。科学 RHS 56,004,480 次，包含 288 个优化任务和 144 次固定父坐标残差诊断的成本。三点比较未产生新的真实预测、L2 覆盖或联合恢复证据。[协议](../campaigns/gftd_objective_alignment_20261112/protocol.md) · [终态回执](../results/gftd_objective_alignment_20261112/science/execution.json) · [科学判读](../reports/gftd_objective_alignment_20261112/final_assessment.md) · [独立审查](../reports/gftd_objective_alignment_20261112/result_review.md)
 
-## 当前范围与证据
+决定为代码 `retain_branch`、模型 `retain_evidence`、科学 `continue`。root 已正式闭合本轮，工作量已关闭，45 份执行源码的活动冻结已解除。后续研究须另行冻结和审查。[最终决定](../results/gftd_objective_alignment_20261112/final_adoption.json) · [源码档案](../results/gftd_objective_alignment_20261112/source_archive.json)
 
-- 活动Campaign：[GFTD结构发现](../campaigns/gftd_kuramoto_discovery_20261106.md)；[架构入口](current_design.md)。
-- 本轮：[协议](../campaigns/gftd_matched_prediction_20261109/protocol.md)、[登记](../harness/runs/gftd_matched_prediction_20261109.json)。执行COMPLETED，工作量closed；所有宿主及worker已退出。
-- [科学判读](../reports/gftd_matched_prediction_20261109/final_assessment.md)、[独立L1审查](../reports/gftd_matched_prediction_20261109/l1_review.md)、[主张审查](../reports/gftd_matched_prediction_20261109/final_claim_review.md)、[root最终决定](../results/gftd_matched_prediction_20261109/final_adoption.json)。
-- [全量部署摘要](../results/gftd_matched_prediction_20261109/deploy_digest.json)、[L1摘要](../results/gftd_matched_prediction_20261109/l1_digest.json)绑定原分母、逐事件身份、主细资格及实际成本。
-- 代码retain_branch，模型retain_evidence，科学continue；两模型均保留父参数与not_identified，联合辨识和优化充分性unknown。
-- 科学源码提交a1936bc5，43份源在闭合时仍与prepare_1一致。[原字节档案](../results/gftd_matched_prediction_20261109/source_archive.json)保持不可改；本轮源冻结已在明确阶段边界解除，新执行仍须另行冻结和审查。
+## 匹配预测已闭合
 
-## 本轮主要结果
+在同一 train fit297 上完成两路 fit、594 次部署、L2/L3 与一次真实未来评分。两模型在 fit 后均保留各自父参数，联合辨识和优化充分性为 unknown。完整可比范围的 risk 未支持有界调制总体收益，真实可用区间多检出 4 个失稳样本。原 Run 3 的总体 L1 仍按其原数值资格保留 null。[最终决定](../results/gftd_matched_prediction_20261109/final_adoption.json) · [科学判读](../reports/gftd_matched_prediction_20261109/final_assessment.md) · [部署摘要](../results/gftd_matched_prediction_20261109/deploy_digest.json) · [L1 摘要](../results/gftd_matched_prediction_20261109/l1_digest.json)
 
-| train范围／指标 | 静态 | 有界调制 |
+| train 范围／指标 | 静态 | 有界调制 |
 |---|---:|---:|
 | 初始化原六门 | 297/297 | 297/297 |
-| 完整1秒严格参考确认 | 297/297 | 289/297，另8个到限未决 |
-| 稳定267，5秒risk | 12.312022 | null，264/267合格 |
-| 稳定267，5秒共同转速RMSE（rad/s） | 0.545177 | null |
-| 失稳30，真实区间risk | 9.612748 | 11.805068 |
-| 失稳30，真实区间漏检 | 21/30 | 17/30 |
-| 失稳30，8秒分类漏检 | 7/30 | 7/30，身份不同 |
-| L2正式初态获证 | 0/297 | 0/297 |
-| L3参考模态配对 | 10/13 | 10/13 |
+| 完整 1 s 严格参考确认 | 297/297 | 289/297，8 个到限未决 |
+| 稳定 267，5 s risk | 12.312022 | null，264/267 合格 |
+| 失稳 30，真实区间 risk | 9.612748 | 11.805068 |
+| 失稳 30，真实区间漏检 | 21/30 | 17/30 |
+| 失稳 30，8 s 漏检 | 7/30 | 7/30，事件身份不同 |
+| L2 正式初态获证 | 0/297 | 0/297 |
+| L3 参考模态配对 | 10/13 | 10/13 |
 
-risk是逐事件时间平均归一化平方误差的加权风险，不是RMSE。30个失稳样本从100ms部署点后的真实评分时长为0.03–1.44秒；15秒是协议上限。调制新增检出4个失稳样本且保留静态原9个。静态3个误报恰为调制3个数值未决，不能宣称误报修复。共同可比9例中，调制6例更早但绝对时机误差更大，其余3例相同。
+risk 是逐事件时间平均归一化平方误差的加权风险。失稳样本实际评分时长为部署后 0.03–1.44 s。静态 3 个误报在调制侧均为数值未决；调制稳定 5/8 s 均保留原分母。两模型均有局部 ROM 吸引集证书，全部正式初态均未获证书覆盖，确定性初始化误差界为 null。L3 用于描述物理对应。[独立主张审查](../reports/gftd_matched_prediction_20261109/final_claim_review.md)
 
-调制5/8秒未决为expansion_0062、expansion_0094、pilot_0255；前两例自身5秒主细通过，因原联合8秒门失格，第三例自身5秒也不合格。全部保留原分母。两模型局部证书均成立，但全部实际初态在证书区域外，初始化误差界仍为null。
+## 下一问与边界
 
-fit与部署科学RHS共280,219,557，人工资格另28次RHS、748次H；评分新增模型调用0。部署宿主耗时4,753.69秒，评分77.41秒；FOM同精度成本未比较。原始模型、观测及轨迹留本地。
+以有界调制四分之一步为诊断工作候选，在该点附近检验沿父候选到四分之一步的固定 β 方向能否在合法 100 ms 完整自治历史中由共享静态系数 c 和盒内幅值、力记忆初态 a/r 补偿。后续 Run 为 `gftd_joint_distinguishability_20261112`，当前准备有界设计，尚未释放科学执行。一般拓扑与隐调制联合恢复、预测能力目标和实际初态 L2 覆盖仍待解决。[目标与证据更新](../reports/gftd_objective_alignment_20261112/goal_evidence_update.md) · [研究假说](../campaigns/gftd_kuramoto_discovery_20261106.md) · [架构入口](current_design.md)
 
-## 下一授权动作
-
-按已释放协议完成两模型各三个新候选，核对实际优化、六门、W及计数，再独立判读。命令沿用旧运行环境：进程级 PYTHONPATH 指向本项目 src 与项目根目录，Python 使用 -B。三个固定更新幅度1/2、1/4、1/8全部无合格改善即停止该方向，不追加更小步长、起点或重复轮数。
-
-[原三步目标要求](../reports/gftd_matched_prediction_20261109/goal_requirements_20261112.md)与[全量结果后的完成证据更新](../reports/gftd_objective_alignment_20261112/goal_evidence_update.md)共同界定当前范围：有限K4静态恢复已验证；一般拓扑与隐调制联合恢复、预测能力目标、实际初态L2覆盖仍待完成。原val/test关闭，旧test退出选择，新FOM=0，TASK4暂停，default none及protected anchors不变；部署仅100ms因果历史和末点真实p₀。
+部署沿用 100 ms 因果历史、末点真实 p₀ 与冻结常数。原 val/test 关闭，旧 test 退出选择，新 FOM 为 0，TASK4 暂停。default none、incumbent 与 protected anchors 不变。

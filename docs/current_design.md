@@ -12,7 +12,7 @@
 | 数学与同初态数值资格通过的有界调制研究候选（原生产方程不变） | [储能可行性与有限时域存在](../designs/gftd_storage_feasibility_20261109.md) |
 | 原297个样本已通过六项数值检查的同核初始化 | [同核初始化设计](../designs/gftd_bounded_initialization_20261109.md) |
 | 已闭合的匹配预测Run（完整L1/L2/L3与独立审查） | [匹配预测设计](../designs/gftd_matched_prediction_20261109.md) |
-| 已完成资格与输入核验、正在执行的三点历史目标比较 | [三点更新设计](../designs/gftd_objective_alignment_20261112.md) |
+| 已完成三点历史比较，静态保留父候选，有界调制选中 1/4 | [三点更新设计](../designs/gftd_objective_alignment_20261112.md) · [结果审查](../reports/gftd_objective_alignment_20261112/result_review.md) |
 | 研究假说、竞争解释与 Run 树 | [GFTD Campaign](../campaigns/gftd_kuramoto_discovery_20261106.md) |
 | 未知拓扑 → 动态调制与接口 → train fit297 同期比较 | [三步主线](../designs/gftd_mainline_20261107_architecture.md) |
 | 原Run 3的输入、工作量及判据 | [fit297 协议](https://github.com/LLzijian/grid-transient-rom/blob/145847532bacd3454dca8869e819778efc8258f6/reports/gftd_fit297_20261107_protocol.md) |
@@ -21,14 +21,11 @@
 节点局域核、候选边族和耗散形式属于建模先验；边支撑、调制作用和参数恢复由证据判断。
 完整方程、初始化细节和实验成绩保留在上述设计及报告中。
 
-## 待辨别问题
+## 下一待辨别问题
 
-1. 当前弱式提案的固定缩步能否改善同一自治历史目标？实现、纯mock资格和旧端点聚合身份核验均已通过，科学执行已单独释放，按固定三个步长取证。
-2. 在哪些观测与激励条件下，静态边、动态调制和加性记忆能够被区分？
-3. 如何在原分母和长时数值资格下改善 train fit297 自主预测，并区分完整方法差异与调制本身的作用？
-4. 如何让同一部署 ODE 的严格局部证书覆盖实际初态及其误差集合？已有 L3 图及模态对应保持描述性。
+以有界调制四分之一步为诊断工作候选，在该点附近沿父候选到四分之一步的固定 β 方向，其作用能否在合法 100 ms 自治历史中由共享静态系数 c 和盒内幅值、力记忆初态 a/r 补偿？后续 Run 为 `gftd_joint_distinguishability_20261112`，当前准备有界设计，科学执行尚未释放。[科学判读](../reports/gftd_objective_alignment_20261112/final_assessment.md)
 
-Run 1 支持有限 K4 静态恢复；Run 2 已接通拟合、存取、完整初始化与自主预测，
-动态调制恢复仍未获支持。结果范围及下一动作由 [current_state](current_state.md) 连接对应证据。
-既有 40 维基线和已接受锚点保留原适用范围；default none，incumbent 与 protected anchors 不变。
-历史架构与整理前完整说明见 [设计档案](../designs/history/README.md)。
+已有证据界定了问题范围。Run 1 支持有限 K4 静态恢复，Run 2 建立拟合、存取、因果初始化和自主预测接口。匹配预测完成原 train 297 的同期评价，两模型均有局部吸引集证书、实际初态各 0/297 获证、参考模态各配对 10/13。有界调制在三点比较中的 1/4 更新改善了原 24 包的历史选择目标，联合恢复、预测改善和实际初态证书覆盖仍待对应证据。[当前状态](current_state.md)
+
+既有 40 维基线和已接受锚点保留原适用范围。default none、incumbent 与 protected anchors 不变。
+历史架构见[设计档案](../designs/history/README.md)。
