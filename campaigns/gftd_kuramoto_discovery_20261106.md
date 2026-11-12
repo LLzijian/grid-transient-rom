@@ -74,7 +74,8 @@
 | `gftd_long_horizon_diagnostic_20261109` | 初始化精度Run已保存的新初态及缓存 | 同参数、同初态的长时跨方法辨别 | `discrimination` | [协议](gftd_long_horizon_diagnostic_20261109/protocol.md)：10状态区分积分误差、接受轨迹增长与零项求值异常；只允许一个条件分支 | `COMPLETED`；46条积分均有回执，五状态在参考一致区间内增长且网格误差下降；零项20对真实检查19项通过、1项相同平方溢出未过冻结分类门，28条条件轨迹未释放，工作量关闭 |
 | `gftd_storage_feasibility_20261109` | 长时诊断冻结模型、268两个旧状态及三参考缓存 | 同储能光滑有界调制，保留零点二阶展开 | `probe` | [协议](gftd_storage_feasibility_20261109/protocol.md)：先数学与人工资格，再两个保存初态各三参考1 s | `COMPLETED`；数学及人工资格通过，六条新参考全1 s合格；同窗幅值与调制范围改善，独立复核后保留证据，工作量关闭 |
 | `gftd_bounded_initialization_20261109` | 储能可行性已归档989fa944，固定原调制共享参数 | 显式有界核贯穿字典、存取与合法DP8初始化 | `adaptation + probe` | [协议](gftd_bounded_initialization_20261109/protocol.md)：25包小试后完成其余272包，每个返回点一次严格参考 | `COMPLETED`；297/297六门通过，289完整严格参考确认，8到限未决；独立审查接受、源码归档，工作量closed |
-| `gftd_matched_prediction_20261109` | 已完成的同核初始化及冻结静态／有界两父模型 | 两模型24包匹配适配、原297预测及同一ODE分析 | `adaptation + matched comparison` | [协议](gftd_matched_prediction_20261109/protocol.md)：固定两起点1200残差、完整库提案、原分母L1和L2/L3 | 公开接口和44项固定资格通过；两路fit完成并审查接受、均保留父参数；原全量部署已释放，真实评分等待594个初始化选择冻结 |
+| `gftd_matched_prediction_20261109` | 已完成的同核初始化及冻结静态／有界两父模型 | 两模型24包匹配适配、原297预测及同一ODE分析 | `adaptation + matched comparison` | [协议](gftd_matched_prediction_20261109/protocol.md)：固定两起点1200残差、完整库提案、原分母L1和L2/L3 | `COMPLETED`；两路fit均保留父参数，594初始化六门通过；静态5秒主项合格、调制3个长时未决导致主项null；实际区间漏检21/30与17/30，L2各0/297、L3各10/13；独立审查接受，工作量closed |
+| `gftd_objective_alignment_20261112` | 匹配预测Run闭合，原唯一弱式提案与两端缓存 | 固定三个内点能否改善原自治历史目标 | `adaptation` | [协议](gftd_objective_alignment_20261112/protocol.md)：t=1/2、1/4、1/8；原24包/双起点/六门，W仅诊断 | 设计及旧端点身份已独立审查通过，已登记进入隔离实现；科学和原始输入读取尚未释放 |
 | `gftd_stage2_coi_decoupling` | 受控证据与合格修订，具体父候选待冻结 | 静态耦合候选 | `discrimination` | 在 `train fit297` 固定同一初始化和静态图，仅改变共同模态算子 | 旧规划保留；不再作为三步主线前置 |
 | `gftd_stage2_latent_modulated_topology` | `gftd_stage2_coi_decoupling` 的冻结候选 | 动态调制候选 | `discrimination` / `adaptation` | 固定初始化与共同模态设置，调制开/关同期比较，L2 另证，L3 report-only | `DRAFT_PENDING_RELEASE` |
 
@@ -90,10 +91,10 @@
 
 ## 4. 下一个最有判别力的问题与重开/停止条件
 
-- **当前工作**。[同核初始化结果](../reports/gftd_bounded_initialization_20261109/conclusion.md)已完整闭合：原297个样本全部通过六门，289个完整严格参考确认，15个旧指数失败新增通过。[匹配预测Run](gftd_matched_prediction_20261109/protocol.md)的两路fit已审查闭合、原全量部署已释放；接下来按冻结阶段推进最终模型、全297初始化与预测、真实L1和同一ODE的L2/L3。两模型对弱式提案与自治目标的判读已记录，当前科学协议保持冻结；数值覆盖不替代真实预测和调制识别。
+- **当前工作**。[匹配预测Run](gftd_matched_prediction_20261109/protocol.md)已完成全部fit、部署、L2/L3及一次真实train评分，并通过[独立主张审查](../reports/gftd_matched_prediction_20261109/final_claim_review.md)。两模型各297/297初始化六门通过，但调制5/8秒主项因3个长时数值未决保持null；完整可比范围的risk高于静态。30个失稳样本实际预测区间为部署后0.03–1.44秒，调制新增检出4例且保留静态原9例，漏检分别21/30与17/30；三个静态误报在调制侧为数值未决，不能称误报修复。L2局部证书各覆盖0/297实际初态，L3各配对10/13。按[root闭合决定](../results/gftd_matched_prediction_20261109/final_adoption.json)保留实现及证据、不晋升模型；联合辨识与优化充分性仍unknown。下一问限于既有弱式方向是否存在合格缩步，不自动再做全量L1。
 
 - **2026-11-08证据更新**。M0/M1的同期流程已执行，但总体预测比较因数值资格覆盖不足保持未决；不再将“未执行真实比较”作为当前缺口。M2需要区分共享适配351/384任务到限与初始化后的数值资格损失：646初始化优化任务均收敛，却有547项未返回合格初态。条件支撑为静态35边、调制35边及25调制边，联合唯一性unknown。L2非空局部证明不覆盖本轮47实点；L3的K–绝对Kron导纳相关0.440/0.483及10/13模态配对用于描述，不替代L1。详见[Scientist判读](../reports/gftd_fit297_20261107/originals/gftd_fit297_20261107_scientific_assessment.md)、[独立结果审查](../reports/gftd_fit297_20261107/originals/gftd_fit297_20261107_result_review.md)及[root采用](../results/gftd_fit297_20261107/root_adoption.json)。
 - **判别顺序**。同族正负校准分开检查恢复和误检，推断端隔离真实图及隐轨迹，再比较独立生成机制与最强替代解释，随后准备 IEEE39 条件内辨别。
 - **停止/转向条件**。无效实现先有界修复；信息不足或机制不可区分时检查可观测性和等价类，按证据决定修订或暂存。正、负、混合结果按五轴判读，确认需求与晋升资格分开。每个 Run 预登记比较、适配上限、停止/重开条件和实际成本，旧余额不转移。
 
-当前完整L1闭合后，才决定是否需要[有限缩步草案](../designs/gftd_objective_alignment_20261112_draft.md)。[独立审查](../reports/gftd_matched_prediction_20261109/next_design_review.md)要求补齐逐次评价身份、实际有效系数和固定初态诊断口径；[root决定](../results/gftd_matched_prediction_20261109/next_design_decision.json)为暂缓采纳、不释放新试验。去掉确定性重复属于工程修正，三点缩步至多检验这次弱式方向，不能证明稀疏恢复或模型族闭合极限。
+2026-11-12完整L1闭合后，[root采纳三点问题](../results/gftd_matched_prediction_20261109/final_adoption.json)。补齐系数回存、逐评价核心身份与固定父端点诊断口径后，[正式设计](../designs/gftd_objective_alignment_20261112.md)及[旧端点摘要](../results/gftd_objective_alignment_20261112/endpoint_identity_digest.json)通过[独立审查](../reports/gftd_objective_alignment_20261112/design_review.md)。[root采用](../results/gftd_objective_alignment_20261112/design_adoption.json)仅放行最小隔离实现；科学执行还须核心与配置等价、旧聚合准备键精确匹配、纯mock资格及另行释放。三个固定内点全部无合格改善就停止该方向，不加更小步长、起点或重复轮数；后续真实预测另行前瞻审查。去重只节约重复成本，缩步不能证明稀疏恢复或模型族闭合极限。

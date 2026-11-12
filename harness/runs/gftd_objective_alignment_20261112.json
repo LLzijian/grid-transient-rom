@@ -1,0 +1,76 @@
+{
+  "schema_version": 2,
+  "synthetic": false,
+  "run_id": "gftd_objective_alignment_20261112",
+  "parent_run": "gftd_matched_prediction_20261109",
+  "purpose": "adaptation",
+  "scope": "Fixed 24 train fit297 causal-history packets; two parent-specific weak directions; t=1/2,1/4,1/8; original dual starts, boxes, objective and six gates; no future scoring.",
+  "execution": {
+    "status": "RUNNING",
+    "phase": "implementation",
+    "scientific_execution_released": false,
+    "scientific_jobs_executed": 0,
+    "native_session_id": null,
+    "recorded_utc": "2026-11-12T12:50:03.204997+00:00"
+  },
+  "scientific_work": {
+    "budget_status": "open",
+    "scientific_rhs_limit": 166890240,
+    "actual_scientific_rhs": 0,
+    "new_candidates_limit": 6,
+    "optimization_tasks_limit": 288,
+    "optimization_residuals_limit": 345600,
+    "qualification_suites_limit": 144,
+    "witness_residuals_limit": 144,
+    "qualification_rounds_used": 0,
+    "mock_callbacks_used": 0,
+    "original_data_reads": 0,
+    "real_future_reads": 0,
+    "old_unused_work_transferred": false
+  },
+  "evidence": {
+    "validity": "unknown",
+    "optimizer_health": "unknown",
+    "optimization_adequacy": "unknown",
+    "mechanism_probe": "unknown",
+    "comparison": "matched",
+    "confirmation": "none",
+    "effect": "unknown",
+    "critical_events": "unknown",
+    "references": [
+      "designs/gftd_objective_alignment_20261112.md",
+      "campaigns/gftd_objective_alignment_20261112/protocol.md",
+      "results/gftd_objective_alignment_20261112/endpoint_identity_digest.json",
+      "reports/gftd_objective_alignment_20261112/design_review.md",
+      "results/gftd_objective_alignment_20261112/design_request.json",
+      "results/gftd_matched_prediction_20261109/final_adoption.json",
+      "results/gftd_objective_alignment_20261112/design_adoption.json"
+    ]
+  },
+  "proposal": {
+    "scientific_claim": "observation_only",
+    "model_decision": "retain_evidence",
+    "next_action": "discriminate"
+  },
+  "root_decisions": {
+    "code": "retain_branch",
+    "model": "retain_evidence",
+    "science": "continue"
+  },
+  "scientific_scope": {
+    "data": "train fit297 fixed 24 slots, causal 100 ms history and p0 only",
+    "modes": [
+      "static",
+      "modulated"
+    ],
+    "steps": [
+      0.5,
+      0.25,
+      0.125
+    ],
+    "future_access": false,
+    "new_fom": 0,
+    "val_test": "closed",
+    "parent_selection_history_preserved": true
+  }
+}

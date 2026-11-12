@@ -1,0 +1,53 @@
+{
+  "run": "gftd_objective_alignment_20261112",
+  "parent_run": "gftd_matched_prediction_20261109",
+  "recorded_utc": "2026-11-12T12:35:36.468960+00:00",
+  "status": "design_requested_not_released",
+  "host_tool": "collaboration.followup_task",
+  "target": "/root/objective_alignment_scientist",
+  "configured_model": "gpt-6-astra",
+  "server_resolved_model": null,
+  "source_commit_at_request": "d30d263a466e55a0c029ef1e5bf3aafcaa75a8b8",
+  "inputs": [
+    {
+      "path": "results/gftd_matched_prediction_20261109/final_adoption.json",
+      "bytes": 7853,
+      "sha256": "1716126635c14093db471488eac8d7c0fdd544e2c9549d763727372c63526d93"
+    },
+    {
+      "path": "designs/gftd_objective_alignment_20261112_draft.md",
+      "bytes": 10607,
+      "sha256": "c4742219b1ca2b3cf84e767f42717ed351c780c52ad0c548572a6d3e5ff912f3"
+    },
+    {
+      "path": "reports/gftd_matched_prediction_20261109/next_design_review.md",
+      "bytes": 6694,
+      "sha256": "9600aba8b3783d1ffe7af100b61325a2ca7bb4b859f49ebf4e7c5fb7fb627e17"
+    },
+    {
+      "path": "reports/gftd_matched_prediction_20261109/final_assessment.md",
+      "bytes": 11852,
+      "sha256": "1c16bd5c862c026961853d4c952b05b8bdc9e0f0413b9443cff50822907f4c2d"
+    },
+    {
+      "path": "reports/gftd_matched_prediction_20261109/final_claim_review.md",
+      "bytes": 3292,
+      "sha256": "36a95e83a3e930e825f01a2295d0826131fa2fd8ec82ef613de88290606a6161"
+    }
+  ],
+  "outputs": [
+    "designs/gftd_objective_alignment_20261112.md",
+    "campaigns/gftd_objective_alignment_20261112/protocol.md"
+  ],
+  "question": "Define a finite three-point evaluation of the existing rejected weak direction, preserving exact endpoint evidence, causal history objective, and original initialization semantics.",
+  "implementation_scope_invocation": {
+    "host_tool": "collaboration.spawn_agent",
+    "target": "/root/alignment_modeler",
+    "configured_model": "gpt-6.1-sol",
+    "server_resolved_model": null,
+    "read_only": true
+  },
+  "scientific_execution_released": false,
+  "new_scientific_calls": 0,
+  "old_unused_work_transferred": false
+}

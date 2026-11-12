@@ -1,0 +1,90 @@
+{
+  "run": "gftd_objective_alignment_20261112",
+  "parent_run": "gftd_matched_prediction_20261109",
+  "recorded_utc": "2026-11-12T12:50:03.204997+00:00",
+  "status": "design_accepted_for_minimal_implementation",
+  "references": {
+    "design": {
+      "path": "designs/gftd_objective_alignment_20261112.md",
+      "bytes": 6220,
+      "sha256": "dbeb7a3cadc9235163f2ad3d657b4224848ff58c71c22a35d2ea91bae2c903f6"
+    },
+    "protocol": {
+      "path": "campaigns/gftd_objective_alignment_20261112/protocol.md",
+      "bytes": 15615,
+      "sha256": "18fe52a0d766c3bbe8e9e8d4941d4ef15a633c549d47d58f9e3d303841944c4c"
+    },
+    "endpoint_digest": {
+      "path": "results/gftd_objective_alignment_20261112/endpoint_identity_digest.json",
+      "bytes": 210136,
+      "sha256": "ebc92ecdfbff3a182948569fc8ae3f60ed6dad458757bcafe5835824e23c07e6"
+    },
+    "review": {
+      "path": "reports/gftd_objective_alignment_20261112/design_review.md",
+      "bytes": 5233,
+      "sha256": "3879e6cc8596e9f20817cda2f49234f62f6bcfd77fce41602c66cf84e1ce34e0"
+    },
+    "scientist_request": {
+      "path": "results/gftd_objective_alignment_20261112/design_request.json",
+      "bytes": 2153,
+      "sha256": "e37a5ae5db2dfe833ac5761b04b0522e8e28db6e9e257a29fce2b37e5adc20d8"
+    },
+    "parent_closure": {
+      "path": "results/gftd_matched_prediction_20261109/final_adoption.json",
+      "bytes": 7853,
+      "sha256": "1716126635c14093db471488eac8d7c0fdd544e2c9549d763727372c63526d93"
+    }
+  },
+  "root_decisions": {
+    "code": "retain_branch",
+    "model": "retain_evidence",
+    "science": "continue"
+  },
+  "role_invocations": {
+    "scientist": {
+      "tool": "collaboration.followup_task",
+      "target": "/root/objective_alignment_scientist",
+      "configured_model": "gpt-6-astra",
+      "server_resolved_model": null
+    },
+    "reviewer": {
+      "tool": "collaboration.followup_task",
+      "target": "/root/matched_fit_final_review",
+      "configured_model": "gpt-6.1-sol",
+      "server_resolved_model": null
+    }
+  },
+  "accepted_findings": [
+    "Stored four endpoints and 96 selected-point caches have exact evidence identities.",
+    "Ordered old 24-packet content identity can be established by exact recomputation of the two old matched preparation keys; historical standalone packet hashes remain null.",
+    "Effective-coordinate convex interpolation is a finite update-direction probe, not sparse-support recovery.",
+    "Witness residuals never alter starts, endpoint selection, candidate selection, gates or workload."
+  ],
+  "implementation_scope": [
+    "experiments/gftd_objective_alignment_20261112/run.py",
+    "experiments/gftd_objective_alignment_20261112/qualify.py"
+  ],
+  "shared_core_changes_authorized": false,
+  "scientific_execution_released": false,
+  "raw_history_read_released": false,
+  "future_read_released": false,
+  "scientific_rhs_limit": 166890240,
+  "qualification": {
+    "groups": 6,
+    "max_rounds": 3,
+    "max_mock_callbacks_per_round": 1000,
+    "max_mock_callbacks_total": 3000,
+    "real_rhs": 0,
+    "real_hamiltonian": 0,
+    "execution_released": false
+  },
+  "pre_science_conditions": [
+    "Frozen minimal implementation passes independent code review and registered mock qualification",
+    "New preparation exactly matches original model, config, ordered packet aggregate and core/runtime identities",
+    "Separate root scientific release with immutable source/input bindings and unique claims"
+  ],
+  "new_scientific_calls": 0,
+  "parent_unused_budget_transferred": false,
+  "automatic_full_L1": false,
+  "goal_completed": false
+}

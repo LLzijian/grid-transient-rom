@@ -2,6 +2,12 @@
 
 **2026-11-12：匹配预测 Run 已完成 fit、594次部署、L2/L3和唯一一次真实train评分，并通过独立审查。两模型各297/297通过初始化六门；调制在稳定5/8秒有3个数值未决，原分母主项为null。保留实现与证据，不晋升模型；整项目标仍未完成。**
 
+## 当前推进
+
+- 新Run：[三点设计](../designs/gftd_objective_alignment_20261112.md)、[有限协议](../campaigns/gftd_objective_alignment_20261112/protocol.md)、[独立设计审查](../reports/gftd_objective_alignment_20261112/design_review.md)、[root采用](../results/gftd_objective_alignment_20261112/design_adoption.json)、[登记](../harness/runs/gftd_objective_alignment_20261112.json)。当前仅implementation，科学执行、原历史读取及mock资格执行均未释放；新增科学调用0。
+- 实现仅新增隔离runner及纯mock资格文件，旧核心不改。旧两端和96条选点缓存身份已核；新准备阶段必须精确重算两模型旧有序24包聚合键，历史独立逐包hash仍为null。
+- 两模型各3个内点、共288优化任务、144套六门、144次固定父坐标残差诊断，科学RHS上限166,890,240；旧Run关闭余额不转移，不自动连接全量预测。
+
 ## 当前范围与证据
 
 - 活动Campaign：[GFTD结构发现](../campaigns/gftd_kuramoto_discovery_20261106.md)；[架构入口](current_design.md)。
@@ -33,6 +39,6 @@ fit与部署科学RHS共280,219,557，人工资格另28次RHS、748次H；评分
 
 ## 下一授权动作
 
-按[三点草案](../designs/gftd_objective_alignment_20261112_draft.md)与[设计审查](../reports/gftd_matched_prediction_20261109/next_design_review.md)，补齐实际系数／支撑、逐次评价身份和固定父端点诊断口径，再审查是否登记一个有限历史目标对齐Run。只检验现有弱式方向在1/2、1/4、1/8三个更新幅度是否有合格改善；全部失败即停止该方向，不加更小步长或重复轮数。当前尚未登记或释放新Run，不自动接另一轮全量L1。
+完成最小隔离实现后，独立审查实际调用、身份、失败分母、W与选择的隔离及分项计数；随后冻结源并单独释放首轮纯mock资格。协议最多三轮、3000次mock回调，真实科学调用0。资格通过后，准备阶段精确核对旧端点复用身份，再由root另行释放科学执行。三个固定更新幅度1/2、1/4、1/8全部无合格改善即停止该方向，不追加更小步长、起点或重复轮数。
 
 [原三步目标要求](../reports/gftd_matched_prediction_20261109/goal_requirements_20261112.md)仍有效：有限K4静态恢复已验证；一般拓扑与隐调制联合恢复、预测能力目标、实际初态L2覆盖仍待完成。原val/test关闭，旧test退出选择，新FOM=0，TASK4暂停，default none及protected anchors不变；部署仅100ms因果历史和末点真实p₀。
