@@ -1,0 +1,200 @@
+{
+  "run": "gftd_joint_distinguishability_20261112",
+  "parent_run": "gftd_objective_alignment_20261112",
+  "recorded_utc": "2026-11-12T15:44:49.307288+00:00",
+  "status": "completed_reviewed_witness_unresolved",
+  "execution_status": "COMPLETED",
+  "budget_status": "closed",
+  "references": {
+    "execution": {
+      "path": "results/gftd_joint_distinguishability_20261112/science/execution.json",
+      "bytes": 49572,
+      "sha256": "27d3ad39306c52e3fa581d48c68c54db8af2dd1da0d0fa8974c03932637a2dca"
+    },
+    "host_completion": {
+      "path": "results/gftd_joint_distinguishability_20261112/science_host_completion.json",
+      "bytes": 2027,
+      "sha256": "015176f47c7243496ac85758e4823dba6f49a0dda60c7b0972223e4ecbd0d434"
+    },
+    "source_archive": {
+      "path": "results/gftd_joint_distinguishability_20261112/source_archive.json",
+      "bytes": 16180,
+      "sha256": "7db5081dc67e258093adbd0133af4e592f7fbc631a8f1b6664607cbf25a9bc64"
+    },
+    "result_audit": {
+      "path": "results/gftd_joint_distinguishability_20261112/result_audit_v2.json",
+      "bytes": 9410,
+      "sha256": "ebc7380be6a62bebaec884d3562d026ec8d8b1901ba2b80e20b20a244d3eedd7"
+    },
+    "result_review": {
+      "path": "reports/gftd_joint_distinguishability_20261112/result_review.md",
+      "bytes": 3972,
+      "sha256": "9be88059b9ff2fea7b19e222afa871264b18a9d4fd4b45933d87594ba3115d93"
+    },
+    "result_review_correction": {
+      "path": "reports/gftd_joint_distinguishability_20261112/result_review_correction.md",
+      "bytes": 1258,
+      "sha256": "c95ce17fddc33795df63d69d6ecf03a30b565d2a9835dabcceeceab365f3b4f4"
+    },
+    "audit_source": {
+      "path": "reports/gftd_joint_distinguishability_20261112/result_audit_source.py",
+      "bytes": 15841,
+      "sha256": "d568396ad244add722cca449b822481db2296ff314067c7a92c4357b21013488"
+    },
+    "scientist_assessment": {
+      "path": "reports/gftd_joint_distinguishability_20261112/final_assessment.md",
+      "bytes": 8580,
+      "sha256": "cb5eb3c30becdcd82ca15b1feeecf141b03ba5372446e56395f05906fa03f438"
+    },
+    "scientist_assessment_correction": {
+      "path": "reports/gftd_joint_distinguishability_20261112/final_assessment_correction.md",
+      "bytes": 985,
+      "sha256": "12b7767e03b822b031a7022092ddb44057a0c91fbf7661417672597eba5f0796"
+    },
+    "final_claim_review": {
+      "path": "reports/gftd_joint_distinguishability_20261112/final_claim_review.md",
+      "bytes": 2951,
+      "sha256": "c9fc9e4e78e752e14bbb959ca959352fe546221c4122d5499fb4163de7a62297"
+    },
+    "science_release": {
+      "path": "results/gftd_joint_distinguishability_20261112/science_release.json",
+      "bytes": 8084,
+      "sha256": "f414ec7361f3ed8a1c6b7daac0f0781cae8a786147974b8c35b480ab20ab55d0"
+    },
+    "parent_adoption": {
+      "path": "results/gftd_objective_alignment_20261112/final_adoption.json",
+      "bytes": 6945,
+      "sha256": "a20035ad5a099f6a5bea8e73bcc2f912195cc89b145fda194efe27b1c2b8b676"
+    }
+  },
+  "role_invocations": {
+    "scientist": {
+      "host_tool": "collaboration.followup_task",
+      "target": "/root/objective_alignment_scientist",
+      "configured_model": "gpt-6-astra",
+      "server_resolved_model": null
+    },
+    "reviewer": {
+      "host_tool": "collaboration.followup_task",
+      "target": "/root/matched_fit_final_review",
+      "configured_model": "gpt-6.1-sol",
+      "server_resolved_model": null
+    }
+  },
+  "root_decisions": {
+    "code": "retain_branch",
+    "model": "retain_evidence",
+    "science": "continue"
+  },
+  "assessment_accepted_with_timing_correction": true,
+  "independent_reviews_accepted_with_cost_correction": true,
+  "five_axes": {
+    "evidence_validity": "valid within the fixed reference, direction, box and two finite amplitudes",
+    "optimizer_health": "finite feasible returned point; TRF and every LSMR call reached registered iteration caps",
+    "optimization_adequacy": "unknown; no trustworthy lower bound on the frozen convex objective was computed",
+    "mechanism_identification": "unknown; registered compensation witness unresolved",
+    "effect_and_confirmation": "about 96.8 percent observation-norm cancellation at two fixed amplitudes, both absolute and packet gates failed; no independent confirmation"
+  },
+  "local_scientific_conclusion": {
+    "status": "unresolved",
+    "statement": "The single feasible vector cancels most observation change, but neither tested amplitude satisfies the registered compensation witness gates. No impossibility or joint-identification conclusion follows.",
+    "control": "x=c-beta and u fixed; c co-changes with beta",
+    "scope": "Original 24 train causal-history packets at the saved modulated quarter; alpha 1/64 and 1/128; same feasible compensation vector."
+  },
+  "amplitudes": [
+    {
+      "alpha": 0.015625,
+      "remaining_fraction": 0.03185163736097563,
+      "worst_local_slot": 18,
+      "worst_fine_rms": 4.6167552690739976e-05,
+      "passing_packet_count": 6,
+      "linear": [
+        {
+          "finite": true,
+          "gap": 1.7310117017846062e-07,
+          "limit": 7.243562993544634e-05,
+          "passed": true
+        },
+        {
+          "finite": true,
+          "gap": 3.458874254589406e-07,
+          "limit": 2.407013630055912e-06,
+          "passed": true
+        }
+      ],
+      "eta_mesh": 1.1212978624534496e-15,
+      "eta_round": 4.294235106145788e-14,
+      "worst_event_id": "pilot_0143",
+      "packet_denominator": 24
+    },
+    {
+      "alpha": 0.0078125,
+      "remaining_fraction": 0.03187336092054438,
+      "worst_local_slot": 18,
+      "worst_fine_rms": 2.3123540201576656e-05,
+      "passing_packet_count": 15,
+      "linear": [
+        {
+          "finite": true,
+          "gap": 4.3276087345778325e-08,
+          "limit": 3.6265729294700896e-05,
+          "passed": true
+        },
+        {
+          "finite": true,
+          "gap": 8.64533768846419e-08,
+          "limit": 1.253506815027956e-06,
+          "passed": true
+        }
+      ],
+      "eta_mesh": 1.2012377524288747e-15,
+      "eta_round": 4.294235106145788e-14,
+      "worst_event_id": "pilot_0143",
+      "packet_denominator": 24
+    }
+  ],
+  "cost": {
+    "history_maps": 12912,
+    "rhs": 9296640,
+    "phase_rhs": {
+      "reference": 34560,
+      "finite_differences": 9123840,
+      "verification": 138240
+    },
+    "bounded_linear_problems": 1,
+    "trf_iterations": 100,
+    "lsmr_calls": 101,
+    "lsmr_iterations": 101000,
+    "science_function_wall_seconds": 781.5468296000035,
+    "science_function_cpu_seconds": 778.671875,
+    "native_command_wall_seconds": null,
+    "timing_scope": "Function timer ends before final evidence serialization; full native command wall not separately measured."
+  },
+  "source_commit": "6da9869381f72f20aa7c6582ab0a5001a7a26377",
+  "source_count_verified": 47,
+  "active_source_freeze_released_at_run_closure": true,
+  "source_archive_remains_immutable": true,
+  "working_candidate": {
+    "status": "diagnostic_only",
+    "mode": "modulated",
+    "point": "quarter",
+    "reason": "Qualified lowest historical F among frozen candidates; next question concerns its local beta direction, not deployment promotion.",
+    "reference": {
+      "path": "results/gftd_objective_alignment_20261112/science/jobs/modulated_quarter.json",
+      "bytes": 8973,
+      "sha256": "7b98ad2b68220d6599baaaa71dced108d574af643bece9ae8bc45ab2e9c5b35a"
+    }
+  },
+  "next_decision": {
+    "status": "bounded_question_accepted_for_design_review_only",
+    "question": "For the exact saved A,b,box and current feasible vector, can trustworthy primal/dual bounds decide whether the minimum is below the linear aggregate threshold 2.048e-9?",
+    "lineage": "Child adequacy question of this compensation probe; preserves all previous search and exposure history.",
+    "new_execution_released": false,
+    "new_rhs_allowed": 0,
+    "automatic_full_L1_followup": false
+  },
+  "full_goal_completed": false,
+  "default_or_protected_model_changed": false,
+  "new_future_reads": 0,
+  "closed_unused_work_not_transferred": true
+}

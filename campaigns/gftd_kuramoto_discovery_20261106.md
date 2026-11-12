@@ -1,8 +1,8 @@
 # 静态拓扑、隐幅值调制与力记忆：当前证据和识别边界
 
-追溯编号：`gftd_kuramoto_discovery_20261106`。当前综合更新至 2026-11-12，依据已完成的匹配预测与三点历史比较。原始预测、适用范围和释放以各自协议为准。[完整规划与状态原件](../reports/history/gftd_campaign/originals/gftd_kuramoto_discovery_before_synthesis_20261109.md)
+追溯编号：`gftd_kuramoto_discovery_20261106`。当前综合更新至 2026-11-12，依据已完成的匹配预测、三点历史比较和固定方向补偿检验。原始预测、适用范围和释放以各自协议为准。[完整规划与状态原件](../reports/history/gftd_campaign/originals/gftd_kuramoto_discovery_before_synthesis_20261109.md)
 
-**GFTD 5N 在有限 K4 条件下恢复了静态支撑，并在原 train fit297 完成两种完整方法的同期预测评价。三点比较进一步确认，有界调制的既有弱式方向包含合格缩步，选中四分之一步，静态保留父候选。下一项辨别问题是四分之一步附近的固定 β 方向作用能否由共享静态系数和合法幅值、力记忆初态补偿。模型保留为证据，`default=none`。**
+**GFTD 5N 在有限 K4 条件下恢复了静态支撑，并在原 train fit297 完成两种完整方法的同期预测评价。三点比较进一步确认，有界调制的既有弱式方向包含合格缩步，选中四分之一步，静态保留父候选。随后检验了四分之一步附近固定 β 方向的补偿，两档均未达到见证门。模型保留为证据，`default=none`。**
 
 2026-11-09的[初始化精度Run](../reports/gftd_initialization_precision_20261109/conclusion.md)在固定共享参数、实际步长和门槛下完成全体594项验证：固定八阶初始化通过静态297/297、调制282/297，原47个输出全部保留。长时主细完成数分别为297/297、270/297；完成与长时精度分别判断。该Run未读取真实未来，原总体L1不回填，模型不晋升。
 
@@ -13,6 +13,8 @@
 匹配预测的稳定 267 包 5 s risk 为静态 12.312022、有界调制 null，后者 264/267 合格。1/2 s 稳定样本及失稳真实区间的完整 risk 比较未支持调制收益。真实区间漏检为静态 21/30、有界调制 17/30，调制多检出 4 例。静态 3 个误报在调制侧对应 3 个数值未决。两模型均有局部 ROM 吸引集证书，实际初态各获证 0/297，L3 各配对 10/13。[科学判读](../reports/gftd_matched_prediction_20261109/final_assessment.md) · [独立主张审查](../reports/gftd_matched_prediction_20261109/final_claim_review.md)
 
 三点比较保持原 24 包、双起点、完整自治反馈和六门，六候选完成、144/144 套六门通过，科学 RHS 共 56,004,480 次。静态三个尺度均无合格改善；有界调制 1/4、1/8 均改善登记历史目标，1/4 最低，相对父候选下降 0.135032%。1/4 的未惩罚 MSE 有 10 包下降、14 包上升。该证据支持有界调制方向存在可接受的有限更新，三点搜索已经结束。本轮未产生新预测或证书，调制参数与隐初态的补偿仍待区分。[科学判读](../reports/gftd_objective_alignment_20261112/final_assessment.md) · [独立结果审查](../reports/gftd_objective_alignment_20261112/result_review.md)
+
+扰动幅度 1/64、1/128 下，补偿后的全体归一化观测 RMS 残余分别为 2.304e-5 和 1.153e-5，均超过 1e-6。相对于各自对照，残余减少约 96.8%，两档均未通过见证门。TRF 达到 100 次外层迭代上限，101 次 LSMR 均达到 1,000 次迭代上限，优化充分性仍为 unknown。本轮使用 12,912 次历史映射和 9,296,640 次模型 RHS。[独立结果审查及更正](../reports/gftd_joint_distinguishability_20261112/result_review_correction.md) · [复核记录 v2](../results/gftd_joint_distinguishability_20261112/result_audit_v2.json)
 
 ## 当前认识：先按问题阅读
 
@@ -37,7 +39,7 @@
 
 
 - **登记性质**：`PROSPECTIVE_ARCHITECTURE_CAMPAIGN`（顶层设计规划，2026-11-06）
-- **当前科学状态**。Campaign 为 `active`。匹配预测与三点历史比较已完成执行和审查。代码 `retain_branch`、模型 `retain_evidence`、科学 `continue`，受保护模型不变。下一项补偿见证的固定科学探针已释放并启动，尚无结果。
+- **当前科学状态**。Campaign 为 `active`。匹配预测与三点历史比较已完成执行和审查。代码 `retain_branch`、模型 `retain_evidence`、科学 `continue`，受保护模型不变。固定方向补偿探针的科学执行与独立结果复核均已完成，最终主张审查通过，root 已闭合本轮。
 - **授权引用**。用户 2026-11-06 确定 GFTD 核心方向，2026-11-07 明确恢复按评估方案研究推进。范围内正常推进无需逐轮用户确认，数据、部署与 TASK4 边界沿用 [kiki.md](../kiki.md)，真实状态以 [current_state](../docs/current_state.md) 为准。
 - **范围明确的假说**。在给定观测与激励条件下，仅用合法因果信息，联合储能与弱形式结构选择能否区分静态耦合、动态调制和加性记忆，在可区分时选择简洁共享自治闭合，并改善 L1 预测。功率一致性、L2 证明和 L3 对应分别判断。
 - **架构版本**。[v2.0 草案及更正](../designs/gftd_kuramoto_architecture_brief.md)；当前方程采用独立审查后的 [5N 修订](../designs/gftd_repair_design_20261107.md)，实施顺序采用[三步主线](../designs/gftd_mainline_20261107_architecture.md)。
@@ -48,9 +50,9 @@
 
 | 竞争解释 | 区分预测（Discriminating Prediction） | 已有证据 / 反例 | 尚未解决的缺口 |
 |---|---|---|---|
-| **M0（动态调制改善闭合）** | 在合法短窗和固定方向下，β 对可观测历史的作用超出共享静态系数和幅值／记忆初态的补偿能力。 | 匹配预测在真实可用区间多检出 4 例，完整可比范围的 risk 未支持总体收益。三点比较确认有界调制方向存在合格缩步，尚无该候选的预测证据。 | 针对选中 β 方向检验补偿能否达到相同短窗响应，明确可区分性的范围。 |
-| **M1（共享静态耦合与记忆可补偿）** | 在相同合法输入下，共享 c 与盒内 a/r 的变化可重现指定 β 方向的可观测历史作用。 | 原人工无噪调制族即使 β=0 也可通过预测门；匹配预测的静态方法获得完整原分母主项。静态三个缩步未改善其历史目标，静态／记忆补偿尚未被直接检验。 | 对同一方向比较可行补偿，辨别有限邻域内的等价关系。 |
-| **M2（初始化、优化与数值资格）** | 在同一方程下，合法初态范围、适配目标及长时数值门会改变可获得的结果。 | 积分精度与原核增长已有分辨证据。三点比较中有界调制 1/4 在原盒内改善，144 个固定父坐标见证均未低于对应双起点返回 MSE。匹配预测的三个长时未决保留原分母。 | 共享参数与隐初态联合优化充分性仍为 unknown；补偿设计需区分可行性、求解和数值未决。 |
+| **M0（动态调制改善闭合）** | 在合法短窗和固定方向下，β 对可观测历史的作用超出共享静态系数和幅值／记忆初态的补偿能力。 | 匹配预测在真实可用区间多检出 4 例，完整可比范围的 risk 未支持总体收益。三点比较确认有界调制方向存在合格缩步，尚无该候选的预测证据。 | 两档未获得见证。当前可行解给出上界，该有界线性问题的最优值下界仍待判断。 |
+| **M1（共享静态耦合与记忆可补偿）** | 在相同合法输入下，共享 c 与盒内 a/r 的变化可重现指定 β 方向的可观测历史作用。 | 原人工无噪调制族即使 β=0 也可通过预测门；匹配预测的静态方法获得完整原分母主项。补偿探针的同一可行解在两档均抵消约 96.8% 的归一化观测差，残余均超过绝对门。 | 两档的近似补偿见证均未决。 |
+| **M2（初始化、优化与数值资格）** | 在同一方程下，合法初态范围、适配目标及长时数值门会改变可获得的结果。 | 积分精度与原核增长已有分辨证据。三点比较中有界调制 1/4 在原盒内改善，144 个固定父坐标见证均未低于对应双起点返回 MSE。匹配预测的三个长时未决保留原分母。 | 共享参数与隐初态联合优化充分性仍为 unknown；补偿探针的 TRF 与每次 LSMR 均到限，求解充分性为 unknown。 |
 | **M3（独立时变边权）** | 去掉联合反作用后，比较预测与功率变化 | 所选储能会出现额外边权变化项，其符号和实际效应须检查 | 按判别价值决定是否消融，耗散证明缺失不直接判长期发散 |
 | **M4（噪声造成伪结构信息）** | 平衡下参数本不可辨，含噪字典却可能秩稳定并输出确定参数；信息强度规则须拒绝这些伪值 | 单尺度探针揭示秩稳定伪参数；后续静态拓扑 Run 的 24 个平衡设置均返回 null，含噪权重误差与支撑正确性分开报告 | 该有限对照不保证任意噪声或图规模；保留绝对信息与 null，不能只凭相对秩宣称可辨 |
 
@@ -78,10 +80,9 @@
 | `gftd_bounded_initialization_20261109` | 储能可行性已归档989fa944，固定原调制共享参数 | 显式有界核贯穿字典、存取与合法DP8初始化 | `adaptation + probe` | [协议](gftd_bounded_initialization_20261109/protocol.md)：25包小试后完成其余272包，每个返回点一次严格参考 | `COMPLETED`；297/297六门通过，289完整严格参考确认，8到限未决；独立审查接受、源码归档，工作量closed |
 | `gftd_matched_prediction_20261109` | 已完成的同核初始化及冻结静态／有界两父模型 | 两模型24包匹配适配、原297预测及同一ODE分析 | `adaptation + matched comparison` | [协议](gftd_matched_prediction_20261109/protocol.md)：固定两起点1200残差、完整库提案、原分母L1和L2/L3 | `COMPLETED`；两路fit均保留父参数，594初始化六门通过；静态5秒主项合格、调制3个长时未决导致主项null；实际区间漏检21/30与17/30，L2各0/297、L3各10/13；独立审查接受，工作量closed |
 | `gftd_objective_alignment_20261112` | 匹配预测Run闭合，原唯一弱式提案与两端缓存 | 固定三个内点能否改善原自治历史目标 | `adaptation` | [协议](gftd_objective_alignment_20261112/protocol.md)：t=1/2、1/4、1/8；原24包/双起点/六门，W仅诊断 | `COMPLETED`；6/6 候选、144/144 六门，静态保留父、有界调制选中 1/4，方向搜索结束；[最终决定](../results/gftd_objective_alignment_20261112/final_adoption.json) |
-| `gftd_joint_distinguishability_20261112` | 三点比较选中的调制 quarter，固定原24包 | 共享 x 与合法 a/r 对一个 beta 方向的局部补偿 | `probe` | [有限协议](gftd_joint_distinguishability_20261112/protocol.md)：一个有界线性问题、两档完整历史核验；无见证记未决 | 独立审查及首轮技术资格通过，缓存身份核验完成；科学探针会话 50747 运行中 |
+| `gftd_joint_distinguishability_20261112` | 三点比较选中的调制 quarter，固定原24包 | 共享 x 与合法 a/r 对一个 beta 方向的局部补偿 | `probe` | [有限协议](gftd_joint_distinguishability_20261112/protocol.md)：一个有界线性问题、两档完整历史核验；无见证记未决 | 执行 COMPLETED，独立结果复核完成，两档未决；最终主张审查通过，root 已闭合本轮 |
 | `gftd_stage2_coi_decoupling` | 受控证据与合格修订，具体父候选待冻结 | 静态耦合候选 | `discrimination` | 在 `train fit297` 固定同一初始化和静态图，仅改变共同模态算子 | 旧规划保留；不再作为三步主线前置 |
-| `gftd_stage2_latent_modulated_topology` | `gftd_joint_distinguishability_20261112` | 三点比较选中的调制 quarter，固定原24包 | 共享 x 与合法 a/r 对一个 beta 方向的局部补偿 | `probe` | [有限协议](gftd_joint_distinguishability_20261112/protocol.md)：一个有界线性问题、两档完整历史核验；无见证记未决 | 独立审查及首轮技术资格通过，缓存身份核验完成；科学探针会话 50747 运行中 |
-| `gftd_stage2_coi_decoupling` 的冻结候选 | 动态调制候选 | `discrimination` / `adaptation` | 固定初始化与共同模态设置，调制开/关同期比较，L2 另证，L3 report-only | `DRAFT_PENDING_RELEASE` |
+| `gftd_stage2_latent_modulated_topology` | `gftd_stage2_coi_decoupling` 的冻结候选 | 动态调制候选 | `discrimination` / `adaptation` | 固定初始化与共同模态设置，调制开/关同期比较，L2 另证，L3 report-only | `DRAFT_PENDING_RELEASE` |
 
 上述是规划引用，真实 Run/Job 身份、有限工作量和父候选在前瞻协议中冻结。数学反例和便宜辨别可直接推进相关问题。
 
@@ -95,7 +96,7 @@
 
 ## 4. 下一待辨别问题与停止条件
 
-**以有界调制四分之一步为诊断工作候选，在该点附近沿父候选到四分之一步的固定 β 方向，其作用能否在合法 100 ms 完整自治历史中，由共享静态系数 c 和盒内幅值、力记忆初态 a/r 补偿？** 后续 Run 为 `gftd_joint_distinguishability_20261112`，已完成独立设计与实现审查、六组技术检查及缓存准备，科学执行已启动（原生会话 50747），结果待回执。若可行补偿经完整自治历史核验，证据限于该方向及所检扰动下的近似等价见证；未找到见证保留未决，不把求解目标值当作不可补偿的下界。三点历史收益不产生自动部署或评分授权。[科学判读](../reports/gftd_objective_alignment_20261112/final_assessment.md) · [执行终态](../results/gftd_objective_alignment_20261112/science/execution.json) · [目标与证据更新](../reports/gftd_objective_alignment_20261112/goal_evidence_update.md)
+下一步只拟定已保存线性盒约束问题的可行上界和最优值下界。尚未释放新计算，不开放模型 RHS 或新评分。[独立结果审查及更正](../reports/gftd_joint_distinguishability_20261112/result_review_correction.md) · [复核记录 v2](../results/gftd_joint_distinguishability_20261112/result_audit_v2.json)
 
 - 三点比较的代码保留、模型证据保留、科学继续。root 已正式闭合本轮，45 份源码的活动冻结已解除，后续研究须另行冻结和审查。[最终决定](../results/gftd_objective_alignment_20261112/final_adoption.json) · [源码档案](../results/gftd_objective_alignment_20261112/source_archive.json)
 - 同族正负校准继续分别判断恢复和误检，推断端隔离真实图及隐轨迹。旧 Run 余额不转移，科学结论、确认需求与模型晋升分别判断。

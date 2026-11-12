@@ -1,6 +1,12 @@
 # 当前研究状态
 
-**2026-11-12：匹配预测与三点历史比较均已完成执行和独立结果审查。三点比较中，静态保留父候选，有界调制的四分之一步在原 24 包的历史选择目标上改善 0.135032%，选中该步并结束这条方向的搜索。下一问是调制系数变化能否由共享静态系数和合法隐初态补偿，有界设计和实现已通过审查及首轮技术资格，科学执行已启动。**
+**2026-11-12：固定 β 方向的局部补偿探针已完成执行和独立结果复核。两档均未达到见证门，结论未决。最终主张审查通过，root 已闭合本轮。**
+
+## 固定调制方向的局部补偿
+
+以有界调制四分之一步为诊断候选，用原 24 包，将同一补偿向量按两档尺度施加到共享系数与合法幅值、力记忆初态。扰动幅度 1/64、1/128 下，补偿后的全体归一化观测 RMS 残余分别为 2.304e-5 和 1.153e-5，均超过 1e-6。相对于各自对照，残余减少约 96.8%，两档均未通过见证门。TRF 达到 100 次外层迭代上限，101 次 LSMR 均达到 1,000 次迭代上限，优化充分性仍为 unknown。共 12,912 次历史映射、9,296,640 次模型 RHS，成本已知。[独立结果审查及更正](../reports/gftd_joint_distinguishability_20261112/result_review_correction.md) · [复核记录 v2](../results/gftd_joint_distinguishability_20261112/result_audit_v2.json)
+
+本轮代码 `retain_branch`、模型 `retain_evidence`、科学 `continue`。工作量关闭，47 份活动源码的本轮冻结已解除，执行档案保持不变。[最终决定](../results/gftd_joint_distinguishability_20261112/final_adoption.json) · [科学判读及计时更正](../reports/gftd_joint_distinguishability_20261112/final_assessment_correction.md) · [最终主张审查](../reports/gftd_joint_distinguishability_20261112/final_claim_review.md)
 
 ## 三点历史比较
 
@@ -27,6 +33,6 @@ risk 是逐事件时间平均归一化平方误差的加权风险。失稳样本
 
 ## 下一问与边界
 
-以有界调制四分之一步为诊断工作候选，在该点附近检验沿父候选到四分之一步的固定 β 方向能否在合法 100 ms 完整自治历史中由共享静态系数 c 和盒内幅值、力记忆初态 a/r 补偿。后续 Run 为 `gftd_joint_distinguishability_20261112`，已完成独立设计与实现审查、六组技术检查及缓存准备，科学执行已启动（原生会话 50747），结果待回执。一般拓扑与隐调制联合恢复、预测能力目标和实际初态 L2 覆盖仍待解决。[下一设计](../designs/gftd_joint_distinguishability_20261112.md) · [有限协议](../campaigns/gftd_joint_distinguishability_20261112/protocol.md) · [采用记录](../results/gftd_joint_distinguishability_20261112/design_adoption.json) · [目标与证据更新](../reports/gftd_objective_alignment_20261112/goal_evidence_update.md) · [研究假说](../campaigns/gftd_kuramoto_discovery_20261106.md) · [架构入口](current_design.md)
+下一步只拟定已保存线性盒约束问题的可行上界和最优值下界。尚未释放新计算，不开放模型 RHS 或新评分。一般拓扑与隐调制联合恢复、预测能力目标和实际初态 L2 覆盖仍待解决。[研究假说](../campaigns/gftd_kuramoto_discovery_20261106.md) · [架构入口](current_design.md)
 
 部署沿用 100 ms 因果历史、末点真实 p₀ 与冻结常数。原 val/test 关闭，旧 test 退出选择，新 FOM 为 0，TASK4 暂停。default none、incumbent 与 protected anchors 不变。

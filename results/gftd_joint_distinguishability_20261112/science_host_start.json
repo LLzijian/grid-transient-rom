@@ -1,0 +1,41 @@
+{
+  "run": "gftd_joint_distinguishability_20261112",
+  "phase": "science",
+  "status": "running",
+  "observed_utc": "2026-11-12T15:10:29.226154+00:00",
+  "command": "$env:PYTHONPATH='E:/03-nn_Transfer_Func/kiki/src;E:/03-nn_Transfer_Func/kiki'\n$env:PYTHONIOENCODING='utf-8'\n& .venv-gpu/Scripts/python.exe -B experiments/gftd_joint_distinguishability_20261112/run.py science --release results/gftd_joint_distinguishability_20261112/science_release.json\nexit $LASTEXITCODE",
+  "login": false,
+  "native_session_id": 50747,
+  "native_start_tool_chunk": "03fb5b",
+  "native_initial_yield_seconds": 10.0079203,
+  "native_initial_output": "",
+  "observed_processes": [
+    {
+      "pid": 24688,
+      "parent_pid": 48200,
+      "image": "python.exe"
+    },
+    {
+      "pid": 55524,
+      "parent_pid": 24688,
+      "image": "python.exe"
+    }
+  ],
+  "observed_pids": [
+    24688,
+    55524
+  ],
+  "observation_tool_chunk": "2273e8",
+  "references": {
+    "claim": {
+      "path": "results/gftd_joint_distinguishability_20261112/science/claim.json",
+      "bytes": 6314,
+      "sha256": "e25a8ed61151b0963c82403d7f56a841b0629e7867ab0f45c333c850490c264a"
+    },
+    "release": {
+      "path": "results/gftd_joint_distinguishability_20261112/science_release.json",
+      "bytes": 8084,
+      "sha256": "f414ec7361f3ed8a1c6b7daac0f0781cae8a786147974b8c35b480ab20ab55d0"
+    }
+  }
+}

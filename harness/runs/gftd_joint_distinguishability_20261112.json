@@ -6,25 +6,49 @@
   "purpose": "probe",
   "scope": "Fixed 24 causal histories; one local beta direction at the saved quarter model; one box-constrained linear compensation proposal and two finite checks.",
   "execution": {
-    "status": "RUNNING",
-    "phase": "science_running",
+    "status": "COMPLETED",
+    "phase": "closed_reviewed",
     "scientific_execution_released": true,
     "native_session_id": 50747,
-    "active_claims": [
-      "results/gftd_joint_distinguishability_20261112/science/claim.json"
-    ],
-    "recorded_utc": "2026-11-12T15:10:29.185861+00:00",
+    "active_claims": [],
+    "recorded_utc": "2026-11-12T15:44:49.307288+00:00",
     "scientific_jobs_started": 1,
-    "scientific_jobs_completed": 0,
+    "scientific_jobs_completed": 1,
     "native_start_chunk": "03fb5b",
-    "native_live": true,
+    "native_live": false,
     "observed_pids": [
       24688,
       55524
-    ]
+    ],
+    "host_start": {
+      "path": "results/gftd_joint_distinguishability_20261112/science_host_start.json",
+      "bytes": 1376,
+      "sha256": "a8417d3e9dafb45aaf892fb3289aa34542826b439b0b312af300911307a508d4"
+    },
+    "live_observation": {
+      "recorded_utc": "2026-11-12T15:13:50.568563+00:00",
+      "tool_chunk": "d9fa24",
+      "pids": [
+        24688,
+        55524
+      ],
+      "observed_actual_python_cpu_seconds": 190.11
+    },
+    "native_exit_code": 0,
+    "native_terminal_chunk": "d5c045",
+    "science_execution": {
+      "path": "results/gftd_joint_distinguishability_20261112/science/execution.json",
+      "bytes": 49572,
+      "sha256": "27d3ad39306c52e3fa581d48c68c54db8af2dd1da0d0fa8974c03932637a2dca"
+    },
+    "science_host_completion": {
+      "path": "results/gftd_joint_distinguishability_20261112/science_host_completion.json",
+      "bytes": 2027,
+      "sha256": "015176f47c7243496ac85758e4823dba6f49a0dda60c7b0972223e4ecbd0d434"
+    }
   },
   "scientific_work": {
-    "budget_status": "open",
+    "budget_status": "closed",
     "limits": {
       "history_maps": 12912,
       "rhs": 9296640,
@@ -33,26 +57,29 @@
       "lsmr_calls": 101,
       "lsmr_iterations": 101000
     },
-    "actual_scientific_rhs": 0,
-    "actual_history_maps": 0,
-    "actual_linear_solves": 0,
+    "actual_scientific_rhs": 9296640,
+    "actual_history_maps": 12912,
+    "actual_linear_solves": 1,
     "qualification_rounds_used": 1,
     "old_unused_work_transferred": false,
     "qualification_budget_status": "closed",
     "mock_callbacks": 139,
     "technical_linear_problems": 1,
     "technical_lsmr_calls": 6,
-    "technical_lsmr_iterations": 6
+    "technical_lsmr_iterations": 6,
+    "cost_status": "known_closed",
+    "actual_lsmr_calls": 101,
+    "actual_lsmr_iterations": 101000
   },
   "evidence": {
-    "validity": "unknown",
-    "optimizer_health": "unknown",
+    "validity": "valid",
+    "optimizer_health": "finite_feasible_budget_limited",
     "optimization_adequacy": "unknown",
-    "mechanism_probe": "unknown",
+    "mechanism_probe": "unresolved",
     "comparison": "matched",
     "confirmation": "none",
-    "effect": "unknown",
-    "critical_events": "unknown",
+    "effect": "partial_cancellation_below_registered_witness_precision",
+    "critical_events": "all 24 retained; worst packet pilot_0143 at both amplitudes",
     "references": [
       "designs/gftd_joint_distinguishability_20261112.md",
       "campaigns/gftd_joint_distinguishability_20261112/protocol.md",
@@ -70,7 +97,18 @@
       "results/gftd_joint_distinguishability_20261112/prepare_release.json",
       "results/gftd_joint_distinguishability_20261112/prepare.json",
       "results/gftd_joint_distinguishability_20261112/prepare_host.json",
-      "results/gftd_joint_distinguishability_20261112/science_release.json"
+      "results/gftd_joint_distinguishability_20261112/science_release.json",
+      "results/gftd_joint_distinguishability_20261112/science/execution.json",
+      "results/gftd_joint_distinguishability_20261112/science_host_completion.json",
+      "results/gftd_joint_distinguishability_20261112/source_archive.json",
+      "results/gftd_joint_distinguishability_20261112/result_audit_v2.json",
+      "reports/gftd_joint_distinguishability_20261112/result_review.md",
+      "reports/gftd_joint_distinguishability_20261112/result_review_correction.md",
+      "reports/gftd_joint_distinguishability_20261112/result_audit_source.py",
+      "reports/gftd_joint_distinguishability_20261112/final_assessment.md",
+      "reports/gftd_joint_distinguishability_20261112/final_assessment_correction.md",
+      "reports/gftd_joint_distinguishability_20261112/final_claim_review.md",
+      "results/gftd_joint_distinguishability_20261112/final_adoption.json"
     ]
   },
   "proposal": {
@@ -95,7 +133,7 @@
     "sha256": "efef98e1b2b8bffcebae29e4d75bd09f481afd7066fefa6fbce9711c89647306"
   },
   "source_commit": "6da9869381f72f20aa7c6582ab0a5001a7a26377",
-  "active_source_freeze": true,
+  "active_source_freeze": false,
   "qualification": {
     "path": "results/gftd_joint_distinguishability_20261112/qualification_1.json",
     "bytes": 8227,
@@ -125,5 +163,17 @@
     "path": "results/gftd_joint_distinguishability_20261112/science_release.json",
     "bytes": 8084,
     "sha256": "f414ec7361f3ed8a1c6b7daac0f0781cae8a786147974b8c35b480ab20ab55d0"
+  },
+  "observed_outcome": {
+    "witness": "unresolved",
+    "passed_columns": 1584,
+    "solver_status": 0,
+    "solver_iterations": 100,
+    "interpretation": "Independent review accepted: registered witness unresolved; partial cancellation does not establish joint identification or impossibility."
+  },
+  "final_adoption": {
+    "path": "results/gftd_joint_distinguishability_20261112/final_adoption.json",
+    "bytes": 8070,
+    "sha256": "23f3dca451c5ab6083522bcc328fe4add1247e2a992712577df5935b044699ac"
   }
 }
