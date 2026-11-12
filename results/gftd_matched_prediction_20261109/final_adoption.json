@@ -1,0 +1,199 @@
+{
+  "run": "gftd_matched_prediction_20261109",
+  "recorded_utc": "2026-11-12T12:27:06.754165+00:00",
+  "status": "completed_reviewed_with_scientific_questions_remaining",
+  "execution_status": "COMPLETED",
+  "budget_status": "closed",
+  "references": {
+    "fit_adoption": {
+      "path": "results/gftd_matched_prediction_20261109/fit_adoption.json",
+      "bytes": 3467,
+      "sha256": "e1b9b45bd348871f1b36c97d5ae58a56124679e0647011d61029641d58cb26e7"
+    },
+    "deploy_adoption": {
+      "path": "results/gftd_matched_prediction_20261109/deploy_adoption.json",
+      "bytes": 3598,
+      "sha256": "f69a205885b8f21b492e81a6f0d86a87e78ec4d3ee2abd4322315f9ce7519f82"
+    },
+    "fit_digest": {
+      "path": "results/gftd_matched_prediction_20261109/fit_digest.json",
+      "bytes": 20016,
+      "sha256": "cc888ae7f1a29141cff20902709d5647aab373978b4d90ab28fdd757c07b1018"
+    },
+    "deploy_digest": {
+      "path": "results/gftd_matched_prediction_20261109/deploy_digest.json",
+      "bytes": 31585,
+      "sha256": "9ce6105edf7dac510461fb07004ca1d6c81ed78822eb99d0d21e1bd98bd99c04"
+    },
+    "l1_digest": {
+      "path": "results/gftd_matched_prediction_20261109/l1_digest.json",
+      "bytes": 95790,
+      "sha256": "3f2b9a5ca489fe966ce096b288cd8fa77f426928dcb2e09224a3c034e808d889"
+    },
+    "score_execution": {
+      "path": "results/gftd_matched_prediction_20261109/score/execution.json",
+      "bytes": 107296,
+      "sha256": "b8cd267ecf95a224eeb31b8a908fad395f469416acb8dade2dcf8af6252f4f7a"
+    },
+    "score_summary": {
+      "path": "results/gftd_matched_prediction_20261109/score/l1_summary.json",
+      "bytes": 94308,
+      "sha256": "da00f3869f2d086cfdf266304b0f04267db4424e08e27a5ea5bdb3eb863632f3"
+    },
+    "score_host_completion": {
+      "path": "results/gftd_matched_prediction_20261109/score_host_completion.json",
+      "bytes": 1103,
+      "sha256": "d89aca46a958076ae26457a1808d9d7c3e14505ef211875165982bb93610719a"
+    },
+    "scientist_request": {
+      "path": "results/gftd_matched_prediction_20261109/final_assessment_request.json",
+      "bytes": 1609,
+      "sha256": "fe11c31fbee58cc311cb6fc26b5b2023c7f58bca9f2c1d877d49de4f170fec53"
+    },
+    "scientist_assessment": {
+      "path": "reports/gftd_matched_prediction_20261109/final_assessment.md",
+      "bytes": 11852,
+      "sha256": "1c16bd5c862c026961853d4c952b05b8bdc9e0f0413b9443cff50822907f4c2d"
+    },
+    "l1_review": {
+      "path": "reports/gftd_matched_prediction_20261109/l1_review.md",
+      "bytes": 4436,
+      "sha256": "353ddd55ff44ad9be268376a54c7420c6e3ef93bfdbafbd82e1ce2f8d040ba7b"
+    },
+    "l1_audit": {
+      "path": "results/gftd_matched_prediction_20261109/l1_audit.json",
+      "bytes": 294855,
+      "sha256": "6420105e73f28b44bbe983a0ab43843e67fb6fc0f3bd1124e30d573614589611"
+    },
+    "claim_review": {
+      "path": "reports/gftd_matched_prediction_20261109/final_claim_review.md",
+      "bytes": 3292,
+      "sha256": "36a95e83a3e930e825f01a2295d0826131fa2fd8ec82ef613de88290606a6161"
+    },
+    "requirements": {
+      "path": "reports/gftd_matched_prediction_20261109/goal_requirements_20261112.md",
+      "bytes": 12626,
+      "sha256": "b8994a8faa619b359c8aca4ff84bcf17b2b7ae8b75dc310b95977d6b2ea0a984"
+    },
+    "source_archive": {
+      "path": "results/gftd_matched_prediction_20261109/source_archive.json",
+      "bytes": 12694,
+      "sha256": "7a6d89534637a93b4fe04d67e0cd510573daaa011750ffdd7fd94a79e8c77df5"
+    },
+    "next_draft": {
+      "path": "designs/gftd_objective_alignment_20261112_draft.md",
+      "bytes": 10607,
+      "sha256": "c4742219b1ca2b3cf84e767f42717ed351c780c52ad0c548572a6d3e5ff912f3"
+    },
+    "next_draft_review": {
+      "path": "reports/gftd_matched_prediction_20261109/next_design_review.md",
+      "bytes": 6694,
+      "sha256": "9600aba8b3783d1ffe7af100b61325a2ca7bb4b859f49ebf4e7c5fb7fb627e17"
+    }
+  },
+  "role_invocations": {
+    "scientist": {
+      "host_tool": "collaboration.followup_task",
+      "target": "/root/objective_alignment_scientist",
+      "configured_model": "gpt-6-astra",
+      "server_resolved_model": null
+    },
+    "reviewer": {
+      "host_tool": "collaboration.followup_task",
+      "target": "/root/matched_fit_final_review",
+      "configured_model": "gpt-6.1-sol",
+      "server_resolved_model": null
+    }
+  },
+  "root_decisions": {
+    "code": "retain_branch",
+    "model": "retain_evidence",
+    "science": "continue"
+  },
+  "assessment_accepted": true,
+  "independent_reviews_accepted": true,
+  "five_axes": {
+    "evidence_validity": "valid within the original numerical eligibility and retained null scopes",
+    "optimizer_health": "unknown for joint optimization; completed initialization and candidate checks do not establish it",
+    "optimization_adequacy": "unknown",
+    "mechanism_identification": "unknown; both fits not_identified and parent parameters retained",
+    "effect_and_confirmation": "matched train tradeoff; no independent confirmation"
+  },
+  "l1": {
+    "stable_original_denominator": 267,
+    "unstable_original_denominator": 30,
+    "stable_5s_official_risk": {
+      "static": 12.312021933116863,
+      "modulated": null
+    },
+    "stable_5s_covered": {
+      "static": 267,
+      "modulated": 264
+    },
+    "modulated_long_scope_unresolved_ids": [
+      "expansion_0062",
+      "expansion_0094",
+      "pilot_0255"
+    ],
+    "actual_unstable_scoring_seconds_after_deployment": [
+      0.03,
+      1.44
+    ],
+    "actual_unstable_missed": {
+      "static": 21,
+      "modulated": 17
+    },
+    "eight_second_unstable_missed": {
+      "static": 7,
+      "modulated": 7
+    },
+    "false_alarm_claim": "Three static false alarms are the three modulated unresolved cases; no false-alarm repair claim.",
+    "timing_claim": "Of nine paired comparable cases, modulation is earlier by 0.02-0.04 s in six already-early cases, increasing absolute timing error; three unchanged."
+  },
+  "l2": {
+    "certified_models": 2,
+    "certified_initializations": {
+      "static": 0,
+      "modulated": 0
+    },
+    "initialization_error_bound": null
+  },
+  "l3": {
+    "matched_reference_modes": {
+      "static": 10,
+      "modulated": 10
+    },
+    "reference_mode_count": 13,
+    "interpretation": "report_only"
+  },
+  "cost": {
+    "fit_scientific_rhs": 97812960,
+    "deploy_scientific_rhs": 182406597,
+    "score_model_rhs": 0,
+    "scientific_rhs": 280219557,
+    "artificial_rhs": 28,
+    "total_rhs": 280219585,
+    "artificial_hamiltonian_calls": 748,
+    "same_accuracy_FOM_cost_comparison": null
+  },
+  "source_commit": "a1936bc5ab18de05f5882c7aa9c9807274646894",
+  "source_count_verified": 43,
+  "active_source_freeze_released_at_run_closure": true,
+  "source_archive_remains_immutable": true,
+  "full_goal_completed": false,
+  "default_or_protected_model_changed": false,
+  "next_decision": {
+    "status": "bounded_question_accepted_for_design_review_only",
+    "question": "Does the existing rejected weak-form direction have an acceptable history-objective update at t=1/2, 1/4 or 1/8?",
+    "stopping_rule": "Stop this direction if all three points lack qualified improvement; no smaller steps, extra starts or repeated rounds.",
+    "required_clarifications": [
+      "Exact stored effective coefficients, masks and positive support accounting",
+      "Per-evaluation identity for frozen endpoint caches under a new source bundle",
+      "Fixed-parent-coordinate witness compared only within candidate and packet; never used for selection"
+    ],
+    "new_run_registered": false,
+    "new_execution_released": false,
+    "automatic_full_L1_followup": false
+  },
+  "closed_unused_work_not_transferred": true
+}
