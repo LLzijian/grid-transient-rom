@@ -5,10 +5,11 @@
 ## 当前范围与指针
 
 - Campaign：[GFTD结构发现](../campaigns/gftd_kuramoto_discovery_20261106.md)；[架构入口](current_design.md)。
+- [原三步目标与完成要求](../reports/gftd_matched_prediction_20261109/goal_requirements_20261112.md)已按独立审查补齐；整项目标仍未闭合，数值覆盖不替代机制识别或真实预测。
 - 活动Run：[设计](../designs/gftd_matched_prediction_20261109.md)、[协议](../campaigns/gftd_matched_prediction_20261109/protocol.md)、[登记](../harness/runs/gftd_matched_prediction_20261109.json)。执行状态RUNNING，当前阶段deploy_running，工作量open；[实际启动回执](../results/gftd_matched_prediction_20261109/deploy_host_start.json)记录宿主及worker身份。
 - fit终态：[执行回执](../results/gftd_matched_prediction_20261109/fit/execution.json)、[两模型冻结](../results/gftd_matched_prediction_20261109/fit/model_freeze.json)、[事实摘要](../results/gftd_matched_prediction_20261109/fit_digest.json)、[科学判读](../reports/gftd_matched_prediction_20261109/fit_assessment.md)、[独立审查](../reports/gftd_matched_prediction_20261109/fit_review.md)、[root采用](../results/gftd_matched_prediction_20261109/fit_adoption.json)。原拟合宿主正常退出，未重跑。
 - 下一阶段：[部署释放](../results/gftd_matched_prediction_20261109/deploy_release.json)、[资源检查](../results/gftd_matched_prediction_20261109/deploy_preflight.json)。因宿主可用内存减少，将原效率规划8个worker调整为4个，科学工作量不变。
-- 部署进展：截至2026-11-12T11:08:13.202272+00:00，完成157/594个组合，157个原六门通过，155个完整严格参考确认；[首批103个独立审查](../reports/gftd_matched_prediction_20261109/deploy_batch01_review.md)已通过，[现场快照](../results/gftd_matched_prediction_20261109/deploy_progress_20261112_batch01.json)保留未决项。
+- 部署进展：截至2026-11-12T11:27:21.823937+00:00，完成302/594个组合，302个原六门通过，296个完整严格参考确认；[首批103个审查](../reports/gftd_matched_prediction_20261109/deploy_batch01_review.md)与[第二批137个审查](../reports/gftd_matched_prediction_20261109/deploy_batch02_review.md)已通过，[现场快照](../results/gftd_matched_prediction_20261109/deploy_progress_20261112_batch02.json)保留未决项。
 - 43份执行源码仍与prepare一致，科学源码提交`a1936bc5`。当前阶段不追加拟合、不修改算法或数值门。
 - 用户持续授权未知拓扑、隐幅值调制和train fit297同期比较；原val/test关闭，旧test退出选择，新FOM=0，TASK4暂停。
 - 部署信息维持11点、100 ms相角和转速历史及末点真实p₀，随后共享自治ODE。default none、incumbent与protected anchors不变。
