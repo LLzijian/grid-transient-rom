@@ -8,7 +8,7 @@ GitHub repository: [LLzijian/grid-transient-rom](https://github.com/LLzijian/gri
 
 ## Start here
 
-- [研究报告阅读入口](reports/README.md)：先看[当前静态拓扑与隐幅值调制研究](campaigns/gftd_kuramoto_discovery_20261106.md)，再按问题追溯结论、审查和执行。早期材料从主题档案进入。
+- [研究报告阅读入口](reports/README.md)：先看[OSGKD 三端联合辨识](campaigns/osgkd_ieee39/campaign.md)，再按问题追溯结论、审查和执行。早期材料从主题档案进入。
 - [AGENTS.md](AGENTS.md): top-level research principles, aesthetics, authority and
   navigation. Rules are not experiment logs.
 - [kiki.md](kiki.md): scientific task design — deployment contract, data/information

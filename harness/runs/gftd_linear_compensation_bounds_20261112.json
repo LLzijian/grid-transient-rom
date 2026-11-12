@@ -6,15 +6,15 @@
   "purpose": "probe",
   "scope": "Exact saved binary64 linear least-squares problem and original box; child solve-adequacy question preserving all prior search and exposure.",
   "execution": {
-    "status": "RUNNING",
-    "phase": "implementation_only",
+    "status": "PAUSED_BY_USER",
+    "phase": "shelved_by_osgkd_transition",
     "scientific_execution_released": false,
     "scientific_jobs_started": 0,
     "native_live": false,
     "active_claims": []
   },
   "scientific_work": {
-    "budget_status": "open_not_released",
+    "budget_status": "closed",
     "limits": {
       "science_certificates": 2,
       "science_exact_matrix_scalar_products": 11088000,
@@ -37,7 +37,7 @@
     "actual_science_dense_lstsq": 0,
     "qualification_rounds_used": 0,
     "old_unused_work_transferred": false,
-    "cost_status": "not_started"
+    "cost_status": "not_started_closed"
   },
   "evidence": {
     "validity": "unknown",
@@ -62,13 +62,34 @@
   "source_commit": null,
   "active_source_freeze": false,
   "root_decisions": {
-    "code": "no_change",
+    "code": "retain_branch",
     "model": "retain_evidence",
-    "science": "continue"
+    "science": "unresolved"
   },
   "proposal": {
     "scientific_claim": "fixed_saved_linear_problem_only",
     "model_decision": "retain_evidence",
-    "next_action": "implement_and_review"
+    "next_action": "defer"
+  },
+  "pause": {
+    "recorded_utc": "2026-11-12T16:12:20.7608165Z",
+    "reason": "Explicit user pause relayed from side chat",
+    "relay_thread_id": "01a1d082-cb32-7113-8a43-e3e363514945",
+    "goal_status": "paused",
+    "qualification_started": false,
+    "science_started": false,
+    "resume_requires_explicit_user_instruction": true
+  },
+  "transition": {
+    "disposition": "shelved_superseded",
+    "auto_dispatch": false,
+    "reason": "User requested OSGKD Stage I; old line is no longer a prerequisite",
+    "reference": {
+      "path": "results/osgkd_transition_20261113/closure.json",
+      "bytes": 3728,
+      "sha256": "04ee01b60f7ebd0cd4d440725b8e3cbbb47490b471bbc9460534cac70b188f13"
+    },
+    "replacement_campaign": "campaigns/osgkd_ieee39/campaign.md",
+    "reopen_requires_new_explicit_decision": true
   }
 }

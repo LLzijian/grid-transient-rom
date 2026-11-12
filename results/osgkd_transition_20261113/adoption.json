@@ -1,0 +1,79 @@
+{
+  "transition": "osgkd_transition_20261113",
+  "recorded_utc": "2026-11-12T16:53:24.408673+00:00",
+  "status": "stage1_accepted",
+  "user_scope": "收束现有实验，完成新方案阶段一算法与Harness合同切换",
+  "branch": "codex/osgkd-transition-20261113",
+  "base_commit": "9dec0976285d63f9ef196a955e89e1174a956095",
+  "references": {
+    "architecture": {
+      "path": "designs/osgkd_architecture.md",
+      "bytes": 10980,
+      "sha256": "be3c6bf43371a5dc45f8ee7f3e23871401d8413d5c341bc5af35c1b86d5a16fd"
+    },
+    "campaign": {
+      "path": "campaigns/osgkd_ieee39/campaign.md",
+      "bytes": 7377,
+      "sha256": "53f9819f0d06e5c85b9cf58aeb598c847ac1b1b8ddfd4acdc17015d5edc6c409"
+    },
+    "review_inputs": {
+      "path": "results/osgkd_transition_20261113/review_inputs.json",
+      "bytes": 3177,
+      "sha256": "be99d5d24e7e59d22e9d4965c4725071f66013a6619d12a30b3b1a189e655c98"
+    },
+    "independent_review": {
+      "path": "reports/osgkd_transition_20261113/review.md",
+      "bytes": 3948,
+      "sha256": "15c195fc89cd7621854e678aadd962e33d1982f6ea87852bba8245abba261c60"
+    },
+    "old_work_closure": {
+      "path": "results/osgkd_transition_20261113/closure.json",
+      "bytes": 3728,
+      "sha256": "04ee01b60f7ebd0cd4d440725b8e3cbbb47490b471bbc9460534cac70b188f13"
+    },
+    "validation_path": "results/osgkd_transition_20261113/validation.json"
+  },
+  "role_invocations": {
+    "scientist": {
+      "host_tool": "collaboration.followup_task",
+      "target": "/root/objective_alignment_scientist",
+      "configured_model": "gpt-6-astra",
+      "server_resolved_model": null
+    },
+    "coordinator": {
+      "host_tool": "collaboration.followup_task",
+      "target": "/root/matched_fit_digest",
+      "configured_model": "gpt-6.1-sol",
+      "server_resolved_model": null
+    },
+    "reviewer": {
+      "host_tool": "collaboration.followup_task",
+      "target": "/root/matched_fit_final_review",
+      "configured_model": "gpt-6.1-sol",
+      "server_resolved_model": null
+    }
+  },
+  "root_rationale": "采用机械驱动、内部互易耦合和环境交换的联合辨识架构；以固定完整参考和幅值供能项保持方程、初始化与功率账一致。有限字典和可用标签限定有效分解；motion_only_v1 与 known_p0_reference 分开，C0/C1 保持同信息比较。独立审查无剩余阻断，旧储能总结的无下界表述已更正。",
+  "root_decisions": {
+    "code": "retain_branch",
+    "model": "retain_evidence",
+    "science": "unresolved"
+  },
+  "architecture_contract_adopted": true,
+  "accepted_contract": "motion_only_v1",
+  "historical_reference_contract": "known_p0_reference",
+  "scientific_empirical_claim": "No new empirical OSGKD capability has been tested. GFTD findings retain their original scope.",
+  "stage2_released": false,
+  "new_scientific_run_created": false,
+  "old_science_resumed": false,
+  "new_model_implemented": false,
+  "training_started": false,
+  "private_scientific_arrays_read": false,
+  "model_promoted": false,
+  "default_incumbent_protected_changed": false,
+  "original_val_test": "closed",
+  "new_fom_conditions": 0,
+  "task4": "paused",
+  "next_stage": "Existing-source port adapter, then complete same-information C0/C1 under a prospectively finite protocol; outside this Stage I execution scope",
+  "review_followthrough": "If the reference is claimed to be a physical equilibrium, verify f_m(0,0,u_ref)=0 along with source mappings and the fixed control baseline in the Stage II adapter."
+}

@@ -1,0 +1,78 @@
+{
+  "recorded_utc": "2026-11-12T16:53:26.391323+00:00",
+  "scope": "Stage I control contracts and public metadata only; no scientific model validation",
+  "review_manifest_sha256": "be99d5d24e7e59d22e9d4965c4725071f66013a6619d12a30b3b1a189e655c98",
+  "targeted_tests": {
+    "command": ".venv-gpu/Scripts/python.exe -X utf8 -B -m pytest -q -p no:cacheprovider tests/test_harness_cli.py tests/test_run_navigation.py tests/test_harness_scheduling.py tests/test_harness_evidence.py",
+    "tool_chunk": "afb634",
+    "exit_code": 0,
+    "passed_tests": 82,
+    "passed_subtests": 200,
+    "pytest_elapsed_seconds": 4.6,
+    "tool_wall_seconds": 6.9448278
+  },
+  "static_check": {
+    "command": ".venv-gpu/Scripts/python.exe -X utf8 -B tools/research_harness.py check --root .",
+    "tool_chunk": "c3455c",
+    "exit_code": 0,
+    "valid": true,
+    "checked_files": 74,
+    "checked_relative_references": 999,
+    "issues": [],
+    "private_payloads_read": false,
+    "read_only": true,
+    "scope": "before final acceptance links; final check recorded below"
+  },
+  "invariants": [
+    {
+      "check": "final_review_inputs_exact_bytes",
+      "status": "passed",
+      "files": 19
+    },
+    {
+      "check": "old_source_and_pretransition_snapshots_exact_bytes",
+      "status": "passed",
+      "files": 8
+    },
+    {
+      "check": "attachment_manifest_exact_bytes",
+      "status": "passed",
+      "files": 5
+    },
+    {
+      "check": "harness/policy.json:permissions_unchanged",
+      "status": "passed"
+    },
+    {
+      "check": "harness/navigation.json:runs_unchanged",
+      "status": "passed"
+    },
+    {
+      "check": "old_run_shelved_no_release_no_dispatch_no_budget_transfer",
+      "status": "passed"
+    },
+    {
+      "check": "19_reviewed_files_match_staged_git_blob_bytes",
+      "status": "passed",
+      "tool_chunk": "038ea7"
+    }
+  ],
+  "scientific_rhs_calls": 0,
+  "private_scientific_arrays_read": false,
+  "new_fom_conditions": 0,
+  "training_started": false,
+  "model_promoted": false,
+  "cpu_gpu_cost": null,
+  "final_static_check": {
+    "command": ".venv-gpu/Scripts/python.exe -X utf8 -B tools/research_harness.py check --root .",
+    "exit_code": 0,
+    "valid": true,
+    "checked_files": 74,
+    "checked_relative_references": 1001,
+    "issues": [],
+    "private_payloads_read": false,
+    "read_only": true,
+    "elapsed_seconds": 1.97143270005472,
+    "notice": "Static public-metadata check only; no scientific evidence, model, live state, authority, or input hash was certified."
+  }
+}

@@ -1,5 +1,7 @@
 # 静态拓扑、隐幅值调制与力记忆：当前证据和识别边界
 
+**2026-11-13：GFTD 后续投入已暂存；活动算法转向 [OSGKD](osgkd_ieee39/campaign.md)。下列历史证据保持原范围。**
+
 追溯编号：`gftd_kuramoto_discovery_20261106`。当前综合更新至 2026-11-12，依据已完成的匹配预测、三点历史比较和固定方向补偿检验。原始预测、适用范围和释放以各自协议为准。[完整规划与状态原件](../reports/history/gftd_campaign/originals/gftd_kuramoto_discovery_before_synthesis_20261109.md)
 
 **GFTD 5N 在有限 K4 条件下恢复了静态支撑，并在原 train fit297 完成两种完整方法的同期预测评价。三点比较进一步确认，有界调制的既有弱式方向包含合格缩步，选中四分之一步，静态保留父候选。随后检验了四分之一步附近固定 β 方向的补偿，两档均未达到见证门。模型保留为证据，`default=none`。**
@@ -39,7 +41,7 @@
 
 
 - **登记性质**：`PROSPECTIVE_ARCHITECTURE_CAMPAIGN`（顶层设计规划，2026-11-06）
-- **当前科学状态**。Campaign 为 `active`。匹配预测与三点历史比较已完成执行和审查。代码 `retain_branch`、模型 `retain_evidence`、科学 `continue`，受保护模型不变。固定方向补偿探针的科学执行与独立结果复核均已完成，最终主张审查通过，root 已闭合本轮。
+- **当前科学状态**。Campaign 为 `paused_review`；2026-11-13 按用户转向暂存，活动主线已由 OSGKD 接替。匹配预测与三点历史比较已完成执行和审查。既有三决定保留原时点；本次后续投入暂存，科学未决，受保护模型不变。固定方向补偿探针的科学执行与独立结果复核均已完成，最终主张审查通过，root 已闭合本轮。
 - **授权引用**。用户 2026-11-06 确定 GFTD 核心方向，2026-11-07 明确恢复按评估方案研究推进。范围内正常推进无需逐轮用户确认，数据、部署与 TASK4 边界沿用 [kiki.md](../kiki.md)，真实状态以 [current_state](../docs/current_state.md) 为准。
 - **范围明确的假说**。在给定观测与激励条件下，仅用合法因果信息，联合储能与弱形式结构选择能否区分静态耦合、动态调制和加性记忆，在可区分时选择简洁共享自治闭合，并改善 L1 预测。功率一致性、L2 证明和 L3 对应分别判断。
 - **架构版本**。[v2.0 草案及更正](../designs/gftd_kuramoto_architecture_brief.md)；当前方程采用独立审查后的 [5N 修订](../designs/gftd_repair_design_20261107.md)，实施顺序采用[三步主线](../designs/gftd_mainline_20261107_architecture.md)。
@@ -81,7 +83,7 @@
 | `gftd_matched_prediction_20261109` | 已完成的同核初始化及冻结静态／有界两父模型 | 两模型24包匹配适配、原297预测及同一ODE分析 | `adaptation + matched comparison` | [协议](gftd_matched_prediction_20261109/protocol.md)：固定两起点1200残差、完整库提案、原分母L1和L2/L3 | `COMPLETED`；两路fit均保留父参数，594初始化六门通过；静态5秒主项合格、调制3个长时未决导致主项null；实际区间漏检21/30与17/30，L2各0/297、L3各10/13；独立审查接受，工作量closed |
 | `gftd_objective_alignment_20261112` | 匹配预测Run闭合，原唯一弱式提案与两端缓存 | 固定三个内点能否改善原自治历史目标 | `adaptation` | [协议](gftd_objective_alignment_20261112/protocol.md)：t=1/2、1/4、1/8；原24包/双起点/六门，W仅诊断 | `COMPLETED`；6/6 候选、144/144 六门，静态保留父、有界调制选中 1/4，方向搜索结束；[最终决定](../results/gftd_objective_alignment_20261112/final_adoption.json) |
 | `gftd_joint_distinguishability_20261112` | 三点比较选中的调制 quarter，固定原24包 | 共享 x 与合法 a/r 对一个 beta 方向的局部补偿 | `probe` | [有限协议](gftd_joint_distinguishability_20261112/protocol.md)：一个有界线性问题、两档完整历史核验；无见证记未决 | 执行 COMPLETED，独立结果复核完成，两档未决；最终主张审查通过，root 已闭合本轮 |
-| `gftd_linear_compensation_bounds_20261112` | 已闭合的固定方向补偿探针 | 保存 A、b 和盒的精确原始／对偶界 | `probe` | [协议](gftd_linear_compensation_bounds_20261112/protocol.md)：旧点证书；跨门才一次 BVLS，结论限固定线性问题 | 设计独立审查通过，正在实现，科学执行未释放 |
+| `gftd_linear_compensation_bounds_20261112` | 已闭合的固定方向补偿探针 | 保存 A、b 和盒的精确原始／对偶界 | `probe` | [协议](gftd_linear_compensation_bounds_20261112/protocol.md)：旧点证书；跨门才一次 BVLS，结论限固定线性问题 | `PAUSED_BY_USER`；实现保留、资格与科学均未执行，未用工作量closed，转向后defer |
 | `gftd_stage2_coi_decoupling` | 受控证据与合格修订，具体父候选待冻结 | 静态耦合候选 | `discrimination` | 在 `train fit297` 固定同一初始化和静态图，仅改变共同模态算子 | 旧规划保留；不再作为三步主线前置 |
 | `gftd_stage2_latent_modulated_topology` | `gftd_stage2_coi_decoupling` 的冻结候选 | 动态调制候选 | `discrimination` / `adaptation` | 固定初始化与共同模态设置，调制开/关同期比较，L2 另证，L3 report-only | `DRAFT_PENDING_RELEASE` |
 
@@ -95,10 +97,8 @@
 - 原始 `val/test` 保持关闭；旧已消费 `test` 永久退出模型选择；`new FOM = 0`。
 - `train fit297` 的重复比较属于条件内辨别，种子重复衡量优化随机性。历史 `memory_transport_20261029` A/S/P 各组在真实可用区间漏检均为 21/30 个失稳样本、8 s 均为 4/30、误报均为 0/267 个稳定样本，该结果仅作动机，不能替代同期对照。
 
-## 4. 下一待辨别问题与停止条件
+## 4. 收束后的去向
 
-下一轮针对已保存的固定线性问题计算精确可行上界和对偶下界。设计已通过独立审查并由 root 采用，正在最小实现；只有上下界仍跨越目标时才允许一次密集有界求解，最多 1,051 次内部线性分解。科学执行尚未释放，本轮模型 RHS 和未来评分均为 0。[有限协议](gftd_linear_compensation_bounds_20261112/protocol.md) · [设计采用](../results/gftd_linear_compensation_bounds_20261112/design_adoption.json)[独立结果审查及更正](../reports/gftd_joint_distinguishability_20261112/result_review_correction.md) · [复核记录 v2](../results/gftd_joint_distinguishability_20261112/result_audit_v2.json)
+2026-11-13 按用户要求收束；旧线性补偿界不再排队，也不再作为新路线的前置条件。已完成科学结果和原审查保留，本轮只撤去后续投入，未对 GFTD 全族作否证。[收束报告](../reports/osgkd_transition_20261113/gftd_closure.md) · [OSGKD 主线](osgkd_ieee39/campaign.md)
 
-- 三点比较的代码保留、模型证据保留、科学继续。root 已正式闭合本轮，45 份源码的活动冻结已解除，后续研究须另行冻结和审查。[最终决定](../results/gftd_objective_alignment_20261112/final_adoption.json) · [源码档案](../results/gftd_objective_alignment_20261112/source_archive.json)
-- 同族正负校准继续分别判断恢复和误检，推断端隔离真实图及隐轨迹。旧 Run 余额不转移，科学结论、确认需求与模型晋升分别判断。
-- **2026-11-08证据更新**。M0/M1的同期流程已执行，但总体预测比较因数值资格覆盖不足保持未决；不再将“未执行真实比较”作为当前缺口。M2需要区分共享适配351/384任务到限与初始化后的数值资格损失：646初始化优化任务均收敛，却有547项未返回合格初态。条件支撑为静态35边、调制35边及25调制边，联合唯一性unknown。L2非空局部证明不覆盖本轮47实点；L3的K–绝对Kron导纳相关0.440/0.483及10/13模态配对用于描述，不替代L1。详见[Scientist判读](../reports/gftd_fit297_20261107/originals/gftd_fit297_20261107_scientific_assessment.md)、[独立结果审查](../reports/gftd_fit297_20261107/originals/gftd_fit297_20261107_result_review.md)及[root采用](../results/gftd_fit297_20261107/root_adoption.json)。
+后续重点是机械驱动、内部耦合与环境交换的联合辨识，以及 motion_only_v1 下的完整自主预测。此次请求限阶段一，阶段二未启动；不恢复旧预算，不新增数据权限。
