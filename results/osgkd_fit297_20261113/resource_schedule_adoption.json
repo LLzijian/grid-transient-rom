@@ -1,0 +1,27 @@
+{
+  "client_date": "2026-11-20",
+  "decision": "queue existing C1 behind C0; automatically resume same process on C0 exit",
+  "cause": {
+    "available_MB_before": 771,
+    "pages_per_second_before": 4541.08,
+    "available_MB_after": 1014,
+    "pages_per_second_after": 0
+  },
+  "native_identity_check": "8b4d18",
+  "native_start": "f4380f",
+  "native_effect_check": "477ef0",
+  "helper_source": {
+    "path": "reports/osgkd_fit297_20261113/execution_control/osgkd_sequential.py",
+    "sha256": "5530ef2c56f3755ed2c9fd5ed8de7b65f3527cc5a5fca0a9a648bccccc113e6b"
+  },
+  "receipt": "results/osgkd_fit297_20261113/resource_queue.json",
+  "source_or_optimizer_changed": false,
+  "new_scientific_jobs": 0,
+  "budget_transferred": false,
+  "other_processes_touched": false,
+  "cost_note": "C1 wall time includes queued interval; report it separately and do not infer a C0/C1 speed ratio from these training wall times.",
+  "api_sources": [
+    "https://learn.microsoft.com/en-us/windows/win32/api/psapi/nf-psapi-emptyworkingset",
+    "https://raw.githubusercontent.com/winsiderss/systeminformer/master/phnt/include/ntpsapi.h"
+  ]
+}

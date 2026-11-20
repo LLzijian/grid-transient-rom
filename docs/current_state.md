@@ -1,14 +1,17 @@
 # 当前研究状态
 
-**2026-11-20：接续中断的 OSGKD 阶段二。完整 C0/C1 与训练数据包已完成，真实数值和梯度资格 qual01 已通过，C0/C1 两组配对训练正在执行。**
+**2026-11-20：OSGKD 首轮完整 C0/C1 训练、一次条件适配及全 train fit297 正式评价已完成，最终报告已通过独立复核，证据与工作量已闭合。**
 
-活动架构：[OSGKD](../designs/osgkd_architecture.md)；活动协议：[fit297首轮](../campaigns/osgkd_ieee39/first_fit297_protocol.md)。部署为11点100 ms相角与完整转速，真实p₀不输入模型。
+部署为 [motion_only_v1](../kiki.md)：11点/100 ms相角与完整转速历史，真实p0不输入。活动架构仍为 [OSGKD](../designs/osgkd_architecture.md)；本轮协议为 [fit297首轮](../campaigns/osgkd_ieee39/first_fit297_protocol.md)。
 
-- train fit297 全297保留，267稳定/30失稳，内部拟合228、内部检查69。一次必要输入物化完成，常数和划分原样冻结；未重新积分或校准。
-- 两遍来源诊断及一次保存向量归因已闭合。5个历史前80 ms子窗未满足0.002冲量门，归因仍未决；[观测采用](../results/osgkd_fit297_20261113/observation_adoption.json)明确采用原ANDES离散点值作近似监督，不回填旧审计通过。
-- 完整实现31项原合成测试通过；修订后的8项runner测试及6项数据测试通过。独立审查已核对模型、评价、观测采用与数据链。
-- [qual01 release](../results/osgkd_fit297_20261113/qualify_release.json)绑定来源与代码；12个固定内部拟合探针的主/细积分及两事件三组参数方向梯度资格均通过。两模型最大归一化全态主细RMS均小于8.2×10^-11，最大梯度相对差小于1.8×10^-12。
+- 两组各1500次更新、0非有限拒绝，完整事件顺序和时域配对。均按原规则追加500次，并在最终评分前选定1500次检查点。C1未静态回退；参数6809/6854，状态均50。
+- 两模型全部297的8 s主细数值检查通过，最大归一化RMS差分别2.70e-8、9.39e-8。当前大预测误差不能用本步长范围内的积分精度不足解释。
+- train稳定267的8 s risk：C0 78.28062、C1 42.60901（低45.57%）；共同转速RMSE：1.47912、1.05578 rad/s。稳定误报60/267→6/267，C1的6例是原60例的子集。
+- 稳定1/2 s的C1 risk高18.11%/14.33%；失稳真实区间两模型均只检出3/30、漏检27/30，内部检查12例均漏。8 s的27例未知尾段保留未覆盖，不算成功检出。
+- 原来源审计保留blocked/unresolved；5个历史子窗连续闭合未决。端口按经审查的离散观测合同近似监督，样本全部保留。
 
-当前按同输入、同目标和同事件序列训练C0/C1，各1000次尝试及至多一次500次登记适配，冻结选点后评价全部297。最新作业与使用量见[Run记录](../harness/runs/osgkd_fit297_20261113.json)。
+三个决定：代码 retain_branch，模型 retain_evidence，科学 continue。工作候选为C1第1500次，C0同合同对照同步保留；default none、incumbent和protected anchors不变。原始val/test关闭，新FOM=0，TASK4暂停，GFTD继续暂存。
 
-原始val/test关闭，新FOM=0，TASK4暂停；GFTD继续暂存，default none和保护模型不变。
+下一问题：从同一C1候选比较2 s与8 s目标的有限匹配适配；30失稳真实未来均不足2 s，不能靠延长目标补出其标签。Scientist已提出方案，尚未登记/释放新Run，本轮没有额外训练。
+
+[本轮报告](../reports/osgkd_fit297_20261113/result.md) · [机器结果](../results/osgkd_fit297_20261113/analysis.json) · [科学综合](../reports/osgkd_fit297_20261113/scientific_synthesis.md) · [Run记录](../harness/runs/osgkd_fit297_20261113.json)

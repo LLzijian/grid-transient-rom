@@ -1,0 +1,1476 @@
+{
+  "run_id": "osgkd_fit297_20261113",
+  "phase": "train",
+  "job_id": "train_C0",
+  "release": {
+    "run_id": "osgkd_fit297_20261113",
+    "phase": "train",
+    "job_id": "train_C0",
+    "released": true,
+    "variant": "C0",
+    "device": "cpu",
+    "threads": 1,
+    "torch_version": "2.13.0+cu130",
+    "audit_ref": {
+      "path": "results/osgkd_fit297_20261113/port_audit_release.json",
+      "bytes": 1367,
+      "sha256": "02be50898c5702d5739931032ce2a79436d96294a7244911a26bdb1b01c225a5"
+    },
+    "source_hashes": {
+      "campaigns/osgkd_ieee39/first_fit297_protocol.md": "d62a710cf66de40da4124c23b551455666dad97582bd753bce20b0f839fddd93",
+      "campaigns/osgkd_ieee39/execution_amendment.md": "f0b99748cc071ce95935fc95d96628f9943b6d1d2fda7c14d2f3380bf29ac8e2",
+      "campaigns/osgkd_ieee39/port_audit_amendment.md": "3ff23f5122b16c9ace888c0b7acdfc195a9cce67a53a6ae1feb1e77e014f135c",
+      "designs/osgkd_architecture.md": "be3c6bf43371a5dc45f8ee7f3e23871401d8413d5c341bc5af35c1b86d5a16fd",
+      "designs/osgkd_observation_adoption_20261113.md": "7cc408992e72d536e12da4ad8168b2047dd7c9c3817ffd4cc628bc068e7c5ff3",
+      "experiments/osgkd_fit297_20261113/run.py": "ec74858cd5c296f8210f30242ba620f6a4f9eea160d92b37d021f4b371959c5f",
+      "experiments/osgkd_fit297_20261113/materialize.py": "495128ece3d14493cb1b09d1fc348d1f7eb16f7721aad3b167318185c0a0f7b5",
+      "src/kiki/data/osgkd.py": "30791261eeb068661927a3f154de42f80ef60368f14cc2854388916b5f9075b0",
+      "src/kiki/models/osgkd.py": "6edce1578ff628ea15f3a7c8c429ea7e8898d0bf901ff8810064e19a783af984",
+      "src/kiki/models/osgkd_fitting.py": "2b5dac09543169be952af3698a740620439a2f686977c4f513329bae9704e087",
+      "src/kiki/evaluation/osgkd.py": "1c13a9c7a3ec01dc11bf6aff3bec84efcbbb90ac24f3936a502b9ebc8e7ffa47",
+      "experiments/evaluate_l1_latent.py": "5882dc6814f13ef4210d94db07fd87ca88d8130aa984dbda7757c53088662314",
+      "src/kiki/data/private_dataset.py": "615ec905047a81f681620d3f214b6dfa60be3c78af7059de21b232c593d941ee",
+      "src/kiki/physics/coordinates.py": "9a738d46647ab631407f8e4b5814fe0a7868c717e31fda13963861c10e373089"
+    },
+    "client_date": "2026-11-20",
+    "root_decision": "Run registered C0 with the full frozen paired protocol; adaptation uses existing rules",
+    "implementation_review": {
+      "path": "reports/osgkd_fit297_20261113/implementation_review_v2.md",
+      "bytes": 1313,
+      "sha256": "28ed4f613638e0096aca9723e5f1a1c5ab939da06475cb912df64854e83c5dc2"
+    },
+    "data_review": {
+      "path": "reports/osgkd_fit297_20261113/observation_adoption_review.md",
+      "bytes": 5129,
+      "sha256": "e7b1d67265bca3680283ae91664facdfd90059bdbad6637e8b6ad2a7bf98a559"
+    },
+    "qualification_ref": {
+      "path": "results/osgkd_fit297_20261113/qual01/summary.json",
+      "bytes": 23337,
+      "sha256": "d687160465ec234b2169688a9dafd225628ff3d2ded8a6181d7575037fadb04d"
+    }
+  },
+  "provenance": {
+    "release_ref": {
+      "path": "artifacts/osgkd_fit297_20261113/train_C0/release.json",
+      "sha256": "e410880af3232e2c5ae0cf41670808a98ffa6976971f71c0310beec6e4fd1fb9",
+      "bytes": 2767
+    },
+    "audit_ref": {
+      "path": "results/osgkd_fit297_20261113/port_audit_release.json",
+      "bytes": 1367,
+      "sha256": "02be50898c5702d5739931032ce2a79436d96294a7244911a26bdb1b01c225a5"
+    },
+    "data_bundle": {
+      "bytes": 115709431,
+      "path": "artifacts/osgkd_fit297_20261113/port_audit/data.npz",
+      "sha256": "01d702c5c732523bedcbb025249c0cf7b24e15948f85974c7f01cddb517137fd"
+    },
+    "source_hashes": {
+      "campaigns/osgkd_ieee39/first_fit297_protocol.md": "d62a710cf66de40da4124c23b551455666dad97582bd753bce20b0f839fddd93",
+      "campaigns/osgkd_ieee39/execution_amendment.md": "f0b99748cc071ce95935fc95d96628f9943b6d1d2fda7c14d2f3380bf29ac8e2",
+      "campaigns/osgkd_ieee39/port_audit_amendment.md": "3ff23f5122b16c9ace888c0b7acdfc195a9cce67a53a6ae1feb1e77e014f135c",
+      "designs/osgkd_architecture.md": "be3c6bf43371a5dc45f8ee7f3e23871401d8413d5c341bc5af35c1b86d5a16fd",
+      "designs/osgkd_observation_adoption_20261113.md": "7cc408992e72d536e12da4ad8168b2047dd7c9c3817ffd4cc628bc068e7c5ff3",
+      "experiments/osgkd_fit297_20261113/run.py": "ec74858cd5c296f8210f30242ba620f6a4f9eea160d92b37d021f4b371959c5f",
+      "experiments/osgkd_fit297_20261113/materialize.py": "495128ece3d14493cb1b09d1fc348d1f7eb16f7721aad3b167318185c0a0f7b5",
+      "src/kiki/data/osgkd.py": "30791261eeb068661927a3f154de42f80ef60368f14cc2854388916b5f9075b0",
+      "src/kiki/models/osgkd.py": "6edce1578ff628ea15f3a7c8c429ea7e8898d0bf901ff8810064e19a783af984",
+      "src/kiki/models/osgkd_fitting.py": "2b5dac09543169be952af3698a740620439a2f686977c4f513329bae9704e087",
+      "src/kiki/evaluation/osgkd.py": "1c13a9c7a3ec01dc11bf6aff3bec84efcbbb90ac24f3936a502b9ebc8e7ffa47",
+      "experiments/evaluate_l1_latent.py": "5882dc6814f13ef4210d94db07fd87ca88d8130aa984dbda7757c53088662314",
+      "src/kiki/data/private_dataset.py": "615ec905047a81f681620d3f214b6dfa60be3c78af7059de21b232c593d941ee",
+      "src/kiki/physics/coordinates.py": "9a738d46647ab631407f8e4b5814fe0a7868c717e31fda13963861c10e373089"
+    }
+  },
+  "status": "completed",
+  "result": {
+    "trials": {
+      "C0": {
+        "variant": "C0",
+        "parameter_count": 6809,
+        "attempt_count": 1500,
+        "accepted": 1500,
+        "rejected": 0,
+        "clipped": 28,
+        "stop": "budget_complete",
+        "adaptation": "fit_J_improved",
+        "checkpoints": [
+          {
+            "attempt": 0,
+            "artifact": {
+              "path": "artifacts/osgkd_fit297_20261113/train_C0/C0/attempt_0000.pt",
+              "sha256": "e85e7f2997777f03e1ff41480a20d2527352da37513e49190d0bb2491705862b",
+              "bytes": 72548
+            },
+            "fit": {
+              "J": 1.428033465704472,
+              "eligible": 228,
+              "completed": 228,
+              "failed_ids": [],
+              "finite_subset_components": {
+                "motion": 1.3254604270736752,
+                "ports": 1.0257265294439717,
+                "consistency": 3.856863996073372e-05
+              }
+            },
+            "check": {
+              "J": 1.9669017610232962,
+              "eligible": 69,
+              "completed": 69,
+              "failed_ids": [],
+              "finite_subset_components": {
+                "motion": 1.7578886589440985,
+                "ports": 2.090128076926632,
+                "consistency": 2.9438653447818175e-05
+              }
+            },
+            "numeric": {
+              "passed": true,
+              "events": [
+                {
+                  "id": "newtrain_83adbaea1acb2425",
+                  "finite": true,
+                  "rms": 4.987359730916156e-11,
+                  "max": 3.7686169987534e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "newtrain_b205117cd732146c",
+                  "finite": true,
+                  "rms": 1.899401551416613e-10,
+                  "max": 2.129681320184318e-09,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "newtrain_d94aa665a50e1e71",
+                  "finite": true,
+                  "rms": 4.2334061074713334e-11,
+                  "max": 3.05072481915818e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "newtrain_f19d6366a51b07d4",
+                  "finite": true,
+                  "rms": 6.478274332357976e-11,
+                  "max": 4.4854544733090816e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0112",
+                  "finite": true,
+                  "rms": 3.520239837586832e-11,
+                  "max": 2.671177750806982e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0113",
+                  "finite": true,
+                  "rms": 2.7849777005296457e-11,
+                  "max": 2.1135365098592332e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0114",
+                  "finite": true,
+                  "rms": 4.6214336810920093e-11,
+                  "max": 3.236007473791809e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0115",
+                  "finite": true,
+                  "rms": 3.8846139378373694e-11,
+                  "max": 2.63885044720566e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0116",
+                  "finite": true,
+                  "rms": 4.941285630372244e-11,
+                  "max": 3.7352869064733036e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0117",
+                  "finite": true,
+                  "rms": 4.39264808653986e-11,
+                  "max": 3.056762582093465e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0118",
+                  "finite": true,
+                  "rms": 5.2615222186403965e-11,
+                  "max": 4.53153081480536e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0119",
+                  "finite": true,
+                  "rms": 4.726763418939604e-11,
+                  "max": 3.3695572304636346e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                }
+              ]
+            }
+          },
+          {
+            "attempt": 200,
+            "artifact": {
+              "path": "artifacts/osgkd_fit297_20261113/train_C0/C0/attempt_0200.pt",
+              "sha256": "c8b99740b7d5b2fa75dedb75716443a93c2b999fe46443b89abae07658c8ac7a",
+              "bytes": 191160
+            },
+            "fit": {
+              "J": 0.7850573889492398,
+              "eligible": 228,
+              "completed": 228,
+              "failed_ids": [],
+              "finite_subset_components": {
+                "motion": 0.7250799944384493,
+                "ports": 0.5995922415526682,
+                "consistency": 0.0018170355523765703
+              }
+            },
+            "check": {
+              "J": 0.8792795356539415,
+              "eligible": 69,
+              "completed": 69,
+              "failed_ids": [],
+              "finite_subset_components": {
+                "motion": 0.7801345409471647,
+                "ports": 0.991217468173612,
+                "consistency": 0.0023247889415558124
+              }
+            },
+            "numeric": {
+              "passed": true,
+              "events": [
+                {
+                  "id": "newtrain_83adbaea1acb2425",
+                  "finite": true,
+                  "rms": 2.005263347346357e-10,
+                  "max": 1.402444604892139e-09,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "newtrain_b205117cd732146c",
+                  "finite": true,
+                  "rms": 4.962235387447113e-10,
+                  "max": 3.4779219504343928e-09,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "newtrain_d94aa665a50e1e71",
+                  "finite": true,
+                  "rms": 1.793500775091355e-10,
+                  "max": 1.2575524731329206e-09,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "newtrain_f19d6366a51b07d4",
+                  "finite": true,
+                  "rms": 1.5548580463368782e-10,
+                  "max": 9.010968857759418e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0112",
+                  "finite": true,
+                  "rms": 1.3640107943006552e-10,
+                  "max": 1.1077797803749158e-09,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0113",
+                  "finite": true,
+                  "rms": 1.0507477822815563e-10,
+                  "max": 9.186576554753764e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0114",
+                  "finite": true,
+                  "rms": 2.021389121985479e-10,
+                  "max": 1.3404529708438417e-09,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0115",
+                  "finite": true,
+                  "rms": 1.7439153967175324e-10,
+                  "max": 1.307874879966074e-09,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0116",
+                  "finite": true,
+                  "rms": 2.054899993830777e-10,
+                  "max": 1.4337135922914968e-09,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0117",
+                  "finite": true,
+                  "rms": 2.0078815280987158e-10,
+                  "max": 1.3244119134725452e-09,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0118",
+                  "finite": true,
+                  "rms": 1.9413710471054442e-10,
+                  "max": 1.3008252253143837e-09,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0119",
+                  "finite": true,
+                  "rms": 2.000996671052037e-10,
+                  "max": 1.3618448591046217e-09,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                }
+              ]
+            }
+          },
+          {
+            "attempt": 400,
+            "artifact": {
+              "path": "artifacts/osgkd_fit297_20261113/train_C0/C0/attempt_0400.pt",
+              "sha256": "391625ce92625dfd0d2b4c9fdfd43e43e1cb82f77177b8fba9f4ed467ed12864",
+              "bytes": 191160
+            },
+            "fit": {
+              "J": 0.255894617426322,
+              "eligible": 228,
+              "completed": 228,
+              "failed_ids": [],
+              "finite_subset_components": {
+                "motion": 0.2023315960519487,
+                "ports": 0.5354974949653252,
+                "consistency": 0.001327187784083032
+              }
+            },
+            "check": {
+              "J": 0.3913026166885556,
+              "eligible": 69,
+              "completed": 69,
+              "failed_ids": [],
+              "finite_subset_components": {
+                "motion": 0.30329944207507253,
+                "ports": 0.879875956385415,
+                "consistency": 0.0015578974941545594
+              }
+            },
+            "numeric": {
+              "passed": true,
+              "events": [
+                {
+                  "id": "newtrain_83adbaea1acb2425",
+                  "finite": true,
+                  "rms": 1.1466010041910272e-10,
+                  "max": 1.0062093975559836e-09,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "newtrain_b205117cd732146c",
+                  "finite": true,
+                  "rms": 1.755539179332348e-10,
+                  "max": 2.2805391444102226e-09,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "newtrain_d94aa665a50e1e71",
+                  "finite": true,
+                  "rms": 7.505163697852888e-11,
+                  "max": 5.956466863447338e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "newtrain_f19d6366a51b07d4",
+                  "finite": true,
+                  "rms": 3.3208080461044107e-10,
+                  "max": 2.9441409310493327e-09,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0112",
+                  "finite": true,
+                  "rms": 5.6852601102954193e-11,
+                  "max": 4.571902272624866e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0113",
+                  "finite": true,
+                  "rms": 4.299086979099106e-11,
+                  "max": 3.454030329629988e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0114",
+                  "finite": true,
+                  "rms": 9.009314505208026e-11,
+                  "max": 7.076084232637738e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0115",
+                  "finite": true,
+                  "rms": 6.716342888061306e-11,
+                  "max": 5.335025066743199e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0116",
+                  "finite": true,
+                  "rms": 1.1378663657142055e-10,
+                  "max": 9.226180459897783e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0117",
+                  "finite": true,
+                  "rms": 8.393300118406977e-11,
+                  "max": 8.029880639710883e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0118",
+                  "finite": true,
+                  "rms": 1.3160057220555132e-10,
+                  "max": 1.0541754136283998e-09,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0119",
+                  "finite": true,
+                  "rms": 9.715248081807958e-11,
+                  "max": 1.0229493260313574e-09,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                }
+              ]
+            }
+          },
+          {
+            "attempt": 600,
+            "artifact": {
+              "path": "artifacts/osgkd_fit297_20261113/train_C0/C0/attempt_0600.pt",
+              "sha256": "5ba1724a9614f578cc6b51f48f323ee4b321b3ada7bc7f8231c10a4e300eeb91",
+              "bytes": 191160
+            },
+            "fit": {
+              "J": 0.21990649272721194,
+              "eligible": 228,
+              "completed": 228,
+              "failed_ids": [],
+              "finite_subset_components": {
+                "motion": 0.16982099335008363,
+                "ports": 0.5006778026519821,
+                "consistency": 0.0017719111930069443
+              }
+            },
+            "check": {
+              "J": 0.3332445213388074,
+              "eligible": 69,
+              "completed": 69,
+              "failed_ids": [],
+              "finite_subset_components": {
+                "motion": 0.2518126382467352,
+                "ports": 0.8141420694733467,
+                "consistency": 0.0017676144737515187
+              }
+            },
+            "numeric": {
+              "passed": true,
+              "events": [
+                {
+                  "id": "newtrain_83adbaea1acb2425",
+                  "finite": true,
+                  "rms": 7.949576781207729e-11,
+                  "max": 5.470524593747517e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "newtrain_b205117cd732146c",
+                  "finite": true,
+                  "rms": 2.153177893216583e-10,
+                  "max": 2.9101627774252847e-09,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "newtrain_d94aa665a50e1e71",
+                  "finite": true,
+                  "rms": 5.975993512484433e-11,
+                  "max": 4.411568157067355e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "newtrain_f19d6366a51b07d4",
+                  "finite": true,
+                  "rms": 4.016472383259209e-10,
+                  "max": 5.3445958769771096e-09,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0112",
+                  "finite": true,
+                  "rms": 4.687335692228753e-11,
+                  "max": 3.5464944019064445e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0113",
+                  "finite": true,
+                  "rms": 3.6093306058425334e-11,
+                  "max": 2.738485144787192e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0114",
+                  "finite": true,
+                  "rms": 6.920095924091615e-11,
+                  "max": 4.999446304075318e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0115",
+                  "finite": true,
+                  "rms": 5.2468483779528687e-11,
+                  "max": 3.8090417534406214e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0116",
+                  "finite": true,
+                  "rms": 8.142657748254428e-11,
+                  "max": 5.670600448574052e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0117",
+                  "finite": true,
+                  "rms": 6.058281850313127e-11,
+                  "max": 4.775637233373693e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0118",
+                  "finite": true,
+                  "rms": 9.084350604472077e-11,
+                  "max": 5.924281229920725e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0119",
+                  "finite": true,
+                  "rms": 6.493958768091552e-11,
+                  "max": 5.865286729048518e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                }
+              ]
+            }
+          },
+          {
+            "attempt": 800,
+            "artifact": {
+              "path": "artifacts/osgkd_fit297_20261113/train_C0/C0/attempt_0800.pt",
+              "sha256": "239c1880f1bc8586762df61f099b53b0aed832dc7a7e10afb3dae9c59887b26e",
+              "bytes": 191160
+            },
+            "fit": {
+              "J": 0.19992539784802896,
+              "eligible": 228,
+              "completed": 228,
+              "failed_ids": [],
+              "finite_subset_components": {
+                "motion": 0.15203933362645194,
+                "ports": 0.47862127062408544,
+                "consistency": 0.0023937159168462958
+              }
+            },
+            "check": {
+              "J": 0.3034857747704539,
+              "eligible": 69,
+              "completed": 69,
+              "failed_ids": [],
+              "finite_subset_components": {
+                "motion": 0.22770530968143746,
+                "ports": 0.757547685403294,
+                "consistency": 0.0025696548687053136
+              }
+            },
+            "numeric": {
+              "passed": true,
+              "events": [
+                {
+                  "id": "newtrain_83adbaea1acb2425",
+                  "finite": true,
+                  "rms": 8.053097560800305e-11,
+                  "max": 7.414666084748699e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "newtrain_b205117cd732146c",
+                  "finite": true,
+                  "rms": 2.6740635169685446e-10,
+                  "max": 2.9253541811158357e-09,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "newtrain_d94aa665a50e1e71",
+                  "finite": true,
+                  "rms": 5.879885196903894e-11,
+                  "max": 4.299319686564998e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "newtrain_f19d6366a51b07d4",
+                  "finite": true,
+                  "rms": 4.2541257897488044e-10,
+                  "max": 4.3582204511949385e-09,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0112",
+                  "finite": true,
+                  "rms": 4.5691415403663805e-11,
+                  "max": 3.398514124915151e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0113",
+                  "finite": true,
+                  "rms": 3.4939587159373055e-11,
+                  "max": 2.6040429095474146e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0114",
+                  "finite": true,
+                  "rms": 6.861274113796738e-11,
+                  "max": 5.36656229473742e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0115",
+                  "finite": true,
+                  "rms": 5.1715618396475106e-11,
+                  "max": 4.1366114432203794e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0116",
+                  "finite": true,
+                  "rms": 8.218308529980701e-11,
+                  "max": 7.054029598283749e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0117",
+                  "finite": true,
+                  "rms": 6.044118844882887e-11,
+                  "max": 5.684010928743842e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0118",
+                  "finite": true,
+                  "rms": 9.330009209063398e-11,
+                  "max": 7.361790313753054e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0119",
+                  "finite": true,
+                  "rms": 6.569170107789015e-11,
+                  "max": 6.842747569029951e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                }
+              ]
+            }
+          },
+          {
+            "attempt": 1000,
+            "artifact": {
+              "path": "artifacts/osgkd_fit297_20261113/train_C0/C0/attempt_1000.pt",
+              "sha256": "4d1ba59f9551455e21f43885fc3a2b2eb9d125830133bb13cc82185a0595ec18",
+              "bytes": 191160
+            },
+            "fit": {
+              "J": 0.18539104302518886,
+              "eligible": 228,
+              "completed": 228,
+              "failed_ids": [],
+              "finite_subset_components": {
+                "motion": 0.13845570038799507,
+                "ports": 0.4690535230961325,
+                "consistency": 0.002999032758051582
+              }
+            },
+            "check": {
+              "J": 0.2727661750837571,
+              "eligible": 69,
+              "completed": 69,
+              "failed_ids": [],
+              "finite_subset_components": {
+                "motion": 0.1985980100799758,
+                "ports": 0.7413590421148405,
+                "consistency": 0.0032260792297209907
+              }
+            },
+            "numeric": {
+              "passed": true,
+              "events": [
+                {
+                  "id": "newtrain_83adbaea1acb2425",
+                  "finite": true,
+                  "rms": 7.963618559439836e-11,
+                  "max": 7.453221150220749e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "newtrain_b205117cd732146c",
+                  "finite": true,
+                  "rms": 2.675755261124945e-10,
+                  "max": 2.9449154226313112e-09,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "newtrain_d94aa665a50e1e71",
+                  "finite": true,
+                  "rms": 5.747745197580492e-11,
+                  "max": 4.440890676743576e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "newtrain_f19d6366a51b07d4",
+                  "finite": true,
+                  "rms": 4.3884040876209627e-10,
+                  "max": 4.746951276501932e-09,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0112",
+                  "finite": true,
+                  "rms": 4.487748674598875e-11,
+                  "max": 3.171403276758698e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0113",
+                  "finite": true,
+                  "rms": 3.4524864184454204e-11,
+                  "max": 2.4476358962627955e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0114",
+                  "finite": true,
+                  "rms": 6.700158949579595e-11,
+                  "max": 5.501161218770244e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0115",
+                  "finite": true,
+                  "rms": 5.045393763146021e-11,
+                  "max": 4.213278164384984e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0116",
+                  "finite": true,
+                  "rms": 8.117399477713653e-11,
+                  "max": 7.190166022971343e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0117",
+                  "finite": true,
+                  "rms": 5.86001782805966e-11,
+                  "max": 5.490574257647954e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0118",
+                  "finite": true,
+                  "rms": 9.471375371249407e-11,
+                  "max": 7.944586282514149e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0119",
+                  "finite": true,
+                  "rms": 6.387316203580163e-11,
+                  "max": 6.44601466580577e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                }
+              ]
+            }
+          },
+          {
+            "attempt": 1250,
+            "artifact": {
+              "path": "artifacts/osgkd_fit297_20261113/train_C0/C0/attempt_1250.pt",
+              "sha256": "0b7cac0dac9eb2ed07cd1b2303c9d978bd6255d487ad8b5ccdcaac102fe113ac",
+              "bytes": 191160
+            },
+            "fit": {
+              "J": 0.1720124666013735,
+              "eligible": 228,
+              "completed": 228,
+              "failed_ids": [],
+              "finite_subset_components": {
+                "motion": 0.12708476598298896,
+                "ports": 0.4488939966972282,
+                "consistency": 0.003830094866171789
+              }
+            },
+            "check": {
+              "J": 0.31988911187271524,
+              "eligible": 69,
+              "completed": 69,
+              "failed_ids": [],
+              "finite_subset_components": {
+                "motion": 0.25048633089566225,
+                "ports": 0.6935325545095712,
+                "consistency": 0.004952552609588697
+              }
+            },
+            "numeric": {
+              "passed": true,
+              "events": [
+                {
+                  "id": "newtrain_83adbaea1acb2425",
+                  "finite": true,
+                  "rms": 8.494652141242155e-11,
+                  "max": 7.842381498630053e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "newtrain_b205117cd732146c",
+                  "finite": true,
+                  "rms": 3.119610660548052e-10,
+                  "max": 2.8327029610863974e-09,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "newtrain_d94aa665a50e1e71",
+                  "finite": true,
+                  "rms": 5.881393112014916e-11,
+                  "max": 4.748404591109807e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "newtrain_f19d6366a51b07d4",
+                  "finite": true,
+                  "rms": 4.803142298903235e-10,
+                  "max": 5.053443885572051e-09,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0112",
+                  "finite": true,
+                  "rms": 4.547041073683841e-11,
+                  "max": 3.473333608740307e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0113",
+                  "finite": true,
+                  "rms": 3.4674543418410165e-11,
+                  "max": 2.593029442830771e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0114",
+                  "finite": true,
+                  "rms": 6.919329159460523e-11,
+                  "max": 5.818201291625002e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0115",
+                  "finite": true,
+                  "rms": 5.1621168762842344e-11,
+                  "max": 4.3798007720908157e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0116",
+                  "finite": true,
+                  "rms": 8.601346620294524e-11,
+                  "max": 7.655749932343593e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0117",
+                  "finite": true,
+                  "rms": 6.0824226061343e-11,
+                  "max": 5.517789735662313e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0118",
+                  "finite": true,
+                  "rms": 1.0357736277039378e-10,
+                  "max": 8.918970560799723e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0119",
+                  "finite": true,
+                  "rms": 6.76745843540574e-11,
+                  "max": 6.391127556842605e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                }
+              ]
+            }
+          },
+          {
+            "attempt": 1500,
+            "artifact": {
+              "path": "artifacts/osgkd_fit297_20261113/train_C0/C0/attempt_1500.pt",
+              "sha256": "1222a7a8df66e250c9fdcbcca5da609132f7fa1e1061c5b9bfa1afc50c36c145",
+              "bytes": 191160
+            },
+            "fit": {
+              "J": 0.16846950323661847,
+              "eligible": 228,
+              "completed": 228,
+              "failed_ids": [],
+              "finite_subset_components": {
+                "motion": 0.12380754930616025,
+                "ports": 0.44616621804165896,
+                "consistency": 0.004533212629231707
+              }
+            },
+            "check": {
+              "J": 0.24125890267137132,
+              "eligible": 69,
+              "completed": 69,
+              "failed_ids": [],
+              "finite_subset_components": {
+                "motion": 0.171406550673529,
+                "ports": 0.6980277218618206,
+                "consistency": 0.004957981166023868
+              }
+            },
+            "numeric": {
+              "passed": true,
+              "events": [
+                {
+                  "id": "newtrain_83adbaea1acb2425",
+                  "finite": true,
+                  "rms": 9.079569152602465e-11,
+                  "max": 7.496399640361351e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "newtrain_b205117cd732146c",
+                  "finite": true,
+                  "rms": 2.94820843804026e-10,
+                  "max": 2.835115253674303e-09,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "newtrain_d94aa665a50e1e71",
+                  "finite": true,
+                  "rms": 6.183566130176126e-11,
+                  "max": 4.661148048114657e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "newtrain_f19d6366a51b07d4",
+                  "finite": true,
+                  "rms": 4.797226795398206e-10,
+                  "max": 4.896211436289377e-09,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0112",
+                  "finite": true,
+                  "rms": 4.7565615328857536e-11,
+                  "max": 3.466955009525234e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0113",
+                  "finite": true,
+                  "rms": 3.601765048650323e-11,
+                  "max": 2.5880785970992367e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0114",
+                  "finite": true,
+                  "rms": 7.313539166418513e-11,
+                  "max": 5.657403221201439e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0115",
+                  "finite": true,
+                  "rms": 5.392172595243052e-11,
+                  "max": 4.1701602692465066e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0116",
+                  "finite": true,
+                  "rms": 9.206374312745028e-11,
+                  "max": 7.426778843628351e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0117",
+                  "finite": true,
+                  "rms": 6.352728928129089e-11,
+                  "max": 5.065502658322822e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0118",
+                  "finite": true,
+                  "rms": 1.1073982421629608e-10,
+                  "max": 8.744888661562741e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                },
+                {
+                  "id": "pilot_0119",
+                  "finite": true,
+                  "rms": 7.071052266853471e-11,
+                  "max": 5.787624221346853e-10,
+                  "endpoint_error": 0.0,
+                  "withheld_input_masked": true,
+                  "passed": true
+                }
+              ]
+            }
+          }
+        ],
+        "selected": {
+          "attempt": 1500,
+          "artifact": {
+            "path": "artifacts/osgkd_fit297_20261113/train_C0/C0/attempt_1500.pt",
+            "sha256": "1222a7a8df66e250c9fdcbcca5da609132f7fa1e1061c5b9bfa1afc50c36c145",
+            "bytes": 191160
+          },
+          "fit": {
+            "J": 0.16846950323661847,
+            "eligible": 228,
+            "completed": 228,
+            "failed_ids": [],
+            "finite_subset_components": {
+              "motion": 0.12380754930616025,
+              "ports": 0.44616621804165896,
+              "consistency": 0.004533212629231707
+            }
+          },
+          "check": {
+            "J": 0.24125890267137132,
+            "eligible": 69,
+            "completed": 69,
+            "failed_ids": [],
+            "finite_subset_components": {
+              "motion": 0.171406550673529,
+              "ports": 0.6980277218618206,
+              "consistency": 0.004957981166023868
+            }
+          },
+          "numeric": {
+            "passed": true,
+            "events": [
+              {
+                "id": "newtrain_83adbaea1acb2425",
+                "finite": true,
+                "rms": 9.079569152602465e-11,
+                "max": 7.496399640361351e-10,
+                "endpoint_error": 0.0,
+                "withheld_input_masked": true,
+                "passed": true
+              },
+              {
+                "id": "newtrain_b205117cd732146c",
+                "finite": true,
+                "rms": 2.94820843804026e-10,
+                "max": 2.835115253674303e-09,
+                "endpoint_error": 0.0,
+                "withheld_input_masked": true,
+                "passed": true
+              },
+              {
+                "id": "newtrain_d94aa665a50e1e71",
+                "finite": true,
+                "rms": 6.183566130176126e-11,
+                "max": 4.661148048114657e-10,
+                "endpoint_error": 0.0,
+                "withheld_input_masked": true,
+                "passed": true
+              },
+              {
+                "id": "newtrain_f19d6366a51b07d4",
+                "finite": true,
+                "rms": 4.797226795398206e-10,
+                "max": 4.896211436289377e-09,
+                "endpoint_error": 0.0,
+                "withheld_input_masked": true,
+                "passed": true
+              },
+              {
+                "id": "pilot_0112",
+                "finite": true,
+                "rms": 4.7565615328857536e-11,
+                "max": 3.466955009525234e-10,
+                "endpoint_error": 0.0,
+                "withheld_input_masked": true,
+                "passed": true
+              },
+              {
+                "id": "pilot_0113",
+                "finite": true,
+                "rms": 3.601765048650323e-11,
+                "max": 2.5880785970992367e-10,
+                "endpoint_error": 0.0,
+                "withheld_input_masked": true,
+                "passed": true
+              },
+              {
+                "id": "pilot_0114",
+                "finite": true,
+                "rms": 7.313539166418513e-11,
+                "max": 5.657403221201439e-10,
+                "endpoint_error": 0.0,
+                "withheld_input_masked": true,
+                "passed": true
+              },
+              {
+                "id": "pilot_0115",
+                "finite": true,
+                "rms": 5.392172595243052e-11,
+                "max": 4.1701602692465066e-10,
+                "endpoint_error": 0.0,
+                "withheld_input_masked": true,
+                "passed": true
+              },
+              {
+                "id": "pilot_0116",
+                "finite": true,
+                "rms": 9.206374312745028e-11,
+                "max": 7.426778843628351e-10,
+                "endpoint_error": 0.0,
+                "withheld_input_masked": true,
+                "passed": true
+              },
+              {
+                "id": "pilot_0117",
+                "finite": true,
+                "rms": 6.352728928129089e-11,
+                "max": 5.065502658322822e-10,
+                "endpoint_error": 0.0,
+                "withheld_input_masked": true,
+                "passed": true
+              },
+              {
+                "id": "pilot_0118",
+                "finite": true,
+                "rms": 1.1073982421629608e-10,
+                "max": 8.744888661562741e-10,
+                "endpoint_error": 0.0,
+                "withheld_input_masked": true,
+                "passed": true
+              },
+              {
+                "id": "pilot_0119",
+                "finite": true,
+                "rms": 7.071052266853471e-11,
+                "max": 5.787624221346853e-10,
+                "endpoint_error": 0.0,
+                "withheld_input_masked": true,
+                "passed": true
+              }
+            ]
+          }
+        },
+        "function_costs": {
+          "checkpoint_serialization": {
+            "wall_s": 1.5653797000122722,
+            "cpu_s": 0.90625
+          },
+          "full_objectives": {
+            "wall_s": 594.2513257000246,
+            "cpu_s": 650.765625
+          },
+          "check_numerical_probe": {
+            "wall_s": 43.67357310000807,
+            "cpu_s": 48.328125
+          },
+          "train_attempts": {
+            "wall_s": 8812.46271330057,
+            "cpu_s": 9681.4375
+          },
+          "attempt_serialization": {
+            "wall_s": 0.337414400128182,
+            "cpu_s": 0.328125
+          }
+        },
+        "work": {
+          "train": {
+            "rhs_forward": 15739568,
+            "rhs_recompute": 0,
+            "encoder_events": 23334,
+            "rhs_backward_vjp": null,
+            "rhs_backward_vjp_upper_bound": 15739568
+          },
+          "objectives": {
+            "rhs_forward": 3487936,
+            "rhs_recompute": 0,
+            "encoder_events": 4696,
+            "rhs_backward_vjp": 0,
+            "rhs_backward_vjp_upper_bound": 0
+          },
+          "probe": {
+            "rhs_forward": 460800,
+            "rhs_recompute": 0,
+            "encoder_events": 192,
+            "rhs_backward_vjp": 0,
+            "rhs_backward_vjp_upper_bound": 0
+          }
+        },
+        "cost": {
+          "wall_s": 9454.614994100004,
+          "cpu_s": 10383.03125,
+          "cuda_peak_allocated_bytes": null,
+          "cuda_peak_reserved_bytes": null
+        }
+      }
+    },
+    "objective_excluded_ids": {
+      "fit": [],
+      "check": []
+    }
+  },
+  "environment": {
+    "command": [
+      "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+      "experiments/osgkd_fit297_20261113/run.py",
+      "train",
+      "--job-id",
+      "train_C0",
+      "--variant",
+      "C0"
+    ],
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "numpy": "2.5.2",
+    "torch": "2.13.0+cu130",
+    "device": "cpu",
+    "threads": 1,
+    "interop_threads": 10,
+    "cuda_device": null,
+    "float": "float64"
+  },
+  "cost": {
+    "wall_s": 9455.990872499999,
+    "cpu_s": 10384.28125,
+    "cuda_peak_allocated_bytes": null,
+    "cuda_peak_reserved_bytes": null
+  },
+  "function_costs": {
+    "load_frozen_data": {
+      "wall_s": 1.1958688999875449,
+      "cpu_s": 1.1875
+    }
+  }
+}

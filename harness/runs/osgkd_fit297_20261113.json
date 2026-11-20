@@ -6,26 +6,46 @@
   "purpose": "adaptation",
   "scope": "OSGKD full C0/C1 under motion_only_v1 on existing train fit297; original val/test closed",
   "execution": {
-    "status": "RUNNING",
-    "phase": "paired_training",
+    "status": "COMPLETED",
+    "phase": "closed",
     "scientific_execution_released": true,
-    "scientific_jobs_started": 3,
-    "native_live": true,
-    "active_claims": [
-      {
-        "job_id": "train_C0",
-        "session_id": 70470,
-        "native_chunk": "6fb0ce"
+    "scientific_jobs_started": 4,
+    "native_live": false,
+    "active_claims": [],
+    "resource_queue": {
+      "C1_pid": 10940,
+      "helper_pid": 38208,
+      "resume_condition": "manual resume after memory recovered",
+      "receipt": "results/osgkd_fit297_20261113/resource_queue.json",
+      "status": "resumed",
+      "helper_running": false,
+      "queued_wall_s": 1720.238112
+    },
+    "completed_jobs": {
+      "train_C0": {
+        "native_chunk": "5383df",
+        "exit_code": 0,
+        "summary": "results/osgkd_fit297_20261113/train_C0/summary.json"
       },
-      {
-        "job_id": "train_C1",
-        "session_id": 19971,
-        "native_chunk": "cbf6a0"
+      "train_C1": {
+        "native_chunk": "8234ea",
+        "exit_code": 0,
+        "summary": "results/osgkd_fit297_20261113/train_C1/summary.json"
+      },
+      "eval01": {
+        "native_chunk": "1bfc2d",
+        "exit_code": 0,
+        "summary": "results/osgkd_fit297_20261113/eval01/summary.json"
+      },
+      "qual01": {
+        "native_chunk": "31aff3",
+        "exit_code": 0,
+        "summary": "results/osgkd_fit297_20261113/qual01/summary.json"
       }
-    ]
+    }
   },
   "scientific_work": {
-    "budget_status": "open",
+    "budget_status": "closed",
     "limits": {
       "data_audit_passes": 2,
       "train_attempts_per_variant": 1500,
@@ -33,20 +53,26 @@
       "new_fom": 0
     },
     "data_audit_passes_used": 2,
-    "training_attempts_used": 0,
+    "training_attempts_used": 3000,
     "old_unused_work_transferred": false,
     "data_audit_budget_status": "closed",
     "saved_vector_attribution_limit": 1,
     "saved_vector_attribution_used": 1,
     "saved_vector_attribution_status": "closed_unresolved",
-    "input_materializations": 1
+    "input_materializations": 1,
+    "training_attempts_used_by_variant": {
+      "C0": 1500,
+      "C1": 1500
+    },
+    "final_evaluation_models": 2,
+    "final_evaluation_events_per_model": 297
   },
   "evidence": {
-    "validity": "initial_model_numeric_and_gradient_qualified; final candidate pending",
-    "optimizer_health": "unknown",
+    "validity": "valid_under_adopted_discrete_observation_contract; all297 full8s numeric passed",
+    "optimizer_health": "healthy",
     "optimization_adequacy": "unknown",
-    "mechanism_probe": "not_yet_run",
-    "confirmation": "none",
+    "mechanism_probe": "implementation_passed; unique_physical_mechanism_unresolved",
+    "confirmation": "one_paired_seed_on_previously_exposed_train",
     "references": [
       "designs/osgkd_fit297_20261113.md",
       "campaigns/osgkd_ieee39/first_fit297_protocol.md",
@@ -57,7 +83,14 @@
       "results/osgkd_fit297_20261113/observation_adoption.json",
       "results/osgkd_fit297_20261113/materialization.json",
       "reports/osgkd_fit297_20261113/data_chain_review.md",
-      "results/osgkd_fit297_20261113/qual01/summary.json"
+      "results/osgkd_fit297_20261113/qual01/summary.json",
+      "results/osgkd_fit297_20261113/analysis.json",
+      "results/osgkd_fit297_20261113/numerical_summary.json",
+      "results/osgkd_fit297_20261113/risk_components.json",
+      "reports/osgkd_fit297_20261113/result.md",
+      "reports/osgkd_fit297_20261113/final_review.md",
+      "reports/osgkd_fit297_20261113/scientific_synthesis.md",
+      "results/osgkd_fit297_20261113/closure.json"
     ]
   },
   "root_decisions": {
@@ -66,8 +99,25 @@
     "science": "continue"
   },
   "proposal": {
-    "scientific_claim": "single_seed_existing_train_full_method_comparison",
+    "scientific_claim": "budget_specific_long_time_gain_with_short_time_tradeoff_and_unchanged_actual_LOS_detection",
     "model_decision": "retain_evidence",
-    "next_action": "qualify_then_paired_train"
-  }
+    "next_action": "register bounded matched 2s-vs8s objective adaptation before any new training"
+  },
+  "working_candidate": {
+    "status": "evidence_only",
+    "deployment_contract": "motion_only_v1",
+    "primary": {
+      "path": "artifacts/osgkd_fit297_20261113/train_C1/C1/attempt_1500.pt",
+      "sha256": "c35e6ebabef0c54a5f3dfcc597a82bc325eb41ed86e3df4eb270a4c260dae83c",
+      "bytes": 193196
+    },
+    "matched_control": {
+      "path": "artifacts/osgkd_fit297_20261113/train_C0/C0/attempt_1500.pt",
+      "sha256": "1222a7a8df66e250c9fdcbcca5da609132f7fa1e1061c5b9bfa1afc50c36c145",
+      "bytes": 191160
+    },
+    "scope": "single seed existing train fit297; not promoted"
+  },
+  "incumbent_changed": false,
+  "protected_anchors_changed": false
 }

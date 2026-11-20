@@ -1,6 +1,6 @@
 # 当前架构：OSGKD
 
-当前活动设计为 [OSGKD 三端联合辨识](../designs/osgkd_architecture.md)，主合同为 [motion_only_v1](../kiki.md)。阶段二已获授权，活动 Run 为 `osgkd_fit297_20261113`；实现与观测合同已采用，真实资格及训练进展见当前状态。
+当前活动设计为 [OSGKD 三端联合辨识](../designs/osgkd_architecture.md)，主合同为 [motion_only_v1](../kiki.md)。阶段二已获授权，活动 Run 为 `osgkd_fit297_20261113`；完整实现、两组训练及正式评价已完成，结果与当前工作候选见当前状态。
 
 | 部分 | 学习对象与边界 |
 |---|---|
@@ -10,7 +10,7 @@
 
 首版最多沿用 `(theta,omega,p,a,e)` 的 5N 容器，先形成完整 C0/C1，再删组重拟合。部署仅 11 点/100 ms 相角与完整转速历史及声明的冻结常数，由估计器给出 p/a/e 初态；真实 p₀ 只属于 `known_p0_reference`。固定参考、潜态规范、完整功率链式账和同一未来目标见唯一详细设计。
 
-完整 C0/C1、字段映射和有限训练协议已建立。端口按[离散观测合同](../designs/osgkd_observation_adoption_20261113.md)作近似监督；局部源连续闭合未决记录保留，模型自身积分和梯度资格独立检查。缺环境分项时采用声明的有效分解，不造逐机真值。[OSGKD Campaign](../campaigns/osgkd_ieee39/campaign.md) · [当前状态](current_state.md)
+完整 C0/C1、字段映射及首轮有限训练评价已完成。C1在稳定8 s的risk和误报上有本预算内改善，短时risk与失稳真实区间检出仍需改进；两模型最终数值资格全部通过，尚未晋升。端口按[离散观测合同](../designs/osgkd_observation_adoption_20261113.md)作近似监督；局部源连续闭合未决记录保留，模型自身积分和梯度资格独立检查。缺环境分项时采用声明的有效分解，不造逐机真值。[OSGKD Campaign](../campaigns/osgkd_ieee39/campaign.md) · [当前状态](current_state.md)
 
 GFTD 作为前序证据与可复用组件保留，旧真 p₀ API 不承担新合同：
 

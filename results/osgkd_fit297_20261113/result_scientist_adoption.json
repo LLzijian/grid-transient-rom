@@ -1,0 +1,35 @@
+{
+  "run_id": "osgkd_fit297_20261113",
+  "role_invocation": {
+    "tool": "collaboration.spawn_agent",
+    "target": "/root/osgkd_result_scientist",
+    "fork_turns": "none",
+    "configured_model": "gpt-6-astra",
+    "server_resolved_model": null
+  },
+  "scientific_synthesis": {
+    "path": "reports/osgkd_fit297_20261113/scientific_synthesis.md",
+    "sha256": "b13b71791da8add0d19591446d1817244680f43a8a03e575ff500a08d6e19221",
+    "bytes": 8063
+  },
+  "analysis": {
+    "path": "results/osgkd_fit297_20261113/analysis.json",
+    "sha256": "0a71ef4c7d4654bf4a5dbbeb323ccd9193ce0e585cff39f93742a95d896cc57e",
+    "bytes": 274498
+  },
+  "root_adoption": "accept bounded interpretation and next discrimination question; no new Run or training release",
+  "reasons": [
+    "Long-time prediction and false-LOS improve with short-time tradeoffs under one paired seed.",
+    "All final numerical checks pass, but actual-window unstable detection remains 3/30.",
+    "Longer training horizon adds stable-event supervision; all unstable futures are shorter than 2s.",
+    "Retain code branch and frozen evidence without incumbent promotion."
+  ],
+  "decisions": {
+    "code": "retain_branch",
+    "model": "retain_evidence",
+    "science": "continue"
+  },
+  "additional_training_jobs_released": 0,
+  "original_val_test_closed": true,
+  "new_fom": 0
+}

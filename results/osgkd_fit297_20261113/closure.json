@@ -1,0 +1,134 @@
+{
+  "run_id": "osgkd_fit297_20261113",
+  "client_date": "2026-11-20",
+  "execution_status": "COMPLETED",
+  "budget_status": "closed",
+  "source_commit": "f1f7a2f61f0311e8763913ec6e01527f86f23b49",
+  "frozen_source_count": 14,
+  "frozen_sources_unchanged": true,
+  "native_completions": {
+    "qual01": {
+      "chunk": "31aff3",
+      "exit_code": 0
+    },
+    "train_C0": {
+      "chunk": "5383df",
+      "exit_code": 0
+    },
+    "train_C1": {
+      "chunk": "8234ea",
+      "exit_code": 0
+    },
+    "eval01": {
+      "chunk": "1bfc2d",
+      "exit_code": 0
+    },
+    "analysis": {
+      "chunk": "4a7ea0",
+      "exit_code": 0
+    }
+  },
+  "work": {
+    "training_attempts": 3000,
+    "per_variant": 1500,
+    "rejected_updates": 0,
+    "paired_seeds": 1,
+    "final_evaluation_models": 2,
+    "events_per_evaluation": 297,
+    "data_audit_passes_used": 2,
+    "source_attribution_passes_used": 1,
+    "input_materializations": 1,
+    "additional_training_jobs": 0,
+    "original_val_test_reads": 0,
+    "new_fom": 0
+  },
+  "decisions": {
+    "code": "retain_branch",
+    "model": "retain_evidence",
+    "science": "continue"
+  },
+  "five_axes": {
+    "evidence_validity": "valid_under_adopted_discrete_observation_contract",
+    "optimizer_health": "healthy",
+    "optimization_adequacy": "unknown",
+    "mechanism_identifiability": "unresolved",
+    "effect_confirmation": "single_seed_train_budget_long_time_gain_short_time_tradeoff_detection_unchanged"
+  },
+  "selection": {
+    "C0": {
+      "path": "artifacts/osgkd_fit297_20261113/train_C0/C0/attempt_1500.pt",
+      "sha256": "1222a7a8df66e250c9fdcbcca5da609132f7fa1e1061c5b9bfa1afc50c36c145",
+      "bytes": 191160
+    },
+    "C1_dynamic": {
+      "path": "artifacts/osgkd_fit297_20261113/train_C1/C1/attempt_1500.pt",
+      "sha256": "c35e6ebabef0c54a5f3dfcc597a82bc325eb41ed86e3df4eb270a4c260dae83c",
+      "bytes": 193196
+    }
+  },
+  "C1_score_source": "C1_dynamic",
+  "incumbent_changed": false,
+  "protected_anchors_changed": false,
+  "default_model": "none",
+  "next_question": "bounded matched adaptation from the same selected C1: 2s versus 8s training objective; distinguish long-time target coverage from initialization/shared closure; no new Run released",
+  "report_and_evidence": [
+    {
+      "path": "results/osgkd_fit297_20261113/train_C0/summary.json",
+      "sha256": "6631684fd1ca446cd4c6876265b9e0069af72b357bd5e1b7f1c07ef9ca51996e",
+      "bytes": 54068
+    },
+    {
+      "path": "results/osgkd_fit297_20261113/train_C1/summary.json",
+      "sha256": "77c2ddd21d33adeccfed98e22a93f39efa4a8f408be167f01c29670364ce5ca0",
+      "bytes": 54081
+    },
+    {
+      "path": "results/osgkd_fit297_20261113/eval01/summary.json",
+      "sha256": "685e9dc3d44db6651374304a8328863ee00679a7e4cd36270aba9e7924f37d23",
+      "bytes": 212120
+    },
+    {
+      "path": "results/osgkd_fit297_20261113/analysis.json",
+      "sha256": "0a71ef4c7d4654bf4a5dbbeb323ccd9193ce0e585cff39f93742a95d896cc57e",
+      "bytes": 274498
+    },
+    {
+      "path": "results/osgkd_fit297_20261113/risk_components.json",
+      "sha256": "faeb370ccb75a220ddd42495387f7649d9ff066d85b1a48c6dbf1535d2679127",
+      "bytes": 13578
+    },
+    {
+      "path": "results/osgkd_fit297_20261113/numerical_summary.json",
+      "sha256": "54cc346616216be3b35fba5ad13e11a6317ed2bcb450fc30fcae2b9e8f897556",
+      "bytes": 1094
+    },
+    {
+      "path": "results/osgkd_fit297_20261113/artifacts.json",
+      "sha256": "974d42d232203c2e73244a19e7ca51260ef7a9caa382560365953fea8b5a6eaf",
+      "bytes": 7274
+    },
+    {
+      "path": "results/osgkd_fit297_20261113/result_scientist_adoption.json",
+      "sha256": "dc3748c178ef7b64578358ae7cde182caa8573faa94812c57ee30bfb4539a9b8",
+      "bytes": 1381
+    },
+    {
+      "path": "reports/osgkd_fit297_20261113/result.md",
+      "sha256": "3f281c7bfbdf77529318bf19bf03098d77e2f688e26db303ad70fea5ae942fc0",
+      "bytes": 19278
+    },
+    {
+      "path": "reports/osgkd_fit297_20261113/final_review.md",
+      "sha256": "0c93513ef4f11717242ca23ae9238d40c38e84e0909d4ef07fc069c94c24d6a1",
+      "bytes": 15035
+    },
+    {
+      "path": "reports/osgkd_fit297_20261113/scientific_synthesis.md",
+      "sha256": "b13b71791da8add0d19591446d1817244680f43a8a03e575ff500a08d6e19221",
+      "bytes": 8063
+    }
+  ],
+  "independent_review_scope": "read-only source/receipt/derived scalar reconstruction; no new ODE, raw-array or weight read",
+  "source_diagnostic_status": "closed_unresolved; original blocked audits retained; five historical subwindows not deleted",
+  "publication_receipt_path": "artifacts/osgkd_fit297_20261113/publication.json"
+}
