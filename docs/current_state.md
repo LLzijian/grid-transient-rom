@@ -1,21 +1,14 @@
 # 当前研究状态
 
-**2026-11-13：OSGKD 阶段一算法与合同切换完成。GFTD 旧支线已暂存，未执行的线性补偿界工作量已关闭；本次未启动科学计算或阶段二训练。**
+**2026-11-20：接续中断的 OSGKD 阶段二。完整 C0/C1 与训练数据包已完成，真实数值和梯度资格 qual01 已通过，C0/C1 两组配对训练正在执行。**
 
-活动架构：[OSGKD](../designs/osgkd_architecture.md)。活动问题：[IEEE39 三端联合辨识](../campaigns/osgkd_ieee39/campaign.md)。主合同是 motion_only_v1：11 点/100 ms 相角与完整转速历史，加声明的冻结常数；真实末点 p₀ 只保留为 known_p0_reference 的信息增强输入。
+活动架构：[OSGKD](../designs/osgkd_architecture.md)；活动协议：[fit297首轮](../campaigns/osgkd_ieee39/first_fit297_protocol.md)。部署为11点100 ms相角与完整转速，真实p₀不输入模型。
 
-机械侧学习驱动作用及动态，耦合侧学习有效连接与有界调制，环境侧表达有来源的静态作用及必要记忆。训练仅使用 fit297 中已允许且实际存在的端口记录与未来轨迹作监督；部署不读取它们。固定参考、单位、覆盖与分解锚定由后续 adapter 核对，本次未读取私有科学数组。
+- train fit297 全297保留，267稳定/30失稳，内部拟合228、内部检查69。一次必要输入物化完成，常数和划分原样冻结；未重新积分或校准。
+- 两遍来源诊断及一次保存向量归因已闭合。5个历史前80 ms子窗未满足0.002冲量门，归因仍未决；[观测采用](../results/osgkd_fit297_20261113/observation_adoption.json)明确采用原ANDES离散点值作近似监督，不回填旧审计通过。
+- 完整实现31项原合成测试通过；修订后的8项runner测试及6项数据测试通过。独立审查已核对模型、评价、观测采用与数据链。
+- [qual01 release](../results/osgkd_fit297_20261113/qualify_release.json)绑定来源与代码；12个固定内部拟合探针的主/细积分及两事件三组参数方向梯度资格均通过。两模型最大归一化全态主细RMS均小于8.2×10^-11，最大梯度相对差小于1.8×10^-12。
 
-## 当前指针与已收束工作
+当前按同输入、同目标和同事件序列训练C0/C1，各1000次尝试及至多一次500次登记适配，冻结选点后评价全部297。最新作业与使用量见[Run记录](../harness/runs/osgkd_fit297_20261113.json)。
 
-- 研究分支 `codex/osgkd-transition-20261113` 从已核对科研 HEAD `9dec0976` 派生，main 未改动；阶段一结论见[采用回执](../results/osgkd_transition_20261113/adoption.json)、[核查结果](../results/osgkd_transition_20261113/validation.json)和[独立审查](../reports/osgkd_transition_20261113/review.md)。
-- OSGKD 尚无训练模型或已释放的科学 Run。原 quarter 工作候选降为 GFTD 诊断档案；default none、incumbent 和 protected anchors 不变。
-- 线性界脚本两版保留，第二版复查未完成，资格与科学均未启动。执行保留 PAUSED_BY_USER，后续动作 defer、auto_dispatch=false，预算 closed，科学 unresolved。[收束证据](../results/osgkd_transition_20261113/closure.json)
-- 已完成的匹配预测、三点历史比较及局部补偿结果不重写。[一页 GFTD 总结](../reports/osgkd_transition_20261113/gftd_closure.md)
-- 核对时未发现本项目 Python 3.12/虚拟环境计算进程；四个其他 Python 进程未操作。没有新建自动推进目标或周期任务。
-
-## 唯一下一动作
-
-本次交付阶段一算法与合同。后续阶段二首先将既有端口数据映射与完整 C0/C1 接口一并实现，再按有限协议做训练—评价—解释；不把旧补偿界、完整唯一性或 L2 证书设为前置。本次请求只完成第一步，附件的自动进入阶段二指令未被采用。
-
-原 val/test 关闭，旧消费 test 永久退出选择，新 FOM=0，TASK4 暂停；不扩大到 train385，不增加部署输入或解除受保护模型约束。
+原始val/test关闭，新FOM=0，TASK4暂停；GFTD继续暂存，default none和保护模型不变。

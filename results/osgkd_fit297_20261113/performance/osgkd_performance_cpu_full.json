@@ -1,0 +1,59 @@
+{
+  "device": "Intel64 Family 6 Model 191 Stepping 2, GenuineIntel",
+  "torch": "2.13.0+cu130",
+  "threads": 1,
+  "synthetic_only": true,
+  "batch": 8,
+  "internal_step": 0.005,
+  "dtype": "float64",
+  "optimizer_updates": 0,
+  "command": [
+    "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+    "-B",
+    ".tmp/osgkd_performance.py",
+    "cpu",
+    "full",
+    "eager"
+  ],
+  "pythonpath": "E:\\03-nn_Transfer_Func\\kiki\\src",
+  "source_sha256": {
+    "osgkd_performance.py": "2c0f8b0ef1bdb84d3b19eb6b4268be975ad23692d1a8ddb8727b4a6ef553ac1a",
+    "osgkd.py": "6edce1578ff628ea15f3a7c8c429ea7e8898d0bf901ff8810064e19a783af984",
+    "osgkd_fitting.py": "2b5dac09543169be952af3698a740620439a2f686977c4f513329bae9704e087"
+  },
+  "comparisons": {
+    "C1:eager": {
+      "path": 0.0,
+      "loss": 0.0,
+      "c": 0.0,
+      "beta": 0.0,
+      "mechanical_coeff": 0.0,
+      "amplitude_coeff": 0.0,
+      "environment_coeff": 0.0,
+      "memory_coeff": 0.0,
+      "edge_coeff": 0.0,
+      "encoder.weight_ih_l0": 0.0,
+      "encoder.weight_hh_l0": 0.0,
+      "encoder.bias_ih_l0": 0.0,
+      "encoder.bias_hh_l0": 0.0,
+      "initial_head.weight": 0.0,
+      "initial_head.bias": 0.0
+    }
+  },
+  "timing": {
+    "eager": {
+      "forward_s": 1.0639203999890015,
+      "backward_s": 1.3470927000162192,
+      "total_s": 2.4110131000052206,
+      "loss": 0.2757488359407806,
+      "work": {
+        "rhs_forward": 12800,
+        "rhs_recompute": 0,
+        "encoder_events": 16
+      },
+      "cuda_peak_allocated_bytes": null,
+      "cuda_peak_reserved_bytes": null
+    }
+  },
+  "future_seconds": 2.0
+}

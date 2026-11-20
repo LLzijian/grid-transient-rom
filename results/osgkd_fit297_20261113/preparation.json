@@ -1,0 +1,54 @@
+{
+  "run_id": "osgkd_fit297_20261113",
+  "recorded_utc": "2026-11-12T17:27:13.848956+00:00",
+  "source_commit": "15a8ec2f2e6aa1c1c3a7dfc815861cc22716019e",
+  "user_authorization": "按照新方案自主推进第二阶段，先完成端口数据映射核对和完整 C0/C1 实现，再在 train fit297 范围内开展训练、评价与改进循环。",
+  "stage2_user_authorized": true,
+  "phase": "source_mapping_and_bounded_protocol",
+  "old_gftd_work_resumed": false,
+  "scope": {
+    "data": "existing train fit297 only, 267 stable + 30 unstable",
+    "deployment": "motion_only_v1",
+    "original_val_test": "closed",
+    "new_fom_conditions": 0,
+    "task4": "paused",
+    "protected_models_changed": false
+  },
+  "preparation_allowed": "Read existing code/public metadata; implement pure full C0/C1 and synthetic implementation tests. Port array audit must use exact fit297 allowlist and field allowlist after source inventory. Training follows frozen finite protocol and source review.",
+  "scientific_training_started": false,
+  "process_observation": {
+    "tool_chunk": "e9785c",
+    "known_project_runtime_observed": false,
+    "other_python_pids": [
+      25512,
+      44252,
+      47124,
+      52824
+    ],
+    "other_processes_untouched": true,
+    "command_lines": "CIM access unavailable; executable paths observed via Get-Process"
+  },
+  "role_invocations": {
+    "scientist": {
+      "tool": "collaboration.followup_task",
+      "target": "/root/objective_alignment_scientist",
+      "configured_model": "gpt-6-astra",
+      "binding_evidence": "results/osgkd_harness_followup_20261113/role_receipts.json",
+      "server_resolved_model": null
+    },
+    "data_modeler": {
+      "tool": "collaboration.followup_task",
+      "target": "/root/matched_fit_digest",
+      "configured_model": "gpt-6.1-sol",
+      "binding_evidence": "results/osgkd_harness_followup_20261113/role_receipts.json",
+      "server_resolved_model": null
+    },
+    "ode_modeler": {
+      "tool": "collaboration.spawn_agent",
+      "target": "/root/osgkd_modeler",
+      "fork_turns": "none",
+      "configured_model": "gpt-6.1-sol",
+      "server_resolved_model": null
+    }
+  }
+}

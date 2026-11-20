@@ -1,0 +1,59 @@
+{
+  "device": "NVIDIA GeForce RTX 4060 Ti",
+  "torch": "2.13.0+cu130",
+  "threads": 1,
+  "synthetic_only": true,
+  "batch": 8,
+  "internal_step": 0.005,
+  "dtype": "float64",
+  "optimizer_updates": 0,
+  "command": [
+    "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+    "-B",
+    ".tmp/osgkd_performance.py",
+    "cuda",
+    "full",
+    "eager"
+  ],
+  "pythonpath": "E:\\03-nn_Transfer_Func\\kiki\\src",
+  "source_sha256": {
+    "osgkd_performance.py": "2c0f8b0ef1bdb84d3b19eb6b4268be975ad23692d1a8ddb8727b4a6ef553ac1a",
+    "osgkd.py": "6edce1578ff628ea15f3a7c8c429ea7e8898d0bf901ff8810064e19a783af984",
+    "osgkd_fitting.py": "2b5dac09543169be952af3698a740620439a2f686977c4f513329bae9704e087"
+  },
+  "comparisons": {
+    "C1:eager": {
+      "path": 8.673617379884035e-19,
+      "loss": 0.0,
+      "c": 0.0,
+      "beta": 6.776263578034403e-21,
+      "mechanical_coeff": 0.0,
+      "amplitude_coeff": 0.0,
+      "environment_coeff": 0.0,
+      "memory_coeff": 0.0,
+      "edge_coeff": 0.0,
+      "encoder.weight_ih_l0": 8.673617379884035e-19,
+      "encoder.weight_hh_l0": 4.336808689942018e-19,
+      "encoder.bias_ih_l0": 2.168404344971009e-19,
+      "encoder.bias_hh_l0": 1.734723475976807e-18,
+      "initial_head.weight": 1.734723475976807e-18,
+      "initial_head.bias": 6.938893903907228e-18
+    }
+  },
+  "timing": {
+    "eager": {
+      "forward_s": 2.966965900035575,
+      "backward_s": 5.231237299973145,
+      "total_s": 8.19820320000872,
+      "loss": 0.27730432353885437,
+      "work": {
+        "rhs_forward": 12800,
+        "rhs_recompute": 0,
+        "encoder_events": 16
+      },
+      "cuda_peak_allocated_bytes": 144422400,
+      "cuda_peak_reserved_bytes": 153092096
+    }
+  },
+  "future_seconds": 2.0
+}

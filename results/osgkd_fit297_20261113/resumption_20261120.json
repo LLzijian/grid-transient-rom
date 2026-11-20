@@ -1,0 +1,30 @@
+{
+  "run_id": "osgkd_fit297_20261113",
+  "client_date": "2026-11-20",
+  "user_instruction": "继续完成",
+  "previous_interruption": "agent usage limit; no real-data ODE qualification or optimizer updates started",
+  "base_commit": "15a8ec2f2e6aa1c1c3a7dfc815861cc22716019e",
+  "existing_scientific_jobs_found": 0,
+  "process_check": "Get-Process executable paths; unrelated Python processes observed and left untouched",
+  "source_audit_passes_closed": 2,
+  "saved_vector_attribution_closed": true,
+  "training_attempts_used": 0,
+  "role_invocations": [
+    {
+      "tool": "collaboration.spawn_agent",
+      "target": "/root/osgkd_data_finish",
+      "fork_turns": "none",
+      "configured_model": "gpt-6.1-sol",
+      "server_resolved_model": null,
+      "role": "Modeler"
+    },
+    {
+      "tool": "collaboration.spawn_agent",
+      "target": "/root/osgkd_adoption_review",
+      "fork_turns": "none",
+      "configured_model": "gpt-6.1-sol",
+      "server_resolved_model": null,
+      "role": "Reviewer"
+    }
+  ]
+}

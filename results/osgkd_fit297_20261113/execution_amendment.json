@@ -1,0 +1,40 @@
+{
+  "scope": "equivalent execution only; before any scientific optimizer update",
+  "device": "cpu",
+  "threads": 1,
+  "recompute": false,
+  "dtype": "float64",
+  "internal_step": 0.005,
+  "fine_step": 0.0025,
+  "optimizer_updates_in_measurement": 0,
+  "private_arrays_read_in_measurement": false,
+  "references": [
+    {
+      "path": "results/osgkd_fit297_20261113/performance/osgkd_performance_cpu_screen.json",
+      "bytes": 4070,
+      "sha256": "f90eed22a1e6fd99707dda7b4fe90abae4924147d717c12526368ba8d6971f3f"
+    },
+    {
+      "path": "results/osgkd_fit297_20261113/performance/osgkd_performance_cpu_full.json",
+      "bytes": 1676,
+      "sha256": "4010b574b2ad5d20a04f7943376f614b9979496025dcacbe8addc63ebc2e1a0c"
+    },
+    {
+      "path": "results/osgkd_fit297_20261113/performance/osgkd_performance_cuda_full.json",
+      "bytes": 1803,
+      "sha256": "fa5e18d5878c000461cd17480768431ab379e39c045cc17303ccb9849e51cd40"
+    },
+    {
+      "path": "reports/osgkd_fit297_20261113/performance/osgkd_performance.py",
+      "bytes": 6054,
+      "sha256": "2c0f8b0ef1bdb84d3b19eb6b4268be975ad23692d1a8ddb8727b4a6ef553ac1a"
+    }
+  ],
+  "role_invocation": {
+    "tool": "collaboration.spawn_agent",
+    "target": "/root/osgkd_performance",
+    "fork_turns": "none",
+    "configured_model": "gpt-6.1-sol",
+    "server_resolved_model": null
+  }
+}

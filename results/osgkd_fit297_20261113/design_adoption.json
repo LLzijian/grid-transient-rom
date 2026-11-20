@@ -1,0 +1,62 @@
+{
+  "run_id": "osgkd_fit297_20261113",
+  "recorded_utc": "2026-11-12T17:52:28.173507+00:00",
+  "status": "design_and_second_port_audit_accepted",
+  "references": {
+    "design": {
+      "path": "designs/osgkd_fit297_20261113.md",
+      "bytes": 4935,
+      "sha256": "cb98e7a6635fc100dbd6a9bd9fbcd841bcf050c363d383c75daceb4db1bb1a4e"
+    },
+    "protocol": {
+      "path": "campaigns/osgkd_ieee39/first_fit297_protocol.md",
+      "bytes": 18384,
+      "sha256": "9745686afb4c6bd2d9bb9a79c94230a183f2917b22c4a9b9ca5e4a6b5f2ac8cf"
+    },
+    "design_review": {
+      "path": "reports/osgkd_fit297_20261113/design_review.md",
+      "bytes": 4766,
+      "sha256": "3eb3fb49ea23430d7f4b540145a7ca28b11b6ed2fb81cce46b54affaf707d0d6"
+    },
+    "port_amendment": {
+      "path": "campaigns/osgkd_ieee39/port_audit_amendment.md",
+      "bytes": 6177,
+      "sha256": "3ff23f5122b16c9ace888c0b7acdfc195a9cce67a53a6ae1feb1e77e014f135c"
+    },
+    "port_amendment_review": {
+      "path": "reports/osgkd_fit297_20261113/port_amendment_review.md",
+      "bytes": 1315,
+      "sha256": "7168787e20431ebfa6b8f4f7fba1a7c22e036e79a8ee2fb5ed548c5408f8bbee"
+    },
+    "original_audit": {
+      "path": "results/osgkd_fit297_20261113/port_audit.json",
+      "bytes": 332219,
+      "sha256": "42eefe1aa1dc329cd058bd9497cb83bce7e3782c8e0119d5546c284bd9355783"
+    },
+    "execution_amendment": {
+      "path": "campaigns/osgkd_ieee39/execution_amendment.md",
+      "bytes": 1318,
+      "sha256": "f0b99748cc071ce95935fc95d96628f9943b6d1d2fda7c14d2f3380bf29ac8e2"
+    },
+    "execution_evidence": {
+      "path": "results/osgkd_fit297_20261113/execution_amendment.json",
+      "bytes": 1394,
+      "sha256": "550cc4624b31a7488158d7311c26869b96704e3ce95fc1b5bc8f3bed2db87436"
+    }
+  },
+  "root_rationale": "完整C0/C1在相同motion_only合同内进行有界适配和全297评价。首次审计的69个历史粗格差失败保留，采用独立更严格的高阶残余与嵌套误差诊断判别积分误差；仅使用原剩余一遍。计算采用已实测等价的CPU单线程完整自动微分图，无科学参数或目标改变。",
+  "second_audit_source_reads_allowed": 1,
+  "second_audit_execution_requires_frozen_code": true,
+  "training_released": false,
+  "qualification_released": false,
+  "original_val_test": "closed",
+  "new_fom_conditions": 0,
+  "old_gftd_resumed": false,
+  "decisions": {
+    "code": "retain_branch",
+    "model": "retain_evidence",
+    "science": "continue"
+  },
+  "role_binding_reference": "results/osgkd_fit297_20261113/preparation.json",
+  "server_resolved_models": null
+}

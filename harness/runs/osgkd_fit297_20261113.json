@@ -1,0 +1,73 @@
+{
+  "schema_version": 2,
+  "synthetic": false,
+  "run_id": "osgkd_fit297_20261113",
+  "parent_run": null,
+  "purpose": "adaptation",
+  "scope": "OSGKD full C0/C1 under motion_only_v1 on existing train fit297; original val/test closed",
+  "execution": {
+    "status": "RUNNING",
+    "phase": "paired_training",
+    "scientific_execution_released": true,
+    "scientific_jobs_started": 3,
+    "native_live": true,
+    "active_claims": [
+      {
+        "job_id": "train_C0",
+        "session_id": 70470,
+        "native_chunk": "6fb0ce"
+      },
+      {
+        "job_id": "train_C1",
+        "session_id": 19971,
+        "native_chunk": "cbf6a0"
+      }
+    ]
+  },
+  "scientific_work": {
+    "budget_status": "open",
+    "limits": {
+      "data_audit_passes": 2,
+      "train_attempts_per_variant": 1500,
+      "paired_seeds": 1,
+      "new_fom": 0
+    },
+    "data_audit_passes_used": 2,
+    "training_attempts_used": 0,
+    "old_unused_work_transferred": false,
+    "data_audit_budget_status": "closed",
+    "saved_vector_attribution_limit": 1,
+    "saved_vector_attribution_used": 1,
+    "saved_vector_attribution_status": "closed_unresolved",
+    "input_materializations": 1
+  },
+  "evidence": {
+    "validity": "initial_model_numeric_and_gradient_qualified; final candidate pending",
+    "optimizer_health": "unknown",
+    "optimization_adequacy": "unknown",
+    "mechanism_probe": "not_yet_run",
+    "confirmation": "none",
+    "references": [
+      "designs/osgkd_fit297_20261113.md",
+      "campaigns/osgkd_ieee39/first_fit297_protocol.md",
+      "results/osgkd_fit297_20261113/design_adoption.json",
+      "results/osgkd_fit297_20261113/port_audit.json",
+      "results/osgkd_fit297_20261113/port_audit_recheck.json",
+      "results/osgkd_fit297_20261113/source_time_adoption.json",
+      "results/osgkd_fit297_20261113/observation_adoption.json",
+      "results/osgkd_fit297_20261113/materialization.json",
+      "reports/osgkd_fit297_20261113/data_chain_review.md",
+      "results/osgkd_fit297_20261113/qual01/summary.json"
+    ]
+  },
+  "root_decisions": {
+    "code": "retain_branch",
+    "model": "retain_evidence",
+    "science": "continue"
+  },
+  "proposal": {
+    "scientific_claim": "single_seed_existing_train_full_method_comparison",
+    "model_decision": "retain_evidence",
+    "next_action": "qualify_then_paired_train"
+  }
+}

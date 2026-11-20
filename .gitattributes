@@ -311,3 +311,20 @@
 /results/repository_organization/20261113_gftd_design_archive/** -text
 /reports/osgkd_harness_followup_20261113/** -text whitespace=cr-at-eol
 /results/osgkd_harness_followup_20261113/** -text whitespace=cr-at-eol
+
+# Preserve exact OSGKD fit297 source, protocols and evidence bytes.
+/designs/osgkd_fit297_20261113.md -text whitespace=cr-at-eol
+/designs/osgkd_source_time_discretization_20261113.md -text whitespace=cr-at-eol
+/designs/osgkd_observation_adoption_20261113.md -text whitespace=cr-at-eol
+/experiments/osgkd_fit297_20261113/** -text whitespace=cr-at-eol
+/reports/osgkd_fit297_20261113/** -text whitespace=cr-at-eol
+/results/osgkd_fit297_20261113/** -text whitespace=cr-at-eol
+/harness/runs/osgkd_fit297_20261113.json -text whitespace=cr-at-eol
+/src/kiki/data/osgkd.py -text whitespace=cr-at-eol
+/src/kiki/evaluation/osgkd.py -text whitespace=cr-at-eol
+/src/kiki/models/osgkd.py -text whitespace=cr-at-eol
+/src/kiki/models/osgkd_fitting.py -text whitespace=cr-at-eol
+/tests/test_osgkd_*.py -text whitespace=cr-at-eol
+
+# Retain the reviewed source audit report including its final empty line.
+/reports/osgkd_fit297_20261113/port_amendment_review.md -text whitespace=cr-at-eol,-blank-at-eof
