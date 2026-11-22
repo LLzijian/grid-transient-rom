@@ -15,12 +15,12 @@
   "recorded_utc": "2026-11-22T17:33:02.226764+00:00",
   "source_commit": "47e68f99d0c63ad508fb398c27527dc25fa828db",
   "execution": {
-    "status": "RUNNING",
-    "phase": "paired_training",
+    "status": "COMPLETED",
+    "phase": "closed",
     "scientific_execution_released": true,
     "formal_training_released": true,
     "scientific_jobs_started": 2,
-    "native_live": true,
+    "native_live": false,
     "qualification_release": {
       "path": "results/osgkd_v2_p1a_20261123/qualify_release.json",
       "sha256": "13c5936f7bd52c0e06c4eeb7ff630b078511a94993adf04409d74e25a0362d2b",
@@ -50,11 +50,8 @@
           "bytes": 7211
         },
         "passed": true
-      }
-    },
-    "verified_utc": "2026-11-22T17:38:49.641373+00:00",
-    "active_claims": [
-      {
+      },
+      "pair01": {
         "job_id": "pair01",
         "pid": 22508,
         "launcher_pid": 45636,
@@ -75,9 +72,28 @@
           "returned_receipt": {
             "task_name": "/root/p1a_experimenter"
           }
+        },
+        "native_exit_code": null,
+        "completed": {
+          "path": "artifacts/osgkd_v2_p1a_20261123/pair01/completed.json",
+          "sha256": "fdee09822ee36124f9897dcb6be9c3c64c510a15c1b5128b2b2cbe4bd3381fb1",
+          "bytes": 217
+        },
+        "summary": {
+          "path": "results/osgkd_v2_p1a_20261123/pair01/summary.json",
+          "sha256": "97d9f9ccb9634ecfdcd804c9ab4851b77576ac2d62a2e21102e386e76e9fd76b",
+          "bytes": 5699
+        },
+        "fixed_endpoint": 1700,
+        "evaluation_verification": {
+          "path": "results/osgkd_v2_p1a_20261123/analysis.json",
+          "sha256": "1ef1e46c41f482cbdab1ea9f0c276718daa4c38a300d9d417016d0eef3eaa16a",
+          "bytes": 276442
         }
       }
-    ],
+    },
+    "verified_utc": "2026-11-22T23:19:17.956562+00:00",
+    "active_claims": [],
     "first_pair_verified": {
       "verified_utc": "2026-11-22T17:39:27.849038+00:00",
       "attempt": 1501,
@@ -101,7 +117,7 @@
     }
   },
   "scientific_work": {
-    "budget_status": "open",
+    "budget_status": "closed",
     "limits": {
       "qualification_trial_attempts": 2,
       "paired_attempts": 200,
@@ -122,6 +138,23 @@
         "rhs_backward_vjp_upper_bound": 245760
       },
       "discarded_trial_updates": 2
+    },
+    "paired_attempts_used": 200,
+    "used_by_horizon": {
+      "2s": {
+        "attempts": 200,
+        "accepted": 200,
+        "rhs_forward": 2351616
+      },
+      "8s": {
+        "attempts": 200,
+        "accepted": 200,
+        "rhs_forward": 9287616
+      }
+    },
+    "cost": {
+      "wall_s": 2683.7413346999674,
+      "cpu_s": 5776.421875
     }
   },
   "evidence": {
@@ -129,10 +162,46 @@
       "results/osgkd_v2_p1a_20261123/roles.json",
       "results/osgkd_v2_p0_20261123/probe01/summary.json",
       "results/osgkd_v2_p1a_20261123/qual01/summary.json",
-      "reports/osgkd_v2_p1a_20261123/qualification.md"
-    ]
+      "reports/osgkd_v2_p1a_20261123/qualification.md",
+      "results/osgkd_v2_p1a_20261123/pair01/summary.json",
+      "results/osgkd_v2_p1a_20261123/analysis.json",
+      "reports/osgkd_v2_p1a_20261123/result.md",
+      "reports/osgkd_v2_p1a_20261123/review.md"
+    ],
+    "validity": "valid_for_frozen_train_fit297_pair",
+    "optimizer_health": "finite_with_high_8s_clipping",
+    "optimization_adequacy": "unknown",
+    "mechanism_probe": "target_horizon_discriminated_with_shared_initialization_architecture",
+    "effect": "lower_long_horizon_risk_and_stable_false_alarm_with_early_tradeoff",
+    "confirmation": "one_previously_exposed_train_pair_one_parent_one_optimizer_sequence",
+    "independent_review": {
+      "configured_model": "gpt-6.1-sol",
+      "server_resolved_model": null,
+      "returned_receipt": {
+        "task_name": "/root/p1a_final_review"
+      },
+      "reference": "reports/osgkd_v2_p1a_20261123/review.md"
+    }
   },
   "proposal": {
-    "next_action": "reconcile_native_pair_receipts_then_analyze_fixed_endpoints"
+    "next_action": "fixed_equation_motion_only_initialization_discrimination",
+    "rationale": "large long-horizon gain and preserved parent hits; short-horizon and unstable-error tradeoff"
+  },
+  "closed_utc": "2026-11-22T23:19:17.956562+00:00",
+  "execution_source_commit": "eb084c75fdda880b62c85009c1a4774e7e61ade6",
+  "root_decisions": {
+    "code_decision": "retain_branch",
+    "model_decision": "retain_evidence",
+    "science_decision": "continue"
+  },
+  "follow_up_parent": {
+    "path": "artifacts/osgkd_v2_p1a_20261123/pair01/8s/attempt_1700.pt",
+    "sha256": "cb57c93f850eb1928ea0a8ffc6fdc32d24b7130f9a4079698057582d2a1e9aed",
+    "bytes": 193196
+  },
+  "start_publication": {
+    "path": "artifacts/osgkd_v2_p1a_20261123/publication_confirmed.json",
+    "sha256": "3419c47cd3519e07ae7194960f61ba01ea5870e15ba1cc3400f0bd243a21b997",
+    "bytes": 378
   }
 }

@@ -1,0 +1,152 @@
+{
+  "run_id": "osgkd_v2_p1a_20261123",
+  "job_id": "pair01",
+  "phase": "compare",
+  "release": {
+    "run_id": "osgkd_v2_p1a_20261123",
+    "phase": "compare",
+    "job_id": "pair01",
+    "released": true,
+    "created_utc": "2026-11-22T17:37:13.671985+00:00",
+    "client_date": "2026-11-23",
+    "base_commit": "47e68f99d0c63ad508fb398c27527dc25fa828db",
+    "device": "cpu",
+    "threads": 1,
+    "recompute": false,
+    "audit_ref": {
+      "path": "results/osgkd_fit297_20261113/port_audit_release.json",
+      "bytes": 1367,
+      "sha256": "02be50898c5702d5739931032ce2a79436d96294a7244911a26bdb1b01c225a5"
+    },
+    "checkpoint_ref": {
+      "path": "artifacts/osgkd_fit297_20261113/train_C1/C1/attempt_1500.pt",
+      "sha256": "c35e6ebabef0c54a5f3dfcc597a82bc325eb41ed86e3df4eb270a4c260dae83c",
+      "bytes": 193196
+    },
+    "source_hashes": {
+      "experiments/osgkd_v2_p1a_20261123/run.py": "02a4a7069ce919fd2f9c2ac493c24409de5483119b83bfeba5c37c56da00f07c",
+      "experiments/osgkd_fit297_20261113/run.py": "ec74858cd5c296f8210f30242ba620f6a4f9eea160d92b37d021f4b371959c5f",
+      "campaigns/osgkd_v2/p1a_protocol.md": "f72f8df3484390897249e623b7c4de88847879f7e13f30871a94064f71327337",
+      "src/kiki/models/osgkd.py": "6edce1578ff628ea15f3a7c8c429ea7e8898d0bf901ff8810064e19a783af984",
+      "src/kiki/models/osgkd_fitting.py": "2b5dac09543169be952af3698a740620439a2f686977c4f513329bae9704e087",
+      "src/kiki/data/osgkd.py": "30791261eeb068661927a3f154de42f80ef60368f14cc2854388916b5f9075b0",
+      "src/kiki/evaluation/osgkd.py": "1c13a9c7a3ec01dc11bf6aff3bec84efcbbb90ac24f3936a502b9ebc8e7ffa47",
+      "experiments/evaluate_l1_latent.py": "5882dc6814f13ef4210d94db07fd87ca88d8130aa984dbda7757c53088662314",
+      "results/osgkd_fit297_20261113/artifacts.json": "974d42d232203c2e73244a19e7ca51260ef7a9caa382560365953fea8b5a6eaf",
+      "results/osgkd_v2_p1a_20261123/roles.json": "5aca98cb8242cb52ce35749e0d12445ea210f1433e31059a05c3ccbfc2f2ceae",
+      "results/osgkd_v2_p0_20261123/probe01/summary.json": "41447fe8548f54a86894f67518387c3a0b77ecbc3505c29fda782b305bcf19b0"
+    },
+    "qualification_ref": {
+      "path": "results/osgkd_v2_p1a_20261123/qual01/summary.json",
+      "sha256": "a5998f7030abf10789b24f24846204234f164c5cb2404967ebdd1b03cafaff04",
+      "bytes": 7211
+    }
+  },
+  "release_ref": {
+    "path": "results/osgkd_v2_p1a_20261123/compare_release.json",
+    "sha256": "91012b12a3ce2a4a911aa2e8245dfdf23ee29904bdf3d451e5a74e46c6a68eb9",
+    "bytes": 2143
+  },
+  "status": "completed",
+  "pid": 22508,
+  "started_utc": "2026-11-22T17:37:53.158944+00:00",
+  "command": [
+    "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+    "experiments/osgkd_v2_p1a_20261123/run.py",
+    "compare",
+    "--release",
+    "results/osgkd_v2_p1a_20261123/compare_release.json"
+  ],
+  "result": {
+    "treatments": {
+      "2s": {
+        "checkpoint": {
+          "path": "artifacts/osgkd_v2_p1a_20261123/pair01/2s/attempt_1700.pt",
+          "sha256": "d94706d10321373162ca64f56471bd461b1fdc65eceb91e335f676579f1ce9f8",
+          "bytes": 193196
+        },
+        "attempts": 200,
+        "accepted": 200,
+        "rejected": 0,
+        "clipped": 2,
+        "work": {
+          "rhs_forward": 2351616,
+          "rhs_recompute": 0,
+          "encoder_events": 3108,
+          "rhs_backward_vjp": null,
+          "rhs_backward_vjp_upper_bound": 2351616
+        },
+        "train_cost": {
+          "wall_s": 495.1893913001404,
+          "cpu_s": 1070.625
+        },
+        "evaluation_cost": {
+          "wall_s": 166.56838310003513,
+          "cpu_s": 358.0,
+          "scope": "initialization, both integrals and scoring; serialization excluded"
+        },
+        "evaluation_summary_ref": {
+          "path": "artifacts/osgkd_v2_p1a_20261123/pair01/2s/evaluation/summary.json",
+          "sha256": "4c578b0c93e1c66c9cd7445c02c29941cc9cf0803734c047ec37e3b8f047fb86",
+          "bytes": 52726
+        }
+      },
+      "8s": {
+        "checkpoint": {
+          "path": "artifacts/osgkd_v2_p1a_20261123/pair01/8s/attempt_1700.pt",
+          "sha256": "cb57c93f850eb1928ea0a8ffc6fdc32d24b7130f9a4079698057582d2a1e9aed",
+          "bytes": 193196
+        },
+        "attempts": 200,
+        "accepted": 200,
+        "rejected": 0,
+        "clipped": 164,
+        "work": {
+          "rhs_forward": 9287616,
+          "rhs_recompute": 0,
+          "encoder_events": 3108,
+          "rhs_backward_vjp": null,
+          "rhs_backward_vjp_upper_bound": 9287616
+        },
+        "train_cost": {
+          "wall_s": 1837.2040196996531,
+          "cpu_s": 3953.015625
+        },
+        "evaluation_cost": {
+          "wall_s": 167.9233856999781,
+          "cpu_s": 362.03125,
+          "scope": "initialization, both integrals and scoring; serialization excluded"
+        },
+        "evaluation_summary_ref": {
+          "path": "artifacts/osgkd_v2_p1a_20261123/pair01/8s/evaluation/summary.json",
+          "sha256": "a1642ec3a9889480d3e3abf4aae077a2dc9b8e163d37b14e3c22c713d2dca050",
+          "bytes": 52819
+        }
+      }
+    },
+    "paired_batch_sequence_ref": {
+      "path": "artifacts/osgkd_v2_p1a_20261123/qual01/batch_sequence.json",
+      "sha256": "beeb6653a94483d444cc2a191a8d4095ff3b28df3905be1ff8da368e69dba5a6",
+      "bytes": 34615
+    },
+    "fixed_endpoint": 1700,
+    "new_fom": 0,
+    "objective_excluded_ids": {
+      "fit": [],
+      "check": []
+    },
+    "evaluation_denominator": 297
+  },
+  "cost": {
+    "wall_s": 2683.7413346999674,
+    "cpu_s": 5776.421875
+  },
+  "environment": {
+    "torch": "2.13.0+cu130",
+    "numpy": "2.5.2",
+    "device": "cpu",
+    "dtype": "float64",
+    "threads": 1,
+    "recompute": false
+  }
+}
