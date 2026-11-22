@@ -1,8 +1,9 @@
 # 当前研究状态
 
-**2026-11-23。** 当前方案为 [OSGKD 2.0](../designs/osgkd_v2_architecture.md)。[P0 零训练诊断](../reports/osgkd_v2_p0_20261123/result.md)及 [P1a 固定末点评价](../reports/osgkd_v2_p1a_20261123/result.md)已完成并独立复核。P1a 两边各 200 次成功更新，主细步长评价覆盖全 297 条。
+**2026-11-23。** 当前方案为 [OSGKD 2.0](../designs/osgkd_v2_architecture.md)。[P0 零训练诊断](../reports/osgkd_v2_p0_20261123/result.md)、[P1a 固定末点评价](../reports/osgkd_v2_p1a_20261123/result.md)及[P2a 初态试验](../reports/osgkd_v2_p2a_20261123/result.md)已完成并独立复核。P1a 两边各 200 次成功更新，主细步长评价覆盖全 297 条。
 
 - P1a 的 2 s 与 8 s 训练组，在稳定 267 条的 8 s 运动风险为 39.751 和 2.038，稳定误报为 15/267 和 0/267。8 s 组 1/2 s 风险较高，保住原 C1 三个真实区间检出，仍有 27/30 漏检。[P1a 登记](../harness/runs/osgkd_v2_p1a_20261123.json)
+- P2a 固定 P1a 长组方程，一步精修使历史平方残差降低 98.3%。稳定 8 s 风险由 2.038 升至 89.481，稳定误报由 0/267 升至 105/267，失稳真实区间由 3/30 增至 4/30。精修未通过采用守卫，保留原初始化器和长组方程。[P2a 登记](../harness/runs/osgkd_v2_p2a_20261123.json)
 
 - v1 C0/C1 固定参考均有局部增长。去共同角、保留共同转速后的闭环谱最大实部分别为 1.44007 和 1.47467 s⁻¹。局部增长与实际长期预测误差需分开检验。
 - C1 在失稳样本真实记录内检出 3/30，26 次触发发生于真实记录结束后，另有 1 次截至 8 s 无触发。27 条真实区间漏检中有 13 条的幅值初态达到边界的 99%。[P0 回执](../harness/runs/osgkd_v2_p0_20261123.json)
@@ -19,6 +20,6 @@
 
 三个决定：代码 retain_branch，模型 retain_evidence，科学 continue。工作候选为C1第1500次，C0同合同对照同步保留；default none、incumbent和protected anchors不变。原始val/test关闭，新FOM=0，TASK4暂停，GFTD继续暂存。
 
-P1a 保留两组第 1700 次检查点作证据。下一项从 8 s 组的固定动力学出发，辨别运动历史精修初态的作用。30 个失稳样本真实未来均不足 2 s，两个 P1a 目标对它们使用相同的直接监督范围。[v2 Campaign](../campaigns/osgkd_v2/campaign.md)
+P1a 两组末点继续留存，下一研究从 8 s 组第 1700 次检查点出发。先定位真实短窗内的净作用和端口误差，再选择一个保持相同初始化信息的早期闭合对照。[v2 Campaign](../campaigns/osgkd_v2/campaign.md)
 
 [本轮报告](../reports/osgkd_fit297_20261113/result.md) · [机器结果](../results/osgkd_fit297_20261113/analysis.json) · [科学综合](../reports/osgkd_fit297_20261113/scientific_synthesis.md) · [Run记录](../harness/runs/osgkd_fit297_20261113.json)

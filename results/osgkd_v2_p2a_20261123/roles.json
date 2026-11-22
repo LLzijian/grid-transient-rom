@@ -1,0 +1,27 @@
+{
+  "run_id": "osgkd_v2_p2a_20261123",
+  "client_date": "2026-11-23",
+  "parent_analysis_sha256": "1ef1e46c41f482cbdab1ea9f0c276718daa4c38a300d9d417016d0eef3eaa16a",
+  "adopted_by_root": "在冻结的 P1a 长组方程上检验末点隐态的一步后向精修。用已核身份的 P1a 评价作零步对照，以稳定和失稳样本各一例核对零步重现，再进行全体候选评分。无需重跑不变的整组对照。",
+  "role_invocations": [
+    {
+      "role": "Scientist",
+      "tool": "collaboration.spawn_agent",
+      "configured_model": "gpt-6-astra",
+      "server_resolved_model": null,
+      "fork_turns": "none",
+      "returned_receipt": {"task_name": "/root/p2a_scientist"},
+      "completion": "final_answer_delivered",
+      "adopted_output": "campaigns/osgkd_v2/p2a_protocol.md"
+    },
+    {
+      "role": "Modeler",
+      "tool": "collaboration.spawn_agent",
+      "configured_model": "gpt-6.1-sol",
+      "server_resolved_model": null,
+      "fork_turns": "none",
+      "returned_receipt": {"task_name": "/root/p2a_modeler"},
+      "requested_output": "experiments/osgkd_v2_p2a_20261123/run.py"
+    }
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "schema_version": 2,
+  "synthetic": false,
+  "run_id": "osgkd_v2_p2a_20261123",
+  "parent_run": "osgkd_v2_p1a_20261123",
+  "purpose": "discrimination",
+  "scope": "two fixed train qualification cases then one anchored history refinement and existing future evaluation of train fit297; zero training updates",
+  "deployment_contract": "motion_only_v1",
+  "campaign": "campaigns/osgkd_v2/campaign.md",
+  "protocol": "campaigns/osgkd_v2/p2a_protocol.md",
+  "architecture": "designs/osgkd_v2_architecture.md",
+  "recorded_utc": "2026-11-22T23:24:21.761085+00:00",
+  "source_commit": "6d437744a3ab33cfa24edd861be5a48b155b91e4",
+  "execution": {
+    "status": "COMPLETED",
+    "phase": "closed",
+    "scientific_execution_released": true,
+    "scientific_jobs_started": 1,
+    "native_live": false,
+    "release": {
+      "path": "results/osgkd_v2_p2a_20261123/release.json",
+      "sha256": "b49c24929e7b94f9317885db5c193a98494276a7f33a1f6d8525332429811ae9",
+      "bytes": 2770
+    },
+    "verified_utc": "2026-11-22T23:34:06.431615+00:00",
+    "qualification": {
+      "path": "artifacts/osgkd_v2_p2a_20261123/probe01/qualification.json",
+      "sha256": "fc406e9de552191ecc00a76a8b00d9cb64a687701a0c41fcb76848a9aaa2cecd",
+      "bytes": 4365
+    },
+    "active_claims": [],
+    "completed_jobs": {
+      "probe01": {
+        "job_id": "probe01",
+        "pid": 51280,
+        "started_utc": "2026-11-22T23:25:05.987076+00:00",
+        "native_session": 89993,
+        "native_start_chunk": "5cf893",
+        "started": {
+          "path": "artifacts/osgkd_v2_p2a_20261123/probe01/started.json",
+          "sha256": "90cccea8705c99c1ee45c91570a56f124faa375eb58f776b52f15228887f65f1",
+          "bytes": 3418
+        },
+        "experimenter": {
+          "configured_model": "gpt-6.1-sol",
+          "server_resolved_model": null,
+          "returned_receipt": {
+            "task_name": "/root/p2a_experimenter"
+          }
+        },
+        "native_final_chunk": "c812ed",
+        "exit_code": 0,
+        "completed": {
+          "path": "artifacts/osgkd_v2_p2a_20261123/probe01/completed.json",
+          "sha256": "4e39a5f00d20c5e08b93dca47572500af7628d471a2e4321a9ede126b1eefed9",
+          "bytes": 220
+        },
+        "summary": {
+          "path": "results/osgkd_v2_p2a_20261123/probe01/summary.json",
+          "sha256": "ba6b346da5bb8b1bc1657a24e9fa893a873d9826c52d3905421bcd829510cbb5",
+          "bytes": 106576
+        }
+      }
+    }
+  },
+  "scientific_work": {
+    "budget_status": "closed",
+    "limits": {
+      "qualification_cases": 2,
+      "technical_rechecks": 1,
+      "candidate_evaluation_events": 297,
+      "future_rhs_event_calls": 5702400,
+      "training_updates": 0,
+      "new_fom": 0
+    },
+    "old_unused_work_transferred": false,
+    "qualification_cases_used": 2,
+    "candidate_evaluation_events": 297,
+    "technical_rechecks_used": 0,
+    "training_updates": 0,
+    "new_fom": 0,
+    "future_call_work": {
+      "rhs_forward": 5702400,
+      "rhs_recompute": 0,
+      "encoder_events": 0
+    },
+    "initialization_work": {
+      "encoder_events": 601,
+      "rhs_history_primal": 434720,
+      "rhs_history_jvp_tangent_equivalents": 4329600,
+      "rhs_baseline_prefix": 480
+    },
+    "cost": {
+      "wall_s": 276.3344698000001,
+      "cpu_s": 273.96875
+    }
+  },
+  "evidence": {
+    "references": [
+      "results/osgkd_v2_p2a_20261123/roles.json",
+      "results/osgkd_v2_p1a_20261123/analysis.json",
+      "results/osgkd_v2_p2a_20261123/probe01/summary.json",
+      "results/osgkd_v2_p2a_20261123/analysis.json",
+      "reports/osgkd_v2_p2a_20261123/result.md",
+      "reports/osgkd_v2_p2a_20261123/review.md"
+    ],
+    "preflight_review": {
+      "returned_receipt": {
+        "task_name": "/root/p1a_final_review"
+      },
+      "configured_model": "gpt-6.1-sol",
+      "server_resolved_model": null,
+      "passed": true
+    },
+    "validity": "valid_under_current_train_fit297_and_fixed_equation",
+    "optimizer_health": "not_applicable_frozen_equation_no_training",
+    "optimization_adequacy": "not_applicable_fixed_inference_step",
+    "mechanism_probe": "history_residual_reduced_with_direct_initialization_intervention",
+    "effect": "early_and_late_risk_guards_failed_with_one_additional_actual_hit",
+    "confirmation": "one_frozen_equation_and_one_step_configuration_on_exposed_train",
+    "independent_review": {
+      "configured_model": "gpt-6.1-sol",
+      "server_resolved_model": null,
+      "returned_receipt": {
+        "task_name": "/root/p1a_final_review"
+      },
+      "reference": "reports/osgkd_v2_p2a_20261123/review.md"
+    }
+  },
+  "proposal": {
+    "next_action": "attribute_early_net_forcing_and_port_error_then_select_one_closure_contrast",
+    "rationale": "a large decrease in history residual coexisted with substantially worse early and late prediction; most false positives occur with latent states within the original GRU ranges"
+  },
+  "closed_utc": "2026-11-22T23:34:06.431615+00:00",
+  "root_decisions": {
+    "code_decision": "retain_branch",
+    "model_decision": "retain_evidence",
+    "science_decision": "continue"
+  },
+  "comparison": {
+    "retain_refined_candidate": false,
+    "continuation_parent": {
+      "path": "artifacts/osgkd_v2_p1a_20261123/pair01/8s/attempt_1700.pt",
+      "sha256": "cb57c93f850eb1928ea0a8ffc6fdc32d24b7130f9a4079698057582d2a1e9aed",
+      "bytes": 193196
+    },
+    "early_los_guard_outcome": {
+      "stable_early_risk_strict": false,
+      "stable_early_improvement_ge_5pct": false,
+      "stable_8s_ratio_le_1_05": false,
+      "stable_no_false_alarm": false,
+      "parent_true_interval_hits_retained": true,
+      "no_increase_actual_misses": true,
+      "no_increase_numerical_unresolved": true
+    }
+  }
+}

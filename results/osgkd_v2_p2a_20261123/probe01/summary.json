@@ -1,0 +1,2979 @@
+{
+  "run_id": "osgkd_v2_p2a_20261123",
+  "job_id": "probe01",
+  "release": {
+    "run_id": "osgkd_v2_p2a_20261123",
+    "job_id": "probe01",
+    "released": true,
+    "client_date": "2026-11-23",
+    "created_utc": "2026-11-22T23:24:21.761085+00:00",
+    "base_commit": "6d437744a3ab33cfa24edd861be5a48b155b91e4",
+    "audit_ref": {
+      "path": "results/osgkd_fit297_20261113/port_audit_release.json",
+      "bytes": 1367,
+      "sha256": "02be50898c5702d5739931032ce2a79436d96294a7244911a26bdb1b01c225a5"
+    },
+    "checkpoint_ref": {
+      "path": "artifacts/osgkd_v2_p1a_20261123/pair01/8s/attempt_1700.pt",
+      "sha256": "cb57c93f850eb1928ea0a8ffc6fdc32d24b7130f9a4079698057582d2a1e9aed",
+      "bytes": 193196
+    },
+    "parent_pair_ref": {
+      "path": "results/osgkd_v2_p1a_20261123/pair01/summary.json",
+      "sha256": "97d9f9ccb9634ecfdcd804c9ab4851b77576ac2d62a2e21102e386e76e9fd76b",
+      "bytes": 5699
+    },
+    "baseline_rows_ref": {
+      "path": "artifacts/osgkd_v2_p1a_20261123/pair01/8s/evaluation/rows.json",
+      "sha256": "3e895ffccff0ebcacad6d8024086812e2b8902ce5c483dcb2c46be3641ab713a",
+      "bytes": 1336349
+    },
+    "baseline_predictions_ref": {
+      "path": "artifacts/osgkd_v2_p1a_20261123/pair01/8s/evaluation/predictions.npz",
+      "sha256": "a0e7f03c3b507babbbae9fda67f389a98c40f4f6bb092fd0dd54549fa594e7df",
+      "bytes": 182531921
+    },
+    "source_hashes": {
+      "experiments/osgkd_v2_p2a_20261123/run.py": "ee513cc7f7fa58284e0bdf5c627126077078d77207b33c80fa9aadeb66c23727",
+      "campaigns/osgkd_v2/p2a_protocol.md": "06b943e02d916abd6af2946b1492496a5583b93b46e306093fa4dc970e456479",
+      "experiments/osgkd_v2_p1a_20261123/run.py": "02a4a7069ce919fd2f9c2ac493c24409de5483119b83bfeba5c37c56da00f07c",
+      "experiments/osgkd_fit297_20261113/run.py": "ec74858cd5c296f8210f30242ba620f6a4f9eea160d92b37d021f4b371959c5f",
+      "src/kiki/models/osgkd.py": "6edce1578ff628ea15f3a7c8c429ea7e8898d0bf901ff8810064e19a783af984",
+      "src/kiki/models/osgkd_fitting.py": "2b5dac09543169be952af3698a740620439a2f686977c4f513329bae9704e087",
+      "src/kiki/evaluation/osgkd.py": "1c13a9c7a3ec01dc11bf6aff3bec84efcbbb90ac24f3936a502b9ebc8e7ffa47",
+      "src/kiki/data/osgkd.py": "30791261eeb068661927a3f154de42f80ef60368f14cc2854388916b5f9075b0",
+      "experiments/evaluate_l1_latent.py": "5882dc6814f13ef4210d94db07fd87ca88d8130aa984dbda7757c53088662314",
+      "results/osgkd_v2_p2a_20261123/roles.json": "6d107a4c22f94b098b1157646f38f62c7c6be9a6e2a356b9be5358abc81487c4",
+      "results/osgkd_v2_p1a_20261123/analysis.json": "1ef1e46c41f482cbdab1ea9f0c276718daa4c38a300d9d417016d0eef3eaa16a",
+      "results/osgkd_v2_p1a_20261123/pair01/summary.json": "97d9f9ccb9634ecfdcd804c9ab4851b77576ac2d62a2e21102e386e76e9fd76b"
+    },
+    "scope": "two fixed train qualification cases then one anchored history refinement and existing future evaluation of train fit297; zero training updates"
+  },
+  "release_ref": {
+    "path": "results/osgkd_v2_p2a_20261123/release.json",
+    "sha256": "b49c24929e7b94f9317885db5c193a98494276a7f33a1f6d8525332429811ae9",
+    "bytes": 2770
+  },
+  "status": "completed",
+  "pid": 51280,
+  "started_utc": "2026-11-22T23:25:05.987076+00:00",
+  "command": [
+    "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+    "experiments/osgkd_v2_p2a_20261123/run.py",
+    "--release",
+    "results/osgkd_v2_p2a_20261123/release.json"
+  ],
+  "result": {
+    "passed": true,
+    "qualification": {
+      "passed": true,
+      "forced_fallback_exact": true,
+      "events": [
+        {
+          "event_id": "expansion_0000",
+          "checks": {
+            "endpoint": true,
+            "main_fine": {
+              "rms": 1.6164001277120582e-12,
+              "maximum": 6.66247612635118e-12,
+              "passed": true
+            },
+            "common_angle_shift": {
+              "rms": 7.752586250769639e-17,
+              "maximum": 2.42861286636753e-16,
+              "passed": true
+            },
+            "round_trip": {
+              "rms": 2.778949123275133e-14,
+              "maximum": 1.425526363618701e-13,
+              "passed": true
+            },
+            "history_main_fine": {
+              "rms": 1.6896604113597492e-12,
+              "maximum": 6.8948319276174175e-12,
+              "passed": true
+            },
+            "jacobian_direction": {
+              "passed": true,
+              "checks": [
+                {
+                  "h": 1e-05,
+                  "absolute_error": 7.539985708647263e-12,
+                  "relative_error": 5.440358101727031e-11,
+                  "passed": true
+                },
+                {
+                  "h": 5e-06,
+                  "absolute_error": 1.3979425978928868e-11,
+                  "relative_error": 1.0086634951278757e-10,
+                  "passed": true
+                }
+              ]
+            },
+            "saved_K0_prefix": {
+              "passed": true,
+              "checks": [
+                {
+                  "path": "main",
+                  "normalized_max_absolute_error": 1.115274043559265e-16,
+                  "passed": true
+                },
+                {
+                  "path": "fine",
+                  "normalized_max_absolute_error": 1.1102230246251565e-16,
+                  "passed": true
+                }
+              ]
+            }
+          },
+          "initialization": [
+            {
+              "reason": "accepted",
+              "accepted": true,
+              "before": 0.00417134740532033,
+              "trial_after": 0.0004869917894745075,
+              "effective_after": 0.0004869917894745075,
+              "trial_history_after": 0.0004116154147563728,
+              "effective_history_after": 0.0004116154147563728,
+              "linear_residual_relative": 1.9688283484353409e-16,
+              "solve_condition": 29.623621652443717,
+              "delta_norm": 0.27454758188360484
+            }
+          ],
+          "passed": true
+        },
+        {
+          "event_id": "expansion_0008",
+          "checks": {
+            "endpoint": true,
+            "main_fine": {
+              "rms": 5.46290225035556e-12,
+              "maximum": 2.0708545989123195e-11,
+              "passed": true
+            },
+            "common_angle_shift": {
+              "rms": 1.21935143296219e-16,
+              "maximum": 4.440892098500626e-16,
+              "passed": true
+            },
+            "round_trip": {
+              "rms": 1.4468872430031987e-13,
+              "maximum": 6.278994554927987e-13,
+              "passed": true
+            },
+            "history_main_fine": {
+              "rms": 7.239022269377275e-12,
+              "maximum": 3.5998320472530484e-11,
+              "passed": true
+            },
+            "jacobian_direction": {
+              "passed": true,
+              "checks": [
+                {
+                  "h": 1e-05,
+                  "absolute_error": 1.8948069867880978e-11,
+                  "relative_error": 1.3936577736423527e-10,
+                  "passed": true
+                },
+                {
+                  "h": 5e-06,
+                  "absolute_error": 4.586717497685171e-11,
+                  "relative_error": 3.373596646435508e-10,
+                  "passed": true
+                }
+              ]
+            },
+            "saved_K0_prefix": {
+              "passed": true,
+              "checks": [
+                {
+                  "path": "main",
+                  "normalized_max_absolute_error": 4.909474296211098e-16,
+                  "passed": true
+                },
+                {
+                  "path": "fine",
+                  "normalized_max_absolute_error": 5.022811228979364e-16,
+                  "passed": true
+                }
+              ]
+            }
+          },
+          "initialization": [
+            {
+              "reason": "accepted",
+              "accepted": true,
+              "before": 0.02381108016651553,
+              "trial_after": 0.0006426962990860093,
+              "effective_after": 0.0006426962990860093,
+              "trial_history_after": 0.0001742633902614086,
+              "effective_history_after": 0.0001742633902614086,
+              "linear_residual_relative": 1.7265360805471104e-16,
+              "solve_condition": 29.78389078247653,
+              "delta_norm": 0.6844215870533312
+            }
+          ],
+          "passed": true
+        }
+      ]
+    },
+    "evaluation_denominator": 297,
+    "parameter_updates": 0,
+    "new_fom": 0,
+    "baseline_rows_ref": {
+      "path": "artifacts/osgkd_v2_p1a_20261123/pair01/8s/evaluation/rows.json",
+      "sha256": "3e895ffccff0ebcacad6d8024086812e2b8902ce5c483dcb2c46be3641ab713a",
+      "bytes": 1336349
+    },
+    "baseline_summary_ref": {
+      "path": "artifacts/osgkd_v2_p1a_20261123/pair01/8s/evaluation/summary.json",
+      "sha256": "a1642ec3a9889480d3e3abf4aae077a2dc9b8e163d37b14e3c22c713d2dca050",
+      "bytes": 52819
+    },
+    "candidate": {
+      "summary": {
+        "metric": "motion_risk_v1; excludes mechanical term of legacy risk",
+        "splits": {
+          "train_all": {
+            "all_1s": {
+              "denominator": 297,
+              "covered": 297,
+              "short_record_ids": [
+                "expansion_0008",
+                "expansion_0010",
+                "expansion_0013",
+                "expansion_0030",
+                "expansion_0044",
+                "expansion_0078",
+                "expansion_0104",
+                "expansion_0106",
+                "expansion_0109",
+                "expansion_0143",
+                "newtrain_2ca331ed919db8a0",
+                "newtrain_384b3c14b5db826e",
+                "newtrain_7686602ca2df933f",
+                "newtrain_807efe654094c95c",
+                "newtrain_9839a09144dd43ec",
+                "newtrain_b205117cd732146c",
+                "newtrain_f19d6366a51b07d4",
+                "pilot_0030",
+                "pilot_0093",
+                "pilot_0122",
+                "pilot_0202",
+                "pilot_0207",
+                "pilot_0222",
+                "pilot_0252",
+                "pilot_0254",
+                "pilot_0335",
+                "pilot_0380"
+              ],
+              "unresolved_ids": [],
+              "official": {
+                "motion_risk_v1": 1.0603703140330343,
+                "common_speed_rmse_rad_s": 0.29884516165864905,
+                "tau_m": {
+                  "observed_components": 277060,
+                  "rmse_system_pu_torque": 0.2891874638761187,
+                  "normalized_rmse": 0.499326280471757
+                },
+                "tau_e": {
+                  "observed_components": 277060,
+                  "rmse_system_pu_torque": 2.0368838784555656,
+                  "normalized_rmse": 0.7897935216345395
+                }
+              },
+              "covered_only_diagnostic": {
+                "motion_risk_v1": 1.0603703140330343,
+                "common_speed_rmse_rad_s": 0.29884516165864905,
+                "tau_m": {
+                  "observed_components": 277060,
+                  "rmse_system_pu_torque": 0.2891874638761187,
+                  "normalized_rmse": 0.499326280471757
+                },
+                "tau_e": {
+                  "observed_components": 277060,
+                  "rmse_system_pu_torque": 2.0368838784555656,
+                  "normalized_rmse": 0.7897935216345395
+                }
+              }
+            },
+            "all_2s": {
+              "denominator": 297,
+              "covered": 297,
+              "short_record_ids": [
+                "expansion_0008",
+                "expansion_0010",
+                "expansion_0013",
+                "expansion_0030",
+                "expansion_0044",
+                "expansion_0078",
+                "expansion_0104",
+                "expansion_0106",
+                "expansion_0109",
+                "expansion_0138",
+                "expansion_0143",
+                "newtrain_2ca331ed919db8a0",
+                "newtrain_384b3c14b5db826e",
+                "newtrain_7686602ca2df933f",
+                "newtrain_807efe654094c95c",
+                "newtrain_9839a09144dd43ec",
+                "newtrain_b205117cd732146c",
+                "newtrain_f19d6366a51b07d4",
+                "pilot_0030",
+                "pilot_0093",
+                "pilot_0122",
+                "pilot_0202",
+                "pilot_0205",
+                "pilot_0207",
+                "pilot_0220",
+                "pilot_0222",
+                "pilot_0252",
+                "pilot_0254",
+                "pilot_0335",
+                "pilot_0380"
+              ],
+              "unresolved_ids": [],
+              "official": {
+                "motion_risk_v1": 3.5683905915305356,
+                "common_speed_rmse_rad_s": 0.37027988348803215,
+                "tau_m": {
+                  "observed_components": 544990,
+                  "rmse_system_pu_torque": 0.29235181848060043,
+                  "normalized_rmse": 0.5135566833888203
+                },
+                "tau_e": {
+                  "observed_components": 544990,
+                  "rmse_system_pu_torque": 1.9697464116408159,
+                  "normalized_rmse": 0.7589956027710406
+                }
+              },
+              "covered_only_diagnostic": {
+                "motion_risk_v1": 3.5683905915305356,
+                "common_speed_rmse_rad_s": 0.37027988348803215,
+                "tau_m": {
+                  "observed_components": 544990,
+                  "rmse_system_pu_torque": 0.29235181848060043,
+                  "normalized_rmse": 0.5135566833888203
+                },
+                "tau_e": {
+                  "observed_components": 544990,
+                  "rmse_system_pu_torque": 1.9697464116408159,
+                  "normalized_rmse": 0.7589956027710406
+                }
+              }
+            },
+            "all_5s": {
+              "denominator": 297,
+              "covered": 297,
+              "short_record_ids": [
+                "expansion_0008",
+                "expansion_0010",
+                "expansion_0013",
+                "expansion_0030",
+                "expansion_0044",
+                "expansion_0078",
+                "expansion_0104",
+                "expansion_0106",
+                "expansion_0109",
+                "expansion_0138",
+                "expansion_0143",
+                "newtrain_2ca331ed919db8a0",
+                "newtrain_384b3c14b5db826e",
+                "newtrain_7686602ca2df933f",
+                "newtrain_807efe654094c95c",
+                "newtrain_9839a09144dd43ec",
+                "newtrain_b205117cd732146c",
+                "newtrain_f19d6366a51b07d4",
+                "pilot_0030",
+                "pilot_0093",
+                "pilot_0122",
+                "pilot_0202",
+                "pilot_0205",
+                "pilot_0207",
+                "pilot_0220",
+                "pilot_0222",
+                "pilot_0252",
+                "pilot_0254",
+                "pilot_0335",
+                "pilot_0380"
+              ],
+              "unresolved_ids": [],
+              "official": {
+                "motion_risk_v1": 28.51157377934883,
+                "common_speed_rmse_rad_s": 0.9809335609143569,
+                "tau_m": {
+                  "observed_components": 1345990,
+                  "rmse_system_pu_torque": 0.31362015561993734,
+                  "normalized_rmse": 0.575041195185149
+                },
+                "tau_e": {
+                  "observed_components": 1345990,
+                  "rmse_system_pu_torque": 1.6192372993489141,
+                  "normalized_rmse": 0.5880900352399847
+                }
+              },
+              "covered_only_diagnostic": {
+                "motion_risk_v1": 28.51157377934883,
+                "common_speed_rmse_rad_s": 0.9809335609143569,
+                "tau_m": {
+                  "observed_components": 1345990,
+                  "rmse_system_pu_torque": 0.31362015561993734,
+                  "normalized_rmse": 0.575041195185149
+                },
+                "tau_e": {
+                  "observed_components": 1345990,
+                  "rmse_system_pu_torque": 1.6192372993489141,
+                  "normalized_rmse": 0.5880900352399847
+                }
+              }
+            },
+            "all_8s": {
+              "denominator": 297,
+              "covered": 297,
+              "short_record_ids": [
+                "expansion_0008",
+                "expansion_0010",
+                "expansion_0013",
+                "expansion_0030",
+                "expansion_0044",
+                "expansion_0078",
+                "expansion_0104",
+                "expansion_0106",
+                "expansion_0109",
+                "expansion_0138",
+                "expansion_0143",
+                "newtrain_2ca331ed919db8a0",
+                "newtrain_384b3c14b5db826e",
+                "newtrain_7686602ca2df933f",
+                "newtrain_807efe654094c95c",
+                "newtrain_9839a09144dd43ec",
+                "newtrain_b205117cd732146c",
+                "newtrain_f19d6366a51b07d4",
+                "pilot_0030",
+                "pilot_0093",
+                "pilot_0122",
+                "pilot_0202",
+                "pilot_0205",
+                "pilot_0207",
+                "pilot_0220",
+                "pilot_0222",
+                "pilot_0252",
+                "pilot_0254",
+                "pilot_0335",
+                "pilot_0380"
+              ],
+              "unresolved_ids": [],
+              "official": {
+                "motion_risk_v1": 82.84878884419109,
+                "common_speed_rmse_rad_s": 1.2026023456763577,
+                "tau_m": {
+                  "observed_components": 2146990,
+                  "rmse_system_pu_torque": 0.33701034013912323,
+                  "normalized_rmse": 0.6485698380845899
+                },
+                "tau_e": {
+                  "observed_components": 2146990,
+                  "rmse_system_pu_torque": 1.4125127187537199,
+                  "normalized_rmse": 0.5127557359723488
+                }
+              },
+              "covered_only_diagnostic": {
+                "motion_risk_v1": 82.84878884419109,
+                "common_speed_rmse_rad_s": 1.2026023456763577,
+                "tau_m": {
+                  "observed_components": 2146990,
+                  "rmse_system_pu_torque": 0.33701034013912323,
+                  "normalized_rmse": 0.6485698380845899
+                },
+                "tau_e": {
+                  "observed_components": 2146990,
+                  "rmse_system_pu_torque": 1.4125127187537199,
+                  "normalized_rmse": 0.5127557359723488
+                }
+              }
+            },
+            "stable_1s": {
+              "denominator": 267,
+              "covered": 267,
+              "short_record_ids": [],
+              "unresolved_ids": [],
+              "official": {
+                "motion_risk_v1": 1.103186481944101,
+                "common_speed_rmse_rad_s": 0.2710034503500518,
+                "tau_m": {
+                  "observed_components": 267000,
+                  "rmse_system_pu_torque": 0.2715167524883649,
+                  "normalized_rmse": 0.46626844639233556
+                },
+                "tau_e": {
+                  "observed_components": 267000,
+                  "rmse_system_pu_torque": 1.97971553578458,
+                  "normalized_rmse": 0.7266320442936494
+                }
+              },
+              "covered_only_diagnostic": {
+                "motion_risk_v1": 1.103186481944101,
+                "common_speed_rmse_rad_s": 0.2710034503500518,
+                "tau_m": {
+                  "observed_components": 267000,
+                  "rmse_system_pu_torque": 0.2715167524883649,
+                  "normalized_rmse": 0.46626844639233556
+                },
+                "tau_e": {
+                  "observed_components": 267000,
+                  "rmse_system_pu_torque": 1.97971553578458,
+                  "normalized_rmse": 0.7266320442936494
+                }
+              }
+            },
+            "stable_2s": {
+              "denominator": 267,
+              "covered": 267,
+              "short_record_ids": [],
+              "unresolved_ids": [],
+              "official": {
+                "motion_risk_v1": 3.819349695088646,
+                "common_speed_rmse_rad_s": 0.3492955496762589,
+                "tau_m": {
+                  "observed_components": 534000,
+                  "rmse_system_pu_torque": 0.27986947223916375,
+                  "normalized_rmse": 0.49070977598788745
+                },
+                "tau_e": {
+                  "observed_components": 534000,
+                  "rmse_system_pu_torque": 1.9354242737858407,
+                  "normalized_rmse": 0.7191647894850958
+                }
+              },
+              "covered_only_diagnostic": {
+                "motion_risk_v1": 3.819349695088646,
+                "common_speed_rmse_rad_s": 0.3492955496762589,
+                "tau_m": {
+                  "observed_components": 534000,
+                  "rmse_system_pu_torque": 0.27986947223916375,
+                  "normalized_rmse": 0.49070977598788745
+                },
+                "tau_e": {
+                  "observed_components": 534000,
+                  "rmse_system_pu_torque": 1.9354242737858407,
+                  "normalized_rmse": 0.7191647894850958
+                }
+              }
+            },
+            "stable_5s": {
+              "denominator": 267,
+              "covered": 267,
+              "short_record_ids": [],
+              "unresolved_ids": [],
+              "official": {
+                "motion_risk_v1": 30.939953311143043,
+                "common_speed_rmse_rad_s": 0.9813171331754867,
+                "tau_m": {
+                  "observed_components": 1335000,
+                  "rmse_system_pu_torque": 0.3092032230635531,
+                  "normalized_rmse": 0.5674906347708186
+                },
+                "tau_e": {
+                  "observed_components": 1335000,
+                  "rmse_system_pu_torque": 1.599362380378598,
+                  "normalized_rmse": 0.5660424908721003
+                }
+              },
+              "covered_only_diagnostic": {
+                "motion_risk_v1": 30.939953311143043,
+                "common_speed_rmse_rad_s": 0.9813171331754867,
+                "tau_m": {
+                  "observed_components": 1335000,
+                  "rmse_system_pu_torque": 0.3092032230635531,
+                  "normalized_rmse": 0.5674906347708186
+                },
+                "tau_e": {
+                  "observed_components": 1335000,
+                  "rmse_system_pu_torque": 1.599362380378598,
+                  "normalized_rmse": 0.5660424908721003
+                }
+              }
+            },
+            "stable_8s": {
+              "denominator": 267,
+              "covered": 267,
+              "short_record_ids": [],
+              "unresolved_ids": [],
+              "official": {
+                "motion_risk_v1": 89.480554221674,
+                "common_speed_rmse_rad_s": 1.2038327013202315,
+                "tau_m": {
+                  "observed_components": 2136000,
+                  "rmse_system_pu_torque": 0.3345667561477875,
+                  "normalized_rmse": 0.6447588870441565
+                },
+                "tau_e": {
+                  "observed_components": 2136000,
+                  "rmse_system_pu_torque": 1.397135160044641,
+                  "normalized_rmse": 0.49657641312348655
+                }
+              },
+              "covered_only_diagnostic": {
+                "motion_risk_v1": 89.480554221674,
+                "common_speed_rmse_rad_s": 1.2038327013202315,
+                "tau_m": {
+                  "observed_components": 2136000,
+                  "rmse_system_pu_torque": 0.3345667561477875,
+                  "normalized_rmse": 0.6447588870441565
+                },
+                "tau_e": {
+                  "observed_components": 2136000,
+                  "rmse_system_pu_torque": 1.397135160044641,
+                  "normalized_rmse": 0.49657641312348655
+                }
+              }
+            },
+            "unstable_actual": {
+              "denominator": 30,
+              "covered": 30,
+              "short_record_ids": [],
+              "unresolved_ids": [],
+              "official": {
+                "motion_risk_v1": 1.0081030125955093,
+                "common_speed_rmse_rad_s": 0.9331673911238112,
+                "tau_m": {
+                  "observed_components": 10990,
+                  "rmse_system_pu_torque": 0.6576693533408213,
+                  "normalized_rmse": 1.1741377549861969
+                },
+                "tau_e": {
+                  "observed_components": 10990,
+                  "rmse_system_pu_torque": 3.223748375099475,
+                  "normalized_rmse": 1.8538752017443159
+                }
+              },
+              "covered_only_diagnostic": {
+                "motion_risk_v1": 1.0081030125955093,
+                "common_speed_rmse_rad_s": 0.9331673911238112,
+                "tau_m": {
+                  "observed_components": 10990,
+                  "rmse_system_pu_torque": 0.6576693533408213,
+                  "normalized_rmse": 1.1741377549861969
+                },
+                "tau_e": {
+                  "observed_components": 10990,
+                  "rmse_system_pu_torque": 3.223748375099475,
+                  "normalized_rmse": 1.8538752017443159
+                }
+              }
+            }
+          },
+          "train_fit": {
+            "all_1s": {
+              "denominator": 228,
+              "covered": 228,
+              "short_record_ids": [
+                "expansion_0044",
+                "expansion_0078",
+                "expansion_0104",
+                "expansion_0106",
+                "expansion_0109",
+                "expansion_0143",
+                "newtrain_384b3c14b5db826e",
+                "newtrain_807efe654094c95c",
+                "pilot_0030",
+                "pilot_0093",
+                "pilot_0202",
+                "pilot_0207",
+                "pilot_0252",
+                "pilot_0254",
+                "pilot_0335",
+                "pilot_0380"
+              ],
+              "unresolved_ids": [],
+              "official": {
+                "motion_risk_v1": 1.1597292112398998,
+                "common_speed_rmse_rad_s": 0.2794168565791621,
+                "tau_m": {
+                  "observed_components": 216180,
+                  "rmse_system_pu_torque": 0.2842176380088821,
+                  "normalized_rmse": 0.4842619564117052
+                },
+                "tau_e": {
+                  "observed_components": 216180,
+                  "rmse_system_pu_torque": 1.9829413969367142,
+                  "normalized_rmse": 0.7719591390981783
+                }
+              },
+              "covered_only_diagnostic": {
+                "motion_risk_v1": 1.1597292112398998,
+                "common_speed_rmse_rad_s": 0.2794168565791621,
+                "tau_m": {
+                  "observed_components": 216180,
+                  "rmse_system_pu_torque": 0.2842176380088821,
+                  "normalized_rmse": 0.4842619564117052
+                },
+                "tau_e": {
+                  "observed_components": 216180,
+                  "rmse_system_pu_torque": 1.9829413969367142,
+                  "normalized_rmse": 0.7719591390981783
+                }
+              }
+            },
+            "all_2s": {
+              "denominator": 228,
+              "covered": 228,
+              "short_record_ids": [
+                "expansion_0044",
+                "expansion_0078",
+                "expansion_0104",
+                "expansion_0106",
+                "expansion_0109",
+                "expansion_0138",
+                "expansion_0143",
+                "newtrain_384b3c14b5db826e",
+                "newtrain_807efe654094c95c",
+                "pilot_0030",
+                "pilot_0093",
+                "pilot_0202",
+                "pilot_0205",
+                "pilot_0207",
+                "pilot_0252",
+                "pilot_0254",
+                "pilot_0335",
+                "pilot_0380"
+              ],
+              "unresolved_ids": [],
+              "official": {
+                "motion_risk_v1": 4.108199968963167,
+                "common_speed_rmse_rad_s": 0.36231696795671875,
+                "tau_m": {
+                  "observed_components": 426900,
+                  "rmse_system_pu_torque": 0.2784015512504374,
+                  "normalized_rmse": 0.48716544951067703
+                },
+                "tau_e": {
+                  "observed_components": 426900,
+                  "rmse_system_pu_torque": 1.9054314569850483,
+                  "normalized_rmse": 0.733767983279799
+                }
+              },
+              "covered_only_diagnostic": {
+                "motion_risk_v1": 4.108199968963167,
+                "common_speed_rmse_rad_s": 0.36231696795671875,
+                "tau_m": {
+                  "observed_components": 426900,
+                  "rmse_system_pu_torque": 0.2784015512504374,
+                  "normalized_rmse": 0.48716544951067703
+                },
+                "tau_e": {
+                  "observed_components": 426900,
+                  "rmse_system_pu_torque": 1.9054314569850483,
+                  "normalized_rmse": 0.733767983279799
+                }
+              }
+            },
+            "all_5s": {
+              "denominator": 228,
+              "covered": 228,
+              "short_record_ids": [
+                "expansion_0044",
+                "expansion_0078",
+                "expansion_0104",
+                "expansion_0106",
+                "expansion_0109",
+                "expansion_0138",
+                "expansion_0143",
+                "newtrain_384b3c14b5db826e",
+                "newtrain_807efe654094c95c",
+                "pilot_0030",
+                "pilot_0093",
+                "pilot_0202",
+                "pilot_0205",
+                "pilot_0207",
+                "pilot_0252",
+                "pilot_0254",
+                "pilot_0335",
+                "pilot_0380"
+              ],
+              "unresolved_ids": [],
+              "official": {
+                "motion_risk_v1": 33.0647828852337,
+                "common_speed_rmse_rad_s": 0.9949305452621836,
+                "tau_m": {
+                  "observed_components": 1056900,
+                  "rmse_system_pu_torque": 0.3031615089524567,
+                  "normalized_rmse": 0.5579910192752646
+                },
+                "tau_e": {
+                  "observed_components": 1056900,
+                  "rmse_system_pu_torque": 1.578660230538058,
+                  "normalized_rmse": 0.5706295834833427
+                }
+              },
+              "covered_only_diagnostic": {
+                "motion_risk_v1": 33.0647828852337,
+                "common_speed_rmse_rad_s": 0.9949305452621836,
+                "tau_m": {
+                  "observed_components": 1056900,
+                  "rmse_system_pu_torque": 0.3031615089524567,
+                  "normalized_rmse": 0.5579910192752646
+                },
+                "tau_e": {
+                  "observed_components": 1056900,
+                  "rmse_system_pu_torque": 1.578660230538058,
+                  "normalized_rmse": 0.5706295834833427
+                }
+              }
+            },
+            "all_8s": {
+              "denominator": 228,
+              "covered": 228,
+              "short_record_ids": [
+                "expansion_0044",
+                "expansion_0078",
+                "expansion_0104",
+                "expansion_0106",
+                "expansion_0109",
+                "expansion_0138",
+                "expansion_0143",
+                "newtrain_384b3c14b5db826e",
+                "newtrain_807efe654094c95c",
+                "pilot_0030",
+                "pilot_0093",
+                "pilot_0202",
+                "pilot_0205",
+                "pilot_0207",
+                "pilot_0252",
+                "pilot_0254",
+                "pilot_0335",
+                "pilot_0380"
+              ],
+              "unresolved_ids": [],
+              "official": {
+                "motion_risk_v1": 92.56061106521452,
+                "common_speed_rmse_rad_s": 1.2256562140125367,
+                "tau_m": {
+                  "observed_components": 1686900,
+                  "rmse_system_pu_torque": 0.33055758017021275,
+                  "normalized_rmse": 0.6396991445476677
+                },
+                "tau_e": {
+                  "observed_components": 1686900,
+                  "rmse_system_pu_torque": 1.3855801729710762,
+                  "normalized_rmse": 0.4993780125902037
+                }
+              },
+              "covered_only_diagnostic": {
+                "motion_risk_v1": 92.56061106521452,
+                "common_speed_rmse_rad_s": 1.2256562140125367,
+                "tau_m": {
+                  "observed_components": 1686900,
+                  "rmse_system_pu_torque": 0.33055758017021275,
+                  "normalized_rmse": 0.6396991445476677
+                },
+                "tau_e": {
+                  "observed_components": 1686900,
+                  "rmse_system_pu_torque": 1.3855801729710762,
+                  "normalized_rmse": 0.4993780125902037
+                }
+              }
+            },
+            "stable_1s": {
+              "denominator": 210,
+              "covered": 210,
+              "short_record_ids": [],
+              "unresolved_ids": [],
+              "official": {
+                "motion_risk_v1": 1.200353463555571,
+                "common_speed_rmse_rad_s": 0.2525647157905483,
+                "tau_m": {
+                  "observed_components": 210000,
+                  "rmse_system_pu_torque": 0.2718941546556338,
+                  "normalized_rmse": 0.4610790745129173
+                },
+                "tau_e": {
+                  "observed_components": 210000,
+                  "rmse_system_pu_torque": 1.9214465971871086,
+                  "normalized_rmse": 0.7316778676905984
+                }
+              },
+              "covered_only_diagnostic": {
+                "motion_risk_v1": 1.200353463555571,
+                "common_speed_rmse_rad_s": 0.2525647157905483,
+                "tau_m": {
+                  "observed_components": 210000,
+                  "rmse_system_pu_torque": 0.2718941546556338,
+                  "normalized_rmse": 0.4610790745129173
+                },
+                "tau_e": {
+                  "observed_components": 210000,
+                  "rmse_system_pu_torque": 1.9214465971871086,
+                  "normalized_rmse": 0.7316778676905984
+                }
+              }
+            },
+            "stable_2s": {
+              "denominator": 210,
+              "covered": 210,
+              "short_record_ids": [],
+              "unresolved_ids": [],
+              "official": {
+                "motion_risk_v1": 4.330699351598183,
+                "common_speed_rmse_rad_s": 0.34056689973679344,
+                "tau_m": {
+                  "observed_components": 420000,
+                  "rmse_system_pu_torque": 0.27029807768958813,
+                  "normalized_rmse": 0.4719158792152214
+                },
+                "tau_e": {
+                  "observed_components": 420000,
+                  "rmse_system_pu_torque": 1.8695602296664338,
+                  "normalized_rmse": 0.7070161808135025
+                }
+              },
+              "covered_only_diagnostic": {
+                "motion_risk_v1": 4.330699351598183,
+                "common_speed_rmse_rad_s": 0.34056689973679344,
+                "tau_m": {
+                  "observed_components": 420000,
+                  "rmse_system_pu_torque": 0.27029807768958813,
+                  "normalized_rmse": 0.4719158792152214
+                },
+                "tau_e": {
+                  "observed_components": 420000,
+                  "rmse_system_pu_torque": 1.8695602296664338,
+                  "normalized_rmse": 0.7070161808135025
+                }
+              }
+            },
+            "stable_5s": {
+              "denominator": 210,
+              "covered": 210,
+              "short_record_ids": [],
+              "unresolved_ids": [],
+              "official": {
+                "motion_risk_v1": 35.3380698410884,
+                "common_speed_rmse_rad_s": 0.9946929156333556,
+                "tau_m": {
+                  "observed_components": 1050000,
+                  "rmse_system_pu_torque": 0.3003713975547875,
+                  "normalized_rmse": 0.5531637989468279
+                },
+                "tau_e": {
+                  "observed_components": 1050000,
+                  "rmse_system_pu_torque": 1.5590128646300272,
+                  "normalized_rmse": 0.5556998378071524
+                }
+              },
+              "covered_only_diagnostic": {
+                "motion_risk_v1": 35.3380698410884,
+                "common_speed_rmse_rad_s": 0.9946929156333556,
+                "tau_m": {
+                  "observed_components": 1050000,
+                  "rmse_system_pu_torque": 0.3003713975547875,
+                  "normalized_rmse": 0.5531637989468279
+                },
+                "tau_e": {
+                  "observed_components": 1050000,
+                  "rmse_system_pu_torque": 1.5590128646300272,
+                  "normalized_rmse": 0.5556998378071524
+                }
+              }
+            },
+            "stable_8s": {
+              "denominator": 210,
+              "covered": 210,
+              "short_record_ids": [],
+              "unresolved_ids": [],
+              "official": {
+                "motion_risk_v1": 98.55934285846268,
+                "common_speed_rmse_rad_s": 1.2263938758544604,
+                "tau_m": {
+                  "observed_components": 1680000,
+                  "rmse_system_pu_torque": 0.3290701552659867,
+                  "normalized_rmse": 0.6373888581641152
+                },
+                "tau_e": {
+                  "observed_components": 1680000,
+                  "rmse_system_pu_torque": 1.3707488351595385,
+                  "normalized_rmse": 0.48842132390884047
+                }
+              },
+              "covered_only_diagnostic": {
+                "motion_risk_v1": 98.55934285846268,
+                "common_speed_rmse_rad_s": 1.2263938758544604,
+                "tau_m": {
+                  "observed_components": 1680000,
+                  "rmse_system_pu_torque": 0.3290701552659867,
+                  "normalized_rmse": 0.6373888581641152
+                },
+                "tau_e": {
+                  "observed_components": 1680000,
+                  "rmse_system_pu_torque": 1.3707488351595385,
+                  "normalized_rmse": 0.48842132390884047
+                }
+              }
+            },
+            "unstable_actual": {
+              "denominator": 18,
+              "covered": 18,
+              "short_record_ids": [],
+              "unresolved_ids": [],
+              "official": {
+                "motion_risk_v1": 1.089628848387759,
+                "common_speed_rmse_rad_s": 1.0304531161079495,
+                "tau_m": {
+                  "observed_components": 6900,
+                  "rmse_system_pu_torque": 0.5900476346407225,
+                  "normalized_rmse": 1.0618769974535058
+                },
+                "tau_e": {
+                  "observed_components": 6900,
+                  "rmse_system_pu_torque": 3.4457560963800353,
+                  "normalized_rmse": 1.698395126374597
+                }
+              },
+              "covered_only_diagnostic": {
+                "motion_risk_v1": 1.089628848387759,
+                "common_speed_rmse_rad_s": 1.0304531161079495,
+                "tau_m": {
+                  "observed_components": 6900,
+                  "rmse_system_pu_torque": 0.5900476346407225,
+                  "normalized_rmse": 1.0618769974535058
+                },
+                "tau_e": {
+                  "observed_components": 6900,
+                  "rmse_system_pu_torque": 3.4457560963800353,
+                  "normalized_rmse": 1.698395126374597
+                }
+              }
+            }
+          },
+          "train_check": {
+            "all_1s": {
+              "denominator": 69,
+              "covered": 69,
+              "short_record_ids": [
+                "expansion_0008",
+                "expansion_0010",
+                "expansion_0013",
+                "expansion_0030",
+                "newtrain_2ca331ed919db8a0",
+                "newtrain_7686602ca2df933f",
+                "newtrain_9839a09144dd43ec",
+                "newtrain_b205117cd732146c",
+                "newtrain_f19d6366a51b07d4",
+                "pilot_0122",
+                "pilot_0222"
+              ],
+              "unresolved_ids": [],
+              "official": {
+                "motion_risk_v1": 0.7065479292208705,
+                "common_speed_rmse_rad_s": 0.3594464848500828,
+                "tau_m": {
+                  "observed_components": 60880,
+                  "rmse_system_pu_torque": 0.30618381572494735,
+                  "normalized_rmse": 0.5494916197288354
+                },
+                "tau_e": {
+                  "observed_components": 60880,
+                  "rmse_system_pu_torque": 2.217853711823057,
+                  "normalized_rmse": 0.8501042301571088
+                }
+              },
+              "covered_only_diagnostic": {
+                "motion_risk_v1": 0.7065479292208705,
+                "common_speed_rmse_rad_s": 0.3594464848500828,
+                "tau_m": {
+                  "observed_components": 60880,
+                  "rmse_system_pu_torque": 0.30618381572494735,
+                  "normalized_rmse": 0.5494916197288354
+                },
+                "tau_e": {
+                  "observed_components": 60880,
+                  "rmse_system_pu_torque": 2.217853711823057,
+                  "normalized_rmse": 0.8501042301571088
+                }
+              }
+            },
+            "all_2s": {
+              "denominator": 69,
+              "covered": 69,
+              "short_record_ids": [
+                "expansion_0008",
+                "expansion_0010",
+                "expansion_0013",
+                "expansion_0030",
+                "newtrain_2ca331ed919db8a0",
+                "newtrain_7686602ca2df933f",
+                "newtrain_9839a09144dd43ec",
+                "newtrain_b205117cd732146c",
+                "newtrain_f19d6366a51b07d4",
+                "pilot_0122",
+                "pilot_0220",
+                "pilot_0222"
+              ],
+              "unresolved_ids": [],
+              "official": {
+                "motion_risk_v1": 1.595388707774604,
+                "common_speed_rmse_rad_s": 0.39773849521348303,
+                "tau_m": {
+                  "observed_components": 118090,
+                  "rmse_system_pu_torque": 0.33801348350673044,
+                  "normalized_rmse": 0.5993452361248277
+                },
+                "tau_e": {
+                  "observed_components": 118090,
+                  "rmse_system_pu_torque": 2.1865232718861454,
+                  "normalized_rmse": 0.8439269098962842
+                }
+              },
+              "covered_only_diagnostic": {
+                "motion_risk_v1": 1.595388707774604,
+                "common_speed_rmse_rad_s": 0.39773849521348303,
+                "tau_m": {
+                  "observed_components": 118090,
+                  "rmse_system_pu_torque": 0.33801348350673044,
+                  "normalized_rmse": 0.5993452361248277
+                },
+                "tau_e": {
+                  "observed_components": 118090,
+                  "rmse_system_pu_torque": 2.1865232718861454,
+                  "normalized_rmse": 0.8439269098962842
+                }
+              }
+            },
+            "all_5s": {
+              "denominator": 69,
+              "covered": 69,
+              "short_record_ids": [
+                "expansion_0008",
+                "expansion_0010",
+                "expansion_0013",
+                "expansion_0030",
+                "newtrain_2ca331ed919db8a0",
+                "newtrain_7686602ca2df933f",
+                "newtrain_9839a09144dd43ec",
+                "newtrain_b205117cd732146c",
+                "newtrain_f19d6366a51b07d4",
+                "pilot_0122",
+                "pilot_0220",
+                "pilot_0222"
+              ],
+              "unresolved_ids": [],
+              "official": {
+                "motion_risk_v1": 11.98016478284626,
+                "common_speed_rmse_rad_s": 0.9279660846980077,
+                "tau_m": {
+                  "observed_components": 289090,
+                  "rmse_system_pu_torque": 0.34920062389063805,
+                  "normalized_rmse": 0.6334820991384293
+                },
+                "tau_e": {
+                  "observed_components": 289090,
+                  "rmse_system_pu_torque": 1.7596394292409532,
+                  "normalized_rmse": 0.647932342740359
+                }
+              },
+              "covered_only_diagnostic": {
+                "motion_risk_v1": 11.98016478284626,
+                "common_speed_rmse_rad_s": 0.9279660846980077,
+                "tau_m": {
+                  "observed_components": 289090,
+                  "rmse_system_pu_torque": 0.34920062389063805,
+                  "normalized_rmse": 0.6334820991384293
+                },
+                "tau_e": {
+                  "observed_components": 289090,
+                  "rmse_system_pu_torque": 1.7596394292409532,
+                  "normalized_rmse": 0.647932342740359
+                }
+              }
+            },
+            "all_8s": {
+              "denominator": 69,
+              "covered": 69,
+              "short_record_ids": [
+                "expansion_0008",
+                "expansion_0010",
+                "expansion_0013",
+                "expansion_0030",
+                "newtrain_2ca331ed919db8a0",
+                "newtrain_7686602ca2df933f",
+                "newtrain_9839a09144dd43ec",
+                "newtrain_b205117cd732146c",
+                "newtrain_f19d6366a51b07d4",
+                "pilot_0122",
+                "pilot_0220",
+                "pilot_0222"
+              ],
+              "unresolved_ids": [],
+              "official": {
+                "motion_risk_v1": 46.737448021888795,
+                "common_speed_rmse_rad_s": 1.1140024246615101,
+                "tau_m": {
+                  "observed_components": 460090,
+                  "rmse_system_pu_torque": 0.35968013752828976,
+                  "normalized_rmse": 0.680104779731205
+                },
+                "tau_e": {
+                  "observed_components": 460090,
+                  "rmse_system_pu_torque": 1.5071481298371348,
+                  "normalized_rmse": 0.5590728331579978
+                }
+              },
+              "covered_only_diagnostic": {
+                "motion_risk_v1": 46.737448021888795,
+                "common_speed_rmse_rad_s": 1.1140024246615101,
+                "tau_m": {
+                  "observed_components": 460090,
+                  "rmse_system_pu_torque": 0.35968013752828976,
+                  "normalized_rmse": 0.680104779731205
+                },
+                "tau_e": {
+                  "observed_components": 460090,
+                  "rmse_system_pu_torque": 1.5071481298371348,
+                  "normalized_rmse": 0.5590728331579978
+                }
+              }
+            },
+            "stable_1s": {
+              "denominator": 57,
+              "covered": 57,
+              "short_record_ids": [],
+              "unresolved_ids": [],
+              "official": {
+                "motion_risk_v1": 0.7202572914214551,
+                "common_speed_rmse_rad_s": 0.33016662003171,
+                "tau_m": {
+                  "observed_components": 57000,
+                  "rmse_system_pu_torque": 0.27012177360839673,
+                  "normalized_rmse": 0.4849082169388619
+                },
+                "tau_e": {
+                  "observed_components": 57000,
+                  "rmse_system_pu_torque": 2.180998791293533,
+                  "normalized_rmse": 0.7077318191503904
+                }
+              },
+              "covered_only_diagnostic": {
+                "motion_risk_v1": 0.7202572914214551,
+                "common_speed_rmse_rad_s": 0.33016662003171,
+                "tau_m": {
+                  "observed_components": 57000,
+                  "rmse_system_pu_torque": 0.27012177360839673,
+                  "normalized_rmse": 0.4849082169388619
+                },
+                "tau_e": {
+                  "observed_components": 57000,
+                  "rmse_system_pu_torque": 2.180998791293533,
+                  "normalized_rmse": 0.7077318191503904
+                }
+              }
+            },
+            "stable_2s": {
+              "denominator": 57,
+              "covered": 57,
+              "short_record_ids": [],
+              "unresolved_ids": [],
+              "official": {
+                "motion_risk_v1": 1.7136043057076968,
+                "common_speed_rmse_rad_s": 0.37972635488985396,
+                "tau_m": {
+                  "observed_components": 114000,
+                  "rmse_system_pu_torque": 0.31261397555628734,
+                  "normalized_rmse": 0.5544807767715324
+                },
+                "tau_e": {
+                  "observed_components": 114000,
+                  "rmse_system_pu_torque": 2.1608269856489075,
+                  "normalized_rmse": 0.7622539261081974
+                }
+              },
+              "covered_only_diagnostic": {
+                "motion_risk_v1": 1.7136043057076968,
+                "common_speed_rmse_rad_s": 0.37972635488985396,
+                "tau_m": {
+                  "observed_components": 114000,
+                  "rmse_system_pu_torque": 0.31261397555628734,
+                  "normalized_rmse": 0.5544807767715324
+                },
+                "tau_e": {
+                  "observed_components": 114000,
+                  "rmse_system_pu_torque": 2.1608269856489075,
+                  "normalized_rmse": 0.7622539261081974
+                }
+              }
+            },
+            "stable_5s": {
+              "denominator": 57,
+              "covered": 57,
+              "short_record_ids": [],
+              "unresolved_ids": [],
+              "official": {
+                "motion_risk_v1": 13.56171159406203,
+                "common_speed_rmse_rad_s": 0.9303800967202734,
+                "tau_m": {
+                  "observed_components": 285000,
+                  "rmse_system_pu_torque": 0.33976632819878605,
+                  "normalized_rmse": 0.6174117041757192
+                },
+                "tau_e": {
+                  "observed_components": 285000,
+                  "rmse_system_pu_torque": 1.7399631615855615,
+                  "normalized_rmse": 0.6026172456065856
+                }
+              },
+              "covered_only_diagnostic": {
+                "motion_risk_v1": 13.56171159406203,
+                "common_speed_rmse_rad_s": 0.9303800967202734,
+                "tau_m": {
+                  "observed_components": 285000,
+                  "rmse_system_pu_torque": 0.33976632819878605,
+                  "normalized_rmse": 0.6174117041757192
+                },
+                "tau_e": {
+                  "observed_components": 285000,
+                  "rmse_system_pu_torque": 1.7399631615855615,
+                  "normalized_rmse": 0.6026172456065856
+                }
+              }
+            },
+            "stable_8s": {
+              "denominator": 57,
+              "covered": 57,
+              "short_record_ids": [],
+              "unresolved_ids": [],
+              "official": {
+                "motion_risk_v1": 53.1581582095304,
+                "common_speed_rmse_rad_s": 1.116786665417115,
+                "tau_m": {
+                  "observed_components": 456000,
+                  "rmse_system_pu_torque": 0.3540818875210475,
+                  "normalized_rmse": 0.671213709781432
+                },
+                "tau_e": {
+                  "observed_components": 456000,
+                  "rmse_system_pu_torque": 1.4903222275585701,
+                  "normalized_rmse": 0.5255306419461232
+                }
+              },
+              "covered_only_diagnostic": {
+                "motion_risk_v1": 53.1581582095304,
+                "common_speed_rmse_rad_s": 1.116786665417115,
+                "tau_m": {
+                  "observed_components": 456000,
+                  "rmse_system_pu_torque": 0.3540818875210475,
+                  "normalized_rmse": 0.671213709781432
+                },
+                "tau_e": {
+                  "observed_components": 456000,
+                  "rmse_system_pu_torque": 1.4903222275585701,
+                  "normalized_rmse": 0.5255306419461232
+                }
+              }
+            },
+            "unstable_actual": {
+              "denominator": 12,
+              "covered": 12,
+              "short_record_ids": [],
+              "unresolved_ids": [],
+              "official": {
+                "motion_risk_v1": 0.6800654933846787,
+                "common_speed_rmse_rad_s": 0.7406227399519892,
+                "tau_m": {
+                  "observed_components": 4090,
+                  "rmse_system_pu_torque": 0.7582013871595087,
+                  "normalized_rmse": 1.3424139044457377
+                },
+                "tau_e": {
+                  "observed_components": 4090,
+                  "rmse_system_pu_torque": 2.809729945826298,
+                  "normalized_rmse": 2.0901240549342086
+                }
+              },
+              "covered_only_diagnostic": {
+                "motion_risk_v1": 0.6800654933846787,
+                "common_speed_rmse_rad_s": 0.7406227399519892,
+                "tau_m": {
+                  "observed_components": 4090,
+                  "rmse_system_pu_torque": 0.7582013871595087,
+                  "normalized_rmse": 1.3424139044457377
+                },
+                "tau_e": {
+                  "observed_components": 4090,
+                  "rmse_system_pu_torque": 2.809729945826298,
+                  "normalized_rmse": 2.0901240549342086
+                }
+              }
+            }
+          }
+        },
+        "classification": {
+          "train_all": {
+            "8s": {
+              "denominator": 297,
+              "stable_denominator": 267,
+              "unstable_denominator": 30,
+              "detected_unstable_ids": [
+                "expansion_0106",
+                "pilot_0207",
+                "pilot_0254",
+                "pilot_0380"
+              ],
+              "missed_unstable_ids": [],
+              "false_los_ids": [
+                "expansion_0002",
+                "expansion_0004",
+                "expansion_0006",
+                "expansion_0007",
+                "expansion_0011",
+                "expansion_0020",
+                "expansion_0021",
+                "expansion_0022",
+                "expansion_0026",
+                "expansion_0027",
+                "expansion_0029",
+                "expansion_0036",
+                "expansion_0037",
+                "expansion_0038",
+                "expansion_0039",
+                "expansion_0040",
+                "expansion_0041",
+                "expansion_0042",
+                "expansion_0043",
+                "expansion_0045",
+                "expansion_0062",
+                "expansion_0084",
+                "expansion_0086",
+                "expansion_0087",
+                "expansion_0088",
+                "expansion_0089",
+                "expansion_0090",
+                "expansion_0091",
+                "expansion_0092",
+                "expansion_0093",
+                "expansion_0094",
+                "expansion_0095",
+                "expansion_0098",
+                "expansion_0100",
+                "expansion_0101",
+                "expansion_0102",
+                "expansion_0103",
+                "expansion_0105",
+                "expansion_0134",
+                "expansion_0135",
+                "expansion_0136",
+                "expansion_0137",
+                "expansion_0139",
+                "expansion_0141",
+                "newtrain_0586bd3a72003148",
+                "newtrain_1a969dfe17c75d69",
+                "newtrain_1f6fd43bd6b0177a",
+                "newtrain_3437c2ab89bafaa6",
+                "newtrain_9d6e71f7fdd48ba6",
+                "newtrain_ab91dc4c00f6ba89",
+                "newtrain_b01e1cbcd7bcb6ad",
+                "newtrain_b8983e101d289815",
+                "newtrain_ba7b0555ceb7f21d",
+                "newtrain_e287677b0cb6b062",
+                "newtrain_eaa134bd4881401e",
+                "newtrain_ec341ae4d28d1ec0",
+                "newtrain_fcce946bce1243a2",
+                "newtrain_fdf9b090374343f7",
+                "pilot_0012",
+                "pilot_0014",
+                "pilot_0022",
+                "pilot_0023",
+                "pilot_0024",
+                "pilot_0025",
+                "pilot_0026",
+                "pilot_0027",
+                "pilot_0028",
+                "pilot_0029",
+                "pilot_0031",
+                "pilot_0084",
+                "pilot_0091",
+                "pilot_0116",
+                "pilot_0117",
+                "pilot_0119",
+                "pilot_0120",
+                "pilot_0121",
+                "pilot_0132",
+                "pilot_0133",
+                "pilot_0134",
+                "pilot_0136",
+                "pilot_0138",
+                "pilot_0140",
+                "pilot_0141",
+                "pilot_0196",
+                "pilot_0197",
+                "pilot_0198",
+                "pilot_0199",
+                "pilot_0200",
+                "pilot_0201",
+                "pilot_0203",
+                "pilot_0212",
+                "pilot_0213",
+                "pilot_0214",
+                "pilot_0216",
+                "pilot_0218",
+                "pilot_0219",
+                "pilot_0221",
+                "pilot_0245",
+                "pilot_0246",
+                "pilot_0248",
+                "pilot_0250",
+                "pilot_0326",
+                "pilot_0328",
+                "pilot_0329",
+                "pilot_0331"
+              ],
+              "numerical_unresolved_ids": [],
+              "latency_uncovered_ids": [],
+              "unsettled_ids": [
+                "expansion_0000",
+                "expansion_0001",
+                "expansion_0003",
+                "expansion_0005",
+                "expansion_0009",
+                "expansion_0016",
+                "expansion_0017",
+                "expansion_0018",
+                "expansion_0019",
+                "expansion_0023",
+                "expansion_0024",
+                "expansion_0025",
+                "expansion_0028",
+                "expansion_0031",
+                "expansion_0032",
+                "expansion_0033",
+                "expansion_0034",
+                "expansion_0035",
+                "expansion_0048",
+                "expansion_0049",
+                "expansion_0050",
+                "expansion_0051",
+                "expansion_0052",
+                "expansion_0053",
+                "expansion_0054",
+                "expansion_0056",
+                "expansion_0058",
+                "expansion_0059",
+                "expansion_0060",
+                "expansion_0061",
+                "expansion_0063",
+                "expansion_0064",
+                "expansion_0065",
+                "expansion_0066",
+                "expansion_0067",
+                "expansion_0068",
+                "expansion_0069",
+                "expansion_0070",
+                "expansion_0071",
+                "expansion_0072",
+                "expansion_0073",
+                "expansion_0074",
+                "expansion_0075",
+                "expansion_0076",
+                "expansion_0077",
+                "expansion_0079",
+                "expansion_0080",
+                "expansion_0081",
+                "expansion_0082",
+                "expansion_0083",
+                "expansion_0085",
+                "expansion_0096",
+                "expansion_0097",
+                "expansion_0099",
+                "expansion_0107",
+                "expansion_0128",
+                "expansion_0129",
+                "expansion_0130",
+                "expansion_0131",
+                "expansion_0132",
+                "expansion_0133",
+                "newtrain_0f6db7878ac41fe9",
+                "newtrain_449f2a97fdcc3c2a",
+                "newtrain_5dabbb7b966f2b7a",
+                "newtrain_7755b677d7b70273",
+                "newtrain_83adbaea1acb2425",
+                "newtrain_8525e16ffdad8894",
+                "newtrain_93972dda5a9d2d8d",
+                "newtrain_a1e9f43d0649de37",
+                "newtrain_ca7f9a992f24d035",
+                "newtrain_d94aa665a50e1e71",
+                "newtrain_e6041b33464f3be1",
+                "newtrain_fffecebc8c19c397",
+                "pilot_0000",
+                "pilot_0001",
+                "pilot_0002",
+                "pilot_0003",
+                "pilot_0004",
+                "pilot_0005",
+                "pilot_0006",
+                "pilot_0007",
+                "pilot_0008",
+                "pilot_0009",
+                "pilot_0010",
+                "pilot_0011",
+                "pilot_0013",
+                "pilot_0015",
+                "pilot_0016",
+                "pilot_0017",
+                "pilot_0018",
+                "pilot_0019",
+                "pilot_0020",
+                "pilot_0021",
+                "pilot_0080",
+                "pilot_0081",
+                "pilot_0082",
+                "pilot_0083",
+                "pilot_0085",
+                "pilot_0086",
+                "pilot_0087",
+                "pilot_0089",
+                "pilot_0112",
+                "pilot_0113",
+                "pilot_0114",
+                "pilot_0115",
+                "pilot_0118",
+                "pilot_0123",
+                "pilot_0125",
+                "pilot_0128",
+                "pilot_0129",
+                "pilot_0130",
+                "pilot_0131",
+                "pilot_0135",
+                "pilot_0137",
+                "pilot_0139",
+                "pilot_0143",
+                "pilot_0192",
+                "pilot_0193",
+                "pilot_0194",
+                "pilot_0195",
+                "pilot_0208",
+                "pilot_0209",
+                "pilot_0210",
+                "pilot_0211",
+                "pilot_0215",
+                "pilot_0217",
+                "pilot_0223",
+                "pilot_0240",
+                "pilot_0241",
+                "pilot_0242",
+                "pilot_0243",
+                "pilot_0244",
+                "pilot_0247",
+                "pilot_0255",
+                "pilot_0320",
+                "pilot_0321",
+                "pilot_0322",
+                "pilot_0323",
+                "pilot_0324",
+                "pilot_0325",
+                "pilot_0327",
+                "pilot_0330",
+                "pilot_0333",
+                "pilot_0368",
+                "pilot_0369",
+                "pilot_0370",
+                "pilot_0371",
+                "pilot_0372",
+                "pilot_0373",
+                "pilot_0374",
+                "pilot_0375",
+                "pilot_0376",
+                "pilot_0377",
+                "pilot_0378",
+                "pilot_0379",
+                "pilot_0381"
+              ],
+              "settled_ids": [
+                "expansion_0055",
+                "expansion_0057",
+                "pilot_0142",
+                "pilot_0249",
+                "pilot_0251",
+                "pilot_0253"
+              ],
+              "uncovered_ids": [
+                "expansion_0008",
+                "expansion_0010",
+                "expansion_0013",
+                "expansion_0030",
+                "expansion_0044",
+                "expansion_0078",
+                "expansion_0104",
+                "expansion_0109",
+                "expansion_0138",
+                "expansion_0143",
+                "newtrain_2ca331ed919db8a0",
+                "newtrain_384b3c14b5db826e",
+                "newtrain_7686602ca2df933f",
+                "newtrain_807efe654094c95c",
+                "newtrain_9839a09144dd43ec",
+                "newtrain_b205117cd732146c",
+                "newtrain_f19d6366a51b07d4",
+                "pilot_0030",
+                "pilot_0093",
+                "pilot_0122",
+                "pilot_0202",
+                "pilot_0205",
+                "pilot_0220",
+                "pilot_0222",
+                "pilot_0252",
+                "pilot_0335"
+              ],
+              "autonomous_los_ids": [
+                "expansion_0002",
+                "expansion_0004",
+                "expansion_0006",
+                "expansion_0007",
+                "expansion_0010",
+                "expansion_0011",
+                "expansion_0013",
+                "expansion_0020",
+                "expansion_0021",
+                "expansion_0022",
+                "expansion_0026",
+                "expansion_0027",
+                "expansion_0029",
+                "expansion_0030",
+                "expansion_0036",
+                "expansion_0037",
+                "expansion_0038",
+                "expansion_0039",
+                "expansion_0040",
+                "expansion_0041",
+                "expansion_0042",
+                "expansion_0043",
+                "expansion_0044",
+                "expansion_0045",
+                "expansion_0062",
+                "expansion_0084",
+                "expansion_0086",
+                "expansion_0087",
+                "expansion_0088",
+                "expansion_0089",
+                "expansion_0090",
+                "expansion_0091",
+                "expansion_0092",
+                "expansion_0093",
+                "expansion_0094",
+                "expansion_0095",
+                "expansion_0098",
+                "expansion_0100",
+                "expansion_0101",
+                "expansion_0102",
+                "expansion_0103",
+                "expansion_0105",
+                "expansion_0106",
+                "expansion_0109",
+                "expansion_0134",
+                "expansion_0135",
+                "expansion_0136",
+                "expansion_0137",
+                "expansion_0138",
+                "expansion_0139",
+                "expansion_0141",
+                "expansion_0143",
+                "newtrain_0586bd3a72003148",
+                "newtrain_1a969dfe17c75d69",
+                "newtrain_1f6fd43bd6b0177a",
+                "newtrain_2ca331ed919db8a0",
+                "newtrain_3437c2ab89bafaa6",
+                "newtrain_807efe654094c95c",
+                "newtrain_9839a09144dd43ec",
+                "newtrain_9d6e71f7fdd48ba6",
+                "newtrain_ab91dc4c00f6ba89",
+                "newtrain_b01e1cbcd7bcb6ad",
+                "newtrain_b8983e101d289815",
+                "newtrain_ba7b0555ceb7f21d",
+                "newtrain_e287677b0cb6b062",
+                "newtrain_eaa134bd4881401e",
+                "newtrain_ec341ae4d28d1ec0",
+                "newtrain_f19d6366a51b07d4",
+                "newtrain_fcce946bce1243a2",
+                "newtrain_fdf9b090374343f7",
+                "pilot_0012",
+                "pilot_0014",
+                "pilot_0022",
+                "pilot_0023",
+                "pilot_0024",
+                "pilot_0025",
+                "pilot_0026",
+                "pilot_0027",
+                "pilot_0028",
+                "pilot_0029",
+                "pilot_0030",
+                "pilot_0031",
+                "pilot_0084",
+                "pilot_0091",
+                "pilot_0093",
+                "pilot_0116",
+                "pilot_0117",
+                "pilot_0119",
+                "pilot_0120",
+                "pilot_0121",
+                "pilot_0122",
+                "pilot_0132",
+                "pilot_0133",
+                "pilot_0134",
+                "pilot_0136",
+                "pilot_0138",
+                "pilot_0140",
+                "pilot_0141",
+                "pilot_0196",
+                "pilot_0197",
+                "pilot_0198",
+                "pilot_0199",
+                "pilot_0200",
+                "pilot_0201",
+                "pilot_0202",
+                "pilot_0203",
+                "pilot_0207",
+                "pilot_0212",
+                "pilot_0213",
+                "pilot_0214",
+                "pilot_0216",
+                "pilot_0218",
+                "pilot_0219",
+                "pilot_0220",
+                "pilot_0221",
+                "pilot_0222",
+                "pilot_0245",
+                "pilot_0246",
+                "pilot_0248",
+                "pilot_0250",
+                "pilot_0252",
+                "pilot_0254",
+                "pilot_0326",
+                "pilot_0328",
+                "pilot_0329",
+                "pilot_0331",
+                "pilot_0335",
+                "pilot_0380"
+              ],
+              "autonomous_settled_ids": [
+                "expansion_0055",
+                "expansion_0057",
+                "pilot_0142",
+                "pilot_0249",
+                "pilot_0251",
+                "pilot_0253"
+              ],
+              "autonomous_unsettled_ids": [
+                "expansion_0000",
+                "expansion_0001",
+                "expansion_0003",
+                "expansion_0005",
+                "expansion_0008",
+                "expansion_0009",
+                "expansion_0016",
+                "expansion_0017",
+                "expansion_0018",
+                "expansion_0019",
+                "expansion_0023",
+                "expansion_0024",
+                "expansion_0025",
+                "expansion_0028",
+                "expansion_0031",
+                "expansion_0032",
+                "expansion_0033",
+                "expansion_0034",
+                "expansion_0035",
+                "expansion_0048",
+                "expansion_0049",
+                "expansion_0050",
+                "expansion_0051",
+                "expansion_0052",
+                "expansion_0053",
+                "expansion_0054",
+                "expansion_0056",
+                "expansion_0058",
+                "expansion_0059",
+                "expansion_0060",
+                "expansion_0061",
+                "expansion_0063",
+                "expansion_0064",
+                "expansion_0065",
+                "expansion_0066",
+                "expansion_0067",
+                "expansion_0068",
+                "expansion_0069",
+                "expansion_0070",
+                "expansion_0071",
+                "expansion_0072",
+                "expansion_0073",
+                "expansion_0074",
+                "expansion_0075",
+                "expansion_0076",
+                "expansion_0077",
+                "expansion_0078",
+                "expansion_0079",
+                "expansion_0080",
+                "expansion_0081",
+                "expansion_0082",
+                "expansion_0083",
+                "expansion_0085",
+                "expansion_0096",
+                "expansion_0097",
+                "expansion_0099",
+                "expansion_0104",
+                "expansion_0107",
+                "expansion_0128",
+                "expansion_0129",
+                "expansion_0130",
+                "expansion_0131",
+                "expansion_0132",
+                "expansion_0133",
+                "newtrain_0f6db7878ac41fe9",
+                "newtrain_384b3c14b5db826e",
+                "newtrain_449f2a97fdcc3c2a",
+                "newtrain_5dabbb7b966f2b7a",
+                "newtrain_7686602ca2df933f",
+                "newtrain_7755b677d7b70273",
+                "newtrain_83adbaea1acb2425",
+                "newtrain_8525e16ffdad8894",
+                "newtrain_93972dda5a9d2d8d",
+                "newtrain_a1e9f43d0649de37",
+                "newtrain_b205117cd732146c",
+                "newtrain_ca7f9a992f24d035",
+                "newtrain_d94aa665a50e1e71",
+                "newtrain_e6041b33464f3be1",
+                "newtrain_fffecebc8c19c397",
+                "pilot_0000",
+                "pilot_0001",
+                "pilot_0002",
+                "pilot_0003",
+                "pilot_0004",
+                "pilot_0005",
+                "pilot_0006",
+                "pilot_0007",
+                "pilot_0008",
+                "pilot_0009",
+                "pilot_0010",
+                "pilot_0011",
+                "pilot_0013",
+                "pilot_0015",
+                "pilot_0016",
+                "pilot_0017",
+                "pilot_0018",
+                "pilot_0019",
+                "pilot_0020",
+                "pilot_0021",
+                "pilot_0080",
+                "pilot_0081",
+                "pilot_0082",
+                "pilot_0083",
+                "pilot_0085",
+                "pilot_0086",
+                "pilot_0087",
+                "pilot_0089",
+                "pilot_0112",
+                "pilot_0113",
+                "pilot_0114",
+                "pilot_0115",
+                "pilot_0118",
+                "pilot_0123",
+                "pilot_0125",
+                "pilot_0128",
+                "pilot_0129",
+                "pilot_0130",
+                "pilot_0131",
+                "pilot_0135",
+                "pilot_0137",
+                "pilot_0139",
+                "pilot_0143",
+                "pilot_0192",
+                "pilot_0193",
+                "pilot_0194",
+                "pilot_0195",
+                "pilot_0205",
+                "pilot_0208",
+                "pilot_0209",
+                "pilot_0210",
+                "pilot_0211",
+                "pilot_0215",
+                "pilot_0217",
+                "pilot_0223",
+                "pilot_0240",
+                "pilot_0241",
+                "pilot_0242",
+                "pilot_0243",
+                "pilot_0244",
+                "pilot_0247",
+                "pilot_0255",
+                "pilot_0320",
+                "pilot_0321",
+                "pilot_0322",
+                "pilot_0323",
+                "pilot_0324",
+                "pilot_0325",
+                "pilot_0327",
+                "pilot_0330",
+                "pilot_0333",
+                "pilot_0368",
+                "pilot_0369",
+                "pilot_0370",
+                "pilot_0371",
+                "pilot_0372",
+                "pilot_0373",
+                "pilot_0374",
+                "pilot_0375",
+                "pilot_0376",
+                "pilot_0377",
+                "pilot_0378",
+                "pilot_0379",
+                "pilot_0381"
+              ]
+            },
+            "actual": {
+              "denominator": 30,
+              "stable_denominator": 0,
+              "unstable_denominator": 30,
+              "detected_unstable_ids": [
+                "expansion_0106",
+                "pilot_0207",
+                "pilot_0254",
+                "pilot_0380"
+              ],
+              "missed_unstable_ids": [
+                "expansion_0008",
+                "expansion_0010",
+                "expansion_0013",
+                "expansion_0030",
+                "expansion_0044",
+                "expansion_0078",
+                "expansion_0104",
+                "expansion_0109",
+                "expansion_0138",
+                "expansion_0143",
+                "newtrain_2ca331ed919db8a0",
+                "newtrain_384b3c14b5db826e",
+                "newtrain_7686602ca2df933f",
+                "newtrain_807efe654094c95c",
+                "newtrain_9839a09144dd43ec",
+                "newtrain_b205117cd732146c",
+                "newtrain_f19d6366a51b07d4",
+                "pilot_0030",
+                "pilot_0093",
+                "pilot_0122",
+                "pilot_0202",
+                "pilot_0205",
+                "pilot_0220",
+                "pilot_0222",
+                "pilot_0252",
+                "pilot_0335"
+              ],
+              "false_los_ids": [],
+              "numerical_unresolved_ids": [],
+              "latency_uncovered_ids": [],
+              "unsettled_ids": [
+                "expansion_0008",
+                "expansion_0010",
+                "expansion_0013",
+                "expansion_0030",
+                "expansion_0044",
+                "expansion_0078",
+                "expansion_0104",
+                "expansion_0109",
+                "expansion_0138",
+                "expansion_0143",
+                "newtrain_2ca331ed919db8a0",
+                "newtrain_384b3c14b5db826e",
+                "newtrain_7686602ca2df933f",
+                "newtrain_807efe654094c95c",
+                "newtrain_9839a09144dd43ec",
+                "newtrain_b205117cd732146c",
+                "newtrain_f19d6366a51b07d4",
+                "pilot_0030",
+                "pilot_0093",
+                "pilot_0122",
+                "pilot_0202",
+                "pilot_0205",
+                "pilot_0220",
+                "pilot_0222",
+                "pilot_0252",
+                "pilot_0335"
+              ],
+              "settled_ids": [],
+              "uncovered_ids": [],
+              "autonomous_los_ids": [
+                "expansion_0106",
+                "pilot_0207",
+                "pilot_0254",
+                "pilot_0380"
+              ],
+              "autonomous_settled_ids": [],
+              "autonomous_unsettled_ids": [
+                "expansion_0008",
+                "expansion_0010",
+                "expansion_0013",
+                "expansion_0030",
+                "expansion_0044",
+                "expansion_0078",
+                "expansion_0104",
+                "expansion_0109",
+                "expansion_0138",
+                "expansion_0143",
+                "newtrain_2ca331ed919db8a0",
+                "newtrain_384b3c14b5db826e",
+                "newtrain_7686602ca2df933f",
+                "newtrain_807efe654094c95c",
+                "newtrain_9839a09144dd43ec",
+                "newtrain_b205117cd732146c",
+                "newtrain_f19d6366a51b07d4",
+                "pilot_0030",
+                "pilot_0093",
+                "pilot_0122",
+                "pilot_0202",
+                "pilot_0205",
+                "pilot_0220",
+                "pilot_0222",
+                "pilot_0252",
+                "pilot_0335"
+              ]
+            }
+          },
+          "train_fit": {
+            "8s": {
+              "denominator": 228,
+              "stable_denominator": 210,
+              "unstable_denominator": 18,
+              "detected_unstable_ids": [
+                "expansion_0106",
+                "pilot_0207",
+                "pilot_0254",
+                "pilot_0380"
+              ],
+              "missed_unstable_ids": [],
+              "false_los_ids": [
+                "expansion_0036",
+                "expansion_0037",
+                "expansion_0038",
+                "expansion_0039",
+                "expansion_0040",
+                "expansion_0041",
+                "expansion_0042",
+                "expansion_0043",
+                "expansion_0045",
+                "expansion_0062",
+                "expansion_0084",
+                "expansion_0086",
+                "expansion_0087",
+                "expansion_0088",
+                "expansion_0089",
+                "expansion_0090",
+                "expansion_0091",
+                "expansion_0092",
+                "expansion_0093",
+                "expansion_0094",
+                "expansion_0095",
+                "expansion_0098",
+                "expansion_0100",
+                "expansion_0101",
+                "expansion_0102",
+                "expansion_0103",
+                "expansion_0105",
+                "expansion_0134",
+                "expansion_0135",
+                "expansion_0136",
+                "expansion_0137",
+                "expansion_0139",
+                "expansion_0141",
+                "newtrain_0586bd3a72003148",
+                "newtrain_1a969dfe17c75d69",
+                "newtrain_1f6fd43bd6b0177a",
+                "newtrain_ab91dc4c00f6ba89",
+                "newtrain_b01e1cbcd7bcb6ad",
+                "newtrain_b8983e101d289815",
+                "newtrain_ba7b0555ceb7f21d",
+                "newtrain_e287677b0cb6b062",
+                "newtrain_eaa134bd4881401e",
+                "newtrain_fcce946bce1243a2",
+                "pilot_0012",
+                "pilot_0014",
+                "pilot_0022",
+                "pilot_0023",
+                "pilot_0024",
+                "pilot_0025",
+                "pilot_0026",
+                "pilot_0027",
+                "pilot_0028",
+                "pilot_0029",
+                "pilot_0031",
+                "pilot_0084",
+                "pilot_0091",
+                "pilot_0132",
+                "pilot_0133",
+                "pilot_0134",
+                "pilot_0136",
+                "pilot_0138",
+                "pilot_0140",
+                "pilot_0141",
+                "pilot_0196",
+                "pilot_0197",
+                "pilot_0198",
+                "pilot_0199",
+                "pilot_0200",
+                "pilot_0201",
+                "pilot_0203",
+                "pilot_0245",
+                "pilot_0246",
+                "pilot_0248",
+                "pilot_0250",
+                "pilot_0326",
+                "pilot_0328",
+                "pilot_0329",
+                "pilot_0331"
+              ],
+              "numerical_unresolved_ids": [],
+              "latency_uncovered_ids": [],
+              "unsettled_ids": [
+                "expansion_0032",
+                "expansion_0033",
+                "expansion_0034",
+                "expansion_0035",
+                "expansion_0048",
+                "expansion_0049",
+                "expansion_0050",
+                "expansion_0051",
+                "expansion_0052",
+                "expansion_0053",
+                "expansion_0054",
+                "expansion_0056",
+                "expansion_0058",
+                "expansion_0059",
+                "expansion_0060",
+                "expansion_0061",
+                "expansion_0063",
+                "expansion_0064",
+                "expansion_0065",
+                "expansion_0066",
+                "expansion_0067",
+                "expansion_0068",
+                "expansion_0069",
+                "expansion_0070",
+                "expansion_0071",
+                "expansion_0072",
+                "expansion_0073",
+                "expansion_0074",
+                "expansion_0075",
+                "expansion_0076",
+                "expansion_0077",
+                "expansion_0079",
+                "expansion_0080",
+                "expansion_0081",
+                "expansion_0082",
+                "expansion_0083",
+                "expansion_0085",
+                "expansion_0096",
+                "expansion_0097",
+                "expansion_0099",
+                "expansion_0107",
+                "expansion_0128",
+                "expansion_0129",
+                "expansion_0130",
+                "expansion_0131",
+                "expansion_0132",
+                "expansion_0133",
+                "newtrain_0f6db7878ac41fe9",
+                "newtrain_449f2a97fdcc3c2a",
+                "newtrain_5dabbb7b966f2b7a",
+                "newtrain_7755b677d7b70273",
+                "newtrain_8525e16ffdad8894",
+                "newtrain_93972dda5a9d2d8d",
+                "newtrain_a1e9f43d0649de37",
+                "newtrain_ca7f9a992f24d035",
+                "newtrain_e6041b33464f3be1",
+                "newtrain_fffecebc8c19c397",
+                "pilot_0000",
+                "pilot_0001",
+                "pilot_0002",
+                "pilot_0003",
+                "pilot_0004",
+                "pilot_0005",
+                "pilot_0006",
+                "pilot_0007",
+                "pilot_0008",
+                "pilot_0009",
+                "pilot_0010",
+                "pilot_0011",
+                "pilot_0013",
+                "pilot_0015",
+                "pilot_0016",
+                "pilot_0017",
+                "pilot_0018",
+                "pilot_0019",
+                "pilot_0020",
+                "pilot_0021",
+                "pilot_0080",
+                "pilot_0081",
+                "pilot_0082",
+                "pilot_0083",
+                "pilot_0085",
+                "pilot_0086",
+                "pilot_0087",
+                "pilot_0089",
+                "pilot_0128",
+                "pilot_0129",
+                "pilot_0130",
+                "pilot_0131",
+                "pilot_0135",
+                "pilot_0137",
+                "pilot_0139",
+                "pilot_0143",
+                "pilot_0192",
+                "pilot_0193",
+                "pilot_0194",
+                "pilot_0195",
+                "pilot_0240",
+                "pilot_0241",
+                "pilot_0242",
+                "pilot_0243",
+                "pilot_0244",
+                "pilot_0247",
+                "pilot_0255",
+                "pilot_0320",
+                "pilot_0321",
+                "pilot_0322",
+                "pilot_0323",
+                "pilot_0324",
+                "pilot_0325",
+                "pilot_0327",
+                "pilot_0330",
+                "pilot_0333",
+                "pilot_0368",
+                "pilot_0369",
+                "pilot_0370",
+                "pilot_0371",
+                "pilot_0372",
+                "pilot_0373",
+                "pilot_0374",
+                "pilot_0375",
+                "pilot_0376",
+                "pilot_0377",
+                "pilot_0378",
+                "pilot_0379",
+                "pilot_0381"
+              ],
+              "settled_ids": [
+                "expansion_0055",
+                "expansion_0057",
+                "pilot_0142",
+                "pilot_0249",
+                "pilot_0251",
+                "pilot_0253"
+              ],
+              "uncovered_ids": [
+                "expansion_0044",
+                "expansion_0078",
+                "expansion_0104",
+                "expansion_0109",
+                "expansion_0138",
+                "expansion_0143",
+                "newtrain_384b3c14b5db826e",
+                "newtrain_807efe654094c95c",
+                "pilot_0030",
+                "pilot_0093",
+                "pilot_0202",
+                "pilot_0205",
+                "pilot_0252",
+                "pilot_0335"
+              ],
+              "autonomous_los_ids": [
+                "expansion_0036",
+                "expansion_0037",
+                "expansion_0038",
+                "expansion_0039",
+                "expansion_0040",
+                "expansion_0041",
+                "expansion_0042",
+                "expansion_0043",
+                "expansion_0044",
+                "expansion_0045",
+                "expansion_0062",
+                "expansion_0084",
+                "expansion_0086",
+                "expansion_0087",
+                "expansion_0088",
+                "expansion_0089",
+                "expansion_0090",
+                "expansion_0091",
+                "expansion_0092",
+                "expansion_0093",
+                "expansion_0094",
+                "expansion_0095",
+                "expansion_0098",
+                "expansion_0100",
+                "expansion_0101",
+                "expansion_0102",
+                "expansion_0103",
+                "expansion_0105",
+                "expansion_0106",
+                "expansion_0109",
+                "expansion_0134",
+                "expansion_0135",
+                "expansion_0136",
+                "expansion_0137",
+                "expansion_0138",
+                "expansion_0139",
+                "expansion_0141",
+                "expansion_0143",
+                "newtrain_0586bd3a72003148",
+                "newtrain_1a969dfe17c75d69",
+                "newtrain_1f6fd43bd6b0177a",
+                "newtrain_807efe654094c95c",
+                "newtrain_ab91dc4c00f6ba89",
+                "newtrain_b01e1cbcd7bcb6ad",
+                "newtrain_b8983e101d289815",
+                "newtrain_ba7b0555ceb7f21d",
+                "newtrain_e287677b0cb6b062",
+                "newtrain_eaa134bd4881401e",
+                "newtrain_fcce946bce1243a2",
+                "pilot_0012",
+                "pilot_0014",
+                "pilot_0022",
+                "pilot_0023",
+                "pilot_0024",
+                "pilot_0025",
+                "pilot_0026",
+                "pilot_0027",
+                "pilot_0028",
+                "pilot_0029",
+                "pilot_0030",
+                "pilot_0031",
+                "pilot_0084",
+                "pilot_0091",
+                "pilot_0093",
+                "pilot_0132",
+                "pilot_0133",
+                "pilot_0134",
+                "pilot_0136",
+                "pilot_0138",
+                "pilot_0140",
+                "pilot_0141",
+                "pilot_0196",
+                "pilot_0197",
+                "pilot_0198",
+                "pilot_0199",
+                "pilot_0200",
+                "pilot_0201",
+                "pilot_0202",
+                "pilot_0203",
+                "pilot_0207",
+                "pilot_0245",
+                "pilot_0246",
+                "pilot_0248",
+                "pilot_0250",
+                "pilot_0252",
+                "pilot_0254",
+                "pilot_0326",
+                "pilot_0328",
+                "pilot_0329",
+                "pilot_0331",
+                "pilot_0335",
+                "pilot_0380"
+              ],
+              "autonomous_settled_ids": [
+                "expansion_0055",
+                "expansion_0057",
+                "pilot_0142",
+                "pilot_0249",
+                "pilot_0251",
+                "pilot_0253"
+              ],
+              "autonomous_unsettled_ids": [
+                "expansion_0032",
+                "expansion_0033",
+                "expansion_0034",
+                "expansion_0035",
+                "expansion_0048",
+                "expansion_0049",
+                "expansion_0050",
+                "expansion_0051",
+                "expansion_0052",
+                "expansion_0053",
+                "expansion_0054",
+                "expansion_0056",
+                "expansion_0058",
+                "expansion_0059",
+                "expansion_0060",
+                "expansion_0061",
+                "expansion_0063",
+                "expansion_0064",
+                "expansion_0065",
+                "expansion_0066",
+                "expansion_0067",
+                "expansion_0068",
+                "expansion_0069",
+                "expansion_0070",
+                "expansion_0071",
+                "expansion_0072",
+                "expansion_0073",
+                "expansion_0074",
+                "expansion_0075",
+                "expansion_0076",
+                "expansion_0077",
+                "expansion_0078",
+                "expansion_0079",
+                "expansion_0080",
+                "expansion_0081",
+                "expansion_0082",
+                "expansion_0083",
+                "expansion_0085",
+                "expansion_0096",
+                "expansion_0097",
+                "expansion_0099",
+                "expansion_0104",
+                "expansion_0107",
+                "expansion_0128",
+                "expansion_0129",
+                "expansion_0130",
+                "expansion_0131",
+                "expansion_0132",
+                "expansion_0133",
+                "newtrain_0f6db7878ac41fe9",
+                "newtrain_384b3c14b5db826e",
+                "newtrain_449f2a97fdcc3c2a",
+                "newtrain_5dabbb7b966f2b7a",
+                "newtrain_7755b677d7b70273",
+                "newtrain_8525e16ffdad8894",
+                "newtrain_93972dda5a9d2d8d",
+                "newtrain_a1e9f43d0649de37",
+                "newtrain_ca7f9a992f24d035",
+                "newtrain_e6041b33464f3be1",
+                "newtrain_fffecebc8c19c397",
+                "pilot_0000",
+                "pilot_0001",
+                "pilot_0002",
+                "pilot_0003",
+                "pilot_0004",
+                "pilot_0005",
+                "pilot_0006",
+                "pilot_0007",
+                "pilot_0008",
+                "pilot_0009",
+                "pilot_0010",
+                "pilot_0011",
+                "pilot_0013",
+                "pilot_0015",
+                "pilot_0016",
+                "pilot_0017",
+                "pilot_0018",
+                "pilot_0019",
+                "pilot_0020",
+                "pilot_0021",
+                "pilot_0080",
+                "pilot_0081",
+                "pilot_0082",
+                "pilot_0083",
+                "pilot_0085",
+                "pilot_0086",
+                "pilot_0087",
+                "pilot_0089",
+                "pilot_0128",
+                "pilot_0129",
+                "pilot_0130",
+                "pilot_0131",
+                "pilot_0135",
+                "pilot_0137",
+                "pilot_0139",
+                "pilot_0143",
+                "pilot_0192",
+                "pilot_0193",
+                "pilot_0194",
+                "pilot_0195",
+                "pilot_0205",
+                "pilot_0240",
+                "pilot_0241",
+                "pilot_0242",
+                "pilot_0243",
+                "pilot_0244",
+                "pilot_0247",
+                "pilot_0255",
+                "pilot_0320",
+                "pilot_0321",
+                "pilot_0322",
+                "pilot_0323",
+                "pilot_0324",
+                "pilot_0325",
+                "pilot_0327",
+                "pilot_0330",
+                "pilot_0333",
+                "pilot_0368",
+                "pilot_0369",
+                "pilot_0370",
+                "pilot_0371",
+                "pilot_0372",
+                "pilot_0373",
+                "pilot_0374",
+                "pilot_0375",
+                "pilot_0376",
+                "pilot_0377",
+                "pilot_0378",
+                "pilot_0379",
+                "pilot_0381"
+              ]
+            },
+            "actual": {
+              "denominator": 18,
+              "stable_denominator": 0,
+              "unstable_denominator": 18,
+              "detected_unstable_ids": [
+                "expansion_0106",
+                "pilot_0207",
+                "pilot_0254",
+                "pilot_0380"
+              ],
+              "missed_unstable_ids": [
+                "expansion_0044",
+                "expansion_0078",
+                "expansion_0104",
+                "expansion_0109",
+                "expansion_0138",
+                "expansion_0143",
+                "newtrain_384b3c14b5db826e",
+                "newtrain_807efe654094c95c",
+                "pilot_0030",
+                "pilot_0093",
+                "pilot_0202",
+                "pilot_0205",
+                "pilot_0252",
+                "pilot_0335"
+              ],
+              "false_los_ids": [],
+              "numerical_unresolved_ids": [],
+              "latency_uncovered_ids": [],
+              "unsettled_ids": [
+                "expansion_0044",
+                "expansion_0078",
+                "expansion_0104",
+                "expansion_0109",
+                "expansion_0138",
+                "expansion_0143",
+                "newtrain_384b3c14b5db826e",
+                "newtrain_807efe654094c95c",
+                "pilot_0030",
+                "pilot_0093",
+                "pilot_0202",
+                "pilot_0205",
+                "pilot_0252",
+                "pilot_0335"
+              ],
+              "settled_ids": [],
+              "uncovered_ids": [],
+              "autonomous_los_ids": [
+                "expansion_0106",
+                "pilot_0207",
+                "pilot_0254",
+                "pilot_0380"
+              ],
+              "autonomous_settled_ids": [],
+              "autonomous_unsettled_ids": [
+                "expansion_0044",
+                "expansion_0078",
+                "expansion_0104",
+                "expansion_0109",
+                "expansion_0138",
+                "expansion_0143",
+                "newtrain_384b3c14b5db826e",
+                "newtrain_807efe654094c95c",
+                "pilot_0030",
+                "pilot_0093",
+                "pilot_0202",
+                "pilot_0205",
+                "pilot_0252",
+                "pilot_0335"
+              ]
+            }
+          },
+          "train_check": {
+            "8s": {
+              "denominator": 69,
+              "stable_denominator": 57,
+              "unstable_denominator": 12,
+              "detected_unstable_ids": [],
+              "missed_unstable_ids": [],
+              "false_los_ids": [
+                "expansion_0002",
+                "expansion_0004",
+                "expansion_0006",
+                "expansion_0007",
+                "expansion_0011",
+                "expansion_0020",
+                "expansion_0021",
+                "expansion_0022",
+                "expansion_0026",
+                "expansion_0027",
+                "expansion_0029",
+                "newtrain_3437c2ab89bafaa6",
+                "newtrain_9d6e71f7fdd48ba6",
+                "newtrain_ec341ae4d28d1ec0",
+                "newtrain_fdf9b090374343f7",
+                "pilot_0116",
+                "pilot_0117",
+                "pilot_0119",
+                "pilot_0120",
+                "pilot_0121",
+                "pilot_0212",
+                "pilot_0213",
+                "pilot_0214",
+                "pilot_0216",
+                "pilot_0218",
+                "pilot_0219",
+                "pilot_0221"
+              ],
+              "numerical_unresolved_ids": [],
+              "latency_uncovered_ids": [],
+              "unsettled_ids": [
+                "expansion_0000",
+                "expansion_0001",
+                "expansion_0003",
+                "expansion_0005",
+                "expansion_0009",
+                "expansion_0016",
+                "expansion_0017",
+                "expansion_0018",
+                "expansion_0019",
+                "expansion_0023",
+                "expansion_0024",
+                "expansion_0025",
+                "expansion_0028",
+                "expansion_0031",
+                "newtrain_83adbaea1acb2425",
+                "newtrain_d94aa665a50e1e71",
+                "pilot_0112",
+                "pilot_0113",
+                "pilot_0114",
+                "pilot_0115",
+                "pilot_0118",
+                "pilot_0123",
+                "pilot_0125",
+                "pilot_0208",
+                "pilot_0209",
+                "pilot_0210",
+                "pilot_0211",
+                "pilot_0215",
+                "pilot_0217",
+                "pilot_0223"
+              ],
+              "settled_ids": [],
+              "uncovered_ids": [
+                "expansion_0008",
+                "expansion_0010",
+                "expansion_0013",
+                "expansion_0030",
+                "newtrain_2ca331ed919db8a0",
+                "newtrain_7686602ca2df933f",
+                "newtrain_9839a09144dd43ec",
+                "newtrain_b205117cd732146c",
+                "newtrain_f19d6366a51b07d4",
+                "pilot_0122",
+                "pilot_0220",
+                "pilot_0222"
+              ],
+              "autonomous_los_ids": [
+                "expansion_0002",
+                "expansion_0004",
+                "expansion_0006",
+                "expansion_0007",
+                "expansion_0010",
+                "expansion_0011",
+                "expansion_0013",
+                "expansion_0020",
+                "expansion_0021",
+                "expansion_0022",
+                "expansion_0026",
+                "expansion_0027",
+                "expansion_0029",
+                "expansion_0030",
+                "newtrain_2ca331ed919db8a0",
+                "newtrain_3437c2ab89bafaa6",
+                "newtrain_9839a09144dd43ec",
+                "newtrain_9d6e71f7fdd48ba6",
+                "newtrain_ec341ae4d28d1ec0",
+                "newtrain_f19d6366a51b07d4",
+                "newtrain_fdf9b090374343f7",
+                "pilot_0116",
+                "pilot_0117",
+                "pilot_0119",
+                "pilot_0120",
+                "pilot_0121",
+                "pilot_0122",
+                "pilot_0212",
+                "pilot_0213",
+                "pilot_0214",
+                "pilot_0216",
+                "pilot_0218",
+                "pilot_0219",
+                "pilot_0220",
+                "pilot_0221",
+                "pilot_0222"
+              ],
+              "autonomous_settled_ids": [],
+              "autonomous_unsettled_ids": [
+                "expansion_0000",
+                "expansion_0001",
+                "expansion_0003",
+                "expansion_0005",
+                "expansion_0008",
+                "expansion_0009",
+                "expansion_0016",
+                "expansion_0017",
+                "expansion_0018",
+                "expansion_0019",
+                "expansion_0023",
+                "expansion_0024",
+                "expansion_0025",
+                "expansion_0028",
+                "expansion_0031",
+                "newtrain_7686602ca2df933f",
+                "newtrain_83adbaea1acb2425",
+                "newtrain_b205117cd732146c",
+                "newtrain_d94aa665a50e1e71",
+                "pilot_0112",
+                "pilot_0113",
+                "pilot_0114",
+                "pilot_0115",
+                "pilot_0118",
+                "pilot_0123",
+                "pilot_0125",
+                "pilot_0208",
+                "pilot_0209",
+                "pilot_0210",
+                "pilot_0211",
+                "pilot_0215",
+                "pilot_0217",
+                "pilot_0223"
+              ]
+            },
+            "actual": {
+              "denominator": 12,
+              "stable_denominator": 0,
+              "unstable_denominator": 12,
+              "detected_unstable_ids": [],
+              "missed_unstable_ids": [
+                "expansion_0008",
+                "expansion_0010",
+                "expansion_0013",
+                "expansion_0030",
+                "newtrain_2ca331ed919db8a0",
+                "newtrain_7686602ca2df933f",
+                "newtrain_9839a09144dd43ec",
+                "newtrain_b205117cd732146c",
+                "newtrain_f19d6366a51b07d4",
+                "pilot_0122",
+                "pilot_0220",
+                "pilot_0222"
+              ],
+              "false_los_ids": [],
+              "numerical_unresolved_ids": [],
+              "latency_uncovered_ids": [],
+              "unsettled_ids": [
+                "expansion_0008",
+                "expansion_0010",
+                "expansion_0013",
+                "expansion_0030",
+                "newtrain_2ca331ed919db8a0",
+                "newtrain_7686602ca2df933f",
+                "newtrain_9839a09144dd43ec",
+                "newtrain_b205117cd732146c",
+                "newtrain_f19d6366a51b07d4",
+                "pilot_0122",
+                "pilot_0220",
+                "pilot_0222"
+              ],
+              "settled_ids": [],
+              "uncovered_ids": [],
+              "autonomous_los_ids": [],
+              "autonomous_settled_ids": [],
+              "autonomous_unsettled_ids": [
+                "expansion_0008",
+                "expansion_0010",
+                "expansion_0013",
+                "expansion_0030",
+                "newtrain_2ca331ed919db8a0",
+                "newtrain_7686602ca2df933f",
+                "newtrain_9839a09144dd43ec",
+                "newtrain_b205117cd732146c",
+                "newtrain_f19d6366a51b07d4",
+                "pilot_0122",
+                "pilot_0220",
+                "pilot_0222"
+              ]
+            }
+          }
+        },
+        "initialization_reasons": {
+          "main": {
+            "accepted": 297
+          },
+          "fine": {
+            "accepted": 297
+          }
+        },
+        "main_fine_acceptance_disagreement_count": 0,
+        "history_objective": {
+          "main": {
+            "before_sum": 5.415999538382908,
+            "effective_after_sum": 0.19335116377577932,
+            "effective_history_after_sum": 0.0903485723495294,
+            "accepted_trial_after_sum": 0.19335116377577932
+          },
+          "fine": {
+            "before_sum": 5.415999538320216,
+            "effective_after_sum": 0.19335116375820655,
+            "effective_history_after_sum": 0.0903485723413012,
+            "accepted_trial_after_sum": 0.19335116375820655
+          }
+        },
+        "integration_work": {
+          "rhs_forward": 5702400,
+          "rhs_recompute": 0,
+          "encoder_events": 0
+        },
+        "cost": {
+          "initialization": {
+            "wall_s": 121.30514230002882,
+            "cpu_s": 120.53125
+          },
+          "future_integration_and_scoring": {
+            "wall_s": 135.33385299984366,
+            "cpu_s": 134.515625
+          }
+        }
+      },
+      "predictions_ref": {
+        "path": "artifacts/osgkd_v2_p2a_20261123/probe01/predictions.npz",
+        "sha256": "b65a09ada3e6159bd612c612ed07b1cc6b31f8a15332c9b9bf9ad789d7c0b79a",
+        "bytes": 183786158
+      },
+      "rows_ref": {
+        "path": "artifacts/osgkd_v2_p2a_20261123/probe01/rows.json",
+        "sha256": "7f8b816e94461b95a6e4940b10a7c4379c32c6142e70832ac25e27411da0cd4f",
+        "bytes": 1885421
+      },
+      "initialization_ref": {
+        "path": "artifacts/osgkd_v2_p2a_20261123/probe01/initialization.json",
+        "sha256": "7f658982385ecbe6446e37fd3459c138082ec6fcefa698c8b23a0eebec3f2608",
+        "bytes": 281418
+      }
+    },
+    "initialization_work": {
+      "encoder_events": 601,
+      "rhs_history_primal": 434720,
+      "rhs_history_jvp_tangent_equivalents": 4329600,
+      "rhs_baseline_prefix": 480
+    }
+  },
+  "cost": {
+    "wall_s": 276.3344698000001,
+    "cpu_s": 273.96875
+  },
+  "environment": {
+    "torch": "2.13.0+cu130",
+    "numpy": "2.5.2",
+    "device": "cpu",
+    "dtype": "float64",
+    "threads": 1
+  }
+}
