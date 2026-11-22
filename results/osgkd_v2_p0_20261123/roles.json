@@ -1,0 +1,27 @@
+{
+  "run_id": "osgkd_v2_p0_20261123",
+  "client_date": "2026-11-23",
+  "base_commit": "47e68f99d0c63ad508fb398c27527dc25fa828db",
+  "adopted_by_root": "冻结两份 v1 第1500次检查点与原事件评价，检查固定参考的物理商空间谱和初态边界，按真实时间范围核对失步。只用运动历史初始化一次，P0 结论用于选择后续辨别对象。",
+  "role_invocations": [
+    {
+      "role": "Scientist",
+      "tool": "collaboration.spawn_agent",
+      "configured_model": "gpt-6-astra",
+      "server_resolved_model": null,
+      "fork_turns": "none",
+      "returned_receipt": {"task_name": "/root/p0_scientist"},
+      "completion": "final_answer_delivered",
+      "adopted_output": "campaigns/osgkd_v2/p0_protocol.md"
+    },
+    {
+      "role": "Modeler",
+      "tool": "collaboration.spawn_agent",
+      "configured_model": "gpt-6.1-sol",
+      "server_resolved_model": null,
+      "fork_turns": "none",
+      "returned_receipt": {"task_name": "/root/p0_modeler"},
+      "requested_output": "experiments/osgkd_v2_p0_20261123/run.py"
+    }
+  ]
+}

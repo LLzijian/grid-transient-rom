@@ -1,0 +1,102 @@
+{
+  "schema_version": 2,
+  "synthetic": false,
+  "run_id": "osgkd_v2_p0_20261123",
+  "parent_run": "osgkd_fit297_20261113",
+  "purpose": "probe",
+  "scope": "two frozen v1 checkpoints, existing train fit297 histories and paired saved rows; no training, new integrations, val/test or FOM",
+  "campaign": "campaigns/osgkd_v2/campaign.md",
+  "architecture": "designs/osgkd_v2_architecture.md",
+  "protocol": "campaigns/osgkd_v2/p0_protocol.md",
+  "recorded_utc": "2026-11-22T17:26:25.471055+00:00",
+  "source_commit": "47e68f99d0c63ad508fb398c27527dc25fa828db",
+  "deployment_contract": "motion_only_v1",
+  "execution": {
+    "status": "COMPLETED",
+    "phase": "closed",
+    "scientific_execution_released": true,
+    "scientific_jobs_started": 1,
+    "native_live": false,
+    "release": {
+      "path": "results/osgkd_v2_p0_20261123/release.json",
+      "sha256": "76c7f92a3c90d82596f21f5a36357adb226aee3b6a763e6fb300ddcf118d490f",
+      "bytes": 2742
+    },
+    "completed_jobs": {
+      "probe01": {
+        "native_chunk": "2ab11d",
+        "exit_code": 0,
+        "pid": 12768,
+        "experimenter": {
+          "configured_model": "gpt-6.1-sol",
+          "server_resolved_model": null,
+          "returned_receipt": {
+            "task_name": "/root/p0_experimenter"
+          }
+        },
+        "started": {
+          "path": "artifacts/osgkd_v2_p0_20261123/probe01/started.json",
+          "sha256": "a113166b379c7aa1bfcb294c48b9438d4da0d1b54bd6ab9c5ddfbad63d7bb14a",
+          "bytes": 3042
+        },
+        "completed": {
+          "path": "artifacts/osgkd_v2_p0_20261123/probe01/completed.json",
+          "sha256": "1c5ff8fbcec63eb8df4242ee0a35edc932063d4ac2a7ccda0425433265fe755b",
+          "bytes": 1222
+        },
+        "summary": {
+          "path": "results/osgkd_v2_p0_20261123/probe01/summary.json",
+          "sha256": "41447fe8548f54a86894f67518387c3a0b77ecbc3505c29fda782b305bcf19b0",
+          "bytes": 49477
+        }
+      }
+    }
+  },
+  "scientific_work": {
+    "budget_status": "closed",
+    "limits": {
+      "selected_models": 2,
+      "initialized_events": 594,
+      "technical_rechecks": 1,
+      "new_integrations": 0,
+      "training_updates": 0,
+      "new_fom": 0
+    },
+    "old_unused_work_transferred": false,
+    "used": {
+      "initialized_events": 594,
+      "new_fom": 0,
+      "new_integrations": 0,
+      "training_updates": 0
+    },
+    "cost": {
+      "cpu_s": 2.09375,
+      "scope": "verification, bundle load and diagnostics; final serialization excluded",
+      "wall_s": 2.4025542000308633
+    }
+  },
+  "evidence": {
+    "references": [
+      "results/osgkd_v2_p0_20261123/roles.json",
+      "results/osgkd_fit297_20261113/artifacts.json",
+      "results/osgkd_v2_p0_20261123/probe01/summary.json",
+      "reports/osgkd_v2_p0_20261123/result.md",
+      "reports/osgkd_v2_p0_20261123/review.md"
+    ],
+    "validity": "valid_for_fixed_reference_and_exposed_train_fit297",
+    "optimizer_health": "not_applicable",
+    "optimization_adequacy": "not_applicable",
+    "mechanism_probe": "local_growth_in_both_models; no_attribution_to_event_failure",
+    "confirmation": "archived_train_diagnostic"
+  },
+  "closed_utc": "2026-11-22T17:33:02.226764+00:00",
+  "root_decisions": {
+    "code_decision": "retain_branch",
+    "model_decision": "retain_evidence",
+    "science_decision": "continue"
+  },
+  "proposal": {
+    "next_action": "qualify_fixed_parent_2s_vs_8s_objective_comparison",
+    "next_protocol": "campaigns/osgkd_v2/p1a_protocol.md"
+  }
+}

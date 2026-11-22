@@ -1,0 +1,229 @@
+{
+  "run_id": "osgkd_v2_p1a_20261123",
+  "job_id": "qual01",
+  "phase": "qualify",
+  "release": {
+    "run_id": "osgkd_v2_p1a_20261123",
+    "phase": "qualify",
+    "job_id": "qual01",
+    "released": true,
+    "created_utc": "2026-11-22T17:33:02.226764+00:00",
+    "client_date": "2026-11-23",
+    "base_commit": "47e68f99d0c63ad508fb398c27527dc25fa828db",
+    "device": "cpu",
+    "threads": 1,
+    "recompute": false,
+    "audit_ref": {
+      "path": "results/osgkd_fit297_20261113/port_audit_release.json",
+      "bytes": 1367,
+      "sha256": "02be50898c5702d5739931032ce2a79436d96294a7244911a26bdb1b01c225a5"
+    },
+    "checkpoint_ref": {
+      "path": "artifacts/osgkd_fit297_20261113/train_C1/C1/attempt_1500.pt",
+      "sha256": "c35e6ebabef0c54a5f3dfcc597a82bc325eb41ed86e3df4eb270a4c260dae83c",
+      "bytes": 193196
+    },
+    "source_hashes": {
+      "experiments/osgkd_v2_p1a_20261123/run.py": "02a4a7069ce919fd2f9c2ac493c24409de5483119b83bfeba5c37c56da00f07c",
+      "experiments/osgkd_fit297_20261113/run.py": "ec74858cd5c296f8210f30242ba620f6a4f9eea160d92b37d021f4b371959c5f",
+      "campaigns/osgkd_v2/p1a_protocol.md": "f72f8df3484390897249e623b7c4de88847879f7e13f30871a94064f71327337",
+      "src/kiki/models/osgkd.py": "6edce1578ff628ea15f3a7c8c429ea7e8898d0bf901ff8810064e19a783af984",
+      "src/kiki/models/osgkd_fitting.py": "2b5dac09543169be952af3698a740620439a2f686977c4f513329bae9704e087",
+      "src/kiki/data/osgkd.py": "30791261eeb068661927a3f154de42f80ef60368f14cc2854388916b5f9075b0",
+      "src/kiki/evaluation/osgkd.py": "1c13a9c7a3ec01dc11bf6aff3bec84efcbbb90ac24f3936a502b9ebc8e7ffa47",
+      "experiments/evaluate_l1_latent.py": "5882dc6814f13ef4210d94db07fd87ca88d8130aa984dbda7757c53088662314",
+      "results/osgkd_fit297_20261113/artifacts.json": "974d42d232203c2e73244a19e7ca51260ef7a9caa382560365953fea8b5a6eaf",
+      "results/osgkd_v2_p1a_20261123/roles.json": "5aca98cb8242cb52ce35749e0d12445ea210f1433e31059a05c3ccbfc2f2ceae",
+      "results/osgkd_v2_p0_20261123/probe01/summary.json": "41447fe8548f54a86894f67518387c3a0b77ecbc3505c29fda782b305bcf19b0"
+    }
+  },
+  "release_ref": {
+    "path": "results/osgkd_v2_p1a_20261123/qualify_release.json",
+    "sha256": "13c5936f7bd52c0e06c4eeb7ff630b078511a94993adf04409d74e25a0362d2b",
+    "bytes": 1948
+  },
+  "status": "completed",
+  "pid": 18400,
+  "started_utc": "2026-11-22T17:33:38.705255+00:00",
+  "command": [
+    "E:\\03-nn_Transfer_Func\\kiki\\.venv-gpu\\Scripts\\python.exe",
+    "experiments/osgkd_v2_p1a_20261123/run.py",
+    "qualify",
+    "--release",
+    "results/osgkd_v2_p1a_20261123/qualify_release.json"
+  ],
+  "result": {
+    "passed": true,
+    "restored_trial_equal": true,
+    "trial": {
+      "attempt": 1501,
+      "horizon_s": 2.0,
+      "event_ids": [
+        "pilot_0080",
+        "pilot_0321",
+        "pilot_0205",
+        "newtrain_fcce946bce1243a2",
+        "pilot_0011",
+        "pilot_0014",
+        "expansion_0102",
+        "pilot_0128"
+      ],
+      "J": 0.16269092659612325,
+      "components": {
+        "motion": 0.1321606100906919,
+        "ports": 0.30509241016550376,
+        "consistency": 0.002107548888097692
+      },
+      "accepted": true,
+      "clipped": false,
+      "gradient_norm": 1.2290484058472608,
+      "projection": {
+        "changed_coordinates": 7,
+        "max_change": 0.0002503605886481769,
+        "c_zero": 0,
+        "beta_zero": 0,
+        "beta_at_c": 7
+      }
+    },
+    "numerical": {
+      "passed": true,
+      "events": [
+        {
+          "id": "pilot_0080",
+          "steps": 800,
+          "finite": true,
+          "rms": 2.41687854898562e-10,
+          "maximum": 2.9906832565984587e-09,
+          "passed": true
+        },
+        {
+          "id": "pilot_0205",
+          "steps": 144,
+          "finite": true,
+          "rms": 1.194218476370508e-10,
+          "maximum": 7.105761988941206e-10,
+          "passed": true
+        }
+      ]
+    },
+    "gradient": {
+      "passed": true,
+      "checks": [
+        {
+          "direction": "encoder",
+          "h": 1e-05,
+          "ad": 18.093846498506938,
+          "fd": 18.093846509081857,
+          "absolute_error": 1.0574918718475601e-08,
+          "tolerance": 0.01809385650908186,
+          "passed": true
+        },
+        {
+          "direction": "encoder",
+          "h": 5e-06,
+          "ad": 18.093846498506938,
+          "fd": 18.093846498867805,
+          "absolute_error": 3.608668919241609e-10,
+          "tolerance": 0.018093856498867807,
+          "passed": true
+        },
+        {
+          "direction": "dynamics",
+          "h": 1e-05,
+          "ad": -10.143837114657718,
+          "fd": -10.143837114107157,
+          "absolute_error": 5.505604860900348e-10,
+          "tolerance": 0.010143847114657718,
+          "passed": true
+        },
+        {
+          "direction": "dynamics",
+          "h": 5e-06,
+          "ad": -10.143837114657718,
+          "fd": -10.143837122811306,
+          "absolute_error": 8.153588026971192e-09,
+          "tolerance": 0.010143847122811306,
+          "passed": true
+        },
+        {
+          "direction": "edges",
+          "h": 1e-05,
+          "ad": -3.895174532869711,
+          "fd": -3.89517452936694,
+          "absolute_error": 3.502770962171553e-09,
+          "tolerance": 0.003895184532869711,
+          "passed": true
+        },
+        {
+          "direction": "edges",
+          "h": 5e-06,
+          "ad": -3.895174532869711,
+          "fd": -3.8951745289672597,
+          "absolute_error": 3.902451251036609e-09,
+          "tolerance": 0.003895184532869711,
+          "passed": true
+        }
+      ],
+      "event_id": "pilot_0080"
+    },
+    "grouped": {
+      "event_ids": [
+        "pilot_0080",
+        "pilot_0321",
+        "newtrain_fcce946bce1243a2",
+        "pilot_0011",
+        "pilot_0014",
+        "expansion_0102",
+        "pilot_0128",
+        "expansion_0093"
+      ],
+      "loss_absolute_error": 1.7763568394002505e-14,
+      "gradient_max_absolute_error": 9.094947017729282e-13,
+      "gradient_tolerance": 3.8589726668083206e-06,
+      "grouped_cost": {
+        "wall_s": 10.570229099947028,
+        "cpu_s": 22.65625
+      },
+      "sequential_cost": {
+        "wall_s": 72.55594120000023,
+        "cpu_s": 156.078125
+      },
+      "passed": true
+    },
+    "batch_sequence_ref": {
+      "path": "artifacts/osgkd_v2_p1a_20261123/qual01/batch_sequence.json",
+      "sha256": "beeb6653a94483d444cc2a191a8d4095ff3b28df3905be1ff8da368e69dba5a6",
+      "bytes": 34615
+    },
+    "trial_attempts": 2,
+    "discarded_trial_updates": 2,
+    "work": {
+      "rhs_forward": 245760,
+      "rhs_recompute": 0,
+      "encoder_events": 96,
+      "rhs_backward_vjp": null,
+      "rhs_backward_vjp_upper_bound": 245760
+    },
+    "memory_observation": {
+      "working_set_bytes": 1975545856,
+      "peak_working_set_bytes": 2466164736
+    },
+    "objective_excluded_ids": {
+      "fit": [],
+      "check": []
+    },
+    "evaluation_denominator": 297
+  },
+  "cost": {
+    "wall_s": 153.50698090001242,
+    "cpu_s": 324.1875
+  },
+  "environment": {
+    "torch": "2.13.0+cu130",
+    "numpy": "2.5.2",
+    "device": "cpu",
+    "dtype": "float64",
+    "threads": 1,
+    "recompute": false
+  }
+}

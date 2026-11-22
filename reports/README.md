@@ -4,7 +4,7 @@
 
 ## 先按问题阅读
 
-- **OSGKD 2.0 的实证起点**：[IEEE39 首轮 C0/C1 预测结果](osgkd_fit297_20261113/result.md)与[科学综合](osgkd_fit297_20261113/scientific_synthesis.md)。下一轮比较见[当前 Campaign](../campaigns/osgkd_v2/campaign.md)。
+- **OSGKD 2.0 的实证起点**：[IEEE39 首轮 C0/C1 预测结果](osgkd_fit297_20261113/result.md)、[P0 参考谱与失步时机](osgkd_v2_p0_20261123/result.md)及[P1a 配对时域对照](../campaigns/osgkd_v2/p1a_protocol.md)。
 - **[前序研究：静态拓扑、隐幅值调制与力记忆](../campaigns/gftd_kuramoto_discovery_20261106.md)**：先读当前研究候选、证据范围与未决问题；[静态恢复](gftd_sparse_topology_20261107/README.md)、[调制辨别](gftd_modulation_20261107/README.md)、[真实暂态迁移](gftd_fit297_20261107/README.md)提供正式登记与原执行／续跑导航。
 - **[力记忆与 p 通道](history/force_memory/README.md)**：空间作用、初始化与优化解释、反推资格、驱动阶数和共享常数补救。
 - **[后续闭合模型与训练时域](history/closure_development/README.md)**：函数形式的预测收益、机制选择与训练窗口的辨别作用，工程条件单独说明。

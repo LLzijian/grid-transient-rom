@@ -1,0 +1,27 @@
+{
+  "run_id": "osgkd_v2_p1a_20261123",
+  "client_date": "2026-11-23",
+  "base_commit": "47e68f99d0c63ad508fb398c27527dc25fa828db",
+  "adopted_by_root": "固定父 C1、Adam 与配对批次，仅改变目标最长为 2 s 或 8 s，CPU float64 单线程资格后再作两边各 200 次尝试。沿用 v1 评分，增加明确的长目标张量覆盖与一长一短轨迹的前瞻资格。",
+  "role_invocations": [
+    {
+      "role": "Scientist",
+      "tool": "collaboration.spawn_agent",
+      "configured_model": "gpt-6-astra",
+      "server_resolved_model": null,
+      "fork_turns": "none",
+      "returned_receipt": {"task_name": "/root/p1a_scientist"},
+      "completion": "final_answer_delivered",
+      "adopted_output": "campaigns/osgkd_v2/p1a_protocol.md"
+    },
+    {
+      "role": "Modeler",
+      "tool": "collaboration.spawn_agent",
+      "configured_model": "gpt-6.1-sol",
+      "server_resolved_model": null,
+      "fork_turns": "none",
+      "returned_receipt": {"task_name": "/root/p1a_modeler"},
+      "requested_output": "experiments/osgkd_v2_p1a_20261123/run.py"
+    }
+  ]
+}

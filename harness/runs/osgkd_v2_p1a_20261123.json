@@ -1,0 +1,138 @@
+{
+  "schema_version": 2,
+  "synthetic": false,
+  "run_id": "osgkd_v2_p1a_20261123",
+  "parent_run": "osgkd_fit297_20261113",
+  "purpose": "discrimination",
+  "scope": "200 paired attempts at 2s vs 8s on the same C1/Adam/fit297; motion_only_v1",
+  "campaign": "campaigns/osgkd_v2/campaign.md",
+  "protocol": "campaigns/osgkd_v2/p1a_protocol.md",
+  "architecture": "designs/osgkd_v2_architecture.md",
+  "depends_on": [
+    "osgkd_v2_p0_20261123"
+  ],
+  "deployment_contract": "motion_only_v1",
+  "recorded_utc": "2026-11-22T17:33:02.226764+00:00",
+  "source_commit": "47e68f99d0c63ad508fb398c27527dc25fa828db",
+  "execution": {
+    "status": "RUNNING",
+    "phase": "paired_training",
+    "scientific_execution_released": true,
+    "formal_training_released": true,
+    "scientific_jobs_started": 2,
+    "native_live": true,
+    "qualification_release": {
+      "path": "results/osgkd_v2_p1a_20261123/qualify_release.json",
+      "sha256": "13c5936f7bd52c0e06c4eeb7ff630b078511a94993adf04409d74e25a0362d2b",
+      "bytes": 1948
+    },
+    "comparison_release": {
+      "path": "results/osgkd_v2_p1a_20261123/compare_release.json",
+      "sha256": "91012b12a3ce2a4a911aa2e8245dfdf23ee29904bdf3d451e5a74e46c6a68eb9",
+      "bytes": 2143
+    },
+    "completed_jobs": {
+      "qual01": {
+        "native_chunk": "5b6362",
+        "native_session": 94616,
+        "exit_code": 0,
+        "pid": 18400,
+        "experimenter": {
+          "configured_model": "gpt-6.1-sol",
+          "server_resolved_model": null,
+          "returned_receipt": {
+            "task_name": "/root/p1a_experimenter"
+          }
+        },
+        "summary": {
+          "path": "results/osgkd_v2_p1a_20261123/qual01/summary.json",
+          "sha256": "a5998f7030abf10789b24f24846204234f164c5cb2404967ebdd1b03cafaff04",
+          "bytes": 7211
+        },
+        "passed": true
+      }
+    },
+    "verified_utc": "2026-11-22T17:38:49.641373+00:00",
+    "active_claims": [
+      {
+        "job_id": "pair01",
+        "pid": 22508,
+        "launcher_pid": 45636,
+        "started_utc": "2026-11-22T17:37:53.158944+00:00",
+        "started": {
+          "path": "artifacts/osgkd_v2_p1a_20261123/pair01/started.json",
+          "sha256": "894d7c7b9a1e3b794d22d69a0f83432c8baead5494fc78cfd4236a96e28d9e8f",
+          "bytes": 2827
+        },
+        "launch": {
+          "path": "artifacts/osgkd_v2_p1a_20261123/host_pair01/spawn.json",
+          "sha256": "b140e1a7de27747ce8f8320b68ec2bb482fe0bc52b56524abeba3e3f2d73da04",
+          "bytes": 493
+        },
+        "experimenter": {
+          "configured_model": "gpt-6.1-sol",
+          "server_resolved_model": null,
+          "returned_receipt": {
+            "task_name": "/root/p1a_experimenter"
+          }
+        }
+      }
+    ],
+    "first_pair_verified": {
+      "verified_utc": "2026-11-22T17:39:27.849038+00:00",
+      "attempt": 1501,
+      "ordered_event_ids_matched": true,
+      "arms": {
+        "2s": {
+          "horizon_s": 2.0,
+          "accepted": true,
+          "clipped": false,
+          "wall_s": 3.699459100025706,
+          "cpu_s": 6.1875
+        },
+        "8s": {
+          "horizon_s": 8.0,
+          "accepted": true,
+          "clipped": true,
+          "wall_s": 12.421081000007689,
+          "cpu_s": 26.921875
+        }
+      }
+    }
+  },
+  "scientific_work": {
+    "budget_status": "open",
+    "limits": {
+      "qualification_trial_attempts": 2,
+      "paired_attempts": 200,
+      "paired_seeds": 1,
+      "new_fom": 0
+    },
+    "old_unused_work_transferred": false,
+    "qualification": {
+      "cost": {
+        "wall_s": 153.50698090001242,
+        "cpu_s": 324.1875
+      },
+      "work": {
+        "rhs_forward": 245760,
+        "rhs_recompute": 0,
+        "encoder_events": 96,
+        "rhs_backward_vjp": null,
+        "rhs_backward_vjp_upper_bound": 245760
+      },
+      "discarded_trial_updates": 2
+    }
+  },
+  "evidence": {
+    "references": [
+      "results/osgkd_v2_p1a_20261123/roles.json",
+      "results/osgkd_v2_p0_20261123/probe01/summary.json",
+      "results/osgkd_v2_p1a_20261123/qual01/summary.json",
+      "reports/osgkd_v2_p1a_20261123/qualification.md"
+    ]
+  },
+  "proposal": {
+    "next_action": "reconcile_native_pair_receipts_then_analyze_fixed_endpoints"
+  }
+}

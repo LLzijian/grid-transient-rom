@@ -1,0 +1,52 @@
+{
+  "run_id": "osgkd_v2_p0_20261123",
+  "job_id": "probe01",
+  "released": true,
+  "created_utc": "2026-11-22T17:26:25.471055+00:00",
+  "client_date": "2026-11-23",
+  "base_commit": "47e68f99d0c63ad508fb398c27527dc25fa828db",
+  "audit_ref": {
+    "path": "results/osgkd_fit297_20261113/port_audit_release.json",
+    "bytes": 1367,
+    "sha256": "02be50898c5702d5739931032ce2a79436d96294a7244911a26bdb1b01c225a5"
+  },
+  "models": {
+    "C0": {
+      "path": "artifacts/osgkd_fit297_20261113/train_C0/C0/attempt_1500.pt",
+      "sha256": "1222a7a8df66e250c9fdcbcca5da609132f7fa1e1061c5b9bfa1afc50c36c145",
+      "bytes": 191160
+    },
+    "C1": {
+      "path": "artifacts/osgkd_fit297_20261113/train_C1/C1/attempt_1500.pt",
+      "sha256": "c35e6ebabef0c54a5f3dfcc597a82bc325eb41ed86e3df4eb270a4c260dae83c",
+      "bytes": 193196
+    }
+  },
+  "rows": {
+    "C0": {
+      "path": "artifacts/osgkd_fit297_20261113/eval01/C0/rows.json",
+      "sha256": "16f0dcf1a6c5d8eafedc40ca16e4b662d3d92f15a3e39915c3c3a4598fc002c3",
+      "bytes": 1341464
+    },
+    "C1": {
+      "path": "artifacts/osgkd_fit297_20261113/eval01/C1_dynamic/rows.json",
+      "sha256": "e38154ba441d7f3d4518312d778c111794c8bc8d521610c1faaa3ad2e3e74925",
+      "bytes": 1342709
+    }
+  },
+  "source_hashes": {
+    "experiments/osgkd_v2_p0_20261123/run.py": "9608758ed78830a3bd9ce0073401082ffcec5605b8083cbfa9919956e13b4769",
+    "campaigns/osgkd_v2/p0_protocol.md": "06f4b96de0407cd12bf7616cdd091e42b63228275779fd15f135c25b145f01f4",
+    "src/kiki/models/osgkd.py": "6edce1578ff628ea15f3a7c8c429ea7e8898d0bf901ff8810064e19a783af984",
+    "src/kiki/models/osgkd_fitting.py": "2b5dac09543169be952af3698a740620439a2f686977c4f513329bae9704e087",
+    "src/kiki/data/osgkd.py": "30791261eeb068661927a3f154de42f80ef60368f14cc2854388916b5f9075b0",
+    "src/kiki/evaluation/osgkd.py": "1c13a9c7a3ec01dc11bf6aff3bec84efcbbb90ac24f3936a502b9ebc8e7ffa47",
+    "src/kiki/evaluation/gftd_analysis.py": "67d76cde3c16f83c5d017e4ad2e1c95ca613e7817d97b1605cb2f22778d227f5",
+    "src/kiki/evaluation/modal.py": "ab18e50266a28b29a0035b52880ffb15344bfec46b472baf513250ffd2f7eddc",
+    "src/kiki/physics/kuramoto_functional.py": "6e0c6bf1e2c1018bae2c3d7d134e2bf67775691afcce936fdb6f92b933d317f0",
+    "experiments/evaluate_l1_latent.py": "5882dc6814f13ef4210d94db07fd87ca88d8130aa984dbda7757c53088662314",
+    "results/osgkd_fit297_20261113/artifacts.json": "974d42d232203c2e73244a19e7ca51260ef7a9caa382560365953fea8b5a6eaf",
+    "results/osgkd_v2_p0_20261123/roles.json": "dac8cb47402dde57cce89b76ee2935b2eda443dfa156acdf706c85f2dec2f3ec"
+  },
+  "authorized_scope": "two frozen v1 checkpoints, existing train fit297 histories and paired saved rows; no training, new integrations, val/test or FOM"
+}
