@@ -7,6 +7,17 @@
 归档文件保持原字节，相对路径仍具有原文件位置的历史语义；查找迁移位置和哈希使用
 [原迁移清单](../../harness/documentation_migration_20261108.json)和[当前归档入口](../../results/repository_organization/current.json)。历史实验按原提交和冻结材料复现。
 
+## OSGKD v1
+
+2026-11-23 归档，四份文档均可按[原提交](https://github.com/LLzijian/grid-transient-rom/tree/d92822a8bbec5784e2eb73995c77c930b5728741/designs)阅读。fit297 的方案在历史目录中保存原文。另三份是旧运行器按路径和哈希读取的执行输入，保留在原位置。
+
+| 设计 | 历史用途 |
+|---|---|
+| [架构](../osgkd_architecture.md) | fit297 的资格、训练及评分执行清单绑定此原件 |
+| [离散观测合同](../osgkd_observation_adoption_20261113.md) | 同一执行清单绑定此原件 |
+| [来源时间离散分析](../osgkd_source_time_discretization_20261113.md) | 已冻结的归因脚本从采用记录取得并校验此原件 |
+| [fit297 设计](osgkd_v1_20261123/osgkd_fit297_20261113.md) | 首次 C0/C1 比较的问题与范围，可按[累计归档清单](../../results/repository_organization/20261123_osgkd_v1_design_archive/migration.json)回查旧地址 |
+
 ## GFTD 20261113
 
 11 份前序 GFTD 设计按原字节归档；原相对链接按归档前位置理解。下表“原提交阅读”可连续读取当时上下文。

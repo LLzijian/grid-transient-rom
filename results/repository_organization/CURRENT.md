@@ -6,7 +6,7 @@
 
 | 用途 | 来源 |
 |---|---|
-| 历史设计归档 | [GFTD 设计迁移清单](20261113_gftd_design_archive/migration.json) |
+| 历史设计归档 | [GFTD 与 OSGKD v1 累计迁移清单](20261123_osgkd_v1_design_archive/migration.json) |
 | 旧文档迁移 | [harness/documentation_migration_20261108.json](../../harness/documentation_migration_20261108.json) |
 | 累计归档位置 | [results/repository_organization/20261109_modulation_runtime_recovery37/migration.json](20261109_modulation_runtime_recovery37/migration.json) |
 | 报告保护 | [results/repository_organization/20261109_modulation_runtime_recovery37/protected.csv](20261109_modulation_runtime_recovery37/protected.csv) |
@@ -19,7 +19,7 @@
 | 已复核的依赖样板 | [results/repository_organization/20261109_modulation_runtime_recovery37/dependency_review.json](20261109_modulation_runtime_recovery37/dependency_review.json) |
 | 核验过的固定阅读版本 | [results/repository_organization/20261109_modulation_runtime_recovery37/reading_manifest.json](20261109_modulation_runtime_recovery37/reading_manifest.json) |
 
-已关联4822项；按旧路径或当前位置查询：`show-organization --root . --path <路径>`。
+已关联4823项；按旧路径或当前位置查询：`show-organization --root . --path <路径>`。
 
 [本批归档回执](20261109_modulation_runtime_recovery37/README.md)记录原件和恢复路径。
 

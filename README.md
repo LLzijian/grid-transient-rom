@@ -1,14 +1,13 @@
 # Kiki
 
-Scientific research on physics-structured sparse reduced-order models for IEEE39
-post-fault dynamics, with transient prediction, stability and modal-analysis objectives.
+OSGKD 2.0 studies structure discovery in open, partially observed networks of heterogeneous inertial oscillators. Short motion histories initialize a shared dynamical model. The research asks which couplings, nonlinear forces and memory states the observations can distinguish. IEEE39 post-fault dynamics are the high-order prediction benchmark.
 
 GitHub repository: [LLzijian/grid-transient-rom](https://github.com/LLzijian/grid-transient-rom)
 (https://github.com/LLzijian/grid-transient-rom.git).
 
 ## Start here
 
-- [研究报告阅读入口](reports/README.md)：先看[OSGKD 三端联合辨识](campaigns/osgkd_ieee39/campaign.md)，再按问题追溯结论、审查和执行。早期材料从主题档案进入。
+- [研究报告阅读入口](reports/README.md)：先看 [OSGKD 2.0 执行规划](campaigns/osgkd_v2/campaign.md) 与 [IEEE39 已有结果](reports/osgkd_fit297_20261113/result.md)，再按问题追溯结论、审查和执行。早期材料从主题档案进入。
 - [AGENTS.md](AGENTS.md): top-level research principles, aesthetics, authority and
   navigation. Rules are not experiment logs.
 - [kiki.md](kiki.md): scientific task design — deployment contract, data/information

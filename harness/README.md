@@ -2,6 +2,8 @@
 
 从[报告首页](../reports/README.md)按中文问题进入，主题认识维护在 Campaign，科学身份与决定仍来自 `harness/runs/` 和所引用的原件。
 
+当前设计见 [OSGKD 2.0](../designs/osgkd_v2_architecture.md)，待检验问题见 [v2 Campaign](../campaigns/osgkd_v2/campaign.md)。`navigation.json` 的 active_entry 标识当前研究入口，已释放工作仍须查对应 Run 回执。
+
 ## 查一个 Run 或全部登记
 
 ```powershell

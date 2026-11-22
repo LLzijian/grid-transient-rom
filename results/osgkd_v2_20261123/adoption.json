@@ -1,0 +1,53 @@
+{
+  "date": "2026-11-23",
+  "base_commit": "d92822a8bbec5784e2eb73995c77c930b5728741",
+  "decision": "adopt_osgkd_v2_research_design",
+  "root_rationale": "采用有限字典与因果初态反演的统一设计，以时域对照、删组重拟合和三层基准分别检验预测、结构与迁移。快慢支路保留本征衰减率，适定性限于所列增长条件。",
+  "code_decision": "update_design_and_harness",
+  "model_decision": "retain_v1_C1_working_candidate_and_C0_reference",
+  "science_decision": "open_questions_in_campaign",
+  "new_run_released": false,
+  "training_started": false,
+  "source_hashes_lf": {
+    "results/osgkd_v2_20261123/review_inputs.json": "f2f7e5a546a3fc71572300155c62c6246171399f396d99fa4072afd08008fca9",
+    "reports/osgkd_v2_20261123/review.md": "5a8d2c895d12d7e2cdd5d32a1e210454cda0a699b842b8066123770f54338c19"
+  },
+  "host_parent_thread": "01a1b6b7-345a-77a0-8f41-25fc5dcdb063",
+  "host_parent_turn": "01a20430-d2a7-78e1-b568-cc0c87c3678c",
+  "role_invocations": [
+    {
+      "role": "Scientist",
+      "target": "/root/v2_scientist",
+      "configured_model": "gpt-6-astra",
+      "server_resolved_model": null,
+      "tool": "collaboration.spawn_agent",
+      "fork_turns": "none",
+      "call_id": "call_299fb9c8a55441eab7ece337fb1452c3",
+      "thread_id": "01a20431-b97d-7930-acdd-6b967da8f869",
+      "completed_turn_id": "01a20431-ba63-7063-ba7c-22befd09aaeb",
+      "final_message_id": "msg_0ffc94ecd01d7f24016b03205a74b887d0924a3bbcd8d7a69a"
+    },
+    {
+      "role": "Reviewer",
+      "target": "/root/v2_review",
+      "configured_model": "gpt-6.1-sol",
+      "server_resolved_model": null,
+      "tool": "collaboration.spawn_agent",
+      "fork_turns": "none",
+      "call_id": "call_8de3025180b742faabf15b399a5ca177",
+      "thread_id": "01a20437-34bb-7481-a33e-cb1c8b18ef0b",
+      "completed_turn_id": "01a20437-35ac-7433-af14-cda6dbbc7bb0",
+      "final_message_id": "msg_021223b6095ec9dc016b0321619de087d08d50f895d6b40abe"
+    }
+  ],
+  "verification": {
+    "harness_issues": [],
+    "checked_references": 1016,
+    "registered_runs_checked": 30,
+    "control_tests_passed": 91,
+    "subtests_passed": 209,
+    "frozen_v1_execution_sources_raw_sha256_verified": 14,
+    "local_v1_checkpoint_and_rows_identities_verified": 4,
+    "external_source_links_verified_at_git_commit": 7
+  }
+}

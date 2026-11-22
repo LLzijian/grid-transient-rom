@@ -1,21 +1,12 @@
-# 当前架构：OSGKD
+# 当前架构 · OSGKD 2.0
 
-当前活动设计为 [OSGKD 三端联合辨识](../designs/osgkd_architecture.md)，主合同为 [motion_only_v1](../kiki.md)。阶段二已获授权，活动 Run 为 `osgkd_fit297_20261113`；完整实现、两组训练及正式评价已完成，结果与当前工作候选见当前状态。
+从开放异质惯性振子网络的短时运动观测中，哪些耦合、非线性力和记忆阶次可以被区分？OSGKD 2.0 用同一显式方程解释历史、预测未来并计算开放功率收支。IEEE39 的部署合同仍为 11 点、100 ms 相角和完整转速，加冻结常数。真实机械初值只用于另列的信息增强对照。[算法规格](../designs/osgkd_v2_architecture.md) · [信息合同](../kiki.md#motion_only_v1)
 
-| 部分 | 学习对象与边界 |
+| 设计选择 | 可检验的问题 |
 |---|---|
-| 机械驱动 | 用实际存在的 train 端口标签锚定有效机械作用，重新辨识动态，旧机械模型只作起点 |
-| 内部耦合 | 有效图、基础强度及有界调制；互易交换部分零和，图先验与真实线路恢复分开 |
-| 环境交换 | 有来源的静态电气作用及必要动态记忆；允许非零和与正负增量，不能把旧 r 直接重命名 |
+| 内部互易势、独立的驱动与环境端口 | 允许环境净交换后，哪些边、调制和高阶谐波仍有作用？ |
+| 节点共享的初态器及历史窗物理精修（EAVI） | 与同一动力学的纯编码、纯迭代相比，部署时估计和可观测未来能否同时改善？ |
+| 先拟合完整字典，再删组重拟合 | 给较简单模型同等适配机会后，哪些结构仍有必要，哪些只能识别到等价类？ |
+| 长短轨迹联合训练 | 从相同父模型出发，目标时域能解释多少长期误差，失稳样本真实区间的检出是否改善？ |
 
-首版最多沿用 `(theta,omega,p,a,e)` 的 5N 容器，先形成完整 C0/C1，再删组重拟合。部署仅 11 点/100 ms 相角与完整转速历史及声明的冻结常数，由估计器给出 p/a/e 初态；真实 p₀ 只属于 `known_p0_reference`。固定参考、潜态规范、完整功率链式账和同一未来目标见唯一详细设计。
-
-完整 C0/C1、字段映射及首轮有限训练评价已完成。C1在稳定8 s的risk和误报上有本预算内改善，短时risk与失稳真实区间检出仍需改进；两模型最终数值资格全部通过，尚未晋升。端口按[离散观测合同](../designs/osgkd_observation_adoption_20261113.md)作近似监督；局部源连续闭合未决记录保留，模型自身积分和梯度资格独立检查。缺环境分项时采用声明的有效分解，不造逐机真值。[OSGKD Campaign](../campaigns/osgkd_ieee39/campaign.md) · [当前状态](current_state.md)
-
-GFTD 作为前序证据与可复用组件保留，旧真 p₀ API 不承担新合同：
-
-- [5N 原修订](../designs/history/gftd_20261113/gftd_repair_design_20261107.md)、[有界核与储能分析](../designs/history/gftd_20261113/gftd_storage_feasibility_20261109.md)、[同核初始化](../designs/history/gftd_20261113/gftd_bounded_initialization_20261109.md)。
-- [匹配预测](../designs/history/gftd_20261113/gftd_matched_prediction_20261109.md)、[三点更新](../designs/history/gftd_20261113/gftd_objective_alignment_20261112.md)、[局部补偿](../designs/history/gftd_20261113/gftd_joint_distinguishability_20261112.md)。
-- [GFTD 收束](../reports/osgkd_transition_20261113/gftd_closure.md)、[原三步主线](../designs/history/gftd_20261113/gftd_mainline_20261107_architecture.md)、[设计档案](../designs/history/README.md)。
-
-已接受的 40 维基线及锚点保持原适用范围。default none、incumbent 和 protected anchors 不变。
+当前采用的是研究设计。已实现并完成配对训练的是 v1 C0/C1，C1 为工作候选。v2 的方法效果、外部系统迁移和结构恢复分别由后续试验检验。[执行规划](../campaigns/osgkd_v2/campaign.md) · [v1 结果](../reports/osgkd_fit297_20261113/result.md) · [运行状态](current_state.md)

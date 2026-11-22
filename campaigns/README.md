@@ -7,7 +7,8 @@
 新 Run 协议保存在本目录，由 Campaign 卡引用；结果、分析和审查报告放 `reports/`。
 旧冻结协议保持原路径与身份，目录整理不改写历史预登记。
 
-- [OSGKD 三端联合辨识](osgkd_ieee39/campaign.md)：当前主线，motion_only_v1；阶段一切换与后续完整预测研究。
+- [OSGKD 2.0](osgkd_v2/campaign.md)：当前研究规划。按目标时域、物理模块、初态精修和删组重拟合分别辨别，逐步建立跨规模与跨系统证据。
+- [OSGKD v1 IEEE39](osgkd_ieee39/campaign.md)：前序三端模型的完整 C0/C1 同信息比较及冻结协议。
 - [前序静态拓扑、隐幅值调制与力记忆](gftd_kuramoto_discovery_20261106.md)：当前认识、识别边界、解释更正及三步主线材料入口；原规划另存字节原件，当前综合随闭合事件更新。
 - [retrospective_force_memory_20261030.md](retrospective_force_memory_20261030.md)：对既有 40 维力记忆材料的追溯索引，不是当时预登记或新的活动训练授权。
 
