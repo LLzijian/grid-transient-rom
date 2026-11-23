@@ -21,7 +21,14 @@
     "reference": "kiki.md",
     "comparison_reference_id": "known_p0_reference",
     "architecture_reference": "designs/osgkd_v2_architecture.md",
-    "state_reference": "docs/current_state.md"
+    "state_reference": "docs/current_state.md",
+    "data": {
+      "reference": "kiki.md#3-数据与信息",
+      "client_date": "2026-11-23",
+      "train": {"role": "parameter_updates", "events": 385},
+      "val": {"role": "validation_only", "events": 117},
+      "test": "closed"
+    }
   },
   "authorization_rule": "Dated policy/registry snapshots never grant execution permission; verify current explicit user instructions and live host state. Installation does not resume science.",
   "model_binding_intent": {
@@ -63,7 +70,7 @@
   },
   "protected_scopes": [
     "private_data",
-    "original validation/test",
+    "test data",
     "historical results and protocols",
     "closed budgets",
     "accepted model anchors",

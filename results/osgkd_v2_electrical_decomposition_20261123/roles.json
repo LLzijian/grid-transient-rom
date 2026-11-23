@@ -1,0 +1,44 @@
+{
+  "run_id": "osgkd_v2_electrical_decomposition_20261123",
+  "client_date": "2026-11-23",
+  "source_commit": "d3c781e059a0cd927897d5eb09625a224856c74d",
+  "role_invocations": [
+    {
+      "role": "Scientist",
+      "tool": "collaboration.spawn_agent",
+      "configured_model": "gpt-6-astra",
+      "server_resolved_model": null,
+      "returned_receipt": {
+        "task_name": "/root/electrical_decomposition_scientist"
+      },
+      "completion": "final_answer_delivered"
+    },
+    {
+      "role": "Modeler",
+      "tool": "collaboration.spawn_agent",
+      "configured_model": "gpt-6.1-sol",
+      "server_resolved_model": null,
+      "returned_receipt": {
+        "task_name": "/root/electrical_decomposition_modeler"
+      },
+      "completion": "final_answer_delivered"
+    },
+    {
+      "role": "Reviewer",
+      "tool": "collaboration.spawn_agent and followup_task",
+      "configured_model": "gpt-6.1-sol",
+      "server_resolved_model": null,
+      "returned_receipt": {
+        "task_name": "/root/electrical_decomposition_reviewer"
+      },
+      "completion": "final_answer_delivered"
+    }
+  ],
+  "adopted_by_root": "以固定状态上物理零和校正的归一化误差下界和双窗同组判据决定结构对照方向。环境内部输出只描述模型。相邻边使用实际每边底板，数值核验沿用 P0。只复查既存的三个 train 端点。",
+  "preflight_review": {
+    "code_sha256": "0ca004ecffc969a736f5818430804e4a4055f84bd193d514ae65a41837e9f7d3",
+    "protocol_sha256": "4a241c7618ea55bd172ed46996bf8afd873bed380cc23282bdca87a7f9691462",
+    "release_blockers": [],
+    "synthetic_self_check": "passed"
+  }
+}
