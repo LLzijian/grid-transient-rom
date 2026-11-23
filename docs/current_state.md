@@ -2,7 +2,7 @@
 
 **后续数据口径（2026-11-23）。** IEEE39 使用完整 `train` 的 385 条（342 稳定、43 失稳）训练，原始 `val` 的 117 条（95 稳定、22 失稳）验证。其中 10 条 `val` 失稳样本不足 100 ms，计入原分母并标明未覆盖。新训练比较使用完整 `train` 建立批次顺序，用相同的双步长 `val` 验证规则比较各组。沿用冻结的父模型尺度。`test` 关闭，新 FOM 为 0，TASK4 暂停，default none。[数据合同](../kiki.md#3-数据与信息) · [数据入口](../src/kiki/data/osgkd_train_val.py) · [验证入口](../src/kiki/evaluation/osgkd_validation.py)
 
-**固定父点基线。** 第 1860 次父点在完整 `train` 的稳定 8 s 风险为 0.756、误报 1/342、失稳真实区间检出 3/43；在原始 `val` 分别为 1.757、1/95、0/12（原分母 0/22）。`val` 转矩已统一为共同平衡增量，重算逐事件复现运动与分类。下一步从同一点做 200 对固定方程更新，比较原策略与分段风险目标及失稳分层采样。[冻结基线](../reports/osgkd_v2_train385_baseline_20261123/result.md) · [配对协议](../campaigns/osgkd_v2/train385_risk_alignment_protocol.md)
+**冻结基线和完整 train 对照（2026-11-24）。** 第 1860 次父点在稳定 8 s 的 `train`、`val` 风险为 0.756、1.757。固定方程各完成 200 次接受更新后，`val` 稳定风险为原目标 0.842、分段风险及分层采样 1.045，两组均误报 0/95。候选降低失稳真实区间运动风险，两组真实区间检出仍为 `train` 3/43 和 `val` 0/12（原分母 0/22）。采用与快动态分支条件均未成立。保留第 1860 次工作父点，原目标第 2060 次留作当前稳定 `val` 参照。[冻结基线](../reports/osgkd_v2_train385_baseline_20261123/result.md) · [配对结果](../reports/osgkd_v2_train385_risk_alignment_20261123/result.md)
 
 **2026-11-23。** 当前方案为 [OSGKD 2.0](../designs/osgkd_v2_architecture.md)。[P0 零训练诊断](../reports/osgkd_v2_p0_20261123/result.md)、[P1a 固定末点评价](../reports/osgkd_v2_p1a_20261123/result.md)及[P2a 初态试验](../reports/osgkd_v2_p2a_20261123/result.md)已完成并独立复核。P1a 两边各 200 次成功更新，主细步长评价覆盖全 297 条。
 
