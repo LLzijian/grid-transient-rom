@@ -106,6 +106,10 @@ abandon 仅表示不继续投入，必须附仍未解决的科学状态。
 
 研究执行改变设计、代码或结果后，按既有授权选择性提交并普通推送；接受、失败、
 拒绝和未决同样归档。只读检查无新材料不做空提交；本包安装工具不操作 Git。
+研究分支推送后，由现有 [GitHub Actions](../.github/workflows/sync-review-to-gdrive.yml)
+自动将可公开的研究文本同步到 Google Drive 的 `Kiki_Research_Sync`。
+闭合时核对目录内 `LATEST_DIGEST.md` 所列提交。单轮 ZIP 按明确请求生成。
+
 耐久记录含协议/修订、必要源码配置、关键正负证据、逐事件摘要、三个决定、
 命令环境、来源哈希及推送核验。小体积证据入库，大型/私有产物按原存储保全并记哈希。
 禁止整树暂存无关修改、force push、reset --hard 或 git clean 清除未归档研究。

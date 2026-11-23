@@ -7,9 +7,9 @@
 ## 查一个 Run 或全部登记
 
 ```powershell
-./.venv-gpu/Scripts/python.exe -X utf8 -B tools/research_harness.py show-run --root . --all
-./.venv-gpu/Scripts/python.exe -X utf8 -B tools/research_harness.py show-run --root . --run gftd_fit297_20261107
-./.venv-gpu/Scripts/python.exe -X utf8 -B tools/research_harness.py check --root . --run gftd_fit297_20261107
+../.venv/Scripts/python.exe -X utf8 -B tools/research_harness.py show-run --root . --all
+../.venv/Scripts/python.exe -X utf8 -B tools/research_harness.py show-run --root . --run gftd_fit297_20261107
+../.venv/Scripts/python.exe -X utf8 -B tools/research_harness.py check --root . --run gftd_fit297_20261107
 ```
 
 默认只输出终端。`--format json` 提供字段级材料、原登记状态、未知项和冲突；`--output <新文件>` 显式生成导航，拒绝覆盖已有文件。更新已生成页时，先输出到同目录的新文件，对照原页后替换；不要用导航生成器覆盖冻结报告。相同输入生成稳定内容，不添加调用时间。
@@ -42,16 +42,15 @@
 
 闭合更新的步骤见[工程循环](../docs/engineering_loop.md)和[闭合模板](../templates/run_closure.md)。新材料应从创建时按职责保存；历史冻结记录不批量回填。
 
-每个闭合 Run 的本地记录包在 `artifacts/research_records/`。使用
-`python tools/archive_run_records.py <run_id>` 打包，附加本轮执行回执或逐事件记录时逐项传入 `--local-record <路径>`。
-工具会核验 ZIP 内的文件清单、大小和 SHA256。
+闭合后的公开研究文本随研究分支推送自动同步到 Google Drive 的 `Kiki_Research_Sync`。
+同步版本见目录内 `LATEST_DIGEST.md`，归档口径见 [研究政策](../docs/research_policy.md#6-归档git-与状态)。
 
 ## 当前整理状态与维护
 
 ```powershell
-./.venv-gpu/Scripts/python.exe -X utf8 -B tools/research_harness.py show-organization --root .
-./.venv-gpu/Scripts/python.exe -X utf8 -B tools/research_harness.py show-organization --root . --path reports/0102_prediction_optimization_capability.md
-./.venv-gpu/Scripts/python.exe -X utf8 -B tools/research_harness.py show-organization --root . --path results/e08 --format json
+../.venv/Scripts/python.exe -X utf8 -B tools/research_harness.py show-organization --root .
+../.venv/Scripts/python.exe -X utf8 -B tools/research_harness.py show-organization --root . --path reports/0102_prediction_optimization_capability.md
+../.venv/Scripts/python.exe -X utf8 -B tools/research_harness.py show-organization --root . --path results/e08 --format json
 ```
 
 默认只读输出。原路径和当前位置均可查询；结果区分所属范围、用途核实程度、保护消费者、具体解除条件及连续阅读／原件入口。`in_git`表示该文件或目录下至少一个文件被跟踪，`local_presence`只检查路径本身，`remote_availability=not_verified`不承诺远端完整取得；原表的`public_results`名称不是公开可取得的证明。
