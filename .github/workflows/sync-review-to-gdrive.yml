@@ -19,7 +19,7 @@ jobs:
   sync:
     if: github.repository == 'LLzijian/grid-transient-rom' && !github.event.deleted
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
@@ -54,5 +54,6 @@ jobs:
           printf '%s\n' "$RCLONE_CONF" > "$RCLONE_CONFIG"
           unset RCLONE_CONF
           dest=gdrive:Kiki_Research_Sync
-          rclone sync _review_sync "$dest" --checksum --fast-list --exclude /LATEST_DIGEST.md
+          rclone sync _review_sync "$dest" --checksum --fast-list --exclude /LATEST_DIGEST.md \
+            --transfers 12 --stats 30s --stats-one-line --stats-log-level NOTICE
           rclone copyto _review_sync/LATEST_DIGEST.md "$dest/LATEST_DIGEST.md" --checksum
