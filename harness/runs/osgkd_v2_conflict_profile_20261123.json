@@ -1,0 +1,148 @@
+{
+  "schema_version": 2,
+  "synthetic": false,
+  "run_id": "osgkd_v2_conflict_profile_20261123",
+  "parent_run": "osgkd_v2_p1a_20261123",
+  "depends_on": [
+    "osgkd_v2_early_electrical_20261123"
+  ],
+  "purpose": "probe",
+  "scope": "two fixed points, matched stable 8s and the 27 previous early electrical misses",
+  "campaign": "campaigns/osgkd_v2/campaign.md",
+  "architecture": "designs/osgkd_v2_architecture.md",
+  "protocol": "campaigns/osgkd_v2/conflict_profile_protocol.md",
+  "deployment_contract": "motion_only_v1",
+  "source_commit": "625c266af364e03420f2e706ee89dd6c3c027088",
+  "recorded_utc": "2026-11-23T05:57:38.478346+00:00",
+  "execution": {
+    "status": "COMPLETED",
+    "phase": "closed",
+    "scientific_execution_released": true,
+    "scientific_jobs_started": 1,
+    "native_live": false,
+    "release": {
+      "path": "results/osgkd_v2_conflict_profile_20261123/release.json",
+      "bytes": 2638,
+      "sha256": "d9df944d654f1f250140113a87ce2ad7abed485dc3b7ce9b32cc0bf34ad22739"
+    },
+    "active_claims": [],
+    "verified_utc": "2026-11-23T06:04:16.718339+00:00",
+    "completed_jobs": {
+      "probe01": {
+        "job_id": "probe01",
+        "pid": 57836,
+        "native_session": 83091,
+        "native_start_chunk": "f84470",
+        "started_utc": "2026-11-23T05:58:35.441767+00:00",
+        "started": {
+          "path": "artifacts/osgkd_v2_conflict_profile_20261123/probe01/started.json",
+          "sha256": "f8154923f97f3fbfe66d200d42bb67e850baa6c880200cbf89ff836c238e5456",
+          "bytes": 3008
+        },
+        "experimenter": {
+          "configured_model": "gpt-6.1-sol",
+          "server_resolved_model": null,
+          "returned_receipt": {
+            "task_name": "/root/early_electrical_experimenter"
+          }
+        },
+        "native_final_chunk": "9fe7db",
+        "exit_code": 0,
+        "completed": {
+          "path": "artifacts/osgkd_v2_conflict_profile_20261123/probe01/completed.json",
+          "bytes": 210,
+          "sha256": "619718dfb54526c8a92306b326b676cec4b679961260d6f5e9acb7b0b599483a"
+        },
+        "summary": {
+          "path": "results/osgkd_v2_conflict_profile_20261123/probe01/summary.json",
+          "bytes": 64363,
+          "sha256": "4069b16a68f0313f7b28d0b77ec83f1fd7a940b072ed04a3aa0395ffa1de969c"
+        }
+      }
+    }
+  },
+  "scientific_work": {
+    "budget_status": "closed",
+    "limits": {
+      "gradient_forward_rhs_events": 113200,
+      "fixed_reference_spectra": 2,
+      "profile_initializations": 891,
+      "training_updates": 0,
+      "new_evaluation_integrations": 0,
+      "new_fom": 0
+    },
+    "old_unused_work_transferred": false,
+    "used": {
+      "early_electrical_backward_calls": 2,
+      "eight_second_backward_calls": 8,
+      "encoder_events": 86,
+      "new_evaluation_integrations": 0,
+      "new_fom": 0,
+      "profile_initialization_calls": 3,
+      "profile_initialization_events": 891,
+      "reference_spectra": 2,
+      "rhs_cap": 113200,
+      "rhs_forward": 111520,
+      "rhs_recompute": 0,
+      "saved_fine_prefix_state_points": 1791,
+      "training_updates": 0
+    },
+    "cost": {
+      "cpu_s": 166.734375,
+      "wall_s": 82.9642240999965
+    }
+  },
+  "evidence": {
+    "references": [
+      "results/osgkd_v2_conflict_profile_20261123/roles.json",
+      "results/osgkd_v2_early_electrical_20261123/analysis.json",
+      "results/osgkd_v2_p0_20261123/probe01/summary.json",
+      "results/osgkd_v2_conflict_profile_20261123/probe01/summary.json",
+      "reports/osgkd_v2_conflict_profile_20261123/result.md",
+      "reports/osgkd_v2_conflict_profile_20261123/review.md"
+    ],
+    "preflight_review": {
+      "configured_model": "gpt-6.1-sol",
+      "server_resolved_model": null,
+      "returned_receipt": {
+        "task_name": "/root/early_closure_reviewer"
+      },
+      "code_sha256": "4d599905a78912039aa3b9deee3f30d85f69345f84478343ed3ab12296457231",
+      "protocol_sha256": "7eb8b11f58ec6f0e116f7dc6beef741af8b2669e92b6544fcda75dcfff89a79d",
+      "release_blockers": []
+    },
+    "validity": "valid_frozen_train_profiles_and_two_checkpoints",
+    "optimizer_health": "not_applicable_zero_training",
+    "optimization_adequacy": "not_applicable",
+    "mechanism_probe": "local_opposing_coupling_and_environment_gradients_on_the_same_sampled_stable_events",
+    "effect": "persistent_signed_electrical_overprediction_on_22_of_27_fixed_misses_and_no_099_amplitude_touches",
+    "confirmation": "descriptive_fixed_points_previously_exposed_train",
+    "confirmation_need": "diagnose_first",
+    "promotion_eligible": false,
+    "independent_review": {
+      "configured_model": "gpt-6.1-sol",
+      "server_resolved_model": null,
+      "returned_receipt": {
+        "task_name": "/root/early_closure_reviewer"
+      },
+      "reference": "reports/osgkd_v2_conflict_profile_20261123/review.md",
+      "closure_blockers": []
+    }
+  },
+  "records_archive": "artifacts/research_records/osgkd_v2_conflict_profile_20261123_records.zip",
+  "proposal": {
+    "next_action": "fixed_128_pair_learning_rate_only_before_anchored_potential",
+    "structure_priority": "anchored_angular_potential_without_amplitude_change",
+    "next_parent": {
+      "bytes": 194348,
+      "path": "artifacts/osgkd_v2_early_electrical_20261123/pair01/control/attempt_1732.pt",
+      "sha256": "b5926b1a8b7b56fd4f7eee353366f6f106278f3c46d850ee157ed3929541663e"
+    }
+  },
+  "root_decisions": {
+    "code_decision": "retain_branch",
+    "model_decision": "retain_evidence",
+    "science_decision": "continue"
+  },
+  "closed_utc": "2026-11-23T06:04:16.718339+00:00"
+}
