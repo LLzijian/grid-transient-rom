@@ -1,23 +1,24 @@
 name: Sync Research Reports to Google Drive
 
 on:
-  push:
-    branches: [codex/osgkd-transition-20261113]
   workflow_dispatch:
 
 permissions:
   contents: read
 
 env:
-  REVIEW_BRANCH: codex/osgkd-transition-20261113
-
-concurrency:
-  group: kiki-research-review-drive
-  cancel-in-progress: false
+  REVIEW_BRANCH: ${{ vars.REVIEW_BRANCH }}
 
 jobs:
   sync:
-    if: github.repository == 'LLzijian/grid-transient-rom' && !github.event.deleted
+    if: >-
+      github.repository == 'LLzijian/grid-transient-rom' &&
+      vars.REVIEW_BRANCH != '' && !github.event.deleted &&
+      (github.event_name == 'workflow_dispatch' ||
+       github.ref == format('refs/heads/{0}', vars.REVIEW_BRANCH))
+    concurrency:
+      group: kiki-research-review-drive
+      cancel-in-progress: false
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
