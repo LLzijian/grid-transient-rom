@@ -1,0 +1,285 @@
+{
+  "schema_version": 2,
+  "synthetic": false,
+  "run_id": "osgkd_v2_p1a_clean_parent_20261123",
+  "parent_run": "osgkd_v2_early_electrical_20261123",
+  "depends_on": [
+    "osgkd_v2_conflict_profile_20261123"
+  ],
+  "purpose": "adaptation",
+  "scope": "two learning rates under fixed 8s objective and 128 matched attempts",
+  "campaign": "campaigns/osgkd_v2/campaign.md",
+  "architecture": "designs/osgkd_v2_architecture.md",
+  "protocol": "campaigns/osgkd_v2/p1a_clean_parent_protocol.md",
+  "deployment_contract": "motion_only_v1",
+  "source_commit": "38cd11ce4e0fe8c41677b215fa2f68d1489fb4a0",
+  "recorded_utc": "2026-11-23T06:08:22.664700+00:00",
+  "execution": {
+    "status": "COMPLETED",
+    "phase": "closed",
+    "scientific_execution_released": true,
+    "scientific_jobs_started": 1,
+    "native_live": false,
+    "active_claims": [],
+    "release": {
+      "path": "results/osgkd_v2_p1a_clean_parent_20261123/release.json",
+      "bytes": 2964,
+      "sha256": "8331ef404cce268331ab6e709b75c19294c55c259eb9b795400a246c13769a90"
+    },
+    "verified_utc": "2026-11-23T07:36:45.589774+00:00",
+    "first_pair_verified": {
+      "attempt": 1733,
+      "ordered_batch_identical": true,
+      "both_accepted": true,
+      "same_base_objective_and_gradient_norm": true,
+      "pre_projection_adam_update_ratio": {
+        "initializer": 0.29999999999999943,
+        "dynamics": 0.30000000000000765,
+        "coupling": 0.300000000000018
+      },
+      "recorded_utc": "2026-11-23T06:13:06.955097+00:00"
+    },
+    "latest_recovery_verified": {
+      "pairs": 96,
+      "manifests": [
+        {
+          "path": "artifacts/osgkd_v2_p1a_clean_parent_20261123/pair01/recovery/attempt_1764/manifest.json",
+          "bytes": 690,
+          "sha256": "bf362dd657d9f7682b3bb69c5941c183ee1bccbb810d97f7682dbbf026fe5a04"
+        },
+        {
+          "path": "artifacts/osgkd_v2_p1a_clean_parent_20261123/pair01/recovery/attempt_1796/manifest.json",
+          "bytes": 690,
+          "sha256": "8ae521203f04f5e823a2456aea85d8ac011ecde1c26d310f72a1f95890077d81"
+        },
+        {
+          "path": "artifacts/osgkd_v2_p1a_clean_parent_20261123/pair01/recovery/attempt_1828/manifest.json",
+          "bytes": 690,
+          "sha256": "ab2b66f38372fae84fcbf7cc2ddc5e04cb8905e9a0347dfa66e09e99f25a7dcc"
+        }
+      ],
+      "totals_through_recovery": {
+        "control": {
+          "accepted": 96,
+          "clipped": 33,
+          "wall_s": 1584.9806341998046
+        },
+        "candidate": {
+          "accepted": 96,
+          "clipped": 20,
+          "wall_s": 1581.1082278002286
+        }
+      },
+      "verified_utc": "2026-11-23T07:02:59.162593+00:00"
+    },
+    "training_verified": {
+      "endpoint": 1860,
+      "matched_attempts": 128,
+      "accepted": {
+        "control": 128,
+        "candidate": 128
+      },
+      "clipping": {
+        "control": 41,
+        "candidate": 25
+      },
+      "checked_utc": "2026-11-23T07:15:21.447325+00:00"
+    },
+    "completed_jobs": {
+      "pair01": {
+        "job_id": "pair01",
+        "pid": 5200,
+        "started_utc": "2026-11-23T06:09:23.542185+00:00",
+        "native_session": 66373,
+        "native_start_chunk": "4c0565",
+        "started": {
+          "path": "artifacts/osgkd_v2_p1a_clean_parent_20261123/pair01/started.json",
+          "sha256": "efca055692673bd8a19c650394d21eec81aa2fbbfb8862992bbd64f476be7e59",
+          "bytes": 3666
+        },
+        "experimenter": {
+          "configured_model": "gpt-6.1-sol",
+          "server_resolved_model": null,
+          "returned_receipt": {
+            "task_name": "/root/early_electrical_experimenter"
+          }
+        },
+        "native_final_chunk": "f36870",
+        "exit_code": 0,
+        "completed": {
+          "path": "artifacts/osgkd_v2_p1a_clean_parent_20261123/pair01/completed.json",
+          "sha256": "ac4c9afeddfd561eaae8f2f54a8047d058e2e4beb9c01e6edc516a81af79401b",
+          "bytes": 230
+        },
+        "summary": {
+          "path": "results/osgkd_v2_p1a_clean_parent_20261123/pair01/summary.json",
+          "sha256": "f4f60cb9208736a253828a1e358d412851a14b5132d56ba7cc3d8fc788af9b5d",
+          "bytes": 8192
+        },
+        "fixed_endpoint": 1860
+      }
+    }
+  },
+  "scientific_work": {
+    "budget_status": "closed",
+    "old_unused_work_transferred": false,
+    "limits": {
+      "paired_attempts": 128,
+      "paired_seeds": 1,
+      "training_rhs_event_calls": 13107200,
+      "fixed_evaluation_events_per_endpoint": 297,
+      "new_fom": 0
+    },
+    "used": {
+      "paired_attempts": 128,
+      "paired_seeds": 1,
+      "training_rhs_event_calls": 11912336,
+      "fixed_evaluation_events_per_endpoint": 297,
+      "accepted": {
+        "control": 128,
+        "candidate": 128
+      },
+      "rejected": {
+        "control": 0,
+        "candidate": 0
+      },
+      "clips": {
+        "control": 41,
+        "candidate": 25
+      },
+      "new_fom": 0
+    },
+    "cost": {
+      "native": {
+        "wall_s": 4274.4033860999625,
+        "cpu_s": 8154.484375
+      },
+      "endpoint_analysis": {
+        "wall_s": 2.228690399962943,
+        "cpu_s": 1.40625
+      },
+      "training": {
+        "control": {
+          "wall_s": 1928.2738665999495,
+          "cpu_s": 3647.171875
+        },
+        "candidate": {
+          "wall_s": 1925.5321343003307,
+          "cpu_s": 3634.9375
+        }
+      },
+      "evaluation": {
+        "control": {
+          "wall_s": 184.2818091000081,
+          "cpu_s": 394.8125,
+          "scope": "initialization, both integrals and scoring; serialization excluded"
+        },
+        "candidate": {
+          "wall_s": 194.38502659997903,
+          "cpu_s": 416.671875,
+          "scope": "initialization, both integrals and scoring; serialization excluded"
+        }
+      }
+    },
+    "recovery_manifest_refs": [
+      {
+        "path": "artifacts/osgkd_v2_p1a_clean_parent_20261123/pair01/recovery/attempt_1764/manifest.json",
+        "sha256": "bf362dd657d9f7682b3bb69c5941c183ee1bccbb810d97f7682dbbf026fe5a04",
+        "bytes": 690
+      },
+      {
+        "path": "artifacts/osgkd_v2_p1a_clean_parent_20261123/pair01/recovery/attempt_1796/manifest.json",
+        "sha256": "8ae521203f04f5e823a2456aea85d8ac011ecde1c26d310f72a1f95890077d81",
+        "bytes": 690
+      },
+      {
+        "path": "artifacts/osgkd_v2_p1a_clean_parent_20261123/pair01/recovery/attempt_1828/manifest.json",
+        "sha256": "ab2b66f38372fae84fcbf7cc2ddc5e04cb8905e9a0347dfa66e09e99f25a7dcc",
+        "bytes": 690
+      }
+    ]
+  },
+  "evidence": {
+    "references": [
+      "results/osgkd_v2_p1a_clean_parent_20261123/roles.json",
+      "results/osgkd_v2_early_electrical_20261123/pair01/summary.json",
+      "results/osgkd_v2_conflict_profile_20261123/probe01/summary.json",
+      "results/osgkd_v2_p1a_clean_parent_20261123/pair01/summary.json",
+      "results/osgkd_v2_p1a_clean_parent_20261123/analysis.json",
+      "reports/osgkd_v2_p1a_clean_parent_20261123/result.md",
+      "reports/osgkd_v2_p1a_clean_parent_20261123/review.md"
+    ],
+    "preflight_review": {
+      "configured_model": "gpt-6.1-sol",
+      "server_resolved_model": null,
+      "returned_receipt": {
+        "task_name": "/root/early_closure_reviewer"
+      },
+      "reviewed_source_sha256": {
+        "experiments/osgkd_v2_p1a_clean_parent_20261123/run.py": "d91ed26291eb11bf6fe26220ca9271ea9dc081f824f6f5fdc63bc10c803034d9",
+        "campaigns/osgkd_v2/p1a_clean_parent_protocol.md": "c17283c3c543e5a939ceb983f6a45a3e52f328513bd494b8cd8ed3996c65a269",
+        "experiments/osgkd_v2_p1a_clean_parent_20261123/analyze.py": "1a811089ce904688d3c90c958763f1155f69a9bb7b96abd26b82ce939f60b932"
+      },
+      "release_blockers": []
+    },
+    "validity": "valid_fixed_train_fit297_learning_rate_pair",
+    "optimizer_health": "finite_with_lower_clipping_at_03",
+    "optimization_adequacy": "unknown",
+    "mechanism_probe": "single_lr_variation_with_fixed_shared_initial_state_joint_objective_and_batches",
+    "effect": "original_lr_passed_stable_8s_threshold_lower_lr_reduced_clipping_and_unstable_actual_motion_risk",
+    "confirmation": "one_fixed_pair_one_parent_previously_exposed_train",
+    "confirmation_need": "needed_for_broader_effect",
+    "promotion_eligible": false,
+    "adoption_checks": {
+      "control": {
+        "original_coverage": true,
+        "stable_8s_risk": true,
+        "stable_8s_false_alarms": true,
+        "parent_hits_preserved": true,
+        "parent_trigger_timing": true,
+        "stable_1s": true,
+        "stable_2s": true
+      },
+      "candidate": {
+        "original_coverage": true,
+        "stable_8s_risk": false,
+        "stable_8s_false_alarms": true,
+        "parent_hits_preserved": true,
+        "parent_trigger_timing": true,
+        "stable_1s": true,
+        "stable_2s": true
+      }
+    },
+    "endpoint_analysis": {
+      "path": "results/osgkd_v2_p1a_clean_parent_20261123/analysis.json",
+      "sha256": "b3dc18cb7ec63783bda4f7c2676e3ab5ade06c778902524e90932ccd64ee1176",
+      "bytes": 274494
+    },
+    "independent_review": {
+      "configured_model": "gpt-6.1-sol",
+      "server_resolved_model": null,
+      "returned_receipt": {
+        "task_name": "/root/early_closure_reviewer"
+      },
+      "reference": "reports/osgkd_v2_p1a_clean_parent_20261123/review.md",
+      "closure_blockers": []
+    }
+  },
+  "proposal": {
+    "next_action": "matched_reference_anchored_high_order_potential",
+    "scope": "train research working parent only",
+    "selected_treatment": "control"
+  },
+  "records_archive": "artifacts/research_records/osgkd_v2_p1a_clean_parent_20261123_records.zip",
+  "root_decisions": {
+    "code_decision": "retain_branch",
+    "model_decision": "retain_evidence",
+    "science_decision": "continue"
+  },
+  "follow_up_parent": {
+    "path": "artifacts/osgkd_v2_p1a_clean_parent_20261123/pair01/control/attempt_1860.pt",
+    "sha256": "291853229dd6738a9132fcacce53d104f83d1a6045b1d3823733549759def49f",
+    "bytes": 193964
+  },
+  "closed_utc": "2026-11-23T07:36:45.589774+00:00"
+}

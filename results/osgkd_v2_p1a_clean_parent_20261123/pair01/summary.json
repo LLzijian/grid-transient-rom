@@ -1,0 +1,202 @@
+{
+  "run_id": "osgkd_v2_p1a_clean_parent_20261123",
+  "job_id": "pair01",
+  "release": {
+    "run_id": "osgkd_v2_p1a_clean_parent_20261123",
+    "job_id": "pair01",
+    "released": true,
+    "device": "cpu",
+    "threads": 1,
+    "recompute": false,
+    "client_date": "2026-11-23",
+    "base_commit": "38cd11ce4e0fe8c41677b215fa2f68d1489fb4a0",
+    "created_utc": "2026-11-23T06:08:22.664700+00:00",
+    "input_refs": {
+      "audit": {
+        "path": "results/osgkd_fit297_20261113/port_audit_release.json",
+        "bytes": 1367,
+        "sha256": "02be50898c5702d5739931032ce2a79436d96294a7244911a26bdb1b01c225a5"
+      },
+      "early_summary": {
+        "path": "results/osgkd_v2_early_electrical_20261123/pair01/summary.json",
+        "bytes": 13207,
+        "sha256": "4568963657c93d2b28ddc5f869c522dece3607da138b6f35d7a7ac910a766d6e"
+      },
+      "conflict_summary": {
+        "path": "results/osgkd_v2_conflict_profile_20261123/probe01/summary.json",
+        "bytes": 64363,
+        "sha256": "4069b16a68f0313f7b28d0b77ec83f1fd7a940b072ed04a3aa0395ffa1de969c"
+      }
+    },
+    "parent_analysis_ref": {
+      "path": "results/osgkd_v2_early_electrical_20261123/analysis.json",
+      "bytes": 300443,
+      "sha256": "5d6b6841db956fb3c0cb5157937ecc4f990b450f1e7378003fdf6b7812a4b06b"
+    },
+    "checkpoint_ref": {
+      "path": "artifacts/osgkd_v2_early_electrical_20261123/pair01/control/attempt_1732.pt",
+      "sha256": "b5926b1a8b7b56fd4f7eee353366f6f106278f3c46d850ee157ed3929541663e",
+      "bytes": 194348
+    },
+    "source_hashes": {
+      "experiments/osgkd_v2_p1a_clean_parent_20261123/run.py": "d91ed26291eb11bf6fe26220ca9271ea9dc081f824f6f5fdc63bc10c803034d9",
+      "experiments/osgkd_v2_p1a_clean_parent_20261123/analyze.py": "1a811089ce904688d3c90c958763f1155f69a9bb7b96abd26b82ce939f60b932",
+      "campaigns/osgkd_v2/p1a_clean_parent_protocol.md": "c17283c3c543e5a939ceb983f6a45a3e52f328513bd494b8cd8ed3996c65a269",
+      "experiments/osgkd_v2_p1a_20261123/run.py": "02a4a7069ce919fd2f9c2ac493c24409de5483119b83bfeba5c37c56da00f07c",
+      "experiments/osgkd_fit297_20261113/run.py": "ec74858cd5c296f8210f30242ba620f6a4f9eea160d92b37d021f4b371959c5f",
+      "src/kiki/models/osgkd.py": "6edce1578ff628ea15f3a7c8c429ea7e8898d0bf901ff8810064e19a783af984",
+      "src/kiki/models/osgkd_fitting.py": "2b5dac09543169be952af3698a740620439a2f686977c4f513329bae9704e087",
+      "src/kiki/data/osgkd.py": "30791261eeb068661927a3f154de42f80ef60368f14cc2854388916b5f9075b0",
+      "src/kiki/evaluation/osgkd.py": "1c13a9c7a3ec01dc11bf6aff3bec84efcbbb90ac24f3936a502b9ebc8e7ffa47",
+      "experiments/evaluate_l1_latent.py": "5882dc6814f13ef4210d94db07fd87ca88d8130aa984dbda7757c53088662314",
+      "results/osgkd_fit297_20261113/artifacts.json": "974d42d232203c2e73244a19e7ca51260ef7a9caa382560365953fea8b5a6eaf",
+      "experiments/osgkd_v2_early_closure_20261123/run.py": "dc59f038367988785b5c6f348adbc8af0cd45586745c591174ba38da492efd6f",
+      "results/osgkd_v2_p1a_clean_parent_20261123/roles.json": "90849040d3df4e81e25f79f4264d9783627586259c2489f5809022f5aa856b81"
+    },
+    "fixed_endpoint": 1860,
+    "paired_attempts": 128
+  },
+  "release_ref": {
+    "path": "results/osgkd_v2_p1a_clean_parent_20261123/release.json",
+    "sha256": "8331ef404cce268331ab6e709b75c19294c55c259eb9b795400a246c13769a90",
+    "bytes": 2964
+  },
+  "status": "completed",
+  "pid": 5200,
+  "started_utc": "2026-11-23T06:09:23.542185+00:00",
+  "command": [
+    "E:\\03-nn_Transfer_Func\\.venv\\Scripts\\python.exe",
+    "experiments/osgkd_v2_p1a_clean_parent_20261123/run.py",
+    "--release",
+    "results/osgkd_v2_p1a_clean_parent_20261123/release.json"
+  ],
+  "completed_utc": "2026-11-23T07:20:37.917105+00:00",
+  "result": {
+    "treatments": {
+      "control": {
+        "checkpoint": {
+          "path": "artifacts/osgkd_v2_p1a_clean_parent_20261123/pair01/control/attempt_1860.pt",
+          "sha256": "291853229dd6738a9132fcacce53d104f83d1a6045b1d3823733549759def49f",
+          "bytes": 193964
+        },
+        "attempts": 128,
+        "accepted": 128,
+        "rejected": 0,
+        "clipped": 41,
+        "work": {
+          "rhs_forward": 5956168,
+          "rhs_recompute": 0,
+          "encoder_events": 1987,
+          "rhs_backward_vjp": null,
+          "rhs_backward_vjp_upper_bound": 5956168
+        },
+        "attempts_ref": {
+          "path": "artifacts/osgkd_v2_p1a_clean_parent_20261123/pair01/control/attempts.json",
+          "sha256": "a6fe2e972e0380a3ec88a79bc1d77097cf1897fbbb5e64afd0da3a66df03d799",
+          "bytes": 255810
+        },
+        "train_cost": {
+          "wall_s": 1928.2738665999495,
+          "cpu_s": 3647.171875
+        },
+        "evaluation_cost": {
+          "wall_s": 184.2818091000081,
+          "cpu_s": 394.8125,
+          "scope": "initialization, both integrals and scoring; serialization excluded"
+        },
+        "evaluation_summary_ref": {
+          "path": "artifacts/osgkd_v2_p1a_clean_parent_20261123/pair01/control/evaluation/summary.json",
+          "sha256": "2b0829a0c5da84904d3912a761c4be8b232fd872c27d752b3cce68c231b1ddcc",
+          "bytes": 52802
+        }
+      },
+      "candidate": {
+        "checkpoint": {
+          "path": "artifacts/osgkd_v2_p1a_clean_parent_20261123/pair01/candidate/attempt_1860.pt",
+          "sha256": "2b4ae294789c3f55e3c5df441a991571429925168a04c070e4fddbc42bc4311e",
+          "bytes": 193964
+        },
+        "attempts": 128,
+        "accepted": 128,
+        "rejected": 0,
+        "clipped": 25,
+        "work": {
+          "rhs_forward": 5956168,
+          "rhs_recompute": 0,
+          "encoder_events": 1987,
+          "rhs_backward_vjp": null,
+          "rhs_backward_vjp_upper_bound": 5956168
+        },
+        "attempts_ref": {
+          "path": "artifacts/osgkd_v2_p1a_clean_parent_20261123/pair01/candidate/attempts.json",
+          "sha256": "ecdb0ef9e2842ad1b2fe4032132659c65c508bf7dddaacd34217524466292717",
+          "bytes": 254250
+        },
+        "train_cost": {
+          "wall_s": 1925.5321343003307,
+          "cpu_s": 3634.9375
+        },
+        "evaluation_cost": {
+          "wall_s": 194.38502659997903,
+          "cpu_s": 416.671875,
+          "scope": "initialization, both integrals and scoring; serialization excluded"
+        },
+        "evaluation_summary_ref": {
+          "path": "artifacts/osgkd_v2_p1a_clean_parent_20261123/pair01/candidate/evaluation/summary.json",
+          "sha256": "5c40a078a26bd22ed9390784c75475101b25170d0d5ef184bd3f9ccd0b8f3ecb",
+          "bytes": 52803
+        }
+      }
+    },
+    "target_endpoint": 1860,
+    "actual_endpoint": 1860,
+    "fixed_endpoint": 1860,
+    "stopped_early": false,
+    "paired_batch_sequence_ref": {
+      "path": "artifacts/osgkd_v2_p1a_clean_parent_20261123/pair01/batch_sequence.json",
+      "sha256": "944056e5bcd0e91fab1078a7f5cc51110607e73e12764ad41a503be710c3dc64",
+      "bytes": 22079
+    },
+    "recovery_manifest_refs": [
+      {
+        "path": "artifacts/osgkd_v2_p1a_clean_parent_20261123/pair01/recovery/attempt_1764/manifest.json",
+        "sha256": "bf362dd657d9f7682b3bb69c5941c183ee1bccbb810d97f7682dbbf026fe5a04",
+        "bytes": 690
+      },
+      {
+        "path": "artifacts/osgkd_v2_p1a_clean_parent_20261123/pair01/recovery/attempt_1796/manifest.json",
+        "sha256": "8ae521203f04f5e823a2456aea85d8ac011ecde1c26d310f72a1f95890077d81",
+        "bytes": 690
+      },
+      {
+        "path": "artifacts/osgkd_v2_p1a_clean_parent_20261123/pair01/recovery/attempt_1828/manifest.json",
+        "sha256": "ab2b66f38372fae84fcbf7cc2ddc5e04cb8905e9a0347dfa66e09e99f25a7dcc",
+        "bytes": 690
+      }
+    ],
+    "training_rhs_forward": 11912336,
+    "training_rhs_cap": 13107200,
+    "new_fom": 0,
+    "objective_excluded_ids": {
+      "fit": [],
+      "check": []
+    },
+    "evaluation_denominator": 297
+  },
+  "cost": {
+    "wall_s": 4274.4033860999625,
+    "cpu_s": 8154.484375
+  },
+  "environment": {
+    "torch": "2.13.0+cu130",
+    "numpy": "2.5.2",
+    "device": "cpu",
+    "dtype": "float64",
+    "threads": 1,
+    "recompute": false
+  },
+  "memory_observation": {
+    "working_set_bytes": 1077673984,
+    "peak_working_set_bytes": 2204737536
+  }
+}

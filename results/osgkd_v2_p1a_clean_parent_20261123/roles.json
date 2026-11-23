@@ -1,0 +1,31 @@
+{
+  "run_id": "osgkd_v2_p1a_clean_parent_20261123",
+  "client_date": "2026-11-23",
+  "source_commit": "38cd11ce4e0fe8c41677b215fa2f68d1489fb4a0",
+  "role_invocations": [
+    {
+      "role": "Scientist",
+      "tool": "collaboration.followup_task",
+      "configured_model": "gpt-6-astra",
+      "server_resolved_model": null,
+      "returned_receipt": {
+        "task_name": "/root/conflict_profile_scientist"
+      },
+      "completion": "final_answer_delivered",
+      "adopted_output": "campaigns/osgkd_v2/p1a_clean_parent_protocol.md"
+    },
+    {
+      "role": "Modeler",
+      "tool": "collaboration.spawn_agent",
+      "configured_model": "gpt-6.1-sol",
+      "server_resolved_model": null,
+      "returned_receipt": {
+        "task_name": "/root/clean_parent_modeler"
+      },
+      "completion": "final_answer_delivered",
+      "adopted_output": "experiments/osgkd_v2_p1a_clean_parent_20261123/run.py",
+      "sha256": "d91ed26291eb11bf6fe26220ca9271ea9dc081f824f6f5fdc63bc10c803034d9"
+    }
+  ],
+  "adopted_by_root": "128 matched attempts, 1732 original objective parent and 0.3x versus original LR. Record actual Adam and projection; lower clipping is descriptive. Protect previous detections within the original adjacent 0.01 s grid and retain the original parent if neither endpoint meets the gate."
+}
