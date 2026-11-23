@@ -1,0 +1,245 @@
+{
+  "schema_version": 2,
+  "synthetic": false,
+  "run_id": "osgkd_v2_early_electrical_20261123",
+  "parent_run": "osgkd_v2_p1a_20261123",
+  "depends_on": [
+    "osgkd_v2_early_closure_20261123"
+  ],
+  "purpose": "discrimination",
+  "scope": "same 8s fit297 continuation from attempt 1700; only add .1 early total-electrical loss",
+  "campaign": "campaigns/osgkd_v2/campaign.md",
+  "architecture": "designs/osgkd_v2_architecture.md",
+  "protocol": "campaigns/osgkd_v2/early_electrical_protocol.md",
+  "deployment_contract": "motion_only_v1",
+  "source_commit": "063930fe1363e4dcf0e8e6cb878922963b1adbaf",
+  "recorded_utc": "2026-11-23T00:09:49.934031+00:00",
+  "records_archive": "artifacts/research_records/osgkd_v2_early_electrical_20261123_records.zip",
+  "execution": {
+    "status": "COMPLETED",
+    "phase": "closed",
+    "scientific_execution_released": true,
+    "formal_training_requires_internal_qualification": true,
+    "scientific_jobs_started": 1,
+    "native_live": false,
+    "release": {
+      "path": "results/osgkd_v2_early_electrical_20261123/release.json",
+      "sha256": "7304d65d4e81ec2faf5ba2fe94ace94c8442264ed46ffff1bf1b3c2497d2231f",
+      "bytes": 3279
+    },
+    "unexecuted_preflight_v1": {
+      "path": "results/osgkd_v2_early_electrical_20261123/release_preflight_v1.json",
+      "sha256": "b0ee2b69a7f4eb4fc4c21195839e77243fa7abdf4fde334ac7c6dc64111a6c8b",
+      "bytes": 2946
+    },
+    "verified_utc": "2026-11-23T00:42:36.357087+00:00",
+    "active_claims": [],
+    "qualification": {
+      "path": "artifacts/osgkd_v2_early_electrical_20261123/pair01/qualification/qualification.json",
+      "bytes": 4068,
+      "sha256": "1c6c4f1d63064330d709dcb92254743f8e9f0c18532c54de8263c1827dd632dc"
+    },
+    "first_pair_verified": {
+      "attempt": 1701,
+      "ordered_event_ids_matched": true,
+      "both_accepted": true
+    },
+    "completed_jobs": {
+      "pair01": {
+        "pid": 58524,
+        "native_session": 93120,
+        "native_start_chunk": "d2a645",
+        "native_final_chunk": "968c0d",
+        "exit_code": 0,
+        "started": {
+          "path": "artifacts/osgkd_v2_early_electrical_20261123/pair01/started.json",
+          "sha256": "9c7c49918f0d519fab00832ab87c85fade3c377bf745d23a9ddf6c3d811e2afc",
+          "bytes": 3996
+        },
+        "completed": {
+          "path": "artifacts/osgkd_v2_early_electrical_20261123/pair01/completed.json",
+          "sha256": "207ca928cf8532be910c76a02af5c961f2b8e61f8625567e2b0fd4da4cb3f0d8",
+          "bytes": 231
+        },
+        "summary": {
+          "path": "results/osgkd_v2_early_electrical_20261123/pair01/summary.json",
+          "sha256": "4568963657c93d2b28ddc5f869c522dece3607da138b6f35d7a7ac910a766d6e",
+          "bytes": 13207
+        },
+        "fixed_endpoint": 1732,
+        "experimenter": {
+          "configured_model": "gpt-6.1-sol",
+          "server_resolved_model": null,
+          "returned_receipt": {
+            "task_name": "/root/early_electrical_experimenter"
+          }
+        }
+      }
+    }
+  },
+  "scientific_work": {
+    "budget_status": "closed",
+    "limits": {
+      "qualification_trial_attempts": 2,
+      "paired_attempts": 32,
+      "paired_seeds": 1,
+      "training_rhs_event_calls": 3328000,
+      "technical_rechecks": 1,
+      "new_fom": 0
+    },
+    "old_unused_work_transferred": false,
+    "used": {
+      "paired_attempts": 32,
+      "paired_seeds": 1,
+      "qualification_trial_attempts": 2,
+      "qualification_work": {
+        "rhs_forward": 113608,
+        "rhs_recompute": 0,
+        "encoder_events": 56,
+        "rhs_backward_vjp": null,
+        "rhs_backward_vjp_upper_bound": 113608
+      },
+      "technical_rechecks": 0,
+      "formal_parameter_updates": {
+        "control": 32,
+        "candidate": 32
+      },
+      "nonfinite_rejections": {
+        "control": 0,
+        "candidate": 0
+      },
+      "clipped_attempts": {
+        "control": 15,
+        "candidate": 16
+      },
+      "training_rhs_event_calls": 3019176,
+      "fixed_evaluation_events_per_endpoint": 297,
+      "evaluation_rhs_event_calls": {
+        "control": 5702400,
+        "candidate": 5702400
+      },
+      "post_evaluation_port_state_points": 22656,
+      "new_fom": 0
+    },
+    "cost": {
+      "native_job": {
+        "wall_s": 1407.4644307999988,
+        "cpu_s": 2953.015625
+      },
+      "endpoint_analysis": {
+        "wall_s": 17.24065879994305,
+        "cpu_s": 4.8125
+      },
+      "training": {
+        "control": {
+          "wall_s": 430.7665284998948,
+          "cpu_s": 900.234375
+        },
+        "candidate": {
+          "wall_s": 485.80975189991295,
+          "cpu_s": 1030.34375
+        }
+      },
+      "evaluation": {
+        "control": {
+          "wall_s": 211.66639120003674,
+          "cpu_s": 451.671875,
+          "scope": "initialization, both integrals and scoring; serialization excluded"
+        },
+        "candidate": {
+          "wall_s": 198.32437779998872,
+          "cpu_s": 423.90625,
+          "scope": "initialization, both integrals and scoring; serialization excluded"
+        }
+      }
+    },
+    "recovery_manifest_refs": [
+      {
+        "path": "artifacts/osgkd_v2_early_electrical_20261123/pair01/recovery/attempt_1708/manifest.json",
+        "sha256": "2b5ead70014b02d922b647c82f6966bdf9bca4a49b9318024f3d333cf242792c",
+        "bytes": 689
+      },
+      {
+        "path": "artifacts/osgkd_v2_early_electrical_20261123/pair01/recovery/attempt_1716/manifest.json",
+        "sha256": "5127c50f443781693229bf40fb8abcf2c916e27a1f4eef3246e9c0bd51468ae4",
+        "bytes": 690
+      },
+      {
+        "path": "artifacts/osgkd_v2_early_electrical_20261123/pair01/recovery/attempt_1724/manifest.json",
+        "sha256": "a8184f5f3ec811c65f9822bc361180cd497d4041b46b1afc6e9e1e42485fd02a",
+        "bytes": 690
+      }
+    ]
+  },
+  "evidence": {
+    "references": [
+      "results/osgkd_v2_early_electrical_20261123/roles.json",
+      "results/osgkd_v2_early_closure_20261123/probe01/summary.json",
+      "results/osgkd_v2_p1a_20261123/pair01/summary.json",
+      "results/osgkd_v2_early_electrical_20261123/pair01/summary.json",
+      "results/osgkd_v2_early_electrical_20261123/analysis.json",
+      "reports/osgkd_v2_early_electrical_20261123/result.md",
+      "reports/osgkd_v2_early_electrical_20261123/review.md"
+    ],
+    "preflight_review": {
+      "configured_model": "gpt-6.1-sol",
+      "server_resolved_model": null,
+      "returned_receipt": {
+        "task_name": "/root/early_closure_reviewer"
+      },
+      "recovery_and_analysis_binding_verified": true
+    },
+    "validity": "valid_for_frozen_train_fit297_paired_endpoints",
+    "optimizer_health": "all_updates_finite_with_15_and_16_clips_of_32",
+    "optimization_adequacy": "unknown",
+    "mechanism_probe": "additive_early_total_electrical_point_loss_at_fixed_horizon_and_shared_initialization",
+    "effect": "small_early_error_decreases_and_higher_stable_8s_risk_than_matched_control",
+    "confirmation": "one_parent_one_paired_order_previously_exposed_train",
+    "confirmation_need": "diagnose_first",
+    "promotion_eligible": false,
+    "practical_gates": {
+      "numerical_and_coverage": true,
+      "early_electrical": false,
+      "early_motion": false,
+      "stable_8s_false_alarms": true,
+      "parent_hits_preserved": true,
+      "parent_trigger_timing": true,
+      "stable_1s_risk": true,
+      "stable_2s_risk": true,
+      "stable_8s_risk": false
+    },
+    "fixed_endpoint_analysis": {
+      "path": "results/osgkd_v2_early_electrical_20261123/analysis.json",
+      "sha256": "5d6b6841db956fb3c0cb5157937ecc4f990b450f1e7378003fdf6b7812a4b06b",
+      "bytes": 300443
+    },
+    "independent_review": {
+      "configured_model": "gpt-6.1-sol",
+      "server_resolved_model": null,
+      "returned_receipt": {
+        "task_name": "/root/early_closure_reviewer"
+      },
+      "reference": "reports/osgkd_v2_early_electrical_20261123/review.md",
+      "closure_blockers": []
+    }
+  },
+  "proposal": {
+    "next_action": "discriminate_late_stable_error_increase_before_dose_or_architecture_change",
+    "competing_explanations": [
+      "shared_parameter_objective_conflict",
+      "batch_and_optimizer_trajectory_sensitivity"
+    ],
+    "first_evidence": "paired_event_scores_and_frozen_models"
+  },
+  "closed_utc": "2026-11-23T00:42:36.357087+00:00",
+  "root_decisions": {
+    "code_decision": "retain_branch",
+    "model_decision": "retain_evidence",
+    "science_decision": "continue"
+  },
+  "follow_up_parent": {
+    "path": "artifacts/osgkd_v2_p1a_20261123/pair01/8s/attempt_1700.pt",
+    "sha256": "cb57c93f850eb1928ea0a8ffc6fdc32d24b7130f9a4079698057582d2a1e9aed",
+    "bytes": 193196
+  }
+}

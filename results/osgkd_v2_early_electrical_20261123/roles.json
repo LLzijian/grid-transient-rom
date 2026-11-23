@@ -1,0 +1,25 @@
+{
+  "run_id": "osgkd_v2_early_electrical_20261123",
+  "client_date": "2026-11-23",
+  "parent_port_probe_sha256": "f002e7fcd7ac80cbcccc568c5c91a2e9c3dbfee603f3d85d05698f2fbe3dd855",
+  "adopted_by_root": "固定 P1a 长组父检查点和原 8 s 目标，增加唯一的 0.1 权重短窗总电气端口项。32 次配对尝试加固定 1732 末点，前瞻保护稳定预测和原有真实区间检出。",
+  "role_invocations": [
+    {
+      "role": "Scientist",
+      "tool": "collaboration.followup_task",
+      "configured_model": "gpt-6-astra",
+      "server_resolved_model": null,
+      "returned_receipt": {"task_name": "/root/early_closure_scientist"},
+      "completion": "final_answer_delivered",
+      "adopted_output": "campaigns/osgkd_v2/early_electrical_protocol.md"
+    },
+    {
+      "role": "Modeler",
+      "tool": "collaboration.spawn_agent",
+      "configured_model": "gpt-6.1-sol",
+      "server_resolved_model": null,
+      "returned_receipt": {"task_name": "/root/early_electrical_modeler"},
+      "requested_output": "experiments/osgkd_v2_early_electrical_20261123/run.py"
+    }
+  ]
+}

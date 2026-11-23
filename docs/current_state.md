@@ -20,8 +20,6 @@
 
 三个决定：代码 retain_branch，模型 retain_evidence，科学 continue。工作候选为C1第1500次，C0同合同对照同步保留；default none、incumbent和protected anchors不变。原始val/test关闭，新FOM=0，TASK4暂停，GFTD继续暂存。
 
-P1a 两组末点继续留存，下一研究从 8 s 组第 1700 次检查点出发。先定位真实短窗内的净作用和端口误差，再选择一个保持相同初始化信息的早期闭合对照。[v2 Campaign](../campaigns/osgkd_v2/campaign.md)
-
-[早期闭合诊断](../reports/osgkd_v2_early_closure_20261123/result.md)已完成。原 27 条漏检在两个判定窗均覆盖十节点，总电气端通过分流门。下一比较仅增加早期总电气端口监督，保留同一初态信息与 8 s 预测目标。
+[早期闭合诊断](../reports/osgkd_v2_early_closure_20261123/result.md)在原 27 条漏检的两窗均覆盖十节点，选出总电气端。[固定末点配对适配](../reports/osgkd_v2_early_electrical_20261123/result.md)已完成各 32 次更新并通过独立复核。候选组在真实上限 0.25 s 的电气与运动均方误差分别比对照组低 1.71% 和 3.43%，均未达到预登记幅度。稳定 8 s 风险为父模型 2.038、对照组 1.115、候选组 2.075，三组仍均检出原 3/30，稳定误报为 0/267。保留 P1a 长组，下一辨别聚焦稳定 8 s 风险上升事件，先区分短窗与长期目标的冲突及优化路径的影响。[Run 登记](../harness/runs/osgkd_v2_early_electrical_20261123.json) · [v2 Campaign](../campaigns/osgkd_v2/campaign.md)
 
 [本轮报告](../reports/osgkd_fit297_20261113/result.md) · [机器结果](../results/osgkd_fit297_20261113/analysis.json) · [科学综合](../reports/osgkd_fit297_20261113/scientific_synthesis.md) · [Run记录](../harness/runs/osgkd_fit297_20261113.json)
