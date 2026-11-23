@@ -1,0 +1,26 @@
+{
+  "run_id": "osgkd_v2_p1b_electrical_unlock_20261123",
+  "client_date": "2026-11-23",
+  "source_commit": "84c65baefa0719dd6a758dd28f492bb7d6b5638d",
+  "role_invocations": [
+    {
+      "role": "Scientist",
+      "tool": "collaboration.followup_task",
+      "configured_model": "gpt-6-astra",
+      "server_resolved_model": null,
+      "returned_receipt": {"task_name": "/root/conflict_profile_scientist"},
+      "completion": "final_answer_delivered",
+      "adopted_output": "designs/osgkd_v2_anchored_electrical_potential_20261123.md"
+    },
+    {
+      "role": "Modeler",
+      "tool": "collaboration.spawn_agent and followup_task",
+      "configured_model": "gpt-6.1-sol",
+      "server_resolved_model": null,
+      "returned_receipt": {"task_name": "/root/anchored_potential_modeler"},
+      "completion": "final_answer_delivered",
+      "adopted_output": "src/kiki/models/osgkd_anchored_potential.py"
+    }
+  ],
+  "adopted_by_root": "共同父点为正式通过门的原学习率第 1860 次。160 对比较只开放高阶势，采用用户指定的 0.5 tanh rho。沿用原耦合核和幅值映射，保存实际裁剪、更新、数值、端口误差和原事件身份。"
+}

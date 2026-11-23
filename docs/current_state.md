@@ -24,6 +24,8 @@
 
 [固定端点诊断](../reports/osgkd_v2_conflict_profile_20261123/result.md)在稳定变差组所抽 4 条上发现两端点重复的耦合、环境局部梯度冲突。原 27 条漏检有 22 条的主要加速机组持续高估电气作用，三个端点幅值初态触界均为 0/27。优先检验单一高阶耦合势。
 
-[学习率对照](../reports/osgkd_v2_p1a_clean_parent_20261123/result.md)各完成 128 次更新。train 稳定 8 s 风险为父点 1.115、原学习率 0.429、0.3 倍 1.007。两组稳定误报 0/267，保有原 3/30 检出。原学习率组第 1860 次通过采用门，作为拟释放的高阶耦合势配对父模型。[v2 Campaign](../campaigns/osgkd_v2/campaign.md)
+[学习率对照](../reports/osgkd_v2_p1a_clean_parent_20261123/result.md)各完成 128 次更新。train 稳定 8 s 风险为父点 1.115、原学习率 0.429、0.3 倍 1.007。两组稳定误报 0/267，保有原 3/30 检出。采用原学习率第 1860 次作为研究父点。
+
+[高阶耦合势对照](../reports/osgkd_v2_p1b_electrical_unlock_20261123/result.md)已通过真实零点资格并完成 160 对。原 27 条漏检的 0.25 s 真实截断窗，高阶势组的总电气和运动均方误差比原势组低 4.97% 和 7.27%，检出为 4/30 和 3/30。稳定 8 s 风险为高阶势组 0.750、原势组 0.605，双方均 0/267 误报。联合采用门未通过，保留第 1860 次父点。下一辨别聚焦电气净交换与零和传递的误差分量。[v2 Campaign](../campaigns/osgkd_v2/campaign.md)
 
 [本轮报告](../reports/osgkd_fit297_20261113/result.md) · [机器结果](../results/osgkd_fit297_20261113/analysis.json) · [科学综合](../reports/osgkd_fit297_20261113/scientific_synthesis.md) · [Run记录](../harness/runs/osgkd_fit297_20261113.json)

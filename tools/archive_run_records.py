@@ -30,6 +30,23 @@ def digest(raw):
     return hashlib.sha256(raw).hexdigest()
 
 
+def bound_sources(run_id, release, names):
+    if not release["path"].startswith(f"results/{run_id}/"):
+        raise ValueError("expected a release belonging to this Run")
+    raw = canonical_file(release["path"]).read_bytes()
+    if len(raw) != release["bytes"] or digest(raw) != release["sha256"]:
+        raise ValueError("release identity differs")
+    body = json.loads(raw)
+    if body["run_id"] != run_id:
+        raise ValueError("release belongs to another Run")
+    for name in names:
+        if not name.startswith(("designs/", "src/", "tests/")) or PurePosixPath(name).suffix not in (".md", ".py"):
+            raise ValueError(f"expected a design or source reference: {name}")
+        if body["source_hashes"].get(name) != digest(canonical_file(name).read_bytes()):
+            raise ValueError(f"source differs from the frozen release: {name}")
+    return names
+
+
 def verify(archive, manifest):
     files = {entry["path"]: entry for entry in manifest["files"]}
     with ZipFile(archive) as bundle:
@@ -63,6 +80,9 @@ def archive_run(run_id, local_records):
         if not protocol.startswith("campaigns/"):
             raise ValueError("expected the Run protocol in campaigns/")
         members.add(protocol)
+    sources = record.get("records_archive_source_refs", [])
+    if sources:
+        members.update(bound_sources(run_id, execution["release"], sources))
     for name in local_records:
         if not name.startswith(f"artifacts/{run_id}/") or PurePosixPath(name).suffix not in RECORD_SUFFIXES:
             raise ValueError(f"expected a text record belonging to this Run: {name}")

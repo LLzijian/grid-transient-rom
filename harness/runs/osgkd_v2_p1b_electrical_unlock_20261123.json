@@ -1,0 +1,351 @@
+{
+  "schema_version": 2,
+  "synthetic": false,
+  "run_id": "osgkd_v2_p1b_electrical_unlock_20261123",
+  "parent_run": "osgkd_v2_p1a_clean_parent_20261123",
+  "depends_on": [
+    "osgkd_v2_conflict_profile_20261123"
+  ],
+  "purpose": "discrimination",
+  "scope": "single high-order anchored-potential extension on a fixed qualified parent",
+  "campaign": "campaigns/osgkd_v2/campaign.md",
+  "architecture": "designs/osgkd_v2_anchored_electrical_potential_20261123.md",
+  "protocol": "campaigns/osgkd_v2/p1b_electrical_unlock_protocol.md",
+  "deployment_contract": "motion_only_v1",
+  "source_commit": "84c65baefa0719dd6a758dd28f492bb7d6b5638d",
+  "recorded_utc": "2026-11-23T07:47:35.926525+00:00",
+  "execution": {
+    "status": "COMPLETED",
+    "phase": "closed",
+    "scientific_execution_released": true,
+    "formal_training_requires_internal_qualification": true,
+    "scientific_jobs_started": 1,
+    "native_live": false,
+    "active_claims": [],
+    "release": {
+      "path": "results/osgkd_v2_p1b_electrical_unlock_20261123/release.json",
+      "bytes": 4295,
+      "sha256": "3fe5c90ac73bd8f1a34b000e11fc39d4c8064b52ca3907ebe7b42ad9ff3238c1"
+    },
+    "verified_utc": "2026-11-23T09:15:50.068768+00:00",
+    "qualification": {
+      "path": "artifacts/osgkd_v2_p1b_electrical_unlock_20261123/pair01/qualification.json",
+      "bytes": 1026,
+      "sha256": "b325ca2d77c9d46a79c7a71fa5099362206233b10f14b710c96f266cb23b713d"
+    },
+    "first_pair_verified": {
+      "attempt": 1861,
+      "identical_event_order_and_loss": true,
+      "both_accepted": true,
+      "rho_gradient_nonzero": true,
+      "shared_gradient_norm_preserved": true
+    },
+    "latest_recovery_verified": {
+      "pairs": 128,
+      "manifests": [
+        {
+          "path": "artifacts/osgkd_v2_p1b_electrical_unlock_20261123/pair01/recovery/attempt_1892/manifest.json",
+          "bytes": 705,
+          "sha256": "151113c488f11e89dfa0c4495117a10d65aa081e096ad995d5f5a7529cf8382c"
+        },
+        {
+          "path": "artifacts/osgkd_v2_p1b_electrical_unlock_20261123/pair01/recovery/attempt_1924/manifest.json",
+          "bytes": 705,
+          "sha256": "319b40b83e50962acedc020d346b9d3adc56642cc68daaa9b0fe82dc76a4e636"
+        },
+        {
+          "path": "artifacts/osgkd_v2_p1b_electrical_unlock_20261123/pair01/recovery/attempt_1956/manifest.json",
+          "bytes": 705,
+          "sha256": "4d7b90788d25ca1ee9490c479887e0512749c52220899c86c5ea7845618095be"
+        },
+        {
+          "path": "artifacts/osgkd_v2_p1b_electrical_unlock_20261123/pair01/recovery/attempt_1988/manifest.json",
+          "bytes": 706,
+          "sha256": "48b28b74cb0e2cb395213b56acd02d75c933d189d5b753f61e6c467fd1e7e088"
+        }
+      ],
+      "totals_through_recovery": {
+        "control": {
+          "accepted": 128,
+          "clipped": 24,
+          "wall_s": 1399.0484003000893
+        },
+        "candidate": {
+          "accepted": 128,
+          "clipped": 25,
+          "wall_s": 1692.4870016001514
+        }
+      },
+      "verified_utc": "2026-11-23T08:43:18.419387+00:00"
+    },
+    "training_verified": {
+      "endpoint": 2020,
+      "matched_attempts": 160,
+      "accepted": {
+        "control": 160,
+        "candidate": 160
+      },
+      "clipping": {
+        "control": 30,
+        "candidate": 29
+      },
+      "checked_utc": "2026-11-23T08:55:33.103717+00:00"
+    },
+    "completed_jobs": {
+      "pair01": {
+        "job_id": "pair01",
+        "pid": 43116,
+        "started_utc": "2026-11-23T07:48:51.060744+00:00",
+        "native_session": 26372,
+        "native_start_chunk": "8c6e31",
+        "started": {
+          "path": "artifacts/osgkd_v2_p1b_electrical_unlock_20261123/pair01/started.json",
+          "sha256": "95c11cd22a714cd4709b1c843f75ce3c27e4f839742bbb787b355c6d4a4296fd",
+          "bytes": 5040
+        },
+        "experimenter": {
+          "configured_model": "gpt-6.1-sol",
+          "server_resolved_model": null,
+          "returned_receipt": {
+            "task_name": "/root/early_electrical_experimenter"
+          }
+        },
+        "native_final_chunk": "a865ba",
+        "exit_code": 0,
+        "completed": {
+          "path": "artifacts/osgkd_v2_p1b_electrical_unlock_20261123/pair01/completed.json",
+          "sha256": "8ea84cd086518a05c02f5ac8518dcd52c0c6a7488fb532a6d36d30b1d497657d",
+          "bytes": 236
+        },
+        "summary": {
+          "path": "results/osgkd_v2_p1b_electrical_unlock_20261123/pair01/summary.json",
+          "sha256": "5c39117f65b7d0199f798f6b3461784435124c392d689ec4825addb94c299726",
+          "bytes": 10083
+        },
+        "fixed_endpoint": 2020
+      }
+    }
+  },
+  "scientific_work": {
+    "budget_status": "closed",
+    "old_unused_work_transferred": false,
+    "limits": {
+      "paired_attempts": 160,
+      "paired_seeds": 1,
+      "training_rhs_event_calls": 16384000,
+      "qualification_events": 2,
+      "fixed_evaluation_events_per_endpoint": 297,
+      "new_fom": 0
+    },
+    "used": {
+      "paired_attempts": 160,
+      "paired_seeds": 1,
+      "training_rhs_event_calls": 14872432,
+      "qualification_work": {
+        "rhs_forward": 74892,
+        "rhs_recompute": 0,
+        "encoder_events": 14,
+        "rhs_backward_vjp": null,
+        "rhs_backward_vjp_upper_bound": 74892
+      },
+      "qualification_parameter_updates": 0,
+      "fixed_evaluation_events_per_endpoint": 297,
+      "accepted": {
+        "control": 160,
+        "candidate": 160
+      },
+      "rejected": {
+        "control": 0,
+        "candidate": 0
+      },
+      "clips": {
+        "control": 30,
+        "candidate": 29
+      },
+      "post_evaluation_port_state_points": 22656,
+      "new_fom": 0
+    },
+    "cost": {
+      "native": {
+        "wall_s": 4405.792388700007,
+        "cpu_s": 9359.484375
+      },
+      "endpoint_analysis": {
+        "wall_s": 8.125781500013545,
+        "cpu_s": 5.3125
+      },
+      "training": {
+        "control": {
+          "wall_s": 1743.255311700108,
+          "cpu_s": 3719.421875
+        },
+        "candidate": {
+          "wall_s": 2108.1284355000244,
+          "cpu_s": 4501.296875
+        }
+      },
+      "evaluation": {
+        "control": {
+          "wall_s": 189.14072500000475,
+          "cpu_s": 400.859375,
+          "scope": "initialization, both integrals and scoring; serialization excluded"
+        },
+        "candidate": {
+          "wall_s": 235.6202639999683,
+          "cpu_s": 501.46875,
+          "scope": "initialization, both integrals and scoring; serialization excluded"
+        }
+      }
+    },
+    "recovery_manifest_refs": [
+      {
+        "path": "artifacts/osgkd_v2_p1b_electrical_unlock_20261123/pair01/recovery/attempt_1892/manifest.json",
+        "sha256": "151113c488f11e89dfa0c4495117a10d65aa081e096ad995d5f5a7529cf8382c",
+        "bytes": 705
+      },
+      {
+        "path": "artifacts/osgkd_v2_p1b_electrical_unlock_20261123/pair01/recovery/attempt_1924/manifest.json",
+        "sha256": "319b40b83e50962acedc020d346b9d3adc56642cc68daaa9b0fe82dc76a4e636",
+        "bytes": 705
+      },
+      {
+        "path": "artifacts/osgkd_v2_p1b_electrical_unlock_20261123/pair01/recovery/attempt_1956/manifest.json",
+        "sha256": "4d7b90788d25ca1ee9490c479887e0512749c52220899c86c5ea7845618095be",
+        "bytes": 705
+      },
+      {
+        "path": "artifacts/osgkd_v2_p1b_electrical_unlock_20261123/pair01/recovery/attempt_1988/manifest.json",
+        "sha256": "48b28b74cb0e2cb395213b56acd02d75c933d189d5b753f61e6c467fd1e7e088",
+        "bytes": 706
+      }
+    ]
+  },
+  "evidence": {
+    "references": [
+      "results/osgkd_v2_p1b_electrical_unlock_20261123/roles.json",
+      "results/osgkd_v2_p1a_clean_parent_20261123/analysis.json",
+      "results/osgkd_v2_conflict_profile_20261123/probe01/summary.json",
+      "results/osgkd_v2_p1b_electrical_unlock_20261123/pair01/summary.json",
+      "results/osgkd_v2_p1b_electrical_unlock_20261123/analysis.json",
+      "reports/osgkd_v2_p1b_electrical_unlock_20261123/result.md",
+      "reports/osgkd_v2_p1b_electrical_unlock_20261123/review.md"
+    ],
+    "preflight_review": {
+      "configured_model": "gpt-6.1-sol",
+      "server_resolved_model": null,
+      "returned_receipt": {
+        "task_name": "/root/early_closure_reviewer"
+      },
+      "reviewed_source_sha256": {
+        "experiments/osgkd_v2_p1b_electrical_unlock_20261123/run.py": "3aebad62bde6dc5b814accdebc2b140a08d698a69f4bc4e4382a1db2fc6bc68a",
+        "experiments/osgkd_v2_p1b_electrical_unlock_20261123/analyze.py": "49c532871fcf4ffe5fd85ef3ac67052fe82ef347c92e16db1fce96f11c620918",
+        "campaigns/osgkd_v2/p1b_electrical_unlock_protocol.md": "7f0dde4f617f330f31ea5ca44e52a59c7067f3466bfdad2d9395009b7ffd882a",
+        "src/kiki/models/osgkd_anchored_potential.py": "a62d48d15432e691b3741e9426a91c6ff5648445cc9d242920fdeec937f8c195",
+        "designs/osgkd_v2_anchored_electrical_potential_20261123.md": "ba83c0c7f8a18450c857c97f7d4191862d33068245967d1e01c73a9f32d99941"
+      },
+      "analysis_coverage_amendment_verified": true,
+      "working_parent_verified": true,
+      "release_blockers": []
+    },
+    "validity": "valid_fixed_parent_and_matched_train_fit297_endpoints",
+    "optimizer_health": "finite_updates_with_active_harmonic_gradient_and_30_29_clips_of_160",
+    "optimization_adequacy": "unknown",
+    "mechanism_probe": "exact_nested_anchored_potential_and_open_power_consistency",
+    "effect": "short_motion_and_one_actual_detection_gain_but_electrical_and_stable_protection_failed",
+    "confirmation": "one_fixed_pair_previously_exposed_train",
+    "confirmation_need": "diagnose_first",
+    "promotion_eligible": false,
+    "practical_gates": {
+      "checks": {
+        "numerical_and_coverage": true,
+        "early_electrical": false,
+        "early_motion": true,
+        "stable_8s_false_alarms": true,
+        "parent_hits_preserved": true,
+        "parent_trigger_timing": true,
+        "stable_1s_risk": false,
+        "stable_2s_risk": false,
+        "stable_8s_risk": false
+      },
+      "passed": false,
+      "parent_hit_times_record_s": {
+        "expansion_0106": {
+          "parent": 0.13,
+          "control": 0.13,
+          "candidate": 0.13
+        },
+        "pilot_0207": {
+          "parent": 0.14,
+          "control": 0.14,
+          "candidate": 0.14
+        },
+        "pilot_0254": {
+          "parent": 0.13,
+          "control": 0.13,
+          "candidate": 0.13
+        }
+      },
+      "new_hits_over_parent": [
+        "expansion_0138"
+      ],
+      "new_hits_over_control": [
+        "expansion_0138"
+      ],
+      "pipeline_motion_and_stability_passed": false,
+      "detection_gate": false
+    },
+    "endpoint_analysis": {
+      "path": "results/osgkd_v2_p1b_electrical_unlock_20261123/analysis.json",
+      "sha256": "7bb8c4af8ca9064f006842d6fdeb8082d741f035c40f96b855c256b08610d3c9",
+      "bytes": 281071
+    },
+    "independent_review": {
+      "configured_model": "gpt-6.1-sol",
+      "server_resolved_model": null,
+      "returned_receipt": {
+        "task_name": "/root/early_closure_reviewer"
+      },
+      "reference": "reports/osgkd_v2_p1b_electrical_unlock_20261123/review.md",
+      "closure_blockers": []
+    },
+    "exploratory_endpoint_coefficients": {
+      "count": 90,
+      "gamma_max_abs_by_harmonic": [
+        0.009728654805975293,
+        0.011267563312127235
+      ],
+      "gamma_99pct_touches": 0,
+      "checkpoint": {
+        "path": "artifacts/osgkd_v2_p1b_electrical_unlock_20261123/pair01/candidate/attempt_2020.pt",
+        "sha256": "c645fe41dc9faad374e0407e1e5071a181061510dd3035e68dd3f21d271956e7",
+        "bytes": 198560
+      }
+    }
+  },
+  "proposal": {
+    "next_question": "distinguish_total_electrical_net_exchange_and_zero_sum_residual",
+    "working_parent": {
+      "path": "artifacts/osgkd_v2_p1a_clean_parent_20261123/pair01/control/attempt_1860.pt",
+      "sha256": "291853229dd6738a9132fcacce53d104f83d1a6045b1d3823733549759def49f",
+      "bytes": 193964
+    },
+    "loss_geometry_release": "conditional_gate_not_met"
+  },
+  "records_archive": "artifacts/research_records/osgkd_v2_p1b_electrical_unlock_20261123_records.zip",
+  "records_archive_source_refs": [
+    "designs/osgkd_v2_anchored_electrical_potential_20261123.md",
+    "src/kiki/models/osgkd_anchored_potential.py",
+    "tests/test_osgkd_anchored_potential.py"
+  ],
+  "root_decisions": {
+    "code_decision": "retain_branch",
+    "model_decision": "retain_evidence",
+    "science_decision": "unresolved"
+  },
+  "follow_up_parent": {
+    "path": "artifacts/osgkd_v2_p1a_clean_parent_20261123/pair01/control/attempt_1860.pt",
+    "sha256": "291853229dd6738a9132fcacce53d104f83d1a6045b1d3823733549759def49f",
+    "bytes": 193964
+  },
+  "closed_utc": "2026-11-23T09:15:50.068768+00:00"
+}
