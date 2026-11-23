@@ -1,0 +1,58 @@
+name: Sync Research Reports to Google Drive
+
+on:
+  push:
+    branches: [codex/osgkd-transition-20261113]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  REVIEW_BRANCH: codex/osgkd-transition-20261113
+
+concurrency:
+  group: kiki-research-review-drive
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    if: github.repository == 'LLzijian/grid-transient-rom' && !github.event.deleted
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          ref: ${{ github.event_name == 'push' && github.sha || format('refs/heads/{0}', env.REVIEW_BRANCH) }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Build plain-text review bundle
+        env:
+          PUSH_BEFORE: ${{ github.event.before }}
+        run: python3 scripts/build_review_sync.py --out _review_sync --base "$PUSH_BEFORE"
+
+      - name: Install rclone
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y rclone
+
+      - name: Sync to Google Drive
+        shell: bash
+        env:
+          RCLONE_CONF: ${{ secrets.RCLONE_CONF }}
+        run: |
+          tip=$(git ls-remote --exit-code origin "refs/heads/$REVIEW_BRANCH" | cut -f1)
+          if [[ "$tip" != "$(git rev-parse HEAD)" ]]; then
+            echo "A newer branch revision is available. Skipping this upload."
+            exit 0
+          fi
+          : "${RCLONE_CONF:?Set the RCLONE_CONF repository Actions secret}"
+          RCLONE_CONFIG=$(mktemp "$RUNNER_TEMP/kiki-rclone.XXXXXX")
+          export RCLONE_CONFIG
+          trap 'rm -f -- "$RCLONE_CONFIG"' EXIT
+          printf '%s\n' "$RCLONE_CONF" > "$RCLONE_CONFIG"
+          unset RCLONE_CONF
+          dest=gdrive:Kiki_Research_Sync
+          rclone sync _review_sync "$dest" --checksum --fast-list --exclude /LATEST_DIGEST.md
+          rclone copyto _review_sync/LATEST_DIGEST.md "$dest/LATEST_DIGEST.md" --checksum
