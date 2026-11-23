@@ -7,6 +7,15 @@ from pathlib import Path
 SCRIPT = Path(__file__).resolve().parents[1] / "scripts" / "build_review_sync.py"
 
 
+def test_report_lead_preserves_explicit_and_legacy_conclusions():
+    from scripts.build_review_sync import report_lead
+
+    report = "# 结果\n\n**全量验证已完成。** 其余细节单列。[摘要](run01/summary.json)\n\n方法。"
+    legacy = "# 结果\n\n2026-11-23。冻结父点完成验证。[摘要](run01/summary.json)\n\n方法。"
+    assert report_lead(report.encode(), "run01") == "**全量验证已完成。**"
+    assert report_lead(legacy.encode(), "run01") == "2026-11-23。冻结父点完成验证。"
+
+
 def test_review_bundle_is_a_snapshot_of_one_push(tmp_path):
     def git(*args, data=None):
         return subprocess.run(

@@ -205,9 +205,11 @@ def report_lead(content, run):
         prose = " ".join(line for line in lines if line and not line.startswith("#"))
         if not prose or prose.startswith(("|", "```", "<!--", "---")):
             continue
+        prose = re.sub(r"(?:[ ·]*\[[^\]]+\]\([^)]+\))+$", "", prose)
         if run in prose and re.match(r"(?:Run\b|日期|\d{4}-\d{2}-\d{2})", prose):
             continue
-        prose = re.sub(r"(?:[ ·]*\[[^\]]+\]\([^)]+\))+$", "", prose)
+        if conclusion := re.match(r"^\*\*([^*]+)\*\*", prose):
+            prose = conclusion.group(0)
         return re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", prose)
     return ""
 

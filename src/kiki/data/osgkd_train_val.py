@@ -23,6 +23,7 @@ SOURCE_METADATA = {
     ),
 }
 FAULT = "temporary_bus_three_phase_ground"
+PM_REFERENCE_SHA256 = "8ee9052f7e1031ac2e5391ff2d59cf0da86acebae81a1b0e861563984fdead29"
 
 
 def _require(ok, message):
@@ -157,6 +158,8 @@ def load_val(constants):
             reference = {key: file["equilibrium"][key][...] for key in ("delta", "omega", "Pm")}
             _require(all(value.shape == (10,) and np.isfinite(value).all() for value in reference.values()),
                      "invalid val equilibrium")
+            _require(hashlib.sha256(np.asarray(reference["Pm"], dtype="<f8").tobytes(order="C")).hexdigest()
+                     == PM_REFERENCE_SHA256, "val/train common torque reference differs")
             if common_reference is not None:
                 _require(all(np.array_equal(value, common_reference[key]) for key, value in reference.items()),
                          "val shards have different fixed references")
@@ -192,8 +195,8 @@ def load_val(constants):
                                  missing_reason="fewer_than_11_original_history_points", original_points=len(t))
                 else:
                     event = d.event_record(eid, group, row["label"], t, raw["delta"],
-                                           (raw["omega"]-1)*constants["omega_s"], raw["Pm"],
-                                           raw["Pm"], raw["te"], meta, mass)
+                                           (raw["omega"]-1)*constants["omega_s"], raw["Pm"]-reference["Pm"],
+                                           raw["Pm"]-reference["Pm"], raw["te"]-reference["Pm"], meta, mass)
                 events.append(event)
     events.sort(key=lambda event: event["id"])
     _require(len(events) == 117 and Counter(e["label"] for e in events) == {"stable": 95, "unstable": 22}

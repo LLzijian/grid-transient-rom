@@ -1,6 +1,7 @@
 # Run 闭合：<id>
 
-一句话：<在何范围观察/支持什么，什么仍未决>。
+**<用一句话写明比较范围和核心结果。>**
+
 来源 commit、协议/修订、checkpoint/hash、数据/尺度/seed、实际成本与未知项。
 执行状态；预算状态；科学状态分别写，绝不合成一个 accept。
 
@@ -24,3 +25,4 @@ confirmation_need 与 promotion_eligibility 分开，工具记录资格不代替
 将本轮登记、协议、结果、审查与复现所需源码选择性提交并推送到研究分支。
 现有工作流将公开研究文本自动同步到 Google Drive 的 `Kiki_Research_Sync`，
 用目录内 `LATEST_DIGEST.md` 核对提交号。原始轨迹、私有数据、模型权重和优化器状态按本地资产清单保全。
+公开 `summary.json` 保存聚合指标和产物引用，保证小于 512 KiB。逐事件诊断和大数组保存在 `artifacts/`。

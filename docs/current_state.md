@@ -2,6 +2,8 @@
 
 **后续数据口径（2026-11-23）。** IEEE39 使用完整 `train` 的 385 条（342 稳定、43 失稳）训练，原始 `val` 的 117 条（95 稳定、22 失稳）验证。其中 10 条 `val` 失稳样本不足 100 ms，计入原分母并标明未覆盖。新训练比较使用完整 `train` 建立批次顺序，用相同的双步长 `val` 验证规则比较各组。沿用冻结的父模型尺度。`test` 关闭，新 FOM 为 0，TASK4 暂停，default none。[数据合同](../kiki.md#3-数据与信息) · [数据入口](../src/kiki/data/osgkd_train_val.py) · [验证入口](../src/kiki/evaluation/osgkd_validation.py)
 
+**固定父点基线。** 第 1860 次父点在完整 `train` 的稳定 8 s 风险为 0.756、误报 1/342、失稳真实区间检出 3/43；在原始 `val` 分别为 1.757、1/95、0/12（原分母 0/22）。`val` 转矩已统一为共同平衡增量，重算逐事件复现运动与分类。下一步从同一点做 200 对固定方程更新，比较原策略与分段风险目标及失稳分层采样。[冻结基线](../reports/osgkd_v2_train385_baseline_20261123/result.md) · [配对协议](../campaigns/osgkd_v2/train385_risk_alignment_protocol.md)
+
 **2026-11-23。** 当前方案为 [OSGKD 2.0](../designs/osgkd_v2_architecture.md)。[P0 零训练诊断](../reports/osgkd_v2_p0_20261123/result.md)、[P1a 固定末点评价](../reports/osgkd_v2_p1a_20261123/result.md)及[P2a 初态试验](../reports/osgkd_v2_p2a_20261123/result.md)已完成并独立复核。P1a 两边各 200 次成功更新，主细步长评价覆盖全 297 条。
 
 - P1a 的 2 s 与 8 s 训练组，在稳定 267 条的 8 s 运动风险为 39.751 和 2.038，稳定误报为 15/267 和 0/267。8 s 组 1/2 s 风险较高，保住原 C1 三个真实区间检出，仍有 27/30 漏检。[P1a 登记](../harness/runs/osgkd_v2_p1a_20261123.json)
@@ -30,6 +32,6 @@
 
 [高阶耦合势对照](../reports/osgkd_v2_p1b_electrical_unlock_20261123/result.md)已通过真实零点资格并完成 160 对。原 27 条漏检的 0.25 s 真实截断窗，高阶势组的总电气和运动均方误差比原势组低 4.97% 和 7.27%，检出为 4/30 和 3/30。稳定 8 s 风险为高阶势组 0.750、原势组 0.605，双方均 0/267 误报。联合采用门未通过，保留第 1860 次父点。
 
-[电气误差分解](../reports/osgkd_v2_electrical_decomposition_20261123/result.md)已完成复核和技术归档。第 1860 次父点在原 27 条漏检的两个短窗中，物理零和校正残余下界为 5.84% 和 3.17%。选定机组相邻边均远离调制底板，三个分流条件均未通过。保留工作父点，下一轮结构训练等待确认协议。[v2 Campaign](../campaigns/osgkd_v2/campaign.md)
+[电气误差分解](../reports/osgkd_v2_electrical_decomposition_20261123/result.md)已完成复核。第 1860 次父点在原 27 条漏检的两个短窗中，物理零和校正残余下界为 5.84% 和 3.17%。选定机组相邻边均远离调制底板，三个分流条件均未通过，保留工作父点。[v2 Campaign](../campaigns/osgkd_v2/campaign.md)
 
 [本轮报告](../reports/osgkd_fit297_20261113/result.md) · [机器结果](../results/osgkd_fit297_20261113/analysis.json) · [科学综合](../reports/osgkd_fit297_20261113/scientific_synthesis.md) · [Run记录](../harness/runs/osgkd_fit297_20261113.json)
