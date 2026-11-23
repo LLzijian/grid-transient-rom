@@ -21,3 +21,7 @@ confirmation_need 与 promotion_eligibility 分开，工具记录资格不代替
 主题维护：受影响的 Campaign 问题／正文位置；直接核对的原结论与证据；认识变化与更正范围；尚未纳入材料。
 材料导航：Run 入口、原执行／技术续跑关系、结果与本地产物清单；新增路径保护项及解除条件。
 归档 commit / push 核验 / 未解决阻碍；真实清理与下一授权动作。
+每个闭合 Run 交付一个 `artifacts/research_records/<run_id>_records.zip`。本轮登记、
+协议、结果、审查及复现源码入包，执行回执和逐事件记录用 `--local-record` 指定。
+完成本地归档提交后运行 `python tools/archive_run_records.py <run_id>`，逐项核验
+包内清单和 SHA256。原始轨迹、私有数据、模型权重和优化器状态按本地资产清单保全。

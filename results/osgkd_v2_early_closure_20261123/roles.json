@@ -1,0 +1,27 @@
+{
+  "run_id": "osgkd_v2_early_closure_20261123",
+  "client_date": "2026-11-23",
+  "base_commit": "384c1774",
+  "adopted_by_root": "不重跑预测，复用 P1a 两组的既存状态和点值端口，核对观测与模型离散收支。事前固定主细、两个窗口一致的单端分流规则，以此选择下一监督对照。",
+  "role_invocations": [
+    {
+      "role": "Scientist",
+      "tool": "collaboration.spawn_agent",
+      "configured_model": "gpt-6-astra",
+      "server_resolved_model": null,
+      "fork_turns": "none",
+      "returned_receipt": {"task_name": "/root/early_closure_scientist"},
+      "completion": "final_answer_delivered",
+      "adopted_output": "campaigns/osgkd_v2/early_closure_protocol.md"
+    },
+    {
+      "role": "Modeler",
+      "tool": "collaboration.spawn_agent",
+      "configured_model": "gpt-6.1-sol",
+      "server_resolved_model": null,
+      "fork_turns": "none",
+      "returned_receipt": {"task_name": "/root/early_closure_modeler"},
+      "requested_output": "experiments/osgkd_v2_early_closure_20261123/run.py"
+    }
+  ]
+}

@@ -42,6 +42,10 @@
 
 闭合更新的步骤见[工程循环](../docs/engineering_loop.md)和[闭合模板](../templates/run_closure.md)。新材料应从创建时按职责保存；历史冻结记录不批量回填。
 
+每个闭合 Run 的本地记录包在 `artifacts/research_records/`。使用
+`python tools/archive_run_records.py <run_id>` 打包，附加本轮执行回执或逐事件记录时逐项传入 `--local-record <路径>`。
+工具会核验 ZIP 内的文件清单、大小和 SHA256。
+
 ## 当前整理状态与维护
 
 ```powershell

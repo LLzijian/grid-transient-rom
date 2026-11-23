@@ -22,4 +22,6 @@
 
 P1a 两组末点继续留存，下一研究从 8 s 组第 1700 次检查点出发。先定位真实短窗内的净作用和端口误差，再选择一个保持相同初始化信息的早期闭合对照。[v2 Campaign](../campaigns/osgkd_v2/campaign.md)
 
+[早期闭合诊断](../reports/osgkd_v2_early_closure_20261123/result.md)已完成。原 27 条漏检在两个判定窗均覆盖十节点，总电气端通过分流门。下一比较仅增加早期总电气端口监督，保留同一初态信息与 8 s 预测目标。
+
 [本轮报告](../reports/osgkd_fit297_20261113/result.md) · [机器结果](../results/osgkd_fit297_20261113/analysis.json) · [科学综合](../reports/osgkd_fit297_20261113/scientific_synthesis.md) · [Run记录](../harness/runs/osgkd_fit297_20261113.json)

@@ -1,0 +1,130 @@
+{
+  "schema_version": 2,
+  "synthetic": false,
+  "run_id": "osgkd_v2_early_closure_20261123",
+  "parent_run": "osgkd_v2_p1a_20261123",
+  "depends_on": [
+    "osgkd_v2_p2a_20261123"
+  ],
+  "purpose": "probe",
+  "scope": "existing fit297 train early net impulse accounting using P1a fixed endpoints; motion_only_v1 observers",
+  "deployment_contract": "motion_only_v1",
+  "campaign": "campaigns/osgkd_v2/campaign.md",
+  "protocol": "campaigns/osgkd_v2/early_closure_protocol.md",
+  "architecture": "designs/osgkd_v2_architecture.md",
+  "recorded_utc": "2026-11-22T23:57:02.015806+00:00",
+  "source_commit": "384c1774aa2216b35a6dde7ee27d3bc2c212eaaf",
+  "execution": {
+    "status": "COMPLETED",
+    "phase": "closed",
+    "scientific_execution_released": true,
+    "scientific_jobs_started": 1,
+    "native_live": false,
+    "release": {
+      "path": "results/osgkd_v2_early_closure_20261123/release.json",
+      "sha256": "1d02059b158ca673f8cb3ec88d3dca2586f28830aa9d0cab5359a3d153e75db9",
+      "bytes": 3197
+    },
+    "active_claims": [],
+    "verified_utc": "2026-11-23T00:02:20.101322+00:00",
+    "completed_jobs": {
+      "probe01": {
+        "native_start_chunk": "5d4c4b",
+        "native_final_chunk": "15c7f9",
+        "native_session": 7884,
+        "pid": 29412,
+        "exit_code": 0,
+        "started": {
+          "path": "artifacts/osgkd_v2_early_closure_20261123/probe01/started.json",
+          "sha256": "f642bfcab72802db837bb8660c119e916b66a4e6a3d346b3b8c573b462c1cf2a",
+          "bytes": 3927
+        },
+        "completed": {
+          "path": "artifacts/osgkd_v2_early_closure_20261123/probe01/completed.json",
+          "sha256": "a38537c8b1abf004608d36574bab18f51ee6f098d39ebfb929854a1affbfc9b3",
+          "bytes": 230
+        },
+        "summary": {
+          "path": "results/osgkd_v2_early_closure_20261123/probe01/summary.json",
+          "sha256": "f002e7fcd7ac80cbcccc568c5c91a2e9c3dbfee603f3d85d05698f2fbe3dd855",
+          "bytes": 485883
+        },
+        "experimenter": {
+          "configured_model": "gpt-6.1-sol",
+          "server_resolved_model": null,
+          "returned_receipt": {
+            "task_name": "/root/early_closure_experimenter"
+          }
+        }
+      }
+    }
+  },
+  "scientific_work": {
+    "budget_status": "closed",
+    "limits": {
+      "evaluated_events": 297,
+      "evaluated_fixed_models": 2,
+      "port_state_points": 30888,
+      "technical_rechecks": 1,
+      "new_ode_integrations": 0,
+      "training_updates": 0,
+      "new_fom": 0
+    },
+    "old_unused_work_transferred": false,
+    "used": {
+      "port_state_points": 30208,
+      "port_calls": 1188,
+      "parameter_updates": 0,
+      "rhs_evaluations": 0,
+      "integrations": 0,
+      "encoder_calls": 0,
+      "new_fom": 0,
+      "maximum_saved_points_per_event_path": 26
+    },
+    "cost": {
+      "wall_s": 10.576513900014106,
+      "cpu_s": 5.921875
+    }
+  },
+  "evidence": {
+    "references": [
+      "results/osgkd_v2_early_closure_20261123/roles.json",
+      "results/osgkd_v2_p1a_20261123/analysis.json",
+      "designs/osgkd_observation_adoption_20261113.md",
+      "results/osgkd_v2_early_closure_20261123/probe01/summary.json",
+      "reports/osgkd_v2_early_closure_20261123/result.md",
+      "reports/osgkd_v2_early_closure_20261123/review.md"
+    ],
+    "validity": "valid_same_train_and_frozen_saved_predictions",
+    "optimizer_health": "not_applicable_no_training",
+    "optimization_adequacy": "not_applicable",
+    "mechanism_probe": "two_windows_two_precisions_selected_total_electrical_error_supervision",
+    "effect": "signed_impulse_accounting_in_previously_exposed_train_and_matched_event_contrast",
+    "confirmation": "observational_run_not_an_intervention",
+    "independent_review": {
+      "configured_model": "gpt-6.1-sol",
+      "server_resolved_model": null,
+      "returned_receipt": {
+        "task_name": "/root/early_closure_reviewer"
+      },
+      "reference": "reports/osgkd_v2_early_closure_20261123/review.md"
+    }
+  },
+  "records_archive": "artifacts/research_records/osgkd_v2_early_closure_20261123_records.zip",
+  "proposal": {
+    "next_action": "matched_early_total_electrical_supervision_at_fixed_8s_horizon",
+    "selected_port": "total_electrical",
+    "within_scope_basis": {
+      "path": "results/osgkd_v2_early_closure_20261123/probe01/summary.json",
+      "sha256": "f002e7fcd7ac80cbcccc568c5c91a2e9c3dbfee603f3d85d05698f2fbe3dd855",
+      "bytes": 485883
+    },
+    "parent_run": "osgkd_v2_p1a_20261123"
+  },
+  "closed_utc": "2026-11-23T00:02:20.101322+00:00",
+  "root_decisions": {
+    "code_decision": "retain_branch",
+    "model_decision": "retain_evidence",
+    "science_decision": "continue"
+  }
+}
