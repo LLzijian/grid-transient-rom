@@ -13,6 +13,6 @@ OSGKD v1 的封顶基线是原方程第 2260 次，50 维状态和 6,174 参数�
 
 OSGKD 2.0 的默认配方为完整 `train`、每批 1/8 失稳、0.4/0.3/0.3 分段运动损失、批内事件等权均值和余弦退火。主评价用 8 s 自主失稳召回，与稳定 8 s 运动风险、误报数和原始分母一起读取。真实区间检出和触发时间作为诊断。[评价修订](../campaigns/osgkd_v2/evaluation_amendment_20261124.md)
 
-Sprint 2A 比较三种子图初始化器与同种子扁平 GRU。原 C1 方程、宽幅值界和训练条件共用。依据第 2048 次图模型的正实增长模态，四组在 8 s 阶段约束固定参考点的闭环谱。末点结果用于检验种子间一致性及编码器配对差异。[匹配设计](../designs/osgkd_v2_sprint2a_20261125.md) · [前瞻协议](../campaigns/osgkd_v2/sprint2a_spectral_matched_protocol.md)
+Sprint 2A 比较三种子图初始化器与同种子扁平 GRU。原 C1 方程、宽幅值界和训练条件共用。依据 Sprint 1 第 2048 步图模型的正实增长模态，四组在 8 s 阶段约束固定参考点的闭环谱。原始 `val` 上，图 `24121` 的稳定 8 s 风险为 0.4309、误报 0/95、自主召回 9/12。三个图种子的平均稳定风险和召回均未达到晋升门槛，暂留四组证据。同种子扁平对照保留为本轮比较锚点。[匹配设计](../designs/osgkd_v2_sprint2a_20261125.md) · [前瞻协议](../campaigns/osgkd_v2/sprint2a_spectral_matched_protocol.md) · [结案报告](../reports/osgkd_v2_sprint2a_20261125/result.md)
 
 Sprint 2B 的删组和同条件基线检验互易交换、记忆和开闭端口对预测的作用。Layer 1 使用独立已知真值的开放振子网络度量边和调制恢复，两机反例单独检验有界核与无界核的有限时行为。[备战架构](../designs/osgkd_v2_discovery_preparation_20261125.md) · [稀疏与基线协议](../campaigns/osgkd_v2/sprint2b_discovery_baselines_protocol.md) · [合成协议](../campaigns/osgkd_v2/sprint3_layer1_protocol.md)

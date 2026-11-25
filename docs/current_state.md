@@ -1,6 +1,6 @@
 # 当前研究状态
 
-**Sprint 2A 运行中断（2026-11-25）。** 图 `24111`、扁平 `24111` 和图 `24121` 分别记录了 904、906、867 次接受更新，均零拒绝。前两组已进入 8 s 和活动谱铰链阶段，分别记录 8/8、10/10 次总梯度裁剪。最近权重、Adam 和随机状态检查点为 896、896、832。图 `24131` 的队列无启动回执，原生退出原因未知。四个固定末点全部封存后方可按原协议评价 `val`。[运行中断](../reports/osgkd_v2_sprint2a_20261125/interruption.md) · [真实资格](../results/osgkd_v2_sprint2a_20261125/qualify01/summary.json) · [运行登记](../harness/runs/osgkd_v2_sprint2a_20261125.json)
+**Sprint 2A 结案（2026-11-26）。** 四组各接受 2048 次更新，零拒绝。原中断的三段训练记录逐项重放一致。四个固定末点均通过原始 `val` 双步长核验。图组三种子稳定 8 s 风险为 0.8979 ± 0.4051，8 s 自主召回均值为 8.67/12，误报为 1/95、0/95、1/95。图主干未达到晋升条件。同种子扁平 `24111` 的风险为 0.2200、误报 0/95、自主召回 10/12（原始分母 10/22）。四个末点作为证据保留。Sprint 2B 和 Layer 1 暂停，等待确认启动顺序。[Table 1](../reports/osgkd_v2_sprint2a_20261125/result.md) · [独立复核](../reports/osgkd_v2_sprint2a_20261125/review.md) · [运行登记](../harness/runs/osgkd_v2_sprint2a_20261125.json)
 
 **Sprint 2B 和 Layer 1 备战（2026-11-25）。** 三种子剪枝和删组重拟合、等变图 Neural ODE 与封闭被动 Kuramoto、三个规模的合成真值及两机逃逸复现均通过合成资格和独立实现复核。正式科学工作按前瞻方案登记。[资格报告](../reports/osgkd_v2_discovery_preparation_20261125/result.md) · [Sprint 2B](../campaigns/osgkd_v2/sprint2b_discovery_baselines_protocol.md) · [Layer 1](../campaigns/osgkd_v2/sprint3_layer1_protocol.md)
 
