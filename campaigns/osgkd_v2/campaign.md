@@ -55,6 +55,8 @@ Sprint 1 在完整 `train` 上从头联合训练节点共享图 GRU 和原 C1 �
 
 Sprint 2A 固定三个从头训练的图主干种子和一个同种子扁平对照。所有组共用局部谱铰链和相同的批次、课程及动力学起点。四个第 2048 次端点统一使用原始 `val` 回答图编码器的配对贡献，并给出图组的三种子均值与样本标准差。[前瞻协议](sprint2a_spectral_matched_protocol.md)
 
+后续结构发现以三种子的嵌套剪枝和模块删组重拟合检验机制，补充共用初始化器、训练配方和评价口径的 Neural ODE 与封闭被动参照。三个规模的合成真值用于结构恢复与泛化试验。[Sprint 2B](sprint2b_discovery_baselines_protocol.md) · [Layer 1](sprint3_layer1_protocol.md)
+
 ## 三层证据
 
 | 要支持的主张 | 系统、比较对象与评价口径 |
