@@ -12,3 +12,5 @@
 OSGKD v1 的封顶基线是原方程第 2260 次，50 维状态和 6,174 参数的扁平 GRU。高阶势与 60 维零和快记忆作为扁平框架下的探针封存。Sprint 1 保留原开放动力学的三部分结构，以 1,928 参数的节点共享图初始化器从头联合训练。图初始化器通过对称性和同权跨规模门禁，两点 `val` 自主召回为 9/12，稳定风险超过预登记门。代码和两端点作为研究证据归档。[图初始化器设计](../designs/osgkd_v2_p2a_equivariant_graph_20261124.md) · [图初始化器结果](../reports/osgkd_v2_p2a_equivariant_graph_20261124/result.md) · [封顶结果](../reports/osgkd_v2_sprint0_20261124/result.md) · [运行状态](current_state.md)
 
 OSGKD 2.0 的默认配方为完整 `train`、每批 1/8 失稳、0.4/0.3/0.3 分段运动损失、批内事件等权均值和余弦退火。主评价用 8 s 自主失稳召回，与稳定 8 s 运动风险、误报数和原始分母一起读取。真实区间检出和触发时间作为诊断。[评价修订](../campaigns/osgkd_v2/evaluation_amendment_20261124.md)
+
+Sprint 2A 比较三种子图初始化器与同种子扁平 GRU。原 C1 方程、宽幅值界和训练条件共用。依据第 2048 次图模型的正实增长模态，四组在 8 s 阶段约束固定参考点的闭环谱。末点结果用于检验种子间一致性及编码器配对差异。[匹配设计](../designs/osgkd_v2_sprint2a_20261125.md) · [前瞻协议](../campaigns/osgkd_v2/sprint2a_spectral_matched_protocol.md)
