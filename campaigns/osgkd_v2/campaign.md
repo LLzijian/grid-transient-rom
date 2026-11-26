@@ -55,7 +55,9 @@ Sprint 1 在完整 `train` 上从头联合训练节点共享图 GRU 和原 C1 �
 
 Sprint 2A 固定三个从头训练的图主干种子和一个同种子扁平对照。所有组共用局部谱铰链和相同的批次、课程及动力学起点。四个第 2048 步末点均通过原始 `val` 双步长数值核验，图组三种子的平均稳定 8 s 风险和自主召回未过晋升门槛。结案保留单种子配对和三个图种子的完整结果。[前瞻协议](sprint2a_spectral_matched_protocol.md) · [结案报告](../../reports/osgkd_v2_sprint2a_20261125/result.md) · [独立复核](../../reports/osgkd_v2_sprint2a_20261125/review.md)
 
-Sprint 2B-1 完成同种子 `24111` 的两组机制基线。原始 `val` 上 Neural ODE 稳定 8 s 风险 0.1584、8 s 自主召回 0/12，封闭被动为 2.3462、5/12，同种子开放扁平 OSGKD 为 0.2200、10/12。三者误报均为 0/95，四组原分母及计时见 Table 2。Layer 1 的三种规模短窗资源已测量。后续三种子删组重拟合与 Layer 1 正式训练暂停。[Table 2](../../reports/osgkd_v2_sprint2b_baselines_20261126/result.md) · [Sprint 2B](sprint2b_discovery_baselines_protocol.md) · [Layer 1](sprint3_layer1_protocol.md)
+Sprint 2B-1 完成同种子 `24111` 的两组机制基线。原始 `val` 上 Neural ODE 稳定 8 s 风险 0.1584、8 s 自主召回 0/12，封闭被动为 2.3462、5/12，同种子开放扁平 OSGKD 为 0.2200、10/12。三者误报均为 0/95，四组原分母及计时见 Table 2。Layer 1 的三种规模短窗资源已测量。[Table 2](../../reports/osgkd_v2_sprint2b_baselines_20261126/result.md) · [Sprint 2B](sprint2b_discovery_baselines_protocol.md) · [Layer 1](sprint3_layer1_protocol.md)
+
+WP0 用固定图父点确认了 Top-30/20 的功能一致性。单事件尺度干预未达到图主干修正门，WP1B 保持暂存。WP1A 继续用原父点和同预算完整重拟合作双参照。[WP0 协议](wp0_mechanism_rank_protocol.md) · [实测报告](../../reports/osgkd_v2_wp0_20261127/result.md)
 
 ## 三层证据
 

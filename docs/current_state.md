@@ -1,5 +1,7 @@
 # 当前研究状态
 
+**WP0 零更新诊断（2026-11-27）。** 三对边贡献秩相关为 0.904、0.818、0.912，均通过节点置换与 Holm 校正。Top-30、Top-20 满足一致性门，Top-12 一对 F1 为 0.667。对 `pilot_0232` 的边速差尺度干预使两个误报种子的 1 s 误差升高 35.6%、61.4%，WP1B 未触发。WP1A 用 Top-30/20 和四项模块对照，先核验固定同种子配对。九个变体的叶参数优化器回归已通过。[WP0 报告](../reports/osgkd_v2_wp0_20261127/result.md) · [独立复核](../reports/osgkd_v2_wp0_20261127/review.md)
+
 **Sprint 2B-1 结案（2026-11-26）。** 两组各接受 2048 次更新、零拒绝，固定末点均通过原始 `val` 双步长核验。Neural ODE 稳定 8 s 风险 0.1584、自主召回 0/12，封闭被动 Kuramoto 为 2.3462、5/12，两组误报均 0/95。同种子开放扁平 OSGKD 为 0.2200、10/12、0/95。两个 Sprint 2A 图种子的唯一误报均为 `pilot_0232`。Layer 1 的 N=32、496 条候选边、批大小 8 短窗前后向峰值为 787.6 MiB。备战包 A 和 Layer 1 正式训练暂停。[Table 2](../reports/osgkd_v2_sprint2b_baselines_20261126/result.md) · [独立复核](../reports/osgkd_v2_sprint2b_baselines_20261126/review.md) · [运行登记](../harness/runs/osgkd_v2_sprint2b_baselines_20261126.json)
 
 **Sprint 2A 结案（2026-11-26）。** 四组各接受 2048 次更新，零拒绝。原中断的三段训练记录逐项重放一致。四个固定末点均通过原始 `val` 双步长核验。图组三种子稳定 8 s 风险为 0.8979 ± 0.4051，8 s 自主召回均值为 8.67/12，误报为 1/95、0/95、1/95。图主干未达到晋升条件。同种子扁平 `24111` 的风险为 0.2200、误报 0/95、自主召回 10/12（原始分母 10/22）。四个末点作为证据保留。Sprint 2B 和 Layer 1 暂停，等待确认启动顺序。[Table 1](../reports/osgkd_v2_sprint2a_20261125/result.md) · [独立复核](../reports/osgkd_v2_sprint2a_20261125/review.md) · [运行登记](../harness/runs/osgkd_v2_sprint2a_20261125.json)
