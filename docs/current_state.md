@@ -1,8 +1,10 @@
 # 当前研究状态
 
+**WP1A 配对重拟合结案。** 三种子 24 组各接受 128 次，零拒绝。原始 `val` 固定末点均通过 107/107 条双步长资格，三个 `full` 原父点护栏均通过。Top-30 的三种子平均稳定 8 s 风险为 0.4380，自主召回各 6/12，完整重拟合为 0.8348、9/12、9/12、8/12。去互易耦合组三次自主召回均为 0/12。去环境记忆将三种子失稳真实区间风险均值从 0.3156 升至 0.9184。剪枝与删组证据全部封存。准备用固定矩阵检验 Layer 1 已知真值恢复与跨规模适配。[Table 3](../reports/osgkd_v2_wp1a_refits_20261127/result.md) · [独立复核](../reports/osgkd_v2_wp1a_refits_20261127/review.md)
+
 **Layer 1 可辨识对照。** 同步平衡与纯幅值初态对 56 个边参数的灵敏度均为零。已知总转矩的同频补偿构造中，12 条边与 11 条边产生相同观测。角激励和波形重合度相图定量区分满秩、近简并与精确等价。开放功率账、线性增长证明和有限时间逃逸复现已归档。Layer 1 正式拟合仍按资源预算排程。[可辨识证据](../reports/osgkd_v2_wp2_layer1_20261127/identifiability.md) · [方法与理论](../paper/osgkd_v2_methods_and_theory.md)
 
-**Layer 1 长窗资源预算。** 18 格合成前后向测量通过，三个规模的 4 s 物理批量均可取 4。最大规模 $N=32$、496 条候选边的 4 s 前后向中位耗时为 3.588 s，峰值工作集为 1.645 GiB。参数更新、新 FOM 与 IEEE39 `test` 事件轨迹访问均为 0。WP1A 进入 24 组串行重拟合，Layer 1 参数拟合等待 WP1A 结案。[预算表](../reports/osgkd_v2_wp2_layer1_20261127/resource_budget.md) · [Layer 1 执行协议](../campaigns/osgkd_v2/wp2_layer1_execution_protocol.md)
+**Layer 1 长窗资源预算。** 18 格合成前后向测量通过，三个规模的 4 s 物理批量均可取 4。最大规模 $N=32$、496 条候选边的 4 s 前后向中位耗时为 3.588 s，峰值工作集为 1.645 GiB。该探针参数更新、新 FOM 与 IEEE39 `test` 事件轨迹访问均为 0。[预算表](../reports/osgkd_v2_wp2_layer1_20261127/resource_budget.md) · [Layer 1 执行协议](../campaigns/osgkd_v2/wp2_layer1_execution_protocol.md)
 
 **WP0 零更新诊断（2026-11-27）。** 三对边贡献秩相关为 0.904、0.818、0.912，均通过节点置换与 Holm 校正。Top-30、Top-20 满足一致性门，Top-12 一对 F1 为 0.667。对 `pilot_0232` 的边速差尺度干预使两个误报种子的 1 s 误差升高 35.6%、61.4%，WP1B 未触发。WP1A 用 Top-30/20 和四项模块对照，先核验固定同种子配对。九个变体的叶参数优化器回归已通过。[WP0 报告](../reports/osgkd_v2_wp0_20261127/result.md) · [独立复核](../reports/osgkd_v2_wp0_20261127/review.md)
 
