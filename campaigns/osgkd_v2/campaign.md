@@ -53,9 +53,9 @@ Sprint 1 在完整 `train` 上从头联合训练节点共享图 GRU 和原 C1 �
 
 图模型末点探针在第 1792、2048 次各测得一个正实增长模态，最大实部分别 +0.3668、+0.3628 s⁻¹。第 2048 次按前瞻规则触发谱铰链训练配方。唯一稳定误报的恢复偏差在 2–4 s 已明显扩大，5.51 s 满足完整失步条件。完整 `train` 的功能贡献排名保留为后续删组重拟合参照。[探针结果](../../reports/osgkd_v2_p2a_post_audit_20261124/result.md)
 
-Sprint 2A 固定三个从头训练的图主干种子和一个同种子扁平对照。所有组共用局部谱铰链和相同的批次、课程及动力学起点。四个第 2048 步末点均通过原始 `val` 双步长数值核验，图组三种子的平均稳定 8 s 风险和自主召回未过晋升门槛。结案保留单种子配对和三个图种子的完整结果。Sprint 2B 与 Layer 1 的启动顺序等待确认。[前瞻协议](sprint2a_spectral_matched_protocol.md) · [结案报告](../../reports/osgkd_v2_sprint2a_20261125/result.md) · [独立复核](../../reports/osgkd_v2_sprint2a_20261125/review.md)
+Sprint 2A 固定三个从头训练的图主干种子和一个同种子扁平对照。所有组共用局部谱铰链和相同的批次、课程及动力学起点。四个第 2048 步末点均通过原始 `val` 双步长数值核验，图组三种子的平均稳定 8 s 风险和自主召回未过晋升门槛。结案保留单种子配对和三个图种子的完整结果。[前瞻协议](sprint2a_spectral_matched_protocol.md) · [结案报告](../../reports/osgkd_v2_sprint2a_20261125/result.md) · [独立复核](../../reports/osgkd_v2_sprint2a_20261125/review.md)
 
-后续结构发现以三种子的嵌套剪枝和模块删组重拟合检验机制，补充共用初始化器、训练配方和评价口径的 Neural ODE 与封闭被动参照。三个规模的合成真值用于结构恢复与泛化试验。[Sprint 2B](sprint2b_discovery_baselines_protocol.md) · [Layer 1](sprint3_layer1_protocol.md)
+Sprint 2B-1 完成同种子 `24111` 的两组机制基线。原始 `val` 上 Neural ODE 稳定 8 s 风险 0.1584、8 s 自主召回 0/12，封闭被动为 2.3462、5/12，同种子开放扁平 OSGKD 为 0.2200、10/12。三者误报均为 0/95，四组原分母及计时见 Table 2。Layer 1 的三种规模短窗资源已测量。后续三种子删组重拟合与 Layer 1 正式训练暂停。[Table 2](../../reports/osgkd_v2_sprint2b_baselines_20261126/result.md) · [Sprint 2B](sprint2b_discovery_baselines_protocol.md) · [Layer 1](sprint3_layer1_protocol.md)
 
 ## 三层证据
 
