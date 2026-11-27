@@ -19,7 +19,7 @@ v1 在同一 train fit297 上各做 1,500 次更新，一个配对种子。以�
 
 ## 实施顺序与判断
 
-WP0–WP3.1 已完成独立复核，WP3.2 的附加研究本轮暂缓。冻结的 IEEE39 确认纳入两个来源共 86 条及 23 个唯一末点。已有证据分别支持固定预算下的预测比较、物理模块取舍、映射限定的跨规模检验与已知重力下的跨系统重拟合。端点评分只在用户明确批准后开启，test 事件轨迹访问为 0。[冻结申请](../../reports/osgkd_v2_frozen_confirmation_20261127/result.md) · [主张台账](../../reports/osgkd_v2_frozen_confirmation_20261127/claim_ledger.md)
+WP3.2 完成扁平 24121 和 24131 两个 Sprint 2A 同预算端点，固定 Table 1 现有三个同种子配对。v2 同时纳入三个种子的 no_beta 和 frozen_p，与前序证据组成 31 个唯一端点和 52 对比较。局部吸引域与模态专项暂缓。两份原留出共 86 条，test 轨迹装载与评分均为 0，等待用户明确授权 v2。[对称增补表](../../reports/osgkd_v2_wp3_2_flat_seeds_20261128/result.md) · [v2 冻结申请](../../reports/osgkd_v2_frozen_confirmation_v2_20261128/result.md) · [原 v1 档案](../../reports/osgkd_v2_frozen_confirmation_20261127/result.md)
 
 Layer 2 三套开放机械摆阵的固定评分已通过独立复核。使用同一开放模板从头拟合，在三个系统上均取得低于同信息图 Neural ODE 与两种封闭摆阵的 4 s 风险。冻结 Layer 1 编码器的少量适配门未通过。已知重力确定绝对参考，节点置换等变性与功率恒等式仍在相应假设下成立。[摆阵结案](../../reports/osgkd_v2_wp3_pendulum_20261127/result.md) · [执行协议](wp3_pendulum_protocol.md)
 
