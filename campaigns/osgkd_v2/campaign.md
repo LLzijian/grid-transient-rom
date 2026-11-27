@@ -19,6 +19,8 @@ v1 在同一 train fit297 上各做 1,500 次更新，一个配对种子。以�
 
 ## 实施顺序与判断
 
+Layer 1 的 72 个固定端点全部通过双步长核验。九格弱式稀疏回归精确恢复静态边。开放 OSGKD 在该预算下较图 Neural ODE 和封闭被动对照有预测收益，当前剪枝流程未提高结构恢复。冻结编码器适配的映射目标静态边 F1 高，跨规模预测仍有源种子差异。接续使用三个独立机械摆阵检验已知重力下的同模板拟合与有限数据适配。[Layer 1 报告](../../reports/osgkd_v2_wp2_layer1_20261127/result.md) · [独立复核](../../reports/osgkd_v2_wp2_layer1_20261127/review.md)
+
 WP1A 全部 24 个固定末点通过原始 `val` 数值资格。Top-30 在三个种子将自主召回降至 6/12，去内部互易耦合后三次均为 0/12。三份完整保留组均通过护栏。静态项、内部耦合、环境记忆及机械动态的独立对照和适配成本列入 Table 3。结构恢复与迁移继续由 Layer 1 的已知真值和固定比较取证。[Table 3](../../reports/osgkd_v2_wp1a_refits_20261127/result.md) · [配对协议](wp1a_matched_refit_protocol.md)
 
 Layer 1 的 $N=8,16,32$ 长窗资源测量已完成，三个规模均采用物理批量 4 的 4 s 拟合。开放 0.01 噪声格是预登记的跨规模映射来源，两个目标规模各自比较三种参数适配范围。原始 IEEE39 `test` 关闭。[资源报告](../../reports/osgkd_v2_wp2_layer1_20261127/resource_budget.md) · [执行协议](wp2_layer1_execution_protocol.md)

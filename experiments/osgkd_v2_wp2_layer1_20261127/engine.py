@@ -59,14 +59,17 @@ def residuals(model, path, events):
     return predicted - events.targets[:, :, 1:path.shape[1]]
 
 
-def objective(model, path, events, weights):
-    if weights is None:
-        return residuals(model, path, events).square().mean()
+def motion_objective(model, path, events, weights):
     steps = path.shape[1] - 1
     theta, omega = path[:, 1:, :2 * model.n].split(model.n, -1)
     sq = (torch.stack((theta, omega), dim=1) - events.targets[:, :2, 1:steps + 1]).square()
     active = [(a, min(steps, b), weight) for a, b, weight in weights if a < steps]
     return sum(weight * sq[:, :, a:b].mean() for a, b, weight in active) / sum(w for _, _, w in active)
+
+
+def objective(model, path, events, weights):
+    return (residuals(model, path, events).square().mean() if weights is None else
+            motion_objective(model, path, events, weights))
 
 
 def loss(model, events, steps, dt, weights=None):
@@ -84,13 +87,21 @@ def plan(n, batch_size, attempts, seed):
 def fit_step(model, optimizer, events, steps, dt, microbatch, masks, weights=None):
     optimizer.zero_grad(set_to_none=True)
     total = 0.
+    components = events.targets.new_zeros(len(METRICS)) if weights is None else None
     for start in range(0, len(events), microbatch):
         batch = events.select(slice(start, start + microbatch))
-        value = loss(model, batch, steps, dt, weights)
+        path = trajectory(model, batch, steps, dt)
+        weight = len(batch) / len(events)
+        if weights is None:
+            sq = residuals(model, path, batch).square()
+            value = sq.mean()
+            components += weight * sq.detach().mean(dim=(0, 2, 3))
+        else:
+            value = motion_objective(model, path, batch, weights)
         if not bool(value.detach().isfinite()):
             raise FloatingPointError('nonfinite trajectory objective')
-        total += float(value.detach()) * len(batch) / len(events)
-        (value * (len(batch) / len(events))).backward()
+        total += float(value.detach()) * weight
+        (value * weight).backward()
     mask_gradients(model, masks)
     norm = float(torch.nn.utils.clip_grad_norm_(model.parameters(), 5.))
     if not math.isfinite(norm):
@@ -100,7 +111,7 @@ def fit_step(model, optimizer, events, steps, dt, microbatch, masks, weights=Non
     adam = (value for state in optimizer.state.values() for value in state.values() if isinstance(value, torch.Tensor))
     if not (all(p.isfinite().all() for p in model.parameters()) and all(v.isfinite().all() for v in adam)):
         raise FloatingPointError('nonfinite projected parameter or Adam state')
-    return total, norm
+    return total, norm, dict(zip(METRICS, components.tolist(), strict=True)) if components is not None else None
 
 
 def optimizer(model):
@@ -169,12 +180,13 @@ def function_rms(model, events, steps, batch_size):
 
 
 @torch.inference_mode()
-def score_events(model, events, windows, batch_size, dt=.005, fine=.0025):
+def score_events(model, events, windows, batch_size, dt=.005, fine=.0025, event_ids=None):
     """Both meshes from the same causal input; timers include initialization and RK4 only."""
     weight = model.mass.diag() / model.mass.diag().sum()
-    errors, common, mesh = {step: [] for step in windows}, {step: [] for step in windows}, []
-    timing = 0.
-    coverage = 0
+    event_ids = list(range(len(events))) if event_ids is None else event_ids
+    if len(event_ids) != len(events) or len(set(event_ids)) != len(event_ids):
+        raise ValueError('one unique ID per held-out event required')
+    rows, timing = [], 0.
     for start in range(0, len(events), batch_size):
         batch = events.select(slice(start, start + batch_size))
         begin = perf_counter()
@@ -183,28 +195,43 @@ def score_events(model, events, windows, batch_size, dt=.005, fine=.0025):
         reference = trajectory(model, batch, max(windows), fine)
         res = residuals(model, coarse, batch)
         finer = residuals(model, reference, batch)
-        ok = res.isfinite().all(dim=(1, 2, 3)) & finer.isfinite().all(dim=(1, 2, 3))
-        rmse = res[:, :2].square().mean(dim=(1, 2, 3)).sqrt()
-        error_gap = (rmse - finer[:, :2].square().mean(dim=(1, 2, 3)).sqrt()).abs()
+        sq, sq_fine = res.square(), finer.square()
+        ok = (sq.isfinite().all(dim=(1, 2, 3)) & sq_fine.isfinite().all(dim=(1, 2, 3)) &
+              coarse.isfinite().all(dim=(1, 2)) & reference.isfinite().all(dim=(1, 2)))
+        rmse = sq[:, :2].mean(dim=(1, 2, 3)).sqrt()
+        error_gap = (rmse - sq_fine[:, :2].mean(dim=(1, 2, 3)).sqrt()).abs()
         path_gap = (coarse[..., :2*model.n] - reference[..., :2*model.n]).square().mean(dim=(1, 2)).sqrt()
-        accepted = ok & (path_gap <= 1e-3) & (error_gap <= torch.maximum(rmse * .01, rmse.new_tensor(1e-4)))
-        coverage += int(accepted.sum())
-        mesh.extend(float(v) if bool(v.isfinite()) else None for v in path_gap)
-        for step in windows:
-            sq = res[accepted, :, :step].square().mean(dim=(2, 3))
-            errors[step].append(sq)
-            common[step].append((res[accepted, 1, :step] @ weight).square().mean(dim=1))
+        ok &= rmse.isfinite() & path_gap.isfinite() & error_gap.isfinite()
+        error_limit = torch.maximum(rmse * .01, rmse.new_tensor(1e-4))
+        accepted = ok & (path_gap <= 1e-3) & (error_gap <= error_limit)
+        for i in range(len(batch)):
+            finite = bool(ok[i])
+            measures = {}
+            if finite:
+                for step in windows:
+                    mse = sq[i, :, :step].mean(dim=(1, 2)).tolist()
+                    measures[str(step)] = dict(mse=dict(zip(METRICS, mse, strict=True)),
+                                               common_speed_mse=float((res[i, 1, :step] @ weight).square().mean()))
+            rows.append(dict(id=event_ids[start+i], finite=finite, qualified=bool(accepted[i]), scopes=measures,
+                             mesh_motion_rms=float(path_gap[i]) if finite else None,
+                             mesh_rmse_gap=float(error_gap[i]) if finite else None,
+                             mesh_rmse_limit=float(error_limit[i]) if finite else None))
+    passed = [row for row in rows if row['qualified']]
+    coverage = len(passed)
     output = {}
     for step in windows:
-        sq = torch.cat(errors[step])
         if not coverage:
             output[str(step)] = None
             continue
+        measures = [row['scopes'][str(step)] for row in passed]
+        sq = torch.tensor([[item['mse'][name] for name in METRICS] for item in measures], dtype=torch.float64)
         risk = sq[:, :2].mean(dim=1)
         output[str(step)] = {'rmse': dict(zip(METRICS, sq.mean(dim=0).sqrt().tolist(), strict=True)),
                              'risk_mean': float(risk.mean()),
                              'risk_mean_tail': float(.8 * risk.mean() + .2 * risk.topk(math.ceil(.1 * coverage)).values.mean()),
-                             'common_speed_rmse': float(torch.cat(common[step]).mean().sqrt())}
-    return dict(coverage=coverage, raw_count=len(events), windows=output, whole_window_qualified=coverage == len(events),
-                max_mesh_motion_rms=max((v for v in mesh if v is not None), default=None),
-                inference_wall_s=timing, inference_per_event_s=timing/len(events), main_dt=dt, fine_dt=fine)
+                             'common_speed_rmse': math.sqrt(sum(m['common_speed_mse'] for m in measures) / coverage)}
+    qualified = coverage == len(events)
+    return dict(coverage=coverage, raw_count=len(events), whole_window_qualified=qualified,
+                windows=output if qualified else dict.fromkeys(output), covered_only_windows=output,
+                max_mesh_motion_rms=max((r['mesh_motion_rms'] for r in rows if r['finite']), default=None),
+                inference_wall_s=timing, inference_per_event_s=timing/len(events), main_dt=dt, fine_dt=fine, rows=rows)
