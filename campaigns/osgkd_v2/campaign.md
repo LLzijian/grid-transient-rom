@@ -19,6 +19,8 @@ v1 在同一 train fit297 上各做 1,500 次更新，一个配对种子。以�
 
 ## 实施顺序与判断
 
+WP0–WP3.1 已完成独立复核，WP3.2 的附加研究本轮暂缓。冻结的 IEEE39 确认纳入两个来源共 86 条及 23 个唯一末点。已有证据分别支持固定预算下的预测比较、物理模块取舍、映射限定的跨规模检验与已知重力下的跨系统重拟合。端点评分只在用户明确批准后开启，test 事件轨迹访问为 0。[冻结申请](../../reports/osgkd_v2_frozen_confirmation_20261127/result.md) · [主张台账](../../reports/osgkd_v2_frozen_confirmation_20261127/claim_ledger.md)
+
 Layer 2 三套开放机械摆阵的固定评分已通过独立复核。使用同一开放模板从头拟合，在三个系统上均取得低于同信息图 Neural ODE 与两种封闭摆阵的 4 s 风险。冻结 Layer 1 编码器的少量适配门未通过。已知重力确定绝对参考，节点置换等变性与功率恒等式仍在相应假设下成立。[摆阵结案](../../reports/osgkd_v2_wp3_pendulum_20261127/result.md) · [执行协议](wp3_pendulum_protocol.md)
 
 Layer 1 的 72 个固定端点全部通过双步长核验。九格弱式稀疏回归精确恢复静态边。开放 OSGKD 在该预算下较图 Neural ODE 和封闭被动对照有预测收益，当前剪枝流程未提高结构恢复。冻结编码器适配的映射目标静态边 F1 高，跨规模预测仍有源种子差异。接续使用三个独立机械摆阵检验已知重力下的同模板拟合与有限数据适配。[Layer 1 报告](../../reports/osgkd_v2_wp2_layer1_20261127/result.md) · [独立复核](../../reports/osgkd_v2_wp2_layer1_20261127/review.md)
