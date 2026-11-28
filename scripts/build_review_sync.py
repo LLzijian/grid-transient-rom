@@ -227,12 +227,19 @@ def ledger_table(files, recent):
     for run in runs:
         analysis = f"results/{run}/analysis.json"
         registration = f"harness/runs/{run}.json"
-        report = next((path for path in (
-            f"reports/{run}/result.md", f"reports/{run}/conclusion.md",
+        run_record = read_json(files, registration)
+        conclusion = f"reports/{run}/conclusion.md"
+        final_report = (
+            field(run_record, "execution", "status") == "COMPLETED"
+            and field(run_record, "evidence", "report", "path") == conclusion
+            and conclusion in files
+        )
+        report = conclusion if final_report else next((path for path in (
+            f"reports/{run}/result.md", conclusion,
             archived.get(f"{run}_conclusion.md"), f"reports/{run}/final_assessment.md",
             f"reports/{run}/scientific_assessment.md", archived.get(f"{run}_scientific_assessment.md"),
         ) if path in files), None)
-        summary = analysis_summary(read_json(files, analysis))
+        summary = "" if final_report else analysis_summary(read_json(files, analysis))
         if not summary and report:
             summary = report_lead(files[report], run)
         sources = [(label, path) for label, path in (

@@ -16,6 +16,26 @@ def test_report_lead_preserves_explicit_and_legacy_conclusions():
     assert report_lead(legacy.encode(), "run01") == "2026-11-23。冻结父点完成验证。"
 
 
+def test_ledger_uses_registered_conclusion_without_replacing_application():
+    from scripts.build_review_sync import ledger_table
+
+    application = "reports/run01/result.md"
+    conclusion = "reports/run01/conclusion.md"
+    registration = "harness/runs/run01.json"
+    files = {
+        application: "# 冻结申请\n\n**等待授权。**\n".encode(),
+        conclusion: "# 结案\n\n**固定评分完成。**\n".encode(),
+    }
+    record = {"execution": {"status": "BLOCKED"}, "evidence": {"report": {"path": conclusion}}}
+    files[registration] = json.dumps(record).encode()
+    assert "等待授权" in ledger_table(files, list(files))
+    record["execution"]["status"] = "COMPLETED"
+    files[registration] = json.dumps(record).encode()
+    ledger = ledger_table(files, list(files))
+    assert "固定评分完成" in ledger and f"[报告]({conclusion})" in ledger
+    assert "等待授权" not in ledger
+
+
 def test_review_bundle_is_a_snapshot_of_one_push(tmp_path):
     def git(*args, data=None):
         return subprocess.run(

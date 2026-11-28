@@ -19,7 +19,7 @@ v1 在同一 train fit297 上各做 1,500 次更新，一个配对种子。以�
 
 ## 实施顺序与判断
 
-WP3.2 完成扁平 24121 和 24131 两个 Sprint 2A 同预算端点，固定 Table 1 现有三个同种子配对。v2 同时纳入三个种子的 no_beta 和 frozen_p，与前序证据组成 31 个唯一端点和 52 对比较。局部吸引域与模态专项暂缓。两份原留出共 86 条，test 轨迹装载与评分均为 0，等待用户明确授权 v2。[对称增补表](../../reports/osgkd_v2_wp3_2_flat_seeds_20261128/result.md) · [v2 冻结申请](../../reports/osgkd_v2_frozen_confirmation_v2_20261128/result.md) · [原 v1 档案](../../reports/osgkd_v2_frozen_confirmation_20261127/result.md)
+WP3.2 完成扁平 24121 和 24131 两个同预算端点，补齐三个同种子编码器配对。经用户授权，IEEE39 一次性 v2 评分在 86 条既有留出上完成 31 个固定端点（含 no_beta、frozen_p）和 52 项既定比较。三个图种子的稳定 8 s 风险与失稳真实区间风险均低于同种子扁平端点，扁平端点自主触发更多。全部 31 个端点的真实区间检出为零。留出已消耗。局部吸引域、模态专项及后续科学任务暂缓。保留固定比较证据，default none。[一次性评分结案](../../reports/osgkd_v2_frozen_confirmation_v2_20261128/conclusion.md) · [独立复核](../../reports/osgkd_v2_frozen_confirmation_v2_20261128/score_review.md) · [对称 val 增补表](../../reports/osgkd_v2_wp3_2_flat_seeds_20261128/result.md) · [原 v1 档案](../../reports/osgkd_v2_frozen_confirmation_20261127/result.md)
 
 Layer 2 三套开放机械摆阵的固定评分已通过独立复核。使用同一开放模板从头拟合，在三个系统上均取得低于同信息图 Neural ODE 与两种封闭摆阵的 4 s 风险。冻结 Layer 1 编码器的少量适配门未通过。已知重力确定绝对参考，节点置换等变性与功率恒等式仍在相应假设下成立。[摆阵结案](../../reports/osgkd_v2_wp3_pendulum_20261127/result.md) · [执行协议](wp3_pendulum_protocol.md)
 

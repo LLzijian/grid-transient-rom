@@ -1,6 +1,6 @@
 # 当前研究状态
 
-**IEEE39 一次性独立确认 v2 已冻结，待授权。** 两个补充扁平末点各接受 2,048 次更新，六组均为 107/107 数值合格。三种子稳定 8 s 风险为图 0.8979 ± 0.4051、扁平 0.5227 ± 0.2667，图的三对失稳真实区间风险均更低。v2 冻结 31 端点、52 对比较，沿用原 86 条留出。原 v1 封存为历史。test 轨迹装载与评分为 0，新 FOM 为 0，default none。仅等待用户明确授权 v2 一次评分。[对称 Table 1](../reports/osgkd_v2_wp3_2_flat_seeds_20261128/result.md) · [v2 冻结申请](../reports/osgkd_v2_frozen_confirmation_v2_20261128/result.md) · [独立审查](../reports/osgkd_v2_frozen_confirmation_v2_20261128/review.md)
+**IEEE39 一次性独立确认 v2 已封卷。** 授权的 86 条留出各装载一次，31 个固定端点与 52 项既定比较完成。31 个端点的 2,356 个可初始化端点–事件组合全部通过双步长资格。预登记开放图模型与图 Neural ODE 的稳定 8 s 风险分别为 0.2978 和 0.0767，稳定误报为 1/67 和 0/67，自主失稳检出为 3/9（3/19）和 0/9（0/19）。全部 31 个端点真实区间检出为零。留出已消耗，新 FOM 为 0，default none。后续科学任务暂停。[结案](../reports/osgkd_v2_frozen_confirmation_v2_20261128/conclusion.md) · [独立复核](../reports/osgkd_v2_frozen_confirmation_v2_20261128/score_review.md) · [对称 val Table 1](../reports/osgkd_v2_wp3_2_flat_seeds_20261128/result.md)
 
 **WP3.1 开放机械摆阵结案。** 三个 8 节点系统的 24 个作业共接受 4,608 次更新。固定末点在两档历史噪声下合计 768/768 个端点—噪声—事件通过双步长资格。无噪 4 s 风险的跨系统均值为开放 OSGKD 全量 0.003384、图 Neural ODE 全量 0.034943、封闭被动 0.007193、封闭保守 0.030852。冻结 Layer 1 编码器的适配门为 0/3。已接续完成 WP3.2 扁平补种子。IEEE39 事件轨迹零访问，新 FOM 为 0。[摆阵结案](../reports/osgkd_v2_wp3_pendulum_20261127/result.md) · [独立复核](../reports/osgkd_v2_wp3_pendulum_20261127/review.md)
 
