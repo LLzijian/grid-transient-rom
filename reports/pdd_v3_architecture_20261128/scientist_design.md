@@ -1,382 +1,457 @@
-<!-- Host Receipt: results/pdd_v3_architecture_20261128/scientist_receipt.json -->
-> **宿主调用真实回执（重要治理标注）**：
-> 1. 本轮已实际尝试调用本机 `codex-cli 0.144.4` 执行 `gpt-6-astra`（`codex exec -m gpt-6-astra -s read-only --ephemeral --json`，线程 `01a221ac-432a-7780-9ac5-c6e8f770096d`），服务端返回 HTTP 400：`The 'gpt-6-astra' model requires a newer version of Codex. Please upgrade to the latest app or CLI and try again.`（完整真实回执见 [scientist_receipt.json](../../results/pdd_v3_architecture_20261128/scientist_receipt.json)）。
-> 2. 严格遵守 `AGENTS.md` §4 与 `agents/scientist.md`（禁止冒充 `gpt-6-astra`），下列有界设计方案由上下文隔离的 Antigravity 只读 `research` 子代理（会话 `1639b919-2a4c-4032-b93d-7768bcefc975`，底层模型 `gemini-4-neon-xhigh`）起草，效力严格标定为 **`PROVISIONAL_DRAFT`（暂定草案）**，待用户在升级后的 Codex 宿主完成 `gpt-6-astra` 复核或明示批准等效替代绑定后转正。
+# PDD v3.1（OSGKD-Decoupled）正式 Scientist 有界设计方案
 
-# PDD v3（OSGKD-Decoupled）暂定 Scientist 有界设计方案
+**设计状态：`SCIENTIST_APPROVED_V3_1`；独立 Reviewer 对 v3.1 的复核待完成。执行状态：`PAUSED_BY_USER`；模型指针：`default none`。**
 
-> **身份与暂定性质声明（严格遵循 `AGENTS.md` §4 与 `agents/scientist.md`）**
-> - **角色身份**：暂定 Scientist 角色有界设计起草者（Provisional Scientist-Role Bounded Design Drafter），运行于 Antigravity 只读 research 子代理（会话 ID `1639b919-2a4c-4032-b93d-7768bcefc975`）。**本子代理不是、也严禁自称为 `gpt-6-astra`。**
-> - **治理效力**：本稿为供 `root` 审阅、独立只读 Reviewer 挑战及用户决策的**暂定有界设计草案（Provisional Bounded Design）**；在真实 `gpt-6-astra` 审定签发或用户明示认可暂定替代前，不记为已完成 `gpt-6-astra` 正式回执。
-> - **只读红线回执**：本轮严格只读检查了 10 份必读文件及对应依赖源码/报告（`osgkd_synthetic.py`、`negative_controls.py`、`osgkd.py`、`osgkd_graph.py`、`osgkd_baselines.py`、`osgkd_fitting.py`、`experiments/osgkd_v2_wp2_layer1_20261127/{models,engine,training}.py`、`escape_example.py`、`pendulum.py` 及 `wp2`/`wp3` 封存结果表）；**0 文件修改、0 训练更新、0 ODE 积分、0 `private_data/` 访问、0 IEEE-39 `test` 访问**。
+本稿正式合入 [v3_1_scientist_spec.md](v3_1_scientist_spec.md) 的完整规范与静态复算摘录；本次数字门禁通过后由 `gpt-6.1-sol` 仅作文档落地。科学审定作者与回执归属保持下述 `gpt-6-astra` 科学分工，文档实现者不作科学重判，不构成独立复核、训练放行或模型晋升。
 
----
+**历史来源与作者区别。** v3.0 原稿由 Antigravity 只读 research 子代理、模型 `gemini-4-neon-xhigh` 起草，会话 `1639b919-2a4c-4032-b93d-7768bcefc975`，当时仅为暂定草案。原稿以 Git `HEAD:reports/pdd_v3_architecture_20261128/scientist_design.md` 的冻结内容为准，统一 LF 后 SHA-256 为 `ab98674c2430b5d2569261db8de1faa66c02db5645759a108a7d46c6965fb9df`（UTF-8 字节；CRLF 先转 LF）。此前本机 `codex-cli 0.144.4` 尝试 `gpt-6-astra` 得 HTTP 400（要求升级 Codex）的事实与 [历史回执](../../results/pdd_v3_architecture_20261128/scientist_receipt.json) 不追改，也不代表本次审定失败。原作者的“0 文件修改”等只读声明仅描述原次调用。本次正式文本替换过时矛盾内容，未将原稿作者改记为指定 Scientist。
 
-## 0. Scientist 决策摘要（按 `agents/scientist.md` 必答要素拍板）
+本文前九节与附录为完整 v3.1 规范；后部保留章节给出原方案中不冲突的 Stage 2、基准 2 与 G1/G2/G4 细节。新定理、信息合同、定标、窗口、噪声、G3、重标盒和预算只有一个活动版本，不保留旧版本为并列候选。
 
-- **主假说**：在训练期具备特权聚合端口观测（$\mathcal{O}_1$）而部署期仅具短时部分运动历史（$\mathcal{O}_0$）的开放网络化动力学中，当环境闭合满足严格真因果限制 $\mathcal{F}_{\mathrm{env}}$ 且动态调制采用**奇对称有界核** $K_e(a)=c_e+\beta_e\tanh(a_i+a_j)$（$\kappa=0.8$）时，将**静态骨架恢复（Stage 1：零均值带通弱式 FISTA + 节点局部速度记忆去混叠）**与**固定骨架上的残差开放闭合及等变短历史部署初始化（Stage 2）**解耦，可在强开放/强调制工况下同时消除端到端跨模块互代、保住近精确拓扑恢复，并在部署期零特权输入条件下显著优于 `Stage-1-Only`、`End-to-End OSGKD v2`、`No-Privilege Same-Arch` 及黑箱连续 ODE 的大样本失稳分岔保真。
-- **核心唯一拍板清单（零悬而未决选项）**：
-  1. **动态调制核唯一拍板**：采用**奇对称有界核** $K_e(a) = c_e + \beta_e\tanh(a_i+a_j)$，$c_e\ge 0$，$0\le \beta_e \le 0.8\,c_e$（淘汰 $\exp(\tanh s_e)-1$，仅保留后者于 `End-to-End OSGKD v2` 历史基线内部以保持对旧实现保真）。
-  2. **基准 3 唯一拍板**：选定**开放可塑 Wilson–Cowan 神经群体网络（Open Plastic Wilson–Cowan Neural Population Network）**，舍弃黏弹性非线性阻尼弹簧-质点网络。
-  3. **Stage 1 / Stage 2 骨架规则拍板**：主方案严格冻结 $(\hat S, \hat c, \hat g)$（`PDD-Frozen`）；仅保留一项预登记消融 `Stage-2 Bounded-Recal`，将 $c_e$（$e\in\hat S_c$）限定于定理界定的投影盒 $[0.75\hat c_e,\,1.40\hat c_e]$ 内，严禁增删边或无约束覆盖。
-- **竞争解释与最简对照**：① Stage 2 冗余（Weak SINDy 质疑）$\leftrightarrow$ 最简对照 `Stage-1-Only`（门禁 **G1**）；② 端到端联合拟合更优 $\leftrightarrow$ `End-to-End OSGKD v2`（门禁 **G2**）；③ 特权端口无净收益 $\leftrightarrow$ `No-Privilege Same-Arch`（门禁 **G3**）；④ 黑箱 ODE 在大样本下同样保持失稳或直接分类器即可替代 $\leftrightarrow$ `Equivariant Graph Neural ODE` / `Latent ODE` 与 `Direct Classifier` / `Seq2Seq`（门禁 **G4**）。
-- **最有判别力的下一问题（Run 0）**：放行后先用 **`1,792` 次总更新（单进程 CPU 约 `1.4 h`）**在基准 1（$N=8$，`strong_open`）与基准 3（Wilson–Cowan $N=8$）上检验零泄漏资格、内存上限（至 $N=32$）以及 G1/G2 空间是否真正打开；若 Run 0 未在合成真值上拉开 `PDD` vs `Stage-1-Only` 的差距，立即止损修正工况或闭合，不盲目扩张至全十字星矩阵。
-- **适用主张边界**：所有强机制与统计结论限于已声明的函数类 $\mathcal{F}_{\mathrm{env}}$、激励条件（A3）与公开合成基准及已封存 IEEE-39 探索性应用范围；不宣称跨领域冻结权重零样本迁移，不宣称高阶电力系统安全证书。
+**审定模型　gpt-6-astra　｜　审定时间　2026-11-28 19:50（北京时间，UTC+8）**
 
----
+**裁决**　采用有条件的支撑恢复定理、匹配信息的两阶段对照和下述两套静态定标。设计修订覆盖原 Reviewer 的 B1–B3、M1–M4、m1–m2。现有证据包括解析推导、基准 1 的参考矩阵谱和基准 3 的完整平衡点与雅可比谱。轨迹上的持续激励、强度占比、跃迁频率、恢复效果、运行耗时均待验证。执行仍为 `PAUSED_BY_USER`，模型指针 `default none`。本件是 v3.0 草案经审定后的正式 v3.1 设计；尚未完成独立 Reviewer 对本版本的复核。
 
-## 一、Theorem 1–3 精确数学陈述、假设检查与证明路线
+本次实际指定模型的科学分工为 `/root/scientist`（定理与总审）、`/root/swing_calibration`、`/root/wc_calibration`、`/root/comparison` 及 `/root/motion_control`。v3.0 原稿的作者、模型和日期由本文历史来源及历史失败回执保留。本次审定不构成独立 Reviewer 对 v3.1 的复核。其历史输入为 v3.0 的审查报告、暂定 Scientist 原稿、val 轨迹核查与架构简报，版本由原审查清单固定，部署合同见 `kiki.md`。
 
-> 目标篇幅：适配 NeurIPS 主文 `1.0–1.5` 页理论节（主文呈现精确定义、定理陈述与核心证明骨架，完整引理与常数推导放入附录 A）。
+## 1　B1 · 从运动可知的量与 G3 所检验的量
 
-### 1.1 动态调制核唯一拍板与数学对比
+用 $\mathcal O_0$ 专指一条事件的 11 帧、100 ms 因果历史与事前冻结常数。$\mathcal O_0^{\rm traj}$ 在训练时加上同一系统所有合法训练事件的完整运动（振子的 $\theta,\omega$ 或神经群体的 $r$）。$\mathcal O_1$ 再加训练期聚合端口；$\mathcal O_2$ 才含真图、真实隐态、分项、生成器激励和真系数。所有部署预测均从 $\mathcal O_0$ 自主推进，保持观测末帧及共同参考。训练缺帧和真实截止后不填充。预测、初始化与端口分解沿用同一方程。
 
-| 核函数候选 | 显式表达与约束 | 范围与极值比 | 偶部系统偏差（对称分布 $s_e=a_i+a_j$） | Stage 2 冻结 $\hat c$ 兼容性 | Theorem 3 逃逸反例对照界 |
-| --- | --- | --- | --- | --- | --- |
-| 旧 v2 指数核（**淘汰**） | $c_e + \beta_e[\exp(\tanh s_e)-1]$，$0\le\beta_e\le c_e$ | $[0.368\,c_e,\,2.718\,c_e]$（不对称，$+172\% / -63\%$） | 偶部 $\cosh(\tanh s_e)-1\ge 0$ 严格非负；$\sigma_s\approx 1$ 时引入 $+21\%\text{–}35\%\,\beta_e$ 正向均值偏移 | **差**：Stage 1 估计出的 $\hat c_e$ 系统性高估 $c_e$，迫使冻结 $\hat c$ 的 Stage 2 给 $a(t)$ 注入永久负直流偏置以抵消偏差，重演跨模块补偿 | $0\le z(t)\le \frac{\pi e}{2}(1-e^{-t})\approx 4.270$ |
-| **奇对称有界核（唯一拍板）** | **$K_e(a) = c_e + \beta_e\tanh(s_e)$，$c_e\ge 0$，$0\le\beta_e\le \kappa c_e$，$\kappa=0.8$** | **$[0.20\,c_e,\,1.80\,c_e]$（对称 $\pm 80\%$，峰谷比 **9×**）** | **严格奇函数** $\tanh(-s)=-\tanh(s)$；凡 $s_e$ 分布对称则一阶静态偏移**恒为零**（$\mu_e=\mathbb{E}[\tanh s_e]=0$） | **优**：Stage 1 估计无系统偶部偏移，$c_e^{\mathrm{eff}}\approx c_e$，主方案 `PDD-Frozen` 无直流补偿冲突；最坏非对称情形仍有严格双边正界 $[(1-\kappa)c_e,(1+\kappa)c_e]$ | **$0\le z(t)\le \frac{\pi\kappa}{2}(1-e^{-t}) < 1.257$**（更紧且证明仅 2 行） |
+**Theorem 1，结论 4a（端口规范）。** 已知 $M,D$、连续无噪运动时可求 $n=M\dot\omega+D\omega$。观测端口的线性算子 $[I,-I]$ 的秩为 $N$，核为 $\{(v,v)\}$，逐时刻恰 $N$ 维。允许端口函数自由变化时各时刻可有不同的 $v(t)$。在允许同一衰减模态的受限闭合子族，取 $\tau_m=p,\ \tau_e=F(\theta)+e$，$\dot p=-\lambda p,\ \dot e=-\lambda e$，$p_0,e_0$ 同加 $v$，则两端口同加 $e^{-\lambda t}v$，对整条轨迹给出 $N$ 个独立自由参数。物理先验若将其中一端完全指定，可能缩小相应参数族内的核。这里的必然性指运动观测算子的核，以及允许类上的非单射性；没有把任意 $\delta(t)$ 都算作某个固定异衰减 5N ODE 的解。WC 的端口和映射之核为 $(v,-v)$。
 
-**拍板结论**：PDD v3 主干与所有新建合成基准真值**唯一采用奇对称有界核 $K_e(a) = c_e + \beta_e\tanh(a_i+a_j)$，固定 $\kappa = 0.8$**。
-- **物理与储能势对接**：对应的一阶中心化互易势为
-  $$U_c(\theta, a) = \sum_{e\in E}\Big[K_e(a)(1-\cos\varphi_e) - c_e(1-\cos\eta_e) - c_e\sin\eta_e(\varphi_e-\eta_e) - \beta_e(1-\cos\eta_e)s_e\Big],$$
-  满足 $U_c(\theta_\star,0)=0$、$\nabla_\theta U_c = B[K(a)\odot\sin\varphi - c\odot\sin\eta] = F_c(\theta,a)$、$\nabla_a U_c\big|_{z_\star} = |B|[\beta\odot(\operatorname{sech}^2(0)(1-\cos\eta)-(1-\cos\eta))] = 0$，且 $\partial_{s_e} K_e(a) = \beta_e\operatorname{sech}^2(s_e) \in (0, 0.8 c_e]$ 全局有界光滑。
-- **强失稳物理契合**：下界 $0.20 c_e$ 允许在大摆角电压跌落期将同步回复刚度削弱至标称值的 $20\%$（显著强于旧 v2 核的 $36.8\%$ 下界），同时严格远离零点保证全局正定回复与适定性。
+**结论 4b（静态骨架）。** 同噪声、同激励、同窗口下考察两个实验。振子对 $\phi=\Phi'\in C_c^2$ 有
+$$
+ y_{\rm net}=\langle\phi',M\omega\rangle-\langle\phi,D\omega\rangle
+             =\langle\phi,\tau_e-\tau_m\rangle .
+$$
+对有已知重力项 $-G\sin\theta$ 的摆阵，左端还须减 $\langle\phi,G\sin\theta\rangle$。恒等式不需求观测的数值导数。若 $\tau_m$ 也在可消去的局部记忆类中，且下节秩成立，纯运动可有与端口 Stage 1 相同的静态解。对不在 $\mathcal F_{\rm env}$ 的快变机械驱动，须区分两种结果。若允许的驱动差与静态列空间在已观测轨线上有非零交集（包括将未知边力原样移入驱动），才有该方向的精确歧义；若低维驱动可另外剖除且余下矩阵满秩，仍可恢复，只可能改变精度。带宽越宽本身不是不可辨识证明。
 
----
+在 $\|\phi\|_2=1$ 的同形频带窗中 $\|\phi'\|_2$ 的尺度为 $O(\Omega_k+L_k^{-1})$。速度噪声产生 $\langle\phi',M\delta\omega\rangle$，其最坏误差多出该因子；离散白噪声的方差按实际求积权重平方和算。端口通道直接取 $\langle\phi,\delta\tau_e\rangle$，两法还共同受到角度、速度设计阵误差影响。噪声说明估计的条件性与精度，不推出无噪观测不单射。基准 3 的反演还要求 $s=(\tau_r\dot r+r)/(1-\alpha_r r)\in(0,1)$，且 $(S^{-1})'(s)=1/[\gamma_s s(1-s)]$。反演只给出两电流之和；噪声在近饱和处放大、越域时无实值。非线性与弱积分一般不交换。两类场景均开放给完整的纯运动对照，数值差距由实验裁决。
 
-### 1.2 观测算子层级与环境函数类 $\mathcal{F}_{\mathrm{env}}$ 的严格数学定义
+**G3 规格。** 基准 1 `strong_open` 和基准 3 $N=8$ 各用相同三种子配对 `PDD-Frozen` 与 `No-Privilege Two-Stage`；`No-Privilege Same-Arch` 是次级对照，用于分辨端到端优化与信息因素。基准 1 全轨迹噪声两侧格亦加入 Two-Stage。两级目标、结构选择、256 步课程、训练事件、部署条件和评分保持可比；无特权方法取得全合法运动、相同一致性损失及已公开驱动字典。主比较沿用原 G3 的预登记效应量：三种子逐种子分别检验 AUPRC、F1 各提高至少 0.15，以及分离 RMSE 相对降幅至少 35%；预测 MSE 降至少 15% 或失稳 AUROC 增至少 0.05，另一项按原护栏控制（MSE 至多相对恶化 5%，AUROC 至多相对降低 5%）。分别报告三个终点，只有全过才使用联合主张；不以分离收益代替骨架收益。各项中的种子波动和事件内误差分别报告。该门禁比较同时去除两阶段端口信息后的总效果，不能据此分别量化 Stage 1 标签与 Stage 2 标签的因果贡献。无特权追平时收缩经验主张，结论 4a 的代数结果仍成立。配对单位是事件或来源事件簇；同一真图上的 F1/AUPRC 按图与优化种子逐项列值，不给边重采样伪造的跨系统置信度。两阶段主比较另外给同轨迹/同种子的配对误差。基准 3 单列跨方程族结果。
 
-设无向候选图 $G=(V,E)$，$|V|=N$，$|E|=m$（默认完全候选图 $m=\binom{N}{2}$），定向关联矩阵 $B\in\{-1,0,1\}^{N\times m}$（对边 $e=(i,j), i<j$ 取 $B_{i,e}=+1, B_{j,e}=-1$，故 $\mathbf{1}^\top B=0^\top$），无符号关联矩阵 $|B|\in\{0,1\}^{N\times m}$（满足 $\mathbf{1}^\top |B|=2\mathbf{1}_m^\top$）。系统完整状态为 $z(t)=(\theta(t),\omega(t),p(t),a(t),e(t))\in\mathbb{R}^{5N}$，$t\in[-h,T]$（$h=0.1\ \mathrm{s}, T=4.0\ \mathrm{s}$），参考平衡 $z_\star=(\theta_\star,0,0,0,0)$，$\varphi=B^\top\theta$，$\eta=B^\top\theta_\star$。令冻结公开常数集合 $\mathcal{C}=(M,D,\theta_\star,B,S_p,S_e,\omega_{\mathrm{scale}})$。
+## 2　B2、M1 · Theorem 1 的设计矩阵、有限带宽误差与支撑恢复
 
-1. **严格嵌套观测算子 $\mathcal{O}_0 \subset \mathcal{O}_1 \subset \mathcal{O}_2$**：
-   对轨迹集合 $\{z^{(r)}\}_{r=1}^R$：
-   - **$\mathcal{O}_0$（部署级）**：$\mathcal{O}_0(z^{(r)}) := \big(\{(\theta^{(r)}(t_j),\omega^{(r)}(t_j))\}_{j=0}^{10},\; \mathcal{C}\big)$，$t_j=-h+j\Delta t\in[-0.1,0]\ \mathrm{s}$；
-   - **$\mathcal{O}_1$（训练特权级）**：$\mathcal{O}_1(z^{(r)}) := \big(\mathcal{O}_0(z^{(r)}),\; \{(\theta^{(r)}(t),\omega^{(r)}(t),\tau_m^{(r)}(t),\tau_e^{(r)}(t))\}_{t\in[0,T]}\big)$，其中 $\tau_e = F_c(\theta,a) + F_{\mathrm{sym}}(\theta) + \tau_{\mathrm{env}}^{\mathrm{open}}(a,e)$ 为**聚合**总电气/交互端口；
-   - **$\mathcal{O}_2$（神谕/冻结评分级）**：$\mathcal{O}_2(z^{(r)}) := \big(z^{(r)}(\cdot), F_c^{(r)}(\cdot), F_{\mathrm{sym}}^{(r)}(\cdot), \tau_{\mathrm{env}}^{\mathrm{open},(r)}(\cdot), S^\star, c^\star, g^\star, \beta^\star\big)$。
-   显然生成的 $\sigma$-代数满足 $\sigma(\mathcal{O}_0)\subsetneq \sigma(\mathcal{O}_1)\subsetneq \sigma(\mathcal{O}_2)$。
+**A1–A2。** 取一个固定参考、有限简单无向候选图、定向关联 $B$，$\varphi=B^\top\theta,\eta=B^\top\theta_\star$，$s=|B|^\top a$。在振子系统，互易项为 $B[(c^\star+\beta^\star\tanh s)\sin\varphi-c^\star\sin\eta]$，可选损耗项为 $|B|[g^\star(\cos\varphi-\cos\eta)]$。逐边乘法，$0\le\beta^\star\le0.8c^\star$。环境端口为 $S_e e+h(a)$，$h$ 节点局部，无瞬时边差模直通。写 $\dot e=-\Lambda_e e+\Gamma_e\omega+b_e,\ \dot a=-\Lambda_a a+\Gamma_a\omega+b_a$；两 $\Gamma$ 为常对角阵，$b_e,b_a$ 无显式速度项且在有限窗内平方可积。非线性或非对角速度反馈若另加，须重建干扰空间及其秩。此项声明限制对高阶约化的外推。
 
-2. **严格真因果开放环境函数类 $\mathcal{F}_{\mathrm{env}}(T_e, \Lambda_a, L_{\mathrm{cm}})$**：
-   称开放环境端口 $\tau_{\mathrm{env}}^{\mathrm{open}}$ 属于 $\mathcal{F}_{\mathrm{env}}$，当且仅当：
-   - **(E1 无瞬时差模 $\sin\varphi$ 直通)** $\tau_{\mathrm{env}}^{\mathrm{open}}(t) = S_e e(t) + \tau_{\mathrm{env,cm}}(a(t))$，满足 $\partial_\theta \tau_{\mathrm{env}}^{\mathrm{open}} \equiv 0$（严禁 v2 中的 `env_edges` 或任意含 $\sin\varphi$ 的瞬时边直通）；局部幅值读出 $\tau_{\mathrm{env,cm},i}(a) = \alpha_{1,i}\tanh(a_i) + \alpha_{2,i}\tanh^2(a_i)$ 全局 Lipschitz 常数不超过 $L_{\mathrm{cm}} = \max_i(|\alpha_{1,i}|+2|\alpha_{2,i}|)$；
-   - **(E2 严格真因果一阶/有限阶记忆)** 隐态 $e(t), a(t)\in\mathbb{R}^N$ 遵循
-     $$\dot e = -T_e^{-1} e + \Gamma_\omega \omega + \tilde\psi_e(\theta, a, e), \qquad \dot a = -\Lambda_a a + \psi_a(\theta, \omega, a),$$
-     其中 $T_e^{-1}=\operatorname{diag}(T_{e,1}^{-1},\dots,T_{e,N}^{-1})\succ 0$（记 $T_{\min}^{-1}:=\max_i T_{e,i}^{-1}$）、$\Lambda_a\succ 0$（记 $\Lambda_{a,\max}:=\max_i \Lambda_{a,i}$），$\Gamma_\omega=\operatorname{diag}(\gamma_{e\omega,1},\dots,\gamma_{e\omega,N})$ 为节点局部对角速度耦合阵，且 $\tilde\psi_e,\psi_a$ 在轨线上平方可积（$\partial_\omega\tilde\psi_e\equiv 0$）。在频域上，算子 $(\frac{d}{dt}+T_{e,i}^{-1})^{-1}$ 具有严格真高频滚降 $|(i\Omega + T_{e,i}^{-1})^{-1}| = (\Omega^2 + T_{e,i}^{-2})^{-1/2} \le |\Omega|^{-1} = O(|\Omega|^{-1})\to 0$。
+**B2(c) · 一个加权问题。** 用 $R$ 表事件数，$K$ 表每事件的测试函数数。每个合法完整窗的原始 $N$ 行为
+$$
+ X_c=B\,\mathrm{diag}\langle\phi,\sin\varphi-\sin\eta\rangle,\quad
+ X_g=|B|\,\mathrm{diag}\langle\phi,\cos\varphi-\cos\eta\rangle,\quad
+ L=\mathrm{diag}(-\langle\Phi,\omega\rangle),\quad y=\langle\phi,\tau_e\rangle .
+$$
+全局和采用 $w=\sqrt N/2,\ A_w=[I_N;\,w\mathbf1^\top]$。对每块的 $y,X_c,X_g,L$、其他正式剖除列以及一切误差**同时**左乘 $A_w$。令 $A$ 为重复的块对角算子。分母 $n=K_{\rm aug}=RK(N+1)$，未增广 $n_0=RKN$；有掩码时用实际完整块数替换 $RK$，不拼凑缺节点的全局行。用秩揭示 SVD 得 $Q=I-(AL)(AL)^+$，并令 $X=QA[X_c,X_g],\ Y=QAy$。剖除额外列时并入 $L$。固定浮点秩容差 $\max(\#\mathrm{rows},\#\mathrm{cols})\,\epsilon_{\rm mach}\sigma_{\max}$，在实现报告数值残余 $\|QAL\|$；带岭逆不满足精确消去恒等式。增广行重复使用同一测量，协方差随之变为 $A\Sigma A^\top$；单独复制一份噪声会改变问题。
 
----
+**A3 与 Step 1。** 令 $\Psi_{\cos}$ 含逐窗余弦系数，$P_d=I-\mathbf1\mathbf1^\top/N$ 逐块作用。增广前划分共模与差模，再加全局行，即有
+$$
+ \|A(X_c u+X_g v)\|^2=(4/N+4w^2)\|\Psi_{\cos}v\|^2+\|X_cu+P_dX_gv\|^2 .
+$$
+故若 $\Psi_{\cos}/\sqrt{RK}$ 与 $X_c/\sqrt n$ 的最小奇异值分别至少 $g_c,g_s>0$，$m_g=\|P_dX_g/\sqrt n\|$，记 $h_c=(4/N+N)g_c^2/(N+1)$，则加权静态块的最小奇异值平方下界为 $\min\{h_c g_s^2/(h_c+2m_g^2),h_c/2\}$（对第二项用 Young 不等式）。仅含正弦时直接用相应块。再乘静态列空间与干扰列空间最小主夹角的 $\sin\theta_{\min}$，得到投影奇异值下界。**实际条件是 $\gamma=\sigma_{\min}(X/\sqrt n)>0$**；有条件稀疏恢复可改用下文的活跃块条件。无调制、去干扰后零误差时给唯一系数。有剩余记忆时给有限误差界。
 
-### 1.3 Theorem 1（特权端口 $\mathcal{O}_1$ 下的静态骨架可辨识性与函数类分离）
+完全图小角、等权且零共模时，$c_0(NI-\mathbf1\mathbf1^\top)-Nc_0I=-c_0\mathbf1\mathbf1^\top$ 在 $\mathbf1^\perp$ 上为零，静态与节点局部干扰列可以重合；有限大摆角下须对非线性阵重新检验。A3 要求共模速度有**独立于差模的充分激励**（保留原始完整速度），或由大角非线性提供可测的列空间分离。只检测到非零平均转速不能推出满秩。在 `static_closed`、`strong_mod_closed` 两格，逐折、全训练分别记录带/不带 $L$ 的数值秩、$\gamma$、$\sin\theta_{\min}$、归一化阵的 $\kappa_2$，并列共模/差模弱速度的 RMS；理论按实际拟合的阵判断。若已知模型合同显式关闭某块，仅在该合同下省略。零列、秩亏或噪声超过下述恢复余量均标未获资格，不能用真图选择投影或删列。非二分图的识别来自上述时间与空间的联合结构。
 
-**数学陈述**：
-设观测满足 **(A1)** $\mathcal{O}_1$ 聚合端口 $\tau_e = B[K(a)\odot\sin\varphi - c^\star\odot\sin\eta] + |B|[g^\star\odot(\cos\varphi-\cos\eta)] + \tau_{\mathrm{env}}^{\mathrm{open}}$（核取奇对称 $K_e(a)=c_e^\star+\beta_e^\star\tanh s_e$，$0\le\beta_e^\star\le\kappa c_e^\star$）；**(A2)** $\tau_{\mathrm{env}}^{\mathrm{open}}\in\mathcal{F}_{\mathrm{env}}$。
+**B2(a) · Step 2。** $h_i=\alpha_{1i}\tanh a_i+\alpha_{2i}\tanh^2a_i$，取 $\ell_i=h_i'(0)$。积分分部使 $S_e\Gamma_e$ 和 $\mathrm{diag}(\ell)\Gamma_a$ 对应的速度项精确落入 $L$。留下的局部读出为
+$$
+ \langle\Phi,h_i'(a_i)(\lambda_{ai}a_i-b_{ai})\rangle
+ -\gamma_{ai}\langle\Phi,(h_i'(a_i)-\ell_i)\omega_i\rangle .
+$$
+记 $\bar E_v^2=\sum_{r,k}\|v^{(r)}\|_{L^2(I_k)}^2/n_0$，$C_\Phi=\max_k\Omega_k\|\Phi_k\|_2$；对新窗按其原函数实算。未增广、去掉上述常系数速度项后，记忆残差 RMS 的有限带宽上界为
+$$
+ B_{\rm mem}={C_\Phi\over\Omega_{\min}}\big[
+ \|S_e\|(\|\Lambda_e\|\bar E_e+\bar E_{b_e})
+ +\|h'\|_\infty(\|\Lambda_a\|\bar E_a+\bar E_{b_a})
+ +\|\Gamma_a\|\,\bar E_{(h'(a)-\ell)\odot\omega}\big].
+$$
+最后一项是时变导数乘速度的泄漏地板项（残差上界中的保留项，未断言对每条轨迹存在正下界）。当激励速度随 $\Omega$ 增长时它可保持 $O(1)$；固定轨线提高窗频，$\gamma$ 又可随信号谱衰减。相同未增广 RMS 下，共模确定性残差的最坏放大为 $C_N=\sqrt{N/(N+1)}\sqrt{1+N^2/4}$，独立同方差零均值节点噪声在投影前的**期望均方根规模**（均方取根）为 $D_N=\sqrt{N/(N+1)}\sqrt{1+N/4}$ 倍。前式由 $\|A_w\|^2=1+w^2N$，后式由 $\mathrm{tr}(A_w^\top A_w)=N(1+w^2)$。相关噪声按实际协方差或最坏界。余弦块分母改善伴随分子放大。
 
-选取第 3.1 节构造的 $M$ 个零均值紧支导数调制带通测试函数 $\phi_k = \Psi'_k/\|\Psi'_k\|_{L^2(I_k)} \in C_c^1(I_k)$（对应原函数 $\Phi_k = \Psi_k/\|\Psi'_k\|_{L^2(I_k)}$ 满足 $\Phi_k(\partial I_k)=0$，中心角频率 $\Omega_k \ge \Omega_{\min} > 0$）。对 $R$ 条训练轨迹构建弱式堆叠向量 $y\in\mathbb{R}^{K_{\mathrm{tot}}}$（$K_{\mathrm{tot}}=RMN$）、静态设计阵 $\Phi_{\mathrm{stat}}=[\Phi_c,\Phi_g]\in\mathbb{R}^{K_{\mathrm{tot}}\times 2m}$ 及规范不变节点局部速度记忆干扰阵 $\Phi_{\mathrm{loc}}\in\mathbb{R}^{K_{\mathrm{tot}}\times N}$（第 $(r,k)$ 块为 $\operatorname{diag}(-\langle\Phi_k,\omega^{(r)}\rangle)$）。设正交投影 $Q_\perp = I - \Pi_{\operatorname{col}(\Phi_{\mathrm{loc}})}$（若 $\Gamma_\omega=0$ 则取 $Q_\perp=I$），记 $\tilde\Phi_{\mathrm{stat}}=Q_\perp \Phi_{\mathrm{stat}}$，归一化 Gram 阵 $\mathcal{G}=\frac{1}{K_{\mathrm{tot}}}\tilde\Phi_{\mathrm{stat}}^\top\tilde\Phi_{\mathrm{stat}}$。
+采用实测的 $\widehat X,\widehat Y,\widehat Q$，把观测目标误差、列扰动乘真系数、干扰列误差乘真干扰系数、调制残差及离散求积误差一并计入 $r=\widehat Y-\widehat X\vartheta_{\rm target}$。满秩 LS 有
+$$
+ \|\hat\vartheta-\vartheta_{\rm target}\|_2
+ \le {\|\Pi_{\widehat X}r\|_2\over\sqrt n\,\sigma_{\min}(\widehat X/\sqrt n)} .
+$$
+干净无调制时，记忆贡献至多 $C_NB_{\rm mem}/\gamma$。**趋零推论**仅在 $h$ 线性（其常数速度项可投掉）或 $\partial_\omega\psi_a\equiv0$ 的子族给出：沿一列宽带激励，若 $\inf\gamma>0$、其余窗能量与 $C_\Phi$ 一致有界、调制为零且噪声和求积误差趋零，则记忆造成的参数误差趋零。固定采样率还受 Nyquist 限制；此推论不用于任一固定轨迹或固定 401 帧数据。
 
-假设满足 **(A3 宽带持续激励强制性)**：
-1. 互易正弦块与全局求和余弦块分别满足 $\sigma_{\min}(\Phi_c/\sqrt{K_{\mathrm{tot}}})\ge \gamma_{\sin}>0$、$\sigma_{\min}(\Psi_{\cos}/\sqrt{RM})\ge \gamma_{\cos}>0$（其中 $(\Psi_{\cos})_{(r,k),e}=\langle\phi_k,\cos\varphi_e^{(r)}-\cos\eta_e\rangle$），且 $\|P_\perp\Phi_g/\sqrt{K_{\mathrm{tot}}}\|_2\le M_g<\infty$；
-2. 静态列空间 $\mathcal{S}_{\mathrm{stat}}=\operatorname{col}(\Phi_{\mathrm{stat}})$ 与干扰空间 $\mathcal{S}_{\mathrm{loc}}=\operatorname{col}(\Phi_{\mathrm{loc}})$ 最小主夹角满足 $\theta_{\min}:=\angle(\mathcal{S}_{\mathrm{stat}},\mathcal{S}_{\mathrm{loc}})>0$（当 $\Gamma_\omega=0$ 时 $\sin\theta_{\min}=1$）。
+**M1 · 结论 3 与实际算法。** 设 $d_j=\|X_j\|/\sqrt n,\ D_c=\mathrm{diag}(d)$，去掉并记录零列，$Z=XD_c^{-1}$，$q=D_c\vartheta$。求解
+$$
+ \min_{q\ge0}\|Y-Zq\|^2/(2n)+\lambda\mathbf1^\top q .
+$$
+在物理坐标这恰是 $\lambda\sum_j d_j\vartheta_j$。$S$ 为真活跃的正弦及已启用余弦索引。令 $v$ 为真实动态调制项经相同弱窗、增广与投影后的向量，$G=Z^\top Z/n$。定义
+$$
+ q^{\rm eff}_S=q^\star_S+G_{SS}^{-1}Z_S^\top v/n,\qquad
+ q^{\rm eff}_{S^c}=0,\qquad c_e^{\rm eff}=q^{\rm eff}_{c,e}/d_{c,e}.
+$$
+这是活跃空间上的联合投影；仅用于定义估计对象或事后真值评分。$g$ 同估时亦可吸收投影。剩余 $v_\perp=(I-P_S)v$ 正交于 $Z_S$。可报告 $\mu_e^{\rm eff}=(c_e^{\rm eff}-c_e^\star)/\beta_e^\star$（$\beta_e^\star=0$ 记未定义，并单列交叉投影偏移）。瞬时刚度的 $[0.2,1.8]c^\star$ 界不能传给多列弱式投影；单边无混叠且正权时才是凸加权均值。$a$ 边际对称也不能推出 $Z_S^\top v=0$。精确支撑的前提包括 $q^{\rm eff}_S>0$，不能由投影定义循环证明。
 
-则以下四项结论同时成立：
+令 $Y=Zq^{\rm eff}+r,\ b_S=Z_S^\top r/n,\ P_S=Z_SZ_S^+$。若 $G_{SS}\succ0$，活跃解为 $q^+_S=q^{\rm eff}_S+G_{SS}^{-1}(b_S-\lambda\mathbf1)$，其余为零。精确的一侧 KKT 判据是 $q^+_S>0$ 且对每个 $j\notin S$，
+$$
+ Z_j^\top(I-P_S)r/n+\lambda G_{jS}G_{SS}^{-1}\mathbf1\ \le\lambda .
+$$
+非活跃严格不等号保证解唯一。可检验的充分条件为 $\max_{j\notin S}G_{jS}G_{SS}^{-1}\mathbf1\le1-\eta_0$、非活跃投影残差上界 $<\lambda\eta_0$、$\min q^{\rm eff}_S>\|G_{SS}^{-1}(b_S-\lambda\mathbf1)\|_\infty$。这给出不可表征性、噪声与最小信号三个独立余量。实际阈值还要求每个活跃项在本块内 $q^+_j/\max q^+\ge0.05$；空块输出空支撑。去偏 NNLS 在选中列上单独解并验证 KKT 与正性。惟有这些条件满足时才说恢复精确 $S^\star$ 与估计投影刚度。跨格的 F1 仍是待测结果。
 
-1. **结论 1（一般非二分图上的空间端点奇偶 × 函数奇偶联合分离与精确最小奇异值下界）**：
-   即使在**一般非二分连通图**上 $\operatorname{col}(B)=\mathbf{1}^\perp \not\perp \operatorname{col}(|B|)=\mathbb{R}^N$，静态设计阵 $\Phi_{\mathrm{stat}}=[\Phi_c,\Phi_g]$ 仍具满列秩 $2m$，且投影后最小奇异值严格有正下界：
-   $$\gamma_0 := \sigma_{\min}\!\left(\frac{\tilde\Phi_{\mathrm{stat}}}{\sqrt{K_{\mathrm{tot}}}}\right) \ge \gamma_{\mathrm{stat}}\sin\theta_{\min} > 0, \qquad \gamma_{\mathrm{stat}} := \sqrt{\min\!\left(\frac{2\gamma_{\cos}^2\gamma_{\sin}^2}{N^2 M_g^2 + 2\gamma_{\cos}^2},\; \frac{2}{N^2}\gamma_{\cos}^2\right)}.$$
-   （若对全局求和行施加第 3.1 节的尺标均衡权重 $\sqrt{N/4}$，则下界中的 $N^2$ 改善为无 $N$ 退化的常数 $1$：$\gamma_{\mathrm{stat}}^W = \sqrt{\min\!\big(\frac{2\gamma_{\cos}^2\gamma_{\sin}^2}{4 M_g^2 + 2\gamma_{\cos}^2},\; \frac{1}{2}\gamma_{\cos}^2\big)}$。）特别地，在无调制无记忆子族下，$(c^\star,g^\star)$ 唯一可辨识。
+## 3　M1 · Theorem 2 与 Theorem 3 的适用域
 
-2. **结论 2（瞬时直通 vs. 严格真因果记忆的精确高频投影分离与定量误差界）**：
-   设 Stage 1 残差为 $r_{\mathrm{tot}} = Q_\perp(r_{\mathrm{mem}}^{\mathrm{rem}} + r_{\mathrm{mod}} + \varepsilon)$。首先，由规范不变分部积分恒等式 $\langle\phi_k, \theta_i\rangle = -\langle\Phi_k,\omega_i\rangle$，投影 $Q_\perp$ **精确消去**速度驱动记忆的 $O(1)$ 高频直通分量 $S_e\Gamma_\omega\theta$；剩余严格真因果记忆残差 $r_{\mathrm{mem}}^{\mathrm{rem}}$ 与局部幅值读出残差满足**显式有限区间衰减界**：
-   $$\frac{\|r_{\mathrm{mem}}^{\mathrm{rem}}\|_2}{\sqrt{K_{\mathrm{tot}}}} \le \frac{1}{\Omega_{\min}}\Big[\|S_e\|_{\max}\big(T_{\min}^{-1}\bar E_e + \bar E_{\tilde\psi_e}\big) + L_{\mathrm{cm}}\big(\Lambda_{a,\max}\bar E_a + \bar E_{\psi_a}\big)\Big] = O\!\left(\frac{T_{\min}^{-1} + \Lambda_{a,\max} + 1}{\Omega_{\min}}\right),$$
-   其中 $\bar E_x := \big(\frac{1}{K_{\mathrm{tot}}}\sum_{r,k}\|x^{(r)}\|_{L^2(I_k)}^2\big)^{1/2}$ 为每窗均方根能量。记剩余记忆残差与 $\operatorname{col}(\tilde\Phi_{\mathrm{stat}})$ 夹角为 $\theta_{\mathrm{rem}}$，则在无调制（$\beta^\star=0$）、有限观测噪声 $\varepsilon$ 下，无约束弱式最小二乘估计 $\hat\vartheta^{\mathrm{LS}}$ 满足：
-   $$\|\hat\vartheta^{\mathrm{LS}} - \vartheta^\star\|_2 \le \frac{1}{\gamma_{\mathrm{stat}}\sin\theta_{\min}}\left[\frac{\cos\theta_{\mathrm{rem}}}{\Omega_{\min}}\Big(\|S_e\|_{\max}(T_{\min}^{-1}\bar E_e + \bar E_{\tilde\psi_e}) + L_{\mathrm{cm}}(\Lambda_{a,\max}\bar E_a + \bar E_{\psi_a})\Big) + \frac{\|\Pi_{\mathrm{stat}}\varepsilon\|_2}{\sqrt{K_{\mathrm{tot}}}}\right].$$
-   **当 $\Omega_{\min}\to\infty$ 且无噪时，估计误差按 $\Omega_{\min}^{-1}$ 严格收敛至零。**
+| Theorem 2 的情形 | 可复核的算子与结论 |
+|---|---|
+| 1(a)、1(b) 零角激励 | 共同参考平衡使 $(c,\beta)$ 灵敏度为零。纯幅值见证另需 $\eta=0,\ h=\tau_{\rm env,cm}\equiv0,\ \partial_a\psi_e\equiv0$，且 $p=e=\omega=0$ 时相应右端为零，$a$ 子系统在该曲线上不依赖待判系数。线性及非线性 $a\to e$ 通路都须关闭。于是任意合法 $a(0)$ 可纯幅值演化，秩为 0，参数内点局部维数 $2\lvert E\rvert$（边界为可行锥）。 |
+| 2 单空间模态 | 取 $\theta=\theta_\star+u f(t)$，边差恒满足所有环路约束。小角线性伴随模型有 $\alpha_e=\cos\eta_e(u_i-u_j)$，$y=(B_S\mathrm{diag}(\alpha)c+q)f$；$\mathbf f\ne0$，$q\in\mathbb R^N$ 为允许的同频环境响应。$\mathbf f\otimes[B_S\mathrm{diag}(\alpha),I]$ 的秩恰 $N$，零空间维数 $m=\lvert S\rvert$，任意连通图均可构造。比如线性系统在节点输入可选时用相应净力驱动该模态，或取合法自由模态。有限幅度正弦的高次谐波可打破等价。 |
+| 3 瞬时环境混叠 | 放开相同边特征直通后，$[X_c,X_c]$ 仅见两组系数之和。若 $X_c$ 秩为 $k$，核维数 $2\lvert E\rvert-k$；满列秩时为 $\lvert E\rvert$。 |
+| 4 无端口观测 | 逐帧秩 $N$、核维数 $N$，以及在同衰减子族内的整轨 $N$ 维见证，见结论 4a。 |
 
-3. **结论 3（强奇对称调制下的有限样本 FISTA 误差界与支撑精确恢复）**：
-   在强调制 $0\le\beta_e^\star\le\kappa c_e^\star$（$\kappa=0.8$）下，分解 $\tanh(s_e(t)) = \mu_e + \tilde h_e(t)$，则有效目标刚度 $c_e^{\mathrm{eff}} := c_e^\star + \beta_e^\star\mu_e \in [(1-\kappa)c_e^\star,(1+\kappa)c_e^\star] = [0.2 c_e^\star, 1.8 c_e^\star]$ 与 $c^\star$ **精确同支撑**（$c_e^{\mathrm{eff}}>0 \iff c_e^\star>0$），且在 $a(t)$ 符号对称激励下 $\mu_e=0$（**零系统偏差**）。对非负 $L_1$ 正则 Stage 1 估计 $\hat\vartheta = \arg\min_{\vartheta\ge 0}\frac{1}{2K_{\mathrm{tot}}}\|\tilde\Phi_{\mathrm{stat}}\vartheta - \tilde y\|_2^2 + \lambda_1\mathbf{1}^\top\vartheta$，只要 $\lambda_1 \ge \lambda_{\mathrm{crit}} := \big\|\frac{1}{K_{\mathrm{tot}}}\tilde\Phi_{\mathrm{stat}}^\top r_{\mathrm{tot}}\big\|_\infty$（含调制零均值波动项 $\tilde r_{\mathrm{mod}}$、记忆残差 $r_{\mathrm{mem}}^{\mathrm{rem}}$ 与噪声 $\varepsilon$），则对支撑大小 $s = |S^\star|$ 有：
-   $$\|\hat\vartheta - \vartheta^{\mathrm{eff}}\|_2 \le \frac{2\lambda_1\sqrt{s}}{\gamma_0^2} = \frac{2\lambda_1\sqrt{s}}{\gamma_{\mathrm{stat}}^2 \sin^2\theta_{\min}}.$$
-   特别地，若 $\frac{2\lambda_1\sqrt{s}}{\gamma_0^2} < \frac{1}{2}\min_{e\in S_c^\star} c_e^{\mathrm{eff}}$，则取阈值 $\tau_{\mathrm{supp}}\in\big(\frac{2\lambda_1\sqrt{s}}{\gamma_0^2},\, c_{\min}^{\mathrm{eff}}-\frac{2\lambda_1\sqrt{s}}{\gamma_0^2}\big)$ 保证**精确支撑恢复 $\hat S_c = S_c^\star$（$\mathrm{F1}=1.000$）**。
+**Theorem 3。** 在有限图、有限系数、$M\succ0$ 下，指定 5N 振子闭合由线性项和有界且导数有界的函数构成；$K(a)\sin\varphi$ 两因子及导数均有界，下述快驱动亦有界光滑。故该具体场全局 Lipschitz，存在 $A,L$ 使 $\|f(z)\|\le A+L\|z\|$。局部 Lipschitz 与此增长界已足以延拓所有有限时解。一般更广闭合不能仅由线性增长推出全局 Lipschitz。有界正刚度不保证大角势 Hessian 正定、长时有界、渐近稳定或任意积分步长稳定。
 
-4. **结论 4（条件必要性）**：若取消 $\mathcal{O}_1$（退化至 $\mathcal{O}_0$）、取消 $\mathcal{F}_{\mathrm{env}}$ 允许瞬时差模 $\sin\varphi$ 直通、或取消 (A3) 宽带激励，则唯一可辨识性崩塌，精确等价类维数由 Theorem 2 给出。
+在**历史含储能梯度反馈的幅值方程族** $\dot a=-\nabla_a U_c-\Lambda_a a$，原二机不变子系统 $\dot z=(\pi/2)K'(z)-z,\ z(0)=0$ 对 $K=e^z$ 满足 $\dot z\ge(\pi/2-1)e^z$，有限爆破上界 $(\pi/2-1)^{-1}$ s。对 $K=1+0.8\tanh z$，$0\le z(t)\le0.4\pi(1-e^{-t})<1.256638$。两核比较来自同一个梯度闭合。v3 的 $\dot a$ 不含 $K'$；该例只证历史族中存在会爆破的成员。WC 的域与最终有界性证明见 §5。
 
-**形式化证明路线（4 步无缝衔接，可直接排入 0.5 页证明骨架 + 附录 A）**：
-- **Step 1（非二分图块三角下界，无需 $\operatorname{col}(B)\perp\operatorname{col}(|B|)$）**：
-  利用 $\mathbb{R}^N = \operatorname{span}(\mathbf{1})\oplus \mathbf{1}^\perp$ 正交分解及 $\mathbf{1}^\top B = 0^\top$、$\mathbf{1}^\top |B| = 2\mathbf{1}_m^\top$，对任意 $(c,g)\in\mathbb{R}^{2m}$ 有精确勾股恒等式：
-  $$\|\Phi_c c + \Phi_g g\|_2^2 = \frac{4}{N}\|\Psi_{\cos} g\|_2^2 + \|\Phi_c c + P_\perp \Phi_g g\|_2^2.$$
-  （另注：逐边交叉块对角元 $(B^\top|B|)_{e,e}=(+1)(+1)+(-1)(+1)=0$ 对**任意图**恒为零，仅共顶点相邻边存在交叉。）对第二项应用精确 Young 恒等式 $\|u+v\|_2^2 = (1-\alpha)\|u\|_2^2 - \frac{1-\alpha}{\alpha}\|v\|_2^2 + \|\sqrt{\alpha}u+\frac{1}{\sqrt{\alpha}}v\|_2^2 \ge (1-\alpha)\|u\|_2^2 - \frac{1-\alpha}{\alpha}\|v\|_2^2$（$\alpha\in(0,1)$），取 $\frac{1-\alpha}{\alpha} = \frac{2\gamma_{\cos}^2}{N^2 M_g^2}$ 即刻得到 $\frac{1}{K_{\mathrm{tot}}}\|\Phi_c c+\Phi_g g\|_2^2 \ge \gamma_{\mathrm{stat}}^2(\|c\|_2^2+\|g\|_2^2)$。再由正交投影定义 $\|Q_\perp v\|_2 = \|v\|_2\sin\angle(v,\mathcal{S}_{\mathrm{loc}})\ge \|v\|_2\sin\theta_{\min}$，即得 $\gamma_0 \ge \gamma_{\mathrm{stat}}\sin\theta_{\min}$。（线性无关性核验：即使在小角线性化极限下，$L_c + \operatorname{diag}(\tilde\gamma) = 0$ 的非对角元 $-c_{ij}=0$ 立推 $c=0$ 进而 $\tilde\gamma=0$，故对所有 $N\ge 2$ 在持久激励下必有 $\sin\theta_{\min}>0$。）
-- **Step 2（有限区间分部积分与精确 $\|\Phi_k\|_{L^2} < \Omega_k^{-1}$ 引理）**：
-  对第 3.1 节构造的 $\Psi_{m,q}(u) = \sin^2(\pi u/L)\cdot\{\cos,\sin\}(\Omega_m u)$（$\Omega_m=2\pi m/L, m\ge 1$），$\Psi_{m,q}(0)=\Psi_{m,q}(L)=0$ 且 $\Psi'_{m,q}(0)=\Psi'_{m,q}(L)=0$。直接三角正交积分给出**精确闭式恒等式**：
-  - 对 $m\ge 2$（余弦与正弦均同）：$\|\Phi_{m,q}\|_{L^2} = \frac{\|\Psi_{m,q}\|_{L^2}}{\|\Psi'_{m,q}\|_{L^2}} = \big(\Omega_m^2 + \frac{4\pi^2}{3L^2}\big)^{-1/2} < \Omega_m^{-1}$；
-  - 对 $m=1$：$\|\Phi_{1,\cos}\|_{L^2} = \frac{\sqrt{7/8}}{\Omega_1} < \Omega_1^{-1}$，$\|\Phi_{1,\sin}\|_{L^2} = \frac{\sqrt{5/8}}{\Omega_1} < \Omega_1^{-1}$。
-  将 $\phi_k = \Phi'_k$ 与 $e_i(t)$ 在 $I_k$ 上分部积分（边界项 $\Phi_k e_i\big|_{\partial I_k} = 0$ 精确消失）：
-  $$\langle\phi_k, e_i\rangle = -\langle\Phi_k, \dot e_i\rangle = -\gamma_{e\omega,i}\langle\Phi_k,\omega_i\rangle + \langle\Phi_k, T_{e,i}^{-1}e_i - \tilde\psi_{e,i}\rangle.$$
-  首项落入 $\mathcal{S}_{\mathrm{loc}}$ 被 $Q_\perp$ 精确零化；第二项与 $\langle\phi_k,\tau_{\mathrm{env,cm},i}(a)\rangle = -\langle\Phi_k,\tau'_{\mathrm{env,cm},i}(a)\dot a_i\rangle$ 直接由 Cauchy–Schwarz 与 $\|\Phi_k\|_{L^2}<\Omega_{\min}^{-1}$ 给出结论 2 的显式上界。
-- **Step 3（非负凸锥变分不等式）**：
-  由 $\hat\vartheta\ge 0$ 最优性及 $\vartheta^{\mathrm{eff}}\ge 0$ 可行性，$\langle \mathcal{G}(\hat\vartheta-\vartheta^{\mathrm{eff}}) - \frac{1}{K_{\mathrm{tot}}}\tilde\Phi_{\mathrm{stat}}^\top r_{\mathrm{tot}} + \lambda_1\mathbf{1},\; \vartheta^{\mathrm{eff}}-\hat\vartheta\rangle \ge 0$。当 $\lambda_1\ge\lambda_{\mathrm{crit}}$ 时，对所有 $j\notin S^\star$ 有 $\Delta_j = \hat\vartheta_j \ge 0$ 且 $(\frac{1}{K_{\mathrm{tot}}}\tilde\Phi_{\mathrm{stat}}^\top r_{\mathrm{tot}}-\lambda_1\mathbf{1})_j\le 0$，故非支撑和 $\le 0$；仅留支撑集上界 $2\lambda_1\|\Delta_{S^\star}\|_1 \le 2\lambda_1\sqrt{s}\|\Delta\|_2$，结合 $\Delta^\top\mathcal{G}\Delta \ge \gamma_0^2\|\Delta\|_2^2$ 立得结论 3 与精确支撑恢复推论。
+## 4　B3 · 基准 1 的物理系统及频带
 
----
+**系统固定法。** 每个 $N=8,16,32$ 固定一个原生物理系统，各工况、观测噪声、优化种子复用。下表是这三个确定性系统的结果。生成器采用 NumPy PCG64，独立子流 $G_k=\mathrm{default\_rng}(\mathrm{SeedSequence}([20261128,N,k]))$。构造环边及弦 $(0,2)$，从按字典序排列的其余非环非自环边用 子流 $G_0$ 的 `choice` 无放回取 $N/2-1$ 个；将全部 $i<j$ 的边排序。$B_{ie}=+1,\ B_{je}=-1,\ C=|B|$。$G_1,G_2,G_3,G_4$ 依序分别取均匀 $m_i\in[.7,1.4],d_i\in[.12,.25],c_e\in[1.2,2.4],\theta_{\star i}\in[-.35,.35]$，参考角统一减节点均值。设
+$$
+ K=B\,\mathrm{diag}(c\cos\eta)B^\top,\quad
+ s_N={\lambda_2(\mathrm{diag}(m)^{-1/2}K\,\mathrm{diag}(m)^{-1/2})\over(2\pi\cdot.8)^2},\quad
+ M_i=s_Nm_i,\quad D_i=\sqrt{s_N}\,d_i .
+$$
+用子流 $G_5$ 的 `choice` 从排序后边序号无放回取 $N$ 条；按返回顺序赋 $G_6$ 生成的 $\beta_e/c_e\in[.65,.8]$，其余置零。$G_7$ 对所有真边给 $g_e/c_e\in[.25,.50]$。这些是生成数值；任何学习方法均不得从种子或生成器重建真值。$M,D$ 作为既有可测常数给各法。
 
-### 1.4 Theorem 2（退化激励与无约束环境下的精确等价类维数）
+| $N$ | 真边 / 候选 | $s_N$ | 全部 $N-1$ 个正自然频率的最小–最大值 (Hz) | 含 $D$ 的静态骨架振荡频带 (Hz) |
+|---:|---:|---:|---:|---:|
+| 8 | 12 / 28 | .083169103975 | .800000–1.832886 | .799146–1.831617 |
+| 16 | 24 / 120 | .027718793350 | .800000–3.307230 | .796749–3.304417 |
+| 32 | 48 / 496 | .015374441480 | .800000–4.503304 | .794143–4.500774 |
 
-设系统具有 $N$ 节点、$|E|$ 条候选边（$m=|S^\star|$ 条真实活动边），对应定向关联阵 $B\in\mathbb{R}^{N\times|E|}$ 及活动边关联阵 $A = B_{S^\star}\in\mathbb{R}^{N\times m}$。以下四类退化/放宽情形给出**精确矩阵秩与零空间维数公式**：
+计算为 $\sqrt{\lambda(\,M^{-1/2}KM^{-1/2}\,)}/(2\pi)$，仅排除共同角度的零根。谱配准是已知真值生成器的定标步骤。两种封闭格令 $\tau_m=\tau_{\rm env}=g=0$，静态格 $\beta=0$，调制格保留 $a,\beta$；非活动隐态不进入运动方程。闭格在生成初始历史之前，除独立差模扰动外，对各事件全节点叠加同一事前抽取的共模初速（均匀 $[-.4,.4]$ rad/s、与差模和结局独立），此后按原方程演化；不对生成好的轨迹作后处理。合法历史能观测这项激励。两种开放格均开启调制、机械及环境，另在 `strong_open_sym` 开启 $g$。以 $\Delta_e=\cos(\varphi_e-\eta_e)-1$ 取代隐态驱动中的 $\cos\varphi_e-\cos\eta_e$，保留后者用于损耗端口。这使大摆角负反馈保留而参考处该驱动一阶导数为零。最终真值为
+$$
+\begin{aligned}
+ 2\dot p&=-.525p-.35\omega-.15\tanh p,\\
+ 2\dot a&=-.45a+.575\omega+.4C\Delta,\\
+ 2\dot e&=-.265e+.475\omega+.35\tanh a+.225C\Delta,\\
+ \tau_e&=B[(c+\beta\tanh(C^\top a))\sin\varphi-c\sin\eta]
+       +C[g(\cos\varphi-\cos\eta)]+1.8e+.35\tanh a,\\
+ T_i(\omega)&=\tanh^3[(\omega_i-\bar\omega_M)/(.4\,{\rm rad/s})],\quad
+ \bar\omega_M={\mathbf1^\top M\omega\over\mathbf1^\top M\mathbf1},\qquad
+ \tau_{m,i}=p_i-b_iT_i(\omega),\quad b_i=.4 .
+\end{aligned}
+$$
+$M\dot\omega=\tau_m-\tau_e-D\omega$。快反馈在参考的一阶导数为零，对当前差速有瞬时响应，依赖全网共模速度；它不属于 A2 的严格真节点局部慢端口类。对非零正弦差速，三次非线性产生高次谐波。例如幅值恰为 .4 rad/s 的单频探针，$T_i$ 基频、三次、五次幅值分别为 .37757、.08191、.02069。幅度 $.4$ 是生成真值；正式基线和 PDD 都享有相同模板、可学习 $b_i$，参考度量不暴露真图。纯运动 Stage 1 在 $L$ 加入 $\mathrm{diag}\langle\phi,T\rangle$ 剖除未知 $b$（因为净目标中符号为 $+bT$），再按 §2 完成同一套 FISTA/NNLS 与 Stage 2。学得的 $b$ 可作初始化，所有同构法在各自 Stage 2 都可训练 $b$。训练真值除测量外不充当未来驱动。控制组也能解释该快通道，实际可见的宽带强度仍须测量；应同时报告快/慢机械 RMS 和观测误差。修改后的 $\Delta$ 属于原正余弦静态字典的线性组合，或可直接作为公开候选输入，勿把参考重写进 $g$ 列。
 
-| 情形 | 退化/放宽假设 | 观测/灵敏度线性算子 $M$ | 精确秩 $\operatorname{rank}(M)$ | 精确等价类维数 $\dim\ker(M)$ | 显式等价类与 Layer 1 数值精确复现 |
-| --- | --- | --- | :---: | :---: | --- |
-| **1. 零角激励** | (1a) 同步平衡 $\theta(t)\equiv\theta_\star+\bar\theta\mathbf{1}, \omega\equiv p\equiv a\equiv e\equiv 0$（任意 $\theta_\star$）；或<br>(1b) 纯幅值初态 $a(0)\ne 0, \theta\equiv\theta_\star, \omega\equiv p\equiv e\equiv 0$（**须零流参考 $\eta=B^\top\theta_\star=0$**；若 $\eta\ne 0$ 则 $\beta\tanh(s)\sin\eta\ne 0$ 局部可观） | 灵敏度阵 $J_{(c,\beta)} = \frac{\partial(\tau_e,\dot z)}{\partial(c,\beta)} \equiv 0$（参数维数 $2|E|$） | **`0`** | **`2|E|`** | 任意 $(c,\beta)$ 给出完全相同的零运动右端与零端口。复现 Layer 1（$N=8,|E|=28$）：$2|E|=56 \Rightarrow$ **秩 `0`、零空间 `56`**。 |
-| **2. 单频/同频补偿** | 活动边角波形与环境共享单一非零时间波形 $f(t)$（$T_s$ 采样帧向量 $\mathbf{f}\ne 0$）：$y(t)=(Ac+q)f(t)$，$\xi=(c,q)\in\mathbb{R}^{m+N}$ | Kronecker 积算子 $M = \mathbf{f}\otimes [A, I_N]\in\mathbb{R}^{(T_s N)\times(m+N)}$ | **`N`**（因 $\operatorname{rank}(\mathbf{f})=1$ 且 $\operatorname{rank}([A,I_N])=N$） | **`m`**（即 $(m+N)-N$） | $\ker(M)=\{(\Delta c,\,-A\Delta c):\Delta c\in\mathbb{R}^m\}$。取 $\Delta c=-c_{e_0}^\star\mathbf{e}_{e_0}$ 可将 $m$ 条真边合法删减为 $m-1$ 条而观测严格不变。复现 Layer 1（$N=8,m=12$）：参数 $20 \Rightarrow$ **秩 `8`、零空间 `12`**（12 边 $\to$ 11 边，观测差 $<10^{-14}$）。 |
-| **3. 无约束瞬时差模环境混叠** | 保留 $\mathcal{O}_1$ 与满宽带激励 (A3)，但取消 $\mathcal{F}_{\mathrm{env}}$，允许 $\tau_{\mathrm{env}}^{\mathrm{inst}}=B[q_{\mathrm{env}}\odot(\sin\varphi-\sin\eta)]$（或任意边特征直通） | $\Phi_c(c+q_{\mathrm{env}}) = [\Phi_c,\Phi_c]\begin{bmatrix}c\\ q_{\mathrm{env}}\end{bmatrix}$ | $\le |E|$（对 $(c,q_{\mathrm{env}})\in\mathbb{R}^{2|E|}$） | **$\ge |E|$**（放开 $a$ 调制则 $\ge 2|E|$） | $\{(c+\Delta,\,q_{\mathrm{env}}-\Delta): \Delta\in\mathbb{R}^{|E|}, c+\Delta\ge 0\}$。因 $P_\perp B=B$，零和投影 $P_\perp$ **完全无法**消去此等价类。 |
-| **4. $\mathcal{O}_0$ 端口平移规范** | 退化为纯运动观测 $\mathcal{O}_0$（无 $\tau_m,\tau_e$ 独立观测），动量方程仅暴露净力 $\tau_{\mathrm{net}}=\tau_m-\tau_e$ | 端口差映射 $(\tau_m,\tau_e)\mapsto \tau_m-\tau_e$ | 每帧 $N$（总自由度 $2N$） | **逐帧 $N$ 维**（定常/共享衰减模态参数空间至少 **$N$ 维**） | $(\tau_m(t),\tau_e(t))\mapsto (\tau_m(t)+\delta(t),\,\tau_e(t)+\delta(t))$ 保持 $(\theta,\omega)$ 严格不变；若机械驱动未限为节点局部，则还可吸收任意 $B[\Delta\odot\sin\varphi]$ 使静态骨架亦不可辨。 |
+**完整线性化交叉核验。** $R=M^{-1}$，$K_s=K-C\,\mathrm{diag}(g\sin\eta)B^\top$，$H=B\,\mathrm{diag}(\beta\sin\eta)C^\top+.35I$。按 $(\theta,\omega,p,a,e)$ 的解析 Jacobian 为
+$$
+ \begin{pmatrix}0&I&0&0&0\\-RK_s&-RD&R&-RH&-1.8R\\
+ 0&-.175I&-.3375I&0&0\\0&.2875I&0&-.225I&0\\
+ 0&.2375I&0&.175I&-.1325I\end{pmatrix}.
+$$
+表中 $\alpha$ 为仅除去唯一共同角度零根后的谱横坐标（$\mathrm{s}^{-1}$）。开放格各自出现两个分离的簇，以 $|\Im\lambda|>1\ {\rm s}^{-1}$ 标快振荡，分离倍数为最小快 $|\Im\lambda|$ 除以其余根最大 $|\lambda|$。包括共模转速；关损耗 / 开损耗按同一顺序列出。
 
-**证明步骤**：情形 1 直接由 $K_e(0)\sin\eta_e - c_e\sin\eta_e \equiv 0$ 及 $\eta=0\Rightarrow\sin\varphi_e\equiv 0$ 逐项求导得零矩阵；情形 2 由 Kronecker 积秩公式 $\operatorname{rank}(\mathbf{f}\otimes[A,I_N])=\operatorname{rank}(\mathbf{f})\cdot\operatorname{rank}([A,I_N])=1\cdot N$ 及秩-零度定理直接得出，且非负支撑缩减见证由 $\Delta c = -c_{e_0}^\star\mathbf{e}_{e_0}$ 构造验证；情形 3 由 $[I_{|E|}, I_{|E|}]$ 零空间维数 $|E|$ 及 $P_\perp B=B$ 给出；情形 4 由 $[I_N, -I_N]$ 零空间 $\{(v,v):v\in\mathbb{R}^N\}$ 给出。
+| $N$ | 两封闭格 $\alpha$（静态 / 调制） | 两开放格 $\alpha$ | 两开放格全部快振荡频带 (Hz) | 两开放格快慢分离 |
+|---:|---|---|---|---|
+| 8 | −.240297 / −.204042 | −.088099 / −.083010 | .445854–1.881642 / .474400–1.904585 | 8.447 / 8.986 |
+| 16 | −.450913 / −.211405 | −.057615 / −.055118 | .769320–3.397460 / .780550–3.446595 | 14.559 / 14.771 |
+| 32 | −.559792 / −.207747 | −.038956 / −.038446 | 1.034524–4.604735 / 1.078445–4.669514 | 19.554 / 20.385 |
 
----
+封闭格复算在活动态上做：使用上式的运动块及适用的 $a$ 行，断开机械、电气环境读出。频率单位一律 Hz；谱实部和慢极点单位 $\mathrm{s}^{-1}$。严格环境记忆 $e$ 的截止为 $.1325/(2\pi)=.02109$ Hz；即取 $p,a,e$ 三个孤立参考衰减中最快的 $.3375/(2\pi)=.053715$ Hz，最低正自然频率仍高 **14.893 倍**，最低完整开放振荡频率也高 **8.300 倍**。此处 “截止” 描述线性通道，不能代替 B2 的非线性速度泄漏界。
 
-### 1.5 Theorem 3（奇对称有界核开放闭合的全局适定性与有限时间逃逸反例）
+**Stage 1 主通带。** 在 0–4 s 取三个 2 s 窗，起点 $0,1,2$ s。每窗用 $f=.50,.75,\ldots,5.00$ Hz、$q=0,\pi/2$ 双相；总数 $K=114$。$u$ 为窗内时间，$\Psi=\sin^4(\pi u/2)\cos(2\pi fu+q)$，$\Phi=\Psi/\|\Psi'\|_2,\ \phi=\Phi'$，窗外零。至三阶端点消失保证 $\phi$ 的零延拓属于 $C_c^2(\mathbb R)$。强度以实际窗频响定义，紧支窗并非理想带通。求积用 $\Delta t=.01$ s 的梯形权；可从离散 $\phi$ 扣除 $b(u)\sum w_t\phi/\sum w_tb$、再归一（$b=\sin^4(\pi u/2)$），同时对 $\phi'$ 做同一解析修正和缩放；相应离散误差纳入 §2。新窗不套用旧 $\sin^2$ 包络的常数。
 
-**数学陈述**：
-1. **全局存在唯一性（对接奇对称有界核）**：对固定有限图 $G=(V,E)$、$M\succ 0$、$D\succeq 0$、有限正尺度 $(S_p,S_e,\omega_{\mathrm{scale}})$、奇对称有界核 $K_e(a)=c_e+\beta_e\tanh(a_i+a_j)$（$c_e\ge 0, 0\le\beta_e\le\kappa c_e, \kappa=0.8$）及第 3.2 节有界非线性字典（所有非线性基函数为 $\sin,\cos,\tanh,\tanh^2$，线性项系数有限），完整 $5N$ 维向量场 $f:\mathbb{R}^{5N}\to\mathbb{R}^{5N}$ 为 $C^\infty$ 局部 Lipschitz（本具体无状态乘积闭合甚至全局 Lipschitz）且满足显式全局线性增长界：
-   $$\|f(z)\|_2 \le A + L\|z\|_2 \qquad (\forall z\in\mathbb{R}^{5N}),$$
-   其中
-   $$A = \|M^{-1}\|_2\Big(2(1+\kappa)\|B\|_2\|c\|_2 + 2\||B|\|_2\|g\|_2 + \|\alpha_1\|_2 + \|\alpha_2\|_2\Big) + A_{\mathrm{lat,bdd}},$$
-   $$L = 1 + \|M^{-1}\|_2\big(\|FS_p\|_2 + \|D\|_2 + \|S_e\|_2\big) + L_{\mathrm{lat,lin}}.$$
-   由 Picard–Lindelöf 局部存在唯一性与 Grönwall 不等式 $\|z(t)\|_2 \le (\|z(0)\|_2 + At)e^{Lt}$，任意有限初态 $z(0)\in\mathbb{R}^{5N}$ 的唯一解延拓至所有有限时刻 $t\in[0,\infty)$，**严格排除有限时间逃逸**。（基准 3 的 $4N$ 维 Wilson–Cowan 向量场同理满足 $[0,1]^N$ 前向不变性与全局线性增长，拥有完全同构的全局存在唯一性。）
-2. **两机无界核有限时间逃逸解析反例（结构必要性）**：在已独立复核的两机储能不变子系统 $\dot z = \frac{\pi}{2}K'(z)-z,\; z(0)=0$ 上：
-   - **无界指数核** $K(z)=e^z$：对 $z\ge 0$ 有 $e^z\ge 1+z>z$，故 $\dot z\ge (\frac{\pi}{2}-1)e^z$，分离变量得有限爆破上界 $T_{\mathrm{esc}} \le (\frac{\pi}{2}-1)^{-1} \approx 1.751938\ \mathrm{s}$（与 `escape_example.py` 一致：到达 $z=16$ 时刻 `0.761924409 s`，解析尾界 $1.972\times 10^{-7}\ \mathrm{s}$）；
-   - **选定奇对称有界核** $K^{\mathrm{odd}}(z)=1+\kappa\tanh z$（$\kappa=0.8$）：$K'(z)=\kappa\operatorname{sech}^2 z\in(0,\kappa]$，由 $\dot z(0)=\frac{\pi\kappa}{2}>0$ 得 $z(t)\ge 0$ 且 $\dot z + z \le \frac{\pi\kappa}{2}$，积分因子 $e^t$ 立得全局一致有界：
-     $$0 \le z(t) \le \frac{\pi\kappa}{2}(1-e^{-t}) < \frac{\pi\kappa}{2} \approx 1.2566 \qquad (\forall t\ge 0).$$
-   （历史 v2 有界核 $e^{\tanh z}$ 对应上界 $\frac{\pi e}{2}(1-e^{-t})$ 保持完全兼容并作为参照并列复核。）
+复算每行 $k$ 的 $H_k(f)=|\sum_t w_t\phi_k(t)e^{2\pi ift}|$，在 $0:.0005:5.5$ Hz 上求行峰 $P_k$，取 $\max_k H_k(f)/P_k$。在 **[.44,5.00] Hz** 主带网格下界为 **.74019657**。以窗中心为相位原点，行归一化频响的 Lipschitz 上界 $\max_k 2\pi\sum_t|t-1||w_t\phi_k(t)|/P_k=2.41093\,{\rm Hz}^{-1}$；插值间隙最多 .00025 Hz，故整段下界 $.73959>1/\sqrt2$。该主带覆盖三个尺寸的全部正自然频率及表中开放振荡。离散 DC 残差 $<10^{-15}$。若事件被截断，仅使用观测完整的窗、登记丢窗率和缺事件，尤其检查快失稳事件对 A3 的贡献；不能把过早截止的事件当作有 114 个窗口。
 
-**明确不蕴含的结论（防夸大红线）**：
-Theorem 3 **不蕴含**：① 长期一致有界性（$\sup_{t\ge 0}\|z(t)\|<\infty$，线性增长界允许且物理上必须允许真实失稳轨线指数分离）；② 局部/全局渐近稳定性、被动性或 Lyapunov 吸引域（RoA）证书；③ 显式定步长 RK4 在任意大步长 $\Delta t$ 下的数值稳定性（仍须逐格通过双步长资格核验）；④ 底层高阶 FOM（如 IEEE-39）的适定性或安全证书。
+**Run 0 分支 B 的替换与重校准。** 删除 “删 0.5 Hz” 及其变体。支撑差时依次报告完整窗覆盖、实际谱能量、A3 夹角/条件数、噪声与冻结后可查的 $\mu_e^{\rm eff}$、残差及核验分母。强失稳下不设 $\mu_e=0$。`PDD-Frozen` 使用同一 $\hat S,\hat c,\hat g$；`Stage-2 Bounded-Recal` 保持 $\hat S_c,\hat S_g,\hat g$ 不变，在每次更新后对 $e\in\hat S_c$ 投影
+$$
+ .50\,\hat c_e\le c_e\le2.20\,\hat c_e,\quad 0\le\beta_e\le.8c_e ;
+ \qquad c_{e\notin\hat S_c}=\beta_{e\notin\hat S_c}=0 .
+$$
+若 NNLS 把某选中边估到零，记录支撑/非零权不一致；该盒在该边退化为零，不偷偷补边。盒覆盖某真系数的充要条件是 $\hat c/c^\star\in[1/2.20,2]$。例如就算在理想单列下 $|\mu|\le.7$，$\beta/c=.8$ 仍允许 $c/\hat c=1/.44=2.2727$。故此盒是有预算的消融约束，不能声称必定含真值。冻结/重标并列用同一骨架、数据和种子，报告 $c^{\rm eff}$ 相对误差、相对 $c^\star$ 误差、越盒率、触边率、端口、MSE、VPT 及失稳。评分用的真值不回流折内拟合；一次冒烟差异不能晋升模型。
 
----
+## 5　B3 · 基准 3 的稀疏 Wilson–Cowan 定标
 
-## 二、基准 3（非振子开放网络系统）唯一最终选型与完整规格
+**拓扑与真值。** $N=8,16$，$n_E=3N/4,\ n_I=N/4$；编号从 0 开始，$W_{ij}$ 表示 $j\to i$ 的有符号权。每个接收 E 节点 $i$ 从 $(i-1)\bmod n_E,(i-2)\bmod n_E$ 各取 $+1.25$，从 I 节点 $n_E+\lfloor i/3\rfloor$ 取 $-1.5$。每个接收 I 节点 $n_E+k$ 从 $3k,3k+1,3k+2$ 各取 $+2/3$，从 $n_E+(k-1)\bmod n_I$ 取 $-0.5$。置换节点时连同类型、常数、数据一起置换。真边数为 26/56、52/240。学习器只得有向无自环完全候选图与已知源类型，不能抄生成器的连接规则。以下四块按**接收行、发出列**消除下标歧义。
 
-### 2.1 唯一二选一拍板与五维淘汰论证
+| 接收 ← 发出 | 有符号行和 | $\beta_{ij}/w_{ij}$ 真值，$w=\lvert W\rvert$ | Stage 2 可学区间 |
+|---|---:|---:|---|
+| E ← E | +2.50 | +0.80 | $[0,0.8]w$ |
+| E ← I | −1.50 | −0.02 | $[-0.8,0]w$ |
+| I ← E | +2.00 | +0.05 | $[0,0.8]w$ |
+| I ← I | −0.50 | −0.02 | $[-0.8,0]w$ |
 
-**唯一拍板选定：开放可塑 Wilson–Cowan 神经群体网络（Open Plastic Wilson–Cowan Neural Population Network）**；**明确舍弃：开放黏弹性非线性阻尼弹簧-质点网络**。
+令 $d=r-r_\star,\ r_{\star i}=0.15,\ \tau_r=0.08\,{\rm s},\ \alpha_r=0.15$，$S(x)=(1+\exp[-5(x-0.5)])^{-1}$，$I_0=S^{-1}(.15/(1-.15^2))=0.158445237369$。令 $C_{ij}=\sigma_j\beta_{ij},\ K_{ij}=W_{ij}+C_{ij}\tanh(a_i+a_j)$。精确生成方程为
+$$
+\begin{aligned}
+ I_{\rm drive}&=u,\quad I_{\rm net}=Kd-1.5m+.01\tanh a,\\
+ .08\dot r&=-r+(1-.15r)\odot S(I_0+u+I_{\rm net}),\\
+ \dot u&=-.6u-.02d,\qquad
+ \dot a=-.5a+2d-.1\tanh a,\qquad
+ \dot m=-.3m+.02d+.01\tanh a .
+\end{aligned}
+$$
+六项 $(\gamma_{ur},\gamma_{ar},\gamma_{a,\mathrm{sat}},\gamma_{mr},\gamma_{ma},\alpha_{\mathrm{cm}})=(.02,2,.1,.02,.01,.01)$，所有节点取同值。高发放提高 $a$，E 源权幅值增加，I 源抑制幅值轻减；所有突触全程保持源类型符号。该 STP 为有效突触可塑性模型。确定双稳态的代价是将原稿适应与调制的 RMS 占比、强调制边比例撤为待测量，不据静态根宣称满足这些比例。
 
-| 评估维度 | 开放 Wilson–Cowan 神经群体网络（**入选**） | 开放黏弹性非线性阻尼弹簧-质点网络（**舍弃**） |
-| --- | --- | --- |
-| **1. 与振子方程族的本质数学差异** | **本质跨方程族**：一阶非哈密顿耗散发放率动力学（无惯量 $M$、无二阶动量、无辛结构）、遵循 Dale 法则的**有向非互易** E/I 突触耦合、单调饱和 Sigmoid 激活与有界状态空间 $[0,1]^N$。彻底击碎“只是换皮摇摆方程”的审稿质疑。 | **实质同族**：仍为二阶牛顿力学网络 $M\ddot q+D\dot q+B[k\odot\phi(B^\top q)]=f$，与基准 1（带惯性 Kuramoto）和基准 2（机械摆阵）同属二阶互易势网络，跨方程族说服力不足。 |
-| **2. $\mathcal{O}_1$ 特权端口与 $\mathcal{O}_0$ 部署观测的物理自然性** | **教科书级 LUPI 映射**：训练期 $\mathcal{O}_1$ 为侵入式胞内/膜片钳记录的聚合突触与神经调质净电流 $(I_{\mathrm{drive}}, I_{\mathrm{net}})$；部署期 $\mathcal{O}_0$ 仅为非侵入式宏观群体发放率短时历史 $r(t)$（钙成像/多单元记录）。 | 与基准 2 机械摆阵（实验室力矩传感器 vs 外场位速）在物理叙事上高度重复，缺乏独立跨领域支撑。 |
-| **3. Theorem 1 分离条件的直接对应性** | **精准同构且无需互易性**：瞬时有向突触骨架 $W(a)(r-r_\star)$ vs 严格真因果慢适应/星形胶质环境记忆 $m(t)$（$\dot m$ 仅由 $r,a,m$ 驱动、不含 $\dot r$，100% 严格真 $O(\Omega_m^{-1})$ 衰减！）+ 短时突触可塑性（STP）奇对称调制；$\mathcal{O}_0$ 下精确存在同构的 $N$ 维电流平移规范 $(I_{\mathrm{drive}}+\delta, I_{\mathrm{net}}-\delta)$。 | 仅复述互易 $B$ 与速度阻尼结构，未能检验两阶段解耦脱离 $B/\sin$ 后的可迁移性。 |
-| **4. 定性失稳/分岔是否清晰可测** | **典型双稳态鞍结癫痫跃迁（Bistable Seizure Runaway）**：低发放稳态（$r_\star\approx 0.15$）与高发放超同步癫痫吸引子（$\bar r_E > 0.65$）由清晰分界面隔开；短时突触易化 $a$ 增强 $W_{EE}$ 与慢适应耗竭决定是否越过分界，与振子失步互补。 | 黏弹性弹簧-质点通常为单稳态耗散（除非人工构造负刚度屈曲），失稳边界不如双稳态神经癫痫跃迁自然清晰。 |
-| **5. 单进程 CPU 算力成本** | 状态维数仅 **$4N$**（$N=8$ 为 32 维，比振子 40 维更轻），$\tau_r\in[0.08,0.15]\ \mathrm{s}$ 无刚性，RK4 $\Delta t=0.01\ \mathrm{s}$ 稳定且单步耗时较基准 1 低约 **20%–25%**。 | 状态维数 $5N$ 且高刚度黏弹性项易引入数值刚性（增大步长资格负担）。 |
+**静态证明与复算。** 群体均匀子空间因四块入权行和固定而不变。逐类令 $u=-d/30$、解 $.5a+.1\tanh a=2d$（严格单调），代入 $m=(.02d+.01\tanh a)/.3$、$\dot r=0$ 得二维不动点方程。全图稳定性用完整 $4N$ Jacobian，未截去空间模态。以下按 E/I 顺序给出平衡坐标。
 
-### 2.2 开放可塑 Wilson–Cowan 网络完整数学规格
+| 平衡 | $(r_E,r_I)$ | $(u_E,u_I)$ | $(a_E,a_I)$ | $(m_E,m_I)$ |
+|---|---|---|---|---|
+| 低发放 | (.150000000, .150000000) | (0, 0) | (0, 0) | (0, 0) |
+| 中间 | (.194471533, .190435918) | (−.001482384, −.001347864) | (.148418490, .134921856) | (.007876043, .007166030) |
+| 高发放 | (.869436721, .846807657) | (−.023981224, −.023226922) | (2.679619866, 2.589471587) | (.080983618, .079413684) |
 
-- **网络拓扑与状态维数（$4N$ 维，$N\in\{8, 16\}$）**：
-  - 遵循生物 Dale 法则：将节点分为已知类型的兴奋性（E）与抑制性（I）群体，记已知冻结符号 $\sigma_j=+1\ (j\in V_E)$、$\sigma_j=-1\ (j\in V_I)$。$N=8$ 取 $6\text{E}+2\text{I}$；$N=16$ 取 $12\text{E}+4\text{I}$。候选图为有向无自环完全图（$|E_{\mathrm{dir}}|=N(N-1)$：$56$ 条于 $N=8$，$240$ 条于 $N=16$），真实稀疏突触支撑 $|S^\star| \approx 2.5N$（$20/56$ 于 $N=8$，$40/240$ 于 $N=16$，含 E$\to$E、E$\to$I、I$\to$E、I$\to$I 环路）。
-  - 完整状态 $z = (r, u, a, m) \in [0,1]^N \times \mathbb{R}^N \times \mathbb{R}^N \times \mathbb{R}^N$：
-    - $r_i \in [0, 1]$：可观群体发放率；
-    - $u_i$：不可观外源丘脑/皮层下主动驱动电流（对应振子 $p_i$）；
-    - $a_i$：不可观短时突触可塑性（STP 易化/抑制）神经调质隐态（对应振子 $a_i$）；
-    - $m_i$：不可观慢发放频率适应 / 胞外离子环境记忆（对应振子 $e_i$）。
-- **已知硬生物物理先验（冻结公开常数）**：
-  - 膜时间常数 $\tau_{r,i}\in[0.08,0.15]\ \mathrm{s}$、不应期系数 $\alpha_r = 0.15$（稳态上限 $r_{\max}=1/1.15\approx 0.870$）、单调传递函数 $S(x) = (1 + \exp(-\gamma_s(x - x_0)))^{-1}$（$\gamma_s=5.0, x_0=0.5$）、已知细胞类型符号 $\sigma_j\in\{+1,-1\}$、已知稳态参考发放率 $r_{\star,i}\in[0.14,0.18]$ 及对应平衡偏置电流 $I_{0,i} := S^{-1}\!\big(\frac{r_{\star,i}}{1-\alpha_r r_{\star,i}}\big)$（保证在 $z_\star=(r_\star,0,0,0)$ 处 $\dot r\equiv 0$ 精确成立）。
-- **完整微分方程**：
-  $$\tau_{r,i}\dot r_i = -r_i + (1 - \alpha_r r_i)\,S\!\big(I_{0,i} + I_{\mathrm{drive},i} + I_{\mathrm{net},i}\big),$$
-  $$I_{\mathrm{drive},i} = u_i, \qquad I_{\mathrm{net},i} = \underbrace{\sum_{j\ne i} \sigma_j\, w_{ij}(a)\,(r_j - r_{\star,j})}_{F_{\mathrm{syn},i}(r,a)} \;\underbrace{- S_{m,i} m_i + \alpha_{\mathrm{cm},i}\tanh(a_i)}_{I_{\mathrm{env},i}^{\mathrm{open}}(a,m)},$$
-  其中奇对称有界 STP 调制核（与基准 1 **完全同构**）：
-  $$w_{ij}(a) = w_{ij} + \beta_{ij}\tanh(a_i + a_j), \qquad w_{ij}\ge 0,\quad 0\le \beta_{ij}\le 0.8\,w_{ij}.$$
-  隐态方程（严格真因果，$\partial_{\dot r}\psi_m \equiv 0$）：
-  $$\dot u_i = -\lambda_{u,i} u_i - \gamma_{ur,i}(r_i - r_{\star,i}), \qquad \lambda_{u,i}\in[0.45,0.75]\ \mathrm{s}^{-1},$$
-  $$\dot a_i = -\lambda_{a,i} a_i + \gamma_{ar,i}(r_i - r_{\star,i}) - \gamma_{a,\mathrm{sat},i}\tanh(a_i), \qquad \lambda_{a,i}\in[0.40,0.65]\ \mathrm{s}^{-1},$$
-  $$\dot m_i = -T_{m,i}^{-1} m_i + \gamma_{mr,i}(r_i - r_{\star,i}) + \gamma_{ma,i}\tanh(a_i), \qquad T_{m,i}^{-1}\in[0.20,0.40]\ \mathrm{s}^{-1}.$$
-  （物理强开放/强调制参数：静态 E 权行和 $\approx 1.7\text{–}2.1$、I 权行和 $\approx 1.1\text{–}1.5$ 保证低发放平衡 $r_\star$ 局部渐近稳定；$2/3$ 活动突触具强调制 $\beta_{ij}\in[0.65,0.80]w_{ij}$，且 $S_{m,i}\in[1.2,1.9]$，使调制电流 RMS 占 $I_{\mathrm{net}}$ 的 $20\%\text{–}35\%$、慢适应环境电流 RMS 占 $35\%\text{–}50\%$。）
-- **三级观测算子 $\mathcal{O}_0 / \mathcal{O}_1 / \mathcal{O}_2$**：
-  - $\mathcal{O}_0$：11 帧 100 ms 因果发放率历史 $\{r(t_j)\}_{j=0}^{10}$（$t_j\in[-0.1,0]\ \mathrm{s}$）+ 冻结公开常数 $(\tau_r, \alpha_r, \gamma_s, x_0, \sigma, r_\star, I_0)$；**部署期严禁输入任何电流或隐态**。
-  - $\mathcal{O}_1$：训练期观测轨迹 $r(t)$ + 聚合特权电流 $(I_{\mathrm{drive}}(t), I_{\mathrm{net}}(t))$（$t\in[0,4.0]\ \mathrm{s}$）。
-  - $\mathcal{O}_2$：真实分离电流 $(F_{\mathrm{syn}}, I_{\mathrm{env}}^{\mathrm{open}})$、真有向突触阵 $(S^\star, w^\star, \beta^\star)$ 与隐态 $(u, a, m)$（仅冻结评分）。
-- **定性失稳/双稳态癫痫跃迁判据**：
-  - 稳态（homeostatic）：尾窗 $[3.0, 4.0]\ \mathrm{s}$ 上所有帧满足兴奋性群体均发放率 $\bar r_E(t) := \frac{1}{|V_E|}\sum_{i\in V_E} r_i(t) < 0.35$。
-  - 失稳/癫痫态转换（seizure transition）：在 $t\in(0, 4.0]\ \mathrm{s}$ 内存在连续 20 帧（$0.20\ \mathrm{s}$）满足 $\bar r_E(t) > 0.65$（且因果历史窗 $[-0.1,0]\ \mathrm{s}$ 内全程 $\bar r_E < 0.50$ 以确保 100% 因果可初始化）。连续 AUROC 评分量取 $s_{\mathrm{seiz}} = \max_{t\in[0,4.0]} \bar r_E(t)$。
-- **Stage 1 / Stage 2 对应形式**：
-  - **Stage 1**：因 $\dot m$ 无 $\dot r$ 驱动，直接用与基准 1 **完全相同**的 48 个零均值带通测试函数 $\phi_k$ 对 $I_{\mathrm{net},i}(t)$ 投影，分解为 $N$ 个独立的 $(N-1)$ 维非负凸 FISTA 问题：$\min_{w_{i,\cdot}\ge 0} \frac{1}{2RM}\sum_{r,k}\big(\langle\phi_k, I_{\mathrm{net},i}^{(r)}\rangle - \sum_{j\ne i} \sigma_j w_{ij}\langle\phi_k, r_j^{(r)}-r_{\star,j}\rangle\big)^2 + \lambda_1\sum_{j\ne i} d_{ij} w_{ij}$，再用 4 折内部 1-SE CV 选 $\lambda_1$、$\tau_{\mathrm{supp}}=0.05$ 定支撑 $\hat S$ 并去偏 NNLS 精修 $\hat w$。
-  - **Stage 2**：冻结 $(\hat S, \hat w)$，仅在 $\hat S$ 上学 $\beta_{ij}\in[0,0.8\hat w_{ij}]$、严格真残差动力学 $(\dot u, \dot a, \dot m)$ 及同构等变图 GRU 发放率编码器 $I_\phi^{\mathrm{WC}}$（以 $(r_i-r_{\star,i}, \sigma_i, \log\tau_{r,i})$ 及节点对差 $(r_i-r_j, \sigma_j)$ 为唯一 $\mathcal{O}_0$ 合法输入，扣除参考平衡读出，严格保持末帧 $r(0)$，参数量 `~1,864`）。
+| $N$ / Jacobian 维数 | 低态最大实部 | 高态最大实部 | 中间态不稳定根数 |
+|---|---:|---:|---:|
+| 8 / 32 | −0.316364420 | −0.300021468 | 1 |
+| 16 / 64 | −0.297922487 | −0.300021468 | 3 |
 
----
+两尺寸在低态的 E/I 共轭对都是 $-4.833973665\pm6.893986588\,i\ {\rm s}^{-1}$，阻尼振荡频率 **1.097212043 Hz**。它是一对群体模态，并非要求全谱的主导根为复根。中间态均有正实根 $+5.224949837$，$N=16$ 另有 $+4.211062378\pm26.110917358\,i$。高态 $\bar r_E>.65$ 且全谱严格左稳，给出两个局部吸引平衡的证据。不能从中间态推断全空间分界或从低历史必达高态。
 
-## 三、Stage 1 / Stage 2 精确算法接口、损失与零泄漏规范
+复算处方：按上述稀疏规则建 $W,C$，取猜测 $r_i=t,\ u_i=-(t-.15)/30,\ a_i=4(t-.15),\ m_i=.1(t-.15)$，$t=.15,.20,.85$。在 float64 对 $F(z)=0$ 求根，解容差 $10^{-11}$，$F$ 取 $\dot r,\dot u,\dot a,\dot m$ 的拼接。一次按解析导数建矩阵；又独立用复步 $J_{\cdot j}=\mathrm{Im}\,F(z+10^{-20}i\,e_j)/10^{-20}$ 重算并求全部特征值。两尺寸三点此次复算的最大 $\|F(z)\|_\infty=2.64\times10^{-14}$ 以下。推导判稳依据为高低平衡的双曲性。这些是静态浮点根及余量，不是区间算术认证。
 
-### 3.1 Stage 1：带通弱式测试函数、非负 FISTA 与对称损耗联合接口
+**定理 3 的 WC 域。** 在 $r=0$ 向内，在 $r=b=(1+\alpha_r)^{-1}$ 有 $\tau_r\dot r=b(S-1)<0$。$\mathcal D=[0,b]^N\times\mathbb R^{3N}$ 对其中初态严格向内、前向不变。较大的 $[0,1]^N$ 也不变；从 $r_i(0)>b$ 出发时只可写 $r_i(t)\le b+(r_i(0)-b)_+e^{-(1+\alpha_r)t/\tau_r}$。由于 $r$ 有界，$K$、$K'$、$S'$ 有界，完整场在该条带上全局 Lipschitz。$u,a,m$ 各为严格衰减加有界驱动，变常数公式给出与初态无关的最终上界。部署含噪时所有方法精确保留实测末帧，记录逐节点与逐事件越界率，不裁剪、不删除事件或替换干净末帧。盒外初态不适用盒内不变性；因 $S,\tanh$ 有界，整个 WC 场对任意有限初态局部 Lipschitz 且至多线性增长，仍有全局解。
 
-1. **显式光滑紧支零均值带通测试函数族 $\phi_k(t)$**（纠正旧 Layer 1 `weak_force_fit` 采用低通正窗导致慢记忆 $S_e e(t)$ 100% 穿透的根因缺陷）：
-   - 在 $T=4.0\ \mathrm{s}$、采样间隔 $\Delta t=0.01\ \mathrm{s}$（$401$ 帧）上构造多尺度紧支窗：
-     - **尺度 1（高通主力）**：$W_1=7$ 个半重叠 $L_1=1.0\ \mathrm{s}$ 子窗（$[0,1],[0.5,1.5],\dots,[3,4]\ \mathrm{s}$，每窗 $N_w=100$ 区间），每窗取谐波 $m\in\{1,2,3\}$（角频率 $\Omega_m = 2\pi, 4\pi, 6\pi\ \mathrm{rad/s}$，对应 $1, 2, 3\ \mathrm{Hz}$）$\times$ 正余弦双正交相位 $q\in\{\cos,\sin\}$，共 $7\times 6 = 42$ 个测试函数；
-     - **尺度 2（中频补充）**：$W_2=3$ 个半重叠 $L_2=2.0\ \mathrm{s}$ 子窗（$[0,2],[1,3],[2,4]\ \mathrm{s}$，$N_w=200$ 区间），取 $m=1$（$\Omega=\pi\ \mathrm{rad/s}=0.5\ \mathrm{Hz}$）$\times\{\cos,\sin\}$，共 $6$ 个测试函数；
-     - 合计每条轨迹 **$M = 48$ 个测试函数**，通带严格覆盖 $[0.5, 3.0]\ \mathrm{Hz}$（$\Omega_{\min}=\pi\ \mathrm{rad/s}$，远高于开放记忆截止频率 $T_e^{-1}\le 0.40\ \mathrm{s}^{-1}$，衰减因子 $T_e^{-1}/\Omega_m\in[0.01,0.13]$）。
-   - 解析构造与原函数：对子窗 $I_w=[t_w, t_w+L]$ 上局部时间 $u=t-t_w\in[0,L]$，定义
-     $$\Psi_{m,\cos}(u) = \sin^2\!\left(\frac{\pi u}{L}\right)\cos(\Omega_m u), \qquad \Psi_{m,\sin}(u) = \sin^2\!\left(\frac{\pi u}{L}\right)\sin(\Omega_m u),$$
-     $$\phi_{m,q}(u) := \frac{\Psi'_{m,q}(u)}{\|\Psi'_{m,q}\|_{L^2(0,L)}}, \qquad \Phi_{m,q}(u) := \frac{\Psi_{m,q}(u)}{\|\Psi'_{m,q}\|_{L^2(0,L)}}.$$
-   - **$\Delta t=0.01\ \mathrm{s}$ 离散步长兼容性**：最高谐波频率为 $(m+1)/L = 4\ \mathrm{Hz}$（Nyquist 为 $50\ \mathrm{Hz}$，每周期 $25$ 个采样点）。因 $\Psi_{m,q}$ 与 $\phi_{m,q}$ 均在端点零化且为有限阶三角多项式，复合梯形求积对其积分为**谱精确（误差 $<10^{-15}$）**；离散权重向量 $\mathbf{w}_k$ 在内部节点强制扣除均值至 $10^{-16}$ 并归一为 $\|\mathbf{w}_k\|_2=\sqrt{\Delta t}$，离散分部积分与连续 Theorem 1 界偏差 $\le O(\Delta t^2\Omega_{\max}^2) < 3.5\%$。
+**WC Stage-1-Only。** 与 PDD 共用仅从训练 $I_{\rm net}$ 求得的有向 $\hat S,\hat w$（Dale 符号已知），$K=\sigma_j\hat w_{ij}$ 固定，置 $\beta=a=m=0$，删除各自读出；保留完整正向 sigmoid、已知不应期和参考。仅训练 $\dot u=-\Lambda_u u-G_{ur}(r-r_\star)$ 的对角线性系数及 $u_0=I_\phi(\mathcal O_0)$ 的编码器，和 $r_{\rm last}$ 一起推进，沿用相同可得聚合电流监督、课程与预算。比较对象可预测非恒定外源电流。
 
-2. **对称损耗联合估计与节点局部速度记忆去混叠接口**：
-   - 对每条训练轨迹 $r$ 与每个测试函数 $k$ 计算：
-     - 目标 $y_{r,k} = \langle\phi_k,\tau_e^{(r)}\rangle\in\mathbb{R}^N$；
-     - 互易块 $\Phi_{c,(r,k)} = B\operatorname{diag}(\langle\phi_k,\sin\varphi^{(r)}-\sin\eta\rangle)\in\mathbb{R}^{N\times|E|}$；
-     - 对称损耗块（按工况/模型开关启用）$\Phi_{g,(r,k)} = |B|\operatorname{diag}(\langle\phi_k,\cos\varphi^{(r)}-\cos\eta\rangle)\in\mathbb{R}^{N\times|E|}$；
-     - **全局求和尺标均衡增广行**（落定 Theorem 1 机制 1）：追加标量行 $\sqrt{\frac{1}{4}}\mathbf{1}^\top y_{r,k} = \sqrt{\frac{1}{4}}\cdot 2\sum_e g_e\langle\phi_k,\cos\varphi_e^{(r)}-\cos\eta_e\rangle + \cdots$（对所有 $N\in\{8,16,32\}$ 保持全局求和通道权重与 $N$ 无关）；
-     - **规范不变节点局部速度记忆干扰块**（基准 1/2 启用，基准 3 省略）：$\Phi_{\mathrm{loc},(r,k)} = \operatorname{diag}(-\langle\Phi_k,\omega^{(r)}\rangle)\in\mathbb{R}^{N\times N}$。因干扰参数 $\tilde\gamma\in\mathbb{R}^N$ 无约束且不加惩罚，先用精确 Schur 补 / Frisch–Waugh–Lovell 投影 $Q_\perp = I - \Phi_{\mathrm{loc}}(\Phi_{\mathrm{loc}}^\top\Phi_{\mathrm{loc}}+10^{-12}I_N)^{-1}\Phi_{\mathrm{loc}}^\top$（仅需 $N\times N$ 线性求解）解析消去 $\tilde\gamma$，得到降噪后设计阵 $\tilde\Phi_{\mathrm{stat}}=Q_\perp\Phi_{\mathrm{stat}}$ 与目标 $\tilde y=Q_\perp y$。
+**WC 纯运动 Two-Stage 的实现合同。** 与振子的净转矩分别按物理方程构造。WC 的正式 Stage 1 直接拟合正向 sigmoid 的弱式。对节点 $i$、窗口 $k$，拟合下列有限窗残差
+$$
+ E_{ik}=-\tau_i\langle\phi'_k,r_i\rangle+\langle\phi_k,r_i\rangle
+ -\langle\phi_k,(1-\alpha_r r_i)S(I_{0i}+\sum_{j\ne i}\sigma_jw_{ij}d_j(t)+n_i(t))\rangle .
+$$
+这里 $d_j(t)=r_j(t)-r_{\star j}$；$n_i$ 是可观测运动支持的低维电流干扰。取 $\lambda_\ell=(.25,.60,1.20)\,{\rm s}^{-1}$，特征为 $e^{-\lambda_\ell t}(r_i(0)-r_{\star i})$、$e^{-\lambda_\ell t}[r_i(0)-r_i(-.1)]$ 和 $\int_0^t e^{-\lambda_\ell(t-s)}d_i(s)\,ds$。每节点九个常系数跨事件共享；没有逐帧自由电流。用相同训练历史、窗和候选图，目标为归一化弱残差平方均值的一半加 $\lambda\sum d_{ij}^{\rm rms}w_{ij}$ 与 $10^{-6}\|b_n\|^2/2$；$w\ge0$，标准化使用训练子折的列 RMS，取穿过 sigmoid 的弱响应在参考电流 $I_0$、观测回归因子 $r_j-r_{\star j}$ 下对 $w$ 的 Jacobian 列 RMS（包含 $S'(I_0)$）计算尺度。相对惩罚用 §7 的七点网格，基准梯度为 $w=0$、拟合干扰后的最大正向下降梯度；数值为零时保留空模型并报告。每折两种确定起点（$w=0$ 和每行均分总正幅值 1，干扰系数 0），有界迭代 L-BFGS-B 每起点至多 300 次；按训练目标择优，再以验证事件的前向弱残差选惩罚。0.05 阈值及固定支撑无惩罚 refit 同 PDD。Stage 2 换为完整同构 WC、严格冻结所得 $\hat w,\hat S$，仅用运动与一致性损失等训练 256 步。这项额外静态非凸优化与卷积计时代价单列，单种子四折训练至多 $2(4\times7+1+1)\times300=18{,}000$ 次优化迭代，另记录零字典干扰初拟合的实际迭代（每训练子集最多 300）。PDD 的 NNLS 收敛性质不移用到本法。
 
-3. **非负重启 FISTA、训练内部 4 折 1-SE 选参、支撑阈值与去偏 NNLS**：
-   - 列归一化非负凸优化目标（记列 RMS $d_j = \|\tilde\Phi_{\mathrm{stat},\cdot,j}\|_2/\sqrt{K_{\mathrm{tot}}}$）：
-     $$\min_{\vartheta=(c,g)\ge 0}\; \frac{1}{2K_{\mathrm{tot}}}\|\tilde\Phi_{\mathrm{stat}}\vartheta - \tilde y\|_2^2 + \lambda_1 \sum_j d_j \vartheta_j.$$
-   - **求解器**：O'Donoghue–Candès 自适应重启非负 FISTA，精确步长 $1/\lambda_{\max}(\mathcal{G})$，上限 `2000` 步，投影 KKT 残差 $\le 10^{-10}$ 收敛（$N=32$ 耗时 $<0.5\ \mathrm{s}$）。
-   - **训练内部 4 折 1-SE 规则选 $\lambda_1$（零 `val`/`test` 接触）**：在 `train` 内部按激励/失稳类别分层切 4 折；搜索网格 $\lambda_1 / \lambda_{\max}^{\mathrm{data}} \in \{10^{-4}, 3\times 10^{-4}, 10^{-3}, 3\times 10^{-3}, 10^{-2}, 3\times 10^{-2}, 10^{-1}\}$（其中 $\lambda_{\max}^{\mathrm{data}}=\max_j \frac{1}{K_{\mathrm{tot}}d_j}|\tilde\Phi_{\cdot,j}^\top\tilde y|$），选取 CV 弱式 MSE 落在最低均值 $+1\ \mathrm{SE}$ 内的**最大** $\lambda_1^{\mathrm{1SE}}$。
-   - **支撑判定与去偏 refit**：在全量 `train` 用 $\lambda_1^{\mathrm{1SE}}$ 拟合 $\hat\vartheta^{\mathrm{FISTA}}$；连续排序分（供 AUROC/AUPRC 评分）取 $s_e^{\mathrm{score}} = d_{c,e}\hat c_e^{\mathrm{FISTA}}$；硬支撑由相对弱式功能 RMS 占比 $\rho_e^{\mathrm{func}} = \frac{d_{c,e}\hat c_e^{\mathrm{FISTA}}}{\max_{e'} d_{c,e'}\hat c_{e'}^{\mathrm{FISTA}}} \ge \tau_{\mathrm{supp}}$ 确定，**预登记固定 $\tau_{\mathrm{supp}} = 0.05$**（$\hat S_g$ 同理）。最后严格在 $\hat S_c$（与 $\hat S_g$）上求解一次**无惩罚（$\lambda_1=0$）非负最小二乘（NNLS）**消除 $L_1$ 收缩偏差，输出冻结静态骨架 $(\hat S_c, \hat c, \hat S_g, \hat g)$ 移交 Stage 2。
+另报告纯运动逆读出的诊断：用固定 9 帧三次局部多项式（端点单侧、不跨缺测）估 $\dot r$，统计原始带噪运动中 $s\notin(0,1)$ 及 $s\notin[.02,.98]$ 的比例。正式前向弱式使用所有有完整窗口的事件、从不调用 logit；不得因逆读出越域把该方法记 NaN 或淘汰。不论谁胜，G3 只说明所定义方法及预算下的净收益。
 
----
+## 6　M2 · 观测噪声、分层与尺度
 
-### 3.2 Stage 2：残差开放闭合、冻结规则、零泄漏断言与反陷阱训练规范
+| 合同项 | 冻结规则 |
+|---|---|
+| 噪声主轴 | 分别存 $\sigma_H$（部署与训练历史）、$\sigma_X$（训练全运动）、$\sigma_P$（训练聚合端口）。主横轴取三者同为 $0,.01,.03$ 的三格，主锚为 $(.01,.01,.01)$。每条合法 0–4 s 训练测量均按本通道加噪，含 $\tau_m,\tau_e$ 或 $I_{\rm drive},I_{\rm net}$。不沿用只扰动 11 帧的生成器。 |
+| 可复现噪声 | 原始传感单位按 $\theta:1$ rad、$\omega:1$ rad/s、各转矩/电流/发放率各 1 个本合成系统单位固定；用 $\sigma$ 乘单位尺度的零均值独立高斯。每事件、传感器、节点、物理时间戳锁定同一随机抽样，各法共用，三档可共用单位正态底样。历史与全轨迹重合帧只加一次。生成器角度/速度真关系不强制回填至含噪观测。WC 的越域原始测量、末帧越界率和逆读出失效率留档；干净分项/标签仅评分器可读。 |
+| 可归因比较 | 同一已拟合模型可固定全轨迹/端口训练噪声，配对重评不同历史噪声，作为部署敏感性副表，无需新拟合。主横轴三者联动，不能将差值完全归因于某一个噪声源。全轨迹弱式验证亦在相同有噪观测上计算，最终轨迹误差另对冻结真实未来评分。 |
+| 划分与批次 | 按事件整组分折，来源相同的成对扰动或重复测量保持同组（分组键仅隔离，不作特征）。用训练运动可得的结局与历史能量分位分层，所有无特权对照也可计算。振子能量代理取历史平均 $\sum_i M_i\omega_i^2/\sum_iM_i$，WC 取平均 $(r_i-r_{\star i})^2$。折划分可先按可观测结局固定；批次的能量四分位及任何用于拟合的分位点只在训练子折估计，稀小层按相邻能量层合并。禁止读取 $\mathcal O_2$ 的 `excitation`、隐负荷规模或生成来源做模型/CV/批次选择。 |
+| 环境尺度与初态 | 公开 `S_e_scale=1.0` 只定义模型有效转矩单位。基准 1 生成器 `env_gain_true=1.8` 仅构建真值；若另建异质生成格，其真值同样隔离。以 $e_{\rm model}=1.8e_{\rm gen}$ 可说明有效坐标，模型参数吸收尺度。学习态 $p,a,e$ 的编码器用参考扣减、有限线性输出，取消原 `e_init_bound=2` 等隐态硬截断；无特权版本不读取端口分位数。检查输出、尺度与饱和/尾部误差，不能从聚合端口推出真隐态范围。 |
+| Stage 2 与部署 | 损失的运动/合法端口等尺度只用该系统该档带噪 `train` 计算并冻结，例如去共同参考后有效元素 RMS、下限 $10^{-6}$，每个物理通道独立。无特权方法只取运动尺度；部署所需归一化常数作为共享冻结模型参数。隐藏 metadata、端口、真图、分层标签不得进入初始化、模型 rollout、数据加载旁路或缓存。用替换特权/真值数据的污染副本核查输出逐比特不变。 |
+
+## 7　M2、M3 · 拟合与基线规格卡
+
+**四折无泄漏弱式。** 每个训练子折 $T$ 单独计算全部投影、$d_{j,T}$、噪声/损失尺度、相对网格基值与干扰系数。以 $X_T^A,L_T^A,y_T^A$ 表示已增广、未投影的行。先用 $Q_T$、归一化列拟合 $\hat\vartheta_{T,\alpha}$，再得 $\hat b_{T,\alpha}=(L_T^A)^+(y_T^A-X_T^A\hat\vartheta_{T,\alpha})$。验证用 $X_V^A\hat\vartheta_{T,\alpha}+L_V^A\hat b_{T,\alpha}$ 直接预测 $y_V^A$；验证目标不参与重估干扰、标准化、选列或投影。相对网格 $\alpha\in\{10^{-4},3\!\times\!10^{-4},10^{-3},3\!\times\!10^{-3},10^{-2},3\!\times\!10^{-2},10^{-1}\}$；零解临界值用归一化列的最大正梯度相关 $\max(0,\max_j Z_{T,j}^\top Y_T/n_T)$。四折每折对事件等权，选在最低均值加其一标准误内最大的 $\alpha$。最后用完整 train 重算所有量再拟合。WC 特权线性问题以逐接收节点带 Dale 符号的 $d_j(t)$ 建列，不复制振子全局和行、没有速度 nuisance。WC 无特权按 §5 用训练拟合的 $w,b_n$ 直接预测验证弱矩。所有实现将确切窗、截断、列与阈值写入后续配置。
+
+| 方法 | 训练和图推断 | 部署、结构读出与公平边界 |
+|---|---|---|
+| `No-Privilege Same-Arch` | 端到端同构，完全读 $\mathcal O_0^{\rm traj}$，运动损失、$0.05\mathcal L_{\rm cons}$ 及登记稀疏项，256 步；无端口和起点端口监督。 | 与 PDD 用同一短历史编码器与闭合自由度。它与 PDD 的差含训练程序；不能单独裁决 G3。 |
+| `No-Privilege Two-Stage` | 振子 §1、§4 的合法净力弱式，WC §5 的正向饱和弱式。与特权方法各自从完整训练运动做 Stage 1，共享支撑阈值、train-only 选参与同构 Stage 2。 | 冻结自估骨架、支持与损耗权重，Stage 2 同样享有 $\mathcal L_{\rm motion}+.05\mathcal L_{\rm cons}$ 及同构正则，无端口损失。$\mathcal L_{\rm cons}$ 只在训练时用下一段 0.1 s 观测重编码对齐隐态，部署不重编码。 |
+| `NRI/ACD` 与 `NRI+Port` | 明示为固定系统的 NRI/ACD 风格适配。完整 train 轨迹经时序/边编码器产生每事件边 logit，按有效帧掩码、事件等权平均得系统共享 $q_{ij}=\mathrm{sigmoid}(\mathrm{mean}_r\,l_{rij})$。二值 Concrete/Gumbel 门、消息 ODE、train 重构与 Bernoulli 稀疏先验共同训练；CV 只池化训练子折。无向振子绑定双向门、WC 保留方向。固定默认先验边率 .25、KL 系数 $10^{-3}$、温度在课程内由 1 线性降至 .5。 | 部署冻结系统图，以 $q$ 的确定性软门做预测、连续图指标用 $q$，二值阈值 .5。事件历史只初始化隐态。`+Port` 在相同消息/节点解码器上监督参与 RHS 的两个聚合端口，基线只训运动。一般聚合读出不能当作内部/环境分离真值。 |
+| `SINDy-AE` | 保持物理观测坐标、共享历史编码器只学隐坐标。候选字典用节点的线性、至二次、tanh 与预声明物理边组（振子 $\sin,\cos$ 中心化特征，WC 为有向 $r_j-r_{\star j}$）。运动与聚合端口共同训练。先密训 128 步，Phase B 完结才准首次剪枝；在 128、160、192、224 步作顺序阈值最小二乘/岭重拟合，最后 32 步固定支撑。按 train 子折定列 RMS；组分数取归一化贡献的二范数，首次及后续阈值为同类组最大分数的 .05。剪枝时在训练轨迹的合法历史窗逐时编码得到隐坐标，和实测运动组成停止梯度的 $z$；以 $-\langle\phi',z\rangle$ 为目标对 $\langle\phi,\Theta(z)\rangle$ 做阈值岭回归（列 RMS 归一，岭 $10^{-6}$），端口字典另以实测聚合读出拟合。支撑掩码之后继续端到端运动/端口训练；记录字典秩和求解成本。 | 只有明确标定端点 $(i,j)$ 的物理读出组贡献能映射成静态边分数。隐坐标之间的稀疏系数、节点自项均不能事后命名为线路。若采用无物理读出的 AE 实现，其拓扑指标填 N/A。 |
+| `PHNN/LGNN` | 仅振子和摆阵适用，采用下述单一开放 PHNN 适配；WC 填 N/A。等容量区间约 2–3k 参数是设计目标，报告实际模型大小、潜态与计算时间。 | 完整 $5N$ 演化、初态、参与动量方程的端口和训练监督共用同一套参数；图势未声明逐边支持时，硬图指标 N/A。 |
+
+**5N 开放端口哈密顿基线。** 用 $\xi=(q,\pi,h),\ q=\theta,\ \pi=M\omega,\ h=(p,a,e)$，取
+$$
+ H={1\over2}\pi^\top M^{-1}\pi+V_\psi(q,a)+U_G(q)+\tfrac12 h^\top C_hh,\qquad C_h=I .
+$$
+$V_\psi$ 为平滑图势，在共同参考扣除常数与一阶参考项；$U_G$ 为摆阵已知重力势或零。令 $v=\nabla_\pi H,\ \chi=\nabla_h H,\ R_h=L_\psi L_\psi^\top+10^{-6}I$（节点局部 $3\times3$ 块）。正式方程为
+$$
+ \dot q=v,\quad \dot\pi=-\nabla_q (V_\psi+U_G)-Dv
+             +\hat\tau_m-\hat\tau_{\rm env},\qquad
+ \dot h=-R_h\chi+j_\psi(\xi).
+$$
+等价于 $\dot\xi=(J-R)\nabla H+u_{\rm open}$，其中 $J_{q\pi}=I,J_{\pi q}=-I$、其余块为零，$R=\mathrm{diag}(0,D,R_h)$，$u_{\rm open}=(0,\hat\tau_m-\hat\tau_{\rm env},j_\psi)$。$j_\psi$ 为参考扣减的节点共享主动源，包含三组隐态动力学。机械读出可用 $S_p p-bT(\omega)$，环境读出为参考扣减的可学习状态头；$\hat\tau_e=\nabla_q V_\psi+\hat\tau_{\rm env}$（重力另计）。编码器从历史给 $p_0,a_0,e_0$，合法末帧给 $q_0,\pi_0$。采用 PDD 同口径的运动、聚合端口、起点端口与一致性监督。由链式法则，
+$$
+ \dot H=v^\top(\hat\tau_m-\hat\tau_{\rm env})-v^\top Dv-\chi^\top R_h\chi+\chi^\top j_\psi .
+$$
+最后一项记入开放功率账；该恒等式不授予整个系统被动性或 SI 能量解释。
+
+## 8　M4 · 更新、复用与资源口径
+
+原表各行是 $7+33+40+20+12+18+28=\mathbf{158}$ 个 ODE 训练条目，$158\times256+128=40,576$，原文写的 128 个有误。按本规格复用原本的 5 个基准 1、2 个 WC 的 Run 0 冒烟时，相同配置仅有 151 个独立拟合。v3.1 新增无特权双阶段独立拟合 10 个（基准 1 锚三种子、两端噪声各两种子、WC 锚三种子）；两个 Run 0 冒烟再次引用其中各一项。
+
+| 阶段 | 新的独立 ODE 训练数 | 主课程更新 |
+|---|---:|---:|
+| Run 0，基准 1 六端点、WC 三端点 | 9 | 2,304 |
+| Phase 1 基准 1 锚，$12\times3-6$ | 30 | 7,680 + 128 |
+| 工况纵轴 | 40 | 10,240 |
+| 全轨迹噪声两端 | 24 | 6,144 |
+| 规模横轴 | 12 | 3,072 |
+| 基准 2 | 18 | 4,608 |
+| 基准 3 其余，$9\times3+4-3$ | 28 | 7,168 |
+| **合计** | **161** | **41,344** |
+
+修订毛计 **170** 项、去重 **9** 项；另有 12 个非 ODE 参照。振子 Stage 1 的 FISTA 仍以 2,000 步及投影 KKT 残差 $10^{-10}$ 为上限/收敛准则；Stage 2 的 256 步为 $64@1\,{\rm s}+64@2\,{\rm s}+128@4\,{\rm s}$。原稿训练 RK4 0.01 s、训练前 0.01/0.005 s 双网格、评分 0.005/0.0025 s 双网格作为未来资格保留。128 步追加为从无特权端到端锚格种子 24121 的第 256 步继续至第 384 步。该检查不能代替对无特权双阶段的优化健康报告。主课程计数不含 CV、非凸弱式求解、双网格梯度资格、失败重跑、打分或 dry-run。原 7 个及修订后 9 个冒烟可以复用拟合检查点的前提是代码、数据/噪声、超参、种子、课程与选点合同哈希相同；任何一项变更，另记实际成本及谱系。Run 0 的止损和实现适配用合成 train/val；冻结合成确认集留到合约锁定后评分。相关轨迹与优化种子不重复计作独立物理系统。
+
+**Run 0 预算与止损。** 基准 1 六项为 `Stage-1-Only`、`PDD-Frozen`、`Bounded-Recal`、`End-to-End v2`、`GraphNeuralODE`、`No-Privilege Two-Stage`；WC 三项为 `Stage-1-Only`、`PDD-Frozen`、`No-Privilege Two-Stage`。两种 PDD 用同一份 Stage 1 结果。原 G1/G2 冒烟门槛继续用于合成验证，失利时保留结果并判断是观测条件、闭合还是优化预算所致。基准 3 还须从符合低历史条件的事件实测连续超阈值时长 $\ge.20$ s（用时间戳末减首，$.01$ s 网格需至少 21 个连续超阈值采样点，或明确计时的 20 个完整区间）。不把高平衡存在当作跃迁样本已足额。若 RMS 或覆盖不足，标对应原假说未获资格。任何调整形成新冻结版本，不能根据确认集改造生成器。
+
+单进程 CPU float64、batch 4。未来 dry-run 对 `PDD`、`GraphNeuralODE` 各测 $N=8,16,32$；`PHNN` 在 $N=8$ 振子和摆阵各测一次，并在 $N=32$ 加一次内存压力探针；`No-Privilege Two-Stage` 在基准 1、WC 的 $N=8$ 各测一次。共 11 配置，每配置 1 个预热、3 个 4 s 计时批次，含完整梯度计算而不做 `optimizer.step`。另对双阶段记录实际 Stage 1 的建阵、4 折、峰值内存及 refit，WC 的两初值/解算成本独列。PHNN 必须测对 $\nabla H$ 再反传的二阶计算，记录前向、反向、峰值 RSS、是否越过原 4 GiB 资格线；越线即标该配置资源不合格，不沿用 $0.132$ h/run。6 次正式 PHNN 可先按 3–8 CPU h 作情景预算；全套含调试暂估 100–180 h、另留 4–6 周异构实现，均为规划范围，实测仍为 unknown。NRI 图推断和两阶段预处理同样计费。
+
+$N=32$ 的 `GraphNeuralODE` 可把 `_readout(reference)` 在一次 rollout 内计算一次，与各次动态读出相减并复用于端口与 RHS。训练时保留计算图、不 `detach`，不能跨参数更新、rollout、参考、设备或 dtype 复用。入表前比较逐步输出、损失以及全部参数梯度，记录实际耗时/RSS；这里仅裁定数学等价优化。
+
+## 9　m1、m2 · 下一位实施者的逐处同步口径
+
+**m1。** `val_trajectory_audit.md` 文首、§2.2 两处及两份简报改为：“在 12 条可初始化失稳事件中，模型 0/12 触发失步，7/12 在 8 s 尾窗严格达稳。其余 5 条涵盖最快 4 条（0.14、0.19、0.21、0.25 s）和第 7 快的 `pilot_0239`（0.42 s，32 帧）；并列 0.33 s 的 `expansion_0186`、`pilot_0152` 占第 5、6 位，均达稳。”切勿把尾窗判据 $\max_i|\omega_i-\omega_{\rm COI}|<.005$ pu 写成共模速度本身小；达稳并不识别轨迹最终吸引子。历史判断仅据冻结表，本次没有重放轨迹。
+
+**m2。** 两简报引用关系写成“正文一致镜像（相对链接按所在目录调整，换行编码可不同）”，保留各自实际哈希与原记录。当前简报、镜像、Campaign 和方法表随后同步：① 奇对称核与振子 $\kappa=.8$，WC 以 Dale 符号与有符号调制幅值为准；② WC 已选定，含电流接口、四块稀疏图和线性 $u$ 消融；③ 114 个新窗、$w,K_{\rm aug}$、节点干扰与列归一化/四折/5%/NNLS；④ 冻结主干与 [.50,2.20] 重标盒；⑤ 双层 LUPI、两种无特权与重写的 G3；⑥ 新噪声和预算、已完成本次 Scientist 审定、v3.1 独立复核与实际运行仍待完成。去掉旧“待 Scientist 二选一”、旧频段/盒和“字节一致”。历史的 HTTP 400 与暂定作者回执不追改。
+
+简报原有六项范围护栏照录其原意：等价类贝叶斯/Laplace 后验另议；不另建商空间/集合估计算法；跨域跨规模只检验模板重拟合；不另建 Datasets & Benchmarks 或 RoA 求解器；实验矩阵维持十字星；新高阶 FOM 为 0、IEEE-39 test 关闭。代码决定为**交付规格供同步**，模型决定为**无晋升**，科学决定为**采用有限条件定理及两套静态定标，动态效应待辨别**。
+
+## 附　静态复算摘录
+
+以下可放入同一 Python 3.12 进程，使用 NumPy/SciPy。第一段对每个尺寸输出全部正自然频率和两种开放格的商空间谱指标。第二段用复步雅可比核对 WC 的全维根；仅评价代数函数，从不推进时间。
+
+~~~python
+import numpy as np
+
+for n in (8, 16, 32):
+    def stream(k):
+        return np.random.default_rng(np.random.SeedSequence([20261128, n, k]))
+
+    ring = {tuple(sorted((i, (i + 1) % n))) for i in range(n)}
+    pool = [(i, j) for i in range(n) for j in range(i + 1, n)
+            if (i, j) not in ring and (i, j) != (0, 2)]
+    picks = stream(0).choice(len(pool), n // 2 - 1, replace=False)
+    edges = sorted(ring | {(0, 2)} | {pool[k] for k in picks})
+    B = np.zeros((n, len(edges)))
+    for k, (i, j) in enumerate(edges):
+        B[i, k], B[j, k] = 1, -1
+    C = np.abs(B)
+    m = stream(1).uniform(.7, 1.4, n)
+    d = stream(2).uniform(.12, .25, n)
+    c = stream(3).uniform(1.2, 2.4, len(edges))
+    ref = stream(4).uniform(-.35, .35, n)
+    eta = B.T @ (ref - ref.mean())
+    K = (B * (c * np.cos(eta))) @ B.T
+    scale = np.linalg.eigvalsh(K / np.sqrt(np.outer(m, m)))[1] / (2*np.pi*.8)**2
+    mass = scale * m
+    D = np.diag(np.sqrt(scale) * d)
+    freqs = np.sqrt(np.linalg.eigvalsh(K / np.sqrt(np.outer(mass, mass)))[1:]) / (2*np.pi)
+    assert len(freqs) == n-1 and np.all((.44 < freqs) & (freqs < 5))
+    beta = np.zeros(len(edges))
+    ix = stream(5).choice(len(edges), n, replace=False)
+    beta[ix] = stream(6).uniform(.65, .8, n) * c[ix]
+    loss = stream(7).uniform(.25, .50, len(edges)) * c
+    I = np.eye(n)
+    O = np.zeros_like(I)
+    R = np.diag(1 / mass)
+    H = (B * (beta * np.sin(eta))) @ C.T + .35*I
+    print(n, "natural Hz", freqs)
+    for sym in (False, True):
+        Ks = K - (C * (sym * loss * np.sin(eta))) @ B.T
+        J = np.block([[O, I, O, O, O], [-R@Ks, -R@D, R, -R@H, -1.8*R],
+                      [O, -.175*I, -.3375*I, O, O], [O, .2875*I, O, -.225*I, O],
+                      [O, .2375*I, O, .175*I, -.1325*I]])
+        eig = np.linalg.eigvals(J)
+        assert np.count_nonzero(np.abs(eig) < 1e-8) == 1
+        eig = eig[np.abs(eig) >= 1e-8]
+        fast = np.abs(eig.imag) > 1
+        ratio = np.min(np.abs(eig.imag[fast])) / np.max(np.abs(eig[~fast]))
+        assert eig.real.max() < 0 and ratio >= 8
+        print(n, sym, "spectral abscissa", eig.real.max(), "separation", ratio)
+~~~
+
+~~~python
+import numpy as np
+from scipy.optimize import root
+
+for n in (8, 16):
+    ne, ni = 3*n//4, n//4
+    W = np.zeros((n, n))
+    for i in range(ne):
+        W[i, (i-1) % ne] = W[i, (i-2) % ne] = 1.25
+        W[i, ne+i//3] = -1.5
+    for k in range(ni):
+        W[ne+k, 3*k:3*k+3] = 2/3
+        W[ne+k, ne+(k-1) % ni] = -.5
+    C = .05*W
+    C[:ne, :ne] = .8*W[:ne, :ne]
+    C[:, ne:] = -.02*W[:, ne:]
+    bias = .5 + np.log(.15/(1-1.15*.15))/5
+
+    def field(z):
+        r, u, a, m = np.split(z, 4)
+        d = r-.15
+        K = W + C*np.tanh(a[:, None] + a[None, :])
+        current = bias + u + K@d - 1.5*m + .01*np.tanh(a)
+        sigmoid = 1/(1+np.exp(-5*(current-.5)))
+        return np.r_[(-r+(1-.15*r)*sigmoid)/.08, -.6*u-.02*d,
+                     -.5*a+2*d-.1*np.tanh(a), -.3*m+.02*d+.01*np.tanh(a)]
+
+    def jac(z):
+        return np.array([field(z+1j*1e-20*e).imag/1e-20 for e in np.eye(4*n)]).T
+
+    for rate in (.15, .20, .85):
+        d = rate-.15
+        start = np.repeat([rate, -d/30, 4*d, .1*d], n)
+        sol = root(field, start, jac=jac, tol=1e-11)
+        residual = np.max(np.abs(field(sol.x)))
+        eig = np.linalg.eigvals(jac(sol.x))
+        assert sol.success and residual < 1e-11
+        if rate != .20:
+            assert eig.real.max() < 0
+        if rate == .15:
+            mode = eig[np.argmin(np.abs(eig.imag-6.893986588))]
+            assert 1 < mode.imag/(2*np.pi) < 2
+        print(n, rate, sol.x[[0, ne]], residual, eig.real.max(), sum(eig.real > 0))
+~~~
+
+**审定回执。** 指定 Scientist 已审阅两份定标回执、完整方程、拓扑及 Jacobian 构造，并签发本规格的数学与设计结论。基准 1 的矩阵和基准 3 的根另在共享解释器中复算通过。本轮 ODE 轨迹积分、训练更新、新增 FOM 与 IEEE-39 test 访问均为 0。
+
+
+## 10　保留的算法、基准 2 与判别门槛
+
+本节保留 v3.0 中未被规范替换的细节。所有实测成本、资格和效应均尚待运行验证；下列配置与门槛不是已取得结果。振子环境与幅值隐态的速度反馈限于第 2 节的常对角线性项；机械快通道按第 4 节公开字典，禁止借编码器或端口监督向部署提供未来信息。幅值与环境方程中的邻边输入只进入隐态导数，不作为端口瞬时直通。严格冻结及重标规则只采用第 4 节的 `[.50,2.20]` 盒，旧 `[.75,1.40]` 盒与“必含真值”论证均已撤销。
+
+### 10.1 Stage 2、初始化与监督
 
 1. **精确 Stage 2 方程（基准 1/2 振子/摆阵载体，$5N$ 维）**：
-   $$\dot\theta = \omega, \qquad M\dot\omega = F S_p p - \tau_e - D\omega \quad (\text{摆阵加已知 } -G\sin\theta),$$
+   $$\dot\theta = \omega, \qquad M\dot\omega = \hat\tau_m - \tau_e - D\omega \quad (\text{摆阵加已知 } -G\sin\theta),$$
    $$\tau_e = B\big[(c + \beta\odot\tanh(s))\odot\sin\varphi - c\odot\sin\eta\big] + |B|\big[g\odot(\cos\varphi-\cos\eta)\big] + S_e e + \alpha_1\odot\tanh(a) + \alpha_2\odot\tanh^2(a),$$
+   - 机械端口采用 $\hat\tau_m=S_p p-b\odot T(\omega)$，$T$ 与可学习 $b$、各方法可用信息完全采用第 4 节；不能省略该快通道后宣称同构公平。机械隐态保留原受控字典，环境/幅值假设不扩大到机械端口。
    - **严禁 `env_edges`**：相对旧 `src/kiki/models/osgkd.py` 第 230 行，**彻底删除**环境端口上的任意无约束边特征直通项 `env_edges`，硬性落实 $\mathcal{F}_{\mathrm{env}}$。
-   - **受控残差隐态方程（严禁冻结 $\dot p$）**：
+   - **受控残差隐态方程（不将机械态固定为常数）**：以下 $\tilde\omega_i=\omega_i/\omega_{\mathrm{scale},i}$，尺度从训练冻结；保留共同速度，不减逐帧均速。
      $$\dot p_i = -\lambda_{p,i} p_i + w_{p\omega,i}\tilde\omega_i + w_{pt,i}\tanh(p_i) + w_{p\omega t,i}\tanh(\tilde\omega_i),$$
      $$\dot a_i = -\lambda_{a,i} a_i + w_{a\omega,i}\tilde\omega_i + w_{at,i}\tanh(a_i) + \sum_{e\in\hat S_c(i)}\big(v_{a,e,i}^{(1)}(\sin\varphi_e-\sin\eta_e) + v_{a,e,i}^{(2)}(\cos\varphi_e-\cos\eta_e)\big),$$
      $$\dot e_i = -\lambda_{e,i} e_i + w_{ea,i} a_i + w_{e\omega,i}\tilde\omega_i + w_{et,i}\tanh(e_i) + w_{eat,i}\tanh(a_i) + \sum_{e\in\hat S_c(i)}\big(v_{e,e,i}^{(1)}(\sin\varphi_e-\sin\eta_e) + v_{e,e,i}^{(2)}(\cos\varphi_e-\cos\eta_e)\big),$$
-     所有衰减率均通过 $\lambda_{\cdot,i} = \operatorname{softplus}(\tilde\lambda_{\cdot,i}) + 0.05\ \mathrm{s}^{-1}$ 参数化，保证严格真因果记忆（$T_e^{-1}\ge 0.05$）并从结构上杜绝 $\dot p=0$ 退化；且 $\dot a,\dot e$ 的邻边输入严格掩码至冻结骨架 $\hat S_c$。
+     所有衰减率均通过 $\lambda_{\cdot,i} = \operatorname{softplus}(\tilde\lambda_{\cdot,i}) + 0.05\ \mathrm{s}^{-1}$ 参数化，提供严格正衰减率；常轨线仍须按数据与实际右端判断，不能由正衰减率断言轨线导数处处非零；且 $\dot a,\dot e$ 的邻边输入严格掩码至冻结骨架 $\hat S_c$。
 
-2. **骨架冻结规则与唯一投影盒消融**：
-   - **主方案（`PDD-Frozen`）**：`c.requires_grad_(False)`、`g.requires_grad_(False)`，所有 $e\notin\hat S_c$ 强制 $c_e=\beta_e\equiv 0$；对 $e\in\hat S_c$，每步更新后硬投影 $0 \le \beta_e \le 0.8\,\hat c_e$。
-   - **唯一预登记消融（`Stage-2 Bounded-Recal`）**：支撑 $\hat S_c$ 仍严格冻结（禁增删边），仅允许 $c_e\ (e\in\hat S_c)$ 在定理推导盒内微调：由调制均值偏置 $|\mu_e|\le 0.35$ 及 $\kappa=0.8$ 得 $c_e^{\mathrm{eff}}\in[0.72 c_e, 1.28 c_e]$，加有限样本估计余量给出精确投影盒：
-     $$c_e \in \big[0.75\,\hat c_e,\; 1.40\,\hat c_e\big] \quad (\forall e\in\hat S_c), \qquad \text{随即投影 } 0 \le \beta_e \le 0.8\,c_e.$$
-
-3. **等变图短历史编码器 $I_\phi$ 与硬性零 $\mathcal{O}_1$ 泄漏白名单断言**：
-   - 架构沿用已验证的 `OSGKDGraph._GraphEncoder`（`src/kiki/models/osgkd_graph.py`，`hidden_size=20`，节点参数共享、参考历史扣减零点对齐，严格保留末点 $(\theta_{\mathrm{obs}}(0),\omega_{\mathrm{obs}}(0))$，**精确 1,928 可训练参数**，保证与 v2 和 `GraphNeuralODE` 编码器容量零偏差）。
+2. **等变图短历史编码器 $I_\phi$ 与硬性零 $\mathcal{O}_1$ 泄漏白名单断言**：
+   - 架构沿用已验证的 `OSGKDGraph._GraphEncoder`（`src/kiki/models/osgkd_graph.py`，`hidden_size=20`，节点参数共享、参考历史扣减零点对齐，严格保留末点 $(\theta_{\mathrm{obs}}(0),\omega_{\mathrm{obs}}(0))$，原实现 **1,928 可训练参数**；新实现与 v2 和 `GraphNeuralODE` 的编码器容量须实测核对）。
    - **静态 + 运行时零泄漏白名单断言（Run 0 强制门禁）**：
      1. 接口层强制 `initialize(packet)` 仅接受 `MotionPacket`，校验顶层键集合**精确等于** `{"history", "constants"}`，且 `history` 键严格限定为 `{"t", "theta", "omega"}`（基准 3 为 `{"t", "r"}`），出现任何特权键（`targets`, `tau_m`, `tau_e`, `I_drive`, `I_net`, `truth`, `label`, `p`, `a`, `e`, `u`, `m`）立即抛 `PermissionError`；
      2. 静态 AST 检查验证 `initialize()` 与 `rollout()` 源码及调用链零引用特权字段名；
-     3. 运行时污染单测（Taint Test）：将验证事件的全部 $\mathcal{O}_1$ 字段覆写为 `NaN` 与 `+1e9` 两份副本，断言 `initialize` 与 `rollout` 输出与原事件**逐比特完全一致（`atol=0, rtol=0`）**。
+     3. 运行时污染单测（Taint Test）：固定合法运动包，在验证副本中将聚合端口、神谕字段与禁止使用的 metadata 分别覆写为 `NaN` 与 `+1e9` 两份副本，断言 `initialize` 与 `rollout` 输出与原事件**逐比特完全一致（`atol=0, rtol=0`）**。
 
-4. **损失权重、课程与优化器（显式规避 `frozen_p` 3× 收缩陷阱与 `P2a` 历史精修灾难）**：
+3. **损失权重、课程与优化器（显式规避 `frozen_p` 3× 收缩陷阱与 `P2a` 历史精修灾难）**：
    - **总目标**（$\mathcal{O}_1$ 仅作训练监督目标，绝不进入输入）：
      $$\mathcal{L}_{\mathrm{Stage2}} = \mathcal{L}_{\mathrm{motion}} + 0.5\,\mathcal{L}_{\mathrm{port}} + 0.5\,\mathcal{L}_{\mathrm{port},0} + 0.05\,\mathcal{L}_{\mathrm{cons}} + 10^{-4}\|\beta\|_1,$$
      - $\mathcal{L}_{\mathrm{motion}}$：归一化 $(\theta,\omega)$ 在有效未来区间 $(0, T_s]$ 的均方误差（失稳轨线在截止点截断，不填充）；
      - $\mathcal{L}_{\mathrm{port}}$：归一化 $(\tau_m, \tau_e)$ 在 $(0, T_s]$ 的均方误差（权重 `0.5`，强于 v2 的 `0.1`，锚定开放残差归属）；
-     - **$\mathcal{L}_{\mathrm{port},0}$（反 `frozen_p` 3× 收缩专设项）**：在部署起点 $t=0$ 直接以 $\mathcal{O}_1$ 监督 $\hat\tau_m(0)=F S_p p_0$ 与 $\hat\tau_e(0)$（权重 `0.5`），配合可训练阻尼 $\dot p$，彻底杜绝编码器压缩 $\|p_0\|_2$ 的跨模块代偿；
+     - **$\mathcal{L}_{\mathrm{port},0}$（反 `frozen_p` 3× 收缩专设项）**：在部署起点 $t=0$ 直接以 $\mathcal{O}_1$ 监督 $\hat\tau_m(0)=S_p p_0-b\odot T(\omega_0)$ 与 $\hat\tau_e(0)$（权重 `0.5`），配合可训练阻尼 $\dot p$，约束编码器压缩 $\|p_0\|_2$ 的跨模块代偿；是否改善由匹配对照验证；
      - $\mathcal{L}_{\mathrm{cons}}$：推进 $0.1\ \mathrm{s}$ 后隐态与编码器对未来 $0.1\ \mathrm{s}$ 运动窗重新编码的一致性损失（权重 `0.05`）；
      - **永久禁用 `P2a` 历史一步精修**：无论训练期或部署期均不做初态梯度精修，杜绝过拟合 11 帧噪声导致未来风险恶化 44× 的灾难。
-   - **三段课程与优化器**：Phase A（$T_s=1\ \mathrm{s}$, 64 步）$\to$ Phase B（$T_s=2\ \mathrm{s}$, 64 步）$\to$ Phase C（$T_s=4\ \mathrm{s}$, 128 步），总计 **`256` 次接受更新**；物理与有效批量均为 `4`（按激励/稳失稳分层配平）；Adam 分组学习率（编码器 `3e-3`、残差 ODE `1e-2`），8 步线性预热 + 余弦退火至 `0.1×`，梯度范数裁剪 `5.0`，每步后硬投影约束与支持掩码；训练内部 RK4 步长 `0.01 s`（训练前强制过 `0.01 vs 0.005 s` 双网格梯度资格），评分强制过 `0.005 vs 0.0025 s` 双网格资格。
+   - **三段课程与优化器**：Phase A（$T_s=1\ \mathrm{s}$, 64 步）$\to$ Phase B（$T_s=2\ \mathrm{s}$, 64 步）$\to$ Phase C（$T_s=4\ \mathrm{s}$, 128 步），总计 **`256` 次接受更新**；物理与有效批量均为 `4`（按训练运动可得结局和训练子折历史能量四分位配平，来源配对不跨折）；Adam 分组学习率（编码器 `3e-3`、残差 ODE `1e-2`），8 步线性预热 + 余弦退火至 `0.1×`，梯度范数裁剪 `5.0`，每步后硬投影约束与支持掩码；训练内部 RK4 步长 `0.01 s`（训练前强制过 `0.01 vs 0.005 s` 双网格梯度资格），评分强制过 `0.005 vs 0.0025 s` 双网格资格。
 
 ---
 
-## 四、基准 1 强开放/强调制工况定量设计、十字星矩阵、ML 基线公平口径与 G1–G4 硬门禁
 
-### 4.1 旧 Layer 1 诊断：为何 `Stage-1-Only` 拿到 `0.00207` 风险？
+编码器参数数目为原实现口径；新实现须实测复核。训练一致性项只在训练期从合法运动子窗计算；部署不得重新编码、初态梯度精修或逐事件拟合。所有归一化按第 6 节只从相应训练折确定。聚合端口与真分项评分严格分开。
 
-对照逐行审查的 `src/kiki/data/osgkd_synthetic.py`（L57–113）与 `experiments/osgkd_v2_wp2_layer1_20261127/models.py`（L22–45），旧 Layer 1 中 `weak_static` 在 `modulated` 无噪格仅 `0.00207`、在 `open` 无噪格仅 `0.00705` 的**五重定量根因**完全明确：
-
-1. **调制能量微弱（$<4\%$ RMS 占比）**：仅 $4/12$ 条边带调制且 $\beta_e = 0.3 c_e$（L60–61）；初态 $a_0\sim\mathcal{N}(0,0.4^2)$ 又按 $\dot a=-0.6a+0.3\omega$ 迅速衰减（L85, L104），导致调制转矩在 4 s 内的 RMS 不到静态耦合转矩的 $4\%$。
-2. **开放环境记忆弱且纯线性衰减**：`environment_gain = 0.4`（L65），而节点静态耦合刚度和约 $3.0$（大 $7.5\times$）；$\dot e=-0.4e+0.2\omega$（L86）无非线性/相角反馈，环境项在 4 s 内单调衰减，对运动总方差贡献极低。
-3. **小摆角线性域、零失稳事件**：初态扰动仅 $\theta_0\sim\mathcal{N}(0,0.2^2), \omega_0\sim\mathcal{N}(0,0.12^2), p_0\sim\mathcal{N}(0,0.2^2)$（L104），最大角差 $|\varphi_e|\lesssim 0.4\ \mathrm{rad}\ll\pi$，**0/48 条失稳**，几乎无大角非线性效应。
-4. **`WeakStatic` 仍配齐了 1,928 参编码器与线性机械通道吸纳残差**：`WeakStatic`（`models.py` L22–43）虽冻结 $\hat c$，但仍联合训练完整图编码器及 $\dot p=a_p p+b_p\omega$；在小扰动线性域内，线性机械态 $p(t)$ 足以吸收微弱线性记忆 $0.4e(t)$ 的大部分动量效应。
-5. **旧弱式回归用正值低通 Hann 窗却未被惩罚**：因旧环境记忆弱，低通正窗虽然把 $S_e e(t)$ 全部透传，仍未破坏 $\hat c$ 的支撑恢复（相对误差仅 `0.048`）。
-
-### 4.2 新基准 1（`open_oscillator_v3`）强开放/强调制与大样本失稳定量参数设计
-
-| 物理组件 | 旧 Layer 1（过弱） | **新基准 1 `open_oscillator_v3`（唯一拍板规格）** | 物理与统计作用 |
-| --- | --- | --- | --- |
-| **稀疏拓扑与参考** | $N=8$（12/28 边），16/32 为克隆拷贝；$\theta_\star=0$ | $N\in\{8,16,32\}$ **原生随机稀疏图**（环+$\lfloor N/2\rfloor$ 弦，$|S^\star|=1.5N$：$12/28$、$24/120$、$48/496$）；非零稳态流 $\theta_{\star,i}\sim\mathcal{U}(-0.35,0.35)$ 居中 | 考验真实图稀疏恢复与一般 $\eta\ne 0$ 下的 Theorem 1 |
-| **惯量、阻尼与静态骨架** | $M\in[0.8,1.2], D\in[0.15,0.30], c\in[0.7,1.3]$ | $M_i\sim\mathcal{U}(0.7,1.4)$，$D_i\sim\mathcal{U}(0.12,0.25)$，$c_e\sim\mathcal{U}(1.2,2.4)$ | 轻阻尼维持 4 s 宽带多频振荡，保障 (A3) 强制性 |
-| **强动态调制（奇对称核）** | $1/3$ 边，$\beta=0.3c$，无角反馈（RMS $<4\%$） | **$2/3$ 活动边**带调制，$\beta_e\sim\mathcal{U}(0.65,0.80)\,c_e$；核 $K_e(a)=c_e+\beta_e\tanh(a_i+a_j)$（刚度可在 $[0.2c_e,1.8c_e]$ 变动 9×）；$\dot a_i=-\lambda_{a,i}a_i+\gamma_{a\omega,i}\omega_i+\gamma_{a,\cos,i}\sum_{e\in S^\star(i)}(\cos\varphi_e-\cos\eta_e)$，$\lambda_a\in[0.35,0.55], \gamma_{a\omega}\in[0.45,0.70], \gamma_{a,\cos}\in[0.30,0.50]$ | **大角正反馈“电压跌落”机制**：$|\varphi_e|$ 增大 $\Rightarrow \cos\varphi_e-\cos\eta_e<0 \Rightarrow a_i$ 变负 $\Rightarrow K_e(a)$ 骤降至 $0.2c_e$，使静态 `Stage-1-Only` 严重高估同步回复力而漏报失稳！**生成器断言调制转矩 RMS 占 $\tau_e$ 的 `22%–35%`**。 |
-| **强开放环境记忆（$\mathcal{F}_{\mathrm{env}}$）** | $S_e=0.4$，$\dot e=-0.4e+0.2\omega$（无角/幅反馈） | $\tau_{\mathrm{env}}^{\mathrm{open}}=S_e e + \alpha_{\mathrm{cm}}\odot\tanh(a)$，$S_{e,i}\in[1.4,2.2], \alpha_{\mathrm{cm},i}\in[0.25,0.45]$；$\dot e_i=-T_{e,i}^{-1}e_i + \gamma_{e\omega,i}\omega_i + \gamma_{ea,i}\tanh(a_i) + \gamma_{e,\cos,i}\sum_{e\in S^\star(i)}(\cos\varphi_e-\cos\eta_e)$，$T_e^{-1}\in[0.18,0.35]\ \mathrm{s}^{-1}, \gamma_{e\omega}\in[0.35,0.60], \gamma_{ea}\in[0.25,0.45], \gamma_{e,\cos}\in[0.15,0.30]$ | 慢时标（$T_e\in[2.85,5.55]\ \mathrm{s}$）与 Stage 1 通带分离 $>9\times$；强非线性开放功率交换使 `Stage-1-Only` 长时严重失配（目标 4 s MSE $\ge 0.10$）。**生成器断言环境转矩 RMS 占 $\tau_e$ 的 `35%–50%`**。 |
-| **对称余弦损耗切片** | 无 | `strong_open_sym` 格加入 $|B|[g\odot(\cos\varphi-\cos\eta)]$，$g_e\sim\mathcal{U}(0.25,0.50)c_e$（$e\in S^\star$） | 在非二分图上实证检验 Theorem 1 机制 1 |
-| **主动机械驱动** | $\dot p=-0.8p-0.2\omega$ | $\dot p_i=-\lambda_{p,i}p_i-\gamma_{p\omega,i}\omega_i-\gamma_{pt,i}\tanh(p_i)$，$\lambda_p\in[0.40,0.65], \gamma_{p\omega}\in[0.25,0.45], \gamma_{pt}\in[0.10,0.20]$ | 非平凡动态调速，防止单靠常数 $p_0$ 拟合 |
-| **大样本失稳与防作弊分界生成** | 48 train / 24 val，**0 失稳** | 每格固定 **`train = 96`（64 稳 + 32 失稳）、`val = 32`（16 稳 + 16 失稳）、`test = 128`（64 稳 + 64 可初始化失稳）**。失稳判据：$(0,4]\ \mathrm{s}$ 内连续 5 帧（$0.05\ \mathrm{s}$）满足 $\operatorname{ptp}(\theta)>\pi$ 且 $\max_i|\omega_i-\omega_{\mathrm{COI}}|>0.35\ \mathrm{rad/s}$；历史窗 $[-0.1,0]\ \mathrm{s}$ 内强制非失步（**100% 因果可初始化**）。4 类分层激励：`distributed_strong`、`local_fault`、`latent_overload`（强 $(p_0,a_0,e_0)$ 而初角/初速温和，防简单阈值作弊）、`boundary_near_separatrix`（沿随机扰动射线 1D 二分包夹分界 $\pm 15\%$ 生成成对稳/失稳样本，保证稳/失稳初始能量分布显著重叠）。 | 64 失稳 + 64 稳测试集使召回 95% CI 收窄至 $\pm 10\%$，配对 McNemar 对 20 pp 差异检验力 $>95\%$，DeLong AUROC 标准误 $\approx 0.025$。 |
-
-### 4.3 十字星实验矩阵（严格控算力，禁全笛卡尔积）
+### 10.2 基准 2 与十字星组织
 
 | 切片轴 | 格点设置 | 方法清单 | 种子与独立单元 |
-| --- | --- | --- | --- |
-| **中心锚格（Anchor）** | 基准 1，$N=8$，`strong_open`，历史噪声 `0.01` | **全部 13 端点**：`PDD-Frozen`、`PDD Bounded-Recal`、`Stage-1-Only`、`End-to-End OSGKD v2`、`No-Privilege Same-Arch`、`NRI/ACD`、`NRI+Port`、`SINDy-AE`、`Latent ODE`、`PHNN/LGNN`、`Equivariant Graph Neural ODE`、`Direct Classifier`、`Seq2Seq` | **3 种子**（`24121, 24122, 24123`）；另对种子 1 的 `No-Privilege` 追加 384 步充分性检查 |
-| **纵轴（工况递进）** | $N=8$，噪声 `0.01`：① `static_closed`；② `strong_mod_closed`；③ `strong_open`（复用锚格）；④ `strong_open_sym` | 核心 5 方法（`PDD-Frozen`, `Stage-1-Only`, `End-to-End v2`, `No-Privilege`, `Graph Neural ODE`）；格 ②④ 追加 `PDD Bounded-Recal` | 格 ①②：**2 种子**；格 ③④：**3 种子** |
-| **横轴 A（噪声）** | $N=8$，`strong_open`，噪声 `{0.00, 0.01(复用), 0.03}` | 核心 5 方法 | 格 `0.00, 0.03`：**2 种子** |
-| **横轴 B（规模）** | `strong_open`，噪声 `0.01`，$N\in\{8(\text{复用}), 16, 32\}$ | 核心 4 方法（`PDD-Frozen`, `Stage-1-Only`, `End-to-End v2`, `Graph Neural ODE`） | $N=16$：**2 种子**；$N=32$：**1 种子**（先过 Run 0 内存 dry-run） |
-| **基准 2（升级摆阵）** | $N=8$，强开放/强调制 + 已知重力 $-G\sin\theta$，每系统 `96/32/128`（含 64 翻转/失稳），噪声 `0.01` | 核心 6 方法（`PDD-Frozen`, `Stage-1-Only`, `End-to-End v2`, `No-Privilege`, `Graph Neural ODE`, `PHNN/LGNN`） | **3 个独立系统种子**（`31, 41, 51`）各 1 优化种子（3 独立物理系统） |
-| **基准 3（Wilson–Cowan）** | $N=8$（6E+2I，强 STP+适应记忆，64 稳+64 癫痫）及 $N=16$（12E+4I），噪声 `0.01` | $N=8$：**10 个适用端点**（`PDD-Frozen`, `Stage-1-Only`, `End-to-End v2-WC`, `No-Privilege`, `NRI/ACD`, `SINDy-AE`, `Latent ODE`, `Graph Neural ODE`, `Direct Classifier`, `Seq2Seq`；非哈密顿故 `PHNN/LGNN` 标注 N/A）；$N=16$：核心 4 方法 | $N=8$：**3 种子**；$N=16$：**1 种子** |
-| **理论数值核验** | Theorem 2 四类负对照 + 20 格激励/重合相图 + Theorem 3 逃逸对照（$e^z$ vs $1+0.8\tanh z$ vs $e^{\tanh z}$） | 确定性 NumPy 验证脚本 | 1 次确定性运行（$<2\ \mathrm{min}$） |
+|---|---|---|---|
+| **基准 2（升级摆阵）** | $N=8$，强开放/强调制 + 已知重力 $-G\sin\theta$，每系统 `96/32/128`（train/val/独立合成确认集）（含 64 翻转/失稳），噪声 `0.01` | 核心 6 方法（`PDD-Frozen`, `Stage-1-Only`, `End-to-End v2`, `No-Privilege Same-Arch`, `Graph Neural ODE`, `PHNN/LGNN`） | **3 个独立系统种子**（`31, 41, 51`）各 1 优化种子（3 独立物理系统） |
 
-### 4.4 全部 10 个必配基线的公平口径表（信息合同、容量匹配、优化预算）
+基准 2 的已知重力项在预测和纯运动弱式中使用同一符号，不能由环境项补偿。只复用振子的冻结/重标、部署白名单和数值资格，不把参数或性能跨系统等同。相同模板在三独立物理系统重新拟合，分别报告各系统结果。
 
-> **统一公平原则**：所有动力学基线均在 CPU float64 下以相同 3 段课程（`64@1s + 64@2s + 128@4s = 256` 步、批量 `4`、RK4 $\Delta t_{\mathrm{train}}=0.01\ \mathrm{s}$、相同 Adam+余弦学习率）训练，并在同一 `0.005/0.0025 s` 双网格资格与同一 128 条冻结测试集上评分；$N=8$ 可训练参数量统一匹配在 **`~2,000–3,000`** 区间（消除参数量悬殊混淆）；非 ODE 参照（`Direct Classifier`, `Seq2Seq`）给予充足收敛预算（早停于 `val`）作为诚实参照上界。
+十字星仍只做中心锚格、工况递进、全轨迹噪声、规模、基准 2、基准 3 与理论负对照，不展开全笛卡尔积。中心锚格种子为 `24121,24122,24123`；规模轴 N=16 两优化种子、N=32 一优化种子。`static_closed`、`strong_mod_closed` 各两优化种子，`strong_open_sym` 三优化种子；噪声两侧各两种子。新 Two-Stage 对照及去重后的数量、课程、Run 0 项目以第 8 节的 161 次 ODE 训练、41,344 次课程更新为唯一总账；不沿用旧表的 128 次或 40,576 次口径。固定图上的优化种子不当作独立物理系统。
 
-| # | 方法名称 | 训练期信息合同 | 部署期输入 | $N=8$ 参数量（估计） | 关键实现与公平性边界 |
-| :-: | --- | :---: | :---: | ---: | --- |
-| 主 | **`PDD-Frozen`**（主方案） | $\mathcal{O}_1$（Stage 1 弱式 + Stage 2 监督） | 仅 $\mathcal{O}_0$ | `~2,300` | Stage 1 冻结 $(\hat S,\hat c,\hat g)$；Stage 2 仅学 $\beta_{\hat S}$、$\mathcal{F}_{\mathrm{env}}$ 残差与 1,928 参图编码器（`Bounded-Recal` 同参数，仅开放 $c_{\hat S}\in[0.75\hat c,1.40\hat c]$） |
-| 1 | **`Stage-1-Only`** | $\mathcal{O}_1$（仅 Stage 1 + 简单线性 $\dot p$） | 仅 $\mathcal{O}_0$ | `~1,972` | 核心消融（直面 Weak SINDy 质疑）：精确相同 Stage 1 冻结 $\hat c$，关闭 $\beta\equiv 0$、$e\equiv 0$，仅训线性 $\dot p$ 与 $p_0$ 编码器（256 步） |
-| 2 | **`End-to-End OSGKD v2`** | $\mathcal{O}_1$（全量联合） | 仅 $\mathcal{O}_0$ | `2,376` | 严格保留本仓冻结 `OSGKDGraph`（指数核、含 `env_edges`、128 步密训 + 128 步剪枝重拟合 = 256 步） |
-| 3 | **`No-Privilege Same-Arch`** | **仅 $\mathcal{O}_0$ 轨迹**（零端口监督） | 仅 $\mathcal{O}_0$ | `~2,320` | 与 PDD 完全同构（奇对称核、无 `env_edges`、同 1,928 参编码器），跳过 Stage 1，仅靠未来 $(\theta,\omega)$ 运动损失 + $L_1(c,\beta)$ 训练 256 步（锚格种子 1 另跑 384 步排除欠优化） |
-| 4 | **`NRI / ACD`** | 标配 **$\mathcal{O}_0$ 轨迹**（锚格另列 `NRI+Port` 含 $\mathcal{O}_1$ 读出头） | 仅 $\mathcal{O}_0$ | `~2,800` | Kipf+ (ICML'18) / Löwe+ (CLeaR'22) 摊销交互图推断：GNN 边编码器经 Gumbel-Softmax 推断二值边概率 $q_\phi(z_{ij}\mid H_{100})$，配匹配 RK4 GNN 解码器（256 步） |
-| 5 | **`SINDy-AE`** | $\mathcal{O}_1$（运动 + 端口监督） | 仅 $\mathcal{O}_0$ | `~2,500` | Champion+ (PNAS'19) 部分观测稀疏发现：共享 1,928 参编码器 + 候选三角/多项式/$\tanh$ 稀疏字典，每 32 步执行一次序贯阈值剪枝（STLSQ），共 256 步 |
-| 6 | **`Latent ODE`** | $\mathcal{O}_1$（运动 + 端口解码监督） | 仅 $\mathcal{O}_0$ | `~2,600` | Rubanova+ (NeurIPS'19) 黑箱隐态连续动力学：GRU 编码 $H_{100}\to h_0\in\mathbb{R}^{5N}$，无图互易先验 MLP ODE 演化 $h(t)$ 并线性解码 $(\theta,\omega,\tau_m,\tau_e)$（256 步） |
-| 7 | **`PHNN / LGNN`** | $\mathcal{O}_1$（运动 + 端口监督） | 仅 $\mathcal{O}_0$ | `~2,500` | Desai+ (PRE'21) / Thangamuthu+ (NeurIPS'22)：共享 1,928 参编码器 + 图势能哈密顿网络 $H_\theta(\theta,\omega)$ + 半正定耗散 $R_\theta\succeq 0$ + 外端口头（仅适用基准 1、2；基准 3 标 N/A） |
-| 8 | **`Equivariant Graph Neural ODE`** | $\mathcal{O}_1$（运动 + 端口监督） | 仅 $\mathcal{O}_0$ | `2,599` | 严格保留本仓 `GraphNeuralODE`（同 1,928 参等变图编码器 + 稠密边/节点 MLP RHS，无互易与 $\mathcal{F}_{\mathrm{env}}$ 结构约束，256 步） |
-| 9 | **`Direct Classifier`** | $\mathcal{O}_0$ 历史 + **二元失稳标签** | 仅 $\mathcal{O}_0$ | `~2,150` | **非动力学分类参照上界（显式标注不产出轨迹、端口或图）**：同 1,928 参图 GRU 编码器 + 池化二分类头，BCE 训至 `val` 早停收敛（$\le 200$ epoch） |
-| 10 | **`Seq2Seq`** | $\mathcal{O}_0$ 历史 + 未来 $(\theta,\omega)$ | 仅 $\mathcal{O}_0$ | `~2,800` | **非 ODE 序列回归参照（显式标注无自治微分方程与拓扑）**：同图 GRU 编码器 + 多步序列解码器直出 400 帧未来运动，MSE 训至 `val` 早停收敛 |
+将来独立合成确认集拟为每格 128 条（64 稳/64 失稳），train/val 拟为 96/32 条；标签配额、历史可初始化、完整窗覆盖和分界激励须实际核验。四类激励为 `distributed_strong`、`local_fault`、`latent_overload`、`boundary_near_separatrix`；沿扰动射线分界包夹的来源簇在划分前分组，不能把同源近邻分到训练与确认两侧。确认集在生成器冻结后锁定，Run 0 不用它改设计。所有“test”命名仅指未来独立合成确认，IEEE-39 test 始终关闭；本次没有读取或生成这些数据。不预言固定样本量必达指定检验力。
 
-*结构恢复评测边界*：仅显式边模型（`PDD`, `Bounded-Recal`, `Stage-1-Only`, `End-to-End v2`, `No-Privilege`, `NRI/ACD`, `SINDy-AE`）计入拓扑 AUROC/AUPRC/F1 与 $\mathcal{O}_2$ 端口分离误差；黑箱/隐式模型明确标为 `—`，不伪造结构指标。
+### 10.3 G1、G2、G4 原登记效应量与统计单位
 
-### 4.5 G1–G4 预登记硬门禁、统计检验方法与止损触发条件
-
-所有硬门禁在**中心锚格 3 种子、128 条冻结测试集（64 稳 + 64 失稳）**上按以下统一指标与检验判定（`VPT` 定义为归一化瞬时状态误差 $\|\hat x(t)-x(t)\|_2/\mathrm{RMS}(x)$ 首次超过 $0.20$ 前的最大有效预测时长，上限 $4.0\ \mathrm{s}$；失稳 AUROC 采用自治轨线最大摆幅 $s_{\mathrm{instab}}=\max_{t\in[0,4]}\operatorname{ptp}(\hat\theta(t))$，无额外分类头）：
+G3 完整采用第 1 节的匹配 Two-Stage 主比较。下表用于将来三优化种子与独立合成确认，Run 0 只在合成 train/val 作冒烟。VPT 是归一化瞬时状态误差首次超过 .20 前的有效时长，上限 4 s；尺度从训练冻结。振子失稳连续评分为自治轨线 `max ptp(theta)`，无额外分类头；WC 用第 5 节对应阈值与连续发放率评分。
 
 | 门禁 | 核心比较对 | 预登记定量通过阈值（须**全部同时满足**） | 统计检验与区间方法 | 失败 / 止损触发条件 |
 | --- | --- | --- | --- | --- |
 | **G1（Stage 2 必要性）** | `PDD-Frozen` vs `Stage-1-Only` | ① 3 种子均值 `MSE@4s` 相对降低 **$\ge 40\%$**（比值 $\le 0.60$），且 **3/3 种子同号**；<br>② 3 种子均值 `VPT` 净提升 **$\ge +0.60\ \mathrm{s}$**（3/3 种子同号）；<br>③ 失稳召回净提升 **$\ge +15\ \mathrm{pp}$**（同时稳定误报率 $\le 10\%$）**或** 失稳 `AUROC` 提升 **$\ge +0.08$**。 | 逐事件配对自助法（Paired Event Bootstrap, $B=10{,}000$）计算 95% CI（严格不跨零）；召回采用 **McNemar 精确配对检验**（$p<0.01$）；AUROC 采用 **DeLong 配对检验**（$p<0.01$）。 | **Run 0 早停止损**：若 `Stage-1-Only` 的 `MSE@4s < 0.05` 或 PDD 相对降幅 $<25\%$，暂停全矩阵，先核查生成器调制/开放 RMS 占比是否落入目标区间及 Stage 2 是否欠拟合。 |
-| **G2（解耦优于端到端）** | `PDD-Frozen` vs `End-to-End OSGKD v2` | ① 静态边 `AUPRC` 提升 **$\ge +0.15$**，静态边 `F1 >= 0.90` 且高出 v2 **$\ge +0.15$**（3/3 种子）；<br>② $\mathcal{O}_2$ 内部/环境分离 `Port Sep RMSE` 相对降低 **$\ge 30\%$**（3/3 种子）；<br>③ 预测/失稳非退化护栏：`MSE@4s` 不劣于 v2 超过 $10\%$ 且失稳 `AUROC` 不劣于 v2 超过 $0.03$。 | 配对 Bootstrap 95% CI（不跨零）；`Port Sep RMSE` 配对 **Wilcoxon 符号秩检验**（$p<0.01$）。并同步核查 `Bounded-Recal`：仅当其跨 3/3 种子降 `MSE@4s` $\ge 10\%$ 且 $\hat c$ 相对误差恶化 $\le 5\%$ 时才记为有效补偿消融，否则坚持 `PDD-Frozen` 主干。 | 若 v2 在长时预测与失稳上全面碾压（PDD 退化 $>15\%$）或静态边 F1 优势 $<0.05$，放弃硬冻结解耦主干主张，转查 Stage 1 残差偏差传递。 |
-| **G3（特权信息纯增益）** | `PDD-Frozen` vs `No-Privilege Same-Arch` | ① 静态边 `AUPRC` 提升 **$\ge +0.15$** 且 `F1` 提升 **$\ge +0.15$**（3/3 种子）；<br>② $\mathcal{O}_2$ `Port Sep RMSE` 相对降低 **$\ge 35\%$**（3/3 种子）；<br>③ `MSE@4s` 相对降低 **$\ge 15\%$** 或失稳 `AUROC` 提升 **$\ge +0.05$**（另一项退化 $\le 5\%$）。 | 配对 Bootstrap 95% CI；并在锚格种子 1 对 `No-Privilege` 跑 $1.5\times$（384 步）充分性校验以排除“无特权仅收敛慢”的混淆。 | 若无特权同构在 384 步追平 PDD（F1 差 $<0.05$ 且 `Port Sep` 差 $<10\%$），则 LUPI 头条不成立，触发 Campaign 结构复盘。 |
-| **G4（定性失稳分岔保真）** | `PDD-Frozen` vs `Graph Neural ODE` & `Latent ODE`（并列 `Direct Classifier`） | ① `PDD-Frozen` 失稳召回 **$\ge 70\%$**、稳定误报 **$\le 12\%$**，且召回高于两黑箱 ODE 至少 **$\ge +20\ \mathrm{pp}$**；<br>② 失稳 `AUROC >= 0.85` 且高于两黑箱 ODE **$\ge +0.08$**；<br>③ 稳定子集 `MSE@4s` 不超 `Graph Neural ODE` 的 $1.5\times$；<br>④ 诚实并列 `Direct Classifier`（不强求反超有监督分类器，展示在产出连续轨迹+物理图前提下的可比性）。 | 64 条失稳 **McNemar 精确检验**（$p<0.005$）；128 条 **DeLong 检验**（$p<0.005$）；精确 **Clopper–Pearson 95% CI**。并在基准 3（Wilson–Cowan 64+64 癫痫跃迁）复验跨方程族一致性。 | 若黑箱 ODE 在大样本合成失稳上亦保持高召回（$>65\%$ 且与 PDD 差 $<10\ \mathrm{pp}$），按证据立即收缩 C3/G4 主张至“高阶约化失配/强分布外（如 IEEE-39）情形”，不夸大。 |
+| **G2（解耦优于端到端）** | `PDD-Frozen` vs `End-to-End OSGKD v2` | ① 静态边 `AUPRC` 提升 **$\ge +0.15$**，静态边 `F1 >= 0.90` 且高出 v2 **$\ge +0.15$**（3/3 种子）；<br>② $\mathcal{O}_2$ 内部/环境分离 `Port Sep RMSE` 相对降低 **$\ge 30\%$**（3/3 种子）；<br>③ 预测/失稳非退化护栏：`MSE@4s` 不劣于 v2 超过 $10\%$ 且失稳 `AUROC` 不劣于 v2 超过 $0.03$。 | 配对 Bootstrap 95% CI（不跨零）；`Port Sep RMSE` 配对 **Wilcoxon 符号秩检验**（$p<0.01$）。并同步核查 `Bounded-Recal`：仅当其跨 3/3 种子降 `MSE@4s` $\ge 10\%$ 且 $\hat c$ 相对误差恶化 $\le 5\%$ 时才记为有效补偿消融，否则坚持 `PDD-Frozen` 主干。 | 若 v2 在长时预测与失稳上全面碾压（PDD 退化 $>15\%$）或静态边 F1 优势 $<0.05$，暂不支持该预算下硬冻结解耦主干优势，转查 Stage 1 残差偏差传递。 |
+| **G4（定性失稳分岔保真）** | `PDD-Frozen` vs `Graph Neural ODE` & `Latent ODE`（并列 `Direct Classifier`） | ① `PDD-Frozen` 失稳召回 **$\ge 70\%$**、稳定误报 **$\le 12\%$**，且召回高于两黑箱 ODE 至少 **$\ge +20\ \mathrm{pp}$**；<br>② 失稳 `AUROC >= 0.85` 且高于两黑箱 ODE **$\ge +0.08$**；<br>③ 稳定子集 `MSE@4s` 不超 `Graph Neural ODE` 的 $1.5\times$；<br>④ 诚实并列 `Direct Classifier`（不强求反超有监督分类器，展示在产出连续轨迹+物理图前提下的可比性）。 | 64 条失稳 **McNemar 精确检验**（$p<0.005$）；128 条 **DeLong 检验**（$p<0.005$）；精确 **Clopper–Pearson 95% CI**。并在基准 3（Wilson–Cowan 64+64 癫痫跃迁）复验跨方程族一致性。 | 若黑箱 ODE 在大样本合成失稳上亦保持高召回（$>65\%$ 且与 PDD 差 $<10\ \mathrm{pp}$），收缩当前合成数据上的 C3/G4 主张；IEEE-39 或分布外优势须另行登记并取得相应证据，不由本阴性结果推出。 |
 
----
+配对自助法以事件或来源事件簇为单位；事件簇中相关样本不能当独立事件。F1/AUPRC 按物理图与优化种子直接列值，不对同一图的边重采样制造跨系统置信度。表中 Bootstrap/Wilcoxon 只用于有合理配对单位的事件误差；不把三种子当作足以执行 p<.01 的 Wilcoxon 样本。召回的配对二元差异用同一失稳事件，AUROC 用同一合法确认事件；相关簇需按簇处理。三项分别报告，全部满足才作联合主张。效应阈值与统计不确定性分别判断，不以未显著证明等效。
 
-## 五、单进程 CPU float64 算力预算与 Run 0 最小判别计划
+### 10.4 Run 0 其余保留门槛与前瞻适配
 
-### 5.1 基于 `resource_budget.md` 实测的单进程 CPU float64 分阶段算力预算
+基准 1 锚格单种子 `24121`：Stage 1 F1≥.90、AUPRC≥.95；`Stage-1-Only` MSE@4s≥.10 或失稳召回≤65%；PDD 相对其 MSE 降≥35%、VPT 增≥.50 s；PDD 静态边 F1 比 v2 高≥.15。基准 3：Stage 1 有向 AUPRC≥.90，PDD 相对 Stage-1-Only 的 MSE 降≥30%、跃迁召回≥65%。全部零泄漏资格、训练/评分双网格资格及 N=32 峰值 RSS≤4 GiB 均须实际通过。预算、九项端点和 21 个超阈值采样点的计时规则按第 8 节。
 
-直接锚定 `reports/osgkd_v2_wp2_layer1_20261127/resource_budget.md` 实测数据（单进程 CPU float64，批量 4，RK4 $\Delta t=0.01\ \mathrm{s}$）：
-- $N=8$（28 候选边）：$2\ \mathrm{s}$ `1.028 s/step`（RSS `715 MiB`），$4\ \mathrm{s}$ `1.837 s/step`（RSS `852 MiB`），插值 $1\ \mathrm{s}$ `~0.58 s/step`；单次 256 步三段课程（`64@1s + 64@2s + 128@4s`）裸时长 `338 s (5.6 min)`，乘以 **1.4× 工程保守系数**（含双网格资格、检查点 I/O、`GraphNeuralODE` 稠密边 MLP 及后台负载）按 **`0.132 h/run`**（`GraphNeuralODE` 按 `0.18 h/run`，`Stage-1-Only` 按 `0.06 h/run`，`Direct Classifier`/`Seq2Seq` 按 `0.03 h/run`）计；128 条测试集批量 16 双网格（`0.005/0.0025 s`）评分约 `0.75 min/endpoint`。
-- $N=16$（120 候选边）：$2\ \mathrm{s}$ `0.987 s/step`（`780 MiB`），$4\ \mathrm{s}$ `2.144 s/step`（`982 MiB`）；保守 **`0.15 h/run`**（`GraphNeuralODE` 约 `0.30 h/run`）。
-- $N=32$（496 候选边）：$2\ \mathrm{s}$ `1.914 s/step`（`1,135 MiB`），$4\ \mathrm{s}$ `3.588 s/step`（`1,685 MiB`）；保守 **`0.25 h/run`**（`GraphNeuralODE` $N^2=1024$ 稠密消息约 `0.63 h/run`，峰值 RSS 预计 `2.2–2.8 GiB`，须先过 Run 0 内存 dry-run）。
-- 基准 3（Wilson–Cowan，$4N$ 态）：约为同 $N$ 振子单步耗时的 **0.8×**（$N=8$ 约 `0.11 h/run`，$N=16$ 约 `0.13 h/run`）。
+若 Stage-1-Only MSE<.05 或 PDD 降幅<25%，暂停矩阵扩张，诊断 RMS、覆盖和优化充分性；不能由低误差自动断言机制不存在。若 Stage 1 F1<.85，按第 4 节依次查窗、谱、秩/夹角、噪声和投影残差，不删除 .5 Hz 窗。若冻结主干比重标或 v2 差≥15%，报告投影目标偏移、越盒/触边、优化与端口误差；不能从单次冒烟自动晋升重标主干。黑箱召回高时收缩相应合成主张，不自动转移为 IEEE-39 优势。任何工况、课程或算法适配需形成新冻结版本、保留父子谱系，且不得回看合成确认集改造生成器。
 
-| 执行阶段 | 作业规模（运行条数 × 课程） | 总梯度更新次数 | 净单进程 CPU 墙钟（含 1.4× 系数与双网格评分） | 预计峰值工作集（RSS） |
-| --- | --- | ---: | ---: | ---: |
-| **Run 0（资格 + G1/G2 冒烟 + 内存 Dry-Run）** | 基准 1 锚格 1 种子 × 5 端点 + 基准 3 冒烟 1 种子 × 2 端点 + 零泄漏/理论/内存 dry-run | **`1,792`** | **`1.4 h`** | `0.9 GiB`（$N=32$ dry-run $\le 2.8\ \mathrm{GiB}$） |
-| **Phase 1 · 基准 1 中心锚格** | 11 ODE 端点 × 3 种子 + 1×384 步充分性校验 + 6 非 ODE 快跑 | `8,576` | **`5.4 h`** | `0.95 GiB` |
-| **Phase 1 · 基准 1 纵轴切片** | `static_closed`(10) + `strong_mod_closed`(12) + `strong_open_sym`(18) = 40 runs | `10,240` | **`5.7 h`** | `0.95 GiB` |
-| **Phase 1 · 基准 1 横轴 A（噪声）** | `0.00 / 0.03` × 2 种子 × 5 方法 = 20 runs | `5,120` | **`3.0 h`** | `0.95 GiB` |
-| **Phase 1 · 基准 1 横轴 B（规模）** | $N=16$ (8 runs) + $N=32$ (4 runs) | `3,072` | **`3.4 h`** | `1.0–2.8 GiB` |
-| **Phase 2 · 基准 2 升级机械摆阵** | 3 独立系统 × 6 核心方法 = 18 runs | `4,608` | **`2.8 h`** | `0.95 GiB` |
-| **Phase 3 · 基准 3 Wilson–Cowan** | $N=8$ (8 ODE × 3 种子 + 6 非 ODE) + $N=16$ (4 核心 × 1 种子) | `7,168` | **`3.8 h`** | `0.85–1.2 GiB` |
-| **核心全套合计（零新 FOM、零 `test`）** | **128 ODE runs + 12 非 ODE runs + 理论核验** | **`40,576`** | **`25.5 h`（约 1.06 天）** | **$\le 2.8\ \mathrm{GiB}$** |
-| **含 2.5× 诊断/调优/复跑安全余量** | 预留 Run 0 回调、超参核验、失败重跑与图表复算 | `~100,000` | **`~64 h`（< 2.7 天单进程 CPU）** | **$\le 2.8\ \mathrm{GiB}$** |
-| *可选 Phase 4 · IEEE-39 `train/val` 探索对比* | *仅在基准 1–3 闭合且另行登记后决定（严格零 `test` 访问）* | *`~1,536`* | *`~6–8 h`* | *`~1.2 GiB`* |
-
-**NeurIPS 2027（约 5 个月 / 20 周）日程可行性核验**：
-全套核心实验（含 2.5× 安全余量）的单进程 CPU 纯计算墙钟不足 **3 天**，仅占 5 个月周期的 **< 2%**，峰值内存严格低于 `3 GiB`，单机单进程即可极其从容地完成全部实验，从而将 95% 以上研发周期聚焦于**定理证明严密化、零泄漏与公平基线工程审查、Run 0 早停把关及高质量论文撰写与模拟审稿**。
-
----
-
-### 5.2 放行后 Run 0（资格 + G1 冒烟探针）最小判别计划
-
-- **触发前提**：待本暂定设计经 `root` 审阅、独立 Reviewer 只读挑战并获用户正式放行代码实现与 Run 0 后启动；**当前保持 `PAUSED_BY_USER` 与 `default none`**。
-- **最小工作量（总墙钟 $\le 1.5\ \mathrm{h}$，`1,792` 次更新）**：
-  1. **零训练硬资格包（约 `10 min`）**：① 静态 AST + 运行时 `NaN/1e9` 污染零 $\mathcal{O}_1$ 泄漏断言；② 基准 1 与基准 3 生成器物理强度断言（验证基准 1 调制 RMS $\in [22\%,35\%]$、环境记忆 RMS $\in [35\%,50\%]$、稳/失稳初始能量分布重叠、100% 因果可初始化；验证基准 3 稳态/癫痫态分离与正向不变性）；③ Theorem 2 四类负对照 + Theorem 3 双机逃逸（$e^z$ vs $1+0.8\tanh z$ vs $e^{\tanh z}$）自动化复核；④ $N\in\{8,16,32\}$（含 `GraphNeuralODE`）4 s 批量 4 单进程内存与耗时 dry-run。
-  2. **基准 1 锚格冒烟（$N=8$, `strong_open`, 噪声 `0.01`, 单种子 `24121`, 5 端点 = `1,280` 步, 约 `50 min`）**：`Stage-1-Only`、`PDD-Frozen`、`PDD Bounded-Recal`、`End-to-End OSGKD v2`、`Equivariant Graph Neural ODE`，统一在 128 条冻结测试集（64 稳 + 64 失稳）上过双网格评分。
-  3. **基准 3 冒烟（Wilson–Cowan $N=8$, 单种子 `24121`, 2 端点 = `512` 步, 约 `18 min`）**：`Stage-1-Only` vs `PDD-Frozen`，核验非振子有向突触恢复与双稳态癫痫跃迁判别。
-- **Run 0 明确通过（Go）判据**：
-  1. 全部 4 项零训练资格 100% 通过（0 泄漏、两网格合格率 100%、$N=32$ 峰值 RSS $\le 4.0\ \mathrm{GiB}$）；
-  2. 基准 1 锚格（种子 `24121`）：Stage 1 静态边 `F1 >= 0.90`（`AUPRC >= 0.95`）；`Stage-1-Only` 出现真实长时/失稳失配（`MSE@4s >= 0.10` 或失稳召回 $\le 65\%$）；`PDD-Frozen` 较 `Stage-1-Only` 的 `MSE@4s` 降幅 $\ge 35\%$ 且 `VPT` 提升 $\ge +0.50\ \mathrm{s}$；较 `End-to-End v2` 的静态边 `F1` 高出 $\ge +0.15$；
-  3. 基准 3（种子 `24121`）：Stage 1 有向突触 `AUPRC >= 0.90`，`PDD-Frozen` 较 `Stage-1-Only` 的 `MSE@4s` 降幅 $\ge 30\%$ 且癫痫跃迁召回 $\ge 65\%$。
-- **反面结果如何改变决策（四条精确止损/转向分支）**：
-  - **分支 A（`Stage-1-Only` `MSE@4s < 0.05`）**：说明新基准开放/调制仍偏弱（重蹈旧 Layer 1 覆辙）；**冻结全矩阵扩张**，仅依据生成器 RMS 诊断上调耦合调制或开放记忆增益并重跑 Run 0，不改算法架构。
-  - **分支 B（Stage 1 静态边 `F1 < 0.85`）**：说明强开放记忆或大调制波动穿透通带；检查 $\Phi_{\mathrm{loc}}$ 投影后的带通残差谱与 $\sigma_{\min}(\mathcal{G})$，核实是激励带宽不足（违反 A3）还是需收窄通带下限（如移除 $0.5\ \mathrm{Hz}$ 尺度 2 仅留 $1\text{–}3\ \mathrm{Hz}$ 尺度 1）。
-  - **分支 C（`PDD-Frozen` 劣于 `PDD Bounded-Recal` $\ge 15\%$ 或劣于 v2 $\ge 15\%$）**：诊断是否因大摆角电压跌落使 $a(t)$ 呈显著负均值偏置（$\mu_e < -0.25$）导致 Stage 1 系统低估 $c^\star$；若确证为非零均值偏置，则在进入 Phase 1 前将预登记主干升级为 `Stage-2 Bounded-Recal`（仍严格冻结 $\hat S$），并在 Theorem 1 中明示非对称 $a(t)$ 的箱式重校准边界。
-  - **分支 D（`Graph Neural ODE` 在大样本合成失稳上召回 $\ge 75\%$）**：不构成算法失败，但立即复核稳/失稳初始能量分布是否过于易分；若在严格重叠分界下黑箱 ODE 仍高召回，则**诚实收缩论文 C3/G4 主张范围**至高阶约化失配情形（IEEE-39），避免过度宣称，聚焦 C1+C2+C4 主线推进。
-
----
-
-*报告完毕（Provisional Scientist-Role Bounded Design Drafter，严格只读，未修改任何文件或运行任何实验）。*
+原方案暂不展开等价类 Bayesian/Laplace、自动方程空间搜索或混合切换、Datasets & Benchmarks 独立路线或 RoA 扩展。新增高阶 FOM=0，TASK4 暂停，IEEE-39 test 关闭。代码决定为文档合同修订，模型决定为无晋升；科学决定限于本规范的有条件命题及静态定标，轨迹效应待检验。

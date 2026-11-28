@@ -1,62 +1,116 @@
 {
   "role": "scientist",
-  "requested_model_binding": "gpt-6-astra",
-  "timestamp_local": "2026-11-28T18:21:29+08:00",
-  "invocation_method": "codex exec -m gpt-6-astra -s read-only --ephemeral --json",
-  "cli_binary": "C:\\Users\\LLLzijian\\AppData\\Local\\Programs\\OpenAI\\Codex\\bin\\codex.exe",
-  "cli_version": "codex-cli 0.144.4",
-  "exit_code": 1,
-  "status": "BLOCKED_HOST_CLI_VERSION",
-  "thread_id": "01a221ac-432a-7780-9ac5-c6e8f770096d",
-  "error_summary": "HTTP 400 invalid_request_error: The gpt-6-astra model requires a newer version of Codex. Please upgrade to the latest app or CLI and try again.",
-  "stderr_excerpt": "codex : 2026-11-28T10:21:05.477802Z ERROR codex_models_manager::cache: failed to load models cache: missing field `base\r\n_instructions` at line 139 column 5\r\nAt line:1 char:269\r\n+ ... ompt.txt' | codex exec -m gpt-6-astra -s read-only --ephemeral --json ...\r\n+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : NotSpecified: (2026-11-28T10:2...ne 139 column 5:String) [], RemoteException\r\n    + FullyQualifiedErrorId : NativeCommandError\r\n \r\n2026-11-28T10:21:27.415485Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `base_instruc\r\ntions` at line 139 column 5",
-  "events": [
-    {
-      "type": "thread.started",
-      "thread_id": "01a221ac-432a-7780-9ac5-c6e8f770096d"
-    },
-    {
-      "type": "item.completed",
-      "item": {
-        "id": "item_0",
-        "type": "error",
-        "message": "Model metadata for `gpt-6-astra` not found. Defaulting to fallback metadata; this can degrade performance and cause issues."
-      }
-    },
-    {
-      "type": "turn.started"
-    },
-    {
-      "type": "item.completed",
-      "item": {
-        "id": "item_1",
-        "type": "error",
-        "message": "Skill descriptions were shortened to fit the 2% skills context budget. Codex can still see every skill, but some descriptions are shorter. Disable unused skills or plugins to leave more room for the rest."
-      }
-    },
-    {
-      "type": "error",
-      "message": "{\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6-astra' model requires a newer version of Codex. Please upgrade to the latest app or CLI and try again.\"}}"
-    },
-    {
-      "type": "turn.failed",
-      "error": {
-        "message": "{\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6-astra' model requires a newer version of Codex. Please upgrade to the latest app or CLI and try again.\"}}"
+  "revision": "v3.1",
+  "status": "SCIENTIST_DESIGN_SIGNED_REVIEW_PENDING",
+  "scientist_design": {
+    "actual_model": "gpt-6-astra",
+    "signed_at_local": "2026-11-28T19:50:00+08:00",
+    "invocation_method": "collaboration.spawn_agent with explicit model=gpt-6-astra (prior session; root-provided invocation provenance)",
+    "signing_task": "/root/scientist",
+    "support_tasks": [
+      "/root/swing_calibration",
+      "/root/wc_calibration",
+      "/root/comparison",
+      "/root/motion_control"
+    ],
+    "source_path": "reports/pdd_v3_architecture_20261128/v3_1_scientist_spec.md",
+    "api_request_id": null,
+    "provenance_limit": "Invocation provenance supplied by coordinating root and task paths stated in the signed spec; no raw API request ID available."
+  },
+  "implementation_collaboration": {
+    "actual_model": "gpt-6.1-sol",
+    "invocation_method": "collaboration.spawn_agent with explicit model=gpt-6.1-sol (root-provided invocation provenance)",
+    "tasks": [
+      "/root/verify_swing_v31",
+      "/root/verify_wc_v31",
+      "/root/implementation31",
+      "/root/brief31",
+      "/root/indices31"
+    ],
+    "integration": "root integration and checks",
+    "api_request_id": null
+  },
+  "evidence_paths": [
+    "results/pdd_v3_architecture_20261128/v3_1_static_algebra_check.json",
+    "reports/pdd_v3_architecture_20261128/revision_ledger_v3_1.md"
+  ],
+  "review_status": "v3.1 independent AGY review pending; old review is v3.0 only",
+  "execution_status": "PAUSED_BY_USER",
+  "model_pointer": "default none",
+  "new_training": 0,
+  "new_ode_integration": 0,
+  "new_fom": 0,
+  "new_test_access": 0,
+  "historical_v3_0_receipt": {
+    "commit": "fa4c09828a610b9add92fe1eefe5f35d58777ecb",
+    "path": "results/pdd_v3_architecture_20261128/scientist_receipt.json",
+    "git_blob": "2afc733ca1d073ba58695c1ccf04f7afde6d8b6c",
+    "sha256_lf": "e94165f7ba8b91b79b8f30cb4c4c37986f073acfc55e4bbd638e35b3dfe6fdf2",
+    "original_receipt": {
+      "role": "scientist",
+      "requested_model_binding": "gpt-6-astra",
+      "timestamp_local": "2026-11-28T18:21:29+08:00",
+      "invocation_method": "codex exec -m gpt-6-astra -s read-only --ephemeral --json",
+      "cli_binary": "C:\\Users\\LLLzijian\\AppData\\Local\\Programs\\OpenAI\\Codex\\bin\\codex.exe",
+      "cli_version": "codex-cli 0.144.4",
+      "exit_code": 1,
+      "status": "BLOCKED_HOST_CLI_VERSION",
+      "thread_id": "01a221ac-432a-7780-9ac5-c6e8f770096d",
+      "error_summary": "HTTP 400 invalid_request_error: The gpt-6-astra model requires a newer version of Codex. Please upgrade to the latest app or CLI and try again.",
+      "stderr_excerpt": "codex : 2026-11-28T10:21:05.477802Z ERROR codex_models_manager::cache: failed to load models cache: missing field `base\r\n_instructions` at line 139 column 5\r\nAt line:1 char:269\r\n+ ... ompt.txt' | codex exec -m gpt-6-astra -s read-only --ephemeral --json ...\r\n+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : NotSpecified: (2026-11-28T10:2...ne 139 column 5:String) [], RemoteException\r\n    + FullyQualifiedErrorId : NativeCommandError\r\n \r\n2026-11-28T10:21:27.415485Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `base_instruc\r\ntions` at line 139 column 5",
+      "events": [
+        {
+          "type": "thread.started",
+          "thread_id": "01a221ac-432a-7780-9ac5-c6e8f770096d"
+        },
+        {
+          "type": "item.completed",
+          "item": {
+            "id": "item_0",
+            "type": "error",
+            "message": "Model metadata for `gpt-6-astra` not found. Defaulting to fallback metadata; this can degrade performance and cause issues."
+          }
+        },
+        {
+          "type": "turn.started"
+        },
+        {
+          "type": "item.completed",
+          "item": {
+            "id": "item_1",
+            "type": "error",
+            "message": "Skill descriptions were shortened to fit the 2% skills context budget. Codex can still see every skill, but some descriptions are shorter. Disable unused skills or plugins to leave more room for the rest."
+          }
+        },
+        {
+          "type": "error",
+          "message": "{\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6-astra' model requires a newer version of Codex. Please upgrade to the latest app or CLI and try again.\"}}"
+        },
+        {
+          "type": "turn.failed",
+          "error": {
+            "message": "{\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6-astra' model requires a newer version of Codex. Please upgrade to the latest app or CLI and try again.\"}}"
+          }
+        }
+      ],
+      "governance_note": "Per AGENTS.md §4 and agents/scientist.md, no substitute model may claim to fulfill the gpt-6-astra binding. Formal Scientist sign-off remains PROVISIONAL until verified on a gpt-6-astra-capable Codex host or explicitly approved as equivalent by the user.",
+      "provisional_fallback_subagent": {
+        "host": "Antigravity",
+        "subagent_type": "research",
+        "role": "Provisional Scientist Designer",
+        "conversation_id": "1639b919-2a4c-4032-b93d-7768bcefc975",
+        "model_parameter": "inherit",
+        "actual_model_family": "Gemini 4 Neon (NOT gpt-6-astra)",
+        "read_only": true,
+        "status": "PROVISIONAL_DRAFT_ONLY",
+        "output_path": "reports/pdd_v3_architecture_20261128/scientist_design.md",
+        "output_bytes": 74059,
+        "output_sha256_lf": "ab98674c2430b5d2569261db8de1faa66c02db5645759a108a7d46c6965fb9df"
       }
     }
-  ],
-  "governance_note": "Per AGENTS.md §4 and agents/scientist.md, no substitute model may claim to fulfill the gpt-6-astra binding. Formal Scientist sign-off remains PROVISIONAL until verified on a gpt-6-astra-capable Codex host or explicitly approved as equivalent by the user.",
-  "provisional_fallback_subagent": {
-    "host": "Antigravity",
-    "subagent_type": "research",
-    "role": "Provisional Scientist Designer",
-    "conversation_id": "1639b919-2a4c-4032-b93d-7768bcefc975",
-    "model_parameter": "inherit",
-    "actual_model_family": "Gemini 4 Neon (NOT gpt-6-astra)",
-    "read_only": true,
-    "status": "PROVISIONAL_DRAFT_ONLY",
-    "output_path": "reports/pdd_v3_architecture_20261128/scientist_design.md",
-    "output_bytes": 74059,
-    "output_sha256_lf": "ab98674c2430b5d2569261db8de1faa66c02db5645759a108a7d46c6965fb9df"
+  },
+  "frozen_v3_0_manifest": {
+    "path": "results/pdd_v3_architecture_20261128/review_inputs.json",
+    "scope": "Original v3.0 inputs only. Resolve changed paths from the historical commit, not current v3.1 working files. Manifest and historical review receipts were not rewritten."
   }
 }
