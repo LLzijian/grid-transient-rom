@@ -1,4 +1,6 @@
-# 当前架构 · OSGKD 2.0
+# 当前架构 · OSGKD 2.0（已封卷参照）与 PDD v3（`DRAFT` 筹备中）
+
+> **2026-11-28 架构切换筹备**：基于 OSGKD 2.0 封卷证据与定位审查，项目已正式立项面向 NeurIPS 2027 的新主线 **[PDD v3（OSGKD-Decoupled）架构简报](../designs/pdd_v3_architecture_brief.md)**（`DRAFT`）与 [PDD v3 Campaign](../campaigns/pdd_v3/campaign.md)，将头条问题切换为“训练期特权物理观测（$\mathcal{O}_1$）与部署期短时部分观测（$\mathcal{O}_0$）下的开放网络化动力学可辨识性与两阶段解耦发现”。在 Scientist（`gpt-6-astra`）有界设计、独立 Reviewer 只读挑战及用户最终放行前，本页仍保留已封卷的 OSGKD 2.0 端到端规格作为历史与消融参照，`default none` 不变。
 
 从开放异质惯性振子网络的短时运动观测中，哪些耦合、非线性力和记忆阶次可以被区分？OSGKD 2.0 用同一显式方程解释历史、预测未来并计算开放功率收支。IEEE39 的部署合同仍为 11 点、100 ms 相角和完整转速，加冻结常数。真实机械初值只用于另列的信息增强对照。[算法规格](../designs/osgkd_v2_architecture.md) · [信息合同](../kiki.md#motion_only_v1)
 
